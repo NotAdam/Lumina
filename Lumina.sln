@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina", "Lumina\Lumina.csproj", "{4B3957D0-3904-4492-8CFA-86791E1DDD6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Example", "Lumina.Example\Lumina.Example.csproj", "{6148BD34-08B8-4503-B074-28BA2141A54C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B3957D0-3904-4492-8CFA-86791E1DDD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B3957D0-3904-4492-8CFA-86791E1DDD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B3957D0-3904-4492-8CFA-86791E1DDD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B3957D0-3904-4492-8CFA-86791E1DDD6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6148BD34-08B8-4503-B074-28BA2141A54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6148BD34-08B8-4503-B074-28BA2141A54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6148BD34-08B8-4503-B074-28BA2141A54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6148BD34-08B8-4503-B074-28BA2141A54C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
