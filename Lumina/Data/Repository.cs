@@ -7,20 +7,20 @@ using System.Linq;
 
 namespace Lumina.Data
 {
-    public class DatCategory
+    public class Repository
     {
-        public DirectoryInfo BasePath { get; private set; }
+        public DirectoryInfo RootDir { get; private set; }
 
         /// <summary>
         /// Returns the name of the current dat category
         /// </summary>
-        public string Name => BasePath.Name;
+        public string Name => RootDir.Name;
 
         public string Version { get; private set; }
 
         public int ExpansionId { get; private set; }
 
-        public static readonly Dictionary< string, int > CategoryNameToIdMap = new Dictionary< string, int >
+        public static readonly Dictionary< string, byte > CategoryNameToIdMap = new Dictionary< string, byte >
         {
             {"common",          0x00},
             {"bgcommon",        0x01},
@@ -34,37 +34,57 @@ namespace Lumina.Data
             {"ui_script",       0x09},
             {"exd",             0x0A},
             {"game_script",     0x0B},
-            {"music",           0x0C}
+            {"music",           0x0C},
+            {"sqpack_test",     0x12},
+            {"debug",           0x13},
         };
 
-        public static readonly Dictionary< int, string > CategoryIdToNameMap =
+        public static readonly Dictionary< byte, string > CategoryIdToNameMap =
             CategoryNameToIdMap.ToDictionary( x => x.Value, x => x.Key );
         
         /// <summary>
-        /// A collection of dats assoicated with the current category or expansion.
+        /// A collection of dats assoicated with the current repository.
         /// </summary>
-        public List< Dat > Dats { get; set; }
+        public Dictionary< byte, Category > Categories { get; set; }
 
-        public DatCategory( DirectoryInfo basePath )
+        public Repository( DirectoryInfo rootDir )
         {
-            BasePath = basePath;
+            RootDir = rootDir;
 
-            // calc expac id
-            if( Name.StartsWith( "ex" ) )
-            {
-                try
-                {
-                    ExpansionId = int.Parse( Name.Substring( 2 ) );
-                }
-                catch( FormatException e )
-                {
-                    Trace.TraceWarning( "failed to parse expansionid, e: {0}", e.Message );
-                    throw;
-                }
-            }
-            
+            GetExpansionId();
             ParseVersion();
             SetupIndexes();
+        }
+
+        public FileResource GetFile( byte cat, UInt64 hash )
+        {
+            var category = Categories[ cat ];
+            
+            return category.GetFile( hash );
+        }
+
+        public FileResource GetFile( string cat, UInt64 hash )
+        {
+            var catId = CategoryNameToIdMap[ cat ];
+
+            return GetFile( catId, hash );
+        }
+
+        private void GetExpansionId()
+        {
+            if( !Name.StartsWith( "ex" ) )
+            {
+                return;
+            }
+            
+            try
+            {
+                ExpansionId = int.Parse( Name.Substring( 2 ) );
+            }
+            catch( FormatException e )
+            {
+                Trace.TraceWarning( "failed to parse expansionid, e: {0}", e.Message );
+            }
         }
 
         /// <summary>
@@ -77,13 +97,13 @@ namespace Lumina.Data
             // haha what the fuck?
             if( Name == "ffxiv" )
             {
-                var path = BasePath.Parent.Parent;
+                var path = RootDir.Parent.Parent;
                 versionPath = Path.Combine( path.FullName, "ffxivgame.ver" );
             }
             else
             {
                 // (less) gross version fetch
-                versionPath = Path.Combine( BasePath.FullName, Name + ".ver" );
+                versionPath = Path.Combine( RootDir.FullName, Name + ".ver" );
             }
             
             if( File.Exists( versionPath ) )
@@ -97,7 +117,7 @@ namespace Lumina.Data
         /// </summary>
         private void SetupIndexes()
         {
-            Dats = new List< Dat >();
+            Categories = new Dictionary< byte, Category >();
             foreach( var cat in CategoryNameToIdMap )
             {
                 // discover indexes first
@@ -112,10 +132,10 @@ namespace Lumina.Data
                         break;
                     }
                     
-                    var index = new Index( file );
-                    var dat = new Dat( cat.Value, ExpansionId, chunk, Lumina.Options.CurrentPlatform, index );
+                    var index = new SqPackIndex( file );
+                    var dat = new Category( cat.Value, ExpansionId, chunk, Lumina.Options.PlatformFilter, index );
 
-                    Dats.Add( dat );
+                    Categories[ cat.Value ] = dat;
                 }
             }
         }
@@ -131,9 +151,9 @@ namespace Lumina.Data
         /// <param name="platform">Current platform</param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static string BuildDatStr( int cat, int ex, int chunk, DatPlatform platform, string type )
+        public static string BuildDatStr( byte cat, int ex, int chunk, Structs.PlatformId platform, string type )
         {
-            return $"{cat:x02}{ex:x02}{chunk:x02}.{platform.ToString()}.{type}";
+            return $"{cat:x02}{ex:x02}{chunk:x02}.{platform.ToString().ToLowerInvariant()}.{type}";
         }
 
         /// <summary>
@@ -143,12 +163,12 @@ namespace Lumina.Data
         /// <param name="ex">Current expansion id</param>
         /// <param name="chunk">The chunk id</param>
         /// <returns>System.IO.FileInfo representing the index file found</returns>
-        public FileInfo FindIndex( int cat, int ex, int chunk )
+        public FileInfo FindIndex( byte cat, int ex, int chunk )
         {
             foreach( var type in new[] { "index", "index2" } )
             {
-                var index = BuildDatStr( cat, ex, chunk, Lumina.Options.CurrentPlatform, type );
-                var path = Path.Combine( BasePath.FullName, index );
+                var index = BuildDatStr( cat, ex, chunk, Lumina.Options.PlatformFilter, type );
+                var path = Path.Combine( RootDir.FullName, index );
 
                 var fileInfo = new FileInfo( path );
 

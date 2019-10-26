@@ -4,6 +4,6 @@ namespace Lumina
 {
     public class LuminaOptions
     {
-        public DatPlatform CurrentPlatform { get; set; } = DatPlatform.win32;
+        public Data.Structs.PlatformId PlatformFilter { get; set; } = Data.Structs.PlatformId.Win32;
     }
 }

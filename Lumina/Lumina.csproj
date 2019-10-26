@@ -8,6 +8,8 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <RepositoryUrl>https://github.com/NotAdam/Lumina</RepositoryUrl>
         <PackageVersion>1.0.0-preview0</PackageVersion>
+        <Description>Lumina is a small, performant and simple library for interacting with FINAL FANTASY XIV game data.</Description>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
