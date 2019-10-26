@@ -50,11 +50,9 @@ namespace Lumina
         public FileResource GetFile( string path )
         {
             var pathParts = path.Split( '/' );
-            var filename = pathParts.Last();
-            var folder = path.Substring( 0, path.LastIndexOf( '/' ) );
             var category = pathParts.First();
 
-            var hash = (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
+            var hash = GetFileHash( path );
             
             Repository repo;
 
@@ -68,6 +66,15 @@ namespace Lumina
             }
             
             return repo.GetFile( category, hash );
+        }
+
+        public UInt64 GetFileHash( string path )
+        {
+            var pathParts = path.Split( '/' );
+            var filename = pathParts.Last();
+            var folder = path.Substring( 0, path.LastIndexOf( '/' ) );
+
+            return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
         }
     }
 }

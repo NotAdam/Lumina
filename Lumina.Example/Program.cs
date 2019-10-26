@@ -19,20 +19,26 @@ namespace Lumina.Example
                         dat.Value.CategoryId,
                         dat.Value.Expansion,
                         dat.Value.Chunk );
-                    Console.WriteLine( "    index: {0} -> platform: {1}, entries: {2}",
+                    Console.WriteLine( "    index: {0} -> platform: {1}, entries: {2}, datfiles: {3}",
                         dat.Value.SqPackIndex.File.Name,
                         dat.Value.SqPackIndex.SqPackHeader.platformId,
-                        dat.Value.SqPackIndex.HashTableEntries.Count );
+                        dat.Value.SqPackIndex.HashTableEntries.Count,
+                        dat.Value.DatFiles.Count );
+
+                    foreach( var datFile in dat.Value.DatFiles )
+                    {
+                        Console.WriteLine( "      file: {0}", datFile.Value.Name );
+                    }
                 }
             }
-            
-            foreach(var filePath in new []
+
+            foreach( var filePath in new[]
             {
                 "exd/root.exl",
                 "music/ffxiv/bgm_system_title.scd",
                 "music/ex2/bgm_ex2_system_title.scd",
                 "music/ex3/bgm_ex3_system_title.scd"
-            })
+            } )
             {
                 var file = lumina.GetFile( filePath );
 
@@ -41,7 +47,8 @@ namespace Lumina.Example
                     continue;
                 }
 
-                Console.WriteLine( "got file: {0} @ 0x{1:x} ({2:x})", filePath, file.HashTableEntry.Offset, file.HashTableEntry.data );
+                Console.WriteLine( "got file: {0} @ 0x{1:x} ({2:x})", filePath, file.HashTableEntry.Offset,
+                    file.HashTableEntry.data );
             }
         }
     }

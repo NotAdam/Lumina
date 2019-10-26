@@ -41,7 +41,7 @@ namespace Lumina.Data
 
         public static readonly Dictionary< byte, string > CategoryIdToNameMap =
             CategoryNameToIdMap.ToDictionary( x => x.Value, x => x.Key );
-        
+
         /// <summary>
         /// A collection of dats assoicated with the current repository.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Lumina.Data
         public FileResource GetFile( byte cat, UInt64 hash )
         {
             var category = Categories[ cat ];
-            
+
             return category.GetFile( hash );
         }
 
@@ -76,7 +76,7 @@ namespace Lumina.Data
             {
                 return;
             }
-            
+
             try
             {
                 ExpansionId = int.Parse( Name.Substring( 2 ) );
@@ -93,7 +93,7 @@ namespace Lumina.Data
         private void ParseVersion()
         {
             string versionPath = null;
-            
+
             // haha what the fuck?
             if( Name == "ffxiv" )
             {
@@ -105,11 +105,11 @@ namespace Lumina.Data
                 // (less) gross version fetch
                 versionPath = Path.Combine( RootDir.FullName, Name + ".ver" );
             }
-            
+
             if( File.Exists( versionPath ) )
             {
                 Version = File.ReadAllText( versionPath );
-            } 
+            }
         }
 
         /// <summary>
@@ -131,9 +131,10 @@ namespace Lumina.Data
                     {
                         break;
                     }
-                    
+
                     var index = new SqPackIndex( file );
-                    var dat = new Category( cat.Value, ExpansionId, chunk, Lumina.Options.PlatformFilter, index );
+                    var dat = new Category( cat.Value, ExpansionId, chunk, Lumina.Options.PlatformFilter, index,
+                        RootDir );
 
                     Categories[ cat.Value ] = dat;
                 }
@@ -177,7 +178,7 @@ namespace Lumina.Data
                     return fileInfo;
                 }
             }
-            
+
             return null;
         }
     }
