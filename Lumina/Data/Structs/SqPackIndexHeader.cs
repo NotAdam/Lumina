@@ -34,8 +34,8 @@ namespace Lumina.Data.Structs
 
         public bool IsSynonym => ( data & 0b1 ) == 0b1;
 
-        public uint DataFileId => ( data & 0b110 ) >> 1;
+        public uint DataFileId => ( data & 0b1110 ) >> 1;
 
-        public uint Offset => ( data >> 3 );
+        public uint Offset => ( data >> 4 );
     }
 }
