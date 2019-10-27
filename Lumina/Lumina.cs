@@ -9,6 +9,8 @@ using System.Text;
 using Lumina.Data;
 using Lumina.Misc;
 
+// ReSharper disable MemberCanBePrivate.Global
+
 namespace Lumina
 {
     public class Lumina
@@ -54,17 +56,9 @@ namespace Lumina
 
             var hash = GetFileHash( path );
             
-            Repository repo;
+            var repoName = pathParts[ 1 ].StartsWith( "ex" ) ? pathParts[ 1 ] : "ffxiv";
+            var repo = Repositories[ repoName ];
 
-            if( pathParts[ 1 ].StartsWith( "ex" ) )
-            {
-                repo = Repositories[ pathParts[ 1 ] ];
-            }
-            else
-            {
-                repo = Repositories[ "ffxiv" ];
-            }
-            
             return repo.GetFile( category, hash );
         }
 

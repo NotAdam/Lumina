@@ -36,6 +36,6 @@ namespace Lumina.Data.Structs
 
         public uint DataFileId => ( data & 0b1110 ) >> 1;
 
-        public uint Offset => ( data >> 4 );
+        public uint Offset => (uint) ( data & ~0xF ) * 0x08;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace Lumina.Example
 {
@@ -37,7 +38,8 @@ namespace Lumina.Example
                 "exd/root.exl",
                 "music/ffxiv/bgm_system_title.scd",
                 "music/ex2/bgm_ex2_system_title.scd",
-                "music/ex3/bgm_ex3_system_title.scd"
+                "music/ex3/bgm_ex3_system_title.scd",
+                "bg/ex3/01_nvt_n4/fld/n4fa/level/bg.lgb"
             } )
             {
                 var file = lumina.GetFile( filePath );
@@ -47,8 +49,11 @@ namespace Lumina.Example
                     continue;
                 }
 
-                Console.WriteLine( "got file: {0} @ 0x{1:x} ({2:x})", filePath, file.HashTableEntry.Offset,
-                    file.HashTableEntry.data );
+                Console.WriteLine( "got file: {0} @ 0x{1:x} ({2:x}), dat: {3}", 
+                    filePath, 
+                    file.HashTableEntry.Offset,
+                    file.HashTableEntry.data, 
+                    file.HashTableEntry.DataFileId );
             }
         }
     }

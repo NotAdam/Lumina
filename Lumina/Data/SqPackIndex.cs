@@ -43,12 +43,12 @@ namespace Lumina.Data
             // read index hdr
             IndexHeader = br.ReadStructure< SqPackIndexHeader >();
 
-            HashTableEntries = new Dictionary< ulong, IndexHashTableEntry >();
+            HashTableEntries = new Dictionary< UInt64, IndexHashTableEntry >();
 
             // read hashtable entries
             fs.Position = IndexHeader.index_data_offset;
             var entryCount = IndexHeader.index_data_size / Marshal.SizeOf( typeof( IndexHashTableEntry ) );
-            for( int i = 0; i < entryCount; i++ )
+            for( var i = 0; i < entryCount; i++ )
             {
                 var entry = br.ReadStructure< IndexHashTableEntry >();
                 
