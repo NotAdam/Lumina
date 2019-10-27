@@ -1,18 +1,40 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
+using System.Threading;
+using ICSharpCode.SharpZipLib.Zip.Compression;
 using Lumina.Data.Structs;
 using Lumina.Extensions;
 
 namespace Lumina.Data
 {
+    public class SqPackInflateException : Exception
+    {
+        public SqPackInflateException( string message ) : base( message )
+        {
+            
+        }
+    }
+    
     public class SqPack
     {
         /// <summary>
         /// Where the actual file is located on disk
         /// </summary>
         public FileInfo File { get; }
-        
+
+        /// <summary>
+        /// Returns the name of the SqPack file
+        /// </summary>
+        public string Name => File.Name;
+
+        /// <summary>
+        /// Returns the full path to the SqPack file
+        /// </summary>
+        public string FullName => File.FullName;
+
         public SqPackHeader SqPackHeader { get; private set; }
 
         /// <summary>
@@ -28,15 +50,98 @@ namespace Lumina.Data
         {
             Contract.Requires( file != null );
             Contract.Requires( file.Exists );
-            
+
             File = file;
 
             using var fs = file.OpenRead();
             using var br = new BinaryReader( fs );
-            
+
             SqPackHeader = br.ReadStructure< SqPackHeader >();
 
             //fs.Position = SqPackHeader.size;
+        }
+
+        public FileResource ReadFile( uint offset, uint sectionId = 0 )
+        {
+            using var fs = File.OpenRead();
+            using var br = new BinaryReader( fs );
+
+            fs.Position = offset;
+
+            var fileInfo = br.ReadStructure< SqPackFileInfo >();
+
+            var file = new FileResource
+            {
+                FileInfo = fileInfo,
+                BaseOffset = offset
+            };
+
+            switch( fileInfo.Type )
+            {
+                case FileType.Empty:
+                    break;
+                case FileType.Standard:
+                    ReadStandardFile( file, fs, br );
+                    break;
+                case FileType.Model:
+                    break;
+                case FileType.Texture:
+                    break;
+                default:
+                    throw new NotImplementedException( $"File Type {(UInt32) fileInfo.Type} is not implemented." );
+            }
+
+            return file;
+        }
+
+        protected void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br )
+        {
+            var blocks = new List< DatStdFileBlockInfos >();
+
+            // todo: do this in a single read, multiple is a bit shit
+            for( var i = 0; i < resource.FileInfo.number_of_blocks; i++ )
+            {
+                blocks.Add( br.ReadStructure< DatStdFileBlockInfos >() );
+            }
+
+            var ms = resource.DataSections[ 0 ] = new MemoryStream();
+
+            foreach( var block in blocks )
+            {
+                ReadFileBlock( resource.BaseOffset + resource.FileInfo.Size + block.offset, fs, br, ms );
+            }
+        }
+
+        protected void ReadFileBlock( uint offset, FileStream fs, BinaryReader br, MemoryStream dest )
+        {
+            fs.Position = offset;
+
+            var blockHeader = br.ReadStructure< DatBlockHeader >();
+
+            // uncompressed block
+            if( blockHeader.compressed_size == 32000 )
+            {
+                dest.Write( br.ReadBytes( (int) blockHeader.uncompressed_size ) );
+
+                return;
+            }
+
+            var data = br.ReadBytes( (int) blockHeader.uncompressed_size );
+
+            var inflater = new Inflater( true );
+
+            inflater.SetInput( data );
+            var bytesInflated = inflater.Inflate( data );
+
+            if( bytesInflated == blockHeader.uncompressed_size )
+            {
+                dest.Write( data );
+            }
+            else
+            {
+                throw new SqPackInflateException(
+                    "Failed to inflate block, bytesInflated != blockHeader.uncompressed_size" );
+            }
         }
     }
 }

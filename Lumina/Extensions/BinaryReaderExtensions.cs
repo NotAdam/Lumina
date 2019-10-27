@@ -13,14 +13,11 @@ namespace Lumina.Extensions
         /// <param name="br"></param>
         /// <typeparam name="T">The structure to read in to</typeparam>
         /// <returns>The file data as a structure</returns>
-        public static unsafe T ReadStructure< T >( this BinaryReader br )
+        public static T ReadStructure< T >( this BinaryReader br ) where T : struct
         {
-            var data = br.ReadBytes( Marshal.SizeOf( typeof( T ) ) );
+            ReadOnlySpan< byte > data = br.ReadBytes( Marshal.SizeOf( typeof( T ) ) );
 
-            fixed( byte* ptr = &data[ 0 ] )
-            {
-                return (T) Marshal.PtrToStructure( new IntPtr( ptr ), typeof( T ) );
-            }
+            return MemoryMarshal.AsRef< T >( data );
         }
     }
 }

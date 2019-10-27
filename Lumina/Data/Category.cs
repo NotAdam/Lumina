@@ -21,9 +21,9 @@ namespace Lumina.Data
 
         public SqPackIndex SqPackIndex { get; }
 
-        public Dictionary< byte, FileInfo > DatFiles { get; internal set; }
+        public Dictionary< byte, SqPack > DatFiles { get; internal set; }
 
-        public Category( 
+        public Category(
             byte category,
             int expansion,
             int chunk,
@@ -38,25 +38,25 @@ namespace Lumina.Data
             SqPackIndex = sqPackIndex;
             RootDir = rootDir;
 
-            DatFiles = new Dictionary< byte, FileInfo >();
-            
+            DatFiles = new Dictionary< byte, SqPack >();
+
             // init dats
             for( byte id = 0; id < SqPackIndex.IndexHeader.number_of_data_file; id++ )
             {
                 var datName = Repository.BuildDatStr( CategoryId, Expansion, Chunk, Platform, $"dat{id}" );
 
                 var path = Path.Combine( RootDir.FullName, datName );
-            
+
                 var fileInfo = new FileInfo( path );
 
                 if( fileInfo.Exists )
                 {
-                    DatFiles[ id ] = fileInfo;
+                    DatFiles[ id ] = new SqPack( fileInfo );
                 }
             }
         }
 
-        public FileResource GetFile( UInt64 hash )
+        public FileResource GetFile( UInt64 hash, uint sectionId = 0 )
         {
             var status = SqPackIndex.HashTableEntries.TryGetValue( hash, out var hashTableEntry );
 
@@ -65,10 +65,15 @@ namespace Lumina.Data
                 return null;
             }
 
-            return new FileResource( this, hashTableEntry );
+            // get dat
+            var dat = DatFiles[ hashTableEntry.DataFileId ];
+            
+            var file = dat.ReadFile( hashTableEntry.Offset, sectionId );
+
+            return file;
         }
 
-        public FileInfo GetDat( byte datId )
+        public SqPack GetDat( byte datId )
         {
             return DatFiles.TryGetValue( datId, out var dat ) ? dat : null;
         }
