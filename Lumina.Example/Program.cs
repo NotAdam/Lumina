@@ -12,7 +12,7 @@ namespace Lumina.Example
 
             var file = lumina.GetFile( "exd/root.exl" );
 
-            File.WriteAllBytes( "root.exl", file.GetDataSection( 0 ) );
+            file.SaveFile( "root.exl" );
         }
     }
 }

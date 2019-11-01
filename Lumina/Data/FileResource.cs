@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using Lumina.Data.Structs;
 
 namespace Lumina.Data
@@ -18,6 +19,9 @@ namespace Lumina.Data
 
         public Dictionary< byte, MemoryStream > DataSections { get; internal set; }
 
+        /// <summary>
+        /// Called once the files are read out from the dats. Used to further parse the file into usable data structures.
+        /// </summary>
         public virtual void LoadFile()
         {
         }
@@ -27,6 +31,13 @@ namespace Lumina.Data
             var stream = DataSections[ sectionId ];
 
             return stream.ToArray();
+        }
+
+        public void SaveFile( string path, byte section = 0 )
+        {
+            var data = GetDataSection( section );
+
+            File.WriteAllBytes( path, data );
         }
     }
 }

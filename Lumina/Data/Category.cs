@@ -56,19 +56,19 @@ namespace Lumina.Data
             }
         }
 
-        public FileResource GetFile( UInt64 hash, uint sectionId = 0 )
+        public T GetFile< T >( UInt64 hash ) where T : FileResource
         {
             var status = SqPackIndex.HashTableEntries.TryGetValue( hash, out var hashTableEntry );
 
             if( !status )
             {
-                return null;
+                return default;
             }
 
             // get dat
             var dat = DatFiles[ hashTableEntry.DataFileId ];
-            
-            var file = dat.ReadFile( hashTableEntry.Offset, sectionId );
+
+            var file = dat.ReadFile< T >( hashTableEntry.Offset );
 
             return file;
         }

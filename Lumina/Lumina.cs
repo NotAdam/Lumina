@@ -51,15 +51,20 @@ namespace Lumina
 
         public FileResource GetFile( string path )
         {
+            return GetFile< FileResource >( path );
+        }
+
+        public T GetFile< T >( string path ) where T : FileResource
+        {
             var pathParts = path.Split( '/' );
             var category = pathParts.First();
 
             var hash = GetFileHash( path );
-            
+
             var repoName = pathParts[ 1 ].StartsWith( "ex" ) ? pathParts[ 1 ] : "ffxiv";
             var repo = Repositories[ repoName ];
 
-            return repo.GetFile( category, hash );
+            return repo.GetFile< T >( category, hash );
         }
 
         public UInt64 GetFileHash( string path )

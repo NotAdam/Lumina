@@ -14,10 +14,9 @@ namespace Lumina.Data
     {
         public SqPackInflateException( string message ) : base( message )
         {
-            
         }
     }
-    
+
     public class SqPack
     {
         /// <summary>
@@ -51,6 +50,11 @@ namespace Lumina.Data
             Contract.Requires( file != null );
             Contract.Requires( file.Exists );
 
+            if( !file.Exists )
+            {
+                throw new FileNotFoundException( $"SqPack file {file.FullName} could not be found." );
+            }
+
             File = file;
 
             using var fs = file.OpenRead();
@@ -61,7 +65,7 @@ namespace Lumina.Data
             //fs.Position = SqPackHeader.size;
         }
 
-        public FileResource ReadFile( uint offset, uint sectionId = 0 )
+        public T ReadFile< T >( uint offset ) where T : FileResource
         {
             using var fs = File.OpenRead();
             using var br = new BinaryReader( fs );
@@ -70,26 +74,30 @@ namespace Lumina.Data
 
             var fileInfo = br.ReadStructure< SqPackFileInfo >();
 
-            var file = new FileResource
-            {
-                FileInfo = fileInfo,
-                BaseOffset = offset
-            };
+            var file = Activator.CreateInstance< T >();
+            file.FileInfo = fileInfo;
+            file.BaseOffset = offset;
 
             switch( fileInfo.Type )
             {
                 case FileType.Empty:
-                    break;
+                    throw new FileNotFoundException( $"The file located at 0x{offset:x} in dat {Name} is empty." );
+
                 case FileType.Standard:
                     ReadStandardFile( file, fs, br );
                     break;
+
                 case FileType.Model:
                     break;
+
                 case FileType.Texture:
                     break;
+
                 default:
                     throw new NotImplementedException( $"File Type {(UInt32) fileInfo.Type} is not implemented." );
             }
+
+            file.LoadFile();
 
             return file;
         }
@@ -110,6 +118,9 @@ namespace Lumina.Data
             {
                 ReadFileBlock( resource.BaseOffset + resource.FileInfo.Size + block.offset, fs, br, ms );
             }
+
+            // reset position ready for reading
+            ms.Position = 0;
         }
 
         protected void ReadFileBlock( uint offset, FileStream fs, BinaryReader br, MemoryStream dest )

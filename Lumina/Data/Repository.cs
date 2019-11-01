@@ -4,6 +4,8 @@ using System.Collections.Immutable;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace Lumina.Data
 {
@@ -22,21 +24,21 @@ namespace Lumina.Data
 
         public static readonly Dictionary< string, byte > CategoryNameToIdMap = new Dictionary< string, byte >
         {
-            {"common",          0x00},
-            {"bgcommon",        0x01},
-            {"bg",              0x02},
-            {"cut",             0x03},
-            {"chara",           0x04},
-            {"shader",          0x05},
-            {"ui",              0x06},
-            {"sound",           0x07},
-            {"vfx",             0x08},
-            {"ui_script",       0x09},
-            {"exd",             0x0A},
-            {"game_script",     0x0B},
-            {"music",           0x0C},
-            {"sqpack_test",     0x12},
-            {"debug",           0x13},
+            { "common", 0x00 },
+            { "bgcommon", 0x01 },
+            { "bg", 0x02 },
+            { "cut", 0x03 },
+            { "chara", 0x04 },
+            { "shader", 0x05 },
+            { "ui", 0x06 },
+            { "sound", 0x07 },
+            { "vfx", 0x08 },
+            { "ui_script", 0x09 },
+            { "exd", 0x0A },
+            { "game_script", 0x0B },
+            { "music", 0x0C },
+            { "sqpack_test", 0x12 },
+            { "debug", 0x13 },
         };
 
         public static readonly Dictionary< byte, string > CategoryIdToNameMap =
@@ -56,18 +58,19 @@ namespace Lumina.Data
             SetupIndexes();
         }
 
-        public FileResource GetFile( byte cat, UInt64 hash )
-        {
-            var category = Categories[ cat ];
-
-            return category.GetFile( hash );
-        }
-
-        public FileResource GetFile( string cat, UInt64 hash )
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
+        public T GetFile< T >( string cat, UInt64 hash ) where T : FileResource
         {
             var catId = CategoryNameToIdMap[ cat ];
 
-            return GetFile( catId, hash );
+            return GetFile< T >( catId, hash );
+        }
+
+        public T GetFile< T >( byte cat, UInt64 hash ) where T : FileResource
+        {
+            var category = Categories[ cat ];
+
+            return category.GetFile< T >( hash );
         }
 
         private void GetExpansionId()

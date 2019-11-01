@@ -10,7 +10,8 @@ namespace Lumina.Misc
     {
         public const UInt32 CrcInitialSeed = 0xFFFFFFFF;
 
-        private static readonly UInt32[] CrcTable = {
+        private static readonly UInt32[] CrcTable =
+        {
             0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3, 0x0EDB8832,
             0x79DCB8A4, 0xE0D5E91E, 0x97D2D988, 0x09B64C2B, 0x7EB17CBD, 0xE7B82D07, 0x90BF1D91,
             0x1DB71064, 0x6AB020F2, 0xF3B97148, 0x84BE41DE, 0x1ADAD47D, 0x6DDDE4EB, 0xF4D4B551, 0x83D385C7, 0x136C9856,
@@ -45,35 +46,41 @@ namespace Lumina.Misc
             0xC4614AB8, 0x5D681B02, 0x2A6F2B94, 0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D
         };
 
-        private static uint Get(uint[] table, uint seed, byte[] buffer, int start, int size) {
-            if (table == null)
-                throw new ArgumentNullException("table");
-            if (buffer == null)
-                throw new ArgumentNullException("buffer");
+        private static uint Get( uint[] table, uint seed, byte[] buffer, int start, int size )
+        {
+            if( table == null )
+                throw new ArgumentNullException( nameof( table ) );
+            if( buffer == null )
+                throw new ArgumentNullException( nameof( buffer ) );
 
             var crc = seed;
-            for (var i = start; i < start + size; i++)
-                unchecked {
-                    var b = buffer[i];
-                    if (b >= 0x41 && b <= 0x5A)
-                        b = (byte)(((uint)b) + 0x20);
-                    crc = (crc >> 8) ^ table[(byte)(b ^ crc)];
+            for( var i = start; i < start + size; i++ )
+                unchecked
+                {
+                    var b = buffer[ i ];
+                    if( b >= 0x41 && b <= 0x5A )
+                        b = (byte) ( ( (uint) b ) + 0x20 );
+                    crc = ( crc >> 8 ) ^ table[ (byte) ( b ^ crc ) ];
                 }
+
             return crc;
         }
 
-        public static uint Get(uint seed, byte[] buffer, int start, int size) {
-            if (buffer == null)
-                throw new ArgumentNullException("buffer");
-            return Get(CrcTable, seed, buffer, start, size);
+        public static uint Get( uint seed, byte[] buffer, int start, int size )
+        {
+            if( buffer == null )
+                throw new ArgumentNullException( nameof( buffer ) );
+            
+            return Get( CrcTable, seed, buffer, start, size );
         }
 
-        public static uint Get(string value) {
-            if (value == null)
-                throw new ArgumentNullException("value");
-            var b = Encoding.ASCII.GetBytes(value);
-            return Get(CrcInitialSeed, b, 0, b.Length);
+        public static uint Get( string value )
+        {
+            if( value == null )
+                throw new ArgumentNullException( nameof( value ) );
+            
+            var b = Encoding.ASCII.GetBytes( value );
+            return Get( CrcInitialSeed, b, 0, b.Length );
         }
     }
- 
 }
