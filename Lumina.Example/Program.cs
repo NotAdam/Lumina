@@ -48,13 +48,12 @@ namespace Lumina.Example
         {
             var lumina = new Lumina( args[ 0 ] );
 
-            var file = lumina.GetFile( "exd/root.exl" );
+            // custom data type
+            var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
 
             file.SaveFile( "root.exl" );
 
-            // custom data type
-            var file2 = lumina.GetFile< CustomFileType >( "exd/root.exl" );
-            var aetheryte = file2.ExdMap.First( m => m.Key == "Aetheryte" );
+            var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
 
             Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
         }
