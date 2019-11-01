@@ -1,6 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 namespace Lumina.Extensions
@@ -15,9 +16,34 @@ namespace Lumina.Extensions
         /// <returns>The file data as a structure</returns>
         public static T ReadStructure< T >( this BinaryReader br ) where T : struct
         {
-            ReadOnlySpan< byte > data = br.ReadBytes( Marshal.SizeOf( typeof( T ) ) );
+            ReadOnlySpan< byte > data = br.ReadBytes( Marshal.SizeOf< T >() );
 
             return MemoryMarshal.AsRef< T >( data );
+        }
+
+        /// <summary>
+        /// Reads many structures from the current stream position.
+        /// </summary>
+        /// <param name="br"></param>
+        /// <param name="count">The number of T to read from the stream</param>
+        /// <typeparam name="T">The structure to read in to</typeparam>
+        /// <returns>A list containing the structures read from the stream</returns>
+        public static List< T > ReadStructures< T >( this BinaryReader br, int count ) where T : struct
+        {
+            var size = Marshal.SizeOf< T >();
+            var data = br.ReadBytes( size * count );
+
+            var list = new List< T >( count );
+
+            for( int i = 0; i < count; i++ )
+            {
+                var offset = size * i;
+                var span = new ReadOnlySpan< byte >( data, offset, size );
+
+                list.Add( MemoryMarshal.AsRef< T >( span ) );
+            }
+
+            return list;
         }
     }
 }

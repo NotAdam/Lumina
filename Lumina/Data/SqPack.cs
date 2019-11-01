@@ -42,7 +42,8 @@ namespace Lumina.Data
         public bool ShouldConvertEndianness
         {
             // todo: what about reading LE files on BE device? do we even care?
-            get => BitConverter.IsLittleEndian && SqPackHeader.platformId == PlatformId.PS3;
+            get => BitConverter.IsLittleEndian && SqPackHeader.platformId == PlatformId.PS3 ||
+                   !BitConverter.IsLittleEndian && SqPackHeader.platformId != PlatformId.PS3;
         }
 
         public SqPack( FileInfo file )
@@ -62,7 +63,7 @@ namespace Lumina.Data
 
             SqPackHeader = br.ReadStructure< SqPackHeader >();
 
-            //fs.Position = SqPackHeader.size;
+            fs.Position = SqPackHeader.size;
         }
 
         public T ReadFile< T >( uint offset ) where T : FileResource
@@ -104,13 +105,7 @@ namespace Lumina.Data
 
         protected void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br )
         {
-            var blocks = new List< DatStdFileBlockInfos >();
-
-            // todo: do this in a single read, multiple is a bit shit
-            for( var i = 0; i < resource.FileInfo.number_of_blocks; i++ )
-            {
-                blocks.Add( br.ReadStructure< DatStdFileBlockInfos >() );
-            }
+            var blocks = br.ReadStructures< DatStdFileBlockInfos >( (int) resource.FileInfo.number_of_blocks );
 
             var ms = resource.DataSections[ 0 ] = new MemoryStream();
 

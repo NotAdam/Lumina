@@ -48,10 +48,11 @@ namespace Lumina.Data
             // read hashtable entries
             fs.Position = IndexHeader.index_data_offset;
             var entryCount = IndexHeader.index_data_size / Marshal.SizeOf( typeof( IndexHashTableEntry ) );
-            for( var i = 0; i < entryCount; i++ )
+
+            var entries = br.ReadStructures< IndexHashTableEntry >( (int)entryCount );
+
+            foreach( var entry in entries )
             {
-                var entry = br.ReadStructure< IndexHashTableEntry >();
-                
                 HashTableEntries[ entry.hash ] = entry;
             }
         }
