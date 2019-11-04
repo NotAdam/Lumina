@@ -10,18 +10,15 @@ namespace Lumina.Data
     {
         public FileResource()
         {
-            DataSections = new Dictionary< byte, MemoryStream >();
         }
-        
+
         public SqPackFileInfo FileInfo { get; internal set; }
 
         internal uint BaseOffset { get; set; }
 
-        public Dictionary< byte, MemoryStream > DataSections { get; internal set; }
-        
         public byte[] Data { get; internal set; }
 
-        public Span<byte> DataSpan => Data.AsSpan();
+        public Span< byte > DataSpan => Data.AsSpan();
 
         /// <summary>
         /// Called once the files are read out from the dats. Used to further parse the file into usable data structures.
@@ -30,18 +27,9 @@ namespace Lumina.Data
         {
         }
 
-        public byte[] GetDataSection( byte sectionId )
-        {
-            var stream = DataSections[ sectionId ];
-
-            return stream.ToArray();
-        }
-
         public void SaveFile( string path, byte section = 0 )
         {
-            var data = GetDataSection( section );
-
-            File.WriteAllBytes( path, data );
+            File.WriteAllBytes( path, Data );
         }
     }
 }

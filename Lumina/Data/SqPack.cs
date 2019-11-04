@@ -106,10 +106,10 @@ namespace Lumina.Data
             return file;
         }
 
-        protected void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms)
+        protected void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
         {
             var blocks = br.ReadStructures< DatStdFileBlockInfos >( (int) resource.FileInfo.number_of_blocks );
-            
+
             foreach( var block in blocks )
             {
                 ReadFileBlock( resource.BaseOffset + resource.FileInfo.Size + block.offset, fs, br, ms );
@@ -119,14 +119,14 @@ namespace Lumina.Data
             ms.Position = 0;
         }
 
-        private void ReadTextureFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms)
+        private void ReadTextureFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
         {
             var blocks = br.ReadStructures< LodBlock >( (int) resource.FileInfo.number_of_blocks );
 
             // if there is a mipmap header, the comp_offset
             // will not be 0
             uint mipMapSize = blocks[ 0 ].comp_offset;
-            if (mipMapSize != 0)
+            if( mipMapSize != 0 )
             {
                 long originalPos = fs.Position;
 
@@ -137,17 +137,18 @@ namespace Lumina.Data
             }
 
             // i is for texture blocks, j is 'data blocks'...
-            for (byte i = 0; i < blocks.Count; i++)
+            for( byte i = 0; i < blocks.Count; i++ )
             {
                 // start from comp_offset
                 UInt32 runningBlockTotal = blocks[ i ].comp_offset + resource.BaseOffset + resource.FileInfo.Size;
                 ReadFileBlock( runningBlockTotal, fs, br, ms );
 
-                for ( int j = 1; j < blocks[ i ].block_count; j++ )
+                for( int j = 1; j < blocks[ i ].block_count; j++ )
                 {
                     runningBlockTotal += (UInt32) br.ReadInt16();
                     ReadFileBlock( runningBlockTotal, fs, br, ms );
                 }
+
                 // unknown
                 br.ReadInt16();
             }

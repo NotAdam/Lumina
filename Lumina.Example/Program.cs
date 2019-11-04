@@ -21,7 +21,8 @@ namespace Lumina.Example
 
             public override void LoadFile()
             {
-                var stream = DataSections[ 0 ];
+                // todo: not sure if good idea yet
+                using var stream = new MemoryStream( Data, false );
                 using var sr = new StreamReader( stream );
 
                 // read version
