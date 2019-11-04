@@ -73,12 +73,40 @@ namespace Lumina.Data
             using var ms = new MemoryStream();
 
             fs.Position = offset;
-
+            
             var fileInfo = br.ReadStructure< SqPackFileInfo >();
-
             var file = Activator.CreateInstance< T >();
-            file.FileInfo = fileInfo;
-            file.BaseOffset = offset;
+
+            // check if we need to read the extended model header or just default to the standard file header
+            if( fileInfo.Type == FileType.Model )
+            {
+                fs.Position = offset;
+
+                var modelFileInfo = br.ReadStructure< ModelBlock >();
+                
+                file.FileInfo = new LuminaFileInfo
+                {
+                    HeaderSize = modelFileInfo.Size,
+                    Type = modelFileInfo.Type,
+                    BlockCount = modelFileInfo.used_number_of_block,
+                    RawFileSize = modelFileInfo.RawFileSize,
+                    Offset = offset,
+                    
+                    // todo: is this useful?
+                    ModelBlock = modelFileInfo
+                };
+            }
+            else
+            {
+                file.FileInfo = new LuminaFileInfo
+                {
+                    HeaderSize = fileInfo.Size,
+                    Type = fileInfo.Type,
+                    BlockCount = fileInfo.number_of_blocks,
+                    RawFileSize = fileInfo.RawFileSize,
+                    Offset = offset
+                };
+            }
 
             switch( fileInfo.Type )
             {
@@ -90,6 +118,7 @@ namespace Lumina.Data
                     break;
 
                 case FileType.Model:
+                    ReadModelFile( file, fs, br, ms );
                     break;
 
                 case FileType.Texture:
@@ -106,22 +135,29 @@ namespace Lumina.Data
             return file;
         }
 
-        protected void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
+        private void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
         {
-            var blocks = br.ReadStructures< DatStdFileBlockInfos >( (int) resource.FileInfo.number_of_blocks );
+            var blocks = br.ReadStructures< DatStdFileBlockInfos >( (int) resource.FileInfo.BlockCount );
 
             foreach( var block in blocks )
             {
-                ReadFileBlock( resource.BaseOffset + resource.FileInfo.Size + block.offset, fs, br, ms );
+                ReadFileBlock( resource.FileInfo.Offset + resource.FileInfo.HeaderSize + block.offset, fs, br, ms );
             }
 
             // reset position ready for reading
             ms.Position = 0;
         }
 
+        private void ReadModelFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
+        {
+            var blockInfo = br.ReadStructure< DatMdlFileBlockInfo >();
+            
+            
+        }
+
         private void ReadTextureFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
         {
-            var blocks = br.ReadStructures< LodBlock >( (int) resource.FileInfo.number_of_blocks );
+            var blocks = br.ReadStructures< LodBlock >( (int) resource.FileInfo.BlockCount );
 
             // if there is a mipmap header, the comp_offset
             // will not be 0
@@ -130,7 +166,7 @@ namespace Lumina.Data
             {
                 long originalPos = fs.Position;
 
-                fs.Position = resource.BaseOffset + resource.FileInfo.Size;
+                fs.Position = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
                 ms.Write( br.ReadBytes( (int) mipMapSize ) );
 
                 fs.Position = originalPos;
@@ -140,7 +176,7 @@ namespace Lumina.Data
             for( byte i = 0; i < blocks.Count; i++ )
             {
                 // start from comp_offset
-                UInt32 runningBlockTotal = blocks[ i ].comp_offset + resource.BaseOffset + resource.FileInfo.Size;
+                UInt32 runningBlockTotal = blocks[ i ].comp_offset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
                 ReadFileBlock( runningBlockTotal, fs, br, ms );
 
                 for( int j = 1; j < blocks[ i ].block_count; j++ )

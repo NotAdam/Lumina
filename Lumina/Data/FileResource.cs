@@ -5,16 +5,14 @@ using System.Threading.Tasks;
 using Lumina.Data.Structs;
 
 namespace Lumina.Data
-{
+{ 
     public class FileResource
     {
         public FileResource()
         {
         }
 
-        public SqPackFileInfo FileInfo { get; internal set; }
-
-        internal uint BaseOffset { get; set; }
+        public LuminaFileInfo FileInfo { get; internal set; }
 
         public byte[] Data { get; internal set; }
 
