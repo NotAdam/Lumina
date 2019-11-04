@@ -70,6 +70,7 @@ namespace Lumina.Data
         {
             using var fs = File.OpenRead();
             using var br = new BinaryReader( fs );
+            using var ms = new MemoryStream();
 
             fs.Position = offset;
 
@@ -85,30 +86,30 @@ namespace Lumina.Data
                     throw new FileNotFoundException( $"The file located at 0x{offset:x} in dat {Name} is empty." );
 
                 case FileType.Standard:
-                    ReadStandardFile( file, fs, br );
+                    ReadStandardFile( file, fs, br, ms );
                     break;
 
                 case FileType.Model:
                     break;
 
                 case FileType.Texture:
+                    ReadTextureFile( file, fs, br, ms );
                     break;
 
                 default:
                     throw new NotImplementedException( $"File Type {(UInt32) fileInfo.Type} is not implemented." );
             }
 
+            file.Data = ms.ToArray();
             file.LoadFile();
 
             return file;
         }
 
-        protected void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br )
+        protected void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms)
         {
             var blocks = br.ReadStructures< DatStdFileBlockInfos >( (int) resource.FileInfo.number_of_blocks );
-
-            var ms = resource.DataSections[ 0 ] = new MemoryStream();
-
+            
             foreach( var block in blocks )
             {
                 ReadFileBlock( resource.BaseOffset + resource.FileInfo.Size + block.offset, fs, br, ms );
@@ -118,8 +119,43 @@ namespace Lumina.Data
             ms.Position = 0;
         }
 
+        private void ReadTextureFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms)
+        {
+            var blocks = br.ReadStructures< LodBlock >( (int) resource.FileInfo.number_of_blocks );
+
+            // if there is a mipmap header, the comp_offset
+            // will not be 0
+            uint mipMapSize = blocks[ 0 ].comp_offset;
+            if (mipMapSize != 0)
+            {
+                long originalPos = fs.Position;
+
+                fs.Position = resource.BaseOffset + resource.FileInfo.Size;
+                ms.Write( br.ReadBytes( (int) mipMapSize ) );
+
+                fs.Position = originalPos;
+            }
+
+            // i is for texture blocks, j is 'data blocks'...
+            for (byte i = 0; i < blocks.Count; i++)
+            {
+                // start from comp_offset
+                UInt32 runningBlockTotal = blocks[ i ].comp_offset + resource.BaseOffset + resource.FileInfo.Size;
+                ReadFileBlock( runningBlockTotal, fs, br, ms );
+
+                for ( int j = 1; j < blocks[ i ].block_count; j++ )
+                {
+                    runningBlockTotal += (UInt32) br.ReadInt16();
+                    ReadFileBlock( runningBlockTotal, fs, br, ms );
+                }
+                // unknown
+                br.ReadInt16();
+            }
+        }
+
         protected void ReadFileBlock( uint offset, FileStream fs, BinaryReader br, MemoryStream dest )
         {
+            long originalPosition = fs.Position;
             fs.Position = offset;
 
             var blockHeader = br.ReadStructure< DatBlockHeader >();
@@ -148,6 +184,8 @@ namespace Lumina.Data
                 throw new SqPackInflateException(
                     "Failed to inflate block, bytesInflated != blockHeader.uncompressed_size" );
             }
+
+            fs.Position = originalPosition;
         }
     }
 }

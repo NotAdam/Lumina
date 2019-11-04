@@ -37,4 +37,14 @@ namespace Lumina.Data.Structs
         public UInt32 compressed_size;
         public UInt32 uncompressed_size;
     };
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct LodBlock
+    {
+        public UInt32 comp_offset;
+        public UInt32 comp_size;
+        public UInt32 decomp_size;
+        public UInt32 block_offset;
+        public UInt32 block_count;
+    }
 }

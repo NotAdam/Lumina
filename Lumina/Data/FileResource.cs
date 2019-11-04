@@ -18,6 +18,10 @@ namespace Lumina.Data
         internal uint BaseOffset { get; set; }
 
         public Dictionary< byte, MemoryStream > DataSections { get; internal set; }
+        
+        public byte[] Data { get; internal set; }
+
+        public Span<byte> DataSpan => Data.AsSpan();
 
         /// <summary>
         /// Called once the files are read out from the dats. Used to further parse the file into usable data structures.
