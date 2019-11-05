@@ -14,4 +14,6 @@ jobs:
       with:
         dotnet-version: 3.0.100
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release --nologo
+    - name: Run tests
+      run: dotnet test --configuration Release --nologo
