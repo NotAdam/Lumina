@@ -6,12 +6,11 @@ Lumina is an (attempt) at creating a small, performant library for interacting w
 
 ## Usage
 
-### Read File
+See the `Lumina.Example` project for more comprehensive examples on loading files and creating custom data types.
 
-Currently only regular files are supported, models and textures are coming soon™
 
     var lumina = new Lumina( "path/to/sqpack/folder" );
 
     var file = lumina.GetFile( "exd/root.exl" );
 
-    File.WriteAllBytes( "root.exl", file.GetDataSection( 0 ) );
+    file.SaveFile( "root.exl" );
