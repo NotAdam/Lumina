@@ -50,8 +50,6 @@ namespace Lumina.Example
         {
             var lumina = new Lumina( args[ 0 ] );
 
-            //lumina.GetFile( "chara/human/c0701/obj/hair/h0009/model/c0701h0009_hir.mdl" );
-
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
 

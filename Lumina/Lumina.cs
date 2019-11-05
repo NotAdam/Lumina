@@ -49,7 +49,7 @@ namespace Lumina
             }
         }
 
-        public ParsedFilePath ParseFilePath( string path )
+        public static ParsedFilePath ParseFilePath( string path )
         {
             var pathParts = path.Split( '/' );
             var category = pathParts.First();
@@ -62,7 +62,7 @@ namespace Lumina
             {
                 Category = category,
                 Hash = hash,
-                Repository = Repositories[ repoName ]
+                Repository = repoName
             };
         }
 
@@ -74,18 +74,20 @@ namespace Lumina
         public T GetFile< T >( string path ) where T : FileResource
         {
             var parsed = ParseFilePath( path );
+            var repo = Repositories[ parsed.Repository ];
 
-            return parsed.Repository.GetFile< T >( parsed.Category, parsed.Hash );
+            return repo.GetFile< T >( parsed.Category, parsed.Hash );
         }
 
         public bool FileExists( string path )
         {
             var parsed = ParseFilePath( path );
-
-            return parsed.Repository.FileExists( parsed.Category, parsed.Hash );
+            var repo = Repositories[ parsed.Repository ];
+            
+            return repo.FileExists( parsed.Category, parsed.Hash );
         }
 
-        public UInt64 GetFileHash( string path )
+        public static UInt64 GetFileHash( string path )
         {
             var pathParts = path.Split( '/' );
             var filename = pathParts.Last();
