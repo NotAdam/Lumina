@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Lumina.Data.Structs
 {
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout( LayoutKind.Sequential )]
     public unsafe struct SqPackHeader
     {
         public fixed byte magic[8];

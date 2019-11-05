@@ -7,9 +7,9 @@ namespace Lumina.Data.Structs
 {
     public enum FileType : UInt32
     {
-        Empty = 1, 
-        Standard = 2, 
-        Model = 3, 
+        Empty = 1,
+        Standard = 2,
+        Model = 3,
         Texture = 4,
     }
 
@@ -20,8 +20,8 @@ namespace Lumina.Data.Structs
         HIGH,
         LOW
     }
-    
-    [StructLayout(LayoutKind.Sequential)]
+
+    [StructLayout( LayoutKind.Sequential )]
     public unsafe struct SqPackFileInfo
     {
         public UInt32 Size;
@@ -30,16 +30,16 @@ namespace Lumina.Data.Structs
         public fixed UInt32 __unknown[2];
         public UInt32 number_of_blocks;
     }
-    
-    [StructLayout(LayoutKind.Sequential)]
+
+    [StructLayout( LayoutKind.Sequential )]
     public struct DatStdFileBlockInfos
     {
         public UInt32 offset;
         public UInt16 size;
         public UInt16 uncompressed_size;
     };
-    
-    [StructLayout(LayoutKind.Sequential)]
+
+    [StructLayout( LayoutKind.Sequential )]
     struct DatBlockHeader
     {
         public UInt32 size;
@@ -48,7 +48,7 @@ namespace Lumina.Data.Structs
         public UInt32 uncompressed_size;
     };
 
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout( LayoutKind.Sequential )]
     struct LodBlock
     {
         public UInt32 comp_offset;
@@ -57,8 +57,8 @@ namespace Lumina.Data.Structs
         public UInt32 block_offset;
         public UInt32 block_count;
     }
-    
-    [StructLayout(LayoutKind.Sequential)]
+
+    [StructLayout( LayoutKind.Sequential )]
     public unsafe struct ModelBlock
     {
         public UInt32 Size;

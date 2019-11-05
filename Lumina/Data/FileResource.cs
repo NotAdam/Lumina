@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Lumina.Data.Structs;
 
 namespace Lumina.Data
-{ 
+{
     public class FileResource
     {
         public FileResource()

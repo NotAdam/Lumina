@@ -56,7 +56,7 @@ namespace Lumina
 
             var hash = GetFileHash( path );
 
-            var repoName = pathParts[1].StartsWith( "ex" ) ? pathParts[1] : "ffxiv";
+            var repoName = pathParts[ 1 ].StartsWith( "ex" ) ? pathParts[ 1 ] : "ffxiv";
 
             return new ParsedFilePath
             {

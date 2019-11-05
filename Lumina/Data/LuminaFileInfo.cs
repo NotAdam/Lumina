@@ -9,9 +9,9 @@ namespace Lumina.Data
         public FileType Type;
         public UInt32 RawFileSize;
         public UInt32 BlockCount;
-        
+
         public uint Offset { get; internal set; }
-        
+
         public ModelBlock ModelBlock { get; internal set; }
     }
 }
