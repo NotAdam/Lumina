@@ -158,6 +158,10 @@ namespace Lumina.Data
 
             var mdlBlock = resource.FileInfo.ModelBlock;
 
+            ms.Write( BitConverter.GetBytes(mdlBlock.m_uVertexDeclarationNum) );
+            ms.Write( BitConverter.GetBytes(mdlBlock.m_uMaterialNum) );
+            ms.Write( new byte[64] );
+
             if( (Int32) lod > mdlBlock.m_uLODNum )
                 throw new ArgumentException( "Requested LOD does not exist.", nameof( lod ) );
 
