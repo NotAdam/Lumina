@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics;
@@ -65,6 +65,19 @@ namespace Lumina
             var repo = Repositories[ repoName ];
 
             return repo.GetFile< T >( category, hash );
+        }
+
+        public bool FileExists( string path )
+        {
+            var pathParts = path.Split( '/' );
+            var category = pathParts.First();
+
+            var hash = GetFileHash( path );
+
+            var repoName = pathParts[1].StartsWith( "ex" ) ? pathParts[1] : "ffxiv";
+            var repo = Repositories[repoName];
+
+            return repo.FileExists( category, hash );
         }
 
         public UInt64 GetFileHash( string path )
