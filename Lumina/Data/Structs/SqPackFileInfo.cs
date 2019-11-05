@@ -12,6 +12,14 @@ namespace Lumina.Data.Structs
         Model = 3, 
         Texture = 4,
     }
+
+    public enum LOD : Int32
+    {
+        ALL = -1,
+        HIGHEST,
+        HIGH,
+        LOW
+    }
     
     [StructLayout(LayoutKind.Sequential)]
     public unsafe struct SqPackFileInfo
@@ -90,19 +98,5 @@ namespace Lumina.Data.Structs
         public bool m_bEnableIndexBufferStreaming;
         public bool m_bEnableEdgeGeometry;
         public byte m_uPadding;
-        public fixed UInt16 m_uCompressedBlockSize[1];
     };
-    
-
-    [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct DatMdlFileBlockInfo
-    {
-        public UInt32 unknown1;
-        public fixed UInt32 uncompressed_sizes[0xB];
-        public fixed UInt32 compressed_sizes[0xB];
-        public fixed UInt32 offsets[0xB];
-        public fixed UInt16 block_ids[0xB];
-        public fixed UInt16 block_counts[0xB];
-        public fixed UInt32 unknown2[0x2];
-    }
 }

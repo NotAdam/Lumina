@@ -118,7 +118,7 @@ namespace Lumina.Data
                     break;
 
                 case FileType.Model:
-                    ReadModelFile( file, fs, br, ms );
+                    ReadModelFile( file, fs, br, ms, LOD.ALL );
                     break;
 
                 case FileType.Texture:
@@ -130,6 +130,8 @@ namespace Lumina.Data
             }
 
             file.Data = ms.ToArray();
+            if( file.Data.Length != file.FileInfo.RawFileSize )
+                Debug.WriteLine( "Read data size does not match file size." );
             file.LoadFile();
 
             return file;
@@ -148,11 +150,92 @@ namespace Lumina.Data
             ms.Position = 0;
         }
 
-        private void ReadModelFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
+        // the resulting data from reading the model file does not match the file size... where is the rest of it?
+        private unsafe void ReadModelFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms, LOD lod = 0 )
         {
-            var blockInfo = br.ReadStructure< DatMdlFileBlockInfo >();
-            
-            
+            if( lod != LOD.ALL )
+                Console.WriteLine( "Please note that loading anything other than all LODs may not be accurate." );
+
+            var mdlBlock = resource.FileInfo.ModelBlock;
+
+            if( (Int32) lod > mdlBlock.m_uLODNum )
+                throw new ArgumentException( "Requested LOD does not exist.", nameof( lod ) );
+
+            uint baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
+            uint accumOffset = baseOffset;
+
+            int totalBlocks = 0;
+
+            // 11 types of block; 1/1/3/3/3 stack/runtime/vertex/egeo/index
+            totalBlocks += mdlBlock.m_uStackDataBlockNum;
+            totalBlocks += mdlBlock.m_uRuntimeDataBlockNum;
+
+            for( int i = 0; i < 3; i++ )
+                totalBlocks += mdlBlock.m_uVertexBufferDataBlockNum[ i ];
+            for( int i = 0; i < 3; i++ )
+                totalBlocks += mdlBlock.m_uEdgeGeometryVertexBufferDataBlockNum[ i ];
+            for( int i = 0; i < 3; i++ )
+                totalBlocks += mdlBlock.m_uIndexBufferDataBlockNum[ i ];
+
+            var compressedBlockSizes = br.ReadStructures< UInt16 >( totalBlocks );
+
+            if( lod == LOD.ALL )
+            {
+                for( int i = 0; i < totalBlocks; i++ )
+                {
+                    ReadFileBlock( accumOffset, fs, br, ms );
+                    accumOffset = (uint) (accumOffset + compressedBlockSizes[i]);
+                }
+            }
+            else // todo: dunno, refactor this? hard to follow and may be unnecessary anyways
+            {
+                // so we don't have to accumulate block sizes during reading
+                // which would result in a lot more looping than necessary
+                var cumulativeBlockSizes = new List< UInt16 >();
+                cumulativeBlockSizes.Add( 0 );
+
+                for( int i = 0; i < compressedBlockSizes.Count; i++ )
+                {
+                    UInt16 temp = 0;
+                    for( int j = i; j >= 0; j-- )
+                        temp += (UInt16) compressedBlockSizes[ j ];
+                    cumulativeBlockSizes.Add(temp);
+                }
+
+                int ilod = (Int32) lod;
+
+                // load block index, block count for our lod
+                List< int > extractIndices = new List< int >();
+                List< int > extractBlockSizes = new List< int >();
+
+                extractIndices.Add( mdlBlock.m_uStackDataBlockIndex );
+                extractBlockSizes.Add( mdlBlock.m_uStackDataBlockNum );
+
+                extractIndices.Add( mdlBlock.m_uRuntimeDataBlockIndex );
+                extractBlockSizes.Add( mdlBlock.m_uRuntimeDataBlockNum );
+
+                extractIndices.Add( mdlBlock.m_uVertexBufferDataBlockIndex[ ilod ] );
+                extractBlockSizes.Add( mdlBlock.m_uVertexBufferDataBlockNum[ ilod ] );
+
+                if( mdlBlock.m_bEnableEdgeGeometry )
+                {
+                    extractIndices.Add( mdlBlock.m_uEdgeGeometryVertexBufferDataBlockIndex[ ilod ] );
+                    extractBlockSizes.Add( mdlBlock.m_uEdgeGeometryVertexBufferDataBlockNum[ ilod ] );
+                }
+
+                extractIndices.Add( mdlBlock.m_uIndexBufferDataBlockIndex[ilod] );
+                extractBlockSizes.Add( mdlBlock.m_uIndexBufferDataBlockNum[ilod] );
+
+                /*
+                 * for any buffer i:
+                 * - extractIndices[i] is the index which these blocks start at
+                 * - extractBlockSizes[i] is the number of contiguous blocks that begin at extractIndices[i]
+                 * - cumulativeBlockSizes[i] is the pre-accumulated start offset for block i
+                 */
+                for( int i = 0; i < extractIndices.Count; i++ )
+                    for( int j = 0; j < extractBlockSizes[ i ]; j++ )
+                        ReadFileBlock( baseOffset + cumulativeBlockSizes[ extractIndices [ i ] + j ], fs, br, ms );
+            }
         }
 
         private void ReadTextureFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
@@ -177,12 +260,12 @@ namespace Lumina.Data
             {
                 // start from comp_offset
                 UInt32 runningBlockTotal = blocks[ i ].comp_offset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-                ReadFileBlock( runningBlockTotal, fs, br, ms );
+                ReadFileBlock( runningBlockTotal, fs, br, ms, true );
 
                 for( int j = 1; j < blocks[ i ].block_count; j++ )
                 {
                     runningBlockTotal += (UInt32) br.ReadInt16();
-                    ReadFileBlock( runningBlockTotal, fs, br, ms );
+                    ReadFileBlock( runningBlockTotal, fs, br, ms, true );
                 }
 
                 // unknown
@@ -190,7 +273,7 @@ namespace Lumina.Data
             }
         }
 
-        protected void ReadFileBlock( uint offset, FileStream fs, BinaryReader br, MemoryStream dest )
+        protected void ReadFileBlock( uint offset, FileStream fs, BinaryReader br, MemoryStream dest, bool resetPosition = false )
         {
             long originalPosition = fs.Position;
             fs.Position = offset;
@@ -222,7 +305,8 @@ namespace Lumina.Data
                     "Failed to inflate block, bytesInflated != blockHeader.uncompressed_size" );
             }
 
-            fs.Position = originalPosition;
+            if( resetPosition )
+                fs.Position = originalPosition;
         }
     }
 }
