@@ -187,7 +187,7 @@ namespace Lumina.Data
 
         public bool FileExists( string cat, UInt64 hash )
         {
-            var catId = CategoryNameToIdMap[cat];
+            var catId = CategoryNameToIdMap[ cat ];
 
             return Categories[ catId ].FileExists( hash );
         }

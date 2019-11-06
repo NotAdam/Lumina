@@ -73,7 +73,7 @@ namespace Lumina.Data
             using var ms = new MemoryStream();
 
             fs.Position = offset;
-            
+
             var fileInfo = br.ReadStructure< SqPackFileInfo >();
             var file = Activator.CreateInstance< T >();
 
@@ -83,7 +83,7 @@ namespace Lumina.Data
                 fs.Position = offset;
 
                 var modelFileInfo = br.ReadStructure< ModelBlock >();
-                
+
                 file.FileInfo = new LuminaFileInfo
                 {
                     HeaderSize = modelFileInfo.Size,
@@ -91,7 +91,7 @@ namespace Lumina.Data
                     BlockCount = modelFileInfo.used_number_of_block,
                     RawFileSize = modelFileInfo.RawFileSize,
                     Offset = offset,
-                    
+
                     // todo: is this useful?
                     ModelBlock = modelFileInfo
                 };
@@ -126,7 +126,7 @@ namespace Lumina.Data
                     break;
 
                 default:
-                    throw new NotImplementedException( $"File Type {(UInt32) fileInfo.Type} is not implemented." );
+                    throw new NotImplementedException( $"File Type {(UInt32)fileInfo.Type} is not implemented." );
             }
 
             file.Data = ms.ToArray();
@@ -139,7 +139,7 @@ namespace Lumina.Data
 
         private void ReadStandardFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
         {
-            var blocks = br.ReadStructures< DatStdFileBlockInfos >( (int) resource.FileInfo.BlockCount );
+            var blocks = br.ReadStructures< DatStdFileBlockInfos >( (int)resource.FileInfo.BlockCount );
 
             foreach( var block in blocks )
             {
@@ -158,11 +158,11 @@ namespace Lumina.Data
 
             var mdlBlock = resource.FileInfo.ModelBlock;
 
-            ms.Write( BitConverter.GetBytes(mdlBlock.m_uVertexDeclarationNum) );
-            ms.Write( BitConverter.GetBytes(mdlBlock.m_uMaterialNum) );
+            ms.Write( BitConverter.GetBytes( mdlBlock.m_uVertexDeclarationNum ) );
+            ms.Write( BitConverter.GetBytes( mdlBlock.m_uMaterialNum ) );
             ms.Write( new byte[64] );
 
-            if( (Int32) lod > mdlBlock.m_uLODNum )
+            if( (Int32)lod > mdlBlock.m_uLODNum )
                 throw new ArgumentException( "Requested LOD does not exist.", nameof( lod ) );
 
             uint baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
@@ -188,7 +188,7 @@ namespace Lumina.Data
                 for( int i = 0; i < totalBlocks; i++ )
                 {
                     ReadFileBlock( accumOffset, fs, br, ms );
-                    accumOffset = (uint) (accumOffset + compressedBlockSizes[i]);
+                    accumOffset = (uint)( accumOffset + compressedBlockSizes[ i ] );
                 }
             }
             else // todo: dunno, refactor this? hard to follow and may be unnecessary anyways
@@ -202,11 +202,11 @@ namespace Lumina.Data
                 {
                     UInt16 temp = 0;
                     for( int j = i; j >= 0; j-- )
-                        temp += (UInt16) compressedBlockSizes[ j ];
-                    cumulativeBlockSizes.Add(temp);
+                        temp += (UInt16)compressedBlockSizes[ j ];
+                    cumulativeBlockSizes.Add( temp );
                 }
 
-                int ilod = (Int32) lod;
+                int ilod = (Int32)lod;
 
                 // load block index, block count for our lod
                 List< int > extractIndices = new List< int >();
@@ -227,8 +227,8 @@ namespace Lumina.Data
                     extractBlockSizes.Add( mdlBlock.m_uEdgeGeometryVertexBufferDataBlockNum[ ilod ] );
                 }
 
-                extractIndices.Add( mdlBlock.m_uIndexBufferDataBlockIndex[ilod] );
-                extractBlockSizes.Add( mdlBlock.m_uIndexBufferDataBlockNum[ilod] );
+                extractIndices.Add( mdlBlock.m_uIndexBufferDataBlockIndex[ ilod ] );
+                extractBlockSizes.Add( mdlBlock.m_uIndexBufferDataBlockNum[ ilod ] );
 
                 /*
                  * for any buffer i:
@@ -237,14 +237,14 @@ namespace Lumina.Data
                  * - cumulativeBlockSizes[i] is the pre-accumulated start offset for block i
                  */
                 for( int i = 0; i < extractIndices.Count; i++ )
-                    for( int j = 0; j < extractBlockSizes[ i ]; j++ )
-                        ReadFileBlock( baseOffset + cumulativeBlockSizes[ extractIndices [ i ] + j ], fs, br, ms );
+                for( int j = 0; j < extractBlockSizes[ i ]; j++ )
+                    ReadFileBlock( baseOffset + cumulativeBlockSizes[ extractIndices[ i ] + j ], fs, br, ms );
             }
         }
 
         private void ReadTextureFile( FileResource resource, FileStream fs, BinaryReader br, MemoryStream ms )
         {
-            var blocks = br.ReadStructures< LodBlock >( (int) resource.FileInfo.BlockCount );
+            var blocks = br.ReadStructures< LodBlock >( (int)resource.FileInfo.BlockCount );
 
             // if there is a mipmap header, the comp_offset
             // will not be 0
@@ -254,7 +254,7 @@ namespace Lumina.Data
                 long originalPos = fs.Position;
 
                 fs.Position = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-                ms.Write( br.ReadBytes( (int) mipMapSize ) );
+                ms.Write( br.ReadBytes( (int)mipMapSize ) );
 
                 fs.Position = originalPos;
             }
@@ -268,7 +268,7 @@ namespace Lumina.Data
 
                 for( int j = 1; j < blocks[ i ].block_count; j++ )
                 {
-                    runningBlockTotal += (UInt32) br.ReadInt16();
+                    runningBlockTotal += (UInt32)br.ReadInt16();
                     ReadFileBlock( runningBlockTotal, fs, br, ms, true );
                 }
 
@@ -287,12 +287,12 @@ namespace Lumina.Data
             // uncompressed block
             if( blockHeader.compressed_size == 32000 )
             {
-                dest.Write( br.ReadBytes( (int) blockHeader.uncompressed_size ) );
+                dest.Write( br.ReadBytes( (int)blockHeader.uncompressed_size ) );
 
                 return;
             }
 
-            var data = br.ReadBytes( (int) blockHeader.uncompressed_size );
+            var data = br.ReadBytes( (int)blockHeader.uncompressed_size );
 
             var inflater = new Inflater( true );
 
@@ -305,8 +305,7 @@ namespace Lumina.Data
             }
             else
             {
-                throw new SqPackInflateException(
-                    "Failed to inflate block, bytesInflated != blockHeader.uncompressed_size" );
+                throw new SqPackInflateException( "Failed to inflate block, bytesInflated != blockHeader.uncompressed_size" );
             }
 
             if( resetPosition )

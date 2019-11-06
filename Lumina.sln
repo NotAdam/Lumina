@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina", "Lumina\Lumina.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Example", "Lumina.Example\Lumina.Example.csproj", "{6148BD34-08B8-4503-B074-28BA2141A54C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Tests", "Lumina.Tests\Lumina.Tests.csproj", "{210B2A38-44B0-4BC7-919E-D61BD31B4921}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{6148BD34-08B8-4503-B074-28BA2141A54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6148BD34-08B8-4503-B074-28BA2141A54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6148BD34-08B8-4503-B074-28BA2141A54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210B2A38-44B0-4BC7-919E-D61BD31B4921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210B2A38-44B0-4BC7-919E-D61BD31B4921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210B2A38-44B0-4BC7-919E-D61BD31B4921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210B2A38-44B0-4BC7-919E-D61BD31B4921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
