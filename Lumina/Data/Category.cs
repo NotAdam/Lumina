@@ -58,7 +58,7 @@ namespace Lumina.Data
 
         public bool FileExists( UInt64 hash )
         {
-            return SqPackIndex.HashTableEntries.TryGetValue( hash, out var hashTableEntry );
+            return SqPackIndex.HashTableEntries.ContainsKey( hash );
         }
 
         public T GetFile< T >( UInt64 hash ) where T : FileResource
