@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Lumina.Extensions
 {
@@ -44,6 +46,32 @@ namespace Lumina.Extensions
             }
 
             return list;
+        }
+
+        /// <summary>
+        /// Moves the BinaryReader position to offset, reads a string, then
+        /// sets the position back to the original.
+        /// </summary>
+        /// <param name="br"></param>
+        /// <param name="offset">The offset to read a string starting from.</param>
+        /// <returns></returns>
+        public static string ReadStringOffset( this BinaryReader br, long offset )
+        {
+            long originalPosition = br.BaseStream.Position;
+            br.BaseStream.Position = offset;
+
+            List< byte > chars = new List< byte >();
+
+            byte current;
+            do
+            {
+                current = br.ReadByte();
+                chars.Add( current );
+            } while( current != 0 );
+
+            br.BaseStream.Position = originalPosition;
+            string ret = Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
+            return ret;
         }
     }
 }
