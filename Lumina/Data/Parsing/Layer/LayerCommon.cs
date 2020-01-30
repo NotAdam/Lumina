@@ -8,6 +8,9 @@ using Lumina.Extensions;
 using Vector3 = Lumina.Data.Parsing.Common.Vector3;
 using Transformation = Lumina.Data.Parsing.Common.Transformation;
 
+// x field is never used warning
+#pragma warning disable 169
+
 namespace Lumina.Data.Parsing.Layer
 {
     public class LayerCommon
@@ -1766,24 +1769,21 @@ namespace Lumina.Data.Parsing.Layer
         {
             public eAssetTypeLayer AssetType;
             public uint InstanceID;
-            public int Name;
+            public StringOffset Name;
             public Transformation Transform;
             public IInstanceObject Object;
-
-            public string strName;
 
             public static InstanceObject Read( BinaryReader br )
             {
                 InstanceObject ret = new InstanceObject();
                 long start = br.BaseStream.Position;
 
-                ret.AssetType = (eAssetTypeLayer) br.ReadInt32();
+                ret.AssetType = (eAssetTypeLayer)br.ReadInt32();
                 ret.InstanceID = br.ReadUInt32();
-                ret.Name = br.ReadInt32();
+                ret.Name = new StringOffset( br, start );
+
                 ret.Transform = Transformation.Read( br );
 
-                ret.strName = br.ReadStringOffset( start + ret.Name );
-                
                 switch ( ret.AssetType )
                 {
                     case eAssetTypeLayer.BG: ret.Object = BGInstanceObject.Read( br ); break; //0x1
