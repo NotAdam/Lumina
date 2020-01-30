@@ -5,6 +5,9 @@ using System.Text;
 using Lumina.Data.Parsing.Layer;
 using Lumina.Extensions;
 
+// field assigned but not read warning
+#pragma warning disable 414
+
 namespace Lumina.Data.Files
 {
     public class LgbFile : FileResource

@@ -17,6 +17,7 @@ namespace Lumina.Extensions
             {
                 return (ushort)( num3 | 0x7fff );
             }
+
             if( num >= 0x38800000 ) return (ushort)( num3 | ( ( ( ( num + -939524096 ) + 0xfff ) + ( ( num >> 13 ) & 1 ) ) >> 13 ) );
 
             var num6 = ( num & 0x7fffff ) | 0x800000;
@@ -47,10 +48,11 @@ namespace Lumina.Extensions
                     while( ( num & 0x400 ) == 0 )
                     {
                         num2--;
-                        num = num << 1;
+                        num <<= 1;
                     }
+
                     num &= 0xfffffbff;
-                    num3 = (uint)( ( ( value & 0x8000 ) << 0x10 ) | ( ( num2 + 0x7f ) << 0x17 ) ) | ( num << 13 );
+                    num3 = ( (uint)( value & 0x8000 ) << 0x10 ) | ( ( num2 + 0x7f ) << 0x17 ) | ( num << 13 );
                 }
                 else
                 {
@@ -61,10 +63,12 @@ namespace Lumina.Extensions
             {
                 num3 =
                     (uint)
-                    ( ( ( value & 0x8000 ) << 0x10 ) | ( ( ( ( value >> 10 ) & 0x1f ) - 15 + 0x7f ) << 0x17 )
-                      | ( ( value & 0x3ff ) << 13 ) );
+                    ( ( ( value & 0x8000 ) << 0x10 ) |
+                      ( ( ( ( value >> 10 ) & 0x1f ) - 15 + 0x7f ) << 0x17 ) |
+                      ( ( value & 0x3ff ) << 13 ) );
             }
-            return *( (float*)&num3 );
+
+            return *(float*)&num3;
         }
     }
 }
