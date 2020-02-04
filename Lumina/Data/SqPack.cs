@@ -132,6 +132,11 @@ namespace Lumina.Data
             file.Data = ms.ToArray();
             if( file.Data.Length != file.FileInfo.RawFileSize )
                 Debug.WriteLine( "Read data size does not match file size." );
+            
+            file.DataStream = new MemoryStream( file.Data, false );
+            file.Reader = new BinaryReader( file.DataStream );
+            file.DataStream.Position = 0;
+
             file.LoadFile();
 
             return file;

@@ -3,6 +3,13 @@ using System.Runtime.InteropServices;
 
 namespace Lumina.Data.Structs
 {
+    public enum PlatformId : byte
+    {
+        Win32,
+        PS3,
+        PS4
+    }
+    
     [StructLayout( LayoutKind.Sequential )]
     public unsafe struct SqPackHeader
     {

@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Lumina.Data;
+using Lumina.Data.Structs;
+using Lumina.Excel;
 using Lumina.Misc;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -20,6 +22,19 @@ namespace Lumina
         public Dictionary< string, Repository > Repositories { get; private set; }
 
         public static LuminaOptions Options { get; private set; }
+
+        /// <summary>
+        /// Reading PS3 dats on a LE machine means we need to convert endianness from BE where applicable
+        /// </summary>
+        public static bool ShouldConvertEndianness => Options.CurrentPlatform == PlatformId.PS3 && BitConverter.IsLittleEndian;
+        
+        /// <summary>
+        /// Provides access to EXD/EXH data, internally called Excel.
+        ///
+        /// Loaded by default on init unless you opt not to load it. Can be loaded at a later time by calling Lumina.InitExcelModule or optionally
+        /// constructing your own Excel.ExcelModule.
+        /// </summary>
+        public ExcelModule Excel { get; private set; }
 
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
@@ -46,6 +61,11 @@ namespace Lumina
             foreach( var repo in DataPath.GetDirectories() )
             {
                 Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo );
+            }
+
+            if( Options.LoadExcelModuleOnInit )
+            {
+                InitExcelModule();
             }
         }
 
@@ -94,6 +114,13 @@ namespace Lumina
             var folder = path.Substring( 0, path.LastIndexOf( '/' ) );
 
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
+        }
+
+        public bool InitExcelModule()
+        {
+            Excel = new ExcelModule( this );
+            
+            return Excel.Init();
         }
     }
 }

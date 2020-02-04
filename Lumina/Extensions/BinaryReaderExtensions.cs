@@ -42,10 +42,29 @@ namespace Lumina.Extensions
                 var offset = size * i;
                 var span = new ReadOnlySpan< byte >( data, offset, size );
 
-                list.Add( MemoryMarshal.AsRef< T >( span ) );
+                list.Add( MemoryMarshal.Read< T >( span ) );
             }
 
             return list;
+        }
+
+        public static T[] ReadStructuresAsArray< T >( this BinaryReader br, int count ) where T : struct
+        {
+            var size = Marshal.SizeOf< T >();
+            var data = br.ReadBytes( size * count );
+
+            // im a pirate arr
+            var arr = new T[ count ];
+
+            for( int i = 0; i < count; i++ )
+            {
+                var offset = size * i;
+                var span = new ReadOnlySpan< byte >( data, offset, size );
+
+                arr[ i ] = MemoryMarshal.Read< T >( span );
+            }
+
+            return arr;
         }
 
         /// <summary>

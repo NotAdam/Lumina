@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace Lumina.Data.Structs
 {
-    public enum FileType : UInt32
+    public enum FileType : uint
     {
         Empty = 1,
         Standard = 2,
@@ -13,7 +13,7 @@ namespace Lumina.Data.Structs
         Texture = 4,
     }
 
-    public enum LOD : Int32
+    public enum LOD : int
     {
         ALL = -1,
         HIGHEST,

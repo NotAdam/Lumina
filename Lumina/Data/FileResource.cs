@@ -18,6 +18,10 @@ namespace Lumina.Data
 
         public Span< byte > DataSpan => Data.AsSpan();
 
+        public MemoryStream DataStream { get; internal set; }
+        
+        public BinaryReader Reader { get; internal set; }
+
         /// <summary>
         /// Called once the files are read out from the dats. Used to further parse the file into usable data structures.
         /// </summary>
@@ -25,7 +29,7 @@ namespace Lumina.Data
         {
         }
 
-        public void SaveFile( string path, byte section = 0 )
+        public virtual void SaveFile( string path )
         {
             File.WriteAllBytes( path, Data );
         }

@@ -136,7 +136,7 @@ namespace Lumina.Data
                     }
 
                     var index = new SqPackIndex( file );
-                    var dat = new Category( cat.Value, ExpansionId, chunk, Lumina.Options.PlatformFilter, index,
+                    var dat = new Category( cat.Value, ExpansionId, chunk, Lumina.Options.CurrentPlatform, index,
                         RootDir );
 
                     Categories[ cat.Value ] = dat;
@@ -171,7 +171,7 @@ namespace Lumina.Data
         {
             foreach( var type in new[] { "index", "index2" } )
             {
-                var index = BuildDatStr( cat, ex, chunk, Lumina.Options.PlatformFilter, type );
+                var index = BuildDatStr( cat, ex, chunk, Lumina.Options.CurrentPlatform, type );
                 var path = Path.Combine( RootDir.FullName, index );
 
                 var fileInfo = new FileInfo( path );
