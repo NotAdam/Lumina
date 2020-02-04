@@ -66,7 +66,7 @@ namespace Lumina.Data
             fs.Position = SqPackHeader.size;
         }
 
-        public T ReadFile< T >( uint offset ) where T : FileResource
+        public T ReadFile< T >( long offset ) where T : FileResource
         {
             using var fs = File.OpenRead();
             using var br = new BinaryReader( fs );
@@ -165,8 +165,8 @@ namespace Lumina.Data
             if( (Int32)lod > mdlBlock.m_uLODNum )
                 throw new ArgumentException( "Requested LOD does not exist.", nameof( lod ) );
 
-            uint baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-            uint accumOffset = baseOffset;
+            long baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
+            long accumOffset = baseOffset;
 
             int totalBlocks = 0;
 
@@ -263,7 +263,7 @@ namespace Lumina.Data
             for( byte i = 0; i < blocks.Count; i++ )
             {
                 // start from comp_offset
-                UInt32 runningBlockTotal = blocks[ i ].comp_offset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
+                long runningBlockTotal = blocks[ i ].comp_offset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
                 ReadFileBlock( runningBlockTotal, fs, br, ms, true );
 
                 for( int j = 1; j < blocks[ i ].block_count; j++ )
@@ -277,7 +277,7 @@ namespace Lumina.Data
             }
         }
 
-        protected void ReadFileBlock( uint offset, FileStream fs, BinaryReader br, MemoryStream dest, bool resetPosition = false )
+        protected void ReadFileBlock( long offset, FileStream fs, BinaryReader br, MemoryStream dest, bool resetPosition = false )
         {
             long originalPosition = fs.Position;
             fs.Position = offset;
