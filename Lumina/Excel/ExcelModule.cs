@@ -54,7 +54,11 @@ namespace Lumina.Excel
                 // don't preload misc excel entries, unlikely to hit them under normal conditions
                 if( map.Value == -1 && !Lumina.Options.PreCacheAllExcelHeaders )
                 {
+#if DEBUG
                     continue;
+#else
+                    return;
+#endif
                 }
                 
                 PreloadExcelHeader( map.Key, map.Value );
