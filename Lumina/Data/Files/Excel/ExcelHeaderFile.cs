@@ -27,10 +27,6 @@ namespace Lumina.Data.Files.Excel
 
         public ExcelLanguage[] Languages { get; private set; }
 
-        public uint RowCount => Header.RowCount;
-
-        public ExcelVariant Variant => Header.Variant;
-
         public override unsafe void LoadFile()
         {
             // fuck c# and its FIXED MUST BE ACCESSED BY LOCAL VARIABLE

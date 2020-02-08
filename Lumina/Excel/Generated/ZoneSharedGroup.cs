@@ -5,7 +5,7 @@ namespace Lumina.Excel.Generated
     {
         public uint col0;
         public uint Quest1;
-        
+
         public void PopulateData( RowParser parser )
         {
             col0 = parser.ReadColumn< uint >( 0 );

@@ -36,6 +36,12 @@ namespace Lumina.Excel
         public ExcelHeaderFile HeaderFile { get; }
 
         public ExcelHeaderHeader Header => HeaderFile.Header;
+        
+        public uint RowCount => Header.RowCount;
+
+        public uint ColumnCount => Header.ColumnCount;
+
+        public ExcelVariant Variant => Header.Variant;
 
         public readonly Dictionary< Language, List< ExcelSegment > > DataSegments;
 
