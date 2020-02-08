@@ -8,14 +8,14 @@ namespace Lumina.Excel
 {
     public class RowParser
     {
-        private readonly ExcelSheet _Sheet;
+        private readonly ExcelSheetImpl  _Sheet;
         private readonly ExcelDataFile _DataFile;
         private readonly uint _Row;
         private readonly uint _SubRow;
 
         private readonly ExcelDataOffset _Offset;
 
-        public RowParser( ExcelSheet sheet, ExcelDataFile dataFile, uint row, uint subRow = uint.MaxValue )
+        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row, uint subRow = uint.MaxValue )
         {
             _Sheet = sheet;
             _DataFile = dataFile;
@@ -25,7 +25,7 @@ namespace Lumina.Excel
             _Offset = _DataFile.RowData[ _Row ];
         }
 
-        private T ReadObject< T >( ExcelColumnDataType type )
+        private T ReadField< T >( ExcelColumnDataType type )
         {
             var stream = _DataFile.FileStream;
             var br = _DataFile.Reader;
@@ -104,7 +104,7 @@ namespace Lumina.Excel
                 case ExcelColumnDataType.PackedBool6:
                 case ExcelColumnDataType.PackedBool7:
                 {
-                    var shift = (int)ExcelColumnDataType.PackedBool7 - (int)type;
+                    var shift = (int)type - (int)ExcelColumnDataType.PackedBool0;
                     var bit = 1 << shift;
 
                     var rawData = br.ReadByte();
@@ -123,8 +123,9 @@ namespace Lumina.Excel
         public T ReadOffset< T >( int offset, byte bit = 0 )
         {
             ExcelColumnDefinition col = default;
-            bool foundOffset = false;
-        
+            int colId = -1;
+
+            // todo: this is shite
             for( int i = 0; i < _Sheet.Columns.Length; i++ )
             {
                 col = _Sheet.Columns[ i ];
@@ -132,23 +133,16 @@ namespace Lumina.Excel
                 if( col.Offset != offset )
                     continue;
                 
-                foundOffset = true;
+                colId = i;
                 break;
             }
         
-            if( !foundOffset )
+            if( colId == -1 )
             {
                 throw new KeyNotFoundException( $"offset {offset:x8} in sheet {_Sheet.Name} doesn't match any columns!" );
             }
-        
-            var row = _DataFile.RowData[ _Row ];
-        
-            var stream = _DataFile.FileStream;
-            var br = _DataFile.Reader;
-        
-            stream.Position = row.Offset + 6 + col.Offset;
-
-            return ReadObject< T >( col.Type );
+            
+            return ReadColumn< T >( colId );
         }
 
         public T ReadColumn< T >( int column )
@@ -161,7 +155,7 @@ namespace Lumina.Excel
 
             stream.Position = row.Offset + 6 + col.Offset;
 
-            return ReadObject< T >( col.Type );
+            return ReadField< T >( col.Type );
         }
     }
 }

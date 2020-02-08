@@ -25,6 +25,8 @@ namespace Lumina.Example
 
             public override void LoadFile()
             {
+                Console.WriteLine("loading customfiletype");
+                
                 // todo: not sure if good idea yet
                 using var stream = new MemoryStream( Data, false );
                 using var sr = new StreamReader( stream );
@@ -48,18 +50,26 @@ namespace Lumina.Example
                     ExdMap[ data[ 0 ] ] = id;
                 }
             }
+
+            public override void SaveFile( string path )
+            {
+                Console.WriteLine( $"saving file to path: {path}" );
+                base.SaveFile( path );
+            }
         }
 
         static void Main( string[] args )
         {
             var lumina = new Lumina( args[ 0 ] );
 
-            var row = lumina.Excel.GetRow< Excel.Generated.ActionTimeline >( "ActionTimeline", 1 );
+            var actionTimeline = lumina.Excel.GetSheet< Excel.Generated.ActionTimeline >();
+            var row = actionTimeline.GetRow( 1 );
+            Console.WriteLine($"timeline name: {row.Name}");
 
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
             file.SaveFile( "root.exl" );
-
+            
             var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
 
             Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
