@@ -64,7 +64,6 @@ namespace Lumina
             }
 
             Excel = new ExcelModule( this );
-            Excel.Init();
         }
 
         public static ParsedFilePath ParseFilePath( string path )

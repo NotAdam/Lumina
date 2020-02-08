@@ -12,8 +12,6 @@ namespace Lumina.Excel
     {
         private readonly Lumina _Lumina;
 
-        private readonly Dictionary< string, ExcelHeaderFile > _Headers;
-
         private readonly Dictionary< int, string > _ImmutableIdToSheetMap;
         private readonly List< string > _SheetNames;
 
@@ -24,21 +22,12 @@ namespace Lumina.Excel
         public ExcelModule( Lumina lumina )
         {
             _Lumina = lumina;
-            _Headers = new Dictionary< string, ExcelHeaderFile >();
             _ImmutableIdToSheetMap = new Dictionary< int, string >();
             _SheetNames = new List< string >();
             
             Sheets = new List< ExcelSheetImpl >();
             SheetMap = new Dictionary< string, ExcelSheetImpl >();
-        }
-
-        public string BuildExcelHeaderPath( string path )
-        {
-            return $"exd/{path}.exh";
-        }
-
-        public bool Init()
-        {
+            
             // load all sheet names first
             var files = _Lumina.GetFile< ExcelListFile >( "exd/root.exl" );
 
@@ -55,10 +44,11 @@ namespace Lumina.Excel
 
                 _ImmutableIdToSheetMap[ map.Value ] = map.Key;
             }
+        }
 
-            Debug.WriteLine( $"processed {_Headers.Count} excel headers" );
-
-            return true;
+        public string BuildExcelHeaderPath( string path )
+        {
+            return $"exd/{path}.exh";
         }
 
         public ExcelSheet< T > GetSheet< T >() where T : IExcelRow
@@ -90,7 +80,6 @@ namespace Lumina.Excel
 
             Sheets.Add( newSheet );
             SheetMap[ name ] = newSheet;
-            _Headers.Add( path, headerFile );
 
             return newSheet;
         }
