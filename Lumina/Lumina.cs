@@ -63,10 +63,8 @@ namespace Lumina
                 Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo );
             }
 
-            if( Options.LoadExcelModuleOnInit )
-            {
-                InitExcelModule();
-            }
+            Excel = new ExcelModule( this );
+            Excel.Init();
         }
 
         public static ParsedFilePath ParseFilePath( string path )
@@ -136,11 +134,9 @@ namespace Lumina
             return Crc32.Get( path );
         }
 
-        public bool InitExcelModule()
+        public ExcelSheet< T > GetExcelSheet< T >() where T : IExcelRow
         {
-            Excel = new ExcelModule( this );
-            
-            return Excel.Init();
+            return Excel.GetSheet< T >();
         }
     }
 }

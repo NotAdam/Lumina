@@ -62,9 +62,17 @@ namespace Lumina.Example
         {
             var lumina = new Lumina( args[ 0 ] );
 
-            var actionTimeline = lumina.Excel.GetSheet< Excel.Generated.ActionTimeline >();
+            var actionTimeline = lumina.GetExcelSheet< Excel.Generated.ActionTimeline >();
             var row = actionTimeline.GetRow( 1 );
             Console.WriteLine($"timeline name: {row.Name}");
+
+            var zoneSharedGroup = lumina.GetExcelSheet< Excel.Generated.ZoneSharedGroup >();
+            for( int i = 0; i < 9; i++ )
+            {
+                var subrow = zoneSharedGroup.GetRow( 1, i );
+                
+                Console.WriteLine($"zonesharedgroup(1, {i}): u32: {subrow.col0} u32: {subrow.Quest1}");
+            }
 
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );

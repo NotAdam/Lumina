@@ -10,11 +10,6 @@ namespace Lumina
         public Data.Structs.PlatformId CurrentPlatform { get; set; } = Data.Structs.PlatformId.Win32;
 
         /// <summary>
-        /// Whether or not the excel module (exd/exh) is loaded on init. Can be loaded later if required.
-        /// </summary>
-        public bool LoadExcelModuleOnInit { get; set; } = true;
-
-        /// <summary>
         /// If true, each loaded FileResource will have a weak reference maintained by Lumina so that sequential loads will return the pre-loaded file
         /// in the event it hasn't been GC'd/a reference is maintained elsewhere. This is constrained by the file type used to load, so loading the
         /// same file as a FileResource and then a TexFile will kill the old FileResource reference and replace it with a TexFile reference and miss the cache.

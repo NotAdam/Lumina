@@ -22,12 +22,22 @@ namespace Lumina.Excel
         {
         }
         
-        public T GetRow( uint row )
+        public T GetRow( int row )
         {
             return GetRow( row, Lumina.Options.DefaultExcelLanguage );
         }
 
-        public T GetRow( uint row, Language lang )
+        public T GetRow( int row, int subRow )
+        {
+            return GetRowInternal( row, subRow, Lumina.Options.DefaultExcelLanguage );
+        }
+
+        public T GetRow( int row, Language lang )
+        {
+            return GetRowInternal( row, Int32.MaxValue, lang );
+        }
+
+        internal T GetRowInternal( int row, int subRow, Language lang )
         {
             var segments = GetLangSegments( lang );
 
@@ -39,7 +49,17 @@ namespace Lumina.Excel
             }
 
             var rowObj = Activator.CreateInstance< T >();
-            var parser = new RowParser( this, data.File, row );
+
+            RowParser parser;
+
+            if( subRow != Int32.MaxValue )
+            {
+                parser = new RowParser( this, data.File, row, subRow );
+            }
+            else
+            {
+                parser = new RowParser( this, data.File, row );
+            }
 
             rowObj.PopulateData( parser );
 
