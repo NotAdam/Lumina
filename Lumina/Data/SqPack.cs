@@ -46,6 +46,8 @@ namespace Lumina.Data
                    !BitConverter.IsLittleEndian && SqPackHeader.platformId != PlatformId.PS3;
         }
 
+        protected Dictionary< long, WeakReference< FileResource > > _fileCache;
+
         public SqPack( FileInfo file )
         {
             Contract.Requires( file != null );
@@ -55,6 +57,9 @@ namespace Lumina.Data
             {
                 throw new FileNotFoundException( $"SqPack file {file.FullName} could not be found." );
             }
+
+            // always init the cache just in case the should cache setting is changed later
+            _fileCache = new Dictionary< long, WeakReference< FileResource > >();
 
             File = file;
 
@@ -66,8 +71,38 @@ namespace Lumina.Data
             fs.Position = SqPackHeader.size;
         }
 
+        protected T GetCachedFile< T >( long offset ) where T : FileResource
+        {
+            if( !_fileCache.TryGetValue( offset, out var weakRef ) )
+            {
+                return null;
+            }
+
+            if( !weakRef.TryGetTarget( out var cachedFile ) )
+            {
+                return null;
+            }
+            
+            // only return from cache if target type matches
+            // otherwise we'll force a cache miss and parse it as per usual
+            if( cachedFile is T obj )
+                return obj;
+
+            return null;
+        }
+
         public T ReadFile< T >( long offset ) where T : FileResource
         {
+            if( Lumina.Options.CacheFileResources )
+            {
+                var obj = GetCachedFile< T >( offset );
+
+                if( obj != null )
+                {
+                    return obj;
+                }
+            }
+            
             using var fs = File.OpenRead();
             using var br = new BinaryReader( fs );
             using var ms = new MemoryStream();
@@ -133,9 +168,14 @@ namespace Lumina.Data
             if( file.Data.Length != file.FileInfo.RawFileSize )
                 Debug.WriteLine( "Read data size does not match file size." );
             
-            file.DataStream = new MemoryStream( file.Data, false );
-            file.Reader = new BinaryReader( file.DataStream );
-            file.DataStream.Position = 0;
+            file.FileStream = new MemoryStream( file.Data, false );
+            file.Reader = new BinaryReader( file.FileStream );
+            file.FileStream.Position = 0;
+
+            if( Lumina.Options.CacheFileResources )
+            {
+                _fileCache[ offset ] = new WeakReference< FileResource >( file );
+            }
 
             file.LoadFile();
 
@@ -304,14 +344,7 @@ namespace Lumina.Data
             inflater.SetInput( data );
             var bytesInflated = inflater.Inflate( data );
 
-            if( bytesInflated == blockHeader.uncompressed_size )
-            {
-                dest.Write( data );
-            }
-            else
-            {
-                throw new SqPackInflateException( "Failed to inflate block, bytesInflated != blockHeader.uncompressed_size" );
-            }
+            dest.Write( data );
 
             if( resetPosition )
                 fs.Position = originalPosition;

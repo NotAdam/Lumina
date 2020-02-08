@@ -33,19 +33,17 @@ namespace Lumina.Data.Files
 
         public override void LoadFile()
         {
-            BinaryReader br = new BinaryReader(new MemoryStream(Data));
-
-            Header = FileHeader.Read( br );
-            ChunkHeader = LayerCommon.LayerChunk.Read( br );
+            Header = FileHeader.Read( Reader );
+            ChunkHeader = LayerCommon.LayerChunk.Read( Reader );
             Layers = new LayerCommon.Layer[ChunkHeader.LayersCount];
 
-            long start = br.BaseStream.Position;
-            var layerOffsets = br.ReadStructures< Int32 >( ChunkHeader.LayersCount );
+            long start = FileStream.Position;
+            var layerOffsets = Reader.ReadStructures< Int32 >( ChunkHeader.LayersCount );
 
             for( int i = 0; i < ChunkHeader.LayersCount; i++ )
             {
-                br.BaseStream.Position = start + layerOffsets[ i ];
-                Layers[ i ] = LayerCommon.Layer.Read( br );
+                FileStream.Position = start + layerOffsets[ i ];
+                Layers[ i ] = LayerCommon.Layer.Read( Reader );
             }
         }
     }

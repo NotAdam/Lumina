@@ -19,18 +19,22 @@ namespace Lumina.Data.Files.Excel
 
         public const string Magic = "EXHF";
 
-        public ExcelHeaderHeader Header { get; internal set; }
+        public ExcelHeaderHeader Header { get; private set; }
 
-        public ExcelColumnDefinition[] ColumnDefinitions { get; internal set; }
+        public ExcelColumnDefinition[] ColumnDefinitions { get; private set; }
 
-        public ExcelDataBreakpoint[] DataBreakpoints { get; internal set; }
-        
-        public Language[] Languages { get; internal set; }
+        public ExcelDataBreakpoint[] DataBreakpoints { get; private set; }
+
+        public ExcelLanguage[] Languages { get; private set; }
+
+        public uint RowCount => Header.RowCount;
+
+        public ExcelVariant Variant => Header.Variant;
 
         public override unsafe void LoadFile()
         {
             // fuck c# and its FIXED MUST BE ACCESSED BY LOCAL VARIABLE
-            var header = Header = Reader.ReadStructure< ExcelHeaderHeader >();
+            var header = Reader.ReadStructure< ExcelHeaderHeader >();
 
             if(
                 header.Magic[ 0 ] != 'E' ||
@@ -41,7 +45,7 @@ namespace Lumina.Data.Files.Excel
                 throw new InvalidDataException( "fucked exh file :(((((" );
             }
 
-            DataStream.Position = 0x20;
+            FileStream.Position = 0x20;
 
             // swap bytes on LE systems
             if( BitConverter.IsLittleEndian )
@@ -51,15 +55,16 @@ namespace Lumina.Data.Files.Excel
                 header.ColumnCount = BinaryPrimitives.ReverseEndianness( header.ColumnCount );
                 header.ExdCount = BinaryPrimitives.ReverseEndianness( header.ExdCount );
                 header.LanguageCount = BinaryPrimitives.ReverseEndianness( header.LanguageCount );
-
-                // just neck me now
-                header.Variant = (ExcelHeaderHeader.ExcelVariant)BinaryPrimitives.ReverseEndianness( (int)header.Variant );
+                header.RowCount = BinaryPrimitives.ReverseEndianness( header.RowCount );
             }
+
+            // fucking c# and its STRUCTS ARE ALWAYS A COPY
+            Header = header;
 
             ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( header.ColumnCount );
             DataBreakpoints = Reader.ReadStructuresAsArray< ExcelDataBreakpoint >( header.ExdCount );
 
-            Languages = Reader.ReadStructuresAsArray< UInt16 >( header.LanguageCount ).Select( v => (Language)v ).ToArray();
+            Languages = Reader.ReadStructuresAsArray< ExcelLanguage >( header.LanguageCount );
 
             if( !BitConverter.IsLittleEndian )
             {

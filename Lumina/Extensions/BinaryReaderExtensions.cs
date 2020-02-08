@@ -20,7 +20,7 @@ namespace Lumina.Extensions
         {
             ReadOnlySpan< byte > data = br.ReadBytes( Unsafe.SizeOf< T >() );
 
-            return MemoryMarshal.AsRef< T >( data );
+            return MemoryMarshal.Read< T >( data );
         }
 
         /// <summary>

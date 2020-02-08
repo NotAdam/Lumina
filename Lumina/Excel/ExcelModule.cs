@@ -9,7 +9,13 @@ namespace Lumina.Excel
     {
         private readonly Lumina _lumina;
 
-        private Dictionary< string, ExcelHeaderFile > _headers;
+        private readonly Dictionary< string, ExcelHeaderFile > _headers;
+
+        private readonly Dictionary< int, ExcelSheet > _immutableIdToSheetMap;
+
+        public readonly List< ExcelSheet > Sheets;
+
+        public readonly Dictionary< string, ExcelSheet > SheetMap;
 
 #if !DEBUG
         private object _headerLock = new object();
@@ -19,6 +25,10 @@ namespace Lumina.Excel
         {
             _lumina = lumina;
             _headers = new Dictionary< string, ExcelHeaderFile >();
+            _immutableIdToSheetMap = new Dictionary< int, ExcelSheet >();
+            
+            Sheets = new List< ExcelSheet >();
+            SheetMap = new Dictionary< string, ExcelSheet >();
         }
 
         public string BuildExcelHeaderPath( string path )
@@ -41,32 +51,57 @@ namespace Lumina.Excel
             Parallel.ForEach( files.ExdMap, ( map ) =>
 #endif
             {
-                var path = BuildExcelHeaderPath( map.Key );
-            
-                var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
-#if !DEBUG
-                lock( _headerLock )
-#endif
+                // don't preload misc excel entries, unlikely to hit them under normal conditions
+                if( map.Value == -1 && !Lumina.Options.PreCacheAllExcelHeaders )
                 {
-                    _headers.Add( path, headerFile );
+                    continue;
                 }
+                
+                PreloadExcelHeader( map.Key, map.Value );
             }
 #if !DEBUG
             );
 #endif
 
-            // foreach( var map in files.ExdMap )
-            // {
-            //     var path = BuildExcelHeaderPath( map.Key );
-            //
-            //     var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
-            //     
-            //     _headers.Add( path, headerFile );
-            // }
-            
             Debug.WriteLine($"processed {_headers.Count} excel headers");
 
             return true;
+        }
+
+        protected void PreloadExcelHeader( string name, int immutableId = -1 )
+        {
+            var path = BuildExcelHeaderPath( name );
+            var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
+
+            var sheet = new ExcelSheet( headerFile, immutableId, name, _lumina );
+
+            if( immutableId != -1 )
+            {
+                _immutableIdToSheetMap[ immutableId ] = sheet;
+            }
+            
+            Sheets.Add( sheet );
+            SheetMap[ name ] = sheet;
+
+#if !DEBUG
+                lock( _headerLock )
+#endif
+            {
+                _headers.Add( path, headerFile );
+            }
+        }
+
+        public T GetRow< T >( string name, uint row ) where T : IExcelRow
+        {
+            var sheet = GetSheet( name );
+
+            return sheet.GetRow< T >( row );
+        }
+
+        public ExcelSheet GetSheet( string name )
+        {
+            // todo: attempt to load sheet if not found
+            return SheetMap[ name ];
         }
     }
 }

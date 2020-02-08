@@ -99,6 +99,11 @@ namespace Lumina
             return repo.GetFile< T >( parsed.Category, parsed.Hash );
         }
 
+        /// <summary>
+        /// Check if a file exists anywhere by checking whether the hash exists in any index
+        /// </summary>
+        /// <param name="path">The full path of the file</param>
+        /// <returns>True if the file exists</returns>
         public bool FileExists( string path )
         {
             var parsed = ParseFilePath( path );
@@ -107,6 +112,11 @@ namespace Lumina
             return repo.FileExists( parsed.Category, parsed.Hash );
         }
 
+        /// <summary>
+        /// Returns the index variant of a file hash
+        /// </summary>
+        /// <param name="path">The full path of the file</param>
+        /// <returns>A U64 containing a split hash of the folder and file CRC32s</returns>
         public static UInt64 GetFileHash( string path )
         {
             var pathParts = path.Split( '/' );
@@ -114,6 +124,16 @@ namespace Lumina
             var folder = path.Substring( 0, path.LastIndexOf( '/' ) );
 
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
+        }
+
+        /// <summary>
+        /// Returns the index2 variant of a file hash
+        /// </summary>
+        /// <param name="path">The full path of the file</param>
+        /// <returns>The CRC32 of the path provided</returns>
+        public static UInt32 GetFileHash2( string path )
+        {
+            return Crc32.Get( path );
         }
 
         public bool InitExcelModule()

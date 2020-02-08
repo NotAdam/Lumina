@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Lumina.Data.Structs;
+using Lumina.Data.Structs.Excel;
+using Lumina.Excel;
 
 namespace Lumina.Example
 {
@@ -50,9 +54,10 @@ namespace Lumina.Example
         {
             var lumina = new Lumina( args[ 0 ] );
 
+            var row = lumina.Excel.GetRow< Excel.Generated.ActionTimeline >( "ActionTimeline", 1 );
+
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
-
             file.SaveFile( "root.exl" );
 
             var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );

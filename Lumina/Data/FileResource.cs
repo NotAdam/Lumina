@@ -18,7 +18,7 @@ namespace Lumina.Data
 
         public Span< byte > DataSpan => Data.AsSpan();
 
-        public MemoryStream DataStream { get; internal set; }
+        public MemoryStream FileStream { get; internal set; }
         
         public BinaryReader Reader { get; internal set; }
 
