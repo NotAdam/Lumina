@@ -1,6 +1,7 @@
 using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
@@ -153,29 +154,36 @@ namespace Lumina.Excel
             return (T)data;
         }
 
+        private byte GetBitPosition( byte flag )
+        {
+            byte count = 0;
+
+            while( flag != 1 )
+            {
+                flag >>= 1;
+                count++;
+            }
+
+            return count;
+        }
+
         public T ReadOffset< T >( int offset, byte bit = 0 )
         {
-            ExcelColumnDefinition col = default;
-            int colId = -1;
+            var stream = _DataFile.FileStream;
+            var br = _DataFile.Reader;
 
-            // todo: this is shite
-            for( int i = 0; i < _Sheet.Columns.Length; i++ )
+            stream.Position = _RowOffset + offset;
+
+            if( bit > 0 )
             {
-                col = _Sheet.Columns[ i ];
+                var pos = GetBitPosition( bit );
+                var flag = ExcelColumnDataType.PackedBool0 + pos;
 
-                if( col.Offset != offset )
-                    continue;
-
-                colId = i;
-                break;
+                return ReadField< T >( flag );
             }
 
-            if( colId == -1 )
-            {
-                throw new KeyNotFoundException( $"offset {offset:x8} in sheet {_Sheet.Name} doesn't match any columns!" );
-            }
-
-            return ReadColumn< T >( colId );
+            var col = _Sheet.Columns.First( c => c.Offset == offset );
+            return ReadField< T >( col.Type );
         }
 
         public T ReadColumn< T >( int column )
