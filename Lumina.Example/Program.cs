@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using Lumina.Data;
-using Lumina.Data.Structs;
-using Lumina.Data.Structs.Excel;
-using Lumina.Excel;
-using Lumina.Excel.Generated;
+using Lumina.Excel.Sheets;
 
 namespace Lumina.Example
 {
@@ -67,16 +61,14 @@ namespace Lumina.Example
             // excel reading
             var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
             var actionTimelineRows = actionTimeline.GetRows();
-            Console.WriteLine($"ActionTimeline GetRows(): {actionTimelineRows.Count}");
 
-            var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
-            var zsgRows = zoneSharedGroup.GetRows();
-            Console.WriteLine($"ZoneSharedGroup GetSubRows(): {zsgRows.Count}");
-
-            foreach( var row in zsgRows )
-            {
-                Console.WriteLine($"ZoneSharedGroup({row.RowId}.{row.SubRowId}) c: ");
-            }
+            // var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
+            // var zsgRows = zoneSharedGroup.GetRows();
+            //
+            // foreach( var row in zsgRows )
+            // {
+            //     Console.WriteLine($"ZoneSharedGroup({row.RowId}.{row.SubRowId}) c: ");
+            // }
             
 
             // custom data type

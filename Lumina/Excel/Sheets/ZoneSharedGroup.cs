@@ -1,4 +1,4 @@
-namespace Lumina.Excel.Generated
+namespace Lumina.Excel.Sheets
 {
     [SheetName( "ZoneSharedGroup" )]
     public class ZoneSharedGroup : IExcelRow

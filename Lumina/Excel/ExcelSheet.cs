@@ -38,7 +38,7 @@ namespace Lumina.Excel
             return GetRowInternal( row, Int32.MaxValue, lang );
         }
 
-        internal T GetRowInternal( int row, int subRow, Language lang )
+        internal ExcelSegment GetSegmentForRow( int row, Language lang )
         {
             var segments = GetLangSegments( lang );
 
@@ -48,6 +48,25 @@ namespace Lumina.Excel
             {
                 throw new KeyNotFoundException( $"row {row} not found in sheet {Name}!" );
             }
+
+            return data;
+        }
+
+        public RowParser GetRowParser( int row )
+        {
+            return GetRowParser( row, _Lumina.Options.DefaultExcelLanguage );
+        }
+
+        public RowParser GetRowParser( int row, Language lang )
+        {
+            var data = GetSegmentForRow( row, lang );
+            
+            return new RowParser( this, data.File, row );
+        }
+
+        internal T GetRowInternal( int row, int subRow, Language lang )
+        {
+            var data = GetSegmentForRow( row, lang );
 
             var rowObj = Activator.CreateInstance< T >();
 

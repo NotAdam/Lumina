@@ -1,5 +1,6 @@
 using System;
 using System.Buffers.Binary;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
@@ -22,6 +23,8 @@ namespace Lumina.Excel
         public int SubRow;
         public int RowCount => _RowHeader.RowCount;
 
+        private MemoryStream Stream => _DataFile.FileStream;
+        
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
             _Sheet = sheet;
@@ -45,10 +48,9 @@ namespace Lumina.Excel
             Row = row;
             _Offset = _DataFile.RowData[ Row ];
 
-            var stream = _DataFile.FileStream;
             var br = _DataFile.Reader;
 
-            stream.Position = _Offset.Offset;
+            Stream.Position = _Offset.Offset;
 
             _RowHeader = br.ReadStructure< ExcelDataRowHeader >();
 
@@ -82,9 +84,17 @@ namespace Lumina.Excel
             return _Offset.Offset + 6 + ( subRow * _Sheet.Header.DataOffset + 2 * ( subRow + 1 ) );
         }
 
+        public byte[] ReadBytes( int offset, int count )
+        {
+            var br = _DataFile.Reader;
+            
+            Stream.Position = _RowOffset + offset;
+
+            return br.ReadBytes( count );
+        }
+
         private T ReadField< T >( ExcelColumnDataType type )
         {
-            var stream = _DataFile.FileStream;
             var br = _DataFile.Reader;
 
             object data = null;
@@ -193,10 +203,7 @@ namespace Lumina.Excel
 
         public T ReadOffset< T >( int offset, byte bit = 0 )
         {
-            var stream = _DataFile.FileStream;
-            var br = _DataFile.Reader;
-
-            stream.Position = _RowOffset + offset;
+            Stream.Position = _RowOffset + offset;
 
             if( bit > 0 )
             {
@@ -210,12 +217,18 @@ namespace Lumina.Excel
             return ReadField< T >( col.Type );
         }
 
+        public T ReadOffset< T >( int offset, ExcelColumnDataType type )
+        {
+            Stream.Position = _RowOffset + offset;
+            
+            return ReadField< T >( type );
+        }
+
         public T ReadColumn< T >( int column )
         {
             var col = _Sheet.Columns[ column ];
-            var stream = _DataFile.FileStream;
 
-            stream.Position = _RowOffset + col.Offset;
+            Stream.Position = _RowOffset + col.Offset;
 
             return ReadField< T >( col.Type );
         }

@@ -1,8 +1,9 @@
 using System;
 using System.Buffers.Binary;
 using System.Runtime.InteropServices;
+using Lumina.Data.Structs.Excel;
 
-namespace Lumina.Excel.Generated
+namespace Lumina.Excel.Sheets
 {
     [SheetName("ActionTimeline")]
     public class ActionTimeline : IExcelRow
@@ -17,12 +18,15 @@ namespace Lumina.Excel.Generated
         public byte WeaponTimeline;
         public byte LoadType;
         public byte StartAttach;
-        public bool Pause;
-        public bool ResidentPap;
-        public bool Resident;
-        public bool KillUpper;
-        public bool IsMotionCanceledByMoving;
-        public bool IsLoop;
+
+        private byte _Packed11;
+
+        public bool Pause => ( _Packed11 & 0x1 ) == 0x1;
+        public bool ResidentPap => ( _Packed11 & 0x2 ) == 0x2;
+        public bool Resident => ( _Packed11 & 0x4 ) == 0x4;
+        public bool KillUpper => ( _Packed11 & 0x8 ) == 0x8;
+        public bool IsMotionCanceledByMoving => ( _Packed11 & 0x10 ) == 0x10;
+        public bool IsLoop => ( _Packed11 & 0x20 ) == 0x20;
 
         public int RowId { get; set; }
         public int SubRowId { get; set; }
@@ -43,12 +47,7 @@ namespace Lumina.Excel.Generated
             LoadType = parser.ReadOffset< byte >( 0xD );
             StartAttach = parser.ReadOffset< byte >( 0xE );
 
-            Pause = parser.ReadOffset< bool >( 0x11, 0x4 );
-            ResidentPap = parser.ReadOffset< bool >( 0x11, 0x8 );
-            Resident = parser.ReadOffset< bool >( 0x11, 0x10 );
-            KillUpper = parser.ReadOffset< bool >( 0x11, 0x20 );
-            IsMotionCanceledByMoving = parser.ReadOffset< bool >( 0x11, 0x40 );
-            IsLoop = parser.ReadOffset< bool >( 0x11, 0x80 );
+            _Packed11 = parser.ReadOffset< byte >( 0x11, ExcelColumnDataType.UInt8 );
         }
     }
 }

@@ -60,8 +60,11 @@ namespace Lumina.Excel
                 return null;
             }
 
-            var name = attr.Name;
-            
+            return GetSheet< T >( attr.Name );
+        }
+
+        public ExcelSheet< T > GetSheet< T >( string name ) where T : IExcelRow
+        {
             if( SheetMap.TryGetValue( name, out var sheet ) )
             {
                 return sheet as ExcelSheet< T >;
