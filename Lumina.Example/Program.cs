@@ -64,8 +64,7 @@ namespace Lumina.Example
             var lumina = new Lumina( args[ 0 ] );
 
             // excel reading
-            var actionTimeline = lumina.GetExcelSheet< Excel.Generated.ActionTimeline >();
-
+            var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
             var actionTimelineRows = actionTimeline.GetRows();
             Console.WriteLine($"ActionTimeline GetRows(): {actionTimelineRows.Count}");
 
