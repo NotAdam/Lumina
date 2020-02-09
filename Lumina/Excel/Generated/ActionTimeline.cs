@@ -24,8 +24,14 @@ namespace Lumina.Excel.Generated
         public bool IsMotionCanceledByMoving;
         public bool IsLoop;
 
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
         public void PopulateData( RowParser parser )
         {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+            
             Name = parser.ReadOffset< string >( 0x0 );
             Type = parser.ReadOffset< byte >( 0x6 );
             Priority = parser.ReadOffset< byte >( 0x7 );

@@ -67,57 +67,19 @@ namespace Lumina.Excel
             return rowObj;
         }
 
-        public Dictionary< int, T > GetRows()
+        public List< T > GetRows()
         {
             return GetRows( Lumina.Options.DefaultExcelLanguage );
         }
 
-        public Dictionary< int, T > GetRows( Language lang )
+        public List< T > GetRows( Language lang )
         {
-            var rows = new Dictionary< int, T >();
+            var rows = new List< T >();
             var segments = GetLangSegments( lang );
 
             foreach( var segment in segments )
             {
                 var file = segment.File;
-                var rowPtrs = file.RowData;
-
-                var parser = new RowParser( this, file );
-
-                foreach( var rowPtr in rowPtrs )
-                {
-                    var id = (int)rowPtr.RowId;
-                    parser.SeekToRow( id );
-
-                    var obj = Activator.CreateInstance< T >();
-                    obj.PopulateData( parser );
-
-                    rows[ id ] = obj;
-                }
-            }
-
-            return rows;
-        }
-
-        public Dictionary< Tuple< int, int >, T > GetSubRows()
-        {
-            return GetSubRows( Lumina.Options.DefaultExcelLanguage );
-        }
-
-        public Dictionary< Tuple< int, int >, T > GetSubRows( Language lang )
-        {
-            if( Header.Variant != ExcelVariant.Subrows )
-            {
-                throw new InvalidOperationException( "can't use GetSubRows to iterate a sheet that doesn't contain subrows!" );
-            }
-
-            var rows = new Dictionary< Tuple< int, int >, T >();
-            var segments = GetLangSegments( lang );
-
-            foreach( var segment in segments )
-            {
-                var file = segment.File;
-
                 var rowPtrs = file.RowData;
 
                 var parser = new RowParser( this, file );
@@ -126,17 +88,27 @@ namespace Lumina.Excel
                 {
                     parser.SeekToRow( (int)rowPtr.RowId );
 
-                    // read subrows
-                    for( int i = 0; i < parser.RowCount; i++ )
+                    if( Header.Variant == ExcelVariant.Subrows )
                     {
-                        parser.SeekToRow( (int)rowPtr.RowId, i );
+                        // read subrows
+                        for( int i = 0; i < parser.RowCount; i++ )
+                        {
+                            parser.SeekToRow( (int)rowPtr.RowId, i );
+                            var obj = Activator.CreateInstance< T >();
 
+                            obj.PopulateData( parser );
+
+                            rows.Add( obj );
+                        }
+                    }
+                    else
+                    {
+                        parser.SeekToRow( (int)rowPtr.RowId );
                         var obj = Activator.CreateInstance< T >();
+                        
                         obj.PopulateData( parser );
 
-                        var rowIndex = Tuple.Create( (int)rowPtr.RowId, i );
-
-                        rows[ rowIndex ] = obj;
+                        rows.Add( obj );
                     }
                 }
             }

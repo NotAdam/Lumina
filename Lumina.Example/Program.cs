@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Lumina.Data;
 using Lumina.Data.Structs;
 using Lumina.Data.Structs.Excel;
 using Lumina.Excel;
@@ -69,7 +70,7 @@ namespace Lumina.Example
             Console.WriteLine($"ActionTimeline GetRows(): {actionTimelineRows.Count}");
 
             var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
-            var zsgRows = zoneSharedGroup.GetSubRows();
+            var zsgRows = zoneSharedGroup.GetRows();
             Console.WriteLine($"ZoneSharedGroup GetSubRows(): {zsgRows.Count}");
             
 

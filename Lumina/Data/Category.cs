@@ -9,7 +9,7 @@ namespace Lumina.Data
 {
     public class Category
     {
-        public DirectoryInfo RootDir { get; private set; }
+        public DirectoryInfo RootDir { get; }
 
         public byte CategoryId { get; }
 
@@ -17,11 +17,11 @@ namespace Lumina.Data
 
         public int Chunk { get; }
 
-        public Structs.PlatformId Platform { get; }
+        public PlatformId Platform { get; }
 
         public SqPackIndex SqPackIndex { get; }
 
-        public Dictionary< byte, SqPack > DatFiles { get; internal set; }
+        public Dictionary< byte, SqPack > DatFiles { get; }
 
         public Category(
             byte category,
