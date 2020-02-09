@@ -19,6 +19,8 @@ namespace Lumina.Data
 
     public class SqPack
     {
+        private readonly Lumina _Lumina;
+
         /// <summary>
         /// Where the actual file is located on disk
         /// </summary>
@@ -48,7 +50,7 @@ namespace Lumina.Data
 
         protected Dictionary< long, WeakReference< FileResource > > _fileCache;
 
-        public SqPack( FileInfo file )
+        internal SqPack( FileInfo file, Lumina lumina )
         {
             Contract.Requires( file != null );
             Contract.Requires( file.Exists );
@@ -57,6 +59,8 @@ namespace Lumina.Data
             {
                 throw new FileNotFoundException( $"SqPack file {file.FullName} could not be found." );
             }
+
+            _Lumina = lumina;
 
             // always init the cache just in case the should cache setting is changed later
             _fileCache = new Dictionary< long, WeakReference< FileResource > >();
@@ -93,7 +97,7 @@ namespace Lumina.Data
 
         public T ReadFile< T >( long offset ) where T : FileResource
         {
-            if( Lumina.Options.CacheFileResources )
+            if( _Lumina.Options.CacheFileResources )
             {
                 var obj = GetCachedFile< T >( offset );
 
@@ -172,7 +176,7 @@ namespace Lumina.Data
             file.Reader = new BinaryReader( file.FileStream );
             file.FileStream.Position = 0;
 
-            if( Lumina.Options.CacheFileResources )
+            if( _Lumina.Options.CacheFileResources )
             {
                 _fileCache[ offset ] = new WeakReference< FileResource >( file );
             }

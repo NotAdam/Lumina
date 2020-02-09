@@ -26,7 +26,7 @@ namespace Lumina.Excel
         public ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Lumina lumina ) :
             this( headerFile, name )
         {
-            _lumina = lumina;
+            _Lumina = lumina;
 
             GenerateFileSegments();
         }
@@ -51,7 +51,7 @@ namespace Lumina.Excel
 
         public ExcelLanguage[] Languages => HeaderFile.Languages;
 
-        protected Lumina _lumina { get; set; }
+        protected readonly Lumina _Lumina;
 
         internal List< ExcelSegment > GetLangSegments( Language lang )
         {
@@ -89,7 +89,7 @@ namespace Lumina.Excel
                     var filePath = GenerateFilePath( Name, bp.StartId, lang.Language );
 
                     // ignore languages that don't exist in this client build
-                    if( !_lumina.FileExists( filePath ) )
+                    if( !_Lumina.FileExists( filePath ) )
                     {
                         continue;
                     }
@@ -111,7 +111,7 @@ namespace Lumina.Excel
                         segments = DataSegments[ lang.Language ];
                     }
 
-                    segment.File = _lumina.GetFile< ExcelDataFile >( segment.FilePath );
+                    segment.File = _Lumina.GetFile< ExcelDataFile >( segment.FilePath );
 
                     segments.Add( segment );
                 }

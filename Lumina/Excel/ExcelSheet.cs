@@ -25,12 +25,12 @@ namespace Lumina.Excel
 
         public T GetRow( int row )
         {
-            return GetRow( row, Lumina.Options.DefaultExcelLanguage );
+            return GetRow( row, _Lumina.Options.DefaultExcelLanguage );
         }
 
         public T GetRow( int row, int subRow )
         {
-            return GetRowInternal( row, subRow, Lumina.Options.DefaultExcelLanguage );
+            return GetRowInternal( row, subRow, _Lumina.Options.DefaultExcelLanguage );
         }
 
         public T GetRow( int row, Language lang )
@@ -69,7 +69,7 @@ namespace Lumina.Excel
 
         public List< T > GetRows()
         {
-            return GetRows( Lumina.Options.DefaultExcelLanguage );
+            return GetRows( _Lumina.Options.DefaultExcelLanguage );
         }
 
         public List< T > GetRows( Language lang )

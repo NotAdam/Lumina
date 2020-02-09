@@ -9,6 +9,7 @@ namespace Lumina.Data
 {
     public class Category
     {
+        private readonly Lumina _Lumina;
         public DirectoryInfo RootDir { get; }
 
         public byte CategoryId { get; }
@@ -23,14 +24,16 @@ namespace Lumina.Data
 
         public Dictionary< byte, SqPack > DatFiles { get; }
 
-        public Category(
+        internal Category(
             byte category,
             int expansion,
             int chunk,
             PlatformId platform,
             SqPackIndex sqPackIndex,
-            DirectoryInfo rootDir )
+            DirectoryInfo rootDir,
+            Lumina lumina )
         {
+            _Lumina = lumina;
             CategoryId = category;
             Expansion = expansion;
             Chunk = chunk;
@@ -51,7 +54,7 @@ namespace Lumina.Data
 
                 if( fileInfo.Exists )
                 {
-                    DatFiles[ id ] = new SqPack( fileInfo );
+                    DatFiles[ id ] = new SqPack( fileInfo, _Lumina );
                 }
             }
         }

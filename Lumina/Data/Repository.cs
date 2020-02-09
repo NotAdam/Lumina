@@ -11,6 +11,7 @@ namespace Lumina.Data
 {
     public class Repository
     {
+        private readonly Lumina _Lumina;
         public DirectoryInfo RootDir { get; private set; }
 
         /// <summary>
@@ -49,8 +50,9 @@ namespace Lumina.Data
         /// </summary>
         public Dictionary< byte, Category > Categories { get; set; }
 
-        public Repository( DirectoryInfo rootDir )
+        internal Repository( DirectoryInfo rootDir, Lumina lumina )
         {
+            _Lumina = lumina;
             RootDir = rootDir;
 
             GetExpansionId();
@@ -141,9 +143,15 @@ namespace Lumina.Data
                         break;
                     }
 
-                    var index = new SqPackIndex( file );
-                    var dat = new Category( cat.Value, ExpansionId, chunk, Lumina.Options.CurrentPlatform, index,
-                        RootDir );
+                    var index = new SqPackIndex( file, _Lumina );
+                    var dat = new Category( 
+                        cat.Value,
+                        ExpansionId,
+                        chunk,
+                        _Lumina.Options.CurrentPlatform,
+                        index,
+                        RootDir,
+                        _Lumina );
 
                     Categories[ cat.Value ] = dat;
                 }
@@ -177,7 +185,7 @@ namespace Lumina.Data
         {
             foreach( var type in new[] { "index", "index2" } )
             {
-                var index = BuildDatStr( cat, ex, chunk, Lumina.Options.CurrentPlatform, type );
+                var index = BuildDatStr( cat, ex, chunk, _Lumina.Options.CurrentPlatform, type );
                 var path = Path.Combine( RootDir.FullName, index );
 
                 var fileInfo = new FileInfo( path );

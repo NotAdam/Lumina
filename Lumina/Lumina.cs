@@ -21,12 +21,12 @@ namespace Lumina
 
         public Dictionary< string, Repository > Repositories { get; private set; }
 
-        public static LuminaOptions Options { get; private set; }
+        public LuminaOptions Options { get; private set; }
 
         /// <summary>
         /// Reading PS3 dats on a LE machine means we need to convert endianness from BE where applicable
         /// </summary>
-        public static bool ShouldConvertEndianness => Options.CurrentPlatform == PlatformId.PS3 && BitConverter.IsLittleEndian;
+        public bool ShouldConvertEndianness => Options.CurrentPlatform == PlatformId.PS3 && BitConverter.IsLittleEndian;
         
         /// <summary>
         /// Provides access to EXD/EXH data, internally called Excel.
@@ -60,7 +60,7 @@ namespace Lumina
             Repositories = new Dictionary< string, Repository >();
             foreach( var repo in DataPath.GetDirectories() )
             {
-                Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo );
+                Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo, this );
             }
 
             Excel = new ExcelModule( this );

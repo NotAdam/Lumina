@@ -18,7 +18,7 @@ namespace Lumina.Data
 
         public Dictionary< UInt64, IndexHashTableEntry > HashTableEntries { get; set; }
 
-        public SqPackIndex( FileInfo indexFile ) : base( indexFile )
+        internal SqPackIndex( FileInfo indexFile, Lumina lumina ) : base( indexFile, lumina )
         {
             IsIndex2 = indexFile.Extension == ".index2";
 
