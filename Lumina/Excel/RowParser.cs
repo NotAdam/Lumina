@@ -131,7 +131,7 @@ namespace Lumina.Excel
             {
                 case ExcelColumnDataType.String:
                 {
-                    var stringOffset = BinaryPrimitives.ReadUInt32BigEndian( br.ReadBytes( Unsafe.SizeOf< UInt32 >() ) );
+                    var stringOffset = br.ReadUInt32();
                     data = br.ReadStringOffset( _RowOffset + _Sheet.Header.DataOffset + stringOffset );
 
                     break;
@@ -153,39 +153,39 @@ namespace Lumina.Excel
                 }
                 case ExcelColumnDataType.Int16:
                 {
-                    data = BinaryPrimitives.ReadInt16BigEndian( br.ReadBytes( Unsafe.SizeOf< Int16 >() ) );
+                    data = br.ReadInt16();
                     break;
                 }
                 case ExcelColumnDataType.UInt16:
                 {
-                    data = BinaryPrimitives.ReadUInt16BigEndian( br.ReadBytes( Unsafe.SizeOf< UInt16 >() ) );
+                    data = br.ReadUInt16();
                     break;
                 }
                 case ExcelColumnDataType.Int32:
                 {
-                    data = BinaryPrimitives.ReadInt32BigEndian( br.ReadBytes( Unsafe.SizeOf< Int32 >() ) );
+                    data = br.ReadInt32();
                     break;
                 }
                 case ExcelColumnDataType.UInt32:
                 {
-                    data = BinaryPrimitives.ReadUInt32BigEndian( br.ReadBytes( Unsafe.SizeOf< UInt32 >() ) );
+                    data = br.ReadUInt32();
                     break;
                 }
                 // case ExcelColumnDataType.Unk:
                 // break;
                 case ExcelColumnDataType.Float32:
                 {
-                    data = BitConverter.Int32BitsToSingle( BinaryPrimitives.ReadInt32BigEndian( br.ReadBytes( Unsafe.SizeOf< float >() ) ) );
+                    data = br.ReadSingle();
                     break;
                 }
                 case ExcelColumnDataType.Int64:
                 {
-                    data = BinaryPrimitives.ReadInt64BigEndian( br.ReadBytes( Unsafe.SizeOf< Int64 >() ) );
+                    data = br.ReadUInt64();
                     break;
                 }
                 case ExcelColumnDataType.UInt64:
                 {
-                    data = BinaryPrimitives.ReadUInt64BigEndian( br.ReadBytes( Unsafe.SizeOf< UInt64 >() ) );
+                    data = br.ReadUInt64();
                     break;
                 }
                 // case ExcelColumnDataType.Unk2:

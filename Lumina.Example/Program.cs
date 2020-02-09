@@ -21,8 +21,8 @@ namespace Lumina.Example
 
             public override void LoadFile()
             {
-                Console.WriteLine("loading customfiletype");
-                
+                Console.WriteLine( "loading customfiletype" );
+
                 // todo: not sure if good idea yet
                 using var stream = new MemoryStream( Data, false );
                 using var sr = new StreamReader( stream );
@@ -60,21 +60,26 @@ namespace Lumina.Example
 
             // excel reading
             var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
-            var actionTimelineRows = actionTimeline.GetRows();
+            var atRows = actionTimeline.GetRows().Take( 5 );
 
-            // var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
-            // var zsgRows = zoneSharedGroup.GetRows();
-            //
-            // foreach( var row in zsgRows )
-            // {
-            //     Console.WriteLine($"ZoneSharedGroup({row.RowId}.{row.SubRowId}) c: ");
-            // }
+            foreach( var row in atRows )
+            {
+                Console.WriteLine( $"name: {row.Name}" );
+            }
+
+            var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
+            var zsgRows = zoneSharedGroup.GetRows().Take( 5 );
             
+            foreach( var row in zsgRows )
+            {
+                Console.WriteLine( $"ZoneSharedGroup({row.RowId}.{row.SubRowId}) col0: {row.col0}" );
+            }
+
 
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
             file.SaveFile( "root.exl" );
-            
+
             var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
 
             Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
