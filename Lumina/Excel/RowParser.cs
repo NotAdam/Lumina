@@ -15,6 +15,7 @@ namespace Lumina.Excel
         private readonly ExcelDataFile _DataFile;
         private readonly int _Row;
         private readonly int _SubRow;
+        private readonly int _SubRowCount;
 
         private readonly ExcelDataOffset _Offset;
         private readonly ExcelDataRowHeader _RowHeader;
@@ -154,6 +155,7 @@ namespace Lumina.Excel
             return (T)data;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private byte GetBitPosition( byte flag )
         {
             byte count = 0;

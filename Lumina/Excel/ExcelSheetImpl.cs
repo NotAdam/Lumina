@@ -47,7 +47,7 @@ namespace Lumina.Excel
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
-        public ExcelDataBreakpoint[] DataBreakpoints => HeaderFile.DataBreakpoints;
+        public ExcelDataPagination[] DataPagination => HeaderFile.DataPagination;
 
         public ExcelLanguage[] Languages => HeaderFile.Languages;
 
@@ -84,7 +84,7 @@ namespace Lumina.Excel
         {
             foreach( var lang in HeaderFile.Languages )
             {
-                foreach( var bp in HeaderFile.DataBreakpoints )
+                foreach( var bp in HeaderFile.DataPagination )
                 {
                     var filePath = GenerateFilePath( Name, bp.StartId, lang.Language );
 

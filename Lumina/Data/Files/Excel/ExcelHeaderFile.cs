@@ -23,7 +23,7 @@ namespace Lumina.Data.Files.Excel
 
         public ExcelColumnDefinition[] ColumnDefinitions { get; private set; }
 
-        public ExcelDataBreakpoint[] DataBreakpoints { get; private set; }
+        public ExcelDataPagination[] DataPagination { get; private set; }
 
         public ExcelLanguage[] Languages { get; private set; }
 
@@ -58,7 +58,7 @@ namespace Lumina.Data.Files.Excel
             Header = header;
 
             ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( header.ColumnCount );
-            DataBreakpoints = Reader.ReadStructuresAsArray< ExcelDataBreakpoint >( header.ExdCount );
+            DataPagination = Reader.ReadStructuresAsArray< ExcelDataPagination >( header.ExdCount );
 
             Languages = Reader.ReadStructuresAsArray< ExcelLanguage >( header.LanguageCount );
 
@@ -75,9 +75,9 @@ namespace Lumina.Data.Files.Excel
                 cd.Type = (ExcelColumnDataType)BinaryPrimitives.ReverseEndianness( (ushort)cd.Type );
             }
 
-            for( var i = 0; i < DataBreakpoints.Length; i++ )
+            for( var i = 0; i < DataPagination.Length; i++ )
             {
-                ref var db = ref DataBreakpoints[ i ];
+                ref var db = ref DataPagination[ i ];
                 db.RowCount = BinaryPrimitives.ReverseEndianness( db.RowCount );
                 db.StartId = BinaryPrimitives.ReverseEndianness( db.StartId );
             }
