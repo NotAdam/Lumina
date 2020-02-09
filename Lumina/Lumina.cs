@@ -56,6 +56,13 @@ namespace Lumina
             {
                 throw new DirectoryNotFoundException( "DataPath provided is missing." );
             }
+            
+            // check if sqpack file exists in dir, seems to be a good indicator of whether the dir is correct
+            var file = DataPath.GetFiles().FirstOrDefault( f => f.Name == "sqpack" );
+            if( file == null )
+            {
+                throw new ArgumentException( "the data path arg must point to the sqpack directory", nameof( dataPath ) );
+            }
 
             Repositories = new Dictionary< string, Repository >();
             foreach( var repo in DataPath.GetDirectories() )

@@ -4,7 +4,7 @@ namespace Lumina.Excel.Sheets
     public class ZoneSharedGroup : IExcelRow
     {
         public uint col0;
-        public uint Quest1;
+        public uint[] Quests;
 
         public int RowId { get; set; }
         public int SubRowId { get; set; }
@@ -13,9 +13,9 @@ namespace Lumina.Excel.Sheets
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
-            
-            col0 = parser.ReadColumn< uint >( 0 );
-            Quest1 = parser.ReadColumn< uint >( 2 );
+
+            col0 = parser.ReadOffset< uint >( 0x0 );
+            Quests = parser.ReadStructuresAsArray< uint >( 0x4, 6 );
         }
     }
 }
