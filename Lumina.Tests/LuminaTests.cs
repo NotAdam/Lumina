@@ -10,6 +10,7 @@ namespace Lumina.Tests
         [InlineData( "music", "ex2", 16573140193792963234, "music/ex2/bgm_ex2_system_title.scd" )]
         [InlineData( "chara", "ffxiv", 8982245735269998910, "chara/weapon/w0501/obj/body/b0018/vfx/texture/uv_cryst_128s.atex" )]
         [InlineData( "sound", "ffxiv", 7568289509259556905, "sound/vfx/ability/se_vfx_abi_berserk_c.scd")]
+        [InlineData( "exd", "ffxiv", 16400836168543909290, "exd/exportedsg.exh")]
         public void FilePathsAreParsedCorrectly( string category, string repo, ulong hash, string path )
         {
             var parsed = Lumina.ParseFilePath( path );

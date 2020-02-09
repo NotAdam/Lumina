@@ -44,10 +44,6 @@ namespace Lumina
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
         public Lumina( string dataPath, LuminaOptions options = null )
         {
-            Contract.Requires( dataPath != null );
-            Contract.Ensures( Options != null );
-            Contract.Ensures( Repositories != null );
-
             Options = options ?? new LuminaOptions();
 
             DataPath = new DirectoryInfo( dataPath );
@@ -86,13 +82,18 @@ namespace Lumina
 
             var hash = GetFileHash( path );
 
-            var repoName = pathParts[ 1 ].StartsWith( "ex" ) ? pathParts[ 1 ] : "ffxiv";
+            var repo = pathParts[ 1 ];
+            // todo: supports up to ex9, so we've got another ~11 years before this breaks
+            if( repo[ 0 ] != 'e' || repo[ 1 ] != 'x' || !char.IsDigit( repo[ 2 ] ) )
+            {
+                repo = "ffxiv";
+            }
 
             return new ParsedFilePath
             {
                 Category = category,
                 Hash = hash,
-                Repository = repoName
+                Repository = repo
             };
         }
 

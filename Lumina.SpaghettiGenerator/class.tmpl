@@ -1,0 +1,18 @@
+namespace Lumina.Excel.GeneratedSheets
+{
+    [SheetName( "%%SHEET_NAME%%" )]
+    public class %%SHEET_NAME%% : IExcelRow
+    {
+%%DATA_MEMBERS%%
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+%%DATA_READERS%%
+        }
+    }
+}

@@ -12,8 +12,8 @@ namespace Lumina.Excel
     {
         private readonly Lumina _Lumina;
 
-        private readonly Dictionary< int, string > _ImmutableIdToSheetMap;
-        private readonly List< string > _SheetNames;
+        public readonly Dictionary< int, string > ImmutableIdToSheetMap;
+        public readonly List< string > SheetNames;
 
         public readonly List< ExcelSheetImpl > Sheets;
 
@@ -22,8 +22,8 @@ namespace Lumina.Excel
         public ExcelModule( Lumina lumina )
         {
             _Lumina = lumina;
-            _ImmutableIdToSheetMap = new Dictionary< int, string >();
-            _SheetNames = new List< string >();
+            ImmutableIdToSheetMap = new Dictionary< int, string >();
+            SheetNames = new List< string >();
             
             Sheets = new List< ExcelSheetImpl >();
             SheetMap = new Dictionary< string, ExcelSheetImpl >();
@@ -35,14 +35,14 @@ namespace Lumina.Excel
 
             foreach( var map in files.ExdMap )
             {
-                _SheetNames.Add( map.Key.ToLowerInvariant() );
+                SheetNames.Add( map.Key.ToLowerInvariant() );
 
                 if( map.Value == -1 )
                 {
                     continue;
                 }
 
-                _ImmutableIdToSheetMap[ map.Value ] = map.Key;
+                ImmutableIdToSheetMap[ map.Value ] = map.Key;
             }
         }
 
@@ -70,7 +70,7 @@ namespace Lumina.Excel
                 return sheet as ExcelSheet< T >;
             }
             
-            if( !_SheetNames.Contains( name.ToLowerInvariant() ) )
+            if( !SheetNames.Contains( name.ToLowerInvariant() ) )
             {
                 return null;
             }
@@ -80,6 +80,7 @@ namespace Lumina.Excel
             var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );
 
             var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, _Lumina );
+            newSheet.GenerateFileSegments();
 
             Sheets.Add( newSheet );
             SheetMap[ name ] = newSheet;

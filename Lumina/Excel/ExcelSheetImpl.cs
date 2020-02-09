@@ -31,8 +31,6 @@ namespace Lumina.Excel
             this( headerFile, name )
         {
             _Lumina = lumina;
-
-            GenerateFileSegments();
         }
 
         public string Name { get; }
@@ -84,7 +82,7 @@ namespace Lumina.Excel
             return $"exd/{name}_{startId}_{lang}.exd";
         }
 
-        protected void GenerateFileSegments()
+        internal void GenerateFileSegments()
         {
             foreach( var lang in HeaderFile.Languages )
             {
@@ -130,21 +128,10 @@ namespace Lumina.Excel
             foreach( var row in Columns )
             {
                 var type = row.Type;
-
-                // ignore single byte fields
-                if( type == ExcelColumnDataType.Bool ||
-                    type == ExcelColumnDataType.Int8 ||
-                    type == ExcelColumnDataType.UInt8 ||
-                    (int)type >= (int)ExcelColumnDataType.PackedBool0
-                )
-                {
-                    continue;
-                }
                 
-                long colOffset = offset + row.Offset;
-                ms.Position = colOffset;
+                ms.Position = offset + row.Offset;
 
-                byte[] data = null;
+                byte[] data;
 
                 switch( type )
                 {
@@ -168,9 +155,16 @@ namespace Lumina.Excel
                         data = br.ReadBytes( Unsafe.SizeOf< UInt64 >() );
                         break;
                     }
+                    
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        continue;
                 }
+
+                // not really sure why but this sometimes happens, but it'll read 0 bytes and then try and write it to the end
+                // and crash because it's attempting to alloc memory for some retarded reason, makes 0 sense to me
+                // todo: figure out why (item sheet, maybe quest?)
+                if( data.Length == 0 )
+                    continue;
 
                 Array.Reverse( data );
 
