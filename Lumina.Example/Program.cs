@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using Lumina.Data.Structs;
 using Lumina.Data.Structs.Excel;
 using Lumina.Excel;
+using Lumina.Excel.Generated;
 
 namespace Lumina.Example
 {
@@ -62,12 +63,16 @@ namespace Lumina.Example
         {
             var lumina = new Lumina( args[ 0 ] );
 
+            // excel reading
             var actionTimeline = lumina.GetExcelSheet< Excel.Generated.ActionTimeline >();
 
-            foreach( var (id, row) in actionTimeline.GetRows() )
-            {
-                Console.WriteLine( $"timeline name: {row.Name}" );
-            }
+            var actionTimelineRows = actionTimeline.GetRows();
+            Console.WriteLine($"ActionTimeline GetRows(): {actionTimelineRows.Count}");
+
+            var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
+            var zsgRows = zoneSharedGroup.GetSubRows();
+            Console.WriteLine($"ZoneSharedGroup GetSubRows(): {zsgRows.Count}");
+            
 
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );

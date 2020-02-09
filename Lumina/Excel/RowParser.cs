@@ -1,6 +1,5 @@
 using System;
 using System.Buffers.Binary;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
@@ -14,21 +13,36 @@ namespace Lumina.Excel
         private readonly ExcelSheetImpl _Sheet;
         private readonly ExcelDataFile _DataFile;
 
-        private readonly ExcelDataOffset _Offset;
-        private readonly ExcelDataRowHeader _RowHeader;
+        private ExcelDataOffset _Offset;
+        private ExcelDataRowHeader _RowHeader;
         
         private long _RowOffset;
 
-        public readonly int Row;
-        public readonly int SubRow;
+        public int Row;
+        public int SubRow;
         public int RowCount => _RowHeader.RowCount;
 
-        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row )
+        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
             _Sheet = sheet;
             _DataFile = dataFile;
-            Row = row;
+        }
 
+        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row )
+            : this( sheet, dataFile )
+        {
+            SeekToRow( row );
+        }
+
+        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row, int subRow )
+            : this( sheet, dataFile, row )
+        {
+            SeekToRow( row, subRow );
+        }
+
+        public void SeekToRow( int row )
+        {
+            Row = row;
             _Offset = _DataFile.RowData[ Row ];
 
             var stream = _DataFile.FileStream;
@@ -48,9 +62,10 @@ namespace Lumina.Excel
             _RowOffset = _Offset.Offset + 6;
         }
 
-        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row, int subRow )
-            : this( sheet, dataFile, row )
+        public void SeekToRow( int row, int subRow )
         {
+            SeekToRow( row );
+            
             SubRow = subRow;
 
             if( subRow > _RowHeader.RowCount )

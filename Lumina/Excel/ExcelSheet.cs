@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
+using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel
 {
@@ -21,7 +22,7 @@ namespace Lumina.Excel
             base( headerFile, name, lumina )
         {
         }
-        
+
         public T GetRow( int row )
         {
             return GetRow( row, Lumina.Options.DefaultExcelLanguage );
@@ -66,14 +67,51 @@ namespace Lumina.Excel
             return rowObj;
         }
 
-        public Dictionary< uint, T > GetRows()
+        public Dictionary< int, T > GetRows()
         {
             return GetRows( Lumina.Options.DefaultExcelLanguage );
         }
 
-        public Dictionary< uint, T > GetRows( Language lang )
+        public Dictionary< int, T > GetRows( Language lang )
         {
-            var rows = new Dictionary< uint, T >();
+            var rows = new Dictionary< int, T >();
+            var segments = GetLangSegments( lang );
+
+            foreach( var segment in segments )
+            {
+                var file = segment.File;
+                var rowPtrs = file.RowData;
+
+                var parser = new RowParser( this, file );
+
+                foreach( var rowPtr in rowPtrs )
+                {
+                    var id = (int)rowPtr.RowId;
+                    parser.SeekToRow( id );
+
+                    var obj = Activator.CreateInstance< T >();
+                    obj.PopulateData( parser );
+
+                    rows[ id ] = obj;
+                }
+            }
+
+            return rows;
+        }
+
+        public Dictionary< Tuple< int, int >, T > GetSubRows()
+        {
+            return GetSubRows( Lumina.Options.DefaultExcelLanguage );
+        }
+
+        public Dictionary< Tuple< int, int >, T > GetSubRows( Language lang )
+        {
+            if( Header.Variant != ExcelVariant.Subrows )
+            {
+                throw new InvalidOperationException( "can't use GetSubRows to iterate a sheet that doesn't contain subrows!" );
+            }
+
+            var rows = new Dictionary< Tuple< int, int >, T >();
             var segments = GetLangSegments( lang );
 
             foreach( var segment in segments )
@@ -82,9 +120,24 @@ namespace Lumina.Excel
 
                 var rowPtrs = file.RowData;
 
+                var parser = new RowParser( this, file );
+
                 foreach( var rowPtr in rowPtrs )
                 {
-                    rows[ rowPtr.RowId ] = GetRow( (int)rowPtr.RowId, lang );
+                    parser.SeekToRow( (int)rowPtr.RowId );
+
+                    // read subrows
+                    for( int i = 0; i < parser.RowCount; i++ )
+                    {
+                        parser.SeekToRow( (int)rowPtr.RowId, i );
+
+                        var obj = Activator.CreateInstance< T >();
+                        obj.PopulateData( parser );
+
+                        var rowIndex = Tuple.Create( (int)rowPtr.RowId, i );
+
+                        rows[ rowIndex ] = obj;
+                    }
                 }
             }
 
