@@ -1,5 +1,6 @@
 using System;
 using System.Buffers.Binary;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -91,6 +92,33 @@ namespace Lumina.Excel
             Stream.Position = _RowOffset + offset;
 
             return br.ReadBytes( count );
+        }
+
+        public T ReadStructure< T >( int offset ) where T : struct
+        {
+            var br = _DataFile.Reader;
+            
+            Stream.Position = _RowOffset + offset;
+
+            return br.ReadStructure< T >();
+        }
+        
+        public List< T > ReadStructures< T >( int offset, int count ) where T : struct
+        {
+            var br = _DataFile.Reader;
+            
+            Stream.Position = _RowOffset + offset;
+
+            return br.ReadStructures< T >( count );
+        }
+        
+        public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct
+        {
+            var br = _DataFile.Reader;
+            
+            Stream.Position = _RowOffset + offset;
+
+            return br.ReadStructuresAsArray< T >( count );
         }
 
         private T ReadField< T >( ExcelColumnDataType type )
