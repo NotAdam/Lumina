@@ -65,5 +65,30 @@ namespace Lumina.Excel
 
             return rowObj;
         }
+
+        public Dictionary< uint, T > GetRows()
+        {
+            return GetRows( Lumina.Options.DefaultExcelLanguage );
+        }
+
+        public Dictionary< uint, T > GetRows( Language lang )
+        {
+            var rows = new Dictionary< uint, T >();
+            var segments = GetLangSegments( lang );
+
+            foreach( var segment in segments )
+            {
+                var file = segment.File;
+
+                var rowPtrs = file.RowData;
+
+                foreach( var rowPtr in rowPtrs )
+                {
+                    rows[ rowPtr.RowId ] = GetRow( (int)rowPtr.RowId, lang );
+                }
+            }
+
+            return rows;
+        }
     }
 }

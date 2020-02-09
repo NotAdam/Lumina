@@ -13,22 +13,23 @@ namespace Lumina.Excel
     {
         private readonly ExcelSheetImpl _Sheet;
         private readonly ExcelDataFile _DataFile;
-        private readonly int _Row;
-        private readonly int _SubRow;
-        private readonly int _SubRowCount;
 
         private readonly ExcelDataOffset _Offset;
         private readonly ExcelDataRowHeader _RowHeader;
-
+        
         private long _RowOffset;
+
+        public readonly int Row;
+        public readonly int SubRow;
+        public int RowCount => _RowHeader.RowCount;
 
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row )
         {
             _Sheet = sheet;
             _DataFile = dataFile;
-            _Row = row;
+            Row = row;
 
-            _Offset = _DataFile.RowData[ _Row ];
+            _Offset = _DataFile.RowData[ Row ];
 
             var stream = _DataFile.FileStream;
             var br = _DataFile.Reader;
@@ -50,14 +51,20 @@ namespace Lumina.Excel
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row, int subRow )
             : this( sheet, dataFile, row )
         {
-            _SubRow = subRow;
+            SubRow = subRow;
 
             if( subRow > _RowHeader.RowCount )
             {
                 throw new IndexOutOfRangeException( $"subrow {subRow} > {_RowHeader.RowCount}!" );
             }
 
-            _RowOffset = _RowOffset + ( subRow * _Sheet.Header.DataOffset + 2 * ( subRow + 1 ) );
+            _RowOffset = CalculateSubRowOffset( subRow );
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public long CalculateSubRowOffset( int subRow )
+        {
+            return _Offset.Offset + 6 + ( subRow * _Sheet.Header.DataOffset + 2 * ( subRow + 1 ) );
         }
 
         private T ReadField< T >( ExcelColumnDataType type )

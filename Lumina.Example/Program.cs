@@ -63,15 +63,10 @@ namespace Lumina.Example
             var lumina = new Lumina( args[ 0 ] );
 
             var actionTimeline = lumina.GetExcelSheet< Excel.Generated.ActionTimeline >();
-            var row = actionTimeline.GetRow( 1 );
-            Console.WriteLine($"timeline name: {row.Name}");
 
-            var zoneSharedGroup = lumina.GetExcelSheet< Excel.Generated.ZoneSharedGroup >();
-            for( int i = 0; i < 9; i++ )
+            foreach( var (id, row) in actionTimeline.GetRows() )
             {
-                var subrow = zoneSharedGroup.GetRow( 1, i );
-                
-                Console.WriteLine($"zonesharedgroup(1, {i}): u32: {subrow.col0} u32: {subrow.Quest1}");
+                Console.WriteLine( $"timeline name: {row.Name}" );
             }
 
             // custom data type
