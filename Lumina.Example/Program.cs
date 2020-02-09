@@ -72,6 +72,11 @@ namespace Lumina.Example
             var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
             var zsgRows = zoneSharedGroup.GetRows();
             Console.WriteLine($"ZoneSharedGroup GetSubRows(): {zsgRows.Count}");
+
+            foreach( var row in zsgRows )
+            {
+                Console.WriteLine($"ZoneSharedGroup({row.RowId}.{row.SubRowId}) c: ");
+            }
             
 
             // custom data type

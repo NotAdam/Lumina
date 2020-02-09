@@ -61,16 +61,22 @@ namespace Lumina.Data
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public T GetFile< T >( string cat, UInt64 hash ) where T : FileResource
         {
-            var catId = CategoryNameToIdMap[ cat ];
+            if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
+            {
+                return GetFile< T >( catId, hash );
+            }
 
-            return GetFile< T >( catId, hash );
+            return null;
         }
 
         public T GetFile< T >( byte cat, UInt64 hash ) where T : FileResource
         {
-            var category = Categories[ cat ];
+            if( Categories.TryGetValue( cat, out var category ) )
+            {
+                return category.GetFile< T >( hash );
+            }
 
-            return category.GetFile< T >( hash );
+            return null;
         }
 
         private void GetExpansionId()
@@ -187,9 +193,12 @@ namespace Lumina.Data
 
         public bool FileExists( string cat, UInt64 hash )
         {
-            var catId = CategoryNameToIdMap[ cat ];
+            if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
+            {
+                return Categories[ catId ].FileExists( hash );
+            }
 
-            return Categories[ catId ].FileExists( hash );
+            return false;
         }
     }
 }
