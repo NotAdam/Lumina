@@ -2,7 +2,7 @@ using Lumina.Data.Files.Excel;
 
 namespace Lumina.Excel
 {
-    public class ExcelSegment
+    public class ExcelPage
     {
         public string FilePath { get; set; }
 

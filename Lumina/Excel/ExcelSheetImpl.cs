@@ -17,7 +17,7 @@ namespace Lumina.Excel
     {
         public ExcelSheetImpl()
         {
-            DataSegments = new Dictionary< Language, List< ExcelSegment > >();
+            DataPages = new Dictionary< Language, List< ExcelPage > >();
         }
 
         public ExcelSheetImpl( ExcelHeaderFile headerFile, string name ) :
@@ -47,7 +47,7 @@ namespace Lumina.Excel
 
         public ExcelVariant Variant => Header.Variant;
 
-        public readonly Dictionary< Language, List< ExcelSegment > > DataSegments;
+        public readonly Dictionary< Language, List< ExcelPage > > DataPages;
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
@@ -57,14 +57,14 @@ namespace Lumina.Excel
 
         protected readonly Lumina _Lumina;
 
-        internal List< ExcelSegment > GetLangSegments( Language lang )
+        internal List< ExcelPage > GetLanguagePages( Language lang )
         {
-            if( DataSegments.TryGetValue( lang, out var obj ) )
+            if( DataPages.TryGetValue( lang, out var obj ) )
             {
                 return obj;
             }
 
-            if( DataSegments.TryGetValue( Language.None, out var noLang ) )
+            if( DataPages.TryGetValue( Language.None, out var noLang ) )
             {
                 return noLang;
             }
@@ -98,21 +98,21 @@ namespace Lumina.Excel
                         continue;
                     }
 
-                    var segment = new ExcelSegment
+                    var segment = new ExcelPage
                     {
                         FilePath = filePath,
                         RowCount = bp.RowCount,
                         StartId = bp.StartId
                     };
 
-                    List< ExcelSegment > segments;
-                    if( !DataSegments.ContainsKey( lang.Language ) )
+                    List< ExcelPage > segments;
+                    if( !DataPages.ContainsKey( lang.Language ) )
                     {
-                        segments = DataSegments[ lang.Language ] = new List< ExcelSegment >();
+                        segments = DataPages[ lang.Language ] = new List< ExcelPage >();
                     }
                     else
                     {
-                        segments = DataSegments[ lang.Language ];
+                        segments = DataPages[ lang.Language ];
                     }
 
                     segment.File = _Lumina.GetFile< ExcelDataFile >( segment.FilePath );

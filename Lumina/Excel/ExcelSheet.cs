@@ -38,11 +38,11 @@ namespace Lumina.Excel
             return GetRowInternal( row, Int32.MaxValue, lang );
         }
 
-        internal ExcelSegment GetSegmentForRow( int row, Language lang )
+        internal ExcelPage GetSegmentForRow( int row, Language lang )
         {
-            var segments = GetLangSegments( lang );
+            var pages = GetLanguagePages( lang );
 
-            var data = segments.FirstOrDefault( s => row >= s.StartId && row < s.StartId + s.RowCount );
+            var data = pages.FirstOrDefault( s => row >= s.StartId && row < s.StartId + s.RowCount );
 
             if( data == null )
             {
@@ -94,7 +94,7 @@ namespace Lumina.Excel
         public List< T > GetRows( Language lang )
         {
             var rows = new List< T >();
-            var segments = GetLangSegments( lang );
+            var segments = GetLanguagePages( lang );
 
             foreach( var segment in segments )
             {
