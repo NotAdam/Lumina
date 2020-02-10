@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 
 namespace Lumina.Data.Parsing
 {
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout( LayoutKind.Sequential )]
     public struct Quad
     {
         public ulong Data;
@@ -25,12 +25,6 @@ namespace Lumina.Data.Parsing
 
     public static class QuadExtensions
     {
-        public static Quad AsQuad( this ulong value )
-        {
-            return new Quad
-            {
-                Data = value
-            };
-        }
+        public static Quad AsQuad( this ulong value ) => (Quad)value;
     }
 }
