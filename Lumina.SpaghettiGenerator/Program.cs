@@ -46,8 +46,8 @@ namespace Lumina.SpaghettiGenerator
         {
             get
             {
-                if( RootDefinition?.Name != null )
-                    return RootDefinition.Name;
+                if( RootDefinition?.RealName != null )
+                    return RootDefinition.RealName;
 
                 if( IsBitfield )
                     return $"packed{Offset:x}";
@@ -107,7 +107,9 @@ namespace Lumina.SpaghettiGenerator
 
         static string ProcessSheet( string name )
         {
-            var def = File.ReadAllText( $"./Definitions/{name}.json" );
+            var path = $"./Definitions/{name}.json";
+            var lastModified = System.IO.File.GetLastWriteTime(path );
+            var def = File.ReadAllText( path );
             var tmpl = _sheetTemplate;
 
             var sheet = _lumina.Excel.GetSheet< DummyExcelSheet >( name );
@@ -197,13 +199,64 @@ namespace Lumina.SpaghettiGenerator
             tmpl = tmpl.Replace( "%%SHEET_NAME%%", name );
 
             var sb = new StringBuilder();
+
+            sb.Append( indent );
+            sb.Append( $"// column defs from {lastModified:R}" );
+            sb.AppendLine();
+            sb.AppendLine();
+            // output debug shit
+            for( int i = 0; i < cols.Length; i++ )
+            {
+                var col = cols[ i ];
+                
+                sb.Append( indent );
+                sb.Append( "/*" );
+                sb.Append( $" offset: {col.Offset:x4} col: {i}" );
+                sb.AppendLine();
+                
+                // get sc def
+                var schemaDef = schema.Definitions.FirstOrDefault( d => d.Index == i );
+                if( schemaDef != null )
+                {
+                    sb.Append( indent );
+                    sb.AppendLine( $" *  name: {schemaDef.RealName}" );
+
+                    if( string.IsNullOrWhiteSpace( schemaDef.Type ) )
+                    {
+                        sb.Append( indent );
+                        sb.AppendLine( $" *  type: {schemaDef.Type}" );  
+                    }
+
+                    if( schemaDef.Type == "repeat" )
+                    {
+                        sb.Append( indent );
+                        sb.AppendLine( $" *  repeat count: {schemaDef.Count}" );  
+                    }
+                }
+                else
+                {
+                    sb.Append( indent );
+                    sb.Append( $" *  no SaintCoinach definition found" );
+                    sb.AppendLine();
+                }
+
+                sb.Append( indent );
+                sb.AppendLine( " */" );
+                sb.AppendLine();
+            }
+
+            sb.AppendLine();
+
+            tmpl = tmpl.Replace( "%%DEBUG_INFO%%", sb.ToString() );
+            
+            sb.Clear();
             foreach( var (offset, gcd) in items.OrderBy( pair => pair.Key ) )
             {
                 var typeName = ExcelTypeToManaged( gcd.ColumnDefinition.Type );
 
                 // add comment
                 sb.Append( indent );
-                sb.Append( $"// col: {gcd.Id:00} offset: {offset:x4} name: {gcd.Name}" );
+                sb.Append( $"// col: {gcd.Id:00} offset: {offset:x4}" );
                 sb.AppendLine();
 
                 if( gcd.IsBitfield )
