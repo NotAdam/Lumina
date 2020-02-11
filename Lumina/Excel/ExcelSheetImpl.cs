@@ -49,7 +49,7 @@ namespace Lumina.Excel
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
-        public ExcelDataPagination[] DataPagination => HeaderFile.DataPagination;
+        public ExcelDataPagination[] DataPagination => HeaderFile.DataPages;
 
         public ExcelLanguage[] Languages => HeaderFile.Languages;
 
@@ -86,7 +86,7 @@ namespace Lumina.Excel
         {
             foreach( var lang in HeaderFile.Languages )
             {
-                foreach( var bp in HeaderFile.DataPagination )
+                foreach( var bp in HeaderFile.DataPages )
                 {
                     var filePath = GenerateFilePath( Name, bp.StartId, lang.Language );
 

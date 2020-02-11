@@ -23,7 +23,7 @@ namespace Lumina.Data.Files.Excel
 
         public ExcelColumnDefinition[] ColumnDefinitions { get; private set; }
 
-        public ExcelDataPagination[] DataPagination { get; private set; }
+        public ExcelDataPagination[] DataPages { get; private set; }
 
         public ExcelLanguage[] Languages { get; private set; }
 
@@ -49,7 +49,7 @@ namespace Lumina.Data.Files.Excel
                 header.Version = BinaryPrimitives.ReverseEndianness( header.Version );
                 header.DataOffset = BinaryPrimitives.ReverseEndianness( header.DataOffset );
                 header.ColumnCount = BinaryPrimitives.ReverseEndianness( header.ColumnCount );
-                header.ExdCount = BinaryPrimitives.ReverseEndianness( header.ExdCount );
+                header.PageCount = BinaryPrimitives.ReverseEndianness( header.PageCount );
                 header.LanguageCount = BinaryPrimitives.ReverseEndianness( header.LanguageCount );
                 header.RowCount = BinaryPrimitives.ReverseEndianness( header.RowCount );
             }
@@ -58,7 +58,7 @@ namespace Lumina.Data.Files.Excel
             Header = header;
 
             ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( header.ColumnCount );
-            DataPagination = Reader.ReadStructuresAsArray< ExcelDataPagination >( header.ExdCount );
+            DataPages = Reader.ReadStructuresAsArray< ExcelDataPagination >( header.PageCount );
 
             Languages = Reader.ReadStructuresAsArray< ExcelLanguage >( header.LanguageCount );
 
@@ -75,9 +75,9 @@ namespace Lumina.Data.Files.Excel
                 cd.Type = (ExcelColumnDataType)BinaryPrimitives.ReverseEndianness( (ushort)cd.Type );
             }
 
-            for( var i = 0; i < DataPagination.Length; i++ )
+            for( var i = 0; i < DataPages.Length; i++ )
             {
-                ref var db = ref DataPagination[ i ];
+                ref var db = ref DataPages[ i ];
                 db.RowCount = BinaryPrimitives.ReverseEndianness( db.RowCount );
                 db.StartId = BinaryPrimitives.ReverseEndianness( db.StartId );
             }
