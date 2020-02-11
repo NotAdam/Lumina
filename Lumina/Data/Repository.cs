@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Lumina.Data.Structs;
 using Microsoft.VisualBasic.CompilerServices;
 
 namespace Lumina.Data
@@ -136,20 +137,26 @@ namespace Lumina.Data
                 // so we don't need to discover those here
                 for( int chunk = 0; chunk < 255; chunk++ )
                 {
-                    var file = FindIndex( cat.Value, ExpansionId, chunk );
+                    var indexFiles = FindIndexes( cat.Value, ExpansionId, chunk );
 
-                    if( file == null || chunk == -1 )
+                    if( indexFiles.Count == 0 )
                     {
                         break;
                     }
 
-                    var index = new SqPackIndex( file, _Lumina );
+                    var indexes = new List< SqPackIndex >();
+
+                    foreach( var fileInfo in indexFiles )
+                    {
+                        indexes.Add( new SqPackIndex( fileInfo, _Lumina ) );
+                    }
+
                     var dat = new Category( 
                         cat.Value,
                         ExpansionId,
                         chunk,
                         _Lumina.Options.CurrentPlatform,
-                        index,
+                        indexes,
                         RootDir,
                         _Lumina );
 
@@ -175,14 +182,16 @@ namespace Lumina.Data
         }
 
         /// <summary>
-        /// Brute force for an index or index2 file
+        /// Brute force for index and index2 files
         /// </summary>
         /// <param name="cat">Current category id</param>
         /// <param name="ex">Current expansion id</param>
         /// <param name="chunk">The chunk id</param>
         /// <returns>System.IO.FileInfo representing the index file found</returns>
-        public FileInfo FindIndex( byte cat, int ex, int chunk )
+        public List< FileInfo > FindIndexes( byte cat, int ex, int chunk )
         {
+            var files = new List< FileInfo >();
+            
             foreach( var type in new[] { "index", "index2" } )
             {
                 var index = BuildDatStr( cat, ex, chunk, _Lumina.Options.CurrentPlatform, type );
@@ -192,21 +201,27 @@ namespace Lumina.Data
 
                 if( fileInfo.Exists )
                 {
-                    return fileInfo;
+                    files.Add( fileInfo );
                 }
             }
 
-            return null;
+            return files;
         }
 
-        public bool FileExists( string cat, UInt64 hash )
+        public bool FileExists( string catName, ParsedFilePath path )
         {
-            if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
+            if( !CategoryNameToIdMap.TryGetValue( catName, out var catId ) )
             {
-                return Categories[ catId ].FileExists( hash );
+                return false;
             }
+            
+            var cat = Categories[ catId ];
 
-            return false;
+            // nb: keep these as separate checks because it'll run both otherwise which is a bit pointless
+            if( cat.FileExists( path.Hash ) )
+                return true;
+                
+            return cat.FileExists( path.Hash2 );
         }
     }
 }

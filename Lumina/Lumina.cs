@@ -79,6 +79,7 @@ namespace Lumina
             var category = pathParts.First();
 
             var hash = GetFileHash( path );
+            var hash2 = GetFileHash2( path );
 
             var repo = pathParts[ 1 ];
             // todo: supports up to ex9, so we've got another ~11 years before this breaks
@@ -91,6 +92,7 @@ namespace Lumina
             {
                 Category = category,
                 Hash = hash,
+                Hash2 = hash2,
                 Repository = repo
             };
         }
@@ -123,13 +125,13 @@ namespace Lumina
         /// <returns>True if the file exists</returns>
         public bool FileExists( string path )
         {
-            var parsed = ParseFilePath( path );
-            if( parsed == null )
+            var parsedPath = ParseFilePath( path );
+            if( parsedPath == null )
                 return false;
 
-            if( Repositories.TryGetValue( parsed.Repository, out var repo ) )
+            if( Repositories.TryGetValue( parsedPath.Repository, out var repo ) )
             {
-                return repo.FileExists( parsed.Category, parsed.Hash );
+                return repo.FileExists( parsedPath.Category, parsedPath );
             }
 
             return false;
@@ -143,7 +145,7 @@ namespace Lumina
         public static UInt64 GetFileHash( string path )
         {
             var pathParts = path.Split( '/' );
-            var filename = pathParts.Last();
+            var filename = pathParts[ ^1 ];
             var folder = path.Substring( 0, path.LastIndexOf( '/' ) );
 
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );

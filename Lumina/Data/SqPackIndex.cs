@@ -16,7 +16,8 @@ namespace Lumina.Data
 
         public SqPackIndexHeader IndexHeader { get; private set; }
 
-        public Dictionary< UInt64, IndexHashTableEntry > HashTableEntries { get; set; }
+        public Dictionary< ulong, IndexHashTableEntry > HashTableEntries { get; set; }
+        public Dictionary< uint, Index2HashTableEntry > HashTableEntries2 { get; set; }
 
         internal SqPackIndex( FileInfo indexFile, Lumina lumina ) : base( indexFile, lumina )
         {
@@ -43,18 +44,13 @@ namespace Lumina.Data
             // read index hdr
             IndexHeader = br.ReadStructure< SqPackIndexHeader >();
 
-            HashTableEntries = new Dictionary< UInt64, IndexHashTableEntry >();
-
             // read hashtable entries
             fs.Position = IndexHeader.index_data_offset;
             var entryCount = IndexHeader.index_data_size / Marshal.SizeOf( typeof( IndexHashTableEntry ) );
 
-            var entries = br.ReadStructures< IndexHashTableEntry >( (int)entryCount );
-
-            foreach( var entry in entries )
-            {
-                HashTableEntries[ entry.hash ] = entry;
-            }
+            HashTableEntries = br
+                .ReadStructures< IndexHashTableEntry >( (int)entryCount )
+                .ToDictionary( k => k.hash, v => v );
         }
 
         private void LoadIndex2()
@@ -67,25 +63,14 @@ namespace Lumina.Data
 
             // read index hdr
             IndexHeader = br.ReadStructure< SqPackIndexHeader >();
-            
-            // create u64 type
-            HashTableEntries = new Dictionary< UInt64, IndexHashTableEntry >();
 
             // read hashtable entries
             fs.Position = IndexHeader.index_data_offset;
             var entryCount = IndexHeader.index_data_size / Marshal.SizeOf( typeof( Index2HashTableEntry ) );
 
-            var entries = br.ReadStructures< Index2HashTableEntry >( (int)entryCount );
-
-            foreach( var entry in entries )
-            {
-                // move index2 data into index so we can read em as is at the cost of slightly more mem usage
-                HashTableEntries[ entry.hash ] = new IndexHashTableEntry
-                {
-                    data = entry.data,
-                    hash = entry.hash
-                };
-            }
+            HashTableEntries2 = br
+                .ReadStructures< Index2HashTableEntry >( (int)entryCount )
+                .ToDictionary( k => k.hash, v => v );
         }
     }
 }

@@ -20,7 +20,10 @@ namespace Lumina.Data
 
         public PlatformId Platform { get; }
 
-        public SqPackIndex SqPackIndex { get; }
+        public List< SqPackIndex > SqPackIndexes { get; }
+        
+        public Dictionary< UInt64, IndexHashTableEntry > IndexHashTableEntries { get; set; }
+        public Dictionary< uint, Index2HashTableEntry > Index2HashTableEntries { get; set; }
 
         public Dictionary< byte, SqPack > DatFiles { get; }
 
@@ -29,7 +32,7 @@ namespace Lumina.Data
             int expansion,
             int chunk,
             PlatformId platform,
-            SqPackIndex sqPackIndex,
+            List< SqPackIndex > sqPackIndexes,
             DirectoryInfo rootDir,
             Lumina lumina )
         {
@@ -38,13 +41,15 @@ namespace Lumina.Data
             Expansion = expansion;
             Chunk = chunk;
             Platform = platform;
-            SqPackIndex = sqPackIndex;
+            SqPackIndexes = sqPackIndexes;
             RootDir = rootDir;
 
             DatFiles = new Dictionary< byte, SqPack >();
 
+            var rootIndex = sqPackIndexes.First();
+
             // init dats
-            for( byte id = 0; id < SqPackIndex.IndexHeader.number_of_data_file; id++ )
+            for( byte id = 0; id < rootIndex.IndexHeader.number_of_data_file; id++ )
             {
                 var datName = Repository.BuildDatStr( CategoryId, Expansion, Chunk, Platform, $"dat{id}" );
 
@@ -57,16 +62,36 @@ namespace Lumina.Data
                     DatFiles[ id ] = new SqPack( fileInfo, _Lumina );
                 }
             }
+            
+            // postprocess indexes into one hashlist
+            IndexHashTableEntries = new Dictionary< ulong, IndexHashTableEntry >();
+
+            foreach( var index in sqPackIndexes )
+            {
+                if( index.IsIndex2 )
+                {
+                    Index2HashTableEntries = index.HashTableEntries2;
+                }
+                else
+                {
+                    IndexHashTableEntries = index.HashTableEntries;
+                }
+            }
         }
 
         public bool FileExists( UInt64 hash )
         {
-            return SqPackIndex.HashTableEntries.ContainsKey( hash );
+            return IndexHashTableEntries.ContainsKey( hash );
+        }
+
+        public bool FileExists( uint hash )
+        {
+            return Index2HashTableEntries.ContainsKey( hash );
         }
 
         public T GetFile< T >( UInt64 hash ) where T : FileResource
         {
-            var status = SqPackIndex.HashTableEntries.TryGetValue( hash, out var hashTableEntry );
+            var status = IndexHashTableEntries.TryGetValue( hash, out var hashTableEntry );
 
             if( !status )
             {
