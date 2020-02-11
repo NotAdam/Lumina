@@ -31,6 +31,7 @@ namespace Lumina.Data.Structs
     {
         public UInt64 hash;
         public UInt32 data;
+        private UInt32 _padding;
 
         public bool IsSynonym => ( data & 0b1 ) == 0b1;
 
