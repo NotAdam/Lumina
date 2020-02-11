@@ -17,7 +17,7 @@ namespace Lumina.Tests
             
             Assert.Equal( category, parsed.Category );
             Assert.Equal( repo, parsed.Repository );
-            Assert.Equal( hash, parsed.Hash );
+            Assert.Equal( hash, parsed.IndexHash );
         }
     }
 }

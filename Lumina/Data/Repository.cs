@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Transactions;
 using Lumina.Data.Structs;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -62,23 +63,23 @@ namespace Lumina.Data
         }
 
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
-        public T GetFile< T >( string cat, UInt64 hash ) where T : FileResource
+        public T GetFile< T >( string cat, ParsedFilePath path ) where T : FileResource
         {
             if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
             {
-                return GetFile< T >( catId, hash );
+                return GetFile< T >( catId, path );
             }
 
             return null;
         }
 
-        public T GetFile< T >( byte cat, UInt64 hash ) where T : FileResource
+        public T GetFile< T >( byte cat, ParsedFilePath path ) where T : FileResource
         {
             if( Categories.TryGetValue( cat, out var categories ) )
             {
                 foreach( var category in categories )
                 {
-                    var file = category.GetFile< T >( hash );
+                    var file = category.GetFile< T >( path );
                     if( file != null )
                         return file;
                 }
@@ -226,10 +227,10 @@ namespace Lumina.Data
             foreach( var cat in categories )
             {
                 // nb: keep these as separate checks because it'll run both otherwise which is a bit pointless
-                if( cat.FileExists( path.Hash ) )
+                if( cat.FileExists( path.IndexHash ) )
                     return true;
 
-                if( cat.FileExists( path.Hash2 ) )
+                if( cat.FileExists( path.Index2Hash ) )
                     return true;
             }
 

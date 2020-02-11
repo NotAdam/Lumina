@@ -89,19 +89,39 @@ namespace Lumina.Data
             return Index2HashTableEntries.ContainsKey( hash );
         }
 
-        public T GetFile< T >( UInt64 hash ) where T : FileResource
+        private bool TryGetFileDatOffset( ParsedFilePath path, out byte dataFileId, out long offset )
         {
-            var status = IndexHashTableEntries.TryGetValue( hash, out var hashTableEntry );
+            if( IndexHashTableEntries.TryGetValue( path.IndexHash, out var hashTableEntry ) )
+            {
+                dataFileId = hashTableEntry.DataFileId;
+                offset = hashTableEntry.Offset;
+                return true;
+            }
+            
+            if( Index2HashTableEntries.TryGetValue( path.Index2Hash, out var hashTableEntry2 ) )
+            {
+                dataFileId = hashTableEntry2.DataFileId;
+                offset = hashTableEntry2.Offset;
+                return true;
+            }
 
+            dataFileId = 0;
+            offset = 0;
+
+            return false;
+        }
+
+        public T GetFile< T >( ParsedFilePath path ) where T : FileResource
+        {
+            var status = TryGetFileDatOffset( path, out var dataFileId, out var offset );
             if( !status )
             {
-                return default;
+                return null;
             }
 
             // get dat
-            var dat = DatFiles[ hashTableEntry.DataFileId ];
-
-            var file = dat.ReadFile< T >( hashTableEntry.Offset );
+            var dat = DatFiles[ dataFileId ];
+            var file = dat.ReadFile< T >( offset );
 
             return file;
         }

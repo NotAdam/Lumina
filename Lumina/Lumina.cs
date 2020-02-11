@@ -73,13 +73,13 @@ namespace Lumina
             if( path[ ^1 ] == '/' )
                 return null;
 
-            path = path.ToLowerInvariant();
+            path = path.ToLowerInvariant().Trim();
             
             var pathParts = path.Split( '/' );
             var category = pathParts.First();
 
             var hash = GetFileHash( path );
-            var hash2 = GetFileHash2( path );
+            var hash2 = Crc32.Get( path );
 
             var repo = pathParts[ 1 ];
             // todo: supports up to ex9, so we've got another ~11 years before this breaks
@@ -91,8 +91,8 @@ namespace Lumina
             return new ParsedFilePath
             {
                 Category = category,
-                Hash = hash,
-                Hash2 = hash2,
+                IndexHash = hash,
+                Index2Hash = hash2,
                 Repository = repo
             };
         }
@@ -112,7 +112,7 @@ namespace Lumina
             
             if( Repositories.TryGetValue( parsed.Repository, out var repo ) )
             {
-                return repo.GetFile< T >( parsed.Category, parsed.Hash );
+                return repo.GetFile< T >( parsed.Category, parsed );
             }
 
             return null;
@@ -149,16 +149,6 @@ namespace Lumina
             var folder = path.Substring( 0, path.LastIndexOf( '/' ) );
 
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
-        }
-
-        /// <summary>
-        /// Returns the index2 variant of a file hash
-        /// </summary>
-        /// <param name="path">The full path of the file</param>
-        /// <returns>The CRC32 of the path provided</returns>
-        public static UInt32 GetFileHash2( string path )
-        {
-            return Crc32.Get( path );
         }
 
         public ExcelSheet< T > GetExcelSheet< T >() where T : IExcelRow

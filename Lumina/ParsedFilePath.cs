@@ -11,11 +11,15 @@ namespace Lumina
         /// <summary>
         /// Index hash
         /// </summary>
-        public ulong Hash { get; internal set; }
+        public ulong IndexHash { get; internal set; }
         
         /// <summary>
         /// Index2 hash
         /// </summary>
-        public uint Hash2 { get; internal set; }
+        public uint Index2Hash { get; internal set; }
+
+        public uint FolderHash => (uint)(IndexHash >> 32);
+
+        public uint FileHash => (uint)IndexHash;
     }
 }
