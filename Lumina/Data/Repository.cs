@@ -49,7 +49,7 @@ namespace Lumina.Data
         /// <summary>
         /// A collection of dats assoicated with the current repository.
         /// </summary>
-        public Dictionary< byte, Category > Categories { get; set; }
+        public Dictionary< byte, List< Category > > Categories { get; set; }
 
         internal Repository( DirectoryInfo rootDir, Lumina lumina )
         {
@@ -74,9 +74,14 @@ namespace Lumina.Data
 
         public T GetFile< T >( byte cat, UInt64 hash ) where T : FileResource
         {
-            if( Categories.TryGetValue( cat, out var category ) )
+            if( Categories.TryGetValue( cat, out var categories ) )
             {
-                return category.GetFile< T >( hash );
+                foreach( var category in categories )
+                {
+                    var file = category.GetFile< T >( hash );
+                    if( file != null )
+                        return file;
+                }
             }
 
             return null;
@@ -129,9 +134,10 @@ namespace Lumina.Data
         /// </summary>
         private void SetupIndexes()
         {
-            Categories = new Dictionary< byte, Category >();
+            Categories = new Dictionary< byte, List< Category > >();
             foreach( var cat in CategoryNameToIdMap )
             {
+                var catList = Categories[ cat.Value ] = new List< Category >();
                 // discover indexes first
                 // once we find an index, that index will have an associated dat (or dats) too
                 // so we don't need to discover those here
@@ -141,7 +147,7 @@ namespace Lumina.Data
 
                     if( indexFiles.Count == 0 )
                     {
-                        break;
+                        continue;
                     }
 
                     var indexes = new List< SqPackIndex >();
@@ -160,7 +166,7 @@ namespace Lumina.Data
                         RootDir,
                         _Lumina );
 
-                    Categories[ cat.Value ] = dat;
+                    catList.Add( dat );
                 }
             }
         }
@@ -215,13 +221,19 @@ namespace Lumina.Data
                 return false;
             }
             
-            var cat = Categories[ catId ];
+            var categories = Categories[ catId ];
 
-            // nb: keep these as separate checks because it'll run both otherwise which is a bit pointless
-            if( cat.FileExists( path.Hash ) )
-                return true;
-                
-            return cat.FileExists( path.Hash2 );
+            foreach( var cat in categories )
+            {
+                // nb: keep these as separate checks because it'll run both otherwise which is a bit pointless
+                if( cat.FileExists( path.Hash ) )
+                    return true;
+
+                if( cat.FileExists( path.Hash2 ) )
+                    return true;
+            }
+
+            return false;
         }
     }
 }
