@@ -103,7 +103,7 @@ namespace Lumina.Excel
 
                 var parser = new RowParser( this, file );
 
-                foreach( var (index, rowPtr) in rowPtrs )
+                foreach( var rowPtr in rowPtrs.Values )
                 {
                     parser.SeekToRow( (int)rowPtr.RowId );
 

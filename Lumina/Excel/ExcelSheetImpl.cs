@@ -183,7 +183,7 @@ namespace Lumina.Excel
             var writer = new BinaryWriter( stream );
             var reader = new BinaryReader( stream );
 
-            foreach( var (index, row) in file.RowData )
+            foreach( var row in file.RowData.Values )
             {
                 var offset = row.Offset;
 
