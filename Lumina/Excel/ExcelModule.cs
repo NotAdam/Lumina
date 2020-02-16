@@ -87,5 +87,29 @@ namespace Lumina.Excel
 
             return newSheet;
         }
+
+        /// <summary>
+        /// Returns a raw accessor to an excel sheet allowing you to skip templated row access entirely.
+        /// </summary>
+        /// <param name="name">Name of the sheet to load</param>
+        /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
+        internal ExcelSheetImpl GetSheetRaw( string name )
+        {
+            // todo: duped code is a bit ass but zzz
+            // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on
+            if( !SheetNames.Contains( name.ToLowerInvariant() ) )
+            {
+                return null;
+            }
+            
+            // create new sheet
+            var path = BuildExcelHeaderPath( name );
+            var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );
+
+            var newSheet = (ExcelSheetImpl)Activator.CreateInstance( typeof( ExcelSheetImpl ), headerFile, name, _Lumina );
+            newSheet.GenerateFileSegments();
+
+            return newSheet;
+        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Buffers.Binary;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -16,7 +17,7 @@ namespace Lumina.Data.Files.Excel
 
         public ExcelDataHeader Header { get; protected set; }
 
-        public ExcelDataOffset[] RowData { get; protected set; }
+        public Dictionary< uint, ExcelDataOffset > RowData { get; protected set; }
 
         public override unsafe void LoadFile()
         {
@@ -44,16 +45,19 @@ namespace Lumina.Data.Files.Excel
             var offsetSize = Unsafe.SizeOf< ExcelDataOffset >();
             var count = header.IndexSize / offsetSize;
 
-            RowData = Reader.ReadStructuresAsArray< ExcelDataOffset >( (int)count );
+            RowData = new Dictionary< uint, ExcelDataOffset >();
+            var rawRowData = Reader.ReadStructuresAsArray< ExcelDataOffset >( (int)count );
 
             if( BitConverter.IsLittleEndian )
             {
-                for( var i = 0; i < RowData.Length; i++ )
+                for( var i = 0; i < rawRowData.Length; i++ )
                 {
-                    ref var row = ref RowData[ i ];
+                    ref var row = ref rawRowData[ i ];
 
                     row.RowId = BinaryPrimitives.ReverseEndianness( row.RowId );
                     row.Offset = BinaryPrimitives.ReverseEndianness( row.Offset );
+
+                    RowData[ row.RowId ] = row;
                 }
             }
         }
