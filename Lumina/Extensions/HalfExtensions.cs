@@ -28,7 +28,7 @@ namespace Lumina.Extensions
 
         public static float Unpack( this Span< byte > buffer, int offset )
         {
-            return Unpack( BitConverter.ToUInt16( buffer.Slice( offset, sizeof( UInt16 ) ) ) );
+            return Unpack( BitConverter.ToUInt16( buffer.Slice( offset, sizeof( UInt16 ) ).ToArray(), 0 ) );
         }
 
         public static float Unpack( this byte[] buffer, int offset )

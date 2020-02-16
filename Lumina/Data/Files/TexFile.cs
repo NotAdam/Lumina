@@ -177,7 +177,7 @@ namespace Lumina.Data.Files
         {
             for( var i = 0; ( i + 2 ) <= 2 * width * height; i += 2 )
             {
-                var v = BitConverter.ToUInt16( src.Slice( i, sizeof( UInt16 ) ) );
+                var v = BitConverter.ToUInt16( src.Slice( i, sizeof( UInt16 ) ).ToArray(), 0 );
 
                 var a = (uint)( v & 0x8000 );
                 var r = (uint)( v & 0x7C00 );
@@ -196,7 +196,7 @@ namespace Lumina.Data.Files
         {
             for( var i = 0; ( i + 2 ) <= 2 * width * height; i += 2 )
             {
-                var v = BitConverter.ToUInt16( src.Slice( i, sizeof( UInt16 ) ) );
+                var v = BitConverter.ToUInt16( src.Slice( i, sizeof( UInt16 ) ).ToArray(), 0 );
 
                 for( var j = 0; j < 4; ++j )
                     dst[i * 2 + j] = (byte)( ( ( v >> ( 4 * j ) ) & 0x0F ) << 4 );

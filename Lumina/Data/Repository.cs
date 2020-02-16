@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Transactions;
-using Lumina.Data.Structs;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace Lumina.Data
 {
