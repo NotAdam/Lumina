@@ -42,7 +42,7 @@ namespace Lumina.Excel
         {
             var pages = GetLanguagePages( lang );
 
-            var data = pages.FirstOrDefault( s => row >= s.StartId && row < s.StartId + s.RowCount );
+            var data = pages.FirstOrDefault( s => s.RowData.ContainsKey( (uint)row ) );
 
             if( data == null )
             {
@@ -103,7 +103,7 @@ namespace Lumina.Excel
 
                 var parser = new RowParser( this, file );
 
-                foreach( var rowPtr in rowPtrs )
+                foreach( var (index, rowPtr) in rowPtrs )
                 {
                     parser.SeekToRow( (int)rowPtr.RowId );
 

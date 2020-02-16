@@ -47,7 +47,7 @@ namespace Lumina.Excel
         public void SeekToRow( int row )
         {
             Row = row;
-            _Offset = _DataFile.RowData[ Row ];
+            _Offset = _DataFile.RowData[ (uint)Row ];
 
             var br = _DataFile.Reader;
 
