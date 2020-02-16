@@ -56,55 +56,28 @@ namespace Lumina.Example
             }
         }
 
-        [SheetName("Item")]
-        class itemtest : IExcelRow
-        {
-            public string name;
-            public string desc;
-            
-            public int RowId { get; set; }
-            public int SubRowId { get; set; }
-            public void PopulateData( RowParser parser, Lumina lumina )
-            {
-                RowId = parser.Row;
-                SubRowId = parser.SubRow;
-
-                name = parser.ReadColumn< string >( 9 );
-                desc = parser.ReadColumn< string >( 8 );
-            }
-        }
-
         static void Main( string[] args )
         {
             var lumina = new Lumina( args[ 0 ] );
 
             // excel reading
-            // var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
-            // var atRows = actionTimeline.GetRows().Take( 5 );
-            //
-            // foreach( var row in atRows )
-            // {
-            //     Console.WriteLine( $"name: {row.Name}" );
-            // }
-            //
-            // var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
-            // var zsgRows = zoneSharedGroup.GetRows().Take( 5 );
-            //
-            // foreach( var row in zsgRows )
-            // {
-            //     Console.WriteLine( $"ZoneSharedGroup({row.RowId}.{row.SubRowId}) col0: {row.col0}" );
-            // }
-
-            var itemEn = lumina.GetExcelSheet< itemtest >();
-            var enRow = itemEn.GetRow( 2 );
+            var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
+            var atRows = actionTimeline.GetRows().Take( 5 );
             
-            var itemJp = lumina.GetExcelSheet< itemtest >( Language.Japanese );
-            var jpRow = itemJp.GetRow( 2 );
+            foreach( var row in atRows )
+            {
+                Console.WriteLine( $"name: {row.Name}" );
+            }
             
-            Console.WriteLine($"id: {enRow.RowId} name: {enRow.name} desc: {enRow.desc}");
-            Console.WriteLine($"id: {jpRow.RowId} name: {jpRow.name} desc: {jpRow.desc}");
-
-
+            var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
+            var zsgRows = zoneSharedGroup.GetRows().Take( 5 );
+            
+            foreach( var row in zsgRows )
+            {
+                Console.WriteLine( $"ZoneSharedGroup({row.RowId}.{row.SubRowId}) col0: {row.col0}" );
+            }
+            
+            
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
             file.SaveFile( "root.exl" );
