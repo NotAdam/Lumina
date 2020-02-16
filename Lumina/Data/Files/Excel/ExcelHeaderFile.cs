@@ -25,7 +25,7 @@ namespace Lumina.Data.Files.Excel
 
         public ExcelDataPagination[] DataPages { get; private set; }
 
-        public ExcelLanguage[] Languages { get; private set; }
+        public Language[] Languages { get; private set; }
 
         public override unsafe void LoadFile()
         {
@@ -59,8 +59,9 @@ namespace Lumina.Data.Files.Excel
 
             ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( header.ColumnCount );
             DataPages = Reader.ReadStructuresAsArray< ExcelDataPagination >( header.PageCount );
-
-            Languages = Reader.ReadStructuresAsArray< ExcelLanguage >( header.LanguageCount );
+            
+            // todo: these are LE? what the fuck? am i going insane?
+            Languages = Reader.ReadStructures< ushort >( header.LanguageCount ).Select( lang => (Language)lang ).ToArray();
 
             if( !BitConverter.IsLittleEndian )
             {

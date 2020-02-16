@@ -16,7 +16,7 @@ namespace Lumina.Excel
     {
         public ExcelSheetImpl()
         {
-            DataPages = new Dictionary< Language, List< ExcelPage > >();
+            DataPages = new List< ExcelPage >();
         }
 
         public ExcelSheetImpl( ExcelHeaderFile headerFile, string name ) :
@@ -25,9 +25,15 @@ namespace Lumina.Excel
             HeaderFile = headerFile;
             Name = name;
         }
-
-        public ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Lumina lumina ) :
+        
+        public ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage ) :
             this( headerFile, name )
+        {
+            RequestedLanguage = requestedLanguage;
+        }
+
+        public ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina ) :
+            this( headerFile, name, requestedLanguage )
         {
             _Lumina = lumina;
         }
@@ -44,31 +50,18 @@ namespace Lumina.Excel
 
         public ExcelVariant Variant => Header.Variant;
 
-        public readonly Dictionary< Language, List< ExcelPage > > DataPages;
+        public readonly List< ExcelPage > DataPages;
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
         public ExcelDataPagination[] DataPagination => HeaderFile.DataPages;
 
-        public ExcelLanguage[] Languages => HeaderFile.Languages;
+        public Language[] Languages => HeaderFile.Languages;
+        
+        public Language RequestedLanguage { get; protected set; }
 
         protected readonly Lumina _Lumina;
 
-        internal List< ExcelPage > GetLanguagePages( Language lang )
-        {
-            if( DataPages.TryGetValue( lang, out var obj ) )
-            {
-                return obj;
-            }
-
-            if( DataPages.TryGetValue( Language.None, out var noLang ) )
-            {
-                return noLang;
-            }
-
-            return null;
-        }
-        
         protected string GenerateFilePath( string name, uint startId, Language language )
         {
             if( language == Language.None )
@@ -83,42 +76,36 @@ namespace Lumina.Excel
 
         internal void GenerateFileSegments()
         {
-            foreach( var lang in HeaderFile.Languages )
+            var lang = Language.None;
+
+            if( HeaderFile.Languages.Contains( RequestedLanguage ) )
             {
-                foreach( var bp in HeaderFile.DataPages )
+                lang = RequestedLanguage;
+            }
+
+            foreach( var bp in HeaderFile.DataPages )
+            {
+                var filePath = GenerateFilePath( Name, bp.StartId, lang );
+
+                // ignore languages that don't exist in this client build
+                if( !_Lumina.FileExists( filePath ) )
                 {
-                    var filePath = GenerateFilePath( Name, bp.StartId, lang.Language );
-
-                    // ignore languages that don't exist in this client build
-                    if( !_Lumina.FileExists( filePath ) )
-                    {
-                        continue;
-                    }
-
-                    var segment = new ExcelPage
-                    {
-                        FilePath = filePath,
-                        RowCount = bp.RowCount,
-                        StartId = bp.StartId
-                    };
-
-                    List< ExcelPage > segments;
-                    if( !DataPages.ContainsKey( lang.Language ) )
-                    {
-                        segments = DataPages[ lang.Language ] = new List< ExcelPage >();
-                    }
-                    else
-                    {
-                        segments = DataPages[ lang.Language ];
-                    }
-
-                    segment.File = _Lumina.GetFile< ExcelDataFile >( segment.FilePath );
-                    
-                    // convert big endian to little endian on le systems
-                    ProcessDataEndianness( segment.File );
-
-                    segments.Add( segment );
+                    continue;
                 }
+
+                var segment = new ExcelPage
+                {
+                    FilePath = filePath,
+                    RowCount = bp.RowCount,
+                    StartId = bp.StartId
+                };
+
+                segment.File = _Lumina.GetFile< ExcelDataFile >( segment.FilePath );
+                    
+                // convert big endian to little endian on le systems
+                ProcessDataEndianness( segment.File );
+
+                DataPages.Add( segment );
             }
         }
 

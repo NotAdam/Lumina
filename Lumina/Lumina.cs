@@ -93,7 +93,8 @@ namespace Lumina
                 Category = category,
                 IndexHash = hash,
                 Index2Hash = hash2,
-                Repository = repo
+                Repository = repo,
+                Path = path
             };
         }
 
@@ -154,6 +155,11 @@ namespace Lumina
         public ExcelSheet< T > GetExcelSheet< T >() where T : IExcelRow
         {
             return Excel.GetSheet< T >();
+        }
+
+        public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : IExcelRow
+        {
+            return Excel.GetSheet< T >( language );
         }
     }
 }

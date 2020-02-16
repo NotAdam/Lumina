@@ -21,5 +21,7 @@ namespace Lumina
         public uint FolderHash => (uint)(IndexHash >> 32);
 
         public uint FileHash => (uint)IndexHash;
+        
+        public string Path { get; internal set; }
     }
 }

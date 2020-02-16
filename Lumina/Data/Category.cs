@@ -123,6 +123,8 @@ namespace Lumina.Data
             var dat = DatFiles[ dataFileId ];
             var file = dat.ReadFile< T >( offset );
 
+            file.FilePath = path;
+
             return file;
         }
 

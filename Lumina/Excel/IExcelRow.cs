@@ -5,6 +5,6 @@ namespace Lumina.Excel
         int RowId { get; set; }
         int SubRowId { get; set; }
         
-        void PopulateData( RowParser parser );
+        void PopulateData( RowParser parser, Lumina lumina );
     }
 }

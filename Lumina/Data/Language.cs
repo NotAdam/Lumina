@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Lumina.Data
 {
     [Flags]
-    public enum Language : byte
+    public enum Language : ushort
     {
         [Display( Name = "" )]
         None,

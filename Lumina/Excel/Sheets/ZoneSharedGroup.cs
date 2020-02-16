@@ -9,7 +9,7 @@ namespace Lumina.Excel.Sheets
         public int RowId { get; set; }
         public int SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser )
+        public void PopulateData( RowParser parser, Lumina lumina )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;

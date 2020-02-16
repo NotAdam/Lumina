@@ -21,6 +21,8 @@ namespace Lumina.Data
         public MemoryStream FileStream { get; internal set; }
         
         public BinaryReader Reader { get; internal set; }
+        
+        public ParsedFilePath FilePath { get; internal set; }
 
         /// <summary>
         /// Called once the files are read out from the dats. Used to further parse the file into usable data structures.

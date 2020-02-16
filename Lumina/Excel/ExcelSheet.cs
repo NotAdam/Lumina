@@ -9,6 +9,8 @@ namespace Lumina.Excel
 {
     public class ExcelSheet< T > : ExcelSheetImpl where T : IExcelRow
     {
+        protected Dictionary< Tuple< int, int >, T > RowCache = new Dictionary< Tuple< int, int >, T >();
+        
         public ExcelSheet() : base()
         {
         }
@@ -18,8 +20,14 @@ namespace Lumina.Excel
         {
         }
 
-        public ExcelSheet( ExcelHeaderFile headerFile, string name, Lumina lumina ) :
-            base( headerFile, name, lumina )
+        public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage ) :
+            base( headerFile, name, requestedLanguage )
+        {
+            
+        }
+
+        public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina ) :
+            base( headerFile, name, requestedLanguage, lumina )
         {
         }
 
@@ -30,19 +38,17 @@ namespace Lumina.Excel
 
         public T GetRow( int row, int subRow )
         {
-            return GetRowInternal( row, subRow, _Lumina.Options.DefaultExcelLanguage );
+            return GetRowInternal( row, subRow );
         }
 
         public T GetRow( int row, Language lang )
         {
-            return GetRowInternal( row, Int32.MaxValue, lang );
+            return GetRowInternal( row, Int32.MaxValue );
         }
 
-        internal ExcelPage GetSegmentForRow( int row, Language lang )
+        internal ExcelPage GetSegmentForRow( int row )
         {
-            var pages = GetLanguagePages( lang );
-
-            var data = pages.FirstOrDefault( s => s.RowData.ContainsKey( (uint)row ) );
+            var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( (uint)row ) );
 
             if( data == null )
             {
@@ -51,22 +57,24 @@ namespace Lumina.Excel
 
             return data;
         }
-
+        
         public RowParser GetRowParser( int row )
         {
-            return GetRowParser( row, _Lumina.Options.DefaultExcelLanguage );
-        }
-
-        public RowParser GetRowParser( int row, Language lang )
-        {
-            var data = GetSegmentForRow( row, lang );
+            var data = GetSegmentForRow( row );
             
             return new RowParser( this, data.File, row );
         }
 
-        internal T GetRowInternal( int row, int subRow, Language lang )
+        internal T GetRowInternal( int row, int subRow )
         {
-            var data = GetSegmentForRow( row, lang );
+            var id = GetRowCacheKey( row, subRow );
+
+            if( RowCache.TryGetValue( id, out var cachedRow ) )
+            {
+                return cachedRow;
+            }
+            
+            var data = GetSegmentForRow( row );
 
             var rowObj = Activator.CreateInstance< T >();
 
@@ -81,24 +89,30 @@ namespace Lumina.Excel
                 parser = new RowParser( this, data.File, row );
             }
 
-            rowObj.PopulateData( parser );
+            rowObj.PopulateData( parser, _Lumina );
+            
+            RowCache[ id ] = rowObj;
 
             return rowObj;
         }
 
-        public List< T > GetRows()
+        private Tuple< int, int > GetRowCacheKey( int row )
         {
-            return GetRows( _Lumina.Options.DefaultExcelLanguage );
+            return GetRowCacheKey( row, 0 );
         }
 
-        public List< T > GetRows( Language lang )
+        private Tuple< int, int > GetRowCacheKey( int row, int subRow )
+        {
+            return Tuple.Create( row, subRow );
+        }
+
+        public List< T > GetRows()
         {
             var rows = new List< T >();
-            var segments = GetLanguagePages( lang );
 
-            foreach( var segment in segments )
+            foreach( var page in DataPages )
             {
-                var file = segment.File;
+                var file = page.File;
                 var rowPtrs = file.RowData;
 
                 var parser = new RowParser( this, file );
@@ -112,20 +126,36 @@ namespace Lumina.Excel
                         // read subrows
                         for( int i = 0; i < parser.RowCount; i++ )
                         {
+                            var id = GetRowCacheKey( (int)rowPtr.RowId, i );
+
+                            if( RowCache.TryGetValue( id, out var cachedRow ) )
+                            {
+                                rows.Add( cachedRow );
+                                continue;
+                            }
+
                             parser.SeekToRow( (int)rowPtr.RowId, i );
                             var obj = Activator.CreateInstance< T >();
 
-                            obj.PopulateData( parser );
+                            obj.PopulateData( parser, _Lumina );
 
                             rows.Add( obj );
                         }
                     }
                     else
                     {
+                        var id = GetRowCacheKey( (int)rowPtr.RowId );
+
+                        if( RowCache.TryGetValue( id, out var cachedRow ) )
+                        {
+                            rows.Add( cachedRow );
+                            continue;
+                        }
+                        
                         parser.SeekToRow( (int)rowPtr.RowId );
                         var obj = Activator.CreateInstance< T >();
                         
-                        obj.PopulateData( parser );
+                        obj.PopulateData( parser, _Lumina );
 
                         rows.Add( obj );
                     }
