@@ -6,14 +6,30 @@ namespace Lumina.Extensions
 {
     public static class SpanExtensions
     {
-        public static T ReadStructure< T >( this Span< byte > span ) where T : struct
+
+        public static unsafe T ReadStructure< T >( this Span< byte > span ) where T : struct
         {
-            return MemoryMarshal.AsRef< T >( span );
+#if NETSTANDARD
+            fixed( byte* bp = &span.GetPinnableReference() )
+            {
+                return Marshal.PtrToStructure< T >( new IntPtr( bp ) );
+            }
+#else
+            return MemoryMarshal.Read< T >( span );
+#endif
         }
 
-        public static T ReadStructure< T >( this Span< byte > span, int offset ) where T : struct
+        public static unsafe T ReadStructure< T >( this Span< byte > span, int offset ) where T : struct
         {
-            return MemoryMarshal.AsRef< T >( span.Slice( offset ) );
+#if NETSTANDARD
+            fixed( byte* bp = &span.GetPinnableReference() )
+            {
+                return Marshal.PtrToStructure< T >( new IntPtr( bp + offset ) );
+            }
+#else
+            return MemoryMarshal.Read< T >( span );
+#endif
+
         }
     }
 }
