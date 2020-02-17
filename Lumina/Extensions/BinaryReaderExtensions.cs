@@ -76,21 +76,20 @@ namespace Lumina.Extensions
         /// <returns></returns>
         public static string ReadStringOffset( this BinaryReader br, long offset )
         {
-            long originalPosition = br.BaseStream.Position;
+            var originalPosition = br.BaseStream.Position;
             br.BaseStream.Position = offset;
 
-            List< byte > chars = new List< byte >();
+            var chars = new List< byte >();
 
             byte current;
-            do
+            while( ( current = br.ReadByte() ) != 0 )
             {
-                current = br.ReadByte();
                 chars.Add( current );
-            } while( current != 0 );
+            }
 
             br.BaseStream.Position = originalPosition;
-            string ret = Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
-            return ret;
+            
+            return Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
         }
     }
 }
