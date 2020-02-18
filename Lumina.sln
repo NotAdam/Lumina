@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Tests", "Lumina.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.SpaghettiGenerator", "Lumina.SpaghettiGenerator\Lumina.SpaghettiGenerator.csproj", "{206E65C3-5CDF-4FB1-B66A-A0A8BDCDFBC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Cmd", "Lumina.Cmd\Lumina.Cmd.csproj", "{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{206E65C3-5CDF-4FB1-B66A-A0A8BDCDFBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{206E65C3-5CDF-4FB1-B66A-A0A8BDCDFBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{206E65C3-5CDF-4FB1-B66A-A0A8BDCDFBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

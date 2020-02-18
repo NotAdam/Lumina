@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Lumina.Data.Structs;
 
@@ -19,9 +20,9 @@ namespace Lumina.Data
         public Span< byte > DataSpan => Data.AsSpan();
 
         public MemoryStream FileStream { get; internal set; }
-        
+
         public BinaryReader Reader { get; internal set; }
-        
+
         public ParsedFilePath FilePath { get; internal set; }
 
         /// <summary>
@@ -34,6 +35,20 @@ namespace Lumina.Data
         public virtual void SaveFile( string path )
         {
             File.WriteAllBytes( path, Data );
+        }
+
+        public string GetFileHash()
+        {
+            using var sha256 = System.Security.Cryptography.SHA256.Create();
+            var hash = sha256.ComputeHash( Data );
+
+            var sb = new StringBuilder();
+            foreach( var b in hash )
+            {
+                sb.Append( $"{b:x2}" );
+            }
+
+            return sb.ToString();
         }
     }
 }

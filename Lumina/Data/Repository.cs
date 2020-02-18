@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Lumina.Data.Structs;
 
 namespace Lumina.Data
 {
@@ -78,6 +79,33 @@ namespace Lumina.Data
                     var file = category.GetFile< T >( path );
                     if( file != null )
                         return file;
+                }
+            }
+
+            return null;
+        }
+        
+        public SqPackFileInfo? GetFileMetadata( string cat, ParsedFilePath path )
+        {
+            if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
+            {
+                return GetFileMetadata( catId, path );
+            }
+
+            return null;
+        }
+
+        public SqPackFileInfo? GetFileMetadata( byte cat, ParsedFilePath path )
+        {
+            if( Categories.TryGetValue( cat, out var categories ) )
+            {
+                foreach( var category in categories )
+                {
+                    var file = category.GetFileMetadata( path );
+                    if( file != null )
+                    {
+                        return file;
+                    }
                 }
             }
 

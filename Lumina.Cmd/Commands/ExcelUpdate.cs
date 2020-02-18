@@ -1,0 +1,108 @@
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using CliFx;
+using CliFx.Attributes;
+using Lumina.Data.Files.Excel;
+using Lumina.Data.Structs.Excel;
+
+namespace Lumina.Cmd.Commands
+{
+    [Command( "excelupdate",
+        Description = "Updates excel column definitions. Requires that old install location has exd dats available. Others are not required." )]
+    public class ExcelUpdate : ICommand
+    {
+        [CommandOption( "oldpath", 'o', Description = "Path to the older client install location", IsRequired = true )]
+        public string OldPath { get; set; }
+
+        [CommandOption( "newpath", 'n', Description = "Path to the new client install location", IsRequired = true )]
+        public string NewPath { get; set; }
+
+
+        public ValueTask ExecuteAsync( IConsole console )
+        {
+            var co = console.Output;
+            var ol = new Lumina( OldPath );
+            var nl = new Lumina( NewPath );
+
+            co.WriteLine( $"old sheets: {ol.Excel.SheetNames.Count} new sheets: {nl.Excel.SheetNames.Count}" );
+
+            var removedSheets = ol.Excel.SheetNames.Except( nl.Excel.SheetNames ).ToList();
+            if( removedSheets.Any() )
+            {
+                co.WriteLine( $"{removedSheets.Count} sheets removed" );
+
+                foreach( var sheetName in removedSheets )
+                {
+                    co.WriteLine( $" - {sheetName}" );
+                }
+            }
+
+            var newSheets = nl.Excel.SheetNames.Except( ol.Excel.SheetNames ).ToList();
+            if( newSheets.Any() )
+            {
+                co.WriteLine( $"{newSheets.Count} new sheets" );
+
+                foreach( var sheetName in newSheets )
+                {
+                    co.WriteLine( $" - {sheetName}" );
+                }
+            }
+
+            co.WriteLine( "diffing existing sheets..." );
+            var existingSheets = nl.Excel.SheetNames.Intersect( ol.Excel.SheetNames ).ToList();
+            foreach( var eSheet in existingSheets )
+            {
+                var exhPath = $"exd/{eSheet}.exh";
+                var oldHeader = ol.GetFile< ExcelHeaderFile >( exhPath );
+                var newHeader = nl.GetFile< ExcelHeaderFile >( exhPath );
+
+                Debug.Assert( oldHeader != null && newHeader != null );
+
+                var rowsChanged = oldHeader.Header.RowCount != newHeader.Header.RowCount;
+
+                var oldColumnsHash = GetColumnHash( oldHeader );
+                var newColumnsHash = GetColumnHash( newHeader );
+
+                var colHashChanged = oldColumnsHash != newColumnsHash;
+
+                if( colHashChanged )
+                {
+                    co.WriteLine( $" - {eSheet}" );
+
+                    var oldHash = oldColumnsHash.Substring( 0, 8 );
+                    var newHash = newColumnsHash.Substring( 0, 8 );
+                    co.WriteLine($"   - col hash changed! old: {oldHash} new: {newHash}");
+                    co.WriteLine($"   - old col count: {oldHeader.Header.ColumnCount} new col count: {newHeader.Header.ColumnCount}");
+                }
+            }
+
+            return default;
+        }
+
+        private ReadOnlySpan< byte > GetColumnsSpan( ExcelHeaderFile file )
+        {
+            var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();
+            return file.DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * file.Header.ColumnCount );
+        }
+
+        private string GetColumnHash( ExcelHeaderFile file )
+        {
+            var data = GetColumnsSpan( file );
+
+            using var sha256 = System.Security.Cryptography.SHA256.Create();
+            var hash = sha256.ComputeHash( data.ToArray() );
+
+            var sb = new StringBuilder();
+            foreach( var b in hash )
+            {
+                sb.Append( $"{b:x2}" );
+            }
+
+            return sb.ToString();
+        }
+    }
+}

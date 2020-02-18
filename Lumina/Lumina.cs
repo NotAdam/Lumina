@@ -119,6 +119,22 @@ namespace Lumina
             return null;
         }
 
+        public SqPackFileInfo? GetFileMetadata( string path )
+        {
+            var parsed = ParseFilePath( path );
+            if( parsed == null )
+            {
+                return null;
+            }
+            
+            if( Repositories.TryGetValue( parsed.Repository, out var repo ) )
+            {
+                return repo.GetFileMetadata( parsed.Category, parsed );
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Check if a file exists anywhere by checking whether the hash exists in any index
         /// </summary>

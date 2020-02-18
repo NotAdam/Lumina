@@ -128,6 +128,20 @@ namespace Lumina.Data
             return file;
         }
 
+        public SqPackFileInfo? GetFileMetadata( ParsedFilePath path )
+        {
+            var status = TryGetFileDatOffset( path, out var dataFileId, out var offset );
+            if( !status )
+            {
+                return null;
+            }
+
+            // get dat
+            var dat = DatFiles[ dataFileId ];
+
+            return dat.GetFileMetadata( offset );
+        }
+
         public SqPack GetDat( byte datId )
         {
             return DatFiles.TryGetValue( datId, out var dat ) ? dat : null;

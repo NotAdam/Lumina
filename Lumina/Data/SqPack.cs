@@ -95,6 +95,17 @@ namespace Lumina.Data
             return null;
         }
 
+        public SqPackFileInfo GetFileMetadata( long offset )
+        {
+            using var fs = File.OpenRead();
+            using var br = new BinaryReader( fs );
+            using var ms = new MemoryStream();
+
+            fs.Position = offset;
+
+            return br.ReadStructure< SqPackFileInfo >();
+        }
+
         public T ReadFile< T >( long offset ) where T : FileResource
         {
             if( _Lumina.Options.CacheFileResources )
