@@ -6,11 +6,16 @@ namespace Lumina.Cmd
 {
     public static class Program
     {
-        public static async Task< int > Main() =>
-            await new CliApplicationBuilder()
-                .UseDescription( "A command line tool that exposes useful functionality in a more digestible and code-free way." )
+        public static async Task< int > Main()
+        {
+            Pastel.ConsoleExtensions.Enable();
+            
+            return await new CliApplicationBuilder()
+                .UseDescription( "A command line tool that probably does useful things." )
                 .AddCommandsFromThisAssembly()
                 .Build()
                 .RunAsync();
+        }
+
     }
 }

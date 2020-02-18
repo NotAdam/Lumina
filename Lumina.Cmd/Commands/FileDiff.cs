@@ -6,10 +6,11 @@ using CliFx.Attributes;
 
 namespace Lumina.Cmd.Commands
 {
-    [Command( "hashtest", Description = "attempts to find different files by hash" )]
-    public class HashTest : ICommand
+    [Command( "file diff",
+        Description = "Given a path list, this will diff files by size and then hash to see if they've changed. Requires 2 client installs with appropriate dats available in each." )]
+    public class FileDiff : ICommand
     {
-        [CommandOption( "path", 'p', Description = "Path to the older client install location", IsRequired = true )]
+        [CommandOption( "oldpath", 'p', Description = "Path to the older client install location", IsRequired = true )]
         public string Path { get; set; }
 
         [CommandOption( "newpath", 'n', Description = "Path to the new client install location", IsRequired = true )]

@@ -12,7 +12,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Cmd.Commands
 {
     [Command( "excelupdate",
-        Description = "Updates excel column definitions. Requires that old install location has exd dats available. Others are not required." )]
+        Description = "Updates excel column definitions. Requires that old install location has exd dats (0a) available. Other dats are not required to exist." )]
     public class ExcelUpdate : ICommand
     {
         [CommandOption( "oldpath", 'o', Description = "Path to the older client install location", IsRequired = true )]
