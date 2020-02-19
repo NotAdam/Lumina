@@ -61,13 +61,12 @@ namespace Lumina.Cmd.Commands
                 var newHeader = nl.GetFile< ExcelHeaderFile >( exhPath );
 
                 Debug.Assert( oldHeader != null && newHeader != null );
-
-                var rowsChanged = oldHeader.Header.RowCount != newHeader.Header.RowCount;
-
-                var oldColumnsHash = GetColumnHash( oldHeader );
-                var newColumnsHash = GetColumnHash( newHeader );
+                
+                var oldColumnsHash = oldHeader.GetColumnsHash( oldHeader );
+                var newColumnsHash = newHeader.GetColumnsHash( newHeader );
 
                 var colHashChanged = oldColumnsHash != newColumnsHash;
+                var rowsChanged = oldHeader.Header.RowCount != newHeader.Header.RowCount;
 
                 if( colHashChanged )
                 {
@@ -81,28 +80,6 @@ namespace Lumina.Cmd.Commands
             }
 
             return default;
-        }
-
-        private ReadOnlySpan< byte > GetColumnsSpan( ExcelHeaderFile file )
-        {
-            var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();
-            return file.DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * file.Header.ColumnCount );
-        }
-
-        private string GetColumnHash( ExcelHeaderFile file )
-        {
-            var data = GetColumnsSpan( file );
-
-            using var sha256 = System.Security.Cryptography.SHA256.Create();
-            var hash = sha256.ComputeHash( data.ToArray() );
-
-            var sb = new StringBuilder();
-            foreach( var b in hash )
-            {
-                sb.Append( $"{b:x2}" );
-            }
-
-            return sb.ToString();
         }
     }
 }

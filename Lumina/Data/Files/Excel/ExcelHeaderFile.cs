@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
 using System.Net;
+using System.Text;
 
 namespace Lumina.Data.Files.Excel
 {
@@ -82,6 +83,28 @@ namespace Lumina.Data.Files.Excel
                 db.RowCount = BinaryPrimitives.ReverseEndianness( db.RowCount );
                 db.StartId = BinaryPrimitives.ReverseEndianness( db.StartId );
             }
+        }
+        
+        private ReadOnlySpan< byte > GetColumnsSpan( ExcelHeaderFile file )
+        {
+            var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();
+            return file.DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
+        }
+
+        public string GetColumnsHash( ExcelHeaderFile file )
+        {
+            var data = GetColumnsSpan( file );
+
+            using var sha256 = System.Security.Cryptography.SHA256.Create();
+            var hash = sha256.ComputeHash( data.ToArray() );
+
+            var sb = new StringBuilder();
+            foreach( var b in hash )
+            {
+                sb.Append( $"{b:x2}" );
+            }
+
+            return sb.ToString();
         }
     }
 }
