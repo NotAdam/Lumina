@@ -27,7 +27,7 @@ namespace Lumina.Extensions
                 return Marshal.PtrToStructure< T >( new IntPtr( bp + offset ) );
             }
 #else
-            return MemoryMarshal.Read< T >( span );
+            return MemoryMarshal.Read< T >( span.Slice( offset ) );
 #endif
 
         }
