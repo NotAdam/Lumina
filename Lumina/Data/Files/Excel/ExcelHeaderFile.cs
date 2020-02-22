@@ -9,6 +9,7 @@ using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
 using System.Net;
 using System.Text;
+using Lumina.Misc;
 
 namespace Lumina.Data.Files.Excel
 {
@@ -85,26 +86,17 @@ namespace Lumina.Data.Files.Excel
             }
         }
         
-        private ReadOnlySpan< byte > GetColumnsSpan( ExcelHeaderFile file )
+        public uint GetColumnsHash()
         {
             var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();
-            return file.DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
+            var span = DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
+
+            return Crc32.Get( span.ToArray() );
         }
 
-        public string GetColumnsHash( ExcelHeaderFile file )
+        public string GetColumnsHashString()
         {
-            var data = GetColumnsSpan( file );
-
-            using var sha256 = System.Security.Cryptography.SHA256.Create();
-            var hash = sha256.ComputeHash( data.ToArray() );
-
-            var sb = new StringBuilder();
-            foreach( var b in hash )
-            {
-                sb.Append( $"{b:x2}" );
-            }
-
-            return sb.ToString();
+            return GetColumnsHash().ToString( "x8" );
         }
     }
 }

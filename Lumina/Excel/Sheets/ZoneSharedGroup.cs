@@ -1,6 +1,6 @@
 namespace Lumina.Excel.Sheets
 {
-    [SheetName( "ZoneSharedGroup" )]
+    [ExcelSheet( "ZoneSharedGroup" )]
     public class ZoneSharedGroup : IExcelRow
     {
         public uint col0;

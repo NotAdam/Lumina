@@ -59,7 +59,7 @@ namespace Lumina.Excel
         
         public ExcelSheet< T > GetSheet< T >( Language language ) where T : IExcelRow
         {
-            var attr = typeof( T ).GetCustomAttribute< SheetNameAttribute >();
+            var attr = typeof( T ).GetCustomAttribute< ExcelSheetAttribute >();
 
             if( attr == null )
             {

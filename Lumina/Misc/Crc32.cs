@@ -46,15 +46,11 @@ namespace Lumina.Misc
             0xB3667A2E, 0xC4614AB8, 0x5D681B02, 0x2A6F2B94, 0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D
         };
 
-        private static uint Get( uint[] table, uint seed, byte[] buffer, int start, int size )
+        private static uint Get( uint[] table, uint seed, ReadOnlySpan< byte > buffer, int start, int size )
         {
-            if( table == null )
-                throw new ArgumentNullException( nameof( table ) );
-            if( buffer == null )
-                throw new ArgumentNullException( nameof( buffer ) );
-
             var crc = seed;
             for( var i = start; i < start + size; i++ )
+            {
                 unchecked
                 {
                     var b = buffer[ i ];
@@ -62,25 +58,44 @@ namespace Lumina.Misc
                         b = (byte) ( ( (uint) b ) + 0x20 );
                     crc = ( crc >> 8 ) ^ table[ (byte) ( b ^ crc ) ];
                 }
+            }
 
             return crc;
         }
-
-        public static uint Get( uint seed, byte[] buffer, int start, int size )
+        
+        private static uint Get( uint[] table, uint seed, ReadOnlySpan< char > buffer, int start, int size )
         {
-            if( buffer == null )
-                throw new ArgumentNullException( nameof( buffer ) );
-            
-            return Get( CrcTable, seed, buffer, start, size );
+            var crc = seed;
+            for( var i = start; i < start + size; i++ )
+            {
+                unchecked
+                {
+                    var b = buffer[ i ];
+                    if( b >= 0x41 && b <= 0x5A )
+                        b = (char) ( ( (uint) b ) + 0x20 );
+                    crc = ( crc >> 8 ) ^ table[ (byte) ( b ^ crc ) ];
+                }
+            }
+
+            return crc;
         }
 
         public static uint Get( string value )
         {
             if( value == null )
                 throw new ArgumentNullException( nameof( value ) );
-            
-            var b = Encoding.ASCII.GetBytes( value );
-            return Get( CrcInitialSeed, b, 0, b.Length );
+
+            var data = value.AsSpan();
+            return Get( CrcTable, CrcInitialSeed, data, 0, data.Length );
+        }
+
+        public static uint Get( byte[] buffer )
+        {
+            if( buffer == null )
+                throw new ArgumentNullException( nameof( buffer ) );
+
+            var data = buffer.AsSpan();
+            return Get( CrcTable, CrcInitialSeed, data, 0, data.Length );
         }
     }
 }

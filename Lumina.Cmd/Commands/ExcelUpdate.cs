@@ -62,8 +62,8 @@ namespace Lumina.Cmd.Commands
 
                 Debug.Assert( oldHeader != null && newHeader != null );
                 
-                var oldColumnsHash = oldHeader.GetColumnsHash( oldHeader );
-                var newColumnsHash = newHeader.GetColumnsHash( newHeader );
+                var oldColumnsHash = oldHeader.GetColumnsHashString();
+                var newColumnsHash = newHeader.GetColumnsHashString();
 
                 var colHashChanged = oldColumnsHash != newColumnsHash;
                 var rowsChanged = oldHeader.Header.RowCount != newHeader.Header.RowCount;

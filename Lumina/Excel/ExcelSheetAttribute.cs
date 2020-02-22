@@ -2,11 +2,11 @@ using System;
 
 namespace Lumina.Excel
 {
-    public class SheetNameAttribute : Attribute
+    public class ExcelSheetAttribute : Attribute
     {
         public readonly string Name;
 
-        public SheetNameAttribute( string name )
+        public ExcelSheetAttribute( string name )
         {
             Name = name;
         }
