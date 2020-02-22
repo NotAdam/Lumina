@@ -25,10 +25,10 @@ namespace Lumina.Excel
             _Lumina = lumina;
             ImmutableIdToSheetMap = new Dictionary< int, string >();
             SheetNames = new List< string >();
-            
+
             Sheets = new List< ExcelSheetImpl >();
             SheetCache = new Dictionary< Tuple< Language, string >, ExcelSheetImpl >();
-            
+
             // load all sheet names first
             var files = _Lumina.GetFile< ExcelListFile >( "exd/root.exl" );
 
@@ -56,36 +56,37 @@ namespace Lumina.Excel
         {
             return GetSheet< T >( _Lumina.Options.DefaultExcelLanguage );
         }
-        
+
         public ExcelSheet< T > GetSheet< T >( Language language ) where T : IExcelRow
         {
-            var attr = typeof( T ).GetCustomAttribute< ExcelSheetAttribute >();
+            var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
 
             if( attr == null )
             {
                 return null;
             }
 
-            return GetSheet< T >( attr.Name, language );
+            return GetSheet< T >( attr.Name, language, attr.ColumnHash );
         }
 
         public ExcelSheet< T > GetSheet< T >( string name ) where T : IExcelRow
         {
-            return GetSheet< T >( name, _Lumina.Options.DefaultExcelLanguage );
+            return GetSheet< T >( name, _Lumina.Options.DefaultExcelLanguage, null );
         }
 
-        public ExcelSheet< T > GetSheet< T >( string name, Language language ) where T : IExcelRow
+        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : IExcelRow
         {
             name = name.ToLowerInvariant();
-            
+
             var idNoLanguage = Tuple.Create( Language.None, name );
             var id = Tuple.Create( language, name );
-            
+
             // attempt to get non-localised sheet first, then attempt to fetch a localised sheet from the cache
             if( SheetCache.TryGetValue( idNoLanguage, out var sheet ) )
             {
                 return sheet as ExcelSheet< T >;
             }
+
             if( SheetCache.TryGetValue( id, out sheet ) )
             {
                 return sheet as ExcelSheet< T >;
@@ -95,10 +96,20 @@ namespace Lumina.Excel
             {
                 return null;
             }
-            
+
             // create new sheet
             var path = BuildExcelHeaderPath( name );
             var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );
+
+            // validate checksum if enabled and we have a hash that we expect to find
+            if( _Lumina.Options.PanicOnSheetChecksumMismatch && expectedHash.HasValue )
+            {
+                var actualHash = headerFile.GetColumnsHash();
+                if( actualHash != expectedHash )
+                {
+                    throw new ExcelSheetColumnChecksumMismatchException( name, expectedHash.Value, actualHash );
+                }
+            }
 
             var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _Lumina );
             newSheet.GenerateFileSegments();
@@ -132,7 +143,7 @@ namespace Lumina.Excel
             {
                 return null;
             }
-            
+
             // create new sheet
             var path = BuildExcelHeaderPath( name );
             var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );

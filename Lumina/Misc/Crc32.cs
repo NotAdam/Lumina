@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Lumina.Misc
@@ -46,56 +47,52 @@ namespace Lumina.Misc
             0xB3667A2E, 0xC4614AB8, 0x5D681B02, 0x2A6F2B94, 0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D
         };
 
-        private static uint Get( uint[] table, uint seed, ReadOnlySpan< byte > buffer, int start, int size )
+        private static uint Get( ReadOnlySpan< byte > buffer, int start, int size )
         {
-            var crc = seed;
+            var crc = CrcInitialSeed;
             for( var i = start; i < start + size; i++ )
             {
                 unchecked
                 {
                     var b = buffer[ i ];
                     if( b >= 0x41 && b <= 0x5A )
-                        b = (byte) ( ( (uint) b ) + 0x20 );
-                    crc = ( crc >> 8 ) ^ table[ (byte) ( b ^ crc ) ];
+                        b = (byte)( ( (uint)b ) + 0x20 );
+                    crc = ( crc >> 8 ) ^ CrcTable[ (byte)( b ^ crc ) ];
                 }
             }
 
             return crc;
         }
-        
-        private static uint Get( uint[] table, uint seed, ReadOnlySpan< char > buffer, int start, int size )
+
+        private static uint Get( ReadOnlySpan< char > buffer, int start, int size )
         {
-            var crc = seed;
+            var crc = CrcInitialSeed;
             for( var i = start; i < start + size; i++ )
             {
                 unchecked
                 {
                     var b = buffer[ i ];
                     if( b >= 0x41 && b <= 0x5A )
-                        b = (char) ( ( (uint) b ) + 0x20 );
-                    crc = ( crc >> 8 ) ^ table[ (byte) ( b ^ crc ) ];
+                        b = (char)( ( (uint)b ) + 0x20 );
+                    crc = ( crc >> 8 ) ^ CrcTable[ (byte)( b ^ crc ) ];
                 }
             }
 
             return crc;
         }
 
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public static uint Get( string value )
         {
-            if( value == null )
-                throw new ArgumentNullException( nameof( value ) );
-
             var data = value.AsSpan();
-            return Get( CrcTable, CrcInitialSeed, data, 0, data.Length );
+            return Get( data, 0, data.Length );
         }
 
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public static uint Get( byte[] buffer )
         {
-            if( buffer == null )
-                throw new ArgumentNullException( nameof( buffer ) );
-
             var data = buffer.AsSpan();
-            return Get( CrcTable, CrcInitialSeed, data, 0, data.Length );
+            return Get( data, 0, data.Length );
         }
     }
 }

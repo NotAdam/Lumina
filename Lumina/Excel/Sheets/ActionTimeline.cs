@@ -5,7 +5,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.Sheets
 {
-    [ExcelSheet("ActionTimeline")]
+    [Sheet("ActionTimeline" )]
     public class ActionTimeline : IExcelRow
     {
         public string Name;

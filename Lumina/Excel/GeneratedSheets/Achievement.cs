@@ -1,6 +1,6 @@
 namespace Lumina.Excel.GeneratedSheets
 {
-    [ExcelSheet( "Achievement" )]
+    [Sheet( "Achievement" )]
     public class Achievement : IExcelRow
     {
         // col: 1 offset: 0000
