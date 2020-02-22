@@ -1,6 +1,6 @@
 using System;
 
-namespace Lumina.Excel
+namespace Lumina.Excel.Exceptions
 {
     public class ExcelSheetColumnChecksumMismatchException : Exception
     {
