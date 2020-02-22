@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Threading;
-using ICSharpCode.SharpZipLib.Zip.Compression;
+using System.IO.Compression;
 using Lumina.Data.Structs;
 using Lumina.Extensions;
 
@@ -86,7 +85,7 @@ namespace Lumina.Data
             {
                 return null;
             }
-            
+
             // only return from cache if target type matches
             // otherwise we'll force a cache miss and parse it as per usual
             if( cachedFile is T obj )
@@ -117,7 +116,7 @@ namespace Lumina.Data
                     return obj;
                 }
             }
-            
+
             using var fs = File.OpenRead();
             using var br = new BinaryReader( fs );
             using var ms = new MemoryStream();
@@ -182,7 +181,7 @@ namespace Lumina.Data
             file.Data = ms.ToArray();
             if( file.Data.Length != file.FileInfo.RawFileSize )
                 Debug.WriteLine( "Read data size does not match file size." );
-            
+
             file.FileStream = new MemoryStream( file.Data, false );
             file.Reader = new BinaryReader( file.FileStream );
             file.FileStream.Position = 0;
@@ -348,18 +347,21 @@ namespace Lumina.Data
             if( blockHeader.compressed_size == 32000 )
             {
                 dest.Write( br.ReadBytes( (int)blockHeader.uncompressed_size ) );
-
                 return;
             }
 
             var data = br.ReadBytes( (int)blockHeader.uncompressed_size );
 
-            var inflater = new Inflater( true );
-
-            inflater.SetInput( data );
-            var bytesInflated = inflater.Inflate( data );
-
-            dest.Write( data );
+            var uncompressedData = new MemoryStream();
+            using( var compressedStream = new MemoryStream( data ) )
+            {
+                using var zlibStream = new DeflateStream( compressedStream, CompressionMode.Decompress );
+                zlibStream.CopyTo( uncompressedData );
+                zlibStream.Close();
+                
+                uncompressedData.Position = 0;
+                uncompressedData.CopyTo( dest );
+            }
 
             if( resetPosition )
                 fs.Position = originalPosition;

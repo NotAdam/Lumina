@@ -8,7 +8,6 @@ using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using ICSharpCode.SharpZipLib.Tar;
 using Lumina.Data.Parsing.Tex;
 using Lumina.Extensions;
 
