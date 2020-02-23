@@ -28,21 +28,22 @@ namespace Umbra.Views
             InitializeComponent();
             ViewModel = new MainWindowViewModel();
 
-            this.WhenActivated( registration =>
+            this.WhenActivated( reg =>
             {
-                this.OneWayBind(
-                        ViewModel,
-                        x => x.DataPath,
-                        x => x.DataPathLabel.Content
-                    )
-                    .DisposeWith( registration );
+                // debug tab
+                this.OneWayBind( ViewModel, x => x.DataPath, x => x.DataPathLabel.Content )
+                    .DisposeWith( reg );
                 
-                this.BindCommand(
-                        ViewModel,
-                        x => x.QuitCommand,
-                        x => x.QuitButton
-                    )
-                    .DisposeWith( registration );
+                this.OneWayBind( ViewModel, x => x.Repositories, x => x.RepositoriesLabel.Content )
+                    .DisposeWith( reg );
+
+                // menu commands
+                this.BindCommand( ViewModel, x => x.QuitCommand, x => x.QuitButton )
+                    .DisposeWith( reg );
+
+                // debug commands
+                this.BindCommand( ViewModel, x => x.ChangeThemeCommand, x => x.SwitchThemeButton )
+                    .DisposeWith( reg );
             } );
         }
     }

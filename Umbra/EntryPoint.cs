@@ -1,9 +1,11 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Config.Net;
 using Lumina;
 using Microsoft.Win32;
+using ReactiveUI;
 using Serilog;
 using Serilog.Core;
 using Splat;
@@ -35,14 +37,13 @@ namespace Umbra
                     rollingInterval: RollingInterval.Day,
                     retainedFileCountLimit: 14
                 ) )
-#if DEBUG
-                .MinimumLevel.Verbose()
-#else
                 .MinimumLevel.Information()
-#endif
                 .CreateLogger();
 
             Locator.CurrentMutable.UseSerilogFullLogger();
+
+            // fix poco yells that rxui spits out, they're annoying and useless
+            Locator.CurrentMutable.RegisterConstant( new RxUI.CustomObservableForProperty(), typeof( ICreatesObservableForProperty ) );
 
             var configFile = Path.Combine( dataDir.FullName, "config.json" );
 
@@ -72,7 +73,8 @@ namespace Umbra
             // init lumina
             var luminaOptions = new LuminaOptions
             {
-                CacheFileResources = false
+                CacheFileResources = true,
+                DefaultExcelLanguage = settings.ExcelLanguage
             };
 
             var lumina = new Lumina.Lumina(
@@ -80,8 +82,15 @@ namespace Umbra
                 luminaOptions
             );
 
+            foreach( var ver in settings.PreviousVersions )
+            {
+                Log.Information( "previous version: {@PrevVersion}", ver );
+            }
+
             Locator.CurrentMutable.RegisterConstant( luminaOptions );
             Locator.CurrentMutable.RegisterConstant( lumina );
+
+            Locator.CurrentMutable.RegisterViewsForViewModels( Assembly.GetCallingAssembly() );
 
             // bootstrap app
             var app = new App();
@@ -104,7 +113,7 @@ namespace Umbra
             {
                 return null;
             }
-            
+
             var filtered = key.GetValueNames()
                 .Where( x => x.Contains( "ffxiv_dx11.exe" ) || x.Contains( "ffxiv.exe" ) )
                 .Select( x => new { Path = x, Value = key.GetValue( x ) } )
@@ -115,7 +124,7 @@ namespace Umbra
 
             foreach( var entry in filtered )
             {
-                Log.Debug( "found potential client path candidate: {ClientPath}", entry.Path );
+                Log.Information( "found potential client path candidate: {ClientPath}", entry.Path );
 
                 var dir = Path.GetDirectoryName( entry.Path );
                 var sqpack = new DirectoryInfo( Path.Combine( dir, "sqpack" ) );
@@ -125,7 +134,7 @@ namespace Umbra
                     continue;
                 }
 
-                Log.Debug( "found sqpack directory in candidate: {ClientPath} -> {DataPath}", 
+                Log.Information( "found sqpack directory in candidate: {ClientPath} -> {DataPath}",
                     entry.Path, sqpack.FullName );
                 return sqpack.FullName;
             }

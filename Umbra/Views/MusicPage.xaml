@@ -1,0 +1,32 @@
+<rxui:ReactivePage
+    x:TypeArguments="vms:MusicPageViewModel" x:Class="Umbra.Views.MusicPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:rxui="http://reactiveui.net"
+    xmlns:vms="clr-namespace:Umbra.ViewModels"
+    xmlns:views="clr-namespace:Umbra.Views"
+    xmlns:local="clr-namespace:Umbra.Views"
+    mc:Ignorable="d"
+    Title="MusicPage"
+    d:DesignHeight="720" d:DesignWidth="1280"
+    Height="Auto" Width="Auto">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel LastChildFill="True">
+            <TextBox x:Name="SearchFilter" DockPanel.Dock="Top" Margin="0,0,0,2"/>
+            <ListView x:Name="SearchResults" />
+        </DockPanel>
+
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+
+        <ContentControl Grid.Column="2" x:Name="MusicPlayerMount" />
+    </Grid>
+</rxui:ReactivePage>

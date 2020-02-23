@@ -69,6 +69,9 @@ namespace Lumina
 
         public static ParsedFilePath ParseFilePath( string path )
         {
+            if( string.IsNullOrWhiteSpace( path ) )
+                return null;
+            
             // validate path slightly
             if( path[ ^1 ] == '/' )
                 return null;

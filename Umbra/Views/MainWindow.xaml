@@ -6,46 +6,63 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Umbra"
     xmlns:vms="clr-namespace:Umbra.ViewModels"
+    xmlns:views="clr-namespace:Umbra.Views"
     xmlns:rxui="http://reactiveui.net"
     mc:Ignorable="d"
     Title="Umbra"
     Width="1280" Height="720"
     WindowState="Maximized">
-    
+
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_Quit" x:Name="QuitButton" />
             </MenuItem>
             <MenuItem Header="_Data">
-                <MenuItem Header="Brute force file paths"/>
+                <MenuItem Header="Brute force file paths" />
             </MenuItem>
         </Menu>
         <TabControl>
-            <TabItem Header="Home">
+            <TabItem Header="Music">
+                <Frame Source="MusicPage.xaml" />
+            </TabItem>
+            <TabItem Header="Debug">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    
-                    <Label FontSize="24" Grid.Row="0" Content="ayy lmao"/>
 
-                    <Label Grid.Column="0" Grid.Row="1" Content="Data Path"/>
-                    <Label Grid.Column="1" Grid.Row="1" x:Name="DataPathLabel" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label FontSize="24" Grid.Row="0" Content="ayy lmao" />
+
+                    <Label Grid.Column="0" Grid.Row="1" Content="Data Path" />
+                    <Label Grid.Column="1" Grid.Row="1" x:Name="DataPathLabel" />
+
+                    <Label Grid.Column="0" Grid.Row="2" Content="Repositories" />
+                    <Label Grid.Column="1" Grid.Row="2" x:Name="RepositoriesLabel" />
+
+                    <Button Grid.Column="1" Grid.Row="3" x:Name="SwitchThemeButton" Content="Switch Theme" Width="78" Height="20" />
+                    
+                    <TreeView Grid.Column="1" Grid.Row="4" Height="500" Width="300">
+                        <TreeViewItem Header="test1">
+                            <TreeViewItem Header="test1.1"/>
+                            <TreeViewItem Header="test1.2"/>
+                            <TreeViewItem Header="test1.3"/>
+                            <TreeViewItem Header="test1.4"/>
+                        </TreeViewItem>
+                        <TreeViewItem Header="test2"/>
+                        <TreeViewItem Header="test3"/>
+                        <TreeViewItem Header="test4"/>
+
+                    </TreeView>
                 </Grid>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <ListView>
-                    <ListView.Items>
-                        <Label Content="great community btw"/>
-                        <Label Content="great community btw"/>
-                    </ListView.Items>
-                </ListView>
             </TabItem>
         </TabControl>
     </DockPanel>
