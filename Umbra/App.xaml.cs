@@ -40,6 +40,7 @@ namespace Umbra
             if( dataPath == null )
             {
                 MessageBox.Show( "No datapath provided! pls set one", "fuck", MessageBoxButton.OK, MessageBoxImage.Error );
+                return;
             }
             
             Lumina = new Lumina.Lumina( dataPath );

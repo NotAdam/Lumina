@@ -19,7 +19,7 @@ namespace Umbra.UI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class MainWindow
     {
         public MainWindow()
         {
@@ -29,7 +29,7 @@ namespace Umbra.UI
 
             DataContext = new ViewModels.MainWindow
             {
-                DataPath = app.Lumina.DataPath.FullName
+                DataPath = app?.Lumina?.DataPath.FullName
             };
         }
     }
