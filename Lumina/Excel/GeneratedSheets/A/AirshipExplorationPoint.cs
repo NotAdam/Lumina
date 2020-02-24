@@ -1,73 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AirshipExplorationPoint", columnHash: 0x307f38a2 )]
     public class AirshipExplorationPoint : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Name{Short}
-         *  type: 
-         */
-
-        /* offset: 001b col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 5
-         *  name: RequiredLevel
-         *  type: 
-         */
-
-        /* offset: 000c col: 6
-         *  name: RequiredFuel
-         *  type: 
-         */
-
-        /* offset: 000e col: 7
-         *  name: Duration<min>
-         *  type: 
-         */
-
-        /* offset: 0010 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 10
-         *  name: RequiredSurveillance
-         *  type: 
-         */
-
-        /* offset: 0018 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 13
-         *  name: ExpReward
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -162,7 +100,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown1a = parser.ReadOffset< byte >( 0x1a );
 
             // col: 2 offset: 001b
-            packed1b = parser.ReadOffset< byte >( 0x1b );
+            packed1b = parser.ReadOffset< byte >( 0x1b, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutScreenImage", columnHash: 0xe4a523cd )]
     public class CutScreenImage : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Image
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

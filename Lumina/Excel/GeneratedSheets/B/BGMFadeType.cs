@@ -1,30 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMFadeType", columnHash: 0xe018b5fa )]
     public class BGMFadeType : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: FadeOutTime
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: FadeInTime
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: FadeInStartTime
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: ResumeFadeInTime
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

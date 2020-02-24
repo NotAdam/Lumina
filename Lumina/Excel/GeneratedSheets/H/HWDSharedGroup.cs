@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDSharedGroup", columnHash: 0x5a516458 )]
     public class HWDSharedGroup : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: LGB
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Param
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

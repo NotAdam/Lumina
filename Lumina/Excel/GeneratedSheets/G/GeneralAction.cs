@@ -1,53 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GeneralAction", columnHash: 0x5dffa8fa )]
     public class GeneralAction : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0010 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  name: Action
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: UnlockLink
-         *  type: 
-         */
-
-        /* offset: 0011 col: 5
-         *  name: Recast
-         *  type: 
-         */
-
-        /* offset: 0012 col: 6
-         *  name: UIPriority
-         *  type: 
-         */
-
-        /* offset: 0008 col: 7
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0013 col: 8
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -112,7 +70,7 @@ namespace Lumina.Excel.GeneratedSheets
             UIPriority = parser.ReadOffset< byte >( 0x12 );
 
             // col: 8 offset: 0013
-            packed13 = parser.ReadOffset< byte >( 0x13 );
+            packed13 = parser.ReadOffset< byte >( 0x13, ExcelColumnDataType.UInt8 );
 
 
         }

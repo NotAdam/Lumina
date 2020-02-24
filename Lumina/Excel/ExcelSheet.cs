@@ -9,7 +9,7 @@ namespace Lumina.Excel
 {
     public class ExcelSheet< T > : ExcelSheetImpl where T : IExcelRow
     {
-        protected Dictionary< Tuple< int, int >, T > RowCache = new Dictionary< Tuple< int, int >, T >();
+        // protected Dictionary< Tuple< int, int >, T > RowCache = new Dictionary< Tuple< int, int >, T >();
         
         public ExcelSheet() : base()
         {
@@ -67,12 +67,12 @@ namespace Lumina.Excel
 
         internal T GetRowInternal( int row, int subRow )
         {
-            var id = GetRowCacheKey( row, subRow );
+            // var id = GetRowCacheKey( row, subRow );
 
-            if( RowCache.TryGetValue( id, out var cachedRow ) )
-            {
-                return cachedRow;
-            }
+            // if( RowCache.TryGetValue( id, out var cachedRow ) )
+            // {
+                // return cachedRow;
+            // }
             
             var data = GetSegmentForRow( row );
 
@@ -91,20 +91,20 @@ namespace Lumina.Excel
 
             rowObj.PopulateData( parser, _Lumina );
             
-            RowCache[ id ] = rowObj;
+            // RowCache[ id ] = rowObj;
 
             return rowObj;
         }
 
-        private Tuple< int, int > GetRowCacheKey( int row )
-        {
-            return GetRowCacheKey( row, 0 );
-        }
-
-        private Tuple< int, int > GetRowCacheKey( int row, int subRow )
-        {
-            return Tuple.Create( row, subRow );
-        }
+        // private Tuple< int, int > GetRowCacheKey( int row )
+        // {
+        //     return GetRowCacheKey( row, 0 );
+        // }
+        //
+        // private Tuple< int, int > GetRowCacheKey( int row, int subRow )
+        // {
+        //     return Tuple.Create( row, subRow );
+        // }
 
         public List< T > GetRows()
         {
@@ -126,13 +126,13 @@ namespace Lumina.Excel
                         // read subrows
                         for( int i = 0; i < parser.RowCount; i++ )
                         {
-                            var id = GetRowCacheKey( (int)rowPtr.RowId, i );
+                            // var id = GetRowCacheKey( (int)rowPtr.RowId, i );
 
-                            if( RowCache.TryGetValue( id, out var cachedRow ) )
-                            {
-                                rows.Add( cachedRow );
-                                continue;
-                            }
+                            // if( RowCache.TryGetValue( id, out var cachedRow ) )
+                            // {
+                            //     rows.Add( cachedRow );
+                            //     continue;
+                            // }
 
                             parser.SeekToRow( (int)rowPtr.RowId, i );
                             var obj = Activator.CreateInstance< T >();
@@ -144,13 +144,13 @@ namespace Lumina.Excel
                     }
                     else
                     {
-                        var id = GetRowCacheKey( (int)rowPtr.RowId );
+                        // var id = GetRowCacheKey( (int)rowPtr.RowId );
 
-                        if( RowCache.TryGetValue( id, out var cachedRow ) )
-                        {
-                            rows.Add( cachedRow );
-                            continue;
-                        }
+                        // if( RowCache.TryGetValue( id, out var cachedRow ) )
+                        // {
+                        //     rows.Add( cachedRow );
+                        //     continue;
+                        // }
                         
                         parser.SeekToRow( (int)rowPtr.RowId );
                         var obj = Activator.CreateInstance< T >();

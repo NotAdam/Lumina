@@ -1,107 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringLeveRoute", columnHash: 0xd979f0ca )]
     public class GatheringLeveRoute : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: 
-         *  repeat count: 12
-         */
-
-        /* offset: 0030 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0048 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004c col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0050 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0054 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0058 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 22
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005c col: 23
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

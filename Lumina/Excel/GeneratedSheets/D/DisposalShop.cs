@@ -1,83 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DisposalShop", columnHash: 0xf12dc1ea )]
     public class DisposalShop : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: ShopName
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003c col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 17
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -196,7 +124,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown40 = parser.ReadOffset< ushort >( 0x40 );
 
             // col: 17 offset: 0044
-            packed44 = parser.ReadOffset< byte >( 0x44 );
+            packed44 = parser.ReadOffset< byte >( 0x44, ExcelColumnDataType.UInt8 );
 
 
         }

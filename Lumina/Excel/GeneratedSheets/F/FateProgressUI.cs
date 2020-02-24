@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FateProgressUI", columnHash: 0x73e43ab7 )]
     public class FateProgressUI : IExcelRow
     {
         // column defs from Wed, 31 Jul 2019 22:24:05 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Location
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Achievement
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: ReqFatesToRank2
-         *  type: 
-         */
-
-        /* offset: 0009 col: 3
-         *  name: ReqFatesToRank3
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: DisplayOrder
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

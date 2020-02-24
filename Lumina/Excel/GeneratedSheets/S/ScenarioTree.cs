@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ScenarioTree", columnHash: 0xcc25b9f9 )]
     public class ScenarioTree : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0006 col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Image
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000

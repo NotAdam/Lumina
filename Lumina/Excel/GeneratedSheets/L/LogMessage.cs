@@ -1,32 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LogMessage", columnHash: 0xf3a6d024 )]
     public class LogMessage : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0004 col: 0
-         *  name: LogKind
-         *  type: 
-         */
-
-        /* offset: 0006 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Text
-         *  type: 
-         */
-
 
 
         // col: 04 offset: 0000
@@ -67,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown8 = parser.ReadOffset< byte >( 0x8 );
 
             // col: 3 offset: 0009
-            packed9 = parser.ReadOffset< byte >( 0x9 );
+            packed9 = parser.ReadOffset< byte >( 0x9, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,81 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcState", columnHash: 0x439de63e )]
     public class BNpcState : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 000a col: 0
-         *  name: Slot
-         *  type: 
-         */
-
-        /* offset: 0010 col: 1
-         *  name: OverRay
-         *  type: 
-         */
-
-        /* offset: 0011 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  name: Idle
-         *  type: 
-         */
-
-        /* offset: 000c col: 5
-         *  name: Attribute[0]
-         *  type: 
-         */
-
-        /* offset: 0012 col: 6
-         *  name: AttributeFlag[0]
-         *  type: 
-         */
-
-        /* offset: 000d col: 7
-         *  name: Attribute[1]
-         *  type: 
-         */
-
-        /* offset: 0013 col: 8
-         *  name: AttributeFlag[1]
-         *  type: 
-         */
-
-        /* offset: 000e col: 9
-         *  name: Attribute[2]
-         *  type: 
-         */
-
-        /* offset: 0014 col: 10
-         *  name: AttributeFlag[2]
-         *  type: 
-         */
-
-        /* offset: 0000 col: 11
-         *  name: Scale
-         *  type: 
-         */
-
-        /* offset: 000f col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 13
-         *  name: LoopTimeline
-         *  type: 
-         */
-
-        /* offset: 0015 col: 14
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 11 offset: 0000
@@ -176,7 +106,7 @@ namespace Lumina.Excel.GeneratedSheets
             AttributeFlag2 = parser.ReadOffset< bool >( 0x14 );
 
             // col: 14 offset: 0015
-            packed15 = parser.ReadOffset< byte >( 0x15 );
+            packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
 
 
         }

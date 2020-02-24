@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMFade", columnHash: 0xf09994a9 )]
     public class BGMFade : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: SceneOut
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: SceneIn
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: BGMFadeType
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

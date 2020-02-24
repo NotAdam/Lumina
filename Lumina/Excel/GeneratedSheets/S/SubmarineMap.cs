@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SubmarineMap", columnHash: 0x98fff20a )]
     public class SubmarineMap : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Image
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

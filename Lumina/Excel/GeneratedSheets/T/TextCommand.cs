@@ -1,63 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TextCommand", columnHash: 0x5d4b4e4b )]
     public class TextCommand : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 001a col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001b col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001d col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 5
-         *  name: Command
-         *  type: 
-         */
-
-        /* offset: 0010 col: 6
-         *  name: ShortCommand
-         *  type: 
-         */
-
-        /* offset: 0000 col: 7
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0004 col: 8
-         *  name: Alias
-         *  type: 
-         */
-
-        /* offset: 0008 col: 9
-         *  name: ShortAlias
-         *  type: 
-         */
-
-        /* offset: 0018 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 11
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 07 offset: 0000

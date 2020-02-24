@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MacroIconRedirectOld", columnHash: 0x5c9aa6b3 )]
     public class MacroIconRedirectOld : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Icon{Old}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Icon{New}
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

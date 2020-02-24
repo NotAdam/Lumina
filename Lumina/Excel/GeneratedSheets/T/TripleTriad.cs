@@ -1,145 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TripleTriad", columnHash: 0x2f29903e )]
     public class TripleTriad : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0030 col: 0
-         *  name: TripleTriadCard{Fixed}
-         *  repeat count: 5
-         */
-
-        /* offset: 0032 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0036 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003a col: 5
-         *  name: TripleTriadCard{Variable}
-         *  repeat count: 5
-         */
-
-        /* offset: 003c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003e col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0042 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004a col: 10
-         *  name: TripleTriadRule
-         *  repeat count: 2
-         */
-
-        /* offset: 004b col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004d col: 12
-         *  name: UsesRegionalRules
-         *  type: 
-         */
-
-        /* offset: 0044 col: 13
-         *  name: Fee
-         *  type: 
-         */
-
-        /* offset: 004c col: 14
-         *  name: PreviousQuestJoin
-         *  type: 
-         */
-
-        /* offset: 0010 col: 15
-         *  name: PreviousQuest
-         *  repeat count: 3
-         */
-
-        /* offset: 0014 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0046 col: 18
-         *  name: StartTime
-         *  type: 
-         */
-
-        /* offset: 0048 col: 19
-         *  name: EndTime
-         *  type: 
-         */
-
-        /* offset: 001c col: 20
-         *  name: DefaultTalk{Challenge}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 21
-         *  name: DefaultTalk{Unavailable}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 22
-         *  name: DefaultTalk{NPCWin}
-         *  type: 
-         */
-
-        /* offset: 0028 col: 23
-         *  name: DefaultTalk{Draw}
-         *  type: 
-         */
-
-        /* offset: 002c col: 24
-         *  name: DefaultTalk{PCWin}
-         *  type: 
-         */
-
-        /* offset: 004d col: 25
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 26
-         *  name: Item{PossibleReward}
-         *  repeat count: 4
-         */
-
-        /* offset: 0004 col: 27
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 28
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 29
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 26 offset: 0000
@@ -260,7 +126,7 @@ namespace Lumina.Excel.GeneratedSheets
             PreviousQuestJoin = parser.ReadOffset< byte >( 0x4c );
 
             // col: 12 offset: 004d
-            packed4d = parser.ReadOffset< byte >( 0x4d );
+            packed4d = parser.ReadOffset< byte >( 0x4d, ExcelColumnDataType.UInt8 );
 
 
         }

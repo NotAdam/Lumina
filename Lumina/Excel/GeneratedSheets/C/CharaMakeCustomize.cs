@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeCustomize", columnHash: 0x2ba6bf0f )]
     public class CharaMakeCustomize : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 000e col: 0
-         *  name: FeatureID
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000c col: 2
-         *  name: Data
-         *  type: 
-         */
-
-        /* offset: 000f col: 3
-         *  name: IsPurchasable
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: Hint
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: HintItem
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000
@@ -81,7 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             FeatureID = parser.ReadOffset< byte >( 0xe );
 
             // col: 3 offset: 000f
-            packedf = parser.ReadOffset< byte >( 0xf );
+            packedf = parser.ReadOffset< byte >( 0xf, ExcelColumnDataType.UInt8 );
 
 
         }

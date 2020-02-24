@@ -1,87 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EventIconPriority", columnHash: 0x0bc77e1c )]
     public class EventIconPriority : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Icon
-         *  repeat count: 19
-         */
-
-        /* offset: 0004 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003c col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0048 col: 18
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

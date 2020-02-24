@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMScene", columnHash: 0x2711a5ea )]
     public class BGMScene : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: EnableDisableRestart
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Resume
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: EnablePassEnd
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: ForceAutoReset
-         *  type: 
-         */
-
-        /* offset: 0000 col: 4
-         *  name: IgnoreBattle
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -50,7 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             // col: 0 offset: 0000
-            packed0 = parser.ReadOffset< byte >( 0x0 );
+            packed0 = parser.ReadOffset< byte >( 0x0, ExcelColumnDataType.UInt8 );
 
 
         }

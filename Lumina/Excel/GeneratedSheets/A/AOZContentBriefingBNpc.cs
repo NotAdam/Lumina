@@ -1,134 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZContentBriefingBNpc", columnHash: 0xfc0810d7 )]
     public class AOZContentBriefingBNpc : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: BNpcName
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: TargetSmall
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: TargetLarge
-         *  type: 
-         */
-
-        /* offset: 0017 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  name: Endurance
-         *  type: 
-         */
-
-        /* offset: 000d col: 5
-         *  name: Fire
-         *  type: 
-         */
-
-        /* offset: 000e col: 6
-         *  name: Ice
-         *  type: 
-         */
-
-        /* offset: 000f col: 7
-         *  name: Wind
-         *  type: 
-         */
-
-        /* offset: 0010 col: 8
-         *  name: Earth
-         *  type: 
-         */
-
-        /* offset: 0011 col: 9
-         *  name: Thunder
-         *  type: 
-         */
-
-        /* offset: 0012 col: 10
-         *  name: Water
-         *  type: 
-         */
-
-        /* offset: 0013 col: 11
-         *  name: Slashing
-         *  type: 
-         */
-
-        /* offset: 0014 col: 12
-         *  name: Piercing
-         *  type: 
-         */
-
-        /* offset: 0015 col: 13
-         *  name: Blunt
-         *  type: 
-         */
-
-        /* offset: 0016 col: 14
-         *  name: Magic
-         *  type: 
-         */
-
-        /* offset: 0017 col: 15
-         *  name: SlowResistance
-         *  type: 
-         */
-
-        /* offset: 0017 col: 16
-         *  name: PetrificationResistance
-         *  type: 
-         */
-
-        /* offset: 0017 col: 17
-         *  name: ParalysisResistance
-         *  type: 
-         */
-
-        /* offset: 0017 col: 18
-         *  name: SilenceResistance
-         *  type: 
-         */
-
-        /* offset: 0017 col: 19
-         *  name: BlindResistance
-         *  type: 
-         */
-
-        /* offset: 0017 col: 20
-         *  name: StunResistance
-         *  type: 
-         */
-
-        /* offset: 0017 col: 21
-         *  name: SleepResistance
-         *  type: 
-         */
-
-        /* offset: 0018 col: 22
-         *  name: BindResistance
-         *  type: 
-         */
-
-        /* offset: 0018 col: 23
-         *  name: HeavyResistance
-         *  type: 
-         */
-
-        /* offset: 0018 col: 24
-         *  name: InstaDeathResistance
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -242,10 +119,10 @@ namespace Lumina.Excel.GeneratedSheets
             Magic = parser.ReadOffset< byte >( 0x16 );
 
             // col: 3 offset: 0017
-            packed17 = parser.ReadOffset< byte >( 0x17 );
+            packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
 
             // col: 22 offset: 0018
-            packed18 = parser.ReadOffset< byte >( 0x18 );
+            packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
 
 
         }

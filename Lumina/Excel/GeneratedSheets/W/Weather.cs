@@ -1,41 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Weather", columnHash: 0x02cf2541 )]
     public class Weather : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0018 col: 0
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 6
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

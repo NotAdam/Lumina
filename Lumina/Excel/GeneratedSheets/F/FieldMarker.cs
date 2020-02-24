@@ -1,28 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FieldMarker", columnHash: 0x23003392 )]
     public class FieldMarker : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0004 col: 0
-         *  name: VFX
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000a col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 3
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000

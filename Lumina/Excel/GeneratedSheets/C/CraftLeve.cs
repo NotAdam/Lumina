@@ -1,58 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftLeve", columnHash: 0x51a3acc3 )]
     public class CraftLeve : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Leve
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: CraftLeveTalk
-         *  type: 
-         */
-
-        /* offset: 0020 col: 2
-         *  name: Repeats
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: 
-         *  repeat count: 4
-         */
-
-        /* offset: 0018 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

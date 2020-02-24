@@ -1,98 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Frontline03", columnHash: 0x605090e3 )]
     public class Frontline03 : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0010 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0025 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0026 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003a col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 9
-         *  name: EmptyIcon
-         *  repeat count: 3
-         */
-
-        /* offset: 0014 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 12
-         *  name: MaelstromIcon
-         *  repeat count: 3
-         */
-
-        /* offset: 0018 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 15
-         *  name: TwinAdderIcon
-         *  repeat count: 3
-         */
-
-        /* offset: 001c col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 18
-         *  name: ImmortalFlamesIcon
-         *  repeat count: 3
-         */
-
-        /* offset: 0020 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 20
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 09 offset: 0000

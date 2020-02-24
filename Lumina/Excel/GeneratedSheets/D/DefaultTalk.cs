@@ -1,104 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DefaultTalk", columnHash: 0xe6dec88d )]
     public class DefaultTalk : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0024 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 5
-         *  name: ActionTimeline{Pose}
-         *  repeat count: 3
-         */
-
-        /* offset: 0008 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0005 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0007 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 20
-         *  name: Text
-         *  repeat count: 3
-         */
-
-        /* offset: 001c col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 22
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 05 offset: 0000
@@ -189,7 +96,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown6 = parser.ReadOffset< byte >( 0x6 );
 
             // col: 17 offset: 0007
-            packed7 = parser.ReadOffset< byte >( 0x7 );
+            packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
 
             // col: 12 offset: 000a
             unknowna = parser.ReadOffset< ushort >( 0xa );
@@ -204,7 +111,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknowne = parser.ReadOffset< byte >( 0xe );
 
             // col: 18 offset: 000f
-            packedf = parser.ReadOffset< byte >( 0xf );
+            packedf = parser.ReadOffset< byte >( 0xf, ExcelColumnDataType.UInt8 );
 
             // col: 13 offset: 0012
             unknown12 = parser.ReadOffset< ushort >( 0x12 );
@@ -219,7 +126,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown16 = parser.ReadOffset< byte >( 0x16 );
 
             // col: 19 offset: 0017
-            packed17 = parser.ReadOffset< byte >( 0x17 );
+            packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
 
             // col: 20 offset: 0018
             Text = new string[3];

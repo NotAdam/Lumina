@@ -1,123 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Aetheryte", columnHash: 0xcd1e31a4 )]
     public class Aetheryte : IExcelRow
     {
         // column defs from Tue, 29 Oct 2019 18:54:30 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Singular
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Adjective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Plural
-         *  type: 
-         */
-
-        /* offset: 0009 col: 3
-         *  name: PossessivePronoun
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: StartsWithVowel
-         *  type: 
-         */
-
-        /* offset: 000b col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  name: Pronoun
-         *  type: 
-         */
-
-        /* offset: 000d col: 7
-         *  name: Article
-         *  type: 
-         */
-
-        /* offset: 0028 col: 8
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 002a col: 9
-         *  name: AethernetName
-         *  type: 
-         */
-
-        /* offset: 002c col: 10
-         *  name: Territory
-         *  type: 
-         */
-
-        /* offset: 0014 col: 11
-         *  name: Level
-         *  repeat count: 4
-         */
-
-        /* offset: 0018 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0036 col: 15
-         *  name: IsAetheryte
-         *  type: 
-         */
-
-        /* offset: 0010 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 17
-         *  name: AethernetGroup
-         *  type: 
-         */
-
-        /* offset: 0036 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 19
-         *  name: RequiredQuest
-         *  type: 
-         */
-
-        /* offset: 002e col: 20
-         *  name: Map
-         *  type: 
-         */
-
-        /* offset: 0030 col: 21
-         *  name: Aetherstream{X}
-         *  type: 
-         */
-
-        /* offset: 0032 col: 22
-         *  name: Aetherstream{Y}
-         *  type: 
-         */
-
-        /* offset: 0035 col: 23
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -253,7 +141,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown35 = parser.ReadOffset< byte >( 0x35 );
 
             // col: 15 offset: 0036
-            packed36 = parser.ReadOffset< byte >( 0x36 );
+            packed36 = parser.ReadOffset< byte >( 0x36, ExcelColumnDataType.UInt8 );
 
 
         }

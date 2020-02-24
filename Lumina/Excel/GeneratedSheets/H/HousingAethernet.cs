@@ -1,30 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingAethernet", columnHash: 0x751baa92 )]
     public class HousingAethernet : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Level
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Order
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

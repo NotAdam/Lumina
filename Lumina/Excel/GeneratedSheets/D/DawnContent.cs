@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DawnContent", columnHash: 0x5d58cc84 )]
     public class DawnContent : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Content
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Exp
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

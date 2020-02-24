@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDLevelChangeDeception", columnHash: 0xda365c51 )]
     public class HWDLevelChangeDeception : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Image
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

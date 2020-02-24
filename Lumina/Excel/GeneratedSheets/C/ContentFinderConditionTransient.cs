@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentFinderConditionTransient", columnHash: 0xdebb20e3 )]
     public class ContentFinderConditionTransient : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Description
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

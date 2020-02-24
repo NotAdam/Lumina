@@ -1,43 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringSubCategory", columnHash: 0x6dac8145 )]
     public class GatheringSubCategory : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 000e col: 0
-         *  name: GatheringType
-         *  type: 
-         */
-
-        /* offset: 000f col: 1
-         *  name: ClassJob
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  name: Division
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0000 col: 5
-         *  name: FolkloreBook
-         *  type: 
-         */
-
-        /* offset: 0010 col: 6
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 05 offset: 0000

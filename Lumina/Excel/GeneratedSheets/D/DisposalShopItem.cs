@@ -1,37 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DisposalShopItem", columnHash: 0x1990ed53 )]
     public class DisposalShopItem : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Item{Disposed}
-         *  type: 
-         */
-
-        /* offset: 000e col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Item{Received}
-         *  type: 
-         */
-
-        /* offset: 000e col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Quantity{Received}
-         *  type: 
-         */
-
-        /* offset: 000c col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 04 offset: 0000
@@ -73,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknownc = parser.ReadOffset< ushort >( 0xc );
 
             // col: 1 offset: 000e
-            packede = parser.ReadOffset< byte >( 0xe );
+            packede = parser.ReadOffset< byte >( 0xe, ExcelColumnDataType.UInt8 );
 
 
         }

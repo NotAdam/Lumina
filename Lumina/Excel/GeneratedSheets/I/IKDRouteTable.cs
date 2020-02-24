@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDRouteTable", columnHash: 0xdbf43666 )]
     public class IKDRouteTable : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Route
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

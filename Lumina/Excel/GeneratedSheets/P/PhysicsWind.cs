@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PhysicsWind", columnHash: 0x3bc4120f )]
     public class PhysicsWind : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Threshold
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Amplitude
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: AmplitudeFrequency
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: PowerMin
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: PowerMax
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: PowerFrequency
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

@@ -1,32 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PvPActionSort", columnHash: 0xc3af756b )]
     public class PvPActionSort : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0006 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Action
-         *  type: 
-         */
-
-        /* offset: 0007 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0007 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 4
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 04 offset: 0000
@@ -62,7 +41,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadOffset< byte >( 0x6 );
 
             // col: 2 offset: 0007
-            packed7 = parser.ReadOffset< byte >( 0x7 );
+            packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
 
 
         }

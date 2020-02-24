@@ -1,39 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonLayer", columnHash: 0x832a5a83 )]
     public class DeepDungeonLayer : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0006 col: 0
-         *  name: DeepDungeon
-         *  type: 
-         */
-
-        /* offset: 0007 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 6
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000

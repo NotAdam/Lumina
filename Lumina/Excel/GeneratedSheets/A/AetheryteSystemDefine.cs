@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AetheryteSystemDefine", columnHash: 0x98fff20a )]
     public class AetheryteSystemDefine : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Text
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: DefineValue
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

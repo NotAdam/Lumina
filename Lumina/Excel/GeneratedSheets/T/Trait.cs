@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Trait", columnHash: 0x395111c9 )]
     public class Trait : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000e col: 2
-         *  name: ClassJob
-         *  type: 
-         */
-
-        /* offset: 000f col: 3
-         *  name: Level
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: Quest
-         *  type: 
-         */
-
-        /* offset: 000c col: 5
-         *  name: Value
-         *  type: 
-         */
-
-        /* offset: 0010 col: 6
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

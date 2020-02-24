@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GcArmyCaptureTactics", columnHash: 0x62bcfbad )]
     public class GcArmyCaptureTactics : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: HP
-         *  type: 
-         */
-
-        /* offset: 000d col: 2
-         *  name: DamageDealt
-         *  type: 
-         */
-
-        /* offset: 000e col: 3
-         *  name: DamageReceived
-         *  type: 
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Tactic
-         *  type: 
-         */
-
-        /* offset: 0004 col: 5
-         *  name: Icon
-         *  type: 
-         */
-
 
 
         // col: 04 offset: 0000

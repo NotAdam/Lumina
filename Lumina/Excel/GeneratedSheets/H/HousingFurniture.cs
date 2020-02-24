@@ -1,79 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingFurniture", columnHash: 0xccfbe5ff )]
     public class HousingFurniture : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 000c col: 0
-         *  name: ModelKey
-         *  type: 
-         */
-
-        /* offset: 000e col: 1
-         *  name: HousingItemCategory
-         *  type: 
-         */
-
-        /* offset: 000f col: 2
-         *  name: UsageType
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: UsageParameter
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 5
-         *  name: AquariumTier
-         *  type: 
-         */
-
-        /* offset: 0004 col: 6
-         *  name: CustomTalk
-         *  type: 
-         */
-
-        /* offset: 0008 col: 7
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0015 col: 8
-         *  name: DestroyOnRemoval
-         *  type: 
-         */
-
-        /* offset: 0015 col: 9
-         *  name: Tooltip
-         *  type: 
-         */
-
-        /* offset: 0012 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 14
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000
@@ -159,7 +91,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown14 = parser.ReadOffset< byte >( 0x14 );
 
             // col: 8 offset: 0015
-            packed15 = parser.ReadOffset< byte >( 0x15 );
+            packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
 
 
         }

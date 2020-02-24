@@ -1,100 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Map", columnHash: 0x56a0aa07 )]
     public class Map : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 001a col: 0
-         *  name: MapCondition
-         *  type: 
-         */
-
-        /* offset: 001b col: 1
-         *  name: PriorityCategoryUI
-         *  type: 
-         */
-
-        /* offset: 001c col: 2
-         *  name: PriorityUI
-         *  type: 
-         */
-
-        /* offset: 001e col: 3
-         *  name: MapIndex
-         *  type: 
-         */
-
-        /* offset: 001d col: 4
-         *  name: Hierarchy
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: MapMarkerRange
-         *  type: 
-         */
-
-        /* offset: 0000 col: 6
-         *  name: Id
-         *  type: 
-         */
-
-        /* offset: 000a col: 7
-         *  name: SizeFactor
-         *  type: 
-         */
-
-        /* offset: 0014 col: 8
-         *  name: Offset{X}
-         *  type: 
-         */
-
-        /* offset: 0016 col: 9
-         *  name: Offset{Y}
-         *  type: 
-         */
-
-        /* offset: 000c col: 10
-         *  name: PlaceName{Region}
-         *  type: 
-         */
-
-        /* offset: 000e col: 11
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 0010 col: 12
-         *  name: PlaceName{Sub}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 13
-         *  name: DiscoveryIndex
-         *  type: 
-         */
-
-        /* offset: 0004 col: 14
-         *  name: DiscoveryFlag
-         *  type: 
-         */
-
-        /* offset: 0012 col: 15
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 001f col: 16
-         *  name: DiscoveryArrayByte
-         *  type: 
-         */
-
-        /* offset: 001f col: 17
-         *  name: IsEvent
-         *  type: 
-         */
-
 
 
         // col: 06 offset: 0000
@@ -208,7 +119,7 @@ namespace Lumina.Excel.GeneratedSheets
             MapIndex = parser.ReadOffset< sbyte >( 0x1e );
 
             // col: 16 offset: 001f
-            packed1f = parser.ReadOffset< byte >( 0x1f );
+            packed1f = parser.ReadOffset< byte >( 0x1f, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddyAction", columnHash: 0x9a695bec )]
     public class BuddyAction : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: Icon{Status}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: Reward
-         *  type: 
-         */
-
-        /* offset: 0012 col: 5
-         *  name: Sort
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

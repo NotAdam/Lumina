@@ -1,50 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GilShopItem", columnHash: 0x2f7317fe )]
     public class GilShopItem : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0019 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Row{Required}
-         *  repeat count: 3
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 7
-         *  name: State{Required}
-         *  type: 
-         */
-
-        /* offset: 0016 col: 8
-         *  name: Patch
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -100,7 +61,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown18 = parser.ReadOffset< byte >( 0x18 );
 
             // col: 1 offset: 0019
-            packed19 = parser.ReadOffset< byte >( 0x19 );
+            packed19 = parser.ReadOffset< byte >( 0x19, ExcelColumnDataType.UInt8 );
 
 
         }

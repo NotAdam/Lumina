@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SatisfactionSupply", columnHash: 0x2d608ea2 )]
     public class SatisfactionSupply : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 000c col: 0
-         *  name: Slot
-         *  type: 
-         */
-
-        /* offset: 000d col: 1
-         *  name: Probability<%>
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: Collectability{Low}
-         *  type: 
-         */
-
-        /* offset: 0006 col: 4
-         *  name: Collectability{Mid}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: Collectability{High}
-         *  type: 
-         */
-
-        /* offset: 000a col: 6
-         *  name: Reward
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000

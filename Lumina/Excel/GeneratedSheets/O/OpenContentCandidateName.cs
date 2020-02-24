@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OpenContentCandidateName", columnHash: 0xdebb20e3 )]
     public class OpenContentCandidateName : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

@@ -1,186 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TerritoryType", columnHash: 0x7dff1ae4 )]
     public class TerritoryType : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Bg
-         *  type: 
-         */
-
-        /* offset: 002c col: 2
-         *  name: BattalionMode
-         *  type: 
-         */
-
-        /* offset: 001c col: 3
-         *  name: PlaceName{Region}
-         *  type: 
-         */
-
-        /* offset: 001e col: 4
-         *  name: PlaceName{Zone}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 5
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 0022 col: 6
-         *  name: Map
-         *  type: 
-         */
-
-        /* offset: 002d col: 7
-         *  name: LoadingImage
-         *  type: 
-         */
-
-        /* offset: 002e col: 8
-         *  name: ExclusiveType
-         *  type: 
-         */
-
-        /* offset: 002f col: 9
-         *  name: TerritoryIntendedUse
-         *  type: 
-         */
-
-        /* offset: 0024 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 12
-         *  name: WeatherRate
-         *  type: 
-         */
-
-        /* offset: 0038 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0031 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 15
-         *  name: PCSearch
-         *  type: 
-         */
-
-        /* offset: 0038 col: 16
-         *  name: Stealth
-         *  type: 
-         */
-
-        /* offset: 0038 col: 17
-         *  name: Mount
-         *  type: 
-         */
-
-        /* offset: 0038 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0026 col: 19
-         *  name: BGM
-         *  type: 
-         */
-
-        /* offset: 000c col: 20
-         *  name: PlaceName{Region}Icon
-         *  type: 
-         */
-
-        /* offset: 0010 col: 21
-         *  name: PlaceNameIcon
-         *  type: 
-         */
-
-        /* offset: 0008 col: 22
-         *  name: ArrayEventHandler
-         *  type: 
-         */
-
-        /* offset: 0028 col: 23
-         *  name: QuestBattle
-         *  type: 
-         */
-
-        /* offset: 0014 col: 24
-         *  name: Aetheryte
-         *  type: 
-         */
-
-        /* offset: 0018 col: 25
-         *  name: FixedTime
-         *  type: 
-         */
-
-        /* offset: 002a col: 26
-         *  name: Resident
-         *  type: 
-         */
-
-        /* offset: 0037 col: 27
-         *  name: AchievementIndex
-         *  type: 
-         */
-
-        /* offset: 0038 col: 28
-         *  name: IsPvpZone
-         *  type: 
-         */
-
-        /* offset: 0032 col: 29
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0033 col: 30
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 31
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0035 col: 32
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 33
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 34
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0036 col: 35
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 36
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 37
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -372,10 +197,10 @@ namespace Lumina.Excel.GeneratedSheets
             AchievementIndex = parser.ReadOffset< sbyte >( 0x37 );
 
             // col: 11 offset: 0038
-            packed38 = parser.ReadOffset< byte >( 0x38 );
+            packed38 = parser.ReadOffset< byte >( 0x38, ExcelColumnDataType.UInt8 );
 
             // col: 34 offset: 0039
-            packed39 = parser.ReadOffset< byte >( 0x39 );
+            packed39 = parser.ReadOffset< byte >( 0x39, ExcelColumnDataType.UInt8 );
 
 
         }

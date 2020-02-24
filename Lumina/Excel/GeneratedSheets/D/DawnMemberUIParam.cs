@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DawnMemberUIParam", columnHash: 0x0fd503c6 )]
     public class DawnMemberUIParam : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Class{Singular}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: VoiceLine
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Class{Plural}
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000

@@ -1,92 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IndividualWeather", columnHash: 0x1012bc70 )]
     public class IndividualWeather : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Weather
-         *  repeat count: 5
-         */
-
-        /* offset: 0014 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0021 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002d col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 10
-         *  name: Quest
-         *  repeat count: 5
-         */
-
-        /* offset: 000c col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 19
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 10 offset: 0000

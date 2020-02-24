@@ -1,52 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuildleveAssignment", columnHash: 0x55964b3b )]
     public class GuildleveAssignment : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 1
-         *  name: AssignmentTalk
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Quest
-         *  repeat count: 2
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 9
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -93,7 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown10 = parser.ReadOffset< byte >( 0x10 );
 
             // col: 4 offset: 0011
-            packed11 = parser.ReadOffset< byte >( 0x11 );
+            packed11 = parser.ReadOffset< byte >( 0x11, ExcelColumnDataType.UInt8 );
 
 
         }

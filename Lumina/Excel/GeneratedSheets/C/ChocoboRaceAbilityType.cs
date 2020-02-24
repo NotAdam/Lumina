@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboRaceAbilityType", columnHash: 0xcd4cb81c )]
     public class ChocoboRaceAbilityType : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: IsActive
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -26,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             // col: 0 offset: 0000
-            packed0 = parser.ReadOffset< byte >( 0x0 );
+            packed0 = parser.ReadOffset< byte >( 0x0, ExcelColumnDataType.UInt8 );
 
 
         }

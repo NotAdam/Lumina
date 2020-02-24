@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CycleTime", columnHash: 0x5d58cc84 )]
     public class CycleTime : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: FirstCycle
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Cycle
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

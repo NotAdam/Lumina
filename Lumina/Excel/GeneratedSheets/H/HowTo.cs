@@ -1,68 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HowTo", columnHash: 0xe4488448 )]
     public class HowTo : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Images
-         *  repeat count: 10
-         */
-
-        /* offset: 0006 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 12
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 0018 col: 13
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -113,7 +56,7 @@ namespace Lumina.Excel.GeneratedSheets
             Category = parser.ReadOffset< sbyte >( 0x19 );
 
             // col: 1 offset: 001a
-            packed1a = parser.ReadOffset< byte >( 0x1a );
+            packed1a = parser.ReadOffset< byte >( 0x1a, ExcelColumnDataType.UInt8 );
 
 
         }

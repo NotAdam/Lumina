@@ -1,50 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LogFilter", columnHash: 0x6ef5ba16 )]
     public class LogFilter : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 000c col: 0
-         *  name: LogKind
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Caster
-         *  type: 
-         */
-
-        /* offset: 000a col: 2
-         *  name: Target
-         *  type: 
-         */
-
-        /* offset: 000d col: 3
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: DisplayOrder
-         *  type: 
-         */
-
-        /* offset: 000f col: 5
-         *  name: Preset
-         *  type: 
-         */
-
-        /* offset: 0000 col: 6
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 7
-         *  name: Example
-         *  type: 
-         */
-
 
 
         // col: 06 offset: 0000

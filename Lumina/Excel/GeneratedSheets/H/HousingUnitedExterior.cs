@@ -1,47 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingUnitedExterior", columnHash: 0x88a791a7 )]
     public class HousingUnitedExterior : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0020 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Item
-         *  repeat count: 8
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 8
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

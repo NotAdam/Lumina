@@ -1,64 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentCloseCycle", columnHash: 0xd3032cdb )]
     public class ContentCloseCycle : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Unixtime
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Time{Seconds}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 12
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

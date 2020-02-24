@@ -1,102 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringLeve", columnHash: 0xfa74e4d0 )]
     public class GatheringLeve : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Route
-         *  repeat count: 4
-         */
-
-        /* offset: 0004 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 4
-         *  name: RequiredItem[0]
-         *  type: 
-         */
-
-        /* offset: 002c col: 5
-         *  name: RequiredItemQty[0]
-         *  type: 
-         */
-
-        /* offset: 0014 col: 6
-         *  name: RequiredItem[1]
-         *  type: 
-         */
-
-        /* offset: 002d col: 7
-         *  name: RequiredItemQty[1]
-         *  type: 
-         */
-
-        /* offset: 0018 col: 8
-         *  name: RequiredItem[2]
-         *  type: 
-         */
-
-        /* offset: 002e col: 9
-         *  name: RequiredItemQty[2]
-         *  type: 
-         */
-
-        /* offset: 001c col: 10
-         *  name: RequiredItem[3]
-         *  type: 
-         */
-
-        /* offset: 002f col: 11
-         *  name: RequiredItemQty[3]
-         *  type: 
-         */
-
-        /* offset: 0030 col: 12
-         *  name: ItemNumber
-         *  type: 
-         */
-
-        /* offset: 0020 col: 13
-         *  name: Rule
-         *  type: 
-         */
-
-        /* offset: 0031 col: 14
-         *  name: Varient
-         *  type: 
-         */
-
-        /* offset: 0028 col: 15
-         *  name: Objective[0]
-         *  type: 
-         */
-
-        /* offset: 002a col: 16
-         *  name: Objective[1]
-         *  type: 
-         */
-
-        /* offset: 0024 col: 17
-         *  name: BNpcEntry
-         *  type: 
-         */
-
-        /* offset: 0032 col: 18
-         *  name: UseSecondaryTool
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -207,7 +116,7 @@ namespace Lumina.Excel.GeneratedSheets
             Varient = parser.ReadOffset< byte >( 0x31 );
 
             // col: 18 offset: 0032
-            packed32 = parser.ReadOffset< byte >( 0x32 );
+            packed32 = parser.ReadOffset< byte >( 0x32, ExcelColumnDataType.UInt8 );
 
 
         }

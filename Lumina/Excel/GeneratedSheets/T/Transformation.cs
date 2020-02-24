@@ -1,157 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Transformation", columnHash: 0xa9f5ba48 )]
     public class Transformation : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 002a col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 1
-         *  name: Model
-         *  type: 
-         */
-
-        /* offset: 0014 col: 2
-         *  name: BNpcName
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: BNpcCustomize
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: NpcEquip
-         *  type: 
-         */
-
-        /* offset: 002e col: 5
-         *  name: ExHotbarEnableConfig
-         *  type: 
-         */
-
-        /* offset: 0016 col: 6
-         *  name: Action[0]
-         *  type: 
-         */
-
-        /* offset: 002f col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 8
-         *  name: Action[1]
-         *  type: 
-         */
-
-        /* offset: 0030 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 10
-         *  name: Action[2]
-         *  type: 
-         */
-
-        /* offset: 0031 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 12
-         *  name: Action[3]
-         *  type: 
-         */
-
-        /* offset: 0032 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 14
-         *  name: Action[4]
-         *  type: 
-         */
-
-        /* offset: 0020 col: 15
-         *  name: Action[5]
-         *  type: 
-         */
-
-        /* offset: 0033 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0033 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002b col: 18
-         *  name: RPParameter
-         *  type: 
-         */
-
-        /* offset: 0000 col: 19
-         *  name: Speed
-         *  type: 
-         */
-
-        /* offset: 0004 col: 20
-         *  name: Scale
-         *  type: 
-         */
-
-        /* offset: 0033 col: 21
-         *  name: IsPvP
-         *  type: 
-         */
-
-        /* offset: 0033 col: 22
-         *  name: IsEvent
-         *  type: 
-         */
-
-        /* offset: 0033 col: 23
-         *  name: PlayerCamera
-         *  type: 
-         */
-
-        /* offset: 0033 col: 24
-         *  name: StartVFX
-         *  type: 
-         */
-
-        /* offset: 0033 col: 25
-         *  name: EndVFX
-         *  type: 
-         */
-
-        /* offset: 0022 col: 26
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 27
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 28
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002d col: 29
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0026 col: 30
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 31
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 19 offset: 0000
@@ -324,7 +178,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown32 = parser.ReadOffset< bool >( 0x32 );
 
             // col: 16 offset: 0033
-            packed33 = parser.ReadOffset< byte >( 0x33 );
+            packed33 = parser.ReadOffset< byte >( 0x33, ExcelColumnDataType.UInt8 );
 
 
         }

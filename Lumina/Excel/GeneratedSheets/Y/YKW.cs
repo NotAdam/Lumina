@@ -1,36 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "YKW", columnHash: 0xa866cd57 )]
     public class YKW : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0008 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 000a col: 2
-         *  name: Location
-         *  repeat count: 3
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 05 offset: 0000

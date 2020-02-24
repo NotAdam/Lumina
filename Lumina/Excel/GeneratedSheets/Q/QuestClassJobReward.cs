@@ -1,99 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestClassJobReward", columnHash: 0x1eed8c67 )]
     public class QuestClassJobReward : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0020 col: 0
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Reward{Item}
-         *  repeat count: 4
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0021 col: 5
-         *  name: Reward{Amount}
-         *  repeat count: 4
-         */
-
-        /* offset: 0022 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0023 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 9
-         *  name: Required{Item}
-         *  repeat count: 4
-         */
-
-        /* offset: 0014 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0025 col: 13
-         *  name: Required{Amount}
-         *  repeat count: 4
-         */
-
-        /* offset: 0026 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0027 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0029 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002a col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002b col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 20
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

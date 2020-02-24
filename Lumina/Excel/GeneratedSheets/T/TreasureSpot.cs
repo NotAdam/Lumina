@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TreasureSpot", columnHash: 0x4a63eb8e )]
     public class TreasureSpot : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Location
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: MapOffsetX
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: MapOffsetY
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

@@ -1,39 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Omen", columnHash: 0xd79b6c3f )]
     public class Omen : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Path
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: PathAlly
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 000a col: 3
-         *  name: RestrictYScale
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: LargeScale
-         *  type: 
-         */
-
-        /* offset: 0009 col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -75,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown9 = parser.ReadOffset< sbyte >( 0x9 );
 
             // col: 3 offset: 000a
-            packeda = parser.ReadOffset< byte >( 0xa );
+            packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
 
 
         }

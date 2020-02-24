@@ -1,38 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Lobby", columnHash: 0x54075f2e )]
     public class Lobby : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 000c col: 0
-         *  name: TYPE
-         *  type: 
-         */
-
-        /* offset: 0010 col: 1
-         *  name: PARAM
-         *  type: 
-         */
-
-        /* offset: 0014 col: 2
-         *  name: LINK
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Text
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000

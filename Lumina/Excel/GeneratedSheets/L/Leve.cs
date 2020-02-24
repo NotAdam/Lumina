@@ -1,163 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Leve", columnHash: 0x7e5dafa0 )]
     public class Leve : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0020 col: 2
-         *  name: LeveClient
-         *  type: 
-         */
-
-        /* offset: 0024 col: 3
-         *  name: LeveAssignmentType
-         *  type: 
-         */
-
-        /* offset: 0028 col: 4
-         *  name: Town
-         *  type: 
-         */
-
-        /* offset: 0050 col: 5
-         *  name: ClassJobLevel
-         *  type: 
-         */
-
-        /* offset: 0054 col: 6
-         *  name: TimeLimit
-         *  type: 
-         */
-
-        /* offset: 0055 col: 7
-         *  name: AllowanceCost
-         *  type: 
-         */
-
-        /* offset: 002c col: 8
-         *  name: Evaluation
-         *  type: 
-         */
-
-        /* offset: 0030 col: 9
-         *  name: PlaceName{Start}
-         *  type: 
-         */
-
-        /* offset: 0034 col: 10
-         *  name: PlaceName{Issued}
-         *  type: 
-         */
-
-        /* offset: 005a col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0056 col: 12
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
-        /* offset: 0038 col: 13
-         *  name: JournalGenre
-         *  type: 
-         */
-
-        /* offset: 003c col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 15
-         *  name: PlaceName{StartZone}
-         *  type: 
-         */
-
-        /* offset: 0044 col: 16
-         *  name: Icon{CityState}
-         *  type: 
-         */
-
-        /* offset: 0048 col: 17
-         *  name: DataId
-         *  type: 
-         */
-
-        /* offset: 005a col: 18
-         *  name: CanCancel
-         *  type: 
-         */
-
-        /* offset: 0057 col: 19
-         *  name: MaxDifficulty
-         *  type: 
-         */
-
-        /* offset: 0008 col: 20
-         *  name: ExpFactor
-         *  type: 
-         */
-
-        /* offset: 000c col: 21
-         *  name: ExpReward
-         *  type: 
-         */
-
-        /* offset: 0010 col: 22
-         *  name: GilReward
-         *  type: 
-         */
-
-        /* offset: 0014 col: 23
-         *  name: LeveRewardItem
-         *  type: 
-         */
-
-        /* offset: 0058 col: 24
-         *  name: LeveVfx
-         *  type: 
-         */
-
-        /* offset: 0059 col: 25
-         *  name: LeveVfx{Frame}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 26
-         *  name: Level{Levemete}
-         *  type: 
-         */
-
-        /* offset: 004c col: 27
-         *  name: Icon{Issuer}
-         *  type: 
-         */
-
-        /* offset: 005a col: 28
-         *  name: LockedLeve
-         *  type: 
-         */
-
-        /* offset: 001c col: 29
-         *  name: Level{Start}
-         *  type: 
-         */
-
-        /* offset: 0052 col: 30
-         *  name: BGM
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -344,7 +192,7 @@ namespace Lumina.Excel.GeneratedSheets
             LeveVfxFrame = parser.ReadOffset< byte >( 0x59 );
 
             // col: 11 offset: 005a
-            packed5a = parser.ReadOffset< byte >( 0x5a );
+            packed5a = parser.ReadOffset< byte >( 0x5a, ExcelColumnDataType.UInt8 );
 
 
         }

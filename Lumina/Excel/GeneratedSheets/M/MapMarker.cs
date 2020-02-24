@@ -1,63 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapMarker", columnHash: 0x58f22163 )]
     public class MapMarker : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0006 col: 0
-         *  name: X
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Y
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0002 col: 3
-         *  name: PlaceName{Subtext}
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: SubtextOrientation
-         *  type: 
-         */
-
-        /* offset: 000b col: 5
-         *  name: MapMarkerRegion
-         *  type: 
-         */
-
-        /* offset: 000c col: 6
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 000d col: 7
-         *  name: Data{Type}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 8
-         *  name: Data{Key}
-         *  type: 
-         */
-
-        /* offset: 000e col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000

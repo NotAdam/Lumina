@@ -1,83 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "NotebookDivision", columnHash: 0xb4638be9 )]
     public class NotebookDivision : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: NotebookDivisionCategory
-         *  type: 
-         */
-
-        /* offset: 0009 col: 2
-         *  name: CraftOpeningLevel
-         *  type: 
-         */
-
-        /* offset: 000a col: 3
-         *  name: GatheringOpeningLevel
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: QuestUnlock
-         *  type: 
-         */
-
-        /* offset: 000b col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 7
-         *  name: CRPCraft
-         *  type: 
-         */
-
-        /* offset: 000d col: 8
-         *  name: BSMCraft
-         *  type: 
-         */
-
-        /* offset: 000e col: 9
-         *  name: ARMCraft
-         *  type: 
-         */
-
-        /* offset: 000f col: 10
-         *  name: GSMCraft
-         *  type: 
-         */
-
-        /* offset: 0010 col: 11
-         *  name: LTWCraft
-         *  type: 
-         */
-
-        /* offset: 0011 col: 12
-         *  name: WVRCraft
-         *  type: 
-         */
-
-        /* offset: 0012 col: 13
-         *  name: ALCCraft
-         *  type: 
-         */
-
-        /* offset: 0013 col: 14
-         *  name: CULCraft
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -178,7 +106,7 @@ namespace Lumina.Excel.GeneratedSheets
             CULCraft = parser.ReadOffset< bool >( 0x13 );
 
             // col: 6 offset: 0014
-            packed14 = parser.ReadOffset< byte >( 0x14 );
+            packed14 = parser.ReadOffset< byte >( 0x14, ExcelColumnDataType.UInt8 );
 
 
         }

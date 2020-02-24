@@ -1,86 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentMemberType", columnHash: 0x48587c6d )]
     public class ContentMemberType : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 000a col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0001 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0003 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0005 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 9
-         *  name: TanksPerParty
-         *  type: 
-         */
-
-        /* offset: 0007 col: 10
-         *  name: HealersPerParty
-         *  type: 
-         */
-
-        /* offset: 0008 col: 11
-         *  name: MeleesPerParty
-         *  type: 
-         */
-
-        /* offset: 0009 col: 12
-         *  name: RangedPerParty
-         *  type: 
-         */
-
-        /* offset: 000a col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 17
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000
@@ -164,7 +89,7 @@ namespace Lumina.Excel.GeneratedSheets
             RangedPerParty = parser.ReadOffset< byte >( 0x9 );
 
             // col: 0 offset: 000a
-            packeda = parser.ReadOffset< byte >( 0xa );
+            packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
 
 
         }

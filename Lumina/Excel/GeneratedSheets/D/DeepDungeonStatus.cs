@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonStatus", columnHash: 0xdc23efe7 )]
     public class DeepDungeonStatus : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: ScreenImage
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: LogMessage
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

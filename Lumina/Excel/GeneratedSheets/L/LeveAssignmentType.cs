@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LeveAssignmentType", columnHash: 0x7c19f23c )]
     public class LeveAssignmentType : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0008 col: 0
-         *  name: IsFaction
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000
@@ -48,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             Icon = parser.ReadOffset< int >( 0x4 );
 
             // col: 0 offset: 0008
-            packed8 = parser.ReadOffset< byte >( 0x8 );
+            packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
 
 
         }

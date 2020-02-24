@@ -1,48 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ConfigKey", columnHash: 0x927ebfb7 )]
     public class ConfigKey : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Label
-         *  type: 
-         */
-
-        /* offset: 000a col: 1
-         *  name: Param
-         *  type: 
-         */
-
-        /* offset: 000b col: 2
-         *  name: Platform
-         *  type: 
-         */
-
-        /* offset: 000e col: 3
-         *  name: Required
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 7
-         *  name: Text
-         *  type: 
-         */
-
 
 
         // col: 07 offset: 0000
@@ -101,7 +64,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknownd = parser.ReadOffset< byte >( 0xd );
 
             // col: 3 offset: 000e
-            packede = parser.ReadOffset< byte >( 0xe );
+            packede = parser.ReadOffset< byte >( 0xe, ExcelColumnDataType.UInt8 );
 
 
         }

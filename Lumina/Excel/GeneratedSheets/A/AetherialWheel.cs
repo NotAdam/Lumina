@@ -1,30 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AetherialWheel", columnHash: 0xfee5acb6 )]
     public class AetherialWheel : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item{Unprimed}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Item{Primed}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Grade
-         *  type: 
-         */
-
-        /* offset: 0009 col: 3
-         *  name: HoursRequired
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

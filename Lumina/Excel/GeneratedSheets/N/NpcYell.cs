@@ -1,59 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "NpcYell", columnHash: 0xbd07b3cb )]
     public class NpcYell : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 000c col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 5
-         *  name: OutputType
-         *  type: 
-         */
-
-        /* offset: 0004 col: 6
-         *  name: BalloonTime
-         *  type: 
-         */
-
-        /* offset: 0012 col: 7
-         *  name: IsBalloonSlow
-         *  type: 
-         */
-
-        /* offset: 0012 col: 8
-         *  name: BattleTalkTime
-         *  type: 
-         */
-
-        /* offset: 0008 col: 9
-         *  name: Text
-         *  type: 
-         */
-
-        /* offset: 0000 col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 10 offset: 0000
@@ -110,7 +62,7 @@ namespace Lumina.Excel.GeneratedSheets
             OutputType = parser.ReadOffset< byte >( 0x11 );
 
             // col: 2 offset: 0012
-            packed12 = parser.ReadOffset< byte >( 0x12 );
+            packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
 
 
         }

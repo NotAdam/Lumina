@@ -1,81 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SatisfactionSupplyReward", columnHash: 0xc81395f9 )]
     public class SatisfactionSupplyReward : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 001c col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: 
-         *  repeat count: 2
-         */
-
-        /* offset: 0002 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001d col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 10
-         *  name: Satisfaction{Low}
-         *  type: 
-         */
-
-        /* offset: 0012 col: 11
-         *  name: Satisfaction{Mid}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 12
-         *  name: Satisfaction{High}
-         *  type: 
-         */
-
-        /* offset: 0016 col: 13
-         *  name: Gil{Low}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 14
-         *  name: Gil{Mid}
-         *  type: 
-         */
-
-        /* offset: 001a col: 15
-         *  name: Gil{High}
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

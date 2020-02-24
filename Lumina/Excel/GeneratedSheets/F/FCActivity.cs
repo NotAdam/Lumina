@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCActivity", columnHash: 0xe45dc889 )]
     public class FCActivity : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Text
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: SelfKind
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: TargetKind
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: NumParam
-         *  type: 
-         */
-
-        /* offset: 0007 col: 4
-         *  name: FCActivityCategory
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: IconType
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

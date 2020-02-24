@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PreHandler", columnHash: 0x121fc5dc )]
     public class PreHandler : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Target
-         *  type: 
-         */
-
-        /* offset: 0006 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  name: ActionTimeline
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

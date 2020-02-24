@@ -1,37 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTaskParameter", columnHash: 0xcbd32284 )]
     public class RetainerTaskParameter : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: ItemLevel{DoW}
-         *  repeat count: 2
-         */
-
-        /* offset: 0002 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Gathering{DoL}
-         *  repeat count: 2
-         */
-
-        /* offset: 0006 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  name: Gathering{FSH}
-         *  repeat count: 2
-         */
-
-        /* offset: 000a col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

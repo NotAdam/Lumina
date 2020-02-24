@@ -1,76 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTask", columnHash: 0x99415e4e )]
     public class RetainerTask : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0018 col: 0
-         *  name: IsRandom
-         *  type: 
-         */
-
-        /* offset: 0014 col: 1
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
-        /* offset: 0015 col: 2
-         *  name: RetainerLevel
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 4
-         *  name: RetainerTaskParameter
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: VentureCost
-         *  type: 
-         */
-
-        /* offset: 000a col: 6
-         *  name: MaxTime{min}
-         *  type: 
-         */
-
-        /* offset: 0000 col: 7
-         *  name: Experience
-         *  type: 
-         */
-
-        /* offset: 000c col: 8
-         *  name: RequiredItemLevel
-         *  type: 
-         */
-
-        /* offset: 0016 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 11
-         *  name: RequiredGathering
-         *  type: 
-         */
-
-        /* offset: 0010 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 13
-         *  name: Task
-         *  type: 
-         */
-
 
 
         // col: 07 offset: 0000
@@ -165,7 +100,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown17 = parser.ReadOffset< byte >( 0x17 );
 
             // col: 0 offset: 0018
-            packed18 = parser.ReadOffset< byte >( 0x18 );
+            packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "StatusLoopVFX", columnHash: 0xe9330973 )]
     public class StatusLoopVFX : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: VFX
-         *  type: 
-         */
-
-        /* offset: 0006 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 2
-         *  name: VFX2
-         *  type: 
-         */
-
-        /* offset: 0007 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 4
-         *  name: VFX3
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 7
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -98,7 +64,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown9 = parser.ReadOffset< byte >( 0x9 );
 
             // col: 7 offset: 000a
-            packeda = parser.ReadOffset< byte >( 0xa );
+            packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
 
 
         }

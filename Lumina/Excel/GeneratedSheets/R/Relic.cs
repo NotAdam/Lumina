@@ -1,90 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Relic", columnHash: 0x8080ef57 )]
     public class Relic : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item{Atma}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Item{Animus}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: Materia[0]
-         *  type: 
-         */
-
-        /* offset: 0014 col: 4
-         *  name: NoteMain[0]
-         *  type: 
-         */
-
-        /* offset: 0015 col: 5
-         *  name: NoteSub[0]
-         *  type: 
-         */
-
-        /* offset: 0016 col: 6
-         *  name: NoteSelection{1}[0]
-         *  type: 
-         */
-
-        /* offset: 000e col: 7
-         *  name: Materia[1]
-         *  type: 
-         */
-
-        /* offset: 0017 col: 8
-         *  name: NoteMain[1]
-         *  type: 
-         */
-
-        /* offset: 0018 col: 9
-         *  name: NoteSub[1]
-         *  type: 
-         */
-
-        /* offset: 0019 col: 10
-         *  name: NoteSelection[1]
-         *  type: 
-         */
-
-        /* offset: 0010 col: 11
-         *  name: Materia[2]
-         *  type: 
-         */
-
-        /* offset: 001a col: 12
-         *  name: NoteMain[2]
-         *  type: 
-         */
-
-        /* offset: 001b col: 13
-         *  name: NoteSub[2]
-         *  type: 
-         */
-
-        /* offset: 0012 col: 14
-         *  name: Materia[3]
-         *  type: 
-         */
-
-        /* offset: 001c col: 15
-         *  name: NoteSelection[3]
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

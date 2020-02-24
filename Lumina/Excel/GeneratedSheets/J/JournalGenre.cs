@@ -1,29 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "JournalGenre", columnHash: 0x2c6b75bb )]
     public class JournalGenre : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: JournalCategory
-         *  type: 
-         */
-
-        /* offset: 0009 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 03 offset: 0000
@@ -58,7 +40,7 @@ namespace Lumina.Excel.GeneratedSheets
             JournalCategory = parser.ReadOffset< byte >( 0x8 );
 
             // col: 2 offset: 0009
-            packed9 = parser.ReadOffset< byte >( 0x9 );
+            packed9 = parser.ReadOffset< byte >( 0x9, ExcelColumnDataType.UInt8 );
 
 
         }

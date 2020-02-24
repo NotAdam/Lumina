@@ -1,50 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MonsterNoteTarget", columnHash: 0x4157404f )]
     public class MonsterNoteTarget : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: BNpcName
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0012 col: 2
-         *  name: Town
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: 
-         *  repeat count: 3
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 8
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

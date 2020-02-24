@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GFateRideShooting", columnHash: 0xdbf43666 )]
     public class GFateRideShooting : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: ContentEntry
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

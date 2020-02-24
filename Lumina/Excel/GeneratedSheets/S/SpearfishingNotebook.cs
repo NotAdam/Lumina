@@ -1,65 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpearfishingNotebook", columnHash: 0x0f196a4a )]
     public class SpearfishingNotebook : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0012 col: 0
-         *  name: GatheringLevel
-         *  type: 
-         */
-
-        /* offset: 0015 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 2
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 000e col: 3
-         *  name: X
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: Y
-         *  type: 
-         */
-
-        /* offset: 0004 col: 5
-         *  name: Radius
-         *  type: 
-         */
-
-        /* offset: 0013 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 7
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 0014 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 9
-         *  name: GatheringPointBase
-         *  type: 
-         */
-
-        /* offset: 000a col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 11
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000
@@ -142,7 +88,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown14 = parser.ReadOffset< byte >( 0x14 );
 
             // col: 1 offset: 0015
-            packed15 = parser.ReadOffset< byte >( 0x15 );
+            packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
 
 
         }

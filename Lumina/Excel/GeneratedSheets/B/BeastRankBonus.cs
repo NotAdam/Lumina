@@ -1,80 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastRankBonus", columnHash: 0x4d6cbdc3 )]
     public class BeastRankBonus : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0004 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 8
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0014 col: 9
-         *  name: Item{Quantity}
-         *  repeat count: 8
-         */
-
-        /* offset: 0015 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001b col: 16
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 08 offset: 0000

@@ -1,63 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Ballista", columnHash: 0xcac0c160 )]
     public class Ballista : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: BNPC
-         *  type: 
-         */
-
-        /* offset: 000f col: 1
-         *  name: Near
-         *  type: 
-         */
-
-        /* offset: 0010 col: 2
-         *  name: Far
-         *  type: 
-         */
-
-        /* offset: 0002 col: 3
-         *  name: Angle
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: Bullet
-         *  type: 
-         */
-
-        /* offset: 000d col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 7
-         *  name: Action[0]
-         *  type: 
-         */
-
-        /* offset: 0006 col: 8
-         *  name: Action[1]
-         *  type: 
-         */
-
-        /* offset: 0008 col: 9
-         *  name: Action[2]
-         *  type: 
-         */
-
-        /* offset: 000a col: 10
-         *  name: Action[3]
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

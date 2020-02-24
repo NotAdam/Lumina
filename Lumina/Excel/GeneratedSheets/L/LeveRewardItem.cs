@@ -1,75 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LeveRewardItem", columnHash: 0x00035bbe )]
     public class LeveRewardItem : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: 
-         *  repeat count: 8
-         */
-
-        /* offset: 0010 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 15
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

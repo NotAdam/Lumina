@@ -1,80 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Adventure", columnHash: 0xf6b785f8 )]
     public class Adventure : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 000c col: 0
-         *  name: Level
-         *  type: 
-         */
-
-        /* offset: 0010 col: 1
-         *  name: MinLevel
-         *  type: 
-         */
-
-        /* offset: 002a col: 2
-         *  name: MaxLevel
-         *  type: 
-         */
-
-        /* offset: 0024 col: 3
-         *  name: Emote
-         *  type: 
-         */
-
-        /* offset: 0026 col: 4
-         *  name: MinTime
-         *  type: 
-         */
-
-        /* offset: 0028 col: 5
-         *  name: MaxTime
-         *  type: 
-         */
-
-        /* offset: 0014 col: 6
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 0018 col: 7
-         *  name: Icon{List}
-         *  type: 
-         */
-
-        /* offset: 001c col: 8
-         *  name: Icon{Discovered}
-         *  type: 
-         */
-
-        /* offset: 0000 col: 9
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 10
-         *  name: Impression
-         *  type: 
-         */
-
-        /* offset: 0008 col: 11
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0020 col: 12
-         *  name: Icon{Undiscovered}
-         *  type: 
-         */
-
-        /* offset: 002b col: 13
-         *  name: IsInitial
-         *  type: 
-         */
-
 
 
         // col: 09 offset: 0000
@@ -169,7 +100,7 @@ namespace Lumina.Excel.GeneratedSheets
             MaxLevel = parser.ReadOffset< byte >( 0x2a );
 
             // col: 13 offset: 002b
-            packed2b = parser.ReadOffset< byte >( 0x2b );
+            packed2b = parser.ReadOffset< byte >( 0x2b, ExcelColumnDataType.UInt8 );
 
 
         }

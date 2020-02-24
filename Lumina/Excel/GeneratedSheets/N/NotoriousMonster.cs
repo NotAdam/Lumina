@@ -1,29 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "NotoriousMonster", columnHash: 0x307c9206 )]
     public class NotoriousMonster : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0004 col: 0
-         *  name: BNpcBase
-         *  type: 
-         */
-
-        /* offset: 000a col: 1
-         *  name: Rank
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: BNpcName
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000

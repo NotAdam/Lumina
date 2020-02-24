@@ -1,66 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PublicContent", columnHash: 0xd084c410 )]
     public class PublicContent : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 001e col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0014 col: 1
-         *  name: TimeLimit
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: MapIcon
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: TextData{Start}
-         *  type: 
-         */
-
-        /* offset: 000c col: 5
-         *  name: TextData{End}
-         *  type: 
-         */
-
-        /* offset: 0016 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 8
-         *  name: ContentFinderCondition
-         *  type: 
-         */
-
-        /* offset: 001a col: 9
-         *  name: AdditionalData
-         *  type: 
-         */
-
-        /* offset: 001f col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 11
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000

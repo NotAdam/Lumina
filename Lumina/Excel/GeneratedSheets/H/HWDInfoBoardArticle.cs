@@ -1,32 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDInfoBoardArticle", columnHash: 0x76cb5660 )]
     public class HWDInfoBoardArticle : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0006 col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0007 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Text
-         *  type: 
-         */
-
 
 
         // col: 04 offset: 0000
@@ -67,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown7 = parser.ReadOffset< byte >( 0x7 );
 
             // col: 3 offset: 0008
-            packed8 = parser.ReadOffset< byte >( 0x8 );
+            packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
 
 
         }

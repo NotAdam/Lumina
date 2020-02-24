@@ -1,34 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDContentBonus", columnHash: 0xb7d9b7a3 )]
     public class IKDContentBonus : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Objective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Requirement
-         *  type: 
-         */
-
-        /* offset: 000c col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Image
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: Order
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

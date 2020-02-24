@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DescriptionSection", columnHash: 0x2020acf6 )]
     public class DescriptionSection : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 0000 col: 0
-         *  name: String
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: Page
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

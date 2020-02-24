@@ -1,80 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ModelChara", columnHash: 0xc49c9dc2 )]
     public class ModelChara : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Model
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: Base
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: Variant
-         *  type: 
-         */
-
-        /* offset: 0002 col: 4
-         *  name: SEPack
-         *  type: 
-         */
-
-        /* offset: 0007 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 7
-         *  name: PapVariation
-         *  type: 
-         */
-
-        /* offset: 0008 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 15
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000
@@ -151,7 +82,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknowna = parser.ReadOffset< sbyte >( 0xa );
 
             // col: 6 offset: 000b
-            packedb = parser.ReadOffset< byte >( 0xb );
+            packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
 
 
         }

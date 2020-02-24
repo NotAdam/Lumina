@@ -1,37 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Stain", columnHash: 0xa2420e68 )]
     public class Stain : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Color
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Shade
-         *  type: 
-         */
-
-        /* offset: 0009 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000
@@ -73,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown9 = parser.ReadOffset< byte >( 0x9 );
 
             // col: 4 offset: 000a
-            packeda = parser.ReadOffset< byte >( 0xa );
+            packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
 
 
         }

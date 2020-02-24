@@ -1,38 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringPointBonus", columnHash: 0x1f29bd0d )]
     public class GatheringPointBonus : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Condition
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: ConditionValue
-         *  type: 
-         */
-
-        /* offset: 0002 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 3
-         *  name: BonusType
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: BonusValue
-         *  type: 
-         */
-
-        /* offset: 0006 col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

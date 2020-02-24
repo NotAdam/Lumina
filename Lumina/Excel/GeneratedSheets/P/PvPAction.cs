@@ -1,48 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PvPAction", columnHash: 0x3818ca1d )]
     public class PvPAction : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Action
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 5
-         *  name: GrandCompany
-         *  repeat count: 3
-         */
-
-        /* offset: 000b col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 8
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

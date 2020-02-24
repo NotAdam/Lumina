@@ -1,174 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MountCustomize", columnHash: 0x82bd7e3f )]
     public class MountCustomize : IExcelRow
     {
         // column defs from Wed, 24 Jul 2019 22:56:39 GMT
-
-        /* offset: 0030 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: HyurMaleScale
-         *  type: 
-         */
-
-        /* offset: 0002 col: 2
-         *  name: HyurFemaleScale
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: ElezenMaleScale
-         *  type: 
-         */
-
-        /* offset: 0006 col: 4
-         *  name: ElezenFemaleScale
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: LalaMaleScale
-         *  type: 
-         */
-
-        /* offset: 000a col: 6
-         *  name: LalaFemaleScale
-         *  type: 
-         */
-
-        /* offset: 000c col: 7
-         *  name: MiqoMaleScale
-         *  type: 
-         */
-
-        /* offset: 000e col: 8
-         *  name: MiqoFemaleScale
-         *  type: 
-         */
-
-        /* offset: 0010 col: 9
-         *  name: RoeMaleScale
-         *  type: 
-         */
-
-        /* offset: 0012 col: 10
-         *  name: RoeFemaleScale
-         *  type: 
-         */
-
-        /* offset: 0014 col: 11
-         *  name: AuRaMaleScale
-         *  type: 
-         */
-
-        /* offset: 0016 col: 12
-         *  name: AuRaFemaleScale
-         *  type: 
-         */
-
-        /* offset: 0018 col: 13
-         *  name: HrothgarMaleScale
-         *  type: 
-         */
-
-        /* offset: 001a col: 14
-         *  name: HrothgarFemaleScale
-         *  type: 
-         */
-
-        /* offset: 001c col: 15
-         *  name: VieraMaleScale
-         *  type: 
-         */
-
-        /* offset: 001e col: 16
-         *  name: VieraFemaleScale
-         *  type: 
-         */
-
-        /* offset: 0020 col: 17
-         *  name: HyurMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0021 col: 18
-         *  name: HyurFemaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0022 col: 19
-         *  name: ElezenMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0023 col: 20
-         *  name: ElezenFemaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0024 col: 21
-         *  name: LalaMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0025 col: 22
-         *  name: LalaFemaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0026 col: 23
-         *  name: MiqoMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0027 col: 24
-         *  name: MiqoFemaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0028 col: 25
-         *  name: RoeMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 0029 col: 26
-         *  name: RoeFemaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 002a col: 27
-         *  name: AuRaMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 002b col: 28
-         *  name: AuRaFemaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 002c col: 29
-         *  name: HrothgarMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 002d col: 30
-         *  name: HrothgarRoeFemaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 002e col: 31
-         *  name: VieraMaleCameraHeight
-         *  type: 
-         */
-
-        /* offset: 002f col: 32
-         *  name: VieraFemaleCameraHeight
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000
@@ -377,7 +214,7 @@ namespace Lumina.Excel.GeneratedSheets
             VieraFemaleCameraHeight = parser.ReadOffset< byte >( 0x2f );
 
             // col: 0 offset: 0030
-            packed30 = parser.ReadOffset< byte >( 0x30 );
+            packed30 = parser.ReadOffset< byte >( 0x30, ExcelColumnDataType.UInt8 );
 
 
         }

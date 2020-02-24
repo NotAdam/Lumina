@@ -1,121 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WarpLogic", columnHash: 0x4684fa1c )]
     public class WarpLogic : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0060 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005c col: 1
-         *  name: WarpName
-         *  type: 
-         */
-
-        /* offset: 0064 col: 2
-         *  name: CanSkipCutscene
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Function
-         *  repeat count: 10
-         */
-
-        /* offset: 0008 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0048 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 13
-         *  name: 
-         *  repeat count: 10
-         */
-
-        /* offset: 000c col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003c col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004c col: 22
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0050 col: 23
-         *  name: Question
-         *  type: 
-         */
-
-        /* offset: 0054 col: 24
-         *  name: Response{Yes}
-         *  type: 
-         */
-
-        /* offset: 0058 col: 25
-         *  name: Response{No}
-         *  type: 
-         */
-
 
 
         // col: 03 offset: 0000
@@ -194,7 +84,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown60 = parser.ReadOffset< uint >( 0x60 );
 
             // col: 2 offset: 0064
-            packed64 = parser.ReadOffset< byte >( 0x64 );
+            packed64 = parser.ReadOffset< byte >( 0x64, ExcelColumnDataType.UInt8 );
 
 
         }

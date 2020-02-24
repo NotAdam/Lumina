@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AchievementHideCondition", columnHash: 0x824c4ccf )]
     public class AchievementHideCondition : IExcelRow
     {
         // column defs from Wed, 31 Jul 2019 22:24:05 GMT
-
-        /* offset: 0000 col: 0
-         *  name: HideAchievement
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: HideName
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: HideConditions
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -38,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             // col: 0 offset: 0000
-            packed0 = parser.ReadOffset< byte >( 0x0 );
+            packed0 = parser.ReadOffset< byte >( 0x0, ExcelColumnDataType.UInt8 );
 
 
         }

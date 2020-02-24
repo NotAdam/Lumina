@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntOrder", columnHash: 0xa9aa9ab5 )]
     public class MobHuntOrder : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Target
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: NeededKills
-         *  type: 
-         */
-
-        /* offset: 0003 col: 2
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: Rank
-         *  type: 
-         */
-
-        /* offset: 0005 col: 4
-         *  name: MobHuntReward
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

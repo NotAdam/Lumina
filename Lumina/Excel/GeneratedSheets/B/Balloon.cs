@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Balloon", columnHash: 0x9d1b5f4b )]
     public class Balloon : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Slowly
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Dialogue
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000
@@ -37,7 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
             Dialogue = parser.ReadOffset< string >( 0x0 );
 
             // col: 0 offset: 0004
-            packed4 = parser.ReadOffset< byte >( 0x4 );
+            packed4 = parser.ReadOffset< byte >( 0x4, ExcelColumnDataType.UInt8 );
 
 
         }

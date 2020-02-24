@@ -1,227 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ClassJob", columnHash: 0xc6d83eda )]
     public class ClassJob : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Abbreviation
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004e col: 3
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
-        /* offset: 005b col: 4
-         *  name: ExpArrayIndex
-         *  type: 
-         */
-
-        /* offset: 005c col: 5
-         *  name: BattleClassIndex
-         *  type: 
-         */
-
-        /* offset: 004f col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0050 col: 7
-         *  name: JobIndex
-         *  type: 
-         */
-
-        /* offset: 005d col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 9
-         *  name: Modifier{HitPoints}
-         *  type: 
-         */
-
-        /* offset: 002e col: 10
-         *  name: Modifier{ManaPoints}
-         *  type: 
-         */
-
-        /* offset: 0030 col: 11
-         *  name: Modifier{Strength}
-         *  type: 
-         */
-
-        /* offset: 0032 col: 12
-         *  name: Modifier{Vitality}
-         *  type: 
-         */
-
-        /* offset: 0034 col: 13
-         *  name: Modifier{Dexterity}
-         *  type: 
-         */
-
-        /* offset: 0036 col: 14
-         *  name: Modifier{Intelligence}
-         *  type: 
-         */
-
-        /* offset: 0038 col: 15
-         *  name: Modifier{Mind}
-         *  type: 
-         */
-
-        /* offset: 003a col: 16
-         *  name: Modifier{Piety}
-         *  type: 
-         */
-
-        /* offset: 003c col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003e col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0042 col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0046 col: 22
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0051 col: 23
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0052 col: 24
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0053 col: 25
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0054 col: 26
-         *  name: ClassJob{Parent}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 27
-         *  name: Name{English}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 28
-         *  name: Item{StartingWeapon}
-         *  type: 
-         */
-
-        /* offset: 0028 col: 29
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0055 col: 30
-         *  name: Role
-         *  type: 
-         */
-
-        /* offset: 0056 col: 31
-         *  name: StartingTown
-         *  type: 
-         */
-
-        /* offset: 005e col: 32
-         *  name: MonsterNote
-         *  type: 
-         */
-
-        /* offset: 0057 col: 33
-         *  name: PrimaryStat
-         *  type: 
-         */
-
-        /* offset: 0048 col: 34
-         *  name: LimitBreak1
-         *  type: 
-         */
-
-        /* offset: 004a col: 35
-         *  name: LimitBreak2
-         *  type: 
-         */
-
-        /* offset: 004c col: 36
-         *  name: LimitBreak3
-         *  type: 
-         */
-
-        /* offset: 0058 col: 37
-         *  name: UIPriority
-         *  type: 
-         */
-
-        /* offset: 0014 col: 38
-         *  name: Item{SoulCrystal}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 39
-         *  name: UnlockQuest
-         *  type: 
-         */
-
-        /* offset: 001c col: 40
-         *  name: RelicQuest
-         *  type: 
-         */
-
-        /* offset: 0020 col: 41
-         *  name: Prerequisite
-         *  type: 
-         */
-
-        /* offset: 0059 col: 42
-         *  name: StartingLevel
-         *  type: 
-         */
-
-        /* offset: 005a col: 43
-         *  name: PartyBonus
-         *  type: 
-         */
-
-        /* offset: 005f col: 44
-         *  name: IsLimitedJob
-         *  type: 
-         */
-
-        /* offset: 000c col: 45
-         *  name: CanQueueForDuty
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -383,7 +167,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown8 = parser.ReadOffset< string >( 0x8 );
 
             // col: 45 offset: 000c
-            packedc = parser.ReadOffset< byte >( 0xc );
+            packedc = parser.ReadOffset< byte >( 0xc, ExcelColumnDataType.UInt8 );
 
             // col: 27 offset: 0010
             NameEnglish = parser.ReadOffset< string >( 0x10 );
@@ -509,7 +293,7 @@ namespace Lumina.Excel.GeneratedSheets
             MonsterNote = parser.ReadOffset< sbyte >( 0x5e );
 
             // col: 44 offset: 005f
-            packed5f = parser.ReadOffset< byte >( 0x5f );
+            packed5f = parser.ReadOffset< byte >( 0x5f, ExcelColumnDataType.UInt8 );
 
 
         }

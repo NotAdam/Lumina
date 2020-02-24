@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuidePage", columnHash: 0x5bfa8a4e )]
     public class GuidePage : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Key
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Output
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

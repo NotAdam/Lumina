@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DawnQuestAnnounce", columnHash: 0xf8bddb48 )]
     public class DawnQuestAnnounce : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Quest
-         *  type: 
-         */
-
-        /* offset: 001c col: 1
-         *  name: Content
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: ENPC
-         *  repeat count: 6
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 7
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

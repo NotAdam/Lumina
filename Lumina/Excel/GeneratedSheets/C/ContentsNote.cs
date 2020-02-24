@@ -1,80 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentsNote", columnHash: 0x748963d8 )]
     public class ContentsNote : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0024 col: 0
-         *  name: ContentType
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0025 col: 2
-         *  name: MenuOrder
-         *  type: 
-         */
-
-        /* offset: 0010 col: 3
-         *  name: RequiredAmount
-         *  type: 
-         */
-
-        /* offset: 0026 col: 4
-         *  name: Reward[0]
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: ExpMultiplier
-         *  type: 
-         */
-
-        /* offset: 0027 col: 6
-         *  name: Reward[1]
-         *  type: 
-         */
-
-        /* offset: 0018 col: 7
-         *  name: GilRward
-         *  type: 
-         */
-
-        /* offset: 0020 col: 8
-         *  name: LevelUnlock
-         *  type: 
-         */
-
-        /* offset: 0022 col: 9
-         *  name: HowTo
-         *  type: 
-         */
-
-        /* offset: 0008 col: 10
-         *  name: ReqUnlock
-         *  type: 
-         */
-
-        /* offset: 0000 col: 11
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 12
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 001c col: 13
-         *  name: ExpCap
-         *  type: 
-         */
-
 
 
         // col: 11 offset: 0000

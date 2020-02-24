@@ -1,50 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GimmickAccessor", columnHash: 0xc4f527f3 )]
     public class GimmickAccessor : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0018 col: 0
-         *  name: Param0
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Param1
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Param2
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 8
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000
@@ -104,7 +65,7 @@ namespace Lumina.Excel.GeneratedSheets
             Param0 = parser.ReadOffset< int >( 0x18 );
 
             // col: 7 offset: 001c
-            packed1c = parser.ReadOffset< byte >( 0x1c );
+            packed1c = parser.ReadOffset< byte >( 0x1c, ExcelColumnDataType.UInt8 );
 
 
         }

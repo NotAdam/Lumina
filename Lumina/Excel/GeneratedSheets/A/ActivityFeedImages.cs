@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActivityFeedImages", columnHash: 0x530c5199 )]
     public class ActivityFeedImages : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: ExpansionImage
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: ActivityFeedJA
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: ActivityFeedEN
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: ActivityFeedDE
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: ActivityFeedFR
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

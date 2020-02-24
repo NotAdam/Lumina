@@ -1,120 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishingSpot", columnHash: 0x0a291860 )]
     public class FishingSpot : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 003e col: 0
-         *  name: GatheringLevel
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: BigFish{OnReach}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: BigFish{OnEnd}
-         *  type: 
-         */
-
-        /* offset: 003f col: 3
-         *  name: FishingSpotCategory
-         *  type: 
-         */
-
-        /* offset: 0042 col: 4
-         *  name: Rare
-         *  type: 
-         */
-
-        /* offset: 0030 col: 5
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 0032 col: 6
-         *  name: PlaceName{Main}
-         *  type: 
-         */
-
-        /* offset: 0034 col: 7
-         *  name: PlaceName{Sub}
-         *  type: 
-         */
-
-        /* offset: 003a col: 8
-         *  name: X
-         *  type: 
-         */
-
-        /* offset: 003c col: 9
-         *  name: Z
-         *  type: 
-         */
-
-        /* offset: 0036 col: 10
-         *  name: Radius
-         *  type: 
-         */
-
-        /* offset: 0040 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 12
-         *  name: Item
-         *  repeat count: 10
-         */
-
-        /* offset: 000c col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 22
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 0041 col: 23
-         *  name: Order
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000
@@ -225,7 +116,7 @@ namespace Lumina.Excel.GeneratedSheets
             Order = parser.ReadOffset< byte >( 0x41 );
 
             // col: 4 offset: 0042
-            packed42 = parser.ReadOffset< byte >( 0x42 );
+            packed42 = parser.ReadOffset< byte >( 0x42, ExcelColumnDataType.UInt8 );
 
 
         }

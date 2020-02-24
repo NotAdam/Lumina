@@ -1,97 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EventItem", columnHash: 0x2a1d4fb2 )]
     public class EventItem : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Singular
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: Adjective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Plural
-         *  type: 
-         */
-
-        /* offset: 000d col: 3
-         *  name: PossessivePronoun
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: StartsWithVowel
-         *  type: 
-         */
-
-        /* offset: 000f col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 6
-         *  name: Pronoun
-         *  type: 
-         */
-
-        /* offset: 0011 col: 7
-         *  name: Article
-         *  type: 
-         */
-
-        /* offset: 0012 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 9
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0018 col: 10
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 001a col: 11
-         *  name: Action
-         *  type: 
-         */
-
-        /* offset: 001c col: 12
-         *  name: StackSize
-         *  type: 
-         */
-
-        /* offset: 001d col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 14
-         *  name: Quest
-         *  type: 
-         */
-
-        /* offset: 001e col: 15
-         *  name: CastTime
-         *  type: 
-         */
-
-        /* offset: 001f col: 16
-         *  name: CastTimeline
-         *  type: 
-         */
-
-        /* offset: 0020 col: 17
-         *  name: Timeline
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -186,7 +100,7 @@ namespace Lumina.Excel.GeneratedSheets
             Article = parser.ReadOffset< sbyte >( 0x11 );
 
             // col: 8 offset: 0012
-            packed12 = parser.ReadOffset< byte >( 0x12 );
+            packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
 
             // col: 14 offset: 0014
             Quest = parser.ReadOffset< uint >( 0x14 );

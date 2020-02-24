@@ -1,34 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActivityFeedButtons", columnHash: 0x20072d40 )]
     public class ActivityFeedButtons : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0010 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: BannerURL
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Language
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: PictureURL
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

@@ -1,113 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Emote", columnHash: 0xc4735d67 )]
     public class Emote : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: ActionTimeline
-         *  repeat count: 7
-         */
-
-        /* offset: 000e col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0022 col: 11
-         *  name: EmoteCategory
-         *  type: 
-         */
-
-        /* offset: 0023 col: 12
-         *  name: EmoteMode
-         *  type: 
-         */
-
-        /* offset: 0024 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 15
-         *  name: HasCancelEmote
-         *  type: 
-         */
-
-        /* offset: 0024 col: 16
-         *  name: DrawsWeapon
-         *  type: 
-         */
-
-        /* offset: 001a col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 18
-         *  name: TextCommand
-         *  type: 
-         */
-
-        /* offset: 001c col: 19
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 001e col: 20
-         *  name: LogMessage{Targeted}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 21
-         *  name: LogMessage{Untargeted}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 22
-         *  name: UnlockLink
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -197,7 +95,7 @@ namespace Lumina.Excel.GeneratedSheets
             EmoteMode = parser.ReadOffset< byte >( 0x23 );
 
             // col: 8 offset: 0024
-            packed24 = parser.ReadOffset< byte >( 0x24 );
+            packed24 = parser.ReadOffset< byte >( 0x24, ExcelColumnDataType.UInt8 );
 
 
         }

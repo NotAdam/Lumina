@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Lumina.Data;
 using Lumina.Excel;
-using Lumina.Excel.Sheets;
+using Lumina.Excel.GeneratedSheets;
 
 namespace Lumina.Example
 {
@@ -66,7 +66,7 @@ namespace Lumina.Example
             
             foreach( var row in atRows )
             {
-                Console.WriteLine( $"name: {row.Name}" );
+                Console.WriteLine( $"name: {row.Key}" );
             }
             
             var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
@@ -74,7 +74,7 @@ namespace Lumina.Example
             
             foreach( var row in zsgRows )
             {
-                Console.WriteLine( $"ZoneSharedGroup({row.RowId}.{row.SubRowId}) col0: {row.col0}" );
+                Console.WriteLine( $"ZoneSharedGroup({row.RowId}.{row.SubRowId}) quest1: {row.Quest1}" );
             }
             
             

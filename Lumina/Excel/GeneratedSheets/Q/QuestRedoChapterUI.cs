@@ -1,58 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestRedoChapterUI", columnHash: 0x4d7d2656 )]
     public class QuestRedoChapterUI : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 000c col: 0
-         *  name: Quest
-         *  type: 
-         */
-
-        /* offset: 001c col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001d col: 2
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 001e col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 4
-         *  name: QuestRedoUISmall
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: QuestRedoUILarge
-         *  type: 
-         */
-
-        /* offset: 0018 col: 6
-         *  name: QuestRedoUIWide
-         *  type: 
-         */
-
-        /* offset: 0000 col: 7
-         *  name: ChapterName
-         *  type: 
-         */
-
-        /* offset: 0004 col: 8
-         *  name: ChapterPart
-         *  type: 
-         */
-
-        /* offset: 0008 col: 9
-         *  name: Transient
-         *  type: 
-         */
-
 
 
         // col: 07 offset: 0000

@@ -1,49 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PetAction", columnHash: 0x5e492849 )]
     public class PetAction : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: Action
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: Pet
-         *  type: 
-         */
-
-        /* offset: 000f col: 5
-         *  name: MasterOrder
-         *  type: 
-         */
-
-        /* offset: 000f col: 6
-         *  name: DisableOrder
-         *  type: 
-         */
-
-        /* offset: 000f col: 7
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -92,7 +54,7 @@ namespace Lumina.Excel.GeneratedSheets
             Pet = parser.ReadOffset< byte >( 0xe );
 
             // col: 5 offset: 000f
-            packedf = parser.ReadOffset< byte >( 0xf );
+            packedf = parser.ReadOffset< byte >( 0xf, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestChapter", columnHash: 0x5edc18ea )]
     public class QuestChapter : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Quest
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Redo
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

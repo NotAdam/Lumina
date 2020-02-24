@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutsceneWorkIndex", columnHash: 0xd870e208 )]
     public class CutsceneWorkIndex : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: WorkIndex
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

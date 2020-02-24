@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntTarget", columnHash: 0x83a7f541 )]
     public class MobHuntTarget : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0006 col: 1
-         *  name: FATE
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: PlaceName
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000

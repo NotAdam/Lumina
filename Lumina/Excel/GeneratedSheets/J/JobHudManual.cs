@@ -1,36 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "JobHudManual", columnHash: 0x21d1dec2 )]
     public class JobHudManual : IExcelRow
     {
         // column defs from Wed, 31 Jul 2019 22:24:05 GMT
-
-        /* offset: 000a col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Action
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 5
-         *  name: Guide
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000

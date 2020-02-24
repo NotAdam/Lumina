@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyLeveRule", columnHash: 0xcc3ad729 )]
     public class CompanyLeveRule : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Objective
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  name: Help
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

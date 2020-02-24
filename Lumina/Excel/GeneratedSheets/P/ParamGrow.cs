@@ -1,85 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ParamGrow", columnHash: 0x64a92445 )]
     public class ParamGrow : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: ExpToNext
-         *  type: 
-         */
-
-        /* offset: 0024 col: 1
-         *  name: AdditionalActions
-         *  type: 
-         */
-
-        /* offset: 0025 col: 2
-         *  name: ApplyAction
-         *  type: 
-         */
-
-        /* offset: 0018 col: 3
-         *  name: ScaledQuestXP
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: MpModifier
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: BaseSpeed
-         *  type: 
-         */
-
-        /* offset: 000c col: 6
-         *  name: LevelModifier
-         *  type: 
-         */
-
-        /* offset: 0026 col: 7
-         *  name: QuestExpModifier
-         *  type: 
-         */
-
-        /* offset: 001a col: 8
-         *  name: HpModifier
-         *  type: 
-         */
-
-        /* offset: 0010 col: 9
-         *  name: HuntingLogExpReward
-         *  type: 
-         */
-
-        /* offset: 0014 col: 10
-         *  name: MonsterNoteSeals
-         *  type: 
-         */
-
-        /* offset: 001c col: 11
-         *  name: ItemLevelSync
-         *  type: 
-         */
-
-        /* offset: 001e col: 12
-         *  name: ProperDungeon
-         *  type: 
-         */
-
-        /* offset: 0020 col: 13
-         *  name: ProperGuildOrder
-         *  type: 
-         */
-
-        /* offset: 0022 col: 14
-         *  name: CraftingLevel
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

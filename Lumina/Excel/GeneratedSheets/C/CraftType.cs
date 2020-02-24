@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftType", columnHash: 0xb92c9b70 )]
     public class CraftType : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: MainPhysical
-         *  type: 
-         */
-
-        /* offset: 0005 col: 1
-         *  name: SubPhysical
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000

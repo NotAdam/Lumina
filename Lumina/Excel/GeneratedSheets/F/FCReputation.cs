@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCReputation", columnHash: 0x3d6be37e )]
     public class FCReputation : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: PointsToNext
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: RequiredPoints
-         *  type: 
-         */
-
-        /* offset: 0010 col: 2
-         *  name: DiscountRate
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: Color
-         *  type: 
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 04 offset: 0000

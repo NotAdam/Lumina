@@ -1,70 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Warp", columnHash: 0x1a234b7b )]
     public class Warp : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 0008 col: 0
-         *  name: PopRange
-         *  type: 
-         */
-
-        /* offset: 0018 col: 1
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 000c col: 2
-         *  name: ConditionSuccessEvent
-         *  type: 
-         */
-
-        /* offset: 0010 col: 3
-         *  name: ConditionFailEvent
-         *  type: 
-         */
-
-        /* offset: 0014 col: 4
-         *  name: ConfirmEvent
-         *  type: 
-         */
-
-        /* offset: 001a col: 5
-         *  name: WarpCondition
-         *  type: 
-         */
-
-        /* offset: 001c col: 6
-         *  name: WarpLogic
-         *  type: 
-         */
-
-        /* offset: 001e col: 7
-         *  name: StartCutscene
-         *  type: 
-         */
-
-        /* offset: 0020 col: 8
-         *  name: EndCutscene
-         *  type: 
-         */
-
-        /* offset: 0022 col: 9
-         *  name: CanSkipCutscene
-         *  type: 
-         */
-
-        /* offset: 0000 col: 10
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 11
-         *  name: Question
-         *  type: 
-         */
-
 
 
         // col: 10 offset: 0000
@@ -147,7 +88,7 @@ namespace Lumina.Excel.GeneratedSheets
             EndCutscene = parser.ReadOffset< ushort >( 0x20 );
 
             // col: 9 offset: 0022
-            packed22 = parser.ReadOffset< byte >( 0x22 );
+            packed22 = parser.ReadOffset< byte >( 0x22, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,59 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SubmarinePart", columnHash: 0xc971f464 )]
     public class SubmarinePart : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 000c col: 0
-         *  name: Slot
-         *  type: 
-         */
-
-        /* offset: 000d col: 1
-         *  name: Rank
-         *  type: 
-         */
-
-        /* offset: 000e col: 2
-         *  name: Components
-         *  type: 
-         */
-
-        /* offset: 0002 col: 3
-         *  name: Surveillance
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: Retrieval
-         *  type: 
-         */
-
-        /* offset: 0006 col: 5
-         *  name: Speed
-         *  type: 
-         */
-
-        /* offset: 0008 col: 6
-         *  name: Range
-         *  type: 
-         */
-
-        /* offset: 000a col: 7
-         *  name: Favor
-         *  type: 
-         */
-
-        /* offset: 0000 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 9
-         *  name: RepairMaterials
-         *  type: 
-         */
-
 
 
         // col: 08 offset: 0000

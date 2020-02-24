@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionComboRoute", columnHash: 0xc4b3400f )]
     public class ActionComboRoute : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Action
-         *  repeat count: 4
-         */
-
-        /* offset: 0006 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 6
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -73,7 +44,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknownc = parser.ReadOffset< sbyte >( 0xc );
 
             // col: 6 offset: 000d
-            packedd = parser.ReadOffset< byte >( 0xd );
+            packedd = parser.ReadOffset< byte >( 0xd, ExcelColumnDataType.UInt8 );
 
 
         }

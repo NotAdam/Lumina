@@ -1,51 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDRoute", columnHash: 0x9a3e7720 )]
     public class IKDRoute : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Spot
-         *  repeat count: 5
-         */
-
-        /* offset: 0018 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 5
-         *  name: TimeDefine
-         *  type: 
-         */
-
-        /* offset: 0010 col: 6
-         *  name: Image
-         *  type: 
-         */
-
-        /* offset: 0014 col: 7
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 0000 col: 8
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 08 offset: 0000

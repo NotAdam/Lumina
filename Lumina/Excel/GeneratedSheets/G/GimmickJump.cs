@@ -1,39 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GimmickJump", columnHash: 0x4858f2f1 )]
     public class GimmickJump : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0008 col: 0
-         *  name: FallDamage
-         *  type: 
-         */
-
-        /* offset: 000a col: 1
-         *  name: Height
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: LoopMotion
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: EndMotion
-         *  type: 
-         */
-
-        /* offset: 000b col: 4
-         *  name: StartClient
-         *  type: 
-         */
-
-        /* offset: 000b col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000
@@ -75,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             Height = parser.ReadOffset< sbyte >( 0xa );
 
             // col: 4 offset: 000b
-            packedb = parser.ReadOffset< byte >( 0xb );
+            packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
 
 
         }

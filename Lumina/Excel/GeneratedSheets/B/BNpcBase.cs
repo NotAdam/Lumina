@@ -1,108 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcBase", columnHash: 0xdd911c47 )]
     public class BNpcBase : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Behavior
-         *  type: 
-         */
-
-        /* offset: 0012 col: 1
-         *  name: Battalion
-         *  type: 
-         */
-
-        /* offset: 0013 col: 2
-         *  name: LinkRace
-         *  type: 
-         */
-
-        /* offset: 0014 col: 3
-         *  name: Rank
-         *  type: 
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Scale
-         *  type: 
-         */
-
-        /* offset: 000a col: 5
-         *  name: ModelChara
-         *  type: 
-         */
-
-        /* offset: 000c col: 6
-         *  name: BNpcCustomize
-         *  type: 
-         */
-
-        /* offset: 000e col: 7
-         *  name: NpcEquip
-         *  type: 
-         */
-
-        /* offset: 0010 col: 8
-         *  name: Special
-         *  type: 
-         */
-
-        /* offset: 0015 col: 9
-         *  name: SEPack
-         *  type: 
-         */
-
-        /* offset: 001a col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 11
-         *  name: ArrayEventHandler
-         *  type: 
-         */
-
-        /* offset: 0016 col: 12
-         *  name: BNpcParts
-         *  type: 
-         */
-
-        /* offset: 001a col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 14
-         *  name: IsTargetLine
-         *  type: 
-         */
-
-        /* offset: 001a col: 15
-         *  name: IsDisplayLevel
-         *  type: 
-         */
-
-        /* offset: 001a col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 20
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 04 offset: 0000
@@ -214,7 +117,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown19 = parser.ReadOffset< byte >( 0x19 );
 
             // col: 10 offset: 001a
-            packed1a = parser.ReadOffset< byte >( 0x1a );
+            packed1a = parser.ReadOffset< byte >( 0x1a, ExcelColumnDataType.UInt8 );
 
 
         }

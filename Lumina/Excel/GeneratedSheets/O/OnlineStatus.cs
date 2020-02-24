@@ -1,34 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OnlineStatus", columnHash: 0xd87db84c )]
     public class OnlineStatus : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0009 col: 0
-         *  name: List
-         *  type: 
-         */
-
-        /* offset: 0009 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Priority
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: Icon
-         *  type: 
-         */
-
 
 
         // col: 03 offset: 0000
@@ -64,7 +41,7 @@ namespace Lumina.Excel.GeneratedSheets
             Priority = parser.ReadOffset< byte >( 0x8 );
 
             // col: 0 offset: 0009
-            packed9 = parser.ReadOffset< byte >( 0x9 );
+            packed9 = parser.ReadOffset< byte >( 0x9, ExcelColumnDataType.UInt8 );
 
 
         }

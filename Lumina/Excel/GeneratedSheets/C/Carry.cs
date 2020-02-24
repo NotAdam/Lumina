@@ -1,28 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Carry", columnHash: 0x31e1f9e6 )]
     public class Carry : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Model
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Timeline
-         *  type: 
-         */
-
-        /* offset: 0009 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 3
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

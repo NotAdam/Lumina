@@ -1,69 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SubmarineExploration", columnHash: 0xff922bb4 )]
     public class SubmarineExploration : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Destination
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Location
-         *  type: 
-         */
-
-        /* offset: 000e col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 8
-         *  name: RankReq
-         *  type: 
-         */
-
-        /* offset: 0017 col: 9
-         *  name: CeruleumTankReq
-         *  type: 
-         */
-
-        /* offset: 000c col: 10
-         *  name: Duration<min>
-         *  type: 
-         */
-
-        /* offset: 0018 col: 11
-         *  name: DistanceForSurvey
-         *  type: 
-         */
-
-        /* offset: 0008 col: 12
-         *  name: ExpReward
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -152,7 +94,7 @@ namespace Lumina.Excel.GeneratedSheets
             DistanceForSurvey = parser.ReadOffset< byte >( 0x18 );
 
             // col: 6 offset: 0019
-            packed19 = parser.ReadOffset< byte >( 0x19 );
+            packed19 = parser.ReadOffset< byte >( 0x19, ExcelColumnDataType.UInt8 );
 
 
         }

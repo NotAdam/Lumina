@@ -1,19 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuideTitle", columnHash: 0x9db0e48f )]
     public class GuideTitle : IExcelRow
     {
         // column defs from Wed, 31 Jul 2019 22:24:05 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Title
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

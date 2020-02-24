@@ -1,28 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastReputationRank", columnHash: 0x446d8bad )]
     public class BeastReputationRank : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 000c col: 0
-         *  name: RequiredReputation
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

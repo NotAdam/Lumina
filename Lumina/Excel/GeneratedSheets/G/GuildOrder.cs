@@ -1,87 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuildOrder", columnHash: 0xbdf9fa30 )]
     public class GuildOrder : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0038 col: 0
-         *  name: ENpc[Name]
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Objective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Description{1}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Description{2}
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: Description{3}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 5
-         *  name: CompletionBonusExp
-         *  type: 
-         */
-
-        /* offset: 0014 col: 6
-         *  name: RewardExp
-         *  type: 
-         */
-
-        /* offset: 0018 col: 7
-         *  name: CompletionBonusGil
-         *  type: 
-         */
-
-        /* offset: 001c col: 8
-         *  name: RewardGil
-         *  type: 
-         */
-
-        /* offset: 0020 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0032 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0035 col: 16
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

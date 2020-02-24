@@ -1,19 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDSharedGroupControlParam", columnHash: 0xde74b4c4 )]
     public class HWDSharedGroupControlParam : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0001 col: 1
-         *  name: ParamValue
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

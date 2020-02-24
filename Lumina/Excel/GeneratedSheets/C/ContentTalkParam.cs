@@ -1,36 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentTalkParam", columnHash: 0xd4cefacf )]
     public class ContentTalkParam : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Param
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 2
-         *  name: TestAction
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0007 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0005 col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000
@@ -77,7 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown7 = parser.ReadOffset< sbyte >( 0x7 );
 
             // col: 0 offset: 0008
-            packed8 = parser.ReadOffset< byte >( 0x8 );
+            packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
 
 
         }

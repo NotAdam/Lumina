@@ -1,34 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingMapMarkerInfo", columnHash: 0x13236296 )]
     public class HousingMapMarkerInfo : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: X
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Y
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Z
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 4
-         *  name: Map
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

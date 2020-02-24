@@ -1,86 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ModelSkeleton", columnHash: 0x94cc54f1 )]
     public class ModelSkeleton : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Radius
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Height
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: VFXScale
-         *  type: 
-         */
-
-        /* offset: 0014 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0022 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 11
-         *  name: FloatHeight
-         *  type: 
-         */
-
-        /* offset: 0010 col: 12
-         *  name: FloatDown
-         *  type: 
-         */
-
-        /* offset: 0024 col: 13
-         *  name: FloatUp
-         *  type: 
-         */
-
-        /* offset: 0026 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 15
-         *  name: MotionBlendType
-         *  type: 
-         */
-
-        /* offset: 0027 col: 16
-         *  name: LoopFlySE
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -193,7 +118,7 @@ namespace Lumina.Excel.GeneratedSheets
             LoopFlySE = parser.ReadOffset< byte >( 0x27 );
 
             // col: 15 offset: 0028
-            packed28 = parser.ReadOffset< byte >( 0x28 );
+            packed28 = parser.ReadOffset< byte >( 0x28, ExcelColumnDataType.UInt8 );
 
 
         }

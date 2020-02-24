@@ -1,32 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Currency", columnHash: 0x072e6fd8 )]
     public class Currency : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 3
-         *  name: Limit
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -67,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown9 = parser.ReadOffset< byte >( 0x9 );
 
             // col: 4 offset: 000a
-            packeda = parser.ReadOffset< byte >( 0xa );
+            packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,71 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyCraftSequence", columnHash: 0x6d444cc1 )]
     public class CompanyCraftSequence : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0004 col: 0
-         *  name: ResultItem
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 2
-         *  name: CompanyCraftDraftCategory
-         *  type: 
-         */
-
-        /* offset: 0010 col: 3
-         *  name: CompanyCraftType
-         *  type: 
-         */
-
-        /* offset: 0014 col: 4
-         *  name: CompanyCraftDraft
-         *  type: 
-         */
-
-        /* offset: 0018 col: 5
-         *  name: CompanyCraftPart
-         *  repeat count: 8
-         */
-
-        /* offset: 001a col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0022 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0026 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 13
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 13 offset: 0000

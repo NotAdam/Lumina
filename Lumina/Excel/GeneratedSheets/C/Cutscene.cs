@@ -1,43 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Cutscene", columnHash: 0x35b9ac80 )]
     public class Cutscene : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Path
-         *  type: 
-         */
-
-        /* offset: 0014 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -96,7 +64,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown15 = parser.ReadOffset< byte >( 0x15 );
 
             // col: 3 offset: 0016
-            packed16 = parser.ReadOffset< byte >( 0x16 );
+            packed16 = parser.ReadOffset< byte >( 0x16, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGM", columnHash: 0xc9fc6953 )]
     public class BGM : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: File
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Priority
-         *  type: 
-         */
-
-        /* offset: 000a col: 2
-         *  name: DisableRestartTimeOut
-         *  type: 
-         */
-
-        /* offset: 000a col: 3
-         *  name: DisableRestart
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: PassEnd
-         *  type: 
-         */
-
-        /* offset: 0004 col: 5
-         *  name: DisableRestartResetTime
-         *  type: 
-         */
-
-        /* offset: 0009 col: 6
-         *  name: SpecialMode
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -82,7 +48,7 @@ namespace Lumina.Excel.GeneratedSheets
             SpecialMode = parser.ReadOffset< byte >( 0x9 );
 
             // col: 2 offset: 000a
-            packeda = parser.ReadOffset< byte >( 0xa );
+            packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
 
 
         }

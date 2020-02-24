@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMSituation", columnHash: 0x64a88f98 )]
     public class BGMSituation : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: DaytimeID
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: NightID
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: BattleID
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: DaybreakID
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: TwilightID
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

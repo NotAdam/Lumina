@@ -1,80 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EquipSlotCategory", columnHash: 0xf4ab6454 )]
     public class EquipSlotCategory : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: MainHand
-         *  type: 
-         */
-
-        /* offset: 0001 col: 1
-         *  name: OffHand
-         *  type: 
-         */
-
-        /* offset: 0002 col: 2
-         *  name: Head
-         *  type: 
-         */
-
-        /* offset: 0003 col: 3
-         *  name: Body
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: Gloves
-         *  type: 
-         */
-
-        /* offset: 0005 col: 5
-         *  name: Waist
-         *  type: 
-         */
-
-        /* offset: 0006 col: 6
-         *  name: Legs
-         *  type: 
-         */
-
-        /* offset: 0007 col: 7
-         *  name: Feet
-         *  type: 
-         */
-
-        /* offset: 0008 col: 8
-         *  name: Ears
-         *  type: 
-         */
-
-        /* offset: 0009 col: 9
-         *  name: Neck
-         *  type: 
-         */
-
-        /* offset: 000a col: 10
-         *  name: Wrists
-         *  type: 
-         */
-
-        /* offset: 000b col: 11
-         *  name: FingerL
-         *  type: 
-         */
-
-        /* offset: 000c col: 12
-         *  name: FingerR
-         *  type: 
-         */
-
-        /* offset: 000d col: 13
-         *  name: SoulCrystal
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

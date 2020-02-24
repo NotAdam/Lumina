@@ -1,39 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Relic3", columnHash: 0xeb3c566a )]
     public class Relic3 : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item{Animus}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Item{Scroll}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 2
-         *  name: MateriaLimit
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Item{Novus}
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0011 col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

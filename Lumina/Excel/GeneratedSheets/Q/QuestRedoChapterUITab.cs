@@ -1,29 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestRedoChapterUITab", columnHash: 0x198356e8 )]
     public class QuestRedoChapterUITab : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 000c col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Icon1
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Icon2
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Text
-         *  type: 
-         */
-
 
 
         // col: 03 offset: 0000

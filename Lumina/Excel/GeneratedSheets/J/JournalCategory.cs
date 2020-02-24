@@ -1,30 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "JournalCategory", columnHash: 0xc5670d26 )]
     public class JournalCategory : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: SeparateType
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: DataType
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: JournalSection
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

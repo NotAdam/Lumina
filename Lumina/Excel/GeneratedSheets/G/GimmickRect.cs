@@ -1,59 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GimmickRect", columnHash: 0x9be6d434 )]
     public class GimmickRect : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: LayoutID
-         *  type: 
-         */
-
-        /* offset: 0024 col: 1
-         *  name: TriggerIn
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Param0
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0025 col: 6
-         *  name: TriggerOut
-         *  type: 
-         */
-
-        /* offset: 0014 col: 7
-         *  name: Param1
-         *  type: 
-         */
-
-        /* offset: 0018 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

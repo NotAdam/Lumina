@@ -1,109 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftAction", columnHash: 0x6057073b )]
     public class CraftAction : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 002c col: 2
-         *  name: Animation{Start}
-         *  type: 
-         */
-
-        /* offset: 002e col: 3
-         *  name: Animation{End}
-         *  type: 
-         */
-
-        /* offset: 0030 col: 4
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0037 col: 5
-         *  name: ClassJob
-         *  type: 
-         */
-
-        /* offset: 0034 col: 6
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
-        /* offset: 0035 col: 7
-         *  name: ClassJobLevel
-         *  type: 
-         */
-
-        /* offset: 0008 col: 8
-         *  name: QuestRequirement
-         *  type: 
-         */
-
-        /* offset: 0038 col: 9
-         *  name: Specialist
-         *  type: 
-         */
-
-        /* offset: 0032 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0036 col: 11
-         *  name: Cost
-         *  type: 
-         */
-
-        /* offset: 000c col: 12
-         *  name: CRP
-         *  type: 
-         */
-
-        /* offset: 0010 col: 13
-         *  name: BSM
-         *  type: 
-         */
-
-        /* offset: 0014 col: 14
-         *  name: ARM
-         *  type: 
-         */
-
-        /* offset: 0018 col: 15
-         *  name: GSM
-         *  type: 
-         */
-
-        /* offset: 001c col: 16
-         *  name: LTW
-         *  type: 
-         */
-
-        /* offset: 0020 col: 17
-         *  name: WVR
-         *  type: 
-         */
-
-        /* offset: 0024 col: 18
-         *  name: ALC
-         *  type: 
-         */
-
-        /* offset: 0028 col: 19
-         *  name: CUL
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -234,7 +136,7 @@ namespace Lumina.Excel.GeneratedSheets
             ClassJob = parser.ReadOffset< sbyte >( 0x37 );
 
             // col: 9 offset: 0038
-            packed38 = parser.ReadOffset< byte >( 0x38 );
+            packed38 = parser.ReadOffset< byte >( 0x38, ExcelColumnDataType.UInt8 );
 
 
         }

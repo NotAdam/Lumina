@@ -1,60 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MoveTimeline", columnHash: 0xf057da9c )]
     public class MoveTimeline : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Idle
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: MoveForward
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: MoveBack
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: MoveLeft
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: MoveRight
-         *  type: 
-         */
-
-        /* offset: 000a col: 5
-         *  name: MoveUp
-         *  type: 
-         */
-
-        /* offset: 000c col: 6
-         *  name: MoveDown
-         *  type: 
-         */
-
-        /* offset: 000e col: 7
-         *  name: MoveTurnLeft
-         *  type: 
-         */
-
-        /* offset: 0010 col: 8
-         *  name: MoveTurnRight
-         *  type: 
-         */
-
-        /* offset: 0012 col: 9
-         *  name: Extra
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

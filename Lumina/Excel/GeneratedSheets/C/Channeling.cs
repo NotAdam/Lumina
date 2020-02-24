@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Channeling", columnHash: 0x9ff65ad6 )]
     public class Channeling : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: File
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: WidthScale
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

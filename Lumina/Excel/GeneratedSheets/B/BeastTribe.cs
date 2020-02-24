@@ -1,92 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastTribe", columnHash: 0x336849f0 )]
     public class BeastTribe : IExcelRow
     {
         // column defs from Wed, 24 Jul 2019 22:56:39 GMT
-
-        /* offset: 0025 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 1
-         *  name: MinLevel
-         *  type: 
-         */
-
-        /* offset: 0021 col: 2
-         *  name: BeastRankBonus
-         *  type: 
-         */
-
-        /* offset: 0014 col: 3
-         *  name: Icon{Reputation}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 4
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0022 col: 5
-         *  name: MaxRank
-         *  type: 
-         */
-
-        /* offset: 0023 col: 6
-         *  name: Expansion
-         *  type: 
-         */
-
-        /* offset: 001c col: 7
-         *  name: CurrencyItem
-         *  type: 
-         */
-
-        /* offset: 0024 col: 8
-         *  name: DisplayOrder
-         *  type: 
-         */
-
-        /* offset: 0000 col: 9
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 000c col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 17
-         *  name: Name{Relation}
-         *  type: 
-         */
-
 
 
         // col: 09 offset: 0000
@@ -205,7 +124,7 @@ namespace Lumina.Excel.GeneratedSheets
             DisplayOrder = parser.ReadOffset< byte >( 0x24 );
 
             // col: 0 offset: 0025
-            packed25 = parser.ReadOffset< byte >( 0x25 );
+            packed25 = parser.ReadOffset< byte >( 0x25, ExcelColumnDataType.UInt8 );
 
 
         }

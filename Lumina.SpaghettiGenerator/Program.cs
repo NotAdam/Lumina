@@ -231,48 +231,6 @@ namespace Lumina.SpaghettiGenerator
             sb.Append( $"// column defs from {lastModified:R}" );
             sb.AppendLine();
             sb.AppendLine();
-            // output debug shit
-            for( int i = 0; i < cols.Length; i++ )
-            {
-                var col = cols[ i ];
-
-                sb.Append( indent );
-                sb.Append( "/*" );
-                sb.Append( $" offset: {col.Offset:x4} col: {i}" );
-                sb.AppendLine();
-
-                // get sc def
-                var schemaDef = schema.Definitions.FirstOrDefault( d => d.Index == i );
-                if( schemaDef != null )
-                {
-                    sb.Append( indent );
-                    sb.AppendLine( $" *  name: {schemaDef.RealName}" );
-
-                    if( string.IsNullOrWhiteSpace( schemaDef.Type ) )
-                    {
-                        sb.Append( indent );
-                        sb.AppendLine( $" *  type: {schemaDef.Type}" );
-                    }
-
-                    if( schemaDef.Type == "repeat" )
-                    {
-                        sb.Append( indent );
-                        sb.AppendLine( $" *  repeat count: {schemaDef.Count}" );
-                    }
-                }
-                else
-                {
-                    sb.Append( indent );
-                    sb.Append( $" *  no SaintCoinach definition found" );
-                    sb.AppendLine();
-                }
-
-                sb.Append( indent );
-                sb.AppendLine( " */" );
-                sb.AppendLine();
-            }
-
-            sb.AppendLine();
 
             tmpl = tmpl.Replace( "%%DEBUG_INFO%%", sb.ToString() );
 
@@ -336,7 +294,7 @@ namespace Lumina.SpaghettiGenerator
                 if( gcd.IsBitfield )
                 {
                     sb.Append( indent );
-                    sb.Append( GenerateReadMember( "byte", $"packed{offset:x}", offset ) );
+                    sb.Append( GenerateReadMember( "byte", $"packed{offset:x}", offset, -1, true ) );
                     sb.AppendLine();
                     sb.AppendLine();
 
@@ -392,7 +350,7 @@ namespace Lumina.SpaghettiGenerator
             return $"public {type}{arrayStr} {name};";
         }
 
-        static string GenerateReadMember( string type, string name, int offset, int arrayIndex = -1 )
+        static string GenerateReadMember( string type, string name, int offset, int arrayIndex = -1, bool bitset = false )
         {
             var arrayStr = "";
             if( arrayIndex > -1 )
@@ -400,12 +358,18 @@ namespace Lumina.SpaghettiGenerator
                 arrayStr = $"[{arrayIndex}]";
             }
 
-            if( string.IsNullOrEmpty( name ) )
+            var bitsetType = "";
+            if( bitset )
             {
-                return $"unknown{offset:x}{arrayStr} = parser.ReadOffset< {type} >( 0x{offset:x} );";
+                bitsetType = ", ExcelColumnDataType.UInt8";
             }
 
-            return $"{name}{arrayStr} = parser.ReadOffset< {type} >( 0x{offset:x} );";
+            if( string.IsNullOrEmpty( name ) )
+            {
+                return $"unknown{offset:x}{arrayStr} = parser.ReadOffset< {type} >( 0x{offset:x}{bitsetType} );";
+            }
+
+            return $"{name}{arrayStr} = parser.ReadOffset< {type} >( 0x{offset:x}{bitsetType} );";
         }
 
         static string ExcelTypeToManaged( ExcelColumnDataType type )

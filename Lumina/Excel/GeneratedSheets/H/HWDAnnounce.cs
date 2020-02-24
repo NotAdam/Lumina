@@ -1,28 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDAnnounce", columnHash: 0x1d91a784 )]
     public class HWDAnnounce : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: ENPC
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 3
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

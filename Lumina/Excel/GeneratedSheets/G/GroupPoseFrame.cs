@@ -1,41 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GroupPoseFrame", columnHash: 0x6499223f )]
     public class GroupPoseFrame : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 000c col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 1
-         *  name: Image
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: GridText
-         *  type: 
-         */
-
-        /* offset: 0014 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 6
-         *  name: Text
-         *  type: 
-         */
-
 
 
         // col: 06 offset: 0000

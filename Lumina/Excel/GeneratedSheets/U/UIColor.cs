@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "UIColor", columnHash: 0x96a22aea )]
     public class UIColor : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: UIForeground
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: UIGlow
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

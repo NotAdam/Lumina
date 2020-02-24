@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDDevProgress", columnHash: 0xcd4cb81c )]
     public class HWDDevProgress : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: CanGoNext
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -26,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             // col: 0 offset: 0000
-            packed0 = parser.ReadOffset< byte >( 0x0 );
+            packed0 = parser.ReadOffset< byte >( 0x0, ExcelColumnDataType.UInt8 );
 
 
         }

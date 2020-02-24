@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyAction", columnHash: 0xde0dd9cf )]
     public class CompanyAction : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 000c col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0010 col: 3
-         *  name: FCRank
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: Cost
-         *  type: 
-         */
-
-        /* offset: 0011 col: 5
-         *  name: Order
-         *  type: 
-         */
-
-        /* offset: 0012 col: 6
-         *  name: Purchasable
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -92,7 +58,7 @@ namespace Lumina.Excel.GeneratedSheets
             Order = parser.ReadOffset< byte >( 0x11 );
 
             // col: 6 offset: 0012
-            packed12 = parser.ReadOffset< byte >( 0x12 );
+            packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
 
 
         }

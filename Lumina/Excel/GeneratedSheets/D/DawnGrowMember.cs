@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DawnGrowMember", columnHash: 0xa0995e80 )]
     public class DawnGrowMember : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Member
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Image{Name}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: BigImage{Old}
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: BigImage{New}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: SmallImage{Old}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: SmallImage{New}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 6
-         *  name: Class
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

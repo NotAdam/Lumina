@@ -1,59 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapMarkerRegion", columnHash: 0xe2747195 )]
     public class MapMarkerRegion : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0014 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 1
-         *  name: X
-         *  type: 
-         */
-
-        /* offset: 000a col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 11
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000
@@ -136,7 +88,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown14 = parser.ReadOffset< byte >( 0x14 );
 
             // col: 11 offset: 0015
-            packed15 = parser.ReadOffset< byte >( 0x15 );
+            packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
 
 
         }

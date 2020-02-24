@@ -1,30 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ScreenImage", columnHash: 0xf03c70eb )]
     public class ScreenImage : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Image
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Jingle
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0007 col: 3
-         *  name: Lang
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -59,7 +40,7 @@ namespace Lumina.Excel.GeneratedSheets
             Type = parser.ReadOffset< sbyte >( 0x6 );
 
             // col: 3 offset: 0007
-            packed7 = parser.ReadOffset< byte >( 0x7 );
+            packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
 
 
         }

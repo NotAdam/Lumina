@@ -1,31 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "JobHudManualPriority", columnHash: 0x5be005ad )]
     public class JobHudManualPriority : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 0000 col: 0
-         *  name: JobHudManual
-         *  repeat count: 3
-         */
-
-        /* offset: 0001 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0003 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 4
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

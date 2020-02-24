@@ -1,63 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ENpcResident", columnHash: 0xf74fa88c )]
     public class ENpcResident : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Singular
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: Adjective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Plural
-         *  type: 
-         */
-
-        /* offset: 000d col: 3
-         *  name: PossessivePronoun
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: StartsWithVowel
-         *  type: 
-         */
-
-        /* offset: 000f col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 6
-         *  name: Pronoun
-         *  type: 
-         */
-
-        /* offset: 0011 col: 7
-         *  name: Article
-         *  type: 
-         */
-
-        /* offset: 0008 col: 8
-         *  name: Title
-         *  type: 
-         */
-
-        /* offset: 0014 col: 9
-         *  name: Map
-         *  type: 
-         */
-
-        /* offset: 0015 col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -134,7 +82,7 @@ namespace Lumina.Excel.GeneratedSheets
             Map = parser.ReadOffset< byte >( 0x14 );
 
             // col: 10 offset: 0015
-            packed15 = parser.ReadOffset< byte >( 0x15 );
+            packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,80 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanionTransient", columnHash: 0xea0b06cf )]
     public class CompanionTransient : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description{Enhanced}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Tooltip
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: SpecialAction{Name}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: SpecialAction{Description}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: Attack
-         *  type: 
-         */
-
-        /* offset: 0015 col: 6
-         *  name: Defense
-         *  type: 
-         */
-
-        /* offset: 0016 col: 7
-         *  name: Speed
-         *  type: 
-         */
-
-        /* offset: 0018 col: 8
-         *  name: HasAreaAttack
-         *  type: 
-         */
-
-        /* offset: 0018 col: 9
-         *  name: Strength{Gate}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 10
-         *  name: Strength{Eye}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 11
-         *  name: Strength{Shield}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 12
-         *  name: Strength{Arcana}
-         *  type: 
-         */
-
-        /* offset: 0017 col: 13
-         *  name: MinionSkillType
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -149,7 +80,7 @@ namespace Lumina.Excel.GeneratedSheets
             MinionSkillType = parser.ReadOffset< byte >( 0x17 );
 
             // col: 8 offset: 0018
-            packed18 = parser.ReadOffset< byte >( 0x18 );
+            packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
 
 
         }

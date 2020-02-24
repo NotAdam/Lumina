@@ -1,38 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WeeklyBingoOrderData", columnHash: 0xe0f2b530 )]
     public class WeeklyBingoOrderData : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Data
-         *  type: 
-         */
-
-        /* offset: 000c col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 3
-         *  name: Text
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000e col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

@@ -1,73 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingYardObject", columnHash: 0xe15fd4d0 )]
     public class HousingYardObject : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 000c col: 0
-         *  name: ModelKey
-         *  type: 
-         */
-
-        /* offset: 000d col: 1
-         *  name: HousingItemCategory
-         *  type: 
-         */
-
-        /* offset: 000e col: 2
-         *  name: UsageType
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: UsageParameter
-         *  type: 
-         */
-
-        /* offset: 000f col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 5
-         *  name: CustomTalk
-         *  type: 
-         */
-
-        /* offset: 0008 col: 6
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0013 col: 7
-         *  name: DestroyOnRemoval
-         *  type: 
-         */
-
-        /* offset: 0013 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 13
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000
@@ -147,7 +85,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown12 = parser.ReadOffset< byte >( 0x12 );
 
             // col: 7 offset: 0013
-            packed13 = parser.ReadOffset< byte >( 0x13 );
+            packed13 = parser.ReadOffset< byte >( 0x13, ExcelColumnDataType.UInt8 );
 
 
         }

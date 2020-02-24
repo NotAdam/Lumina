@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTaskLvRange", columnHash: 0xde74b4c4 )]
     public class RetainerTaskLvRange : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Min
-         *  type: 
-         */
-
-        /* offset: 0001 col: 1
-         *  name: Max
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

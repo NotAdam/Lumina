@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTaskNormal", columnHash: 0x81338da6 )]
     public class RetainerTaskNormal : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Quantity[0]
-         *  type: 
-         */
-
-        /* offset: 0009 col: 2
-         *  name: Quantity[1]
-         *  type: 
-         */
-
-        /* offset: 000a col: 3
-         *  name: Quantity[2]
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: GatheringLog
-         *  type: 
-         */
-
-        /* offset: 0006 col: 5
-         *  name: FishingLog
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

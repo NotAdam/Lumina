@@ -1,58 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SkyIsland2MissionDetail", columnHash: 0x62246edb )]
     public class SkyIsland2MissionDetail : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 001c col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 001d col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 2
-         *  name: Range
-         *  type: 
-         */
-
-        /* offset: 001f col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 4
-         *  name: EObj
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 7
-         *  name: Objective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 07 offset: 0000

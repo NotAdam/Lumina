@@ -1,34 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AchievementCategory", columnHash: 0xb98d9baf )]
     public class AchievementCategory : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: AchievementKind
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  name: ShowComplete
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: HideCategory
-         *  type: 
-         */
-
-        /* offset: 0005 col: 4
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -64,7 +41,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown5 = parser.ReadOffset< byte >( 0x5 );
 
             // col: 2 offset: 0006
-            packed6 = parser.ReadOffset< byte >( 0x6 );
+            packed6 = parser.ReadOffset< byte >( 0x6, ExcelColumnDataType.UInt8 );
 
 
         }

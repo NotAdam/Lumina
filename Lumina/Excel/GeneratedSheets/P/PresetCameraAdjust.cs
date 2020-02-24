@@ -1,80 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PresetCameraAdjust", columnHash: 0x4cdff077 )]
     public class PresetCameraAdjust : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Hyur_M
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Hyur_F
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Elezen_M
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: Elezen_F
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: Lalafell_M
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: Lalafell_F
-         *  type: 
-         */
-
-        /* offset: 0018 col: 6
-         *  name: Miqote_M
-         *  type: 
-         */
-
-        /* offset: 001c col: 7
-         *  name: Miqote_F
-         *  type: 
-         */
-
-        /* offset: 0020 col: 8
-         *  name: Roe_M
-         *  type: 
-         */
-
-        /* offset: 0024 col: 9
-         *  name: Roe_F
-         *  type: 
-         */
-
-        /* offset: 0028 col: 10
-         *  name: Hrothgar_M
-         *  type: 
-         */
-
-        /* offset: 002c col: 11
-         *  name: Hrothgar_F
-         *  type: 
-         */
-
-        /* offset: 0030 col: 12
-         *  name: Viera_M
-         *  type: 
-         */
-
-        /* offset: 0034 col: 13
-         *  name: Viera_F
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftLevelDifference", columnHash: 0xba1851a4 )]
     public class CraftLevelDifference : IExcelRow
     {
         // column defs from Wed, 24 Jul 2019 22:56:39 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Difference
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: ProgressFactor
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: QualityFactor
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

@@ -1,20 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDFishParam", columnHash: 0x5a516458 )]
     public class IKDFishParam : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Fish
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: IKDContentBonus
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

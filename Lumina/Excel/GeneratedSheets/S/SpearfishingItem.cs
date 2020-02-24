@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpearfishingItem", columnHash: 0xd17632b4 )]
     public class SpearfishingItem : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: GatheringItemLevel
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: FishingRecordType
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 000d col: 5
-         *  name: IsVisible
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -81,7 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             FishingRecordType = parser.ReadOffset< byte >( 0xc );
 
             // col: 5 offset: 000d
-            packedd = parser.ReadOffset< byte >( 0xd );
+            packedd = parser.ReadOffset< byte >( 0xd, ExcelColumnDataType.UInt8 );
 
 
         }

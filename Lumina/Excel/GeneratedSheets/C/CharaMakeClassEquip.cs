@@ -1,50 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeClassEquip", columnHash: 0x41dafacb )]
     public class CharaMakeClassEquip : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Helmet
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Top
-         *  type: 
-         */
-
-        /* offset: 0010 col: 2
-         *  name: Glove
-         *  type: 
-         */
-
-        /* offset: 0018 col: 3
-         *  name: Down
-         *  type: 
-         */
-
-        /* offset: 0020 col: 4
-         *  name: Shoes
-         *  type: 
-         */
-
-        /* offset: 0028 col: 5
-         *  name: Weapon
-         *  type: 
-         */
-
-        /* offset: 0030 col: 6
-         *  name: SubWeapon
-         *  type: 
-         */
-
-        /* offset: 0038 col: 7
-         *  name: Class
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

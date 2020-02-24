@@ -1,65 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutsceneMotion", columnHash: 0x3d86ce33 )]
     public class CutsceneMotion : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: WALK_LOOP_SPEED
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: RUN_LOOP_SPEED
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: SLOWWALK_LOOP_SPEED
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: SLOWRUN_LOOP_SPEED
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: BATTLEWALK_LOOP_SPEED
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: BATTLERUN_LOOP_SPEED
-         *  type: 
-         */
-
-        /* offset: 0018 col: 6
-         *  name: DASH_LOOP_SPEED
-         *  type: 
-         */
-
-        /* offset: 001c col: 7
-         *  name: TURN_CW90_FRAME
-         *  type: 
-         */
-
-        /* offset: 001d col: 8
-         *  name: TURN_CCW90_FRAME
-         *  type: 
-         */
-
-        /* offset: 001e col: 9
-         *  name: TURN_CW180_FRAME
-         *  type: 
-         */
-
-        /* offset: 001f col: 10
-         *  name: TURN_CCW180_FRAME
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

@@ -1,49 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcName", columnHash: 0x77a72da0 )]
     public class BNpcName : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Singular
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Adjective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Plural
-         *  type: 
-         */
-
-        /* offset: 0009 col: 3
-         *  name: PossessivePronoun
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: StartsWithVowel
-         *  type: 
-         */
-
-        /* offset: 000b col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  name: Pronoun
-         *  type: 
-         */
-
-        /* offset: 000d col: 7
-         *  name: Article
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

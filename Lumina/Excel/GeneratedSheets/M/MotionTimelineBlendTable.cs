@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MotionTimelineBlendTable", columnHash: 0x69213275 )]
     public class MotionTimelineBlendTable : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: DestBlendGroup
-         *  type: 
-         */
-
-        /* offset: 0001 col: 1
-         *  name: SrcBlendGroup
-         *  type: 
-         */
-
-        /* offset: 0002 col: 2
-         *  name: BlendFrame_PC
-         *  type: 
-         */
-
-        /* offset: 0003 col: 3
-         *  name: BlendFram_TypeA
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: BlendFram_TypeB
-         *  type: 
-         */
-
-        /* offset: 0005 col: 5
-         *  name: BlendFram_TypeC
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

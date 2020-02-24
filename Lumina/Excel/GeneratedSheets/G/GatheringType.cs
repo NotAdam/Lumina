@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringType", columnHash: 0x182c5eea )]
     public class GatheringType : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Icon{Main}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Icon{Off}
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

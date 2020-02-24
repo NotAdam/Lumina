@@ -1,107 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Achievement", columnHash: 0x24bfffd6 )]
     public class Achievement : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0036 col: 0
-         *  name: AchievementCategory
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0037 col: 3
-         *  name: Points
-         *  type: 
-         */
-
-        /* offset: 0030 col: 4
-         *  name: Title
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0032 col: 6
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0038 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 8
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 000c col: 9
-         *  name: Key
-         *  type: 
-         */
-
-        /* offset: 0010 col: 10
-         *  name: Data
-         *  repeat count: 8
-         */
-
-        /* offset: 0014 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 18
-         *  name: Order
-         *  type: 
-         */
-
-        /* offset: 003a col: 19
-         *  name: Padding
-         *  type: 
-         */
-
-        /* offset: 003b col: 20
-         *  name: AchievementHideCondition
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

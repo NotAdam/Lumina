@@ -1,30 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntReward", columnHash: 0x4ace707c )]
     public class MobHuntReward : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 0000 col: 0
-         *  name: ExpReward
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: GilReward
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Expansion
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: CurrencyReward
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

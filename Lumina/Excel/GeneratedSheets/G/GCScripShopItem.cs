@@ -1,30 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GCScripShopItem", columnHash: 0x6c3dae69 )]
     public class GCScripShopItem : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Required{GrandCompanyRank}
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Cost{GCSeals}
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: SortKey
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000

@@ -1,47 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboTaxiStand", columnHash: 0x233d23d9 )]
     public class ChocoboTaxiStand : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0004 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 8
-         *  name: PlaceName
-         *  type: 
-         */
-
 
 
         // col: 08 offset: 0000

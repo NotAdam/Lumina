@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InstanceContentCSBonus", columnHash: 0x8613e13c )]
     public class InstanceContentCSBonus : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Instance
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

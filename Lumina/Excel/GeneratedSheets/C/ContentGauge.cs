@@ -1,53 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentGauge", columnHash: 0xf678f7f7 )]
     public class ContentGauge : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: Color
-         *  type: 
-         */
-
-        /* offset: 000f col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 3
-         *  name: TextString
-         *  type: 
-         */
-
-        /* offset: 000b col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 9
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -118,7 +76,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknowne = parser.ReadOffset< sbyte >( 0xe );
 
             // col: 2 offset: 000f
-            packedf = parser.ReadOffset< byte >( 0xf );
+            packedf = parser.ReadOffset< byte >( 0xf, ExcelColumnDataType.UInt8 );
 
 
         }

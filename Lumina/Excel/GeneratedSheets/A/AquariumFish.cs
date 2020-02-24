@@ -1,29 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AquariumFish", columnHash: 0x9b5e32ba )]
     public class AquariumFish : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0006 col: 0
-         *  name: AquariumWater
-         *  type: 
-         */
-
-        /* offset: 0007 col: 1
-         *  name: Size
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000

@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FurnitureCatalogItemList", columnHash: 0x24e9963a )]
     public class FurnitureCatalogItemList : IExcelRow
     {
         // column defs from Wed, 31 Jul 2019 22:24:05 GMT
-
-        /* offset: 0004 col: 0
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  name: Patch
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

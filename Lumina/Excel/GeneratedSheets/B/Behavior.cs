@@ -1,79 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Behavior", columnHash: 0x858a7450 )]
     public class Behavior : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0018 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001b col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  name: Balloon
-         *  type: 
-         */
-
-        /* offset: 0016 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001d col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001f col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 16
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 11 offset: 0000

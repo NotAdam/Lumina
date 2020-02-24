@@ -1,39 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Description", columnHash: 0x1933868c )]
     public class Description : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 000c col: 0
-         *  name: Quest
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Text[Long]
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Text[Short]
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Text[Commentary]
-         *  type: 
-         */
-
-        /* offset: 0014 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  name: Section
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000
@@ -80,7 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             Section = parser.ReadOffset< uint >( 0x10 );
 
             // col: 4 offset: 0014
-            packed14 = parser.ReadOffset< byte >( 0x14 );
+            packed14 = parser.ReadOffset< byte >( 0x14, ExcelColumnDataType.UInt8 );
 
 
         }

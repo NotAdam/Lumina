@@ -1,50 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WarpCondition", columnHash: 0xc096f9d0 )]
     public class WarpCondition : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0010 col: 0
-         *  name: Gil
-         *  type: 
-         */
-
-        /* offset: 0016 col: 1
-         *  name: CompleteParam
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: RequiredQuest{1}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: RequiredQuest{2}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: DRequiredQuest{3}
-         *  type: 
-         */
-
-        /* offset: 000c col: 5
-         *  name: RequiredQuest{4}
-         *  type: 
-         */
-
-        /* offset: 0012 col: 6
-         *  name: QuestReward
-         *  type: 
-         */
-
-        /* offset: 0014 col: 7
-         *  name: Class{Level}
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000

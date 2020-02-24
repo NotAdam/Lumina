@@ -1,144 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Status", columnHash: 0xd8ae9831 )]
     public class Status : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000e col: 3
-         *  name: MaxStacks
-         *  type: 
-         */
-
-        /* offset: 000f col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 0011 col: 6
-         *  name: HitEffect
-         *  type: 
-         */
-
-        /* offset: 0012 col: 7
-         *  name: VFX
-         *  type: 
-         */
-
-        /* offset: 0017 col: 8
-         *  name: LockMovement
-         *  type: 
-         */
-
-        /* offset: 0017 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 10
-         *  name: LockActions
-         *  type: 
-         */
-
-        /* offset: 0017 col: 11
-         *  name: LockControl
-         *  type: 
-         */
-
-        /* offset: 0017 col: 12
-         *  name: Transfiguration
-         *  type: 
-         */
-
-        /* offset: 0017 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 14
-         *  name: CanDispel
-         *  type: 
-         */
-
-        /* offset: 0017 col: 15
-         *  name: InflictedByActor
-         *  type: 
-         */
-
-        /* offset: 0018 col: 16
-         *  name: IsPermanent
-         *  type: 
-         */
-
-        /* offset: 0013 col: 17
-         *  name: PartyListPriority
-         *  type: 
-         */
-
-        /* offset: 0018 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 22
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 23
-         *  name: Log
-         *  type: 
-         */
-
-        /* offset: 0018 col: 24
-         *  name: IsFcBuff
-         *  type: 
-         */
-
-        /* offset: 0018 col: 25
-         *  name: Invisibility
-         *  type: 
-         */
-
-        /* offset: 0015 col: 26
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 27
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 28
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -256,10 +123,10 @@ namespace Lumina.Excel.GeneratedSheets
             unknown16 = parser.ReadOffset< byte >( 0x16 );
 
             // col: 8 offset: 0017
-            packed17 = parser.ReadOffset< byte >( 0x17 );
+            packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
 
             // col: 16 offset: 0018
-            packed18 = parser.ReadOffset< byte >( 0x18 );
+            packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
 
 
         }

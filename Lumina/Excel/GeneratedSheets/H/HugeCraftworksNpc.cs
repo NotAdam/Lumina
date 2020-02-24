@@ -1,367 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HugeCraftworksNpc", columnHash: 0x79685419 )]
     public class HugeCraftworksNpc : IExcelRow
     {
         // column defs from Wed, 31 Jul 2019 22:24:05 GMT
-
-        /* offset: 0094 col: 0
-         *  name: ENpcResident
-         *  type: 
-         */
-
-        /* offset: 0098 col: 1
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  name: ItemRequested
-         *  repeat count: 4
-         */
-
-        /* offset: 0018 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003c col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 9
-         *  name: QtyRequested
-         *  repeat count: 4
-         */
-
-        /* offset: 001e col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002a col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0036 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0042 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0017 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0023 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002f col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003b col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0047 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0007 col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001f col: 22
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002b col: 23
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0037 col: 24
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0043 col: 25
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 26
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 27
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 28
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 29
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 30
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 31
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 32
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 33
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0021 col: 34
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002d col: 35
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 36
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0045 col: 37
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 38
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 39
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 40
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 41
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 42
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 43
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 44
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 45
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0022 col: 46
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002e col: 47
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003a col: 48
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0046 col: 49
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0048 col: 50
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0054 col: 51
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0060 col: 52
-         *  name: ItemReward
-         *  repeat count: 4
-         */
-
-        /* offset: 006c col: 53
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0078 col: 54
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0084 col: 55
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0052 col: 56
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005e col: 57
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 006a col: 58
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0076 col: 59
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0082 col: 60
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 008e col: 61
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0050 col: 62
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005c col: 63
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0068 col: 64
-         *  name: QtyItemReward
-         *  repeat count: 4
-         */
-
-        /* offset: 0074 col: 65
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0080 col: 66
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 008c col: 67
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004c col: 68
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0058 col: 69
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0064 col: 70
-         *  name: ItemUnkown
-         *  repeat count: 4
-         */
-
-        /* offset: 0070 col: 71
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 007c col: 72
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0088 col: 73
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0053 col: 74
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005f col: 75
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 006b col: 76
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0077 col: 77
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0083 col: 78
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 008f col: 79
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0051 col: 80
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005d col: 81
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0069 col: 82
-         *  name: QtyItemUnkown
-         *  repeat count: 4
-         */
-
-        /* offset: 0075 col: 83
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0081 col: 84
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 008d col: 85
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0090 col: 86
-         *  name: Transient
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000
@@ -608,7 +252,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknowna = parser.ReadOffset< byte >( 0xa );
 
             // col: 14 offset: 000b
-            packedb = parser.ReadOffset< byte >( 0xb );
+            packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
 
             // col: 3 offset: 000c
             ItemRequested = new uint[4];
@@ -640,7 +284,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown16 = parser.ReadOffset< byte >( 0x16 );
 
             // col: 15 offset: 0017
-            packed17 = parser.ReadOffset< byte >( 0x17 );
+            packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
 
             // col: 40 offset: 001c
             unknown1c = parser.ReadOffset< ushort >( 0x1c );
@@ -658,7 +302,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown22 = parser.ReadOffset< byte >( 0x22 );
 
             // col: 16 offset: 0023
-            packed23 = parser.ReadOffset< byte >( 0x23 );
+            packed23 = parser.ReadOffset< byte >( 0x23, ExcelColumnDataType.UInt8 );
 
             // col: 41 offset: 0028
             unknown28 = parser.ReadOffset< ushort >( 0x28 );
@@ -676,7 +320,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown2e = parser.ReadOffset< byte >( 0x2e );
 
             // col: 17 offset: 002f
-            packed2f = parser.ReadOffset< byte >( 0x2f );
+            packed2f = parser.ReadOffset< byte >( 0x2f, ExcelColumnDataType.UInt8 );
 
             // col: 42 offset: 0034
             unknown34 = parser.ReadOffset< ushort >( 0x34 );
@@ -694,7 +338,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown3a = parser.ReadOffset< byte >( 0x3a );
 
             // col: 18 offset: 003b
-            packed3b = parser.ReadOffset< byte >( 0x3b );
+            packed3b = parser.ReadOffset< byte >( 0x3b, ExcelColumnDataType.UInt8 );
 
             // col: 7 offset: 003c
             unknown3c = parser.ReadOffset< uint >( 0x3c );
@@ -718,7 +362,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown46 = parser.ReadOffset< byte >( 0x46 );
 
             // col: 19 offset: 0047
-            packed47 = parser.ReadOffset< byte >( 0x47 );
+            packed47 = parser.ReadOffset< byte >( 0x47, ExcelColumnDataType.UInt8 );
 
             // col: 50 offset: 0048
             unknown48 = parser.ReadOffset< uint >( 0x48 );

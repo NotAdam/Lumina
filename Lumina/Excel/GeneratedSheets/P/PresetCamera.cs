@@ -1,95 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PresetCamera", columnHash: 0x7d6930eb )]
     public class PresetCamera : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0040 col: 0
-         *  name: EID
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: PosX
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: PosY
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: PosZ
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: Elezen
-         *  type: 
-         */
-
-        /* offset: 0010 col: 5
-         *  name: Lalafell
-         *  type: 
-         */
-
-        /* offset: 0014 col: 6
-         *  name: Miqote
-         *  type: 
-         */
-
-        /* offset: 0018 col: 7
-         *  name: Roe
-         *  type: 
-         */
-
-        /* offset: 001c col: 8
-         *  name: Hrothgar
-         *  type: 
-         */
-
-        /* offset: 0020 col: 9
-         *  name: Viera
-         *  type: 
-         */
-
-        /* offset: 0024 col: 10
-         *  name: Hyur_F
-         *  type: 
-         */
-
-        /* offset: 0028 col: 11
-         *  name: Elezen_F
-         *  type: 
-         */
-
-        /* offset: 002c col: 12
-         *  name: Lalafell_F
-         *  type: 
-         */
-
-        /* offset: 0030 col: 13
-         *  name: Miqote_F
-         *  type: 
-         */
-
-        /* offset: 0034 col: 14
-         *  name: Roe_F
-         *  type: 
-         */
-
-        /* offset: 0038 col: 15
-         *  name: Hrothgar_F
-         *  type: 
-         */
-
-        /* offset: 003c col: 16
-         *  name: Viera_F
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

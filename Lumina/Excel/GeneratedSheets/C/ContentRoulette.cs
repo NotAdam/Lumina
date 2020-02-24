@@ -1,183 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentRoulette", columnHash: 0x8dd999fc )]
     public class ContentRoulette : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: DutyType
-         *  type: 
-         */
-
-        /* offset: 002a col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003b col: 6
-         *  name: IsInDutyFinder
-         *  type: 
-         */
-
-        /* offset: 003b col: 7
-         *  name: OpenRule
-         *  type: 
-         */
-
-        /* offset: 002b col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003b col: 9
-         *  name: RequiredLevel
-         *  type: 
-         */
-
-        /* offset: 002c col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002d col: 11
-         *  name: ItemLevel{Required}
-         *  type: 
-         */
-
-        /* offset: 001c col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 13
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0014 col: 14
-         *  name: ContentRouletteRoleBonus
-         *  type: 
-         */
-
-        /* offset: 002e col: 15
-         *  name: Reward{TomeA}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 16
-         *  name: Reward{TomeB}
-         *  type: 
-         */
-
-        /* offset: 0022 col: 17
-         *  name: Reward{TomeC}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0026 col: 20
-         *  name: SortKey
-         *  type: 
-         */
-
-        /* offset: 002f col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 22
-         *  name: ContentMemberType
-         *  type: 
-         */
-
-        /* offset: 0031 col: 23
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0032 col: 24
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0033 col: 25
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003a col: 26
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 27
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0035 col: 28
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0036 col: 29
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0037 col: 30
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003b col: 31
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003b col: 32
-         *  name: RequireAllDuties
-         *  type: 
-         */
-
-        /* offset: 003b col: 33
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003b col: 34
-         *  name: ContentRouletteOpenRule
-         *  type: 
-         */
-
-        /* offset: 0038 col: 35
-         *  name: InstanceContent
-         *  type: 
-         */
-
-        /* offset: 0028 col: 36
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003b col: 37
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0039 col: 38
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -387,7 +215,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown3a = parser.ReadOffset< sbyte >( 0x3a );
 
             // col: 6 offset: 003b
-            packed3b = parser.ReadOffset< byte >( 0x3b );
+            packed3b = parser.ReadOffset< byte >( 0x3b, ExcelColumnDataType.UInt8 );
 
 
         }

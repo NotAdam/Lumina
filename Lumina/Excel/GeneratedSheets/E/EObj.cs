@@ -1,90 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EObj", columnHash: 0x9335c666 )]
     public class EObj : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 000a col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 8
-         *  name: PopType
-         *  type: 
-         */
-
-        /* offset: 0000 col: 9
-         *  name: Data
-         *  type: 
-         */
-
-        /* offset: 0007 col: 10
-         *  name: Invisibility
-         *  type: 
-         */
-
-        /* offset: 0004 col: 11
-         *  name: SgbPath
-         *  type: 
-         */
-
-        /* offset: 0012 col: 12
-         *  name: EyeCollision
-         *  type: 
-         */
-
-        /* offset: 0012 col: 13
-         *  name: DirectorControl
-         *  type: 
-         */
-
-        /* offset: 0012 col: 14
-         *  name: Target
-         *  type: 
-         */
-
-        /* offset: 0008 col: 15
-         *  name: EventHighAddition
-         *  type: 
-         */
-
-        /* offset: 0012 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 17
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 09 offset: 0000
@@ -188,7 +109,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown11 = parser.ReadOffset< bool >( 0x11 );
 
             // col: 12 offset: 0012
-            packed12 = parser.ReadOffset< byte >( 0x12 );
+            packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
 
 
         }

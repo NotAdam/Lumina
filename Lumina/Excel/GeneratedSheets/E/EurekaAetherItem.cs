@@ -1,54 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EurekaAetherItem", columnHash: 0x45c06ae0 )]
     public class EurekaAetherItem : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Singular
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: Adjective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Plural
-         *  type: 
-         */
-
-        /* offset: 000d col: 3
-         *  name: PossessivePronoun
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: StartsWithVowel
-         *  type: 
-         */
-
-        /* offset: 000f col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 6
-         *  name: Pronoun
-         *  type: 
-         */
-
-        /* offset: 0011 col: 7
-         *  name: Article
-         *  type: 
-         */
-
-        /* offset: 0008 col: 8
-         *  name: Name
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

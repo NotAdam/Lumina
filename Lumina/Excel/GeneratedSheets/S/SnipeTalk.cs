@@ -1,36 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SnipeTalk", columnHash: 0xcea69cac )]
     public class SnipeTalk : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 000e col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 2
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0000 col: 3
-         *  name: Text
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 03 offset: 0000

@@ -1,90 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZContent", columnHash: 0x615a9876 )]
     public class AOZContent : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 000c col: 0
-         *  name: StandardFinishTime
-         *  type: 
-         */
-
-        /* offset: 000e col: 1
-         *  name: IdealFinishTime
-         *  type: 
-         */
-
-        /* offset: 0016 col: 2
-         *  name: Act1FightType
-         *  type: 
-         */
-
-        /* offset: 0010 col: 3
-         *  name: Act1
-         *  type: 
-         */
-
-        /* offset: 0019 col: 4
-         *  name: ArenaType[1]
-         *  type: 
-         */
-
-        /* offset: 0017 col: 5
-         *  name: Act2FightType
-         *  type: 
-         */
-
-        /* offset: 0012 col: 6
-         *  name: Act2
-         *  type: 
-         */
-
-        /* offset: 001a col: 7
-         *  name: ArenaType[2]
-         *  type: 
-         */
-
-        /* offset: 0018 col: 8
-         *  name: Act3FightType
-         *  type: 
-         */
-
-        /* offset: 0014 col: 9
-         *  name: Act3
-         *  type: 
-         */
-
-        /* offset: 001b col: 10
-         *  name: ArenaType[3]
-         *  type: 
-         */
-
-        /* offset: 0008 col: 11
-         *  name: ContentEntry
-         *  type: 
-         */
-
-        /* offset: 001c col: 12
-         *  name: Order
-         *  type: 
-         */
-
-        /* offset: 0000 col: 13
-         *  name: GilReward
-         *  type: 
-         */
-
-        /* offset: 0002 col: 14
-         *  name: AlliedSealsReward
-         *  type: 
-         */
-
-        /* offset: 0004 col: 15
-         *  name: TomestonesReward
-         *  type: 
-         */
-
 
 
         // col: 13 offset: 0000

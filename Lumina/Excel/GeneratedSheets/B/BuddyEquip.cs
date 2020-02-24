@@ -1,93 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddyEquip", columnHash: 0xb429792a )]
     public class BuddyEquip : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Singular
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: Adjective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Plural
-         *  type: 
-         */
-
-        /* offset: 000d col: 3
-         *  name: PossessivePronoun
-         *  type: 
-         */
-
-        /* offset: 000e col: 4
-         *  name: StartsWithVowel
-         *  type: 
-         */
-
-        /* offset: 000f col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 6
-         *  name: Pronoun
-         *  type: 
-         */
-
-        /* offset: 0011 col: 7
-         *  name: Article
-         *  type: 
-         */
-
-        /* offset: 0008 col: 8
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0014 col: 9
-         *  name: Model{Top}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 10
-         *  name: Model{Body}
-         *  type: 
-         */
-
-        /* offset: 001c col: 11
-         *  name: Model{Legs}
-         *  type: 
-         */
-
-        /* offset: 0026 col: 12
-         *  name: GrandCompany
-         *  type: 
-         */
-
-        /* offset: 0020 col: 13
-         *  name: Icon{Head}
-         *  type: 
-         */
-
-        /* offset: 0022 col: 14
-         *  name: Icon{Body}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 15
-         *  name: Icon{Legs}
-         *  type: 
-         */
-
-        /* offset: 0027 col: 16
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

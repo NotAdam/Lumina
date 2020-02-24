@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Knockback", columnHash: 0x6876beaf )]
     public class Knockback : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Distance
-         *  type: 
-         */
-
-        /* offset: 0001 col: 1
-         *  name: Speed
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: Motion
-         *  type: 
-         */
-
-        /* offset: 0002 col: 3
-         *  name: NearDistance
-         *  type: 
-         */
-
-        /* offset: 0003 col: 4
-         *  name: Direction
-         *  type: 
-         */
-
-        /* offset: 0004 col: 5
-         *  name: DirectionArg
-         *  type: 
-         */
-
-        /* offset: 0005 col: 6
-         *  name: CancelMove
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -87,7 +53,7 @@ namespace Lumina.Excel.GeneratedSheets
             DirectionArg = parser.ReadOffset< byte >( 0x4 );
 
             // col: 2 offset: 0005
-            packed5 = parser.ReadOffset< byte >( 0x5 );
+            packed5 = parser.ReadOffset< byte >( 0x5, ExcelColumnDataType.UInt8 );
 
 
         }

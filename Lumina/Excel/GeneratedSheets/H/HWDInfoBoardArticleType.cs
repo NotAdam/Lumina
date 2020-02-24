@@ -1,15 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDInfoBoardArticleType", columnHash: 0xdebb20e3 )]
     public class HWDInfoBoardArticleType : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Type
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

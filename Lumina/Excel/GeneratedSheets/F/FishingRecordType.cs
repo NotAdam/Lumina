@@ -1,43 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishingRecordType", columnHash: 0x2c75ba5d )]
     public class FishingRecordType : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Addon
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: RankBRequirement
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  name: RankARequirement
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: RankAARequirement
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: RankAAARequirement
-         *  type: 
-         */
-
-        /* offset: 000c col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 6
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

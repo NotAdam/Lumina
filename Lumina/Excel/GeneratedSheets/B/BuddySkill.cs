@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddySkill", columnHash: 0xe3220ddc )]
     public class BuddySkill : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0006 col: 0
-         *  name: BuddyLevel
-         *  type: 
-         */
-
-        /* offset: 0007 col: 1
-         *  name: IsActive
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: Defender
-         *  type: 
-         */
-
-        /* offset: 0002 col: 3
-         *  name: Attacker
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: Healer
-         *  type: 
-         */
-
 
 
         // col: 02 offset: 0000
@@ -70,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
             BuddyLevel = parser.ReadOffset< byte >( 0x6 );
 
             // col: 1 offset: 0007
-            packed7 = parser.ReadOffset< byte >( 0x7 );
+            packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
 
 
         }

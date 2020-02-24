@@ -1,40 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MainCommand", columnHash: 0x63da0c66 )]
     public class MainCommand : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 000d col: 2
-         *  name: MainCommandCategory
-         *  type: 
-         */
-
-        /* offset: 000e col: 3
-         *  name: SortID
-         *  type: 
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 5
-         *  name: Description
-         *  type: 
-         */
-
 
 
         // col: 04 offset: 0000

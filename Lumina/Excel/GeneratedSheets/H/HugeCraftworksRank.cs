@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HugeCraftworksRank", columnHash: 0xf7af7ac5 )]
     public class HugeCraftworksRank : IExcelRow
     {
         // column defs from Wed, 31 Jul 2019 22:24:05 GMT
-
-        /* offset: 0004 col: 0
-         *  name: CrafterLevel
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: ExpRewardPerItem
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

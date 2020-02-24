@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDCrafterSupplyReward", columnHash: 0x829e9d8e )]
     public class HWDCrafterSupplyReward : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0004 col: 0
-         *  name: ScriptReward{Amount}
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: ExpReward
-         *  type: 
-         */
-
-        /* offset: 0006 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

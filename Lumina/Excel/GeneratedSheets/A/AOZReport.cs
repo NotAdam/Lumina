@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZReport", columnHash: 0x1a97b0af )]
     public class AOZReport : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Reward
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: Order
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

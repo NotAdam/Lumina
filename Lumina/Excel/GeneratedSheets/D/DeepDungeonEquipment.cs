@@ -1,64 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonEquipment", columnHash: 0xc638f2bf )]
     public class DeepDungeonEquipment : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0018 col: 0
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Singular
-         *  type: 
-         */
-
-        /* offset: 0010 col: 2
-         *  name: Adjective
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: Plural
-         *  type: 
-         */
-
-        /* offset: 0011 col: 4
-         *  name: PossessivePronoun
-         *  type: 
-         */
-
-        /* offset: 0012 col: 5
-         *  name: StartsWithVowel
-         *  type: 
-         */
-
-        /* offset: 0013 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 7
-         *  name: Pronoun
-         *  type: 
-         */
-
-        /* offset: 0015 col: 8
-         *  name: Article
-         *  type: 
-         */
-
-        /* offset: 0008 col: 9
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 000c col: 10
-         *  name: Description
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

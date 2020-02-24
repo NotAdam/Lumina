@@ -1,59 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EmjDani", columnHash: 0xf3fb0152 )]
     public class EmjDani : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 11
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -136,7 +88,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown16 = parser.ReadOffset< short >( 0x16 );
 
             // col: 3 offset: 0018
-            packed18 = parser.ReadOffset< byte >( 0x18 );
+            packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,54 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TripleTriadCardResident", columnHash: 0xcce12103 )]
     public class TripleTriadCardResident : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Top
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: Bottom
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: Left
-         *  type: 
-         */
-
-        /* offset: 0007 col: 4
-         *  name: Right
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: TripleTriadCardRarity
-         *  type: 
-         */
-
-        /* offset: 0009 col: 6
-         *  name: TripleTriadCardType
-         *  type: 
-         */
-
-        /* offset: 0002 col: 7
-         *  name: SaleValue
-         *  type: 
-         */
-
-        /* offset: 000a col: 8
-         *  name: SortKey
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

@@ -1,64 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Credit", columnHash: 0x1fe6ec22 )]
     public class Credit : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0014 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Roles(1)
-         *  type: 
-         */
-
-        /* offset: 0002 col: 2
-         *  name: JapaneseCast(1)
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: EnglishCast(1)
-         *  type: 
-         */
-
-        /* offset: 0006 col: 4
-         *  name: FrenchCast(1)
-         *  type: 
-         */
-
-        /* offset: 0008 col: 5
-         *  name: GermanCast(1)
-         *  type: 
-         */
-
-        /* offset: 000a col: 6
-         *  name: Roles(2)
-         *  type: 
-         */
-
-        /* offset: 000c col: 7
-         *  name: JapaneseCast(2)
-         *  type: 
-         */
-
-        /* offset: 000e col: 8
-         *  name: EnglishCast(2)
-         *  type: 
-         */
-
-        /* offset: 0010 col: 9
-         *  name: FrenchCast(2)
-         *  type: 
-         */
-
-        /* offset: 0012 col: 10
-         *  name: GermanCast(2)
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

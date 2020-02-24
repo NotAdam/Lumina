@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonFloorEffectUI", columnHash: 0x11a44a12 )]
     public class DeepDungeonFloorEffectUI : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0008 col: 0
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Description
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

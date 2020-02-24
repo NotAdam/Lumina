@@ -1,47 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCRank", columnHash: 0x0105b558 )]
     public class FCRank : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: NextPoint
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: CurrentPoint
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Rights
-         *  type: 
-         */
-
-        /* offset: 000a col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 5
-         *  name: FCActionActiveNum
-         *  type: 
-         */
-
-        /* offset: 000f col: 6
-         *  name: FCActionStockNum
-         *  type: 
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

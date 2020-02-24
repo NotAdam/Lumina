@@ -1,161 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PartyContent", columnHash: 0x54e6a214 )]
     public class PartyContent : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 007e col: 0
-         *  name: Key
-         *  type: 
-         */
-
-        /* offset: 0078 col: 1
-         *  name: TimeLimit
-         *  type: 
-         */
-
-        /* offset: 0080 col: 2
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 006c col: 3
-         *  name: TextData{Start}
-         *  type: 
-         */
-
-        /* offset: 0070 col: 4
-         *  name: TextData{End}
-         *  type: 
-         */
-
-        /* offset: 0000 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 002c col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003c col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 22
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0048 col: 23
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004c col: 24
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0050 col: 25
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0054 col: 26
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0058 col: 27
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005c col: 28
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0060 col: 29
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0064 col: 30
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0068 col: 31
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 007a col: 32
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 007c col: 33
-         *  name: ContentFinderCondition
-         *  type: 
-         */
-
-        /* offset: 0074 col: 34
-         *  name: Image
-         *  type: 
-         */
-
-        /* offset: 007f col: 35
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 05 offset: 0000
@@ -382,7 +232,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown7f = parser.ReadOffset< byte >( 0x7f );
 
             // col: 2 offset: 0080
-            packed80 = parser.ReadOffset< byte >( 0x80 );
+            packed80 = parser.ReadOffset< byte >( 0x80, ExcelColumnDataType.UInt8 );
 
 
         }

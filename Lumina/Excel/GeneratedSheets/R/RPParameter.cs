@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RPParameter", columnHash: 0x251a33cc )]
     public class RPParameter : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: BNpcName
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: ClassJob
-         *  type: 
-         */
-
-        /* offset: 0003 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

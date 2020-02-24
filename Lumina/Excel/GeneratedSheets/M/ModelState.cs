@@ -1,19 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ModelState", columnHash: 0xd73eab80 )]
     public class ModelState : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0002 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Start
-         *  type: 
-         */
-
 
 
         // col: 01 offset: 0000

@@ -1,38 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GardeningSeed", columnHash: 0xa8a6cb9c )]
     public class GardeningSeed : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0008 col: 1
-         *  name: ModelID
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 000b col: 3
-         *  name: SE
-         *  type: 
-         */
-
-        /* offset: 000b col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -74,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknowna = parser.ReadOffset< byte >( 0xa );
 
             // col: 3 offset: 000b
-            packedb = parser.ReadOffset< byte >( 0xb );
+            packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
 
 
         }

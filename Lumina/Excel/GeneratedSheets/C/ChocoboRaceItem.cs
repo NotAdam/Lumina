@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboRaceItem", columnHash: 0x7a3e01e7 )]
     public class ChocoboRaceItem : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Description
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Icon
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

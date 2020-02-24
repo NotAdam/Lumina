@@ -1,49 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EmoteMode", columnHash: 0x087a32e7 )]
     public class EmoteMode : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: StartEmote
-         *  type: 
-         */
-
-        /* offset: 0002 col: 1
-         *  name: EndEmote
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: Move
-         *  type: 
-         */
-
-        /* offset: 0005 col: 3
-         *  name: Camera
-         *  type: 
-         */
-
-        /* offset: 0005 col: 4
-         *  name: EndOnRotate
-         *  type: 
-         */
-
-        /* offset: 0005 col: 5
-         *  name: EndOnEmote
-         *  type: 
-         */
-
-        /* offset: 0004 col: 6
-         *  name: ConditionMode
-         *  type: 
-         */
-
-        /* offset: 0005 col: 7
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -82,7 +44,7 @@ namespace Lumina.Excel.GeneratedSheets
             ConditionMode = parser.ReadOffset< byte >( 0x4 );
 
             // col: 2 offset: 0005
-            packed5 = parser.ReadOffset< byte >( 0x5 );
+            packed5 = parser.ReadOffset< byte >( 0x5, ExcelColumnDataType.UInt8 );
 
 
         }

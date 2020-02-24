@@ -1,35 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MotionTimeline", columnHash: 0xd5952f72 )]
     public class MotionTimeline : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Filename
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: BlendGroup
-         *  type: 
-         */
-
-        /* offset: 0005 col: 2
-         *  name: IsLoop
-         *  type: 
-         */
-
-        /* offset: 0005 col: 3
-         *  name: IsBlinkEnable
-         *  type: 
-         */
-
-        /* offset: 0005 col: 4
-         *  name: IsLipEnable
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -60,7 +36,7 @@ namespace Lumina.Excel.GeneratedSheets
             BlendGroup = parser.ReadOffset< byte >( 0x4 );
 
             // col: 2 offset: 0005
-            packed5 = parser.ReadOffset< byte >( 0x5 );
+            packed5 = parser.ReadOffset< byte >( 0x5, ExcelColumnDataType.UInt8 );
 
 
         }

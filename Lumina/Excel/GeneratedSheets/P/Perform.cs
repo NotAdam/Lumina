@@ -1,68 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Perform", columnHash: 0x48a99e9c )]
     public class Perform : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0010 col: 0
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0023 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 2
-         *  name: ModelKey
-         *  type: 
-         */
-
-        /* offset: 001c col: 3
-         *  name: Animation{Start}
-         *  type: 
-         */
-
-        /* offset: 001e col: 4
-         *  name: Animation{End}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 5
-         *  name: Animation{Idle}
-         *  type: 
-         */
-
-        /* offset: 0000 col: 6
-         *  name: Animation{Play01}
-         *  type: 
-         */
-
-        /* offset: 0002 col: 7
-         *  name: Animation{Play02}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 8
-         *  name: StopAnimation
-         *  type: 
-         */
-
-        /* offset: 0004 col: 9
-         *  name: Instrument
-         *  type: 
-         */
-
-        /* offset: 0018 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0022 col: 11
-         *  name: Transient
-         *  type: 
-         */
-
 
 
         // col: 06 offset: 0000
@@ -145,7 +88,7 @@ namespace Lumina.Excel.GeneratedSheets
             Transient = parser.ReadOffset< byte >( 0x22 );
 
             // col: 1 offset: 0023
-            packed23 = parser.ReadOffset< byte >( 0x23 );
+            packed23 = parser.ReadOffset< byte >( 0x23, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,116 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeon", columnHash: 0xea7a6143 )]
     public class DeepDungeon : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 001a col: 0
-         *  name: AetherpoolArm
-         *  type: 
-         */
-
-        /* offset: 001b col: 1
-         *  name: AetherpoolArmor
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  name: PomanderSlot
-         *  repeat count: 16
-         */
-
-        /* offset: 0001 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0003 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0005 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0007 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0009 col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 18
-         *  name: MagiciteSlot
-         *  repeat count: 4
-         */
-
-        /* offset: 0011 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 22
-         *  name: Name
-         *  type: 
-         */
-
-        /* offset: 0018 col: 23
-         *  name: ContentFinderCondition{Start}
-         *  type: 
-         */
-
-        /* offset: 001c col: 24
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000
@@ -183,7 +78,7 @@ namespace Lumina.Excel.GeneratedSheets
             AetherpoolArmor = parser.ReadOffset< byte >( 0x1b );
 
             // col: 24 offset: 001c
-            packed1c = parser.ReadOffset< byte >( 0x1c );
+            packed1c = parser.ReadOffset< byte >( 0x1c, ExcelColumnDataType.UInt8 );
 
 
         }

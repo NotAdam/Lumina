@@ -1,60 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Tribe", columnHash: 0xe74759fb )]
     public class Tribe : IExcelRow
     {
         // column defs from Sun, 09 Feb 2020 20:51:08 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Masculine
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Feminine
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Hp
-         *  type: 
-         */
-
-        /* offset: 0009 col: 3
-         *  name: Mp
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  name: STR
-         *  type: 
-         */
-
-        /* offset: 000b col: 5
-         *  name: VIT
-         *  type: 
-         */
-
-        /* offset: 000c col: 6
-         *  name: DEX
-         *  type: 
-         */
-
-        /* offset: 000d col: 7
-         *  name: INT
-         *  type: 
-         */
-
-        /* offset: 000e col: 8
-         *  name: MND
-         *  type: 
-         */
-
-        /* offset: 000f col: 9
-         *  name: PIE
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

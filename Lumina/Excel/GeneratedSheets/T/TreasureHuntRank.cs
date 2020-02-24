@@ -1,52 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TreasureHuntRank", columnHash: 0x3997d502 )]
     public class TreasureHuntRank : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0012 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: ItemName
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: KeyItemName
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: InstanceMap
-         *  type: 
-         */
-
-        /* offset: 0013 col: 5
-         *  name: MaxPartySize
-         *  type: 
-         */
-
-        /* offset: 0014 col: 6
-         *  name: MinPartySize
-         *  type: 
-         */
-
-        /* offset: 0010 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 8
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000
@@ -111,7 +70,7 @@ namespace Lumina.Excel.GeneratedSheets
             MinPartySize = parser.ReadOffset< byte >( 0x14 );
 
             // col: 8 offset: 0015
-            packed15 = parser.ReadOffset< byte >( 0x15 );
+            packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
 
 
         }

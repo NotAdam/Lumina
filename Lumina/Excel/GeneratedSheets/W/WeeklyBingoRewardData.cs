@@ -1,66 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WeeklyBingoRewardData", columnHash: 0x02b099a0 )]
     public class WeeklyBingoRewardData : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0012 col: 0
-         *  name: 
-         *  repeat count: 2
-         */
-
-        /* offset: 0000 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0013 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0016 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0015 col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 10
-         *  name: Reward{Item}[2]
-         *  type: 
-         */
-
-        /* offset: 0017 col: 11
-         *  name: Reward{HQ}[2]
-         *  type: 
-         */
-
-        /* offset: 0010 col: 12
-         *  name: Reward{Quantity}[2]
-         *  type: 
-         */
-
 
 
         // col: 06 offset: 0004
@@ -145,7 +90,7 @@ namespace Lumina.Excel.GeneratedSheets
             RewardHQ2 = parser.ReadOffset< bool >( 0x17 );
 
             // col: 2 offset: 0018
-            packed18 = parser.ReadOffset< byte >( 0x18 );
+            packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
 
 
         }

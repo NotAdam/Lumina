@@ -1,58 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EquipRaceCategory", columnHash: 0xf914b198 )]
     public class EquipRaceCategory : IExcelRow
     {
         // column defs from Fri, 28 Jun 2019 17:13:11 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Hyur
-         *  type: 
-         */
-
-        /* offset: 0001 col: 1
-         *  name: Elezen
-         *  type: 
-         */
-
-        /* offset: 0002 col: 2
-         *  name: Lalafell
-         *  type: 
-         */
-
-        /* offset: 0003 col: 3
-         *  name: Miqo'te
-         *  type: 
-         */
-
-        /* offset: 0004 col: 4
-         *  name: Roegadyn
-         *  type: 
-         */
-
-        /* offset: 0005 col: 5
-         *  name: Au Ra
-         *  type: 
-         */
-
-        /* offset: 0006 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0007 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 8
-         *  name: Male
-         *  type: 
-         */
-
-        /* offset: 0008 col: 9
-         *  name: Female
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -118,7 +71,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown7 = parser.ReadOffset< bool >( 0x7 );
 
             // col: 8 offset: 0008
-            packed8 = parser.ReadOffset< byte >( 0x8 );
+            packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
 
 
         }

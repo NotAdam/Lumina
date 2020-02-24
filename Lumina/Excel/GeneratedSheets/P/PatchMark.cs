@@ -1,47 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PatchMark", columnHash: 0x4b87e076 )]
     public class PatchMark : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 000f col: 0
-         *  name: Category
-         *  type: 
-         */
-
-        /* offset: 000c col: 1
-         *  name: SubCategoryType
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: SubCategory
-         *  type: 
-         */
-
-        /* offset: 000d col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 5
-         *  name: MarkID
-         *  type: 
-         */
-
-        /* offset: 000e col: 6
-         *  name: Version
-         *  type: 
-         */
-
-        /* offset: 000a col: 7
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 04 offset: 0000

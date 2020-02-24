@@ -1,89 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RelicItem", columnHash: 0xc8fc45d9 )]
     public class RelicItem : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0040 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 1
-         *  name: Gladiator{Item}
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: Pugilist{Item}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Marauder{Item}
-         *  type: 
-         */
-
-        /* offset: 000c col: 4
-         *  name: Lancer{Item}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 5
-         *  name: Archer{Item}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 6
-         *  name: Conjurer{Item}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 7
-         *  name: Thaumaturge{Item}
-         *  type: 
-         */
-
-        /* offset: 001c col: 8
-         *  name: Arcanist(SMN){Item}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 9
-         *  name: Arcanist(SCH){Item}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 10
-         *  name: Shield{Item}
-         *  type: 
-         */
-
-        /* offset: 0028 col: 11
-         *  name: Rogue{Item}
-         *  type: 
-         */
-
-        /* offset: 002c col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0030 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0034 col: 14
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0038 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 003c col: 16
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 01 offset: 0000

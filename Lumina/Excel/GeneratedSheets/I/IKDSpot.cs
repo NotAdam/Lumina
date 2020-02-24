@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDSpot", columnHash: 0x96a22aea )]
     public class IKDSpot : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0000 col: 0
-         *  name: SpotMain
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: SpotSub
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: PlaceName
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000

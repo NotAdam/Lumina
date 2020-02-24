@@ -1,58 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimationLOD", columnHash: 0x261cfad0 )]
     public class AnimationLOD : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: CameraDistance
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: SampleInterval
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: BoneLOD
-         *  type: 
-         */
-
-        /* offset: 0009 col: 3
-         *  name: AnimationEnable
-         *  repeat count: 8
-         */
-
-        /* offset: 000a col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000d col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000f col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

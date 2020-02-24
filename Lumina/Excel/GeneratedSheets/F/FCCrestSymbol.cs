@@ -1,24 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCCrestSymbol", columnHash: 0x43bdd5b1 )]
     public class FCCrestSymbol : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0002 col: 0
-         *  name: ColorNum
-         *  type: 
-         */
-
-        /* offset: 0003 col: 1
-         *  name: FCRight
-         *  type: 
-         */
-
-        /* offset: 0000 col: 2
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000

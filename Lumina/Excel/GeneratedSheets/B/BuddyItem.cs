@@ -1,34 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddyItem", columnHash: 0xfa9fc03d )]
     public class BuddyItem : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 0003 col: 1
-         *  name: UseField
-         *  type: 
-         */
-
-        /* offset: 0003 col: 2
-         *  name: UseTraining
-         *  type: 
-         */
-
-        /* offset: 0003 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0002 col: 4
-         *  name: Status
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -59,7 +36,7 @@ namespace Lumina.Excel.GeneratedSheets
             Status = parser.ReadOffset< byte >( 0x2 );
 
             // col: 1 offset: 0003
-            packed3 = parser.ReadOffset< byte >( 0x3 );
+            packed3 = parser.ReadOffset< byte >( 0x3, ExcelColumnDataType.UInt8 );
 
 
         }

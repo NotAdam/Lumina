@@ -1,135 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "NpcEquip", columnHash: 0x8659fe79 )]
     public class NpcEquip : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Model{MainHand}
-         *  type: 
-         */
-
-        /* offset: 0038 col: 1
-         *  name: Dye{MainHand}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Model{OffHand}
-         *  type: 
-         */
-
-        /* offset: 0039 col: 3
-         *  name: Dye{OffHand}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: Model{Head}
-         *  type: 
-         */
-
-        /* offset: 003a col: 5
-         *  name: Dye{Head}
-         *  type: 
-         */
-
-        /* offset: 0044 col: 6
-         *  name: Visor
-         *  type: 
-         */
-
-        /* offset: 0014 col: 7
-         *  name: Model{Body}
-         *  type: 
-         */
-
-        /* offset: 003b col: 8
-         *  name: Dye{Body}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 9
-         *  name: Model{Hands}
-         *  type: 
-         */
-
-        /* offset: 003c col: 10
-         *  name: Dye{Hands}
-         *  type: 
-         */
-
-        /* offset: 001c col: 11
-         *  name: Model{Legs}
-         *  type: 
-         */
-
-        /* offset: 003d col: 12
-         *  name: Dye{Legs}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 13
-         *  name: Model{Feet}
-         *  type: 
-         */
-
-        /* offset: 003e col: 14
-         *  name: Dye{Feet}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 15
-         *  name: Model{Ears}
-         *  type: 
-         */
-
-        /* offset: 003f col: 16
-         *  name: Dye{Ears}
-         *  type: 
-         */
-
-        /* offset: 0028 col: 17
-         *  name: Model{Neck}
-         *  type: 
-         */
-
-        /* offset: 0040 col: 18
-         *  name: Dye{Neck}
-         *  type: 
-         */
-
-        /* offset: 002c col: 19
-         *  name: Model{Wrists}
-         *  type: 
-         */
-
-        /* offset: 0041 col: 20
-         *  name: Dye{Wrists}
-         *  type: 
-         */
-
-        /* offset: 0030 col: 21
-         *  name: Model{LeftRing}
-         *  type: 
-         */
-
-        /* offset: 0042 col: 22
-         *  name: Dye{LeftRing}
-         *  type: 
-         */
-
-        /* offset: 0034 col: 23
-         *  name: Model{RightRing}
-         *  type: 
-         */
-
-        /* offset: 0043 col: 24
-         *  name: Dye{RightRing}
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -290,7 +166,7 @@ namespace Lumina.Excel.GeneratedSheets
             DyeRightRing = parser.ReadOffset< byte >( 0x43 );
 
             // col: 6 offset: 0044
-            packed44 = parser.ReadOffset< byte >( 0x44 );
+            packed44 = parser.ReadOffset< byte >( 0x44, ExcelColumnDataType.UInt8 );
 
 
         }

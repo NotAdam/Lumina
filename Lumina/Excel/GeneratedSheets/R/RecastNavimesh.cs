@@ -1,164 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecastNavimesh", columnHash: 0x75b2270a )]
     public class RecastNavimesh : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Tile{Size}
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: Cell{Size}
-         *  type: 
-         */
-
-        /* offset: 000c col: 3
-         *  name: Cell{Height}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 4
-         *  name: Agent{Height}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 5
-         *  name: Agent{Radius}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 6
-         *  name: Agent{MaxClimb}
-         *  type: 
-         */
-
-        /* offset: 001c col: 7
-         *  name: Agent{MaxSlope}
-         *  type: 
-         */
-
-        /* offset: 007c col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 9
-         *  name: Region{MinSize}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 10
-         *  name: Region{MergedSize}
-         *  type: 
-         */
-
-        /* offset: 007c col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0028 col: 12
-         *  name: MaxEdgeLength
-         *  type: 
-         */
-
-        /* offset: 002c col: 13
-         *  name: MaxEdgeError
-         *  type: 
-         */
-
-        /* offset: 0030 col: 14
-         *  name: VertsPerPoly
-         *  type: 
-         */
-
-        /* offset: 0034 col: 15
-         *  name: DetailMesh{SampleDistance}
-         *  type: 
-         */
-
-        /* offset: 0038 col: 16
-         *  name: DetailMesh{MaxSampleError}
-         *  type: 
-         */
-
-        /* offset: 003c col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0040 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0044 col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0048 col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 004c col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0050 col: 22
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0054 col: 23
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0058 col: 24
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 005c col: 25
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0060 col: 26
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0064 col: 27
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0068 col: 28
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 006c col: 29
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 007c col: 30
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0070 col: 31
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0074 col: 32
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0078 col: 33
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 007c col: 34
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000
@@ -364,7 +211,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknown78 = parser.ReadOffset< float >( 0x78 );
 
             // col: 8 offset: 007c
-            packed7c = parser.ReadOffset< byte >( 0x7c );
+            packed7c = parser.ReadOffset< byte >( 0x7c, ExcelColumnDataType.UInt8 );
 
 
         }

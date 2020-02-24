@@ -1,106 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionTimeline", columnHash: 0x7402d920 )]
     public class ActionTimeline : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0006 col: 0
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0007 col: 1
-         *  name: Priority
-         *  type: 
-         */
-
-        /* offset: 0011 col: 2
-         *  name: Pause
-         *  type: 
-         */
-
-        /* offset: 0008 col: 3
-         *  name: Stance
-         *  type: 
-         */
-
-        /* offset: 0009 col: 4
-         *  name: Slot
-         *  type: 
-         */
-
-        /* offset: 000a col: 5
-         *  name: LookAtMode
-         *  type: 
-         */
-
-        /* offset: 0000 col: 6
-         *  name: Key
-         *  type: 
-         */
-
-        /* offset: 000b col: 7
-         *  name: ActionTimelineIDMode
-         *  type: 
-         */
-
-        /* offset: 000c col: 8
-         *  name: WeaponTimeline
-         *  type: 
-         */
-
-        /* offset: 000d col: 9
-         *  name: LoadType
-         *  type: 
-         */
-
-        /* offset: 000e col: 10
-         *  name: StartAttach
-         *  type: 
-         */
-
-        /* offset: 000f col: 11
-         *  name: ResidentPap
-         *  type: 
-         */
-
-        /* offset: 0011 col: 12
-         *  name: Resident
-         *  type: 
-         */
-
-        /* offset: 0004 col: 13
-         *  name: KillUpper
-         *  type: 
-         */
-
-        /* offset: 0011 col: 14
-         *  name: IsMotionCanceledByMoving
-         *  type: 
-         */
-
-        /* offset: 0011 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 16
-         *  name: IsLoop
-         *  type: 
-         */
-
-        /* offset: 0011 col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 19
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 06 offset: 0000
@@ -201,7 +106,7 @@ namespace Lumina.Excel.GeneratedSheets
             IsLoop = parser.ReadOffset< byte >( 0x10 );
 
             // col: 2 offset: 0011
-            packed11 = parser.ReadOffset< byte >( 0x11 );
+            packed11 = parser.ReadOffset< byte >( 0x11, ExcelColumnDataType.UInt8 );
 
 
         }

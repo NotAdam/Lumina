@@ -1,56 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Tutorial", columnHash: 0x871b8a1c )]
     public class Tutorial : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0018 col: 0
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0019 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 2
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001b col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Exp
-         *  type: 
-         */
-
-        /* offset: 0004 col: 5
-         *  name: Gil
-         *  type: 
-         */
-
-        /* offset: 0008 col: 6
-         *  name: Reward{Tank}
-         *  type: 
-         */
-
-        /* offset: 000c col: 7
-         *  name: Reward{Melee}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 8
-         *  name: Reward{Ranged}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 9
-         *  name: Objective
-         *  type: 
-         */
-
 
 
         // col: 04 offset: 0000

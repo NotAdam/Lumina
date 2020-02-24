@@ -1,64 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Race", columnHash: 0x3cc6df2e )]
     public class Race : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Masculine
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Feminine
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: RSE{M}{Body}
-         *  type: 
-         */
-
-        /* offset: 0010 col: 3
-         *  name: RSE{M}{Hands}
-         *  type: 
-         */
-
-        /* offset: 0018 col: 4
-         *  name: RSE{M}{Legs}
-         *  type: 
-         */
-
-        /* offset: 0020 col: 5
-         *  name: RSE{M}{Feet}
-         *  type: 
-         */
-
-        /* offset: 000c col: 6
-         *  name: RSE{F}{Body}
-         *  type: 
-         */
-
-        /* offset: 0014 col: 7
-         *  name: RSE{F}{Hands}
-         *  type: 
-         */
-
-        /* offset: 001c col: 8
-         *  name: RSE{F}{Legs}
-         *  type: 
-         */
-
-        /* offset: 0024 col: 9
-         *  name: RSE{F}{Feet}
-         *  type: 
-         */
-
-        /* offset: 0028 col: 10
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 00 offset: 0000

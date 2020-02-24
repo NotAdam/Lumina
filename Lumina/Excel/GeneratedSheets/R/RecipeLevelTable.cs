@@ -1,45 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecipeLevelTable", columnHash: 0xf24f1bf5 )]
     public class RecipeLevelTable : IExcelRow
     {
         // column defs from Mon, 15 Jul 2019 14:22:54 GMT
-
-        /* offset: 000c col: 0
-         *  name: ClassJobLevel
-         *  type: 
-         */
-
-        /* offset: 000d col: 1
-         *  name: Stars
-         *  type: 
-         */
-
-        /* offset: 0004 col: 2
-         *  name: SuggestedCraftsmanship
-         *  type: 
-         */
-
-        /* offset: 0006 col: 3
-         *  name: SuggestedControl
-         *  type: 
-         */
-
-        /* offset: 0008 col: 4
-         *  name: Difficulty
-         *  type: 
-         */
-
-        /* offset: 0000 col: 5
-         *  name: Quality
-         *  type: 
-         */
-
-        /* offset: 000a col: 6
-         *  name: Durability
-         *  type: 
-         */
-
 
 
         // col: 05 offset: 0000

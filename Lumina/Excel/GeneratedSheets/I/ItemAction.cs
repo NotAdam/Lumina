@@ -1,109 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemAction", columnHash: 0xb1f26af0 )]
     public class ItemAction : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0026 col: 0
-         *  name: CondLv
-         *  type: 
-         */
-
-        /* offset: 0027 col: 1
-         *  name: CondBattle
-         *  type: 
-         */
-
-        /* offset: 0027 col: 2
-         *  name: CondPVP
-         *  type: 
-         */
-
-        /* offset: 0027 col: 3
-         *  name: CondPVPOnly
-         *  type: 
-         */
-
-        /* offset: 0000 col: 4
-         *  name: Type
-         *  type: 
-         */
-
-        /* offset: 0002 col: 5
-         *  name: Data
-         *  repeat count: 9
-         */
-
-        /* offset: 0004 col: 6
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0006 col: 7
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0008 col: 8
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000a col: 9
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000c col: 10
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000e col: 11
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0010 col: 12
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 13
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0014 col: 14
-         *  name: Data{HQ}
-         *  repeat count: 9
-         */
-
-        /* offset: 0016 col: 15
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0018 col: 16
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001a col: 17
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001c col: 18
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 001e col: 19
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0020 col: 20
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0022 col: 21
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0024 col: 22
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 04 offset: 0000
@@ -164,7 +66,7 @@ namespace Lumina.Excel.GeneratedSheets
             CondLv = parser.ReadOffset< byte >( 0x26 );
 
             // col: 1 offset: 0027
-            packed27 = parser.ReadOffset< byte >( 0x27 );
+            packed27 = parser.ReadOffset< byte >( 0x27, ExcelColumnDataType.UInt8 );
 
 
         }

@@ -1,25 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapSymbol", columnHash: 0xe7e370e4 )]
     public class MapSymbol : IExcelRow
     {
         // column defs from Wed, 15 Jan 2020 17:17:16 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Icon
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: PlaceName
-         *  type: 
-         */
-
-        /* offset: 0008 col: 2
-         *  name: DisplayNavi
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -48,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             PlaceName = parser.ReadOffset< int >( 0x4 );
 
             // col: 2 offset: 0008
-            packed8 = parser.ReadOffset< byte >( 0x8 );
+            packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
 
 
         }

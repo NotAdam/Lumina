@@ -1,37 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestClassJobSupply", columnHash: 0xdd620f3e )]
     public class QuestClassJobSupply : IExcelRow
     {
         // column defs from Sat, 15 Jun 2019 16:05:03 GMT
-
-        /* offset: 0008 col: 0
-         *  name: ClassJobCategory
-         *  type: 
-         */
-
-        /* offset: 0009 col: 1
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0000 col: 2
-         *  name: ENpcResident
-         *  type: 
-         */
-
-        /* offset: 0004 col: 3
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 000a col: 4
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 000b col: 5
-         *  no SaintCoinach definition found
-         */
-
 
 
         // col: 02 offset: 0000
@@ -78,7 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             unknowna = parser.ReadOffset< byte >( 0xa );
 
             // col: 5 offset: 000b
-            packedb = parser.ReadOffset< byte >( 0xb );
+            packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
 
 
         }

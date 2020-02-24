@@ -1,68 +1,11 @@
+using Lumina.Data.Structs.Excel;
+
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishParameter", columnHash: 0x019385c9 )]
     public class FishParameter : IExcelRow
     {
         // column defs from Mon, 24 Feb 2020 17:34:06 GMT
-
-        /* offset: 0000 col: 0
-         *  name: Text
-         *  type: 
-         */
-
-        /* offset: 0004 col: 1
-         *  name: Item
-         *  type: 
-         */
-
-        /* offset: 000c col: 2
-         *  name: GatheringItemLevel
-         *  type: 
-         */
-
-        /* offset: 0010 col: 3
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0012 col: 4
-         *  name: IsHidden
-         *  type: 
-         */
-
-        /* offset: 0012 col: 5
-         *  no SaintCoinach definition found
-         */
-
-        /* offset: 0011 col: 6
-         *  name: FishingRecordType
-         *  type: 
-         */
-
-        /* offset: 0008 col: 7
-         *  name: TerritoryType
-         *  type: 
-         */
-
-        /* offset: 000e col: 8
-         *  name: GatheringSubCategory
-         *  type: 
-         */
-
-        /* offset: 0012 col: 9
-         *  name: IsInLog
-         *  type: 
-         */
-
-        /* offset: 0012 col: 10
-         *  name: TimeRestricted
-         *  type: 
-         */
-
-        /* offset: 0012 col: 11
-         *  name: WeatherRestricted
-         *  type: 
-         */
-
 
 
         // col: 00 offset: 0000
@@ -125,7 +68,7 @@ namespace Lumina.Excel.GeneratedSheets
             FishingRecordType = parser.ReadOffset< byte >( 0x11 );
 
             // col: 4 offset: 0012
-            packed12 = parser.ReadOffset< byte >( 0x12 );
+            packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
 
 
         }
