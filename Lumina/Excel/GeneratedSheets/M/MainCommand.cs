@@ -1,0 +1,88 @@
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "MainCommand", columnHash: 0x63da0c66 )]
+    public class MainCommand : IExcelRow
+    {
+        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+
+        /* offset: 0008 col: 0
+         *  name: Icon
+         *  type: 
+         */
+
+        /* offset: 000c col: 1
+         *  name: Category
+         *  type: 
+         */
+
+        /* offset: 000d col: 2
+         *  name: MainCommandCategory
+         *  type: 
+         */
+
+        /* offset: 000e col: 3
+         *  name: SortID
+         *  type: 
+         */
+
+        /* offset: 0000 col: 4
+         *  name: Name
+         *  type: 
+         */
+
+        /* offset: 0004 col: 5
+         *  name: Description
+         *  type: 
+         */
+
+
+
+        // col: 04 offset: 0000
+        public string Name;
+
+        // col: 05 offset: 0004
+        public string Description;
+
+        // col: 00 offset: 0008
+        public int Icon;
+
+        // col: 01 offset: 000c
+        public byte Category;
+
+        // col: 02 offset: 000d
+        public byte MainCommandCategory;
+
+        // col: 03 offset: 000e
+        public sbyte SortID;
+
+
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            // col: 4 offset: 0000
+            Name = parser.ReadOffset< string >( 0x0 );
+
+            // col: 5 offset: 0004
+            Description = parser.ReadOffset< string >( 0x4 );
+
+            // col: 0 offset: 0008
+            Icon = parser.ReadOffset< int >( 0x8 );
+
+            // col: 1 offset: 000c
+            Category = parser.ReadOffset< byte >( 0xc );
+
+            // col: 2 offset: 000d
+            MainCommandCategory = parser.ReadOffset< byte >( 0xd );
+
+            // col: 3 offset: 000e
+            SortID = parser.ReadOffset< sbyte >( 0xe );
+
+
+        }
+    }
+}

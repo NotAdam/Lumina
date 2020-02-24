@@ -1,0 +1,184 @@
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "BNpcState", columnHash: 0x439de63e )]
+    public class BNpcState : IExcelRow
+    {
+        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+
+        /* offset: 000a col: 0
+         *  name: Slot
+         *  type: 
+         */
+
+        /* offset: 0010 col: 1
+         *  name: OverRay
+         *  type: 
+         */
+
+        /* offset: 0011 col: 2
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 000b col: 3
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0008 col: 4
+         *  name: Idle
+         *  type: 
+         */
+
+        /* offset: 000c col: 5
+         *  name: Attribute[0]
+         *  type: 
+         */
+
+        /* offset: 0012 col: 6
+         *  name: AttributeFlag[0]
+         *  type: 
+         */
+
+        /* offset: 000d col: 7
+         *  name: Attribute[1]
+         *  type: 
+         */
+
+        /* offset: 0013 col: 8
+         *  name: AttributeFlag[1]
+         *  type: 
+         */
+
+        /* offset: 000e col: 9
+         *  name: Attribute[2]
+         *  type: 
+         */
+
+        /* offset: 0014 col: 10
+         *  name: AttributeFlag[2]
+         *  type: 
+         */
+
+        /* offset: 0000 col: 11
+         *  name: Scale
+         *  type: 
+         */
+
+        /* offset: 000f col: 12
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0004 col: 13
+         *  name: LoopTimeline
+         *  type: 
+         */
+
+        /* offset: 0015 col: 14
+         *  no SaintCoinach definition found
+         */
+
+
+
+        // col: 11 offset: 0000
+        public float Scale;
+
+        // col: 13 offset: 0004
+        public int LoopTimeline;
+
+        // col: 04 offset: 0008
+        public ushort Idle;
+
+        // col: 00 offset: 000a
+        public byte Slot;
+
+        // col: 03 offset: 000b
+        public byte unknownb;
+
+        // col: 05 offset: 000c
+        public byte Attribute0;
+
+        // col: 07 offset: 000d
+        public byte Attribute1;
+
+        // col: 09 offset: 000e
+        public byte Attribute2;
+
+        // col: 12 offset: 000f
+        public byte unknownf;
+
+        // col: 01 offset: 0010
+        public sbyte OverRay;
+
+        // col: 02 offset: 0011
+        public sbyte unknown11;
+
+        // col: 06 offset: 0012
+        public bool AttributeFlag0;
+
+        // col: 08 offset: 0013
+        public bool AttributeFlag1;
+
+        // col: 10 offset: 0014
+        public bool AttributeFlag2;
+
+        // col: 14 offset: 0015
+        private byte packed15;
+        public bool packed15_1 => ( packed15 & 0x1 ) == 0x1;
+
+
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            // col: 11 offset: 0000
+            Scale = parser.ReadOffset< float >( 0x0 );
+
+            // col: 13 offset: 0004
+            LoopTimeline = parser.ReadOffset< int >( 0x4 );
+
+            // col: 4 offset: 0008
+            Idle = parser.ReadOffset< ushort >( 0x8 );
+
+            // col: 0 offset: 000a
+            Slot = parser.ReadOffset< byte >( 0xa );
+
+            // col: 3 offset: 000b
+            unknownb = parser.ReadOffset< byte >( 0xb );
+
+            // col: 5 offset: 000c
+            Attribute0 = parser.ReadOffset< byte >( 0xc );
+
+            // col: 7 offset: 000d
+            Attribute1 = parser.ReadOffset< byte >( 0xd );
+
+            // col: 9 offset: 000e
+            Attribute2 = parser.ReadOffset< byte >( 0xe );
+
+            // col: 12 offset: 000f
+            unknownf = parser.ReadOffset< byte >( 0xf );
+
+            // col: 1 offset: 0010
+            OverRay = parser.ReadOffset< sbyte >( 0x10 );
+
+            // col: 2 offset: 0011
+            unknown11 = parser.ReadOffset< sbyte >( 0x11 );
+
+            // col: 6 offset: 0012
+            AttributeFlag0 = parser.ReadOffset< bool >( 0x12 );
+
+            // col: 8 offset: 0013
+            AttributeFlag1 = parser.ReadOffset< bool >( 0x13 );
+
+            // col: 10 offset: 0014
+            AttributeFlag2 = parser.ReadOffset< bool >( 0x14 );
+
+            // col: 14 offset: 0015
+            packed15 = parser.ReadOffset< byte >( 0x15 );
+
+
+        }
+    }
+}

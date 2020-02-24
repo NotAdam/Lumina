@@ -1,0 +1,126 @@
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "ContentGauge", columnHash: 0xf678f7f7 )]
+    public class ContentGauge : IExcelRow
+    {
+        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+
+        /* offset: 0000 col: 0
+         *  name: Name
+         *  type: 
+         */
+
+        /* offset: 0008 col: 1
+         *  name: Color
+         *  type: 
+         */
+
+        /* offset: 000f col: 2
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0004 col: 3
+         *  name: TextString
+         *  type: 
+         */
+
+        /* offset: 000b col: 4
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 000d col: 5
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0009 col: 6
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 000c col: 7
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 000e col: 8
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 000a col: 9
+         *  no SaintCoinach definition found
+         */
+
+
+
+        // col: 00 offset: 0000
+        public string Name;
+
+        // col: 03 offset: 0004
+        public string TextString;
+
+        // col: 01 offset: 0008
+        public byte Color;
+
+        // col: 06 offset: 0009
+        public byte unknown9;
+
+        // col: 09 offset: 000a
+        public byte unknowna;
+
+        // col: 04 offset: 000b
+        public sbyte unknownb;
+
+        // col: 07 offset: 000c
+        public sbyte unknownc;
+
+        // col: 05 offset: 000d
+        public sbyte unknownd;
+
+        // col: 08 offset: 000e
+        public sbyte unknowne;
+
+        // col: 02 offset: 000f
+        private byte packedf;
+        public bool packedf_1 => ( packedf & 0x1 ) == 0x1;
+
+
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            // col: 0 offset: 0000
+            Name = parser.ReadOffset< string >( 0x0 );
+
+            // col: 3 offset: 0004
+            TextString = parser.ReadOffset< string >( 0x4 );
+
+            // col: 1 offset: 0008
+            Color = parser.ReadOffset< byte >( 0x8 );
+
+            // col: 6 offset: 0009
+            unknown9 = parser.ReadOffset< byte >( 0x9 );
+
+            // col: 9 offset: 000a
+            unknowna = parser.ReadOffset< byte >( 0xa );
+
+            // col: 4 offset: 000b
+            unknownb = parser.ReadOffset< sbyte >( 0xb );
+
+            // col: 7 offset: 000c
+            unknownc = parser.ReadOffset< sbyte >( 0xc );
+
+            // col: 5 offset: 000d
+            unknownd = parser.ReadOffset< sbyte >( 0xd );
+
+            // col: 8 offset: 000e
+            unknowne = parser.ReadOffset< sbyte >( 0xe );
+
+            // col: 2 offset: 000f
+            packedf = parser.ReadOffset< byte >( 0xf );
+
+
+        }
+    }
+}

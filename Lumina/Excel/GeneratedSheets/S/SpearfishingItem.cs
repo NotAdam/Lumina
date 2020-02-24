@@ -1,0 +1,89 @@
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "SpearfishingItem", columnHash: 0xd17632b4 )]
+    public class SpearfishingItem : IExcelRow
+    {
+        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+
+        /* offset: 0000 col: 0
+         *  name: Description
+         *  type: 
+         */
+
+        /* offset: 0004 col: 1
+         *  name: Item
+         *  type: 
+         */
+
+        /* offset: 0008 col: 2
+         *  name: GatheringItemLevel
+         *  type: 
+         */
+
+        /* offset: 000c col: 3
+         *  name: FishingRecordType
+         *  type: 
+         */
+
+        /* offset: 000a col: 4
+         *  name: TerritoryType
+         *  type: 
+         */
+
+        /* offset: 000d col: 5
+         *  name: IsVisible
+         *  type: 
+         */
+
+
+
+        // col: 00 offset: 0000
+        public string Description;
+
+        // col: 01 offset: 0004
+        public int Item;
+
+        // col: 02 offset: 0008
+        public ushort GatheringItemLevel;
+
+        // col: 04 offset: 000a
+        public ushort TerritoryType;
+
+        // col: 03 offset: 000c
+        public byte FishingRecordType;
+
+        // col: 05 offset: 000d
+        private byte packedd;
+        public bool IsVisible => ( packedd & 0x1 ) == 0x1;
+
+
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            // col: 0 offset: 0000
+            Description = parser.ReadOffset< string >( 0x0 );
+
+            // col: 1 offset: 0004
+            Item = parser.ReadOffset< int >( 0x4 );
+
+            // col: 2 offset: 0008
+            GatheringItemLevel = parser.ReadOffset< ushort >( 0x8 );
+
+            // col: 4 offset: 000a
+            TerritoryType = parser.ReadOffset< ushort >( 0xa );
+
+            // col: 3 offset: 000c
+            FishingRecordType = parser.ReadOffset< byte >( 0xc );
+
+            // col: 5 offset: 000d
+            packedd = parser.ReadOffset< byte >( 0xd );
+
+
+        }
+    }
+}

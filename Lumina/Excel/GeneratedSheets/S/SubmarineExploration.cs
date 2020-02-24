@@ -1,0 +1,160 @@
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "SubmarineExploration", columnHash: 0xff922bb4 )]
+    public class SubmarineExploration : IExcelRow
+    {
+        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+
+        /* offset: 0000 col: 0
+         *  name: Destination
+         *  type: 
+         */
+
+        /* offset: 0004 col: 1
+         *  name: Location
+         *  type: 
+         */
+
+        /* offset: 000e col: 2
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0010 col: 3
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0012 col: 4
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0014 col: 5
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0019 col: 6
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0015 col: 7
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0016 col: 8
+         *  name: RankReq
+         *  type: 
+         */
+
+        /* offset: 0017 col: 9
+         *  name: CeruleumTankReq
+         *  type: 
+         */
+
+        /* offset: 000c col: 10
+         *  name: Duration<min>
+         *  type: 
+         */
+
+        /* offset: 0018 col: 11
+         *  name: DistanceForSurvey
+         *  type: 
+         */
+
+        /* offset: 0008 col: 12
+         *  name: ExpReward
+         *  type: 
+         */
+
+
+
+        // col: 00 offset: 0000
+        public string Destination;
+
+        // col: 01 offset: 0004
+        public string Location;
+
+        // col: 12 offset: 0008
+        public uint ExpReward;
+
+        // col: 10 offset: 000c
+        public ushort Durationmin;
+
+        // col: 02 offset: 000e
+        public short unknowne;
+
+        // col: 03 offset: 0010
+        public short unknown10;
+
+        // col: 04 offset: 0012
+        public short unknown12;
+
+        // col: 05 offset: 0014
+        public byte unknown14;
+
+        // col: 07 offset: 0015
+        public byte unknown15;
+
+        // col: 08 offset: 0016
+        public byte RankReq;
+
+        // col: 09 offset: 0017
+        public byte CeruleumTankReq;
+
+        // col: 11 offset: 0018
+        public byte DistanceForSurvey;
+
+        // col: 06 offset: 0019
+        private byte packed19;
+        public bool packed19_1 => ( packed19 & 0x1 ) == 0x1;
+
+
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            // col: 0 offset: 0000
+            Destination = parser.ReadOffset< string >( 0x0 );
+
+            // col: 1 offset: 0004
+            Location = parser.ReadOffset< string >( 0x4 );
+
+            // col: 12 offset: 0008
+            ExpReward = parser.ReadOffset< uint >( 0x8 );
+
+            // col: 10 offset: 000c
+            Durationmin = parser.ReadOffset< ushort >( 0xc );
+
+            // col: 2 offset: 000e
+            unknowne = parser.ReadOffset< short >( 0xe );
+
+            // col: 3 offset: 0010
+            unknown10 = parser.ReadOffset< short >( 0x10 );
+
+            // col: 4 offset: 0012
+            unknown12 = parser.ReadOffset< short >( 0x12 );
+
+            // col: 5 offset: 0014
+            unknown14 = parser.ReadOffset< byte >( 0x14 );
+
+            // col: 7 offset: 0015
+            unknown15 = parser.ReadOffset< byte >( 0x15 );
+
+            // col: 8 offset: 0016
+            RankReq = parser.ReadOffset< byte >( 0x16 );
+
+            // col: 9 offset: 0017
+            CeruleumTankReq = parser.ReadOffset< byte >( 0x17 );
+
+            // col: 11 offset: 0018
+            DistanceForSurvey = parser.ReadOffset< byte >( 0x18 );
+
+            // col: 6 offset: 0019
+            packed19 = parser.ReadOffset< byte >( 0x19 );
+
+
+        }
+    }
+}

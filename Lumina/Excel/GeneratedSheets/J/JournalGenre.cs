@@ -1,0 +1,66 @@
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "JournalGenre", columnHash: 0x2c6b75bb )]
+    public class JournalGenre : IExcelRow
+    {
+        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+
+        /* offset: 0004 col: 0
+         *  name: Icon
+         *  type: 
+         */
+
+        /* offset: 0008 col: 1
+         *  name: JournalCategory
+         *  type: 
+         */
+
+        /* offset: 0009 col: 2
+         *  no SaintCoinach definition found
+         */
+
+        /* offset: 0000 col: 3
+         *  name: Name
+         *  type: 
+         */
+
+
+
+        // col: 03 offset: 0000
+        public string Name;
+
+        // col: 00 offset: 0004
+        public int Icon;
+
+        // col: 01 offset: 0008
+        public byte JournalCategory;
+
+        // col: 02 offset: 0009
+        private byte packed9;
+        public bool packed9_1 => ( packed9 & 0x1 ) == 0x1;
+
+
+        public int RowId { get; set; }
+        public int SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            // col: 3 offset: 0000
+            Name = parser.ReadOffset< string >( 0x0 );
+
+            // col: 0 offset: 0004
+            Icon = parser.ReadOffset< int >( 0x4 );
+
+            // col: 1 offset: 0008
+            JournalCategory = parser.ReadOffset< byte >( 0x8 );
+
+            // col: 2 offset: 0009
+            packed9 = parser.ReadOffset< byte >( 0x9 );
+
+
+        }
+    }
+}
