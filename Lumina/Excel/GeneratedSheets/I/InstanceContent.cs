@@ -3,7 +3,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "InstanceContent", columnHash: 0xe8f48f92 )]
     public class InstanceContent : IExcelRow
     {
-        // column defs from Sun, 09 Feb 2020 20:51:08 GMT
+        // column defs from Mon, 24 Feb 2020 18:22:54 GMT
 
         /* offset: 0090 col: 0
          *  name: InstanceContentType
@@ -21,8 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
          */
 
         /* offset: 0097 col: 3
-         *  name: Name
-         *  type: 
+         *  no SaintCoinach definition found
          */
 
         /* offset: 0082 col: 4
@@ -403,7 +402,7 @@ namespace Lumina.Excel.GeneratedSheets
 
         // col: 03 offset: 0097
         private byte packed97;
-        public bool Name => ( packed97 & 0x1 ) == 0x1;
+        public bool packed97_1 => ( packed97 & 0x1 ) == 0x1;
         public bool Colosseum => ( packed97 & 0x2 ) == 0x2;
         public bool packed97_4 => ( packed97 & 0x4 ) == 0x4;
 
