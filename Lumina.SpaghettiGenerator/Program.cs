@@ -68,8 +68,8 @@ namespace Lumina.SpaghettiGenerator
         {
             if( string.IsNullOrWhiteSpace( str ) )
                 return null;
-            
-            return str
+
+            str = str
                 .Replace( "<", "" )
                 .Replace( ">", "" )
                 .Replace( "{", "" )
@@ -82,6 +82,17 @@ namespace Lumina.SpaghettiGenerator
                 .Replace( " ", "" )
                 .Replace( "'", "" )
                 .Replace( "%", "Pct" );
+
+            if( char.IsDigit( str[ 0 ] ) )
+            {
+                // kill me
+                var index = str[ 0 ] - '0';
+                var fucking = new string[] { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+                str = $"{fucking[ index ]}{str.Substring( 1 )}";
+            }
+
+            return str;
         }
 
         // that's amore
@@ -100,19 +111,33 @@ namespace Lumina.SpaghettiGenerator
                 Console.WriteLine( $"doing sheet: {name}" );
 
                 var code = ProcessSheet( name );
+                if( code == null )
+                {
+                    continue;
+                }
 
-                File.WriteAllText( $"./output/{name}.cs", code );
+                var path = $"./output/{name[ 0 ]}/{name}.cs";
+                var dir = Path.GetDirectoryName( path );
+                Directory.CreateDirectory( dir );
+
+                File.WriteAllText( path, code );
             }
         }
 
         static string ProcessSheet( string name )
         {
             var path = $"./Definitions/{name}.json";
-            var lastModified = System.IO.File.GetLastWriteTime(path );
+            var lastModified = System.IO.File.GetLastWriteTime( path );
             var def = File.ReadAllText( path );
             var tmpl = _sheetTemplate;
 
             var sheet = _lumina.Excel.GetSheet< DummyExcelSheet >( name );
+            if( sheet == null )
+            {
+                Console.WriteLine( $" - sheet {name} no longer exists!" );
+                return null;
+            }
+
             var cols = sheet.Columns;
 
             var schema = JsonConvert.DeserializeObject< SheetDefinition >( def );
@@ -197,6 +222,8 @@ namespace Lumina.SpaghettiGenerator
             var indent = "        ";
 
             tmpl = tmpl.Replace( "%%SHEET_NAME%%", name );
+            var hash = sheet.HeaderFile.GetColumnsHash();
+            tmpl = tmpl.Replace( "%%COL_HASH%%", $"0x{hash:x8}" );
 
             var sb = new StringBuilder();
 
@@ -208,12 +235,12 @@ namespace Lumina.SpaghettiGenerator
             for( int i = 0; i < cols.Length; i++ )
             {
                 var col = cols[ i ];
-                
+
                 sb.Append( indent );
                 sb.Append( "/*" );
                 sb.Append( $" offset: {col.Offset:x4} col: {i}" );
                 sb.AppendLine();
-                
+
                 // get sc def
                 var schemaDef = schema.Definitions.FirstOrDefault( d => d.Index == i );
                 if( schemaDef != null )
@@ -224,13 +251,13 @@ namespace Lumina.SpaghettiGenerator
                     if( string.IsNullOrWhiteSpace( schemaDef.Type ) )
                     {
                         sb.Append( indent );
-                        sb.AppendLine( $" *  type: {schemaDef.Type}" );  
+                        sb.AppendLine( $" *  type: {schemaDef.Type}" );
                     }
 
                     if( schemaDef.Type == "repeat" )
                     {
                         sb.Append( indent );
-                        sb.AppendLine( $" *  repeat count: {schemaDef.Count}" );  
+                        sb.AppendLine( $" *  repeat count: {schemaDef.Count}" );
                     }
                 }
                 else
@@ -248,7 +275,7 @@ namespace Lumina.SpaghettiGenerator
             sb.AppendLine();
 
             tmpl = tmpl.Replace( "%%DEBUG_INFO%%", sb.ToString() );
-            
+
             sb.Clear();
             foreach( var (offset, gcd) in items.OrderBy( pair => pair.Key ) )
             {
@@ -264,17 +291,18 @@ namespace Lumina.SpaghettiGenerator
                     sb.Append( indent );
                     // yes i hate myself 
                     // no i don't care
-                    sb.Append( GenerateDataMember( "byte", $"packed{offset:x}", offset, gcd.ArraySize ).Replace( "public", "private" ) );
+                    sb.Append( GenerateDataMember( "byte", $"packed{offset:x}", offset ).Replace( "public", "private" ) );
                     sb.AppendLine();
 
                     // time to hate myself even more
                     int index = 0;
                     foreach( var member in gcd.Members )
                     {
-                        var defaultName = $"unknown{offset:x}_{member.Bit:x}";
+                        var bit = 1 << index;
+                        var defaultName = $"packed{offset:x}_{bit:x}";
 
                         sb.Append( indent );
-                        sb.Append( $"public bool {Clean( member.Name ) ?? defaultName} => ( packed{offset:x} & 0x{member.Bit:x} ) == 0x{member.Bit:x};" );
+                        sb.Append( $"public bool {Clean( member.Name ) ?? defaultName} => ( packed{offset:x} & 0x{bit:x} ) == 0x{bit:x};" );
                         sb.AppendLine();
 
                         index++;
@@ -305,14 +333,6 @@ namespace Lumina.SpaghettiGenerator
                 sb.Append( $"// col: {gcd.Id} offset: {offset:x4}" );
                 sb.AppendLine();
 
-                // init array
-                if( gcd.IsArray )
-                {
-                    sb.Append( indent );
-                    sb.Append( $"{gcd.Name} = new {typeName}[{gcd.ArraySize}];" );
-                    sb.AppendLine();
-                }
-
                 if( gcd.IsBitfield )
                 {
                     sb.Append( indent );
@@ -322,6 +342,13 @@ namespace Lumina.SpaghettiGenerator
 
                     continue;
                 }
+                // ReSharper disable once RedundantIfElseBlock
+                else if( gcd.IsArray )
+                {
+                    sb.Append( indent );
+                    sb.Append( $"{gcd.CleanName} = new {typeName}[{gcd.ArraySize}];" );
+                    sb.AppendLine();
+                }
 
                 foreach( var member in gcd.Members )
                 {
@@ -329,6 +356,7 @@ namespace Lumina.SpaghettiGenerator
 
                     if( gcd.IsArray )
                     {
+                        // todo: left as straight reads because exds can have nested structures which then read incorrectly if you do a batch read
                         sb.Append( GenerateReadMember( typeName, gcd.CleanName, member.Offset, member.ArrayIndex ) );
                     }
 
@@ -344,8 +372,6 @@ namespace Lumina.SpaghettiGenerator
             }
 
             tmpl = tmpl.Replace( "%%DATA_READERS%%", sb.ToString() );
-
-            // Console.WriteLine( tmpl );
 
             return tmpl;
         }
