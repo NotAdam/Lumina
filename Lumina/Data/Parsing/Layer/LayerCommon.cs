@@ -519,7 +519,9 @@ namespace Lumina.Data.Parsing.Layer
             {
                 PathInstanceObject ret = new PathInstanceObject();
 
-                long start = br.BaseStream.Position;
+                // todo: pass baseoffsets of instanceobjects to all composition classes
+                long start = br.BaseStream.Position - 48;
+
                 ret.ControlPoints = br.ReadInt32();
                 ret.ControlPointCount = br.ReadInt32();
                 ret.Reserved1 = br.ReadUInt32();
