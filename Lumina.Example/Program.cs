@@ -60,6 +60,11 @@ namespace Lumina.Example
         {
             var lumina = new Lumina( args[ 0 ] );
 
+            foreach( var item in lumina.GetExcelSheet< Item >().GetRows().Take( 10 ) )
+            {
+                Console.WriteLine($"name: {item.Name}");
+            }
+
             // excel reading
             var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
             var atRows = actionTimeline.GetRows().Take( 5 );

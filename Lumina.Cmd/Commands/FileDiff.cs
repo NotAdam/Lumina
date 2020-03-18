@@ -6,7 +6,7 @@ using CliFx.Attributes;
 
 namespace Lumina.Cmd.Commands
 {
-    [Command( "file diff",
+    [Command( "filediff",
         Description = "Given a path list, this will diff files by size and then hash to see if they've changed. Requires 2 client installs with appropriate dats available in each." )]
     public class FileDiff : ICommand
     {

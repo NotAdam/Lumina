@@ -4,7 +4,7 @@ using CliFx.Attributes;
 
 namespace Lumina.Cmd.Commands
 {
-    [Command( "file extract", Description = "Extract files as is from the game's filesystem" )]
+    [Command( "extract", Description = "Extract files as is from the game's filesystem" )]
     public class FileExtract : ICommand
     {
         [CommandParameter( 0, Description = "path to game file" )]
