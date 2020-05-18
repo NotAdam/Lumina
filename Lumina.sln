@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.SpaghettiGenerator",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Cmd", "Lumina.Cmd\Lumina.Cmd.csproj", "{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbra", "Umbra\Umbra.csproj", "{E7ABFDD6-53B5-40C9-89E4-A62B548E561A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,9 +36,5 @@ Global
 		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7ABFDD6-53B5-40C9-89E4-A62B548E561A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7ABFDD6-53B5-40C9-89E4-A62B548E561A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7ABFDD6-53B5-40C9-89E4-A62B548E561A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7ABFDD6-53B5-40C9-89E4-A62B548E561A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
