@@ -212,7 +212,12 @@ namespace Lumina.Excel
                     throw new ArgumentOutOfRangeException( "type", $"invalid excel column type: {type}" );
             }
 
-            return (T)data;
+            if( data is T castedData )
+            {
+                return castedData;
+            }
+
+            return default;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
