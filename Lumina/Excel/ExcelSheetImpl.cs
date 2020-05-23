@@ -60,7 +60,7 @@ namespace Lumina.Excel
         
         public Language RequestedLanguage { get; protected set; }
 
-        protected readonly Lumina _Lumina;
+        internal readonly Lumina _Lumina;
 
         protected string GenerateFilePath( string name, uint startId, Language language )
         {

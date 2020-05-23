@@ -26,5 +26,10 @@ namespace Lumina
         /// which do not define a column checksum.
         /// </summary>
         public bool PanicOnSheetChecksumMismatch { get; set; } = true;
+
+        /// <summary>
+        /// If enabled, if a cast fails in an excel sheet, an InvalidCastException will be thrown instead of the types default value being inserted instead.
+        /// </summary>
+        public bool ExcelSheetStrictCastingEnabled { get; set; } = false;
     }
 }

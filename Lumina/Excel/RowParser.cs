@@ -212,6 +212,11 @@ namespace Lumina.Excel
                     throw new ArgumentOutOfRangeException( "type", $"invalid excel column type: {type}" );
             }
 
+            if( _Sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
+            {
+                return (T)data;
+            }
+
             if( data is T castedData )
             {
                 return castedData;
