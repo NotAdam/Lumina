@@ -54,6 +54,20 @@ namespace Lumina.Excel
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
+        private Dictionary<ushort, ExcelColumnDefinition> _columnsByOffset;
+        public Dictionary<ushort, ExcelColumnDefinition> ColumnsByOffset
+        {
+            get
+            {
+                if( _columnsByOffset == null )
+                {
+                    _columnsByOffset = Columns.GroupBy( p => p.Offset ).ToDictionary( c => c.Key, c => c.First() );
+                }
+                return _columnsByOffset;
+            }
+        }
+
+
         public ExcelDataPagination[] DataPagination => HeaderFile.DataPages;
 
         public Language[] Languages => HeaderFile.Languages;

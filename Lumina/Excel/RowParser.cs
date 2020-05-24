@@ -239,7 +239,7 @@ namespace Lumina.Excel
             return count;
         }
 
-        public T ReadOffset< T >( int offset, byte bit = 0 )
+        public T ReadOffset< T >( ushort offset, byte bit = 0 )
         {
             Stream.Position = _RowOffset + offset;
 
@@ -251,8 +251,7 @@ namespace Lumina.Excel
                 return ReadField< T >( flag );
             }
 
-            var col = _Sheet.Columns.First( c => c.Offset == offset );
-            return ReadField< T >( col.Type );
+            return ReadField< T >( _Sheet.ColumnsByOffset[offset].Type );
         }
 
         public T ReadOffset< T >( int offset, ExcelColumnDataType type )
