@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "GardeningSeed", columnHash: 0xa8a6cb9c )]
     public class GardeningSeed : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -21,9 +21,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknowna;
 
         // col: 03 offset: 000b
-        private byte packedb;
-        public bool SE => ( packedb & 0x1 ) == 0x1;
-        public bool packedb_2 => ( packedb & 0x2 ) == 0x2;
+        public bool SE;
+        public byte packedb;
+        public bool packedb_2;
 
 
         public int RowId { get; set; }
@@ -48,6 +48,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 000b
             packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
+
+            SE = ( packedb & 0x1 ) == 0x1;
+            packedb_2 = ( packedb & 0x2 ) == 0x2;
 
 
         }

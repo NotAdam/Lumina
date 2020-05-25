@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Warp", columnHash: 0x1a234b7b )]
     public class Warp : IExcelRow
     {
-        // column defs from Sun, 09 Feb 2020 20:51:08 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 10 offset: 0000
@@ -42,8 +42,8 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort EndCutscene;
 
         // col: 09 offset: 0022
-        private byte packed22;
-        public bool CanSkipCutscene => ( packed22 & 0x1 ) == 0x1;
+        public bool CanSkipCutscene;
+        public byte packed22;
 
 
         public int RowId { get; set; }
@@ -89,6 +89,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 9 offset: 0022
             packed22 = parser.ReadOffset< byte >( 0x22, ExcelColumnDataType.UInt8 );
+
+            CanSkipCutscene = ( packed22 & 0x1 ) == 0x1;
 
 
         }

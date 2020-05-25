@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Achievement", columnHash: 0x24bfffd6 )]
     public class Achievement : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -45,7 +45,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Type;
 
         // col: 19 offset: 003a
-        public byte Padding;
+        public byte unknown3a;
 
         // col: 20 offset: 003b
         public byte AchievementHideCondition;
@@ -104,7 +104,7 @@ namespace Lumina.Excel.GeneratedSheets
             Type = parser.ReadOffset< byte >( 0x39 );
 
             // col: 19 offset: 003a
-            Padding = parser.ReadOffset< byte >( 0x3a );
+            unknown3a = parser.ReadOffset< byte >( 0x3a );
 
             // col: 20 offset: 003b
             AchievementHideCondition = parser.ReadOffset< byte >( 0x3b );

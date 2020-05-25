@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "StatusLoopVFX", columnHash: 0xe9330973 )]
     public class StatusLoopVFX : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -30,8 +30,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown9;
 
         // col: 07 offset: 000a
-        private byte packeda;
-        public bool packeda_1 => ( packeda & 0x1 ) == 0x1;
+        public bool packeda_1;
+        public byte packeda;
 
 
         public int RowId { get; set; }
@@ -65,6 +65,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 7 offset: 000a
             packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
+
+            packeda_1 = ( packeda & 0x1 ) == 0x1;
 
 
         }

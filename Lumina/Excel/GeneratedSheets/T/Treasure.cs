@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Treasure", columnHash: 0x030e840a )]
     public class Treasure : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -36,9 +36,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Item;
 
         // col: 09 offset: 0014
-        private byte packed14;
-        public bool packed14_1 => ( packed14 & 0x1 ) == 0x1;
-        public bool packed14_2 => ( packed14 & 0x2 ) == 0x2;
+        public bool packed14_1;
+        public byte packed14;
+        public bool packed14_2;
 
 
         public int RowId { get; set; }
@@ -78,6 +78,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 9 offset: 0014
             packed14 = parser.ReadOffset< byte >( 0x14, ExcelColumnDataType.UInt8 );
+
+            packed14_1 = ( packed14 & 0x1 ) == 0x1;
+            packed14_2 = ( packed14 & 0x2 ) == 0x2;
 
 
         }

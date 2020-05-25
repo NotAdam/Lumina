@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "MobHuntOrder", columnHash: 0xa9aa9ab5 )]
     public class MobHuntOrder : IExcelRow
     {
-        // column defs from Sun, 09 Feb 2020 20:51:08 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000

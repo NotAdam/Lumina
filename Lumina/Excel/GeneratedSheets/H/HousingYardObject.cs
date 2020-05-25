@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "HousingYardObject", columnHash: 0xe15fd4d0 )]
     public class HousingYardObject : IExcelRow
     {
-        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 03 offset: 0000
@@ -39,11 +39,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown12;
 
         // col: 07 offset: 0013
-        private byte packed13;
-        public bool DestroyOnRemoval => ( packed13 & 0x1 ) == 0x1;
-        public bool packed13_2 => ( packed13 & 0x2 ) == 0x2;
-        public bool packed13_4 => ( packed13 & 0x4 ) == 0x4;
-        public bool packed13_8 => ( packed13 & 0x8 ) == 0x8;
+        public bool DestroyOnRemoval;
+        public byte packed13;
+        public bool packed13_2;
+        public bool packed13_4;
+        public bool packed13_8;
 
 
         public int RowId { get; set; }
@@ -86,6 +86,11 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 7 offset: 0013
             packed13 = parser.ReadOffset< byte >( 0x13, ExcelColumnDataType.UInt8 );
+
+            DestroyOnRemoval = ( packed13 & 0x1 ) == 0x1;
+            packed13_2 = ( packed13 & 0x2 ) == 0x2;
+            packed13_4 = ( packed13 & 0x4 ) == 0x4;
+            packed13_8 = ( packed13 & 0x8 ) == 0x8;
 
 
         }

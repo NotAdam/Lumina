@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "HugeCraftworksNpc", columnHash: 0x79685419 )]
     public class HugeCraftworksNpc : IExcelRow
     {
-        // column defs from Wed, 31 Jul 2019 22:24:05 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000
@@ -30,8 +30,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknowna;
 
         // col: 14 offset: 000b
-        private byte packedb;
-        public bool packedb_1 => ( packedb & 0x1 ) == 0x1;
+        public bool packedb_1;
+        public byte packedb;
 
         // col: 03 offset: 000c
         public uint[] ItemRequested;
@@ -55,8 +55,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown16;
 
         // col: 15 offset: 0017
-        private byte packed17;
-        public bool packed17_1 => ( packed17 & 0x1 ) == 0x1;
+        public bool packed17_1;
+        public byte packed17;
 
         // col: 40 offset: 001c
         public ushort unknown1c;
@@ -74,8 +74,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown22;
 
         // col: 16 offset: 0023
-        private byte packed23;
-        public bool packed23_1 => ( packed23 & 0x1 ) == 0x1;
+        public bool packed23_1;
+        public byte packed23;
 
         // col: 41 offset: 0028
         public ushort unknown28;
@@ -93,8 +93,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2e;
 
         // col: 17 offset: 002f
-        private byte packed2f;
-        public bool packed2f_1 => ( packed2f & 0x1 ) == 0x1;
+        public bool packed2f_1;
+        public byte packed2f;
 
         // col: 42 offset: 0034
         public ushort unknown34;
@@ -112,8 +112,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3a;
 
         // col: 18 offset: 003b
-        private byte packed3b;
-        public bool packed3b_1 => ( packed3b & 0x1 ) == 0x1;
+        public bool packed3b_1;
+        public byte packed3b;
 
         // col: 07 offset: 003c
         public uint unknown3c;
@@ -137,8 +137,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown46;
 
         // col: 19 offset: 0047
-        private byte packed47;
-        public bool packed47_1 => ( packed47 & 0x1 ) == 0x1;
+        public bool packed47_1;
+        public byte packed47;
 
         // col: 50 offset: 0048
         public uint unknown48;
@@ -254,6 +254,8 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 14 offset: 000b
             packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
 
+            packedb_1 = ( packedb & 0x1 ) == 0x1;
+
             // col: 3 offset: 000c
             ItemRequested = new uint[4];
             ItemRequested[0] = parser.ReadOffset< uint >( 0xc );
@@ -286,6 +288,8 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 15 offset: 0017
             packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
 
+            packed17_1 = ( packed17 & 0x1 ) == 0x1;
+
             // col: 40 offset: 001c
             unknown1c = parser.ReadOffset< ushort >( 0x1c );
 
@@ -303,6 +307,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 16 offset: 0023
             packed23 = parser.ReadOffset< byte >( 0x23, ExcelColumnDataType.UInt8 );
+
+            packed23_1 = ( packed23 & 0x1 ) == 0x1;
 
             // col: 41 offset: 0028
             unknown28 = parser.ReadOffset< ushort >( 0x28 );
@@ -322,6 +328,8 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 17 offset: 002f
             packed2f = parser.ReadOffset< byte >( 0x2f, ExcelColumnDataType.UInt8 );
 
+            packed2f_1 = ( packed2f & 0x1 ) == 0x1;
+
             // col: 42 offset: 0034
             unknown34 = parser.ReadOffset< ushort >( 0x34 );
 
@@ -339,6 +347,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 18 offset: 003b
             packed3b = parser.ReadOffset< byte >( 0x3b, ExcelColumnDataType.UInt8 );
+
+            packed3b_1 = ( packed3b & 0x1 ) == 0x1;
 
             // col: 7 offset: 003c
             unknown3c = parser.ReadOffset< uint >( 0x3c );
@@ -363,6 +373,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 19 offset: 0047
             packed47 = parser.ReadOffset< byte >( 0x47, ExcelColumnDataType.UInt8 );
+
+            packed47_1 = ( packed47 & 0x1 ) == 0x1;
 
             // col: 50 offset: 0048
             unknown48 = parser.ReadOffset< uint >( 0x48 );

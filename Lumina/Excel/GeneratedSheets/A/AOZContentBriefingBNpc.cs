@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "AOZContentBriefingBNpc", columnHash: 0xfc0810d7 )]
     public class AOZContentBriefingBNpc : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -51,21 +51,21 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Magic;
 
         // col: 03 offset: 0017
-        private byte packed17;
-        public bool packed17_1 => ( packed17 & 0x1 ) == 0x1;
-        public bool SlowResistance => ( packed17 & 0x2 ) == 0x2;
-        public bool PetrificationResistance => ( packed17 & 0x4 ) == 0x4;
-        public bool ParalysisResistance => ( packed17 & 0x8 ) == 0x8;
-        public bool SilenceResistance => ( packed17 & 0x10 ) == 0x10;
-        public bool BlindResistance => ( packed17 & 0x20 ) == 0x20;
-        public bool StunResistance => ( packed17 & 0x40 ) == 0x40;
-        public bool SleepResistance => ( packed17 & 0x80 ) == 0x80;
+        public bool packed17_1;
+        public byte packed17;
+        public bool SlowResistance;
+        public bool PetrificationResistance;
+        public bool ParalysisResistance;
+        public bool SilenceResistance;
+        public bool BlindResistance;
+        public bool StunResistance;
+        public bool SleepResistance;
 
         // col: 22 offset: 0018
-        private byte packed18;
-        public bool BindResistance => ( packed18 & 0x1 ) == 0x1;
-        public bool HeavyResistance => ( packed18 & 0x2 ) == 0x2;
-        public bool InstaDeathResistance => ( packed18 & 0x4 ) == 0x4;
+        public bool BindResistance;
+        public byte packed18;
+        public bool HeavyResistance;
+        public bool InstaDeathResistance;
 
 
         public int RowId { get; set; }
@@ -121,8 +121,21 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 3 offset: 0017
             packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
 
+            packed17_1 = ( packed17 & 0x1 ) == 0x1;
+            SlowResistance = ( packed17 & 0x2 ) == 0x2;
+            PetrificationResistance = ( packed17 & 0x4 ) == 0x4;
+            ParalysisResistance = ( packed17 & 0x8 ) == 0x8;
+            SilenceResistance = ( packed17 & 0x10 ) == 0x10;
+            BlindResistance = ( packed17 & 0x20 ) == 0x20;
+            StunResistance = ( packed17 & 0x40 ) == 0x40;
+            SleepResistance = ( packed17 & 0x80 ) == 0x80;
+
             // col: 22 offset: 0018
             packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
+
+            BindResistance = ( packed18 & 0x1 ) == 0x1;
+            HeavyResistance = ( packed18 & 0x2 ) == 0x2;
+            InstaDeathResistance = ( packed18 & 0x4 ) == 0x4;
 
 
         }

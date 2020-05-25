@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ENpcResident", columnHash: 0xf74fa88c )]
     public class ENpcResident : IExcelRow
     {
-        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -39,8 +39,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Map;
 
         // col: 10 offset: 0015
-        private byte packed15;
-        public bool packed15_1 => ( packed15 & 0x1 ) == 0x1;
+        public bool packed15_1;
+        public byte packed15;
 
 
         public int RowId { get; set; }
@@ -83,6 +83,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 10 offset: 0015
             packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
+
+            packed15_1 = ( packed15 & 0x1 ) == 0x1;
 
 
         }

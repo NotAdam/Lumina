@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Map", columnHash: 0x56a0aa07 )]
     public class Map : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 06 offset: 0000
@@ -57,9 +57,9 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte MapIndex;
 
         // col: 16 offset: 001f
-        private byte packed1f;
-        public bool DiscoveryArrayByte => ( packed1f & 0x1 ) == 0x1;
-        public bool IsEvent => ( packed1f & 0x2 ) == 0x2;
+        public bool DiscoveryArrayByte;
+        public byte packed1f;
+        public bool IsEvent;
 
 
         public int RowId { get; set; }
@@ -120,6 +120,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 16 offset: 001f
             packed1f = parser.ReadOffset< byte >( 0x1f, ExcelColumnDataType.UInt8 );
+
+            DiscoveryArrayByte = ( packed1f & 0x1 ) == 0x1;
+            IsEvent = ( packed1f & 0x2 ) == 0x2;
 
 
         }

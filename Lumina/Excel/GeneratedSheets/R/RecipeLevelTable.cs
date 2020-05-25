@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "RecipeLevelTable", columnHash: 0xf24f1bf5 )]
     public class RecipeLevelTable : IExcelRow
     {
-        // column defs from Mon, 15 Jul 2019 14:22:54 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 05 offset: 0000

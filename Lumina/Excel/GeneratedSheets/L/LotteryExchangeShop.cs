@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "LotteryExchangeShop", columnHash: 0xea26200e )]
     public class LotteryExchangeShop : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -69,8 +69,8 @@ namespace Lumina.Excel.GeneratedSheets
         public string unknownc4;
 
         // col: 50 offset: 00c8
-        private byte packedc8;
-        public bool packedc8_1 => ( packedc8 & 0x1 ) == 0x1;
+        public bool packedc8_1;
+        public byte packedc8;
 
 
         public int RowId { get; set; }
@@ -175,6 +175,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 50 offset: 00c8
             packedc8 = parser.ReadOffset< byte >( 0xc8, ExcelColumnDataType.UInt8 );
+
+            packedc8_1 = ( packedc8 & 0x1 ) == 0x1;
 
 
         }

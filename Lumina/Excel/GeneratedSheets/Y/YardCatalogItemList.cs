@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "YardCatalogItemList", columnHash: 0x24e9963a )]
     public class YardCatalogItemList : IExcelRow
     {
-        // column defs from Wed, 31 Jul 2019 22:24:05 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000

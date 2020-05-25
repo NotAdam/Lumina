@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Transformation", columnHash: 0xa9f5ba48 )]
     public class Transformation : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 19 offset: 0000
@@ -84,14 +84,14 @@ namespace Lumina.Excel.GeneratedSheets
         public bool unknown32;
 
         // col: 16 offset: 0033
-        private byte packed33;
-        public bool packed33_1 => ( packed33 & 0x1 ) == 0x1;
-        public bool packed33_2 => ( packed33 & 0x2 ) == 0x2;
-        public bool IsPvP => ( packed33 & 0x4 ) == 0x4;
-        public bool IsEvent => ( packed33 & 0x8 ) == 0x8;
-        public bool PlayerCamera => ( packed33 & 0x10 ) == 0x10;
-        public bool StartVFX => ( packed33 & 0x20 ) == 0x20;
-        public bool EndVFX => ( packed33 & 0x40 ) == 0x40;
+        public bool packed33_1;
+        public byte packed33;
+        public bool packed33_2;
+        public bool IsPvP;
+        public bool IsEvent;
+        public bool PlayerCamera;
+        public bool StartVFX;
+        public bool EndVFX;
 
 
         public int RowId { get; set; }
@@ -179,6 +179,14 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 16 offset: 0033
             packed33 = parser.ReadOffset< byte >( 0x33, ExcelColumnDataType.UInt8 );
+
+            packed33_1 = ( packed33 & 0x1 ) == 0x1;
+            packed33_2 = ( packed33 & 0x2 ) == 0x2;
+            IsPvP = ( packed33 & 0x4 ) == 0x4;
+            IsEvent = ( packed33 & 0x8 ) == 0x8;
+            PlayerCamera = ( packed33 & 0x10 ) == 0x10;
+            StartVFX = ( packed33 & 0x20 ) == 0x20;
+            EndVFX = ( packed33 & 0x40 ) == 0x40;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "WeeklyBingoRewardData", columnHash: 0x02b099a0 )]
     public class WeeklyBingoRewardData : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 06 offset: 0004
@@ -42,8 +42,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool RewardHQ2;
 
         // col: 02 offset: 0018
-        private byte packed18;
-        public bool packed18_1 => ( packed18 & 0x1 ) == 0x1;
+        public bool packed18_1;
+        public byte packed18;
 
 
         public int RowId { get; set; }
@@ -91,6 +91,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0018
             packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
+
+            packed18_1 = ( packed18 & 0x1 ) == 0x1;
 
 
         }

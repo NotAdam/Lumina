@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "HWDInfoBoardArticle", columnHash: 0x76cb5660 )]
     public class HWDInfoBoardArticle : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 04 offset: 0000
@@ -21,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown7;
 
         // col: 03 offset: 0008
-        private byte packed8;
-        public bool packed8_1 => ( packed8 & 0x1 ) == 0x1;
+        public bool packed8_1;
+        public byte packed8;
 
 
         public int RowId { get; set; }
@@ -47,6 +47,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 0008
             packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
+
+            packed8_1 = ( packed8 & 0x1 ) == 0x1;
 
 
         }

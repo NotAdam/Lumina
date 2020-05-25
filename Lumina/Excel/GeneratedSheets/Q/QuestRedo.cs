@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "QuestRedo", columnHash: 0x35f497dd )]
     public class QuestRedo : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 18:15:43 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 03 offset: 0000

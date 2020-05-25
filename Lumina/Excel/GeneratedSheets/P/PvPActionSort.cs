@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "PvPActionSort", columnHash: 0xc3af756b )]
     public class PvPActionSort : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 04 offset: 0000
@@ -18,9 +18,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Name;
 
         // col: 02 offset: 0007
-        private byte packed7;
-        public bool packed7_1 => ( packed7 & 0x1 ) == 0x1;
-        public bool packed7_2 => ( packed7 & 0x2 ) == 0x2;
+        public bool packed7_1;
+        public byte packed7;
+        public bool packed7_2;
 
 
         public int RowId { get; set; }
@@ -42,6 +42,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0007
             packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
+
+            packed7_1 = ( packed7 & 0x1 ) == 0x1;
+            packed7_2 = ( packed7 & 0x2 ) == 0x2;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Fate", columnHash: 0x22c39fbf )]
     public class Fate : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 29 offset: 0000
@@ -27,34 +27,13 @@ namespace Lumina.Excel.GeneratedSheets
         public uint unknown1c;
 
         // col: 37 offset: 0020
-        public uint unknown20;
+        public uint ReqEventItem;
 
         // col: 38 offset: 0024
-        public uint unknown24;
+        public uint TurnInEventItem;
 
         // col: 39 offset: 0028
-        public ushort unknown28;
-
-        // col: 40 offset: 002a
-        public ushort unknown2a;
-
-        // col: 41 offset: 002c
-        public ushort unknown2c;
-
-        // col: 42 offset: 002e
-        public ushort unknown2e;
-
-        // col: 43 offset: 0030
-        public ushort unknown30;
-
-        // col: 44 offset: 0032
-        public ushort unknown32;
-
-        // col: 45 offset: 0034
-        public ushort unknown34;
-
-        // col: 46 offset: 0036
-        public ushort unknown36;
+        public ushort[] ObjectiveIcon;
 
         // col: 03 offset: 0038
         public uint Location;
@@ -75,13 +54,13 @@ namespace Lumina.Excel.GeneratedSheets
         public uint LGBGuardNPCLocation;
 
         // col: 26 offset: 0050
-        public uint unknown50;
+        public uint FATEChain;
 
         // col: 13 offset: 0054
         public int Music;
 
         // col: 02 offset: 0058
-        public ushort unknown58;
+        public ushort FateRuleEx;
 
         // col: 15 offset: 005a
         public ushort ScreenImageAccept;
@@ -93,7 +72,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort ScreenImageFailed;
 
         // col: 21 offset: 0060
-        public ushort unknown60;
+        public ushort GivenStatus;
 
         // col: 22 offset: 0062
         public ushort unknown62;
@@ -120,13 +99,13 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown6d;
 
         // col: 18 offset: 006e
-        private byte packed6e;
-        public bool HasWorldMapIcon => ( packed6e & 0x1 ) == 0x1;
-        public bool IsQuest => ( packed6e & 0x2 ) == 0x2;
-        public bool packed6e_4 => ( packed6e & 0x4 ) == 0x4;
-        public bool packed6e_8 => ( packed6e & 0x8 ) == 0x8;
-        public bool packed6e_10 => ( packed6e & 0x10 ) == 0x10;
-        public bool packed6e_20 => ( packed6e & 0x20 ) == 0x20;
+        public bool HasWorldMapIcon;
+        public byte packed6e;
+        public bool IsQuest;
+        public bool SpecialFate;
+        public bool AdventEvent;
+        public bool MoonFaireEvent;
+        public bool packed6e_20;
 
 
         public int RowId { get; set; }
@@ -159,34 +138,21 @@ namespace Lumina.Excel.GeneratedSheets
             unknown1c = parser.ReadOffset< uint >( 0x1c );
 
             // col: 37 offset: 0020
-            unknown20 = parser.ReadOffset< uint >( 0x20 );
+            ReqEventItem = parser.ReadOffset< uint >( 0x20 );
 
             // col: 38 offset: 0024
-            unknown24 = parser.ReadOffset< uint >( 0x24 );
+            TurnInEventItem = parser.ReadOffset< uint >( 0x24 );
 
             // col: 39 offset: 0028
-            unknown28 = parser.ReadOffset< ushort >( 0x28 );
-
-            // col: 40 offset: 002a
-            unknown2a = parser.ReadOffset< ushort >( 0x2a );
-
-            // col: 41 offset: 002c
-            unknown2c = parser.ReadOffset< ushort >( 0x2c );
-
-            // col: 42 offset: 002e
-            unknown2e = parser.ReadOffset< ushort >( 0x2e );
-
-            // col: 43 offset: 0030
-            unknown30 = parser.ReadOffset< ushort >( 0x30 );
-
-            // col: 44 offset: 0032
-            unknown32 = parser.ReadOffset< ushort >( 0x32 );
-
-            // col: 45 offset: 0034
-            unknown34 = parser.ReadOffset< ushort >( 0x34 );
-
-            // col: 46 offset: 0036
-            unknown36 = parser.ReadOffset< ushort >( 0x36 );
+            ObjectiveIcon = new ushort[8];
+            ObjectiveIcon[0] = parser.ReadOffset< ushort >( 0x28 );
+            ObjectiveIcon[1] = parser.ReadOffset< ushort >( 0x2a );
+            ObjectiveIcon[2] = parser.ReadOffset< ushort >( 0x2c );
+            ObjectiveIcon[3] = parser.ReadOffset< ushort >( 0x2e );
+            ObjectiveIcon[4] = parser.ReadOffset< ushort >( 0x30 );
+            ObjectiveIcon[5] = parser.ReadOffset< ushort >( 0x32 );
+            ObjectiveIcon[6] = parser.ReadOffset< ushort >( 0x34 );
+            ObjectiveIcon[7] = parser.ReadOffset< ushort >( 0x36 );
 
             // col: 3 offset: 0038
             Location = parser.ReadOffset< uint >( 0x38 );
@@ -207,13 +173,13 @@ namespace Lumina.Excel.GeneratedSheets
             LGBGuardNPCLocation = parser.ReadOffset< uint >( 0x4c );
 
             // col: 26 offset: 0050
-            unknown50 = parser.ReadOffset< uint >( 0x50 );
+            FATEChain = parser.ReadOffset< uint >( 0x50 );
 
             // col: 13 offset: 0054
             Music = parser.ReadOffset< int >( 0x54 );
 
             // col: 2 offset: 0058
-            unknown58 = parser.ReadOffset< ushort >( 0x58 );
+            FateRuleEx = parser.ReadOffset< ushort >( 0x58 );
 
             // col: 15 offset: 005a
             ScreenImageAccept = parser.ReadOffset< ushort >( 0x5a );
@@ -225,7 +191,7 @@ namespace Lumina.Excel.GeneratedSheets
             ScreenImageFailed = parser.ReadOffset< ushort >( 0x5e );
 
             // col: 21 offset: 0060
-            unknown60 = parser.ReadOffset< ushort >( 0x60 );
+            GivenStatus = parser.ReadOffset< ushort >( 0x60 );
 
             // col: 22 offset: 0062
             unknown62 = parser.ReadOffset< ushort >( 0x62 );
@@ -256,6 +222,13 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 18 offset: 006e
             packed6e = parser.ReadOffset< byte >( 0x6e, ExcelColumnDataType.UInt8 );
+
+            HasWorldMapIcon = ( packed6e & 0x1 ) == 0x1;
+            IsQuest = ( packed6e & 0x2 ) == 0x2;
+            SpecialFate = ( packed6e & 0x4 ) == 0x4;
+            AdventEvent = ( packed6e & 0x8 ) == 0x8;
+            MoonFaireEvent = ( packed6e & 0x10 ) == 0x10;
+            packed6e_20 = ( packed6e & 0x20 ) == 0x20;
 
 
         }

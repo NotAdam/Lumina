@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "TreasureHuntRank", columnHash: 0x3997d502 )]
     public class TreasureHuntRank : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -33,8 +33,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MinPartySize;
 
         // col: 08 offset: 0015
-        private byte packed15;
-        public bool packed15_1 => ( packed15 & 0x1 ) == 0x1;
+        public bool packed15_1;
+        public byte packed15;
 
 
         public int RowId { get; set; }
@@ -71,6 +71,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 8 offset: 0015
             packed15 = parser.ReadOffset< byte >( 0x15, ExcelColumnDataType.UInt8 );
+
+            packed15_1 = ( packed15 & 0x1 ) == 0x1;
 
 
         }

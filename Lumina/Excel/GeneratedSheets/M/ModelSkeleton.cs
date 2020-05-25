@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ModelSkeleton", columnHash: 0x94cc54f1 )]
     public class ModelSkeleton : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -57,8 +57,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte LoopFlySE;
 
         // col: 15 offset: 0028
-        private byte packed28;
-        public bool MotionBlendType => ( packed28 & 0x1 ) == 0x1;
+        public bool MotionBlendType;
+        public byte packed28;
 
 
         public int RowId { get; set; }
@@ -119,6 +119,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 15 offset: 0028
             packed28 = parser.ReadOffset< byte >( 0x28, ExcelColumnDataType.UInt8 );
+
+            MotionBlendType = ( packed28 & 0x1 ) == 0x1;
 
 
         }

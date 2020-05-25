@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "DefaultTalk", columnHash: 0xe6dec88d )]
     public class DefaultTalk : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 05 offset: 0000
@@ -24,8 +24,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown6;
 
         // col: 17 offset: 0007
-        private byte packed7;
-        public bool packed7_1 => ( packed7 & 0x1 ) == 0x1;
+        public bool packed7_1;
+        public byte packed7;
 
         // col: 12 offset: 000a
         public ushort unknowna;
@@ -40,8 +40,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknowne;
 
         // col: 18 offset: 000f
-        private byte packedf;
-        public bool packedf_1 => ( packedf & 0x1 ) == 0x1;
+        public bool packedf_1;
+        public byte packedf;
 
         // col: 13 offset: 0012
         public ushort unknown12;
@@ -56,8 +56,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown16;
 
         // col: 19 offset: 0017
-        private byte packed17;
-        public bool packed17_1 => ( packed17 & 0x1 ) == 0x1;
+        public bool packed17_1;
+        public byte packed17;
 
         // col: 20 offset: 0018
         public string[] Text;
@@ -98,6 +98,8 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 17 offset: 0007
             packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
 
+            packed7_1 = ( packed7 & 0x1 ) == 0x1;
+
             // col: 12 offset: 000a
             unknowna = parser.ReadOffset< ushort >( 0xa );
 
@@ -113,6 +115,8 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 18 offset: 000f
             packedf = parser.ReadOffset< byte >( 0xf, ExcelColumnDataType.UInt8 );
 
+            packedf_1 = ( packedf & 0x1 ) == 0x1;
+
             // col: 13 offset: 0012
             unknown12 = parser.ReadOffset< ushort >( 0x12 );
 
@@ -127,6 +131,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 19 offset: 0017
             packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
+
+            packed17_1 = ( packed17 & 0x1 ) == 0x1;
 
             // col: 20 offset: 0018
             Text = new string[3];

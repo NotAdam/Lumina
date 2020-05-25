@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Companion", columnHash: 0x776048c3 )]
     public class Companion : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -99,15 +99,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MinionRace;
 
         // col: 18 offset: 002e
-        private byte packed2e;
-        public bool Roulette => ( packed2e & 0x1 ) == 0x1;
-        public bool packed2e_2 => ( packed2e & 0x2 ) == 0x2;
-        public bool Battle => ( packed2e & 0x4 ) == 0x4;
-        public bool LookAt => ( packed2e & 0x8 ) == 0x8;
-        public bool Poke => ( packed2e & 0x10 ) == 0x10;
-        public bool Stroke => ( packed2e & 0x20 ) == 0x20;
-        public bool Clapping => ( packed2e & 0x40 ) == 0x40;
-        public bool packed2e_80 => ( packed2e & 0x80 ) == 0x80;
+        public bool Roulette;
+        public byte packed2e;
+        public bool packed2e_2;
+        public bool Battle;
+        public bool LookAt;
+        public bool Poke;
+        public bool Stroke;
+        public bool Clapping;
+        public bool packed2e_80;
 
 
         public int RowId { get; set; }
@@ -210,6 +210,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 18 offset: 002e
             packed2e = parser.ReadOffset< byte >( 0x2e, ExcelColumnDataType.UInt8 );
+
+            Roulette = ( packed2e & 0x1 ) == 0x1;
+            packed2e_2 = ( packed2e & 0x2 ) == 0x2;
+            Battle = ( packed2e & 0x4 ) == 0x4;
+            LookAt = ( packed2e & 0x8 ) == 0x8;
+            Poke = ( packed2e & 0x10 ) == 0x10;
+            Stroke = ( packed2e & 0x20 ) == 0x20;
+            Clapping = ( packed2e & 0x40 ) == 0x40;
+            packed2e_80 = ( packed2e & 0x80 ) == 0x80;
 
 
         }

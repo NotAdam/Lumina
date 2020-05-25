@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "JournalGenre", columnHash: 0x2c6b75bb )]
     public class JournalGenre : IExcelRow
     {
-        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 03 offset: 0000
@@ -18,8 +18,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte JournalCategory;
 
         // col: 02 offset: 0009
-        private byte packed9;
-        public bool packed9_1 => ( packed9 & 0x1 ) == 0x1;
+        public bool packed9_1;
+        public byte packed9;
 
 
         public int RowId { get; set; }
@@ -41,6 +41,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0009
             packed9 = parser.ReadOffset< byte >( 0x9, ExcelColumnDataType.UInt8 );
+
+            packed9_1 = ( packed9 & 0x1 ) == 0x1;
 
 
         }

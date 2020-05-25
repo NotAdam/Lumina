@@ -5,16 +5,16 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BGMScene", columnHash: 0x2711a5ea )]
     public class BGMScene : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
-        private byte packed0;
-        public bool EnableDisableRestart => ( packed0 & 0x1 ) == 0x1;
-        public bool Resume => ( packed0 & 0x2 ) == 0x2;
-        public bool EnablePassEnd => ( packed0 & 0x4 ) == 0x4;
-        public bool ForceAutoReset => ( packed0 & 0x8 ) == 0x8;
-        public bool IgnoreBattle => ( packed0 & 0x10 ) == 0x10;
+        public bool EnableDisableRestart;
+        public byte packed0;
+        public bool Resume;
+        public bool EnablePassEnd;
+        public bool ForceAutoReset;
+        public bool IgnoreBattle;
 
 
         public int RowId { get; set; }
@@ -27,6 +27,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0000
             packed0 = parser.ReadOffset< byte >( 0x0, ExcelColumnDataType.UInt8 );
+
+            EnableDisableRestart = ( packed0 & 0x1 ) == 0x1;
+            Resume = ( packed0 & 0x2 ) == 0x2;
+            EnablePassEnd = ( packed0 & 0x4 ) == 0x4;
+            ForceAutoReset = ( packed0 & 0x8 ) == 0x8;
+            IgnoreBattle = ( packed0 & 0x10 ) == 0x10;
 
 
         }

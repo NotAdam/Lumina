@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Emote", columnHash: 0xc4735d67 )]
     public class Emote : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -39,14 +39,14 @@ namespace Lumina.Excel.GeneratedSheets
         public byte EmoteMode;
 
         // col: 08 offset: 0024
-        private byte packed24;
-        public bool packed24_1 => ( packed24 & 0x1 ) == 0x1;
-        public bool packed24_2 => ( packed24 & 0x2 ) == 0x2;
-        public bool packed24_4 => ( packed24 & 0x4 ) == 0x4;
-        public bool packed24_8 => ( packed24 & 0x8 ) == 0x8;
-        public bool packed24_10 => ( packed24 & 0x10 ) == 0x10;
-        public bool HasCancelEmote => ( packed24 & 0x20 ) == 0x20;
-        public bool DrawsWeapon => ( packed24 & 0x40 ) == 0x40;
+        public bool packed24_1;
+        public byte packed24;
+        public bool packed24_2;
+        public bool packed24_4;
+        public bool packed24_8;
+        public bool packed24_10;
+        public bool HasCancelEmote;
+        public bool DrawsWeapon;
 
 
         public int RowId { get; set; }
@@ -96,6 +96,14 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 8 offset: 0024
             packed24 = parser.ReadOffset< byte >( 0x24, ExcelColumnDataType.UInt8 );
+
+            packed24_1 = ( packed24 & 0x1 ) == 0x1;
+            packed24_2 = ( packed24 & 0x2 ) == 0x2;
+            packed24_4 = ( packed24 & 0x4 ) == 0x4;
+            packed24_8 = ( packed24 & 0x8 ) == 0x8;
+            packed24_10 = ( packed24 & 0x10 ) == 0x10;
+            HasCancelEmote = ( packed24 & 0x20 ) == 0x20;
+            DrawsWeapon = ( packed24 & 0x40 ) == 0x40;
 
 
         }

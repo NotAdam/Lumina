@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ContentMemberType", columnHash: 0x48587c6d )]
     public class ContentMemberType : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -39,15 +39,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte RangedPerParty;
 
         // col: 00 offset: 000a
-        private byte packeda;
-        public bool packeda_1 => ( packeda & 0x1 ) == 0x1;
-        public bool packeda_2 => ( packeda & 0x2 ) == 0x2;
-        public bool packeda_4 => ( packeda & 0x4 ) == 0x4;
-        public bool packeda_8 => ( packeda & 0x8 ) == 0x8;
-        public bool packeda_10 => ( packeda & 0x10 ) == 0x10;
-        public bool packeda_20 => ( packeda & 0x20 ) == 0x20;
-        public bool packeda_40 => ( packeda & 0x40 ) == 0x40;
-        public bool packeda_80 => ( packeda & 0x80 ) == 0x80;
+        public bool packeda_1;
+        public byte packeda;
+        public bool packeda_2;
+        public bool packeda_4;
+        public bool packeda_8;
+        public bool packeda_10;
+        public bool packeda_20;
+        public bool packeda_40;
+        public bool packeda_80;
 
 
         public int RowId { get; set; }
@@ -90,6 +90,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 000a
             packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
+
+            packeda_1 = ( packeda & 0x1 ) == 0x1;
+            packeda_2 = ( packeda & 0x2 ) == 0x2;
+            packeda_4 = ( packeda & 0x4 ) == 0x4;
+            packeda_8 = ( packeda & 0x8 ) == 0x8;
+            packeda_10 = ( packeda & 0x10 ) == 0x10;
+            packeda_20 = ( packeda & 0x20 ) == 0x20;
+            packeda_40 = ( packeda & 0x40 ) == 0x40;
+            packeda_80 = ( packeda & 0x80 ) == 0x80;
 
 
         }

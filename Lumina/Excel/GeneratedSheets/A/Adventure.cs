@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Adventure", columnHash: 0xf6b785f8 )]
     public class Adventure : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 09 offset: 0000
@@ -48,8 +48,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MaxLevel;
 
         // col: 13 offset: 002b
-        private byte packed2b;
-        public bool IsInitial => ( packed2b & 0x1 ) == 0x1;
+        public bool IsInitial;
+        public byte packed2b;
 
 
         public int RowId { get; set; }
@@ -101,6 +101,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 13 offset: 002b
             packed2b = parser.ReadOffset< byte >( 0x2b, ExcelColumnDataType.UInt8 );
+
+            IsInitial = ( packed2b & 0x1 ) == 0x1;
 
 
         }

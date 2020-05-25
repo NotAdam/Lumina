@@ -5,12 +5,12 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "HWDDevProgress", columnHash: 0xcd4cb81c )]
     public class HWDDevProgress : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
-        private byte packed0;
-        public bool CanGoNext => ( packed0 & 0x1 ) == 0x1;
+        public bool CanGoNext;
+        public byte packed0;
 
 
         public int RowId { get; set; }
@@ -23,6 +23,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0000
             packed0 = parser.ReadOffset< byte >( 0x0, ExcelColumnDataType.UInt8 );
+
+            CanGoNext = ( packed0 & 0x1 ) == 0x1;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ActionComboRoute", columnHash: 0xc4b3400f )]
     public class ActionComboRoute : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -18,8 +18,8 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte unknownc;
 
         // col: 06 offset: 000d
-        private byte packedd;
-        public bool packedd_1 => ( packedd & 0x1 ) == 0x1;
+        public bool packedd_1;
+        public byte packedd;
 
 
         public int RowId { get; set; }
@@ -45,6 +45,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 6 offset: 000d
             packedd = parser.ReadOffset< byte >( 0xd, ExcelColumnDataType.UInt8 );
+
+            packedd_1 = ( packedd & 0x1 ) == 0x1;
 
 
         }

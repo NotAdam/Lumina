@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "AozActionTransient", columnHash: 0x4921bb28 )]
     public class AozActionTransient : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000
@@ -33,22 +33,22 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown17;
 
         // col: 08 offset: 0018
-        private byte packed18;
-        public bool packed18_1 => ( packed18 & 0x1 ) == 0x1;
-        public bool packed18_2 => ( packed18 & 0x2 ) == 0x2;
-        public bool packed18_4 => ( packed18 & 0x4 ) == 0x4;
-        public bool packed18_8 => ( packed18 & 0x8 ) == 0x8;
-        public bool packed18_10 => ( packed18 & 0x10 ) == 0x10;
-        public bool packed18_20 => ( packed18 & 0x20 ) == 0x20;
-        public bool packed18_40 => ( packed18 & 0x40 ) == 0x40;
-        public bool packed18_80 => ( packed18 & 0x80 ) == 0x80;
+        public bool packed18_1;
+        public byte packed18;
+        public bool packed18_2;
+        public bool packed18_4;
+        public bool packed18_8;
+        public bool packed18_10;
+        public bool packed18_20;
+        public bool packed18_40;
+        public bool packed18_80;
 
         // col: 16 offset: 0019
-        private byte packed19;
-        public bool packed19_1 => ( packed19 & 0x1 ) == 0x1;
-        public bool packed19_2 => ( packed19 & 0x2 ) == 0x2;
-        public bool packed19_4 => ( packed19 & 0x4 ) == 0x4;
-        public bool packed19_8 => ( packed19 & 0x8 ) == 0x8;
+        public bool packed19_1;
+        public byte packed19;
+        public bool packed19_2;
+        public bool packed19_4;
+        public bool packed19_8;
 
 
         public int RowId { get; set; }
@@ -86,8 +86,22 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 8 offset: 0018
             packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
 
+            packed18_1 = ( packed18 & 0x1 ) == 0x1;
+            packed18_2 = ( packed18 & 0x2 ) == 0x2;
+            packed18_4 = ( packed18 & 0x4 ) == 0x4;
+            packed18_8 = ( packed18 & 0x8 ) == 0x8;
+            packed18_10 = ( packed18 & 0x10 ) == 0x10;
+            packed18_20 = ( packed18 & 0x20 ) == 0x20;
+            packed18_40 = ( packed18 & 0x40 ) == 0x40;
+            packed18_80 = ( packed18 & 0x80 ) == 0x80;
+
             // col: 16 offset: 0019
             packed19 = parser.ReadOffset< byte >( 0x19, ExcelColumnDataType.UInt8 );
+
+            packed19_1 = ( packed19 & 0x1 ) == 0x1;
+            packed19_2 = ( packed19 & 0x2 ) == 0x2;
+            packed19_4 = ( packed19 & 0x4 ) == 0x4;
+            packed19_8 = ( packed19 & 0x8 ) == 0x8;
 
 
         }

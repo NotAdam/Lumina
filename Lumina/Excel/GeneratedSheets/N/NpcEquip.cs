@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "NpcEquip", columnHash: 0x8659fe79 )]
     public class NpcEquip : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -81,8 +81,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte DyeRightRing;
 
         // col: 06 offset: 0044
-        private byte packed44;
-        public bool Visor => ( packed44 & 0x1 ) == 0x1;
+        public bool Visor;
+        public byte packed44;
 
 
         public int RowId { get; set; }
@@ -167,6 +167,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 6 offset: 0044
             packed44 = parser.ReadOffset< byte >( 0x44, ExcelColumnDataType.UInt8 );
+
+            Visor = ( packed44 & 0x1 ) == 0x1;
 
 
         }

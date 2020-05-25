@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "MountCustomize", columnHash: 0x82bd7e3f )]
     public class MountCustomize : IExcelRow
     {
-        // column defs from Wed, 24 Jul 2019 22:56:39 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -105,8 +105,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte VieraFemaleCameraHeight;
 
         // col: 00 offset: 0030
-        private byte packed30;
-        public bool packed30_1 => ( packed30 & 0x1 ) == 0x1;
+        public bool packed30_1;
+        public byte packed30;
 
 
         public int RowId { get; set; }
@@ -215,6 +215,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0030
             packed30 = parser.ReadOffset< byte >( 0x30, ExcelColumnDataType.UInt8 );
+
+            packed30_1 = ( packed30 & 0x1 ) == 0x1;
 
 
         }

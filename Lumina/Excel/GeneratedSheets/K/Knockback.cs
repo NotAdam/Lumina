@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Knockback", columnHash: 0x6876beaf )]
     public class Knockback : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -24,9 +24,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte DirectionArg;
 
         // col: 02 offset: 0005
-        private byte packed5;
-        public bool Motion => ( packed5 & 0x1 ) == 0x1;
-        public bool CancelMove => ( packed5 & 0x2 ) == 0x2;
+        public bool Motion;
+        public byte packed5;
+        public bool CancelMove;
 
 
         public int RowId { get; set; }
@@ -54,6 +54,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0005
             packed5 = parser.ReadOffset< byte >( 0x5, ExcelColumnDataType.UInt8 );
+
+            Motion = ( packed5 & 0x1 ) == 0x1;
+            CancelMove = ( packed5 & 0x2 ) == 0x2;
 
 
         }

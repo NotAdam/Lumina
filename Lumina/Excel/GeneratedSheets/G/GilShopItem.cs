@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "GilShopItem", columnHash: 0x2f7317fe )]
     public class GilShopItem : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -27,8 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown18;
 
         // col: 01 offset: 0019
-        private byte packed19;
-        public bool packed19_1 => ( packed19 & 0x1 ) == 0x1;
+        public bool packed19_1;
+        public byte packed19;
 
 
         public int RowId { get; set; }
@@ -62,6 +62,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 1 offset: 0019
             packed19 = parser.ReadOffset< byte >( 0x19, ExcelColumnDataType.UInt8 );
+
+            packed19_1 = ( packed19 & 0x1 ) == 0x1;
 
 
         }

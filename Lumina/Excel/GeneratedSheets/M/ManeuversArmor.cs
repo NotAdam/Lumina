@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ManeuversArmor", columnHash: 0xc8b98ed4 )]
     public class ManeuversArmor : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 10 offset: 0000
@@ -27,8 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown26;
 
         // col: 04 offset: 0027
-        private byte packed27;
-        public bool packed27_1 => ( packed27 & 0x1 ) == 0x1;
+        public bool packed27_1;
+        public byte packed27;
 
 
         public int RowId { get; set; }
@@ -66,6 +66,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 0027
             packed27 = parser.ReadOffset< byte >( 0x27, ExcelColumnDataType.UInt8 );
+
+            packed27_1 = ( packed27 & 0x1 ) == 0x1;
 
 
         }

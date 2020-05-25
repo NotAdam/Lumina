@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "EquipRaceCategory", columnHash: 0xf914b198 )]
     public class EquipRaceCategory : IExcelRow
     {
-        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -33,9 +33,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool unknown7;
 
         // col: 08 offset: 0008
-        private byte packed8;
-        public bool Male => ( packed8 & 0x1 ) == 0x1;
-        public bool Female => ( packed8 & 0x2 ) == 0x2;
+        public bool Male;
+        public byte packed8;
+        public bool Female;
 
 
         public int RowId { get; set; }
@@ -72,6 +72,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 8 offset: 0008
             packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
+
+            Male = ( packed8 & 0x1 ) == 0x1;
+            Female = ( packed8 & 0x2 ) == 0x2;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "GatheringLeve", columnHash: 0xfa74e4d0 )]
     public class GatheringLeve : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -54,8 +54,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Varient;
 
         // col: 18 offset: 0032
-        private byte packed32;
-        public bool UseSecondaryTool => ( packed32 & 0x1 ) == 0x1;
+        public bool UseSecondaryTool;
+        public byte packed32;
 
 
         public int RowId { get; set; }
@@ -117,6 +117,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 18 offset: 0032
             packed32 = parser.ReadOffset< byte >( 0x32, ExcelColumnDataType.UInt8 );
+
+            UseSecondaryTool = ( packed32 & 0x1 ) == 0x1;
 
 
         }

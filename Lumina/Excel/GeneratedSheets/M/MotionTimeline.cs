@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "MotionTimeline", columnHash: 0xd5952f72 )]
     public class MotionTimeline : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -15,10 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte BlendGroup;
 
         // col: 02 offset: 0005
-        private byte packed5;
-        public bool IsLoop => ( packed5 & 0x1 ) == 0x1;
-        public bool IsBlinkEnable => ( packed5 & 0x2 ) == 0x2;
-        public bool IsLipEnable => ( packed5 & 0x4 ) == 0x4;
+        public bool IsLoop;
+        public byte packed5;
+        public bool IsBlinkEnable;
+        public bool IsLipEnable;
 
 
         public int RowId { get; set; }
@@ -37,6 +37,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0005
             packed5 = parser.ReadOffset< byte >( 0x5, ExcelColumnDataType.UInt8 );
+
+            IsLoop = ( packed5 & 0x1 ) == 0x1;
+            IsBlinkEnable = ( packed5 & 0x2 ) == 0x2;
+            IsLipEnable = ( packed5 & 0x4 ) == 0x4;
 
 
         }

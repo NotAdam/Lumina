@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "FateEvent", columnHash: 0xb047403f )]
     public class FateEvent : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 08 offset: 0000
@@ -27,15 +27,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] WidgetType;
 
         // col: 40 offset: 0012
-        private byte packed12;
-        public bool IsAutoShake => ( packed12 & 0x1 ) == 0x1;
-        public bool packed12_2 => ( packed12 & 0x2 ) == 0x2;
-        public bool packed12_4 => ( packed12 & 0x4 ) == 0x4;
-        public bool packed12_8 => ( packed12 & 0x8 ) == 0x8;
-        public bool packed12_10 => ( packed12 & 0x10 ) == 0x10;
-        public bool packed12_20 => ( packed12 & 0x20 ) == 0x20;
-        public bool packed12_40 => ( packed12 & 0x40 ) == 0x40;
-        public bool packed12_80 => ( packed12 & 0x80 ) == 0x80;
+        public bool[] IsAutoShake;
+        public byte packed12;
+        public byte packed26;
+        public byte packed3a;
+        public byte packed4e;
+        public byte packed62;
+        public byte packed76;
+        public byte packed8a;
+        public byte packed9e;
 
         // col: 56 offset: 00a0
         public string[] Text;
@@ -117,6 +117,30 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 40 offset: 0012
             packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake = new bool[8];
+            IsAutoShake[0] = ( packed12 & 0x1 ) == 0x1;
+            packed26 = parser.ReadOffset< byte >( 0x26, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake[1] = ( packed26 & 0x1 ) == 0x1;
+            packed3a = parser.ReadOffset< byte >( 0x3a, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake[2] = ( packed3a & 0x1 ) == 0x1;
+            packed4e = parser.ReadOffset< byte >( 0x4e, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake[3] = ( packed4e & 0x1 ) == 0x1;
+            packed62 = parser.ReadOffset< byte >( 0x62, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake[4] = ( packed62 & 0x1 ) == 0x1;
+            packed76 = parser.ReadOffset< byte >( 0x76, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake[5] = ( packed76 & 0x1 ) == 0x1;
+            packed8a = parser.ReadOffset< byte >( 0x8a, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake[6] = ( packed8a & 0x1 ) == 0x1;
+            packed9e = parser.ReadOffset< byte >( 0x9e, ExcelColumnDataType.UInt8 );
+
+            IsAutoShake[7] = ( packed9e & 0x1 ) == 0x1;
 
             // col: 56 offset: 00a0
             Text = new string[8];

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ModelChara", columnHash: 0xc49c9dc2 )]
     public class ModelChara : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -36,14 +36,14 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte unknowna;
 
         // col: 06 offset: 000b
-        private byte packedb;
-        public bool packedb_1 => ( packedb & 0x1 ) == 0x1;
-        public bool PapVariation => ( packedb & 0x2 ) == 0x2;
-        public bool packedb_4 => ( packedb & 0x4 ) == 0x4;
-        public bool packedb_8 => ( packedb & 0x8 ) == 0x8;
-        public bool packedb_10 => ( packedb & 0x10 ) == 0x10;
-        public bool packedb_20 => ( packedb & 0x20 ) == 0x20;
-        public bool packedb_40 => ( packedb & 0x40 ) == 0x40;
+        public bool packedb_1;
+        public byte packedb;
+        public bool PapVariation;
+        public bool packedb_4;
+        public bool packedb_8;
+        public bool packedb_10;
+        public bool packedb_20;
+        public bool packedb_40;
 
 
         public int RowId { get; set; }
@@ -83,6 +83,14 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 6 offset: 000b
             packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
+
+            packedb_1 = ( packedb & 0x1 ) == 0x1;
+            PapVariation = ( packedb & 0x2 ) == 0x2;
+            packedb_4 = ( packedb & 0x4 ) == 0x4;
+            packedb_8 = ( packedb & 0x8 ) == 0x8;
+            packedb_10 = ( packedb & 0x10 ) == 0x10;
+            packedb_20 = ( packedb & 0x20 ) == 0x20;
+            packedb_40 = ( packedb & 0x40 ) == 0x40;
 
 
         }

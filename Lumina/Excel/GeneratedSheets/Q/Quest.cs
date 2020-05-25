@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Quest", columnHash: 0xefffe604 )]
     public class Quest : IExcelRow
     {
-        // column defs from Thu, 31 Oct 2019 11:05:37 GMT
+        // column defs from Sun, 24 May 2020 21:55:07 GMT
 
 
         // col: 00 offset: 0000
@@ -42,15 +42,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1a2;
 
         // col: 662 offset: 01a3
-        private byte packed1a3;
-        public bool packed1a3_1 => ( packed1a3 & 0x1 ) == 0x1;
-        public bool packed1a3_2 => ( packed1a3 & 0x2 ) == 0x2;
-        public bool packed1a3_4 => ( packed1a3 & 0x4 ) == 0x4;
-        public bool packed1a3_8 => ( packed1a3 & 0x8 ) == 0x8;
-        public bool packed1a3_10 => ( packed1a3 & 0x10 ) == 0x10;
-        public bool packed1a3_20 => ( packed1a3 & 0x20 ) == 0x20;
-        public bool packed1a3_40 => ( packed1a3 & 0x40 ) == 0x40;
-        public bool packed1a3_80 => ( packed1a3 & 0x80 ) == 0x80;
+        public bool packed1a3_1;
+        public byte packed1a3;
+        public bool packed1a3_2;
+        public bool packed1a3_4;
+        public bool packed1a3_8;
+        public bool packed1a3_10;
+        public bool packed1a3_20;
+        public bool packed1a3_40;
+        public bool packed1a3_80;
 
         // col: 471 offset: 01a8
         public uint unknown1a8;
@@ -65,15 +65,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1b2;
 
         // col: 663 offset: 01b3
-        private byte packed1b3;
-        public bool packed1b3_1 => ( packed1b3 & 0x1 ) == 0x1;
-        public bool packed1b3_2 => ( packed1b3 & 0x2 ) == 0x2;
-        public bool packed1b3_4 => ( packed1b3 & 0x4 ) == 0x4;
-        public bool packed1b3_8 => ( packed1b3 & 0x8 ) == 0x8;
-        public bool packed1b3_10 => ( packed1b3 & 0x10 ) == 0x10;
-        public bool packed1b3_20 => ( packed1b3 & 0x20 ) == 0x20;
-        public bool packed1b3_40 => ( packed1b3 & 0x40 ) == 0x40;
-        public bool packed1b3_80 => ( packed1b3 & 0x80 ) == 0x80;
+        public bool packed1b3_1;
+        public byte packed1b3;
+        public bool packed1b3_2;
+        public bool packed1b3_4;
+        public bool packed1b3_8;
+        public bool packed1b3_10;
+        public bool packed1b3_20;
+        public bool packed1b3_40;
+        public bool packed1b3_80;
 
         // col: 472 offset: 01b8
         public uint unknown1b8;
@@ -88,15 +88,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1c2;
 
         // col: 664 offset: 01c3
-        private byte packed1c3;
-        public bool packed1c3_1 => ( packed1c3 & 0x1 ) == 0x1;
-        public bool packed1c3_2 => ( packed1c3 & 0x2 ) == 0x2;
-        public bool packed1c3_4 => ( packed1c3 & 0x4 ) == 0x4;
-        public bool packed1c3_8 => ( packed1c3 & 0x8 ) == 0x8;
-        public bool packed1c3_10 => ( packed1c3 & 0x10 ) == 0x10;
-        public bool packed1c3_20 => ( packed1c3 & 0x20 ) == 0x20;
-        public bool packed1c3_40 => ( packed1c3 & 0x40 ) == 0x40;
-        public bool packed1c3_80 => ( packed1c3 & 0x80 ) == 0x80;
+        public bool packed1c3_1;
+        public byte packed1c3;
+        public bool packed1c3_2;
+        public bool packed1c3_4;
+        public bool packed1c3_8;
+        public bool packed1c3_10;
+        public bool packed1c3_20;
+        public bool packed1c3_40;
+        public bool packed1c3_80;
 
         // col: 473 offset: 01c8
         public uint unknown1c8;
@@ -111,15 +111,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1d2;
 
         // col: 665 offset: 01d3
-        private byte packed1d3;
-        public bool packed1d3_1 => ( packed1d3 & 0x1 ) == 0x1;
-        public bool packed1d3_2 => ( packed1d3 & 0x2 ) == 0x2;
-        public bool packed1d3_4 => ( packed1d3 & 0x4 ) == 0x4;
-        public bool packed1d3_8 => ( packed1d3 & 0x8 ) == 0x8;
-        public bool packed1d3_10 => ( packed1d3 & 0x10 ) == 0x10;
-        public bool packed1d3_20 => ( packed1d3 & 0x20 ) == 0x20;
-        public bool packed1d3_40 => ( packed1d3 & 0x40 ) == 0x40;
-        public bool packed1d3_80 => ( packed1d3 & 0x80 ) == 0x80;
+        public bool packed1d3_1;
+        public byte packed1d3;
+        public bool packed1d3_2;
+        public bool packed1d3_4;
+        public bool packed1d3_8;
+        public bool packed1d3_10;
+        public bool packed1d3_20;
+        public bool packed1d3_40;
+        public bool packed1d3_80;
 
         // col: 474 offset: 01d8
         public uint unknown1d8;
@@ -134,15 +134,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1e2;
 
         // col: 666 offset: 01e3
-        private byte packed1e3;
-        public bool packed1e3_1 => ( packed1e3 & 0x1 ) == 0x1;
-        public bool packed1e3_2 => ( packed1e3 & 0x2 ) == 0x2;
-        public bool packed1e3_4 => ( packed1e3 & 0x4 ) == 0x4;
-        public bool packed1e3_8 => ( packed1e3 & 0x8 ) == 0x8;
-        public bool packed1e3_10 => ( packed1e3 & 0x10 ) == 0x10;
-        public bool packed1e3_20 => ( packed1e3 & 0x20 ) == 0x20;
-        public bool packed1e3_40 => ( packed1e3 & 0x40 ) == 0x40;
-        public bool packed1e3_80 => ( packed1e3 & 0x80 ) == 0x80;
+        public bool packed1e3_1;
+        public byte packed1e3;
+        public bool packed1e3_2;
+        public bool packed1e3_4;
+        public bool packed1e3_8;
+        public bool packed1e3_10;
+        public bool packed1e3_20;
+        public bool packed1e3_40;
+        public bool packed1e3_80;
 
         // col: 475 offset: 01e8
         public uint unknown1e8;
@@ -157,15 +157,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1f2;
 
         // col: 667 offset: 01f3
-        private byte packed1f3;
-        public bool packed1f3_1 => ( packed1f3 & 0x1 ) == 0x1;
-        public bool packed1f3_2 => ( packed1f3 & 0x2 ) == 0x2;
-        public bool packed1f3_4 => ( packed1f3 & 0x4 ) == 0x4;
-        public bool packed1f3_8 => ( packed1f3 & 0x8 ) == 0x8;
-        public bool packed1f3_10 => ( packed1f3 & 0x10 ) == 0x10;
-        public bool packed1f3_20 => ( packed1f3 & 0x20 ) == 0x20;
-        public bool packed1f3_40 => ( packed1f3 & 0x40 ) == 0x40;
-        public bool packed1f3_80 => ( packed1f3 & 0x80 ) == 0x80;
+        public bool packed1f3_1;
+        public byte packed1f3;
+        public bool packed1f3_2;
+        public bool packed1f3_4;
+        public bool packed1f3_8;
+        public bool packed1f3_10;
+        public bool packed1f3_20;
+        public bool packed1f3_40;
+        public bool packed1f3_80;
 
         // col: 476 offset: 01f8
         public uint unknown1f8;
@@ -180,15 +180,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown202;
 
         // col: 668 offset: 0203
-        private byte packed203;
-        public bool packed203_1 => ( packed203 & 0x1 ) == 0x1;
-        public bool packed203_2 => ( packed203 & 0x2 ) == 0x2;
-        public bool packed203_4 => ( packed203 & 0x4 ) == 0x4;
-        public bool packed203_8 => ( packed203 & 0x8 ) == 0x8;
-        public bool packed203_10 => ( packed203 & 0x10 ) == 0x10;
-        public bool packed203_20 => ( packed203 & 0x20 ) == 0x20;
-        public bool packed203_40 => ( packed203 & 0x40 ) == 0x40;
-        public bool packed203_80 => ( packed203 & 0x80 ) == 0x80;
+        public bool packed203_1;
+        public byte packed203;
+        public bool packed203_2;
+        public bool packed203_4;
+        public bool packed203_8;
+        public bool packed203_10;
+        public bool packed203_20;
+        public bool packed203_40;
+        public bool packed203_80;
 
         // col: 477 offset: 0208
         public uint unknown208;
@@ -203,15 +203,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown212;
 
         // col: 669 offset: 0213
-        private byte packed213;
-        public bool packed213_1 => ( packed213 & 0x1 ) == 0x1;
-        public bool packed213_2 => ( packed213 & 0x2 ) == 0x2;
-        public bool packed213_4 => ( packed213 & 0x4 ) == 0x4;
-        public bool packed213_8 => ( packed213 & 0x8 ) == 0x8;
-        public bool packed213_10 => ( packed213 & 0x10 ) == 0x10;
-        public bool packed213_20 => ( packed213 & 0x20 ) == 0x20;
-        public bool packed213_40 => ( packed213 & 0x40 ) == 0x40;
-        public bool packed213_80 => ( packed213 & 0x80 ) == 0x80;
+        public bool packed213_1;
+        public byte packed213;
+        public bool packed213_2;
+        public bool packed213_4;
+        public bool packed213_8;
+        public bool packed213_10;
+        public bool packed213_20;
+        public bool packed213_40;
+        public bool packed213_80;
 
         // col: 478 offset: 0218
         public uint unknown218;
@@ -226,15 +226,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown222;
 
         // col: 670 offset: 0223
-        private byte packed223;
-        public bool packed223_1 => ( packed223 & 0x1 ) == 0x1;
-        public bool packed223_2 => ( packed223 & 0x2 ) == 0x2;
-        public bool packed223_4 => ( packed223 & 0x4 ) == 0x4;
-        public bool packed223_8 => ( packed223 & 0x8 ) == 0x8;
-        public bool packed223_10 => ( packed223 & 0x10 ) == 0x10;
-        public bool packed223_20 => ( packed223 & 0x20 ) == 0x20;
-        public bool packed223_40 => ( packed223 & 0x40 ) == 0x40;
-        public bool packed223_80 => ( packed223 & 0x80 ) == 0x80;
+        public bool packed223_1;
+        public byte packed223;
+        public bool packed223_2;
+        public bool packed223_4;
+        public bool packed223_8;
+        public bool packed223_10;
+        public bool packed223_20;
+        public bool packed223_40;
+        public bool packed223_80;
 
         // col: 479 offset: 0228
         public uint unknown228;
@@ -249,15 +249,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown232;
 
         // col: 671 offset: 0233
-        private byte packed233;
-        public bool packed233_1 => ( packed233 & 0x1 ) == 0x1;
-        public bool packed233_2 => ( packed233 & 0x2 ) == 0x2;
-        public bool packed233_4 => ( packed233 & 0x4 ) == 0x4;
-        public bool packed233_8 => ( packed233 & 0x8 ) == 0x8;
-        public bool packed233_10 => ( packed233 & 0x10 ) == 0x10;
-        public bool packed233_20 => ( packed233 & 0x20 ) == 0x20;
-        public bool packed233_40 => ( packed233 & 0x40 ) == 0x40;
-        public bool packed233_80 => ( packed233 & 0x80 ) == 0x80;
+        public bool packed233_1;
+        public byte packed233;
+        public bool packed233_2;
+        public bool packed233_4;
+        public bool packed233_8;
+        public bool packed233_10;
+        public bool packed233_20;
+        public bool packed233_40;
+        public bool packed233_80;
 
         // col: 480 offset: 0238
         public uint unknown238;
@@ -272,15 +272,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown242;
 
         // col: 672 offset: 0243
-        private byte packed243;
-        public bool packed243_1 => ( packed243 & 0x1 ) == 0x1;
-        public bool packed243_2 => ( packed243 & 0x2 ) == 0x2;
-        public bool packed243_4 => ( packed243 & 0x4 ) == 0x4;
-        public bool packed243_8 => ( packed243 & 0x8 ) == 0x8;
-        public bool packed243_10 => ( packed243 & 0x10 ) == 0x10;
-        public bool packed243_20 => ( packed243 & 0x20 ) == 0x20;
-        public bool packed243_40 => ( packed243 & 0x40 ) == 0x40;
-        public bool packed243_80 => ( packed243 & 0x80 ) == 0x80;
+        public bool packed243_1;
+        public byte packed243;
+        public bool packed243_2;
+        public bool packed243_4;
+        public bool packed243_8;
+        public bool packed243_10;
+        public bool packed243_20;
+        public bool packed243_40;
+        public bool packed243_80;
 
         // col: 481 offset: 0248
         public uint unknown248;
@@ -295,15 +295,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown252;
 
         // col: 673 offset: 0253
-        private byte packed253;
-        public bool packed253_1 => ( packed253 & 0x1 ) == 0x1;
-        public bool packed253_2 => ( packed253 & 0x2 ) == 0x2;
-        public bool packed253_4 => ( packed253 & 0x4 ) == 0x4;
-        public bool packed253_8 => ( packed253 & 0x8 ) == 0x8;
-        public bool packed253_10 => ( packed253 & 0x10 ) == 0x10;
-        public bool packed253_20 => ( packed253 & 0x20 ) == 0x20;
-        public bool packed253_40 => ( packed253 & 0x40 ) == 0x40;
-        public bool packed253_80 => ( packed253 & 0x80 ) == 0x80;
+        public bool packed253_1;
+        public byte packed253;
+        public bool packed253_2;
+        public bool packed253_4;
+        public bool packed253_8;
+        public bool packed253_10;
+        public bool packed253_20;
+        public bool packed253_40;
+        public bool packed253_80;
 
         // col: 482 offset: 0258
         public uint unknown258;
@@ -318,15 +318,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown262;
 
         // col: 674 offset: 0263
-        private byte packed263;
-        public bool packed263_1 => ( packed263 & 0x1 ) == 0x1;
-        public bool packed263_2 => ( packed263 & 0x2 ) == 0x2;
-        public bool packed263_4 => ( packed263 & 0x4 ) == 0x4;
-        public bool packed263_8 => ( packed263 & 0x8 ) == 0x8;
-        public bool packed263_10 => ( packed263 & 0x10 ) == 0x10;
-        public bool packed263_20 => ( packed263 & 0x20 ) == 0x20;
-        public bool packed263_40 => ( packed263 & 0x40 ) == 0x40;
-        public bool packed263_80 => ( packed263 & 0x80 ) == 0x80;
+        public bool packed263_1;
+        public byte packed263;
+        public bool packed263_2;
+        public bool packed263_4;
+        public bool packed263_8;
+        public bool packed263_10;
+        public bool packed263_20;
+        public bool packed263_40;
+        public bool packed263_80;
 
         // col: 483 offset: 0268
         public uint unknown268;
@@ -341,15 +341,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown272;
 
         // col: 675 offset: 0273
-        private byte packed273;
-        public bool packed273_1 => ( packed273 & 0x1 ) == 0x1;
-        public bool packed273_2 => ( packed273 & 0x2 ) == 0x2;
-        public bool packed273_4 => ( packed273 & 0x4 ) == 0x4;
-        public bool packed273_8 => ( packed273 & 0x8 ) == 0x8;
-        public bool packed273_10 => ( packed273 & 0x10 ) == 0x10;
-        public bool packed273_20 => ( packed273 & 0x20 ) == 0x20;
-        public bool packed273_40 => ( packed273 & 0x40 ) == 0x40;
-        public bool packed273_80 => ( packed273 & 0x80 ) == 0x80;
+        public bool packed273_1;
+        public byte packed273;
+        public bool packed273_2;
+        public bool packed273_4;
+        public bool packed273_8;
+        public bool packed273_10;
+        public bool packed273_20;
+        public bool packed273_40;
+        public bool packed273_80;
 
         // col: 484 offset: 0278
         public uint unknown278;
@@ -364,15 +364,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown282;
 
         // col: 676 offset: 0283
-        private byte packed283;
-        public bool packed283_1 => ( packed283 & 0x1 ) == 0x1;
-        public bool packed283_2 => ( packed283 & 0x2 ) == 0x2;
-        public bool packed283_4 => ( packed283 & 0x4 ) == 0x4;
-        public bool packed283_8 => ( packed283 & 0x8 ) == 0x8;
-        public bool packed283_10 => ( packed283 & 0x10 ) == 0x10;
-        public bool packed283_20 => ( packed283 & 0x20 ) == 0x20;
-        public bool packed283_40 => ( packed283 & 0x40 ) == 0x40;
-        public bool packed283_80 => ( packed283 & 0x80 ) == 0x80;
+        public bool packed283_1;
+        public byte packed283;
+        public bool packed283_2;
+        public bool packed283_4;
+        public bool packed283_8;
+        public bool packed283_10;
+        public bool packed283_20;
+        public bool packed283_40;
+        public bool packed283_80;
 
         // col: 485 offset: 0288
         public uint unknown288;
@@ -387,15 +387,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown292;
 
         // col: 677 offset: 0293
-        private byte packed293;
-        public bool packed293_1 => ( packed293 & 0x1 ) == 0x1;
-        public bool packed293_2 => ( packed293 & 0x2 ) == 0x2;
-        public bool packed293_4 => ( packed293 & 0x4 ) == 0x4;
-        public bool packed293_8 => ( packed293 & 0x8 ) == 0x8;
-        public bool packed293_10 => ( packed293 & 0x10 ) == 0x10;
-        public bool packed293_20 => ( packed293 & 0x20 ) == 0x20;
-        public bool packed293_40 => ( packed293 & 0x40 ) == 0x40;
-        public bool packed293_80 => ( packed293 & 0x80 ) == 0x80;
+        public bool packed293_1;
+        public byte packed293;
+        public bool packed293_2;
+        public bool packed293_4;
+        public bool packed293_8;
+        public bool packed293_10;
+        public bool packed293_20;
+        public bool packed293_40;
+        public bool packed293_80;
 
         // col: 486 offset: 0298
         public uint unknown298;
@@ -410,15 +410,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2a2;
 
         // col: 678 offset: 02a3
-        private byte packed2a3;
-        public bool packed2a3_1 => ( packed2a3 & 0x1 ) == 0x1;
-        public bool packed2a3_2 => ( packed2a3 & 0x2 ) == 0x2;
-        public bool packed2a3_4 => ( packed2a3 & 0x4 ) == 0x4;
-        public bool packed2a3_8 => ( packed2a3 & 0x8 ) == 0x8;
-        public bool packed2a3_10 => ( packed2a3 & 0x10 ) == 0x10;
-        public bool packed2a3_20 => ( packed2a3 & 0x20 ) == 0x20;
-        public bool packed2a3_40 => ( packed2a3 & 0x40 ) == 0x40;
-        public bool packed2a3_80 => ( packed2a3 & 0x80 ) == 0x80;
+        public bool packed2a3_1;
+        public byte packed2a3;
+        public bool packed2a3_2;
+        public bool packed2a3_4;
+        public bool packed2a3_8;
+        public bool packed2a3_10;
+        public bool packed2a3_20;
+        public bool packed2a3_40;
+        public bool packed2a3_80;
 
         // col: 487 offset: 02a8
         public uint unknown2a8;
@@ -433,15 +433,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2b2;
 
         // col: 679 offset: 02b3
-        private byte packed2b3;
-        public bool packed2b3_1 => ( packed2b3 & 0x1 ) == 0x1;
-        public bool packed2b3_2 => ( packed2b3 & 0x2 ) == 0x2;
-        public bool packed2b3_4 => ( packed2b3 & 0x4 ) == 0x4;
-        public bool packed2b3_8 => ( packed2b3 & 0x8 ) == 0x8;
-        public bool packed2b3_10 => ( packed2b3 & 0x10 ) == 0x10;
-        public bool packed2b3_20 => ( packed2b3 & 0x20 ) == 0x20;
-        public bool packed2b3_40 => ( packed2b3 & 0x40 ) == 0x40;
-        public bool packed2b3_80 => ( packed2b3 & 0x80 ) == 0x80;
+        public bool packed2b3_1;
+        public byte packed2b3;
+        public bool packed2b3_2;
+        public bool packed2b3_4;
+        public bool packed2b3_8;
+        public bool packed2b3_10;
+        public bool packed2b3_20;
+        public bool packed2b3_40;
+        public bool packed2b3_80;
 
         // col: 488 offset: 02b8
         public uint unknown2b8;
@@ -456,15 +456,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2c2;
 
         // col: 680 offset: 02c3
-        private byte packed2c3;
-        public bool packed2c3_1 => ( packed2c3 & 0x1 ) == 0x1;
-        public bool packed2c3_2 => ( packed2c3 & 0x2 ) == 0x2;
-        public bool packed2c3_4 => ( packed2c3 & 0x4 ) == 0x4;
-        public bool packed2c3_8 => ( packed2c3 & 0x8 ) == 0x8;
-        public bool packed2c3_10 => ( packed2c3 & 0x10 ) == 0x10;
-        public bool packed2c3_20 => ( packed2c3 & 0x20 ) == 0x20;
-        public bool packed2c3_40 => ( packed2c3 & 0x40 ) == 0x40;
-        public bool packed2c3_80 => ( packed2c3 & 0x80 ) == 0x80;
+        public bool packed2c3_1;
+        public byte packed2c3;
+        public bool packed2c3_2;
+        public bool packed2c3_4;
+        public bool packed2c3_8;
+        public bool packed2c3_10;
+        public bool packed2c3_20;
+        public bool packed2c3_40;
+        public bool packed2c3_80;
 
         // col: 489 offset: 02c8
         public uint unknown2c8;
@@ -479,15 +479,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2d2;
 
         // col: 681 offset: 02d3
-        private byte packed2d3;
-        public bool packed2d3_1 => ( packed2d3 & 0x1 ) == 0x1;
-        public bool packed2d3_2 => ( packed2d3 & 0x2 ) == 0x2;
-        public bool packed2d3_4 => ( packed2d3 & 0x4 ) == 0x4;
-        public bool packed2d3_8 => ( packed2d3 & 0x8 ) == 0x8;
-        public bool packed2d3_10 => ( packed2d3 & 0x10 ) == 0x10;
-        public bool packed2d3_20 => ( packed2d3 & 0x20 ) == 0x20;
-        public bool packed2d3_40 => ( packed2d3 & 0x40 ) == 0x40;
-        public bool packed2d3_80 => ( packed2d3 & 0x80 ) == 0x80;
+        public bool packed2d3_1;
+        public byte packed2d3;
+        public bool packed2d3_2;
+        public bool packed2d3_4;
+        public bool packed2d3_8;
+        public bool packed2d3_10;
+        public bool packed2d3_20;
+        public bool packed2d3_40;
+        public bool packed2d3_80;
 
         // col: 490 offset: 02d8
         public uint unknown2d8;
@@ -502,15 +502,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2e2;
 
         // col: 682 offset: 02e3
-        private byte packed2e3;
-        public bool packed2e3_1 => ( packed2e3 & 0x1 ) == 0x1;
-        public bool packed2e3_2 => ( packed2e3 & 0x2 ) == 0x2;
-        public bool packed2e3_4 => ( packed2e3 & 0x4 ) == 0x4;
-        public bool packed2e3_8 => ( packed2e3 & 0x8 ) == 0x8;
-        public bool packed2e3_10 => ( packed2e3 & 0x10 ) == 0x10;
-        public bool packed2e3_20 => ( packed2e3 & 0x20 ) == 0x20;
-        public bool packed2e3_40 => ( packed2e3 & 0x40 ) == 0x40;
-        public bool packed2e3_80 => ( packed2e3 & 0x80 ) == 0x80;
+        public bool packed2e3_1;
+        public byte packed2e3;
+        public bool packed2e3_2;
+        public bool packed2e3_4;
+        public bool packed2e3_8;
+        public bool packed2e3_10;
+        public bool packed2e3_20;
+        public bool packed2e3_40;
+        public bool packed2e3_80;
 
         // col: 491 offset: 02e8
         public uint unknown2e8;
@@ -525,15 +525,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2f2;
 
         // col: 683 offset: 02f3
-        private byte packed2f3;
-        public bool packed2f3_1 => ( packed2f3 & 0x1 ) == 0x1;
-        public bool packed2f3_2 => ( packed2f3 & 0x2 ) == 0x2;
-        public bool packed2f3_4 => ( packed2f3 & 0x4 ) == 0x4;
-        public bool packed2f3_8 => ( packed2f3 & 0x8 ) == 0x8;
-        public bool packed2f3_10 => ( packed2f3 & 0x10 ) == 0x10;
-        public bool packed2f3_20 => ( packed2f3 & 0x20 ) == 0x20;
-        public bool packed2f3_40 => ( packed2f3 & 0x40 ) == 0x40;
-        public bool packed2f3_80 => ( packed2f3 & 0x80 ) == 0x80;
+        public bool packed2f3_1;
+        public byte packed2f3;
+        public bool packed2f3_2;
+        public bool packed2f3_4;
+        public bool packed2f3_8;
+        public bool packed2f3_10;
+        public bool packed2f3_20;
+        public bool packed2f3_40;
+        public bool packed2f3_80;
 
         // col: 492 offset: 02f8
         public uint unknown2f8;
@@ -548,15 +548,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown302;
 
         // col: 684 offset: 0303
-        private byte packed303;
-        public bool packed303_1 => ( packed303 & 0x1 ) == 0x1;
-        public bool packed303_2 => ( packed303 & 0x2 ) == 0x2;
-        public bool packed303_4 => ( packed303 & 0x4 ) == 0x4;
-        public bool packed303_8 => ( packed303 & 0x8 ) == 0x8;
-        public bool packed303_10 => ( packed303 & 0x10 ) == 0x10;
-        public bool packed303_20 => ( packed303 & 0x20 ) == 0x20;
-        public bool packed303_40 => ( packed303 & 0x40 ) == 0x40;
-        public bool packed303_80 => ( packed303 & 0x80 ) == 0x80;
+        public bool packed303_1;
+        public byte packed303;
+        public bool packed303_2;
+        public bool packed303_4;
+        public bool packed303_8;
+        public bool packed303_10;
+        public bool packed303_20;
+        public bool packed303_40;
+        public bool packed303_80;
 
         // col: 493 offset: 0308
         public uint unknown308;
@@ -571,15 +571,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown312;
 
         // col: 685 offset: 0313
-        private byte packed313;
-        public bool packed313_1 => ( packed313 & 0x1 ) == 0x1;
-        public bool packed313_2 => ( packed313 & 0x2 ) == 0x2;
-        public bool packed313_4 => ( packed313 & 0x4 ) == 0x4;
-        public bool packed313_8 => ( packed313 & 0x8 ) == 0x8;
-        public bool packed313_10 => ( packed313 & 0x10 ) == 0x10;
-        public bool packed313_20 => ( packed313 & 0x20 ) == 0x20;
-        public bool packed313_40 => ( packed313 & 0x40 ) == 0x40;
-        public bool packed313_80 => ( packed313 & 0x80 ) == 0x80;
+        public bool packed313_1;
+        public byte packed313;
+        public bool packed313_2;
+        public bool packed313_4;
+        public bool packed313_8;
+        public bool packed313_10;
+        public bool packed313_20;
+        public bool packed313_40;
+        public bool packed313_80;
 
         // col: 494 offset: 0318
         public uint unknown318;
@@ -594,15 +594,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown322;
 
         // col: 686 offset: 0323
-        private byte packed323;
-        public bool packed323_1 => ( packed323 & 0x1 ) == 0x1;
-        public bool packed323_2 => ( packed323 & 0x2 ) == 0x2;
-        public bool packed323_4 => ( packed323 & 0x4 ) == 0x4;
-        public bool packed323_8 => ( packed323 & 0x8 ) == 0x8;
-        public bool packed323_10 => ( packed323 & 0x10 ) == 0x10;
-        public bool packed323_20 => ( packed323 & 0x20 ) == 0x20;
-        public bool packed323_40 => ( packed323 & 0x40 ) == 0x40;
-        public bool packed323_80 => ( packed323 & 0x80 ) == 0x80;
+        public bool packed323_1;
+        public byte packed323;
+        public bool packed323_2;
+        public bool packed323_4;
+        public bool packed323_8;
+        public bool packed323_10;
+        public bool packed323_20;
+        public bool packed323_40;
+        public bool packed323_80;
 
         // col: 495 offset: 0328
         public uint unknown328;
@@ -617,15 +617,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown332;
 
         // col: 687 offset: 0333
-        private byte packed333;
-        public bool packed333_1 => ( packed333 & 0x1 ) == 0x1;
-        public bool packed333_2 => ( packed333 & 0x2 ) == 0x2;
-        public bool packed333_4 => ( packed333 & 0x4 ) == 0x4;
-        public bool packed333_8 => ( packed333 & 0x8 ) == 0x8;
-        public bool packed333_10 => ( packed333 & 0x10 ) == 0x10;
-        public bool packed333_20 => ( packed333 & 0x20 ) == 0x20;
-        public bool packed333_40 => ( packed333 & 0x40 ) == 0x40;
-        public bool packed333_80 => ( packed333 & 0x80 ) == 0x80;
+        public bool packed333_1;
+        public byte packed333;
+        public bool packed333_2;
+        public bool packed333_4;
+        public bool packed333_8;
+        public bool packed333_10;
+        public bool packed333_20;
+        public bool packed333_40;
+        public bool packed333_80;
 
         // col: 496 offset: 0338
         public uint unknown338;
@@ -640,15 +640,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown342;
 
         // col: 688 offset: 0343
-        private byte packed343;
-        public bool packed343_1 => ( packed343 & 0x1 ) == 0x1;
-        public bool packed343_2 => ( packed343 & 0x2 ) == 0x2;
-        public bool packed343_4 => ( packed343 & 0x4 ) == 0x4;
-        public bool packed343_8 => ( packed343 & 0x8 ) == 0x8;
-        public bool packed343_10 => ( packed343 & 0x10 ) == 0x10;
-        public bool packed343_20 => ( packed343 & 0x20 ) == 0x20;
-        public bool packed343_40 => ( packed343 & 0x40 ) == 0x40;
-        public bool packed343_80 => ( packed343 & 0x80 ) == 0x80;
+        public bool packed343_1;
+        public byte packed343;
+        public bool packed343_2;
+        public bool packed343_4;
+        public bool packed343_8;
+        public bool packed343_10;
+        public bool packed343_20;
+        public bool packed343_40;
+        public bool packed343_80;
 
         // col: 497 offset: 0348
         public uint unknown348;
@@ -663,15 +663,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown352;
 
         // col: 689 offset: 0353
-        private byte packed353;
-        public bool packed353_1 => ( packed353 & 0x1 ) == 0x1;
-        public bool packed353_2 => ( packed353 & 0x2 ) == 0x2;
-        public bool packed353_4 => ( packed353 & 0x4 ) == 0x4;
-        public bool packed353_8 => ( packed353 & 0x8 ) == 0x8;
-        public bool packed353_10 => ( packed353 & 0x10 ) == 0x10;
-        public bool packed353_20 => ( packed353 & 0x20 ) == 0x20;
-        public bool packed353_40 => ( packed353 & 0x40 ) == 0x40;
-        public bool packed353_80 => ( packed353 & 0x80 ) == 0x80;
+        public bool packed353_1;
+        public byte packed353;
+        public bool packed353_2;
+        public bool packed353_4;
+        public bool packed353_8;
+        public bool packed353_10;
+        public bool packed353_20;
+        public bool packed353_40;
+        public bool packed353_80;
 
         // col: 498 offset: 0358
         public uint unknown358;
@@ -686,15 +686,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown362;
 
         // col: 690 offset: 0363
-        private byte packed363;
-        public bool packed363_1 => ( packed363 & 0x1 ) == 0x1;
-        public bool packed363_2 => ( packed363 & 0x2 ) == 0x2;
-        public bool packed363_4 => ( packed363 & 0x4 ) == 0x4;
-        public bool packed363_8 => ( packed363 & 0x8 ) == 0x8;
-        public bool packed363_10 => ( packed363 & 0x10 ) == 0x10;
-        public bool packed363_20 => ( packed363 & 0x20 ) == 0x20;
-        public bool packed363_40 => ( packed363 & 0x40 ) == 0x40;
-        public bool packed363_80 => ( packed363 & 0x80 ) == 0x80;
+        public bool packed363_1;
+        public byte packed363;
+        public bool packed363_2;
+        public bool packed363_4;
+        public bool packed363_8;
+        public bool packed363_10;
+        public bool packed363_20;
+        public bool packed363_40;
+        public bool packed363_80;
 
         // col: 499 offset: 0368
         public uint unknown368;
@@ -709,15 +709,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown372;
 
         // col: 691 offset: 0373
-        private byte packed373;
-        public bool packed373_1 => ( packed373 & 0x1 ) == 0x1;
-        public bool packed373_2 => ( packed373 & 0x2 ) == 0x2;
-        public bool packed373_4 => ( packed373 & 0x4 ) == 0x4;
-        public bool packed373_8 => ( packed373 & 0x8 ) == 0x8;
-        public bool packed373_10 => ( packed373 & 0x10 ) == 0x10;
-        public bool packed373_20 => ( packed373 & 0x20 ) == 0x20;
-        public bool packed373_40 => ( packed373 & 0x40 ) == 0x40;
-        public bool packed373_80 => ( packed373 & 0x80 ) == 0x80;
+        public bool packed373_1;
+        public byte packed373;
+        public bool packed373_2;
+        public bool packed373_4;
+        public bool packed373_8;
+        public bool packed373_10;
+        public bool packed373_20;
+        public bool packed373_40;
+        public bool packed373_80;
 
         // col: 500 offset: 0378
         public uint unknown378;
@@ -732,15 +732,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown382;
 
         // col: 692 offset: 0383
-        private byte packed383;
-        public bool packed383_1 => ( packed383 & 0x1 ) == 0x1;
-        public bool packed383_2 => ( packed383 & 0x2 ) == 0x2;
-        public bool packed383_4 => ( packed383 & 0x4 ) == 0x4;
-        public bool packed383_8 => ( packed383 & 0x8 ) == 0x8;
-        public bool packed383_10 => ( packed383 & 0x10 ) == 0x10;
-        public bool packed383_20 => ( packed383 & 0x20 ) == 0x20;
-        public bool packed383_40 => ( packed383 & 0x40 ) == 0x40;
-        public bool packed383_80 => ( packed383 & 0x80 ) == 0x80;
+        public bool packed383_1;
+        public byte packed383;
+        public bool packed383_2;
+        public bool packed383_4;
+        public bool packed383_8;
+        public bool packed383_10;
+        public bool packed383_20;
+        public bool packed383_40;
+        public bool packed383_80;
 
         // col: 501 offset: 0388
         public uint unknown388;
@@ -755,15 +755,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown392;
 
         // col: 693 offset: 0393
-        private byte packed393;
-        public bool packed393_1 => ( packed393 & 0x1 ) == 0x1;
-        public bool packed393_2 => ( packed393 & 0x2 ) == 0x2;
-        public bool packed393_4 => ( packed393 & 0x4 ) == 0x4;
-        public bool packed393_8 => ( packed393 & 0x8 ) == 0x8;
-        public bool packed393_10 => ( packed393 & 0x10 ) == 0x10;
-        public bool packed393_20 => ( packed393 & 0x20 ) == 0x20;
-        public bool packed393_40 => ( packed393 & 0x40 ) == 0x40;
-        public bool packed393_80 => ( packed393 & 0x80 ) == 0x80;
+        public bool packed393_1;
+        public byte packed393;
+        public bool packed393_2;
+        public bool packed393_4;
+        public bool packed393_8;
+        public bool packed393_10;
+        public bool packed393_20;
+        public bool packed393_40;
+        public bool packed393_80;
 
         // col: 502 offset: 0398
         public uint unknown398;
@@ -781,15 +781,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3a2;
 
         // col: 694 offset: 03a3
-        private byte packed3a3;
-        public bool packed3a3_1 => ( packed3a3 & 0x1 ) == 0x1;
-        public bool packed3a3_2 => ( packed3a3 & 0x2 ) == 0x2;
-        public bool packed3a3_4 => ( packed3a3 & 0x4 ) == 0x4;
-        public bool packed3a3_8 => ( packed3a3 & 0x8 ) == 0x8;
-        public bool packed3a3_10 => ( packed3a3 & 0x10 ) == 0x10;
-        public bool packed3a3_20 => ( packed3a3 & 0x20 ) == 0x20;
-        public bool packed3a3_40 => ( packed3a3 & 0x40 ) == 0x40;
-        public bool packed3a3_80 => ( packed3a3 & 0x80 ) == 0x80;
+        public bool packed3a3_1;
+        public byte packed3a3;
+        public bool packed3a3_2;
+        public bool packed3a3_4;
+        public bool packed3a3_8;
+        public bool packed3a3_10;
+        public bool packed3a3_20;
+        public bool packed3a3_40;
+        public bool packed3a3_80;
 
         // col: 503 offset: 03a8
         public uint unknown3a8;
@@ -804,15 +804,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3b2;
 
         // col: 695 offset: 03b3
-        private byte packed3b3;
-        public bool packed3b3_1 => ( packed3b3 & 0x1 ) == 0x1;
-        public bool packed3b3_2 => ( packed3b3 & 0x2 ) == 0x2;
-        public bool packed3b3_4 => ( packed3b3 & 0x4 ) == 0x4;
-        public bool packed3b3_8 => ( packed3b3 & 0x8 ) == 0x8;
-        public bool packed3b3_10 => ( packed3b3 & 0x10 ) == 0x10;
-        public bool packed3b3_20 => ( packed3b3 & 0x20 ) == 0x20;
-        public bool packed3b3_40 => ( packed3b3 & 0x40 ) == 0x40;
-        public bool packed3b3_80 => ( packed3b3 & 0x80 ) == 0x80;
+        public bool packed3b3_1;
+        public byte packed3b3;
+        public bool packed3b3_2;
+        public bool packed3b3_4;
+        public bool packed3b3_8;
+        public bool packed3b3_10;
+        public bool packed3b3_20;
+        public bool packed3b3_40;
+        public bool packed3b3_80;
 
         // col: 504 offset: 03b8
         public uint unknown3b8;
@@ -827,15 +827,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3c2;
 
         // col: 696 offset: 03c3
-        private byte packed3c3;
-        public bool packed3c3_1 => ( packed3c3 & 0x1 ) == 0x1;
-        public bool packed3c3_2 => ( packed3c3 & 0x2 ) == 0x2;
-        public bool packed3c3_4 => ( packed3c3 & 0x4 ) == 0x4;
-        public bool packed3c3_8 => ( packed3c3 & 0x8 ) == 0x8;
-        public bool packed3c3_10 => ( packed3c3 & 0x10 ) == 0x10;
-        public bool packed3c3_20 => ( packed3c3 & 0x20 ) == 0x20;
-        public bool packed3c3_40 => ( packed3c3 & 0x40 ) == 0x40;
-        public bool packed3c3_80 => ( packed3c3 & 0x80 ) == 0x80;
+        public bool packed3c3_1;
+        public byte packed3c3;
+        public bool packed3c3_2;
+        public bool packed3c3_4;
+        public bool packed3c3_8;
+        public bool packed3c3_10;
+        public bool packed3c3_20;
+        public bool packed3c3_40;
+        public bool packed3c3_80;
 
         // col: 505 offset: 03c8
         public uint unknown3c8;
@@ -850,15 +850,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3d2;
 
         // col: 697 offset: 03d3
-        private byte packed3d3;
-        public bool packed3d3_1 => ( packed3d3 & 0x1 ) == 0x1;
-        public bool packed3d3_2 => ( packed3d3 & 0x2 ) == 0x2;
-        public bool packed3d3_4 => ( packed3d3 & 0x4 ) == 0x4;
-        public bool packed3d3_8 => ( packed3d3 & 0x8 ) == 0x8;
-        public bool packed3d3_10 => ( packed3d3 & 0x10 ) == 0x10;
-        public bool packed3d3_20 => ( packed3d3 & 0x20 ) == 0x20;
-        public bool packed3d3_40 => ( packed3d3 & 0x40 ) == 0x40;
-        public bool packed3d3_80 => ( packed3d3 & 0x80 ) == 0x80;
+        public bool packed3d3_1;
+        public byte packed3d3;
+        public bool packed3d3_2;
+        public bool packed3d3_4;
+        public bool packed3d3_8;
+        public bool packed3d3_10;
+        public bool packed3d3_20;
+        public bool packed3d3_40;
+        public bool packed3d3_80;
 
         // col: 506 offset: 03d8
         public uint unknown3d8;
@@ -873,15 +873,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3e2;
 
         // col: 698 offset: 03e3
-        private byte packed3e3;
-        public bool packed3e3_1 => ( packed3e3 & 0x1 ) == 0x1;
-        public bool packed3e3_2 => ( packed3e3 & 0x2 ) == 0x2;
-        public bool packed3e3_4 => ( packed3e3 & 0x4 ) == 0x4;
-        public bool packed3e3_8 => ( packed3e3 & 0x8 ) == 0x8;
-        public bool packed3e3_10 => ( packed3e3 & 0x10 ) == 0x10;
-        public bool packed3e3_20 => ( packed3e3 & 0x20 ) == 0x20;
-        public bool packed3e3_40 => ( packed3e3 & 0x40 ) == 0x40;
-        public bool packed3e3_80 => ( packed3e3 & 0x80 ) == 0x80;
+        public bool packed3e3_1;
+        public byte packed3e3;
+        public bool packed3e3_2;
+        public bool packed3e3_4;
+        public bool packed3e3_8;
+        public bool packed3e3_10;
+        public bool packed3e3_20;
+        public bool packed3e3_40;
+        public bool packed3e3_80;
 
         // col: 507 offset: 03e8
         public uint unknown3e8;
@@ -896,15 +896,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3f2;
 
         // col: 699 offset: 03f3
-        private byte packed3f3;
-        public bool packed3f3_1 => ( packed3f3 & 0x1 ) == 0x1;
-        public bool packed3f3_2 => ( packed3f3 & 0x2 ) == 0x2;
-        public bool packed3f3_4 => ( packed3f3 & 0x4 ) == 0x4;
-        public bool packed3f3_8 => ( packed3f3 & 0x8 ) == 0x8;
-        public bool packed3f3_10 => ( packed3f3 & 0x10 ) == 0x10;
-        public bool packed3f3_20 => ( packed3f3 & 0x20 ) == 0x20;
-        public bool packed3f3_40 => ( packed3f3 & 0x40 ) == 0x40;
-        public bool packed3f3_80 => ( packed3f3 & 0x80 ) == 0x80;
+        public bool packed3f3_1;
+        public byte packed3f3;
+        public bool packed3f3_2;
+        public bool packed3f3_4;
+        public bool packed3f3_8;
+        public bool packed3f3_10;
+        public bool packed3f3_20;
+        public bool packed3f3_40;
+        public bool packed3f3_80;
 
         // col: 508 offset: 03f8
         public uint unknown3f8;
@@ -919,15 +919,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown402;
 
         // col: 700 offset: 0403
-        private byte packed403;
-        public bool packed403_1 => ( packed403 & 0x1 ) == 0x1;
-        public bool packed403_2 => ( packed403 & 0x2 ) == 0x2;
-        public bool packed403_4 => ( packed403 & 0x4 ) == 0x4;
-        public bool packed403_8 => ( packed403 & 0x8 ) == 0x8;
-        public bool packed403_10 => ( packed403 & 0x10 ) == 0x10;
-        public bool packed403_20 => ( packed403 & 0x20 ) == 0x20;
-        public bool packed403_40 => ( packed403 & 0x40 ) == 0x40;
-        public bool packed403_80 => ( packed403 & 0x80 ) == 0x80;
+        public bool packed403_1;
+        public byte packed403;
+        public bool packed403_2;
+        public bool packed403_4;
+        public bool packed403_8;
+        public bool packed403_10;
+        public bool packed403_20;
+        public bool packed403_40;
+        public bool packed403_80;
 
         // col: 509 offset: 0408
         public uint unknown408;
@@ -942,15 +942,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown412;
 
         // col: 701 offset: 0413
-        private byte packed413;
-        public bool packed413_1 => ( packed413 & 0x1 ) == 0x1;
-        public bool packed413_2 => ( packed413 & 0x2 ) == 0x2;
-        public bool packed413_4 => ( packed413 & 0x4 ) == 0x4;
-        public bool packed413_8 => ( packed413 & 0x8 ) == 0x8;
-        public bool packed413_10 => ( packed413 & 0x10 ) == 0x10;
-        public bool packed413_20 => ( packed413 & 0x20 ) == 0x20;
-        public bool packed413_40 => ( packed413 & 0x40 ) == 0x40;
-        public bool packed413_80 => ( packed413 & 0x80 ) == 0x80;
+        public bool packed413_1;
+        public byte packed413;
+        public bool packed413_2;
+        public bool packed413_4;
+        public bool packed413_8;
+        public bool packed413_10;
+        public bool packed413_20;
+        public bool packed413_40;
+        public bool packed413_80;
 
         // col: 510 offset: 0418
         public uint unknown418;
@@ -965,15 +965,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown422;
 
         // col: 702 offset: 0423
-        private byte packed423;
-        public bool packed423_1 => ( packed423 & 0x1 ) == 0x1;
-        public bool packed423_2 => ( packed423 & 0x2 ) == 0x2;
-        public bool packed423_4 => ( packed423 & 0x4 ) == 0x4;
-        public bool packed423_8 => ( packed423 & 0x8 ) == 0x8;
-        public bool packed423_10 => ( packed423 & 0x10 ) == 0x10;
-        public bool packed423_20 => ( packed423 & 0x20 ) == 0x20;
-        public bool packed423_40 => ( packed423 & 0x40 ) == 0x40;
-        public bool packed423_80 => ( packed423 & 0x80 ) == 0x80;
+        public bool packed423_1;
+        public byte packed423;
+        public bool packed423_2;
+        public bool packed423_4;
+        public bool packed423_8;
+        public bool packed423_10;
+        public bool packed423_20;
+        public bool packed423_40;
+        public bool packed423_80;
 
         // col: 511 offset: 0428
         public uint unknown428;
@@ -988,15 +988,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown432;
 
         // col: 703 offset: 0433
-        private byte packed433;
-        public bool packed433_1 => ( packed433 & 0x1 ) == 0x1;
-        public bool packed433_2 => ( packed433 & 0x2 ) == 0x2;
-        public bool packed433_4 => ( packed433 & 0x4 ) == 0x4;
-        public bool packed433_8 => ( packed433 & 0x8 ) == 0x8;
-        public bool packed433_10 => ( packed433 & 0x10 ) == 0x10;
-        public bool packed433_20 => ( packed433 & 0x20 ) == 0x20;
-        public bool packed433_40 => ( packed433 & 0x40 ) == 0x40;
-        public bool packed433_80 => ( packed433 & 0x80 ) == 0x80;
+        public bool packed433_1;
+        public byte packed433;
+        public bool packed433_2;
+        public bool packed433_4;
+        public bool packed433_8;
+        public bool packed433_10;
+        public bool packed433_20;
+        public bool packed433_40;
+        public bool packed433_80;
 
         // col: 512 offset: 0438
         public uint unknown438;
@@ -1011,15 +1011,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown442;
 
         // col: 704 offset: 0443
-        private byte packed443;
-        public bool packed443_1 => ( packed443 & 0x1 ) == 0x1;
-        public bool packed443_2 => ( packed443 & 0x2 ) == 0x2;
-        public bool packed443_4 => ( packed443 & 0x4 ) == 0x4;
-        public bool packed443_8 => ( packed443 & 0x8 ) == 0x8;
-        public bool packed443_10 => ( packed443 & 0x10 ) == 0x10;
-        public bool packed443_20 => ( packed443 & 0x20 ) == 0x20;
-        public bool packed443_40 => ( packed443 & 0x40 ) == 0x40;
-        public bool packed443_80 => ( packed443 & 0x80 ) == 0x80;
+        public bool packed443_1;
+        public byte packed443;
+        public bool packed443_2;
+        public bool packed443_4;
+        public bool packed443_8;
+        public bool packed443_10;
+        public bool packed443_20;
+        public bool packed443_40;
+        public bool packed443_80;
 
         // col: 513 offset: 0448
         public uint unknown448;
@@ -1034,15 +1034,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown452;
 
         // col: 705 offset: 0453
-        private byte packed453;
-        public bool packed453_1 => ( packed453 & 0x1 ) == 0x1;
-        public bool packed453_2 => ( packed453 & 0x2 ) == 0x2;
-        public bool packed453_4 => ( packed453 & 0x4 ) == 0x4;
-        public bool packed453_8 => ( packed453 & 0x8 ) == 0x8;
-        public bool packed453_10 => ( packed453 & 0x10 ) == 0x10;
-        public bool packed453_20 => ( packed453 & 0x20 ) == 0x20;
-        public bool packed453_40 => ( packed453 & 0x40 ) == 0x40;
-        public bool packed453_80 => ( packed453 & 0x80 ) == 0x80;
+        public bool packed453_1;
+        public byte packed453;
+        public bool packed453_2;
+        public bool packed453_4;
+        public bool packed453_8;
+        public bool packed453_10;
+        public bool packed453_20;
+        public bool packed453_40;
+        public bool packed453_80;
 
         // col: 514 offset: 0458
         public uint unknown458;
@@ -1057,15 +1057,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown462;
 
         // col: 706 offset: 0463
-        private byte packed463;
-        public bool packed463_1 => ( packed463 & 0x1 ) == 0x1;
-        public bool packed463_2 => ( packed463 & 0x2 ) == 0x2;
-        public bool packed463_4 => ( packed463 & 0x4 ) == 0x4;
-        public bool packed463_8 => ( packed463 & 0x8 ) == 0x8;
-        public bool packed463_10 => ( packed463 & 0x10 ) == 0x10;
-        public bool packed463_20 => ( packed463 & 0x20 ) == 0x20;
-        public bool packed463_40 => ( packed463 & 0x40 ) == 0x40;
-        public bool packed463_80 => ( packed463 & 0x80 ) == 0x80;
+        public bool packed463_1;
+        public byte packed463;
+        public bool packed463_2;
+        public bool packed463_4;
+        public bool packed463_8;
+        public bool packed463_10;
+        public bool packed463_20;
+        public bool packed463_40;
+        public bool packed463_80;
 
         // col: 515 offset: 0468
         public uint unknown468;
@@ -1080,15 +1080,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown472;
 
         // col: 707 offset: 0473
-        private byte packed473;
-        public bool packed473_1 => ( packed473 & 0x1 ) == 0x1;
-        public bool packed473_2 => ( packed473 & 0x2 ) == 0x2;
-        public bool packed473_4 => ( packed473 & 0x4 ) == 0x4;
-        public bool packed473_8 => ( packed473 & 0x8 ) == 0x8;
-        public bool packed473_10 => ( packed473 & 0x10 ) == 0x10;
-        public bool packed473_20 => ( packed473 & 0x20 ) == 0x20;
-        public bool packed473_40 => ( packed473 & 0x40 ) == 0x40;
-        public bool packed473_80 => ( packed473 & 0x80 ) == 0x80;
+        public bool packed473_1;
+        public byte packed473;
+        public bool packed473_2;
+        public bool packed473_4;
+        public bool packed473_8;
+        public bool packed473_10;
+        public bool packed473_20;
+        public bool packed473_40;
+        public bool packed473_80;
 
         // col: 516 offset: 0478
         public uint unknown478;
@@ -1103,15 +1103,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown482;
 
         // col: 708 offset: 0483
-        private byte packed483;
-        public bool packed483_1 => ( packed483 & 0x1 ) == 0x1;
-        public bool packed483_2 => ( packed483 & 0x2 ) == 0x2;
-        public bool packed483_4 => ( packed483 & 0x4 ) == 0x4;
-        public bool packed483_8 => ( packed483 & 0x8 ) == 0x8;
-        public bool packed483_10 => ( packed483 & 0x10 ) == 0x10;
-        public bool packed483_20 => ( packed483 & 0x20 ) == 0x20;
-        public bool packed483_40 => ( packed483 & 0x40 ) == 0x40;
-        public bool packed483_80 => ( packed483 & 0x80 ) == 0x80;
+        public bool packed483_1;
+        public byte packed483;
+        public bool packed483_2;
+        public bool packed483_4;
+        public bool packed483_8;
+        public bool packed483_10;
+        public bool packed483_20;
+        public bool packed483_40;
+        public bool packed483_80;
 
         // col: 517 offset: 0488
         public uint unknown488;
@@ -1126,15 +1126,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown492;
 
         // col: 709 offset: 0493
-        private byte packed493;
-        public bool packed493_1 => ( packed493 & 0x1 ) == 0x1;
-        public bool packed493_2 => ( packed493 & 0x2 ) == 0x2;
-        public bool packed493_4 => ( packed493 & 0x4 ) == 0x4;
-        public bool packed493_8 => ( packed493 & 0x8 ) == 0x8;
-        public bool packed493_10 => ( packed493 & 0x10 ) == 0x10;
-        public bool packed493_20 => ( packed493 & 0x20 ) == 0x20;
-        public bool packed493_40 => ( packed493 & 0x40 ) == 0x40;
-        public bool packed493_80 => ( packed493 & 0x80 ) == 0x80;
+        public bool packed493_1;
+        public byte packed493;
+        public bool packed493_2;
+        public bool packed493_4;
+        public bool packed493_8;
+        public bool packed493_10;
+        public bool packed493_20;
+        public bool packed493_40;
+        public bool packed493_80;
 
         // col: 518 offset: 0498
         public uint unknown498;
@@ -1149,15 +1149,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4a2;
 
         // col: 710 offset: 04a3
-        private byte packed4a3;
-        public bool packed4a3_1 => ( packed4a3 & 0x1 ) == 0x1;
-        public bool packed4a3_2 => ( packed4a3 & 0x2 ) == 0x2;
-        public bool packed4a3_4 => ( packed4a3 & 0x4 ) == 0x4;
-        public bool packed4a3_8 => ( packed4a3 & 0x8 ) == 0x8;
-        public bool packed4a3_10 => ( packed4a3 & 0x10 ) == 0x10;
-        public bool packed4a3_20 => ( packed4a3 & 0x20 ) == 0x20;
-        public bool packed4a3_40 => ( packed4a3 & 0x40 ) == 0x40;
-        public bool packed4a3_80 => ( packed4a3 & 0x80 ) == 0x80;
+        public bool packed4a3_1;
+        public byte packed4a3;
+        public bool packed4a3_2;
+        public bool packed4a3_4;
+        public bool packed4a3_8;
+        public bool packed4a3_10;
+        public bool packed4a3_20;
+        public bool packed4a3_40;
+        public bool packed4a3_80;
 
         // col: 519 offset: 04a8
         public uint unknown4a8;
@@ -1172,15 +1172,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4b2;
 
         // col: 711 offset: 04b3
-        private byte packed4b3;
-        public bool packed4b3_1 => ( packed4b3 & 0x1 ) == 0x1;
-        public bool packed4b3_2 => ( packed4b3 & 0x2 ) == 0x2;
-        public bool packed4b3_4 => ( packed4b3 & 0x4 ) == 0x4;
-        public bool packed4b3_8 => ( packed4b3 & 0x8 ) == 0x8;
-        public bool packed4b3_10 => ( packed4b3 & 0x10 ) == 0x10;
-        public bool packed4b3_20 => ( packed4b3 & 0x20 ) == 0x20;
-        public bool packed4b3_40 => ( packed4b3 & 0x40 ) == 0x40;
-        public bool packed4b3_80 => ( packed4b3 & 0x80 ) == 0x80;
+        public bool packed4b3_1;
+        public byte packed4b3;
+        public bool packed4b3_2;
+        public bool packed4b3_4;
+        public bool packed4b3_8;
+        public bool packed4b3_10;
+        public bool packed4b3_20;
+        public bool packed4b3_40;
+        public bool packed4b3_80;
 
         // col: 520 offset: 04b8
         public uint unknown4b8;
@@ -1195,15 +1195,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4c2;
 
         // col: 712 offset: 04c3
-        private byte packed4c3;
-        public bool packed4c3_1 => ( packed4c3 & 0x1 ) == 0x1;
-        public bool packed4c3_2 => ( packed4c3 & 0x2 ) == 0x2;
-        public bool packed4c3_4 => ( packed4c3 & 0x4 ) == 0x4;
-        public bool packed4c3_8 => ( packed4c3 & 0x8 ) == 0x8;
-        public bool packed4c3_10 => ( packed4c3 & 0x10 ) == 0x10;
-        public bool packed4c3_20 => ( packed4c3 & 0x20 ) == 0x20;
-        public bool packed4c3_40 => ( packed4c3 & 0x40 ) == 0x40;
-        public bool packed4c3_80 => ( packed4c3 & 0x80 ) == 0x80;
+        public bool packed4c3_1;
+        public byte packed4c3;
+        public bool packed4c3_2;
+        public bool packed4c3_4;
+        public bool packed4c3_8;
+        public bool packed4c3_10;
+        public bool packed4c3_20;
+        public bool packed4c3_40;
+        public bool packed4c3_80;
 
         // col: 521 offset: 04c8
         public uint unknown4c8;
@@ -1218,15 +1218,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4d2;
 
         // col: 713 offset: 04d3
-        private byte packed4d3;
-        public bool packed4d3_1 => ( packed4d3 & 0x1 ) == 0x1;
-        public bool packed4d3_2 => ( packed4d3 & 0x2 ) == 0x2;
-        public bool packed4d3_4 => ( packed4d3 & 0x4 ) == 0x4;
-        public bool packed4d3_8 => ( packed4d3 & 0x8 ) == 0x8;
-        public bool packed4d3_10 => ( packed4d3 & 0x10 ) == 0x10;
-        public bool packed4d3_20 => ( packed4d3 & 0x20 ) == 0x20;
-        public bool packed4d3_40 => ( packed4d3 & 0x40 ) == 0x40;
-        public bool packed4d3_80 => ( packed4d3 & 0x80 ) == 0x80;
+        public bool packed4d3_1;
+        public byte packed4d3;
+        public bool packed4d3_2;
+        public bool packed4d3_4;
+        public bool packed4d3_8;
+        public bool packed4d3_10;
+        public bool packed4d3_20;
+        public bool packed4d3_40;
+        public bool packed4d3_80;
 
         // col: 522 offset: 04d8
         public uint unknown4d8;
@@ -1241,15 +1241,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4e2;
 
         // col: 714 offset: 04e3
-        private byte packed4e3;
-        public bool packed4e3_1 => ( packed4e3 & 0x1 ) == 0x1;
-        public bool packed4e3_2 => ( packed4e3 & 0x2 ) == 0x2;
-        public bool packed4e3_4 => ( packed4e3 & 0x4 ) == 0x4;
-        public bool packed4e3_8 => ( packed4e3 & 0x8 ) == 0x8;
-        public bool packed4e3_10 => ( packed4e3 & 0x10 ) == 0x10;
-        public bool packed4e3_20 => ( packed4e3 & 0x20 ) == 0x20;
-        public bool packed4e3_40 => ( packed4e3 & 0x40 ) == 0x40;
-        public bool packed4e3_80 => ( packed4e3 & 0x80 ) == 0x80;
+        public bool packed4e3_1;
+        public byte packed4e3;
+        public bool packed4e3_2;
+        public bool packed4e3_4;
+        public bool packed4e3_8;
+        public bool packed4e3_10;
+        public bool packed4e3_20;
+        public bool packed4e3_40;
+        public bool packed4e3_80;
 
         // col: 523 offset: 04e8
         public uint unknown4e8;
@@ -1264,15 +1264,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4f2;
 
         // col: 715 offset: 04f3
-        private byte packed4f3;
-        public bool packed4f3_1 => ( packed4f3 & 0x1 ) == 0x1;
-        public bool packed4f3_2 => ( packed4f3 & 0x2 ) == 0x2;
-        public bool packed4f3_4 => ( packed4f3 & 0x4 ) == 0x4;
-        public bool packed4f3_8 => ( packed4f3 & 0x8 ) == 0x8;
-        public bool packed4f3_10 => ( packed4f3 & 0x10 ) == 0x10;
-        public bool packed4f3_20 => ( packed4f3 & 0x20 ) == 0x20;
-        public bool packed4f3_40 => ( packed4f3 & 0x40 ) == 0x40;
-        public bool packed4f3_80 => ( packed4f3 & 0x80 ) == 0x80;
+        public bool packed4f3_1;
+        public byte packed4f3;
+        public bool packed4f3_2;
+        public bool packed4f3_4;
+        public bool packed4f3_8;
+        public bool packed4f3_10;
+        public bool packed4f3_20;
+        public bool packed4f3_40;
+        public bool packed4f3_80;
 
         // col: 524 offset: 04f8
         public uint unknown4f8;
@@ -1287,15 +1287,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown502;
 
         // col: 716 offset: 0503
-        private byte packed503;
-        public bool packed503_1 => ( packed503 & 0x1 ) == 0x1;
-        public bool packed503_2 => ( packed503 & 0x2 ) == 0x2;
-        public bool packed503_4 => ( packed503 & 0x4 ) == 0x4;
-        public bool packed503_8 => ( packed503 & 0x8 ) == 0x8;
-        public bool packed503_10 => ( packed503 & 0x10 ) == 0x10;
-        public bool packed503_20 => ( packed503 & 0x20 ) == 0x20;
-        public bool packed503_40 => ( packed503 & 0x40 ) == 0x40;
-        public bool packed503_80 => ( packed503 & 0x80 ) == 0x80;
+        public bool packed503_1;
+        public byte packed503;
+        public bool packed503_2;
+        public bool packed503_4;
+        public bool packed503_8;
+        public bool packed503_10;
+        public bool packed503_20;
+        public bool packed503_40;
+        public bool packed503_80;
 
         // col: 525 offset: 0508
         public uint unknown508;
@@ -1310,15 +1310,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown512;
 
         // col: 717 offset: 0513
-        private byte packed513;
-        public bool packed513_1 => ( packed513 & 0x1 ) == 0x1;
-        public bool packed513_2 => ( packed513 & 0x2 ) == 0x2;
-        public bool packed513_4 => ( packed513 & 0x4 ) == 0x4;
-        public bool packed513_8 => ( packed513 & 0x8 ) == 0x8;
-        public bool packed513_10 => ( packed513 & 0x10 ) == 0x10;
-        public bool packed513_20 => ( packed513 & 0x20 ) == 0x20;
-        public bool packed513_40 => ( packed513 & 0x40 ) == 0x40;
-        public bool packed513_80 => ( packed513 & 0x80 ) == 0x80;
+        public bool packed513_1;
+        public byte packed513;
+        public bool packed513_2;
+        public bool packed513_4;
+        public bool packed513_8;
+        public bool packed513_10;
+        public bool packed513_20;
+        public bool packed513_40;
+        public bool packed513_80;
 
         // col: 526 offset: 0518
         public uint unknown518;
@@ -1333,15 +1333,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown522;
 
         // col: 718 offset: 0523
-        private byte packed523;
-        public bool packed523_1 => ( packed523 & 0x1 ) == 0x1;
-        public bool packed523_2 => ( packed523 & 0x2 ) == 0x2;
-        public bool packed523_4 => ( packed523 & 0x4 ) == 0x4;
-        public bool packed523_8 => ( packed523 & 0x8 ) == 0x8;
-        public bool packed523_10 => ( packed523 & 0x10 ) == 0x10;
-        public bool packed523_20 => ( packed523 & 0x20 ) == 0x20;
-        public bool packed523_40 => ( packed523 & 0x40 ) == 0x40;
-        public bool packed523_80 => ( packed523 & 0x80 ) == 0x80;
+        public bool packed523_1;
+        public byte packed523;
+        public bool packed523_2;
+        public bool packed523_4;
+        public bool packed523_8;
+        public bool packed523_10;
+        public bool packed523_20;
+        public bool packed523_40;
+        public bool packed523_80;
 
         // col: 527 offset: 0528
         public uint unknown528;
@@ -1356,15 +1356,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown532;
 
         // col: 719 offset: 0533
-        private byte packed533;
-        public bool packed533_1 => ( packed533 & 0x1 ) == 0x1;
-        public bool packed533_2 => ( packed533 & 0x2 ) == 0x2;
-        public bool packed533_4 => ( packed533 & 0x4 ) == 0x4;
-        public bool packed533_8 => ( packed533 & 0x8 ) == 0x8;
-        public bool packed533_10 => ( packed533 & 0x10 ) == 0x10;
-        public bool packed533_20 => ( packed533 & 0x20 ) == 0x20;
-        public bool packed533_40 => ( packed533 & 0x40 ) == 0x40;
-        public bool packed533_80 => ( packed533 & 0x80 ) == 0x80;
+        public bool packed533_1;
+        public byte packed533;
+        public bool packed533_2;
+        public bool packed533_4;
+        public bool packed533_8;
+        public bool packed533_10;
+        public bool packed533_20;
+        public bool packed533_40;
+        public bool packed533_80;
 
         // col: 528 offset: 0538
         public uint unknown538;
@@ -1379,15 +1379,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown542;
 
         // col: 720 offset: 0543
-        private byte packed543;
-        public bool packed543_1 => ( packed543 & 0x1 ) == 0x1;
-        public bool packed543_2 => ( packed543 & 0x2 ) == 0x2;
-        public bool packed543_4 => ( packed543 & 0x4 ) == 0x4;
-        public bool packed543_8 => ( packed543 & 0x8 ) == 0x8;
-        public bool packed543_10 => ( packed543 & 0x10 ) == 0x10;
-        public bool packed543_20 => ( packed543 & 0x20 ) == 0x20;
-        public bool packed543_40 => ( packed543 & 0x40 ) == 0x40;
-        public bool packed543_80 => ( packed543 & 0x80 ) == 0x80;
+        public bool packed543_1;
+        public byte packed543;
+        public bool packed543_2;
+        public bool packed543_4;
+        public bool packed543_8;
+        public bool packed543_10;
+        public bool packed543_20;
+        public bool packed543_40;
+        public bool packed543_80;
 
         // col: 529 offset: 0548
         public uint unknown548;
@@ -1402,15 +1402,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown552;
 
         // col: 721 offset: 0553
-        private byte packed553;
-        public bool packed553_1 => ( packed553 & 0x1 ) == 0x1;
-        public bool packed553_2 => ( packed553 & 0x2 ) == 0x2;
-        public bool packed553_4 => ( packed553 & 0x4 ) == 0x4;
-        public bool packed553_8 => ( packed553 & 0x8 ) == 0x8;
-        public bool packed553_10 => ( packed553 & 0x10 ) == 0x10;
-        public bool packed553_20 => ( packed553 & 0x20 ) == 0x20;
-        public bool packed553_40 => ( packed553 & 0x40 ) == 0x40;
-        public bool packed553_80 => ( packed553 & 0x80 ) == 0x80;
+        public bool packed553_1;
+        public byte packed553;
+        public bool packed553_2;
+        public bool packed553_4;
+        public bool packed553_8;
+        public bool packed553_10;
+        public bool packed553_20;
+        public bool packed553_40;
+        public bool packed553_80;
 
         // col: 530 offset: 0558
         public uint unknown558;
@@ -1425,15 +1425,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown562;
 
         // col: 722 offset: 0563
-        private byte packed563;
-        public bool packed563_1 => ( packed563 & 0x1 ) == 0x1;
-        public bool packed563_2 => ( packed563 & 0x2 ) == 0x2;
-        public bool packed563_4 => ( packed563 & 0x4 ) == 0x4;
-        public bool packed563_8 => ( packed563 & 0x8 ) == 0x8;
-        public bool packed563_10 => ( packed563 & 0x10 ) == 0x10;
-        public bool packed563_20 => ( packed563 & 0x20 ) == 0x20;
-        public bool packed563_40 => ( packed563 & 0x40 ) == 0x40;
-        public bool packed563_80 => ( packed563 & 0x80 ) == 0x80;
+        public bool packed563_1;
+        public byte packed563;
+        public bool packed563_2;
+        public bool packed563_4;
+        public bool packed563_8;
+        public bool packed563_10;
+        public bool packed563_20;
+        public bool packed563_40;
+        public bool packed563_80;
 
         // col: 531 offset: 0568
         public uint unknown568;
@@ -1448,15 +1448,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown572;
 
         // col: 723 offset: 0573
-        private byte packed573;
-        public bool packed573_1 => ( packed573 & 0x1 ) == 0x1;
-        public bool packed573_2 => ( packed573 & 0x2 ) == 0x2;
-        public bool packed573_4 => ( packed573 & 0x4 ) == 0x4;
-        public bool packed573_8 => ( packed573 & 0x8 ) == 0x8;
-        public bool packed573_10 => ( packed573 & 0x10 ) == 0x10;
-        public bool packed573_20 => ( packed573 & 0x20 ) == 0x20;
-        public bool packed573_40 => ( packed573 & 0x40 ) == 0x40;
-        public bool packed573_80 => ( packed573 & 0x80 ) == 0x80;
+        public bool packed573_1;
+        public byte packed573;
+        public bool packed573_2;
+        public bool packed573_4;
+        public bool packed573_8;
+        public bool packed573_10;
+        public bool packed573_20;
+        public bool packed573_40;
+        public bool packed573_80;
 
         // col: 532 offset: 0578
         public uint unknown578;
@@ -1471,15 +1471,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown582;
 
         // col: 724 offset: 0583
-        private byte packed583;
-        public bool packed583_1 => ( packed583 & 0x1 ) == 0x1;
-        public bool packed583_2 => ( packed583 & 0x2 ) == 0x2;
-        public bool packed583_4 => ( packed583 & 0x4 ) == 0x4;
-        public bool packed583_8 => ( packed583 & 0x8 ) == 0x8;
-        public bool packed583_10 => ( packed583 & 0x10 ) == 0x10;
-        public bool packed583_20 => ( packed583 & 0x20 ) == 0x20;
-        public bool packed583_40 => ( packed583 & 0x40 ) == 0x40;
-        public bool packed583_80 => ( packed583 & 0x80 ) == 0x80;
+        public bool packed583_1;
+        public byte packed583;
+        public bool packed583_2;
+        public bool packed583_4;
+        public bool packed583_8;
+        public bool packed583_10;
+        public bool packed583_20;
+        public bool packed583_40;
+        public bool packed583_80;
 
         // col: 533 offset: 0588
         public uint unknown588;
@@ -1494,15 +1494,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown592;
 
         // col: 725 offset: 0593
-        private byte packed593;
-        public bool packed593_1 => ( packed593 & 0x1 ) == 0x1;
-        public bool packed593_2 => ( packed593 & 0x2 ) == 0x2;
-        public bool packed593_4 => ( packed593 & 0x4 ) == 0x4;
-        public bool packed593_8 => ( packed593 & 0x8 ) == 0x8;
-        public bool packed593_10 => ( packed593 & 0x10 ) == 0x10;
-        public bool packed593_20 => ( packed593 & 0x20 ) == 0x20;
-        public bool packed593_40 => ( packed593 & 0x40 ) == 0x40;
-        public bool packed593_80 => ( packed593 & 0x80 ) == 0x80;
+        public bool packed593_1;
+        public byte packed593;
+        public bool packed593_2;
+        public bool packed593_4;
+        public bool packed593_8;
+        public bool packed593_10;
+        public bool packed593_20;
+        public bool packed593_40;
+        public bool packed593_80;
 
         // col: 1222 offset: 0594
         public uint[] ToDoMainLocation;
@@ -2210,7 +2210,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort BellEnd;
 
         // col: 33 offset: 09ae
-        public ushort LevelMax;
+        public ushort unknown9ae;
 
         // col: 41 offset: 09b0
         public ushort unknown9b0;
@@ -2297,7 +2297,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Type;
 
         // col: 1438 offset: 09d0
-        public byte unknown9d0;
+        public byte LevelMax;
 
         // col: 1439 offset: 09d1
         public byte ClassJobRequired;
@@ -2318,13 +2318,13 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown9d6;
 
         // col: 37 offset: 09d7
-        private byte packed9d7;
-        public bool IsHouseRequired => ( packed9d7 & 0x1 ) == 0x1;
-        public bool IsRepeatable => ( packed9d7 & 0x2 ) == 0x2;
-        public bool UnlocksSystemContent => ( packed9d7 & 0x4 ) == 0x4;
-        public bool packed9d7_8 => ( packed9d7 & 0x8 ) == 0x8;
-        public bool packed9d7_10 => ( packed9d7 & 0x10 ) == 0x10;
-        public bool packed9d7_20 => ( packed9d7 & 0x20 ) == 0x20;
+        public bool IsHouseRequired;
+        public byte packed9d7;
+        public bool IsRepeatable;
+        public bool UnlocksSystemContent;
+        public bool packed9d7_8;
+        public bool packed9d7_10;
+        public bool packed9d7_20;
 
 
         public int RowId { get; set; }
@@ -2695,6 +2695,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 662 offset: 01a3
             packed1a3 = parser.ReadOffset< byte >( 0x1a3, ExcelColumnDataType.UInt8 );
 
+            packed1a3_1 = ( packed1a3 & 0x1 ) == 0x1;
+            packed1a3_2 = ( packed1a3 & 0x2 ) == 0x2;
+            packed1a3_4 = ( packed1a3 & 0x4 ) == 0x4;
+            packed1a3_8 = ( packed1a3 & 0x8 ) == 0x8;
+            packed1a3_10 = ( packed1a3 & 0x10 ) == 0x10;
+            packed1a3_20 = ( packed1a3 & 0x20 ) == 0x20;
+            packed1a3_40 = ( packed1a3 & 0x40 ) == 0x40;
+            packed1a3_80 = ( packed1a3 & 0x80 ) == 0x80;
+
             // col: 471 offset: 01a8
             unknown1a8 = parser.ReadOffset< uint >( 0x1a8 );
 
@@ -2709,6 +2718,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 663 offset: 01b3
             packed1b3 = parser.ReadOffset< byte >( 0x1b3, ExcelColumnDataType.UInt8 );
+
+            packed1b3_1 = ( packed1b3 & 0x1 ) == 0x1;
+            packed1b3_2 = ( packed1b3 & 0x2 ) == 0x2;
+            packed1b3_4 = ( packed1b3 & 0x4 ) == 0x4;
+            packed1b3_8 = ( packed1b3 & 0x8 ) == 0x8;
+            packed1b3_10 = ( packed1b3 & 0x10 ) == 0x10;
+            packed1b3_20 = ( packed1b3 & 0x20 ) == 0x20;
+            packed1b3_40 = ( packed1b3 & 0x40 ) == 0x40;
+            packed1b3_80 = ( packed1b3 & 0x80 ) == 0x80;
 
             // col: 472 offset: 01b8
             unknown1b8 = parser.ReadOffset< uint >( 0x1b8 );
@@ -2725,6 +2743,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 664 offset: 01c3
             packed1c3 = parser.ReadOffset< byte >( 0x1c3, ExcelColumnDataType.UInt8 );
 
+            packed1c3_1 = ( packed1c3 & 0x1 ) == 0x1;
+            packed1c3_2 = ( packed1c3 & 0x2 ) == 0x2;
+            packed1c3_4 = ( packed1c3 & 0x4 ) == 0x4;
+            packed1c3_8 = ( packed1c3 & 0x8 ) == 0x8;
+            packed1c3_10 = ( packed1c3 & 0x10 ) == 0x10;
+            packed1c3_20 = ( packed1c3 & 0x20 ) == 0x20;
+            packed1c3_40 = ( packed1c3 & 0x40 ) == 0x40;
+            packed1c3_80 = ( packed1c3 & 0x80 ) == 0x80;
+
             // col: 473 offset: 01c8
             unknown1c8 = parser.ReadOffset< uint >( 0x1c8 );
 
@@ -2739,6 +2766,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 665 offset: 01d3
             packed1d3 = parser.ReadOffset< byte >( 0x1d3, ExcelColumnDataType.UInt8 );
+
+            packed1d3_1 = ( packed1d3 & 0x1 ) == 0x1;
+            packed1d3_2 = ( packed1d3 & 0x2 ) == 0x2;
+            packed1d3_4 = ( packed1d3 & 0x4 ) == 0x4;
+            packed1d3_8 = ( packed1d3 & 0x8 ) == 0x8;
+            packed1d3_10 = ( packed1d3 & 0x10 ) == 0x10;
+            packed1d3_20 = ( packed1d3 & 0x20 ) == 0x20;
+            packed1d3_40 = ( packed1d3 & 0x40 ) == 0x40;
+            packed1d3_80 = ( packed1d3 & 0x80 ) == 0x80;
 
             // col: 474 offset: 01d8
             unknown1d8 = parser.ReadOffset< uint >( 0x1d8 );
@@ -2755,6 +2791,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 666 offset: 01e3
             packed1e3 = parser.ReadOffset< byte >( 0x1e3, ExcelColumnDataType.UInt8 );
 
+            packed1e3_1 = ( packed1e3 & 0x1 ) == 0x1;
+            packed1e3_2 = ( packed1e3 & 0x2 ) == 0x2;
+            packed1e3_4 = ( packed1e3 & 0x4 ) == 0x4;
+            packed1e3_8 = ( packed1e3 & 0x8 ) == 0x8;
+            packed1e3_10 = ( packed1e3 & 0x10 ) == 0x10;
+            packed1e3_20 = ( packed1e3 & 0x20 ) == 0x20;
+            packed1e3_40 = ( packed1e3 & 0x40 ) == 0x40;
+            packed1e3_80 = ( packed1e3 & 0x80 ) == 0x80;
+
             // col: 475 offset: 01e8
             unknown1e8 = parser.ReadOffset< uint >( 0x1e8 );
 
@@ -2769,6 +2814,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 667 offset: 01f3
             packed1f3 = parser.ReadOffset< byte >( 0x1f3, ExcelColumnDataType.UInt8 );
+
+            packed1f3_1 = ( packed1f3 & 0x1 ) == 0x1;
+            packed1f3_2 = ( packed1f3 & 0x2 ) == 0x2;
+            packed1f3_4 = ( packed1f3 & 0x4 ) == 0x4;
+            packed1f3_8 = ( packed1f3 & 0x8 ) == 0x8;
+            packed1f3_10 = ( packed1f3 & 0x10 ) == 0x10;
+            packed1f3_20 = ( packed1f3 & 0x20 ) == 0x20;
+            packed1f3_40 = ( packed1f3 & 0x40 ) == 0x40;
+            packed1f3_80 = ( packed1f3 & 0x80 ) == 0x80;
 
             // col: 476 offset: 01f8
             unknown1f8 = parser.ReadOffset< uint >( 0x1f8 );
@@ -2785,6 +2839,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 668 offset: 0203
             packed203 = parser.ReadOffset< byte >( 0x203, ExcelColumnDataType.UInt8 );
 
+            packed203_1 = ( packed203 & 0x1 ) == 0x1;
+            packed203_2 = ( packed203 & 0x2 ) == 0x2;
+            packed203_4 = ( packed203 & 0x4 ) == 0x4;
+            packed203_8 = ( packed203 & 0x8 ) == 0x8;
+            packed203_10 = ( packed203 & 0x10 ) == 0x10;
+            packed203_20 = ( packed203 & 0x20 ) == 0x20;
+            packed203_40 = ( packed203 & 0x40 ) == 0x40;
+            packed203_80 = ( packed203 & 0x80 ) == 0x80;
+
             // col: 477 offset: 0208
             unknown208 = parser.ReadOffset< uint >( 0x208 );
 
@@ -2799,6 +2862,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 669 offset: 0213
             packed213 = parser.ReadOffset< byte >( 0x213, ExcelColumnDataType.UInt8 );
+
+            packed213_1 = ( packed213 & 0x1 ) == 0x1;
+            packed213_2 = ( packed213 & 0x2 ) == 0x2;
+            packed213_4 = ( packed213 & 0x4 ) == 0x4;
+            packed213_8 = ( packed213 & 0x8 ) == 0x8;
+            packed213_10 = ( packed213 & 0x10 ) == 0x10;
+            packed213_20 = ( packed213 & 0x20 ) == 0x20;
+            packed213_40 = ( packed213 & 0x40 ) == 0x40;
+            packed213_80 = ( packed213 & 0x80 ) == 0x80;
 
             // col: 478 offset: 0218
             unknown218 = parser.ReadOffset< uint >( 0x218 );
@@ -2815,6 +2887,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 670 offset: 0223
             packed223 = parser.ReadOffset< byte >( 0x223, ExcelColumnDataType.UInt8 );
 
+            packed223_1 = ( packed223 & 0x1 ) == 0x1;
+            packed223_2 = ( packed223 & 0x2 ) == 0x2;
+            packed223_4 = ( packed223 & 0x4 ) == 0x4;
+            packed223_8 = ( packed223 & 0x8 ) == 0x8;
+            packed223_10 = ( packed223 & 0x10 ) == 0x10;
+            packed223_20 = ( packed223 & 0x20 ) == 0x20;
+            packed223_40 = ( packed223 & 0x40 ) == 0x40;
+            packed223_80 = ( packed223 & 0x80 ) == 0x80;
+
             // col: 479 offset: 0228
             unknown228 = parser.ReadOffset< uint >( 0x228 );
 
@@ -2829,6 +2910,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 671 offset: 0233
             packed233 = parser.ReadOffset< byte >( 0x233, ExcelColumnDataType.UInt8 );
+
+            packed233_1 = ( packed233 & 0x1 ) == 0x1;
+            packed233_2 = ( packed233 & 0x2 ) == 0x2;
+            packed233_4 = ( packed233 & 0x4 ) == 0x4;
+            packed233_8 = ( packed233 & 0x8 ) == 0x8;
+            packed233_10 = ( packed233 & 0x10 ) == 0x10;
+            packed233_20 = ( packed233 & 0x20 ) == 0x20;
+            packed233_40 = ( packed233 & 0x40 ) == 0x40;
+            packed233_80 = ( packed233 & 0x80 ) == 0x80;
 
             // col: 480 offset: 0238
             unknown238 = parser.ReadOffset< uint >( 0x238 );
@@ -2845,6 +2935,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 672 offset: 0243
             packed243 = parser.ReadOffset< byte >( 0x243, ExcelColumnDataType.UInt8 );
 
+            packed243_1 = ( packed243 & 0x1 ) == 0x1;
+            packed243_2 = ( packed243 & 0x2 ) == 0x2;
+            packed243_4 = ( packed243 & 0x4 ) == 0x4;
+            packed243_8 = ( packed243 & 0x8 ) == 0x8;
+            packed243_10 = ( packed243 & 0x10 ) == 0x10;
+            packed243_20 = ( packed243 & 0x20 ) == 0x20;
+            packed243_40 = ( packed243 & 0x40 ) == 0x40;
+            packed243_80 = ( packed243 & 0x80 ) == 0x80;
+
             // col: 481 offset: 0248
             unknown248 = parser.ReadOffset< uint >( 0x248 );
 
@@ -2859,6 +2958,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 673 offset: 0253
             packed253 = parser.ReadOffset< byte >( 0x253, ExcelColumnDataType.UInt8 );
+
+            packed253_1 = ( packed253 & 0x1 ) == 0x1;
+            packed253_2 = ( packed253 & 0x2 ) == 0x2;
+            packed253_4 = ( packed253 & 0x4 ) == 0x4;
+            packed253_8 = ( packed253 & 0x8 ) == 0x8;
+            packed253_10 = ( packed253 & 0x10 ) == 0x10;
+            packed253_20 = ( packed253 & 0x20 ) == 0x20;
+            packed253_40 = ( packed253 & 0x40 ) == 0x40;
+            packed253_80 = ( packed253 & 0x80 ) == 0x80;
 
             // col: 482 offset: 0258
             unknown258 = parser.ReadOffset< uint >( 0x258 );
@@ -2875,6 +2983,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 674 offset: 0263
             packed263 = parser.ReadOffset< byte >( 0x263, ExcelColumnDataType.UInt8 );
 
+            packed263_1 = ( packed263 & 0x1 ) == 0x1;
+            packed263_2 = ( packed263 & 0x2 ) == 0x2;
+            packed263_4 = ( packed263 & 0x4 ) == 0x4;
+            packed263_8 = ( packed263 & 0x8 ) == 0x8;
+            packed263_10 = ( packed263 & 0x10 ) == 0x10;
+            packed263_20 = ( packed263 & 0x20 ) == 0x20;
+            packed263_40 = ( packed263 & 0x40 ) == 0x40;
+            packed263_80 = ( packed263 & 0x80 ) == 0x80;
+
             // col: 483 offset: 0268
             unknown268 = parser.ReadOffset< uint >( 0x268 );
 
@@ -2889,6 +3006,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 675 offset: 0273
             packed273 = parser.ReadOffset< byte >( 0x273, ExcelColumnDataType.UInt8 );
+
+            packed273_1 = ( packed273 & 0x1 ) == 0x1;
+            packed273_2 = ( packed273 & 0x2 ) == 0x2;
+            packed273_4 = ( packed273 & 0x4 ) == 0x4;
+            packed273_8 = ( packed273 & 0x8 ) == 0x8;
+            packed273_10 = ( packed273 & 0x10 ) == 0x10;
+            packed273_20 = ( packed273 & 0x20 ) == 0x20;
+            packed273_40 = ( packed273 & 0x40 ) == 0x40;
+            packed273_80 = ( packed273 & 0x80 ) == 0x80;
 
             // col: 484 offset: 0278
             unknown278 = parser.ReadOffset< uint >( 0x278 );
@@ -2905,6 +3031,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 676 offset: 0283
             packed283 = parser.ReadOffset< byte >( 0x283, ExcelColumnDataType.UInt8 );
 
+            packed283_1 = ( packed283 & 0x1 ) == 0x1;
+            packed283_2 = ( packed283 & 0x2 ) == 0x2;
+            packed283_4 = ( packed283 & 0x4 ) == 0x4;
+            packed283_8 = ( packed283 & 0x8 ) == 0x8;
+            packed283_10 = ( packed283 & 0x10 ) == 0x10;
+            packed283_20 = ( packed283 & 0x20 ) == 0x20;
+            packed283_40 = ( packed283 & 0x40 ) == 0x40;
+            packed283_80 = ( packed283 & 0x80 ) == 0x80;
+
             // col: 485 offset: 0288
             unknown288 = parser.ReadOffset< uint >( 0x288 );
 
@@ -2919,6 +3054,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 677 offset: 0293
             packed293 = parser.ReadOffset< byte >( 0x293, ExcelColumnDataType.UInt8 );
+
+            packed293_1 = ( packed293 & 0x1 ) == 0x1;
+            packed293_2 = ( packed293 & 0x2 ) == 0x2;
+            packed293_4 = ( packed293 & 0x4 ) == 0x4;
+            packed293_8 = ( packed293 & 0x8 ) == 0x8;
+            packed293_10 = ( packed293 & 0x10 ) == 0x10;
+            packed293_20 = ( packed293 & 0x20 ) == 0x20;
+            packed293_40 = ( packed293 & 0x40 ) == 0x40;
+            packed293_80 = ( packed293 & 0x80 ) == 0x80;
 
             // col: 486 offset: 0298
             unknown298 = parser.ReadOffset< uint >( 0x298 );
@@ -2935,6 +3079,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 678 offset: 02a3
             packed2a3 = parser.ReadOffset< byte >( 0x2a3, ExcelColumnDataType.UInt8 );
 
+            packed2a3_1 = ( packed2a3 & 0x1 ) == 0x1;
+            packed2a3_2 = ( packed2a3 & 0x2 ) == 0x2;
+            packed2a3_4 = ( packed2a3 & 0x4 ) == 0x4;
+            packed2a3_8 = ( packed2a3 & 0x8 ) == 0x8;
+            packed2a3_10 = ( packed2a3 & 0x10 ) == 0x10;
+            packed2a3_20 = ( packed2a3 & 0x20 ) == 0x20;
+            packed2a3_40 = ( packed2a3 & 0x40 ) == 0x40;
+            packed2a3_80 = ( packed2a3 & 0x80 ) == 0x80;
+
             // col: 487 offset: 02a8
             unknown2a8 = parser.ReadOffset< uint >( 0x2a8 );
 
@@ -2949,6 +3102,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 679 offset: 02b3
             packed2b3 = parser.ReadOffset< byte >( 0x2b3, ExcelColumnDataType.UInt8 );
+
+            packed2b3_1 = ( packed2b3 & 0x1 ) == 0x1;
+            packed2b3_2 = ( packed2b3 & 0x2 ) == 0x2;
+            packed2b3_4 = ( packed2b3 & 0x4 ) == 0x4;
+            packed2b3_8 = ( packed2b3 & 0x8 ) == 0x8;
+            packed2b3_10 = ( packed2b3 & 0x10 ) == 0x10;
+            packed2b3_20 = ( packed2b3 & 0x20 ) == 0x20;
+            packed2b3_40 = ( packed2b3 & 0x40 ) == 0x40;
+            packed2b3_80 = ( packed2b3 & 0x80 ) == 0x80;
 
             // col: 488 offset: 02b8
             unknown2b8 = parser.ReadOffset< uint >( 0x2b8 );
@@ -2965,6 +3127,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 680 offset: 02c3
             packed2c3 = parser.ReadOffset< byte >( 0x2c3, ExcelColumnDataType.UInt8 );
 
+            packed2c3_1 = ( packed2c3 & 0x1 ) == 0x1;
+            packed2c3_2 = ( packed2c3 & 0x2 ) == 0x2;
+            packed2c3_4 = ( packed2c3 & 0x4 ) == 0x4;
+            packed2c3_8 = ( packed2c3 & 0x8 ) == 0x8;
+            packed2c3_10 = ( packed2c3 & 0x10 ) == 0x10;
+            packed2c3_20 = ( packed2c3 & 0x20 ) == 0x20;
+            packed2c3_40 = ( packed2c3 & 0x40 ) == 0x40;
+            packed2c3_80 = ( packed2c3 & 0x80 ) == 0x80;
+
             // col: 489 offset: 02c8
             unknown2c8 = parser.ReadOffset< uint >( 0x2c8 );
 
@@ -2979,6 +3150,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 681 offset: 02d3
             packed2d3 = parser.ReadOffset< byte >( 0x2d3, ExcelColumnDataType.UInt8 );
+
+            packed2d3_1 = ( packed2d3 & 0x1 ) == 0x1;
+            packed2d3_2 = ( packed2d3 & 0x2 ) == 0x2;
+            packed2d3_4 = ( packed2d3 & 0x4 ) == 0x4;
+            packed2d3_8 = ( packed2d3 & 0x8 ) == 0x8;
+            packed2d3_10 = ( packed2d3 & 0x10 ) == 0x10;
+            packed2d3_20 = ( packed2d3 & 0x20 ) == 0x20;
+            packed2d3_40 = ( packed2d3 & 0x40 ) == 0x40;
+            packed2d3_80 = ( packed2d3 & 0x80 ) == 0x80;
 
             // col: 490 offset: 02d8
             unknown2d8 = parser.ReadOffset< uint >( 0x2d8 );
@@ -2995,6 +3175,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 682 offset: 02e3
             packed2e3 = parser.ReadOffset< byte >( 0x2e3, ExcelColumnDataType.UInt8 );
 
+            packed2e3_1 = ( packed2e3 & 0x1 ) == 0x1;
+            packed2e3_2 = ( packed2e3 & 0x2 ) == 0x2;
+            packed2e3_4 = ( packed2e3 & 0x4 ) == 0x4;
+            packed2e3_8 = ( packed2e3 & 0x8 ) == 0x8;
+            packed2e3_10 = ( packed2e3 & 0x10 ) == 0x10;
+            packed2e3_20 = ( packed2e3 & 0x20 ) == 0x20;
+            packed2e3_40 = ( packed2e3 & 0x40 ) == 0x40;
+            packed2e3_80 = ( packed2e3 & 0x80 ) == 0x80;
+
             // col: 491 offset: 02e8
             unknown2e8 = parser.ReadOffset< uint >( 0x2e8 );
 
@@ -3009,6 +3198,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 683 offset: 02f3
             packed2f3 = parser.ReadOffset< byte >( 0x2f3, ExcelColumnDataType.UInt8 );
+
+            packed2f3_1 = ( packed2f3 & 0x1 ) == 0x1;
+            packed2f3_2 = ( packed2f3 & 0x2 ) == 0x2;
+            packed2f3_4 = ( packed2f3 & 0x4 ) == 0x4;
+            packed2f3_8 = ( packed2f3 & 0x8 ) == 0x8;
+            packed2f3_10 = ( packed2f3 & 0x10 ) == 0x10;
+            packed2f3_20 = ( packed2f3 & 0x20 ) == 0x20;
+            packed2f3_40 = ( packed2f3 & 0x40 ) == 0x40;
+            packed2f3_80 = ( packed2f3 & 0x80 ) == 0x80;
 
             // col: 492 offset: 02f8
             unknown2f8 = parser.ReadOffset< uint >( 0x2f8 );
@@ -3025,6 +3223,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 684 offset: 0303
             packed303 = parser.ReadOffset< byte >( 0x303, ExcelColumnDataType.UInt8 );
 
+            packed303_1 = ( packed303 & 0x1 ) == 0x1;
+            packed303_2 = ( packed303 & 0x2 ) == 0x2;
+            packed303_4 = ( packed303 & 0x4 ) == 0x4;
+            packed303_8 = ( packed303 & 0x8 ) == 0x8;
+            packed303_10 = ( packed303 & 0x10 ) == 0x10;
+            packed303_20 = ( packed303 & 0x20 ) == 0x20;
+            packed303_40 = ( packed303 & 0x40 ) == 0x40;
+            packed303_80 = ( packed303 & 0x80 ) == 0x80;
+
             // col: 493 offset: 0308
             unknown308 = parser.ReadOffset< uint >( 0x308 );
 
@@ -3039,6 +3246,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 685 offset: 0313
             packed313 = parser.ReadOffset< byte >( 0x313, ExcelColumnDataType.UInt8 );
+
+            packed313_1 = ( packed313 & 0x1 ) == 0x1;
+            packed313_2 = ( packed313 & 0x2 ) == 0x2;
+            packed313_4 = ( packed313 & 0x4 ) == 0x4;
+            packed313_8 = ( packed313 & 0x8 ) == 0x8;
+            packed313_10 = ( packed313 & 0x10 ) == 0x10;
+            packed313_20 = ( packed313 & 0x20 ) == 0x20;
+            packed313_40 = ( packed313 & 0x40 ) == 0x40;
+            packed313_80 = ( packed313 & 0x80 ) == 0x80;
 
             // col: 494 offset: 0318
             unknown318 = parser.ReadOffset< uint >( 0x318 );
@@ -3055,6 +3271,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 686 offset: 0323
             packed323 = parser.ReadOffset< byte >( 0x323, ExcelColumnDataType.UInt8 );
 
+            packed323_1 = ( packed323 & 0x1 ) == 0x1;
+            packed323_2 = ( packed323 & 0x2 ) == 0x2;
+            packed323_4 = ( packed323 & 0x4 ) == 0x4;
+            packed323_8 = ( packed323 & 0x8 ) == 0x8;
+            packed323_10 = ( packed323 & 0x10 ) == 0x10;
+            packed323_20 = ( packed323 & 0x20 ) == 0x20;
+            packed323_40 = ( packed323 & 0x40 ) == 0x40;
+            packed323_80 = ( packed323 & 0x80 ) == 0x80;
+
             // col: 495 offset: 0328
             unknown328 = parser.ReadOffset< uint >( 0x328 );
 
@@ -3069,6 +3294,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 687 offset: 0333
             packed333 = parser.ReadOffset< byte >( 0x333, ExcelColumnDataType.UInt8 );
+
+            packed333_1 = ( packed333 & 0x1 ) == 0x1;
+            packed333_2 = ( packed333 & 0x2 ) == 0x2;
+            packed333_4 = ( packed333 & 0x4 ) == 0x4;
+            packed333_8 = ( packed333 & 0x8 ) == 0x8;
+            packed333_10 = ( packed333 & 0x10 ) == 0x10;
+            packed333_20 = ( packed333 & 0x20 ) == 0x20;
+            packed333_40 = ( packed333 & 0x40 ) == 0x40;
+            packed333_80 = ( packed333 & 0x80 ) == 0x80;
 
             // col: 496 offset: 0338
             unknown338 = parser.ReadOffset< uint >( 0x338 );
@@ -3085,6 +3319,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 688 offset: 0343
             packed343 = parser.ReadOffset< byte >( 0x343, ExcelColumnDataType.UInt8 );
 
+            packed343_1 = ( packed343 & 0x1 ) == 0x1;
+            packed343_2 = ( packed343 & 0x2 ) == 0x2;
+            packed343_4 = ( packed343 & 0x4 ) == 0x4;
+            packed343_8 = ( packed343 & 0x8 ) == 0x8;
+            packed343_10 = ( packed343 & 0x10 ) == 0x10;
+            packed343_20 = ( packed343 & 0x20 ) == 0x20;
+            packed343_40 = ( packed343 & 0x40 ) == 0x40;
+            packed343_80 = ( packed343 & 0x80 ) == 0x80;
+
             // col: 497 offset: 0348
             unknown348 = parser.ReadOffset< uint >( 0x348 );
 
@@ -3099,6 +3342,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 689 offset: 0353
             packed353 = parser.ReadOffset< byte >( 0x353, ExcelColumnDataType.UInt8 );
+
+            packed353_1 = ( packed353 & 0x1 ) == 0x1;
+            packed353_2 = ( packed353 & 0x2 ) == 0x2;
+            packed353_4 = ( packed353 & 0x4 ) == 0x4;
+            packed353_8 = ( packed353 & 0x8 ) == 0x8;
+            packed353_10 = ( packed353 & 0x10 ) == 0x10;
+            packed353_20 = ( packed353 & 0x20 ) == 0x20;
+            packed353_40 = ( packed353 & 0x40 ) == 0x40;
+            packed353_80 = ( packed353 & 0x80 ) == 0x80;
 
             // col: 498 offset: 0358
             unknown358 = parser.ReadOffset< uint >( 0x358 );
@@ -3115,6 +3367,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 690 offset: 0363
             packed363 = parser.ReadOffset< byte >( 0x363, ExcelColumnDataType.UInt8 );
 
+            packed363_1 = ( packed363 & 0x1 ) == 0x1;
+            packed363_2 = ( packed363 & 0x2 ) == 0x2;
+            packed363_4 = ( packed363 & 0x4 ) == 0x4;
+            packed363_8 = ( packed363 & 0x8 ) == 0x8;
+            packed363_10 = ( packed363 & 0x10 ) == 0x10;
+            packed363_20 = ( packed363 & 0x20 ) == 0x20;
+            packed363_40 = ( packed363 & 0x40 ) == 0x40;
+            packed363_80 = ( packed363 & 0x80 ) == 0x80;
+
             // col: 499 offset: 0368
             unknown368 = parser.ReadOffset< uint >( 0x368 );
 
@@ -3129,6 +3390,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 691 offset: 0373
             packed373 = parser.ReadOffset< byte >( 0x373, ExcelColumnDataType.UInt8 );
+
+            packed373_1 = ( packed373 & 0x1 ) == 0x1;
+            packed373_2 = ( packed373 & 0x2 ) == 0x2;
+            packed373_4 = ( packed373 & 0x4 ) == 0x4;
+            packed373_8 = ( packed373 & 0x8 ) == 0x8;
+            packed373_10 = ( packed373 & 0x10 ) == 0x10;
+            packed373_20 = ( packed373 & 0x20 ) == 0x20;
+            packed373_40 = ( packed373 & 0x40 ) == 0x40;
+            packed373_80 = ( packed373 & 0x80 ) == 0x80;
 
             // col: 500 offset: 0378
             unknown378 = parser.ReadOffset< uint >( 0x378 );
@@ -3145,6 +3415,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 692 offset: 0383
             packed383 = parser.ReadOffset< byte >( 0x383, ExcelColumnDataType.UInt8 );
 
+            packed383_1 = ( packed383 & 0x1 ) == 0x1;
+            packed383_2 = ( packed383 & 0x2 ) == 0x2;
+            packed383_4 = ( packed383 & 0x4 ) == 0x4;
+            packed383_8 = ( packed383 & 0x8 ) == 0x8;
+            packed383_10 = ( packed383 & 0x10 ) == 0x10;
+            packed383_20 = ( packed383 & 0x20 ) == 0x20;
+            packed383_40 = ( packed383 & 0x40 ) == 0x40;
+            packed383_80 = ( packed383 & 0x80 ) == 0x80;
+
             // col: 501 offset: 0388
             unknown388 = parser.ReadOffset< uint >( 0x388 );
 
@@ -3159,6 +3438,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 693 offset: 0393
             packed393 = parser.ReadOffset< byte >( 0x393, ExcelColumnDataType.UInt8 );
+
+            packed393_1 = ( packed393 & 0x1 ) == 0x1;
+            packed393_2 = ( packed393 & 0x2 ) == 0x2;
+            packed393_4 = ( packed393 & 0x4 ) == 0x4;
+            packed393_8 = ( packed393 & 0x8 ) == 0x8;
+            packed393_10 = ( packed393 & 0x10 ) == 0x10;
+            packed393_20 = ( packed393 & 0x20 ) == 0x20;
+            packed393_40 = ( packed393 & 0x40 ) == 0x40;
+            packed393_80 = ( packed393 & 0x80 ) == 0x80;
 
             // col: 502 offset: 0398
             unknown398 = parser.ReadOffset< uint >( 0x398 );
@@ -3210,6 +3498,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 694 offset: 03a3
             packed3a3 = parser.ReadOffset< byte >( 0x3a3, ExcelColumnDataType.UInt8 );
 
+            packed3a3_1 = ( packed3a3 & 0x1 ) == 0x1;
+            packed3a3_2 = ( packed3a3 & 0x2 ) == 0x2;
+            packed3a3_4 = ( packed3a3 & 0x4 ) == 0x4;
+            packed3a3_8 = ( packed3a3 & 0x8 ) == 0x8;
+            packed3a3_10 = ( packed3a3 & 0x10 ) == 0x10;
+            packed3a3_20 = ( packed3a3 & 0x20 ) == 0x20;
+            packed3a3_40 = ( packed3a3 & 0x40 ) == 0x40;
+            packed3a3_80 = ( packed3a3 & 0x80 ) == 0x80;
+
             // col: 503 offset: 03a8
             unknown3a8 = parser.ReadOffset< uint >( 0x3a8 );
 
@@ -3224,6 +3521,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 695 offset: 03b3
             packed3b3 = parser.ReadOffset< byte >( 0x3b3, ExcelColumnDataType.UInt8 );
+
+            packed3b3_1 = ( packed3b3 & 0x1 ) == 0x1;
+            packed3b3_2 = ( packed3b3 & 0x2 ) == 0x2;
+            packed3b3_4 = ( packed3b3 & 0x4 ) == 0x4;
+            packed3b3_8 = ( packed3b3 & 0x8 ) == 0x8;
+            packed3b3_10 = ( packed3b3 & 0x10 ) == 0x10;
+            packed3b3_20 = ( packed3b3 & 0x20 ) == 0x20;
+            packed3b3_40 = ( packed3b3 & 0x40 ) == 0x40;
+            packed3b3_80 = ( packed3b3 & 0x80 ) == 0x80;
 
             // col: 504 offset: 03b8
             unknown3b8 = parser.ReadOffset< uint >( 0x3b8 );
@@ -3240,6 +3546,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 696 offset: 03c3
             packed3c3 = parser.ReadOffset< byte >( 0x3c3, ExcelColumnDataType.UInt8 );
 
+            packed3c3_1 = ( packed3c3 & 0x1 ) == 0x1;
+            packed3c3_2 = ( packed3c3 & 0x2 ) == 0x2;
+            packed3c3_4 = ( packed3c3 & 0x4 ) == 0x4;
+            packed3c3_8 = ( packed3c3 & 0x8 ) == 0x8;
+            packed3c3_10 = ( packed3c3 & 0x10 ) == 0x10;
+            packed3c3_20 = ( packed3c3 & 0x20 ) == 0x20;
+            packed3c3_40 = ( packed3c3 & 0x40 ) == 0x40;
+            packed3c3_80 = ( packed3c3 & 0x80 ) == 0x80;
+
             // col: 505 offset: 03c8
             unknown3c8 = parser.ReadOffset< uint >( 0x3c8 );
 
@@ -3254,6 +3569,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 697 offset: 03d3
             packed3d3 = parser.ReadOffset< byte >( 0x3d3, ExcelColumnDataType.UInt8 );
+
+            packed3d3_1 = ( packed3d3 & 0x1 ) == 0x1;
+            packed3d3_2 = ( packed3d3 & 0x2 ) == 0x2;
+            packed3d3_4 = ( packed3d3 & 0x4 ) == 0x4;
+            packed3d3_8 = ( packed3d3 & 0x8 ) == 0x8;
+            packed3d3_10 = ( packed3d3 & 0x10 ) == 0x10;
+            packed3d3_20 = ( packed3d3 & 0x20 ) == 0x20;
+            packed3d3_40 = ( packed3d3 & 0x40 ) == 0x40;
+            packed3d3_80 = ( packed3d3 & 0x80 ) == 0x80;
 
             // col: 506 offset: 03d8
             unknown3d8 = parser.ReadOffset< uint >( 0x3d8 );
@@ -3270,6 +3594,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 698 offset: 03e3
             packed3e3 = parser.ReadOffset< byte >( 0x3e3, ExcelColumnDataType.UInt8 );
 
+            packed3e3_1 = ( packed3e3 & 0x1 ) == 0x1;
+            packed3e3_2 = ( packed3e3 & 0x2 ) == 0x2;
+            packed3e3_4 = ( packed3e3 & 0x4 ) == 0x4;
+            packed3e3_8 = ( packed3e3 & 0x8 ) == 0x8;
+            packed3e3_10 = ( packed3e3 & 0x10 ) == 0x10;
+            packed3e3_20 = ( packed3e3 & 0x20 ) == 0x20;
+            packed3e3_40 = ( packed3e3 & 0x40 ) == 0x40;
+            packed3e3_80 = ( packed3e3 & 0x80 ) == 0x80;
+
             // col: 507 offset: 03e8
             unknown3e8 = parser.ReadOffset< uint >( 0x3e8 );
 
@@ -3284,6 +3617,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 699 offset: 03f3
             packed3f3 = parser.ReadOffset< byte >( 0x3f3, ExcelColumnDataType.UInt8 );
+
+            packed3f3_1 = ( packed3f3 & 0x1 ) == 0x1;
+            packed3f3_2 = ( packed3f3 & 0x2 ) == 0x2;
+            packed3f3_4 = ( packed3f3 & 0x4 ) == 0x4;
+            packed3f3_8 = ( packed3f3 & 0x8 ) == 0x8;
+            packed3f3_10 = ( packed3f3 & 0x10 ) == 0x10;
+            packed3f3_20 = ( packed3f3 & 0x20 ) == 0x20;
+            packed3f3_40 = ( packed3f3 & 0x40 ) == 0x40;
+            packed3f3_80 = ( packed3f3 & 0x80 ) == 0x80;
 
             // col: 508 offset: 03f8
             unknown3f8 = parser.ReadOffset< uint >( 0x3f8 );
@@ -3300,6 +3642,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 700 offset: 0403
             packed403 = parser.ReadOffset< byte >( 0x403, ExcelColumnDataType.UInt8 );
 
+            packed403_1 = ( packed403 & 0x1 ) == 0x1;
+            packed403_2 = ( packed403 & 0x2 ) == 0x2;
+            packed403_4 = ( packed403 & 0x4 ) == 0x4;
+            packed403_8 = ( packed403 & 0x8 ) == 0x8;
+            packed403_10 = ( packed403 & 0x10 ) == 0x10;
+            packed403_20 = ( packed403 & 0x20 ) == 0x20;
+            packed403_40 = ( packed403 & 0x40 ) == 0x40;
+            packed403_80 = ( packed403 & 0x80 ) == 0x80;
+
             // col: 509 offset: 0408
             unknown408 = parser.ReadOffset< uint >( 0x408 );
 
@@ -3314,6 +3665,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 701 offset: 0413
             packed413 = parser.ReadOffset< byte >( 0x413, ExcelColumnDataType.UInt8 );
+
+            packed413_1 = ( packed413 & 0x1 ) == 0x1;
+            packed413_2 = ( packed413 & 0x2 ) == 0x2;
+            packed413_4 = ( packed413 & 0x4 ) == 0x4;
+            packed413_8 = ( packed413 & 0x8 ) == 0x8;
+            packed413_10 = ( packed413 & 0x10 ) == 0x10;
+            packed413_20 = ( packed413 & 0x20 ) == 0x20;
+            packed413_40 = ( packed413 & 0x40 ) == 0x40;
+            packed413_80 = ( packed413 & 0x80 ) == 0x80;
 
             // col: 510 offset: 0418
             unknown418 = parser.ReadOffset< uint >( 0x418 );
@@ -3330,6 +3690,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 702 offset: 0423
             packed423 = parser.ReadOffset< byte >( 0x423, ExcelColumnDataType.UInt8 );
 
+            packed423_1 = ( packed423 & 0x1 ) == 0x1;
+            packed423_2 = ( packed423 & 0x2 ) == 0x2;
+            packed423_4 = ( packed423 & 0x4 ) == 0x4;
+            packed423_8 = ( packed423 & 0x8 ) == 0x8;
+            packed423_10 = ( packed423 & 0x10 ) == 0x10;
+            packed423_20 = ( packed423 & 0x20 ) == 0x20;
+            packed423_40 = ( packed423 & 0x40 ) == 0x40;
+            packed423_80 = ( packed423 & 0x80 ) == 0x80;
+
             // col: 511 offset: 0428
             unknown428 = parser.ReadOffset< uint >( 0x428 );
 
@@ -3344,6 +3713,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 703 offset: 0433
             packed433 = parser.ReadOffset< byte >( 0x433, ExcelColumnDataType.UInt8 );
+
+            packed433_1 = ( packed433 & 0x1 ) == 0x1;
+            packed433_2 = ( packed433 & 0x2 ) == 0x2;
+            packed433_4 = ( packed433 & 0x4 ) == 0x4;
+            packed433_8 = ( packed433 & 0x8 ) == 0x8;
+            packed433_10 = ( packed433 & 0x10 ) == 0x10;
+            packed433_20 = ( packed433 & 0x20 ) == 0x20;
+            packed433_40 = ( packed433 & 0x40 ) == 0x40;
+            packed433_80 = ( packed433 & 0x80 ) == 0x80;
 
             // col: 512 offset: 0438
             unknown438 = parser.ReadOffset< uint >( 0x438 );
@@ -3360,6 +3738,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 704 offset: 0443
             packed443 = parser.ReadOffset< byte >( 0x443, ExcelColumnDataType.UInt8 );
 
+            packed443_1 = ( packed443 & 0x1 ) == 0x1;
+            packed443_2 = ( packed443 & 0x2 ) == 0x2;
+            packed443_4 = ( packed443 & 0x4 ) == 0x4;
+            packed443_8 = ( packed443 & 0x8 ) == 0x8;
+            packed443_10 = ( packed443 & 0x10 ) == 0x10;
+            packed443_20 = ( packed443 & 0x20 ) == 0x20;
+            packed443_40 = ( packed443 & 0x40 ) == 0x40;
+            packed443_80 = ( packed443 & 0x80 ) == 0x80;
+
             // col: 513 offset: 0448
             unknown448 = parser.ReadOffset< uint >( 0x448 );
 
@@ -3374,6 +3761,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 705 offset: 0453
             packed453 = parser.ReadOffset< byte >( 0x453, ExcelColumnDataType.UInt8 );
+
+            packed453_1 = ( packed453 & 0x1 ) == 0x1;
+            packed453_2 = ( packed453 & 0x2 ) == 0x2;
+            packed453_4 = ( packed453 & 0x4 ) == 0x4;
+            packed453_8 = ( packed453 & 0x8 ) == 0x8;
+            packed453_10 = ( packed453 & 0x10 ) == 0x10;
+            packed453_20 = ( packed453 & 0x20 ) == 0x20;
+            packed453_40 = ( packed453 & 0x40 ) == 0x40;
+            packed453_80 = ( packed453 & 0x80 ) == 0x80;
 
             // col: 514 offset: 0458
             unknown458 = parser.ReadOffset< uint >( 0x458 );
@@ -3390,6 +3786,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 706 offset: 0463
             packed463 = parser.ReadOffset< byte >( 0x463, ExcelColumnDataType.UInt8 );
 
+            packed463_1 = ( packed463 & 0x1 ) == 0x1;
+            packed463_2 = ( packed463 & 0x2 ) == 0x2;
+            packed463_4 = ( packed463 & 0x4 ) == 0x4;
+            packed463_8 = ( packed463 & 0x8 ) == 0x8;
+            packed463_10 = ( packed463 & 0x10 ) == 0x10;
+            packed463_20 = ( packed463 & 0x20 ) == 0x20;
+            packed463_40 = ( packed463 & 0x40 ) == 0x40;
+            packed463_80 = ( packed463 & 0x80 ) == 0x80;
+
             // col: 515 offset: 0468
             unknown468 = parser.ReadOffset< uint >( 0x468 );
 
@@ -3404,6 +3809,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 707 offset: 0473
             packed473 = parser.ReadOffset< byte >( 0x473, ExcelColumnDataType.UInt8 );
+
+            packed473_1 = ( packed473 & 0x1 ) == 0x1;
+            packed473_2 = ( packed473 & 0x2 ) == 0x2;
+            packed473_4 = ( packed473 & 0x4 ) == 0x4;
+            packed473_8 = ( packed473 & 0x8 ) == 0x8;
+            packed473_10 = ( packed473 & 0x10 ) == 0x10;
+            packed473_20 = ( packed473 & 0x20 ) == 0x20;
+            packed473_40 = ( packed473 & 0x40 ) == 0x40;
+            packed473_80 = ( packed473 & 0x80 ) == 0x80;
 
             // col: 516 offset: 0478
             unknown478 = parser.ReadOffset< uint >( 0x478 );
@@ -3420,6 +3834,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 708 offset: 0483
             packed483 = parser.ReadOffset< byte >( 0x483, ExcelColumnDataType.UInt8 );
 
+            packed483_1 = ( packed483 & 0x1 ) == 0x1;
+            packed483_2 = ( packed483 & 0x2 ) == 0x2;
+            packed483_4 = ( packed483 & 0x4 ) == 0x4;
+            packed483_8 = ( packed483 & 0x8 ) == 0x8;
+            packed483_10 = ( packed483 & 0x10 ) == 0x10;
+            packed483_20 = ( packed483 & 0x20 ) == 0x20;
+            packed483_40 = ( packed483 & 0x40 ) == 0x40;
+            packed483_80 = ( packed483 & 0x80 ) == 0x80;
+
             // col: 517 offset: 0488
             unknown488 = parser.ReadOffset< uint >( 0x488 );
 
@@ -3434,6 +3857,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 709 offset: 0493
             packed493 = parser.ReadOffset< byte >( 0x493, ExcelColumnDataType.UInt8 );
+
+            packed493_1 = ( packed493 & 0x1 ) == 0x1;
+            packed493_2 = ( packed493 & 0x2 ) == 0x2;
+            packed493_4 = ( packed493 & 0x4 ) == 0x4;
+            packed493_8 = ( packed493 & 0x8 ) == 0x8;
+            packed493_10 = ( packed493 & 0x10 ) == 0x10;
+            packed493_20 = ( packed493 & 0x20 ) == 0x20;
+            packed493_40 = ( packed493 & 0x40 ) == 0x40;
+            packed493_80 = ( packed493 & 0x80 ) == 0x80;
 
             // col: 518 offset: 0498
             unknown498 = parser.ReadOffset< uint >( 0x498 );
@@ -3450,6 +3882,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 710 offset: 04a3
             packed4a3 = parser.ReadOffset< byte >( 0x4a3, ExcelColumnDataType.UInt8 );
 
+            packed4a3_1 = ( packed4a3 & 0x1 ) == 0x1;
+            packed4a3_2 = ( packed4a3 & 0x2 ) == 0x2;
+            packed4a3_4 = ( packed4a3 & 0x4 ) == 0x4;
+            packed4a3_8 = ( packed4a3 & 0x8 ) == 0x8;
+            packed4a3_10 = ( packed4a3 & 0x10 ) == 0x10;
+            packed4a3_20 = ( packed4a3 & 0x20 ) == 0x20;
+            packed4a3_40 = ( packed4a3 & 0x40 ) == 0x40;
+            packed4a3_80 = ( packed4a3 & 0x80 ) == 0x80;
+
             // col: 519 offset: 04a8
             unknown4a8 = parser.ReadOffset< uint >( 0x4a8 );
 
@@ -3464,6 +3905,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 711 offset: 04b3
             packed4b3 = parser.ReadOffset< byte >( 0x4b3, ExcelColumnDataType.UInt8 );
+
+            packed4b3_1 = ( packed4b3 & 0x1 ) == 0x1;
+            packed4b3_2 = ( packed4b3 & 0x2 ) == 0x2;
+            packed4b3_4 = ( packed4b3 & 0x4 ) == 0x4;
+            packed4b3_8 = ( packed4b3 & 0x8 ) == 0x8;
+            packed4b3_10 = ( packed4b3 & 0x10 ) == 0x10;
+            packed4b3_20 = ( packed4b3 & 0x20 ) == 0x20;
+            packed4b3_40 = ( packed4b3 & 0x40 ) == 0x40;
+            packed4b3_80 = ( packed4b3 & 0x80 ) == 0x80;
 
             // col: 520 offset: 04b8
             unknown4b8 = parser.ReadOffset< uint >( 0x4b8 );
@@ -3480,6 +3930,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 712 offset: 04c3
             packed4c3 = parser.ReadOffset< byte >( 0x4c3, ExcelColumnDataType.UInt8 );
 
+            packed4c3_1 = ( packed4c3 & 0x1 ) == 0x1;
+            packed4c3_2 = ( packed4c3 & 0x2 ) == 0x2;
+            packed4c3_4 = ( packed4c3 & 0x4 ) == 0x4;
+            packed4c3_8 = ( packed4c3 & 0x8 ) == 0x8;
+            packed4c3_10 = ( packed4c3 & 0x10 ) == 0x10;
+            packed4c3_20 = ( packed4c3 & 0x20 ) == 0x20;
+            packed4c3_40 = ( packed4c3 & 0x40 ) == 0x40;
+            packed4c3_80 = ( packed4c3 & 0x80 ) == 0x80;
+
             // col: 521 offset: 04c8
             unknown4c8 = parser.ReadOffset< uint >( 0x4c8 );
 
@@ -3494,6 +3953,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 713 offset: 04d3
             packed4d3 = parser.ReadOffset< byte >( 0x4d3, ExcelColumnDataType.UInt8 );
+
+            packed4d3_1 = ( packed4d3 & 0x1 ) == 0x1;
+            packed4d3_2 = ( packed4d3 & 0x2 ) == 0x2;
+            packed4d3_4 = ( packed4d3 & 0x4 ) == 0x4;
+            packed4d3_8 = ( packed4d3 & 0x8 ) == 0x8;
+            packed4d3_10 = ( packed4d3 & 0x10 ) == 0x10;
+            packed4d3_20 = ( packed4d3 & 0x20 ) == 0x20;
+            packed4d3_40 = ( packed4d3 & 0x40 ) == 0x40;
+            packed4d3_80 = ( packed4d3 & 0x80 ) == 0x80;
 
             // col: 522 offset: 04d8
             unknown4d8 = parser.ReadOffset< uint >( 0x4d8 );
@@ -3510,6 +3978,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 714 offset: 04e3
             packed4e3 = parser.ReadOffset< byte >( 0x4e3, ExcelColumnDataType.UInt8 );
 
+            packed4e3_1 = ( packed4e3 & 0x1 ) == 0x1;
+            packed4e3_2 = ( packed4e3 & 0x2 ) == 0x2;
+            packed4e3_4 = ( packed4e3 & 0x4 ) == 0x4;
+            packed4e3_8 = ( packed4e3 & 0x8 ) == 0x8;
+            packed4e3_10 = ( packed4e3 & 0x10 ) == 0x10;
+            packed4e3_20 = ( packed4e3 & 0x20 ) == 0x20;
+            packed4e3_40 = ( packed4e3 & 0x40 ) == 0x40;
+            packed4e3_80 = ( packed4e3 & 0x80 ) == 0x80;
+
             // col: 523 offset: 04e8
             unknown4e8 = parser.ReadOffset< uint >( 0x4e8 );
 
@@ -3524,6 +4001,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 715 offset: 04f3
             packed4f3 = parser.ReadOffset< byte >( 0x4f3, ExcelColumnDataType.UInt8 );
+
+            packed4f3_1 = ( packed4f3 & 0x1 ) == 0x1;
+            packed4f3_2 = ( packed4f3 & 0x2 ) == 0x2;
+            packed4f3_4 = ( packed4f3 & 0x4 ) == 0x4;
+            packed4f3_8 = ( packed4f3 & 0x8 ) == 0x8;
+            packed4f3_10 = ( packed4f3 & 0x10 ) == 0x10;
+            packed4f3_20 = ( packed4f3 & 0x20 ) == 0x20;
+            packed4f3_40 = ( packed4f3 & 0x40 ) == 0x40;
+            packed4f3_80 = ( packed4f3 & 0x80 ) == 0x80;
 
             // col: 524 offset: 04f8
             unknown4f8 = parser.ReadOffset< uint >( 0x4f8 );
@@ -3540,6 +4026,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 716 offset: 0503
             packed503 = parser.ReadOffset< byte >( 0x503, ExcelColumnDataType.UInt8 );
 
+            packed503_1 = ( packed503 & 0x1 ) == 0x1;
+            packed503_2 = ( packed503 & 0x2 ) == 0x2;
+            packed503_4 = ( packed503 & 0x4 ) == 0x4;
+            packed503_8 = ( packed503 & 0x8 ) == 0x8;
+            packed503_10 = ( packed503 & 0x10 ) == 0x10;
+            packed503_20 = ( packed503 & 0x20 ) == 0x20;
+            packed503_40 = ( packed503 & 0x40 ) == 0x40;
+            packed503_80 = ( packed503 & 0x80 ) == 0x80;
+
             // col: 525 offset: 0508
             unknown508 = parser.ReadOffset< uint >( 0x508 );
 
@@ -3554,6 +4049,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 717 offset: 0513
             packed513 = parser.ReadOffset< byte >( 0x513, ExcelColumnDataType.UInt8 );
+
+            packed513_1 = ( packed513 & 0x1 ) == 0x1;
+            packed513_2 = ( packed513 & 0x2 ) == 0x2;
+            packed513_4 = ( packed513 & 0x4 ) == 0x4;
+            packed513_8 = ( packed513 & 0x8 ) == 0x8;
+            packed513_10 = ( packed513 & 0x10 ) == 0x10;
+            packed513_20 = ( packed513 & 0x20 ) == 0x20;
+            packed513_40 = ( packed513 & 0x40 ) == 0x40;
+            packed513_80 = ( packed513 & 0x80 ) == 0x80;
 
             // col: 526 offset: 0518
             unknown518 = parser.ReadOffset< uint >( 0x518 );
@@ -3570,6 +4074,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 718 offset: 0523
             packed523 = parser.ReadOffset< byte >( 0x523, ExcelColumnDataType.UInt8 );
 
+            packed523_1 = ( packed523 & 0x1 ) == 0x1;
+            packed523_2 = ( packed523 & 0x2 ) == 0x2;
+            packed523_4 = ( packed523 & 0x4 ) == 0x4;
+            packed523_8 = ( packed523 & 0x8 ) == 0x8;
+            packed523_10 = ( packed523 & 0x10 ) == 0x10;
+            packed523_20 = ( packed523 & 0x20 ) == 0x20;
+            packed523_40 = ( packed523 & 0x40 ) == 0x40;
+            packed523_80 = ( packed523 & 0x80 ) == 0x80;
+
             // col: 527 offset: 0528
             unknown528 = parser.ReadOffset< uint >( 0x528 );
 
@@ -3584,6 +4097,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 719 offset: 0533
             packed533 = parser.ReadOffset< byte >( 0x533, ExcelColumnDataType.UInt8 );
+
+            packed533_1 = ( packed533 & 0x1 ) == 0x1;
+            packed533_2 = ( packed533 & 0x2 ) == 0x2;
+            packed533_4 = ( packed533 & 0x4 ) == 0x4;
+            packed533_8 = ( packed533 & 0x8 ) == 0x8;
+            packed533_10 = ( packed533 & 0x10 ) == 0x10;
+            packed533_20 = ( packed533 & 0x20 ) == 0x20;
+            packed533_40 = ( packed533 & 0x40 ) == 0x40;
+            packed533_80 = ( packed533 & 0x80 ) == 0x80;
 
             // col: 528 offset: 0538
             unknown538 = parser.ReadOffset< uint >( 0x538 );
@@ -3600,6 +4122,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 720 offset: 0543
             packed543 = parser.ReadOffset< byte >( 0x543, ExcelColumnDataType.UInt8 );
 
+            packed543_1 = ( packed543 & 0x1 ) == 0x1;
+            packed543_2 = ( packed543 & 0x2 ) == 0x2;
+            packed543_4 = ( packed543 & 0x4 ) == 0x4;
+            packed543_8 = ( packed543 & 0x8 ) == 0x8;
+            packed543_10 = ( packed543 & 0x10 ) == 0x10;
+            packed543_20 = ( packed543 & 0x20 ) == 0x20;
+            packed543_40 = ( packed543 & 0x40 ) == 0x40;
+            packed543_80 = ( packed543 & 0x80 ) == 0x80;
+
             // col: 529 offset: 0548
             unknown548 = parser.ReadOffset< uint >( 0x548 );
 
@@ -3614,6 +4145,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 721 offset: 0553
             packed553 = parser.ReadOffset< byte >( 0x553, ExcelColumnDataType.UInt8 );
+
+            packed553_1 = ( packed553 & 0x1 ) == 0x1;
+            packed553_2 = ( packed553 & 0x2 ) == 0x2;
+            packed553_4 = ( packed553 & 0x4 ) == 0x4;
+            packed553_8 = ( packed553 & 0x8 ) == 0x8;
+            packed553_10 = ( packed553 & 0x10 ) == 0x10;
+            packed553_20 = ( packed553 & 0x20 ) == 0x20;
+            packed553_40 = ( packed553 & 0x40 ) == 0x40;
+            packed553_80 = ( packed553 & 0x80 ) == 0x80;
 
             // col: 530 offset: 0558
             unknown558 = parser.ReadOffset< uint >( 0x558 );
@@ -3630,6 +4170,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 722 offset: 0563
             packed563 = parser.ReadOffset< byte >( 0x563, ExcelColumnDataType.UInt8 );
 
+            packed563_1 = ( packed563 & 0x1 ) == 0x1;
+            packed563_2 = ( packed563 & 0x2 ) == 0x2;
+            packed563_4 = ( packed563 & 0x4 ) == 0x4;
+            packed563_8 = ( packed563 & 0x8 ) == 0x8;
+            packed563_10 = ( packed563 & 0x10 ) == 0x10;
+            packed563_20 = ( packed563 & 0x20 ) == 0x20;
+            packed563_40 = ( packed563 & 0x40 ) == 0x40;
+            packed563_80 = ( packed563 & 0x80 ) == 0x80;
+
             // col: 531 offset: 0568
             unknown568 = parser.ReadOffset< uint >( 0x568 );
 
@@ -3644,6 +4193,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 723 offset: 0573
             packed573 = parser.ReadOffset< byte >( 0x573, ExcelColumnDataType.UInt8 );
+
+            packed573_1 = ( packed573 & 0x1 ) == 0x1;
+            packed573_2 = ( packed573 & 0x2 ) == 0x2;
+            packed573_4 = ( packed573 & 0x4 ) == 0x4;
+            packed573_8 = ( packed573 & 0x8 ) == 0x8;
+            packed573_10 = ( packed573 & 0x10 ) == 0x10;
+            packed573_20 = ( packed573 & 0x20 ) == 0x20;
+            packed573_40 = ( packed573 & 0x40 ) == 0x40;
+            packed573_80 = ( packed573 & 0x80 ) == 0x80;
 
             // col: 532 offset: 0578
             unknown578 = parser.ReadOffset< uint >( 0x578 );
@@ -3660,6 +4218,15 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 724 offset: 0583
             packed583 = parser.ReadOffset< byte >( 0x583, ExcelColumnDataType.UInt8 );
 
+            packed583_1 = ( packed583 & 0x1 ) == 0x1;
+            packed583_2 = ( packed583 & 0x2 ) == 0x2;
+            packed583_4 = ( packed583 & 0x4 ) == 0x4;
+            packed583_8 = ( packed583 & 0x8 ) == 0x8;
+            packed583_10 = ( packed583 & 0x10 ) == 0x10;
+            packed583_20 = ( packed583 & 0x20 ) == 0x20;
+            packed583_40 = ( packed583 & 0x40 ) == 0x40;
+            packed583_80 = ( packed583 & 0x80 ) == 0x80;
+
             // col: 533 offset: 0588
             unknown588 = parser.ReadOffset< uint >( 0x588 );
 
@@ -3674,6 +4241,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 725 offset: 0593
             packed593 = parser.ReadOffset< byte >( 0x593, ExcelColumnDataType.UInt8 );
+
+            packed593_1 = ( packed593 & 0x1 ) == 0x1;
+            packed593_2 = ( packed593 & 0x2 ) == 0x2;
+            packed593_4 = ( packed593 & 0x4 ) == 0x4;
+            packed593_8 = ( packed593 & 0x8 ) == 0x8;
+            packed593_10 = ( packed593 & 0x10 ) == 0x10;
+            packed593_20 = ( packed593 & 0x20 ) == 0x20;
+            packed593_40 = ( packed593 & 0x40 ) == 0x40;
+            packed593_80 = ( packed593 & 0x80 ) == 0x80;
 
             // col: 1222 offset: 0594
             ToDoMainLocation = new uint[24];
@@ -4511,7 +5087,7 @@ namespace Lumina.Excel.GeneratedSheets
             BellEnd = parser.ReadOffset< ushort >( 0x9ac );
 
             // col: 33 offset: 09ae
-            LevelMax = parser.ReadOffset< ushort >( 0x9ae );
+            unknown9ae = parser.ReadOffset< ushort >( 0x9ae );
 
             // col: 41 offset: 09b0
             unknown9b0 = parser.ReadOffset< ushort >( 0x9b0 );
@@ -4598,7 +5174,7 @@ namespace Lumina.Excel.GeneratedSheets
             Type = parser.ReadOffset< byte >( 0x9cf );
 
             // col: 1438 offset: 09d0
-            unknown9d0 = parser.ReadOffset< byte >( 0x9d0 );
+            LevelMax = parser.ReadOffset< byte >( 0x9d0 );
 
             // col: 1439 offset: 09d1
             ClassJobRequired = parser.ReadOffset< byte >( 0x9d1 );
@@ -4620,6 +5196,13 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 37 offset: 09d7
             packed9d7 = parser.ReadOffset< byte >( 0x9d7, ExcelColumnDataType.UInt8 );
+
+            IsHouseRequired = ( packed9d7 & 0x1 ) == 0x1;
+            IsRepeatable = ( packed9d7 & 0x2 ) == 0x2;
+            UnlocksSystemContent = ( packed9d7 & 0x4 ) == 0x4;
+            packed9d7_8 = ( packed9d7 & 0x8 ) == 0x8;
+            packed9d7_10 = ( packed9d7 & 0x10 ) == 0x10;
+            packed9d7_20 = ( packed9d7 & 0x20 ) == 0x20;
 
 
         }

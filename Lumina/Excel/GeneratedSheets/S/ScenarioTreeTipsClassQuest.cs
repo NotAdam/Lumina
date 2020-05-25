@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ScenarioTreeTipsClassQuest", columnHash: 0xae1d30a7 )]
     public class ScenarioTreeTipsClassQuest : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -21,9 +21,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte RequiredExpansion;
 
         // col: 04 offset: 000b
-        private byte packedb;
-        public bool packedb_1 => ( packedb & 0x1 ) == 0x1;
-        public bool packedb_2 => ( packedb & 0x2 ) == 0x2;
+        public bool packedb_1;
+        public byte packedb;
+        public bool packedb_2;
 
 
         public int RowId { get; set; }
@@ -48,6 +48,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 000b
             packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
+
+            packedb_1 = ( packedb & 0x1 ) == 0x1;
+            packedb_2 = ( packedb & 0x2 ) == 0x2;
 
 
         }

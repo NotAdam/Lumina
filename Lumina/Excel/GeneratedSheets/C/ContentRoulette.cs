@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ContentRoulette", columnHash: 0x8dd999fc )]
     public class ContentRoulette : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -102,15 +102,15 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte unknown3a;
 
         // col: 06 offset: 003b
-        private byte packed3b;
-        public bool IsInDutyFinder => ( packed3b & 0x1 ) == 0x1;
-        public bool OpenRule => ( packed3b & 0x2 ) == 0x2;
-        public bool RequiredLevel => ( packed3b & 0x4 ) == 0x4;
-        public bool packed3b_8 => ( packed3b & 0x8 ) == 0x8;
-        public bool RequireAllDuties => ( packed3b & 0x10 ) == 0x10;
-        public bool packed3b_20 => ( packed3b & 0x20 ) == 0x20;
-        public bool ContentRouletteOpenRule => ( packed3b & 0x40 ) == 0x40;
-        public bool packed3b_80 => ( packed3b & 0x80 ) == 0x80;
+        public bool IsInDutyFinder;
+        public byte packed3b;
+        public bool OpenRule;
+        public bool RequiredLevel;
+        public bool packed3b_8;
+        public bool RequireAllDuties;
+        public bool packed3b_20;
+        public bool ContentRouletteOpenRule;
+        public bool packed3b_80;
 
 
         public int RowId { get; set; }
@@ -216,6 +216,15 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 6 offset: 003b
             packed3b = parser.ReadOffset< byte >( 0x3b, ExcelColumnDataType.UInt8 );
+
+            IsInDutyFinder = ( packed3b & 0x1 ) == 0x1;
+            OpenRule = ( packed3b & 0x2 ) == 0x2;
+            RequiredLevel = ( packed3b & 0x4 ) == 0x4;
+            packed3b_8 = ( packed3b & 0x8 ) == 0x8;
+            RequireAllDuties = ( packed3b & 0x10 ) == 0x10;
+            packed3b_20 = ( packed3b & 0x20 ) == 0x20;
+            ContentRouletteOpenRule = ( packed3b & 0x40 ) == 0x40;
+            packed3b_80 = ( packed3b & 0x80 ) == 0x80;
 
 
         }

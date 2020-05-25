@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "OnlineStatus", columnHash: 0xd87db84c )]
     public class OnlineStatus : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 03 offset: 0000
@@ -18,9 +18,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Priority;
 
         // col: 00 offset: 0009
-        private byte packed9;
-        public bool List => ( packed9 & 0x1 ) == 0x1;
-        public bool packed9_2 => ( packed9 & 0x2 ) == 0x2;
+        public bool List;
+        public byte packed9;
+        public bool packed9_2;
 
 
         public int RowId { get; set; }
@@ -42,6 +42,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0009
             packed9 = parser.ReadOffset< byte >( 0x9, ExcelColumnDataType.UInt8 );
+
+            List = ( packed9 & 0x1 ) == 0x1;
+            packed9_2 = ( packed9 & 0x2 ) == 0x2;
 
 
         }

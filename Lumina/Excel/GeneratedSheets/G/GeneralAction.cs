@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "GeneralAction", columnHash: 0x5dffa8fa )]
     public class GeneralAction : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -33,8 +33,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte UIPriority;
 
         // col: 08 offset: 0013
-        private byte packed13;
-        public bool packed13_1 => ( packed13 & 0x1 ) == 0x1;
+        public bool packed13_1;
+        public byte packed13;
 
 
         public int RowId { get; set; }
@@ -71,6 +71,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 8 offset: 0013
             packed13 = parser.ReadOffset< byte >( 0x13, ExcelColumnDataType.UInt8 );
+
+            packed13_1 = ( packed13 & 0x1 ) == 0x1;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BaseParam", columnHash: 0xedef6dbb )]
     public class BaseParam : IExcelRow
     {
-        // column defs from Sun, 09 Feb 2020 20:51:08 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -87,8 +87,8 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte PacketIndex;
 
         // col: 38 offset: 002c
-        private byte packed2c;
-        public bool packed2c_1 => ( packed2c & 0x1 ) == 0x1;
+        public bool packed2c_1;
+        public byte packed2c;
 
 
         public int RowId { get; set; }
@@ -192,6 +192,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 38 offset: 002c
             packed2c = parser.ReadOffset< byte >( 0x2c, ExcelColumnDataType.UInt8 );
+
+            packed2c_1 = ( packed2c & 0x1 ) == 0x1;
 
 
         }

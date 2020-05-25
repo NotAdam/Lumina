@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "GatheringPointBase", columnHash: 0x73fa0924 )]
     public class GatheringPointBase : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -18,8 +18,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte GatheringLevel;
 
         // col: 10 offset: 0025
-        private byte packed25;
-        public bool IsLimited => ( packed25 & 0x1 ) == 0x1;
+        public bool IsLimited;
+        public byte packed25;
 
 
         public int RowId { get; set; }
@@ -49,6 +49,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 10 offset: 0025
             packed25 = parser.ReadOffset< byte >( 0x25, ExcelColumnDataType.UInt8 );
+
+            IsLimited = ( packed25 & 0x1 ) == 0x1;
 
 
         }

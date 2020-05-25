@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "MiniGameRA", columnHash: 0x89c987f3 )]
     public class MiniGameRA : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 04 offset: 0000
@@ -54,9 +54,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown23;
 
         // col: 05 offset: 0024
-        private byte packed24;
-        public bool packed24_1 => ( packed24 & 0x1 ) == 0x1;
-        public bool packed24_2 => ( packed24 & 0x2 ) == 0x2;
+        public bool packed24_1;
+        public byte packed24;
+        public bool packed24_2;
 
 
         public int RowId { get; set; }
@@ -114,6 +114,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 5 offset: 0024
             packed24 = parser.ReadOffset< byte >( 0x24, ExcelColumnDataType.UInt8 );
+
+            packed24_1 = ( packed24 & 0x1 ) == 0x1;
+            packed24_2 = ( packed24 & 0x2 ) == 0x2;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Status", columnHash: 0xd8ae9831 )]
     public class Status : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -51,25 +51,25 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown16;
 
         // col: 08 offset: 0017
-        private byte packed17;
-        public bool LockMovement => ( packed17 & 0x1 ) == 0x1;
-        public bool packed17_2 => ( packed17 & 0x2 ) == 0x2;
-        public bool LockActions => ( packed17 & 0x4 ) == 0x4;
-        public bool LockControl => ( packed17 & 0x8 ) == 0x8;
-        public bool Transfiguration => ( packed17 & 0x10 ) == 0x10;
-        public bool packed17_20 => ( packed17 & 0x20 ) == 0x20;
-        public bool CanDispel => ( packed17 & 0x40 ) == 0x40;
-        public bool InflictedByActor => ( packed17 & 0x80 ) == 0x80;
+        public bool LockMovement;
+        public byte packed17;
+        public bool packed17_2;
+        public bool LockActions;
+        public bool LockControl;
+        public bool Transfiguration;
+        public bool packed17_20;
+        public bool CanDispel;
+        public bool InflictedByActor;
 
         // col: 16 offset: 0018
-        private byte packed18;
-        public bool IsPermanent => ( packed18 & 0x1 ) == 0x1;
-        public bool packed18_2 => ( packed18 & 0x2 ) == 0x2;
-        public bool packed18_4 => ( packed18 & 0x4 ) == 0x4;
-        public bool packed18_8 => ( packed18 & 0x8 ) == 0x8;
-        public bool IsFcBuff => ( packed18 & 0x10 ) == 0x10;
-        public bool Invisibility => ( packed18 & 0x20 ) == 0x20;
-        public bool packed18_40 => ( packed18 & 0x40 ) == 0x40;
+        public bool IsPermanent;
+        public byte packed18;
+        public bool packed18_2;
+        public bool packed18_4;
+        public bool packed18_8;
+        public bool IsFcBuff;
+        public bool Invisibility;
+        public bool packed18_40;
 
 
         public int RowId { get; set; }
@@ -125,8 +125,25 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 8 offset: 0017
             packed17 = parser.ReadOffset< byte >( 0x17, ExcelColumnDataType.UInt8 );
 
+            LockMovement = ( packed17 & 0x1 ) == 0x1;
+            packed17_2 = ( packed17 & 0x2 ) == 0x2;
+            LockActions = ( packed17 & 0x4 ) == 0x4;
+            LockControl = ( packed17 & 0x8 ) == 0x8;
+            Transfiguration = ( packed17 & 0x10 ) == 0x10;
+            packed17_20 = ( packed17 & 0x20 ) == 0x20;
+            CanDispel = ( packed17 & 0x40 ) == 0x40;
+            InflictedByActor = ( packed17 & 0x80 ) == 0x80;
+
             // col: 16 offset: 0018
             packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
+
+            IsPermanent = ( packed18 & 0x1 ) == 0x1;
+            packed18_2 = ( packed18 & 0x2 ) == 0x2;
+            packed18_4 = ( packed18 & 0x4 ) == 0x4;
+            packed18_8 = ( packed18 & 0x8 ) == 0x8;
+            IsFcBuff = ( packed18 & 0x10 ) == 0x10;
+            Invisibility = ( packed18 & 0x20 ) == 0x20;
+            packed18_40 = ( packed18 & 0x40 ) == 0x40;
 
 
         }

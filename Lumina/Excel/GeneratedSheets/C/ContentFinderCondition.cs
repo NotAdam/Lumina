@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ContentFinderCondition", columnHash: 0xcf653092 )]
     public class ContentFinderCondition : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 35 offset: 0000
@@ -207,26 +207,26 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte unknown60;
 
         // col: 04 offset: 0061
-        private byte packed61;
-        public bool PvP => ( packed61 & 0x1 ) == 0x1;
-        public bool AllowUndersized => ( packed61 & 0x2 ) == 0x2;
-        public bool AllowReplacement => ( packed61 & 0x4 ) == 0x4;
-        public bool packed61_8 => ( packed61 & 0x8 ) == 0x8;
-        public bool packed61_10 => ( packed61 & 0x10 ) == 0x10;
-        public bool packed61_20 => ( packed61 & 0x20 ) == 0x20;
-        public bool packed61_40 => ( packed61 & 0x40 ) == 0x40;
-        public bool HighEndDuty => ( packed61 & 0x80 ) == 0x80;
+        public bool PvP;
+        public byte packed61;
+        public bool AllowUndersized;
+        public bool AllowReplacement;
+        public bool packed61_8;
+        public bool packed61_10;
+        public bool packed61_20;
+        public bool packed61_40;
+        public bool HighEndDuty;
 
         // col: 27 offset: 0062
-        private byte packed62;
-        public bool packed62_1 => ( packed62 & 0x1 ) == 0x1;
-        public bool packed62_2 => ( packed62 & 0x2 ) == 0x2;
-        public bool packed62_4 => ( packed62 & 0x4 ) == 0x4;
-        public bool DutyRecorderAllowed => ( packed62 & 0x8 ) == 0x8;
-        public bool packed62_10 => ( packed62 & 0x10 ) == 0x10;
-        public bool packed62_20 => ( packed62 & 0x20 ) == 0x20;
-        public bool packed62_40 => ( packed62 & 0x40 ) == 0x40;
-        public bool packed62_80 => ( packed62 & 0x80 ) == 0x80;
+        public bool packed62_1;
+        public byte packed62;
+        public bool packed62_2;
+        public bool packed62_4;
+        public bool DutyRecorderAllowed;
+        public bool packed62_10;
+        public bool packed62_20;
+        public bool packed62_40;
+        public bool packed62_80;
 
 
         public int RowId { get; set; }
@@ -438,8 +438,26 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 4 offset: 0061
             packed61 = parser.ReadOffset< byte >( 0x61, ExcelColumnDataType.UInt8 );
 
+            PvP = ( packed61 & 0x1 ) == 0x1;
+            AllowUndersized = ( packed61 & 0x2 ) == 0x2;
+            AllowReplacement = ( packed61 & 0x4 ) == 0x4;
+            packed61_8 = ( packed61 & 0x8 ) == 0x8;
+            packed61_10 = ( packed61 & 0x10 ) == 0x10;
+            packed61_20 = ( packed61 & 0x20 ) == 0x20;
+            packed61_40 = ( packed61 & 0x40 ) == 0x40;
+            HighEndDuty = ( packed61 & 0x80 ) == 0x80;
+
             // col: 27 offset: 0062
             packed62 = parser.ReadOffset< byte >( 0x62, ExcelColumnDataType.UInt8 );
+
+            packed62_1 = ( packed62 & 0x1 ) == 0x1;
+            packed62_2 = ( packed62 & 0x2 ) == 0x2;
+            packed62_4 = ( packed62 & 0x4 ) == 0x4;
+            DutyRecorderAllowed = ( packed62 & 0x8 ) == 0x8;
+            packed62_10 = ( packed62 & 0x10 ) == 0x10;
+            packed62_20 = ( packed62 & 0x20 ) == 0x20;
+            packed62_40 = ( packed62 & 0x40 ) == 0x40;
+            packed62_80 = ( packed62 & 0x80 ) == 0x80;
 
 
         }
