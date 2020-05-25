@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +25,7 @@ namespace Lumina.SpaghettiGenerator
         public int ArrayIndex { get; set; }
         public int Offset { get; set; }
         public int Bit { get; set; }
+        public int ArraySize { get; set; } //used by bitfields because of overlap
         public ExcelColumnDataType Type { get; set; }
     }
 
@@ -47,7 +48,7 @@ namespace Lumina.SpaghettiGenerator
             get
             {
                 if( RootDefinition?.RealName != null )
-                    return RootDefinition.RealName;
+                        return RootDefinition.RealName;
 
                 if( IsBitfield )
                     return $"packed{Offset:x}";
@@ -196,8 +197,9 @@ namespace Lumina.SpaghettiGenerator
                     {
                         col.IsArray = true;
                         col.ArraySize = schemaDef.Count;
-
+                        
                         rootMember.ArrayIndex = 0;
+                        rootMember.ArraySize = schemaDef.Count; //bitfields can overlap existing column lookups
 
                         for( int j = 1; j < col.ArraySize; j++ )
                         {
@@ -207,10 +209,12 @@ namespace Lumina.SpaghettiGenerator
 
                             col.Members.Add( new DataMembers
                             {
+                                Name = schemaDef.RealName, //bitfields
                                 Offset = newCol.Offset,
                                 Type = newCol.Type,
-                                ArrayIndex = j
-                            } );
+                                ArrayIndex = j,
+                                Bit = 1 << ( intType - bool0 )
+                            } ) ;
                         }
                     }
                 }
@@ -235,6 +239,8 @@ namespace Lumina.SpaghettiGenerator
             tmpl = tmpl.Replace( "%%DEBUG_INFO%%", sb.ToString() );
 
             sb.Clear();
+            
+            List<int> BitfieldOffsets = new List<int>(); //Storage to keep track of what bitfields need to have data written to them.
             foreach( var (offset, gcd) in items.OrderBy( pair => pair.Key ) )
             {
                 var typeName = ExcelTypeToManaged( gcd.ColumnDefinition.Type );
@@ -246,24 +252,32 @@ namespace Lumina.SpaghettiGenerator
 
                 if( gcd.IsBitfield )
                 {
-                    sb.Append( indent );
-                    // yes i hate myself 
-                    // no i don't care
-                    sb.Append( GenerateDataMember( "byte", $"packed{offset:x}", offset ).Replace( "public", "private" ) );
-                    sb.AppendLine();
-
-                    // time to hate myself even more
-                    int index = 0;
+                    //root member + any children (array)
                     foreach( var member in gcd.Members )
                     {
-                        var bit = 1 << index;
-                        var defaultName = $"packed{offset:x}_{bit:x}";
 
-                        sb.Append( indent );
-                        sb.Append( $"public bool {Clean( member.Name ) ?? defaultName} => ( packed{offset:x} & 0x{bit:x} ) == 0x{bit:x};" );
-                        sb.AppendLine();
+                        if( member.ArrayIndex == 0 )
+                        {
+                            sb.Append( indent );
+                            // yes i hate myself 
+                            // no i don't care
+                            // yep. I hate bitfields
 
-                        index++;
+                            //This will either be an array or it won't be. which is fine. this gets filled out
+                            sb.Append( GenerateDataMember( typeName, Clean(member.Name) ?? $"packed{member.Offset:x}_{member.Bit:x}", offset, member.ArraySize ) );
+                            sb.AppendLine();
+                        }
+
+                        if(!BitfieldOffsets.Contains(member.Offset))
+                        {
+                            
+                            sb.Append( indent );
+                            //add the packed values for each bitfield. 
+                            //these are public to allow for direct access
+                            sb.Append( GenerateDataMember( "byte", $"packed{member.Offset:x}", member.Offset ) );
+                            sb.AppendLine();
+                            BitfieldOffsets.Add( member.Offset );
+                        }
                     }
                 }
                 else
@@ -275,6 +289,7 @@ namespace Lumina.SpaghettiGenerator
 
                 sb.AppendLine();
             }
+            BitfieldOffsets.Clear();
 
             tmpl = tmpl.Replace( "%%DATA_MEMBERS%%", sb.ToString() );
 
@@ -293,10 +308,33 @@ namespace Lumina.SpaghettiGenerator
 
                 if( gcd.IsBitfield )
                 {
-                    sb.Append( indent );
-                    sb.Append( GenerateReadMember( "byte", $"packed{offset:x}", offset, -1, true ) );
+                    foreach( var member in gcd.Members )
+                    {
+                        //read the bitfield once _before_ we add any data to arrays otherwise we will miss data
+                        if( !BitfieldOffsets.Contains( member.Offset ) )
+                        {
+                            sb.Append( indent );
+                            sb.Append( GenerateReadMember( "byte", $"packed{member.Offset:x}", member.Offset, -1, true ) );
+                            sb.AppendLine();
+                            sb.AppendLine();
+                            BitfieldOffsets.Add( member.Offset );
+                        }
+                        if(member.ArrayIndex == 0 && member.ArraySize > 0 )
+                        {
+                            sb.Append( indent );
+                            sb.Append( $"{Clean( member.Name ) ?? $"packed{member.Offset:x}"} = new {typeName}[{member.ArraySize}];" );
+                            sb.AppendLine();
+                        }
+                        sb.Append( indent );
+                        if( member.ArraySize > 0 || member.ArrayIndex > 0)
+                            sb.Append( $"{Clean( member.Name ) ?? $"packed{member.Offset:x}"}[{member.ArrayIndex}] = ( packed{member.Offset:x} & 0x{member.Bit:x} ) == 0x{member.Bit:x};" );
+                        else
+                            sb.Append( $"{Clean( member.Name ) ?? $"packed{member.Offset:x}_{member.Bit:x}"} = ( packed{member.Offset:x} & 0x{member.Bit:x} ) == 0x{member.Bit:x};" );
+
+                        sb.AppendLine();
+                    }
                     sb.AppendLine();
-                    sb.AppendLine();
+
 
                     continue;
                 }
