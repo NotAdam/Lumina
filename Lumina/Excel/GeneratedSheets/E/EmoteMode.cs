@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "EmoteMode", columnHash: 0x087a32e7 )]
     public class EmoteMode : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -18,12 +18,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte ConditionMode;
 
         // col: 02 offset: 0005
-        private byte packed5;
-        public bool Move => ( packed5 & 0x1 ) == 0x1;
-        public bool Camera => ( packed5 & 0x2 ) == 0x2;
-        public bool EndOnRotate => ( packed5 & 0x4 ) == 0x4;
-        public bool EndOnEmote => ( packed5 & 0x8 ) == 0x8;
-        public bool packed5_10 => ( packed5 & 0x10 ) == 0x10;
+        public bool Move;
+        public byte packed5;
+        public bool Camera;
+        public bool EndOnRotate;
+        public bool EndOnEmote;
+        public bool packed5_10;
 
 
         public int RowId { get; set; }
@@ -45,6 +45,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0005
             packed5 = parser.ReadOffset< byte >( 0x5, ExcelColumnDataType.UInt8 );
+
+            Move = ( packed5 & 0x1 ) == 0x1;
+            Camera = ( packed5 & 0x2 ) == 0x2;
+            EndOnRotate = ( packed5 & 0x4 ) == 0x4;
+            EndOnEmote = ( packed5 & 0x8 ) == 0x8;
+            packed5_10 = ( packed5 & 0x10 ) == 0x10;
 
 
         }

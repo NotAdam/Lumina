@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "GimmickJump", columnHash: 0x4858f2f1 )]
     public class GimmickJump : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000
@@ -21,9 +21,9 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Height;
 
         // col: 04 offset: 000b
-        private byte packedb;
-        public bool StartClient => ( packedb & 0x1 ) == 0x1;
-        public bool packedb_2 => ( packedb & 0x2 ) == 0x2;
+        public bool StartClient;
+        public byte packedb;
+        public bool packedb_2;
 
 
         public int RowId { get; set; }
@@ -48,6 +48,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 000b
             packedb = parser.ReadOffset< byte >( 0xb, ExcelColumnDataType.UInt8 );
+
+            StartClient = ( packedb & 0x1 ) == 0x1;
+            packedb_2 = ( packedb & 0x2 ) == 0x2;
 
 
         }

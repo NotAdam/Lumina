@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "MobHuntRewardCap", columnHash: 0xdbf43666 )]
     public class MobHuntRewardCap : IExcelRow
     {
-        // column defs from Tue, 29 Oct 2019 18:50:18 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000

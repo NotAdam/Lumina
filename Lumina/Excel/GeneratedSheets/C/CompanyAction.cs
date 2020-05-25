@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CompanyAction", columnHash: 0xde0dd9cf )]
     public class CompanyAction : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -27,8 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Order;
 
         // col: 06 offset: 0012
-        private byte packed12;
-        public bool Purchasable => ( packed12 & 0x1 ) == 0x1;
+        public bool Purchasable;
+        public byte packed12;
 
 
         public int RowId { get; set; }
@@ -59,6 +59,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 6 offset: 0012
             packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
+
+            Purchasable = ( packed12 & 0x1 ) == 0x1;
 
 
         }

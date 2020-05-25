@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "AirshipExplorationPoint", columnHash: 0x307f38a2 )]
     public class AirshipExplorationPoint : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -48,8 +48,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1a;
 
         // col: 02 offset: 001b
-        private byte packed1b;
-        public bool packed1b_1 => ( packed1b & 0x1 ) == 0x1;
+        public bool packed1b_1;
+        public byte packed1b;
 
 
         public int RowId { get; set; }
@@ -101,6 +101,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 001b
             packed1b = parser.ReadOffset< byte >( 0x1b, ExcelColumnDataType.UInt8 );
+
+            packed1b_1 = ( packed1b & 0x1 ) == 0x1;
 
 
         }

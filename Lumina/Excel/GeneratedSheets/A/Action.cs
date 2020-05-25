@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Action", columnHash: 0xb3773db1 )]
     public class Action : IExcelRow
     {
-        // column defs from Wed, 24 Jul 2019 22:57:56 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -120,45 +120,45 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte AttackType;
 
         // col: 01 offset: 0035
-        private byte packed35;
-        public bool packed35_1 => ( packed35 & 0x1 ) == 0x1;
-        public bool IsRoleAction => ( packed35 & 0x2 ) == 0x2;
-        public bool CanTargetSelf => ( packed35 & 0x4 ) == 0x4;
-        public bool CanTargetParty => ( packed35 & 0x8 ) == 0x8;
-        public bool CanTargetFriendly => ( packed35 & 0x10 ) == 0x10;
-        public bool CanTargetHostile => ( packed35 & 0x20 ) == 0x20;
-        public bool packed35_40 => ( packed35 & 0x40 ) == 0x40;
-        public bool packed35_80 => ( packed35 & 0x80 ) == 0x80;
+        public bool packed35_1;
+        public byte packed35;
+        public bool IsRoleAction;
+        public bool CanTargetSelf;
+        public bool CanTargetParty;
+        public bool CanTargetFriendly;
+        public bool CanTargetHostile;
+        public bool packed35_40;
+        public bool packed35_80;
 
         // col: 21 offset: 0036
-        private byte packed36;
-        public bool TargetArea => ( packed36 & 0x1 ) == 0x1;
-        public bool packed36_2 => ( packed36 & 0x2 ) == 0x2;
-        public bool packed36_4 => ( packed36 & 0x4 ) == 0x4;
-        public bool CanTargetDead => ( packed36 & 0x8 ) == 0x8;
-        public bool packed36_10 => ( packed36 & 0x10 ) == 0x10;
-        public bool packed36_20 => ( packed36 & 0x20 ) == 0x20;
-        public bool PreservesCombo => ( packed36 & 0x40 ) == 0x40;
-        public bool packed36_80 => ( packed36 & 0x80 ) == 0x80;
+        public bool TargetArea;
+        public byte packed36;
+        public bool packed36_2;
+        public bool packed36_4;
+        public bool CanTargetDead;
+        public bool packed36_10;
+        public bool packed36_20;
+        public bool PreservesCombo;
+        public bool packed36_80;
 
         // col: 51 offset: 0037
-        private byte packed37;
-        public bool AffectsPosition => ( packed37 & 0x1 ) == 0x1;
-        public bool IsPvP => ( packed37 & 0x2 ) == 0x2;
-        public bool packed37_4 => ( packed37 & 0x4 ) == 0x4;
-        public bool packed37_8 => ( packed37 & 0x8 ) == 0x8;
-        public bool packed37_10 => ( packed37 & 0x10 ) == 0x10;
-        public bool packed37_20 => ( packed37 & 0x20 ) == 0x20;
-        public bool packed37_40 => ( packed37 & 0x40 ) == 0x40;
-        public bool packed37_80 => ( packed37 & 0x80 ) == 0x80;
+        public bool AffectsPosition;
+        public byte packed37;
+        public bool IsPvP;
+        public bool packed37_4;
+        public bool packed37_8;
+        public bool packed37_10;
+        public bool packed37_20;
+        public bool packed37_40;
+        public bool packed37_80;
 
         // col: 60 offset: 0038
-        private byte packed38;
-        public bool packed38_1 => ( packed38 & 0x1 ) == 0x1;
-        public bool packed38_2 => ( packed38 & 0x2 ) == 0x2;
-        public bool packed38_4 => ( packed38 & 0x4 ) == 0x4;
-        public bool packed38_8 => ( packed38 & 0x8 ) == 0x8;
-        public bool IsPlayerAction => ( packed38 & 0x10 ) == 0x10;
+        public bool packed38_1;
+        public byte packed38;
+        public bool packed38_2;
+        public bool packed38_4;
+        public bool packed38_8;
+        public bool IsPlayerAction;
 
 
         public int RowId { get; set; }
@@ -283,14 +283,47 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 1 offset: 0035
             packed35 = parser.ReadOffset< byte >( 0x35, ExcelColumnDataType.UInt8 );
 
+            packed35_1 = ( packed35 & 0x1 ) == 0x1;
+            IsRoleAction = ( packed35 & 0x2 ) == 0x2;
+            CanTargetSelf = ( packed35 & 0x4 ) == 0x4;
+            CanTargetParty = ( packed35 & 0x8 ) == 0x8;
+            CanTargetFriendly = ( packed35 & 0x10 ) == 0x10;
+            CanTargetHostile = ( packed35 & 0x20 ) == 0x20;
+            packed35_40 = ( packed35 & 0x40 ) == 0x40;
+            packed35_80 = ( packed35 & 0x80 ) == 0x80;
+
             // col: 21 offset: 0036
             packed36 = parser.ReadOffset< byte >( 0x36, ExcelColumnDataType.UInt8 );
+
+            TargetArea = ( packed36 & 0x1 ) == 0x1;
+            packed36_2 = ( packed36 & 0x2 ) == 0x2;
+            packed36_4 = ( packed36 & 0x4 ) == 0x4;
+            CanTargetDead = ( packed36 & 0x8 ) == 0x8;
+            packed36_10 = ( packed36 & 0x10 ) == 0x10;
+            packed36_20 = ( packed36 & 0x20 ) == 0x20;
+            PreservesCombo = ( packed36 & 0x40 ) == 0x40;
+            packed36_80 = ( packed36 & 0x80 ) == 0x80;
 
             // col: 51 offset: 0037
             packed37 = parser.ReadOffset< byte >( 0x37, ExcelColumnDataType.UInt8 );
 
+            AffectsPosition = ( packed37 & 0x1 ) == 0x1;
+            IsPvP = ( packed37 & 0x2 ) == 0x2;
+            packed37_4 = ( packed37 & 0x4 ) == 0x4;
+            packed37_8 = ( packed37 & 0x8 ) == 0x8;
+            packed37_10 = ( packed37 & 0x10 ) == 0x10;
+            packed37_20 = ( packed37 & 0x20 ) == 0x20;
+            packed37_40 = ( packed37 & 0x40 ) == 0x40;
+            packed37_80 = ( packed37 & 0x80 ) == 0x80;
+
             // col: 60 offset: 0038
             packed38 = parser.ReadOffset< byte >( 0x38, ExcelColumnDataType.UInt8 );
+
+            packed38_1 = ( packed38 & 0x1 ) == 0x1;
+            packed38_2 = ( packed38 & 0x2 ) == 0x2;
+            packed38_4 = ( packed38 & 0x4 ) == 0x4;
+            packed38_8 = ( packed38 & 0x8 ) == 0x8;
+            IsPlayerAction = ( packed38 & 0x10 ) == 0x10;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Mount", columnHash: 0x3b2b9eb0 )]
     public class Mount : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -123,14 +123,14 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4a;
 
         // col: 23 offset: 004b
-        private byte packed4b;
-        public bool packed4b_1 => ( packed4b & 0x1 ) == 0x1;
-        public bool IsEmote => ( packed4b & 0x2 ) == 0x2;
-        public bool IsAirborne => ( packed4b & 0x4 ) == 0x4;
-        public bool ExHotbarEnableConfig => ( packed4b & 0x8 ) == 0x8;
-        public bool UseEP => ( packed4b & 0x10 ) == 0x10;
-        public bool packed4b_20 => ( packed4b & 0x20 ) == 0x20;
-        public bool IsImmobile => ( packed4b & 0x40 ) == 0x40;
+        public bool packed4b_1;
+        public byte packed4b;
+        public bool IsEmote;
+        public bool IsAirborne;
+        public bool ExHotbarEnableConfig;
+        public bool UseEP;
+        public bool packed4b_20;
+        public bool IsImmobile;
 
 
         public int RowId { get; set; }
@@ -257,6 +257,14 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 23 offset: 004b
             packed4b = parser.ReadOffset< byte >( 0x4b, ExcelColumnDataType.UInt8 );
+
+            packed4b_1 = ( packed4b & 0x1 ) == 0x1;
+            IsEmote = ( packed4b & 0x2 ) == 0x2;
+            IsAirborne = ( packed4b & 0x4 ) == 0x4;
+            ExHotbarEnableConfig = ( packed4b & 0x8 ) == 0x8;
+            UseEP = ( packed4b & 0x10 ) == 0x10;
+            packed4b_20 = ( packed4b & 0x20 ) == 0x20;
+            IsImmobile = ( packed4b & 0x40 ) == 0x40;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BGMSwitch", columnHash: 0x0989d4f2 )]
     public class BGMSwitch : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000

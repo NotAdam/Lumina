@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "DpsChallenge", columnHash: 0x944cf024 )]
     public class DpsChallenge : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 04 offset: 0000

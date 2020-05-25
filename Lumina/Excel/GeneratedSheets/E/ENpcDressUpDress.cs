@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ENpcDressUpDress", columnHash: 0xc427517b )]
     public class ENpcDressUpDress : IExcelRow
     {
-        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 35 offset: 0000
@@ -174,11 +174,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown6a;
 
         // col: 01 offset: 006b
-        private byte packed6b;
-        public bool packed6b_1 => ( packed6b & 0x1 ) == 0x1;
-        public bool packed6b_2 => ( packed6b & 0x2 ) == 0x2;
-        public bool packed6b_4 => ( packed6b & 0x4 ) == 0x4;
-        public bool packed6b_8 => ( packed6b & 0x8 ) == 0x8;
+        public bool packed6b_1;
+        public byte packed6b;
+        public bool packed6b_2;
+        public bool packed6b_4;
+        public bool packed6b_8;
 
 
         public int RowId { get; set; }
@@ -356,6 +356,11 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 1 offset: 006b
             packed6b = parser.ReadOffset< byte >( 0x6b, ExcelColumnDataType.UInt8 );
+
+            packed6b_1 = ( packed6b & 0x1 ) == 0x1;
+            packed6b_2 = ( packed6b & 0x2 ) == 0x2;
+            packed6b_4 = ( packed6b & 0x4 ) == 0x4;
+            packed6b_8 = ( packed6b & 0x8 ) == 0x8;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "SubmarineExploration", columnHash: 0xff922bb4 )]
     public class SubmarineExploration : IExcelRow
     {
-        // column defs from Fri, 28 Jun 2019 17:13:11 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -45,8 +45,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte DistanceForSurvey;
 
         // col: 06 offset: 0019
-        private byte packed19;
-        public bool packed19_1 => ( packed19 & 0x1 ) == 0x1;
+        public bool packed19_1;
+        public byte packed19;
 
 
         public int RowId { get; set; }
@@ -95,6 +95,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 6 offset: 0019
             packed19 = parser.ReadOffset< byte >( 0x19, ExcelColumnDataType.UInt8 );
+
+            packed19_1 = ( packed19 & 0x1 ) == 0x1;
 
 
         }

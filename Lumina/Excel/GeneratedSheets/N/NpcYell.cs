@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "NpcYell", columnHash: 0xbd07b3cb )]
     public class NpcYell : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 10 offset: 0000
@@ -27,12 +27,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte OutputType;
 
         // col: 02 offset: 0012
-        private byte packed12;
-        public bool packed12_1 => ( packed12 & 0x1 ) == 0x1;
-        public bool packed12_2 => ( packed12 & 0x2 ) == 0x2;
-        public bool packed12_4 => ( packed12 & 0x4 ) == 0x4;
-        public bool IsBalloonSlow => ( packed12 & 0x8 ) == 0x8;
-        public bool BattleTalkTime => ( packed12 & 0x10 ) == 0x10;
+        public bool packed12_1;
+        public byte packed12;
+        public bool packed12_2;
+        public bool packed12_4;
+        public bool IsBalloonSlow;
+        public bool BattleTalkTime;
 
 
         public int RowId { get; set; }
@@ -63,6 +63,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0012
             packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
+
+            packed12_1 = ( packed12 & 0x1 ) == 0x1;
+            packed12_2 = ( packed12 & 0x2 ) == 0x2;
+            packed12_4 = ( packed12 & 0x4 ) == 0x4;
+            IsBalloonSlow = ( packed12 & 0x8 ) == 0x8;
+            BattleTalkTime = ( packed12 & 0x10 ) == 0x10;
 
 
         }

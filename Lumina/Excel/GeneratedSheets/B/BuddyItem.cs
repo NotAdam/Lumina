@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BuddyItem", columnHash: 0xfa9fc03d )]
     public class BuddyItem : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -15,10 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Status;
 
         // col: 01 offset: 0003
-        private byte packed3;
-        public bool UseField => ( packed3 & 0x1 ) == 0x1;
-        public bool UseTraining => ( packed3 & 0x2 ) == 0x2;
-        public bool packed3_4 => ( packed3 & 0x4 ) == 0x4;
+        public bool UseField;
+        public byte packed3;
+        public bool UseTraining;
+        public bool packed3_4;
 
 
         public int RowId { get; set; }
@@ -37,6 +37,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 1 offset: 0003
             packed3 = parser.ReadOffset< byte >( 0x3, ExcelColumnDataType.UInt8 );
+
+            UseField = ( packed3 & 0x1 ) == 0x1;
+            UseTraining = ( packed3 & 0x2 ) == 0x2;
+            packed3_4 = ( packed3 & 0x4 ) == 0x4;
 
 
         }

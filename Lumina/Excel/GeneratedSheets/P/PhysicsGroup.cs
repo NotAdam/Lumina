@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "PhysicsGroup", columnHash: 0xfa594271 )]
     public class PhysicsGroup : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -24,9 +24,9 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte[] ConfigSwitch;
 
         // col: 12 offset: 003b
-        private byte packed3b;
-        public bool ResetByLookAt => ( packed3b & 0x1 ) == 0x1;
-        public bool ForceAttractByPhysicsOff => ( packed3b & 0x2 ) == 0x2;
+        public bool ResetByLookAt;
+        public byte packed3b;
+        public bool ForceAttractByPhysicsOff;
 
 
         public int RowId { get; set; }
@@ -69,6 +69,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 12 offset: 003b
             packed3b = parser.ReadOffset< byte >( 0x3b, ExcelColumnDataType.UInt8 );
+
+            ResetByLookAt = ( packed3b & 0x1 ) == 0x1;
+            ForceAttractByPhysicsOff = ( packed3b & 0x2 ) == 0x2;
 
 
         }

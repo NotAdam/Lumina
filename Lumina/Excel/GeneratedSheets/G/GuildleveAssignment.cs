@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "GuildleveAssignment", columnHash: 0x55964b3b )]
     public class GuildleveAssignment : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -21,12 +21,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown10;
 
         // col: 04 offset: 0011
-        private byte packed11;
-        public bool packed11_1 => ( packed11 & 0x1 ) == 0x1;
-        public bool packed11_2 => ( packed11 & 0x2 ) == 0x2;
-        public bool packed11_4 => ( packed11 & 0x4 ) == 0x4;
-        public bool packed11_8 => ( packed11 & 0x8 ) == 0x8;
-        public bool packed11_10 => ( packed11 & 0x10 ) == 0x10;
+        public bool packed11_1;
+        public byte packed11;
+        public bool packed11_2;
+        public bool packed11_4;
+        public bool packed11_8;
+        public bool packed11_10;
 
 
         public int RowId { get; set; }
@@ -53,6 +53,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 0011
             packed11 = parser.ReadOffset< byte >( 0x11, ExcelColumnDataType.UInt8 );
+
+            packed11_1 = ( packed11 & 0x1 ) == 0x1;
+            packed11_2 = ( packed11 & 0x2 ) == 0x2;
+            packed11_4 = ( packed11 & 0x4 ) == 0x4;
+            packed11_8 = ( packed11 & 0x8 ) == 0x8;
+            packed11_10 = ( packed11 & 0x10 ) == 0x10;
 
 
         }

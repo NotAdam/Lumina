@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CharaMakeCustomize", columnHash: 0x2ba6bf0f )]
     public class CharaMakeCustomize : IExcelRow
     {
-        // column defs from Sun, 09 Feb 2020 20:51:08 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -24,8 +24,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte FeatureID;
 
         // col: 03 offset: 000f
-        private byte packedf;
-        public bool IsPurchasable => ( packedf & 0x1 ) == 0x1;
+        public bool IsPurchasable;
+        public byte packedf;
 
 
         public int RowId { get; set; }
@@ -53,6 +53,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 000f
             packedf = parser.ReadOffset< byte >( 0xf, ExcelColumnDataType.UInt8 );
+
+            IsPurchasable = ( packedf & 0x1 ) == 0x1;
 
 
         }

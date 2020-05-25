@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "FishingSpot", columnHash: 0x0a291860 )]
     public class FishingSpot : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -51,8 +51,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Order;
 
         // col: 04 offset: 0042
-        private byte packed42;
-        public bool Rare => ( packed42 & 0x1 ) == 0x1;
+        public bool Rare;
+        public byte packed42;
 
 
         public int RowId { get; set; }
@@ -117,6 +117,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 0042
             packed42 = parser.ReadOffset< byte >( 0x42, ExcelColumnDataType.UInt8 );
+
+            Rare = ( packed42 & 0x1 ) == 0x1;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BGM", columnHash: 0xc9fc6953 )]
     public class BGM : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -21,10 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte SpecialMode;
 
         // col: 02 offset: 000a
-        private byte packeda;
-        public bool DisableRestartTimeOut => ( packeda & 0x1 ) == 0x1;
-        public bool DisableRestart => ( packeda & 0x2 ) == 0x2;
-        public bool PassEnd => ( packeda & 0x4 ) == 0x4;
+        public bool DisableRestartTimeOut;
+        public byte packeda;
+        public bool DisableRestart;
+        public bool PassEnd;
 
 
         public int RowId { get; set; }
@@ -49,6 +49,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 000a
             packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
+
+            DisableRestartTimeOut = ( packeda & 0x1 ) == 0x1;
+            DisableRestart = ( packeda & 0x2 ) == 0x2;
+            PassEnd = ( packeda & 0x4 ) == 0x4;
 
 
         }

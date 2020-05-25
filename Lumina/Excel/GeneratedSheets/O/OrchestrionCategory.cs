@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "OrchestrionCategory", columnHash: 0x7ac3ee00 )]
     public class OrchestrionCategory : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -15,10 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint unknown4;
 
         // col: 01 offset: 0008
-        public byte unknown8;
+        public byte HideCategory;
 
         // col: 03 offset: 0009
-        public byte unknown9;
+        public byte Order;
 
 
         public int RowId { get; set; }
@@ -36,10 +36,10 @@ namespace Lumina.Excel.GeneratedSheets
             unknown4 = parser.ReadOffset< uint >( 0x4 );
 
             // col: 1 offset: 0008
-            unknown8 = parser.ReadOffset< byte >( 0x8 );
+            HideCategory = parser.ReadOffset< byte >( 0x8 );
 
             // col: 3 offset: 0009
-            unknown9 = parser.ReadOffset< byte >( 0x9 );
+            Order = parser.ReadOffset< byte >( 0x9 );
 
 
         }

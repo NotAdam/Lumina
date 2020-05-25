@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CompanionTransient", columnHash: 0xea0b06cf )]
     public class CompanionTransient : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -36,12 +36,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MinionSkillType;
 
         // col: 08 offset: 0018
-        private byte packed18;
-        public bool HasAreaAttack => ( packed18 & 0x1 ) == 0x1;
-        public bool StrengthGate => ( packed18 & 0x2 ) == 0x2;
-        public bool StrengthEye => ( packed18 & 0x4 ) == 0x4;
-        public bool StrengthShield => ( packed18 & 0x8 ) == 0x8;
-        public bool StrengthArcana => ( packed18 & 0x10 ) == 0x10;
+        public bool HasAreaAttack;
+        public byte packed18;
+        public bool StrengthGate;
+        public bool StrengthEye;
+        public bool StrengthShield;
+        public bool StrengthArcana;
 
 
         public int RowId { get; set; }
@@ -81,6 +81,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 8 offset: 0018
             packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
+
+            HasAreaAttack = ( packed18 & 0x1 ) == 0x1;
+            StrengthGate = ( packed18 & 0x2 ) == 0x2;
+            StrengthEye = ( packed18 & 0x4 ) == 0x4;
+            StrengthShield = ( packed18 & 0x8 ) == 0x8;
+            StrengthArcana = ( packed18 & 0x10 ) == 0x10;
 
 
         }

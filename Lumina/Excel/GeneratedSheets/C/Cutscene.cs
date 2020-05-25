@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Cutscene", columnHash: 0x35b9ac80 )]
     public class Cutscene : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -30,8 +30,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown15;
 
         // col: 03 offset: 0016
-        private byte packed16;
-        public bool packed16_1 => ( packed16 & 0x1 ) == 0x1;
+        public bool packed16_1;
+        public byte packed16;
 
 
         public int RowId { get; set; }
@@ -65,6 +65,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 0016
             packed16 = parser.ReadOffset< byte >( 0x16, ExcelColumnDataType.UInt8 );
+
+            packed16_1 = ( packed16 & 0x1 ) == 0x1;
 
 
         }

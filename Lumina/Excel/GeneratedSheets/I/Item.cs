@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Item", columnHash: 0x9f2e970b )]
     public class Item : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -153,10 +153,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown68;
 
         // col: 87 offset: 0069
-        private byte packed69;
-        public bool IsAdvancedMeldingPermitted => ( packed69 & 0x1 ) == 0x1;
-        public bool IsPvP => ( packed69 & 0x2 ) == 0x2;
-        public bool IsGlamourous => ( packed69 & 0x4 ) == 0x4;
+        public bool IsAdvancedMeldingPermitted;
+        public byte packed69;
+        public bool IsPvP;
+        public bool IsGlamourous;
 
         // col: 14 offset: 0070
         public uint AdditionalData;
@@ -192,10 +192,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Cooldowns;
 
         // col: 35 offset: 0092
-        public ushort Salvage;
+        public ushort unknown92;
 
         // col: 36 offset: 0094
-        public ushort unknown94;
+        public ushort Salvage;
 
         // col: 39 offset: 0096
         public ushort AetherialReduce;
@@ -222,19 +222,19 @@ namespace Lumina.Excel.GeneratedSheets
         public byte ClassJobRepair;
 
         // col: 20 offset: 009f
-        private byte packed9f;
-        public bool IsUnique => ( packed9f & 0x1 ) == 0x1;
-        public bool IsUntradable => ( packed9f & 0x2 ) == 0x2;
-        public bool IsIndisposable => ( packed9f & 0x4 ) == 0x4;
-        public bool Lot => ( packed9f & 0x8 ) == 0x8;
-        public bool CanBeHq => ( packed9f & 0x10 ) == 0x10;
-        public bool IsDyeable => ( packed9f & 0x20 ) == 0x20;
-        public bool IsCrestWorthy => ( packed9f & 0x40 ) == 0x40;
-        public bool IsCollectable => ( packed9f & 0x80 ) == 0x80;
+        public bool IsUnique;
+        public byte packed9f;
+        public bool IsUntradable;
+        public bool IsIndisposable;
+        public bool Lot;
+        public bool CanBeHq;
+        public bool IsDyeable;
+        public bool IsCrestWorthy;
+        public bool IsCollectable;
 
         // col: 38 offset: 00a0
-        private byte packeda0;
-        public bool AlwaysCollectable => ( packeda0 & 0x1 ) == 0x1;
+        public bool AlwaysCollectable;
+        public byte packeda0;
 
 
         public int RowId { get; set; }
@@ -404,6 +404,10 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 87 offset: 0069
             packed69 = parser.ReadOffset< byte >( 0x69, ExcelColumnDataType.UInt8 );
 
+            IsAdvancedMeldingPermitted = ( packed69 & 0x1 ) == 0x1;
+            IsPvP = ( packed69 & 0x2 ) == 0x2;
+            IsGlamourous = ( packed69 & 0x4 ) == 0x4;
+
             // col: 14 offset: 0070
             AdditionalData = parser.ReadOffset< uint >( 0x70 );
 
@@ -438,10 +442,10 @@ namespace Lumina.Excel.GeneratedSheets
             Cooldowns = parser.ReadOffset< ushort >( 0x90 );
 
             // col: 35 offset: 0092
-            Salvage = parser.ReadOffset< ushort >( 0x92 );
+            unknown92 = parser.ReadOffset< ushort >( 0x92 );
 
             // col: 36 offset: 0094
-            unknown94 = parser.ReadOffset< ushort >( 0x94 );
+            Salvage = parser.ReadOffset< ushort >( 0x94 );
 
             // col: 39 offset: 0096
             AetherialReduce = parser.ReadOffset< ushort >( 0x96 );
@@ -470,8 +474,19 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 20 offset: 009f
             packed9f = parser.ReadOffset< byte >( 0x9f, ExcelColumnDataType.UInt8 );
 
+            IsUnique = ( packed9f & 0x1 ) == 0x1;
+            IsUntradable = ( packed9f & 0x2 ) == 0x2;
+            IsIndisposable = ( packed9f & 0x4 ) == 0x4;
+            Lot = ( packed9f & 0x8 ) == 0x8;
+            CanBeHq = ( packed9f & 0x10 ) == 0x10;
+            IsDyeable = ( packed9f & 0x20 ) == 0x20;
+            IsCrestWorthy = ( packed9f & 0x40 ) == 0x40;
+            IsCollectable = ( packed9f & 0x80 ) == 0x80;
+
             // col: 38 offset: 00a0
             packeda0 = parser.ReadOffset< byte >( 0xa0, ExcelColumnDataType.UInt8 );
+
+            AlwaysCollectable = ( packeda0 & 0x1 ) == 0x1;
 
 
         }

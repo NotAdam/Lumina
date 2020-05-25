@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ActionTimelineMove", columnHash: 0x4a51230b )]
     public class ActionTimelineMove : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -21,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown3;
 
         // col: 04 offset: 0004
-        private byte packed4;
-        public bool packed4_1 => ( packed4 & 0x1 ) == 0x1;
+        public bool packed4_1;
+        public byte packed4;
 
 
         public int RowId { get; set; }
@@ -47,6 +47,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 0004
             packed4 = parser.ReadOffset< byte >( 0x4, ExcelColumnDataType.UInt8 );
+
+            packed4_1 = ( packed4 & 0x1 ) == 0x1;
 
 
         }

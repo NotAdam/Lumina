@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CharaMakeType", columnHash: 0x5a353b46 )]
     public class CharaMakeType : IExcelRow
     {
-        // column defs from Sun, 09 Feb 2020 20:51:08 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 03 offset: 0000
@@ -8949,7 +8949,154 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] VoiceStruct;
 
         // col: 3291 offset: 2edc
-        public int[] FacialFeatureOption;
+        public int[] unknown2edc;
+
+        // col: 3299 offset: 2ee0
+        public int unknown2ee0;
+
+        // col: 3307 offset: 2ee4
+        public int unknown2ee4;
+
+        // col: 3315 offset: 2ee8
+        public int unknown2ee8;
+
+        // col: 3323 offset: 2eec
+        public int unknown2eec;
+
+        // col: 3331 offset: 2ef0
+        public int unknown2ef0;
+
+        // col: 3339 offset: 2ef4
+        public int unknown2ef4;
+
+        // col: 3300 offset: 2efc
+        public int unknown2efc;
+
+        // col: 3308 offset: 2f00
+        public int unknown2f00;
+
+        // col: 3316 offset: 2f04
+        public int unknown2f04;
+
+        // col: 3324 offset: 2f08
+        public int unknown2f08;
+
+        // col: 3332 offset: 2f0c
+        public int unknown2f0c;
+
+        // col: 3340 offset: 2f10
+        public int unknown2f10;
+
+        // col: 3301 offset: 2f18
+        public int unknown2f18;
+
+        // col: 3309 offset: 2f1c
+        public int unknown2f1c;
+
+        // col: 3317 offset: 2f20
+        public int unknown2f20;
+
+        // col: 3325 offset: 2f24
+        public int unknown2f24;
+
+        // col: 3333 offset: 2f28
+        public int unknown2f28;
+
+        // col: 3341 offset: 2f2c
+        public int unknown2f2c;
+
+        // col: 3302 offset: 2f34
+        public int unknown2f34;
+
+        // col: 3310 offset: 2f38
+        public int unknown2f38;
+
+        // col: 3318 offset: 2f3c
+        public int unknown2f3c;
+
+        // col: 3326 offset: 2f40
+        public int unknown2f40;
+
+        // col: 3334 offset: 2f44
+        public int unknown2f44;
+
+        // col: 3342 offset: 2f48
+        public int unknown2f48;
+
+        // col: 3303 offset: 2f50
+        public int unknown2f50;
+
+        // col: 3311 offset: 2f54
+        public int unknown2f54;
+
+        // col: 3319 offset: 2f58
+        public int unknown2f58;
+
+        // col: 3327 offset: 2f5c
+        public int unknown2f5c;
+
+        // col: 3335 offset: 2f60
+        public int unknown2f60;
+
+        // col: 3343 offset: 2f64
+        public int unknown2f64;
+
+        // col: 3304 offset: 2f6c
+        public int unknown2f6c;
+
+        // col: 3312 offset: 2f70
+        public int unknown2f70;
+
+        // col: 3320 offset: 2f74
+        public int unknown2f74;
+
+        // col: 3328 offset: 2f78
+        public int unknown2f78;
+
+        // col: 3336 offset: 2f7c
+        public int unknown2f7c;
+
+        // col: 3344 offset: 2f80
+        public int unknown2f80;
+
+        // col: 3305 offset: 2f88
+        public int unknown2f88;
+
+        // col: 3313 offset: 2f8c
+        public int unknown2f8c;
+
+        // col: 3321 offset: 2f90
+        public int unknown2f90;
+
+        // col: 3329 offset: 2f94
+        public int unknown2f94;
+
+        // col: 3337 offset: 2f98
+        public int unknown2f98;
+
+        // col: 3345 offset: 2f9c
+        public int unknown2f9c;
+
+        // col: 3298 offset: 2fa0
+        public int unknown2fa0;
+
+        // col: 3306 offset: 2fa4
+        public int unknown2fa4;
+
+        // col: 3314 offset: 2fa8
+        public int unknown2fa8;
+
+        // col: 3322 offset: 2fac
+        public int unknown2fac;
+
+        // col: 3330 offset: 2fb0
+        public int unknown2fb0;
+
+        // col: 3338 offset: 2fb4
+        public int unknown2fb4;
+
+        // col: 3346 offset: 2fb8
+        public int unknown2fb8;
 
         // col: 3347 offset: 2fc0
         public ulong[] unknown2fc0;
@@ -18291,63 +18438,161 @@ namespace Lumina.Excel.GeneratedSheets
             VoiceStruct[11] = parser.ReadOffset< byte >( 0x2edb );
 
             // col: 3291 offset: 2edc
-            FacialFeatureOption = new int[56];
-            FacialFeatureOption[0] = parser.ReadOffset< int >( 0x2edc );
-            FacialFeatureOption[1] = parser.ReadOffset< int >( 0x2ef8 );
-            FacialFeatureOption[2] = parser.ReadOffset< int >( 0x2f14 );
-            FacialFeatureOption[3] = parser.ReadOffset< int >( 0x2f30 );
-            FacialFeatureOption[4] = parser.ReadOffset< int >( 0x2f4c );
-            FacialFeatureOption[5] = parser.ReadOffset< int >( 0x2f68 );
-            FacialFeatureOption[6] = parser.ReadOffset< int >( 0x2f84 );
-            FacialFeatureOption[7] = parser.ReadOffset< int >( 0x2fa0 );
-            FacialFeatureOption[8] = parser.ReadOffset< int >( 0x2ee0 );
-            FacialFeatureOption[9] = parser.ReadOffset< int >( 0x2efc );
-            FacialFeatureOption[10] = parser.ReadOffset< int >( 0x2f18 );
-            FacialFeatureOption[11] = parser.ReadOffset< int >( 0x2f34 );
-            FacialFeatureOption[12] = parser.ReadOffset< int >( 0x2f50 );
-            FacialFeatureOption[13] = parser.ReadOffset< int >( 0x2f6c );
-            FacialFeatureOption[14] = parser.ReadOffset< int >( 0x2f88 );
-            FacialFeatureOption[15] = parser.ReadOffset< int >( 0x2fa4 );
-            FacialFeatureOption[16] = parser.ReadOffset< int >( 0x2ee4 );
-            FacialFeatureOption[17] = parser.ReadOffset< int >( 0x2f00 );
-            FacialFeatureOption[18] = parser.ReadOffset< int >( 0x2f1c );
-            FacialFeatureOption[19] = parser.ReadOffset< int >( 0x2f38 );
-            FacialFeatureOption[20] = parser.ReadOffset< int >( 0x2f54 );
-            FacialFeatureOption[21] = parser.ReadOffset< int >( 0x2f70 );
-            FacialFeatureOption[22] = parser.ReadOffset< int >( 0x2f8c );
-            FacialFeatureOption[23] = parser.ReadOffset< int >( 0x2fa8 );
-            FacialFeatureOption[24] = parser.ReadOffset< int >( 0x2ee8 );
-            FacialFeatureOption[25] = parser.ReadOffset< int >( 0x2f04 );
-            FacialFeatureOption[26] = parser.ReadOffset< int >( 0x2f20 );
-            FacialFeatureOption[27] = parser.ReadOffset< int >( 0x2f3c );
-            FacialFeatureOption[28] = parser.ReadOffset< int >( 0x2f58 );
-            FacialFeatureOption[29] = parser.ReadOffset< int >( 0x2f74 );
-            FacialFeatureOption[30] = parser.ReadOffset< int >( 0x2f90 );
-            FacialFeatureOption[31] = parser.ReadOffset< int >( 0x2fac );
-            FacialFeatureOption[32] = parser.ReadOffset< int >( 0x2eec );
-            FacialFeatureOption[33] = parser.ReadOffset< int >( 0x2f08 );
-            FacialFeatureOption[34] = parser.ReadOffset< int >( 0x2f24 );
-            FacialFeatureOption[35] = parser.ReadOffset< int >( 0x2f40 );
-            FacialFeatureOption[36] = parser.ReadOffset< int >( 0x2f5c );
-            FacialFeatureOption[37] = parser.ReadOffset< int >( 0x2f78 );
-            FacialFeatureOption[38] = parser.ReadOffset< int >( 0x2f94 );
-            FacialFeatureOption[39] = parser.ReadOffset< int >( 0x2fb0 );
-            FacialFeatureOption[40] = parser.ReadOffset< int >( 0x2ef0 );
-            FacialFeatureOption[41] = parser.ReadOffset< int >( 0x2f0c );
-            FacialFeatureOption[42] = parser.ReadOffset< int >( 0x2f28 );
-            FacialFeatureOption[43] = parser.ReadOffset< int >( 0x2f44 );
-            FacialFeatureOption[44] = parser.ReadOffset< int >( 0x2f60 );
-            FacialFeatureOption[45] = parser.ReadOffset< int >( 0x2f7c );
-            FacialFeatureOption[46] = parser.ReadOffset< int >( 0x2f98 );
-            FacialFeatureOption[47] = parser.ReadOffset< int >( 0x2fb4 );
-            FacialFeatureOption[48] = parser.ReadOffset< int >( 0x2ef4 );
-            FacialFeatureOption[49] = parser.ReadOffset< int >( 0x2f10 );
-            FacialFeatureOption[50] = parser.ReadOffset< int >( 0x2f2c );
-            FacialFeatureOption[51] = parser.ReadOffset< int >( 0x2f48 );
-            FacialFeatureOption[52] = parser.ReadOffset< int >( 0x2f64 );
-            FacialFeatureOption[53] = parser.ReadOffset< int >( 0x2f80 );
-            FacialFeatureOption[54] = parser.ReadOffset< int >( 0x2f9c );
-            FacialFeatureOption[55] = parser.ReadOffset< int >( 0x2fb8 );
+            unknown2edc = new int[7];
+            unknown2edc[0] = parser.ReadOffset< int >( 0x2edc );
+            unknown2edc[1] = parser.ReadOffset< int >( 0x2ef8 );
+            unknown2edc[2] = parser.ReadOffset< int >( 0x2f14 );
+            unknown2edc[3] = parser.ReadOffset< int >( 0x2f30 );
+            unknown2edc[4] = parser.ReadOffset< int >( 0x2f4c );
+            unknown2edc[5] = parser.ReadOffset< int >( 0x2f68 );
+            unknown2edc[6] = parser.ReadOffset< int >( 0x2f84 );
+
+            // col: 3299 offset: 2ee0
+            unknown2ee0 = parser.ReadOffset< int >( 0x2ee0 );
+
+            // col: 3307 offset: 2ee4
+            unknown2ee4 = parser.ReadOffset< int >( 0x2ee4 );
+
+            // col: 3315 offset: 2ee8
+            unknown2ee8 = parser.ReadOffset< int >( 0x2ee8 );
+
+            // col: 3323 offset: 2eec
+            unknown2eec = parser.ReadOffset< int >( 0x2eec );
+
+            // col: 3331 offset: 2ef0
+            unknown2ef0 = parser.ReadOffset< int >( 0x2ef0 );
+
+            // col: 3339 offset: 2ef4
+            unknown2ef4 = parser.ReadOffset< int >( 0x2ef4 );
+
+            // col: 3300 offset: 2efc
+            unknown2efc = parser.ReadOffset< int >( 0x2efc );
+
+            // col: 3308 offset: 2f00
+            unknown2f00 = parser.ReadOffset< int >( 0x2f00 );
+
+            // col: 3316 offset: 2f04
+            unknown2f04 = parser.ReadOffset< int >( 0x2f04 );
+
+            // col: 3324 offset: 2f08
+            unknown2f08 = parser.ReadOffset< int >( 0x2f08 );
+
+            // col: 3332 offset: 2f0c
+            unknown2f0c = parser.ReadOffset< int >( 0x2f0c );
+
+            // col: 3340 offset: 2f10
+            unknown2f10 = parser.ReadOffset< int >( 0x2f10 );
+
+            // col: 3301 offset: 2f18
+            unknown2f18 = parser.ReadOffset< int >( 0x2f18 );
+
+            // col: 3309 offset: 2f1c
+            unknown2f1c = parser.ReadOffset< int >( 0x2f1c );
+
+            // col: 3317 offset: 2f20
+            unknown2f20 = parser.ReadOffset< int >( 0x2f20 );
+
+            // col: 3325 offset: 2f24
+            unknown2f24 = parser.ReadOffset< int >( 0x2f24 );
+
+            // col: 3333 offset: 2f28
+            unknown2f28 = parser.ReadOffset< int >( 0x2f28 );
+
+            // col: 3341 offset: 2f2c
+            unknown2f2c = parser.ReadOffset< int >( 0x2f2c );
+
+            // col: 3302 offset: 2f34
+            unknown2f34 = parser.ReadOffset< int >( 0x2f34 );
+
+            // col: 3310 offset: 2f38
+            unknown2f38 = parser.ReadOffset< int >( 0x2f38 );
+
+            // col: 3318 offset: 2f3c
+            unknown2f3c = parser.ReadOffset< int >( 0x2f3c );
+
+            // col: 3326 offset: 2f40
+            unknown2f40 = parser.ReadOffset< int >( 0x2f40 );
+
+            // col: 3334 offset: 2f44
+            unknown2f44 = parser.ReadOffset< int >( 0x2f44 );
+
+            // col: 3342 offset: 2f48
+            unknown2f48 = parser.ReadOffset< int >( 0x2f48 );
+
+            // col: 3303 offset: 2f50
+            unknown2f50 = parser.ReadOffset< int >( 0x2f50 );
+
+            // col: 3311 offset: 2f54
+            unknown2f54 = parser.ReadOffset< int >( 0x2f54 );
+
+            // col: 3319 offset: 2f58
+            unknown2f58 = parser.ReadOffset< int >( 0x2f58 );
+
+            // col: 3327 offset: 2f5c
+            unknown2f5c = parser.ReadOffset< int >( 0x2f5c );
+
+            // col: 3335 offset: 2f60
+            unknown2f60 = parser.ReadOffset< int >( 0x2f60 );
+
+            // col: 3343 offset: 2f64
+            unknown2f64 = parser.ReadOffset< int >( 0x2f64 );
+
+            // col: 3304 offset: 2f6c
+            unknown2f6c = parser.ReadOffset< int >( 0x2f6c );
+
+            // col: 3312 offset: 2f70
+            unknown2f70 = parser.ReadOffset< int >( 0x2f70 );
+
+            // col: 3320 offset: 2f74
+            unknown2f74 = parser.ReadOffset< int >( 0x2f74 );
+
+            // col: 3328 offset: 2f78
+            unknown2f78 = parser.ReadOffset< int >( 0x2f78 );
+
+            // col: 3336 offset: 2f7c
+            unknown2f7c = parser.ReadOffset< int >( 0x2f7c );
+
+            // col: 3344 offset: 2f80
+            unknown2f80 = parser.ReadOffset< int >( 0x2f80 );
+
+            // col: 3305 offset: 2f88
+            unknown2f88 = parser.ReadOffset< int >( 0x2f88 );
+
+            // col: 3313 offset: 2f8c
+            unknown2f8c = parser.ReadOffset< int >( 0x2f8c );
+
+            // col: 3321 offset: 2f90
+            unknown2f90 = parser.ReadOffset< int >( 0x2f90 );
+
+            // col: 3329 offset: 2f94
+            unknown2f94 = parser.ReadOffset< int >( 0x2f94 );
+
+            // col: 3337 offset: 2f98
+            unknown2f98 = parser.ReadOffset< int >( 0x2f98 );
+
+            // col: 3345 offset: 2f9c
+            unknown2f9c = parser.ReadOffset< int >( 0x2f9c );
+
+            // col: 3298 offset: 2fa0
+            unknown2fa0 = parser.ReadOffset< int >( 0x2fa0 );
+
+            // col: 3306 offset: 2fa4
+            unknown2fa4 = parser.ReadOffset< int >( 0x2fa4 );
+
+            // col: 3314 offset: 2fa8
+            unknown2fa8 = parser.ReadOffset< int >( 0x2fa8 );
+
+            // col: 3322 offset: 2fac
+            unknown2fac = parser.ReadOffset< int >( 0x2fac );
+
+            // col: 3330 offset: 2fb0
+            unknown2fb0 = parser.ReadOffset< int >( 0x2fb0 );
+
+            // col: 3338 offset: 2fb4
+            unknown2fb4 = parser.ReadOffset< int >( 0x2fb4 );
+
+            // col: 3346 offset: 2fb8
+            unknown2fb8 = parser.ReadOffset< int >( 0x2fb8 );
 
             // col: 3347 offset: 2fc0
             unknown2fc0 = new ulong[1];

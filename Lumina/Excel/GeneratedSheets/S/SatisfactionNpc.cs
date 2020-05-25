@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "SatisfactionNpc", columnHash: 0x7a8036fa )]
     public class SatisfactionNpc : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 04 offset: 0000

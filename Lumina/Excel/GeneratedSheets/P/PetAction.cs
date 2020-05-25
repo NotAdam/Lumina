@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "PetAction", columnHash: 0x5e492849 )]
     public class PetAction : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -24,10 +24,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Pet;
 
         // col: 05 offset: 000f
-        private byte packedf;
-        public bool MasterOrder => ( packedf & 0x1 ) == 0x1;
-        public bool DisableOrder => ( packedf & 0x2 ) == 0x2;
-        public bool packedf_4 => ( packedf & 0x4 ) == 0x4;
+        public bool MasterOrder;
+        public byte packedf;
+        public bool DisableOrder;
+        public bool packedf_4;
 
 
         public int RowId { get; set; }
@@ -55,6 +55,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 5 offset: 000f
             packedf = parser.ReadOffset< byte >( 0xf, ExcelColumnDataType.UInt8 );
+
+            MasterOrder = ( packedf & 0x1 ) == 0x1;
+            DisableOrder = ( packedf & 0x2 ) == 0x2;
+            packedf_4 = ( packedf & 0x4 ) == 0x4;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Perform", columnHash: 0x48a99e9c )]
     public class Perform : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 06 offset: 0000
@@ -42,8 +42,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Transient;
 
         // col: 01 offset: 0023
-        private byte packed23;
-        public bool packed23_1 => ( packed23 & 0x1 ) == 0x1;
+        public bool packed23_1;
+        public byte packed23;
 
 
         public int RowId { get; set; }
@@ -89,6 +89,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 1 offset: 0023
             packed23 = parser.ReadOffset< byte >( 0x23, ExcelColumnDataType.UInt8 );
+
+            packed23_1 = ( packed23 & 0x1 ) == 0x1;
 
 
         }

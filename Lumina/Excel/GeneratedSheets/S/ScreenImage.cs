@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ScreenImage", columnHash: 0xf03c70eb )]
     public class ScreenImage : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -18,8 +18,8 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Type;
 
         // col: 03 offset: 0007
-        private byte packed7;
-        public bool Lang => ( packed7 & 0x1 ) == 0x1;
+        public bool Lang;
+        public byte packed7;
 
 
         public int RowId { get; set; }
@@ -41,6 +41,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 0007
             packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
+
+            Lang = ( packed7 & 0x1 ) == 0x1;
 
 
         }

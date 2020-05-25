@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "TopicSelect", columnHash: 0xc312c89f )]
     public class TopicSelect : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -21,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown2e;
 
         // col: 01 offset: 002f
-        private byte packed2f;
-        public bool packed2f_1 => ( packed2f & 0x1 ) == 0x1;
+        public bool packed2f_1;
+        public byte packed2f;
 
 
         public int RowId { get; set; }
@@ -57,6 +57,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 1 offset: 002f
             packed2f = parser.ReadOffset< byte >( 0x2f, ExcelColumnDataType.UInt8 );
+
+            packed2f_1 = ( packed2f & 0x1 ) == 0x1;
 
 
         }

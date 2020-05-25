@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "LeveAssignmentType", columnHash: 0x7c19f23c )]
     public class LeveAssignmentType : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000
@@ -15,8 +15,8 @@ namespace Lumina.Excel.GeneratedSheets
         public int Icon;
 
         // col: 00 offset: 0008
-        private byte packed8;
-        public bool IsFaction => ( packed8 & 0x1 ) == 0x1;
+        public bool IsFaction;
+        public byte packed8;
 
 
         public int RowId { get; set; }
@@ -35,6 +35,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0008
             packed8 = parser.ReadOffset< byte >( 0x8, ExcelColumnDataType.UInt8 );
+
+            IsFaction = ( packed8 & 0x1 ) == 0x1;
 
 
         }

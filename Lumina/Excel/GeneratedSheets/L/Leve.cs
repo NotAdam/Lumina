@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Leve", columnHash: 0x7e5dafa0 )]
     public class Leve : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -93,10 +93,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte LeveVfxFrame;
 
         // col: 11 offset: 005a
-        private byte packed5a;
-        public bool packed5a_1 => ( packed5a & 0x1 ) == 0x1;
-        public bool CanCancel => ( packed5a & 0x2 ) == 0x2;
-        public bool LockedLeve => ( packed5a & 0x4 ) == 0x4;
+        public bool packed5a_1;
+        public byte packed5a;
+        public bool CanCancel;
+        public bool LockedLeve;
 
 
         public int RowId { get; set; }
@@ -193,6 +193,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 11 offset: 005a
             packed5a = parser.ReadOffset< byte >( 0x5a, ExcelColumnDataType.UInt8 );
+
+            packed5a_1 = ( packed5a & 0x1 ) == 0x1;
+            CanCancel = ( packed5a & 0x2 ) == 0x2;
+            LockedLeve = ( packed5a & 0x4 ) == 0x4;
 
 
         }

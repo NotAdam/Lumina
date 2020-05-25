@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "PartyContent", columnHash: 0x54e6a214 )]
     public class PartyContent : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 05 offset: 0000
@@ -114,8 +114,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown7f;
 
         // col: 02 offset: 0080
-        private byte packed80;
-        public bool Name => ( packed80 & 0x1 ) == 0x1;
+        public bool Name;
+        public byte packed80;
 
 
         public int RowId { get; set; }
@@ -233,6 +233,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0080
             packed80 = parser.ReadOffset< byte >( 0x80, ExcelColumnDataType.UInt8 );
+
+            Name = ( packed80 & 0x1 ) == 0x1;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "DawnMemberUIParam", columnHash: 0x0fd503c6 )]
     public class DawnMemberUIParam : IExcelRow
     {
-        // column defs from Mon, 15 Jul 2019 14:22:54 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000

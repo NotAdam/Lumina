@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "FishParameter", columnHash: 0x019385c9 )]
     public class FishParameter : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -30,12 +30,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte FishingRecordType;
 
         // col: 04 offset: 0012
-        private byte packed12;
-        public bool IsHidden => ( packed12 & 0x1 ) == 0x1;
-        public bool packed12_2 => ( packed12 & 0x2 ) == 0x2;
-        public bool IsInLog => ( packed12 & 0x4 ) == 0x4;
-        public bool TimeRestricted => ( packed12 & 0x8 ) == 0x8;
-        public bool WeatherRestricted => ( packed12 & 0x10 ) == 0x10;
+        public bool IsHidden;
+        public byte packed12;
+        public bool packed12_2;
+        public bool IsInLog;
+        public bool TimeRestricted;
+        public bool WeatherRestricted;
 
 
         public int RowId { get; set; }
@@ -69,6 +69,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 0012
             packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
+
+            IsHidden = ( packed12 & 0x1 ) == 0x1;
+            packed12_2 = ( packed12 & 0x2 ) == 0x2;
+            IsInLog = ( packed12 & 0x4 ) == 0x4;
+            TimeRestricted = ( packed12 & 0x8 ) == 0x8;
+            WeatherRestricted = ( packed12 & 0x10 ) == 0x10;
 
 
         }

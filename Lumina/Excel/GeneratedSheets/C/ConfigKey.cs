@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ConfigKey", columnHash: 0x927ebfb7 )]
     public class ConfigKey : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 07 offset: 0000
@@ -30,8 +30,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknownd;
 
         // col: 03 offset: 000e
-        private byte packede;
-        public bool Required => ( packede & 0x1 ) == 0x1;
+        public bool Required;
+        public byte packede;
 
 
         public int RowId { get; set; }
@@ -65,6 +65,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 000e
             packede = parser.ReadOffset< byte >( 0xe, ExcelColumnDataType.UInt8 );
+
+            Required = ( packede & 0x1 ) == 0x1;
 
 
         }

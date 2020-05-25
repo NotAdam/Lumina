@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ActionTimeline", columnHash: 0x7402d920 )]
     public class ActionTimeline : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 06 offset: 0000
@@ -48,14 +48,14 @@ namespace Lumina.Excel.GeneratedSheets
         public byte IsLoop;
 
         // col: 02 offset: 0011
-        private byte packed11;
-        public bool Pause => ( packed11 & 0x1 ) == 0x1;
-        public bool Resident => ( packed11 & 0x2 ) == 0x2;
-        public bool IsMotionCanceledByMoving => ( packed11 & 0x4 ) == 0x4;
-        public bool packed11_8 => ( packed11 & 0x8 ) == 0x8;
-        public bool packed11_10 => ( packed11 & 0x10 ) == 0x10;
-        public bool packed11_20 => ( packed11 & 0x20 ) == 0x20;
-        public bool packed11_40 => ( packed11 & 0x40 ) == 0x40;
+        public bool Pause;
+        public byte packed11;
+        public bool Resident;
+        public bool IsMotionCanceledByMoving;
+        public bool packed11_8;
+        public bool packed11_10;
+        public bool packed11_20;
+        public bool packed11_40;
 
 
         public int RowId { get; set; }
@@ -107,6 +107,14 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0011
             packed11 = parser.ReadOffset< byte >( 0x11, ExcelColumnDataType.UInt8 );
+
+            Pause = ( packed11 & 0x1 ) == 0x1;
+            Resident = ( packed11 & 0x2 ) == 0x2;
+            IsMotionCanceledByMoving = ( packed11 & 0x4 ) == 0x4;
+            packed11_8 = ( packed11 & 0x8 ) == 0x8;
+            packed11_10 = ( packed11 & 0x10 ) == 0x10;
+            packed11_20 = ( packed11 & 0x20 ) == 0x20;
+            packed11_40 = ( packed11 & 0x40 ) == 0x40;
 
 
         }

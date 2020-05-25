@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "TripleTriad", columnHash: 0x2f29903e )]
     public class TripleTriad : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 26 offset: 0000
@@ -51,9 +51,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte PreviousQuestJoin;
 
         // col: 12 offset: 004d
-        private byte packed4d;
-        public bool UsesRegionalRules => ( packed4d & 0x1 ) == 0x1;
-        public bool packed4d_2 => ( packed4d & 0x2 ) == 0x2;
+        public bool UsesRegionalRules;
+        public byte packed4d;
+        public bool packed4d_2;
 
 
         public int RowId { get; set; }
@@ -127,6 +127,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 12 offset: 004d
             packed4d = parser.ReadOffset< byte >( 0x4d, ExcelColumnDataType.UInt8 );
+
+            UsesRegionalRules = ( packed4d & 0x1 ) == 0x1;
+            packed4d_2 = ( packed4d & 0x2 ) == 0x2;
 
 
         }

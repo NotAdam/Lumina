@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Stain", columnHash: 0xa2420e68 )]
     public class Stain : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 03 offset: 0000
@@ -21,9 +21,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown9;
 
         // col: 04 offset: 000a
-        private byte packeda;
-        public bool packeda_1 => ( packeda & 0x1 ) == 0x1;
-        public bool packeda_2 => ( packeda & 0x2 ) == 0x2;
+        public bool packeda_1;
+        public byte packeda;
+        public bool packeda_2;
 
 
         public int RowId { get; set; }
@@ -48,6 +48,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 4 offset: 000a
             packeda = parser.ReadOffset< byte >( 0xa, ExcelColumnDataType.UInt8 );
+
+            packeda_1 = ( packeda & 0x1 ) == 0x1;
+            packeda_2 = ( packeda & 0x2 ) == 0x2;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CustomTalk", columnHash: 0x74541fa8 )]
     public class CustomTalk : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 03 offset: 0000
@@ -36,21 +36,21 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown108;
 
         // col: 63 offset: 0109
-        private byte packed109;
-        public bool packed109_1 => ( packed109 & 0x1 ) == 0x1;
-        public bool Text => ( packed109 & 0x2 ) == 0x2;
-        public bool packed109_4 => ( packed109 & 0x4 ) == 0x4;
-        public bool packed109_8 => ( packed109 & 0x8 ) == 0x8;
-        public bool packed109_10 => ( packed109 & 0x10 ) == 0x10;
-        public bool packed109_20 => ( packed109 & 0x20 ) == 0x20;
-        public bool packed109_40 => ( packed109 & 0x40 ) == 0x40;
-        public bool packed109_80 => ( packed109 & 0x80 ) == 0x80;
+        public bool packed109_1;
+        public byte packed109;
+        public bool Text;
+        public bool packed109_4;
+        public bool packed109_8;
+        public bool packed109_10;
+        public bool packed109_20;
+        public bool packed109_40;
+        public bool packed109_80;
 
         // col: 73 offset: 010a
-        private byte packed10a;
-        public bool packed10a_1 => ( packed10a & 0x1 ) == 0x1;
-        public bool packed10a_2 => ( packed10a & 0x2 ) == 0x2;
-        public bool packed10a_4 => ( packed10a & 0x4 ) == 0x4;
+        public bool packed10a_1;
+        public byte packed10a;
+        public bool packed10a_2;
+        public bool packed10a_4;
 
 
         public int RowId { get; set; }
@@ -151,8 +151,21 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 63 offset: 0109
             packed109 = parser.ReadOffset< byte >( 0x109, ExcelColumnDataType.UInt8 );
 
+            packed109_1 = ( packed109 & 0x1 ) == 0x1;
+            Text = ( packed109 & 0x2 ) == 0x2;
+            packed109_4 = ( packed109 & 0x4 ) == 0x4;
+            packed109_8 = ( packed109 & 0x8 ) == 0x8;
+            packed109_10 = ( packed109 & 0x10 ) == 0x10;
+            packed109_20 = ( packed109 & 0x20 ) == 0x20;
+            packed109_40 = ( packed109 & 0x40 ) == 0x40;
+            packed109_80 = ( packed109 & 0x80 ) == 0x80;
+
             // col: 73 offset: 010a
             packed10a = parser.ReadOffset< byte >( 0x10a, ExcelColumnDataType.UInt8 );
+
+            packed10a_1 = ( packed10a & 0x1 ) == 0x1;
+            packed10a_2 = ( packed10a & 0x2 ) == 0x2;
+            packed10a_4 = ( packed10a & 0x4 ) == 0x4;
 
 
         }

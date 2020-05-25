@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BattleLeve", columnHash: 0x907f7d43 )]
     public class BattleLeve : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -18,7 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint[] ToDoNumberInvolved;
 
         // col: 64 offset: 0018
-        public uint[] ToDoParam;
+        public uint[] unknown18;
 
         // col: 72 offset: 001c
         public uint unknown1c;
@@ -48,7 +48,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] ItemDropRate;
 
         // col: 104 offset: 0038
-        public byte unknown38;
+        public byte[] unknown38;
 
         // col: 112 offset: 0039
         public byte unknown39;
@@ -83,9 +83,6 @@ namespace Lumina.Excel.GeneratedSheets
         // col: 97 offset: 0058
         public uint unknown58;
 
-        // col: 105 offset: 0068
-        public byte unknown68;
-
         // col: 113 offset: 0069
         public byte unknown69;
 
@@ -118,9 +115,6 @@ namespace Lumina.Excel.GeneratedSheets
 
         // col: 98 offset: 0088
         public uint unknown88;
-
-        // col: 106 offset: 0098
-        public byte unknown98;
 
         // col: 114 offset: 0099
         public byte unknown99;
@@ -155,9 +149,6 @@ namespace Lumina.Excel.GeneratedSheets
         // col: 99 offset: 00b8
         public uint unknownb8;
 
-        // col: 107 offset: 00c8
-        public byte unknownc8;
-
         // col: 115 offset: 00c9
         public byte unknownc9;
 
@@ -191,9 +182,6 @@ namespace Lumina.Excel.GeneratedSheets
         // col: 100 offset: 00e8
         public uint unknowne8;
 
-        // col: 108 offset: 00f8
-        public byte unknownf8;
-
         // col: 116 offset: 00f9
         public byte unknownf9;
 
@@ -215,6 +203,9 @@ namespace Lumina.Excel.GeneratedSheets
         // col: 164 offset: 00ff
         public byte unknownff;
 
+        // col: 69 offset: 0108
+        public uint unknown108;
+
         // col: 77 offset: 010c
         public uint unknown10c;
 
@@ -226,9 +217,6 @@ namespace Lumina.Excel.GeneratedSheets
 
         // col: 101 offset: 0118
         public uint unknown118;
-
-        // col: 109 offset: 0128
-        public byte unknown128;
 
         // col: 117 offset: 0129
         public byte unknown129;
@@ -251,6 +239,9 @@ namespace Lumina.Excel.GeneratedSheets
         // col: 165 offset: 012f
         public byte unknown12f;
 
+        // col: 70 offset: 0138
+        public uint unknown138;
+
         // col: 78 offset: 013c
         public uint unknown13c;
 
@@ -262,9 +253,6 @@ namespace Lumina.Excel.GeneratedSheets
 
         // col: 102 offset: 0148
         public uint unknown148;
-
-        // col: 110 offset: 0158
-        public byte unknown158;
 
         // col: 118 offset: 0159
         public byte unknown159;
@@ -287,6 +275,9 @@ namespace Lumina.Excel.GeneratedSheets
         // col: 166 offset: 015f
         public byte unknown15f;
 
+        // col: 71 offset: 0168
+        public uint unknown168;
+
         // col: 79 offset: 016c
         public uint unknown16c;
 
@@ -298,9 +289,6 @@ namespace Lumina.Excel.GeneratedSheets
 
         // col: 103 offset: 0178
         public uint unknown178;
-
-        // col: 111 offset: 0188
-        public byte unknown188;
 
         // col: 119 offset: 0189
         public byte unknown189;
@@ -324,28 +312,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown18f;
 
         // col: 168 offset: 0190
-        public byte unknown190;
-
-        // col: 169 offset: 0191
-        public byte unknown191;
-
-        // col: 170 offset: 0192
-        public byte unknown192;
-
-        // col: 171 offset: 0193
-        public byte unknown193;
-
-        // col: 172 offset: 0194
-        public byte unknown194;
-
-        // col: 173 offset: 0195
-        public byte unknown195;
-
-        // col: 174 offset: 0196
-        public byte unknown196;
-
-        // col: 175 offset: 0197
-        public byte unknown197;
+        public byte[] ToDoSequence;
 
         // col: 176 offset: 0198
         public int Rule;
@@ -357,13 +324,13 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Objective1;
 
         // col: 180 offset: 01a0
-        public ushort unknown1a0;
+        public ushort Objective2;
 
         // col: 181 offset: 01a2
-        public ushort unknown1a2;
+        public ushort Help0;
 
         // col: 182 offset: 01a4
-        public ushort unknown1a4;
+        public ushort Help1;
 
         // col: 177 offset: 01a6
         public byte Varient;
@@ -411,15 +378,12 @@ namespace Lumina.Excel.GeneratedSheets
             ToDoNumberInvolved[7] = parser.ReadOffset< uint >( 0x164 );
 
             // col: 64 offset: 0018
-            ToDoParam = new uint[8];
-            ToDoParam[0] = parser.ReadOffset< uint >( 0x18 );
-            ToDoParam[1] = parser.ReadOffset< uint >( 0x48 );
-            ToDoParam[2] = parser.ReadOffset< uint >( 0x78 );
-            ToDoParam[3] = parser.ReadOffset< uint >( 0xa8 );
-            ToDoParam[4] = parser.ReadOffset< uint >( 0xd8 );
-            ToDoParam[5] = parser.ReadOffset< uint >( 0x108 );
-            ToDoParam[6] = parser.ReadOffset< uint >( 0x138 );
-            ToDoParam[7] = parser.ReadOffset< uint >( 0x168 );
+            unknown18 = new uint[5];
+            unknown18[0] = parser.ReadOffset< uint >( 0x18 );
+            unknown18[1] = parser.ReadOffset< uint >( 0x48 );
+            unknown18[2] = parser.ReadOffset< uint >( 0x78 );
+            unknown18[3] = parser.ReadOffset< uint >( 0xa8 );
+            unknown18[4] = parser.ReadOffset< uint >( 0xd8 );
 
             // col: 72 offset: 001c
             unknown1c = parser.ReadOffset< uint >( 0x1c );
@@ -489,7 +453,15 @@ namespace Lumina.Excel.GeneratedSheets
             ItemDropRate[7] = parser.ReadOffset< byte >( 0x187 );
 
             // col: 104 offset: 0038
-            unknown38 = parser.ReadOffset< byte >( 0x38 );
+            unknown38 = new byte[8];
+            unknown38[0] = parser.ReadOffset< byte >( 0x38 );
+            unknown38[1] = parser.ReadOffset< byte >( 0x68 );
+            unknown38[2] = parser.ReadOffset< byte >( 0x98 );
+            unknown38[3] = parser.ReadOffset< byte >( 0xc8 );
+            unknown38[4] = parser.ReadOffset< byte >( 0xf8 );
+            unknown38[5] = parser.ReadOffset< byte >( 0x128 );
+            unknown38[6] = parser.ReadOffset< byte >( 0x158 );
+            unknown38[7] = parser.ReadOffset< byte >( 0x188 );
 
             // col: 112 offset: 0039
             unknown39 = parser.ReadOffset< byte >( 0x39 );
@@ -524,9 +496,6 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 97 offset: 0058
             unknown58 = parser.ReadOffset< uint >( 0x58 );
 
-            // col: 105 offset: 0068
-            unknown68 = parser.ReadOffset< byte >( 0x68 );
-
             // col: 113 offset: 0069
             unknown69 = parser.ReadOffset< byte >( 0x69 );
 
@@ -559,9 +528,6 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 98 offset: 0088
             unknown88 = parser.ReadOffset< uint >( 0x88 );
-
-            // col: 106 offset: 0098
-            unknown98 = parser.ReadOffset< byte >( 0x98 );
 
             // col: 114 offset: 0099
             unknown99 = parser.ReadOffset< byte >( 0x99 );
@@ -596,9 +562,6 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 99 offset: 00b8
             unknownb8 = parser.ReadOffset< uint >( 0xb8 );
 
-            // col: 107 offset: 00c8
-            unknownc8 = parser.ReadOffset< byte >( 0xc8 );
-
             // col: 115 offset: 00c9
             unknownc9 = parser.ReadOffset< byte >( 0xc9 );
 
@@ -632,9 +595,6 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 100 offset: 00e8
             unknowne8 = parser.ReadOffset< uint >( 0xe8 );
 
-            // col: 108 offset: 00f8
-            unknownf8 = parser.ReadOffset< byte >( 0xf8 );
-
             // col: 116 offset: 00f9
             unknownf9 = parser.ReadOffset< byte >( 0xf9 );
 
@@ -656,6 +616,9 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 164 offset: 00ff
             unknownff = parser.ReadOffset< byte >( 0xff );
 
+            // col: 69 offset: 0108
+            unknown108 = parser.ReadOffset< uint >( 0x108 );
+
             // col: 77 offset: 010c
             unknown10c = parser.ReadOffset< uint >( 0x10c );
 
@@ -667,9 +630,6 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 101 offset: 0118
             unknown118 = parser.ReadOffset< uint >( 0x118 );
-
-            // col: 109 offset: 0128
-            unknown128 = parser.ReadOffset< byte >( 0x128 );
 
             // col: 117 offset: 0129
             unknown129 = parser.ReadOffset< byte >( 0x129 );
@@ -692,6 +652,9 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 165 offset: 012f
             unknown12f = parser.ReadOffset< byte >( 0x12f );
 
+            // col: 70 offset: 0138
+            unknown138 = parser.ReadOffset< uint >( 0x138 );
+
             // col: 78 offset: 013c
             unknown13c = parser.ReadOffset< uint >( 0x13c );
 
@@ -703,9 +666,6 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 102 offset: 0148
             unknown148 = parser.ReadOffset< uint >( 0x148 );
-
-            // col: 110 offset: 0158
-            unknown158 = parser.ReadOffset< byte >( 0x158 );
 
             // col: 118 offset: 0159
             unknown159 = parser.ReadOffset< byte >( 0x159 );
@@ -728,6 +688,9 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 166 offset: 015f
             unknown15f = parser.ReadOffset< byte >( 0x15f );
 
+            // col: 71 offset: 0168
+            unknown168 = parser.ReadOffset< uint >( 0x168 );
+
             // col: 79 offset: 016c
             unknown16c = parser.ReadOffset< uint >( 0x16c );
 
@@ -739,9 +702,6 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 103 offset: 0178
             unknown178 = parser.ReadOffset< uint >( 0x178 );
-
-            // col: 111 offset: 0188
-            unknown188 = parser.ReadOffset< byte >( 0x188 );
 
             // col: 119 offset: 0189
             unknown189 = parser.ReadOffset< byte >( 0x189 );
@@ -765,28 +725,15 @@ namespace Lumina.Excel.GeneratedSheets
             unknown18f = parser.ReadOffset< byte >( 0x18f );
 
             // col: 168 offset: 0190
-            unknown190 = parser.ReadOffset< byte >( 0x190 );
-
-            // col: 169 offset: 0191
-            unknown191 = parser.ReadOffset< byte >( 0x191 );
-
-            // col: 170 offset: 0192
-            unknown192 = parser.ReadOffset< byte >( 0x192 );
-
-            // col: 171 offset: 0193
-            unknown193 = parser.ReadOffset< byte >( 0x193 );
-
-            // col: 172 offset: 0194
-            unknown194 = parser.ReadOffset< byte >( 0x194 );
-
-            // col: 173 offset: 0195
-            unknown195 = parser.ReadOffset< byte >( 0x195 );
-
-            // col: 174 offset: 0196
-            unknown196 = parser.ReadOffset< byte >( 0x196 );
-
-            // col: 175 offset: 0197
-            unknown197 = parser.ReadOffset< byte >( 0x197 );
+            ToDoSequence = new byte[8];
+            ToDoSequence[0] = parser.ReadOffset< byte >( 0x190 );
+            ToDoSequence[1] = parser.ReadOffset< byte >( 0x191 );
+            ToDoSequence[2] = parser.ReadOffset< byte >( 0x192 );
+            ToDoSequence[3] = parser.ReadOffset< byte >( 0x193 );
+            ToDoSequence[4] = parser.ReadOffset< byte >( 0x194 );
+            ToDoSequence[5] = parser.ReadOffset< byte >( 0x195 );
+            ToDoSequence[6] = parser.ReadOffset< byte >( 0x196 );
+            ToDoSequence[7] = parser.ReadOffset< byte >( 0x197 );
 
             // col: 176 offset: 0198
             Rule = parser.ReadOffset< int >( 0x198 );
@@ -798,13 +745,13 @@ namespace Lumina.Excel.GeneratedSheets
             Objective1 = parser.ReadOffset< ushort >( 0x19e );
 
             // col: 180 offset: 01a0
-            unknown1a0 = parser.ReadOffset< ushort >( 0x1a0 );
+            Objective2 = parser.ReadOffset< ushort >( 0x1a0 );
 
             // col: 181 offset: 01a2
-            unknown1a2 = parser.ReadOffset< ushort >( 0x1a2 );
+            Help0 = parser.ReadOffset< ushort >( 0x1a2 );
 
             // col: 182 offset: 01a4
-            unknown1a4 = parser.ReadOffset< ushort >( 0x1a4 );
+            Help1 = parser.ReadOffset< ushort >( 0x1a4 );
 
             // col: 177 offset: 01a6
             Varient = parser.ReadOffset< byte >( 0x1a6 );

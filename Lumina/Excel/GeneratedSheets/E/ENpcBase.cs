@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ENpcBase", columnHash: 0x74e2be2e )]
     public class ENpcBase : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000
@@ -192,10 +192,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknownef;
 
         // col: 01 offset: 00f0
-        private byte packedf0;
-        public bool Important => ( packedf0 & 0x1 ) == 0x1;
-        public bool Visor => ( packedf0 & 0x2 ) == 0x2;
-        public bool NotRewriteHeight => ( packedf0 & 0x4 ) == 0x4;
+        public bool Important;
+        public byte packedf0;
+        public bool Visor;
+        public bool NotRewriteHeight;
 
 
         public int RowId { get; set; }
@@ -423,6 +423,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 1 offset: 00f0
             packedf0 = parser.ReadOffset< byte >( 0xf0, ExcelColumnDataType.UInt8 );
+
+            Important = ( packedf0 & 0x1 ) == 0x1;
+            Visor = ( packedf0 & 0x2 ) == 0x2;
+            NotRewriteHeight = ( packedf0 & 0x4 ) == 0x4;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "EObj", columnHash: 0x9335c666 )]
     public class EObj : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 09 offset: 0000
@@ -51,11 +51,11 @@ namespace Lumina.Excel.GeneratedSheets
         public bool unknown11;
 
         // col: 12 offset: 0012
-        private byte packed12;
-        public bool EyeCollision => ( packed12 & 0x1 ) == 0x1;
-        public bool DirectorControl => ( packed12 & 0x2 ) == 0x2;
-        public bool Target => ( packed12 & 0x4 ) == 0x4;
-        public bool packed12_8 => ( packed12 & 0x8 ) == 0x8;
+        public bool EyeCollision;
+        public byte packed12;
+        public bool DirectorControl;
+        public bool Target;
+        public bool packed12_8;
 
 
         public int RowId { get; set; }
@@ -110,6 +110,11 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 12 offset: 0012
             packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
+
+            EyeCollision = ( packed12 & 0x1 ) == 0x1;
+            DirectorControl = ( packed12 & 0x2 ) == 0x2;
+            Target = ( packed12 & 0x4 ) == 0x4;
+            packed12_8 = ( packed12 & 0x8 ) == 0x8;
 
 
         }

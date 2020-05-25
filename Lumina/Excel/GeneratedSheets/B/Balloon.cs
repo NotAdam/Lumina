@@ -5,15 +5,15 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Balloon", columnHash: 0x9d1b5f4b )]
     public class Balloon : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
         public string Dialogue;
 
         // col: 00 offset: 0004
-        private byte packed4;
-        public bool Slowly => ( packed4 & 0x1 ) == 0x1;
+        public bool Slowly;
+        public byte packed4;
 
 
         public int RowId { get; set; }
@@ -29,6 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0004
             packed4 = parser.ReadOffset< byte >( 0x4, ExcelColumnDataType.UInt8 );
+
+            Slowly = ( packed4 & 0x1 ) == 0x1;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Recipe", columnHash: 0x4c219369 )]
     public class Recipe : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -99,13 +99,13 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MaterialQualityFactor;
 
         // col: 26 offset: 0060
-        private byte packed60;
-        public bool IsSecondary => ( packed60 & 0x1 ) == 0x1;
-        public bool CanQuickSynth => ( packed60 & 0x2 ) == 0x2;
-        public bool CanHq => ( packed60 & 0x4 ) == 0x4;
-        public bool ExpRewarded => ( packed60 & 0x8 ) == 0x8;
-        public bool IsSpecializationRequired => ( packed60 & 0x10 ) == 0x10;
-        public bool packed60_20 => ( packed60 & 0x20 ) == 0x20;
+        public bool IsSecondary;
+        public byte packed60;
+        public bool CanQuickSynth;
+        public bool CanHq;
+        public bool ExpRewarded;
+        public bool IsSpecializationRequired;
+        public bool IsExpert;
 
 
         public int RowId { get; set; }
@@ -218,6 +218,13 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 26 offset: 0060
             packed60 = parser.ReadOffset< byte >( 0x60, ExcelColumnDataType.UInt8 );
+
+            IsSecondary = ( packed60 & 0x1 ) == 0x1;
+            CanQuickSynth = ( packed60 & 0x2 ) == 0x2;
+            CanHq = ( packed60 & 0x4 ) == 0x4;
+            ExpRewarded = ( packed60 & 0x8 ) == 0x8;
+            IsSpecializationRequired = ( packed60 & 0x10 ) == 0x10;
+            IsExpert = ( packed60 & 0x20 ) == 0x20;
 
 
         }

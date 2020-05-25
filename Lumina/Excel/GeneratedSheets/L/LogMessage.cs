@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "LogMessage", columnHash: 0xf3a6d024 )]
     public class LogMessage : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 04 offset: 0000
@@ -21,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown8;
 
         // col: 03 offset: 0009
-        private byte packed9;
-        public bool packed9_1 => ( packed9 & 0x1 ) == 0x1;
+        public bool packed9_1;
+        public byte packed9;
 
 
         public int RowId { get; set; }
@@ -47,6 +47,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 0009
             packed9 = parser.ReadOffset< byte >( 0x9, ExcelColumnDataType.UInt8 );
+
+            packed9_1 = ( packed9 & 0x1 ) == 0x1;
 
 
         }

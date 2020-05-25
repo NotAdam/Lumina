@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "LogKind", columnHash: 0x23b962ed )]
     public class LogKind : IExcelRow
     {
-        // column defs from Mon, 24 Feb 2020 17:34:06 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 01 offset: 0000
@@ -15,8 +15,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown4;
 
         // col: 02 offset: 0005
-        private byte packed5;
-        public bool packed5_1 => ( packed5 & 0x1 ) == 0x1;
+        public bool packed5_1;
+        public byte packed5;
 
 
         public int RowId { get; set; }
@@ -35,6 +35,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 2 offset: 0005
             packed5 = parser.ReadOffset< byte >( 0x5, ExcelColumnDataType.UInt8 );
+
+            packed5_1 = ( packed5 & 0x1 ) == 0x1;
 
 
         }

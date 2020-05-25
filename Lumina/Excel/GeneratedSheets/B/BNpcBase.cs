@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BNpcBase", columnHash: 0xdd911c47 )]
     public class BNpcBase : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 04 offset: 0000
@@ -54,13 +54,13 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown19;
 
         // col: 10 offset: 001a
-        private byte packed1a;
-        public bool packed1a_1 => ( packed1a & 0x1 ) == 0x1;
-        public bool packed1a_2 => ( packed1a & 0x2 ) == 0x2;
-        public bool IsTargetLine => ( packed1a & 0x4 ) == 0x4;
-        public bool IsDisplayLevel => ( packed1a & 0x8 ) == 0x8;
-        public bool packed1a_10 => ( packed1a & 0x10 ) == 0x10;
-        public bool packed1a_20 => ( packed1a & 0x20 ) == 0x20;
+        public bool packed1a_1;
+        public byte packed1a;
+        public bool packed1a_2;
+        public bool IsTargetLine;
+        public bool IsDisplayLevel;
+        public bool packed1a_10;
+        public bool packed1a_20;
 
 
         public int RowId { get; set; }
@@ -118,6 +118,13 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 10 offset: 001a
             packed1a = parser.ReadOffset< byte >( 0x1a, ExcelColumnDataType.UInt8 );
+
+            packed1a_1 = ( packed1a & 0x1 ) == 0x1;
+            packed1a_2 = ( packed1a & 0x2 ) == 0x2;
+            IsTargetLine = ( packed1a & 0x4 ) == 0x4;
+            IsDisplayLevel = ( packed1a & 0x8 ) == 0x8;
+            packed1a_10 = ( packed1a & 0x10 ) == 0x10;
+            packed1a_20 = ( packed1a & 0x20 ) == 0x20;
 
 
         }

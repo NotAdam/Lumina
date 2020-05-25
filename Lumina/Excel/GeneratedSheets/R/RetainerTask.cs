@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "RetainerTask", columnHash: 0x99415e4e )]
     public class RetainerTask : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 07 offset: 0000
@@ -48,8 +48,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown17;
 
         // col: 00 offset: 0018
-        private byte packed18;
-        public bool IsRandom => ( packed18 & 0x1 ) == 0x1;
+        public bool IsRandom;
+        public byte packed18;
 
 
         public int RowId { get; set; }
@@ -101,6 +101,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0018
             packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
+
+            IsRandom = ( packed18 & 0x1 ) == 0x1;
 
 
         }

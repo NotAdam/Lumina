@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Pet", columnHash: 0x9c5824d1 )]
     public class Pet : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -39,10 +39,10 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte unknown11;
 
         // col: 06 offset: 0012
-        private byte packed12;
-        public bool packed12_1 => ( packed12 & 0x1 ) == 0x1;
-        public bool packed12_2 => ( packed12 & 0x2 ) == 0x2;
-        public bool packed12_4 => ( packed12 & 0x4 ) == 0x4;
+        public bool packed12_1;
+        public byte packed12;
+        public bool packed12_2;
+        public bool packed12_4;
 
 
         public int RowId { get; set; }
@@ -85,6 +85,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 6 offset: 0012
             packed12 = parser.ReadOffset< byte >( 0x12, ExcelColumnDataType.UInt8 );
+
+            packed12_1 = ( packed12 & 0x1 ) == 0x1;
+            packed12_2 = ( packed12 & 0x2 ) == 0x2;
+            packed12_4 = ( packed12 & 0x4 ) == 0x4;
 
 
         }

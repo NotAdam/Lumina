@@ -5,14 +5,14 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "AchievementKind", columnHash: 0x9ff65ad6 )]
     public class AchievementKind : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
         public string Name;
 
         // col: 01 offset: 0004
-        public byte unknown4;
+        public byte Order;
 
 
         public int RowId { get; set; }
@@ -27,7 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadOffset< string >( 0x0 );
 
             // col: 1 offset: 0004
-            unknown4 = parser.ReadOffset< byte >( 0x4 );
+            Order = parser.ReadOffset< byte >( 0x4 );
 
 
         }

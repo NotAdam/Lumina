@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "EmjDani", columnHash: 0xf3fb0152 )]
     public class EmjDani : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -42,8 +42,8 @@ namespace Lumina.Excel.GeneratedSheets
         public short unknown16;
 
         // col: 03 offset: 0018
-        private byte packed18;
-        public bool packed18_1 => ( packed18 & 0x1 ) == 0x1;
+        public bool packed18_1;
+        public byte packed18;
 
 
         public int RowId { get; set; }
@@ -89,6 +89,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 3 offset: 0018
             packed18 = parser.ReadOffset< byte >( 0x18, ExcelColumnDataType.UInt8 );
+
+            packed18_1 = ( packed18 & 0x1 ) == 0x1;
 
 
         }

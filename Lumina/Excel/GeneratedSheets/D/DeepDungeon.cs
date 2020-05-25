@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "DeepDungeon", columnHash: 0xea7a6143 )]
     public class DeepDungeon : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000
@@ -27,8 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte AetherpoolArmor;
 
         // col: 24 offset: 001c
-        private byte packed1c;
-        public bool packed1c_1 => ( packed1c & 0x1 ) == 0x1;
+        public bool packed1c_1;
+        public byte packed1c;
 
 
         public int RowId { get; set; }
@@ -79,6 +79,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 24 offset: 001c
             packed1c = parser.ReadOffset< byte >( 0x1c, ExcelColumnDataType.UInt8 );
+
+            packed1c_1 = ( packed1c & 0x1 ) == 0x1;
 
 
         }

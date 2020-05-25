@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ContentRandomSelect", columnHash: 0xd870e208 )]
     public class ContentRandomSelect : IExcelRow
     {
-        // column defs from Mon, 15 Jul 2019 14:22:54 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000

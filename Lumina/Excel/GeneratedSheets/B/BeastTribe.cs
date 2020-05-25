@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BeastTribe", columnHash: 0x336849f0 )]
     public class BeastTribe : IExcelRow
     {
-        // column defs from Wed, 24 Jul 2019 22:56:39 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 09 offset: 0000
@@ -60,8 +60,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte DisplayOrder;
 
         // col: 00 offset: 0025
-        private byte packed25;
-        public bool packed25_1 => ( packed25 & 0x1 ) == 0x1;
+        public bool packed25_1;
+        public byte packed25;
 
 
         public int RowId { get; set; }
@@ -125,6 +125,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 0 offset: 0025
             packed25 = parser.ReadOffset< byte >( 0x25, ExcelColumnDataType.UInt8 );
+
+            packed25_1 = ( packed25 & 0x1 ) == 0x1;
 
 
         }

@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "BuddySkill", columnHash: 0xe3220ddc )]
     public class BuddySkill : IExcelRow
     {
-        // column defs from Sat, 15 Jun 2019 16:05:03 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 02 offset: 0000
@@ -21,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte BuddyLevel;
 
         // col: 01 offset: 0007
-        private byte packed7;
-        public bool IsActive => ( packed7 & 0x1 ) == 0x1;
+        public bool IsActive;
+        public byte packed7;
 
 
         public int RowId { get; set; }
@@ -47,6 +47,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 1 offset: 0007
             packed7 = parser.ReadOffset< byte >( 0x7, ExcelColumnDataType.UInt8 );
+
+            IsActive = ( packed7 & 0x1 ) == 0x1;
 
 
         }

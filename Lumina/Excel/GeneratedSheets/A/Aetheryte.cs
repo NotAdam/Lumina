@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Aetheryte", columnHash: 0xcd1e31a4 )]
     public class Aetheryte : IExcelRow
     {
-        // column defs from Tue, 29 Oct 2019 18:54:30 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -66,9 +66,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown35;
 
         // col: 15 offset: 0036
-        private byte packed36;
-        public bool IsAetheryte => ( packed36 & 0x1 ) == 0x1;
-        public bool packed36_2 => ( packed36 & 0x2 ) == 0x2;
+        public bool IsAetheryte;
+        public byte packed36;
+        public bool packed36_2;
 
 
         public int RowId { get; set; }
@@ -142,6 +142,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 15 offset: 0036
             packed36 = parser.ReadOffset< byte >( 0x36, ExcelColumnDataType.UInt8 );
+
+            IsAetheryte = ( packed36 & 0x1 ) == 0x1;
+            packed36_2 = ( packed36 & 0x2 ) == 0x2;
 
 
         }

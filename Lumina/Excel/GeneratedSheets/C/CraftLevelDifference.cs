@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CraftLevelDifference", columnHash: 0xba1851a4 )]
     public class CraftLevelDifference : IExcelRow
     {
-        // column defs from Wed, 24 Jul 2019 22:56:39 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000

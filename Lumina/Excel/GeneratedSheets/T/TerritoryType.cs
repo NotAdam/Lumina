@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "TerritoryType", columnHash: 0x7dff1ae4 )]
     public class TerritoryType : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -90,21 +90,21 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte AchievementIndex;
 
         // col: 11 offset: 0038
-        private byte packed38;
-        public bool packed38_1 => ( packed38 & 0x1 ) == 0x1;
-        public bool packed38_2 => ( packed38 & 0x2 ) == 0x2;
-        public bool PCSearch => ( packed38 & 0x4 ) == 0x4;
-        public bool Stealth => ( packed38 & 0x8 ) == 0x8;
-        public bool Mount => ( packed38 & 0x10 ) == 0x10;
-        public bool packed38_20 => ( packed38 & 0x20 ) == 0x20;
-        public bool IsPvpZone => ( packed38 & 0x40 ) == 0x40;
-        public bool packed38_80 => ( packed38 & 0x80 ) == 0x80;
+        public bool packed38_1;
+        public byte packed38;
+        public bool packed38_2;
+        public bool PCSearch;
+        public bool Stealth;
+        public bool Mount;
+        public bool packed38_20;
+        public bool IsPvpZone;
+        public bool packed38_80;
 
         // col: 34 offset: 0039
-        private byte packed39;
-        public bool packed39_1 => ( packed39 & 0x1 ) == 0x1;
-        public bool packed39_2 => ( packed39 & 0x2 ) == 0x2;
-        public bool packed39_4 => ( packed39 & 0x4 ) == 0x4;
+        public bool packed39_1;
+        public byte packed39;
+        public bool packed39_2;
+        public bool packed39_4;
 
 
         public int RowId { get; set; }
@@ -199,8 +199,21 @@ namespace Lumina.Excel.GeneratedSheets
             // col: 11 offset: 0038
             packed38 = parser.ReadOffset< byte >( 0x38, ExcelColumnDataType.UInt8 );
 
+            packed38_1 = ( packed38 & 0x1 ) == 0x1;
+            packed38_2 = ( packed38 & 0x2 ) == 0x2;
+            PCSearch = ( packed38 & 0x4 ) == 0x4;
+            Stealth = ( packed38 & 0x8 ) == 0x8;
+            Mount = ( packed38 & 0x10 ) == 0x10;
+            packed38_20 = ( packed38 & 0x20 ) == 0x20;
+            IsPvpZone = ( packed38 & 0x40 ) == 0x40;
+            packed38_80 = ( packed38 & 0x80 ) == 0x80;
+
             // col: 34 offset: 0039
             packed39 = parser.ReadOffset< byte >( 0x39, ExcelColumnDataType.UInt8 );
+
+            packed39_1 = ( packed39 & 0x1 ) == 0x1;
+            packed39_2 = ( packed39 & 0x2 ) == 0x2;
+            packed39_4 = ( packed39 & 0x4 ) == 0x4;
 
 
         }

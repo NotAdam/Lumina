@@ -5,7 +5,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ClassJob", columnHash: 0xc6d83eda )]
     public class ClassJob : IExcelRow
     {
-        // column defs from Wed, 15 Jan 2020 17:17:16 GMT
+        // column defs from Sun, 10 May 2020 19:27:42 GMT
 
 
         // col: 00 offset: 0000
@@ -18,8 +18,8 @@ namespace Lumina.Excel.GeneratedSheets
         public string unknown8;
 
         // col: 45 offset: 000c
-        private byte packedc;
-        public bool CanQueueForDuty => ( packedc & 0x1 ) == 0x1;
+        public bool CanQueueForDuty;
+        public byte packedc;
 
         // col: 27 offset: 0010
         public string NameEnglish;
@@ -145,8 +145,8 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte MonsterNote;
 
         // col: 44 offset: 005f
-        private byte packed5f;
-        public bool IsLimitedJob => ( packed5f & 0x1 ) == 0x1;
+        public bool IsLimitedJob;
+        public byte packed5f;
 
 
         public int RowId { get; set; }
@@ -168,6 +168,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 45 offset: 000c
             packedc = parser.ReadOffset< byte >( 0xc, ExcelColumnDataType.UInt8 );
+
+            CanQueueForDuty = ( packedc & 0x1 ) == 0x1;
 
             // col: 27 offset: 0010
             NameEnglish = parser.ReadOffset< string >( 0x10 );
@@ -294,6 +296,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             // col: 44 offset: 005f
             packed5f = parser.ReadOffset< byte >( 0x5f, ExcelColumnDataType.UInt8 );
+
+            IsLimitedJob = ( packed5f & 0x1 ) == 0x1;
 
 
         }
