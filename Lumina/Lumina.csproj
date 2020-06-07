@@ -26,9 +26,5 @@
       <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
       <PackageReference Include="IndexRange" Version="1.0.0" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Excel\GeneratedSheets" />
-    </ItemGroup>
 
 </Project>
