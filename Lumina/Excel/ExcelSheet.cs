@@ -31,22 +31,22 @@ namespace Lumina.Excel
         {
         }
 
-        public T GetRow( int row )
+        public T GetRow( uint row )
         {
             return GetRow( row, _Lumina.Options.DefaultExcelLanguage );
         }
 
-        public T GetRow( int row, int subRow )
+        public T GetRow( uint row, uint subRow )
         {
             return GetRowInternal( row, subRow );
         }
 
-        public T GetRow( int row, Language lang )
+        public T GetRow( uint row, Language lang )
         {
             return GetRowInternal( row, Int32.MaxValue );
         }
 
-        internal ExcelPage GetSegmentForRow( int row )
+        internal ExcelPage GetSegmentForRow( uint row )
         {
             var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( (uint)row ) );
 
@@ -58,14 +58,14 @@ namespace Lumina.Excel
             return data;
         }
         
-        public RowParser GetRowParser( int row )
+        public RowParser GetRowParser( uint row )
         {
             var data = GetSegmentForRow( row );
             
             return new RowParser( this, data.File, row );
         }
 
-        internal T GetRowInternal( int row, int subRow )
+        internal T GetRowInternal( uint row, uint subRow )
         {
             // var id = GetRowCacheKey( row, subRow );
 
@@ -119,12 +119,12 @@ namespace Lumina.Excel
 
                 foreach( var rowPtr in rowPtrs.Values )
                 {
-                    parser.SeekToRow( (int)rowPtr.RowId );
+                    parser.SeekToRow( rowPtr.RowId );
 
                     if( Header.Variant == ExcelVariant.Subrows )
                     {
                         // read subrows
-                        for( int i = 0; i < parser.RowCount; i++ )
+                        for( uint i = 0; i < parser.RowCount; i++ )
                         {
                             // var id = GetRowCacheKey( (int)rowPtr.RowId, i );
 
@@ -134,7 +134,7 @@ namespace Lumina.Excel
                             //     continue;
                             // }
 
-                            parser.SeekToRow( (int)rowPtr.RowId, i );
+                            parser.SeekToRow( rowPtr.RowId, i );
                             var obj = Activator.CreateInstance< T >();
 
                             obj.PopulateData( parser, _Lumina );
@@ -152,7 +152,7 @@ namespace Lumina.Excel
                         //     continue;
                         // }
                         
-                        parser.SeekToRow( (int)rowPtr.RowId );
+                        parser.SeekToRow( rowPtr.RowId );
                         var obj = Activator.CreateInstance< T >();
                         
                         obj.PopulateData( parser, _Lumina );

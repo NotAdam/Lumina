@@ -5,8 +5,8 @@ namespace Lumina.Example
     [Sheet( "LogMessage" )]
     public class LogMessage : IExcelRow
     {
-        public int RowId { get; set; }
-        public int SubRowId { get; set; }
+        public uint RowId { get; set; }
+        public uint SubRowId { get; set; }
 
         public string Text;
 

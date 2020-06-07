@@ -20,9 +20,9 @@ namespace Lumina.Excel
         
         private long _RowOffset;
 
-        public int Row;
-        public int SubRow;
-        public int RowCount => _RowHeader.RowCount;
+        public uint Row;
+        public uint SubRow;
+        public uint RowCount => _RowHeader.RowCount;
 
         private MemoryStream Stream => _DataFile.FileStream;
         
@@ -32,22 +32,22 @@ namespace Lumina.Excel
             _DataFile = dataFile;
         }
 
-        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row )
+        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row )
             : this( sheet, dataFile )
         {
             SeekToRow( row );
         }
 
-        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, int row, int subRow )
+        public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row, uint subRow )
             : this( sheet, dataFile, row )
         {
             SeekToRow( row, subRow );
         }
 
-        public void SeekToRow( int row )
+        public void SeekToRow( uint row )
         {
             Row = row;
-            _Offset = _DataFile.RowData[ (uint)Row ];
+            _Offset = _DataFile.RowData[ Row ];
 
             var br = _DataFile.Reader;
 
@@ -65,7 +65,7 @@ namespace Lumina.Excel
             _RowOffset = _Offset.Offset + 6;
         }
 
-        public void SeekToRow( int row, int subRow )
+        public void SeekToRow( uint row, uint subRow )
         {
             SeekToRow( row );
             
@@ -80,7 +80,7 @@ namespace Lumina.Excel
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public long CalculateSubRowOffset( int subRow )
+        public long CalculateSubRowOffset( uint subRow )
         {
             return _Offset.Offset + 6 + ( subRow * _Sheet.Header.DataOffset + 2 * ( subRow + 1 ) );
         }

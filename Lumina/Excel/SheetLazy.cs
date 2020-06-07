@@ -9,24 +9,20 @@ namespace Lumina.Excel
     public class LazyRow< T > where T : IExcelRow
     {
         private readonly Lumina _lumina;
-        private readonly int _row;
-        private readonly int _subrow;
+        private readonly uint _row;
+        private readonly uint _subrow;
 
         private T _value;
 
-        public int Row => _row;
-        public int SubRow => _subrow;
+        public uint Row => _row;
+        public uint SubRow => _subrow;
 
 
-        public LazyRow( Lumina lumina, int row, int subrow = Int32.MaxValue )
+        public LazyRow( Lumina lumina, uint row, uint subrow = Int32.MaxValue )
         {
             _lumina = lumina;
             _row = row;
             _subrow = subrow;
-        }
-
-        public LazyRow( Lumina lumina, uint row ) : this( lumina, (int)row )
-        {
         }
 
         public T Value

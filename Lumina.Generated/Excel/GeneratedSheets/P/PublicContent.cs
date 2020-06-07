@@ -45,8 +45,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte unknown1f;
 
 
-        public int RowId { get; set; }
-        public int SubRowId { get; set; }
+        public uint RowId { get; set; }
+        public uint SubRowId { get; set; }
 
         public void PopulateData( RowParser parser, Lumina lumina )
         {
