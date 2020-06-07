@@ -77,6 +77,12 @@ namespace Lumina.Example
                 Console.WriteLine( $"ZoneSharedGroup({row.RowId}.{row.SubRowId}) quest1: {row.Quest1}" );
             }
             
+            // dump conditions
+            foreach( var condition in lumina.GetExcelSheet< Condition >().GetRows() )
+            {
+                Console.WriteLine( $"condition {condition.RowId:000}: {condition.LogMessage.Value?.Text}" );
+            }
+            
             
             // custom data type
             var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
