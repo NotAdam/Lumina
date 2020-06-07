@@ -18,7 +18,7 @@ namespace Lumina.Excel
         public uint SubRow => _subrow;
 
 
-        public LazyRow( Lumina lumina, uint row, uint subrow = Int32.MaxValue )
+        public LazyRow( Lumina lumina, uint row, uint subrow = UInt32.MaxValue )
         {
             _lumina = lumina;
             _row = row;

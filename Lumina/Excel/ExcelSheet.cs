@@ -43,7 +43,7 @@ namespace Lumina.Excel
 
         public T GetRow( uint row, Language lang )
         {
-            return GetRowInternal( row, Int32.MaxValue );
+            return GetRowInternal( row, UInt32.MaxValue );
         }
 
         internal ExcelPage GetSegmentForRow( uint row )
@@ -80,7 +80,7 @@ namespace Lumina.Excel
 
             RowParser parser;
 
-            if( subRow != Int32.MaxValue )
+            if( subRow != UInt32.MaxValue )
             {
                 parser = new RowParser( this, data.File, row, subRow );
             }
