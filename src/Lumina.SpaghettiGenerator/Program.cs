@@ -46,7 +46,7 @@ namespace Lumina.SpaghettiGenerator
             return str;
         }
         
-        static string ExcelTypeToManaged( ExcelColumnDataType type )
+        internal static string ExcelTypeToManaged( ExcelColumnDataType type )
         {
             switch( type )
             {
@@ -111,6 +111,11 @@ namespace Lumina.SpaghettiGenerator
             }
         }
 
+        static bool DefinitionExists( string name )
+        {
+            return File.Exists( $"./Definitions/{name}.json" );
+        }
+
         static string ProcessDefinition( string name )
         {
             var path = $"./Definitions/{name}.json";
@@ -129,14 +134,12 @@ namespace Lumina.SpaghettiGenerator
             var hash = sheet.HeaderFile.GetColumnsHash();
             tmpl = tmpl.Replace( "%%COL_HASH%%", $"0x{hash:x8}" );
             
-            var fieldsSb = new StringBuilder();
-            var readsSb = new StringBuilder();
 
             var cols = sheet.Columns;
 
             var schema = JsonConvert.DeserializeObject< SheetDefinition >( def );
 
-            var fieldGenerators = new List< BaseShitGenerator >();
+            var generators = new List< BaseShitGenerator >();
 
             for( uint i = 0; i < cols.Length; i++ )
             {
@@ -150,7 +153,7 @@ namespace Lumina.SpaghettiGenerator
                 {
                     var generator = new PrimitiveGenerator( clrType, $"Unknown{i}", i );
                     
-                    fieldGenerators.Add( generator );
+                    generators.Add( generator );
 
                     continue;
                 }
@@ -161,11 +164,11 @@ namespace Lumina.SpaghettiGenerator
                 // single field
                 if( schemaType == null )
                 {
-                    if( schemaDef.ConverterType == "link" )
+                    if( schemaDef.ConverterType == "link" && DefinitionExists( schemaDef.ConverterTarget ) )
                     {
                         var target = schemaDef.ConverterTarget;
                         
-                        fieldGenerators.Add( new LazyRowGenerator( target, schemaDef.Name, i ) );
+                        generators.Add( new LazyRowGenerator( target, schemaDef.Name, i, cols ) );
                     }
                     // todo: this is fucking ass, maybe we can fake a variant though? lol
                     // else if( schemaDef.ConverterType == "complexlink" )
@@ -174,38 +177,83 @@ namespace Lumina.SpaghettiGenerator
                     // }
                     else
                     {
-                        // no link
-                        fieldGenerators.Add( new PrimitiveGenerator( clrType, schemaDef.Name, i ) );
+                        // no link/unsupported
+                        generators.Add( new PrimitiveGenerator( clrType, schemaDef.Name, i ) );
                     }
                 }
                 // repeats
                 else if( schemaType == "repeat" )
                 {
-                    if( schemaDef.ConverterType == "link" )
+                    // todo: groups need their own handling here but it's kind of shit, probably should do this differently
+                    if( schemaDef.Definition?.Type == "group" )
                     {
-                        var target = schemaDef.ConverterTarget;
-                        fieldGenerators.Add( new LazyRowRepeatGenerator( target, schemaDef.Name, i, schemaDef.Count ) );
+                        var memberCount = schemaDef.Definition.Members.Count;
+
+                        string structName;
+                        string fieldName;
+                        if( schemaDef.Definition.GroupName != null )
+                        {
+                            structName = $"{schemaDef.Definition.GroupName}Struct";
+                            fieldName = schemaDef.Definition.GroupName;
+                        }
+                        else
+                        {
+                            structName = $"UnkStruct{i}Struct";
+                            fieldName = $"UnkStruct{i}";
+                        }
+
+                        // todo: add pluralisation to field name? lol
+                        generators.Add( 
+                            new GroupStructGenerator( 
+                                structName,
+                                fieldName, 
+                                i,
+                                schemaDef.Definition.Members,
+                                schemaDef.Count,
+                                cols 
+                            )
+                        );
+                        
+                        i += ( schemaDef.Count * (uint)memberCount ) - 1;
                     }
-                    // todo: this is fucked and i question my sanity if i ever want to actually support this fucking garbage
-                    // else if( schemaDef.ConverterType == "complexlink" )
-                    // {
-                    //     
-                    // }
                     else
                     {
-                        fieldGenerators.Add( new BasicRepeatGenerator( clrType, schemaDef.Name, i, schemaDef.Count ) );
+                        if( schemaDef.ConverterType == "link" && DefinitionExists( schemaDef.ConverterTarget ) )
+                        {
+                            var target = schemaDef.ConverterTarget;
+                            generators.Add( new LazyRowRepeatGenerator( target, schemaDef.Name, i, schemaDef.Count, cols ) );
+                        }
+                        // todo: this is fucked and i question my sanity if i ever want to actually support this fucking garbage
+                        // else if( schemaDef.ConverterType == "complexlink" )
+                        // {
+                        //     
+                        // }
+                        else
+                        {
+                            if( string.IsNullOrEmpty( schemaDef.Name ) )
+                            {
+                                schemaDef.Name = $"Unknown{i}";
+                            }
+                            generators.Add( new PrimitiveRepeatGenerator( clrType, schemaDef.Name, i, schemaDef.Count ) );
+                        }
+                        
+                        i += schemaDef.Count - 1;
                     }
-                    i += schemaDef.Count - 1;
                 }
             }
             
+            var fieldsSb = new StringBuilder();
+            var readsSb = new StringBuilder();
+            var structsSb = new StringBuilder();
+            
             // run the generators
-            foreach( var generator in fieldGenerators )
+            foreach( var generator in generators )
             {
                 generator.WriteFields( fieldsSb );
                 // fieldsSb.AppendLine();
                 generator.WriteReaders( readsSb );
                 // readsSb.AppendLine();
+                generator.WriteStructs( structsSb );
             }
 
             // fix indent the big brain way
@@ -219,7 +267,8 @@ namespace Lumina.SpaghettiGenerator
 
                 return indent + sb.ToString().Replace( "\n", $"\n{indent}");
             };
-            
+
+            tmpl = tmpl.Replace( "%%STRUCT_DEFS%%", fixIndent( structsSb, 2 ) );
             tmpl = tmpl.Replace( "%%DATA_MEMBERS%%", fixIndent( fieldsSb, 2 ) );
             tmpl = tmpl.Replace( "%%DATA_READERS%%", fixIndent( readsSb, 3 ).TrimEnd() );
 

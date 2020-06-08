@@ -15,7 +15,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
         public override void WriteReaders( StringBuilder sb )
         {
-            sb.AppendLine( $"{FieldName} = reader.ReadColumn< {TypeName} >( {ColumnId} );" );
+            sb.AppendLine( $"{FieldName} = parser.ReadColumn< {TypeName} >( {ColumnId} );" );
         }
     }
 }

@@ -13,6 +13,10 @@ namespace Lumina.SpaghettiGenerator
     {
        public string Name { get; set; } 
        
+       public string Type { get; set; }
+       
+       public string GroupName { get; set; }
+       
        public Converter Converter { get; set; }
        
        public List< RootDefinition > Members { get; set; }

@@ -2,11 +2,11 @@ using System.Text;
 
 namespace Lumina.SpaghettiGenerator.CodeGen
 {
-    public class BasicRepeatGenerator : BaseShitGenerator
+    public class PrimitiveRepeatGenerator : BaseShitGenerator
     {
         public uint Count { get; set; }
         
-        public BasicRepeatGenerator( string typeName, string fieldName, uint columnId, uint count ) : base( typeName, fieldName, columnId )
+        public PrimitiveRepeatGenerator( string typeName, string fieldName, uint columnId, uint count ) : base( typeName, fieldName, columnId )
         {
             Count = count;
         }
@@ -19,7 +19,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
         public override void WriteReaders( StringBuilder sb )
         {
             sb.AppendLine( $"for( var i = 0; i < {Count}; i++ )" );
-            sb.AppendLine( $"    {FieldName}[ i ] = reader.ReadColumn< {TypeName} >( {ColumnId} + i );" );
+            sb.AppendLine( $"    {FieldName}[ i ] = parser.ReadColumn< {TypeName} >( {ColumnId} + i );" );
         }
     }
 }

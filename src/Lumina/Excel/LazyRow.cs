@@ -10,19 +10,19 @@ namespace Lumina.Excel
     {
         private readonly Lumina _lumina;
         private readonly uint _row;
-        private readonly uint _subrow;
 
         private T _value;
 
         public uint Row => _row;
-        public uint SubRow => _subrow;
 
-
-        public LazyRow( Lumina lumina, uint row, uint subrow = UInt32.MaxValue )
+        public LazyRow( Lumina lumina, uint row )
         {
             _lumina = lumina;
             _row = row;
-            _subrow = subrow;
+        }
+
+        public LazyRow( Lumina lumina, int row ) : this( lumina, (uint)row )
+        {
         }
 
         public T Value
@@ -34,7 +34,7 @@ namespace Lumina.Excel
                     return _value;
                 }
 
-                _value = _lumina.GetExcelSheet< T >().GetRow( _row, _subrow );
+                _value = _lumina.GetExcelSheet< T >().GetRow( _row );
 
                 return _value;
             }

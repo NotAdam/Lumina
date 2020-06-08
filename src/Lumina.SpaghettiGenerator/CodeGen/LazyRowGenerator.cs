@@ -1,11 +1,15 @@
 using System.Text;
+using Lumina.Data.Structs.Excel;
 
 namespace Lumina.SpaghettiGenerator.CodeGen
 {
     public class LazyRowGenerator : BaseShitGenerator
     {
-        public LazyRowGenerator( string typeName, string fieldName, uint columnId ) : base( typeName, fieldName, columnId )
+        private readonly ExcelColumnDefinition[] _cols;
+
+        public LazyRowGenerator( string typeName, string fieldName, uint columnId, ExcelColumnDefinition[] cols ) : base( typeName, fieldName, columnId )
         {
+            _cols = cols;
         }
         
         public override void WriteFields( StringBuilder sb )
@@ -15,7 +19,14 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
         public override void WriteReaders( StringBuilder sb )
         {
-            sb.AppendLine( $"{FieldName} = new LazyRow< {TypeName} >( lumina, reader.ReadColumn< uint >( {ColumnId} ) );" );
+            if( _cols[ ColumnId ].IsBoolType )
+            {
+                sb.AppendLine( $"// generator error: the definition for this field ({FieldName}) has an invalid type for a LazyRow" );
+                return;
+            }
+            
+            var type = Program.ExcelTypeToManaged( _cols[ ColumnId ].Type );
+            sb.AppendLine( $"{FieldName} = new LazyRow< {TypeName} >( lumina, parser.ReadColumn< {type} >( {ColumnId} ) );" );
         }
     }
 }
