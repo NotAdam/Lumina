@@ -1,70 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Text;
 using Lumina.Data.Structs.Excel;
-using Lumina.Excel;
+using Lumina.SpaghettiGenerator.CodeGen;
 using Newtonsoft.Json;
 
 namespace Lumina.SpaghettiGenerator
 {
-    class DummyExcelSheet : IExcelRow
-    {
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina )
-        {
-        }
-    }
-
-    class DataMembers
-    {
-        public string Name { get; set; }
-        public int ArrayIndex { get; set; }
-        public int Offset { get; set; }
-        public int Bit { get; set; }
-        public int ArraySize { get; set; } //used by bitfields because of overlap
-        public ExcelColumnDataType Type { get; set; }
-    }
-
-    class GeneratedColumnDef
-    {
-        public int Id { get; set; }
-        public ExcelColumnDefinition ColumnDefinition { get; set; }
-
-        public bool IsBitfield { get; set; }
-        public bool IsArray { get; set; }
-        public int ArraySize { get; set; }
-        public int Offset { get; set; }
-
-        public RootDefinition RootDefinition { get; set; }
-
-        public List< DataMembers > Members { get; set; }
-
-        public string Name
-        {
-            get
-            {
-                if( RootDefinition?.RealName != null )
-                        return RootDefinition.RealName;
-
-                if( IsBitfield )
-                    return $"packed{Offset:x}";
-
-                return $"unknown{Offset:x}";
-            }
-        }
-
-        public string CleanName => Program.Clean( Name );
-    }
-
-    class Program
+    public class Program
     {
         private static Lumina _lumina;
         private static string _sheetTemplate;
-
+        
         internal static string Clean( string str )
         {
             if( string.IsNullOrWhiteSpace( str ) )
@@ -95,321 +45,7 @@ namespace Lumina.SpaghettiGenerator
 
             return str;
         }
-
-        // that's amore
-        static void Main( string[] args )
-        {
-            _lumina = new Lumina( args[ 0 ] );
-            _sheetTemplate = File.ReadAllText( "class.tmpl" );
-
-            Directory.CreateDirectory( "output" );
-
-            // ProcessSheet( "AchievementCategory" );
-
-            foreach( var file in Directory.EnumerateFiles( "./Definitions/", "*.json" ) )
-            {
-                var name = Path.GetFileNameWithoutExtension( file );
-                Console.WriteLine( $"doing sheet: {name}" );
-
-                var code = ProcessSheet( name );
-                if( code == null )
-                {
-                    continue;
-                }
-
-                var path = $"./output/{name[ 0 ]}/{name}.cs";
-                var dir = Path.GetDirectoryName( path );
-                Directory.CreateDirectory( dir );
-
-                File.WriteAllText( path, code );
-            }
-        }
-
-        static string ProcessSheet( string name )
-        {
-            var path = $"./Definitions/{name}.json";
-            var lastModified = System.IO.File.GetLastWriteTime( path );
-            var def = File.ReadAllText( path );
-            var tmpl = _sheetTemplate;
-
-            var sheet = _lumina.Excel.GetSheet< DummyExcelSheet >( name );
-            if( sheet == null )
-            {
-                Console.WriteLine( $" - sheet {name} no longer exists!" );
-                return null;
-            }
-
-            var cols = sheet.Columns;
-
-            var schema = JsonConvert.DeserializeObject< SheetDefinition >( def );
-
-            var items = new Dictionary< int, GeneratedColumnDef >();
-
-            var doneCols = new List< int >();
-
-            for( int i = 0; i < cols.Length; i++ )
-            {
-                if( doneCols.Contains( i ) )
-                {
-                    continue;
-                }
-
-                ref var colDef = ref cols[ i ];
-
-                var schemaDef = schema.Definitions.FirstOrDefault( d => d.Index == i );
-
-                GeneratedColumnDef col;
-                if( !items.TryGetValue( colDef.Offset, out col ) )
-                {
-                    col = new GeneratedColumnDef
-                    {
-                        ColumnDefinition = colDef,
-                        Id = i,
-                        RootDefinition = schemaDef,
-                        Offset = colDef.Offset
-                    };
-
-                    items[ colDef.Offset ] = col;
-                }
-
-                var bool0 = (int)ExcelColumnDataType.PackedBool0;
-                var intType = (int)colDef.Type;
-                if( intType >= bool0 )
-                {
-                    col.IsBitfield = true;
-                }
-
-                col.Members ??= new List< DataMembers >();
-
-                var rootMember = new DataMembers
-                {
-                    Name = schemaDef?.RealName,
-                    Offset = colDef.Offset,
-                    Type = colDef.Type,
-                    Bit = 1 << ( intType - bool0 )
-                };
-
-                col.Members.Add( rootMember );
-
-                if( schemaDef != null )
-                {
-                    if( schemaDef.Type == "repeat" )
-                    {
-                        col.IsArray = true;
-                        col.ArraySize = schemaDef.Count;
-                        
-                        rootMember.ArrayIndex = 0;
-                        rootMember.ArraySize = schemaDef.Count; //bitfields can overlap existing column lookups
-
-                        for( int j = 1; j < col.ArraySize; j++ )
-                        {
-                            doneCols.Add( i + j );
-
-                            var newCol = cols[ i + j ];
-
-                            col.Members.Add( new DataMembers
-                            {
-                                Name = schemaDef.RealName, //bitfields
-                                Offset = newCol.Offset,
-                                Type = newCol.Type,
-                                ArrayIndex = j,
-                                Bit = 1 << ( intType - bool0 )
-                            } ) ;
-                        }
-                    }
-                }
-
-                doneCols.Add( i );
-            }
-
-            // no hate pls
-            var indent = "        ";
-
-            tmpl = tmpl.Replace( "%%SHEET_NAME%%", name );
-            var hash = sheet.HeaderFile.GetColumnsHash();
-            tmpl = tmpl.Replace( "%%COL_HASH%%", $"0x{hash:x8}" );
-
-            var sb = new StringBuilder();
-
-            sb.Append( indent );
-            sb.Append( $"// column defs from {lastModified:R}" );
-            sb.AppendLine();
-            sb.AppendLine();
-
-            tmpl = tmpl.Replace( "%%DEBUG_INFO%%", sb.ToString() );
-
-            sb.Clear();
-            
-            List<int> BitfieldOffsets = new List<int>(); //Storage to keep track of what bitfields need to have data written to them.
-            foreach( var (offset, gcd) in items.OrderBy( pair => pair.Key ) )
-            {
-                var typeName = ExcelTypeToManaged( gcd.ColumnDefinition.Type );
-
-                // add comment
-                sb.Append( indent );
-                sb.Append( $"// col: {gcd.Id:00} offset: {offset:x4}" );
-                sb.AppendLine();
-
-                if( gcd.IsBitfield )
-                {
-                    //root member + any children (array)
-                    foreach( var member in gcd.Members )
-                    {
-
-                        if( member.ArrayIndex == 0 )
-                        {
-                            sb.Append( indent );
-                            // yes i hate myself 
-                            // no i don't care
-                            // yep. I hate bitfields
-
-                            //This will either be an array or it won't be. which is fine. this gets filled out
-                            sb.Append( GenerateDataMember( typeName, Clean(member.Name) ?? $"packed{member.Offset:x}_{member.Bit:x}", offset, member.ArraySize ) );
-                            sb.AppendLine();
-                        }
-
-                        if(!BitfieldOffsets.Contains(member.Offset))
-                        {
-                            
-                            sb.Append( indent );
-                            //add the packed values for each bitfield. 
-                            //these are public to allow for direct access
-                            sb.Append( GenerateDataMember( "byte", $"packed{member.Offset:x}", member.Offset ) );
-                            sb.AppendLine();
-                            BitfieldOffsets.Add( member.Offset );
-                        }
-                    }
-                }
-                else
-                {
-                    sb.Append( indent );
-                    sb.Append( GenerateDataMember( typeName, gcd.CleanName, offset, gcd.ArraySize ) );
-                    sb.AppendLine();
-                }
-
-                sb.AppendLine();
-            }
-            BitfieldOffsets.Clear();
-
-            tmpl = tmpl.Replace( "%%DATA_MEMBERS%%", sb.ToString() );
-
-            // no hate plssss
-            indent = "            ";
-
-            sb.Clear();
-            foreach( var (offset, gcd) in items.OrderBy( pair => pair.Key ) )
-            {
-                var typeName = ExcelTypeToManaged( gcd.ColumnDefinition.Type );
-
-                // add comment
-                sb.Append( indent );
-                sb.Append( $"// col: {gcd.Id} offset: {offset:x4}" );
-                sb.AppendLine();
-
-                if( gcd.IsBitfield )
-                {
-                    foreach( var member in gcd.Members )
-                    {
-                        //read the bitfield once _before_ we add any data to arrays otherwise we will miss data
-                        if( !BitfieldOffsets.Contains( member.Offset ) )
-                        {
-                            sb.Append( indent );
-                            sb.Append( GenerateReadMember( "byte", $"packed{member.Offset:x}", member.Offset, -1, true ) );
-                            sb.AppendLine();
-                            sb.AppendLine();
-                            BitfieldOffsets.Add( member.Offset );
-                        }
-                        if(member.ArrayIndex == 0 && member.ArraySize > 0 )
-                        {
-                            sb.Append( indent );
-                            sb.Append( $"{Clean( member.Name ) ?? $"packed{member.Offset:x}"} = new {typeName}[{member.ArraySize}];" );
-                            sb.AppendLine();
-                        }
-                        sb.Append( indent );
-                        if( member.ArraySize > 0 || member.ArrayIndex > 0)
-                            sb.Append( $"{Clean( member.Name ) ?? $"packed{member.Offset:x}"}[{member.ArrayIndex}] = ( packed{member.Offset:x} & 0x{member.Bit:x} ) == 0x{member.Bit:x};" );
-                        else
-                            sb.Append( $"{Clean( member.Name ) ?? $"packed{member.Offset:x}_{member.Bit:x}"} = ( packed{member.Offset:x} & 0x{member.Bit:x} ) == 0x{member.Bit:x};" );
-
-                        sb.AppendLine();
-                    }
-                    sb.AppendLine();
-
-
-                    continue;
-                }
-                // ReSharper disable once RedundantIfElseBlock
-                else if( gcd.IsArray )
-                {
-                    sb.Append( indent );
-                    sb.Append( $"{gcd.CleanName} = new {typeName}[{gcd.ArraySize}];" );
-                    sb.AppendLine();
-                }
-
-                foreach( var member in gcd.Members )
-                {
-                    sb.Append( indent );
-
-                    if( gcd.IsArray )
-                    {
-                        // todo: left as straight reads because exds can have nested structures which then read incorrectly if you do a batch read
-                        sb.Append( GenerateReadMember( typeName, gcd.CleanName, member.Offset, member.ArrayIndex ) );
-                    }
-
-                    else
-                    {
-                        sb.Append( GenerateReadMember( typeName, gcd.CleanName, member.Offset ) );
-                    }
-
-                    sb.AppendLine();
-                }
-
-                sb.AppendLine();
-            }
-
-            tmpl = tmpl.Replace( "%%DATA_READERS%%", sb.ToString() );
-
-            return tmpl;
-        }
-
-        static string GenerateDataMember( string type, string name, int offset, int arraySize = 0 )
-        {
-            var arrayStr = "";
-            if( arraySize > 0 )
-            {
-                arrayStr = $"[]";
-            }
-
-            if( string.IsNullOrEmpty( name ) )
-            {
-                return $"public {type}{arrayStr} unknown{offset:x};";
-            }
-
-            return $"public {type}{arrayStr} {name};";
-        }
-
-        static string GenerateReadMember( string type, string name, int offset, int arrayIndex = -1, bool bitset = false )
-        {
-            var arrayStr = "";
-            if( arrayIndex > -1 )
-            {
-                arrayStr = $"[{arrayIndex}]";
-            }
-
-            var bitsetType = "";
-            if( bitset )
-            {
-                bitsetType = ", ExcelColumnDataType.UInt8";
-            }
-
-            if( string.IsNullOrEmpty( name ) )
-            {
-                return $"unknown{offset:x}{arrayStr} = parser.ReadOffset< {type} >( 0x{offset:x}{bitsetType} );";
-            }
-
-            return $"{name}{arrayStr} = parser.ReadOffset< {type} >( 0x{offset:x}{bitsetType} );";
-        }
-
+        
         static string ExcelTypeToManaged( ExcelColumnDataType type )
         {
             switch( type )
@@ -448,6 +84,132 @@ namespace Lumina.SpaghettiGenerator
                 default:
                     throw new ArgumentOutOfRangeException( nameof( type ), type, null );
             }
+        }
+        
+        static void Main( string[] args )
+        {
+            _lumina = new Lumina( args[ 0 ] );
+            _sheetTemplate = File.ReadAllText( "class.tmpl" );
+
+            Directory.CreateDirectory( "output" );
+
+            // ProcessSheet( "AchievementCategory" );
+
+            foreach( var file in Directory.EnumerateFiles( "./Definitions/", "*.json" ) )
+            {
+                var name = Path.GetFileNameWithoutExtension( file );
+                Console.WriteLine( $"doing sheet: {name}" );
+
+                var code = ProcessDefinition( name );
+                if( code == null )
+                {
+                    continue;
+                }
+
+                var path = $"./output/{name}.cs";
+                File.WriteAllText( path, code );
+
+                break;
+            }
+        }
+
+        static string ProcessDefinition( string name )
+        {
+            var path = $"./Definitions/{name}.json";
+            var lastModified = File.GetLastWriteTime( path );
+            var def = File.ReadAllText( path );
+            var tmpl = _sheetTemplate;
+
+            var sheet = _lumina.Excel.GetSheetRaw( name );
+            if( sheet == null )
+            {
+                Console.WriteLine( $" - sheet {name} no longer exists!" );
+                return null;
+            }
+            
+            tmpl = tmpl.Replace( "%%SHEET_NAME%%", name );
+            var hash = sheet.HeaderFile.GetColumnsHash();
+            tmpl = tmpl.Replace( "%%COL_HASH%%", $"0x{hash:x8}" );
+            
+            var fieldsSb = new StringBuilder();
+            var readsSb = new StringBuilder();
+
+            var cols = sheet.Columns;
+
+            var schema = JsonConvert.DeserializeObject< SheetDefinition >( def );
+
+            var fieldGenerators = new List< BaseShitGenerator >();
+
+            for( uint i = 0; i < cols.Length; i++ )
+            {
+                var column = cols[ i ];
+                var schemaDef = schema.Definitions.FirstOrDefault( d => d.Index == i );
+
+                var type = column.Type;
+                var clrType = ExcelTypeToManaged( type );
+
+                if( schemaDef == null )
+                {
+                    var generator = new PrimitiveGenerator( clrType, $"Unknown{i}", i );
+                    
+                    fieldGenerators.Add( generator );
+
+                    continue;
+                }
+
+                var schemaType = schemaDef.Type;
+                if( schemaType == null )
+                {
+                    // single field
+                    if( schemaDef.Converter?.Type == "link" )
+                    {
+                        var target = schemaDef.Converter.Target;
+                        
+                        fieldGenerators.Add( new LazyRowGenerator( target, schemaDef.Name, i ) );
+                    }
+                    else if( schemaDef.Converter?.Type == "complexlink" )
+                    {
+                        // todo: this is fucking ass, maybe we can fake a variant though? lol
+                        fieldGenerators.Add( new PrimitiveGenerator( clrType, schemaDef.Name, i ) );
+                    }
+                    else
+                    {
+                        // no link
+                        fieldGenerators.Add( new PrimitiveGenerator( clrType, schemaDef.Name, i ) );
+                    }
+                }
+                else if( schemaType == "repeat" )
+                {
+                    fieldGenerators.Add( new RepeatGenerator( clrType, schemaDef.Name, i, schemaDef.Count ) );
+                    i += schemaDef.Count - 1;
+                }
+            }
+            
+            // run the generators
+            foreach( var generator in fieldGenerators )
+            {
+                generator.WriteFields( fieldsSb );
+                // fieldsSb.AppendLine();
+                generator.WriteReaders( readsSb );
+                // readsSb.AppendLine();
+            }
+
+            // fix indent the big brain way
+            Func< StringBuilder, int, string > fixIndent = ( sb, level ) =>
+            {
+                var indent = "";
+                for( int i = 0; i < level * 4; i++ )
+                {
+                    indent += " ";
+                }
+
+                return indent + sb.ToString().Replace( "\n", $"\n{indent}");
+            };
+            
+            tmpl = tmpl.Replace( "%%DATA_MEMBERS%%", fixIndent( fieldsSb, 2 ) );
+            tmpl = tmpl.Replace( "%%DATA_READERS%%", fixIndent( readsSb, 3 ) );
+
+            return tmpl;
         }
     }
 }

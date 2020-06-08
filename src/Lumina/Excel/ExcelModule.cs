@@ -136,7 +136,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="name">Name of the sheet to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        internal ExcelSheetImpl GetSheetRaw( string name )
+        public ExcelSheetImpl GetSheetRaw( string name, Language language = Language.None )
         {
             // todo: duped code is a bit ass but zzz
             // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on
@@ -149,7 +149,7 @@ namespace Lumina.Excel
             var path = BuildExcelHeaderPath( name );
             var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );
 
-            var newSheet = (ExcelSheetImpl)Activator.CreateInstance( typeof( ExcelSheetImpl ), headerFile, name, _Lumina );
+            var newSheet = (ExcelSheetImpl)Activator.CreateInstance( typeof( ExcelSheetImpl ), headerFile, name, language, _Lumina );
             newSheet.GenerateFileSegments();
 
             return newSheet;

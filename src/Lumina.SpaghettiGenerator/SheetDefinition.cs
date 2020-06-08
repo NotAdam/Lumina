@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Lumina.SpaghettiGenerator
 {
@@ -15,15 +16,18 @@ namespace Lumina.SpaghettiGenerator
     
     public class RootDefinition
     {
-        public string Name { get; set; }
-        public int Index { get; set; }
+        [JsonProperty("Name")]
+        public string DefName { get; set; }
+        public uint Index { get; set; }
         public string Type { get; set; }
-        public int Count { get; set; }
+        public uint Count { get; set; }
         
         public Definition Definition { get; set; }
+        
+        public Converter Converter { get; set; }
 
         // totally fucking retarded, thanks SaintCoinach, very cool
-        public string RealName => Name ?? Definition.Name;
+        internal string Name => DefName ?? Definition.Name;
     }
     
     public class SheetDefinition
