@@ -16,7 +16,7 @@ namespace Lumina.Data
             _path = path;
         }
 
-        protected FileState _state;
+        protected FileState _state = FileState.None;
         protected Lumina _lumina;
         protected string _path;
         protected object _instance;
