@@ -39,7 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             CustomTalk = new LazyRow< CustomTalk >( lumina, parser.ReadColumn< uint >( 6 ) );
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ) );
             DestroyOnRemoval = parser.ReadColumn< bool >( 8 );
-            // generator error: the definition for this field (Tooltip) has an invalid type for a LazyRow
+            #warning generator error: the definition for this field (Tooltip) has an invalid type for a LazyRow
             Unknown10 = parser.ReadColumn< byte >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );

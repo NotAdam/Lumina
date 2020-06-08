@@ -6,7 +6,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
     public class LazyRowRepeatGenerator : BaseShitGenerator
     {
         private readonly ExcelColumnDefinition[] _cols;
-        public uint Count { get; set; }
+        private uint Count { get; set; }
         
         public LazyRowRepeatGenerator( string typeName, string fieldName, uint columnId, uint count, ExcelColumnDefinition[] cols ) : base( typeName, fieldName, columnId )
         {
@@ -26,7 +26,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
             if( _cols[ ColumnId ].IsBoolType )
             {
-                sb.AppendLine( $"// generator error: the definition for this repeat ({FieldName}) has an invalid type for a LazyRow" );
+                sb.AppendLine( $"#warning generator error: the definition for this repeat ({FieldName}) has an invalid type for a LazyRow" );
                 return;
             }
             

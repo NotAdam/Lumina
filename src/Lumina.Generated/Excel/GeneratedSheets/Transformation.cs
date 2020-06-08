@@ -71,8 +71,8 @@ namespace Lumina.Excel.GeneratedSheets
             IsPvP = parser.ReadColumn< bool >( 21 );
             IsEvent = parser.ReadColumn< bool >( 22 );
             PlayerCamera = parser.ReadColumn< bool >( 23 );
-            // generator error: the definition for this field (StartVFX) has an invalid type for a LazyRow
-            // generator error: the definition for this field (EndVFX) has an invalid type for a LazyRow
+            #warning generator error: the definition for this field (StartVFX) has an invalid type for a LazyRow
+            #warning generator error: the definition for this field (EndVFX) has an invalid type for a LazyRow
             Unknown26 = parser.ReadColumn< ushort >( 26 );
             Unknown27 = parser.ReadColumn< ushort >( 27 );
             Unknown28 = parser.ReadColumn< uint >( 28 );

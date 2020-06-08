@@ -61,7 +61,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             IsInDutyFinder = parser.ReadColumn< bool >( 6 );
-            // generator error: the definition for this field (OpenRule) has an invalid type for a LazyRow
+            #warning generator error: the definition for this field (OpenRule) has an invalid type for a LazyRow
             Unknown8 = parser.ReadColumn< byte >( 8 );
             RequiredLevel = parser.ReadColumn< bool >( 9 );
             Unknown10 = parser.ReadColumn< byte >( 10 );
