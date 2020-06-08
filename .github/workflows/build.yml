@@ -13,6 +13,6 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Build with dotnet
-      run: dotnet build --configuration Release --nologo
+      run: dotnet build --configuration Release --nologo ./src/Lumina.sln
     - name: dotnet test
-      run: dotnet test --configuration Release --nologo
+      run: dotnet test --configuration Release --nologo ./src/Lumina.sln

@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:experimental" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:experimental" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a799cc4f-ca0d-4567-b8f0-922810043bb8" name="Default Changelist" comment="im literally autistic" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/19/a0598f41/BinaryPrimitives.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3AE6B30F-D0E8-466A-88BE-520AAFE3C34A/5/CliApplicationBuilder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/I/IKDRoute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/59BC8850-2EAC-45EC-A5ED-E278F7F4876D/D5/DefaultScheduler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/I/IKDRouteTable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/E760FF20-CB75-44E6-8419-1D4EE945B8C8/ad/71b5e082/JsonConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Tests/LuminaTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Example/Condition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Example/LogMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Example/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/338/TextWriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HugeCraftworksNpc.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HowToPage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/59BC8850-2EAC-45EC-A5ED-E278F7F4876D/DF/Scheduler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HWDAnnounce.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HWDCrafterSupplyReward.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Cmd/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7E2D210B-411D-4F53-8075-3EFAC5512460/39/RxApp.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Cmd/OutputExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HWDCrafterSupply.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7B190B13-A310-4BD3-8749-56379F74DEFF/46/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/61/BitConverter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Lumina.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/LuminaOptions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/27/Exception.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/ParsedFilePath.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HousingAethernet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/12C/ReaderBigEndian.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HouseRetainerPose.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/d7/8ae52613/Bmi1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/H/HousingAppeal.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/12D/ReaderLittleEndian.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/8b/f2c50260/BitOperations.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/A/AOZArrangement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AEB8D65B-8193-4253-A261-6D1123CB7C2A/1c/95b5ee75/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.editorconfig" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8F56F678-BB10-40E6-8344-F743CCECCFB5/3D/MetroWindow.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5C2CA832-9259-4513-823A-DFD6A44F74D4/22/HashProvider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/322/BinaryReader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/A/AirshipExplorationPart.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5C2CA832-9259-4513-823A-DFD6A44F74D4/58/SHA256.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/G/GFateClimbing2Content.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CF8546-7253-4A62-BFCB-892C8189B137/b8/f8b228df/RuntimeType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/G/GimmickAccessor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9152434B-0FAC-463B-87F2-DD9AF798817F/1e/9177512e/Assert.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/G/GimmickRect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/G/GimmickJump.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3BE62E55-753F-461F-AE0B-4BEE2D112662/B/HashAlgorithm.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/30/RuntimeType.CoreCLR.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/A/Aetheryte.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9D995D4A-0EBE-4A93-85A6-BE06CB7C70EE/98/7cf2eeac/InlineDataAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/G/GFateClimbing2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/SqPackHeader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/SqPackFileInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/Exceptions/ExcelSheetColumnChecksumMismatchException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/SqPackIndexHeader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/G/GCRankUldahMaleText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Files/ImcFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/50/Activator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/A/ActionCastVFX.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Files/TexFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5612D5AF-AFFA-462E-A7E0-1CC9FCD7EC95/cf/b967da6e/TypeDefinition.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Files/LgbFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/Common.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/StringOffset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/32D/MemoryStream.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/Quad.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1EA31BE0-9688-4627-981D-8F868BEB0125/3c/5e70f326/Image.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/2D0/CustomAttributeExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5F51D027-F9F0-4D10-BE19-A0595FE222D4/6e/01585727/FileInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/3F0/Unsafe.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/64/ByReference.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/219/MemoryMarshal.Fast.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/51/Activator.RuntimeType.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/34E51509-1347-41BF-8910-01F99F60A121/da/196ce0b0/Unsafe.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6DADD22E-0197-42CE-80AA-EFEF99855BE0/8f/6a460cb9/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1F49749D-1B1D-4711-88EB-4FB1FD24379D/a9/800eca27/ReactiveWindow`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7E2D210B-411D-4F53-8075-3EFAC5512460/31/IReactiveObjectExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/218/MemoryMarshal.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3AE6B30F-D0E8-466A-88BE-520AAFE3C34A/B/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/12B/Reader.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CF8546-7253-4A62-BFCB-892C8189B137/7d/3a800521/Marshal.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/1E0/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5AEBDC60-C868-49A9-972D-6C83308BC7D8/13/IPAddress.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/D3/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/E/EventSystemDefine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/Q/QuestRedoChapterUITab.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/1E0/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/BF/ReadOnlySpan.Fast.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/65/23823b08/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3AE6B30F-D0E8-466A-88BE-520AAFE3C34A/18/CommandOptionAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/99/MemoryExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/E/EquipRaceCategory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/C6/Span.Fast.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CF8546-7253-4A62-BFCB-892C8189B137/66/f5308b51/KeyValuePair`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.2.0/build/netcoreapp1.0/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelVariant.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelColumnDataType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/Layer/LayerCommon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelDataHeader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelColumnDefinition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelDataPagination.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelDataOffset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelHeaderHeader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Structs/Excel/ExcelDataRowHeader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/Tex/Alpha.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5F02E5FA-DD16-443B-83AB-AD53B754B9B6/42/f849688b/StaticFileOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/Tex/Flags.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/Tex/Squish.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Parsing/Tex/Maths.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Generated/Excel/GeneratedSheets/M/MobHuntReward.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/573FCB39-4AB0-4FF4-AB71-2F921A1020BA/1/SpaStaticFilesExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Files/Excel/ExcelDataFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Files/Excel/ExcelListFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Files/Excel/ExcelHeaderFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Cmd/Commands/ExcelUpdate.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Cmd/Commands/FileExtract.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Cmd/Commands/FileDiff.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Cmd/Commands/Repo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.Cmd/Commands/FileInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/RowParser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/IExcelRow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/15A8B061-7DF3-436E-801B-A9BE4285AF2D/18/Inflater.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/SheetLazy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/SheetAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Extensions/HalfExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Extensions/BinaryReaderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Extensions/SpanExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Extensions/MemoryStreamExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/SqPackIndex.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/28/GC.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/ExcelModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Misc/Crc32.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/ExcelSheet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/ExcelPage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C9F07833-F367-4CC6-BA53-F86A072E30CB/65/4234da01/Application.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Excel/ExcelSheetImpl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/FileResource.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Category.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Language.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/D3/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/LuminaFileInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/12/Array.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/CAB20CFC-4AAD-4DB5-8B95-F4A805707D12/2/OptionsConfigurationServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/SqPack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina/Data/Repository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BBB3B884-123D-47EA-9CD1-5BED540D02AE/68/7a099595/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BBB3B884-123D-47EA-9CD1-5BED540D02AE/2B0/RuntimeConstructorInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/947CFA9E-93C5-4D21-8EE6-CD975672A1F8/c3/5a7d840a/UInt32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Lumina.SpaghettiGenerator/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6FB5F033-77C2-4078-8475-3739BA0B7189/d5/64cd4bcd/ConfigurationBuilder`1.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Lumina/Data/Files/Excel/ExcelHeaderFile.cs" />
+        <option value="$PROJECT_DIR$/Lumina/Data/Repository.cs" />
+        <option value="$PROJECT_DIR$/Lumina/Data/SqPackIndex.cs" />
+        <option value="$PROJECT_DIR$/Lumina/Data/SqPack.cs" />
+        <option value="$PROJECT_DIR$/Lumina/Excel/ExcelModule.cs" />
+        <option value="$PROJECT_DIR$/Lumina/Excel/ExcelSheetImpl.cs" />
+        <option value="$PROJECT_DIR$/Lumina/Excel/RowParser.cs" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Shared/SurveyPrompt.razor" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Pages/_Host.cshtml" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Services/LuminaService.cs" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Shared/MainLayout.razor" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/wwwroot/css/site.css" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Shared/NavMenu.razor" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Pages/Excel.razor" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Pages/Excel/Index.razor" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Startup.cs" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/App.razor" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/Pages/FetchData.razor" />
+        <option value="$PROJECT_DIR$/Lumina.Workbench/_Imports.razor" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/index.js" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/index.scss" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/App.css" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/public/index.html" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/App.js" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/main.ts" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/angular.json" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/nav-menu/nav-menu.component.html" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/styles.scss" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/Ironworks/Ironworks.csproj" />
+        <option value="$PROJECT_DIR$/Ironworks/Config/GameDirectory.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/IronworksConfig.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/Controllers/WeatherForecastController.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/ViewModels/GeneralInfoViewModel.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/Startup.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/appsettings.Development.json" />
+        <option value="$PROJECT_DIR$/Ironworks/Services/LuminaService.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/Controllers/SystemInfoController.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/ViewModels/SystemStatusViewModel.cs" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/models/status.ts" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/services/api-client.service.ts" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/pages/home/home.component.ts" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/pages/home/home.component.html" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/scss/_variables.scss" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/scss/_bootswatch.scss" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/app.component.scss" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/index.html" />
+        <option value="$PROJECT_DIR$/Ironworks/ClientApp/src/app/app.component.html" />
+        <option value="$PROJECT_DIR$/Lumina.Generated/Lumina.Generated.csproj" />
+        <option value="$PROJECT_DIR$/Lumina/Lumina.csproj" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Sirc5s6f3i7tOVLnHMlYwQiqsC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34995976" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30008045" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TWShift.3" value="true" />
+    <property name="TWShift.4" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="C:\Users\Adam\gitrepos\Lumina\Ironworks\ClientApp\node_modules\typescript\lib" />
+  </component>
+  <component name="RunManager" selected=".NET Project.Lumina.Example">
+    <configuration name="Lumina.Cmd (Repo Info)" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Lumina.Cmd/bin/Debug/netcoreapp3.1/Lumina.Cmd.dll" />
+      <option name="PROGRAM_PARAMETERS" value="repo -p &quot;G:\SteamLibrary\steamapps\common\FINAL FANTASY XIV Online\game\sqpack&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lumina.Cmd/bin/Debug/netcoreapp3.1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lumina.Cmd/Lumina.Cmd.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v3.1" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Lumina.Cmd (Update Excel)" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Lumina.Cmd/bin/Release/netcoreapp3.1/Lumina.Cmd.dll" />
+      <option name="PROGRAM_PARAMETERS" value="excelupdate --oldpath &quot;D:\ffxiv\v5.18\sqpack&quot; --newpath &quot;G:\SteamLibrary\steamapps\common\FINAL FANTASY XIV Online\game\sqpack&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lumina.Cmd/bin/Release/netcoreapp3.1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lumina.Cmd/Lumina.Cmd.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v3.1" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Lumina.Example (PS3)" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Lumina.Example/bin/Release/netcoreapp3.1/Lumina.Example.dll" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;D:\Games\_ps3\dev_hdd0\game\BLES01129\USRDIR\game\sqpack&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lumina.Example/bin/Release/netcoreapp3.1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lumina.Example/Lumina.Example.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v3.1" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Lumina.Example" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Lumina.Example/bin/Debug/netcoreapp3.1/Lumina.Example.dll" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;G:\SteamLibrary\steamapps\common\FINAL FANTASY XIV Online\game\sqpack&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lumina.Example/bin/Debug/netcoreapp3.1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lumina.Example/Lumina.Example.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v3.1" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Lumina.SpaghettiGenerator" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Lumina.SpaghettiGenerator/bin/Release/netcoreapp3.1/Lumina.SpaghettiGenerator.dll" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;G:\SteamLibrary\steamapps\common\FINAL FANTASY XIV Online\game\sqpack&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Lumina.SpaghettiGenerator/bin/Release/netcoreapp3.1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Lumina.SpaghettiGenerator/Lumina.SpaghettiGenerator.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value=".NETCoreApp,Version=v3.1" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue=".NET Project.Lumina.Example" />
+      <item itemvalue=".NET Project.Lumina.Cmd (Update Excel)" />
+      <item itemvalue=".NET Project.Lumina.Cmd (Repo Info)" />
+      <item itemvalue=".NET Project.Lumina.Example (PS3)" />
+      <item itemvalue=".NET Project.Lumina.SpaghettiGenerator" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a799cc4f-ca0d-4567-b8f0-922810043bb8" name="Default Changelist" comment="" />
+      <created>1572057334407</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572057334407</updated>
+      <workItem from="1572057337834" duration="1484000" />
+      <workItem from="1572058853378" duration="35339000" />
+      <workItem from="1572134898388" duration="14671000" />
+      <workItem from="1572590741467" duration="14281000" />
+      <workItem from="1572766934504" duration="1465000" />
+      <workItem from="1572849388692" duration="9075000" />
+      <workItem from="1572939966658" duration="10785000" />
+      <workItem from="1573273919022" duration="7533000" />
+      <workItem from="1573342160013" duration="3375000" />
+      <workItem from="1573950685034" duration="4960000" />
+      <workItem from="1574156448386" duration="5271000" />
+      <workItem from="1574231520918" duration="1814000" />
+      <workItem from="1579938333709" duration="2077000" />
+      <workItem from="1580364718484" duration="1967000" />
+      <workItem from="1580611594696" duration="5476000" />
+      <workItem from="1580638802269" duration="1690000" />
+      <workItem from="1580727155424" duration="736000" />
+      <workItem from="1580803648340" duration="15485000" />
+      <workItem from="1580882232211" duration="20336000" />
+      <workItem from="1581127384997" duration="22195000" />
+      <workItem from="1581167806756" duration="1817000" />
+      <workItem from="1581203642746" duration="12768000" />
+      <workItem from="1581218844150" duration="29692000" />
+      <workItem from="1581313789830" duration="12153000" />
+      <workItem from="1581407435609" duration="14830000" />
+      <workItem from="1581841131527" duration="11298000" />
+      <workItem from="1581973592901" duration="12995000" />
+      <workItem from="1582094605306" duration="722000" />
+      <workItem from="1582341331405" duration="1590000" />
+      <workItem from="1582343394101" duration="17408000" />
+      <workItem from="1582422529311" duration="32380000" />
+      <workItem from="1582525488000" duration="10031000" />
+      <workItem from="1582960186331" duration="2195000" />
+      <workItem from="1584521881857" duration="5582000" />
+      <workItem from="1586217567546" duration="140000" />
+      <workItem from="1587095900917" duration="2040000" />
+      <workItem from="1587120947529" duration="4492000" />
+      <workItem from="1587358341111" duration="946000" />
+      <workItem from="1587621543786" duration="945000" />
+      <workItem from="1587877573111" duration="1305000" />
+      <workItem from="1588146296183" duration="620000" />
+      <workItem from="1589777741473" duration="1773000" />
+      <workItem from="1589779557527" duration="1560000" />
+      <workItem from="1589851596809" duration="2924000" />
+      <workItem from="1590206425821" duration="1769000" />
+      <workItem from="1590365302236" duration="3370000" />
+      <workItem from="1591357730625" duration="1492000" />
+      <workItem from="1591502126075" duration="11854000" />
+      <workItem from="1591522469462" duration="920000" />
+      <workItem from="1591523409742" duration="9265000" />
+      <workItem from="1591541874228" duration="4409000" />
+      <workItem from="1591584168774" duration="2352000" />
+      <workItem from="1591587801538" duration="744000" />
+    </task>
+    <task id="LOCAL-00001" summary="fix readme">
+      <created>1572060657283</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572060657283</updated>
+    </task>
+    <task id="LOCAL-00002" summary="expansion and index autodiscovery">
+      <created>1572070137752</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1572070137752</updated>
+    </task>
+    <task id="LOCAL-00003" summary="move to more permissive license">
+      <created>1572134931973</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572134931973</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix dat offset calculation">
+      <created>1572136099674</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1572136099674</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add nuget to readme">
+      <created>1572154519621</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1572154519621</updated>
+    </task>
+    <task id="LOCAL-00006" summary="templated GetFile to support derived filetypes">
+      <created>1572591769133</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1572591769133</updated>
+    </task>
+    <task id="LOCAL-00007" summary="templated GetFile to support derived filetypes">
+      <created>1572593121934</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1572593121934</updated>
+    </task>
+    <task id="LOCAL-00008" summary="templated GetFile to support derived filetypes">
+      <created>1572593382626</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1572593382626</updated>
+    </task>
+    <task id="LOCAL-00009" summary="templated GetFile to support derived filetypes">
+      <created>1572594164348</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572594164348</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add custom file type parser example">
+      <created>1572594176189</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1572594176189</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add custom file type parser example">
+      <created>1572594226989</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1572594226989</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add custom file type parser example">
+      <created>1572594251354</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1572594251354</updated>
+    </task>
+    <task id="LOCAL-00013" summary="cleanup duplicated code">
+      <created>1572595452189</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1572595452189</updated>
+    </task>
+    <task id="LOCAL-00014" summary="indexing speed improvements, save about ~40ms or so">
+      <created>1572600791432</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1572600791432</updated>
+    </task>
+    <task id="LOCAL-00015" summary="cleanup/code formatting">
+      <created>1580365471900</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1580365471900</updated>
+    </task>
+    <task id="LOCAL-00016" summary="obscure string offset fields into class that decays to a string to make usage less retarded">
+      <created>1580365505789</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1580365505789</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fix offset calculation in cases where it goes past i32 max">
+      <created>1580803893553</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1580803893553</updated>
+    </task>
+    <task id="LOCAL-00018" summary="excel header data precaching">
+      <created>1580818308031</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1580818308031</updated>
+    </task>
+    <task id="LOCAL-00019" summary="im literally autistic">
+      <created>1580819491123</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1580819491123</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnitTestsCoverage.Settings">
+    <option name="coveragePercentColumnWidth" value="150" />
+    <option name="sortOrder" value="DESCENDING" />
+    <option name="sortedColumn" value="1" />
+    <option name="symbolColumnWidth" value="339" />
+    <coverage-tree-state>
+      <expand />
+      <select />
+    </coverage-tree-state>
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="fix readme" />
+    <MESSAGE value="expansion and index autodiscovery" />
+    <MESSAGE value="move to more permissive license" />
+    <MESSAGE value="fix dat offset calculation" />
+    <MESSAGE value="add nuget to readme" />
+    <MESSAGE value="templated GetFile to support derived filetypes" />
+    <MESSAGE value="add custom file type parser example" />
+    <MESSAGE value="cleanup duplicated code" />
+    <MESSAGE value="indexing speed improvements, save about ~40ms or so" />
+    <MESSAGE value="cleanup/code formatting" />
+    <MESSAGE value="obscure string offset fields into class that decays to a string to make usage less retarded" />
+    <MESSAGE value="fix offset calculation in cases where it goes past i32 max" />
+    <MESSAGE value="excel header data precaching" />
+    <MESSAGE value="im literally autistic" />
+    <option name="LAST_COMMIT_MESSAGE" value="im literally autistic" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="910" y="435" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591590164923">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="910" y="435" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590365568376" />
+    <state x="910" y="435" key="#com.intellij.execution.impl.EditConfigurationsDialog/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591590164923" />
+    <state x="1085" y="415" key="#com.intellij.ide.util.MemberChooser" timestamp="1591544833138">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1085" y="415" key="#com.intellij.ide.util.MemberChooser/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591544833138" />
+    <state x="958" y="401" width="559" height="635" key="EnvironmentVariablesDialog" timestamp="1591524792238">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="958" y="401" width="614" height="558" key="EnvironmentVariablesDialog/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587122501392" />
+    <state x="958" y="401" width="559" height="635" key="EnvironmentVariablesDialog/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591524792238" />
+    <state width="2517" height="363" key="GridCell.Tab.0.bottom" timestamp="1591546285894">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="376" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590401578924" />
+    <state width="2517" height="363" key="GridCell.Tab.0.bottom/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285894" />
+    <state width="2517" height="363" key="GridCell.Tab.0.center" timestamp="1591546285894">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="376" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590401578923" />
+    <state width="2517" height="363" key="GridCell.Tab.0.center/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285894" />
+    <state width="2517" height="363" key="GridCell.Tab.0.left" timestamp="1591546285894">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="376" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590401578922" />
+    <state width="2517" height="363" key="GridCell.Tab.0.left/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285894" />
+    <state width="2517" height="363" key="GridCell.Tab.0.right" timestamp="1591546285894">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="376" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590401578923" />
+    <state width="2517" height="363" key="GridCell.Tab.0.right/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285894" />
+    <state width="2517" height="363" key="GridCell.Tab.1.bottom" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.1.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663681" />
+    <state width="2517" height="363" key="GridCell.Tab.1.bottom/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.1.center" timestamp="1591546285894">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.1.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663681" />
+    <state width="2517" height="363" key="GridCell.Tab.1.center/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285894" />
+    <state width="2517" height="363" key="GridCell.Tab.1.left" timestamp="1591546285894">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.1.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663680" />
+    <state width="2517" height="363" key="GridCell.Tab.1.left/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285894" />
+    <state width="2517" height="363" key="GridCell.Tab.1.right" timestamp="1591546285894">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.1.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663681" />
+    <state width="2517" height="363" key="GridCell.Tab.1.right/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285894" />
+    <state width="2517" height="363" key="GridCell.Tab.2.bottom" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.2.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.2.bottom/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.2.center" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.2.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663681" />
+    <state width="2517" height="363" key="GridCell.Tab.2.center/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.2.left" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.2.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663681" />
+    <state width="2517" height="363" key="GridCell.Tab.2.left/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.2.right" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.2.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.2.right/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.3.bottom" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.3.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.3.bottom/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.3.center" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.3.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.3.center/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.3.left" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.3.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.3.left/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.3.right" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.3.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.3.right/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.4.bottom" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.4.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.4.bottom/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.4.center" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.4.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.4.center/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.4.left" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.4.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.4.left/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state width="2517" height="363" key="GridCell.Tab.4.right" timestamp="1591546285895">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="363" key="GridCell.Tab.4.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587137663682" />
+    <state width="2517" height="363" key="GridCell.Tab.4.right/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546285895" />
+    <state x="872" y="431" key="Rider.ProjectTemplateDialog.Size" timestamp="1591537455843">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="872" y="431" key="Rider.ProjectTemplateDialog.Size/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1590207088674" />
+    <state x="872" y="431" key="Rider.ProjectTemplateDialog.Size/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591537455843" />
+    <state x="1074" y="385" key="RiderGenerateDialog" timestamp="1591511416101">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1074" y="385" key="RiderGenerateDialog/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591511416101" />
+    <state x="781" y="343" key="SettingsEditor" timestamp="1591587805708">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="343" key="SettingsEditor/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1589779569519" />
+    <state x="781" y="343" key="SettingsEditor/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591587805708" />
+    <state x="1089" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591543374304">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1089" y="613" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591543374304" />
+    <state x="380" y="120" width="1909" height="1143" key="find.popup" timestamp="1591522111851">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="380" y="120" width="1909" height="1143" key="find.popup/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1589851604729" />
+    <state x="380" y="120" width="1909" height="1143" key="find.popup/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591522111851" />
+    <state width="768" height="544" key="javadoc.popup.new" timestamp="1591545097175">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="768" height="544" key="javadoc.popup.new/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1589853022625" />
+    <state width="768" height="544" key="javadoc.popup.new/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591545097175" />
+    <state x="1143" y="586" width="348" height="298" key="org.angular.cli.generate" timestamp="1591546253108">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1143" y="586" width="348" height="298" key="org.angular.cli.generate/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591546253108" />
+    <state x="936" y="330" width="672" height="677" key="run.anything.popup" timestamp="1587099436017">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="936" y="330" width="672" height="677" key="run.anything.popup/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1587099436017" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1591543428136">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1589779454159" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591543428136" />
+    <state x="1002" y="612" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1591545178709">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1002" y="612" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/2560.0.2560.1400/0.0.2560.1400@0.0.2560.1400" timestamp="1591545178709" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="DotNetProject">
+        <watch expression="SqPackIndexes" language="C#" custom="RiderImportsList:" />
+        <watch expression="SqPackIndexes.Items[1].HashTableEntries2" />
+        <watch expression="itemEn" language="C#" custom="RiderImportsList:" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
