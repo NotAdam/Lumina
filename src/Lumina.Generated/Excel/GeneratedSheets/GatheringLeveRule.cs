@@ -1,0 +1,22 @@
+using Lumina.Data.Structs.Excel;
+
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "GatheringLeveRule", columnHash: 0xdebb20e3 )]
+    public class GatheringLeveRule : IExcelRow
+    {
+        
+        public string Rule;
+        
+        public uint RowId { get; set; }
+        public uint SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            Rule = parser.ReadColumn< string >( 0 );
+        }
+    }
+}
