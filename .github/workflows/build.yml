@@ -4,14 +4,17 @@ on: [push]
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.101
+        dotnet-version: 3.1.300
     - name: Build with dotnet
       run: dotnet build --configuration Release --nologo ./src/Lumina.sln
     - name: dotnet test
