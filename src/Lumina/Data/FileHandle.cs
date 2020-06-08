@@ -9,6 +9,12 @@ namespace Lumina.Data
             Loaded,
             Error
         }
+        
+        internal BaseFileHandle( Lumina lumina, string path )
+        {
+            _lumina = lumina;
+            _path = path;
+        }
 
         protected FileState _state;
         protected Lumina _lumina;
@@ -19,6 +25,10 @@ namespace Lumina.Data
 
         public bool HasValue => State == FileState.Loaded && _instance != null;
 
+        /// <summary>
+        /// Loads the underlying <see cref="FileResource"/>
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public virtual void Load()
         {
             throw new System.NotImplementedException();
@@ -31,15 +41,10 @@ namespace Lumina.Data
     /// <typeparam name="T">The type of FileResource to wrap</typeparam>
     public class FileHandle< T > : BaseFileHandle where T : FileResource
     {
-        /// <summary>
-        /// The file handle state.
-        /// </summary>
-        internal FileHandle( Lumina lumina, string path )
+        internal FileHandle( Lumina lumina, string path ) : base( lumina, path )
         {
-            _lumina = lumina;
-            _path = path;
         }
-
+        
         public override void Load()
         {
             _state = FileState.Loading;
@@ -55,6 +60,9 @@ namespace Lumina.Data
             _instance = file;
         }
 
+        /// <summary>
+        /// Returns the <see cref="FileResource"/> or null if it isn't loaded or failed to load.
+        /// </summary>
         public T Value
         {
             get
