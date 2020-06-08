@@ -22,6 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Unknown0 = parser.ReadColumn< string >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
+            Images = new LazyRow< HowToPage >[ 10 ];
             for( var i = 0; i < 10; i++ )
                 Images[ i ] = new LazyRow< HowToPage >( lumina, parser.ReadColumn< short >( 2 + i ) );
             Category = new LazyRow< HowToCategory >( lumina, parser.ReadColumn< sbyte >( 12 ) );

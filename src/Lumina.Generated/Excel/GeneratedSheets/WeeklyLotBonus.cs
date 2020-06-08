@@ -81,6 +81,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            WeeklyLotBonusThreshold = new byte[ 31 ];
             for( var i = 0; i < 31; i++ )
                 WeeklyLotBonusThreshold[ i ] = parser.ReadColumn< byte >( 0 + i );
             Unknown31 = parser.ReadColumn< byte >( 31 );

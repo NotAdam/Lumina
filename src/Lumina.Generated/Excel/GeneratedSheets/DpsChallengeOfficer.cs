@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             UnlockQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ) );
+            ChallengeName = new LazyRow< DpsChallenge >[ 25 ];
             for( var i = 0; i < 25; i++ )
                 ChallengeName[ i ] = new LazyRow< DpsChallenge >( lumina, parser.ReadColumn< ushort >( 1 + i ) );
         }

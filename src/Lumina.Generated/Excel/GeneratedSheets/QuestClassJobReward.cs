@@ -25,12 +25,16 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 0 ) );
+            RewardItem = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RewardItem[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 + i ) );
+            RewardAmount = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RewardAmount[ i ] = parser.ReadColumn< byte >( 5 + i );
+            RequiredItem = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RequiredItem[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 9 + i ) );
+            RequiredAmount = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RequiredAmount[ i ] = parser.ReadColumn< byte >( 13 + i );
             Unknown17 = parser.ReadColumn< bool >( 17 );

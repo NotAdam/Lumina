@@ -1706,13 +1706,14 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Name = parser.ReadColumn< string >( 0 );
+            UnkStruct1 = new UnkStruct1Struct[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
                 UnkStruct1[ i ] = new UnkStruct1Struct();
-                UnkStruct1[ i ].ItemReceive = parser.ReadColumn< int >( 1 + ( i * 2 + 0 ) );
-                UnkStruct1[ i ].CountReceive = parser.ReadColumn< int >( 1 + ( i * 2 + 1 ) );
-                UnkStruct1[ i ].SpecialShopItemCategory = parser.ReadColumn< int >( 1 + ( i * 2 + 2 ) );
-                UnkStruct1[ i ].HQReceive = parser.ReadColumn< int >( 1 + ( i * 2 + 3 ) );
+                UnkStruct1[ i ].ItemReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 0 ) );
+                UnkStruct1[ i ].CountReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 1 ) );
+                UnkStruct1[ i ].SpecialShopItemCategory = parser.ReadColumn< int >( 1 + ( i * 4 + 2 ) );
+                UnkStruct1[ i ].HQReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 3 ) );
             }
             Unknown9 = parser.ReadColumn< int >( 9 );
             Unknown10 = parser.ReadColumn< int >( 10 );
@@ -2186,13 +2187,14 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown478 = parser.ReadColumn< bool >( 478 );
             Unknown479 = parser.ReadColumn< bool >( 479 );
             Unknown480 = parser.ReadColumn< bool >( 480 );
+            UnkStruct481 = new UnkStruct481Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
                 UnkStruct481[ i ] = new UnkStruct481Struct();
-                UnkStruct481[ i ].ItemCost = parser.ReadColumn< int >( 481 + ( i * 3 + 0 ) );
-                UnkStruct481[ i ].CountCost = parser.ReadColumn< int >( 481 + ( i * 3 + 1 ) );
-                UnkStruct481[ i ].HQCost = parser.ReadColumn< int >( 481 + ( i * 3 + 2 ) );
-                UnkStruct481[ i ].CollectabilityRatingCost = parser.ReadColumn< int >( 481 + ( i * 3 + 3 ) );
+                UnkStruct481[ i ].ItemCost = parser.ReadColumn< int >( 481 + ( i * 4 + 0 ) );
+                UnkStruct481[ i ].CountCost = parser.ReadColumn< int >( 481 + ( i * 4 + 1 ) );
+                UnkStruct481[ i ].HQCost = parser.ReadColumn< int >( 481 + ( i * 4 + 2 ) );
+                UnkStruct481[ i ].CollectabilityRatingCost = parser.ReadColumn< int >( 481 + ( i * 4 + 3 ) );
             }
             Unknown493 = parser.ReadColumn< int >( 493 );
             Unknown494 = parser.ReadColumn< int >( 494 );
@@ -2902,16 +2904,20 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1198 = parser.ReadColumn< ushort >( 1198 );
             Unknown1199 = parser.ReadColumn< ushort >( 1199 );
             Unknown1200 = parser.ReadColumn< ushort >( 1200 );
+            QuestItem = new LazyRow< Quest >[ 60 ];
             for( var i = 0; i < 60; i++ )
                 QuestItem[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1201 + i ) );
+            Unknown = new int[ 60 ];
             for( var i = 0; i < 60; i++ )
                 Unknown[ i ] = parser.ReadColumn< int >( 1261 + i );
+            AchievementUnlock = new LazyRow< Achievement >[ 60 ];
             for( var i = 0; i < 60; i++ )
                 AchievementUnlock[ i ] = new LazyRow< Achievement >( lumina, parser.ReadColumn< int >( 1321 + i ) );
+            UnkStruct1381 = new UnkStruct1381Struct[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
                 UnkStruct1381[ i ] = new UnkStruct1381Struct();
-                UnkStruct1381[ i ].Unknown = parser.ReadColumn< byte >( 1381 + ( i * 2 + 0 ) );
+                UnkStruct1381[ i ].Unknown = parser.ReadColumn< byte >( 1381 + ( i * 1 + 0 ) );
             }
             Unknown1383 = parser.ReadColumn< byte >( 1383 );
             Unknown1384 = parser.ReadColumn< byte >( 1384 );
@@ -3331,6 +3337,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1798 = parser.ReadColumn< bool >( 1798 );
             Unknown1799 = parser.ReadColumn< bool >( 1799 );
             Unknown1800 = parser.ReadColumn< bool >( 1800 );
+            PatchNumber = new byte[ 60 ];
             for( var i = 0; i < 60; i++ )
                 PatchNumber[ i ] = parser.ReadColumn< byte >( 1801 + i );
             UseCurrencyType = parser.ReadColumn< ushort >( 1861 );

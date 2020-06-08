@@ -22,6 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ) );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             SecondaryStatTotal = parser.ReadColumn< byte >( 2 );
+            Parameter = new LazyRow< AnimaWeapon5Param >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 Parameter[ i ] = new LazyRow< AnimaWeapon5Param >( lumina, parser.ReadColumn< byte >( 3 + i ) );
         }

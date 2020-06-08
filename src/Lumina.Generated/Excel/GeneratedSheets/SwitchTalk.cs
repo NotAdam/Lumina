@@ -53,8 +53,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             Unknown1 = parser.ReadColumn< uint >( 1 );
+            Quest = new LazyRow< Quest >[ 15 ];
             for( var i = 0; i < 15; i++ )
                 Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 2 + i ) );
+            DefaultTalk = new LazyRow< DefaultTalk >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 DefaultTalk[ i ] = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< uint >( 17 + i ) );
             Unknown33 = parser.ReadColumn< byte >( 33 );

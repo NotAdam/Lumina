@@ -30,6 +30,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
                 return;
             }
             
+            sb.AppendLine( $"{FieldName} = new LazyRow< {TypeName} >[ {Count} ];" );
             sb.AppendLine( $"for( var i = 0; i < {Count}; i++ )" );
             sb.AppendLine( $"    {FieldName}[ i ] = new LazyRow< {TypeName} >( lumina, parser.ReadColumn< {type} >( {ColumnId} + i ) );" );
         }

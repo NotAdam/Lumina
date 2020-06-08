@@ -20,6 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Territory = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< int >( 0 ) );
             Unknown1 = parser.ReadColumn< byte >( 1 );
+            AetherCurrent = new LazyRow< AetherCurrent >[ 15 ];
             for( var i = 0; i < 15; i++ )
                 AetherCurrent[ i ] = new LazyRow< AetherCurrent >( lumina, parser.ReadColumn< int >( 2 + i ) );
         }

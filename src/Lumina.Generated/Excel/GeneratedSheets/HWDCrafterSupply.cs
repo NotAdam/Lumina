@@ -104,10 +104,13 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            ItemTradeIn = new LazyRow< Item >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 ItemTradeIn[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 + i ) );
+            Level = new byte[ 16 ];
             for( var i = 0; i < 16; i++ )
                 Level[ i ] = parser.ReadColumn< byte >( 16 + i );
+            LevelMax = new byte[ 16 ];
             for( var i = 0; i < 16; i++ )
                 LevelMax[ i ] = parser.ReadColumn< byte >( 32 + i );
             Unknown48 = parser.ReadColumn< byte >( 48 );
@@ -126,16 +129,22 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown61 = parser.ReadColumn< byte >( 61 );
             Unknown62 = parser.ReadColumn< byte >( 62 );
             Unknown63 = parser.ReadColumn< byte >( 63 );
+            BaseCollectableRating = new ushort[ 16 ];
             for( var i = 0; i < 16; i++ )
                 BaseCollectableRating[ i ] = parser.ReadColumn< ushort >( 64 + i );
+            MidBaseCollectableRating = new ushort[ 16 ];
             for( var i = 0; i < 16; i++ )
                 MidBaseCollectableRating[ i ] = parser.ReadColumn< ushort >( 80 + i );
+            HighBaseCollectableRating = new ushort[ 16 ];
             for( var i = 0; i < 16; i++ )
                 HighBaseCollectableRating[ i ] = parser.ReadColumn< ushort >( 96 + i );
+            BaseCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 BaseCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 112 + i ) );
+            MidCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 MidCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 128 + i ) );
+            HighCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 HighCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 144 + i ) );
             Unknown160 = parser.ReadColumn< ushort >( 160 );

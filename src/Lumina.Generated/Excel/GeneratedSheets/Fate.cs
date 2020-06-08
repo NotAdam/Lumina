@@ -58,6 +58,7 @@ namespace Lumina.Excel.GeneratedSheets
             ClassJobLevel = parser.ReadColumn< byte >( 4 );
             ClassJobLevelMax = parser.ReadColumn< byte >( 5 );
             EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 6 ) );
+            TypeToDoValue = new byte[ 3 ];
             for( var i = 0; i < 3; i++ )
                 TypeToDoValue[ i ] = parser.ReadColumn< byte >( 7 + i );
             IconObjective = parser.ReadColumn< uint >( 10 );
@@ -82,12 +83,14 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< string >( 29 );
             Description = parser.ReadColumn< string >( 30 );
             Objective = parser.ReadColumn< string >( 31 );
+            StatusText = new string[ 3 ];
             for( var i = 0; i < 3; i++ )
                 StatusText[ i ] = parser.ReadColumn< string >( 32 + i );
             ArrayIndex = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< uint >( 35 ) );
             Unknown36 = parser.ReadColumn< uint >( 36 );
             ReqEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 37 ) );
             TurnInEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 38 ) );
+            ObjectiveIcon = new ushort[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ObjectiveIcon[ i ] = parser.ReadColumn< ushort >( 39 + i );
         }

@@ -51,11 +51,12 @@ namespace Lumina.Excel.GeneratedSheets
             RecipeLevelTable = new LazyRow< RecipeLevelTable >( lumina, parser.ReadColumn< ushort >( 2 ) );
             ItemResult = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 3 ) );
             AmountResult = parser.ReadColumn< byte >( 4 );
+            UnkStruct5 = new UnkStruct5Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
             {
                 UnkStruct5[ i ] = new UnkStruct5Struct();
-                UnkStruct5[ i ].ItemIngredient = parser.ReadColumn< int >( 5 + ( i * 10 + 0 ) );
-                UnkStruct5[ i ].AmountIngredient = parser.ReadColumn< byte >( 5 + ( i * 10 + 1 ) );
+                UnkStruct5[ i ].ItemIngredient = parser.ReadColumn< int >( 5 + ( i * 2 + 0 ) );
+                UnkStruct5[ i ].AmountIngredient = parser.ReadColumn< byte >( 5 + ( i * 2 + 1 ) );
             }
             Unknown25 = parser.ReadColumn< ushort >( 25 );
             IsSecondary = parser.ReadColumn< bool >( 26 );

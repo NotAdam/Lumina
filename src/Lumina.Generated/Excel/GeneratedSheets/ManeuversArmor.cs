@@ -23,10 +23,12 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
+            BNpcBase = new LazyRow< BNpcName >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 BNpcBase[ i ] = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 1 + i ) );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
+            Icon = new uint[ 5 ];
             for( var i = 0; i < 5; i++ )
                 Icon[ i ] = parser.ReadColumn< uint >( 5 + i );
             Unknown10 = parser.ReadColumn< string >( 10 );

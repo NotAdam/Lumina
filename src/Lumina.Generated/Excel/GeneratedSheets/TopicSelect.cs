@@ -28,10 +28,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
+            UnkStruct4 = new UnkStruct4Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
             {
                 UnkStruct4[ i ] = new UnkStruct4Struct();
-                UnkStruct4[ i ].Shop = parser.ReadColumn< uint >( 4 + ( i * 10 + 0 ) );
+                UnkStruct4[ i ].Shop = parser.ReadColumn< uint >( 4 + ( i * 1 + 0 ) );
             }
         }
     }

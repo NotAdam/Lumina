@@ -26,6 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Unknown0 = parser.ReadColumn< string >( 0 );
             AssignmentTalk = parser.ReadColumn< uint >( 1 );
+            Quest = new LazyRow< Quest >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 2 + i ) );
             Unknown4 = parser.ReadColumn< bool >( 4 );

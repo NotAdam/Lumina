@@ -20,6 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ) );
             Category = parser.ReadColumn< byte >( 1 );
+            Param = new byte[ 2 ];
             for( var i = 0; i < 2; i++ )
                 Param[ i ] = parser.ReadColumn< byte >( 2 + i );
         }

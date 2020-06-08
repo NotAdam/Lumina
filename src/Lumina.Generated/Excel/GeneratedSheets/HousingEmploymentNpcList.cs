@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Race = new LazyRow< HousingEmploymentNpcRace >( lumina, parser.ReadColumn< byte >( 0 ) );
+            ENpcBase = new LazyRow< ENpcBase >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 ENpcBase[ i ] = new LazyRow< ENpcBase >( lumina, parser.ReadColumn< uint >( 1 + i ) );
         }

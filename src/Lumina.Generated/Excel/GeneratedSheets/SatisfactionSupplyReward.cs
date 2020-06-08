@@ -32,13 +32,14 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
+            UnkStruct1 = new UnkStruct1Struct[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
                 UnkStruct1[ i ] = new UnkStruct1Struct();
-                UnkStruct1[ i ].RewardCurrency = parser.ReadColumn< ushort >( 1 + ( i * 2 + 0 ) );
-                UnkStruct1[ i ].QuantityLow = parser.ReadColumn< ushort >( 1 + ( i * 2 + 1 ) );
-                UnkStruct1[ i ].QuantityMid = parser.ReadColumn< ushort >( 1 + ( i * 2 + 2 ) );
-                UnkStruct1[ i ].QuantityHigh = parser.ReadColumn< ushort >( 1 + ( i * 2 + 3 ) );
+                UnkStruct1[ i ].RewardCurrency = parser.ReadColumn< ushort >( 1 + ( i * 4 + 0 ) );
+                UnkStruct1[ i ].QuantityLow = parser.ReadColumn< ushort >( 1 + ( i * 4 + 1 ) );
+                UnkStruct1[ i ].QuantityMid = parser.ReadColumn< ushort >( 1 + ( i * 4 + 2 ) );
+                UnkStruct1[ i ].QuantityHigh = parser.ReadColumn< ushort >( 1 + ( i * 4 + 3 ) );
             }
             Unknown9 = parser.ReadColumn< byte >( 9 );
             SatisfactionLow = parser.ReadColumn< ushort >( 10 );

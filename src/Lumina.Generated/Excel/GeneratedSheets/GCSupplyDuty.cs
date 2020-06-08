@@ -71,6 +71,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Unknown0 = new int[ 11 ];
             for( var i = 0; i < 11; i++ )
                 Unknown0[ i ] = parser.ReadColumn< int >( 0 + i );
             Unknown11 = parser.ReadColumn< byte >( 11 );

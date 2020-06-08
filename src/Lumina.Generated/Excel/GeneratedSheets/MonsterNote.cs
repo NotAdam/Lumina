@@ -19,8 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            MonsterNoteTarget = new LazyRow< MonsterNoteTarget >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 0 + i ) );
+            Count = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 Count[ i ] = parser.ReadColumn< byte >( 4 + i );
             Reward = parser.ReadColumn< uint >( 8 );

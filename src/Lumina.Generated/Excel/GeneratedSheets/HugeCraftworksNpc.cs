@@ -87,10 +87,12 @@ namespace Lumina.Excel.GeneratedSheets
             ENpcResident = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ) );
             ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< ushort >( 1 ) );
             Unknown2 = parser.ReadColumn< uint >( 2 );
+            ItemRequested = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 ItemRequested[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 3 + i ) );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
+            QtyRequested = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 QtyRequested[ i ] = parser.ReadColumn< byte >( 9 + i );
             Unknown13 = parser.ReadColumn< byte >( 13 );
@@ -132,6 +134,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown49 = parser.ReadColumn< byte >( 49 );
             Unknown50 = parser.ReadColumn< uint >( 50 );
             Unknown51 = parser.ReadColumn< uint >( 51 );
+            ItemReward = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 ItemReward[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 52 + i ) );
             Unknown56 = parser.ReadColumn< bool >( 56 );
@@ -142,10 +145,12 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown61 = parser.ReadColumn< bool >( 61 );
             Unknown62 = parser.ReadColumn< byte >( 62 );
             Unknown63 = parser.ReadColumn< byte >( 63 );
+            QtyItemReward = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 QtyItemReward[ i ] = parser.ReadColumn< byte >( 64 + i );
             Unknown68 = parser.ReadColumn< uint >( 68 );
             Unknown69 = parser.ReadColumn< uint >( 69 );
+            ItemUnkown = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 ItemUnkown[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 70 + i ) );
             Unknown74 = parser.ReadColumn< bool >( 74 );
@@ -156,6 +161,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown79 = parser.ReadColumn< bool >( 79 );
             Unknown80 = parser.ReadColumn< byte >( 80 );
             Unknown81 = parser.ReadColumn< byte >( 81 );
+            QtyItemUnkown = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 QtyItemUnkown[ i ] = parser.ReadColumn< byte >( 82 + i );
             Transient = parser.ReadColumn< string >( 86 );

@@ -3088,24 +3088,32 @@ namespace Lumina.Excel.GeneratedSheets
             Race = new LazyRow< Race >( lumina, parser.ReadColumn< int >( 0 ) );
             Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< int >( 1 ) );
             Gender = parser.ReadColumn< sbyte >( 2 );
+            Menu = new uint[ 28 ];
             for( var i = 0; i < 28; i++ )
                 Menu[ i ] = parser.ReadColumn< uint >( 3 + i );
+            InitVal = new byte[ 28 ];
             for( var i = 0; i < 28; i++ )
                 InitVal[ i ] = parser.ReadColumn< byte >( 31 + i );
+            SubMenuType = new byte[ 28 ];
             for( var i = 0; i < 28; i++ )
                 SubMenuType[ i ] = parser.ReadColumn< byte >( 59 + i );
+            SubMenuNum = new byte[ 28 ];
             for( var i = 0; i < 28; i++ )
                 SubMenuNum[ i ] = parser.ReadColumn< byte >( 87 + i );
+            LookAt = new byte[ 28 ];
             for( var i = 0; i < 28; i++ )
                 LookAt[ i ] = parser.ReadColumn< byte >( 115 + i );
+            SubMenuMask = new uint[ 28 ];
             for( var i = 0; i < 28; i++ )
                 SubMenuMask[ i ] = parser.ReadColumn< uint >( 143 + i );
+            Customize = new uint[ 28 ];
             for( var i = 0; i < 28; i++ )
                 Customize[ i ] = parser.ReadColumn< uint >( 171 + i );
+            UnkStruct199 = new UnkStruct199Struct[ 100 ];
             for( var i = 0; i < 100; i++ )
             {
                 UnkStruct199[ i ] = new UnkStruct199Struct();
-                UnkStruct199[ i ].SubMenuParam = parser.ReadColumn< uint >( 199 + ( i * 100 + 0 ) );
+                UnkStruct199[ i ].SubMenuParam = parser.ReadColumn< uint >( 199 + ( i * 1 + 0 ) );
             }
             Unknown299 = parser.ReadColumn< uint >( 299 );
             Unknown300 = parser.ReadColumn< uint >( 300 );
@@ -5807,10 +5815,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2996 = parser.ReadColumn< uint >( 2996 );
             Unknown2997 = parser.ReadColumn< uint >( 2997 );
             Unknown2998 = parser.ReadColumn< uint >( 2998 );
+            UnkStruct2999 = new UnkStruct2999Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
             {
                 UnkStruct2999[ i ] = new UnkStruct2999Struct();
-                UnkStruct2999[ i ].SubMenuGraphic = parser.ReadColumn< byte >( 2999 + ( i * 10 + 0 ) );
+                UnkStruct2999[ i ].SubMenuGraphic = parser.ReadColumn< byte >( 2999 + ( i * 1 + 0 ) );
             }
             Unknown3009 = parser.ReadColumn< byte >( 3009 );
             Unknown3010 = parser.ReadColumn< byte >( 3010 );
@@ -6082,12 +6091,14 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3276 = parser.ReadColumn< byte >( 3276 );
             Unknown3277 = parser.ReadColumn< byte >( 3277 );
             Unknown3278 = parser.ReadColumn< byte >( 3278 );
+            VoiceStruct = new byte[ 12 ];
             for( var i = 0; i < 12; i++ )
                 VoiceStruct[ i ] = parser.ReadColumn< byte >( 3279 + i );
+            UnkStruct3291 = new UnkStruct3291Struct[ 7 ];
             for( var i = 0; i < 7; i++ )
             {
                 UnkStruct3291[ i ] = new UnkStruct3291Struct();
-                UnkStruct3291[ i ].FacialFeatureOption = parser.ReadColumn< int >( 3291 + ( i * 7 + 0 ) );
+                UnkStruct3291[ i ].FacialFeatureOption = parser.ReadColumn< int >( 3291 + ( i * 1 + 0 ) );
             }
             Unknown3298 = parser.ReadColumn< int >( 3298 );
             Unknown3299 = parser.ReadColumn< int >( 3299 );
@@ -6138,16 +6149,17 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3344 = parser.ReadColumn< int >( 3344 );
             Unknown3345 = parser.ReadColumn< int >( 3345 );
             Unknown3346 = parser.ReadColumn< int >( 3346 );
+            UnkStruct3347 = new UnkStruct3347Struct[ 1 ];
             for( var i = 0; i < 1; i++ )
             {
                 UnkStruct3347[ i ] = new UnkStruct3347Struct();
-                UnkStruct3347[ i ].Helmet = parser.ReadColumn< ulong >( 3347 + ( i * 1 + 0 ) );
-                UnkStruct3347[ i ].Top = parser.ReadColumn< ulong >( 3347 + ( i * 1 + 1 ) );
-                UnkStruct3347[ i ].Gloves = parser.ReadColumn< ulong >( 3347 + ( i * 1 + 2 ) );
-                UnkStruct3347[ i ].Legs = parser.ReadColumn< ulong >( 3347 + ( i * 1 + 3 ) );
-                UnkStruct3347[ i ].Shoes = parser.ReadColumn< ulong >( 3347 + ( i * 1 + 4 ) );
-                UnkStruct3347[ i ].Weapon = parser.ReadColumn< ulong >( 3347 + ( i * 1 + 5 ) );
-                UnkStruct3347[ i ].SubWeapon = parser.ReadColumn< ulong >( 3347 + ( i * 1 + 6 ) );
+                UnkStruct3347[ i ].Helmet = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 0 ) );
+                UnkStruct3347[ i ].Top = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 1 ) );
+                UnkStruct3347[ i ].Gloves = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 2 ) );
+                UnkStruct3347[ i ].Legs = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 3 ) );
+                UnkStruct3347[ i ].Shoes = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 4 ) );
+                UnkStruct3347[ i ].Weapon = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 5 ) );
+                UnkStruct3347[ i ].SubWeapon = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 6 ) );
             }
             Unknown3354 = parser.ReadColumn< ulong >( 3354 );
             Unknown3355 = parser.ReadColumn< ulong >( 3355 );

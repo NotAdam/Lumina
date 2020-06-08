@@ -25,6 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
             Type = parser.ReadColumn< byte >( 0 );
             GatheringPointBase = new LazyRow< GatheringPointBase >( lumina, parser.ReadColumn< int >( 1 ) );
             Count = parser.ReadColumn< byte >( 2 );
+            GatheringPointBonus = new LazyRow< GatheringPointBonus >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 GatheringPointBonus[ i ] = new LazyRow< GatheringPointBonus >( lumina, parser.ReadColumn< ushort >( 3 + i ) );
             TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 5 ) );

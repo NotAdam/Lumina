@@ -39,6 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
+            ActionTimelinePose = new LazyRow< ActionTimeline >[ 3 ];
             for( var i = 0; i < 3; i++ )
                 ActionTimelinePose[ i ] = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 5 + i ) );
             Unknown8 = parser.ReadColumn< byte >( 8 );
@@ -53,6 +54,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown17 = parser.ReadColumn< bool >( 17 );
             Unknown18 = parser.ReadColumn< bool >( 18 );
             Unknown19 = parser.ReadColumn< bool >( 19 );
+            Text = new string[ 3 ];
             for( var i = 0; i < 3; i++ )
                 Text[ i ] = parser.ReadColumn< string >( 20 + i );
         }

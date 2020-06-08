@@ -31,6 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Route = new LazyRow< GatheringLeveRoute >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 Route[ i ] = new LazyRow< GatheringLeveRoute >( lumina, parser.ReadColumn< int >( 0 + i ) );
             RequiredItem0 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 4 ) );

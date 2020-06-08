@@ -39,6 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown7 = parser.ReadColumn< byte >( 7 );
             Type = parser.ReadColumn< byte >( 8 );
             Key = parser.ReadColumn< int >( 9 );
+            Data = new int[ 8 ];
             for( var i = 0; i < 8; i++ )
                 Data[ i ] = parser.ReadColumn< int >( 10 + i );
             Order = parser.ReadColumn< ushort >( 18 );

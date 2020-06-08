@@ -27,6 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< ushort >( 4 );
+            GrandCompany = new bool[ 3 ];
             for( var i = 0; i < 3; i++ )
                 GrandCompany[ i ] = parser.ReadColumn< bool >( 5 + i );
             Unknown8 = parser.ReadColumn< byte >( 8 );

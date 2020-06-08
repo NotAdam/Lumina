@@ -17,8 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            NQOvermeldPctSlot = new float[ 4 ];
             for( var i = 0; i < 4; i++ )
                 NQOvermeldPctSlot[ i ] = parser.ReadColumn< float >( 0 + i );
+            HQOvermeldPctSlot = new float[ 4 ];
             for( var i = 0; i < 4; i++ )
                 HQOvermeldPctSlot[ i ] = parser.ReadColumn< float >( 4 + i );
         }

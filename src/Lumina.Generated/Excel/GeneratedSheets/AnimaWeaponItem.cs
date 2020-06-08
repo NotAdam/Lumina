@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Item = new LazyRow< Item >[ 14 ];
             for( var i = 0; i < 14; i++ )
                 Item[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 + i ) );
         }

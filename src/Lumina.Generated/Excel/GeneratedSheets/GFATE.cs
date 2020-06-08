@@ -109,6 +109,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown19 = parser.ReadColumn< uint >( 19 );
             Unknown20 = parser.ReadColumn< uint >( 20 );
             Unknown21 = parser.ReadColumn< uint >( 21 );
+            Icon = new uint[ 16 ];
             for( var i = 0; i < 16; i++ )
                 Icon[ i ] = parser.ReadColumn< uint >( 22 + i );
             Unknown38 = parser.ReadColumn< uint >( 38 );

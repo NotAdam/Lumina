@@ -47,6 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 8 ) );
             AethernetName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 9 ) );
             Territory = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 10 ) );
+            Level = new LazyRow< Level >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 Level[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 11 + i ) );
             IsAetheryte = parser.ReadColumn< bool >( 15 );

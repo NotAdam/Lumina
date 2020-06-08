@@ -29,12 +29,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown0 = parser.ReadColumn< byte >( 0 );
             CrystalSand = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 ) );
             Qty = parser.ReadColumn< byte >( 2 );
+            UnkStruct3 = new UnkStruct3Struct[ 8 ];
             for( var i = 0; i < 8; i++ )
             {
                 UnkStruct3[ i ] = new UnkStruct3Struct();
-                UnkStruct3[ i ].ItemName = parser.ReadColumn< uint >( 3 + ( i * 8 + 0 ) );
-                UnkStruct3[ i ].IsHQ = parser.ReadColumn< bool >( 3 + ( i * 8 + 1 ) );
-                UnkStruct3[ i ].Quantity = parser.ReadColumn< byte >( 3 + ( i * 8 + 2 ) );
+                UnkStruct3[ i ].ItemName = parser.ReadColumn< uint >( 3 + ( i * 3 + 0 ) );
+                UnkStruct3[ i ].IsHQ = parser.ReadColumn< bool >( 3 + ( i * 3 + 1 ) );
+                UnkStruct3[ i ].Quantity = parser.ReadColumn< byte >( 3 + ( i * 3 + 2 ) );
             }
             Category = new LazyRow< AnimaWeapon5PatternGroup >( lumina, parser.ReadColumn< byte >( 27 ) );
         }

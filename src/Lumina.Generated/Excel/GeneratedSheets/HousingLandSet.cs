@@ -140,8 +140,10 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            PlotSize = new byte[ 60 ];
             for( var i = 0; i < 60; i++ )
                 PlotSize[ i ] = parser.ReadColumn< byte >( 0 + i );
+            MinPrice = new uint[ 60 ];
             for( var i = 0; i < 60; i++ )
                 MinPrice[ i ] = parser.ReadColumn< uint >( 60 + i );
             Unknown120 = parser.ReadColumn< uint >( 120 );
@@ -264,6 +266,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown237 = parser.ReadColumn< uint >( 237 );
             Unknown238 = parser.ReadColumn< uint >( 238 );
             Unknown239 = parser.ReadColumn< uint >( 239 );
+            InitialPrice = new uint[ 60 ];
             for( var i = 0; i < 60; i++ )
                 InitialPrice[ i ] = parser.ReadColumn< uint >( 240 + i );
             Unknown300 = parser.ReadColumn< uint >( 300 );

@@ -17,8 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Content = new LazyRow< ContentFinderCondition >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 Content[ i ] = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 0 + i ) );
+            CandidateName = new LazyRow< OpenContentCandidateName >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 CandidateName[ i ] = new LazyRow< OpenContentCandidateName >( lumina, parser.ReadColumn< uint >( 16 + i ) );
         }

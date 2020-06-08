@@ -25,6 +25,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
         public override void WriteReaders( StringBuilder sb )
         {
+            sb.AppendLine( $"{FieldName} = new {TypeName}[ {_count} ];" );
             sb.AppendLine( $"for( var i = 0; i < {_count}; i++ )" );
             sb.AppendLine( "{" );
 
@@ -40,7 +41,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
                 var type = Program.ExcelTypeToManaged( col.Type );
 
-                sb.AppendLine( $"    {FieldName}[ i ].{Program.Clean( member.Name )} = parser.ReadColumn< {type} >( {ColumnId} + ( i * {_count} + {i} ) );" );
+                sb.AppendLine( $"    {FieldName}[ i ].{Program.Clean( member.Name )} = parser.ReadColumn< {type} >( {ColumnId} + ( i * {_members.Count} + {i} ) );" );
             }
 
             sb.AppendLine( "}" );

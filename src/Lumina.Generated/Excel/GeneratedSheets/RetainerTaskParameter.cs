@@ -18,10 +18,13 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            ItemLevelDoW = new short[ 2 ];
             for( var i = 0; i < 2; i++ )
                 ItemLevelDoW[ i ] = parser.ReadColumn< short >( 0 + i );
+            GatheringDoL = new short[ 2 ];
             for( var i = 0; i < 2; i++ )
                 GatheringDoL[ i ] = parser.ReadColumn< short >( 2 + i );
+            GatheringFSH = new short[ 2 ];
             for( var i = 0; i < 2; i++ )
                 GatheringFSH[ i ] = parser.ReadColumn< short >( 4 + i );
         }

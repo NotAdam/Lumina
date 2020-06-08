@@ -22,6 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< string >( 0 );
             Icon = parser.ReadColumn< ushort >( 1 );
             CastTime = parser.ReadColumn< byte >( 2 );
+            Animation = new LazyRow< ActionTimeline >[ 3 ];
             for( var i = 0; i < 3; i++ )
                 Animation[ i ] = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 + i ) );
         }

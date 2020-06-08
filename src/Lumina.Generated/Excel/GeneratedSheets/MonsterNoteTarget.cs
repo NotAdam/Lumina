@@ -27,11 +27,12 @@ namespace Lumina.Excel.GeneratedSheets
             BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ) );
             Icon = parser.ReadColumn< int >( 1 );
             Town = new LazyRow< Town >( lumina, parser.ReadColumn< byte >( 2 ) );
+            UnkStruct3 = new UnkStruct3Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
                 UnkStruct3[ i ] = new UnkStruct3Struct();
-                UnkStruct3[ i ].PlaceNameZone = parser.ReadColumn< ushort >( 3 + ( i * 3 + 0 ) );
-                UnkStruct3[ i ].PlaceNameLocation = parser.ReadColumn< ushort >( 3 + ( i * 3 + 1 ) );
+                UnkStruct3[ i ].PlaceNameZone = parser.ReadColumn< ushort >( 3 + ( i * 2 + 0 ) );
+                UnkStruct3[ i ].PlaceNameLocation = parser.ReadColumn< ushort >( 3 + ( i * 2 + 1 ) );
             }
         }
     }

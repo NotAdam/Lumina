@@ -26,11 +26,12 @@ namespace Lumina.Excel.GeneratedSheets
 
             Name = parser.ReadColumn< string >( 0 );
             CompanyCraftDraftCategory = new LazyRow< CompanyCraftDraftCategory >( lumina, parser.ReadColumn< byte >( 1 ) );
+            UnkStruct2 = new UnkStruct2Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
                 UnkStruct2[ i ] = new UnkStruct2Struct();
-                UnkStruct2[ i ].RequiredItem = parser.ReadColumn< int >( 2 + ( i * 3 + 0 ) );
-                UnkStruct2[ i ].RequiredItemCount = parser.ReadColumn< byte >( 2 + ( i * 3 + 1 ) );
+                UnkStruct2[ i ].RequiredItem = parser.ReadColumn< int >( 2 + ( i * 2 + 0 ) );
+                UnkStruct2[ i ].RequiredItemCount = parser.ReadColumn< byte >( 2 + ( i * 2 + 1 ) );
             }
             Order = parser.ReadColumn< uint >( 8 );
         }

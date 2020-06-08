@@ -20,6 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Spot = new LazyRow< IKDSpot >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 Spot[ i ] = new LazyRow< IKDSpot >( lumina, parser.ReadColumn< uint >( 0 + i ) );
             TimeDefine = parser.ReadColumn< byte >( 5 );

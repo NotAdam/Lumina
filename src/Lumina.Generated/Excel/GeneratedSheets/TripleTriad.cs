@@ -31,15 +31,19 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            TripleTriadCardFixed = new LazyRow< TripleTriadCard >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 TripleTriadCardFixed[ i ] = new LazyRow< TripleTriadCard >( lumina, parser.ReadColumn< ushort >( 0 + i ) );
+            TripleTriadCardVariable = new LazyRow< TripleTriadCard >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 TripleTriadCardVariable[ i ] = new LazyRow< TripleTriadCard >( lumina, parser.ReadColumn< ushort >( 5 + i ) );
+            TripleTriadRule = new LazyRow< TripleTriadRule >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 TripleTriadRule[ i ] = new LazyRow< TripleTriadRule >( lumina, parser.ReadColumn< byte >( 10 + i ) );
             UsesRegionalRules = parser.ReadColumn< bool >( 12 );
             Fee = parser.ReadColumn< ushort >( 13 );
             PreviousQuestJoin = parser.ReadColumn< byte >( 14 );
+            PreviousQuest = new LazyRow< Quest >[ 3 ];
             for( var i = 0; i < 3; i++ )
                 PreviousQuest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 15 + i ) );
             StartTime = parser.ReadColumn< ushort >( 18 );
@@ -50,6 +54,7 @@ namespace Lumina.Excel.GeneratedSheets
             DefaultTalkDraw = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< uint >( 23 ) );
             DefaultTalkPCWin = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< uint >( 24 ) );
             Unknown25 = parser.ReadColumn< bool >( 25 );
+            ItemPossibleReward = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 ItemPossibleReward[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 26 + i ) );
         }

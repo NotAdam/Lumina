@@ -25,6 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ) );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Unknown2 = parser.ReadColumn< int >( 2 );
+            RowRequired = new int[ 3 ];
             for( var i = 0; i < 3; i++ )
                 RowRequired[ i ] = parser.ReadColumn< int >( 3 + i );
             Unknown6 = parser.ReadColumn< byte >( 6 );

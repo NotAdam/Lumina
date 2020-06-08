@@ -27,11 +27,12 @@ namespace Lumina.Excel.GeneratedSheets
             Leve = new LazyRow< Leve >( lumina, parser.ReadColumn< int >( 0 ) );
             CraftLeveTalk = parser.ReadColumn< int >( 1 );
             Repeats = parser.ReadColumn< byte >( 2 );
+            UnkStruct3 = new UnkStruct3Struct[ 4 ];
             for( var i = 0; i < 4; i++ )
             {
                 UnkStruct3[ i ] = new UnkStruct3Struct();
-                UnkStruct3[ i ].Item = parser.ReadColumn< int >( 3 + ( i * 4 + 0 ) );
-                UnkStruct3[ i ].ItemCount = parser.ReadColumn< ushort >( 3 + ( i * 4 + 1 ) );
+                UnkStruct3[ i ].Item = parser.ReadColumn< int >( 3 + ( i * 2 + 0 ) );
+                UnkStruct3[ i ].ItemCount = parser.ReadColumn< ushort >( 3 + ( i * 2 + 1 ) );
             }
         }
     }

@@ -100,25 +100,29 @@ namespace Lumina.Excel.GeneratedSheets
             FinalBossCurrencyA = parser.ReadColumn< ushort >( 22 );
             FinalBossCurrencyB = parser.ReadColumn< ushort >( 23 );
             NewPlayerBonusB = parser.ReadColumn< ushort >( 24 );
+            UnkStruct25 = new UnkStruct25Struct[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
                 UnkStruct25[ i ] = new UnkStruct25Struct();
-                UnkStruct25[ i ].BossExp = parser.ReadColumn< uint >( 25 + ( i * 5 + 0 ) );
+                UnkStruct25[ i ].BossExp = parser.ReadColumn< uint >( 25 + ( i * 1 + 0 ) );
             }
+            UnkStruct30 = new UnkStruct30Struct[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
                 UnkStruct30[ i ] = new UnkStruct30Struct();
-                UnkStruct30[ i ].BossCurrencyA = parser.ReadColumn< ushort >( 30 + ( i * 5 + 0 ) );
+                UnkStruct30[ i ].BossCurrencyA = parser.ReadColumn< ushort >( 30 + ( i * 1 + 0 ) );
             }
+            UnkStruct35 = new UnkStruct35Struct[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
                 UnkStruct35[ i ] = new UnkStruct35Struct();
-                UnkStruct35[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 35 + ( i * 5 + 0 ) );
+                UnkStruct35[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 35 + ( i * 1 + 0 ) );
             }
+            UnkStruct40 = new UnkStruct40Struct[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
                 UnkStruct40[ i ] = new UnkStruct40Struct();
-                UnkStruct40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 5 + 0 ) );
+                UnkStruct40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 1 + 0 ) );
             }
             Unknown45 = parser.ReadColumn< uint >( 45 );
             InstanceClearGil = parser.ReadColumn< uint >( 46 );

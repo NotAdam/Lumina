@@ -28,6 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
             Icon = parser.ReadColumn< int >( 3 );
             Unknown4 = parser.ReadColumn< uint >( 4 );
             Name = parser.ReadColumn< string >( 5 );
+            Cutscene = new LazyRow< Cutscene >[ 24 ];
             for( var i = 0; i < 24; i++ )
                 Cutscene[ i ] = new LazyRow< Cutscene >( lumina, parser.ReadColumn< int >( 6 + i ) );
         }

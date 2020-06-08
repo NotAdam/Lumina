@@ -37,12 +37,16 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown6 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< byte >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
+            EmptyIcon = new uint[ 3 ];
             for( var i = 0; i < 3; i++ )
                 EmptyIcon[ i ] = parser.ReadColumn< uint >( 9 + i );
+            MaelstromIcon = new uint[ 3 ];
             for( var i = 0; i < 3; i++ )
                 MaelstromIcon[ i ] = parser.ReadColumn< uint >( 12 + i );
+            TwinAdderIcon = new uint[ 3 ];
             for( var i = 0; i < 3; i++ )
                 TwinAdderIcon[ i ] = parser.ReadColumn< uint >( 15 + i );
+            ImmortalFlamesIcon = new uint[ 3 ];
             for( var i = 0; i < 3; i++ )
                 ImmortalFlamesIcon[ i ] = parser.ReadColumn< uint >( 18 + i );
         }

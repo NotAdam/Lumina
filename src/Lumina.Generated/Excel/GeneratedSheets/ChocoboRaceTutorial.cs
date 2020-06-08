@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            NpcYell = new LazyRow< NpcYell >[ 8 ];
             for( var i = 0; i < 8; i++ )
                 NpcYell[ i ] = new LazyRow< NpcYell >( lumina, parser.ReadColumn< int >( 0 + i ) );
             Unknown8 = parser.ReadColumn< ushort >( 8 );

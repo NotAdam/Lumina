@@ -21,6 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             CompanyCraftType = new LazyRow< CompanyCraftType >( lumina, parser.ReadColumn< byte >( 1 ) );
+            CompanyCraftProcess = new LazyRow< CompanyCraftProcess >[ 3 ];
             for( var i = 0; i < 3; i++ )
                 CompanyCraftProcess[ i ] = new LazyRow< CompanyCraftProcess >( lumina, parser.ReadColumn< ushort >( 2 + i ) );
             Unknown5 = parser.ReadColumn< ushort >( 5 );

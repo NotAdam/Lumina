@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
+            GatheringItem = new LazyRow< GatheringItem >[ 100 ];
             for( var i = 0; i < 100; i++ )
                 GatheringItem[ i ] = new LazyRow< GatheringItem >( lumina, parser.ReadColumn< int >( 1 + i ) );
         }

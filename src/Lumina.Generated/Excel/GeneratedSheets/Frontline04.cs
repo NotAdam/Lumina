@@ -364,6 +364,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3 = parser.ReadColumn< int >( 3 );
             Unknown4 = parser.ReadColumn< int >( 4 );
             Unknown5 = parser.ReadColumn< int >( 5 );
+            UnknownLevel = new LazyRow< Level >[ 27 ];
             for( var i = 0; i < 27; i++ )
                 UnknownLevel[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 6 + i ) );
             Unknown33 = parser.ReadColumn< int >( 33 );

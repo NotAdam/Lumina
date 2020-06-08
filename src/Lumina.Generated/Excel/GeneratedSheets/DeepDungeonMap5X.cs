@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            DeepDungeonRoom = new LazyRow< DeepDungeonRoom >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 DeepDungeonRoom[ i ] = new LazyRow< DeepDungeonRoom >( lumina, parser.ReadColumn< ushort >( 0 + i ) );
         }

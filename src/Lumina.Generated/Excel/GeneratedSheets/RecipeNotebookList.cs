@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
+            Recipe = new LazyRow< Recipe >[ 160 ];
             for( var i = 0; i < 160; i++ )
                 Recipe[ i ] = new LazyRow< Recipe >( lumina, parser.ReadColumn< int >( 1 + i ) );
         }

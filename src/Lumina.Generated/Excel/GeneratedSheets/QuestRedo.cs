@@ -54,6 +54,7 @@ namespace Lumina.Excel.GeneratedSheets
             FinalQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ) );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Chapter = parser.ReadColumn< ushort >( 2 );
+            Quest = new LazyRow< Quest >[ 32 ];
             for( var i = 0; i < 32; i++ )
                 Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 3 + i ) );
             Unknown35 = parser.ReadColumn< byte >( 35 );

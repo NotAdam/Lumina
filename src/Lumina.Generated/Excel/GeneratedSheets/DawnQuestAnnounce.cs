@@ -20,6 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ) );
             Content = new LazyRow< DawnContent >( lumina, parser.ReadColumn< byte >( 1 ) );
+            ENPC = new LazyRow< ENpcResident >[ 6 ];
             for( var i = 0; i < 6; i++ )
                 ENPC[ i ] = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 2 + i ) );
         }

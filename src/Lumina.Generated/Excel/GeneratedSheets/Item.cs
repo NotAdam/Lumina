@@ -153,19 +153,21 @@ namespace Lumina.Excel.GeneratedSheets
             Block = parser.ReadColumn< ushort >( 56 );
             DefensePhys = parser.ReadColumn< ushort >( 57 );
             DefenseMag = parser.ReadColumn< ushort >( 58 );
+            BaseParam = new BaseParamStruct[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
                 BaseParam[ i ] = new BaseParamStruct();
-                BaseParam[ i ].BaseParam = parser.ReadColumn< byte >( 59 + ( i * 6 + 0 ) );
-                BaseParam[ i ].BaseParamValue = parser.ReadColumn< short >( 59 + ( i * 6 + 1 ) );
+                BaseParam[ i ].BaseParam = parser.ReadColumn< byte >( 59 + ( i * 2 + 0 ) );
+                BaseParam[ i ].BaseParamValue = parser.ReadColumn< short >( 59 + ( i * 2 + 1 ) );
             }
             ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( lumina, parser.ReadColumn< byte >( 71 ) );
             ItemSpecialBonusParam = parser.ReadColumn< byte >( 72 );
+            BaseParamSpecial = new BaseParamSpecialStruct[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
                 BaseParamSpecial[ i ] = new BaseParamSpecialStruct();
-                BaseParamSpecial[ i ].BaseParamSpecial = parser.ReadColumn< byte >( 73 + ( i * 6 + 0 ) );
-                BaseParamSpecial[ i ].BaseParamValueSpecial = parser.ReadColumn< short >( 73 + ( i * 6 + 1 ) );
+                BaseParamSpecial[ i ].BaseParamSpecial = parser.ReadColumn< byte >( 73 + ( i * 2 + 0 ) );
+                BaseParamSpecial[ i ].BaseParamValueSpecial = parser.ReadColumn< short >( 73 + ( i * 2 + 1 ) );
             }
             MaterializeType = parser.ReadColumn< byte >( 85 );
             MateriaSlotCount = parser.ReadColumn< byte >( 86 );

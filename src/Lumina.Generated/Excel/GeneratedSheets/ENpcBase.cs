@@ -81,6 +81,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             EventHandler = parser.ReadColumn< ushort >( 0 );
             Important = parser.ReadColumn< bool >( 1 );
+            ENpcData = new uint[ 32 ];
             for( var i = 0; i < 32; i++ )
                 ENpcData[ i ] = parser.ReadColumn< uint >( 2 + i );
             Scale = parser.ReadColumn< float >( 34 );

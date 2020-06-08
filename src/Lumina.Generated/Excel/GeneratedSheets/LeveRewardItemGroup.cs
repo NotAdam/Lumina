@@ -22,12 +22,13 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            UnkStruct0 = new UnkStruct0Struct[ 9 ];
             for( var i = 0; i < 9; i++ )
             {
                 UnkStruct0[ i ] = new UnkStruct0Struct();
-                UnkStruct0[ i ].Item = parser.ReadColumn< int >( 0 + ( i * 9 + 0 ) );
-                UnkStruct0[ i ].Count = parser.ReadColumn< byte >( 0 + ( i * 9 + 1 ) );
-                UnkStruct0[ i ].HQ = parser.ReadColumn< bool >( 0 + ( i * 9 + 2 ) );
+                UnkStruct0[ i ].Item = parser.ReadColumn< int >( 0 + ( i * 3 + 0 ) );
+                UnkStruct0[ i ].Count = parser.ReadColumn< byte >( 0 + ( i * 3 + 1 ) );
+                UnkStruct0[ i ].HQ = parser.ReadColumn< bool >( 0 + ( i * 3 + 2 ) );
             }
         }
     }

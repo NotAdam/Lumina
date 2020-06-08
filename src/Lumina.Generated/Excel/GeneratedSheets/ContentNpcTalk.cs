@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Type = parser.ReadColumn< int >( 0 );
+            ContentTalk = new LazyRow< ContentTalk >[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ContentTalk[ i ] = new LazyRow< ContentTalk >( lumina, parser.ReadColumn< uint >( 1 + i ) );
         }

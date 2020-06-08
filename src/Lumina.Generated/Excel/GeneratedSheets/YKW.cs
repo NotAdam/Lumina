@@ -21,6 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 ) );
+            Location = new LazyRow< TerritoryType >[ 3 ];
             for( var i = 0; i < 3; i++ )
                 Location[ i ] = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 2 + i ) );
             Unknown5 = parser.ReadColumn< string >( 5 );

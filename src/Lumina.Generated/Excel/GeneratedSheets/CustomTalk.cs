@@ -38,8 +38,10 @@ namespace Lumina.Excel.GeneratedSheets
             IconActor = parser.ReadColumn< uint >( 0 );
             IconMap = parser.ReadColumn< uint >( 1 );
             Name = parser.ReadColumn< string >( 2 );
+            ScriptInstruction = new string[ 30 ];
             for( var i = 0; i < 30; i++ )
                 ScriptInstruction[ i ] = parser.ReadColumn< string >( 3 + i );
+            ScriptArg = new uint[ 30 ];
             for( var i = 0; i < 30; i++ )
                 ScriptArg[ i ] = parser.ReadColumn< uint >( 33 + i );
             Unknown63 = parser.ReadColumn< bool >( 63 );

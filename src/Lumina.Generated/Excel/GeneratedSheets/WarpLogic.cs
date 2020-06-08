@@ -30,12 +30,14 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown0 = parser.ReadColumn< uint >( 0 );
             WarpName = parser.ReadColumn< string >( 1 );
             CanSkipCutscene = parser.ReadColumn< bool >( 2 );
+            Function = new string[ 10 ];
             for( var i = 0; i < 10; i++ )
                 Function[ i ] = parser.ReadColumn< string >( 3 + i );
+            UnkStruct13 = new UnkStruct13Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
             {
                 UnkStruct13[ i ] = new UnkStruct13Struct();
-                UnkStruct13[ i ].Argument = parser.ReadColumn< uint >( 13 + ( i * 10 + 0 ) );
+                UnkStruct13[ i ].Argument = parser.ReadColumn< uint >( 13 + ( i * 1 + 0 ) );
             }
             Question = parser.ReadColumn< string >( 23 );
             ResponseYes = parser.ReadColumn< string >( 24 );

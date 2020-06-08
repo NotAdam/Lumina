@@ -27,6 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Weather = new LazyRow< Weather >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 Weather[ i ] = new LazyRow< Weather >( lumina, parser.ReadColumn< byte >( 0 + i ) );
             Unknown5 = parser.ReadColumn< byte >( 5 );
@@ -34,6 +35,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown7 = parser.ReadColumn< byte >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
             Unknown9 = parser.ReadColumn< byte >( 9 );
+            Quest = new LazyRow< Quest >[ 5 ];
             for( var i = 0; i < 5; i++ )
                 Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 10 + i ) );
             Unknown15 = parser.ReadColumn< uint >( 15 );

@@ -33,6 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Name = parser.ReadColumn< string >( 0 );
+            ActionTimeline = new LazyRow< ActionTimeline >[ 7 ];
             for( var i = 0; i < 7; i++ )
                 ActionTimeline[ i ] = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 1 + i ) );
             Unknown8 = parser.ReadColumn< bool >( 8 );

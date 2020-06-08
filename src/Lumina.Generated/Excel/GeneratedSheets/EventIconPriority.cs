@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Icon = new uint[ 19 ];
             for( var i = 0; i < 19; i++ )
                 Icon[ i ] = parser.ReadColumn< uint >( 0 + i );
         }

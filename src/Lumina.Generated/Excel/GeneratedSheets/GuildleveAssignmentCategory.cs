@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            Category = new LazyRow< LeveAssignmentType >[ 8 ];
             for( var i = 0; i < 8; i++ )
                 Category[ i ] = new LazyRow< LeveAssignmentType >( lumina, parser.ReadColumn< int >( 0 + i ) );
         }

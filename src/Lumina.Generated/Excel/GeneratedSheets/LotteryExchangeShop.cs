@@ -37,8 +37,10 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Unknown0 = parser.ReadColumn< string >( 0 );
+            ItemAccepted = new LazyRow< Item >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 ItemAccepted[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 1 + i ) );
+            AmountAccepted = new uint[ 16 ];
             for( var i = 0; i < 16; i++ )
                 AmountAccepted[ i ] = parser.ReadColumn< uint >( 17 + i );
             Unknown33 = parser.ReadColumn< byte >( 33 );

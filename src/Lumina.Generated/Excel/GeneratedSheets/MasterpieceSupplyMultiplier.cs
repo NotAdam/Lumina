@@ -25,10 +25,12 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            XpMultiplier = new ushort[ 2 ];
             for( var i = 0; i < 2; i++ )
                 XpMultiplier[ i ] = parser.ReadColumn< ushort >( 0 + i );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
+            CurrencyMultiplier = new ushort[ 2 ];
             for( var i = 0; i < 2; i++ )
                 CurrencyMultiplier[ i ] = parser.ReadColumn< ushort >( 4 + i );
             Unknown6 = parser.ReadColumn< ushort >( 6 );

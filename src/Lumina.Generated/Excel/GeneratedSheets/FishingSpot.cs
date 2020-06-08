@@ -42,6 +42,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z = parser.ReadColumn< short >( 9 );
             Radius = parser.ReadColumn< ushort >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
+            Item = new LazyRow< Item >[ 10 ];
             for( var i = 0; i < 10; i++ )
                 Item[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 12 + i ) );
             PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 22 ) );

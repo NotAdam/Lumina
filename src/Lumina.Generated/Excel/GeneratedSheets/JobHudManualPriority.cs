@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            JobHudManual = new LazyRow< JobHudManual >[ 3 ];
             for( var i = 0; i < 3; i++ )
                 JobHudManual[ i ] = new LazyRow< JobHudManual >( lumina, parser.ReadColumn< byte >( 0 + i ) );
             Unknown3 = parser.ReadColumn< byte >( 3 );

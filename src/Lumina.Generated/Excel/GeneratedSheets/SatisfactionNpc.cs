@@ -79,10 +79,13 @@ namespace Lumina.Excel.GeneratedSheets
             QuestRequired = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ) );
             LevelUnlock = parser.ReadColumn< byte >( 2 );
             DeliveriesPerWeek = parser.ReadColumn< byte >( 3 );
+            SupplyIndex = new int[ 6 ];
             for( var i = 0; i < 6; i++ )
                 SupplyIndex[ i ] = parser.ReadColumn< int >( 4 + i );
+            SatisfactionRequired = new ushort[ 6 ];
             for( var i = 0; i < 6; i++ )
                 SatisfactionRequired[ i ] = parser.ReadColumn< ushort >( 10 + i );
+            UnkStruct16 = new UnkStruct16Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
                 UnkStruct16[ i ] = new UnkStruct16Struct();

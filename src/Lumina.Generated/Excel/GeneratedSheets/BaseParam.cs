@@ -67,6 +67,7 @@ namespace Lumina.Excel.GeneratedSheets
             HeadChestHandsLegsFeetPct = parser.ReadColumn< byte >( 22 );
             ChestLegsGlovesPct = parser.ReadColumn< byte >( 23 );
             ChestLegsFeetPct = parser.ReadColumn< byte >( 24 );
+            MeldParam = new byte[ 13 ];
             for( var i = 0; i < 13; i++ )
                 MeldParam[ i ] = parser.ReadColumn< byte >( 25 + i );
             Unknown38 = parser.ReadColumn< bool >( 38 );

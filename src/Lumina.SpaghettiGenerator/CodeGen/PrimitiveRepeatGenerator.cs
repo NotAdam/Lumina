@@ -18,6 +18,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
         public override void WriteReaders( StringBuilder sb )
         {
+            sb.AppendLine( $"{FieldName} = new {TypeName}[ {Count} ];" );
             sb.AppendLine( $"for( var i = 0; i < {Count}; i++ )" );
             sb.AppendLine( $"    {FieldName}[ i ] = parser.ReadColumn< {TypeName} >( {ColumnId} + i );" );
         }

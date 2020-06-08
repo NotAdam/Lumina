@@ -24,8 +24,10 @@ namespace Lumina.Excel.GeneratedSheets
 
             AetherpoolArm = new LazyRow< DeepDungeonEquipment >( lumina, parser.ReadColumn< byte >( 0 ) );
             AetherpoolArmor = new LazyRow< DeepDungeonEquipment >( lumina, parser.ReadColumn< byte >( 1 ) );
+            PomanderSlot = new LazyRow< DeepDungeonItem >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 PomanderSlot[ i ] = new LazyRow< DeepDungeonItem >( lumina, parser.ReadColumn< byte >( 2 + i ) );
+            MagiciteSlot = new LazyRow< DeepDungeonMagicStone >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 MagiciteSlot[ i ] = new LazyRow< DeepDungeonMagicStone >( lumina, parser.ReadColumn< byte >( 18 + i ) );
             Name = parser.ReadColumn< string >( 22 );

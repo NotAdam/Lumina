@@ -27,14 +27,15 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
+            UnkStruct0 = new UnkStruct0Struct[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
                 UnkStruct0[ i ] = new UnkStruct0Struct();
-                UnkStruct0[ i ].RewardType = parser.ReadColumn< byte >( 0 + ( i * 2 + 0 ) );
-                UnkStruct0[ i ].RewardItem = parser.ReadColumn< uint >( 0 + ( i * 2 + 1 ) );
-                UnkStruct0[ i ].RewardHQ = parser.ReadColumn< bool >( 0 + ( i * 2 + 2 ) );
-                UnkStruct0[ i ].RewardQuantity = parser.ReadColumn< ushort >( 0 + ( i * 2 + 3 ) );
-                UnkStruct0[ i ].RewardOption = parser.ReadColumn< byte >( 0 + ( i * 2 + 4 ) );
+                UnkStruct0[ i ].RewardType = parser.ReadColumn< byte >( 0 + ( i * 5 + 0 ) );
+                UnkStruct0[ i ].RewardItem = parser.ReadColumn< uint >( 0 + ( i * 5 + 1 ) );
+                UnkStruct0[ i ].RewardHQ = parser.ReadColumn< bool >( 0 + ( i * 5 + 2 ) );
+                UnkStruct0[ i ].RewardQuantity = parser.ReadColumn< ushort >( 0 + ( i * 5 + 3 ) );
+                UnkStruct0[ i ].RewardOption = parser.ReadColumn< byte >( 0 + ( i * 5 + 4 ) );
             }
             RewardItem2 = parser.ReadColumn< uint >( 10 );
             RewardHQ2 = parser.ReadColumn< bool >( 11 );

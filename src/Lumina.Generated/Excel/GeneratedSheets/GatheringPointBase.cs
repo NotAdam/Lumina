@@ -21,6 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             GatheringType = new LazyRow< GatheringType >( lumina, parser.ReadColumn< int >( 0 ) );
             GatheringLevel = parser.ReadColumn< byte >( 1 );
+            Item = new int[ 8 ];
             for( var i = 0; i < 8; i++ )
                 Item[ i ] = parser.ReadColumn< int >( 2 + i );
             IsLimited = parser.ReadColumn< bool >( 10 );
