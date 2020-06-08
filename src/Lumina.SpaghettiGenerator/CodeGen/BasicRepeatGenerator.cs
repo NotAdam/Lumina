@@ -2,11 +2,11 @@ using System.Text;
 
 namespace Lumina.SpaghettiGenerator.CodeGen
 {
-    public class RepeatGenerator : BaseShitGenerator
+    public class BasicRepeatGenerator : BaseShitGenerator
     {
         public uint Count { get; set; }
         
-        public RepeatGenerator( string typeName, string fieldName, uint columnId, uint count ) : base( typeName, fieldName, columnId )
+        public BasicRepeatGenerator( string typeName, string fieldName, uint columnId, uint count ) : base( typeName, fieldName, columnId )
         {
             Count = count;
         }

@@ -108,8 +108,6 @@ namespace Lumina.SpaghettiGenerator
 
                 var path = $"./output/{name}.cs";
                 File.WriteAllText( path, code );
-
-                break;
             }
         }
 
@@ -156,31 +154,47 @@ namespace Lumina.SpaghettiGenerator
 
                     continue;
                 }
-
+                
+                schemaDef.Name = Clean( schemaDef.Name );
                 var schemaType = schemaDef.Type;
+                
+                // single field
                 if( schemaType == null )
                 {
-                    // single field
-                    if( schemaDef.Converter?.Type == "link" )
+                    if( schemaDef.ConverterType == "link" )
                     {
-                        var target = schemaDef.Converter.Target;
+                        var target = schemaDef.ConverterTarget;
                         
                         fieldGenerators.Add( new LazyRowGenerator( target, schemaDef.Name, i ) );
                     }
-                    else if( schemaDef.Converter?.Type == "complexlink" )
-                    {
-                        // todo: this is fucking ass, maybe we can fake a variant though? lol
-                        fieldGenerators.Add( new PrimitiveGenerator( clrType, schemaDef.Name, i ) );
-                    }
+                    // todo: this is fucking ass, maybe we can fake a variant though? lol
+                    // else if( schemaDef.ConverterType == "complexlink" )
+                    // {
+                    //     fieldGenerators.Add( new PrimitiveGenerator( clrType, schemaDef.Name, i ) );
+                    // }
                     else
                     {
                         // no link
                         fieldGenerators.Add( new PrimitiveGenerator( clrType, schemaDef.Name, i ) );
                     }
                 }
+                // repeats
                 else if( schemaType == "repeat" )
                 {
-                    fieldGenerators.Add( new RepeatGenerator( clrType, schemaDef.Name, i, schemaDef.Count ) );
+                    if( schemaDef.ConverterType == "link" )
+                    {
+                        var target = schemaDef.ConverterTarget;
+                        fieldGenerators.Add( new LazyRowRepeatGenerator( target, schemaDef.Name, i, schemaDef.Count ) );
+                    }
+                    // todo: this is fucked and i question my sanity if i ever want to actually support this fucking garbage
+                    // else if( schemaDef.ConverterType == "complexlink" )
+                    // {
+                    //     
+                    // }
+                    else
+                    {
+                        fieldGenerators.Add( new BasicRepeatGenerator( clrType, schemaDef.Name, i, schemaDef.Count ) );
+                    }
                     i += schemaDef.Count - 1;
                 }
             }
@@ -207,7 +221,7 @@ namespace Lumina.SpaghettiGenerator
             };
             
             tmpl = tmpl.Replace( "%%DATA_MEMBERS%%", fixIndent( fieldsSb, 2 ) );
-            tmpl = tmpl.Replace( "%%DATA_READERS%%", fixIndent( readsSb, 3 ) );
+            tmpl = tmpl.Replace( "%%DATA_READERS%%", fixIndent( readsSb, 3 ).TrimEnd() );
 
             return tmpl;
         }

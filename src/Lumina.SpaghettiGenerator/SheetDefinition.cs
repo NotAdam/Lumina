@@ -12,6 +12,10 @@ namespace Lumina.SpaghettiGenerator
     public class Definition
     {
        public string Name { get; set; } 
+       
+       public Converter Converter { get; set; }
+       
+       public List< RootDefinition > Members { get; set; }
     }
     
     public class RootDefinition
@@ -27,7 +31,23 @@ namespace Lumina.SpaghettiGenerator
         public Converter Converter { get; set; }
 
         // totally fucking retarded, thanks SaintCoinach, very cool
-        internal string Name => DefName ?? Definition.Name;
+        internal string Name
+        {
+            get
+            {
+                return DefName ?? Definition.Name;
+            }
+
+            set
+            {
+                // this'll always take priority over the other retarded field
+                DefName = value;
+            }
+        } 
+
+        // more retarded sc fixes because fuck this fucked shitty schema
+        internal string ConverterType => Converter?.Type ?? Definition?.Converter?.Type;
+        internal string ConverterTarget => Converter?.Target ?? Definition?.Converter?.Target;
     }
     
     public class SheetDefinition
