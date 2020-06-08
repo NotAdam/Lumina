@@ -7,7 +7,7 @@ namespace Lumina.Data
     public class FileHandleManager
     {
         private readonly Lumina _lumina;
-        private Queue< WeakReference< BaseFileHandle > > _fileQueue;
+        private readonly Queue< WeakReference< BaseFileHandle > > _fileQueue;
 
         internal FileHandleManager( Lumina lumina )
         {
@@ -32,7 +32,7 @@ namespace Lumina.Data
         }
 
         /// <summary>
-        /// Processes enqueued file handles that haven't been loaded yet. Call this on a different thread to process handles.
+        /// Processes enqueued file handles that haven't been loaded yet. You should call this on a different thread to process handles.
         /// </summary>
         public void ProcessQueue()
         {
