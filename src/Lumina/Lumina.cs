@@ -35,6 +35,8 @@ namespace Lumina
         /// constructing your own Excel.ExcelModule.
         /// </summary>
         public ExcelModule Excel { get; private set; }
+        
+        public FileHandleManager FileHandleManager { get; private set; }
 
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
@@ -65,6 +67,7 @@ namespace Lumina
             }
 
             Excel = new ExcelModule( this );
+            FileHandleManager = new FileHandleManager( this );
         }
 
         public static ParsedFilePath ParseFilePath( string path )
@@ -179,6 +182,26 @@ namespace Lumina
         public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : IExcelRow
         {
             return Excel.GetSheet< T >( language );
+        }
+
+        /// <summary>
+        /// Creates a new handle to a game file but does not load it. You will need to call <see cref="ProcessFileHandleQueue"/> yourself for these handles
+        /// to be loaded, on a different thread.
+        /// </summary>
+        /// <param name="path">The path to the file to load</param>
+        /// <typeparam name="T">The type of <see cref="FileResource"/> to load</typeparam>
+        /// <returns>A handle to the file to be loaded</returns>
+        public FileHandle< T > GetFileHandle< T >( string path ) where T : FileResource
+        {
+            return FileHandleManager.CreateHandle< T >( path );
+        }
+
+        /// <summary>
+        /// Processes enqueued file handles that haven't been loaded yet. Call this on a different thread to process handles.
+        /// </summary>
+        public void ProcessFileHandleQueue()
+        {
+            FileHandleManager.ProcessQueue();
         }
     }
 }
