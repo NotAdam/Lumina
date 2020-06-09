@@ -352,15 +352,11 @@ namespace Lumina.Data
 
             var data = br.ReadBytes( (int)blockHeader.uncompressed_size );
 
-            var uncompressedData = new MemoryStream();
             using( var compressedStream = new MemoryStream( data ) )
             {
                 using var zlibStream = new DeflateStream( compressedStream, CompressionMode.Decompress );
-                zlibStream.CopyTo( uncompressedData );
+                zlibStream.CopyTo( dest );
                 zlibStream.Close();
-                
-                uncompressedData.Position = 0;
-                uncompressedData.CopyTo( dest );
             }
 
             if( resetPosition )
