@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
@@ -47,7 +48,7 @@ namespace Lumina.Data
                    !BitConverter.IsLittleEndian && SqPackHeader.platformId != PlatformId.PS3;
         }
 
-        protected Dictionary< long, WeakReference< FileResource > > _fileCache;
+        protected ConcurrentDictionary< long, WeakReference< FileResource > > _fileCache;
 
         internal SqPack( FileInfo file, Lumina lumina )
         {
@@ -62,7 +63,7 @@ namespace Lumina.Data
             _Lumina = lumina;
 
             // always init the cache just in case the should cache setting is changed later
-            _fileCache = new Dictionary< long, WeakReference< FileResource > >();
+            _fileCache = new ConcurrentDictionary< long, WeakReference< FileResource > >();
 
             File = file;
 

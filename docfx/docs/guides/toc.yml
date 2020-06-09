@@ -2,5 +2,7 @@
   href: basic-usage.md
 - name: Advanced Excel
   href: excel.md
+- name: File Handles & Background Loading
+  href: file-handles.md
 - name: Custom File Readers
   href: custom-file-readers.md

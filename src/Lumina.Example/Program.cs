@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Excel.GeneratedSheets;
@@ -59,6 +60,17 @@ namespace Lumina.Example
         static void Main( string[] args )
         {
             var lumina = new Lumina( args[ 0 ] );
+            
+            var handleThread = new Thread( () =>
+            {
+                while( true )
+                {
+                    lumina.ProcessFileHandleQueue();
+                    Thread.Yield();
+                }
+            }  );
+            
+            handleThread.Start();
 
             // excel reading
             var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
@@ -91,6 +103,8 @@ namespace Lumina.Example
             var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
 
             Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
+            
+            handleThread.Abort();
         }
     }
 }

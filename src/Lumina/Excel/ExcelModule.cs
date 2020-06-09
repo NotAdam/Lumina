@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -27,7 +28,7 @@ namespace Lumina.Excel
         /// </summary>
         public readonly List< string > SheetNames;
 
-        private readonly Dictionary< Tuple< Language, string >, ExcelSheetImpl > _sheetCache;
+        private readonly ConcurrentDictionary< Tuple< Language, string >, ExcelSheetImpl > _sheetCache;
 
         public ExcelModule( Lumina lumina )
         {
@@ -35,7 +36,7 @@ namespace Lumina.Excel
             ImmutableIdToSheetMap = new Dictionary< int, string >();
             SheetNames = new List< string >();
 
-            _sheetCache = new Dictionary< Tuple< Language, string >, ExcelSheetImpl >();
+            _sheetCache = new ConcurrentDictionary< Tuple< Language, string >, ExcelSheetImpl >();
 
             // load all sheet names first
             var files = _Lumina.GetFile< ExcelListFile >( "exd/root.exl" );
@@ -162,7 +163,7 @@ namespace Lumina.Excel
                 id = idNoLanguage;
             }
 
-            _sheetCache[ id ] = newSheet;
+            _sheetCache.TryAdd( id, newSheet );
 
             return newSheet;
         }

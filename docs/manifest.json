@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.FileHandleManager.html",
-          "hash": "qGqjyhmRcptx2S/kO9l/CA=="
+          "hash": "Xkq/aw2Cx9322ZvXBfQl4Q=="
         }
       },
       "is_incremental": true,
@@ -1461,7 +1461,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.SqPack.html",
-          "hash": "kW3nFlFjm/Lc+PVKCmED/A=="
+          "hash": "pmdALlQ9kFRip5iGZZloLg=="
         }
       },
       "is_incremental": true,
@@ -1485,7 +1485,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.SqPackInflateException.html",
-          "hash": "jGXb9L6xzJT2KH+BoUFdtw=="
+          "hash": "r0WPn2Qm7r/BYED2s1qUcA=="
         }
       },
       "is_incremental": true,
@@ -1749,7 +1749,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelModule.html",
-          "hash": "vOIKSJTeoQ644rIQJS+i/w=="
+          "hash": "IAwAEgDaIjAXJ9ufltw7+Q=="
         }
       },
       "is_incremental": true,
@@ -2052,7 +2052,7 @@
           "hash": "EXbIXyY6V7ISrV39VHX3jA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2065,6 +2065,18 @@
         }
       },
       "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/file-handles.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/file-handles.html",
+          "hash": "W99IGiy7SwMNFnkhviaBHg=="
+        }
+      },
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2085,7 +2097,7 @@
       "output": {
         ".html": {
           "relative_path": "docs/toc.html",
-          "hash": "AHhtH1x/wtHTNSaQuqXmIQ=="
+          "hash": "vk5rc8C67Bcf0cqfUiYBfw=="
         }
       },
       "is_incremental": false,
@@ -2128,8 +2140,8 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 6,
-          "skipped_file_count": 5
+          "total_file_count": 7,
+          "skipped_file_count": 6
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

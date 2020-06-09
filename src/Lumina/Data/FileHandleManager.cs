@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,12 +8,12 @@ namespace Lumina.Data
     public class FileHandleManager
     {
         private readonly Lumina _lumina;
-        private readonly Queue< WeakReference< BaseFileHandle > > _fileQueue;
+        private readonly ConcurrentQueue< WeakReference< BaseFileHandle > > _fileQueue;
 
         internal FileHandleManager( Lumina lumina )
         {
             _lumina = lumina;
-            _fileQueue = new Queue< WeakReference< BaseFileHandle > >();
+            _fileQueue = new ConcurrentQueue< WeakReference< BaseFileHandle > >();
         }
 
         /// <summary>
@@ -38,8 +39,8 @@ namespace Lumina.Data
         {
             while( _fileQueue.Any() )
             {
-                var item = _fileQueue.Dequeue();
-                if( item.TryGetTarget( out var handle ) )
+                var res = _fileQueue.TryDequeue( out var weakRef );
+                if( res && weakRef.TryGetTarget( out var handle ) )
                 {
                     handle.Load();
                 }

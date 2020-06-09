@@ -1,16 +1,11 @@
 # Lumina
 
-[![Nuget](https://img.shields.io/nuget/v/Lumina)](https://www.nuget.org/packages/Lumina/)
+[![Nuget](https://img.shields.io/nuget/v/Lumina)](https://www.nuget.org/packages/Lumina/) ![Build](https://github.com/NotAdam/Lumina/workflows/Build/badge.svg?branch=master)
 
-Lumina is an (attempt) at creating a small, performant library for interacting with FINAL FANTASY XIV game data in a convenient manner.
+Lumina is a small & high-performance library for interacting with FINAL FANTASY XIV game data in a convenient manner.
+
+Documentation is located [here](https://lumina.xiv.dev/docs/intro.html).
 
 ## Usage
 
-See the `Lumina.Example` project for more comprehensive examples on loading files and creating custom data types.
-
-
-    var lumina = new Lumina( "path/to/sqpack/folder" );
-
-    var file = lumina.GetFile( "exd/root.exl" );
-
-    file.SaveFile( "root.exl" );
+See the `Lumina.Example` project for a quick start, otherwise for more comprehensive usage examples, check the [getting started guide](https://lumina.xiv.dev/docs/guides/basic-usage.html).
