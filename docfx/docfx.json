@@ -60,6 +60,14 @@
     "noLangKeyword": false,
     "keepFileLink": false,
     "cleanupCacheHistory": false,
-    "disableGitFeatures": false
+    "disableGitFeatures": false,
+    "globalMetadata": {
+      "_appTitle": "Lumina Documentation",
+      "_gitContribute": {
+        "repo": "https://github.com/NotAdam/Lumina",
+        "branch": "master",
+        "apiSpecFolder": "docs/apiSpec"
+      }
+    },
   }
 }

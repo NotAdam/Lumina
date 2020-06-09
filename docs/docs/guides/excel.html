@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Excel </title>
+    <title>Advanced Excel | Lumina Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Excel ">
+    <meta name="title" content="Advanced Excel | Lumina Documentation ">
     <meta name="generator" content="docfx 2.54.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -67,10 +67,59 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="excel">Excel</h1>
+<h1 id="advanced-excel">Advanced Excel</h1>
 
 <h2 id="creating-your-own-sheet-readers">Creating your own sheet readers</h2>
+<p>Similarly to the FileResource system, the Excel implementation works similarly with an extensible interface allowing custom sheet implementations. Custom implementations can be useful when you only want a subset of data out of a specific sheet or are implementing something missing (contributions welcome!).</p>
+<p>In a nutshell, a custom sheet must be decorated with the <code>Sheet</code> attribute and implement <code>IExcelRow</code> which requires you to add a couple properties and a method.</p>
+<pre><code class="lang-cs">[Sheet( &quot;Condition&quot; )]
+public class Condition : IExcelRow
+{
+    public int Index;
+    public uint LogMessageId;
+    public LazyRow&lt; LogMessage &gt; LogMessage;
+
+    public uint RowId { get; set; }
+    public uint SubRowId { get; set; }
+    
+    public void PopulateData( RowParser parser, Lumina lumina )
+    {
+        RowId = parser.Row;
+        SubRowId = parser.SubRow;
+
+        Index = parser.ReadColumn&lt; int &gt;( 0 );
+        
+        LogMessageId = parser.ReadColumn&lt; uint &gt;( 2 );
+        LogMessage = new LazyRow&lt; LogMessage &gt;( lumina, LogMessageId );
+    }
+}
+</code></pre>
+<pre><code class="lang-cs">[Sheet( &quot;LogMessage&quot; )]
+public class LogMessage : IExcelRow
+{
+    public string Text;
+
+    public uint RowId { get; set; }
+    public uint SubRowId { get; set; }
+
+    public void PopulateData( RowParser parser, Lumina lumina )
+    {
+        RowId = parser.Row;
+        SubRowId = parser.SubRow;
+
+        Text = parser.ReadColumn&lt; string &gt;( 4 );
+    }
+}
+</code></pre>
+<p>Few things to note:</p>
+<ul>
+<li>A sheet attribute is required as it lets you create specialised sheets with different class names but still read from the same sheet implicitly, saving you from providing the sheet name in the <code>GetSheet</code> function every time</li>
+<li>To make things simpler, everything must have a <code>SubRowId</code> even if the sheet you're reading from doesn't have them. Simply put, this makes the interface simpler without all kinds of complexity when it comes to reading sheets and implementing them</li>
+<li><code>LazyRow&lt; T &gt;</code> allows for lazy loading of direct references to other sheets, provided that they're implemented somewhere as an <code>IExcelRow</code>, more on that below</li>
+</ul>
 <h2 id="lazyrow">LazyRow</h2>
+<p><code>LazyRow</code> is a lazy sheet loader. There's not much to know about this other than it makes life easy as you can implement foreign key references without any real backing code. The <code>SpaghettiGenerator</code> will spit these out in place of any links from the SaintCoinach schema, but its simple enough to use elsewhere too.</p>
+<p>You don't need to store the row ID in the sheet class itself if you don't want to, and the generator doesn't. You can always access the backing row ID by fetching it from the <code>Row</code> property on the <code>LazyRow</code> instance.</p>
 </article>
           </div>
           
@@ -79,7 +128,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/NotAdam/Lumina/blob/develop/docfx/docs/guides/excel.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/NotAdam/Lumina/blob/master/docfx/docs/guides/excel.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

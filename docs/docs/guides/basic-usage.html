@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Setup &amp; Basic Usage </title>
+    <title>Setup &amp; Basic Usage | Lumina Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Setup &amp; Basic Usage ">
+    <meta name="title" content="Setup &amp; Basic Usage | Lumina Documentation ">
     <meta name="generator" content="docfx 2.54.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -138,6 +138,7 @@ if( itemRow.ClassJobUse.HasValue )
 Console.WriteLine( $&quot;classjobuse: {itemRow.ClassJobUse.Value?.Name}&quot; );
 </code></pre>
 <p>Lazily loaded rows have nearly 0 overhead outside of the first time Lumina sees a new sheet. For example, the first time you load an <code>Item</code> sheet, Lumina needs to fetch information about that sheet such as its structure and such and loads it into memory. This allows subsequent reads to happen extremely quickly as all the necessary data is loaded and pre-transformed once you want to read a row, making it ideal for scenarios that require high-performance.</p>
+<p>You can also filter across entire collections of rows, lazily loaded rows and etc. with linq to quickly grab subsets of data.</p>
 </article>
           </div>
           

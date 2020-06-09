@@ -8236,24 +8236,12 @@ references:
   commentId: F:Lumina.Excel.ExcelModule.ImmutableIdToSheetMap
   fullName: Lumina.Excel.ExcelModule.ImmutableIdToSheetMap
   nameWithType: ExcelModule.ImmutableIdToSheetMap
-- uid: Lumina.Excel.ExcelModule.SheetCache
-  name: SheetCache
-  href: api/Lumina.Excel.ExcelModule.html#Lumina_Excel_ExcelModule_SheetCache
-  commentId: F:Lumina.Excel.ExcelModule.SheetCache
-  fullName: Lumina.Excel.ExcelModule.SheetCache
-  nameWithType: ExcelModule.SheetCache
 - uid: Lumina.Excel.ExcelModule.SheetNames
   name: SheetNames
   href: api/Lumina.Excel.ExcelModule.html#Lumina_Excel_ExcelModule_SheetNames
   commentId: F:Lumina.Excel.ExcelModule.SheetNames
   fullName: Lumina.Excel.ExcelModule.SheetNames
   nameWithType: ExcelModule.SheetNames
-- uid: Lumina.Excel.ExcelModule.Sheets
-  name: Sheets
-  href: api/Lumina.Excel.ExcelModule.html#Lumina_Excel_ExcelModule_Sheets
-  commentId: F:Lumina.Excel.ExcelModule.Sheets
-  fullName: Lumina.Excel.ExcelModule.Sheets
-  nameWithType: ExcelModule.Sheets
 - uid: Lumina.Excel.ExcelPage
   name: ExcelPage
   href: api/Lumina.Excel.ExcelPage.html
@@ -8334,14 +8322,6 @@ references:
   fullName.vb: Lumina.Excel.ExcelSheet(Of T)
   nameWithType: ExcelSheet<T>
   nameWithType.vb: ExcelSheet(Of T)
-- uid: Lumina.Excel.ExcelSheet`1.#ctor
-  name: ExcelSheet()
-  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1__ctor
-  commentId: M:Lumina.Excel.ExcelSheet`1.#ctor
-  fullName: Lumina.Excel.ExcelSheet<T>.ExcelSheet()
-  fullName.vb: Lumina.Excel.ExcelSheet(Of T).ExcelSheet()
-  nameWithType: ExcelSheet<T>.ExcelSheet()
-  nameWithType.vb: ExcelSheet(Of T).ExcelSheet()
 - uid: Lumina.Excel.ExcelSheet`1.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String)
   name: ExcelSheet(ExcelHeaderFile, String)
   href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1__ctor_Lumina_Data_Files_Excel_ExcelHeaderFile_System_String_

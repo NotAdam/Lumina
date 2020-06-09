@@ -95,3 +95,5 @@ Console.WriteLine( $"classjobuse: {itemRow.ClassJobUse.Value?.Name}" );
 ```
 
 Lazily loaded rows have nearly 0 overhead outside of the first time Lumina sees a new sheet. For example, the first time you load an `Item` sheet, Lumina needs to fetch information about that sheet such as its structure and such and loads it into memory. This allows subsequent reads to happen extremely quickly as all the necessary data is loaded and pre-transformed once you want to read a row, making it ideal for scenarios that require high-performance.
+
+You can also filter across entire collections of rows, lazily loaded rows and etc. with linq to quickly grab subsets of data.
