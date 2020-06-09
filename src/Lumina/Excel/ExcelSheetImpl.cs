@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
-using Lumina.Data.Parsing.Tex;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
 
@@ -38,18 +37,39 @@ namespace Lumina.Excel
             _Lumina = lumina;
         }
 
+        /// <summary>
+        /// The name of the sheet
+        /// </summary>
         public string Name { get; }
 
+        /// <summary>
+        /// The header of the sheet which defines its properties such as total row count, pages and languages
+        /// </summary>
         public ExcelHeaderFile HeaderFile { get; }
 
+        /// <summary>
+        /// A quick accessor to the data available in the sheet header
+        /// </summary>
         public ExcelHeaderHeader Header => HeaderFile.Header;
         
+        /// <summary>
+        /// The total count of rows irrespective of paging
+        /// </summary>
         public uint RowCount => Header.RowCount;
 
+        /// <summary>
+        /// The total number of columns
+        /// </summary>
         public uint ColumnCount => Header.ColumnCount;
 
+        /// <summary>
+        /// The kind of sheet
+        /// </summary>
         public ExcelVariant Variant => Header.Variant;
 
+        /// <summary>
+        /// The parsed data pages
+        /// </summary>
         public readonly List< ExcelPage > DataPages;
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
@@ -68,14 +88,33 @@ namespace Lumina.Excel
         }
 
 
+        /// <summary>
+        /// Returns the data pages contained in the Excel header
+        /// </summary>
         public ExcelDataPagination[] DataPagination => HeaderFile.DataPages;
 
+        /// <summary>
+        /// The available languages for this sheet.
+        /// </summary>
+        /// <remarks>
+        /// You will need to reload this sheet with a different language if you want to access a single sheet in more than 1 language at a time.
+        /// </remarks>
         public Language[] Languages => HeaderFile.Languages;
         
+        /// <summary>
+        /// The language that was requested for this sheet when it was loaded
+        /// </summary>
         public Language RequestedLanguage { get; protected set; }
 
         internal readonly Lumina _Lumina;
 
+        /// <summary>
+        /// Generates an absolute path to a data file for a sheet
+        /// </summary>
+        /// <param name="name">The sheet name</param>
+        /// <param name="startId">The page row start index</param>
+        /// <param name="language">The requested language</param>
+        /// <returns>An absolute path to the file</returns>
         protected string GenerateFilePath( string name, uint startId, Language language )
         {
             if( language == Language.None )
@@ -88,7 +127,10 @@ namespace Lumina.Excel
             return $"exd/{name}_{startId}_{lang}.exd";
         }
 
-        internal void GenerateFileSegments()
+        /// <summary>
+        /// Iterates across sheet pagination and creates pages with their associated row counts and breakpoints
+        /// </summary>
+        internal void GenerateFilePages()
         {
             var lang = Language.None;
 
@@ -123,6 +165,13 @@ namespace Lumina.Excel
             }
         }
 
+        /// <summary>
+        /// Reverses an inner segment of data based on the column size
+        /// </summary>
+        /// <param name="offset">The row offset to start from</param>
+        /// <param name="ms">The underlying <see cref="System.IO.MemoryStream"/> that contains the file data</param>
+        /// <param name="bw">Used to write the correct data back into the <see cref="System.IO.MemoryStream"/></param>
+        /// <param name="br">Used to read the correctly sized data from the underlying <see cref="System.IO.MemoryStream"/></param>
         protected void ProcessDataRow( long offset, MemoryStream ms, BinaryWriter bw, BinaryReader br )
         {
             foreach( var row in Columns )
@@ -163,6 +212,7 @@ namespace Lumina.Excel
                 // not really sure why but this sometimes happens, but it'll read 0 bytes and then try and write it to the end
                 // and crash because it's attempting to alloc memory for some retarded reason, makes 0 sense to me
                 // todo: figure out why (item sheet, maybe quest?)
+                // todo: potentially fixed by accident but don't want to remove
                 if( data.Length == 0 )
                     continue;
 
@@ -173,6 +223,10 @@ namespace Lumina.Excel
             }
         }
         
+        /// <summary>
+        /// Reverses the endianness of a data file on LE machines so the underlying stream can be copied from as is
+        /// </summary>
+        /// <param name="file">The file to swap endianness for</param>
         protected void ProcessDataEndianness( ExcelDataFile file )
         {
             if( !BitConverter.IsLittleEndian )

@@ -11,10 +11,6 @@ namespace Lumina.Excel
     {
         // protected Dictionary< Tuple< int, int >, T > RowCache = new Dictionary< Tuple< int, int >, T >();
         
-        public ExcelSheet() : base()
-        {
-        }
-
         public ExcelSheet( ExcelHeaderFile headerFile, string name ) :
             base( headerFile, name )
         {
@@ -46,9 +42,9 @@ namespace Lumina.Excel
             return GetRowInternal( row, UInt32.MaxValue );
         }
 
-        internal ExcelPage GetSegmentForRow( uint row )
+        internal ExcelPage GetPageForRow( uint row )
         {
-            var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( (uint)row ) );
+            var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
 
             if( data == null )
             {
@@ -60,7 +56,7 @@ namespace Lumina.Excel
         
         public RowParser GetRowParser( uint row )
         {
-            var data = GetSegmentForRow( row );
+            var data = GetPageForRow( row );
             
             return new RowParser( this, data.File, row );
         }
@@ -74,7 +70,7 @@ namespace Lumina.Excel
                 // return cachedRow;
             // }
             
-            var data = GetSegmentForRow( row );
+            var data = GetPageForRow( row );
 
             var rowObj = Activator.CreateInstance< T >();
 

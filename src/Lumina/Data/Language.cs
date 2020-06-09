@@ -7,6 +7,9 @@ namespace Lumina.Data
     [Flags]
     public enum Language : ushort
     {
+        /// <summary>
+        /// No language
+        /// </summary>
         [Display( Name = "" )]
         None,
         [Display( Name = "ja" )]

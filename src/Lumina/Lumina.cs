@@ -13,10 +13,20 @@ namespace Lumina
 {
     public class Lumina
     {
+        /// <summary>
+        /// The current data path that Lumina is using to load files.
+        /// </summary>
         public DirectoryInfo DataPath { get; private set; }
 
+        /// <summary>
+        /// Provides access to each <see cref="Repository"/>, which contains the base game content or expansion content. Each folder inside the sqpack
+        /// directory is a repository.
+        /// </summary>
         public Dictionary< string, Repository > Repositories { get; private set; }
 
+        /// <summary>
+        /// Provides access to <see cref="LuminaOptions"/> at runtime. Most of these can be changed without issue without having to create a new instance.
+        /// </summary>
         public LuminaOptions Options { get; private set; }
 
         /// <summary>
@@ -32,6 +42,10 @@ namespace Lumina
         /// </summary>
         public ExcelModule Excel { get; private set; }
         
+        /// <summary>
+        /// Provides access to the <see cref="FileHandleManager"/> which allows you to create new <see cref="FileHandle{T}"/>s which then allows you to
+        /// easily defer file loading onto another thread.
+        /// </summary>
         public FileHandleManager FileHandleManager { get; private set; }
 
         /// <summary>
@@ -66,6 +80,11 @@ namespace Lumina
             FileHandleManager = new FileHandleManager( this );
         }
 
+        /// <summary>
+        /// Parses a game filesystem path and extracts information and hashes the path provided. 
+        /// </summary>
+        /// <param name="path">A game filesystem path</param>
+        /// <returns>A <see cref="ParsedFilePath"/> which contains extracted info from the path, along with the hashes used to access the file index</returns>
         public static ParsedFilePath ParseFilePath( string path )
         {
             if( string.IsNullOrWhiteSpace( path ) )
@@ -100,11 +119,22 @@ namespace Lumina
             };
         }
 
+        /// <summary>
+        /// Load a raw file given a game file path
+        /// </summary>
+        /// <param name="path">A path to a file located inside the game's filesystem</param>
+        /// <returns>The base <see cref="FileResource"/> if it was found, or null if it wasn't found</returns>
         public FileResource GetFile( string path )
         {
             return GetFile< FileResource >( path );
         }
 
+        /// <summary>
+        /// Load a defined file given a game file path
+        /// </summary>
+        /// <param name="path">A path to a file located inside the game's filesystem</param>
+        /// <typeparam name="T">The type of <see cref="FileResource"/> to load the raw file in to</typeparam>
+        /// <returns>Returns the requested file if found, null if not</returns>
         public T GetFile< T >( string path ) where T : FileResource
         {
             var parsed = ParseFilePath( path );
@@ -121,6 +151,11 @@ namespace Lumina
             return null;
         }
 
+        /// <summary>
+        /// Returns file metadata pulled directly from the file header inside the SqPack
+        /// </summary>
+        /// <param name="path">A path to a file located inside the game's filesystem</param>
+        /// <returns>A <see cref="SqPackFileInfo"/> if it was found, null if not</returns>
         public SqPackFileInfo? GetFileMetadata( string path )
         {
             var parsed = ParseFilePath( path );
@@ -170,11 +205,25 @@ namespace Lumina
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
         }
 
+        /// <summary>
+        /// Attempts to load the base excel sheet given it's implementing row parser
+        /// </summary>
+        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetExcelSheet< T >() where T : IExcelRow
         {
             return Excel.GetSheet< T >();
         }
 
+        /// <summary>
+        /// Attempts to load the base excel sheet with a specific language
+        /// </summary>
+        /// <remarks>
+        /// If the language requested doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
+        /// </remarks>
+        /// <param name="language">The requested sheet language</param>
+        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : IExcelRow
         {
             return Excel.GetSheet< T >( language );

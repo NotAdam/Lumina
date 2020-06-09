@@ -16,8 +16,8 @@ namespace Lumina.Data
         }
 
         /// <summary>
-        /// Creates a new handle to a game file but does not load it. You will need to call <see cref="ProcessFileHandleQueue"/> yourself for these handles
-        /// to be loaded, on a different thread.
+        /// Creates a new handle to a game file but does not load it. You will need to call <see cref="ProcessQueue"/> or the wrapper function
+        /// <see cref="Lumina.ProcessFileHandleQueue"/>  yourself for these handles to be loaded, on a different thread.
         /// </summary>
         /// <param name="path">The path to the file to load</param>
         /// <typeparam name="T">The type of <see cref="FileResource"/> to load</typeparam>

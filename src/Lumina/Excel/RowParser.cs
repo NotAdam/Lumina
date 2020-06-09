@@ -12,24 +12,24 @@ namespace Lumina.Excel
 {
     public class RowParser
     {
-        private readonly ExcelSheetImpl _Sheet;
-        private readonly ExcelDataFile _DataFile;
+        private readonly ExcelSheetImpl _sheet;
+        private readonly ExcelDataFile _dataFile;
 
-        private ExcelDataOffset _Offset;
-        private ExcelDataRowHeader _RowHeader;
+        private ExcelDataOffset _offset;
+        private ExcelDataRowHeader _rowHeader;
         
-        private long _RowOffset;
+        private long _rowOffset;
 
         public uint Row;
         public uint SubRow;
-        public uint RowCount => _RowHeader.RowCount;
+        public uint RowCount => _rowHeader.RowCount;
 
-        private MemoryStream Stream => _DataFile.FileStream;
+        private MemoryStream Stream => _dataFile.FileStream;
         
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
-            _Sheet = sheet;
-            _DataFile = dataFile;
+            _sheet = sheet;
+            _dataFile = dataFile;
         }
 
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row )
@@ -44,86 +44,130 @@ namespace Lumina.Excel
             SeekToRow( row, subRow );
         }
 
+        /// <summary>
+        /// Moves the parser to a row in the current page given its index
+        /// </summary>
+        /// <param name="row">The row index to seek to</param>
         public void SeekToRow( uint row )
         {
             Row = row;
-            _Offset = _DataFile.RowData[ Row ];
+            _offset = _dataFile.RowData[ Row ];
 
-            var br = _DataFile.Reader;
+            var br = _dataFile.Reader;
 
-            Stream.Position = _Offset.Offset;
+            Stream.Position = _offset.Offset;
 
-            _RowHeader = br.ReadStructure< ExcelDataRowHeader >();
+            _rowHeader = br.ReadStructure< ExcelDataRowHeader >();
 
             if( BitConverter.IsLittleEndian )
             {
-                _RowHeader.DataSize = BinaryPrimitives.ReverseEndianness( _RowHeader.DataSize );
-                _RowHeader.RowCount = BinaryPrimitives.ReverseEndianness( _RowHeader.RowCount );
+                _rowHeader.DataSize = BinaryPrimitives.ReverseEndianness( _rowHeader.DataSize );
+                _rowHeader.RowCount = BinaryPrimitives.ReverseEndianness( _rowHeader.RowCount );
             }
 
             // header is 6 bytes large, data normally starts here except in the case of variant 2 sheets but we'll keep it anyway
-            _RowOffset = _Offset.Offset + 6;
+            _rowOffset = _offset.Offset + 6;
         }
 
+        /// <summary>
+        /// Moves the parser to a row + subrow in the current page given their indexes
+        /// </summary>
+        /// <param name="row">The row index to seek to</param>
+        /// <param name="subRow">The subrow index to seek to</param>
+        /// <exception cref="IndexOutOfRangeException">Given subrow index was out of bounds</exception>
         public void SeekToRow( uint row, uint subRow )
         {
             SeekToRow( row );
             
             SubRow = subRow;
 
-            if( subRow > _RowHeader.RowCount )
+            if( subRow > _rowHeader.RowCount )
             {
-                throw new IndexOutOfRangeException( $"subrow {subRow} > {_RowHeader.RowCount}!" );
+                throw new IndexOutOfRangeException( $"subrow {subRow} > {_rowHeader.RowCount}!" );
             }
 
-            _RowOffset = CalculateSubRowOffset( subRow );
+            _rowOffset = CalculateSubRowOffset( subRow );
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public long CalculateSubRowOffset( uint subRow )
         {
-            return _Offset.Offset + 6 + ( subRow * _Sheet.Header.DataOffset + 2 * ( subRow + 1 ) );
+            // +6 is the ExcelDataRowHeader
+            return _offset.Offset + 6 + ( subRow * _sheet.Header.DataOffset + 2 * ( subRow + 1 ) );
         }
 
+        /// <summary>
+        /// Read n bytes starting from the row offset + offset
+        /// </summary>
+        /// <param name="offset">The offset inside the row</param>
+        /// <param name="count">The number of bytes to read</param>
+        /// <returns>A copy of the read bytes</returns>
         public byte[] ReadBytes( int offset, int count )
         {
-            var br = _DataFile.Reader;
+            var br = _dataFile.Reader;
             
-            Stream.Position = _RowOffset + offset;
+            Stream.Position = _rowOffset + offset;
 
             return br.ReadBytes( count );
         }
 
+        /// <summary>
+        /// Reads a structure from an offset inside the current row
+        /// </summary>
+        /// <param name="offset">The offset to start reading from</param>
+        /// <typeparam name="T">The type of struct to read out from the row</typeparam>
+        /// <returns>The read structure filled from the row data</returns>
         public T ReadStructure< T >( int offset ) where T : struct
         {
-            var br = _DataFile.Reader;
+            var br = _dataFile.Reader;
             
-            Stream.Position = _RowOffset + offset;
+            Stream.Position = _rowOffset + offset;
 
             return br.ReadStructure< T >();
         }
-        
+
+        /// <summary>
+        /// Reads structures from an offset inside the current row
+        /// </summary>
+        /// <param name="offset">The offset to start reading from</param>
+        /// <param name="count">The number of structures to read sequentially</param>
+        /// <typeparam name="T">The type of struct to read out from the row</typeparam>
+        /// <returns>The read structures filled from the row data</returns>
         public List< T > ReadStructures< T >( int offset, int count ) where T : struct
         {
-            var br = _DataFile.Reader;
+            var br = _dataFile.Reader;
             
-            Stream.Position = _RowOffset + offset;
+            Stream.Position = _rowOffset + offset;
 
             return br.ReadStructures< T >( count );
         }
         
+        /// <summary>
+        /// Reads structures from an offset inside the current row
+        /// </summary>
+        /// <param name="offset">The offset to start reading from</param>
+        /// <param name="count">The number of structures to read sequentially</param>
+        /// <typeparam name="T">The type of struct to read out from the row</typeparam>
+        /// <returns>The read structures filled from the row data</returns>
         public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct
         {
-            var br = _DataFile.Reader;
+            var br = _dataFile.Reader;
             
-            Stream.Position = _RowOffset + offset;
+            Stream.Position = _rowOffset + offset;
 
             return br.ReadStructuresAsArray< T >( count );
         }
 
+        /// <summary>
+        /// Read a field from the current stream position
+        /// </summary>
+        /// <param name="type">The sheet type to read</param>
+        /// <typeparam name="T">The CLR type to store the read data in</typeparam>
+        /// <returns>The read data stored in the provided type</returns>
+        /// <exception cref="ArgumentOutOfRangeException">An invalid column type was provided</exception>
         private T ReadField< T >( ExcelColumnDataType type )
         {
-            var br = _DataFile.Reader;
+            var br = _dataFile.Reader;
 
             object data = null;
 
@@ -132,7 +176,7 @@ namespace Lumina.Excel
                 case ExcelColumnDataType.String:
                 {
                     var stringOffset = br.ReadUInt32();
-                    data = br.ReadStringOffset( _RowOffset + _Sheet.Header.DataOffset + stringOffset );
+                    data = br.ReadStringOffset( _rowOffset + _sheet.Header.DataOffset + stringOffset );
 
                     break;
                 }
@@ -212,7 +256,7 @@ namespace Lumina.Excel
                     throw new ArgumentOutOfRangeException( "type", $"invalid excel column type: {type}" );
             }
 
-            if( _Sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
+            if( _sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
             {
                 return (T)data;
             }
@@ -225,6 +269,11 @@ namespace Lumina.Excel
             return default;
         }
 
+        /// <summary>
+        /// Given a bitset with 1 flag set, find which index that bit is set at
+        /// </summary>
+        /// <param name="flag"></param>
+        /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private byte GetBitPosition( byte flag )
         {
@@ -239,9 +288,16 @@ namespace Lumina.Excel
             return count;
         }
 
+        /// <summary>
+        /// Read a type from an offset in the row
+        /// </summary>
+        /// <param name="offset">The offset to read from</param>
+        /// <param name="bit">Read a specific bit from the underlying position - useful for bools</param>
+        /// <typeparam name="T">The type to store the data in</typeparam>
+        /// <returns>The read data contained in the provided type</returns>
         public T ReadOffset< T >( ushort offset, byte bit = 0 )
         {
-            Stream.Position = _RowOffset + offset;
+            Stream.Position = _rowOffset + offset;
 
             if( bit > 0 )
             {
@@ -251,21 +307,33 @@ namespace Lumina.Excel
                 return ReadField< T >( flag );
             }
 
-            return ReadField< T >( _Sheet.ColumnsByOffset[offset].Type );
+            return ReadField< T >( _sheet.ColumnsByOffset[offset].Type );
         }
 
+        /// <summary>
+        /// Read a type from an offset in the row
+        /// </summary>
+        /// <param name="offset">The offset to read from</param>
+        /// <param name="type">The excel column type to read</param>
+        /// <returns>The read data contained in the provided type</returns>
         public T ReadOffset< T >( int offset, ExcelColumnDataType type )
         {
-            Stream.Position = _RowOffset + offset;
+            Stream.Position = _rowOffset + offset;
             
             return ReadField< T >( type );
         }
 
+        /// <summary>
+        /// Read a type from a column index in the row
+        /// </summary>
+        /// <param name="column">The column index to lookup</param>
+        /// <typeparam name="T">The type to store the read data in</typeparam>
+        /// <returns>The read data contained in the provided type</returns>
         public T ReadColumn< T >( int column )
         {
-            var col = _Sheet.Columns[ column ];
+            var col = _sheet.Columns[ column ];
 
-            Stream.Position = _RowOffset + col.Offset;
+            Stream.Position = _rowOffset + col.Offset;
 
             return ReadField< T >( col.Type );
         }

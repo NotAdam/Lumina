@@ -7,10 +7,6 @@ namespace Lumina.Example
     {
         public int Index;
 
-        public bool Unknown1;
-
-        public byte Unknown2;
-
         public uint LogMessageId;
         
         public LazyRow< LogMessage > LogMessage;

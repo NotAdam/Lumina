@@ -14,12 +14,20 @@ namespace Lumina.Excel
     {
         private readonly Lumina _Lumina;
 
+        /// <summary>
+        /// Mapping between internal IDs used to index sheets loaded at startup to their name.
+        /// </summary>
+        /// <remarks>
+        /// Not actually used for anything in lumina, but kept for reference
+        /// </remarks>
         public readonly Dictionary< int, string > ImmutableIdToSheetMap;
+        
+        /// <summary>
+        /// A list of all available sheets, pulled from root.exl
+        /// </summary>
         public readonly List< string > SheetNames;
 
-        public readonly List< ExcelSheetImpl > Sheets;
-
-        public readonly Dictionary< Tuple< Language, string >, ExcelSheetImpl > SheetCache;
+        private readonly Dictionary< Tuple< Language, string >, ExcelSheetImpl > _sheetCache;
 
         public ExcelModule( Lumina lumina )
         {
@@ -27,8 +35,7 @@ namespace Lumina.Excel
             ImmutableIdToSheetMap = new Dictionary< int, string >();
             SheetNames = new List< string >();
 
-            Sheets = new List< ExcelSheetImpl >();
-            SheetCache = new Dictionary< Tuple< Language, string >, ExcelSheetImpl >();
+            _sheetCache = new Dictionary< Tuple< Language, string >, ExcelSheetImpl >();
 
             // load all sheet names first
             var files = _Lumina.GetFile< ExcelListFile >( "exd/root.exl" );
@@ -48,16 +55,38 @@ namespace Lumina.Excel
             }
         }
 
-        public string BuildExcelHeaderPath( string path )
+        /// <summary>
+        /// Generates a path to the header file, given a sheet name.
+        /// </summary>
+        /// <remarks>
+        /// Sheet names must be in the same format as they're in root.exl. You can see all available sheets by iterating <see cref="SheetNames"/>.
+        /// </remarks>
+        /// <param name="name">A sheet name</param>
+        /// <returns>An absolute path to an excel header file</returns>
+        public string BuildExcelHeaderPath( string name )
         {
-            return $"exd/{path}.exh";
+            return $"exd/{name}.exh";
         }
 
+        /// <summary>
+        /// Attempts to load the base excel sheet given it's implementing row parser
+        /// </summary>
+        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >() where T : IExcelRow
         {
             return GetSheet< T >( _Lumina.Options.DefaultExcelLanguage );
         }
 
+        /// <summary>
+        /// Attempts to load the base excel sheet with a specific language
+        /// </summary>
+        /// <remarks>
+        /// If the language requested doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
+        /// </remarks>
+        /// <param name="language">The requested sheet language</param>
+        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >( Language language ) where T : IExcelRow
         {
             var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
@@ -70,6 +99,14 @@ namespace Lumina.Excel
             return GetSheet< T >( attr.Name, language, attr.ColumnHash );
         }
 
+        /// <summary>
+        /// Get a sheet by it's name with a given type.
+        ///
+        /// Useful for when a schema is shared (e.g. in the case of quest text sheets) as redefining loads of classes is wasteful.
+        /// </summary>
+        /// <param name="name">The name of a sheet</param>
+        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >( string name ) where T : IExcelRow
         {
             return GetSheet< T >( name, _Lumina.Options.DefaultExcelLanguage, null );
@@ -83,12 +120,12 @@ namespace Lumina.Excel
             var id = Tuple.Create( language, name );
 
             // attempt to get non-localised sheet first, then attempt to fetch a localised sheet from the cache
-            if( SheetCache.TryGetValue( idNoLanguage, out var sheet ) )
+            if( _sheetCache.TryGetValue( idNoLanguage, out var sheet ) )
             {
                 return sheet as ExcelSheet< T >;
             }
 
-            if( SheetCache.TryGetValue( id, out sheet ) )
+            if( _sheetCache.TryGetValue( id, out sheet ) )
             {
                 return sheet as ExcelSheet< T >;
             }
@@ -113,7 +150,7 @@ namespace Lumina.Excel
             }
 
             var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _Lumina );
-            newSheet.GenerateFileSegments();
+            newSheet.GenerateFilePages();
 
             // kinda a shit hack but basically this enforces a single language for a sheet that has no localisation
             // because it's possible to then load a single sheet many times if someone isn't careful
@@ -125,8 +162,7 @@ namespace Lumina.Excel
                 id = idNoLanguage;
             }
 
-            Sheets.Add( newSheet );
-            SheetCache[ id ] = newSheet;
+            _sheetCache[ id ] = newSheet;
 
             return newSheet;
         }
@@ -135,6 +171,7 @@ namespace Lumina.Excel
         /// Returns a raw accessor to an excel sheet allowing you to skip templated row access entirely.
         /// </summary>
         /// <param name="name">Name of the sheet to load</param>
+        /// <param name="language">The requested language to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
         public ExcelSheetImpl GetSheetRaw( string name, Language language = Language.None )
         {
@@ -150,7 +187,7 @@ namespace Lumina.Excel
             var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );
 
             var newSheet = (ExcelSheetImpl)Activator.CreateInstance( typeof( ExcelSheetImpl ), headerFile, name, language, _Lumina );
-            newSheet.GenerateFileSegments();
+            newSheet.GenerateFilePages();
 
             return newSheet;
         }

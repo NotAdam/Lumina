@@ -28,7 +28,7 @@ namespace Lumina.Data
         /// <summary>
         /// Loads the underlying <see cref="FileResource"/>
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        /// <exception cref="System.NotImplementedException"></exception>
         public virtual void Load()
         {
             throw new System.NotImplementedException();
