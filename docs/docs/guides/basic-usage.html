@@ -90,7 +90,7 @@ file.SaveFile( &quot;absolute/or/relative/path/root.exl&quot; );
 </code></pre>
 <p>The above will load the file and write it to disk immediately. In the event of a file not existing, <code>GetFile</code> will return null.</p>
 <h3 id="reading-files-the-good-way">Reading Files (the good way)</h3>
-<p>While you can load files raw, where implemented, files can be loaded and are parsed by Lumina and provide access to the file data in a structural manner. It works (nearly) the same as the example provided above.</p>
+<p>While you can load files raw, where implemented, files can be loaded and parsed by Lumina and provide access to the file data in a structural manner. It works (nearly) the same as the example provided above.</p>
 <pre><code class="lang-cs">var lumina = new Lumina.Lumina( &quot;G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack&quot; );
 
 var lgb = lumina.GetFile&lt; LgbFile &gt;( &quot;bg/ffxiv/sea_s1/twn/s1t1/level/bg.lgb&quot; );
@@ -146,7 +146,7 @@ Console.WriteLine( $&quot;classjobuse: {itemRow.ClassJobUse.Value?.Name}&quot; )
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/NotAdam/Lumina/blob/develop/docfx/docs/guides/basic-usage.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/NotAdam/Lumina/blob/master/docfx/docs/guides/basic-usage.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
