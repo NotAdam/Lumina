@@ -1,0 +1,6 @@
+- name: Setup & Basic Usage
+  href: basic-usage.md
+- name: Using Excel
+  href: excel.md
+- name: Custom File Readers
+  href: custom-file-readers.md

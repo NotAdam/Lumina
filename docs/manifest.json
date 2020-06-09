@@ -1,0 +1,2166 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/Adam/gitrepos/Lumina/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.BaseFileHandle.FileState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.BaseFileHandle.FileState.html",
+          "hash": "IW0TFGZdE9muudqEPsyCuw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.BaseFileHandle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.BaseFileHandle.html",
+          "hash": "SS5o74TUZybfLRAynDqc9Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Category.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Category.html",
+          "hash": "QqEuEd+HnIcrCEMm6qhrlA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.FileHandle-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.FileHandle-1.html",
+          "hash": "S/1wd3T8cd8MfiQahscYJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.FileHandleManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.FileHandleManager.html",
+          "hash": "i7OpmNtxWWwczUGx3i0LlA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.FileResource.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.FileResource.html",
+          "hash": "tn9zKFgj5x/P0NdNWAdV8w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.Excel.ExcelDataFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.Excel.ExcelDataFile.html",
+          "hash": "ytkxgb/1Z2a/V/mV4OwXMg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.Excel.ExcelHeaderFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.Excel.ExcelHeaderFile.html",
+          "hash": "OOrv7xlvDEmh2l6ydrK/7w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.Excel.ExcelListFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.Excel.ExcelListFile.html",
+          "hash": "8+v6EcipcmbjXAxectKteg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.Excel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.Excel.html",
+          "hash": "5Sg8bOfQdoMDtRy7Kjr4sQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.ImcFile.ImageChangeData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.ImcFile.ImageChangeData.html",
+          "hash": "MtVFGx8a7wKI7wrkbXPPFw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.ImcFile.ImageChangeParts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.ImcFile.ImageChangeParts.html",
+          "hash": "e8j4vPuxfP+VXrcMwR7uPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.ImcFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.ImcFile.html",
+          "hash": "SgUYGtgoUTgClRnvqq7neA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.LgbFile.FileHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.LgbFile.FileHeader.html",
+          "hash": "/6Lqd7Fceb5K0ewGi9bLqA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.LgbFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.LgbFile.html",
+          "hash": "mPKtFRijOc30ZEG9Zv+9Dg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.TexFile.Attribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.TexFile.Attribute.html",
+          "hash": "dewyuUcWUfHYgSsxDKYjLA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.TexFile.TexHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.TexFile.TexHeader.html",
+          "hash": "KPwvpYzgx5Zfx4u8k2xDoQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.TexFile.TextureFormat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.TexFile.TextureFormat.html",
+          "hash": "vEI9FetEUBbfTpqhjghVTQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.TexFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.TexFile.html",
+          "hash": "fHqcGn77nxOmJyT04cY/xw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Files.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Files.html",
+          "hash": "KbGiNdxQLVFTkPJ2SzqtXw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Language.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Language.html",
+          "hash": "OWNmjI7Cogkxu538l58H/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.LanguageUtil.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.LanguageUtil.html",
+          "hash": "HzAsvyotxSIHRbs6tAO3FQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.LuminaFileInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.LuminaFileInfo.html",
+          "hash": "38J0Ls+D22k+shC/5tYb4A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Common.Matrix43.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Common.Matrix43.html",
+          "hash": "lFkzWsGqdIco8HTAVu41Gg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Common.Matrix43f.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Common.Matrix43f.html",
+          "hash": "TJvM0r2UcdVlJ8WL9646fQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Common.Transformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Common.Transformation.html",
+          "hash": "bMSD/cNniE8B0jbcNTmVkg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Common.Vector3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Common.Vector3.html",
+          "hash": "+QaZVWi3ELvkEUAoR7mk9w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Common.Vector4.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Common.Vector4.html",
+          "hash": "AnppXyzp8r8ZAQyxy/SGLQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Common.html",
+          "hash": "hV4RqixByrNvGT0RZAmulg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.AetheryteInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.AetheryteInstanceObject.html",
+          "hash": "btvMGrvzDUezHAYcZBvq7w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.BGInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.BGInstanceObject.html",
+          "hash": "krYlQhyrf0xA0FX7MSzonA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CTCharacter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CTCharacter.html",
+          "hash": "b6yXHv8s1AUfXsKa7lqu1w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ChairMarkerInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ChairMarkerInstanceObject.html",
+          "hash": "GKUS1KyLsOKMq+Mk+Q5TDA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ClickableRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ClickableRangeInstanceObject.html",
+          "hash": "UtciatXhAgX39COsA+TbHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ClientPathInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ClientPathInstanceObject.html",
+          "hash": "hXRMLfGIiZ3KsgvG+2bTLQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CollisionAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CollisionAttribute.html",
+          "hash": "McPQ6pHwn3HERlnHZTd6og=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CollisionBoxInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CollisionBoxInstanceObject.html",
+          "hash": "E+IdohRTnBXSox5VS6y7uA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.Color.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.Color.html",
+          "hash": "18jU8nZPToSZ84Z3G5FJTQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ColorHDRI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ColorHDRI.html",
+          "hash": "YusapA9MamGzphRciOkU1Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CreationParams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CreationParams.html",
+          "hash": "Hh9DZwLf+MB6M3tGVOeHxA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.DoorRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.DoorRangeInstanceObject.html",
+          "hash": "F674iYYoDy2Ffc3WnLIytQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ENPCInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ENPCInstanceObject.html",
+          "hash": "ZCqVUVRZq3hz/ym/FvcezA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EnvLocationInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EnvLocationInstanceObject.html",
+          "hash": "FckWHKgqZqklgLWNs/9Nsg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EnvSetInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EnvSetInstanceObject.html",
+          "hash": "9oDVuURkSeVx2JiHQdCSZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EventInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EventInstanceObject.html",
+          "hash": "dtJGRMzn9/SN+K+uj4uCQQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EventRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EventRangeInstanceObject.html",
+          "hash": "BmHm7iV/j2/Mi/Q7PYj+wQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ExitRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ExitRangeInstanceObject.html",
+          "hash": "2JyY4Olv3CFswQ4eXCCXlg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.FateRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.FateRangeInstanceObject.html",
+          "hash": "PpglDyIYgnwW7fI366+TCA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GameInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GameInstanceObject.html",
+          "hash": "vpKZFYXCMga8POTyBY+DuQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GatheringInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GatheringInstanceObject.html",
+          "hash": "wHO0FUGzBL6RbI7HGlMqIw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GimmickRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GimmickRangeInstanceObject.html",
+          "hash": "m1HwKUsJZlTPp8Wi4JNeLA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.HelperObjInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.HelperObjInstanceObject.html",
+          "hash": "VC7ELr55ViXyatIgDPs7+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.IInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.IInstanceObject.html",
+          "hash": "TOIg/8CWdOGrhSUb74gakw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.InstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.InstanceObject.html",
+          "hash": "dPzefQvMYpx00RXQxKtlSA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.Layer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.Layer.html",
+          "hash": "D8W/shCgS2B4qFTdge4cRg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerChunk.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerChunk.html",
+          "hash": "HxJYG4iRcI6Ou6IFuztHUg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferenced.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferenced.html",
+          "hash": "wreOJpHDzGA7vc/gtv3kJQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferencedList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferencedList.html",
+          "hash": "dhW1acBf5AkjvbNe/chEAw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferencedType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferencedType.html",
+          "hash": "NARWn6b/+4A6IrYZex1ftg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LightInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LightInstanceObject.html",
+          "hash": "wnaYsfnCD3O4cGiwOEiYPA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LineVFXInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LineVFXInstanceObject.html",
+          "hash": "P5Q1fXRi/RI8gj/LnW5syg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.MapRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.MapRangeInstanceObject.html",
+          "hash": "mer3PHuE2L08HX6pVcM/AA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.MovePathSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.MovePathSettings.html",
+          "hash": "quXDcG3CXXgiuhKgtT+GtQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.NPCInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.NPCInstanceObject.html",
+          "hash": "emPDtkkpzT3Q0LM9JTqvuA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.OBSetEnableReferenced.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.OBSetEnableReferenced.html",
+          "hash": "Af4YPLixbx5OjOb8fn+H5w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.OBSetReferenced.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.OBSetReferenced.html",
+          "hash": "4KH7WD3YqnjyrwiQPfHKrw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PathControlPoint.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PathControlPoint.html",
+          "hash": "WKpQSntivxDIB1KhdU452w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PathInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PathInstanceObject.html",
+          "hash": "YW4Ze90WlG8rpc4B7QsnVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PopRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PopRangeInstanceObject.html",
+          "hash": "cGp4fHaN8AY6xxrVJCuadA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PositionMarkerInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PositionMarkerInstanceObject.html",
+          "hash": "wsmUvz9GsW3hVBUJyXYXCQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PrefetchRangeInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PrefetchRangeInstanceObject.html",
+          "hash": "aq6rZ6NWVEOtNVIJkIx5oQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.QuestMarkerInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.QuestMarkerInstanceObject.html",
+          "hash": "dXMNv78It9IQ5IwWUVf8nQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.RelativePositions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.RelativePositions.html",
+          "hash": "/cavIKw7XS195J8t4vN5hw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SEParam.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SEParam.html",
+          "hash": "J8k7ietRtBWBvuad3uRzPQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SGMemberID.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SGMemberID.html",
+          "hash": "UrjNVW0MBIByMSx1Hy9Crg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SGOverriddenMember.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SGOverriddenMember.html",
+          "hash": "1/EJHsx6OKSFpKsYMWH5jA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ServerPathInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ServerPathInstanceObject.html",
+          "hash": "xq3e8SfEi6nLuVRGlHTnOw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SharedGroupInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SharedGroupInstanceObject.html",
+          "hash": "zy2Whot9xfBkQSrrKDtNtQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SoundInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SoundInstanceObject.html",
+          "hash": "lJDhgLpnzJ/P25e2X+ghSA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TargetMarkerInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TargetMarkerInstanceObject.html",
+          "hash": "+WAmDTyDp7eQOEr659SR1w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TreasureInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TreasureInstanceObject.html",
+          "hash": "BCKQUOdF9v6mvY/9mttrbw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TriggerBoxInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TriggerBoxInstanceObject.html",
+          "hash": "xqQYrzl1ZvwPR14ma4kx5Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.VFXInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.VFXInstanceObject.html",
+          "hash": "9LFeBYXbaYWClGKjiZFfBg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.WeaponInstanceObject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.WeaponInstanceObject.html",
+          "hash": "CPHiuys5kQHtMbbF2foGMw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.WeaponModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.WeaponModel.html",
+          "hash": "Sb7s/12Ae6ugnaSJSB9GAw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eAssetTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eAssetTypeLayer.html",
+          "hash": "uOlAhpC4mY5QAvlrYYj3iA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eCharacterSizeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eCharacterSizeLayer.html",
+          "hash": "arfcp0RJ/kk1MfllUk7YzQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eColorStateLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eColorStateLayer.html",
+          "hash": "xVItXZVasHSVGSpxEBEftg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eDoorStateLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eDoorStateLayer.html",
+          "hash": "k5royMqMlKJsO/VBkwOxrQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eDrawHeadPartsLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eDrawHeadPartsLayer.html",
+          "hash": "VcaG1zWllmYqTQLMMW/3YQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eEnvSetShapeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eEnvSetShapeLayer.html",
+          "hash": "6lsvDJ9jDZukMGt72ySz1w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eExitTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eExitTypeLayer.html",
+          "hash": "9XlatBIvzSDWwwPiBsjL+A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eGimmickTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eGimmickTypeLayer.html",
+          "hash": "aMUWp8DnHaVTI19czxxLHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eHelperObjectTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eHelperObjectTypeLayer.html",
+          "hash": "/qsnBy6URS5WuAaxny6Agg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eLightTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eLightTypeLayer.html",
+          "hash": "d1odpUmuZaGAMwLJXkeC6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eLineStyleLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eLineStyleLayer.html",
+          "hash": "nQ95IoNKC4Y7JIHuoKFAxw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eModelConfigCollisionTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eModelConfigCollisionTypeLayer.html",
+          "hash": "lTP14a2vhWkPzTsdxeukOg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eMovePathModeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eMovePathModeLayer.html",
+          "hash": "2MreUlzDJ1/UgoKXmXWzFw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eObjectTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eObjectTypeLayer.html",
+          "hash": "t1btFlUSAe6wF8TLvmYppQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePointLightTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePointLightTypeLayer.html",
+          "hash": "d46SdEdwaue41SNlPnMHdQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePopTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePopTypeLayer.html",
+          "hash": "VbKJebmG6O+qRUZGzyIpmQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePositionMarkerTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePositionMarkerTypeLayer.html",
+          "hash": "fqV3Wa0JYcwXF8cC1HNMLQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRangeTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRangeTypeLayer.html",
+          "hash": "FZkPEISIGBXhg1JBxpNAGg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRotationStateLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRotationStateLayer.html",
+          "hash": "FOUyRNcGbMdM9hD2UsZdCg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRotationTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRotationTypeLayer.html",
+          "hash": "mXnkgguUMZJQ15F4ddt1RA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eSETypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eSETypeLayer.html",
+          "hash": "PdpfMbBaxR2qWNFzvZ5Jrg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTargetMarkerTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTargetMarkerTypeLayer.html",
+          "hash": "db60TJ4FcU4T6+Hs1QV1vg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTargetTypeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTargetTypeLayer.html",
+          "hash": "sNbo+p0zohUGb0aDwMjOIQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTransformStateLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTransformStateLayer.html",
+          "hash": "BYpvSK+MawdnHanq87QBPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTriggerBoxShapeLayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTriggerBoxShapeLayer.html",
+          "hash": "kB8DwqFGAJJ0xTFC1FvJVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.html",
+          "hash": "fhcD2nGMJEK7n1lRbH0oJQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Layer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Layer.html",
+          "hash": "Dzk0ylCyWfa0kzIHe1PvNQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Quad.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Quad.html",
+          "hash": "jnJYJ/bvVeK4HHxYVKlNLA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.QuadExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.QuadExtensions.html",
+          "hash": "q3APvOqEeEg7+/Ezfi7grQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.StringOffset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.StringOffset.html",
+          "hash": "54k2IKpoqih13DiCJ4RZew=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Tex.Squish.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Tex.Squish.html",
+          "hash": "mPHvgkMA1EPUrRR+w9LXLw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Tex.SquishOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Tex.SquishOptions.html",
+          "hash": "ZTwtrBgxnUOlC5SeL+uZsQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Tex.SquishOptionsExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Tex.SquishOptionsExtensions.html",
+          "hash": "7WfpJjvsUn8ZkzQfE+jfGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.Tex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.Tex.html",
+          "hash": "YRBYjsB4CtoG9kC5jXG0rw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Parsing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Parsing.html",
+          "hash": "cvjQk1n7cQhT+UqnNe8rZQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Repository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Repository.html",
+          "hash": "Nv3DQHpR5m/44Fj83Lwchg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.SqPack.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.SqPack.html",
+          "hash": "9fRBPdUp+WtMa8E7n5v3Cw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.SqPackIndex.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.SqPackIndex.html",
+          "hash": "DR93EPRFmsvfJaz0nBZfiw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.SqPackInflateException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.SqPackInflateException.html",
+          "hash": "zwMNmRPrFYHdVD3U4Kod/Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.DatStdFileBlockInfos.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.DatStdFileBlockInfos.html",
+          "hash": "Tz4NKn+Lc6NI82et81TuPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelColumnDataType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelColumnDataType.html",
+          "hash": "bPB6I9DCWrYTAuxMTXuoxg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelColumnDefinition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelColumnDefinition.html",
+          "hash": "VoJDwnsNMhlQjzdpNMTYPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataHeader.html",
+          "hash": "nWown/AbgTca5Cn2H7bQLw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataOffset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataOffset.html",
+          "hash": "MZDRcjVhuKimemJ9bo3X9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataPagination.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataPagination.html",
+          "hash": "uAkv+aKBUsPULWQhBW25jA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataRowHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataRowHeader.html",
+          "hash": "+tCYMY3wUJh2K69iwbEo6Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelHeaderHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelHeaderHeader.html",
+          "hash": "uIl4vVg+xQxvZ9lcTFzE+g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.ExcelVariant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.ExcelVariant.html",
+          "hash": "LBy3mdg0dgstVajg6VED0w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Excel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Excel.html",
+          "hash": "5yJmbNRGctdX0WLPOykkkw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.FileType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.FileType.html",
+          "hash": "FryJ/RY2oDzmgSfqoZd9PA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.Index2HashTableEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.Index2HashTableEntry.html",
+          "hash": "10K3JwOzSEE6pWclwSylUg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.IndexHashTableEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.IndexHashTableEntry.html",
+          "hash": "gjuihtukGC2WaeardEqEUA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.LOD.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.LOD.html",
+          "hash": "UW/iovDmMa9/40hRBP3MEQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.ModelBlock.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.ModelBlock.html",
+          "hash": "OhMSEbcVB6n3FuwAem7RbQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.PlatformId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.PlatformId.html",
+          "hash": "jy22oZEjpvCKWpLc3RpOVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.SqPackFileInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.SqPackFileInfo.html",
+          "hash": "WHaRO8faUivMyRqiNEjSkg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.SqPackHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.SqPackHeader.html",
+          "hash": "hMR+d8ayGZlGsaV4SlFvnw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.SqPackIndexHeader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.SqPackIndexHeader.html",
+          "hash": "0Y9Dik3Hoj8ZzQtR2BauUA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.Structs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.Structs.html",
+          "hash": "f+RHNyiA/MqMNfoWwNO3Tw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Data.html",
+          "hash": "o062jqLiR3/PsEmFE2TyRQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.ExcelModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.ExcelModule.html",
+          "hash": "038LcvRA43fW+eOv2j29eA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.ExcelPage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.ExcelPage.html",
+          "hash": "WiShDroJyjl+QYolkeWUZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.ExcelSheet-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.ExcelSheet-1.html",
+          "hash": "5LdG4CmhR3IqYCBoMhvOwg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.ExcelSheetImpl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.ExcelSheetImpl.html",
+          "hash": "h+CXXoaq//2h+X/7SRkBHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.Exceptions.ExcelSheetColumnChecksumMismatchException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.Exceptions.ExcelSheetColumnChecksumMismatchException.html",
+          "hash": "bSspq+692Ma62yOcUt9Wag=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.Exceptions.html",
+          "hash": "GUYp8Trs2DiPAiHTG5FYXw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.IExcelRow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.IExcelRow.html",
+          "hash": "9Cn0rdQAbeYtBMbCLcjGcA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.LazyRow-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.LazyRow-1.html",
+          "hash": "8MBu3tUaSz6Zhz30/k4hBg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.RowParser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.RowParser.html",
+          "hash": "HlRmvVS4UKv4CPSRJZdHhA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.SheetAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.SheetAttribute.html",
+          "hash": "v7+6/qvi6wYK4iYut/exBA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Excel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Excel.html",
+          "hash": "RbLz+Q/5aNpFS4gnZcOZNw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Extensions.BinaryReaderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Extensions.BinaryReaderExtensions.html",
+          "hash": "u87K964wfFNllqZQKM1QAA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Extensions.HalfExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Extensions.HalfExtensions.html",
+          "hash": "7voOwJRdNBSS0L0objE4OA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Extensions.MemoryStreamExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Extensions.MemoryStreamExtensions.html",
+          "hash": "zinwpfJLbHY920nQmej9gg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Extensions.SpanExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Extensions.SpanExtensions.html",
+          "hash": "pWTeNRHF+fMio15LMWRlYg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Extensions.html",
+          "hash": "9tHZmhByYdQll46/1btngA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Lumina.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Lumina.html",
+          "hash": "aL+jHBQT1OhRRZlXtm/IlQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.LuminaOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.LuminaOptions.html",
+          "hash": "7MOIXHUK4P1jF52BGlGATA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Misc.Crc32.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Misc.Crc32.html",
+          "hash": "xy/NIADxQni1qn66bPZSgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.Misc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.Misc.html",
+          "hash": "CCbkkKiauSbzcRl7z/RgXQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.ParsedFilePath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.ParsedFilePath.html",
+          "hash": "el8+h210IbVg1jJ32FTt6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Lumina.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Lumina.html",
+          "hash": "rjz0WYwHxXQo20HyI0ZLNQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "PPbrOr7RFdOO8lhxc9N5PA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "EN4SlcgyVlGuEgyDxqtP1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/basic-usage.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/basic-usage.html",
+          "hash": "dd4j181QmllxH1JeMR4oqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/custom-file-readers.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/custom-file-readers.html",
+          "hash": "ut3WtwK86OaF9EtYJZbMRg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/guides/excel.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/guides/excel.html",
+          "hash": "g9rM/OIsQK77T9FYxImWlg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/intro.html",
+          "hash": "dSfQdcSx7V925IfftxvtJA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html",
+          "hash": "UFcAEthiX8KdFXtPhW/oNg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "8B+3Dfa6eBfejCisW8XOqA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "AGlJc5g04B8RI1P/kOsrRQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 6,
+          "skipped_file_count": 4
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 167,
+          "skipped_file_count": 167
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

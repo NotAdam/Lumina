@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Setup &amp; Basic Usage </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Setup &amp; Basic Usage ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="setup--basic-usage">Setup &amp; Basic Usage</h1>
+
+<h2 id="adding-the-package">Adding the Package</h2>
+<p>Lumina is a nuget package. It can be installed like any other. You can install the latest release with the following:</p>
+<pre><code>dotnet add package Lumina
+</code></pre>
+<h2 id="setting-up-lumina">Setting up Lumina</h2>
+<p>Lumina has some advanced options that can provide preferred behaviour in different circumstances, but generally speaking the only thing you are required to have is (part of) a game install. While not recommended for regular users, Lumina can and will operate fine on a partial game install depending on your use case.</p>
+<p>To init Lumina, you need the absolute path of your FINAL FANTASY XIV install's <code>sqpack</code> folder. For example: <code>G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack</code>. Once you have that, initialisation is easy:</p>
+<pre><code class="lang-cs">var lumina = new Lumina.Lumina( &quot;G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack&quot; );
+</code></pre>
+<p>It's worth noting at this point that constructing a new Lumina instance isn't exactly cheap - it's at this stage where Lumina will try to discover all the expansion data and other game related files available at the path provided. While this process will only take about 250ms or so, you should reuse the same instance where possible.</p>
+<h2 id="basic-usage">Basic Usage</h2>
+<h3 id="reading-raw-files">Reading Raw Files</h3>
+<p>Lumina can read nearly all files in the game with no problem and will let you write them to disk, with the only exception being models. This is likely to change in the future but as is, models are not supported.</p>
+<p>To read a file raw, you can just use <code>GetFile</code> with no specialisation. Saving that file to disk is also very simple.</p>
+<pre><code class="lang-cs">var lumina = new Lumina.Lumina( &quot;G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack&quot; );
+
+var file = lumina.GetFile( &quot;exd/root.exl&quot; );
+file.SaveFile( &quot;absolute/or/relative/path/root.exl&quot; );
+</code></pre>
+<p>The above will load the file and write it to disk immediately. In the event of a file not existing, <code>GetFile</code> will return null.</p>
+<h3 id="reading-files-the-good-way">Reading Files (the good way)</h3>
+<p>While you can load files raw, where implemented, files can be loaded and are parsed by Lumina and provide access to the file data in a structural manner. It works (nearly) the same as the example provided above.</p>
+<pre><code class="lang-cs">var lumina = new Lumina.Lumina( &quot;G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack&quot; );
+
+var lgb = lumina.GetFile&lt; LgbFile &gt;( &quot;bg/ffxiv/sea_s1/twn/s1t1/level/bg.lgb&quot; );
+
+foreach( var layer in lgb.Layers )
+{
+    Console.WriteLine( $&quot;layer: {layer.strName}&quot; );
+}
+</code></pre>
+<p>Similarly to raw files, these can also be written to disk as demonstrated above.</p>
+<h3 id="reading-excel-sheets">Reading Excel Sheets</h3>
+<p>Excel is the data format used for storing relational data in FINAL FANTASY XIV. While Lumina abstracts away most of the detail and provides you with a clean interface for accessing the data, those interested can find more details about the file format <a href="https://xiv.dev/game-data/file-formats/excel">here</a>.</p>
+<p>Firstly, the structures required to use this function live in a separate nuget package, <code>Lumina.Generated</code>. You will need to install this package separately to Lumina to access the generated structures. The generated structures provide lazily loaded references to other sheets which makes understanding and using the game data extremely easy, along with statically defined field names, so you can use all the reflection you want.</p>
+<p>Once you've installed the <code>Lumina.Generated</code> package, reading sheets is akin to reading files.</p>
+<pre><code class="lang-cs">var lumina = new Lumina.Lumina( &quot;G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack&quot; );
+
+var itemSheet = lumina.GetExcelSheet&lt; Item &gt;();
+
+// get a single row
+var itemRow = itemSheet.GetRow( 101 );
+Console.WriteLine( $&quot;item name: {itemRow.Name}&quot; );
+
+// get all rows
+var itemRows = itemSheet.GetRows();
+foreach( var row in itemRows )
+{
+    Console.WriteLine( $&quot;item name: {row.Name}&quot; );
+}
+</code></pre>
+<p>As briefly mentioned before, Lumina provides lazily loaded references to other sheets where a reference has been identified. These sheets are encapsulated in a <code>LazyRow&lt; T &gt;</code> which allows you to fetch the underlying value which was used to make the reference, along with loading the reference and accessing the data.</p>
+<pre><code class="lang-cs">var lumina = new Lumina.Lumina( &quot;G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack&quot; );
+
+var itemSheet = lumina.GetExcelSheet&lt; Item &gt;();
+
+var itemRow = itemSheet.GetRow( 101 );
+
+// check if a value is set
+if( itemRow.ClassJobUse.HasValue )
+{
+    var classJobUse = itemRow.ClassJobUse.Value;
+    Console.WriteLine( $&quot;classjobuse: {classJobUse.Name}&quot; );
+}
+
+// alternatively, you can use null coalescing
+Console.WriteLine( $&quot;classjobuse: {itemRow.ClassJobUse.Value?.Name}&quot; );
+</code></pre>
+<p>Lazily loaded rows have nearly 0 overhead outside of the first time Lumina sees a new sheet. For example, the first time you load an <code>Item</code> sheet, Lumina needs to fetch information about that sheet such as its structure and such and loads it into memory. This allows subsequent reads to happen extremely quickly as all the necessary data is loaded and pre-transformed once you want to read a row, making it ideal for scenarios that require high-performance.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NotAdam/Lumina/blob/develop/docfx/docs/guides/basic-usage.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

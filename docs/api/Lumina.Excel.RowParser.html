@@ -1,0 +1,942 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class RowParser
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class RowParser
+   ">
+    <meta name="generator" content="docfx 2.54.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Lumina.Excel.RowParser">
+  
+  
+  <h1 id="Lumina_Excel_RowParser" data-uid="Lumina.Excel.RowParser" class="text-break">Class RowParser
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">RowParser</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Lumina.Excel.html">Lumina.Excel</a></h6>
+  <h6><strong>Assembly</strong>: Lumina.dll</h6>
+  <h5 id="Lumina_Excel_RowParser_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RowParser</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser__ctor_Lumina_Excel_ExcelSheetImpl_Lumina_Data_Files_Excel_ExcelDataFile_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.%23ctor(Lumina.Excel.ExcelSheetImpl%2CLumina.Data.Files.Excel.ExcelDataFile)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L29">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser__ctor_" data-uid="Lumina.Excel.RowParser.#ctor*"></a>
+  <h4 id="Lumina_Excel_RowParser__ctor_Lumina_Excel_ExcelSheetImpl_Lumina_Data_Files_Excel_ExcelDataFile_" data-uid="Lumina.Excel.RowParser.#ctor(Lumina.Excel.ExcelSheetImpl,Lumina.Data.Files.Excel.ExcelDataFile)">RowParser(ExcelSheetImpl, ExcelDataFile)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RowParser(ExcelSheetImpl sheet, ExcelDataFile dataFile)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Lumina.Excel.ExcelSheetImpl.html">ExcelSheetImpl</a></td>
+        <td><span class="parametername">sheet</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Lumina.Data.Files.Excel.ExcelDataFile.html">ExcelDataFile</a></td>
+        <td><span class="parametername">dataFile</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser__ctor_Lumina_Excel_ExcelSheetImpl_Lumina_Data_Files_Excel_ExcelDataFile_System_UInt32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.%23ctor(Lumina.Excel.ExcelSheetImpl%2CLumina.Data.Files.Excel.ExcelDataFile%2CSystem.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L35">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser__ctor_" data-uid="Lumina.Excel.RowParser.#ctor*"></a>
+  <h4 id="Lumina_Excel_RowParser__ctor_Lumina_Excel_ExcelSheetImpl_Lumina_Data_Files_Excel_ExcelDataFile_System_UInt32_" data-uid="Lumina.Excel.RowParser.#ctor(Lumina.Excel.ExcelSheetImpl,Lumina.Data.Files.Excel.ExcelDataFile,System.UInt32)">RowParser(ExcelSheetImpl, ExcelDataFile, UInt32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RowParser(ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Lumina.Excel.ExcelSheetImpl.html">ExcelSheetImpl</a></td>
+        <td><span class="parametername">sheet</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Lumina.Data.Files.Excel.ExcelDataFile.html">ExcelDataFile</a></td>
+        <td><span class="parametername">dataFile</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser__ctor_Lumina_Excel_ExcelSheetImpl_Lumina_Data_Files_Excel_ExcelDataFile_System_UInt32_System_UInt32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.%23ctor(Lumina.Excel.ExcelSheetImpl%2CLumina.Data.Files.Excel.ExcelDataFile%2CSystem.UInt32%2CSystem.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L41">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser__ctor_" data-uid="Lumina.Excel.RowParser.#ctor*"></a>
+  <h4 id="Lumina_Excel_RowParser__ctor_Lumina_Excel_ExcelSheetImpl_Lumina_Data_Files_Excel_ExcelDataFile_System_UInt32_System_UInt32_" data-uid="Lumina.Excel.RowParser.#ctor(Lumina.Excel.ExcelSheetImpl,Lumina.Data.Files.Excel.ExcelDataFile,System.UInt32,System.UInt32)">RowParser(ExcelSheetImpl, ExcelDataFile, UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RowParser(ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row, uint subRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Lumina.Excel.ExcelSheetImpl.html">ExcelSheetImpl</a></td>
+        <td><span class="parametername">sheet</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Lumina.Data.Files.Excel.ExcelDataFile.html">ExcelDataFile</a></td>
+        <td><span class="parametername">dataFile</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">subRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_Row.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.Row%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L23">View Source</a>
+  </span>
+  <h4 id="Lumina_Excel_RowParser_Row" data-uid="Lumina.Excel.RowParser.Row">Row</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint Row</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_SubRow.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.SubRow%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L24">View Source</a>
+  </span>
+  <h4 id="Lumina_Excel_RowParser_SubRow" data-uid="Lumina.Excel.RowParser.SubRow">SubRow</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint SubRow</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_RowCount.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.RowCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L25">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_RowCount_" data-uid="Lumina.Excel.RowParser.RowCount*"></a>
+  <h4 id="Lumina_Excel_RowParser_RowCount" data-uid="Lumina.Excel.RowParser.RowCount">RowCount</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint RowCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_CalculateSubRowOffset_System_UInt32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.CalculateSubRowOffset(System.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L82">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_CalculateSubRowOffset_" data-uid="Lumina.Excel.RowParser.CalculateSubRowOffset*"></a>
+  <h4 id="Lumina_Excel_RowParser_CalculateSubRowOffset_System_UInt32_" data-uid="Lumina.Excel.RowParser.CalculateSubRowOffset(System.UInt32)">CalculateSubRowOffset(UInt32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long CalculateSubRowOffset(uint subRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">subRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_ReadBytes_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.ReadBytes(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L88">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_ReadBytes_" data-uid="Lumina.Excel.RowParser.ReadBytes*"></a>
+  <h4 id="Lumina_Excel_RowParser_ReadBytes_System_Int32_System_Int32_" data-uid="Lumina.Excel.RowParser.ReadBytes(System.Int32,System.Int32)">ReadBytes(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public byte[] ReadBytes(int offset, int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_ReadColumn__1_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.ReadColumn%60%601(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L264">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_ReadColumn_" data-uid="Lumina.Excel.RowParser.ReadColumn*"></a>
+  <h4 id="Lumina_Excel_RowParser_ReadColumn__1_System_Int32_" data-uid="Lumina.Excel.RowParser.ReadColumn``1(System.Int32)">ReadColumn&lt;T&gt;(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T ReadColumn&lt;T&gt;(int column)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_ReadOffset__1_System_Int32_Lumina_Data_Structs_Excel_ExcelColumnDataType_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.ReadOffset%60%601(System.Int32%2CLumina.Data.Structs.Excel.ExcelColumnDataType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L257">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_ReadOffset_" data-uid="Lumina.Excel.RowParser.ReadOffset*"></a>
+  <h4 id="Lumina_Excel_RowParser_ReadOffset__1_System_Int32_Lumina_Data_Structs_Excel_ExcelColumnDataType_" data-uid="Lumina.Excel.RowParser.ReadOffset``1(System.Int32,Lumina.Data.Structs.Excel.ExcelColumnDataType)">ReadOffset&lt;T&gt;(Int32, ExcelColumnDataType)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T ReadOffset&lt;T&gt;(int offset, ExcelColumnDataType type)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Lumina.Data.Structs.Excel.ExcelColumnDataType.html">ExcelColumnDataType</a></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_ReadOffset__1_System_UInt16_System_Byte_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.ReadOffset%60%601(System.UInt16%2CSystem.Byte)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L242">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_ReadOffset_" data-uid="Lumina.Excel.RowParser.ReadOffset*"></a>
+  <h4 id="Lumina_Excel_RowParser_ReadOffset__1_System_UInt16_System_Byte_" data-uid="Lumina.Excel.RowParser.ReadOffset``1(System.UInt16,System.Byte)">ReadOffset&lt;T&gt;(UInt16, Byte)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T ReadOffset&lt;T&gt;(ushort offset, byte bit = 0)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">bit</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_ReadStructure__1_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.ReadStructure%60%601(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L97">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_ReadStructure_" data-uid="Lumina.Excel.RowParser.ReadStructure*"></a>
+  <h4 id="Lumina_Excel_RowParser_ReadStructure__1_System_Int32_" data-uid="Lumina.Excel.RowParser.ReadStructure``1(System.Int32)">ReadStructure&lt;T&gt;(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T ReadStructure&lt;T&gt;(int offset)
+
+    where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_ReadStructures__1_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.ReadStructures%60%601(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L106">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_ReadStructures_" data-uid="Lumina.Excel.RowParser.ReadStructures*"></a>
+  <h4 id="Lumina_Excel_RowParser_ReadStructures__1_System_Int32_System_Int32_" data-uid="Lumina.Excel.RowParser.ReadStructures``1(System.Int32,System.Int32)">ReadStructures&lt;T&gt;(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;T&gt; ReadStructures&lt;T&gt;(int offset, int count)
+
+    where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_ReadStructuresAsArray__1_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.ReadStructuresAsArray%60%601(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L115">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_ReadStructuresAsArray_" data-uid="Lumina.Excel.RowParser.ReadStructuresAsArray*"></a>
+  <h4 id="Lumina_Excel_RowParser_ReadStructuresAsArray__1_System_Int32_System_Int32_" data-uid="Lumina.Excel.RowParser.ReadStructuresAsArray``1(System.Int32,System.Int32)">ReadStructuresAsArray&lt;T&gt;(Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T[] ReadStructuresAsArray&lt;T&gt;(int offset, int count)
+
+    where T : struct</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>T[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_SeekToRow_System_UInt32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.SeekToRow(System.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L47">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_SeekToRow_" data-uid="Lumina.Excel.RowParser.SeekToRow*"></a>
+  <h4 id="Lumina_Excel_RowParser_SeekToRow_System_UInt32_" data-uid="Lumina.Excel.RowParser.SeekToRow(System.UInt32)">SeekToRow(UInt32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SeekToRow(uint row)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser_SeekToRow_System_UInt32_System_UInt32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser.SeekToRow(System.UInt32%2CSystem.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L68">View Source</a>
+  </span>
+  <a id="Lumina_Excel_RowParser_SeekToRow_" data-uid="Lumina.Excel.RowParser.SeekToRow*"></a>
+  <h4 id="Lumina_Excel_RowParser_SeekToRow_System_UInt32_System_UInt32_" data-uid="Lumina.Excel.RowParser.SeekToRow(System.UInt32,System.UInt32)">SeekToRow(UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SeekToRow(uint row, uint subRow)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">row</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">subRow</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/NotAdam/Lumina/new/develop/apiSpec/new?filename=Lumina_Excel_RowParser.md&amp;value=---%0Auid%3A%20Lumina.Excel.RowParser%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/NotAdam/Lumina/blob/develop/src/Lumina/Excel/RowParser.cs/#L13" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
