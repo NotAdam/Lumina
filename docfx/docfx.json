@@ -62,7 +62,6 @@
     "cleanupCacheHistory": false,
     "disableGitFeatures": false,
     "globalMetadata": {
-      "_appTitle": "Lumina Documentation",
       "_gitContribute": {
         "repo": "https://github.com/NotAdam/Lumina",
         "branch": "master",

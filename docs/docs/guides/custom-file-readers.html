@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Custom File Readers | Lumina Documentation </title>
+    <title>Custom File Readers </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Custom File Readers | Lumina Documentation ">
+    <meta name="title" content="Custom File Readers ">
     <meta name="generator" content="docfx 2.54.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -69,6 +69,54 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="custom-file-readers">Custom File Readers</h1>
 
+<p>Custom file readers are relatively simple in terms of what needs to be implemented for Lumina to load it. All custom file types must inherit from <code>Lumina.Data.FileResource</code> and override the <code>LoadFile</code> method. Once that is done, Lumina is capable of reading a file using your custom file type.</p>
+<p>You can also override the behaviour of SaveFile in the event that you want to be able to write out files in a different format instead of its underlying raw data. As is, a custom file type must have a trivial constructor as there is no way to pass parameters to a constructor as of yet, and there doesn't seem to be a need for that either.</p>
+<p>For a more comprehensive loading example, check the built in file implementations located here: <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Data/Files/">https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Data/Files/</a></p>
+<pre><code class="lang-cs">private class CustomFileType : Data.FileResource
+{
+    public Dictionary&lt; string, int &gt; ExdMap;
+
+    public int Version { get; private set; }
+
+    public CustomFileType()
+    {
+        ExdMap = new Dictionary&lt; string, int &gt;();
+    }
+
+    public override void LoadFile()
+    {
+        Console.WriteLine( &quot;loading customfiletype&quot; );
+
+        using var stream = new MemoryStream( Data, false );
+        using var sr = new StreamReader( stream );
+
+        // read version
+        var header = sr.ReadLine().Split( ',' );
+        if( header[ 0 ] != &quot;EXLT&quot; )
+        {
+            throw new Exception( &quot;invalid file format or something :(&quot; );
+        }
+
+        Version = int.Parse( header[ 1 ] );
+
+        // read exd mappings
+        string row;
+        while( ( row = sr.ReadLine() ) != null )
+        {
+            var data = row.Split( ',' );
+            var id = int.Parse( data[ 1 ] );
+
+            ExdMap[ data[ 0 ] ] = id;
+        }
+    }
+
+    public override void SaveFile( string path )
+    {
+        Console.WriteLine( $&quot;saving file to path: {path}&quot; );
+        base.SaveFile( path );
+    }
+}
+</code></pre>
 </article>
           </div>
           

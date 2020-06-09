@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.BaseFileHandle.FileState.html",
-          "hash": "t0l+V4BW7FJreOi/fEEuGA=="
+          "hash": "wqNgNufvKO76IG6FczGhuw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.BaseFileHandle.html",
-          "hash": "r8DLk6tONq3IBVGVhew9VA=="
+          "hash": "MOQNHacTZ5oNvfYv4X8pJg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Category.html",
-          "hash": "bXQ3iArkGK1E3d5HjbzbGw=="
+          "hash": "EXfKKvfVu0SRklT4bCvfyQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.FileHandle-1.html",
-          "hash": "SnMfaKnDnHHhfF3dAPnFrg=="
+          "hash": "mFbb3cA4F5ZlCDBcpNHDhQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.FileHandleManager.html",
-          "hash": "hMWSUSeSqpVCA+SZk0gaGQ=="
+          "hash": "qGqjyhmRcptx2S/kO9l/CA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.FileResource.html",
-          "hash": "loxmx4pqxEneaHh5ce1Qnw=="
+          "hash": "4lU80P+rycWQ+Ewe/+2v/Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.Excel.ExcelDataFile.html",
-          "hash": "bwGJ267+mh4kQEIl+gilrw=="
+          "hash": "s1fXG8gEcw5riKDBxrs/Pg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.Excel.ExcelHeaderFile.html",
-          "hash": "DmezrfKSdxFgRhSrlurOsA=="
+          "hash": "3MLCpg2r4mmu7vTIs7h3sA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.Excel.ExcelListFile.html",
-          "hash": "urUzXWRzX7yjPFlvMtdtLw=="
+          "hash": "qzZ/3rzTpkq8Fpf4JvCjbA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.Excel.html",
-          "hash": "3hYmFpyPdQ/HIFQxE3QuHg=="
+          "hash": "MRkHgwaOrcr7gPTjZO5Rmw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.ImcFile.ImageChangeData.html",
-          "hash": "B66wYU6ZgX2ilpjbgOV0Tg=="
+          "hash": "+xLUZq0rmnIAzMMKAZlcRg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.ImcFile.ImageChangeParts.html",
-          "hash": "J6U7qKW+GBYeQCyMHSms4A=="
+          "hash": "EdVYy2tVdiQDasVsr/I7lw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.ImcFile.html",
-          "hash": "l1FD3cK3X+TY31w/4/E3Ag=="
+          "hash": "SMQQttaXhKcpf6b6gXv/UQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.LgbFile.FileHeader.html",
-          "hash": "UctDIyySoAemV2etB92CIQ=="
+          "hash": "t9qB7fQZwcVZfhBQ8p3qUg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.LgbFile.html",
-          "hash": "qsC1EzaiGE+x5J8LyrMWpg=="
+          "hash": "kkR4bEedgaC8m7x4jclweg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.TexFile.Attribute.html",
-          "hash": "tBf+dn17YXNhlUMTZw7UUw=="
+          "hash": "ZAEQgScML6dIAXI9Y8Fu5A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -201,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.TexFile.TexHeader.html",
-          "hash": "K7ELVDc7iN/blYGvFgC/Xw=="
+          "hash": "XirdM2QNHlG2iRcCXqJLEA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -213,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.TexFile.TextureFormat.html",
-          "hash": "rqOVJuWZSrL4hfWhezqkkA=="
+          "hash": "/wyuQLLb2FFdVtNKiBlQxQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -225,10 +225,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.TexFile.html",
-          "hash": "3bG0IPCMcgSK6OLoEfagxg=="
+          "hash": "u2V6+XtpdfTXvpueaUvj8A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Files.html",
-          "hash": "X78qAB+zQY86WvVONt/X9A=="
+          "hash": "+u6W55vKTcpke6JBw1fsBg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -249,10 +249,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Language.html",
-          "hash": "T8m3qkorrew3R9U2/GOx5w=="
+          "hash": "erQPHGcQn/IJCoSDEuQLfg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -261,10 +261,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.LanguageUtil.html",
-          "hash": "HqwSs78N0IYWRiFpfQIALw=="
+          "hash": "Am3d8wcxdpYhx1BeErYzyw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -273,10 +273,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.LuminaFileInfo.html",
-          "hash": "pOdMXrbqRIE6pdgNBjkKWQ=="
+          "hash": "GceNY4Bo7YhFSeyeXz3yXg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -285,10 +285,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Common.Matrix43.html",
-          "hash": "OMsgDFCkpbHg1rzsvjb7/g=="
+          "hash": "Dq+MC8sc0xZISihzyhuy/Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -297,10 +297,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Common.Matrix43f.html",
-          "hash": "Gfh35a1fhC8ZU8/3Gtq9qQ=="
+          "hash": "0jOy9iB00K3BNoGri2y+FA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -309,10 +309,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Common.Transformation.html",
-          "hash": "2TIXr+lTKDBoqpeL1lHQzw=="
+          "hash": "6XgKpUx00jNftCxBilkOcw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -321,10 +321,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Common.Vector3.html",
-          "hash": "zm0tcc7cxSmnPSdBCBlEoA=="
+          "hash": "3Zc0nXL6csADmjIB0UiWkg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -333,10 +333,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Common.Vector4.html",
-          "hash": "zu2pNsfiGy6HJv0pga0L4g=="
+          "hash": "F4mBZ0HKiLOOOZDdHbVWwQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -345,10 +345,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Common.html",
-          "hash": "VXDA6otPs8BM8/cp6cJngg=="
+          "hash": "p2NPTCp08JD98W36uky7FQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -357,10 +357,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.AetheryteInstanceObject.html",
-          "hash": "h7/zZrGXKKDmNIoCwgPW4w=="
+          "hash": "jPyABoO/CzNr7QGRVFksJg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -369,10 +369,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.BGInstanceObject.html",
-          "hash": "TWlEuTHK5N7H210tFox9tQ=="
+          "hash": "85/l5IIvLYkGc0YWzHrtkg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -381,10 +381,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CTCharacter.html",
-          "hash": "ucf05KmY626CTuSIZiYokA=="
+          "hash": "jBvgRv+SzAghkQ5TaD35zQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -393,10 +393,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ChairMarkerInstanceObject.html",
-          "hash": "slsxIiXkDmcKpKbPb7L3IQ=="
+          "hash": "BdsPLhRRrQfMAHL8Z8TPkg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -405,10 +405,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ClickableRangeInstanceObject.html",
-          "hash": "ZAOG5NN/GMQ1g6i45588Pw=="
+          "hash": "FLUZfwigl34pgsfW4b+Gdg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -417,10 +417,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ClientPathInstanceObject.html",
-          "hash": "2TRkCBRoL6sJdo1428dyuQ=="
+          "hash": "uPwHIBvwfZylp+NkQvYq5g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -429,10 +429,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CollisionAttribute.html",
-          "hash": "e7+xUAki8nfV0QZR3JfqXA=="
+          "hash": "tKUfAiy5yUBqHapFIEfSQQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -441,10 +441,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CollisionBoxInstanceObject.html",
-          "hash": "m0pMIaL2D9FDv7gH5InwFQ=="
+          "hash": "O41cvDRT5ODkTHkE9akQaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -453,10 +453,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.Color.html",
-          "hash": "C/9x7U1HSMhrLU3cfnEmAw=="
+          "hash": "Ipyutv7kl9w1hzKQAxOIlA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -465,10 +465,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ColorHDRI.html",
-          "hash": "1kxDK1+J1lvSt6j5yIip6A=="
+          "hash": "6U4jP89Sn2owWMq81YZkgw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -477,10 +477,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.CreationParams.html",
-          "hash": "tPnBDscsiCeVUNQUxY8ZFw=="
+          "hash": "/btCYBD4/7pjrsYSMSCvGg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -489,10 +489,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.DoorRangeInstanceObject.html",
-          "hash": "uww2t39UpbAVQiCE3SweWA=="
+          "hash": "thvjIZA6rPXTMyjfv1vrJg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -501,10 +501,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ENPCInstanceObject.html",
-          "hash": "lCN5lDWTUZvmy0hMex5w9w=="
+          "hash": "AzXhq/vXwVaQXnCzQhPo3w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -513,10 +513,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EnvLocationInstanceObject.html",
-          "hash": "8rLfQn90Gufzt1xHkAhCjA=="
+          "hash": "SzPLU4NeKhC7BslyLr4bvA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -525,10 +525,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EnvSetInstanceObject.html",
-          "hash": "3lWGA/y1PRbv0/y7ThcV3g=="
+          "hash": "YMhU4uyppHjB/SHLP0b7vA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -537,10 +537,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EventInstanceObject.html",
-          "hash": "y1crlq/HCuzmV/V5IdmPCw=="
+          "hash": "uon+FSx64vlEn8pdZB2Nfw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -549,10 +549,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.EventRangeInstanceObject.html",
-          "hash": "bnH3BVb+50TFYTcUGDz+Tg=="
+          "hash": "R7969otU426Z7UGj9R8PZA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -561,10 +561,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ExitRangeInstanceObject.html",
-          "hash": "hjTc6NDsz9b2W7Y/a0Hemg=="
+          "hash": "WH4+sTHu+Wa2g6badW5fDQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -573,10 +573,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.FateRangeInstanceObject.html",
-          "hash": "zJbtXdGTQU6Vgc0kCYaB5Q=="
+          "hash": "qB2PuCQJRntL+OpxymW3mA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -585,10 +585,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GameInstanceObject.html",
-          "hash": "4QxEIGx7YRJ3PhQIbhN6lA=="
+          "hash": "6YuLTiPCTf1CvXBahXWJuQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -597,10 +597,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GatheringInstanceObject.html",
-          "hash": "/+MJeQCe2fz+RIV243bIJg=="
+          "hash": "lQQe09okcAWP2RWkbtHUsg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -609,10 +609,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.GimmickRangeInstanceObject.html",
-          "hash": "ARQUhSn5NF9evSS2MbqrJg=="
+          "hash": "P/QaDuPoq+UqE8qXJq3LaA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -621,10 +621,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.HelperObjInstanceObject.html",
-          "hash": "PxEQM+qR9uwjNaQvFzIvIA=="
+          "hash": "xEKUf+ACXs4zOiojIsK0Tw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -633,10 +633,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.IInstanceObject.html",
-          "hash": "IVgJLBTogNUnkgH5249peQ=="
+          "hash": "MdcNvvb/b7AlvlhGOGRwrQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -645,10 +645,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.InstanceObject.html",
-          "hash": "BnNOTL+zsXyJDlZKJop06g=="
+          "hash": "gx2kD/7kOs4gpN+TnhBJZw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -657,10 +657,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.Layer.html",
-          "hash": "AED+5GjYtkfmBwrjPBoeLA=="
+          "hash": "R6Nfg1N4Kf9cfVsCpbOivw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -669,10 +669,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerChunk.html",
-          "hash": "mfY9ev72I0kgjyD5OCODXw=="
+          "hash": "d854IJGYKxN8gzblOqiLGA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -681,10 +681,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferenced.html",
-          "hash": "2N58PtMHeE6yLSEHqxOfIQ=="
+          "hash": "kyUVotLtgVMTMnwW0i5BMQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -693,10 +693,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferencedList.html",
-          "hash": "xPXviK7T/Yv9FI9hC2DkZg=="
+          "hash": "bDYr8iWGqXNeUMGuhEADaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -705,10 +705,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LayerSetReferencedType.html",
-          "hash": "F9pHFpkFPUmJb9dU0kqmBA=="
+          "hash": "wOB5gNLGQsz9oKZ/m0JmhA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -717,10 +717,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LightInstanceObject.html",
-          "hash": "DhATqc6RUWOw2DhAY+A7mw=="
+          "hash": "BIJrG6QdUzRE9/BjoCDpBw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -729,10 +729,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.LineVFXInstanceObject.html",
-          "hash": "zcLqNsEA4uWxTQiz1Nb1Qw=="
+          "hash": "697lKDtlwv6zQQvNZGPg9Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -741,10 +741,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.MapRangeInstanceObject.html",
-          "hash": "OBHRZoDlhXIR/Tet6AMnYQ=="
+          "hash": "37rXm+XXbapR+Lxemjdpuw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -753,10 +753,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.MovePathSettings.html",
-          "hash": "o7trh48QGg+IcSzRNS0Osw=="
+          "hash": "Ej8sCZ8fWn+TBG2WRXl7Yg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -765,10 +765,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.NPCInstanceObject.html",
-          "hash": "i6cY7ZEkk0YltyBnVjVcvg=="
+          "hash": "rpCgJ1YCeR5cK1bgRlxZfg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -777,10 +777,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.OBSetEnableReferenced.html",
-          "hash": "i6YXbVjdAtA9nawJht40zw=="
+          "hash": "MqtSKADbnOR2rMz/3y/C0w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -789,10 +789,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.OBSetReferenced.html",
-          "hash": "OtAKCXlf565QU3SOqYhgrA=="
+          "hash": "w7d7e6rCYdQWHGoBN/jjSA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -801,10 +801,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PathControlPoint.html",
-          "hash": "qeGmKBFxdh9d5EfRFgjlHg=="
+          "hash": "WNzjByfwmhPm+lRzTplv8g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -813,10 +813,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PathInstanceObject.html",
-          "hash": "Ir8xDRQdHAUsB6iXTNfFgw=="
+          "hash": "NgERL3DoSn+Cq6x08IWW5Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -825,10 +825,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PopRangeInstanceObject.html",
-          "hash": "STIgCQUizRTC39o1SMXIVg=="
+          "hash": "5YWea9LscZMidQ5h/HX15A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -837,10 +837,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PositionMarkerInstanceObject.html",
-          "hash": "JHT7qCSCAgS3hxkr6nqzHA=="
+          "hash": "ygBnv+Ifo2kKG0RNedgSzg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -849,10 +849,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.PrefetchRangeInstanceObject.html",
-          "hash": "nC6yacaSko4EOMhPnsbB3A=="
+          "hash": "La6PtRCEtfFQrS+xacPvKw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -861,10 +861,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.QuestMarkerInstanceObject.html",
-          "hash": "XN62GgyyhWcX9c0CGs1zxA=="
+          "hash": "ppPvgCZkDet1k1tSkgEhAg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -873,10 +873,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.RelativePositions.html",
-          "hash": "MC0FIL6esIPIoIFLnyCb5A=="
+          "hash": "JuFb6Lk4hKmoAzCoo6sDGg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -885,10 +885,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SEParam.html",
-          "hash": "628NCjpscwsRzMxUfrW+sA=="
+          "hash": "wrLahmMU4cF7fbLzx1URPg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -897,10 +897,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SGMemberID.html",
-          "hash": "xbpWg41PHahyJ5NJjw/lKw=="
+          "hash": "pQ0bOMzl/WO/yhlzBUSoCg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -909,10 +909,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SGOverriddenMember.html",
-          "hash": "dN/ZQuN1s5KmkDMw6mKaPg=="
+          "hash": "IbC5GLFSJOCDFraKDP2ihw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -921,10 +921,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ServerPathInstanceObject.html",
-          "hash": "drYo8nV1nBm/nCx/zvirDA=="
+          "hash": "P4ykvDWSJie/B7q5/brtKQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -933,10 +933,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SharedGroupInstanceObject.html",
-          "hash": "Jeeqr1jFdun0HdtkJG1uqg=="
+          "hash": "Ef1t/i7iWUTiGsJkyRq5lQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -945,10 +945,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.SoundInstanceObject.html",
-          "hash": "ENkiLekEBFIPktozYsclLQ=="
+          "hash": "Cj7UxY3x23L3QstYCNoAaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -957,10 +957,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TargetMarkerInstanceObject.html",
-          "hash": "30q2g69PEAIPuYVVDl4KLA=="
+          "hash": "QjXMZVwADt3Kh+LidrLapQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -969,10 +969,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TreasureInstanceObject.html",
-          "hash": "MB9cd203PIkpaggdSpChjw=="
+          "hash": "evp8yWQESRpUmwnIW7ryxg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -981,10 +981,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.TriggerBoxInstanceObject.html",
-          "hash": "y4vcRipGtulUJJNi0X8i3w=="
+          "hash": "64hsWM/xRGJ/TcnvYymYhg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -993,10 +993,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.VFXInstanceObject.html",
-          "hash": "wAEU+8vo8LZ5QsbKkll6ZQ=="
+          "hash": "NIlKVx9lSbh+oRZuwuwlVA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1005,10 +1005,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.WeaponInstanceObject.html",
-          "hash": "H7k6LhEXXh0kyg2yplXS2g=="
+          "hash": "a5HFjyZzJpwE4PXagyTaNQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1017,10 +1017,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.WeaponModel.html",
-          "hash": "pUVzNoQ6HYv66V1KI2OIqg=="
+          "hash": "8BfnlrxvVdygzMpq62tMPw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1029,10 +1029,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eAssetTypeLayer.html",
-          "hash": "nh8SMRtG2U418+yaVWMJSg=="
+          "hash": "D89yn7y2HyKiliDtzfp25w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1041,10 +1041,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eCharacterSizeLayer.html",
-          "hash": "mgcQe5AG4SoqmK05vg3U3w=="
+          "hash": "yAeAP4bWzIoHR7neOBaPCA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1053,10 +1053,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eColorStateLayer.html",
-          "hash": "WysdM4Y0+I4B7P1y/eCUUg=="
+          "hash": "6A54H2BJkQV5QPhLXx048w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1065,10 +1065,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eDoorStateLayer.html",
-          "hash": "olt3UtXddOYjZQ4Cl2RHIQ=="
+          "hash": "vzMfkCflyVDmwisWJkbUDg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1077,10 +1077,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eDrawHeadPartsLayer.html",
-          "hash": "agwxjqFtiFkatY/MLyp5YQ=="
+          "hash": "Vfc6LnopFIF1Bs2Lo9F+Cg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1089,10 +1089,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eEnvSetShapeLayer.html",
-          "hash": "O/IAvxzIsI6fo/ijd8NCpg=="
+          "hash": "/YWfIoyj79LVWyUABV07xw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1101,10 +1101,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eExitTypeLayer.html",
-          "hash": "F/HR0KzyHTq/Y3rE57anqQ=="
+          "hash": "W9ihsSIjRsjUXFvKtOfRxg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1113,10 +1113,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eGimmickTypeLayer.html",
-          "hash": "Mv8DBRnNB425CAmaHPJd7Q=="
+          "hash": "4EffdvauHjlzrlXct93kXw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1125,10 +1125,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eHelperObjectTypeLayer.html",
-          "hash": "v3oENeeN17Ugc10TAAqfmQ=="
+          "hash": "Hp0Mp1/Dvu88xdauyqW16A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1137,10 +1137,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eLightTypeLayer.html",
-          "hash": "irrElm+wBXuYyrs57xFLIw=="
+          "hash": "4gSPe2PSuOkINdzYwOghWA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1149,10 +1149,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eLineStyleLayer.html",
-          "hash": "5BlaRtftg8ihHf789gKQtQ=="
+          "hash": "dgkJdomxH18Ld3MUT11usA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1161,10 +1161,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eModelConfigCollisionTypeLayer.html",
-          "hash": "DK7jsRH4L1ucXgypRjQGBQ=="
+          "hash": "+CWsUp9tFQ1xuQoKWMtdtw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1173,10 +1173,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eMovePathModeLayer.html",
-          "hash": "rpJ1KCIcdOAdtSULVM2/0w=="
+          "hash": "1GzvUiuCqgKcBLg0j48qZQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1185,10 +1185,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eObjectTypeLayer.html",
-          "hash": "GKCquFPIcCD0igVXPudmrA=="
+          "hash": "Ya0HrhvJpU6P8gjr4YMkYQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1197,10 +1197,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePointLightTypeLayer.html",
-          "hash": "PpMf+VOLqQ96iLXUcpwkIQ=="
+          "hash": "/9XGaQp2v5qJIPUdU8dljg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1209,10 +1209,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePopTypeLayer.html",
-          "hash": "Of5zBn1rJuEX1xb9gJ5cXA=="
+          "hash": "RVpfx7YU3bjx2LgLbNWtrA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1221,10 +1221,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.ePositionMarkerTypeLayer.html",
-          "hash": "3BVlAuVehaasZrnl0vYGJA=="
+          "hash": "xRTolSj0pHsXbyQ5P75vhg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1233,10 +1233,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRangeTypeLayer.html",
-          "hash": "oics3bNJ3HxJfswzX7T0Gw=="
+          "hash": "VzCJNxbh432Nl2aYNNeEIg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1245,10 +1245,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRotationStateLayer.html",
-          "hash": "DDjfh4vArkx7DPQjTOCfIg=="
+          "hash": "KdRRat++zicorSBnSkVdVQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1257,10 +1257,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eRotationTypeLayer.html",
-          "hash": "hUIOYoCkYpHJUyNYaAz7/A=="
+          "hash": "vF31qaTAchaUs9drNvaZrw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1269,10 +1269,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eSETypeLayer.html",
-          "hash": "9dhHrPS5W56+YjsrEhftEQ=="
+          "hash": "EK5CznJkwLOnlsPEJNkM3w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1281,10 +1281,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTargetMarkerTypeLayer.html",
-          "hash": "ZG4Sr5yCS6bPUJwY++HQ7A=="
+          "hash": "xdxZ/aA+gKfuvAkKKLTtpA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1293,10 +1293,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTargetTypeLayer.html",
-          "hash": "6/DBx887Z9wH55O5xXYL3w=="
+          "hash": "s6h2SK84W5uLiUqzGzTEqQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1305,10 +1305,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTransformStateLayer.html",
-          "hash": "92N7uuxrLo/p5mqmfHrj7g=="
+          "hash": "m6FU3nyLCkyO3qxmwXE3sQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1317,10 +1317,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.eTriggerBoxShapeLayer.html",
-          "hash": "PyDhHWY41SAO6LPqyIbjaA=="
+          "hash": "yvwoJx0ogwJ+kvOQ3n0JCg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1329,10 +1329,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.LayerCommon.html",
-          "hash": "tttjc0UEHJXSeMDe1bBmmg=="
+          "hash": "xt5cng2PmmOd5+y9Xk8B8w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1341,10 +1341,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Layer.html",
-          "hash": "L2nX+AA/GoJHowguRWvR8w=="
+          "hash": "P4noN3NvdLuHpgf8EUleEw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1353,10 +1353,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Quad.html",
-          "hash": "Yjgi2YUIQWyg4y4KR+u7Rg=="
+          "hash": "VHEfhRwLZpQufvY2jLFOfQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1365,10 +1365,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.QuadExtensions.html",
-          "hash": "1ThJyrB7LOoee7XZhzCM8Q=="
+          "hash": "iB8Do6677NwuS3g7BySB6w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1377,10 +1377,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.StringOffset.html",
-          "hash": "ozlwlWhrOYyrTrSGR8T+ZQ=="
+          "hash": "Rm4NnjptmRmvr2GMpnB2FA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1389,10 +1389,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Tex.Squish.html",
-          "hash": "YRWppIbxNuc/gTuOshSoeQ=="
+          "hash": "9m7LKPBOmVQLjpe7RzWlWA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1401,10 +1401,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Tex.SquishOptions.html",
-          "hash": "aJ2lbxf5TrnVKdL7Gi8tAA=="
+          "hash": "FJXmKTGfzKH8AjmLTQJGHw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1413,10 +1413,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Tex.SquishOptionsExtensions.html",
-          "hash": "xYoJiuqnSpecSijQufga1Q=="
+          "hash": "2U2j9KaqmUvnTz47kToj2Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1425,10 +1425,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.Tex.html",
-          "hash": "nKx6A3JZ/Vpx/p+OqdGxKw=="
+          "hash": "Fn2jKHpJqiX9CvF0Y95t+A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1437,10 +1437,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Parsing.html",
-          "hash": "kQi/ps6OLUOmPaRzz8pBpQ=="
+          "hash": "owbBkT1h3I4U8q9Oi5AOTg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1449,10 +1449,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Repository.html",
-          "hash": "sLR1Sb3smf9YB5LeudnVmA=="
+          "hash": "T4Q19NxCiY+xXRBon/NXtQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1461,10 +1461,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.SqPack.html",
-          "hash": "7bEIYr7iZ/0jNDdsv1T9jA=="
+          "hash": "kW3nFlFjm/Lc+PVKCmED/A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1473,10 +1473,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.SqPackIndex.html",
-          "hash": "vSXnraNtxMR0P5gdsY4RLA=="
+          "hash": "5n+luXyna/Jv+ah3NCDOLg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1485,10 +1485,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.SqPackInflateException.html",
-          "hash": "+vVIcEaZyux6IIZWQKeTrw=="
+          "hash": "jGXb9L6xzJT2KH+BoUFdtw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1497,10 +1497,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.DatStdFileBlockInfos.html",
-          "hash": "NhcWhm0MjhW/Wjh9weJpQg=="
+          "hash": "r0ya4cC75k3K3y+pdLMwQQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1509,10 +1509,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelColumnDataType.html",
-          "hash": "qwsNp63ld8QwJmfbwh4Asg=="
+          "hash": "MAUhOG+h9gjd68faD7mlYg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1521,10 +1521,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelColumnDefinition.html",
-          "hash": "Afv8EDP93jQznEy22YfShg=="
+          "hash": "6M6/N+rIDISRnk0f8mpLCA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1533,10 +1533,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataHeader.html",
-          "hash": "FlC+uBYjXVPWgeUSWqT9bg=="
+          "hash": "bwR1Ul/anYYEeP4C9XjTTQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1545,10 +1545,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataOffset.html",
-          "hash": "SLAuctn0fAQbMQ6kwDFw4A=="
+          "hash": "eDjqlrBj7Kib6MtNDm18/Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1557,10 +1557,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataPagination.html",
-          "hash": "fkB30CI/F5LRybfbbuFjSw=="
+          "hash": "VoDCgdA7xmI0lY2vo7azHg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1569,10 +1569,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelDataRowHeader.html",
-          "hash": "v3KqbSJvDj1/w4vNxdV04Q=="
+          "hash": "MSrf+rxcBrmmp3GUPKqa1A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1581,10 +1581,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelHeaderHeader.html",
-          "hash": "GSBdxinCvtB0AcpU3R28Aw=="
+          "hash": "MD6rauWSkIZFFX1WxcRiEg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1593,10 +1593,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.ExcelVariant.html",
-          "hash": "5ma8m8bT3exB3ZjxY0hlRw=="
+          "hash": "7gNebNXTFRPZOJQqPEb4eg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1605,10 +1605,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Excel.html",
-          "hash": "rv+1ph9ckASNp0D/XrNZZA=="
+          "hash": "0a+0o2r641pQZdx+OG8RFw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1617,10 +1617,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.FileType.html",
-          "hash": "Rbj2rI3wnFbIqp9vvtJUhg=="
+          "hash": "XN1iCM3i9WFnOWt7da3OKw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1629,10 +1629,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.Index2HashTableEntry.html",
-          "hash": "NfVYSfxwQqn8ipEWa0wzhQ=="
+          "hash": "iR6PL6rPbqmZYr03SOVnqw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1641,10 +1641,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.IndexHashTableEntry.html",
-          "hash": "hn8Y2QEuwx00X5KN9+CA2Q=="
+          "hash": "/Zetc4iLkNjTC2/WFIF22A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1653,10 +1653,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.LOD.html",
-          "hash": "9EFN30o6cS2PTobDlrPv4g=="
+          "hash": "nMGRAKafJOiIEcFIv26hLQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1665,10 +1665,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.ModelBlock.html",
-          "hash": "+out6VeNJV9JWbtni9mBjw=="
+          "hash": "3JgT2H8ZnrfAk8B5hkz7Ng=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1677,10 +1677,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.PlatformId.html",
-          "hash": "UXgBhS+R0o4E/XFYDQGLjg=="
+          "hash": "netLGAxJxAl1Soow6vIuNQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1689,10 +1689,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.SqPackFileInfo.html",
-          "hash": "WyTRWia5Mup4BJHQ5yZxLQ=="
+          "hash": "9tDOsvcoHWilXRslyfcKfQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1701,10 +1701,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.SqPackHeader.html",
-          "hash": "ZGa/TP9HBU5ebGNfSqmNYg=="
+          "hash": "rfpW3sevhB2rLNTr8QWJNQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1713,10 +1713,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.SqPackIndexHeader.html",
-          "hash": "pZfZpruLTxQJSafZAJmsfg=="
+          "hash": "Ft8zeaZ4JUwBCUDoUO/OIA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1725,10 +1725,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.Structs.html",
-          "hash": "caImnU1+QdehE1+9YjZhiw=="
+          "hash": "Z5vbtFRc1IpldEgt+lOcvQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1737,10 +1737,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.html",
-          "hash": "b4GhDJ6+tXGX0rC7mlVHGw=="
+          "hash": "I3FKueHZyImeDcpyGgiGrw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1749,10 +1749,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelModule.html",
-          "hash": "k/5wtxKOwihjBX3SNoYJ3A=="
+          "hash": "vOIKSJTeoQ644rIQJS+i/w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1761,10 +1761,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelPage.html",
-          "hash": "059qV6W019QjAHQHELxORA=="
+          "hash": "Ejzn9DmE24BKQ30GVyZRpg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1773,10 +1773,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelSheet-1.html",
-          "hash": "1IzFEeux6A2i7cOGr/SmkA=="
+          "hash": "fk3iApDEGfqG/6LnYcOn6g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1785,10 +1785,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelSheetImpl.html",
-          "hash": "cdhPPJ3oAW7fhqpHiVnXKw=="
+          "hash": "ka/jwqEs1AgqXfk3OOG+Kw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1797,10 +1797,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.Exceptions.ExcelSheetColumnChecksumMismatchException.html",
-          "hash": "cKqN0Ai+HU3hBXRYwprPOw=="
+          "hash": "fJFitTa6viIO9Sk924GsUQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1809,10 +1809,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.Exceptions.html",
-          "hash": "mn8NFxm7T87LUz3CEOmmTw=="
+          "hash": "M5EHaAIU0ZI4YLzZOukFWg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1821,10 +1821,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.IExcelRow.html",
-          "hash": "1uZSmOwxh+8Fv/O4TmRmGw=="
+          "hash": "9mOUG79xa2ay5P4UwSR+Lw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1833,10 +1833,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.LazyRow-1.html",
-          "hash": "tNT569q1G5k+ST/I7F7GSw=="
+          "hash": "Um68Xo6w/KU5aNnLIVK6oA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1845,10 +1845,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.RowParser.html",
-          "hash": "WhgNjlmdu/R6a/rXe2KO3g=="
+          "hash": "9HlQoIGWo8BEZpP1XLAxmg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1857,10 +1857,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.SheetAttribute.html",
-          "hash": "BEl0awvfllIcyBtMtWGpnQ=="
+          "hash": "85C3VVhFdiMQj2YE9I6lkA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1869,10 +1869,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.html",
-          "hash": "dEWlA/YmbfKCXMK0ptIruA=="
+          "hash": "1K8km+1sAK81iigBjRZjRA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1881,10 +1881,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Extensions.BinaryReaderExtensions.html",
-          "hash": "ptR+BJMR0SWggrDif33Llg=="
+          "hash": "kta0WD5Rty5UHQIP5rF/Tg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1893,10 +1893,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Extensions.HalfExtensions.html",
-          "hash": "VYxcWRxPkzQfpNYoapMXng=="
+          "hash": "ocrF+KX1qKOG+tXZJCgnhQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1905,10 +1905,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Extensions.MemoryStreamExtensions.html",
-          "hash": "U2wrKm+9aKgBgz/aOeoqtg=="
+          "hash": "DkFqTq1C0iGXYPIo5nh25Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1917,10 +1917,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Extensions.SpanExtensions.html",
-          "hash": "NrMLMTYb4E6bXDxemNKPdg=="
+          "hash": "x9UleKefvbUD6cJmRkr+vA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1929,10 +1929,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Extensions.html",
-          "hash": "NkEKYbY613CCVZG4ucv9cw=="
+          "hash": "cbaH71mpsHZQ3xEN8vzYqw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1941,10 +1941,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Lumina.html",
-          "hash": "ze7ciKCwWMeRBMFWxFeSIQ=="
+          "hash": "v/7WAJtT8pq6oKMdcPP1mA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1953,10 +1953,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.LuminaOptions.html",
-          "hash": "CFaJZjRpXFvj7ambuOY0bg=="
+          "hash": "LTPqwBJPJ+6EQbo7wwRCbA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1965,10 +1965,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Misc.Crc32.html",
-          "hash": "RRHDj/VsdFEhzXWWo6pznQ=="
+          "hash": "jYRHpqooAmfw6wFeIAz7eA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1977,10 +1977,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Misc.html",
-          "hash": "MHL93jpb4bOx6a5YEcUn9w=="
+          "hash": "xuZWRXGLqaDA0ztiW7yTHg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1989,10 +1989,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.ParsedFilePath.html",
-          "hash": "ztB2kXY3y3G+DKdTH5rAZg=="
+          "hash": "QdhOXX/NZrjXvL/LBhpZ3g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2001,10 +2001,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.html",
-          "hash": "i++Y/v+dDNHgAetUJ+GXqg=="
+          "hash": "GiysVZaxR9Gcbyx8c3hnKg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2013,10 +2013,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "mArMwEbv6xlcImlesq8HoQ=="
+          "hash": "dJlgG3Eg9UEznukrFPPnbQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2037,10 +2037,10 @@
       "output": {
         ".html": {
           "relative_path": "docs/guides/basic-usage.html",
-          "hash": "yNm7XOV9gUJHFkWxKZjERg=="
+          "hash": "MOhvPMHGh6umisTbRYQ+/w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2049,7 +2049,7 @@
       "output": {
         ".html": {
           "relative_path": "docs/guides/custom-file-readers.html",
-          "hash": "xMsbRDp1iZu3pu+o9aQLKQ=="
+          "hash": "EXbIXyY6V7ISrV39VHX3jA=="
         }
       },
       "is_incremental": false,
@@ -2061,10 +2061,10 @@
       "output": {
         ".html": {
           "relative_path": "docs/guides/excel.html",
-          "hash": "mcxLEVkd453E8jOBB8eZ3w=="
+          "hash": "Qi1G0hqZdunUM2foY40fJA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2073,10 +2073,10 @@
       "output": {
         ".html": {
           "relative_path": "docs/intro.html",
-          "hash": "filbD3NwZE8OsM8NqViQPw=="
+          "hash": "tisF5XeWezWmcMdrjzRGpg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2097,10 +2097,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "adIl/hTzzIFJo36SVuPyBA=="
+          "hash": "k8/UHtvMVmp5xtwlBh7v4A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2119,25 +2119,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because config changed.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ConfigChanged"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 6,
-          "skipped_file_count": 0
+          "skipped_file_count": 5
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 167,
-          "skipped_file_count": 0
+          "skipped_file_count": 167
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
