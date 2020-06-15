@@ -13,27 +13,12 @@ namespace Lumina.Excel
 {
     public class ExcelSheetImpl
     {
-        public ExcelSheetImpl()
+        internal ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina )
         {
             DataPages = new List< ExcelPage >();
-        }
-
-        public ExcelSheetImpl( ExcelHeaderFile headerFile, string name ) :
-            this()
-        {
             HeaderFile = headerFile;
             Name = name;
-        }
-        
-        public ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage ) :
-            this( headerFile, name )
-        {
             RequestedLanguage = requestedLanguage;
-        }
-
-        public ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina ) :
-            this( headerFile, name, requestedLanguage )
-        {
             _Lumina = lumina;
         }
 

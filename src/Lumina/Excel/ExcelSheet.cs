@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Lumina.Data;
@@ -7,20 +8,9 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel
 {
-    public class ExcelSheet< T > : ExcelSheetImpl where T : IExcelRow
+    public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : IExcelRow
     {
-        // protected Dictionary< Tuple< int, int >, T > RowCache = new Dictionary< Tuple< int, int >, T >();
-        
-        public ExcelSheet( ExcelHeaderFile headerFile, string name ) :
-            base( headerFile, name )
-        {
-        }
-
-        public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage ) :
-            base( headerFile, name, requestedLanguage )
-        {
-            
-        }
+        private readonly Dictionary< UInt64, T > _rowCache = new Dictionary< UInt64, T >();
 
         public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina ) :
             base( headerFile, name, requestedLanguage, lumina )
@@ -29,17 +19,12 @@ namespace Lumina.Excel
 
         public T GetRow( uint row )
         {
-            return GetRow( row, _Lumina.Options.DefaultExcelLanguage );
+            return GetRow( row, UInt32.MaxValue );
         }
 
         public T GetRow( uint row, uint subRow )
         {
             return GetRowInternal( row, subRow );
-        }
-
-        public T GetRow( uint row, Language lang )
-        {
-            return GetRowInternal( row, UInt32.MaxValue );
         }
 
         internal ExcelPage GetPageForRow( uint row )
@@ -54,21 +39,14 @@ namespace Lumina.Excel
             return data;
         }
         
-        public RowParser GetRowParser( uint row )
-        {
-            var data = GetPageForRow( row );
-            
-            return new RowParser( this, data.File, row );
-        }
-
         internal T GetRowInternal( uint row, uint subRow )
         {
-            // var id = GetRowCacheKey( row, subRow );
+            var cacheKey = GetCacheKey( row, subRow );
 
-            // if( RowCache.TryGetValue( id, out var cachedRow ) )
-            // {
-                // return cachedRow;
-            // }
+            if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
+            {
+                return cachedRow;
+            }
             
             var data = GetPageForRow( row );
 
@@ -92,20 +70,40 @@ namespace Lumina.Excel
             return rowObj;
         }
 
-        // private Tuple< int, int > GetRowCacheKey( int row )
-        // {
-        //     return GetRowCacheKey( row, 0 );
-        // }
-        //
-        // private Tuple< int, int > GetRowCacheKey( int row, int subRow )
-        // {
-        //     return Tuple.Create( row, subRow );
-        // }
+        private static UInt64 GetCacheKey( uint rowId, uint subrowId = UInt32.MaxValue )
+        {
+            return (UInt64)rowId << 32 | subrowId;
+        }
 
+        private T ReadRowObj( RowParser parser, uint rowId )
+        {
+            parser.SeekToRow( rowId );
+            
+            var obj = Activator.CreateInstance< T >();
+                        
+            obj.PopulateData( parser, _Lumina );
+
+            return obj;
+        }
+
+        private T ReadSubRowObj( RowParser parser, uint rowId, uint subRowId )
+        {
+            parser.SeekToRow( rowId, subRowId );
+            var obj = Activator.CreateInstance< T >();
+
+            obj.PopulateData( parser, _Lumina );
+
+            return obj;
+        }
+
+        [Obsolete("Use the ExcelSheet< T > enumerator or sheet.ToList()")]
         public List< T > GetRows()
         {
-            var rows = new List< T >();
+            return this.ToList();
+        }
 
+        public IEnumerator< T > GetEnumerator()
+        {
             foreach( var page in DataPages )
             {
                 var file = page.File;
@@ -115,50 +113,46 @@ namespace Lumina.Excel
 
                 foreach( var rowPtr in rowPtrs.Values )
                 {
-                    parser.SeekToRow( rowPtr.RowId );
-
                     if( Header.Variant == ExcelVariant.Subrows )
                     {
+                        // required to read the row header out and know how many subrows there is
+                        parser.SeekToRow( rowPtr.RowId );
+                        
                         // read subrows
                         for( uint i = 0; i < parser.RowCount; i++ )
                         {
-                            // var id = GetRowCacheKey( (int)rowPtr.RowId, i );
+                            var cacheKey = GetCacheKey( rowPtr.RowId, i );
+                            if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
+                            {
+                                yield return cachedRow;
+                                continue;
+                            }
 
-                            // if( RowCache.TryGetValue( id, out var cachedRow ) )
-                            // {
-                            //     rows.Add( cachedRow );
-                            //     continue;
-                            // }
-
-                            parser.SeekToRow( rowPtr.RowId, i );
-                            var obj = Activator.CreateInstance< T >();
-
-                            obj.PopulateData( parser, _Lumina );
-
-                            rows.Add( obj );
+                            var obj = ReadSubRowObj( parser, rowPtr.RowId, i );
+                            _rowCache.Add( cacheKey, obj );
+                            yield return obj;
                         }
                     }
                     else
                     {
-                        // var id = GetRowCacheKey( (int)rowPtr.RowId );
-
-                        // if( RowCache.TryGetValue( id, out var cachedRow ) )
-                        // {
-                        //     rows.Add( cachedRow );
-                        //     continue;
-                        // }
+                        var cacheKey = GetCacheKey( rowPtr.RowId );
+                        if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
+                        {
+                            yield return cachedRow;
+                            continue;
+                        }
                         
-                        parser.SeekToRow( rowPtr.RowId );
-                        var obj = Activator.CreateInstance< T >();
-                        
-                        obj.PopulateData( parser, _Lumina );
-
-                        rows.Add( obj );
+                        var obj = ReadRowObj( parser, rowPtr.RowId );
+                        _rowCache.Add( cacheKey, obj );
+                        yield return obj;
                     }
                 }
             }
+        }
 
-            return rows;
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

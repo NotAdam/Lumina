@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Lumina.Data;
 using Lumina.Excel;
 using Lumina.Excel.GeneratedSheets;
@@ -60,10 +61,11 @@ namespace Lumina.Example
         static void Main( string[] args )
         {
             var lumina = new Lumina( args[ 0 ] );
-            
+
+            bool exitThread = false;
             var handleThread = new Thread( () =>
             {
-                while( true )
+                while( !exitThread )
                 {
                     lumina.ProcessFileHandleQueue();
                     Thread.Yield();
@@ -74,7 +76,7 @@ namespace Lumina.Example
 
             // excel reading
             var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
-            var atRows = actionTimeline.GetRows().Take( 5 );
+            var atRows = actionTimeline.Take( 5 );
             
             foreach( var row in atRows )
             {
@@ -82,7 +84,7 @@ namespace Lumina.Example
             }
             
             var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
-            var zsgRows = zoneSharedGroup.GetRows().Take( 5 );
+            var zsgRows = zoneSharedGroup.Take( 5 );
             
             foreach( var row in zsgRows )
             {
@@ -90,7 +92,7 @@ namespace Lumina.Example
             }
             
             // dump conditions
-            foreach( var condition in lumina.GetExcelSheet< Condition >().GetRows() )
+            foreach( var condition in lumina.GetExcelSheet< Condition >() )
             {
                 Console.WriteLine( $"condition {condition.RowId:000}: {condition.LogMessage.Value?.Text}" );
             }
@@ -103,8 +105,8 @@ namespace Lumina.Example
             var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
 
             Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
-            
-            handleThread.Abort();
+
+            exitThread = true;
         }
     }
 }

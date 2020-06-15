@@ -48,7 +48,9 @@ namespace Lumina.Data
                    !BitConverter.IsLittleEndian && SqPackHeader.platformId != PlatformId.PS3;
         }
 
-        protected ConcurrentDictionary< long, WeakReference< FileResource > > _fileCache;
+        protected readonly Dictionary< long, WeakReference< FileResource > > FileCache;
+        
+        protected readonly object CacheLock = new object();
 
         internal SqPack( FileInfo file, Lumina lumina )
         {
@@ -63,7 +65,7 @@ namespace Lumina.Data
             _Lumina = lumina;
 
             // always init the cache just in case the should cache setting is changed later
-            _fileCache = new ConcurrentDictionary< long, WeakReference< FileResource > >();
+            FileCache = new Dictionary< long, WeakReference< FileResource > >();
 
             File = file;
 
@@ -77,7 +79,7 @@ namespace Lumina.Data
 
         protected T GetCachedFile< T >( long offset ) where T : FileResource
         {
-            if( !_fileCache.TryGetValue( offset, out var weakRef ) )
+            if( !FileCache.TryGetValue( offset, out var weakRef ) )
             {
                 return null;
             }
@@ -108,7 +110,13 @@ namespace Lumina.Data
 
         public T ReadFile< T >( long offset ) where T : FileResource
         {
-            if( _Lumina.Options.CacheFileResources )
+            if( !_Lumina.Options.CacheFileResources )
+            {
+                return ReadFileInternal< T >( offset );
+            }
+            
+            
+            lock( CacheLock )
             {
                 var obj = GetCachedFile< T >( offset );
 
@@ -116,8 +124,17 @@ namespace Lumina.Data
                 {
                     return obj;
                 }
-            }
+                
+                var file = ReadFileInternal< T >( offset );
+                
+                FileCache[ offset ] = new WeakReference< FileResource >( file );
 
+                return file;
+            }
+        }
+
+        protected T ReadFileInternal< T >( long offset ) where T : FileResource
+        {
             using var fs = File.OpenRead();
             using var br = new BinaryReader( fs );
             using var ms = new MemoryStream();
@@ -186,11 +203,6 @@ namespace Lumina.Data
             file.FileStream = new MemoryStream( file.Data, false );
             file.Reader = new BinaryReader( file.FileStream );
             file.FileStream.Position = 0;
-
-            if( _Lumina.Options.CacheFileResources )
-            {
-                _fileCache[ offset ] = new WeakReference< FileResource >( file );
-            }
 
             file.LoadFile();
 

@@ -13,7 +13,7 @@ namespace Lumina.Excel
 {
     public class ExcelModule
     {
-        private readonly Lumina _Lumina;
+        private readonly Lumina _lumina;
 
         /// <summary>
         /// Mapping between internal IDs used to index sheets loaded at startup to their name.
@@ -28,18 +28,20 @@ namespace Lumina.Excel
         /// </summary>
         public readonly List< string > SheetNames;
 
-        private readonly ConcurrentDictionary< Tuple< Language, string >, ExcelSheetImpl > _sheetCache;
+        private readonly Dictionary< Tuple< Language, string >, ExcelSheetImpl > _sheetCache;
+
+        private readonly object _sheetCreateLock = new object();
 
         public ExcelModule( Lumina lumina )
         {
-            _Lumina = lumina;
+            _lumina = lumina;
             ImmutableIdToSheetMap = new Dictionary< int, string >();
             SheetNames = new List< string >();
 
-            _sheetCache = new ConcurrentDictionary< Tuple< Language, string >, ExcelSheetImpl >();
+            _sheetCache = new Dictionary< Tuple< Language, string >, ExcelSheetImpl >();
 
             // load all sheet names first
-            var files = _Lumina.GetFile< ExcelListFile >( "exd/root.exl" );
+            var files = _lumina.GetFile< ExcelListFile >( "exd/root.exl" );
 
             Debug.WriteLine( $"got {files.ExdMap.Count} exlt entries" );
 
@@ -76,7 +78,7 @@ namespace Lumina.Excel
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >() where T : IExcelRow
         {
-            return GetSheet< T >( _Lumina.Options.DefaultExcelLanguage );
+            return GetSheet< T >( _lumina.Options.DefaultExcelLanguage );
         }
 
         /// <summary>
@@ -97,7 +99,10 @@ namespace Lumina.Excel
                 return null;
             }
 
-            return GetSheet< T >( attr.Name, language, attr.ColumnHash );
+            lock( _sheetCreateLock )
+            {
+                return GetSheet< T >( attr.Name, language, attr.ColumnHash );
+            }
         }
 
         /// <summary>
@@ -110,7 +115,10 @@ namespace Lumina.Excel
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >( string name ) where T : IExcelRow
         {
-            return GetSheet< T >( name, _Lumina.Options.DefaultExcelLanguage, null );
+            lock( _sheetCreateLock )
+            {
+                return GetSheet< T >( name, _lumina.Options.DefaultExcelLanguage, null );
+            }
         }
 
         private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : IExcelRow
@@ -128,20 +136,23 @@ namespace Lumina.Excel
 
             if( _sheetCache.TryGetValue( id, out sheet ) )
             {
-                return sheet as ExcelSheet< T >;
-            }
-
-            if( !SheetNames.Contains( name ) )
-            {
-                return null;
+                if( sheet is ExcelSheet< T > checkedSheet )
+                {
+                    return checkedSheet;
+                }
             }
 
             // create new sheet
             var path = BuildExcelHeaderPath( name );
-            var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );
+            var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
+
+            if( headerFile == null )
+            {
+                return null;
+            }
 
             // validate checksum if enabled and we have a hash that we expect to find
-            if( _Lumina.Options.PanicOnSheetChecksumMismatch && expectedHash.HasValue )
+            if( _lumina.Options.PanicOnSheetChecksumMismatch && expectedHash.HasValue )
             {
                 var actualHash = headerFile.GetColumnsHash();
                 if( actualHash != expectedHash )
@@ -150,7 +161,7 @@ namespace Lumina.Excel
                 }
             }
 
-            var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _Lumina );
+            var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _lumina );
             newSheet.GenerateFilePages();
 
             // kinda a shit hack but basically this enforces a single language for a sheet that has no localisation
@@ -163,7 +174,7 @@ namespace Lumina.Excel
                 id = idNoLanguage;
             }
 
-            _sheetCache.TryAdd( id, newSheet );
+            _sheetCache[ id ] = newSheet;
 
             return newSheet;
         }
@@ -185,9 +196,9 @@ namespace Lumina.Excel
 
             // create new sheet
             var path = BuildExcelHeaderPath( name );
-            var headerFile = _Lumina.GetFile< ExcelHeaderFile >( path );
+            var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
 
-            var newSheet = (ExcelSheetImpl)Activator.CreateInstance( typeof( ExcelSheetImpl ), headerFile, name, language, _Lumina );
+            var newSheet = (ExcelSheetImpl)Activator.CreateInstance( typeof( ExcelSheetImpl ), headerFile, name, language, _lumina );
             newSheet.GenerateFilePages();
 
             return newSheet;

@@ -37,7 +37,7 @@ namespace Lumina.Data
         /// </summary>
         public void ProcessQueue()
         {
-            while( _fileQueue.Any() )
+            while( HasPendingFileLoads )
             {
                 var res = _fileQueue.TryDequeue( out var weakRef );
                 if( res && weakRef.TryGetTarget( out var handle ) )
@@ -46,6 +46,11 @@ namespace Lumina.Data
                 }
             }
         }
-        
+
+        /// <summary>
+        /// Whether the file queue contains any files that are yet to be loaded
+        /// </summary>
+        public bool HasPendingFileLoads => !_fileQueue.IsEmpty;
+
     }
 }
