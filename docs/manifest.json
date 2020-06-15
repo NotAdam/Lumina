@@ -36,7 +36,7 @@
           "hash": "EXfKKvfVu0SRklT4bCvfyQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.FileHandleManager.html",
-          "hash": "Xkq/aw2Cx9322ZvXBfQl4Q=="
+          "hash": "ilS9d909joKRl6rw3dK+4A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1461,10 +1461,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.SqPack.html",
-          "hash": "pmdALlQ9kFRip5iGZZloLg=="
+          "hash": "qoy4BQmH5L09A6B+g09vUA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1473,10 +1473,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Data.SqPackIndex.html",
-          "hash": "5n+luXyna/Jv+ah3NCDOLg=="
+          "hash": "HRrRWP+dbS8rzxVKQ+fpNw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1740,7 +1740,7 @@
           "hash": "I3FKueHZyImeDcpyGgiGrw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1749,10 +1749,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelModule.html",
-          "hash": "IAwAEgDaIjAXJ9ufltw7+Q=="
+          "hash": "OOcy9fFzluP8akNXutuhbA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1773,10 +1773,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelSheet-1.html",
-          "hash": "fk3iApDEGfqG/6LnYcOn6g=="
+          "hash": "PsArQ8jvTmZtAvBwg7gZ1A=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1785,10 +1785,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Lumina.Excel.ExcelSheetImpl.html",
-          "hash": "ka/jwqEs1AgqXfk3OOG+Kw=="
+          "hash": "bReYwgObN1XIneHR91CROQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1848,7 +1848,7 @@
           "hash": "9HlQoIGWo8BEZpP1XLAxmg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1872,7 +1872,7 @@
           "hash": "1K8km+1sAK81iigBjRZjRA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -1944,7 +1944,7 @@
           "hash": "v/7WAJtT8pq6oKMdcPP1mA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2004,7 +2004,7 @@
           "hash": "GiysVZaxR9Gcbyx8c3hnKg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2037,10 +2037,10 @@
       "output": {
         ".html": {
           "relative_path": "docs/guides/basic-usage.html",
-          "hash": "MOhvPMHGh6umisTbRYQ+/w=="
+          "hash": "zYHanZ0bCj/PJ/KKMrQ5mQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -2076,7 +2076,7 @@
           "hash": "W99IGiy7SwMNFnkhviaBHg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2147,7 +2147,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 167,
-          "skipped_file_count": 167
+          "skipped_file_count": 161
         },
         "TocDocumentProcessor": {
           "can_incremental": false,

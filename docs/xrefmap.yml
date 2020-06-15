@@ -361,6 +361,19 @@ references:
   fullName.vb: Lumina.Data.FileHandleManager.CreateHandle(Of T)(System.String)
   nameWithType: FileHandleManager.CreateHandle<T>(String)
   nameWithType.vb: FileHandleManager.CreateHandle(Of T)(String)
+- uid: Lumina.Data.FileHandleManager.HasPendingFileLoads
+  name: HasPendingFileLoads
+  href: api/Lumina.Data.FileHandleManager.html#Lumina_Data_FileHandleManager_HasPendingFileLoads
+  commentId: P:Lumina.Data.FileHandleManager.HasPendingFileLoads
+  fullName: Lumina.Data.FileHandleManager.HasPendingFileLoads
+  nameWithType: FileHandleManager.HasPendingFileLoads
+- uid: Lumina.Data.FileHandleManager.HasPendingFileLoads*
+  name: HasPendingFileLoads
+  href: api/Lumina.Data.FileHandleManager.html#Lumina_Data_FileHandleManager_HasPendingFileLoads_
+  commentId: Overload:Lumina.Data.FileHandleManager.HasPendingFileLoads
+  isSpec: "True"
+  fullName: Lumina.Data.FileHandleManager.HasPendingFileLoads
+  nameWithType: FileHandleManager.HasPendingFileLoads
 - uid: Lumina.Data.FileHandleManager.ProcessQueue
   name: ProcessQueue()
   href: api/Lumina.Data.FileHandleManager.html#Lumina_Data_FileHandleManager_ProcessQueue
@@ -6966,12 +6979,12 @@ references:
   commentId: T:Lumina.Data.SqPack
   fullName: Lumina.Data.SqPack
   nameWithType: SqPack
-- uid: Lumina.Data.SqPack._fileCache
-  name: _fileCache
-  href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack__fileCache
-  commentId: F:Lumina.Data.SqPack._fileCache
-  fullName: Lumina.Data.SqPack._fileCache
-  nameWithType: SqPack._fileCache
+- uid: Lumina.Data.SqPack.CacheLock
+  name: CacheLock
+  href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack_CacheLock
+  commentId: F:Lumina.Data.SqPack.CacheLock
+  fullName: Lumina.Data.SqPack.CacheLock
+  nameWithType: SqPack.CacheLock
 - uid: Lumina.Data.SqPack.File
   name: File
   href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack_File
@@ -6985,6 +6998,12 @@ references:
   isSpec: "True"
   fullName: Lumina.Data.SqPack.File
   nameWithType: SqPack.File
+- uid: Lumina.Data.SqPack.FileCache
+  name: FileCache
+  href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack_FileCache
+  commentId: F:Lumina.Data.SqPack.FileCache
+  fullName: Lumina.Data.SqPack.FileCache
+  nameWithType: SqPack.FileCache
 - uid: Lumina.Data.SqPack.FullName
   name: FullName
   href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack_FullName
@@ -7069,6 +7088,22 @@ references:
   isSpec: "True"
   fullName: Lumina.Data.SqPack.ReadFileBlock
   nameWithType: SqPack.ReadFileBlock
+- uid: Lumina.Data.SqPack.ReadFileInternal*
+  name: ReadFileInternal
+  href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack_ReadFileInternal_
+  commentId: Overload:Lumina.Data.SqPack.ReadFileInternal
+  isSpec: "True"
+  fullName: Lumina.Data.SqPack.ReadFileInternal
+  nameWithType: SqPack.ReadFileInternal
+- uid: Lumina.Data.SqPack.ReadFileInternal``1(System.Int64)
+  name: ReadFileInternal<T>(Int64)
+  href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack_ReadFileInternal__1_System_Int64_
+  commentId: M:Lumina.Data.SqPack.ReadFileInternal``1(System.Int64)
+  name.vb: ReadFileInternal(Of T)(Int64)
+  fullName: Lumina.Data.SqPack.ReadFileInternal<T>(System.Int64)
+  fullName.vb: Lumina.Data.SqPack.ReadFileInternal(Of T)(System.Int64)
+  nameWithType: SqPack.ReadFileInternal<T>(Int64)
+  nameWithType.vb: SqPack.ReadFileInternal(Of T)(Int64)
 - uid: Lumina.Data.SqPack.ShouldConvertEndianness
   name: ShouldConvertEndianness
   href: api/Lumina.Data.SqPack.html#Lumina_Data_SqPack_ShouldConvertEndianness
@@ -8322,22 +8357,6 @@ references:
   fullName.vb: Lumina.Excel.ExcelSheet(Of T)
   nameWithType: ExcelSheet<T>
   nameWithType.vb: ExcelSheet(Of T)
-- uid: Lumina.Excel.ExcelSheet`1.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String)
-  name: ExcelSheet(ExcelHeaderFile, String)
-  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1__ctor_Lumina_Data_Files_Excel_ExcelHeaderFile_System_String_
-  commentId: M:Lumina.Excel.ExcelSheet`1.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String)
-  fullName: Lumina.Excel.ExcelSheet<T>.ExcelSheet(Lumina.Data.Files.Excel.ExcelHeaderFile, System.String)
-  fullName.vb: Lumina.Excel.ExcelSheet(Of T).ExcelSheet(Lumina.Data.Files.Excel.ExcelHeaderFile, System.String)
-  nameWithType: ExcelSheet<T>.ExcelSheet(ExcelHeaderFile, String)
-  nameWithType.vb: ExcelSheet(Of T).ExcelSheet(ExcelHeaderFile, String)
-- uid: Lumina.Excel.ExcelSheet`1.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String,Lumina.Data.Language)
-  name: ExcelSheet(ExcelHeaderFile, String, Language)
-  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1__ctor_Lumina_Data_Files_Excel_ExcelHeaderFile_System_String_Lumina_Data_Language_
-  commentId: M:Lumina.Excel.ExcelSheet`1.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String,Lumina.Data.Language)
-  fullName: Lumina.Excel.ExcelSheet<T>.ExcelSheet(Lumina.Data.Files.Excel.ExcelHeaderFile, System.String, Lumina.Data.Language)
-  fullName.vb: Lumina.Excel.ExcelSheet(Of T).ExcelSheet(Lumina.Data.Files.Excel.ExcelHeaderFile, System.String, Lumina.Data.Language)
-  nameWithType: ExcelSheet<T>.ExcelSheet(ExcelHeaderFile, String, Language)
-  nameWithType.vb: ExcelSheet(Of T).ExcelSheet(ExcelHeaderFile, String, Language)
 - uid: Lumina.Excel.ExcelSheet`1.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String,Lumina.Data.Language,Lumina.Lumina)
   name: ExcelSheet(ExcelHeaderFile, String, Language, Lumina)
   href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1__ctor_Lumina_Data_Files_Excel_ExcelHeaderFile_System_String_Lumina_Data_Language_Lumina_Lumina_
@@ -8355,6 +8374,23 @@ references:
   fullName.vb: Lumina.Excel.ExcelSheet(Of T).ExcelSheet
   nameWithType: ExcelSheet<T>.ExcelSheet
   nameWithType.vb: ExcelSheet(Of T).ExcelSheet
+- uid: Lumina.Excel.ExcelSheet`1.GetEnumerator
+  name: GetEnumerator()
+  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetEnumerator
+  commentId: M:Lumina.Excel.ExcelSheet`1.GetEnumerator
+  fullName: Lumina.Excel.ExcelSheet<T>.GetEnumerator()
+  fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetEnumerator()
+  nameWithType: ExcelSheet<T>.GetEnumerator()
+  nameWithType.vb: ExcelSheet(Of T).GetEnumerator()
+- uid: Lumina.Excel.ExcelSheet`1.GetEnumerator*
+  name: GetEnumerator
+  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetEnumerator_
+  commentId: Overload:Lumina.Excel.ExcelSheet`1.GetEnumerator
+  isSpec: "True"
+  fullName: Lumina.Excel.ExcelSheet<T>.GetEnumerator
+  fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetEnumerator
+  nameWithType: ExcelSheet<T>.GetEnumerator
+  nameWithType.vb: ExcelSheet(Of T).GetEnumerator
 - uid: Lumina.Excel.ExcelSheet`1.GetRow(System.UInt32)
   name: GetRow(UInt32)
   href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetRow_System_UInt32_
@@ -8363,14 +8399,6 @@ references:
   fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetRow(System.UInt32)
   nameWithType: ExcelSheet<T>.GetRow(UInt32)
   nameWithType.vb: ExcelSheet(Of T).GetRow(UInt32)
-- uid: Lumina.Excel.ExcelSheet`1.GetRow(System.UInt32,Lumina.Data.Language)
-  name: GetRow(UInt32, Language)
-  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetRow_System_UInt32_Lumina_Data_Language_
-  commentId: M:Lumina.Excel.ExcelSheet`1.GetRow(System.UInt32,Lumina.Data.Language)
-  fullName: Lumina.Excel.ExcelSheet<T>.GetRow(System.UInt32, Lumina.Data.Language)
-  fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetRow(System.UInt32, Lumina.Data.Language)
-  nameWithType: ExcelSheet<T>.GetRow(UInt32, Language)
-  nameWithType.vb: ExcelSheet(Of T).GetRow(UInt32, Language)
 - uid: Lumina.Excel.ExcelSheet`1.GetRow(System.UInt32,System.UInt32)
   name: GetRow(UInt32, UInt32)
   href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetRow_System_UInt32_System_UInt32_
@@ -8388,23 +8416,6 @@ references:
   fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetRow
   nameWithType: ExcelSheet<T>.GetRow
   nameWithType.vb: ExcelSheet(Of T).GetRow
-- uid: Lumina.Excel.ExcelSheet`1.GetRowParser(System.UInt32)
-  name: GetRowParser(UInt32)
-  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetRowParser_System_UInt32_
-  commentId: M:Lumina.Excel.ExcelSheet`1.GetRowParser(System.UInt32)
-  fullName: Lumina.Excel.ExcelSheet<T>.GetRowParser(System.UInt32)
-  fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetRowParser(System.UInt32)
-  nameWithType: ExcelSheet<T>.GetRowParser(UInt32)
-  nameWithType.vb: ExcelSheet(Of T).GetRowParser(UInt32)
-- uid: Lumina.Excel.ExcelSheet`1.GetRowParser*
-  name: GetRowParser
-  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetRowParser_
-  commentId: Overload:Lumina.Excel.ExcelSheet`1.GetRowParser
-  isSpec: "True"
-  fullName: Lumina.Excel.ExcelSheet<T>.GetRowParser
-  fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetRowParser
-  nameWithType: ExcelSheet<T>.GetRowParser
-  nameWithType.vb: ExcelSheet(Of T).GetRowParser
 - uid: Lumina.Excel.ExcelSheet`1.GetRows
   name: GetRows()
   href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_GetRows
@@ -8422,43 +8433,31 @@ references:
   fullName.vb: Lumina.Excel.ExcelSheet(Of T).GetRows
   nameWithType: ExcelSheet<T>.GetRows
   nameWithType.vb: ExcelSheet(Of T).GetRows
+- uid: Lumina.Excel.ExcelSheet`1.System#Collections#IEnumerable#GetEnumerator
+  name: IEnumerable.GetEnumerator()
+  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_System_Collections_IEnumerable_GetEnumerator
+  commentId: M:Lumina.Excel.ExcelSheet`1.System#Collections#IEnumerable#GetEnumerator
+  name.vb: System.Collections.IEnumerable.GetEnumerator()
+  fullName: Lumina.Excel.ExcelSheet<T>.System.Collections.IEnumerable.GetEnumerator()
+  fullName.vb: Lumina.Excel.ExcelSheet(Of T).System.Collections.IEnumerable.GetEnumerator()
+  nameWithType: ExcelSheet<T>.IEnumerable.GetEnumerator()
+  nameWithType.vb: ExcelSheet(Of T).System.Collections.IEnumerable.GetEnumerator()
+- uid: Lumina.Excel.ExcelSheet`1.System#Collections#IEnumerable#GetEnumerator*
+  name: IEnumerable.GetEnumerator
+  href: api/Lumina.Excel.ExcelSheet-1.html#Lumina_Excel_ExcelSheet_1_System_Collections_IEnumerable_GetEnumerator_
+  commentId: Overload:Lumina.Excel.ExcelSheet`1.System#Collections#IEnumerable#GetEnumerator
+  isSpec: "True"
+  name.vb: System.Collections.IEnumerable.GetEnumerator
+  fullName: Lumina.Excel.ExcelSheet<T>.System.Collections.IEnumerable.GetEnumerator
+  fullName.vb: Lumina.Excel.ExcelSheet(Of T).System.Collections.IEnumerable.GetEnumerator
+  nameWithType: ExcelSheet<T>.IEnumerable.GetEnumerator
+  nameWithType.vb: ExcelSheet(Of T).System.Collections.IEnumerable.GetEnumerator
 - uid: Lumina.Excel.ExcelSheetImpl
   name: ExcelSheetImpl
   href: api/Lumina.Excel.ExcelSheetImpl.html
   commentId: T:Lumina.Excel.ExcelSheetImpl
   fullName: Lumina.Excel.ExcelSheetImpl
   nameWithType: ExcelSheetImpl
-- uid: Lumina.Excel.ExcelSheetImpl.#ctor
-  name: ExcelSheetImpl()
-  href: api/Lumina.Excel.ExcelSheetImpl.html#Lumina_Excel_ExcelSheetImpl__ctor
-  commentId: M:Lumina.Excel.ExcelSheetImpl.#ctor
-  fullName: Lumina.Excel.ExcelSheetImpl.ExcelSheetImpl()
-  nameWithType: ExcelSheetImpl.ExcelSheetImpl()
-- uid: Lumina.Excel.ExcelSheetImpl.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String)
-  name: ExcelSheetImpl(ExcelHeaderFile, String)
-  href: api/Lumina.Excel.ExcelSheetImpl.html#Lumina_Excel_ExcelSheetImpl__ctor_Lumina_Data_Files_Excel_ExcelHeaderFile_System_String_
-  commentId: M:Lumina.Excel.ExcelSheetImpl.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String)
-  fullName: Lumina.Excel.ExcelSheetImpl.ExcelSheetImpl(Lumina.Data.Files.Excel.ExcelHeaderFile, System.String)
-  nameWithType: ExcelSheetImpl.ExcelSheetImpl(ExcelHeaderFile, String)
-- uid: Lumina.Excel.ExcelSheetImpl.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String,Lumina.Data.Language)
-  name: ExcelSheetImpl(ExcelHeaderFile, String, Language)
-  href: api/Lumina.Excel.ExcelSheetImpl.html#Lumina_Excel_ExcelSheetImpl__ctor_Lumina_Data_Files_Excel_ExcelHeaderFile_System_String_Lumina_Data_Language_
-  commentId: M:Lumina.Excel.ExcelSheetImpl.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String,Lumina.Data.Language)
-  fullName: Lumina.Excel.ExcelSheetImpl.ExcelSheetImpl(Lumina.Data.Files.Excel.ExcelHeaderFile, System.String, Lumina.Data.Language)
-  nameWithType: ExcelSheetImpl.ExcelSheetImpl(ExcelHeaderFile, String, Language)
-- uid: Lumina.Excel.ExcelSheetImpl.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String,Lumina.Data.Language,Lumina.Lumina)
-  name: ExcelSheetImpl(ExcelHeaderFile, String, Language, Lumina)
-  href: api/Lumina.Excel.ExcelSheetImpl.html#Lumina_Excel_ExcelSheetImpl__ctor_Lumina_Data_Files_Excel_ExcelHeaderFile_System_String_Lumina_Data_Language_Lumina_Lumina_
-  commentId: M:Lumina.Excel.ExcelSheetImpl.#ctor(Lumina.Data.Files.Excel.ExcelHeaderFile,System.String,Lumina.Data.Language,Lumina.Lumina)
-  fullName: Lumina.Excel.ExcelSheetImpl.ExcelSheetImpl(Lumina.Data.Files.Excel.ExcelHeaderFile, System.String, Lumina.Data.Language, Lumina.Lumina)
-  nameWithType: ExcelSheetImpl.ExcelSheetImpl(ExcelHeaderFile, String, Language, Lumina)
-- uid: Lumina.Excel.ExcelSheetImpl.#ctor*
-  name: ExcelSheetImpl
-  href: api/Lumina.Excel.ExcelSheetImpl.html#Lumina_Excel_ExcelSheetImpl__ctor_
-  commentId: Overload:Lumina.Excel.ExcelSheetImpl.#ctor
-  isSpec: "True"
-  fullName: Lumina.Excel.ExcelSheetImpl.ExcelSheetImpl
-  nameWithType: ExcelSheetImpl.ExcelSheetImpl
 - uid: Lumina.Excel.ExcelSheetImpl.ColumnCount
   name: ColumnCount
   href: api/Lumina.Excel.ExcelSheetImpl.html#Lumina_Excel_ExcelSheetImpl_ColumnCount

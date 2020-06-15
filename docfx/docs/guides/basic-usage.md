@@ -66,9 +66,8 @@ var itemSheet = lumina.GetExcelSheet< Item >();
 var itemRow = itemSheet.GetRow( 101 );
 Console.WriteLine( $"item name: {itemRow.Name}" );
 
-// get all rows
-var itemRows = itemSheet.GetRows();
-foreach( var row in itemRows )
+// iterate all rows
+foreach( var row in itemSheet )
 {
     Console.WriteLine( $"item name: {row.Name}" );
 }
