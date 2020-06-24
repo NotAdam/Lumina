@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -15,16 +16,16 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            DaytimeID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 0 ) );
-            NightID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 1 ) );
-            BattleID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 2 ) );
-            DaybreakID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 3 ) );
-            TwilightID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 4 ) );
+            DaytimeID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            NightID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            BattleID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            DaybreakID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            TwilightID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 4 ), language );
         }
     }
 }

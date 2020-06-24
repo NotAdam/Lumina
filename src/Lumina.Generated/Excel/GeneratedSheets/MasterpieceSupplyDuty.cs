@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -28,14 +29,14 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 0 ) );
+            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 0 ), language );
             ClassJobLevel = parser.ReadColumn< byte >( 1 );
-            RewardCurrency = new LazyRow< Currency >( lumina, parser.ReadColumn< ushort >( 2 ) );
+            RewardCurrency = new LazyRow< Currency >( lumina, parser.ReadColumn< ushort >( 2 ), language );
             UnkStruct3 = new UnkStruct3Struct[ 8 ];
             for( var i = 0; i < 8; i++ )
             {

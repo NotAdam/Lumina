@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -24,17 +25,17 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            AchievementCategory = new LazyRow< AchievementCategory >( lumina, parser.ReadColumn< byte >( 0 ) );
+            AchievementCategory = new LazyRow< AchievementCategory >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Name = parser.ReadColumn< string >( 1 );
             Description = parser.ReadColumn< string >( 2 );
             Points = parser.ReadColumn< byte >( 3 );
-            Title = new LazyRow< Title >( lumina, parser.ReadColumn< ushort >( 4 ) );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 5 ) );
+            Title = new LazyRow< Title >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 5 ), language );
             Icon = parser.ReadColumn< ushort >( 6 );
             Unknown7 = parser.ReadColumn< byte >( 7 );
             Type = parser.ReadColumn< byte >( 8 );
@@ -44,7 +45,7 @@ namespace Lumina.Excel.GeneratedSheets
                 Data[ i ] = parser.ReadColumn< int >( 10 + i );
             Order = parser.ReadColumn< ushort >( 18 );
             Unknown19 = parser.ReadColumn< byte >( 19 );
-            AchievementHideCondition = new LazyRow< AchievementHideCondition >( lumina, parser.ReadColumn< byte >( 20 ) );
+            AchievementHideCondition = new LazyRow< AchievementHideCondition >( lumina, parser.ReadColumn< byte >( 20 ), language );
         }
     }
 }

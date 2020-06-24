@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -14,12 +15,12 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            GatheringType = new LazyRow< GatheringType >( lumina, parser.ReadColumn< int >( 0 ) );
+            GatheringType = new LazyRow< GatheringType >( lumina, parser.ReadColumn< int >( 0 ), language );
             GatheringLevel = parser.ReadColumn< byte >( 1 );
             Item = new int[ 8 ];
             for( var i = 0; i < 8; i++ )

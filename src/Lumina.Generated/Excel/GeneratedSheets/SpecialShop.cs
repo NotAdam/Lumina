@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -1700,7 +1701,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -2906,13 +2907,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1200 = parser.ReadColumn< ushort >( 1200 );
             QuestItem = new LazyRow< Quest >[ 60 ];
             for( var i = 0; i < 60; i++ )
-                QuestItem[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1201 + i ) );
+                QuestItem[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1201 + i ), language );
             Unknown = new int[ 60 ];
             for( var i = 0; i < 60; i++ )
                 Unknown[ i ] = parser.ReadColumn< int >( 1261 + i );
             AchievementUnlock = new LazyRow< Achievement >[ 60 ];
             for( var i = 0; i < 60; i++ )
-                AchievementUnlock[ i ] = new LazyRow< Achievement >( lumina, parser.ReadColumn< int >( 1321 + i ) );
+                AchievementUnlock[ i ] = new LazyRow< Achievement >( lumina, parser.ReadColumn< int >( 1321 + i ), language );
             UnkStruct1381 = new UnkStruct1381Struct[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
@@ -3341,9 +3342,9 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 60; i++ )
                 PatchNumber[ i ] = parser.ReadColumn< byte >( 1801 + i );
             UseCurrencyType = parser.ReadColumn< ushort >( 1861 );
-            QuestUnlock = new LazyRow< Quest >( lumina, parser.ReadColumn< ushort >( 1862 ) );
-            CompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< ushort >( 1863 ) );
-            NotCompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< ushort >( 1864 ) );
+            QuestUnlock = new LazyRow< Quest >( lumina, parser.ReadColumn< ushort >( 1862 ), language );
+            CompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< ushort >( 1863 ), language );
+            NotCompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< ushort >( 1864 ), language );
             Unknown1865 = parser.ReadColumn< ushort >( 1865 );
             Unknown1866 = parser.ReadColumn< ushort >( 1866 );
             Unknown1867 = parser.ReadColumn< ushort >( 1867 );

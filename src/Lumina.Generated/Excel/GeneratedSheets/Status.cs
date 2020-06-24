@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -39,7 +40,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -50,8 +51,8 @@ namespace Lumina.Excel.GeneratedSheets
             MaxStacks = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Category = parser.ReadColumn< byte >( 5 );
-            HitEffect = new LazyRow< StatusHitEffect >( lumina, parser.ReadColumn< byte >( 6 ) );
-            VFX = new LazyRow< StatusLoopVFX >( lumina, parser.ReadColumn< byte >( 7 ) );
+            HitEffect = new LazyRow< StatusHitEffect >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            VFX = new LazyRow< StatusLoopVFX >( lumina, parser.ReadColumn< byte >( 7 ), language );
             LockMovement = parser.ReadColumn< bool >( 8 );
             Unknown9 = parser.ReadColumn< bool >( 9 );
             LockActions = parser.ReadColumn< bool >( 10 );

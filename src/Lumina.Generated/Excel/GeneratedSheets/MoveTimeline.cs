@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -20,21 +21,21 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Idle = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 0 ) );
-            MoveForward = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 1 ) );
-            MoveBack = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 2 ) );
-            MoveLeft = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 ) );
-            MoveRight = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 4 ) );
-            MoveUp = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 5 ) );
-            MoveDown = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 6 ) );
-            MoveTurnLeft = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 7 ) );
-            MoveTurnRight = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 8 ) );
-            Extra = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 9 ) );
+            Idle = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            MoveForward = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            MoveBack = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            MoveLeft = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            MoveRight = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            MoveUp = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            MoveDown = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            MoveTurnLeft = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            MoveTurnRight = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            Extra = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 9 ), language );
         }
     }
 }

@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -30,7 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -43,7 +44,7 @@ namespace Lumina.Excel.GeneratedSheets
             LookAtMode = parser.ReadColumn< byte >( 5 );
             Key = parser.ReadColumn< string >( 6 );
             ActionTimelineIDMode = parser.ReadColumn< byte >( 7 );
-            WeaponTimeline = new LazyRow< WeaponTimeline >( lumina, parser.ReadColumn< byte >( 8 ) );
+            WeaponTimeline = new LazyRow< WeaponTimeline >( lumina, parser.ReadColumn< byte >( 8 ), language );
             LoadType = parser.ReadColumn< byte >( 9 );
             StartAttach = parser.ReadColumn< byte >( 10 );
             ResidentPap = parser.ReadColumn< byte >( 11 );

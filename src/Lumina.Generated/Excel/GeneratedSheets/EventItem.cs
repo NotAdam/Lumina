@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -28,7 +29,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -44,12 +45,12 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown8 = parser.ReadColumn< bool >( 8 );
             Name = parser.ReadColumn< string >( 9 );
             Icon = parser.ReadColumn< ushort >( 10 );
-            Action = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 11 ) );
+            Action = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 11 ), language );
             StackSize = parser.ReadColumn< byte >( 12 );
             Unknown13 = parser.ReadColumn< byte >( 13 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 14 ) );
+            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 14 ), language );
             CastTime = parser.ReadColumn< byte >( 15 );
-            CastTimeline = new LazyRow< EventItemCastTimeline >( lumina, parser.ReadColumn< byte >( 16 ) );
+            CastTimeline = new LazyRow< EventItemCastTimeline >( lumina, parser.ReadColumn< byte >( 16 ), language );
             Timeline = parser.ReadColumn< byte >( 17 );
         }
     }

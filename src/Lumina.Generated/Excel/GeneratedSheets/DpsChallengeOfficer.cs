@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -12,15 +13,15 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            UnlockQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ) );
+            UnlockQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
             ChallengeName = new LazyRow< DpsChallenge >[ 25 ];
             for( var i = 0; i < 25; i++ )
-                ChallengeName[ i ] = new LazyRow< DpsChallenge >( lumina, parser.ReadColumn< ushort >( 1 + i ) );
+                ChallengeName[ i ] = new LazyRow< DpsChallenge >( lumina, parser.ReadColumn< ushort >( 1 + i ), language );
         }
     }
 }

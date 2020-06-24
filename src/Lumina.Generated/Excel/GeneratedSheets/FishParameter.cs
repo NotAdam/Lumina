@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -22,20 +23,20 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             Text = parser.ReadColumn< string >( 0 );
             Item = parser.ReadColumn< int >( 1 );
-            GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( lumina, parser.ReadColumn< ushort >( 2 ) );
+            GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( lumina, parser.ReadColumn< ushort >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             IsHidden = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
-            FishingRecordType = new LazyRow< FishingRecordType >( lumina, parser.ReadColumn< byte >( 6 ) );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< int >( 7 ) );
-            GatheringSubCategory = new LazyRow< GatheringSubCategory >( lumina, parser.ReadColumn< ushort >( 8 ) );
+            FishingRecordType = new LazyRow< FishingRecordType >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< int >( 7 ), language );
+            GatheringSubCategory = new LazyRow< GatheringSubCategory >( lumina, parser.ReadColumn< ushort >( 8 ), language );
             IsInLog = parser.ReadColumn< bool >( 9 );
             TimeRestricted = parser.ReadColumn< bool >( 10 );
             WeatherRestricted = parser.ReadColumn< bool >( 11 );

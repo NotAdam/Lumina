@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -15,7 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< string >( 0 );
             Description = parser.ReadColumn< string >( 1 );
             Icon = parser.ReadColumn< uint >( 2 );
-            ChocoboRaceAbilityType = new LazyRow< ChocoboRaceAbilityType >( lumina, parser.ReadColumn< sbyte >( 3 ) );
+            ChocoboRaceAbilityType = new LazyRow< ChocoboRaceAbilityType >( lumina, parser.ReadColumn< sbyte >( 3 ), language );
             Value = parser.ReadColumn< byte >( 4 );
         }
     }

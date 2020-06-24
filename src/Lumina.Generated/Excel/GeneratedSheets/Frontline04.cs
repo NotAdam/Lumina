@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -353,20 +354,20 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Level1 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ) );
-            Level2 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 1 ) );
-            Level3 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 2 ) );
+            Level1 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Level2 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 1 ), language );
+            Level3 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 2 ), language );
             Unknown3 = parser.ReadColumn< int >( 3 );
             Unknown4 = parser.ReadColumn< int >( 4 );
             Unknown5 = parser.ReadColumn< int >( 5 );
             UnknownLevel = new LazyRow< Level >[ 27 ];
             for( var i = 0; i < 27; i++ )
-                UnknownLevel[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 6 + i ) );
+                UnknownLevel[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 6 + i ), language );
             Unknown33 = parser.ReadColumn< int >( 33 );
             Unknown34 = parser.ReadColumn< int >( 34 );
             Unknown35 = parser.ReadColumn< int >( 35 );

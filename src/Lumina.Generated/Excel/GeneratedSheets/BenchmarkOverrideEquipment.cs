@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -40,7 +41,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -50,31 +51,31 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< sbyte >( 3 );
             ModelMainHand = parser.ReadColumn< ulong >( 4 );
-            DyeMainHand = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 5 ) );
+            DyeMainHand = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 5 ), language );
             ModelOffHand = parser.ReadColumn< ulong >( 6 );
-            DyeOffHand = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 7 ) );
+            DyeOffHand = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 7 ), language );
             Unknown8 = parser.ReadColumn< ulong >( 8 );
             Unknown9 = parser.ReadColumn< byte >( 9 );
             ModelHead = parser.ReadColumn< uint >( 10 );
-            DyeHead = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 11 ) );
+            DyeHead = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 11 ), language );
             ModelBody = parser.ReadColumn< uint >( 12 );
-            DyeBody = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 13 ) );
+            DyeBody = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 13 ), language );
             ModelHands = parser.ReadColumn< uint >( 14 );
-            DyeHands = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 15 ) );
+            DyeHands = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 15 ), language );
             ModelLegs = parser.ReadColumn< uint >( 16 );
-            DyeLegs = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 17 ) );
+            DyeLegs = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 17 ), language );
             ModelFeet = parser.ReadColumn< uint >( 18 );
-            DyeFeet = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 19 ) );
+            DyeFeet = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 19 ), language );
             ModelEars = parser.ReadColumn< uint >( 20 );
-            DyeEars = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 21 ) );
+            DyeEars = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 21 ), language );
             ModelNeck = parser.ReadColumn< uint >( 22 );
-            DyeNeck = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 23 ) );
+            DyeNeck = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 23 ), language );
             ModelWrists = parser.ReadColumn< uint >( 24 );
-            DyeWrists = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 25 ) );
+            DyeWrists = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 25 ), language );
             ModelLeftRing = parser.ReadColumn< uint >( 26 );
-            DyeLeftRing = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 27 ) );
+            DyeLeftRing = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 27 ), language );
             ModelRightRing = parser.ReadColumn< uint >( 28 );
-            DyeRightRing = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 29 ) );
+            DyeRightRing = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 29 ), language );
         }
     }
 }

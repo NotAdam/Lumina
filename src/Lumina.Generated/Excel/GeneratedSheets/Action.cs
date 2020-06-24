@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -76,7 +77,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -84,14 +85,14 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< string >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Icon = parser.ReadColumn< ushort >( 2 );
-            ActionCategory = new LazyRow< ActionCategory >( lumina, parser.ReadColumn< byte >( 3 ) );
+            ActionCategory = new LazyRow< ActionCategory >( lumina, parser.ReadColumn< byte >( 3 ), language );
             Unknown4 = parser.ReadColumn< byte >( 4 );
-            AnimationStart = new LazyRow< ActionCastTimeline >( lumina, parser.ReadColumn< byte >( 5 ) );
-            VFX = new LazyRow< ActionCastVFX >( lumina, parser.ReadColumn< byte >( 6 ) );
-            AnimationEnd = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< short >( 7 ) );
-            ActionTimelineHit = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 8 ) );
+            AnimationStart = new LazyRow< ActionCastTimeline >( lumina, parser.ReadColumn< byte >( 5 ), language );
+            VFX = new LazyRow< ActionCastVFX >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            AnimationEnd = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< short >( 7 ), language );
+            ActionTimelineHit = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 8 ), language );
             Unknown9 = parser.ReadColumn< byte >( 9 );
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< sbyte >( 10 ) );
+            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< sbyte >( 10 ), language );
             BehaviourType = parser.ReadColumn< byte >( 11 );
             ClassJobLevel = parser.ReadColumn< byte >( 12 );
             IsRoleAction = parser.ReadColumn< bool >( 13 );
@@ -116,24 +117,24 @@ namespace Lumina.Excel.GeneratedSheets
             PrimaryCostValue = parser.ReadColumn< ushort >( 32 );
             SecondaryCostType = parser.ReadColumn< byte >( 33 );
             SecondaryCostValue = parser.ReadColumn< ushort >( 34 );
-            ActionCombo = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 35 ) );
+            ActionCombo = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 35 ), language );
             PreservesCombo = parser.ReadColumn< bool >( 36 );
             Cast100ms = parser.ReadColumn< ushort >( 37 );
             Recast100ms = parser.ReadColumn< ushort >( 38 );
             CooldownGroup = parser.ReadColumn< byte >( 39 );
             Unknown40 = parser.ReadColumn< byte >( 40 );
             MaxCharges = parser.ReadColumn< byte >( 41 );
-            AttackType = new LazyRow< AttackType >( lumina, parser.ReadColumn< sbyte >( 42 ) );
+            AttackType = new LazyRow< AttackType >( lumina, parser.ReadColumn< sbyte >( 42 ), language );
             Aspect = parser.ReadColumn< byte >( 43 );
-            ActionProcStatus = new LazyRow< ActionProcStatus >( lumina, parser.ReadColumn< byte >( 44 ) );
+            ActionProcStatus = new LazyRow< ActionProcStatus >( lumina, parser.ReadColumn< byte >( 44 ), language );
             Unknown45 = parser.ReadColumn< byte >( 45 );
-            StatusGainSelf = new LazyRow< Status >( lumina, parser.ReadColumn< ushort >( 46 ) );
+            StatusGainSelf = new LazyRow< Status >( lumina, parser.ReadColumn< ushort >( 46 ), language );
             UnlockLink = parser.ReadColumn< uint >( 47 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 48 ) );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 48 ), language );
             Unknown49 = parser.ReadColumn< byte >( 49 );
             Unknown50 = parser.ReadColumn< bool >( 50 );
             AffectsPosition = parser.ReadColumn< bool >( 51 );
-            Omen = new LazyRow< Omen >( lumina, parser.ReadColumn< ushort >( 52 ) );
+            Omen = new LazyRow< Omen >( lumina, parser.ReadColumn< ushort >( 52 ), language );
             IsPvP = parser.ReadColumn< bool >( 53 );
             Unknown54 = parser.ReadColumn< bool >( 54 );
             Unknown55 = parser.ReadColumn< bool >( 55 );

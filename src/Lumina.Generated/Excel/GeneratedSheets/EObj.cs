@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -28,7 +29,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -44,7 +45,7 @@ namespace Lumina.Excel.GeneratedSheets
             PopType = parser.ReadColumn< byte >( 8 );
             Data = parser.ReadColumn< uint >( 9 );
             Invisibility = parser.ReadColumn< byte >( 10 );
-            SgbPath = new LazyRow< ExportedSG >( lumina, parser.ReadColumn< ushort >( 11 ) );
+            SgbPath = new LazyRow< ExportedSG >( lumina, parser.ReadColumn< ushort >( 11 ), language );
             EyeCollision = parser.ReadColumn< bool >( 12 );
             DirectorControl = parser.ReadColumn< bool >( 13 );
             Target = parser.ReadColumn< bool >( 14 );

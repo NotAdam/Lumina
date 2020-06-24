@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -16,7 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -25,7 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             SelfKind = parser.ReadColumn< byte >( 1 );
             TargetKind = parser.ReadColumn< byte >( 2 );
             NumParam = parser.ReadColumn< byte >( 3 );
-            FCActivityCategory = new LazyRow< FCActivityCategory >( lumina, parser.ReadColumn< byte >( 4 ) );
+            FCActivityCategory = new LazyRow< FCActivityCategory >( lumina, parser.ReadColumn< byte >( 4 ), language );
             IconType = parser.ReadColumn< sbyte >( 5 );
         }
     }

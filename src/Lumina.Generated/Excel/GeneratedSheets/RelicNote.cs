@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -26,12 +27,12 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 0 ) );
+            EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 0 ), language );
             UnkStruct1 = new UnkStruct1Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
             {
@@ -41,7 +42,7 @@ namespace Lumina.Excel.GeneratedSheets
             }
             MonsterNoteTargetNM = new LazyRow< MonsterNoteTarget >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                MonsterNoteTargetNM[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 21 + i ) );
+                MonsterNoteTargetNM[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 21 + i ), language );
             Unknown24 = parser.ReadColumn< ushort >( 24 );
             UnkStruct25 = new UnkStruct25Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
@@ -52,7 +53,7 @@ namespace Lumina.Excel.GeneratedSheets
             }
             Leve = new LazyRow< Leve >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                Leve[ i ] = new LazyRow< Leve >( lumina, parser.ReadColumn< ushort >( 31 + i ) );
+                Leve[ i ] = new LazyRow< Leve >( lumina, parser.ReadColumn< ushort >( 31 + i ), language );
         }
     }
 }

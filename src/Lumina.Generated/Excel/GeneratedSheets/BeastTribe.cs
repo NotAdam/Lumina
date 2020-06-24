@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -28,19 +29,19 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             MinLevel = parser.ReadColumn< byte >( 1 );
-            BeastRankBonus = new LazyRow< BeastRankBonus >( lumina, parser.ReadColumn< byte >( 2 ) );
+            BeastRankBonus = new LazyRow< BeastRankBonus >( lumina, parser.ReadColumn< byte >( 2 ), language );
             IconReputation = parser.ReadColumn< uint >( 3 );
             Icon = parser.ReadColumn< uint >( 4 );
             MaxRank = parser.ReadColumn< byte >( 5 );
-            Expansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 6 ) );
-            CurrencyItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ) );
+            Expansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            CurrencyItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ), language );
             DisplayOrder = parser.ReadColumn< byte >( 8 );
             Name = parser.ReadColumn< string >( 9 );
             Unknown10 = parser.ReadColumn< sbyte >( 10 );

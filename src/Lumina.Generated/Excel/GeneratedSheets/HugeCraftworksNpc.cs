@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -79,17 +80,17 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ENpcResident = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ) );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< ushort >( 1 ) );
+            ENpcResident = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< ushort >( 1 ), language );
             Unknown2 = parser.ReadColumn< uint >( 2 );
             ItemRequested = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                ItemRequested[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 3 + i ) );
+                ItemRequested[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 3 + i ), language );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
             QtyRequested = new byte[ 4 ];
@@ -136,7 +137,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown51 = parser.ReadColumn< uint >( 51 );
             ItemReward = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                ItemReward[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 52 + i ) );
+                ItemReward[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 52 + i ), language );
             Unknown56 = parser.ReadColumn< bool >( 56 );
             Unknown57 = parser.ReadColumn< bool >( 57 );
             Unknown58 = parser.ReadColumn< bool >( 58 );
@@ -152,7 +153,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown69 = parser.ReadColumn< uint >( 69 );
             ItemUnkown = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                ItemUnkown[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 70 + i ) );
+                ItemUnkown[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 70 + i ), language );
             Unknown74 = parser.ReadColumn< bool >( 74 );
             Unknown75 = parser.ReadColumn< bool >( 75 );
             Unknown76 = parser.ReadColumn< bool >( 76 );

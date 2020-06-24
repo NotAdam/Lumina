@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -49,7 +50,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -68,7 +69,7 @@ namespace Lumina.Excel.GeneratedSheets
             ItemLevelRequired = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< ushort >( 12 );
             Icon = parser.ReadColumn< ushort >( 13 );
-            ContentRouletteRoleBonus = new LazyRow< ContentRouletteRoleBonus >( lumina, parser.ReadColumn< uint >( 14 ) );
+            ContentRouletteRoleBonus = new LazyRow< ContentRouletteRoleBonus >( lumina, parser.ReadColumn< uint >( 14 ), language );
             RewardTomeA = parser.ReadColumn< byte >( 15 );
             RewardTomeB = parser.ReadColumn< ushort >( 16 );
             RewardTomeC = parser.ReadColumn< ushort >( 17 );
@@ -76,7 +77,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown19 = parser.ReadColumn< uint >( 19 );
             SortKey = parser.ReadColumn< ushort >( 20 );
             Unknown21 = parser.ReadColumn< byte >( 21 );
-            ContentMemberType = new LazyRow< ContentMemberType >( lumina, parser.ReadColumn< byte >( 22 ) );
+            ContentMemberType = new LazyRow< ContentMemberType >( lumina, parser.ReadColumn< byte >( 22 ), language );
             Unknown23 = parser.ReadColumn< byte >( 23 );
             Unknown24 = parser.ReadColumn< byte >( 24 );
             Unknown25 = parser.ReadColumn< byte >( 25 );
@@ -89,7 +90,7 @@ namespace Lumina.Excel.GeneratedSheets
             RequireAllDuties = parser.ReadColumn< bool >( 32 );
             Unknown33 = parser.ReadColumn< bool >( 33 );
             ContentRouletteOpenRule = parser.ReadColumn< bool >( 34 );
-            InstanceContent = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< byte >( 35 ) );
+            InstanceContent = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< byte >( 35 ), language );
             Unknown36 = parser.ReadColumn< ushort >( 36 );
             Unknown37 = parser.ReadColumn< bool >( 37 );
             Unknown38 = parser.ReadColumn< byte >( 38 );

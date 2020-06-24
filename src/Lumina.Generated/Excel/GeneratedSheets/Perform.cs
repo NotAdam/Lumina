@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -22,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -30,15 +31,15 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< string >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             ModelKey = parser.ReadColumn< ulong >( 2 );
-            AnimationStart = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 ) );
-            AnimationEnd = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 4 ) );
-            AnimationIdle = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 5 ) );
-            AnimationPlay01 = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 6 ) );
-            AnimationPlay02 = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 7 ) );
-            StopAnimation = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< int >( 8 ) );
+            AnimationStart = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            AnimationEnd = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            AnimationIdle = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            AnimationPlay01 = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            AnimationPlay02 = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            StopAnimation = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< int >( 8 ), language );
             Instrument = parser.ReadColumn< string >( 9 );
             Unknown10 = parser.ReadColumn< int >( 10 );
-            Transient = new LazyRow< PerformTransient >( lumina, parser.ReadColumn< byte >( 11 ) );
+            Transient = new LazyRow< PerformTransient >( lumina, parser.ReadColumn< byte >( 11 ), language );
         }
     }
 }

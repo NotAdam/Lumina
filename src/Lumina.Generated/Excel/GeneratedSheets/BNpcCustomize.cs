@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -36,16 +37,16 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Race = new LazyRow< Race >( lumina, parser.ReadColumn< byte >( 0 ) );
+            Race = new LazyRow< Race >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Gender = parser.ReadColumn< byte >( 1 );
             BodyType = parser.ReadColumn< byte >( 2 );
             Height = parser.ReadColumn< byte >( 3 );
-            Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< byte >( 4 ) );
+            Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< byte >( 4 ), language );
             Face = parser.ReadColumn< byte >( 5 );
             HairStyle = parser.ReadColumn< byte >( 6 );
             HairHighlight = parser.ReadColumn< byte >( 7 );

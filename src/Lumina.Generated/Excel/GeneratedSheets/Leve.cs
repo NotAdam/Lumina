@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -41,27 +42,27 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             Name = parser.ReadColumn< string >( 0 );
             Description = parser.ReadColumn< string >( 1 );
-            LeveClient = new LazyRow< LeveClient >( lumina, parser.ReadColumn< int >( 2 ) );
-            LeveAssignmentType = new LazyRow< LeveAssignmentType >( lumina, parser.ReadColumn< int >( 3 ) );
-            Town = new LazyRow< Town >( lumina, parser.ReadColumn< int >( 4 ) );
+            LeveClient = new LazyRow< LeveClient >( lumina, parser.ReadColumn< int >( 2 ), language );
+            LeveAssignmentType = new LazyRow< LeveAssignmentType >( lumina, parser.ReadColumn< int >( 3 ), language );
+            Town = new LazyRow< Town >( lumina, parser.ReadColumn< int >( 4 ), language );
             ClassJobLevel = parser.ReadColumn< ushort >( 5 );
             TimeLimit = parser.ReadColumn< byte >( 6 );
             AllowanceCost = parser.ReadColumn< byte >( 7 );
             Evaluation = parser.ReadColumn< int >( 8 );
-            PlaceNameStart = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 9 ) );
-            PlaceNameIssued = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 10 ) );
+            PlaceNameStart = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 9 ), language );
+            PlaceNameIssued = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 10 ), language );
             Unknown11 = parser.ReadColumn< bool >( 11 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 12 ) );
-            JournalGenre = new LazyRow< JournalGenre >( lumina, parser.ReadColumn< int >( 13 ) );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 12 ), language );
+            JournalGenre = new LazyRow< JournalGenre >( lumina, parser.ReadColumn< int >( 13 ), language );
             Unknown14 = parser.ReadColumn< int >( 14 );
-            PlaceNameStartZone = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 15 ) );
+            PlaceNameStartZone = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 15 ), language );
             IconCityState = parser.ReadColumn< int >( 16 );
             DataId = parser.ReadColumn< int >( 17 );
             CanCancel = parser.ReadColumn< bool >( 18 );
@@ -69,14 +70,14 @@ namespace Lumina.Excel.GeneratedSheets
             ExpFactor = parser.ReadColumn< float >( 20 );
             ExpReward = parser.ReadColumn< uint >( 21 );
             GilReward = parser.ReadColumn< uint >( 22 );
-            LeveRewardItem = new LazyRow< LeveRewardItem >( lumina, parser.ReadColumn< ushort >( 23 ) );
-            LeveVfx = new LazyRow< LeveVfx >( lumina, parser.ReadColumn< byte >( 24 ) );
-            LeveVfxFrame = new LazyRow< LeveVfx >( lumina, parser.ReadColumn< byte >( 25 ) );
-            LevelLevemete = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 26 ) );
+            LeveRewardItem = new LazyRow< LeveRewardItem >( lumina, parser.ReadColumn< ushort >( 23 ), language );
+            LeveVfx = new LazyRow< LeveVfx >( lumina, parser.ReadColumn< byte >( 24 ), language );
+            LeveVfxFrame = new LazyRow< LeveVfx >( lumina, parser.ReadColumn< byte >( 25 ), language );
+            LevelLevemete = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 26 ), language );
             IconIssuer = parser.ReadColumn< int >( 27 );
             LockedLeve = parser.ReadColumn< bool >( 28 );
-            LevelStart = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 29 ) );
-            BGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 30 ) );
+            LevelStart = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 29 ), language );
+            BGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 30 ), language );
         }
     }
 }

@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -21,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -29,9 +30,9 @@ namespace Lumina.Excel.GeneratedSheets
             X = parser.ReadColumn< short >( 0 );
             Y = parser.ReadColumn< short >( 1 );
             Icon = parser.ReadColumn< ushort >( 2 );
-            PlaceNameSubtext = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 3 ) );
+            PlaceNameSubtext = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 3 ), language );
             SubtextOrientation = parser.ReadColumn< byte >( 4 );
-            MapMarkerRegion = new LazyRow< MapMarkerRegion >( lumina, parser.ReadColumn< byte >( 5 ) );
+            MapMarkerRegion = new LazyRow< MapMarkerRegion >( lumina, parser.ReadColumn< byte >( 5 ), language );
             Type = parser.ReadColumn< byte >( 6 );
             DataType = parser.ReadColumn< byte >( 7 );
             DataKey = parser.ReadColumn< ushort >( 8 );

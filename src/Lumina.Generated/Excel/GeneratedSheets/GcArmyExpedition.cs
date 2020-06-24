@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -65,7 +66,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -77,7 +78,7 @@ namespace Lumina.Excel.GeneratedSheets
             RewardExperience = parser.ReadColumn< uint >( 4 );
             PercentBase = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
-            GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( lumina, parser.ReadColumn< byte >( 7 ) );
+            GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( lumina, parser.ReadColumn< byte >( 7 ), language );
             Name = parser.ReadColumn< string >( 8 );
             Description = parser.ReadColumn< string >( 9 );
             UnkStruct10 = new UnkStruct10Struct[ 6 ];

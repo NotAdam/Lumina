@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -14,14 +15,14 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             MonsterNoteTarget = new LazyRow< MonsterNoteTarget >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 0 + i ) );
+                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
             Count = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 Count[ i ] = parser.ReadColumn< byte >( 4 + i );

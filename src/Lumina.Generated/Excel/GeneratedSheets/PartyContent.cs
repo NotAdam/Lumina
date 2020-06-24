@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -46,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -54,8 +55,8 @@ namespace Lumina.Excel.GeneratedSheets
             Key = parser.ReadColumn< byte >( 0 );
             TimeLimit = parser.ReadColumn< ushort >( 1 );
             Name = parser.ReadColumn< bool >( 2 );
-            TextDataStart = new LazyRow< PartyContentTextData >( lumina, parser.ReadColumn< uint >( 3 ) );
-            TextDataEnd = new LazyRow< PartyContentTextData >( lumina, parser.ReadColumn< uint >( 4 ) );
+            TextDataStart = new LazyRow< PartyContentTextData >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            TextDataEnd = new LazyRow< PartyContentTextData >( lumina, parser.ReadColumn< uint >( 4 ), language );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
@@ -84,7 +85,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown30 = parser.ReadColumn< uint >( 30 );
             Unknown31 = parser.ReadColumn< uint >( 31 );
             Unknown32 = parser.ReadColumn< ushort >( 32 );
-            ContentFinderCondition = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 33 ) );
+            ContentFinderCondition = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 33 ), language );
             Image = parser.ReadColumn< uint >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
         }

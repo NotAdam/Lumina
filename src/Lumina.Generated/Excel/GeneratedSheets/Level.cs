@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -20,7 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -32,9 +33,9 @@ namespace Lumina.Excel.GeneratedSheets
             Radius = parser.ReadColumn< float >( 4 );
             Type = parser.ReadColumn< byte >( 5 );
             Object = parser.ReadColumn< uint >( 6 );
-            Map = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 7 ) );
+            Map = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 7 ), language );
             EventId = parser.ReadColumn< uint >( 8 );
-            Territory = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 9 ) );
+            Territory = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 9 ), language );
         }
     }
 }

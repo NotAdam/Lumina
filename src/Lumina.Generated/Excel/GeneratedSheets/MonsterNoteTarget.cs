@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -19,14 +20,14 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ) );
+            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Icon = parser.ReadColumn< int >( 1 );
-            Town = new LazyRow< Town >( lumina, parser.ReadColumn< byte >( 2 ) );
+            Town = new LazyRow< Town >( lumina, parser.ReadColumn< byte >( 2 ), language );
             UnkStruct3 = new UnkStruct3Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {

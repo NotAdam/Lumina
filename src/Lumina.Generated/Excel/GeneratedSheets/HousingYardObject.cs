@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -24,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -34,8 +35,8 @@ namespace Lumina.Excel.GeneratedSheets
             UsageType = parser.ReadColumn< byte >( 2 );
             UsageParameter = parser.ReadColumn< uint >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
-            CustomTalk = new LazyRow< CustomTalk >( lumina, parser.ReadColumn< uint >( 5 ) );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ) );
+            CustomTalk = new LazyRow< CustomTalk >( lumina, parser.ReadColumn< uint >( 5 ), language );
+            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ), language );
             DestroyOnRemoval = parser.ReadColumn< bool >( 7 );
             Unknown8 = parser.ReadColumn< bool >( 8 );
             Unknown9 = parser.ReadColumn< bool >( 9 );

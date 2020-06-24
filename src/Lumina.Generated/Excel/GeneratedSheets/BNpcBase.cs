@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -31,24 +32,24 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Behavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< ushort >( 0 ) );
+            Behavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Battalion = parser.ReadColumn< byte >( 1 );
             LinkRace = parser.ReadColumn< byte >( 2 );
             Rank = parser.ReadColumn< byte >( 3 );
             Scale = parser.ReadColumn< float >( 4 );
-            ModelChara = new LazyRow< ModelChara >( lumina, parser.ReadColumn< ushort >( 5 ) );
-            BNpcCustomize = new LazyRow< BNpcCustomize >( lumina, parser.ReadColumn< ushort >( 6 ) );
-            NpcEquip = new LazyRow< NpcEquip >( lumina, parser.ReadColumn< ushort >( 7 ) );
+            ModelChara = new LazyRow< ModelChara >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            BNpcCustomize = new LazyRow< BNpcCustomize >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            NpcEquip = new LazyRow< NpcEquip >( lumina, parser.ReadColumn< ushort >( 7 ), language );
             Special = parser.ReadColumn< ushort >( 8 );
             SEPack = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
-            ArrayEventHandler = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< int >( 11 ) );
-            BNpcParts = new LazyRow< BNpcParts >( lumina, parser.ReadColumn< byte >( 12 ) );
+            ArrayEventHandler = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< int >( 11 ), language );
+            BNpcParts = new LazyRow< BNpcParts >( lumina, parser.ReadColumn< byte >( 12 ), language );
             Unknown13 = parser.ReadColumn< bool >( 13 );
             IsTargetLine = parser.ReadColumn< bool >( 14 );
             IsDisplayLevel = parser.ReadColumn< bool >( 15 );

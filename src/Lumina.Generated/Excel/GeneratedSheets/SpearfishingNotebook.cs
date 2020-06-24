@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -22,21 +23,21 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             GatheringLevel = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< int >( 2 ) );
+            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< int >( 2 ), language );
             X = parser.ReadColumn< short >( 3 );
             Y = parser.ReadColumn< short >( 4 );
             Radius = parser.ReadColumn< ushort >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 7 ) );
+            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 7 ), language );
             Unknown8 = parser.ReadColumn< byte >( 8 );
-            GatheringPointBase = new LazyRow< GatheringPointBase >( lumina, parser.ReadColumn< ushort >( 9 ) );
+            GatheringPointBase = new LazyRow< GatheringPointBase >( lumina, parser.ReadColumn< ushort >( 9 ), language );
             Unknown10 = parser.ReadColumn< ushort >( 10 );
             Unknown11 = parser.ReadColumn< ushort >( 11 );
         }

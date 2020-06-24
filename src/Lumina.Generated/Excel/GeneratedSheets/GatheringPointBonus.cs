@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -16,15 +17,15 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Condition = new LazyRow< GatheringCondition >( lumina, parser.ReadColumn< byte >( 0 ) );
+            Condition = new LazyRow< GatheringCondition >( lumina, parser.ReadColumn< byte >( 0 ), language );
             ConditionValue = parser.ReadColumn< ushort >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
-            BonusType = new LazyRow< GatheringPointBonusType >( lumina, parser.ReadColumn< byte >( 3 ) );
+            BonusType = new LazyRow< GatheringPointBonusType >( lumina, parser.ReadColumn< byte >( 3 ), language );
             BonusValue = parser.ReadColumn< ushort >( 4 );
             Unknown5 = parser.ReadColumn< ushort >( 5 );
         }

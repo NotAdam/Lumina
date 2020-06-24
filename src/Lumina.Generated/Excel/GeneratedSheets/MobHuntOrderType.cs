@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -15,15 +16,15 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             Type = parser.ReadColumn< byte >( 0 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ) );
-            EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 2 ) );
-            OrderStart = new LazyRow< MobHuntOrder >( lumina, parser.ReadColumn< ushort >( 3 ) );
+            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            OrderStart = new LazyRow< MobHuntOrder >( lumina, parser.ReadColumn< ushort >( 3 ), language );
             OrderAmount = parser.ReadColumn< byte >( 4 );
         }
     }

@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -15,17 +16,17 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             Spot = new LazyRow< IKDSpot >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                Spot[ i ] = new LazyRow< IKDSpot >( lumina, parser.ReadColumn< uint >( 0 + i ) );
+                Spot[ i ] = new LazyRow< IKDSpot >( lumina, parser.ReadColumn< uint >( 0 + i ), language );
             TimeDefine = parser.ReadColumn< byte >( 5 );
             Image = parser.ReadColumn< uint >( 6 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< uint >( 7 ) );
+            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< uint >( 7 ), language );
             Name = parser.ReadColumn< string >( 8 );
         }
     }

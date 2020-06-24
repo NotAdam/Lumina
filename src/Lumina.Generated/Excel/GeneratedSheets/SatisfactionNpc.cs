@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -70,13 +71,13 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Npc = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< int >( 0 ) );
-            QuestRequired = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ) );
+            Npc = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< int >( 0 ), language );
+            QuestRequired = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ), language );
             LevelUnlock = parser.ReadColumn< byte >( 2 );
             DeliveriesPerWeek = parser.ReadColumn< byte >( 3 );
             SupplyIndex = new int[ 6 ];

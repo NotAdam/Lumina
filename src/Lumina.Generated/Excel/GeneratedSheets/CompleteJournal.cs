@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -17,7 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -30,7 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< string >( 5 );
             Cutscene = new LazyRow< Cutscene >[ 24 ];
             for( var i = 0; i < 24; i++ )
-                Cutscene[ i ] = new LazyRow< Cutscene >( lumina, parser.ReadColumn< int >( 6 + i ) );
+                Cutscene[ i ] = new LazyRow< Cutscene >( lumina, parser.ReadColumn< int >( 6 + i ), language );
         }
     }
 }

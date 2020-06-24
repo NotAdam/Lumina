@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -5,12 +6,12 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Item", columnHash: 0x9f2e970b )]
     public class Item : IExcelRow
     {
-        public struct BaseParamStruct
+        public struct UnkStruct59Struct
         {
             public byte BaseParam;
             public short BaseParamValue;
         }
-        public struct BaseParamSpecialStruct
+        public struct UnkStruct73Struct
         {
             public byte BaseParamSpecial;
             public short BaseParamValueSpecial;
@@ -75,10 +76,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Block;
         public ushort DefensePhys;
         public ushort DefenseMag;
-        public BaseParamStruct[] BaseParam;
+        public UnkStruct59Struct[] UnkStruct59;
         public LazyRow< ItemSpecialBonus > ItemSpecialBonus;
         public byte ItemSpecialBonusParam;
-        public BaseParamSpecialStruct[] BaseParamSpecial;
+        public UnkStruct73Struct[] UnkStruct73;
         public byte MaterializeType;
         public byte MateriaSlotCount;
         public bool IsAdvancedMeldingPermitted;
@@ -89,7 +90,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -105,13 +106,13 @@ namespace Lumina.Excel.GeneratedSheets
             Description = parser.ReadColumn< string >( 8 );
             Name = parser.ReadColumn< string >( 9 );
             Icon = parser.ReadColumn< ushort >( 10 );
-            LevelItem = new LazyRow< ItemLevel >( lumina, parser.ReadColumn< ushort >( 11 ) );
+            LevelItem = new LazyRow< ItemLevel >( lumina, parser.ReadColumn< ushort >( 11 ), language );
             Rarity = parser.ReadColumn< byte >( 12 );
             FilterGroup = parser.ReadColumn< byte >( 13 );
             AdditionalData = parser.ReadColumn< uint >( 14 );
-            ItemUICategory = new LazyRow< ItemUICategory >( lumina, parser.ReadColumn< byte >( 15 ) );
-            ItemSearchCategory = new LazyRow< ItemSearchCategory >( lumina, parser.ReadColumn< byte >( 16 ) );
-            EquipSlotCategory = new LazyRow< EquipSlotCategory >( lumina, parser.ReadColumn< byte >( 17 ) );
+            ItemUICategory = new LazyRow< ItemUICategory >( lumina, parser.ReadColumn< byte >( 15 ), language );
+            ItemSearchCategory = new LazyRow< ItemSearchCategory >( lumina, parser.ReadColumn< byte >( 16 ), language );
+            EquipSlotCategory = new LazyRow< EquipSlotCategory >( lumina, parser.ReadColumn< byte >( 17 ), language );
             Unknown18 = parser.ReadColumn< ushort >( 18 );
             StackSize = parser.ReadColumn< uint >( 19 );
             IsUnique = parser.ReadColumn< bool >( 20 );
@@ -123,27 +124,27 @@ namespace Lumina.Excel.GeneratedSheets
             CanBeHq = parser.ReadColumn< bool >( 26 );
             IsDyeable = parser.ReadColumn< bool >( 27 );
             IsCrestWorthy = parser.ReadColumn< bool >( 28 );
-            ItemAction = new LazyRow< ItemAction >( lumina, parser.ReadColumn< ushort >( 29 ) );
+            ItemAction = new LazyRow< ItemAction >( lumina, parser.ReadColumn< ushort >( 29 ), language );
             Unknown30 = parser.ReadColumn< byte >( 30 );
             Cooldowns = parser.ReadColumn< ushort >( 31 );
-            ClassJobRepair = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 32 ) );
-            ItemRepair = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 33 ) );
-            ItemGlamour = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 34 ) );
+            ClassJobRepair = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 32 ), language );
+            ItemRepair = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 33 ), language );
+            ItemGlamour = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 34 ), language );
             Unknown35 = parser.ReadColumn< ushort >( 35 );
-            Salvage = new LazyRow< Salvage >( lumina, parser.ReadColumn< ushort >( 36 ) );
+            Salvage = new LazyRow< Salvage >( lumina, parser.ReadColumn< ushort >( 36 ), language );
             IsCollectable = parser.ReadColumn< bool >( 37 );
             AlwaysCollectable = parser.ReadColumn< bool >( 38 );
             AetherialReduce = parser.ReadColumn< ushort >( 39 );
             LevelEquip = parser.ReadColumn< byte >( 40 );
             Unknown41 = parser.ReadColumn< byte >( 41 );
             EquipRestriction = parser.ReadColumn< byte >( 42 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 43 ) );
-            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< byte >( 44 ) );
-            ItemSeries = new LazyRow< ItemSeries >( lumina, parser.ReadColumn< byte >( 45 ) );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 43 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< byte >( 44 ), language );
+            ItemSeries = new LazyRow< ItemSeries >( lumina, parser.ReadColumn< byte >( 45 ), language );
             BaseParamModifier = parser.ReadColumn< byte >( 46 );
             ModelMain = parser.ReadColumn< ulong >( 47 );
             ModelSub = parser.ReadColumn< ulong >( 48 );
-            ClassJobUse = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 49 ) );
+            ClassJobUse = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 49 ), language );
             Unknown50 = parser.ReadColumn< byte >( 50 );
             DamagePhys = parser.ReadColumn< ushort >( 51 );
             DamageMag = parser.ReadColumn< ushort >( 52 );
@@ -153,21 +154,21 @@ namespace Lumina.Excel.GeneratedSheets
             Block = parser.ReadColumn< ushort >( 56 );
             DefensePhys = parser.ReadColumn< ushort >( 57 );
             DefenseMag = parser.ReadColumn< ushort >( 58 );
-            BaseParam = new BaseParamStruct[ 6 ];
+            UnkStruct59 = new UnkStruct59Struct[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
-                BaseParam[ i ] = new BaseParamStruct();
-                BaseParam[ i ].BaseParam = parser.ReadColumn< byte >( 59 + ( i * 2 + 0 ) );
-                BaseParam[ i ].BaseParamValue = parser.ReadColumn< short >( 59 + ( i * 2 + 1 ) );
+                UnkStruct59[ i ] = new UnkStruct59Struct();
+                UnkStruct59[ i ].BaseParam = parser.ReadColumn< byte >( 59 + ( i * 2 + 0 ) );
+                UnkStruct59[ i ].BaseParamValue = parser.ReadColumn< short >( 59 + ( i * 2 + 1 ) );
             }
-            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( lumina, parser.ReadColumn< byte >( 71 ) );
+            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( lumina, parser.ReadColumn< byte >( 71 ), language );
             ItemSpecialBonusParam = parser.ReadColumn< byte >( 72 );
-            BaseParamSpecial = new BaseParamSpecialStruct[ 6 ];
+            UnkStruct73 = new UnkStruct73Struct[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
-                BaseParamSpecial[ i ] = new BaseParamSpecialStruct();
-                BaseParamSpecial[ i ].BaseParamSpecial = parser.ReadColumn< byte >( 73 + ( i * 2 + 0 ) );
-                BaseParamSpecial[ i ].BaseParamValueSpecial = parser.ReadColumn< short >( 73 + ( i * 2 + 1 ) );
+                UnkStruct73[ i ] = new UnkStruct73Struct();
+                UnkStruct73[ i ].BaseParamSpecial = parser.ReadColumn< byte >( 73 + ( i * 2 + 0 ) );
+                UnkStruct73[ i ].BaseParamValueSpecial = parser.ReadColumn< short >( 73 + ( i * 2 + 1 ) );
             }
             MaterializeType = parser.ReadColumn< byte >( 85 );
             MateriaSlotCount = parser.ReadColumn< byte >( 86 );

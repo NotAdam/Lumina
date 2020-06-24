@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -92,25 +93,25 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             ShortCode = parser.ReadColumn< string >( 0 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ) );
+            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ), language );
             ContentLinkType = parser.ReadColumn< byte >( 2 );
             Content = parser.ReadColumn< ushort >( 3 );
             PvP = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
-            AcceptClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 8 ) );
-            ContentMemberType = new LazyRow< ContentMemberType >( lumina, parser.ReadColumn< byte >( 9 ) );
+            AcceptClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 8 ), language );
+            ContentMemberType = new LazyRow< ContentMemberType >( lumina, parser.ReadColumn< byte >( 9 ), language );
             Unknown10 = parser.ReadColumn< byte >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );
-            UnlockQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 13 ) );
+            UnlockQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 13 ), language );
             Unknown14 = parser.ReadColumn< ushort >( 14 );
             ClassJobLevelRequired = parser.ReadColumn< byte >( 15 );
             ClassJobLevelSync = parser.ReadColumn< byte >( 16 );
@@ -133,7 +134,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown33 = parser.ReadColumn< bool >( 33 );
             Unknown34 = parser.ReadColumn< bool >( 34 );
             Name = parser.ReadColumn< string >( 35 );
-            ContentType = new LazyRow< ContentType >( lumina, parser.ReadColumn< byte >( 36 ) );
+            ContentType = new LazyRow< ContentType >( lumina, parser.ReadColumn< byte >( 36 ), language );
             TransientKey = parser.ReadColumn< byte >( 37 );
             Transient = parser.ReadColumn< uint >( 38 );
             SortKey = parser.ReadColumn< ushort >( 39 );

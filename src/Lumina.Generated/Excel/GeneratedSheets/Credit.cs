@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -21,22 +22,22 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            Roles1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 1 ) );
-            JapaneseCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 2 ) );
-            EnglishCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 3 ) );
-            FrenchCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 4 ) );
-            GermanCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 5 ) );
-            Roles2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 6 ) );
-            JapaneseCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 7 ) );
-            EnglishCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 8 ) );
-            FrenchCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 9 ) );
-            GermanCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 10 ) );
+            Roles1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            JapaneseCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            EnglishCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            FrenchCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            GermanCast1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            Roles2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            JapaneseCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            EnglishCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            FrenchCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 9 ), language );
+            GermanCast2 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 10 ), language );
         }
     }
 }

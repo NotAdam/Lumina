@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -13,14 +14,14 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ScreenImage = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 0 ) );
-            LogMessage = new LazyRow< LogMessage >( lumina, parser.ReadColumn< ushort >( 1 ) );
-            Name = new LazyRow< DeepDungeonFloorEffectUI >( lumina, parser.ReadColumn< ushort >( 2 ) );
+            ScreenImage = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            LogMessage = new LazyRow< LogMessage >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            Name = new LazyRow< DeepDungeonFloorEffectUI >( lumina, parser.ReadColumn< ushort >( 2 ), language );
         }
     }
 }

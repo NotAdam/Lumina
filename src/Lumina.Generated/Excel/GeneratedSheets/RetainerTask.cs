@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -24,16 +25,16 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             IsRandom = parser.ReadColumn< bool >( 0 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 1 ) );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
             RetainerLevel = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
-            RetainerTaskParameter = new LazyRow< RetainerTaskParameter >( lumina, parser.ReadColumn< ushort >( 4 ) );
+            RetainerTaskParameter = new LazyRow< RetainerTaskParameter >( lumina, parser.ReadColumn< ushort >( 4 ), language );
             VentureCost = parser.ReadColumn< ushort >( 5 );
             MaxTimemin = parser.ReadColumn< ushort >( 6 );
             Experience = parser.ReadColumn< int >( 7 );

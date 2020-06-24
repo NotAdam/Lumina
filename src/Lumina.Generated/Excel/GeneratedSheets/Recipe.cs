@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -41,15 +42,15 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
             Number = parser.ReadColumn< int >( 0 );
-            CraftType = new LazyRow< CraftType >( lumina, parser.ReadColumn< int >( 1 ) );
-            RecipeLevelTable = new LazyRow< RecipeLevelTable >( lumina, parser.ReadColumn< ushort >( 2 ) );
-            ItemResult = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 3 ) );
+            CraftType = new LazyRow< CraftType >( lumina, parser.ReadColumn< int >( 1 ), language );
+            RecipeLevelTable = new LazyRow< RecipeLevelTable >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            ItemResult = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 3 ), language );
             AmountResult = parser.ReadColumn< byte >( 4 );
             UnkStruct5 = new UnkStruct5Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
@@ -69,12 +70,12 @@ namespace Lumina.Excel.GeneratedSheets
             RequiredControl = parser.ReadColumn< ushort >( 33 );
             QuickSynthCraftsmanship = parser.ReadColumn< ushort >( 34 );
             QuickSynthControl = parser.ReadColumn< ushort >( 35 );
-            SecretRecipeBook = new LazyRow< SecretRecipeBook >( lumina, parser.ReadColumn< ushort >( 36 ) );
+            SecretRecipeBook = new LazyRow< SecretRecipeBook >( lumina, parser.ReadColumn< ushort >( 36 ), language );
             CanQuickSynth = parser.ReadColumn< bool >( 37 );
             CanHq = parser.ReadColumn< bool >( 38 );
             ExpRewarded = parser.ReadColumn< bool >( 39 );
-            StatusRequired = new LazyRow< Status >( lumina, parser.ReadColumn< int >( 40 ) );
-            ItemRequired = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 41 ) );
+            StatusRequired = new LazyRow< Status >( lumina, parser.ReadColumn< int >( 40 ), language );
+            ItemRequired = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 41 ), language );
             IsSpecializationRequired = parser.ReadColumn< bool >( 42 );
             IsExpert = parser.ReadColumn< bool >( 43 );
             PatchNumber = parser.ReadColumn< ushort >( 44 );

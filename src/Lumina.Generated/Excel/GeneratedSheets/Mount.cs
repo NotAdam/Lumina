@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -55,7 +56,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -68,16 +69,16 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
-            ModelChara = new LazyRow< ModelChara >( lumina, parser.ReadColumn< int >( 8 ) );
+            ModelChara = new LazyRow< ModelChara >( lumina, parser.ReadColumn< int >( 8 ), language );
             Unknown9 = parser.ReadColumn< ushort >( 9 );
-            FlyingCondition = new LazyRow< MountFlyingCondition >( lumina, parser.ReadColumn< byte >( 10 ) );
+            FlyingCondition = new LazyRow< MountFlyingCondition >( lumina, parser.ReadColumn< byte >( 10 ), language );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );
             Unknown13 = parser.ReadColumn< byte >( 13 );
             IsFlying = parser.ReadColumn< byte >( 14 );
             Unknown15 = parser.ReadColumn< byte >( 15 );
-            MountCustomize = new LazyRow< MountCustomize >( lumina, parser.ReadColumn< byte >( 16 ) );
-            RideBGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 17 ) );
+            MountCustomize = new LazyRow< MountCustomize >( lumina, parser.ReadColumn< byte >( 16 ), language );
+            RideBGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 17 ), language );
             Unknown18 = parser.ReadColumn< string >( 18 );
             Unknown19 = parser.ReadColumn< string >( 19 );
             Unknown20 = parser.ReadColumn< string >( 20 );
@@ -97,7 +98,7 @@ namespace Lumina.Excel.GeneratedSheets
             BaseMotionSpeed_Walk = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
             ExtraSeats = parser.ReadColumn< byte >( 36 );
-            MountAction = new LazyRow< MountAction >( lumina, parser.ReadColumn< ushort >( 37 ) );
+            MountAction = new LazyRow< MountAction >( lumina, parser.ReadColumn< ushort >( 37 ), language );
             IsAirborne = parser.ReadColumn< bool >( 38 );
             ExHotbarEnableConfig = parser.ReadColumn< bool >( 39 );
             UseEP = parser.ReadColumn< bool >( 40 );

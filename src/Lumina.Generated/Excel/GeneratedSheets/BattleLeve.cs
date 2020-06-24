@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -127,7 +128,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -143,10 +144,10 @@ namespace Lumina.Excel.GeneratedSheets
                 EnemyLevel[ i ] = parser.ReadColumn< ushort >( 16 + i );
             BNpcName = new LazyRow< BNpcName >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                BNpcName[ i ] = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 24 + i ) );
+                BNpcName[ i ] = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 24 + i ), language );
             ItemsInvolved = new LazyRow< EventItem >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ItemsInvolved[ i ] = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 32 + i ) );
+                ItemsInvolved[ i ] = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 32 + i ), language );
             ItemsInvolvedQty = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ItemsInvolvedQty[ i ] = parser.ReadColumn< byte >( 40 + i );
@@ -262,11 +263,11 @@ namespace Lumina.Excel.GeneratedSheets
             ToDoSequence = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ToDoSequence[ i ] = parser.ReadColumn< byte >( 168 + i );
-            Rule = new LazyRow< BattleLeveRule >( lumina, parser.ReadColumn< int >( 176 ) );
+            Rule = new LazyRow< BattleLeveRule >( lumina, parser.ReadColumn< int >( 176 ), language );
             Varient = parser.ReadColumn< byte >( 177 );
-            Objective0 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 178 ) );
-            Objective1 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 179 ) );
-            Objective2 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 180 ) );
+            Objective0 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 178 ), language );
+            Objective1 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 179 ), language );
+            Objective2 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 180 ), language );
             Help0 = parser.ReadColumn< ushort >( 181 );
             Help1 = parser.ReadColumn< ushort >( 182 );
         }

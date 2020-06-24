@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -65,12 +66,12 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            BNpcBase1 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 0 ) );
+            BNpcBase1 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             PartSlot1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );
@@ -81,7 +82,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z1 = parser.ReadColumn< float >( 8 );
             Unknown9 = parser.ReadColumn< short >( 9 );
             Scale1 = parser.ReadColumn< float >( 10 );
-            BNpcBase2 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 11 ) );
+            BNpcBase2 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 11 ), language );
             PartSlot2 = parser.ReadColumn< byte >( 12 );
             Unknown13 = parser.ReadColumn< bool >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
@@ -92,7 +93,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z2 = parser.ReadColumn< float >( 19 );
             Unknown20 = parser.ReadColumn< short >( 20 );
             Scale2 = parser.ReadColumn< float >( 21 );
-            BNpcBase3 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 22 ) );
+            BNpcBase3 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 22 ), language );
             PartSlot3 = parser.ReadColumn< byte >( 23 );
             Unknown24 = parser.ReadColumn< bool >( 24 );
             Unknown25 = parser.ReadColumn< bool >( 25 );
@@ -103,7 +104,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z3 = parser.ReadColumn< float >( 30 );
             Scale3 = parser.ReadColumn< short >( 31 );
             Unknown32 = parser.ReadColumn< float >( 32 );
-            BNpcBase4 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 33 ) );
+            BNpcBase4 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 33 ), language );
             PartSlot4 = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< bool >( 35 );
             Unknown36 = parser.ReadColumn< bool >( 36 );
@@ -114,7 +115,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z4 = parser.ReadColumn< float >( 41 );
             Unknown42 = parser.ReadColumn< short >( 42 );
             Scale4 = parser.ReadColumn< float >( 43 );
-            BNpcBase5 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 44 ) );
+            BNpcBase5 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 44 ), language );
             PartSlot5 = parser.ReadColumn< byte >( 45 );
             Unknown46 = parser.ReadColumn< bool >( 46 );
             Unknown47 = parser.ReadColumn< bool >( 47 );

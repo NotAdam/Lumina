@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -27,12 +28,12 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ENpcName = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ) );
+            ENpcName = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
             Objective = parser.ReadColumn< string >( 1 );
             Description1 = parser.ReadColumn< string >( 2 );
             Description2 = parser.ReadColumn< string >( 3 );

@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -20,7 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -31,10 +32,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Exp = parser.ReadColumn< uint >( 4 );
             Gil = parser.ReadColumn< uint >( 5 );
-            RewardTank = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ) );
-            RewardMelee = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ) );
-            RewardRanged = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 8 ) );
-            Objective = new LazyRow< InstanceContentTextData >( lumina, parser.ReadColumn< uint >( 9 ) );
+            RewardTank = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ), language );
+            RewardMelee = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ), language );
+            RewardRanged = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 8 ), language );
+            Objective = new LazyRow< InstanceContentTextData >( lumina, parser.ReadColumn< uint >( 9 ), language );
         }
     }
 }

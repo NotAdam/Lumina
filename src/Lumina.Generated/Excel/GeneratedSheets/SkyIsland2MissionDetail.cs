@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -21,16 +22,16 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Type = new LazyRow< SkyIsland2MissionType >( lumina, parser.ReadColumn< byte >( 0 ) );
+            Type = new LazyRow< SkyIsland2MissionType >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            Range = new LazyRow< SkyIsland2RangeType >( lumina, parser.ReadColumn< byte >( 2 ) );
+            Range = new LazyRow< SkyIsland2RangeType >( lumina, parser.ReadColumn< byte >( 2 ), language );
             Unknown3 = parser.ReadColumn< sbyte >( 3 );
-            EObj = new LazyRow< EObjName >( lumina, parser.ReadColumn< uint >( 4 ) );
+            EObj = new LazyRow< EObjName >( lumina, parser.ReadColumn< uint >( 4 ), language );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Objective = parser.ReadColumn< string >( 7 );

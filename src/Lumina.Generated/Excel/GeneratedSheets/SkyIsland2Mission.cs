@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -36,26 +37,26 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Item1 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 0 ) );
-            Item2 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 1 ) );
+            Item1 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Item2 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 1 ), language );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
-            Objective1 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 4 ) );
+            Objective1 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 4 ), language );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             RequiredAmount1 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
-            Objective2 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 9 ) );
+            Objective2 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 9 ), language );
             Unknown10 = parser.ReadColumn< uint >( 10 );
             RequiredAmount2 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< uint >( 12 );
             Unknown13 = parser.ReadColumn< byte >( 13 );
-            Objective3 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 14 ) );
+            Objective3 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 14 ), language );
             Unknown15 = parser.ReadColumn< uint >( 15 );
             Unknown16 = parser.ReadColumn< byte >( 16 );
             Unknown17 = parser.ReadColumn< uint >( 17 );

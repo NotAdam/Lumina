@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -48,7 +49,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -61,13 +62,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
-            Model = new LazyRow< ModelChara >( lumina, parser.ReadColumn< ushort >( 8 ) );
+            Model = new LazyRow< ModelChara >( lumina, parser.ReadColumn< ushort >( 8 ), language );
             Scale = parser.ReadColumn< byte >( 9 );
             InactiveIdle0 = parser.ReadColumn< byte >( 10 );
             InactiveIdle1 = parser.ReadColumn< byte >( 11 );
             InactiveBattle = parser.ReadColumn< byte >( 12 );
             InactiveWandering = parser.ReadColumn< byte >( 13 );
-            Behavior = new LazyRow< CompanionMove >( lumina, parser.ReadColumn< byte >( 14 ) );
+            Behavior = new LazyRow< CompanionMove >( lumina, parser.ReadColumn< byte >( 14 ), language );
             Special = parser.ReadColumn< byte >( 15 );
             WanderingWait = parser.ReadColumn< byte >( 16 );
             Priority = parser.ReadColumn< ushort >( 17 );
@@ -90,7 +91,7 @@ namespace Lumina.Excel.GeneratedSheets
             SkillCost = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
             Unknown36 = parser.ReadColumn< ushort >( 36 );
-            MinionRace = new LazyRow< MinionRace >( lumina, parser.ReadColumn< byte >( 37 ) );
+            MinionRace = new LazyRow< MinionRace >( lumina, parser.ReadColumn< byte >( 37 ), language );
         }
     }
 }

@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
@@ -25,7 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
@@ -35,17 +36,17 @@ namespace Lumina.Excel.GeneratedSheets
             BigFishOnEnd = parser.ReadColumn< string >( 2 );
             FishingSpotCategory = parser.ReadColumn< byte >( 3 );
             Rare = parser.ReadColumn< bool >( 4 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 5 ) );
-            PlaceNameMain = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 6 ) );
-            PlaceNameSub = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 7 ) );
+            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            PlaceNameMain = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            PlaceNameSub = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 7 ), language );
             X = parser.ReadColumn< short >( 8 );
             Z = parser.ReadColumn< short >( 9 );
             Radius = parser.ReadColumn< ushort >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Item = new LazyRow< Item >[ 10 ];
             for( var i = 0; i < 10; i++ )
-                Item[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 12 + i ) );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 22 ) );
+                Item[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 12 + i ), language );
+            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 22 ), language );
             Order = parser.ReadColumn< byte >( 23 );
         }
     }
