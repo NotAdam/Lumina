@@ -76,7 +76,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >() where T : IExcelRow
+        public ExcelSheet< T > GetSheet< T >() where T : class, IExcelRow
         {
             return GetSheet< T >( _lumina.Options.DefaultExcelLanguage );
         }
@@ -90,7 +90,7 @@ namespace Lumina.Excel
         /// <param name="language">The requested sheet language</param>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( Language language ) where T : IExcelRow
+        public ExcelSheet< T > GetSheet< T >( Language language ) where T : class, IExcelRow
         {
             var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
 
@@ -99,6 +99,7 @@ namespace Lumina.Excel
                 return null;
             }
 
+            // todo: shit place for a lock, probably should move this into private getsheet
             lock( _sheetCreateLock )
             {
                 return GetSheet< T >( attr.Name, language, attr.ColumnHash );
@@ -113,15 +114,16 @@ namespace Lumina.Excel
         /// <param name="name">The name of a sheet</param>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( string name ) where T : IExcelRow
+        public ExcelSheet< T > GetSheet< T >( string name ) where T : class, IExcelRow
         {
+            // todo: shit place for a lock, probably should move this into private getsheet
             lock( _sheetCreateLock )
             {
                 return GetSheet< T >( name, _lumina.Options.DefaultExcelLanguage, null );
             }
         }
 
-        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : IExcelRow
+        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
         {
             name = name.ToLowerInvariant();
 
@@ -198,7 +200,7 @@ namespace Lumina.Excel
             var path = BuildExcelHeaderPath( name );
             var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
 
-            var newSheet = (ExcelSheetImpl)Activator.CreateInstance( typeof( ExcelSheetImpl ), headerFile, name, language, _lumina );
+            var newSheet = new ExcelSheetImpl( headerFile, name, language, _lumina );
             newSheet.GenerateFilePages();
 
             return newSheet;

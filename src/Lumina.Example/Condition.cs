@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Excel;
 
 namespace Lumina.Example
@@ -14,7 +15,7 @@ namespace Lumina.Example
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
         
-        public void PopulateData( RowParser parser, Lumina lumina )
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;

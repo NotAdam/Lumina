@@ -8,7 +8,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel
 {
-    public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : IExcelRow
+    public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : class, IExcelRow
     {
         private readonly Dictionary< UInt64, T > _rowCache = new Dictionary< UInt64, T >();
 
@@ -31,10 +31,10 @@ namespace Lumina.Excel
         {
             var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
 
-            if( data == null )
-            {
-                throw new KeyNotFoundException( $"row {row} not found in sheet {Name}!" );
-            }
+            // if( data == null )
+            // {
+            //     throw new KeyNotFoundException( $"row {row} not found in sheet {Name}!" );
+            // }
 
             return data;
         }
@@ -50,6 +50,11 @@ namespace Lumina.Excel
             
             var data = GetPageForRow( row );
 
+            if( data == null )
+            {
+                return null;
+            }
+
             var rowObj = Activator.CreateInstance< T >();
 
             RowParser parser;
@@ -63,9 +68,9 @@ namespace Lumina.Excel
                 parser = new RowParser( this, data.File, row );
             }
 
-            rowObj.PopulateData( parser, _Lumina );
+            rowObj.PopulateData( parser, _Lumina, RequestedLanguage );
             
-            // RowCache[ id ] = rowObj;
+            _rowCache[ cacheKey ] = rowObj;
 
             return rowObj;
         }
@@ -81,7 +86,7 @@ namespace Lumina.Excel
             
             var obj = Activator.CreateInstance< T >();
                         
-            obj.PopulateData( parser, _Lumina );
+            obj.PopulateData( parser, _Lumina, RequestedLanguage );
 
             return obj;
         }
@@ -91,7 +96,7 @@ namespace Lumina.Excel
             parser.SeekToRow( rowId, subRowId );
             var obj = Activator.CreateInstance< T >();
 
-            obj.PopulateData( parser, _Lumina );
+            obj.PopulateData( parser, _Lumina, RequestedLanguage );
 
             return obj;
         }

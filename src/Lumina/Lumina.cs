@@ -210,7 +210,7 @@ namespace Lumina
         /// </summary>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >() where T : IExcelRow
+        public ExcelSheet< T > GetExcelSheet< T >() where T : class, IExcelRow
         {
             return Excel.GetSheet< T >();
         }
@@ -224,7 +224,7 @@ namespace Lumina
         /// <param name="language">The requested sheet language</param>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : IExcelRow
+        public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : class, IExcelRow
         {
             return Excel.GetSheet< T >( language );
         }

@@ -26,7 +26,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
             }
             
             var type = Program.ExcelTypeToManaged( _cols[ ColumnId ].Type );
-            sb.AppendLine( $"{FieldName} = new LazyRow< {TypeName} >( lumina, parser.ReadColumn< {type} >( {ColumnId} ) );" );
+            sb.AppendLine( $"{FieldName} = new LazyRow< {TypeName} >( lumina, parser.ReadColumn< {type} >( {ColumnId} ), language );" );
         }
     }
 }
