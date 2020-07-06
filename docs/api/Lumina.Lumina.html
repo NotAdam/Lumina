@@ -427,7 +427,8 @@ directory is a repository.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ExcelSheet&lt;T&gt; GetExcelSheet&lt;T&gt;()
-    where T : IExcelRow</code></pre>
+
+    where T : class, IExcelRow</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -476,7 +477,8 @@ directory is a repository.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ExcelSheet&lt;T&gt; GetExcelSheet&lt;T&gt;(Language language)
-    where T : IExcelRow</code></pre>
+
+    where T : class, IExcelRow</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -596,6 +598,7 @@ directory is a repository.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T GetFile&lt;T&gt;(string path)
+
     where T : FileResource</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -664,6 +667,7 @@ to be loaded, on a different thread.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public FileHandle&lt;T&gt; GetFileHandle&lt;T&gt;(string path)
+
     where T : FileResource</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>

@@ -16,7 +16,7 @@ public class Condition : IExcelRow
     public uint RowId { get; set; }
     public uint SubRowId { get; set; }
     
-    public void PopulateData( RowParser parser, Lumina lumina )
+    public void PopulateData( RowParser parser, Lumina lumina, Language language )
     {
         RowId = parser.Row;
         SubRowId = parser.SubRow;
@@ -24,7 +24,7 @@ public class Condition : IExcelRow
         Index = parser.ReadColumn< int >( 0 );
         
         LogMessageId = parser.ReadColumn< uint >( 2 );
-        LogMessage = new LazyRow< LogMessage >( lumina, LogMessageId );
+        LogMessage = new LazyRow< LogMessage >( lumina, LogMessageId, language );
     }
 }
 ```
@@ -38,7 +38,7 @@ public class LogMessage : IExcelRow
     public uint RowId { get; set; }
     public uint SubRowId { get; set; }
 
-    public void PopulateData( RowParser parser, Lumina lumina )
+    public void PopulateData( RowParser parser, Lumina lumina, Language language )
     {
         RowId = parser.Row;
         SubRowId = parser.SubRow;
@@ -52,6 +52,7 @@ Few things to note:
 * A sheet attribute is required as it lets you create specialised sheets with different class names but still read from the same sheet implicitly, saving you from providing the sheet name in the `GetSheet` function every time
 * To make things simpler, everything must have a `SubRowId` even if the sheet you're reading from doesn't have them. Simply put, this makes the interface simpler without all kinds of complexity when it comes to reading sheets and implementing them
 * `LazyRow< T >` allows for lazy loading of direct references to other sheets, provided that they're implemented somewhere as an `IExcelRow`, more on that below
+* `PopulateData` is passed the currently requested language. This is useful as it allows you to know what language a row is (if you choose to store it) but is also required to pass through the current sheet language to the lazy row reader. It's worth noting that if you don't pass the language to the LazyRow, it will use the default language on the Lumina instance instead.
 
 ## LazyRow
 

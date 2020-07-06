@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Advanced Excel </title>
+    <title>Supported File Types </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Advanced Excel ">
+    <meta name="title" content="Supported File Types ">
     <meta name="generator" content="docfx 2.54.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -67,60 +67,18 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="advanced-excel">Advanced Excel</h1>
+<h1 id="supported-file-types">Supported File Types</h1>
 
-<h2 id="creating-your-own-sheet-readers">Creating your own sheet readers</h2>
-<p>Similarly to the FileResource system, the Excel implementation works similarly with an extensible interface allowing custom sheet implementations. Custom implementations can be useful when you only want a subset of data out of a specific sheet or are implementing something missing (contributions welcome!).</p>
-<p>In a nutshell, a custom sheet must be decorated with the <code>Sheet</code> attribute and implement <code>IExcelRow</code> which requires you to add a couple properties and a method.</p>
-<pre><code class="lang-cs">[Sheet( &quot;Condition&quot; )]
-public class Condition : IExcelRow
-{
-    public int Index;
-    public uint LogMessageId;
-    public LazyRow&lt; LogMessage &gt; LogMessage;
-
-    public uint RowId { get; set; }
-    public uint SubRowId { get; set; }
-    
-    public void PopulateData( RowParser parser, Lumina lumina, Language language )
-    {
-        RowId = parser.Row;
-        SubRowId = parser.SubRow;
-
-        Index = parser.ReadColumn&lt; int &gt;( 0 );
-        
-        LogMessageId = parser.ReadColumn&lt; uint &gt;( 2 );
-        LogMessage = new LazyRow&lt; LogMessage &gt;( lumina, LogMessageId, language );
-    }
-}
-</code></pre>
-<pre><code class="lang-cs">[Sheet( &quot;LogMessage&quot; )]
-public class LogMessage : IExcelRow
-{
-    public string Text;
-
-    public uint RowId { get; set; }
-    public uint SubRowId { get; set; }
-
-    public void PopulateData( RowParser parser, Lumina lumina, Language language )
-    {
-        RowId = parser.Row;
-        SubRowId = parser.SubRow;
-
-        Text = parser.ReadColumn&lt; string &gt;( 4 );
-    }
-}
-</code></pre>
-<p>Few things to note:</p>
+<p>This page will provide a brief overview of the types of files that Lumina can read. For more information about specific implementation details, consult the source code or the <a href="https://xiv.dev/game-data/file-formats">dev wiki file formats page</a>.</p>
+<h2 id="excel-files">Excel Files</h2>
+<p><code>*.exd</code>, <code>*.exh</code> and <code>root.exl</code> is readable. This is mostly abstracted away by the <code>ExcelModule</code> but you can load files manually if you wish with <code>ExcelDataFile</code>, <code>ExcelHeaderFile</code> and <code>ExcelListFile</code> respectively.</p>
+<h2 id="layer">Layer</h2>
 <ul>
-<li>A sheet attribute is required as it lets you create specialised sheets with different class names but still read from the same sheet implicitly, saving you from providing the sheet name in the <code>GetSheet</code> function every time</li>
-<li>To make things simpler, everything must have a <code>SubRowId</code> even if the sheet you're reading from doesn't have them. Simply put, this makes the interface simpler without all kinds of complexity when it comes to reading sheets and implementing them</li>
-<li><code>LazyRow&lt; T &gt;</code> allows for lazy loading of direct references to other sheets, provided that they're implemented somewhere as an <code>IExcelRow</code>, more on that below</li>
-<li><code>PopulateData</code> is passed the currently requested language. This is useful as it allows you to know what language a row is (if you choose to store it) but is also required to pass through the current sheet language to the lazy row reader. It's worth noting that if you don't pass the language to the LazyRow, it will use the default language on the Lumina instance instead.</li>
+<li><code>*.lgb</code> files can be read by using <code>lumina.GetFile&lt; LgbFile &gt;( &lt;path&gt; )</code>.</li>
+<li><code>*.sgb</code> files can't be read (yet).</li>
 </ul>
-<h2 id="lazyrow">LazyRow</h2>
-<p><code>LazyRow</code> is a lazy sheet loader. There's not much to know about this other than it makes life easy as you can implement foreign key references without any real backing code. The <code>SpaghettiGenerator</code> will spit these out in place of any links from the SaintCoinach schema, but its simple enough to use elsewhere too.</p>
-<p>You don't need to store the row ID in the sheet class itself if you don't want to, and the generator doesn't. You can always access the backing row ID by fetching it from the <code>Row</code> property on the <code>LazyRow</code> instance.</p>
+<h2 id="textures">Textures</h2>
+<p>Primitive and basic support (e.g. no lod levels) but can be read with <code>lumina.GetFile&lt; TexFile &gt;( &lt;path&gt; )</code>.</p>
 </article>
           </div>
           
@@ -129,7 +87,7 @@ public class LogMessage : IExcelRow
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/NotAdam/Lumina/blob/master/docfx/docs/guides/excel.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/NotAdam/Lumina/blob/master/docfx/docs/guides/supported-filetypes.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

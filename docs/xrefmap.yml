@@ -8708,12 +8708,12 @@ references:
   commentId: T:Lumina.Excel.IExcelRow
   fullName: Lumina.Excel.IExcelRow
   nameWithType: IExcelRow
-- uid: Lumina.Excel.IExcelRow.PopulateData(Lumina.Excel.RowParser,Lumina.Lumina)
-  name: PopulateData(RowParser, Lumina)
-  href: api/Lumina.Excel.IExcelRow.html#Lumina_Excel_IExcelRow_PopulateData_Lumina_Excel_RowParser_Lumina_Lumina_
-  commentId: M:Lumina.Excel.IExcelRow.PopulateData(Lumina.Excel.RowParser,Lumina.Lumina)
-  fullName: Lumina.Excel.IExcelRow.PopulateData(Lumina.Excel.RowParser, Lumina.Lumina)
-  nameWithType: IExcelRow.PopulateData(RowParser, Lumina)
+- uid: Lumina.Excel.IExcelRow.PopulateData(Lumina.Excel.RowParser,Lumina.Lumina,Lumina.Data.Language)
+  name: PopulateData(RowParser, Lumina, Language)
+  href: api/Lumina.Excel.IExcelRow.html#Lumina_Excel_IExcelRow_PopulateData_Lumina_Excel_RowParser_Lumina_Lumina_Lumina_Data_Language_
+  commentId: M:Lumina.Excel.IExcelRow.PopulateData(Lumina.Excel.RowParser,Lumina.Lumina,Lumina.Data.Language)
+  fullName: Lumina.Excel.IExcelRow.PopulateData(Lumina.Excel.RowParser, Lumina.Lumina, Lumina.Data.Language)
+  nameWithType: IExcelRow.PopulateData(RowParser, Lumina, Language)
 - uid: Lumina.Excel.IExcelRow.PopulateData*
   name: PopulateData
   href: api/Lumina.Excel.IExcelRow.html#Lumina_Excel_IExcelRow_PopulateData_
@@ -8756,22 +8756,22 @@ references:
   fullName.vb: Lumina.Excel.LazyRow(Of T)
   nameWithType: LazyRow<T>
   nameWithType.vb: LazyRow(Of T)
-- uid: Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.Int32)
-  name: LazyRow(Lumina, Int32)
-  href: api/Lumina.Excel.LazyRow-1.html#Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_Int32_
-  commentId: M:Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.Int32)
-  fullName: Lumina.Excel.LazyRow<T>.LazyRow(Lumina.Lumina, System.Int32)
-  fullName.vb: Lumina.Excel.LazyRow(Of T).LazyRow(Lumina.Lumina, System.Int32)
-  nameWithType: LazyRow<T>.LazyRow(Lumina, Int32)
-  nameWithType.vb: LazyRow(Of T).LazyRow(Lumina, Int32)
-- uid: Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.UInt32)
-  name: LazyRow(Lumina, UInt32)
-  href: api/Lumina.Excel.LazyRow-1.html#Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_UInt32_
-  commentId: M:Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.UInt32)
-  fullName: Lumina.Excel.LazyRow<T>.LazyRow(Lumina.Lumina, System.UInt32)
-  fullName.vb: Lumina.Excel.LazyRow(Of T).LazyRow(Lumina.Lumina, System.UInt32)
-  nameWithType: LazyRow<T>.LazyRow(Lumina, UInt32)
-  nameWithType.vb: LazyRow(Of T).LazyRow(Lumina, UInt32)
+- uid: Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.Int32,Lumina.Data.Language)
+  name: LazyRow(Lumina, Int32, Language)
+  href: api/Lumina.Excel.LazyRow-1.html#Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_Int32_Lumina_Data_Language_
+  commentId: M:Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.Int32,Lumina.Data.Language)
+  fullName: Lumina.Excel.LazyRow<T>.LazyRow(Lumina.Lumina, System.Int32, Lumina.Data.Language)
+  fullName.vb: Lumina.Excel.LazyRow(Of T).LazyRow(Lumina.Lumina, System.Int32, Lumina.Data.Language)
+  nameWithType: LazyRow<T>.LazyRow(Lumina, Int32, Language)
+  nameWithType.vb: LazyRow(Of T).LazyRow(Lumina, Int32, Language)
+- uid: Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.UInt32,Lumina.Data.Language)
+  name: LazyRow(Lumina, UInt32, Language)
+  href: api/Lumina.Excel.LazyRow-1.html#Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_UInt32_Lumina_Data_Language_
+  commentId: M:Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.UInt32,Lumina.Data.Language)
+  fullName: Lumina.Excel.LazyRow<T>.LazyRow(Lumina.Lumina, System.UInt32, Lumina.Data.Language)
+  fullName.vb: Lumina.Excel.LazyRow(Of T).LazyRow(Lumina.Lumina, System.UInt32, Lumina.Data.Language)
+  nameWithType: LazyRow<T>.LazyRow(Lumina, UInt32, Language)
+  nameWithType.vb: LazyRow(Of T).LazyRow(Lumina, UInt32, Language)
 - uid: Lumina.Excel.LazyRow`1.#ctor*
   name: LazyRow
   href: api/Lumina.Excel.LazyRow-1.html#Lumina_Excel_LazyRow_1__ctor_

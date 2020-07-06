@@ -4,5 +4,7 @@
   href: excel.md
 - name: File Handles & Background Loading
   href: file-handles.md
+- name: Supported File Types
+  href: supported-filetypes.md
 - name: Custom File Readers
   href: custom-file-readers.md

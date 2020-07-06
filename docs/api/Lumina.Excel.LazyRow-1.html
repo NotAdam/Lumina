@@ -110,7 +110,8 @@
   <h5 id="Lumina_Excel_LazyRow_1_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class LazyRow&lt;T&gt;
-    where T : IExcelRow</code></pre>
+
+    where T : class, IExcelRow</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -132,19 +133,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601.%23ctor(Lumina.Lumina%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_Int32_Lumina_Data_Language_.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601.%23ctor(Lumina.Lumina%2CSystem.Int32%2CLumina.Data.Language)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L37">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L41">View Source</a>
   </span>
   <a id="Lumina_Excel_LazyRow_1__ctor_" data-uid="Lumina.Excel.LazyRow`1.#ctor*"></a>
-  <h4 id="Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_Int32_" data-uid="Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.Int32)">LazyRow(Lumina, Int32)</h4>
+  <h4 id="Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_Int32_Lumina_Data_Language_" data-uid="Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.Int32,Lumina.Data.Language)">LazyRow(Lumina, Int32, Language)</h4>
   <div class="markdown level1 summary"><p>Construct a new LazyRow instance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LazyRow(Lumina lumina, int row)</code></pre>
+    <pre><code class="lang-csharp hljs">public LazyRow(Lumina lumina, int row, Language language = Language.None)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -168,23 +169,28 @@
         <td><p>The row id to load if/when the value is fetched</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Lumina.Data.Language.html">Language</a></td>
+        <td><span class="parametername">language</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_UInt32_.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601.%23ctor(Lumina.Lumina%2CSystem.UInt32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_UInt32_Lumina_Data_Language_.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601.%23ctor(Lumina.Lumina%2CSystem.UInt32%2CLumina.Data.Language)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L26">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L29">View Source</a>
   </span>
   <a id="Lumina_Excel_LazyRow_1__ctor_" data-uid="Lumina.Excel.LazyRow`1.#ctor*"></a>
-  <h4 id="Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_UInt32_" data-uid="Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.UInt32)">LazyRow(Lumina, UInt32)</h4>
+  <h4 id="Lumina_Excel_LazyRow_1__ctor_Lumina_Lumina_System_UInt32_Lumina_Data_Language_" data-uid="Lumina.Excel.LazyRow`1.#ctor(Lumina.Lumina,System.UInt32,Lumina.Data.Language)">LazyRow(Lumina, UInt32, Language)</h4>
   <div class="markdown level1 summary"><p>Construct a new LazyRow instance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LazyRow(Lumina lumina, uint row)</code></pre>
+    <pre><code class="lang-csharp hljs">public LazyRow(Lumina lumina, uint row, Language language = Language.None)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -208,6 +214,12 @@
         <td><p>The row id to load if/when the value is fetched</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="Lumina.Data.Language.html">Language</a></td>
+        <td><span class="parametername">language</span></td>
+        <td><p>The requested language to use when resolving row references</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
@@ -217,7 +229,7 @@
     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1_HasValue.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601.HasValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L65">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L69">View Source</a>
   </span>
   <a id="Lumina_Excel_LazyRow_1_HasValue_" data-uid="Lumina.Excel.LazyRow`1.HasValue*"></a>
   <h4 id="Lumina_Excel_LazyRow_1_HasValue" data-uid="Lumina.Excel.LazyRow`1.HasValue">HasValue</h4>
@@ -251,7 +263,7 @@
     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1_Row.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601.Row%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L19">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L21">View Source</a>
   </span>
   <a id="Lumina_Excel_LazyRow_1_Row_" data-uid="Lumina.Excel.LazyRow`1.Row*"></a>
   <h4 id="Lumina_Excel_LazyRow_1_Row" data-uid="Lumina.Excel.LazyRow`1.Row">Row</h4>
@@ -282,7 +294,7 @@
     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1_Value.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601.Value%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L44">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L48">View Source</a>
   </span>
   <a id="Lumina_Excel_LazyRow_1_Value_" data-uid="Lumina.Excel.LazyRow`1.Value*"></a>
   <h4 id="Lumina_Excel_LazyRow_1_Value" data-uid="Lumina.Excel.LazyRow`1.Value">Value</h4>
@@ -319,7 +331,7 @@
                     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Excel_LazyRow_1.md&amp;value=---%0Auid%3A%20Lumina.Excel.LazyRow%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Excel/LazyRow.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
