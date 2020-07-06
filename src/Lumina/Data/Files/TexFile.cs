@@ -102,9 +102,11 @@ namespace Lumina.Data.Files
 
         public override void LoadFile()
         {
-            BinaryReader br = new BinaryReader(new MemoryStream(Data));
-            Header = br.ReadStructure< TexHeader >();
+            Reader.BaseStream.Position = 0;
+            Header = Reader.ReadStructure< TexHeader >();
 
+            // todo: this isn't correct and reads out the whole data portion as 1 image instead of accounting for lod levels
+            // probably a breaking change to fix this
             ImageData = Convert( DataSpan.Slice( HeaderLength ), Header.Width, Header.Height );
         }
 
