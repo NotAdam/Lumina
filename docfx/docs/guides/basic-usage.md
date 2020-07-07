@@ -6,6 +6,11 @@ Lumina is a nuget package. It can be installed like any other. You can install t
 dotnet add package Lumina
 ```
 
+To use Excel structures, you also need to add their respective nuget package:
+```
+dotnet add package Lumina.Generated
+```
+
 ## Setting up Lumina
 Lumina has some advanced options that can provide preferred behaviour in different circumstances, but generally speaking the only thing you are required to have is (part of) a game install. While not recommended for regular users, Lumina can and will operate fine on a partial game install depending on your use case.
 
