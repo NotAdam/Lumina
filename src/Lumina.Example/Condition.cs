@@ -23,7 +23,7 @@ namespace Lumina.Example
             Index = parser.ReadColumn< int >( 0 );
             
             LogMessageId = parser.ReadColumn< uint >( 2 );
-            LogMessage = new LazyRow< LogMessage >( lumina, LogMessageId );
+            LogMessage = new LazyRow< LogMessage >( lumina, LogMessageId, language );
         }
     }
 }
