@@ -1,16 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina", "Lumina\Lumina.csproj", "{4B3957D0-3904-4492-8CFA-86791E1DDD6D}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina", "Lumina\Lumina.csproj", "{4B3957D0-3904-4492-8CFA-86791E1DDD6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Example", "Lumina.Example\Lumina.Example.csproj", "{6148BD34-08B8-4503-B074-28BA2141A54C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Example", "Lumina.Example\Lumina.Example.csproj", "{6148BD34-08B8-4503-B074-28BA2141A54C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Tests", "Lumina.Tests\Lumina.Tests.csproj", "{210B2A38-44B0-4BC7-919E-D61BD31B4921}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Tests", "Lumina.Tests\Lumina.Tests.csproj", "{210B2A38-44B0-4BC7-919E-D61BD31B4921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.SpaghettiGenerator", "Lumina.SpaghettiGenerator\Lumina.SpaghettiGenerator.csproj", "{206E65C3-5CDF-4FB1-B66A-A0A8BDCDFBC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.SpaghettiGenerator", "Lumina.SpaghettiGenerator\Lumina.SpaghettiGenerator.csproj", "{206E65C3-5CDF-4FB1-B66A-A0A8BDCDFBC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Cmd", "Lumina.Cmd\Lumina.Cmd.csproj", "{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Cmd", "Lumina.Cmd\Lumina.Cmd.csproj", "{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Generated", "Lumina.Generated\Lumina.Generated.csproj", "{74F94760-A77E-496D-9D6F-98BD20EABE26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Generated", "Lumina.Generated\Lumina.Generated.csproj", "{74F94760-A77E-496D-9D6F-98BD20EABE26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbra.UI", "Umbra.UI\Umbra.UI.csproj", "{7A14349B-76C3-4424-BBB3-CC8173FF7025}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +47,15 @@ Global
 		{74F94760-A77E-496D-9D6F-98BD20EABE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74F94760-A77E-496D-9D6F-98BD20EABE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74F94760-A77E-496D-9D6F-98BD20EABE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A14349B-76C3-4424-BBB3-CC8173FF7025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A14349B-76C3-4424-BBB3-CC8173FF7025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A14349B-76C3-4424-BBB3-CC8173FF7025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A14349B-76C3-4424-BBB3-CC8173FF7025}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8FD3CADC-B9E1-4895-BC09-22F64EF67C79}
 	EndGlobalSection
 EndGlobal

@@ -251,5 +251,22 @@ namespace Lumina.Excel
                 }
             }
         }
+        
+        /// <summary>
+        /// Gets the corresponding data page for a given row
+        /// </summary>
+        /// <param name="row">The row id to fetch the parent page for</param>
+        /// <returns>The <see cref="ExcelPage"/> if found, null otherwise</returns>
+        public ExcelPage GetPageForRow( uint row )
+        {
+            var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
+
+            // if( data == null )
+            // {
+            //     throw new KeyNotFoundException( $"row {row} not found in sheet {Name}!" );
+            // }
+
+            return data;
+        }
     }
 }

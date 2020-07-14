@@ -27,18 +27,6 @@ namespace Lumina.Excel
             return GetRowInternal( row, subRow );
         }
 
-        internal ExcelPage GetPageForRow( uint row )
-        {
-            var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
-
-            // if( data == null )
-            // {
-            //     throw new KeyNotFoundException( $"row {row} not found in sheet {Name}!" );
-            // }
-
-            return data;
-        }
-        
         internal T GetRowInternal( uint row, uint subRow )
         {
             var cacheKey = GetCacheKey( row, subRow );

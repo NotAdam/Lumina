@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Umbra.UI.ViewModels;assembly=Umbra.UI"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="400"
+        Width="700" Height="400"
+        WindowStartupLocation="CenterScreen"
+        x:Class="Umbra.UI.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="{Binding WindowTitle}">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Umbra">
+                <MenuItem Header="_Quit" Command="{Binding QuitCommand}"/>
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="_ZiPatch"/>
+                <MenuItem Header="Compare Clients"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel DockPanel.Dock="Bottom" Classes="container">
+            <TextBlock Classes="h1">wow very cool</TextBlock>
+            <TextBlock Text="{Binding DataPath}"></TextBlock>
+            <TextBlock Text="{Binding GameVer}"/>
+            <ListBox>
+                <ListBoxItem>File Browser</ListBoxItem>
+                <ListBoxItem>Excel</ListBoxItem>
+                <ListBoxItem>Test</ListBoxItem>
+                <ListBoxItem>Test2</ListBoxItem>
+            </ListBox>
+        </StackPanel>
+    </DockPanel>
+
+</Window>

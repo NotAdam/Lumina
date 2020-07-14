@@ -158,14 +158,7 @@ namespace Lumina.Excel
             return br.ReadStructuresAsArray< T >( count );
         }
 
-        /// <summary>
-        /// Read a field from the current stream position
-        /// </summary>
-        /// <param name="type">The sheet type to read</param>
-        /// <typeparam name="T">The CLR type to store the read data in</typeparam>
-        /// <returns>The read data stored in the provided type</returns>
-        /// <exception cref="ArgumentOutOfRangeException">An invalid column type was provided</exception>
-        private T ReadField< T >( ExcelColumnDataType type )
+        private object ReadFieldInternal( ExcelColumnDataType type )
         {
             var br = _dataFile.Reader;
 
@@ -256,6 +249,20 @@ namespace Lumina.Excel
                     throw new ArgumentOutOfRangeException( "type", $"invalid excel column type: {type}" );
             }
 
+            return data;
+        }
+
+        /// <summary>
+        /// Read a field from the current stream position
+        /// </summary>
+        /// <param name="type">The sheet type to read</param>
+        /// <typeparam name="T">The CLR type to store the read data in</typeparam>
+        /// <returns>The read data stored in the provided type</returns>
+        /// <exception cref="ArgumentOutOfRangeException">An invalid column type was provided</exception>
+        private T ReadField< T >( ExcelColumnDataType type )
+        {
+            var data = ReadFieldInternal( type );
+
             if( _sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
             {
                 return (T)data;
@@ -336,6 +343,15 @@ namespace Lumina.Excel
             Stream.Position = _rowOffset + col.Offset;
 
             return ReadField< T >( col.Type );
+        }
+
+        public object ReadColumnRaw( int column )
+        {
+            var col = _sheet.Columns[ column ];
+            
+            Stream.Position = _rowOffset + col.Offset;
+
+            return ReadFieldInternal( col.Type );
         }
     }
 }
