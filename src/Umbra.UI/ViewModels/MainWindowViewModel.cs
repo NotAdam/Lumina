@@ -21,7 +21,7 @@ namespace Umbra.UI.ViewModels
 #if DEBUG
         public string WindowTitle => "Umbra - Debug";
 #else
-        public string WindowTitle => "Umbra;
+        public string WindowTitle => "Umbra";
 #endif
 
         private readonly Lumina.Lumina _lumina;
