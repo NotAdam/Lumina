@@ -174,20 +174,23 @@ namespace Lumina.Data
                     {
                         continue;
                     }
-
-                    var indexes = new List< SqPackIndex >();
-
-                    foreach( var fileInfo in indexFiles )
+                    
+                    // grab first index from the discovered indexes, this should be index if you have both
+                    // otherwise it _should_ be index2
+                    var file = indexFiles.FirstOrDefault();
+                    if( file == null )
                     {
-                        indexes.Add( new SqPackIndex( fileInfo, _Lumina ) );
+                        continue;
                     }
+
+                    var index = new SqPackIndex( file, _Lumina );
 
                     var dat = new Category( 
                         cat.Value,
                         ExpansionId,
                         chunk,
                         _Lumina.Options.CurrentPlatform,
-                        indexes,
+                        index,
                         RootDir,
                         _Lumina );
 
@@ -250,11 +253,10 @@ namespace Lumina.Data
 
             foreach( var cat in categories )
             {
-                // nb: keep these as separate checks because it'll run both otherwise which is a bit pointless
-                if( cat.FileExists( path.IndexHash ) )
+                if( !cat.Index.IsIndex2 && cat.FileExists( path.IndexHash ) )
                     return true;
 
-                if( cat.FileExists( path.Index2Hash ) )
+                if( cat.Index.IsIndex2 && cat.FileExists( path.Index2Hash ) )
                     return true;
             }
 

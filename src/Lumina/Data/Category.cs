@@ -20,7 +20,7 @@ namespace Lumina.Data
 
         public PlatformId Platform { get; }
 
-        public List< SqPackIndex > SqPackIndexes { get; }
+        public SqPackIndex Index { get; }
         
         public Dictionary< UInt64, IndexHashTableEntry > IndexHashTableEntries { get; set; }
         public Dictionary< uint, Index2HashTableEntry > Index2HashTableEntries { get; set; }
@@ -32,7 +32,7 @@ namespace Lumina.Data
             int expansion,
             int chunk,
             PlatformId platform,
-            List< SqPackIndex > sqPackIndexes,
+            SqPackIndex index,
             DirectoryInfo rootDir,
             Lumina lumina )
         {
@@ -41,15 +41,13 @@ namespace Lumina.Data
             Expansion = expansion;
             Chunk = chunk;
             Platform = platform;
-            SqPackIndexes = sqPackIndexes;
+            Index = index;
             RootDir = rootDir;
 
             DatFiles = new Dictionary< byte, SqPack >();
 
-            var rootIndex = sqPackIndexes.First();
-
             // init dats
-            for( byte id = 0; id < rootIndex.IndexHeader.number_of_data_file; id++ )
+            for( byte id = 0; id < index.IndexHeader.number_of_data_file; id++ )
             {
                 var datName = Repository.BuildDatStr( CategoryId, Expansion, Chunk, Platform, $"dat{id}" );
 
@@ -66,16 +64,13 @@ namespace Lumina.Data
             // postprocess indexes into one hashlist
             IndexHashTableEntries = new Dictionary< ulong, IndexHashTableEntry >();
 
-            foreach( var index in sqPackIndexes )
+            if( index.IsIndex2 )
             {
-                if( index.IsIndex2 )
-                {
-                    Index2HashTableEntries = index.HashTableEntries2;
-                }
-                else
-                {
-                    IndexHashTableEntries = index.HashTableEntries;
-                }
+                Index2HashTableEntries = index.HashTableEntries2;
+            }
+            else
+            {
+                IndexHashTableEntries = index.HashTableEntries;
             }
         }
 
@@ -91,18 +86,23 @@ namespace Lumina.Data
 
         private bool TryGetFileDatOffset( ParsedFilePath path, out byte dataFileId, out long offset )
         {
-            if( IndexHashTableEntries.TryGetValue( path.IndexHash, out var hashTableEntry ) )
+            if( !Index.IsIndex2 )
             {
-                dataFileId = hashTableEntry.DataFileId;
-                offset = hashTableEntry.Offset;
-                return true;
+                if( IndexHashTableEntries.TryGetValue( path.IndexHash, out var hashTableEntry ) )
+                {
+                    dataFileId = hashTableEntry.DataFileId;
+                    offset = hashTableEntry.Offset;
+                    return true;
+                } 
             }
-            
-            if( Index2HashTableEntries.TryGetValue( path.Index2Hash, out var hashTableEntry2 ) )
+            else
             {
-                dataFileId = hashTableEntry2.DataFileId;
-                offset = hashTableEntry2.Offset;
-                return true;
+                if( Index2HashTableEntries.TryGetValue( path.Index2Hash, out var hashTableEntry2 ) )
+                {
+                    dataFileId = hashTableEntry2.DataFileId;
+                    offset = hashTableEntry2.Offset;
+                    return true;
+                }
             }
 
             dataFileId = 0;
