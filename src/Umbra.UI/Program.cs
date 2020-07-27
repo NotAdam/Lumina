@@ -4,9 +4,11 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Logging;
 using Avalonia.Logging.Serilog;
 using Avalonia.ReactiveUI;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Filters;
 using Splat;
+using Umbra.UI.Services;
 
 namespace Umbra.UI
 {
@@ -25,11 +27,7 @@ namespace Umbra.UI
 //                .CreateLogger() );
 //#endif
 
-            var lumina = new Lumina.Lumina( args[0], new Lumina.LuminaOptions
-            {
-                CacheFileResources = true
-            } );
-            Locator.CurrentMutable.RegisterConstant( lumina );
+            Locator.CurrentMutable.RegisterConstant( new LuminaProviderService() );
 
 
             BuildAvaloniaApp().StartWithClassicDesktopLifetime( args );

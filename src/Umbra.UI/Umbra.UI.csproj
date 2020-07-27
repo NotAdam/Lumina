@@ -1,17 +1,25 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <Folder Include="Models\" />
         <AvaloniaResource Include="Assets\**" />
-        <Folder Include="Services\" />
+        <Folder Include="Models\" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.9.11" />
         <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.11" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.6">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.6" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\Lumina\Lumina.csproj" />

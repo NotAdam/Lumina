@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Cmd", "Lumina.Cmd\Lu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Generated", "Lumina.Generated\Lumina.Generated.csproj", "{74F94760-A77E-496D-9D6F-98BD20EABE26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbra.UI", "Umbra.UI\Umbra.UI.csproj", "{7A14349B-76C3-4424-BBB3-CC8173FF7025}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Umbra.UI", "Umbra.UI\Umbra.UI.csproj", "{7A14349B-76C3-4424-BBB3-CC8173FF7025}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Umbra", "Umbra", "{22E62586-7547-4F23-B4FC-B919ED20CB1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{C3DB5F15-1172-4938-B946-281EC006FEB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +58,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{206E65C3-5CDF-4FB1-B66A-A0A8BDCDFBC2} = {C3DB5F15-1172-4938-B946-281EC006FEB1}
+		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49} = {C3DB5F15-1172-4938-B946-281EC006FEB1}
+		{7A14349B-76C3-4424-BBB3-CC8173FF7025} = {22E62586-7547-4F23-B4FC-B919ED20CB1D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8FD3CADC-B9E1-4895-BC09-22F64EF67C79}
