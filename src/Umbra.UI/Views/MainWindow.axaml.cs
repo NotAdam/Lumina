@@ -12,9 +12,9 @@ using Umbra.UI.ViewModels;
 
 namespace Umbra.UI.Views
 {
-    public class MainWindow : ReactiveWindow<MainWindowViewModel>
+    public class MainWindow : ReactiveWindow< MainWindowViewModel >
     {
-        public ContentControl ContentMountRoot => this.FindControl<ContentControl>( "ContentMountRoot" );
+        public ContentControl ContentMountRoot => this.FindControl< ContentControl >( "ContentMountRoot" );
 
         public MainWindow()
         {

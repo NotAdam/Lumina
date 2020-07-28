@@ -6,18 +6,18 @@ namespace Umbra.UI.Services
 {
     public class LuminaProviderService
     {
-        private readonly Dictionary<string, Lumina.Lumina> _instances;
+        private readonly Dictionary< string, Lumina.Lumina > _instances;
 
         public LuminaProviderService()
         {
-            _instances = new Dictionary<string, Lumina.Lumina>();
+            _instances = new Dictionary< string, Lumina.Lumina >();
         }
 
-        public Lumina.Lumina GetInstance(string path)
+        public Lumina.Lumina GetInstance( string path )
         {
             path = path.ToLowerInvariant();
 
-            if( _instances.TryGetValue(path, out var instance ) )
+            if( _instances.TryGetValue( path, out var instance ) )
             {
                 return instance;
             }
@@ -28,19 +28,17 @@ namespace Umbra.UI.Services
             {
                 newInstance = new Lumina.Lumina( path, new Lumina.LuminaOptions
                 {
-                    CacheFileResources = true
+                    CacheFileResources = false
                 } );
-
-
             }
             catch( Exception )
             {
                 return null;
             }
 
-            _instances[path] = newInstance;
+            _instances[ path ] = newInstance;
 
-            return newInstance;            
+            return newInstance;
         }
     }
 }

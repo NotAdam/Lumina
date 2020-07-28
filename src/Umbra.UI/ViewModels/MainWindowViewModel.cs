@@ -10,7 +10,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reactive;
-using System.Text;
 using System.Threading.Tasks;
 using Umbra.UI.Models;
 using Umbra.UI.Services;
@@ -21,14 +20,14 @@ namespace Umbra.UI.ViewModels
     {
         public MainWindowViewModel()
         {
-            _luminaProvider = Locator.Current.GetService<LuminaProviderService>();
+            _luminaProvider = Locator.Current.GetService< LuminaProviderService >();
 
             Quit = ReactiveCommand.Create( OnQuit );
-            AddClient = ReactiveCommand.CreateFromTask<Window>( OnAddClient );
-            RemoveSelectedClient = ReactiveCommand.CreateFromTask( OnRemoveSelectedClient );
+            AddClient = ReactiveCommand.CreateFromTask< Window >( OnAddClient );
+            RemoveSelectedClient = ReactiveCommand.Create( OnRemoveSelectedClient );
             ClientSelected = ReactiveCommand.Create< GameClient >( OnClientSelected );
 
-            GameClients = new ObservableCollection<GameClient>();
+            GameClients = new ObservableCollection< GameClient >();
         }
 
 #if DEBUG
@@ -38,15 +37,16 @@ namespace Umbra.UI.ViewModels
 #endif
 
         private readonly LuminaProviderService _luminaProvider;
-        
-        public ReactiveCommand<Unit, Unit> Quit { get; set; }
-        public ReactiveCommand<Window, Unit> AddClient { get; set; }
-        public ReactiveCommand<Unit, Unit> RemoveSelectedClient { get; set; }
-        public ReactiveCommand<GameClient, Unit> ClientSelected { get; set; }
 
-        public ObservableCollection<GameClient> GameClients { get; set; }
+        public ReactiveCommand< Unit, Unit > Quit { get; set; }
+        public ReactiveCommand< Window, Unit > AddClient { get; set; }
+        public ReactiveCommand< Unit, Unit > RemoveSelectedClient { get; set; }
+        public ReactiveCommand< GameClient, Unit > ClientSelected { get; set; }
+
+        public ObservableCollection< GameClient > GameClients { get; set; }
 
         private GameClient _selectedGameClient;
+
         public GameClient SelectedGameClient
         {
             get => _selectedGameClient;
@@ -54,21 +54,22 @@ namespace Umbra.UI.ViewModels
         }
 
         private Lumina.Lumina _lumina;
+
         public Lumina.Lumina Lumina
         {
             get => _lumina;
             set => this.RaiseAndSetIfChanged( ref _lumina, value );
         }
 
-        public void OnQuit()
+        private void OnQuit()
         {
             Environment.Exit( 0 );
         }
 
-        public async Task OnAddClient( Window parent )
+        private async Task OnAddClient( Window parent )
         {
             var dialog = new OpenFileDialog();
-            dialog.Filters.Add( new FileDialogFilter { Name = "Game Executables", Extensions = new List<string> { "exe" } } );
+            dialog.Filters.Add( new FileDialogFilter { Name = "Game Executables", Extensions = new List< string > { "exe" } } );
             dialog.Title = "Locate game installation";
             dialog.AllowMultiple = false;
 
@@ -80,7 +81,12 @@ namespace Umbra.UI.ViewModels
                 return;
             }
 
-            var path = Path.Join( Path.GetDirectoryName( result[0] ), "sqpack" );
+            var path = Path.Join( Path.GetDirectoryName( result[ 0 ] ), "sqpack" );
+
+            if( GameClients.Any( c => c.Path == path ) )
+            {
+                return;
+            }
 
             // this is kind of shit but we can validate that a path is correct-ish
             Lumina = _luminaProvider.GetInstance( path );
@@ -92,13 +98,12 @@ namespace Umbra.UI.ViewModels
             var client = new GameClient
             {
                 Path = path,
-                Version = Lumina.Repositories.FirstOrDefault( r => r.Key == "ffxiv" ).Value?.Version
             };
 
             GameClients.Add( client );
         }
 
-        public async Task OnRemoveSelectedClient()
+        private void OnRemoveSelectedClient()
         {
             if( SelectedGameClient == null )
             {
@@ -108,9 +113,8 @@ namespace Umbra.UI.ViewModels
             GameClients.Remove( SelectedGameClient );
         }
 
-        public void OnClientSelected( GameClient client )
+        private void OnClientSelected( GameClient client )
         {
-
         }
     }
 }

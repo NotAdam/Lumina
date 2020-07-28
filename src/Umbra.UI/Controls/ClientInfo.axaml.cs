@@ -7,20 +7,15 @@ using Umbra.UI.ViewModels.Controls;
 
 namespace Umbra.UI.Controls
 {
-    public class ClientInfo : ReactiveUserControl<ClientInfoViewModel>
+    public class ClientInfo : ReactiveUserControl< ClientInfoViewModel >
     {
         public ClientInfo()
         {
-
         }
 
-        public ClientInfo(GameClient client)
+        public ClientInfo( GameClient client )
         {
-            ViewModel = new ClientInfoViewModel
-            {
-                Path = client.Path
-            };
-
+            DataContext = new ClientInfoViewModel( client.Path );
 
             this.InitializeComponent();
         }
