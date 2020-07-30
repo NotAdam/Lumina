@@ -14,6 +14,8 @@ namespace Lumina.Data
 
         protected BinaryReader Reader { get; set; }
 
+        public SqPackStream( FileInfo file ) : this( file.OpenRead() ) {}
+
         public SqPackStream(Stream stream)
         {
             BaseStream = stream;

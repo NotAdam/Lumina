@@ -69,8 +69,7 @@ namespace Lumina.Data
 
             File = file;
 
-            using var fs = file.OpenRead();
-            using var ss = new SqPackStream( fs );
+            using var ss = new SqPackStream( File );
 
             SqPackHeader = ss.GetSqPackHeader();
         }
@@ -97,8 +96,7 @@ namespace Lumina.Data
 
         public SqPackFileInfo GetFileMetadata( long offset )
         {
-            using var fs = File.OpenRead();
-            using var ss = new SqPackStream( fs );
+            using var ss = new SqPackStream( File );
 
             return ss.GetFileMetadata( offset );
         }
@@ -107,8 +105,7 @@ namespace Lumina.Data
         {
             if( !_Lumina.Options.CacheFileResources )
             {
-                using var fs = File.OpenRead();
-                using var ss = new SqPackStream( fs );
+                using var ss = new SqPackStream( File );
                 return ss.ReadFile<T>( offset );
             }
             
@@ -122,8 +119,7 @@ namespace Lumina.Data
                     return obj;
                 }
 
-                using var fs = File.OpenRead();
-                using var ss = new SqPackStream( fs );
+                using var ss = new SqPackStream( File );
                 var file = ss.ReadFile< T >( offset );
                 
                 FileCache[ offset ] = new WeakReference< FileResource >( file );
