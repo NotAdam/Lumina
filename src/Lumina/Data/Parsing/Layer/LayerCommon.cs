@@ -27,10 +27,7 @@ namespace Lumina.Data.Parsing.Layer
             public char[] ChunkId; //[4]
             public int ChunkSize;
             public int LayerGroupId;
-
-            private int _nameOffset;
             public string Name;
-            
             public int Layers;
             public int LayersCount;
 
@@ -44,11 +41,9 @@ namespace Lumina.Data.Parsing.Layer
 
                 long start = br.BaseStream.Position;
                 ret.LayerGroupId = br.ReadInt32();
-                ret._nameOffset = br.ReadInt32();
+                ret.Name = br.ReadStringOffset( start );
                 ret.Layers = br.ReadInt32();
                 ret.LayersCount = br.ReadInt32();
-
-                ret.Name = br.ReadStringOffsetData( start + ret._nameOffset );
 
                 return ret;
             }
@@ -482,9 +477,7 @@ namespace Lumina.Data.Parsing.Layer
         /* Instance object classes */
         public struct BGInstanceObject : IInstanceObject
         {
-            private int _assetPathOffset;
             public string AssetPath;
-            private int _collisionAssetPathOffset;
             public string CollisionAssetPath;
 
             public ModelCollisionType CollisionType;
@@ -502,8 +495,8 @@ namespace Lumina.Data.Parsing.Layer
                 BGInstanceObject ret = new BGInstanceObject();
 
                 long start = br.BaseStream.Position;
-                ret._assetPathOffset = br.ReadInt32();
-                ret._collisionAssetPathOffset = br.ReadInt32();
+                ret.AssetPath = br.ReadStringOffset( start - 48 );
+                ret.CollisionAssetPath = br.ReadStringOffset( start - 48 );
                 ret.CollisionType = (ModelCollisionType) br.ReadInt32();
                 ret.AttributeMask = br.ReadUInt32();
                 ret.Attribute = br.ReadUInt32();
@@ -513,9 +506,6 @@ namespace Lumina.Data.Parsing.Layer
                 ret.RenderLightShadowEnabled = br.ReadByte();
                 ret.Padding00 = br.ReadByte();
                 ret.RenderModelClipRange = br.ReadSingle();
-
-                ret.AssetPath = br.ReadStringOffsetData( start + ret._assetPathOffset - 48 );
-                ret.CollisionAssetPath = br.ReadStringOffsetData( start + ret._collisionAssetPathOffset - 48 );
 
                 return ret;
             }
@@ -529,10 +519,7 @@ namespace Lumina.Data.Parsing.Layer
             public PointLightType PointLightType;
             public float AttenuationConeCoefficient;
             public float ConeDegree;
-
-            private int _texturePathOffset;
             public string TexturePath;
-            
             public ColorHDRI DiffuseColorHDRI;
             public byte FollowsDirectionalLight;
             private byte _padding1;
@@ -559,7 +546,7 @@ namespace Lumina.Data.Parsing.Layer
                 ret.PointLightType = (PointLightType) br.ReadInt32();
                 ret.AttenuationConeCoefficient = br.ReadSingle();
                 ret.ConeDegree = br.ReadSingle();
-                ret._texturePathOffset = br.ReadInt32();
+                ret.TexturePath = br.ReadStringOffset( start - 48 );
                 ret.DiffuseColorHDRI = ColorHDRI.Read( br );
                 ret.FollowsDirectionalLight = br.ReadByte();
                 ret._padding1 = br.ReadByte();
@@ -574,17 +561,13 @@ namespace Lumina.Data.Parsing.Layer
                 ret.MergeGroupID = br.ReadUInt16();
                 ret._padding4 = br.ReadByte();
 
-                ret.TexturePath = br.ReadStringOffsetData( start + ret._texturePathOffset - 48 );
-
                 return ret;
             }
         }
 
         public struct VFXInstanceObject : IInstanceObject
         {
-            private int _assetPathOffset;
             public string AssetPath;
-            
             public float SoftParticleFadeRange;
             private uint _padding2;
             public Color Color;
@@ -603,7 +586,7 @@ namespace Lumina.Data.Parsing.Layer
                 VFXInstanceObject ret = new VFXInstanceObject();
 
                 long start = br.BaseStream.Position;
-                ret._assetPathOffset = br.ReadInt32();
+                ret.AssetPath = br.ReadStringOffset( start - 48 );
                 ret.SoftParticleFadeRange = br.ReadSingle();
                 ret._padding2 = br.ReadUInt32();
                 ret.Color = Color.Read( br );
@@ -615,8 +598,6 @@ namespace Lumina.Data.Parsing.Layer
                 ret.FadeFarStart = br.ReadSingle();
                 ret.FadeFarEnd = br.ReadSingle();
                 ret.ZCorrect = br.ReadSingle();
-
-                ret.AssetPath = br.ReadStringOffsetData( start + ret._assetPathOffset - 48 );
 
                 return ret;
             }
@@ -642,9 +623,7 @@ namespace Lumina.Data.Parsing.Layer
 
         public struct SharedGroupInstanceObject : IInstanceObject
         {
-            private int _assetPathOffset;
             public string AssetPath;
-            
             public DoorState InitialDoorState;
             public int OverriddenMembers; // TODO
             public int OverriddenMembersCount;
@@ -668,7 +647,7 @@ namespace Lumina.Data.Parsing.Layer
                 SharedGroupInstanceObject ret = new SharedGroupInstanceObject();
 
                 long start = br.BaseStream.Position;
-                ret._assetPathOffset = br.ReadInt32();
+                ret.AssetPath = br.ReadStringOffset( start - 48 );
                 ret.InitialDoorState = (DoorState) br.ReadInt32();
                 ret.OverriddenMembers = br.ReadInt32();
                 ret.OverriddenMembersCount = br.ReadInt32();
@@ -684,8 +663,6 @@ namespace Lumina.Data.Parsing.Layer
                 ret.InitialTransformState = (TransformState) br.ReadInt32();
                 ret.InitialColorState = (ColourState) br.ReadInt32();
                 long end = br.BaseStream.Position;
-
-                ret.AssetPath = br.ReadStringOffsetData( start + ret._assetPathOffset - 48 );
 
                 //TODO unlock the secrets
 //                if( ret.OverriddenMembersCount > 0 )
@@ -706,10 +683,7 @@ namespace Lumina.Data.Parsing.Layer
         public struct SoundInstanceObject : IInstanceObject
         {
             public int SoundEffectParam;
-
-            private int _assetPathOffset;
             public string AssetPath;
-
             public SEParam SEParam;
 
             public static SoundInstanceObject Read( BinaryReader br )
@@ -718,10 +692,8 @@ namespace Lumina.Data.Parsing.Layer
 
                 long start = br.BaseStream.Position;
                 ret.SoundEffectParam = br.ReadInt32();
-                ret._assetPathOffset = br.ReadInt32();
+                ret.AssetPath = br.ReadStringOffset( start - 48 );
                 long end = br.BaseStream.Position;
-
-                ret.AssetPath = br.ReadStringOffsetData( start + ret._assetPathOffset - 48 );
 
                 br.BaseStream.Position = start + ret.SoundEffectParam - 48;
                 ret.SEParam = SEParam.Read( br );
@@ -897,7 +869,7 @@ namespace Lumina.Data.Parsing.Layer
 
         public struct EnvSetInstanceObject : IInstanceObject
         {
-            private int _assetPathOffset;
+            public string AssetPath;
             public uint BoundInstanceId;
             public EnvSetShape Shape;
             public byte IsEnvMapShootingPoint;
@@ -907,17 +879,15 @@ namespace Lumina.Data.Parsing.Layer
             public int InterpolationTime;
             public float Reverb;
             public float Filter;
-            private int _soundAssetPathOffset;
-
-            public string AssetPath;
             public string SoundAssetPath;
+
 
             public static EnvSetInstanceObject Read( BinaryReader br )
             {
                 EnvSetInstanceObject ret = new EnvSetInstanceObject();
                 long start = br.BaseStream.Position;
 
-                ret._assetPathOffset = br.ReadInt32();
+                ret.AssetPath = br.ReadStringOffset( start - 48 );
                 ret.BoundInstanceId = br.ReadUInt32();
                 ret.Shape = (EnvSetShape) br.ReadInt32();
                 ret.IsEnvMapShootingPoint = br.ReadByte();
@@ -927,10 +897,7 @@ namespace Lumina.Data.Parsing.Layer
                 ret.InterpolationTime = br.ReadInt32();
                 ret.Reverb = br.ReadSingle();
                 ret.Filter = br.ReadSingle();
-                ret._soundAssetPathOffset = br.ReadInt32();
-
-                ret.AssetPath = br.ReadStringOffsetData( start + ret._assetPathOffset - 48 );
-                ret.SoundAssetPath = br.ReadStringOffsetData( start + ret._soundAssetPathOffset - 48 );
+                ret.SoundAssetPath = br.ReadStringOffset( start - 48 );
 
                 return ret;
             }
@@ -1200,9 +1167,6 @@ namespace Lumina.Data.Parsing.Layer
 
         public struct EnvLocationInstanceObject : IInstanceObject
         {
-            private int _shAmbientLightAssetPathOffset;
-            private int _envMapAssetPathOffset;
-
             public string SHAmbientLightAssetPath;
             public string EnvMapAssetPath;
 
@@ -1211,11 +1175,8 @@ namespace Lumina.Data.Parsing.Layer
                 EnvLocationInstanceObject ret = new EnvLocationInstanceObject();
                 long start = br.BaseStream.Position;
 
-                ret._shAmbientLightAssetPathOffset = br.ReadInt32();
-                ret._envMapAssetPathOffset = br.ReadInt32();
-
-                ret.SHAmbientLightAssetPath = br.ReadStringOffsetData(start + ret._shAmbientLightAssetPathOffset - 48);
-                ret.EnvMapAssetPath = br.ReadStringOffsetData(start + ret._envMapAssetPathOffset - 48);
+                ret.SHAmbientLightAssetPath = br.ReadStringOffset( start - 48 );
+                ret.EnvMapAssetPath = br.ReadStringOffset( start - 48 );
 
                 return ret;
             }
@@ -1264,10 +1225,9 @@ namespace Lumina.Data.Parsing.Layer
             public uint Attribute;
             public byte PushPlayerOut;
             private byte[] _padding01; //[3]
-            private int _collisionAssetPathOffset;
+            public string CollisionAssetPath;
             private uint _padding2;
 
-            public string CollisionAssetPath;
 
             public static CollisionBoxInstanceObject Read( BinaryReader br )
             {
@@ -1279,7 +1239,7 @@ namespace Lumina.Data.Parsing.Layer
                 ret.Attribute = br.ReadUInt32();
                 ret.PushPlayerOut = br.ReadByte();
                 ret._padding01 = br.ReadBytes( 3 );
-                ret._collisionAssetPathOffset = br.ReadInt32();
+                ret.CollisionAssetPath = br.ReadStringOffset( start - 48 );
                 ret._padding2 = br.ReadUInt32();
                 
                 return ret;
@@ -1474,7 +1434,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             public LayerEntryType AssetType;
             public uint InstanceId;
-            public StringOffset Name;
+            public string Name;
             public Transformation Transform;
             public IInstanceObject Object;
 
@@ -1568,7 +1528,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             public LayerEntryType AssetType;
             public uint InstanceId;
-            public StringOffset OBSetAssetPath;
+            public string OBSetAssetPath;
 
             public static OBSetReferenced Read( BinaryReader br )
             {
@@ -1609,7 +1569,7 @@ namespace Lumina.Data.Parsing.Layer
         public struct Layer
         {
             public uint LayerId;
-            public int NameOffset;
+            public string Name;
             public int _InstanceObjects;
             public int InstanceObjectCount;
             public byte ToolModeVisible;
@@ -1629,8 +1589,6 @@ namespace Lumina.Data.Parsing.Layer
             public int ObSetEnableReferencedListCount;
             public LayerSetReferencedList LayerSetReferencedList;
 
-            public string Name;
-
             public InstanceObject[] InstanceObjects;
             public LayerSetReferenced[] LayerSetReferences;
             public OBSetReferenced[] OBSetReferencedList;
@@ -1642,7 +1600,7 @@ namespace Lumina.Data.Parsing.Layer
                 long start = br.BaseStream.Position;
 
                 ret.LayerId = br.ReadUInt32();
-                ret.NameOffset = br.ReadInt32();
+                ret.Name = br.ReadStringOffset( start );
                 ret._InstanceObjects = br.ReadInt32();
                 ret.InstanceObjectCount = br.ReadInt32();
                 ret.ToolModeVisible = br.ReadByte();
@@ -1660,8 +1618,6 @@ namespace Lumina.Data.Parsing.Layer
                 ret.ObSetReferencedListCount = br.ReadInt32();
                 ret.ObSetEnableReferencedList = br.ReadInt32();
                 ret.ObSetEnableReferencedListCount = br.ReadInt32();
-
-                ret.Name = br.ReadStringOffsetData( start + ret.NameOffset );
 
                 br.BaseStream.Position = start + ret._InstanceObjects;
                 var instanceOffsets = br.ReadStructures< Int32 >( ret.InstanceObjectCount );
