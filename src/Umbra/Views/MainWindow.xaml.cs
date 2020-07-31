@@ -45,6 +45,12 @@ namespace Umbra.Views
                     vm => vm.GameClients,
                     v => v.GameClientListBox.ItemsSource
                 ).DisposeWith( reg );
+
+                this.Bind(
+                    ViewModel,
+                    vm => vm.SelectedGameClient,
+                    v => v.GameClientListBox.SelectedItem
+                ).DisposeWith( reg );
             } );
         }
     }
