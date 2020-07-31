@@ -1,0 +1,54 @@
+<reactiveUi:ReactiveWindow 
+    x:TypeArguments="vms:MainWindowViewModel"
+    x:Class="Umbra.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vms="clr-namespace:Umbra.ViewModels"
+    xmlns:reactiveUi="http://reactiveui.net"
+    mc:Ignorable="d"
+    Title="Umbra"
+    d:DesignWidth="1000" d:DesignHeight="600"
+    Width="1100" Height="600">
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Umbra">
+                <MenuItem Header="_Quit" x:Name="QuitMenuItem"/>
+            </MenuItem>
+        </Menu>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <Button x:Name="AddNewClientButton">Add Game Client</Button>
+                    <Button x:Name="RemoveSelectedClientButton">Remove Selected</Button>
+                </StackPanel>
+
+                <ListBox x:Name="GameClientListBox" Grid.Row="1">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path}"/>
+                                <!--<TextBlock Text="{Binding Version}" FontSize="10"/>-->
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+
+            <ContentControl Grid.Column="1" Margin="5" x:Name="ContentMountRoot"/>
+        </Grid>
+
+    </DockPanel>
+</reactiveUi:ReactiveWindow>
