@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
+using Lumina.Data.Parsing;
 
 namespace Lumina.Extensions
 {
@@ -69,12 +70,12 @@ namespace Lumina.Extensions
 
         /// <summary>
         /// Moves the BinaryReader position to offset, reads a string, then
-        /// sets the position back to the original.
+        /// sets the reader position back to where it was when it started
         /// </summary>
         /// <param name="br"></param>
         /// <param name="offset">The offset to read a string starting from.</param>
         /// <returns></returns>
-        public static string ReadStringOffset( this BinaryReader br, long offset )
+        public static string ReadStringOffsetData( this BinaryReader br, long offset )
         {
             var originalPosition = br.BaseStream.Position;
             br.BaseStream.Position = offset;
@@ -90,6 +91,17 @@ namespace Lumina.Extensions
             br.BaseStream.Position = originalPosition;
             
             return Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
+        }
+
+        /// <summary>
+        /// Constructs a StringOffset in place and reads the string for you given an start offset
+        /// </summary>
+        /// <param name="br">The reader to use to read the string</param>
+        /// <param name="offset">The offset to start the read from (offset + (read u32) = read loc)</param>
+        /// <returns>A newly constructed StringOffset containing the string you want</returns>
+        public static StringOffset ReadStringOffset( this BinaryReader br, long offset )
+        {
+            return new StringOffset( br, offset );
         }
     }
 }
