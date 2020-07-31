@@ -169,7 +169,7 @@ namespace Lumina.Excel
                 case ExcelColumnDataType.String:
                 {
                     var stringOffset = br.ReadUInt32();
-                    data = br.ReadStringOffset( _rowOffset + _sheet.Header.DataOffset + stringOffset );
+                    data = br.ReadStringOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
 
                     break;
                 }
