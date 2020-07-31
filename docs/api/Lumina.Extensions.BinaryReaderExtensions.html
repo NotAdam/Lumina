@@ -117,17 +117,73 @@
     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Extensions_BinaryReaderExtensions_ReadStringOffset_System_IO_BinaryReader_System_Int64_.md&amp;value=---%0Auid%3A%20Lumina.Extensions.BinaryReaderExtensions.ReadStringOffset(System.IO.BinaryReader%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L77">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L102">View Source</a>
   </span>
   <a id="Lumina_Extensions_BinaryReaderExtensions_ReadStringOffset_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStringOffset*"></a>
   <h4 id="Lumina_Extensions_BinaryReaderExtensions_ReadStringOffset_System_IO_BinaryReader_System_Int64_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStringOffset(System.IO.BinaryReader,System.Int64)">ReadStringOffset(BinaryReader, Int64)</h4>
-  <div class="markdown level1 summary"><p>Moves the BinaryReader position to offset, reads a string, then
-sets the position back to the original.</p>
+  <div class="markdown level1 summary"><p>Constructs a StringOffset in place and reads the string for you given an start offset</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string ReadStringOffset(this BinaryReader br, long offset)</code></pre>
+    <pre><code class="lang-csharp hljs">public static StringOffset ReadStringOffset(this BinaryReader br, long offset)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.BinaryReader</span></td>
+        <td><span class="parametername">br</span></td>
+        <td><p>The reader to use to read the string</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td><p>The offset to start the read from (offset + (read u32) = read loc)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Lumina.Data.Parsing.StringOffset.html">StringOffset</a></td>
+        <td><p>A newly constructed StringOffset containing the string you want</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Extensions_BinaryReaderExtensions_ReadStringOffsetData_System_IO_BinaryReader_System_Int64_.md&amp;value=---%0Auid%3A%20Lumina.Extensions.BinaryReaderExtensions.ReadStringOffsetData(System.IO.BinaryReader%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L78">View Source</a>
+  </span>
+  <a id="Lumina_Extensions_BinaryReaderExtensions_ReadStringOffsetData_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStringOffsetData*"></a>
+  <h4 id="Lumina_Extensions_BinaryReaderExtensions_ReadStringOffsetData_System_IO_BinaryReader_System_Int64_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStringOffsetData(System.IO.BinaryReader,System.Int64)">ReadStringOffsetData(BinaryReader, Int64)</h4>
+  <div class="markdown level1 summary"><p>Moves the BinaryReader position to offset, reads a string, then
+sets the reader position back to where it was when it started</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ReadStringOffsetData(this BinaryReader br, long offset)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -172,7 +228,7 @@ sets the position back to the original.</p>
     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Extensions_BinaryReaderExtensions_ReadStructure__1_System_IO_BinaryReader_.md&amp;value=---%0Auid%3A%20Lumina.Extensions.BinaryReaderExtensions.ReadStructure%60%601(System.IO.BinaryReader)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L19">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L20">View Source</a>
   </span>
   <a id="Lumina_Extensions_BinaryReaderExtensions_ReadStructure_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStructure*"></a>
   <h4 id="Lumina_Extensions_BinaryReaderExtensions_ReadStructure__1_System_IO_BinaryReader_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStructure``1(System.IO.BinaryReader)">ReadStructure&lt;T&gt;(BinaryReader)</h4>
@@ -182,7 +238,6 @@ sets the position back to the original.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static T ReadStructure&lt;T&gt;(this BinaryReader br)
-
     where T : struct</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -239,7 +294,7 @@ sets the position back to the original.</p>
     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Extensions_BinaryReaderExtensions_ReadStructures__1_System_IO_BinaryReader_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Extensions.BinaryReaderExtensions.ReadStructures%60%601(System.IO.BinaryReader%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L33">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L34">View Source</a>
   </span>
   <a id="Lumina_Extensions_BinaryReaderExtensions_ReadStructures_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStructures*"></a>
   <h4 id="Lumina_Extensions_BinaryReaderExtensions_ReadStructures__1_System_IO_BinaryReader_System_Int32_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStructures``1(System.IO.BinaryReader,System.Int32)">ReadStructures&lt;T&gt;(BinaryReader, Int32)</h4>
@@ -249,7 +304,6 @@ sets the position back to the original.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static List&lt;T&gt; ReadStructures&lt;T&gt;(this BinaryReader br, int count)
-
     where T : struct</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -312,7 +366,7 @@ sets the position back to the original.</p>
     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Extensions_BinaryReaderExtensions_ReadStructuresAsArray__1_System_IO_BinaryReader_System_Int32_.md&amp;value=---%0Auid%3A%20Lumina.Extensions.BinaryReaderExtensions.ReadStructuresAsArray%60%601(System.IO.BinaryReader%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L51">View Source</a>
+    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L52">View Source</a>
   </span>
   <a id="Lumina_Extensions_BinaryReaderExtensions_ReadStructuresAsArray_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStructuresAsArray*"></a>
   <h4 id="Lumina_Extensions_BinaryReaderExtensions_ReadStructuresAsArray__1_System_IO_BinaryReader_System_Int32_" data-uid="Lumina.Extensions.BinaryReaderExtensions.ReadStructuresAsArray``1(System.IO.BinaryReader,System.Int32)">ReadStructuresAsArray&lt;T&gt;(BinaryReader, Int32)</h4>
@@ -321,7 +375,6 @@ sets the position back to the original.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static T[] ReadStructuresAsArray&lt;T&gt;(this BinaryReader br, int count)
-
     where T : struct</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -387,7 +440,7 @@ sets the position back to the original.</p>
                     <a href="https://github.com/NotAdam/Lumina/new/master/docs/apiSpec/new?filename=Lumina_Extensions_BinaryReaderExtensions.md&amp;value=---%0Auid%3A%20Lumina.Extensions.BinaryReaderExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/NotAdam/Lumina/blob/master/src/Lumina/Extensions/BinaryReaderExtensions.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
