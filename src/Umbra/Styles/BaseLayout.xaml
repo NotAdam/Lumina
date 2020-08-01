@@ -30,7 +30,7 @@
                                     <Setter Property="Foreground" Value="Transparent" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-                                            <Setter Property="Foreground" Value="LightGray" />
+                                            <Setter Property="Foreground" Value="Gray" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
