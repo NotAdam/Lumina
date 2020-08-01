@@ -30,7 +30,7 @@ namespace Umbra.ViewModels
                 MessageBox.Show( gc.Path );
             } );
 
-            GameClients = new ObservableCollection< GameClient >();
+            GameClients = new ObservableCollection< ClientDetailsViewModel >();
         }
 
         public ReactiveCommand< Unit, Unit > Quit { get; set; }
@@ -40,11 +40,11 @@ namespace Umbra.ViewModels
         
         public ReactiveCommand< GameClient, Unit > ClientDoubleClicked { get; set; }
 
-        public ObservableCollection< GameClient > GameClients { get; set; }
+        public ObservableCollection< ClientDetailsViewModel > GameClients { get; set; }
 
-        private GameClient _selectedGameClient;
+        private ClientDetailsViewModel _selectedGameClient;
 
-        public GameClient SelectedGameClient
+        public ClientDetailsViewModel SelectedGameClient
         {
             get => _selectedGameClient;
             set => this.RaiseAndSetIfChanged( ref _selectedGameClient, value );
@@ -95,7 +95,7 @@ namespace Umbra.ViewModels
                 Version = Lumina.Repositories.FirstOrDefault(r => r.Key == "ffxiv").Value?.Version
             };
             
-            GameClients.Add( client );
+            GameClients.Add( new ClientDetailsViewModel { Client = client } );
         }
 
         private void OnRemoveSelectedClient()

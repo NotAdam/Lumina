@@ -17,6 +17,9 @@
       <Page Update="Views\ClientExplorer.xaml">
           <Generator>MSBuild:Compile</Generator>
       </Page>
+      <Page Update="Controls\ClientDetails.xaml">
+        <Generator></Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>

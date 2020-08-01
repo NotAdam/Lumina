@@ -29,7 +29,7 @@ namespace Umbra
                 .MinimumLevel.Information()
 #endif
                 .WriteTo.Console()
-                .WriteTo.RollingFile( "logs/umbra-{Date}.log", retainedFileCountLimit: 7 )
+                .WriteTo.RollingFile( "logs/umbra-{Date}.log", retainedFileCountLimit: 7, fileSizeLimitBytes: 52_428_800  )
                 
                 .CreateLogger();
 

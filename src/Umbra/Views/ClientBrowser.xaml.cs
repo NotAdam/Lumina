@@ -59,23 +59,8 @@ namespace Umbra.Views
             } );
         }
 
-        private void Control_OnMouseDoubleClick( object sender, MouseButtonEventArgs e )
-        {
-            if( sender is ContentControl item )
-            {
-                if( item.DataContext is GameClient client )
-                {
-                    var explorer = new ClientExplorer( client.Path );
-                    explorer.Show();
-                    explorer.Activate();
-                    explorer.Focus();
-                }
-            }
-        }
-
         private void MenuItem_OnClick( object sender, RoutedEventArgs e )
         {
-            throw new NotImplementedException();
         }
     }
 }
