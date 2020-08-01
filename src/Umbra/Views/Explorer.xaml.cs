@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using AvalonDock.Layout;
 using ReactiveUI;
+using Umbra.Controls.Explorer;
 using Umbra.ViewModels;
 
 namespace Umbra.Views
@@ -12,10 +13,8 @@ namespace Umbra.Views
     {
         public Explorer( string path ) : this()
         {
-            ViewModel = new ExplorerViewModel
-            {
-                GamePath = path
-            };
+            ViewModel = new ExplorerViewModel( path );
+            ExcelSheetListAnchorable.Content = new ExcelSheetsList( ViewModel.Lumina );
         }
 
         public Explorer()

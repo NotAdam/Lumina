@@ -83,16 +83,8 @@
                                     </TreeView>
                                 </DockPanel>
                             </LayoutAnchorable>
-                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" CanHide="False" CanAutoHide="False">
-                                <DockPanel>
-                                    <TextBox DockPanel.Dock="Top" Text="fuggg" Padding="4" />
-                                    <ListView DockPanel.Dock="Bottom">
-                                        <ListView.Items>
-                                            <ListViewItem>Action</ListViewItem>
-                                        </ListView.Items>
-                                    </ListView>
-                                </DockPanel>
-                            </LayoutAnchorable>
+                            
+                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" CanHide="False" CanAutoHide="False" x:Name="ExcelSheetListAnchorable"/>
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
                 </LayoutRoot.LeftSide>

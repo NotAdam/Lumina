@@ -20,6 +20,9 @@
       <Page Update="Controls\ClientDetails.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
+      <Page Update="Controls\Explorer\ExcelSheetsList.xaml">
+        <Generator></Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
@@ -34,6 +37,12 @@
       <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
       <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
       <PackageReference Include="Splat.Serilog" Version="9.5.13" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Controls\Explorer\ExcelSheetsList.xaml.cs">
+        <DependentUpon>ExcelSheetsList.xaml</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

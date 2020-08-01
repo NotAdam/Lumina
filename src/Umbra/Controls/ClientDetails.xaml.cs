@@ -3,7 +3,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using ReactiveUI;
 using Umbra.ViewModels;
-using Umbra.Views;
 
 namespace Umbra.Controls
 {
@@ -35,7 +34,8 @@ namespace Umbra.Controls
                 return;
             }
 
-            var explorer = new Explorer( ViewModel.Path );
+            var explorer = new Views.Explorer( ViewModel.Path );
+            // todo: wtf? this still doesn't even fucking work right
             explorer.Show();
             explorer.Activate();
             explorer.Focus();

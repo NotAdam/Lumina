@@ -47,7 +47,7 @@ namespace Lumina.Excel
 
             foreach( var map in files.ExdMap )
             {
-                SheetNames.Add( map.Key.ToLowerInvariant() );
+                SheetNames.Add( map.Key );
 
                 if( map.Value == -1 )
                 {
@@ -191,14 +191,15 @@ namespace Lumina.Excel
         {
             // todo: duped code is a bit ass but zzz
             // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on
-            if( !SheetNames.Contains( name.ToLowerInvariant() ) )
-            {
-                return null;
-            }
 
             // create new sheet
             var path = BuildExcelHeaderPath( name );
             var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
+
+            if( headerFile == null )
+            {
+                return null;
+            }
 
             var newSheet = new ExcelSheetImpl( headerFile, name, language, _lumina );
             newSheet.GenerateFilePages();

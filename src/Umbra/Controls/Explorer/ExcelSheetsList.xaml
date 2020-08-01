@@ -1,0 +1,17 @@
+<rxui:ReactiveUserControl
+       x:Class="Umbra.Controls.Explorer.ExcelSheetsList"
+       x:TypeArguments="vms:ExcelSheetsListViewModel"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+       xmlns:local="clr-namespace:Umbra.Controls.Explorer"
+       xmlns:vms="clr-namespace:Umbra.ViewModels.Explorer"
+       xmlns:rxui="http://reactiveui.net"
+       mc:Ignorable="d"
+       d:DesignHeight="300" d:DesignWidth="300">
+    <DockPanel>
+        <TextBox DockPanel.Dock="Top" Text="fuggg" Padding="4" x:Name="SearchInput" />
+        <ListView DockPanel.Dock="Bottom" x:Name="SheetList" DisplayMemberPath="." />
+    </DockPanel>
+</rxui:ReactiveUserControl>
