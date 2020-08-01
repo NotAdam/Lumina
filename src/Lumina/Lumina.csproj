@@ -15,17 +15,27 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="../../LICENSE" Pack="true" PackagePath="" />
+        <None Include="../../LICENSE" Pack="true" PackagePath=""/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+        <PackageReference Include="System.Drawing.Common" Version="4.6.0"/>
     </ItemGroup>
-    
+
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-      <PackageReference Include="System.Memory" Version="4.5.3" />
-      <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-      <PackageReference Include="IndexRange" Version="1.0.0" />
+        <PackageReference Include="System.Memory" Version="4.5.3"/>
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0"/>
+        <PackageReference Include="IndexRange" Version="1.0.0"/>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
     </ItemGroup>
 
 </Project>
