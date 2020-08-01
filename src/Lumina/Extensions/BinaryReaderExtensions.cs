@@ -91,5 +91,12 @@ namespace Lumina.Extensions
             
             return Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
         }
+
+        /// <summary>
+        /// Seeks this BinaryReader's position to the given offset. Syntactic sugar.
+        /// </summary>
+        public static void Seek( this BinaryReader br, long offset ) {
+            br.BaseStream.Position = offset;
+        }
     }
 }
