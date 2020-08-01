@@ -1,0 +1,20 @@
+using ReactiveUI;
+
+namespace Umbra.ViewModels
+{
+    public class ClientExplorerViewModel : ReactiveObject
+    {
+        private string _gamePath;
+
+        public string GamePath
+        {
+            get => _gamePath;
+            set => this.RaiseAndSetIfChanged( ref _gamePath, value );
+        }
+
+        public string Title
+        {
+            get => $"Explorer - {_gamePath} - Umbra";
+        }
+    }
+}

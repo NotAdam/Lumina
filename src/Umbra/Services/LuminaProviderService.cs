@@ -21,7 +21,7 @@ namespace Umbra.Services
 
             if( _instances.TryGetValue( key, out var instance ) )
             {
-                Log.Verbose( "found existing lumina instance for path: {GamePath}", key );
+                Log.Verbose( "found existing lumina instance for path: {GamePath}", path );
                 return instance;
             }
 
@@ -39,7 +39,7 @@ namespace Umbra.Services
                 return null;
             }
 
-            Log.Verbose( "created new lumina instance for path: {GamePath}", key );
+            Log.Verbose( "created new lumina instance for path: {GamePath}", path );
             _instances[ key ] = newInstance;
 
             return newInstance;

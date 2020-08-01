@@ -22,7 +22,7 @@ namespace Umbra.ViewModels
             _luminaProvider = Locator.Current.GetService< Services.LuminaProviderService >();
             
             Quit = ReactiveCommand.Create( OnQuit );
-            AddClient = ReactiveCommand.CreateFromTask( OnAddClient );
+            AddClient = ReactiveCommand.Create( OnAddClient );
             RemoveSelectedClient = ReactiveCommand.Create( OnRemoveSelectedClient );
             ClientSelected = ReactiveCommand.Create< GameClient >( OnClientSelected );
             ClientDoubleClicked = ReactiveCommand.Create< GameClient >( ( gc ) =>
@@ -63,7 +63,7 @@ namespace Umbra.ViewModels
             Environment.Exit( 0 );
         }
 
-        private async Task OnAddClient()
+        private void OnAddClient()
         {
             var dialog = new OpenFileDialog();
             dialog.Filter = "Game Client|ffxiv.exe;ffxiv_dx11.exe|All files (*.*)|*.*";

@@ -1,7 +1,10 @@
 using System;
 using System.Reactive.Disposables;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using ReactiveUI;
+using Umbra.Models;
 using Umbra.ViewModels;
 
 namespace Umbra.Views
@@ -32,6 +35,12 @@ namespace Umbra.Views
 
                 this.BindCommand(
                     ViewModel,
+                    vm => vm.AddClient,
+                    v => v.AddClientCtxMenu
+                ).DisposeWith( reg );
+
+                this.BindCommand(
+                    ViewModel,
                     vm => vm.RemoveSelectedClient,
                     v => v.RemoveSelectedClientButton
                 ).DisposeWith( reg );
@@ -48,6 +57,25 @@ namespace Umbra.Views
                     v => v.GameClientListBox.SelectedItem
                 ).DisposeWith( reg );
             } );
+        }
+
+        private void Control_OnMouseDoubleClick( object sender, MouseButtonEventArgs e )
+        {
+            if( sender is ContentControl item )
+            {
+                if( item.DataContext is GameClient client )
+                {
+                    var explorer = new ClientExplorer( client.Path );
+                    explorer.Show();
+                    explorer.Activate();
+                    explorer.Focus();
+                }
+            }
+        }
+
+        private void MenuItem_OnClick( object sender, RoutedEventArgs e )
+        {
+            throw new NotImplementedException();
         }
     }
 }

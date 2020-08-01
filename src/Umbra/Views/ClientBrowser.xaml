@@ -32,12 +32,26 @@
             <ListBox x:Name="GameClientListBox" Grid.Row="1">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Path}"/>
-                            <TextBlock Text="{Binding Version}" FontSize="10"/>
-                        </StackPanel>
+                        <ContentControl MouseDoubleClick="Control_OnMouseDoubleClick">
+                            <StackPanel>
+                                <StackPanel.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Explorer" Click="MenuItem_OnClick"/>
+                                        <Separator/>
+                                        <MenuItem Header="Remove Client"/>
+                                    </ContextMenu>
+                                </StackPanel.ContextMenu>
+                                <TextBlock Text="{Binding Path}"/>
+                                <TextBlock Text="{Binding Version}" FontSize="10"/>
+                            </StackPanel>
+                        </ContentControl>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add Client" x:Name="AddClientCtxMenu"/>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
             </ListBox>
         </Grid>
 
