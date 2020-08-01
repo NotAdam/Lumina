@@ -33,7 +33,7 @@ namespace Umbra.Views
             } );
         }
 
-        private void MenuItem_OnClick( object sender, RoutedEventArgs e )
+        private void AddTab_OnClick( object sender, RoutedEventArgs e )
         {
             AddTabContent( "new tab", new TextBlock { Text = "hello from new tab!" } );
         }
@@ -52,6 +52,11 @@ namespace Umbra.Views
                 Title = "new tab",
                 Content = new TextBlock { Text = "hello from new tab!" }
             } );
+        }
+
+        private void ThrowException_OnClick( object sender, RoutedEventArgs e )
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

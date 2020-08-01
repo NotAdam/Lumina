@@ -23,7 +23,8 @@
                 <MenuItem Header="Open file from hash" />
             </MenuItem>
             <MenuItem Header="Debug">
-                <MenuItem Header="Add tab" Click="MenuItem_OnClick" />
+                <MenuItem Header="Add tab" Click="AddTab_OnClick" />
+                <MenuItem Header="Throw exception" Click="ThrowException_OnClick" />
             </MenuItem>
         </Menu>
 
