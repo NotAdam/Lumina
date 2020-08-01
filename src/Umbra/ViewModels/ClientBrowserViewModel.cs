@@ -1,9 +1,3 @@
-using Avalonia;
-using Avalonia.Controls;
-using DynamicData;
-using Lumina;
-using ReactiveUI;
-using Splat;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,37 +5,36 @@ using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
-using Umbra.UI.Models;
-using Umbra.UI.Services;
+using System.Windows;
+using Microsoft.Win32;
+using ReactiveUI;
+using Splat;
+using Umbra.Models;
 
-namespace Umbra.UI.ViewModels
+namespace Umbra.ViewModels
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class ClientBrowserViewModel : ReactiveObject
     {
-        public MainWindowViewModel()
+        public ClientBrowserViewModel()
         {
-            _luminaProvider = Locator.Current.GetService< LuminaProviderService >();
-
             Quit = ReactiveCommand.Create( OnQuit );
-            AddClient = ReactiveCommand.CreateFromTask< Window >( OnAddClient );
+            AddClient = ReactiveCommand.CreateFromTask( OnAddClient );
             RemoveSelectedClient = ReactiveCommand.Create( OnRemoveSelectedClient );
             ClientSelected = ReactiveCommand.Create< GameClient >( OnClientSelected );
+            ClientDoubleClicked = ReactiveCommand.Create< GameClient >( ( gc ) =>
+            {
+                MessageBox.Show( gc.Path );
+            } );
 
             GameClients = new ObservableCollection< GameClient >();
         }
 
-#if DEBUG
-        public string WindowTitle => "Umbra - Debug";
-#else
-        public string WindowTitle => "Umbra";
-#endif
-
-        private readonly LuminaProviderService _luminaProvider;
-
         public ReactiveCommand< Unit, Unit > Quit { get; set; }
-        public ReactiveCommand< Window, Unit > AddClient { get; set; }
+        public ReactiveCommand< Unit, Unit > AddClient { get; set; }
         public ReactiveCommand< Unit, Unit > RemoveSelectedClient { get; set; }
         public ReactiveCommand< GameClient, Unit > ClientSelected { get; set; }
+        
+        public ReactiveCommand< GameClient, Unit > ClientDoubleClicked { get; set; }
 
         public ObservableCollection< GameClient > GameClients { get; set; }
 
@@ -66,40 +59,37 @@ namespace Umbra.UI.ViewModels
             Environment.Exit( 0 );
         }
 
-        private async Task OnAddClient( Window parent )
+        private async Task OnAddClient()
         {
             var dialog = new OpenFileDialog();
-            dialog.Filters.Add( new FileDialogFilter { Name = "Game Executables", Extensions = new List< string > { "exe" } } );
-            dialog.Title = "Locate game installation";
-            dialog.AllowMultiple = false;
+            dialog.Filter = "Game Client|ffxiv.exe;ffxiv_dx11.exe|All files (*.*)|*.*";
+            dialog.Multiselect = false;
+            dialog.Title = "Locate game client installation";
 
-            var result = await dialog.ShowAsync( parent );
-
-            if( result.Length == 0 )
+            if( dialog.ShowDialog() == false )
             {
-                // wtf?
                 return;
             }
-
-            var path = Path.Join( Path.GetDirectoryName( result[ 0 ] ), "sqpack" );
-
+            
+            var path = Path.Join( Path.GetDirectoryName( dialog.FileName ), "sqpack" );
+            
             if( GameClients.Any( c => c.Path == path ) )
             {
                 return;
             }
-
-            // this is kind of shit but we can validate that a path is correct-ish
-            Lumina = _luminaProvider.GetInstance( path );
-            if( Lumina == null )
-            {
-                return;
-            }
-
+            
+            // // this is kind of shit but we can validate that a path is correct-ish
+            // Lumina = _luminaProvider.GetInstance( path );
+            // if( Lumina == null )
+            // {
+            //     return;
+            // }
+            
             var client = new GameClient
             {
                 Path = path,
             };
-
+            
             GameClients.Add( client );
         }
 

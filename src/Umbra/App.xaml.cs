@@ -18,7 +18,8 @@ namespace Umbra
     {
         public App()
         {
-            Locator.CurrentMutable.RegisterViewsForViewModels(Assembly.GetCallingAssembly());
+            Locator.CurrentMutable.RegisterViewsForViewModels( Assembly.GetCallingAssembly() );
+            Locator.CurrentMutable.RegisterConstant( new Services.TestService() );
         }
     }
 }

@@ -1,4 +1,6 @@
+using System;
 using System.Reactive.Disposables;
+using System.Windows;
 using ReactiveUI;
 using Umbra.ViewModels;
 
@@ -7,12 +9,12 @@ namespace Umbra.Views
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : ReactiveWindow< MainWindowViewModel >
+    public partial class MainWindow : ReactiveWindow< ClientBrowserViewModel >
     {
         public MainWindow()
         {
             InitializeComponent();
-            ViewModel = new MainWindowViewModel();
+            ViewModel = new ClientBrowserViewModel();
 
             this.WhenActivated( reg =>
             {
@@ -32,12 +34,6 @@ namespace Umbra.Views
                     ViewModel,
                     vm => vm.RemoveSelectedClient,
                     v => v.RemoveSelectedClientButton
-                ).DisposeWith( reg );
-
-                this.OneWayBind(
-                    ViewModel,
-                    vm => vm.WindowTitle,
-                    v => v.Title
                 ).DisposeWith( reg );
 
                 this.OneWayBind(
