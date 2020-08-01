@@ -34,7 +34,7 @@
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="{Binding Path}"/>
-                            <!--<TextBlock Text="{Binding Version}" FontSize="10"/>-->
+                            <TextBlock Text="{Binding Version}" FontSize="10"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

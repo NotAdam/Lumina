@@ -15,8 +15,12 @@ namespace Umbra.ViewModels
 {
     public class ClientBrowserViewModel : ReactiveObject
     {
+        private readonly Services.LuminaProviderService _luminaProvider;
+        
         public ClientBrowserViewModel()
         {
+            _luminaProvider = Locator.Current.GetService< Services.LuminaProviderService >();
+            
             Quit = ReactiveCommand.Create( OnQuit );
             AddClient = ReactiveCommand.CreateFromTask( OnAddClient );
             RemoveSelectedClient = ReactiveCommand.Create( OnRemoveSelectedClient );
@@ -78,16 +82,17 @@ namespace Umbra.ViewModels
                 return;
             }
             
-            // // this is kind of shit but we can validate that a path is correct-ish
-            // Lumina = _luminaProvider.GetInstance( path );
-            // if( Lumina == null )
-            // {
-            //     return;
-            // }
+            // this is kind of shit but we can validate that a path is correct-ish
+            Lumina = _luminaProvider.GetInstance( path );
+            if( Lumina == null )
+            {
+                return;
+            }
             
             var client = new GameClient
             {
                 Path = path,
+                Version = Lumina.Repositories.FirstOrDefault(r => r.Key == "ffxiv").Value?.Version
             };
             
             GameClients.Add( client );
