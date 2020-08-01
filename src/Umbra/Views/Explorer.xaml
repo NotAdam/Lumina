@@ -1,0 +1,105 @@
+<rxui:ReactiveWindow
+    x:TypeArguments="vms:ExplorerViewModel"
+    x:Class="Umbra.Views.Explorer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vms="clr-namespace:Umbra.ViewModels"
+    xmlns:rxui="http://reactiveui.net"
+    mc:Ignorable="d"
+    Title="Explorer"
+    Height="450" Width="800"
+    WindowState="Maximized">
+
+    <DockPanel>
+
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Explorer">
+                <MenuItem Header="woo" />
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="Open file from offset and type" />
+                <MenuItem Header="Open file from hash" />
+            </MenuItem>
+            <MenuItem Header="Debug">
+                <MenuItem Header="Add tab" Click="MenuItem_OnClick" />
+            </MenuItem>
+        </Menu>
+
+
+        <DockingManager
+            DockPanel.Dock="Bottom"
+            AllowMixedOrientation="True"
+            AutoWindowSizeWhenOpened="True"
+            IsVirtualizingAnchorable="True"
+            IsVirtualizingDocument="True">
+
+            <DockingManager.Theme>
+                <Vs2013LightTheme />
+            </DockingManager.Theme>
+
+            <DockingManager.DocumentHeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0,0,4,0" Source="{Binding IconSource}" />
+                        <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+                    </StackPanel>
+                </DataTemplate>
+            </DockingManager.DocumentHeaderTemplate>
+
+            <LayoutRoot>
+                <!-- main content -->
+                <LayoutPanel Orientation="Horizontal">
+                    <LayoutDocumentPaneGroup x:Name="RootDocumentPaneGroup">
+                        <LayoutDocumentPane>
+                            <LayoutDocument Title="test tab" ContentId="document1">
+                                <StackPanel>
+                                    <TextBlock>this is where i would put cool shit, if i had any</TextBlock>
+                                </StackPanel>
+                            </LayoutDocument>
+                            <LayoutDocument Title="test tab 2" ContentId="document2">
+                                <TextBlock>
+                                    hello world !!!!!
+                                </TextBlock>
+                            </LayoutDocument>
+                        </LayoutDocumentPane>
+                    </LayoutDocumentPaneGroup>
+                </LayoutPanel>
+
+                <!-- left sidebar -->
+                <LayoutRoot.LeftSide>
+                    <LayoutAnchorSide>
+                        <LayoutAnchorGroup>
+                            <LayoutAnchorable Title="File Browser" AutoHideWidth="350" CanClose="False" CanHide="False" CanAutoHide="False">
+                                <DockPanel>
+                                    <TextBox DockPanel.Dock="Top" Text="fuggg" Padding="4" />
+                                    <TreeView DockPanel.Dock="Bottom">
+                                        <TreeView.Items>
+                                            <TreeViewItem Header="hello">
+                                                <TreeViewItem Header="world" />
+                                            </TreeViewItem>
+                                        </TreeView.Items>
+                                    </TreeView>
+                                </DockPanel>
+                            </LayoutAnchorable>
+                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" CanHide="False" CanAutoHide="False">
+                                <DockPanel>
+                                    <TextBox DockPanel.Dock="Top" Text="fuggg" Padding="4" />
+                                    <ListView DockPanel.Dock="Bottom">
+                                        <ListView.Items>
+                                            <ListViewItem>Action</ListViewItem>
+                                        </ListView.Items>
+                                    </ListView>
+                                </DockPanel>
+                            </LayoutAnchorable>
+                        </LayoutAnchorGroup>
+                    </LayoutAnchorSide>
+                </LayoutRoot.LeftSide>
+            </LayoutRoot>
+            
+        </DockingManager>
+        
+    </DockPanel>
+    
+</rxui:ReactiveWindow>

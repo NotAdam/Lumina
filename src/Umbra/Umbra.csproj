@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
@@ -14,15 +14,17 @@
       <Page Update="Views\ClientBrowser.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
-      <Page Update="Views\ClientExplorer.xaml">
+      <Page Update="Views\Explorer.xaml">
           <Generator>MSBuild:Compile</Generator>
       </Page>
       <Page Update="Controls\ClientDetails.xaml">
-        <Generator></Generator>
+        <Generator>MSBuild:Compile</Generator>
       </Page>
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Dirkster.AvalonDock" Version="4.30.0" />
+      <PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.30.0" />
       <PackageReference Include="ReactiveUI" Version="11.5.6" />
       <PackageReference Include="ReactiveUI.Events.WPF" Version="11.5.6" />
       <PackageReference Include="ReactiveUI.WPF" Version="11.5.6" />

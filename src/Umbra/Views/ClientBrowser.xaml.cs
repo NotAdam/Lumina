@@ -58,9 +58,5 @@ namespace Umbra.Views
                 ).DisposeWith( reg );
             } );
         }
-
-        private void MenuItem_OnClick( object sender, RoutedEventArgs e )
-        {
-        }
     }
 }

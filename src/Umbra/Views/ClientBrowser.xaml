@@ -1,4 +1,4 @@
-<reactiveUi:ReactiveWindow 
+<rxui:ReactiveWindow 
     x:TypeArguments="vms:ClientBrowserViewModel"
     x:Class="Umbra.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vms="clr-namespace:Umbra.ViewModels"
-    xmlns:reactiveUi="http://reactiveui.net"
+    xmlns:rxui="http://reactiveui.net"
     mc:Ignorable="d"
     Title="Client Browser - Umbra"
     d:DesignWidth="800" d:DesignHeight="450"
@@ -24,7 +24,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <StackPanel Orientation="Horizontal" Margin="2">
+            <StackPanel Orientation="Horizontal">
                 <Button x:Name="AddNewClientButton">Add Game Client</Button>
                 <Button x:Name="RemoveSelectedClientButton" HorizontalAlignment="Right">Remove Selected</Button>
             </StackPanel>
@@ -39,4 +39,4 @@
         </Grid>
 
     </DockPanel>
-</reactiveUi:ReactiveWindow>
+</rxui:ReactiveWindow>

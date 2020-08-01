@@ -2,7 +2,7 @@ using ReactiveUI;
 
 namespace Umbra.ViewModels
 {
-    public class ClientExplorerViewModel : ReactiveObject
+    public class ExplorerViewModel : ReactiveObject
     {
         private string _gamePath;
 

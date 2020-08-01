@@ -35,7 +35,7 @@ namespace Umbra.Controls
                 return;
             }
 
-            var explorer = new ClientExplorer( ViewModel.Path );
+            var explorer = new Explorer( ViewModel.Path );
             explorer.Show();
             explorer.Activate();
             explorer.Focus();
