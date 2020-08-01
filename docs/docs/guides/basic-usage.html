@@ -73,12 +73,23 @@
 <p>Lumina is a nuget package. It can be installed like any other. You can install the latest release with the following:</p>
 <pre><code>dotnet add package Lumina
 </code></pre>
+<p>To use Excel structures, you also need to add their respective nuget package:</p>
+<pre><code>dotnet add package Lumina.Generated
+</code></pre>
 <h2 id="setting-up-lumina">Setting up Lumina</h2>
 <p>Lumina has some advanced options that can provide preferred behaviour in different circumstances, but generally speaking the only thing you are required to have is (part of) a game install. While not recommended for regular users, Lumina can and will operate fine on a partial game install depending on your use case.</p>
 <p>To init Lumina, you need the absolute path of your FINAL FANTASY XIV install's <code>sqpack</code> folder. For example: <code>G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack</code>. Once you have that, initialisation is easy:</p>
 <pre><code class="lang-cs">var lumina = new Lumina.Lumina( &quot;G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack&quot; );
 </code></pre>
 <p>It's worth noting at this point that constructing a new Lumina instance isn't exactly cheap - it's at this stage where Lumina will try to discover all the expansion data and other game related files available at the path provided. While this process will only take about 250ms or so, you should reuse the same instance where possible.</p>
+<h3 id="using-lumina-with-a-partial-install">Using Lumina with a Partial Install</h3>
+<p>Lumina can be used on a partial client install and it won't complain - it will just reduce the amount of functionality it can provide. For example, if you <em>only</em> wanted to read excel sheets, you can point Lumina at a file structure that looks like the following:</p>
+<pre><code>sqpack/
+    ffxiv/
+        0a0000.win32.dat0
+        0a0000.win32.index OR 0a0000.win32.index2
+</code></pre>
+<p>With this structure, Lumina will be able to load all of the excel sheets. A list of category IDs to their names is located <a href="https://xiv.dev/data-files/sqpack#categories">here</a>.</p>
 <h2 id="basic-usage">Basic Usage</h2>
 <h3 id="reading-raw-files">Reading Raw Files</h3>
 <p>Lumina can read nearly all files in the game with no problem and will let you write them to disk, with the only exception being models. This is likely to change in the future but as is, models are not supported.</p>

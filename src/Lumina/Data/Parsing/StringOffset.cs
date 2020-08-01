@@ -24,7 +24,7 @@ namespace Lumina.Data.Parsing
 
         public void Read( BinaryReader br, long start, uint offset )
         {
-            Data = br.ReadStringOffset( start + offset );
+            Data = br.ReadStringOffsetData( start + offset );
         }
 
         public static implicit operator string( StringOffset obj ) => obj.Data;

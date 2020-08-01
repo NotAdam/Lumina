@@ -22,6 +22,18 @@ var lumina = new Lumina.Lumina( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" 
 
 It's worth noting at this point that constructing a new Lumina instance isn't exactly cheap - it's at this stage where Lumina will try to discover all the expansion data and other game related files available at the path provided. While this process will only take about 250ms or so, you should reuse the same instance where possible.
 
+### Using Lumina with a Partial Install
+
+Lumina can be used on a partial client install and it won't complain - it will just reduce the amount of functionality it can provide. For example, if you _only_ wanted to read excel sheets, you can point Lumina at a file structure that looks like the following:
+```
+sqpack/
+    ffxiv/
+        0a0000.win32.dat0
+        0a0000.win32.index OR 0a0000.win32.index2
+```
+
+With this structure, Lumina will be able to load all of the excel sheets. A list of category IDs to their names is located [here](https://xiv.dev/data-files/sqpack#categories).
+
 ## Basic Usage
 
 ### Reading Raw Files

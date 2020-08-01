@@ -74,7 +74,7 @@ namespace Lumina.Cmd.Commands
                     for( int i = 0; i < f.Layers.Length; i++ )
                     {
                         var layer = f.Layers[ i ];
-                        co.WriteLine($" - layer {i.Data()} - {layer.strName.Data()}");
+                        co.WriteLine($" - layer {i.Data()} - {layer.Name.Data()}");
                     }
                     break;
                 }
