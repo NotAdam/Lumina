@@ -65,7 +65,7 @@ namespace Lumina.Data.Parsing.Uld {
             EdgeColor = 0x6,
             Number = 0x7,
         }
-        
+
         public struct UldHeader {
             public char[] Identifier;
             public char[] Version;
@@ -183,7 +183,7 @@ namespace Lumina.Data.Parsing.Uld {
                 return ret;
             }
         }
-        
+
         public struct NodeData {
             public uint NodeId;
             public int ParentId;
@@ -304,12 +304,14 @@ namespace Lumina.Data.Parsing.Uld {
                         //Console.WriteLine( $"{ret.NodeOffset - 88} extra bytes..." );
                         if( ret.NodeType > 1000 ) {
                             Uld.ComponentData.ComponentType compType =
-                                definedComponentList.Where(c => c.Id == ret.NodeType).Select(c => c.Type).FirstOrDefault();
+                                definedComponentList.Where( c => c.Id == ret.NodeType ).Select( c => c.Type ).FirstOrDefault();
                             ret.Node = Uld.NodeData.ComponentNode.Read( br, compType );
-                        } else {
+                        }
+                        else {
                             ret.UnknownNodeData = br.ReadBytes( ret.NodeOffset - 88 );
                             //Console.WriteLine( $"Read {ret.NodeOffset - 88} bytes for an unknown of {ret.NodeType}" );    
                         }
+
                         break;
                 }
 
@@ -542,11 +544,11 @@ namespace Lumina.Data.Parsing.Uld {
         public struct Timeline {
             public uint Id;
             public uint Offset;
-            
+
             // might have to consider the possibility that these frame sets ARE independent
             private ushort numframes1;
             private ushort numframes2;
-            
+
             public uint NumFrames;
             public FrameData[] FrameData;
 

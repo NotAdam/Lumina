@@ -41,8 +41,7 @@ namespace Lumina.Data.Parsing.Uld {
             Lobby = 0x1,
         }
 
-        public struct ImageNode : INode
-        {
+        public struct ImageNode : INode {
             // id of part list, id/num of part i think
             public uint PartListId;
             public uint PartId;
@@ -63,8 +62,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct NineGridNode : INode
-        {
+        public struct NineGridNode : INode {
             public uint PartListId;
             public uint PartId;
             public GridPartsType GridPartsType;
@@ -92,8 +90,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct CounterNode : INode
-        {
+        public struct CounterNode : INode {
             public uint PartListId;
             public byte PartId;
             public byte NumberWidth;
@@ -115,8 +112,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct TextNode : INode
-        {
+        public struct TextNode : INode {
             public uint TextId;
             public uint Color;
             public ushort Alignment;
@@ -170,8 +166,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct NumericInputNode : INode
-        {
+        public struct NumericInputNode : INode {
             public TextNode TextNode; //assuming this is an int (id) // don't know what i meant by this in 010
             public int Value;
             public int Max;
@@ -209,8 +204,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct CollisionNode : INode
-        {
+        public struct CollisionNode : INode {
             public CollisionType Type;
             public ushort Unk1;
             public int X;
@@ -228,8 +222,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct FocusNode : INode
-        {
+        public struct FocusNode : INode {
             public byte Index;
             public byte Up;
             public byte Down;
@@ -273,8 +266,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct TextInputNode : INode
-        {
+        public struct TextInputNode : INode {
             public TextNode TextNode;
             public uint Color;
             public uint IMEColor;
@@ -342,8 +334,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct ComponentNode : INode
-        {
+        public struct ComponentNode : INode {
             public byte Index;
             public byte Up;
             public byte Down;
@@ -385,33 +376,57 @@ namespace Lumina.Data.Parsing.Uld {
                 ret.Unk2 = br.ReadByte();
                 ret.OffsetX = br.ReadInt16();
                 ret.OffsetY = br.ReadInt16();
-                
+
                 // the commented types seem to not have extra data
                 switch( parentType ) {
-                    case ComponentData.ComponentType.Button: ret.ComponentNodeData = ButtonComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.Window: ret.ComponentNodeData = WindowComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.CheckBox: ret.ComponentNodeData = CheckBoxComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.RadioButton: ret.ComponentNodeData = RadioButtonComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.Gauge: ret.ComponentNodeData = GaugeComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.Slider: ret.ComponentNodeData = SliderComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.TextInput: ret.ComponentNodeData = TextInputComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.NumericInput: ret.ComponentNodeData = NumericInputComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.List: ret.ComponentNodeData = ListComponentNode.Read( br ); break; //?
+                    case ComponentData.ComponentType.Button:
+                        ret.ComponentNodeData = ButtonComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.Window:
+                        ret.ComponentNodeData = WindowComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.CheckBox:
+                        ret.ComponentNodeData = CheckBoxComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.RadioButton:
+                        ret.ComponentNodeData = RadioButtonComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.Gauge:
+                        ret.ComponentNodeData = GaugeComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.Slider:
+                        ret.ComponentNodeData = SliderComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.TextInput:
+                        ret.ComponentNodeData = TextInputComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.NumericInput:
+                        ret.ComponentNodeData = NumericInputComponentNode.Read( br );
+                        break;
+                    case ComponentData.ComponentType.List:
+                        ret.ComponentNodeData = ListComponentNode.Read( br );
+                        break; //?
                     // case ComponentData.ComponentType.DropDown: ret.ComponentNodeData = DropDownComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.Tabbed: ret.ComponentNodeData = TabbedComponentNode.Read( br ); break;
+                    case ComponentData.ComponentType.Tabbed:
+                        ret.ComponentNodeData = TabbedComponentNode.Read( br );
+                        break;
                     // case ComponentData.ComponentType.TreeList: ret.ComponentNodeData = TreeListComponentNode.Read( br ); break;
                     // case ComponentData.ComponentType.ScrollBar: ret.ComponentNodeData = ScrollBarComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.ListItem: ret.ComponentNodeData = ListItemComponentNode.Read( br ); break;
+                    case ComponentData.ComponentType.ListItem:
+                        ret.ComponentNodeData = ListItemComponentNode.Read( br );
+                        break;
                     // case ComponentData.ComponentType.Icon: ret.ComponentNodeData = IconComponentNode.Read( br ); break;
                     // case ComponentData.ComponentType.IconWithText: ret.ComponentNodeData = IconWithTextComponentNode.Read( br ); break;
                     // case ComponentData.ComponentType.DragDrop: ret.ComponentNodeData = DragDropComponentNode.Read( br ); break;
                     // case ComponentData.ComponentType.LeveCard: ret.ComponentNodeData = LeveCardComponentNode.Read( br ); break;
-                    case ComponentData.ComponentType.NineGridText: ret.ComponentNodeData = NineGridTextComponentNode.Read( br ); break;
+                    case ComponentData.ComponentType.NineGridText:
+                        ret.ComponentNodeData = NineGridTextComponentNode.Read( br );
+                        break;
                     // case ComponentData.ComponentType.Journal: ret.ComponentNodeData = JournalComponentNode.Read( br ); break;
                     // case ComponentData.ComponentType.Multipurpose: ret.ComponentNodeData = MultipurposeComponentNode.Read( br ); break;
                     // case ComponentData.ComponentType.Map: ret.ComponentNodeData = MapComponentNode.Read( br ); break;
                     // case ComponentData.ComponentType.Preview: ret.ComponentNodeData = PreviewComponentNode.Read( br ); break;
-                    default: 
+                    default:
                         // Console.WriteLine( $"No custom node for type {parentType}..." ); 
                         break;
                 }
@@ -420,8 +435,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct ButtonComponentNode : INode
-        {
+        public struct ButtonComponentNode : INode {
             public uint TextId;
 
             public static ButtonComponentNode Read( BinaryReader br ) {
@@ -431,8 +445,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct WindowComponentNode : INode
-        {
+        public struct WindowComponentNode : INode {
             public uint TitleTextId;
             public uint SubtitleTextId;
             public bool CloseButton;
@@ -452,8 +465,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct CheckBoxComponentNode : INode
-        {
+        public struct CheckBoxComponentNode : INode {
             public uint TextId;
 
             public static CheckBoxComponentNode Read( BinaryReader br ) {
@@ -463,8 +475,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct RadioButtonComponentNode : INode
-        {
+        public struct RadioButtonComponentNode : INode {
             public uint TextId;
             public uint GroupId;
 
@@ -476,8 +487,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct GaugeComponentNode : INode
-        {
+        public struct GaugeComponentNode : INode {
             public int Indicator;
             public int Min;
             public int Max;
@@ -493,8 +503,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct SliderComponentNode : INode
-        {
+        public struct SliderComponentNode : INode {
             public int Min;
             public int Max;
             public int Step;
@@ -508,8 +517,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct TextInputComponentNode : INode
-        {
+        public struct TextInputComponentNode : INode {
             public uint MaxWidth;
             public uint MaxLine;
             public uint MaxSByte;
@@ -571,8 +579,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct NumericInputComponentNode : INode
-        {
+        public struct NumericInputComponentNode : INode {
             public int Value;
             public int Max;
             public int Min;
@@ -594,8 +601,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct ListComponentNode : INode
-        {
+        public struct ListComponentNode : INode {
             public ushort RowNum;
             public ushort ColumnNum;
 
@@ -607,8 +613,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct TabbedComponentNode : INode
-        {
+        public struct TabbedComponentNode : INode {
             public uint TextId;
             public uint GroupId;
 
@@ -620,8 +625,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct ListItemComponentNode : INode
-        {
+        public struct ListItemComponentNode : INode {
             public bool Toggle;
             public byte[] Unk1;
 
@@ -633,8 +637,7 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct NineGridTextComponentNode : INode
-        {
+        public struct NineGridTextComponentNode : INode {
             uint TextId;
 
             public static NineGridTextComponentNode Read( BinaryReader br ) {

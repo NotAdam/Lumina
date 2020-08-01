@@ -63,7 +63,7 @@ namespace Lumina.Data.Parsing.Uld {
                 return ret;
             }
         }
-        
+
         public struct SByte1Keyframe : IKeyframe {
             public BaseKeyframeData Keyframe;
             public sbyte Value;
