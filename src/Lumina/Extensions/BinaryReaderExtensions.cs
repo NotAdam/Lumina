@@ -94,6 +94,12 @@ namespace Lumina.Extensions
         }
 
         /// <summary>
+        /// Seeks this BinaryReader's position to the given offset. Syntactic sugar.
+        /// </summary>
+        public static void Seek( this BinaryReader br, long offset ) {
+            br.BaseStream.Position = offset;
+        }
+
         /// Constructs a StringOffset in place and reads the string for you given an start offset
         /// </summary>
         /// <param name="br">The reader to use to read the string</param>
