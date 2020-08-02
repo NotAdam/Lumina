@@ -1,5 +1,6 @@
 using System;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,6 +15,13 @@ namespace Umbra.Views
     /// </summary>
     public partial class MainWindow : ReactiveWindow< ClientBrowserViewModel >
     {
+        static readonly Key[] secret = new[]
+        {
+            Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right, Key.A, Key.B
+        };
+
+        private bool _activatedDarkTheme = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -56,7 +64,24 @@ namespace Umbra.Views
                     vm => vm.SelectedGameClient,
                     v => v.GameClientListBox.SelectedItem
                 ).DisposeWith( reg );
+
+                this.Events().KeyUp
+                    .Select( x => x.Key )
+                    .Window( 10 )
+                    .SelectMany( x => x.SequenceEqual( secret ) )
+                    .Where( x => x && !_activatedDarkTheme )
+                    .Do( x => EnableDarkTheme() )
+                    .Subscribe( x => { } )
+                    .DisposeWith( reg );
             } );
+        }
+
+        private void EnableDarkTheme()
+        {
+            _activatedDarkTheme = true;
+            Application.Current.Resources.MergedDictionaries.Add( 
+                new ResourceDictionary { Source = new Uri( "/Styles/DarkTheme.xaml", UriKind.RelativeOrAbsolute ) }
+            );
         }
     }
 }

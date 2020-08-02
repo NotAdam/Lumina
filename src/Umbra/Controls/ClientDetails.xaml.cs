@@ -19,6 +19,18 @@ namespace Umbra.Controls
                     vm => vm.OpenExplorer,
                     v => v.OpenExplorerButton
                 ).DisposeWith( reg );
+
+                this.OneWayBind(
+                    ViewModel,
+                    vm => vm.Path,
+                    v => v.Path.Text
+                ).DisposeWith( reg );
+
+                this.OneWayBind(
+                    ViewModel,
+                    vm => vm.Version,
+                    v => v.Version.Text
+                ).DisposeWith( reg );
             } );
         }
 

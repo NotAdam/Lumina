@@ -20,8 +20,8 @@
                     <MenuItem Header="Remove Client" x:Name="RemoveClientButton" />
                 </ContextMenu>
             </StackPanel.ContextMenu>
-            <TextBlock Text="{Binding Path}" />
-            <TextBlock Text="{Binding Version}" FontSize="10" />
+            <TextBlock x:Name="Path" />
+            <TextBlock x:Name="Version" FontSize="10" />
         </StackPanel>
     </ContentControl>
     

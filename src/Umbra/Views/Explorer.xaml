@@ -72,7 +72,7 @@
                 <LayoutRoot.LeftSide>
                     <LayoutAnchorSide>
                         <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="File Browser" AutoHideWidth="350" CanClose="False" CanHide="False" CanAutoHide="False">
+                            <LayoutAnchorable Title="File Browser" AutoHideWidth="350" CanClose="False">
                                 <DockPanel>
                                     <TextBox DockPanel.Dock="Top" Text="fuggg" Padding="4" />
                                     <TreeView DockPanel.Dock="Bottom">
@@ -85,7 +85,7 @@
                                 </DockPanel>
                             </LayoutAnchorable>
                             
-                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" CanHide="False" CanAutoHide="False" x:Name="ExcelSheetListAnchorable"/>
+                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" x:Name="ExcelSheetListAnchorable"/>
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
                 </LayoutRoot.LeftSide>
