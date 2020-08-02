@@ -8,16 +8,11 @@ namespace Umbra.Controls.Explorer
 {
     public partial class ExcelSheetsList : ReactiveUserControl< ExcelSheetsListViewModel >
     {
-        public ExcelSheetsList( Lumina.Lumina lumina ) : this()
+        public ExcelSheetsList( Lumina.Lumina lumina )
         {
             ViewModel = new ExcelSheetsListViewModel( lumina );
-        }
-
-        public ExcelSheetsList()
-        {
+            
             InitializeComponent();
-
-            ViewModel ??= new ExcelSheetsListViewModel();
 
             this.WhenActivated( reg =>
             {

@@ -26,6 +26,9 @@
       <Page Update="Controls\Explorer\FileBrowser.xaml">
         <Generator></Generator>
       </Page>
+      <Page Update="Controls\Explorer\Files\ExcelSheetPage.xaml">
+        <Generator></Generator>
+      </Page>
     </ItemGroup>
 
     <ItemGroup>
@@ -50,6 +53,9 @@
       </Compile>
       <Compile Update="Controls\Explorer\FileBrowser.xaml.cs">
         <DependentUpon>FileBrowser.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Controls\Explorer\Files\ExcelSheetPage.xaml.cs">
+        <DependentUpon>ExcelSheetPage.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 

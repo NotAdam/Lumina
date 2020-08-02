@@ -41,11 +41,6 @@ namespace Umbra.Views
             } );
         }
 
-        public Explorer()
-        {
-            throw new InvalidOperationException( "Explorer can't be constructed with an empty constructor - you need to explicitly construct it" );
-        }
-
         private void AddTab_OnClick( object sender, RoutedEventArgs e )
         {
             AddTabContent( "new tab", new TextBlock { Text = "hello from new tab!" } );
