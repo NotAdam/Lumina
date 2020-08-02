@@ -56,7 +56,7 @@ namespace Lumina.Data
                 {
                     HeaderSize = modelFileInfo.Size,
                     Type = modelFileInfo.Type,
-                    BlockCount = modelFileInfo.used_number_of_block,
+                    BlockCount = modelFileInfo.UsedNumberOfBlocks,
                     RawFileSize = modelFileInfo.RawFileSize,
                     Offset = offset,
 
@@ -70,7 +70,7 @@ namespace Lumina.Data
                 {
                     HeaderSize = fileInfo.Size,
                     Type = fileInfo.Type,
-                    BlockCount = fileInfo.number_of_blocks,
+                    BlockCount = fileInfo.NumberOfBlocks,
                     RawFileSize = fileInfo.RawFileSize,
                     Offset = offset
                 };
@@ -86,7 +86,7 @@ namespace Lumina.Data
                     break;
 
                 case FileType.Model:
-                    ReadModelFile( file, ms, LOD.ALL );
+                    ReadModelFile( file, ms, LodLevel.All );
                     break;
 
                 case FileType.Texture:
@@ -116,7 +116,7 @@ namespace Lumina.Data
 
             foreach( var block in blocks )
             {
-                ReadFileBlock( resource.FileInfo.Offset + resource.FileInfo.HeaderSize + block.offset, ms );
+                ReadFileBlock( resource.FileInfo.Offset + resource.FileInfo.HeaderSize + block.Offset, ms );
             }
 
             // reset position ready for reading
@@ -124,9 +124,9 @@ namespace Lumina.Data
         }
 
         // the resulting data from reading the model file does not match the file size... where is the rest of it?
-        private unsafe void ReadModelFile( FileResource resource, MemoryStream ms, LOD lod = 0 )
+        private unsafe void ReadModelFile( FileResource resource, MemoryStream ms, LodLevel lodLevel = 0 )
         {
-            if( lod != LOD.ALL )
+            if( lodLevel != LodLevel.All )
                 Console.WriteLine( "Please note that loading anything other than all LODs may not be accurate." );
 
             var mdlBlock = resource.FileInfo.ModelBlock;
@@ -135,8 +135,8 @@ namespace Lumina.Data
             ms.Write( BitConverter.GetBytes( mdlBlock.m_uMaterialNum ) );
             ms.Write( new byte[64] );
 
-            if( (Int32)lod > mdlBlock.m_uLODNum )
-                throw new ArgumentException( "Requested LOD does not exist.", nameof( lod ) );
+            if( (Int32)lodLevel > mdlBlock.m_uLODNum )
+                throw new ArgumentException( "Requested LOD does not exist.", nameof( lodLevel ) );
 
             long baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
             long accumOffset = baseOffset;
@@ -156,7 +156,7 @@ namespace Lumina.Data
 
             var compressedBlockSizes = Reader.ReadStructures< UInt16 >( totalBlocks );
 
-            if( lod == LOD.ALL )
+            if( lodLevel == LodLevel.All )
             {
                 for( int i = 0; i < totalBlocks; i++ )
                 {
@@ -179,7 +179,7 @@ namespace Lumina.Data
                     cumulativeBlockSizes.Add( temp );
                 }
 
-                int ilod = (Int32)lod;
+                int ilod = (Int32)lodLevel;
 
                 // load block index, block count for our lod
                 List< int > extractIndices = new List< int >();
@@ -221,7 +221,7 @@ namespace Lumina.Data
 
             // if there is a mipmap header, the comp_offset
             // will not be 0
-            uint mipMapSize = blocks[ 0 ].comp_offset;
+            uint mipMapSize = blocks[ 0 ].CompressedOffset;
             if( mipMapSize != 0 )
             {
                 long originalPos = BaseStream.Position;
@@ -236,10 +236,10 @@ namespace Lumina.Data
             for( byte i = 0; i < blocks.Count; i++ )
             {
                 // start from comp_offset
-                long runningBlockTotal = blocks[ i ].comp_offset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
+                long runningBlockTotal = blocks[ i ].CompressedOffset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
                 ReadFileBlock( runningBlockTotal, ms, true );
 
-                for( int j = 1; j < blocks[ i ].block_count; j++ )
+                for( int j = 1; j < blocks[ i ].BlockCount; j++ )
                 {
                     runningBlockTotal += (UInt32)Reader.ReadInt16();
                     ReadFileBlock( runningBlockTotal, ms, true );
@@ -258,13 +258,13 @@ namespace Lumina.Data
             var blockHeader = Reader.ReadStructure< DatBlockHeader >();
 
             // uncompressed block
-            if( blockHeader.compressed_size == 32000 )
+            if( blockHeader.CompressedSize == 32000 )
             {
-                dest.Write( Reader.ReadBytes( (int)blockHeader.uncompressed_size ) );
+                dest.Write( Reader.ReadBytes( (int)blockHeader.UncompressedSize ) );
                 return;
             }
 
-            var data = Reader.ReadBytes( (int)blockHeader.uncompressed_size );
+            var data = Reader.ReadBytes( (int)blockHeader.UncompressedSize );
 
             using( var compressedStream = new MemoryStream( data ) )
             {

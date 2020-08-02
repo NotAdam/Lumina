@@ -13,12 +13,13 @@ namespace Lumina.Data.Structs
         Texture = 4,
     }
 
-    public enum LOD : int
+    public enum LodLevel : int
     {
-        ALL = -1,
-        HIGHEST,
-        HIGH,
-        LOW
+        All = -1,
+        Highest,
+        High,
+        Low,
+        Max = 3
     }
 
     [StructLayout( LayoutKind.Sequential )]
@@ -28,34 +29,34 @@ namespace Lumina.Data.Structs
         public FileType Type;
         public UInt32 RawFileSize;
         public fixed UInt32 __unknown[2];
-        public UInt32 number_of_blocks;
+        public UInt32 NumberOfBlocks;
     }
 
     [StructLayout( LayoutKind.Sequential )]
     public struct DatStdFileBlockInfos
     {
-        public UInt32 offset;
-        public UInt16 size;
-        public UInt16 uncompressed_size;
+        public UInt32 Offset;
+        public UInt16 CompressedSize;
+        public UInt16 UncompressedSize;
     };
 
     [StructLayout( LayoutKind.Sequential )]
     struct DatBlockHeader
     {
-        public UInt32 size;
+        public UInt32 Size;
         public UInt32 unknown1;
-        public UInt32 compressed_size;
-        public UInt32 uncompressed_size;
+        public UInt32 CompressedSize;
+        public UInt32 UncompressedSize;
     };
 
     [StructLayout( LayoutKind.Sequential )]
     struct LodBlock
     {
-        public UInt32 comp_offset;
-        public UInt32 comp_size;
-        public UInt32 decomp_size;
-        public UInt32 block_offset;
-        public UInt32 block_count;
+        public UInt32 CompressedOffset;
+        public UInt32 CompressedSize;
+        public UInt32 DecompressedSize;
+        public UInt32 BlockOffset;
+        public UInt32 BlockCount;
     }
 
     [StructLayout( LayoutKind.Sequential )]
@@ -64,34 +65,34 @@ namespace Lumina.Data.Structs
         public UInt32 Size;
         public FileType Type;
         public UInt32 RawFileSize;
-        public UInt32 number_of_block;
-        public UInt32 used_number_of_block;
-        public UInt32 m_uVersion;
-        public UInt32 m_uStackMemorySize;
-        public UInt32 m_uRuntimeMemorySize;
-        public fixed UInt32 m_uVertexBufferSize[3];
-        public fixed UInt32 m_uEdgeGeometryVertexBufferSize[3];
-        public fixed UInt32 m_uIndexBufferSize[3];
+        public UInt32 NumberOfBlocks;
+        public UInt32 UsedNumberOfBlocks;
+        public UInt32 Version;
+        public UInt32 StackMemorySize;
+        public UInt32 RuntimeMemorySize;
+        public fixed UInt32 m_uVertexBufferSize[LodLevel.Max];
+        public fixed UInt32 m_uEdgeGeometryVertexBufferSize[LodLevel.Max];
+        public fixed UInt32 m_uIndexBufferSize[LodLevel.Max];
         public UInt32 m_uCompressedStackMemorySize;
         public UInt32 m_uCompressedRuntimeMemorySize;
-        public fixed UInt32 m_uCompressedVertexBufferSize[3];
-        public fixed UInt32 m_uCompressedEdgeGeometryVertexBufferSize[3];
-        public fixed UInt32 m_uCompressedIndexBufferSize[3];
+        public fixed UInt32 m_uCompressedVertexBufferSize[LodLevel.Max];
+        public fixed UInt32 m_uCompressedEdgeGeometryVertexBufferSize[LodLevel.Max];
+        public fixed UInt32 m_uCompressedIndexBufferSize[LodLevel.Max];
         public UInt32 m_uStackMemoryOffset;
         public UInt32 m_uRuntimeMemoryOffset;
-        public fixed UInt32 m_uVertexBufferOffset[3];
-        public fixed UInt32 m_uEdgeGeometryVertexBufferOffset[3];
-        public fixed UInt32 m_uIndexBufferOffset[3];
+        public fixed UInt32 m_uVertexBufferOffset[LodLevel.Max];
+        public fixed UInt32 m_uEdgeGeometryVertexBufferOffset[LodLevel.Max];
+        public fixed UInt32 m_uIndexBufferOffset[LodLevel.Max];
         public UInt16 m_uStackDataBlockIndex;
         public UInt16 m_uRuntimeDataBlockIndex;
-        public fixed UInt16 m_uVertexBufferDataBlockIndex[3];
-        public fixed UInt16 m_uEdgeGeometryVertexBufferDataBlockIndex[3];
-        public fixed UInt16 m_uIndexBufferDataBlockIndex[3];
+        public fixed UInt16 m_uVertexBufferDataBlockIndex[LodLevel.Max];
+        public fixed UInt16 m_uEdgeGeometryVertexBufferDataBlockIndex[LodLevel.Max];
+        public fixed UInt16 m_uIndexBufferDataBlockIndex[LodLevel.Max];
         public UInt16 m_uStackDataBlockNum;
         public UInt16 m_uRuntimeDataBlockNum;
-        public fixed UInt16 m_uVertexBufferDataBlockNum[3];
-        public fixed UInt16 m_uEdgeGeometryVertexBufferDataBlockNum[3];
-        public fixed UInt16 m_uIndexBufferDataBlockNum[3];
+        public fixed UInt16 m_uVertexBufferDataBlockNum[LodLevel.Max];
+        public fixed UInt16 m_uEdgeGeometryVertexBufferDataBlockNum[LodLevel.Max];
+        public fixed UInt16 m_uIndexBufferDataBlockNum[LodLevel.Max];
         public UInt16 m_uVertexDeclarationNum;
         public UInt16 m_uMaterialNum;
         public byte m_uLODNum;
