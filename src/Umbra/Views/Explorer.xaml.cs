@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Windows;
@@ -11,17 +12,17 @@ namespace Umbra.Views
 {
     public partial class Explorer : ReactiveWindow< ExplorerViewModel >
     {
-        public Explorer( string path ) : this()
-        {
-            ViewModel = new ExplorerViewModel( path );
-            ExcelSheetListAnchorable.Content = new ExcelSheetsList( ViewModel.Lumina );
-        }
-
-        public Explorer()
+        public Explorer( string path )
         {
             InitializeComponent();
 
-            ViewModel ??= new ExplorerViewModel();
+#if !DEBUG
+            // hide debug menu in release builds so people don't do dumb shit
+            DebugMenu.Visibility = Visibility.Collapsed;
+#endif
+
+            ViewModel = new ExplorerViewModel( path );
+            ExcelSheetListAnchorable.Content = new ExcelSheetsList( ViewModel.Lumina );
 
             this.WhenActivated( reg =>
             {
@@ -30,7 +31,18 @@ namespace Umbra.Views
                     vm => vm.Title,
                     v => v.Title
                 ).DisposeWith( reg );
+
+
+                // event handling
+                MessageBus.Current.Listen< Events.RequestOpenExcelSheet >()
+                    .Subscribe( RequestOpenExcelSheet )
+                    .DisposeWith( reg );
             } );
+        }
+
+        public Explorer()
+        {
+            throw new InvalidOperationException( "Explorer can't be constructed with an empty constructor - you need to explicitly construct it" );
         }
 
         private void AddTab_OnClick( object sender, RoutedEventArgs e )
@@ -45,18 +57,23 @@ namespace Umbra.Views
             {
                 return;
             }
-            
+
             var pane = group as LayoutDocumentPane;
             pane?.Children.Add( new LayoutDocument
             {
-                Title = "new tab",
-                Content = new TextBlock { Text = "hello from new tab!" }
+                Title = title,
+                Content = content
             } );
         }
 
         private void ThrowException_OnClick( object sender, RoutedEventArgs e )
         {
             throw new System.NotImplementedException();
+        }
+
+        private void RequestOpenExcelSheet( Events.RequestOpenExcelSheet e )
+        {
+            AddTabContent( e.SheetName, new TextBlock { Text = $"sheet: {e.SheetName}" } );
         }
     }
 }

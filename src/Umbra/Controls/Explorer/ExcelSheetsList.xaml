@@ -12,6 +12,6 @@
        d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel>
         <TextBox DockPanel.Dock="Top" Text="fuggg" x:Name="SearchInput" Style="{StaticResource TextBoxPlaceholder}" Padding="4" Tag="Search sheets..." />
-        <ListView DockPanel.Dock="Bottom" x:Name="SheetList" DisplayMemberPath="." />
+        <ListView DockPanel.Dock="Bottom" x:Name="SheetList" DisplayMemberPath="." MouseDoubleClick="SheetList_OnMouseDoubleClick" />
     </DockPanel>
 </rxui:ReactiveUserControl>
