@@ -72,27 +72,15 @@
                 <LayoutRoot.LeftSide>
                     <LayoutAnchorSide>
                         <LayoutAnchorGroup>
-                            <LayoutAnchorable Title="File Browser" AutoHideWidth="350" CanClose="False">
-                                <DockPanel>
-                                    <TextBox DockPanel.Dock="Top" Text="fuggg" Padding="4" />
-                                    <TreeView DockPanel.Dock="Bottom">
-                                        <TreeView.Items>
-                                            <TreeViewItem Header="hello">
-                                                <TreeViewItem Header="world" />
-                                            </TreeViewItem>
-                                        </TreeView.Items>
-                                    </TreeView>
-                                </DockPanel>
-                            </LayoutAnchorable>
-                            
-                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" x:Name="ExcelSheetListAnchorable"/>
+                            <LayoutAnchorable Title="File Browser" AutoHideWidth="350" CanClose="False" x:Name="FileBrowserAnchorable" />
+                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" x:Name="ExcelSheetListAnchorable" />
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
                 </LayoutRoot.LeftSide>
             </LayoutRoot>
-            
+
         </DockingManager>
-        
+
     </DockPanel>
-    
+
 </rxui:ReactiveWindow>

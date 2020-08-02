@@ -23,6 +23,7 @@ namespace Umbra.Views
 
             ViewModel = new ExplorerViewModel( path );
             ExcelSheetListAnchorable.Content = new ExcelSheetsList( ViewModel.Lumina );
+            FileBrowserAnchorable.Content = new FileBrowser();
 
             this.WhenActivated( reg =>
             {

@@ -17,7 +17,7 @@ namespace Umbra.Views
     {
         static readonly Key[] secret = new[]
         {
-            Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right, Key.A, Key.B
+            Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right, Key.B, Key.A
         };
 
         private bool _activatedDarkTheme = false;
