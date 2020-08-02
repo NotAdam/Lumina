@@ -37,5 +37,7 @@ namespace Lumina
         /// The raw path provided when parsing the initial path
         /// </summary>
         public string Path { get; internal set; }
+        
+        public static implicit operator string( ParsedFilePath obj ) => obj.Path;
     }
 }

@@ -1,4 +1,4 @@
-<rxui:ReactivePage
+<rxui:ReactiveUserControl
     x:Class="Umbra.Controls.Explorer.Files.ExcelSheetPage"
     x:TypeArguments="vms:ExcelSheetPageViewModel"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -9,31 +9,88 @@
     xmlns:vms="clr-namespace:Umbra.ViewModels.Explorer.Files"
     xmlns:rxui="http://reactiveui.net"
     mc:Ignorable="d"
-    Title="ExcelSheetPage" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    d:DesignHeight="450" d:DesignWidth="800">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal">
-            <TextBlock x:Name="SheetName" FontSize="24" FontWeight="Bold" VerticalAlignment="Stretch">Action</TextBlock>
-            <!--<TextBlock VerticalAlignment="Bottom" Margin="5,0,0,0">Sheet</TextBlock>-->
-        </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock x:Name="SheetName" FontSize="24" FontWeight="Bold" VerticalAlignment="Stretch">Action</TextBlock>
+                <!--<TextBlock VerticalAlignment="Bottom" Margin="5,0,0,0">Sheet</TextBlock>-->
+            </StackPanel>
 
-        <TabControl Grid.Row="1">
-            <TabItem Header="Raw">
-                <DataGrid x:Name="RawSheetDataGrid">
-                    
-                </DataGrid>
-            </TabItem>
-            <TabItem Header="Typed" x:Name="TypedSheetContainer" Visibility="Collapsed">
+            <TabControl Grid.Row="1">
+                <TabItem Header="Raw" x:Name="RawDataGridParentContainer">
+                    <DataGrid
+                        x:Name="RawSheetDataGrid"
+                        AutoGenerateColumns="False"
+                        EnableColumnVirtualization="True"
+                        EnableRowVirtualization="True"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        IsReadOnly="True" />
+                </TabItem>
+                <TabItem Header="Typed" x:Name="StronglyTypedSheetContainer" Visibility="Collapsed">
+                    <DataGrid x:Name="StronglyTypedSheetDataGrid" AutoGenerateColumns="False" />
+                </TabItem>
+                <TabItem Header="Information">
+                <ScrollViewer>
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="150" Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-            </TabItem>
-            <TabItem Header="Information">
-                <TextBlock FontSize="18">Sheet Header</TextBlock>
-            </TabItem>
-        </TabControl>
-    </Grid>
+                        <Grid.RowDefinitions>
+                            <!-- haha padding go brrrr -->
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="5" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-</rxui:ReactivePage>
+                        <!-- basic info -->
+                        <TextBlock FontWeight="Bold">Header File</TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="HeaderFilePath" />
+
+                        <TextBlock FontWeight="Bold" Grid.Row="2" Grid.Column="0">Languages</TextBlock>
+                        <ListView Grid.Row="2" Grid.Column="1" x:Name="SheetLanguagesListView">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListView>
+
+                        <!-- data pages -->
+                        <TextBlock FontWeight="Bold" Grid.Row="4" Grid.Column="0">Data Pages</TextBlock>
+                        <DataGrid 
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            EnableColumnVirtualization="True"
+                            EnableRowVirtualization="True"
+                            x:Name="DataPagesDataGrid"
+                            MaxHeight="500"/>
+
+                        <!-- column info -->
+                        <TextBlock FontWeight="Bold" Grid.Row="6" Grid.Column="0">Columns</TextBlock>
+                        <DataGrid
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            EnableColumnVirtualization="True"
+                            EnableRowVirtualization="True"
+                            x:Name="ColumnsDataGrid"
+                            MaxHeight="500"/>
+                    </Grid>
+
+                </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+</rxui:ReactiveUserControl>

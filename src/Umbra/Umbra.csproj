@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Lumina.Generated\Lumina.Generated.csproj" />
       <ProjectReference Include="..\Lumina\Lumina.csproj" />
     </ItemGroup>
 

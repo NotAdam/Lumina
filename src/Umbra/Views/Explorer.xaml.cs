@@ -69,7 +69,8 @@ namespace Umbra.Views
 
         private void RequestOpenExcelSheet( Events.RequestOpenExcelSheet e )
         {
-            AddTabContent( e.SheetName, new TextBlock { Text = $"sheet: {e.SheetName}" } );
+            var sheetPage = new Controls.Explorer.Files.ExcelSheetPage( e.SheetName, ViewModel.Lumina );
+            AddTabContent( $"Sheet: {e.SheetName}", sheetPage );
         }
     }
 }

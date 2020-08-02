@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
 using System.Windows;
+using DynamicData;
 using Microsoft.Win32;
 using ReactiveUI;
 using Splat;
@@ -16,29 +17,27 @@ namespace Umbra.ViewModels
     public class ClientBrowserViewModel : ReactiveObject
     {
         private readonly Services.LuminaProviderService _luminaProvider;
-        
+        private readonly Services.GarbageSettingsService _settings;
+
         public ClientBrowserViewModel()
         {
             _luminaProvider = Locator.Current.GetService< Services.LuminaProviderService >();
-            
+            _settings = Locator.Current.GetService< Services.GarbageSettingsService >();
+
             Quit = ReactiveCommand.Create( OnQuit );
             AddClient = ReactiveCommand.Create( OnAddClient );
             RemoveSelectedClient = ReactiveCommand.Create( OnRemoveSelectedClient );
             ClientSelected = ReactiveCommand.Create< GameClient >( OnClientSelected );
-            ClientDoubleClicked = ReactiveCommand.Create< GameClient >( ( gc ) =>
-            {
-                MessageBox.Show( gc.Path );
-            } );
 
             GameClients = new ObservableCollection< ClientDetailsViewModel >();
+            // todo: this is shit but i don't care
+            GameClients.AddRange( _settings.Settings.Clients.Select( c => new ClientDetailsViewModel { Client = c } ) );
         }
 
         public ReactiveCommand< Unit, Unit > Quit { get; set; }
         public ReactiveCommand< Unit, Unit > AddClient { get; set; }
         public ReactiveCommand< Unit, Unit > RemoveSelectedClient { get; set; }
         public ReactiveCommand< GameClient, Unit > ClientSelected { get; set; }
-        
-        public ReactiveCommand< GameClient, Unit > ClientDoubleClicked { get; set; }
 
         public ObservableCollection< ClientDetailsViewModel > GameClients { get; set; }
 
@@ -74,28 +73,30 @@ namespace Umbra.ViewModels
             {
                 return;
             }
-            
+
             var path = Path.Join( Path.GetDirectoryName( dialog.FileName ), "sqpack" );
-            
+
             if( GameClients.Any( c => c.Path == path ) )
             {
                 return;
             }
-            
+
             // this is kind of shit but we can validate that a path is correct-ish
             Lumina = _luminaProvider.GetInstance( path );
             if( Lumina == null )
             {
                 return;
             }
-            
+
             var client = new GameClient
             {
                 Path = path,
-                Version = Lumina.Repositories.FirstOrDefault(r => r.Key == "ffxiv").Value?.Version
+                Version = Lumina.Repositories.FirstOrDefault( r => r.Key == "ffxiv" ).Value?.Version
             };
-            
+
             GameClients.Add( new ClientDetailsViewModel { Client = client } );
+            _settings.Settings.Clients.Add( client );
+            _settings.SaveSettings();
         }
 
         private void OnRemoveSelectedClient()
