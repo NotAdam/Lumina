@@ -86,7 +86,7 @@ namespace Lumina.Data
                     break;
 
                 case FileType.Model:
-                    ReadModelFile( file, ms, LodLevel.All );
+                    ReadModelFile( file, ms );
                     break;
 
                 case FileType.Texture:
@@ -123,96 +123,124 @@ namespace Lumina.Data
             ms.Position = 0;
         }
 
-        // the resulting data from reading the model file does not match the file size... where is the rest of it?
-        private unsafe void ReadModelFile( FileResource resource, MemoryStream ms, LodLevel lodLevel = 0 )
-        {
-            if( lodLevel != LodLevel.All )
-                Console.WriteLine( "Please note that loading anything other than all LODs may not be accurate." );
-
+        private unsafe void ReadModelFile( FileResource resource, MemoryStream ms ) {
             var mdlBlock = resource.FileInfo.ModelBlock;
-
-            ms.Write( BitConverter.GetBytes( mdlBlock.m_uVertexDeclarationNum ) );
-            ms.Write( BitConverter.GetBytes( mdlBlock.m_uMaterialNum ) );
-            ms.Write( new byte[64] );
-
-            if( (Int32)lodLevel > mdlBlock.m_uLODNum )
-                throw new ArgumentException( "Requested LOD does not exist.", nameof( lodLevel ) );
-
             long baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-            long accumOffset = baseOffset;
 
-            int totalBlocks = 0;
-
-            // 11 types of block; 1/1/3/3/3 stack/runtime/vertex/egeo/index
-            totalBlocks += mdlBlock.m_uStackDataBlockNum;
-            totalBlocks += mdlBlock.m_uRuntimeDataBlockNum;
-
+            // 1/1/3/3/3 stack/runtime/vertex/egeo/index
+            // TODO: consider testing if this is more reliable than the Explorer method
+            // of adding mdlBlock.IndexBufferDataBlockIndex[2] + mdlBlock.IndexBufferDataBlockNum[2]
+            // i don't want to move this to that method right now, because i know sometimes the index is 0
+            // but it seems to work fine in explorer...
+            int totalBlocks = mdlBlock.StackBlockNum;
+            totalBlocks += mdlBlock.RuntimeBlockNum;
             for( int i = 0; i < 3; i++ )
-                totalBlocks += mdlBlock.m_uVertexBufferDataBlockNum[ i ];
+                totalBlocks += mdlBlock.VertexBufferBlockNum[ i ];
             for( int i = 0; i < 3; i++ )
-                totalBlocks += mdlBlock.m_uEdgeGeometryVertexBufferDataBlockNum[ i ];
+                totalBlocks += mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ];
             for( int i = 0; i < 3; i++ )
-                totalBlocks += mdlBlock.m_uIndexBufferDataBlockNum[ i ];
+                totalBlocks += mdlBlock.IndexBufferBlockNum[ i ];
 
             var compressedBlockSizes = Reader.ReadStructures< UInt16 >( totalBlocks );
+            int currentBlock = 0;
+            int stackSize;
+            int runtimeSize;
+            int[] vertexDataOffsets = new int[3];
+            int[] indexDataOffsets = new int[3];
+            int[] vertexBufferSizes = new int[3];
+            int[] indexBufferSizes = new int[3];
 
-            if( lodLevel == LodLevel.All )
-            {
-                for( int i = 0; i < totalBlocks; i++ )
-                {
-                    ReadFileBlock( accumOffset, ms );
-                    accumOffset = (uint)( accumOffset + compressedBlockSizes[ i ] );
+            ms.Seek( 0x44, SeekOrigin.Begin );
+            
+            Reader.Seek( baseOffset + mdlBlock.StackOffset );
+            long stackStart = ms.Position;
+            for( int i = 0; i < mdlBlock.StackBlockNum; i++ ) {
+                long lastPos = ms.Position;
+                ReadFileBlock( ms );
+                Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
+                currentBlock++;
+            }
+
+            long stackEnd = ms.Position;
+            stackSize = (int) ( stackEnd - stackStart );
+
+            Reader.Seek( baseOffset + mdlBlock.RuntimeOffset );
+            long runtimeStart = ms.Position;
+            for( int i = 0; i < mdlBlock.RuntimeBlockNum; i++ ) {
+                long lastPos = ms.Position;
+                ReadFileBlock( ms );
+                Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
+                currentBlock++;
+            }
+
+            long runtimeEnd = ms.Position;
+            runtimeSize = (int) ( runtimeEnd - runtimeStart );
+
+            for( int i = 0; i < 3; i++ ) {
+
+                if( mdlBlock.VertexBufferBlockNum[ i ] != 0 ) {
+                    int currentVertexOffset = (int) ms.Position;
+                    if( i == 0 || currentVertexOffset != vertexDataOffsets[ i - 1 ] )
+                        vertexDataOffsets[ i ] = currentVertexOffset;
+                    else
+                        vertexDataOffsets[ i ] = 0;
+
+                    Reader.Seek( baseOffset + mdlBlock.VertexBufferOffset[ i ] );
+
+                    for( int j = 0; j < mdlBlock.VertexBufferBlockNum[ i ]; j++ ) {
+                        long lastPos = Reader.BaseStream.Position;
+                        vertexBufferSizes[ i ] += (int) ReadFileBlock( ms );
+                        Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
+                        currentBlock++;
+                    }
+                }
+
+                if( mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ] != 0 ) {
+                    for( int j = 0; j < mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ]; j++ ) {
+                        long lastPos = Reader.BaseStream.Position;
+                        ReadFileBlock( ms );
+                        Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
+                        currentBlock++;
+                    }
+                }
+
+                if( mdlBlock.IndexBufferBlockNum[ i ] != 0 ) {
+                    int currentIndexOffset = (int) ms.Position;
+                    if( i == 0 || currentIndexOffset != indexDataOffsets[ i - 1 ] )
+                        indexDataOffsets[ i ] = currentIndexOffset;
+                    else
+                        indexDataOffsets[ i ] = 0;
+
+                    // i guess this is only needed in the vertex area, for i = 0
+                    // Reader.Seek( baseOffset + mdlBlock.IndexBufferOffset[ i ] );
+
+                    for( int j = 0; j < mdlBlock.IndexBufferBlockNum[ i ]; j++ ) {
+                        long lastPos = Reader.BaseStream.Position;
+                        indexBufferSizes[ i ] += (int) ReadFileBlock( ms );
+                        Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
+                        currentBlock++;
+                    }
                 }
             }
-            else // todo: dunno, refactor this? hard to follow and may be unnecessary anyways
-            {
-                // so we don't have to accumulate block sizes during reading
-                // which would result in a lot more looping than necessary
-                var cumulativeBlockSizes = new List< UInt16 >();
-                cumulativeBlockSizes.Add( 0 );
 
-                for( int i = 0; i < compressedBlockSizes.Count; i++ )
-                {
-                    UInt16 temp = 0;
-                    for( int j = i; j >= 0; j-- )
-                        temp += (UInt16)compressedBlockSizes[ j ];
-                    cumulativeBlockSizes.Add( temp );
-                }
-
-                int ilod = (Int32)lodLevel;
-
-                // load block index, block count for our lod
-                List< int > extractIndices = new List< int >();
-                List< int > extractBlockSizes = new List< int >();
-
-                extractIndices.Add( mdlBlock.m_uStackDataBlockIndex );
-                extractBlockSizes.Add( mdlBlock.m_uStackDataBlockNum );
-
-                extractIndices.Add( mdlBlock.m_uRuntimeDataBlockIndex );
-                extractBlockSizes.Add( mdlBlock.m_uRuntimeDataBlockNum );
-
-                extractIndices.Add( mdlBlock.m_uVertexBufferDataBlockIndex[ ilod ] );
-                extractBlockSizes.Add( mdlBlock.m_uVertexBufferDataBlockNum[ ilod ] );
-
-                if( mdlBlock.m_bEnableEdgeGeometry )
-                {
-                    extractIndices.Add( mdlBlock.m_uEdgeGeometryVertexBufferDataBlockIndex[ ilod ] );
-                    extractBlockSizes.Add( mdlBlock.m_uEdgeGeometryVertexBufferDataBlockNum[ ilod ] );
-                }
-
-                extractIndices.Add( mdlBlock.m_uIndexBufferDataBlockIndex[ ilod ] );
-                extractBlockSizes.Add( mdlBlock.m_uIndexBufferDataBlockNum[ ilod ] );
-
-                /*
-                 * for any buffer i:
-                 * - extractIndices[i] is the index which these blocks start at
-                 * - extractBlockSizes[i] is the number of contiguous blocks that begin at extractIndices[i]
-                 * - cumulativeBlockSizes[i] is the pre-accumulated start offset for block i
-                 */
-                for( int i = 0; i < extractIndices.Count; i++ )
-                for( int j = 0; j < extractBlockSizes[ i ]; j++ )
-                    ReadFileBlock( baseOffset + cumulativeBlockSizes[ extractIndices[ i ] + j ], ms );
-            }
+            ms.Seek( 0, SeekOrigin.Begin );
+            ms.Write( BitConverter.GetBytes( mdlBlock.Version ) );
+            ms.Write( BitConverter.GetBytes( stackSize ) );
+            ms.Write( BitConverter.GetBytes( runtimeSize ) );
+            ms.Write( BitConverter.GetBytes( mdlBlock.VertexDeclarationNum ) );
+            ms.Write( BitConverter.GetBytes( mdlBlock.MaterialNum ) );
+            for( int i = 0; i < 3; i++ )
+                ms.Write( BitConverter.GetBytes( vertexDataOffsets[ i ] ) );
+            for( int i = 0; i < 3; i++ )
+                ms.Write( BitConverter.GetBytes( indexDataOffsets[ i ] ) );
+            for( int i = 0; i < 3; i++ )
+                ms.Write( BitConverter.GetBytes( vertexBufferSizes[ i ] ) );
+            for( int i = 0; i < 3; i++ )
+                ms.Write( BitConverter.GetBytes( indexBufferSizes[ i ] ) );
+            ms.Write( new [] {mdlBlock.NumLods} );
+            ms.Write( BitConverter.GetBytes( mdlBlock.IndexBufferStreamingEnabled ) );
+            ms.Write( BitConverter.GetBytes( mdlBlock.EdgeGeometryEnabled ) );
+            ms.Write( new byte[] {0} );
         }
 
         private void ReadTextureFile( FileResource resource, MemoryStream ms )
@@ -250,18 +278,22 @@ namespace Lumina.Data
             }
         }
 
-        protected void ReadFileBlock( long offset, MemoryStream dest, bool resetPosition = false )
+        protected uint ReadFileBlock( MemoryStream dest, bool resetPosition = false ) {
+            return ReadFileBlock( Reader.BaseStream.Position, dest, resetPosition );
+        }
+
+        protected uint ReadFileBlock( long offset, MemoryStream dest, bool resetPosition = false )
         {
             long originalPosition = BaseStream.Position;
             BaseStream.Position = offset;
 
             var blockHeader = Reader.ReadStructure< DatBlockHeader >();
-
+            
             // uncompressed block
             if( blockHeader.CompressedSize == 32000 )
             {
                 dest.Write( Reader.ReadBytes( (int)blockHeader.UncompressedSize ) );
-                return;
+                return blockHeader.UncompressedSize;
             }
 
             var data = Reader.ReadBytes( (int)blockHeader.UncompressedSize );
@@ -275,6 +307,8 @@ namespace Lumina.Data
 
             if( resetPosition )
                 BaseStream.Position = originalPosition;
+
+            return blockHeader.UncompressedSize;
         }
 
         public void Dispose()
