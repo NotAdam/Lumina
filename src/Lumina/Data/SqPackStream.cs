@@ -123,8 +123,6 @@ namespace Lumina.Data
             ms.Position = 0;
         }
 
-        // the resulting data from reading the model file does not match the file size... where is the rest of it?
-
         private unsafe void ReadModelFile( FileResource resource, MemoryStream ms ) {
             var mdlBlock = resource.FileInfo.ModelBlock;
             long baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
