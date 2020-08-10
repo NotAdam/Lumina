@@ -1,8 +1,11 @@
 using System.Reactive.Disposables;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ReactiveUI;
+using Umbra.Events;
 using Umbra.ViewModels.Explorer;
+using Umbra.Views;
 
 namespace Umbra.Controls.Explorer
 {
@@ -37,10 +40,16 @@ namespace Umbra.Controls.Explorer
                 return;
             }
 
-            MessageBus.Current.SendMessage( new Events.RequestOpenExcelSheet
+            var parent = Window.GetWindow( this );
+            if( parent == null )
             {
-                SheetName = SheetList.SelectedItem as string
-            } );
+                return;
+            }
+            
+            if( parent is Workbench wb )
+            {
+                wb.RequestOpenExcelSheet( SheetList.SelectedItem as string );
+            }
         }
     }
 }

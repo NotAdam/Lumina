@@ -4,14 +4,9 @@ using Umbra.Services;
 
 namespace Umbra.ViewModels
 {
-    public class ExplorerViewModel : ReactiveObject
+    public class WorkbenchViewModel : ReactiveObject
     {
-        public ExplorerViewModel()
-        {
-            
-        }
-
-        public ExplorerViewModel( string gamePath ) : this()
+        public WorkbenchViewModel( string gamePath )
         {
             _gamePath = gamePath;
 
@@ -33,7 +28,7 @@ namespace Umbra.ViewModels
 
         public string Title
         {
-            get => $"Explorer - {_gamePath} - Umbra";
+            get => $"Workbench - {_gamePath} - Umbra";
         }
 
         private Lumina.Lumina _lumina;

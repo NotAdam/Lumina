@@ -10,9 +10,9 @@ using Umbra.ViewModels;
 
 namespace Umbra.Views
 {
-    public partial class Explorer : ReactiveWindow< ExplorerViewModel >
+    public partial class Workbench : ReactiveWindow< WorkbenchViewModel >
     {
-        public Explorer( string path )
+        public Workbench( string path )
         {
             InitializeComponent();
 
@@ -21,7 +21,7 @@ namespace Umbra.Views
             DebugMenu.Visibility = Visibility.Collapsed;
 #endif
 
-            ViewModel = new ExplorerViewModel( path );
+            ViewModel = new WorkbenchViewModel( path );
             ExcelSheetListAnchorable.Content = new ExcelSheetsList( ViewModel.Lumina );
             FileBrowserAnchorable.Content = new FileBrowser();
 
@@ -32,12 +32,7 @@ namespace Umbra.Views
                     vm => vm.Title,
                     v => v.Title
                 ).DisposeWith( reg );
-
-
-                // event handling
-                MessageBus.Current.Listen< Events.RequestOpenExcelSheet >()
-                    .Subscribe( RequestOpenExcelSheet )
-                    .DisposeWith( reg );
+                
             } );
         }
 
@@ -67,10 +62,10 @@ namespace Umbra.Views
             throw new System.NotImplementedException();
         }
 
-        private void RequestOpenExcelSheet( Events.RequestOpenExcelSheet e )
+        public void RequestOpenExcelSheet( string sheetName )
         {
-            var sheetPage = new Controls.Explorer.Files.ExcelSheetPage( e.SheetName, ViewModel.Lumina );
-            AddTabContent( $"Sheet: {e.SheetName}", sheetPage );
+            var sheetPage = new Controls.Explorer.Files.ExcelSheetPage( sheetName, ViewModel.Lumina );
+            AddTabContent( $"Sheet: {sheetName}", sheetPage );
         }
     }
 }

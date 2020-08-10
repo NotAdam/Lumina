@@ -15,7 +15,7 @@
       <Page Update="Views\ClientBrowser.xaml">
         <Generator>MSBuild:Compile</Generator>
       </Page>
-      <Page Update="Views\Explorer.xaml">
+      <Page Update="Views\Workbench.xaml">
           <Generator>MSBuild:Compile</Generator>
       </Page>
       <Page Update="Controls\ClientDetails.xaml">

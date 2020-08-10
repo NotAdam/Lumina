@@ -46,7 +46,7 @@ namespace Umbra.Controls
                 return;
             }
 
-            var explorer = new Views.Explorer( ViewModel.Path );
+            var explorer = new Views.Workbench( ViewModel.Path );
             // todo: wtf? this still doesn't even fucking work right
             explorer.Show();
             explorer.Activate();
