@@ -24,8 +24,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Action > Action3;
         public bool Unknown13;
         public LazyRow< Action > Action4;
+        public bool Unknown15;
         public LazyRow< Action > Action5;
-        public ushort Unknown16;
         public bool Unknown17;
         public LazyRow< RPParameter > RPParameter;
         public LazyRow< Action > RemoveAction;
@@ -69,8 +69,8 @@ namespace Lumina.Excel.GeneratedSheets
             Action3 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 12 ), language );
             Unknown13 = parser.ReadColumn< bool >( 13 );
             Action4 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 14 ), language );
-            //Action5 = new LazyRow< Action >( lumina, parser.ReadColumn< bool >( 15 ), language );
-            Unknown16 = parser.ReadColumn< ushort >( 16 );
+            Unknown15 = parser.ReadColumn< bool >( 15 );
+            Action5 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 16 ), language );
             Unknown17 = parser.ReadColumn< bool >( 17 );
             RPParameter = new LazyRow< RPParameter >( lumina, parser.ReadColumn< ushort >( 18 ), language );
             RemoveAction = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 19 ), language );
