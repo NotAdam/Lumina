@@ -116,9 +116,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown34 = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
             ModelMainHand = parser.ReadColumn< byte >( 36 );
-            DyeMainHand = new LazyRow< Stain >( lumina, parser.ReadColumn< ulong >( 37 ), language );
+            //DyeMainHand = new LazyRow< Stain >( lumina, parser.ReadColumn< ulong >( 37 ), language );
             ModelOffHand = parser.ReadColumn< byte >( 38 );
-            DyeOffHand = new LazyRow< Stain >( lumina, parser.ReadColumn< ulong >( 39 ), language );
+            //DyeOffHand = new LazyRow< Stain >( lumina, parser.ReadColumn< ulong >( 39 ), language );
             ModelHead = parser.ReadColumn< byte >( 40 );
             DyeHead = new LazyRow< Stain >( lumina, parser.ReadColumn< uint >( 41 ), language );
             ModelBody = parser.ReadColumn< byte >( 42 );

@@ -69,7 +69,7 @@ namespace Lumina.Excel.GeneratedSheets
             Action3 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 12 ), language );
             Unknown13 = parser.ReadColumn< bool >( 13 );
             Action4 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 14 ), language );
-            Action5 = new LazyRow< Action >( lumina, parser.ReadColumn< bool >( 15 ), language );
+            //Action5 = new LazyRow< Action >( lumina, parser.ReadColumn< bool >( 15 ), language );
             Unknown16 = parser.ReadColumn< ushort >( 16 );
             Unknown17 = parser.ReadColumn< bool >( 17 );
             RPParameter = new LazyRow< RPParameter >( lumina, parser.ReadColumn< ushort >( 18 ), language );

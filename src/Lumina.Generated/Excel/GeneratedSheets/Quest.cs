@@ -65,7 +65,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] ConditionType;
         public uint[] ConditionValue;
         public byte[] ConditionOperator;
-        public ushort[] Behavior;
+        //public ushort[] Behavior;
         public bool[] VisibleBool;
         public bool[] ConditionBool;
         public bool[] ItemBool;
@@ -370,9 +370,9 @@ namespace Lumina.Excel.GeneratedSheets
             ConditionOperator = new byte[ 64 ];
             for( var i = 0; i < 64; i++ )
                 ConditionOperator[ i ] = parser.ReadColumn< byte >( 533 + i );
-            Behavior = new ushort[ 64 ];
-            for( var i = 0; i < 64; i++ )
-                Behavior[ i ] = parser.ReadColumn< ushort >( 597 + i );
+            //Behavior = new ushort[ 64 ];
+            //for( var i = 0; i < 64; i++ )
+            //Behavior[ i ] = parser.ReadColumn< ushort >( 597 + i );
             VisibleBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
                 VisibleBool[ i ] = parser.ReadColumn< bool >( 661 + i );
