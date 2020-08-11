@@ -1,3 +1,5 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,10 +15,6 @@ namespace Lumina.Excel.GeneratedSheets
         public struct UnkStruct2999Struct
         {
             public byte SubMenuGraphic;
-        }
-        public struct UnkStruct3291Struct
-        {
-            public int FacialFeatureOption;
         }
         public struct UnkStruct3347Struct
         {
@@ -3012,7 +3010,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown3277;
         public byte Unknown3278;
         public byte[] VoiceStruct;
-        public UnkStruct3291Struct[] UnkStruct3291;
+        public int[] Unknown3291;
         public int Unknown3298;
         public int Unknown3299;
         public int Unknown3300;
@@ -6095,12 +6093,9 @@ namespace Lumina.Excel.GeneratedSheets
             VoiceStruct = new byte[ 12 ];
             for( var i = 0; i < 12; i++ )
                 VoiceStruct[ i ] = parser.ReadColumn< byte >( 3279 + i );
-            UnkStruct3291 = new UnkStruct3291Struct[ 7 ];
+            Unknown3291 = new int[ 7 ];
             for( var i = 0; i < 7; i++ )
-            {
-                UnkStruct3291[ i ] = new UnkStruct3291Struct();
-                UnkStruct3291[ i ].FacialFeatureOption = parser.ReadColumn< int >( 3291 + ( i * 1 + 0 ) );
-            }
+                Unknown3291[ i ] = parser.ReadColumn< int >( 3291 + i );
             Unknown3298 = parser.ReadColumn< int >( 3298 );
             Unknown3299 = parser.ReadColumn< int >( 3299 );
             Unknown3300 = parser.ReadColumn< int >( 3300 );

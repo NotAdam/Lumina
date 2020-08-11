@@ -1,24 +1,32 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "IndividualWeather", columnHash: 0x1012bc70 )]
+    [Sheet( "IndividualWeather", columnHash: 0x28885f67 )]
     public class IndividualWeather : IExcelRow
     {
         
         public LazyRow< Weather >[] Weather;
-        public byte Unknown5;
         public byte Unknown6;
         public byte Unknown7;
         public byte Unknown8;
         public byte Unknown9;
+        public byte Unknown10;
+        public byte Unknown11;
+        public byte AddedIn530;
+        public byte AddedIn531;
+        public uint Unknown14;
         public LazyRow< Quest >[] Quest;
-        public uint Unknown15;
-        public uint Unknown16;
-        public uint Unknown17;
-        public uint Unknown18;
-        public uint Unknown19;
+        public uint Unknown21;
+        public uint Unknown22;
+        public uint Unknown23;
+        public uint Unknown24;
+        public uint Unknown25;
+        public uint Unknown26;
+        public uint Unknown27;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -28,22 +36,28 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Weather = new LazyRow< Weather >[ 5 ];
-            for( var i = 0; i < 5; i++ )
+            Weather = new LazyRow< Weather >[ 6 ];
+            for( var i = 0; i < 6; i++ )
                 Weather[ i ] = new LazyRow< Weather >( lumina, parser.ReadColumn< byte >( 0 + i ), language );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< byte >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
             Unknown9 = parser.ReadColumn< byte >( 9 );
-            Quest = new LazyRow< Quest >[ 5 ];
-            for( var i = 0; i < 5; i++ )
-                Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 10 + i ), language );
-            Unknown15 = parser.ReadColumn< uint >( 15 );
-            Unknown16 = parser.ReadColumn< uint >( 16 );
-            Unknown17 = parser.ReadColumn< uint >( 17 );
-            Unknown18 = parser.ReadColumn< uint >( 18 );
-            Unknown19 = parser.ReadColumn< uint >( 19 );
+            Unknown10 = parser.ReadColumn< byte >( 10 );
+            Unknown11 = parser.ReadColumn< byte >( 11 );
+            AddedIn530 = parser.ReadColumn< byte >( 12 );
+            AddedIn531 = parser.ReadColumn< byte >( 13 );
+            Unknown14 = parser.ReadColumn< uint >( 14 );
+            Quest = new LazyRow< Quest >[ 6 ];
+            for( var i = 0; i < 6; i++ )
+                Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 15 + i ), language );
+            Unknown21 = parser.ReadColumn< uint >( 21 );
+            Unknown22 = parser.ReadColumn< uint >( 22 );
+            Unknown23 = parser.ReadColumn< uint >( 23 );
+            Unknown24 = parser.ReadColumn< uint >( 24 );
+            Unknown25 = parser.ReadColumn< uint >( 25 );
+            Unknown26 = parser.ReadColumn< uint >( 26 );
+            Unknown27 = parser.ReadColumn< uint >( 27 );
         }
     }
 }

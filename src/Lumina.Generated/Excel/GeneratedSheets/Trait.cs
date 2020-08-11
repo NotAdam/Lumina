@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Trait", columnHash: 0x395111c9 )]
+    [Sheet( "Trait", columnHash: 0x82f2127d )]
     public class Trait : IExcelRow
     {
         
@@ -14,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Quest > Quest;
         public short Value;
         public LazyRow< ClassJobCategory > ClassJobCategory;
+        public byte Unknown7;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -30,6 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
             Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 4 ), language );
             Value = parser.ReadColumn< short >( 5 );
             ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            Unknown7 = parser.ReadColumn< byte >( 7 );
         }
     }
 }

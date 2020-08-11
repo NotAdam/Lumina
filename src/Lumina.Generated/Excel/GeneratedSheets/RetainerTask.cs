@@ -1,3 +1,5 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -16,8 +18,8 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort MaxTimemin;
         public int Experience;
         public ushort RequiredItemLevel;
-        public byte Unknown9;
-        public byte Unknown10;
+        public byte ConditionParam0;
+        public byte ConditionParam1;
         public ushort RequiredGathering;
         public ushort Unknown12;
         public ushort Task;
@@ -39,8 +41,8 @@ namespace Lumina.Excel.GeneratedSheets
             MaxTimemin = parser.ReadColumn< ushort >( 6 );
             Experience = parser.ReadColumn< int >( 7 );
             RequiredItemLevel = parser.ReadColumn< ushort >( 8 );
-            Unknown9 = parser.ReadColumn< byte >( 9 );
-            Unknown10 = parser.ReadColumn< byte >( 10 );
+            ConditionParam0 = parser.ReadColumn< byte >( 9 );
+            ConditionParam1 = parser.ReadColumn< byte >( 10 );
             RequiredGathering = parser.ReadColumn< ushort >( 11 );
             Unknown12 = parser.ReadColumn< ushort >( 12 );
             Task = parser.ReadColumn< ushort >( 13 );

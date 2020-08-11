@@ -1,3 +1,5 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
         
         public ushort RequiredReputation;
         public string Name;
-        public string Unknown2;
-        public uint Unknown3;
+        public string AlliedNames;
+        public LazyRow< UIColor > Color;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -22,8 +24,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             RequiredReputation = parser.ReadColumn< ushort >( 0 );
             Name = parser.ReadColumn< string >( 1 );
-            Unknown2 = parser.ReadColumn< string >( 2 );
-            Unknown3 = parser.ReadColumn< uint >( 3 );
+            AlliedNames = parser.ReadColumn< string >( 2 );
+            Color = new LazyRow< UIColor >( lumina, parser.ReadColumn< uint >( 3 ), language );
         }
     }
 }

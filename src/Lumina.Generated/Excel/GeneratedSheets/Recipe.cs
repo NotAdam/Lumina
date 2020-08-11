@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Recipe", columnHash: 0x4c219369 )]
+    [Sheet( "Recipe", columnHash: 0x5706f8bd )]
     public class Recipe : IExcelRow
     {
         public struct UnkStruct5Struct
@@ -30,6 +32,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort QuickSynthCraftsmanship;
         public ushort QuickSynthControl;
         public LazyRow< SecretRecipeBook > SecretRecipeBook;
+        public uint Unknown37;
         public bool CanQuickSynth;
         public bool CanHq;
         public bool ExpRewarded;
@@ -71,14 +74,15 @@ namespace Lumina.Excel.GeneratedSheets
             QuickSynthCraftsmanship = parser.ReadColumn< ushort >( 34 );
             QuickSynthControl = parser.ReadColumn< ushort >( 35 );
             SecretRecipeBook = new LazyRow< SecretRecipeBook >( lumina, parser.ReadColumn< ushort >( 36 ), language );
-            CanQuickSynth = parser.ReadColumn< bool >( 37 );
-            CanHq = parser.ReadColumn< bool >( 38 );
-            ExpRewarded = parser.ReadColumn< bool >( 39 );
-            StatusRequired = new LazyRow< Status >( lumina, parser.ReadColumn< int >( 40 ), language );
-            ItemRequired = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 41 ), language );
-            IsSpecializationRequired = parser.ReadColumn< bool >( 42 );
-            IsExpert = parser.ReadColumn< bool >( 43 );
-            PatchNumber = parser.ReadColumn< ushort >( 44 );
+            Unknown37 = parser.ReadColumn< uint >( 37 );
+            CanQuickSynth = parser.ReadColumn< bool >( 38 );
+            CanHq = parser.ReadColumn< bool >( 39 );
+            ExpRewarded = parser.ReadColumn< bool >( 40 );
+            StatusRequired = new LazyRow< Status >( lumina, parser.ReadColumn< int >( 41 ), language );
+            ItemRequired = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 42 ), language );
+            IsSpecializationRequired = parser.ReadColumn< bool >( 43 );
+            IsExpert = parser.ReadColumn< bool >( 44 );
+            PatchNumber = parser.ReadColumn< ushort >( 45 );
         }
     }
 }

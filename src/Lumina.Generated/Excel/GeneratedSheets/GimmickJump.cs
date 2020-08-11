@@ -1,3 +1,5 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
         
         public ushort FallDamage;
         public sbyte Height;
-        public LazyRow< MotionTimeline > LoopMotion;
-        public LazyRow< MotionTimeline > EndMotion;
+        public LazyRow< ActionTimeline > LoopMotion;
+        public LazyRow< ActionTimeline > EndMotion;
         public bool StartClient;
         public bool Unknown5;
         
@@ -24,8 +26,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             FallDamage = parser.ReadColumn< ushort >( 0 );
             Height = parser.ReadColumn< sbyte >( 1 );
-            LoopMotion = new LazyRow< MotionTimeline >( lumina, parser.ReadColumn< uint >( 2 ), language );
-            EndMotion = new LazyRow< MotionTimeline >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            LoopMotion = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            EndMotion = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< uint >( 3 ), language );
             StartClient = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
         }

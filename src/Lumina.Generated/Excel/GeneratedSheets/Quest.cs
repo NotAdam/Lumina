@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Quest", columnHash: 0xefffe604 )]
+    [Sheet( "Quest", columnHash: 0xfc57448f )]
     public class Quest : IExcelRow
     {
         
@@ -44,13 +46,12 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsHouseRequired;
         public LazyRow< DeliveryQuest > DeliveryQuest;
         public uint IssuerStart;
-        public LazyRow< Behavior > RootBehavior;
+        public LazyRow< Behavior > Behavior;
         public ushort Unknown41;
         public uint TargetEnd;
         public bool IsRepeatable;
         public byte RepeatIntervalType;
         public LazyRow< QuestRepeatFlag > QuestRepeatFlag;
-        public bool UnlocksSystemContent;
         public bool CanCancel;
         public byte Type;
         public LazyRow< QuestClassJobSupply > QuestClassJobSupply;
@@ -64,7 +65,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] ConditionType;
         public uint[] ConditionValue;
         public byte[] ConditionOperator;
-        public ushort[] Behavior;
+        //public ushort[] Behavior;
         public bool[] VisibleBool;
         public bool[] ConditionBool;
         public bool[] ItemBool;
@@ -76,7 +77,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] ToDoCompleteSeq;
         public byte[] ToDoQty;
         public LazyRow< Level >[] ToDoMainLocation;
-        public uint[] Unknown1246;
+        public uint[] Unknown1245;
+        public uint Unknown1252;
         public uint Unknown1253;
         public uint Unknown1254;
         public uint Unknown1255;
@@ -237,23 +239,22 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown1410;
         public uint Unknown1411;
         public uint Unknown1412;
-        public uint Unknown1413;
         public byte[] CountableNum;
         public byte LevelMax;
         public LazyRow< ClassJob > ClassJobRequired;
-        public byte Unknown1440;
+        public byte Unknown1439;
         public ushort ExpFactor;
         public uint GilReward;
-        public byte Unknown1443;
+        public uint Unknown1442;
         public ushort GCSeals;
         public LazyRow< Item >[] ItemCatalyst;
         public byte[] ItemCountCatalyst;
         public byte ItemRewardType;
         public uint[] ItemReward0;
         public byte[] ItemCountReward0;
-        public byte Unknown1465;
+        public byte Unknown1464;
         public LazyRow< Stain >[] StainReward0;
-        public byte Unknown1472;
+        public byte Unknown1471;
         public LazyRow< Item >[] ItemReward1;
         public byte[] ItemCountReward1;
         public bool[] IsHQReward1;
@@ -266,19 +267,19 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Action > SystemReward1;
         public LazyRow< Action > GCTypeReward;
         public LazyRow< InstanceContent > InstanceContentUnlock;
-        public byte Unknown1502;
+        public byte Unknown1501;
         public byte TomestoneReward;
         public byte TomestoneCountReward;
         public byte ReputationReward;
         public LazyRow< PlaceName > PlaceName;
         public LazyRow< JournalGenre > JournalGenre;
-        public byte Unknown1508;
+        public byte Unknown1507;
         public uint Icon;
         public uint IconSpecial;
         public bool Introduction;
         public bool HideOfferIcon;
         public LazyRow< EventIconType > EventIconType;
-        public byte Unknown1514;
+        public byte Unknown1513;
         public ushort SortKey;
         
         public uint RowId { get; set; }
@@ -330,85 +331,85 @@ namespace Lumina.Excel.GeneratedSheets
             IsHouseRequired = parser.ReadColumn< bool >( 37 );
             DeliveryQuest = new LazyRow< DeliveryQuest >( lumina, parser.ReadColumn< byte >( 38 ), language );
             IssuerStart = parser.ReadColumn< uint >( 39 );
-            RootBehavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< uint >( 40 ), language );
+            Behavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< uint >( 40 ), language );
             Unknown41 = parser.ReadColumn< ushort >( 41 );
             TargetEnd = parser.ReadColumn< uint >( 42 );
             IsRepeatable = parser.ReadColumn< bool >( 43 );
             RepeatIntervalType = parser.ReadColumn< byte >( 44 );
             QuestRepeatFlag = new LazyRow< QuestRepeatFlag >( lumina, parser.ReadColumn< byte >( 45 ), language );
-            UnlocksSystemContent = parser.ReadColumn< bool >( 46 );
-            CanCancel = parser.ReadColumn< bool >( 47 );
-            Type = parser.ReadColumn< byte >( 48 );
-            QuestClassJobSupply = new LazyRow< QuestClassJobSupply >( lumina, parser.ReadColumn< ushort >( 49 ), language );
+            CanCancel = parser.ReadColumn< bool >( 46 );
+            Type = parser.ReadColumn< byte >( 47 );
+            QuestClassJobSupply = new LazyRow< QuestClassJobSupply >( lumina, parser.ReadColumn< ushort >( 48 ), language );
             ScriptInstruction = new string[ 50 ];
             for( var i = 0; i < 50; i++ )
-                ScriptInstruction[ i ] = parser.ReadColumn< string >( 50 + i );
+                ScriptInstruction[ i ] = parser.ReadColumn< string >( 49 + i );
             ScriptArg = new uint[ 50 ];
             for( var i = 0; i < 50; i++ )
-                ScriptArg[ i ] = parser.ReadColumn< uint >( 100 + i );
+                ScriptArg[ i ] = parser.ReadColumn< uint >( 99 + i );
             ActorSpawnSeq = new byte[ 64 ];
             for( var i = 0; i < 64; i++ )
-                ActorSpawnSeq[ i ] = parser.ReadColumn< byte >( 150 + i );
+                ActorSpawnSeq[ i ] = parser.ReadColumn< byte >( 149 + i );
             ActorDespawnSeq = new byte[ 64 ];
             for( var i = 0; i < 64; i++ )
-                ActorDespawnSeq[ i ] = parser.ReadColumn< byte >( 214 + i );
+                ActorDespawnSeq[ i ] = parser.ReadColumn< byte >( 213 + i );
             Listener = new uint[ 64 ];
             for( var i = 0; i < 64; i++ )
-                Listener[ i ] = parser.ReadColumn< uint >( 278 + i );
+                Listener[ i ] = parser.ReadColumn< uint >( 277 + i );
             QuestUInt8A = new byte[ 32 ];
             for( var i = 0; i < 32; i++ )
-                QuestUInt8A[ i ] = parser.ReadColumn< byte >( 342 + i );
+                QuestUInt8A[ i ] = parser.ReadColumn< byte >( 341 + i );
             QuestUInt8B = new byte[ 32 ];
             for( var i = 0; i < 32; i++ )
-                QuestUInt8B[ i ] = parser.ReadColumn< byte >( 374 + i );
+                QuestUInt8B[ i ] = parser.ReadColumn< byte >( 373 + i );
             ConditionType = new byte[ 64 ];
             for( var i = 0; i < 64; i++ )
-                ConditionType[ i ] = parser.ReadColumn< byte >( 406 + i );
+                ConditionType[ i ] = parser.ReadColumn< byte >( 405 + i );
             ConditionValue = new uint[ 64 ];
             for( var i = 0; i < 64; i++ )
-                ConditionValue[ i ] = parser.ReadColumn< uint >( 470 + i );
+                ConditionValue[ i ] = parser.ReadColumn< uint >( 469 + i );
             ConditionOperator = new byte[ 64 ];
             for( var i = 0; i < 64; i++ )
-                ConditionOperator[ i ] = parser.ReadColumn< byte >( 534 + i );
-            Behavior = new ushort[ 64 ];
-            for( var i = 0; i < 64; i++ )
-                Behavior[ i ] = parser.ReadColumn< ushort >( 598 + i );
+                ConditionOperator[ i ] = parser.ReadColumn< byte >( 533 + i );
+            //Behavior = new ushort[ 64 ];
+            //for( var i = 0; i < 64; i++ )
+            //Behavior[ i ] = parser.ReadColumn< ushort >( 597 + i );
             VisibleBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                VisibleBool[ i ] = parser.ReadColumn< bool >( 662 + i );
+                VisibleBool[ i ] = parser.ReadColumn< bool >( 661 + i );
             ConditionBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                ConditionBool[ i ] = parser.ReadColumn< bool >( 726 + i );
+                ConditionBool[ i ] = parser.ReadColumn< bool >( 725 + i );
             ItemBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                ItemBool[ i ] = parser.ReadColumn< bool >( 790 + i );
+                ItemBool[ i ] = parser.ReadColumn< bool >( 789 + i );
             AnnounceBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                AnnounceBool[ i ] = parser.ReadColumn< bool >( 854 + i );
+                AnnounceBool[ i ] = parser.ReadColumn< bool >( 853 + i );
             BehaviorBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                BehaviorBool[ i ] = parser.ReadColumn< bool >( 918 + i );
+                BehaviorBool[ i ] = parser.ReadColumn< bool >( 917 + i );
             AcceptBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                AcceptBool[ i ] = parser.ReadColumn< bool >( 982 + i );
+                AcceptBool[ i ] = parser.ReadColumn< bool >( 981 + i );
             QualifiedBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                QualifiedBool[ i ] = parser.ReadColumn< bool >( 1046 + i );
+                QualifiedBool[ i ] = parser.ReadColumn< bool >( 1045 + i );
             CanTargetBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
-                CanTargetBool[ i ] = parser.ReadColumn< bool >( 1110 + i );
+                CanTargetBool[ i ] = parser.ReadColumn< bool >( 1109 + i );
             ToDoCompleteSeq = new byte[ 24 ];
             for( var i = 0; i < 24; i++ )
-                ToDoCompleteSeq[ i ] = parser.ReadColumn< byte >( 1174 + i );
+                ToDoCompleteSeq[ i ] = parser.ReadColumn< byte >( 1173 + i );
             ToDoQty = new byte[ 24 ];
             for( var i = 0; i < 24; i++ )
-                ToDoQty[ i ] = parser.ReadColumn< byte >( 1198 + i );
+                ToDoQty[ i ] = parser.ReadColumn< byte >( 1197 + i );
             ToDoMainLocation = new LazyRow< Level >[ 24 ];
             for( var i = 0; i < 24; i++ )
-                ToDoMainLocation[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 1222 + i ), language );
-            Unknown1246 = new uint[ 7 ];
+                ToDoMainLocation[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 1221 + i ), language );
+            Unknown1245 = new uint[ 7 ];
             for( var i = 0; i < 7; i++ )
-                Unknown1246[ i ] = parser.ReadColumn< uint >( 1246 + i );
+                Unknown1245[ i ] = parser.ReadColumn< uint >( 1245 + i );
+            Unknown1252 = parser.ReadColumn< uint >( 1252 );
             Unknown1253 = parser.ReadColumn< uint >( 1253 );
             Unknown1254 = parser.ReadColumn< uint >( 1254 );
             Unknown1255 = parser.ReadColumn< uint >( 1255 );
@@ -569,71 +570,70 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1410 = parser.ReadColumn< uint >( 1410 );
             Unknown1411 = parser.ReadColumn< uint >( 1411 );
             Unknown1412 = parser.ReadColumn< uint >( 1412 );
-            Unknown1413 = parser.ReadColumn< uint >( 1413 );
             CountableNum = new byte[ 24 ];
             for( var i = 0; i < 24; i++ )
-                CountableNum[ i ] = parser.ReadColumn< byte >( 1414 + i );
-            LevelMax = parser.ReadColumn< byte >( 1438 );
-            ClassJobRequired = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 1439 ), language );
-            Unknown1440 = parser.ReadColumn< byte >( 1440 );
-            ExpFactor = parser.ReadColumn< ushort >( 1441 );
-            GilReward = parser.ReadColumn< uint >( 1442 );
-            Unknown1443 = parser.ReadColumn< byte >( 1443 );
-            GCSeals = parser.ReadColumn< ushort >( 1444 );
+                CountableNum[ i ] = parser.ReadColumn< byte >( 1413 + i );
+            LevelMax = parser.ReadColumn< byte >( 1437 );
+            ClassJobRequired = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 1438 ), language );
+            Unknown1439 = parser.ReadColumn< byte >( 1439 );
+            ExpFactor = parser.ReadColumn< ushort >( 1440 );
+            GilReward = parser.ReadColumn< uint >( 1441 );
+            Unknown1442 = parser.ReadColumn< uint >( 1442 );
+            GCSeals = parser.ReadColumn< ushort >( 1443 );
             ItemCatalyst = new LazyRow< Item >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                ItemCatalyst[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< byte >( 1445 + i ), language );
+                ItemCatalyst[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< byte >( 1444 + i ), language );
             ItemCountCatalyst = new byte[ 3 ];
             for( var i = 0; i < 3; i++ )
-                ItemCountCatalyst[ i ] = parser.ReadColumn< byte >( 1448 + i );
-            ItemRewardType = parser.ReadColumn< byte >( 1451 );
+                ItemCountCatalyst[ i ] = parser.ReadColumn< byte >( 1447 + i );
+            ItemRewardType = parser.ReadColumn< byte >( 1450 );
             ItemReward0 = new uint[ 7 ];
             for( var i = 0; i < 7; i++ )
-                ItemReward0[ i ] = parser.ReadColumn< uint >( 1452 + i );
+                ItemReward0[ i ] = parser.ReadColumn< uint >( 1451 + i );
             ItemCountReward0 = new byte[ 6 ];
             for( var i = 0; i < 6; i++ )
-                ItemCountReward0[ i ] = parser.ReadColumn< byte >( 1459 + i );
-            Unknown1465 = parser.ReadColumn< byte >( 1465 );
+                ItemCountReward0[ i ] = parser.ReadColumn< byte >( 1458 + i );
+            Unknown1464 = parser.ReadColumn< byte >( 1464 );
             StainReward0 = new LazyRow< Stain >[ 6 ];
             for( var i = 0; i < 6; i++ )
-                StainReward0[ i ] = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 1466 + i ), language );
-            Unknown1472 = parser.ReadColumn< byte >( 1472 );
+                StainReward0[ i ] = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 1465 + i ), language );
+            Unknown1471 = parser.ReadColumn< byte >( 1471 );
             ItemReward1 = new LazyRow< Item >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                ItemReward1[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1473 + i ), language );
+                ItemReward1[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1472 + i ), language );
             ItemCountReward1 = new byte[ 5 ];
             for( var i = 0; i < 5; i++ )
-                ItemCountReward1[ i ] = parser.ReadColumn< byte >( 1478 + i );
+                ItemCountReward1[ i ] = parser.ReadColumn< byte >( 1477 + i );
             IsHQReward1 = new bool[ 5 ];
             for( var i = 0; i < 5; i++ )
-                IsHQReward1[ i ] = parser.ReadColumn< bool >( 1483 + i );
+                IsHQReward1[ i ] = parser.ReadColumn< bool >( 1482 + i );
             StainReward1 = new LazyRow< Stain >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                StainReward1[ i ] = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 1488 + i ), language );
-            EmoteReward = new LazyRow< Emote >( lumina, parser.ReadColumn< byte >( 1493 ), language );
-            ActionReward = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1494 ), language );
+                StainReward1[ i ] = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 1487 + i ), language );
+            EmoteReward = new LazyRow< Emote >( lumina, parser.ReadColumn< byte >( 1492 ), language );
+            ActionReward = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1493 ), language );
             GeneralActionReward = new LazyRow< GeneralAction >[ 2 ];
             for( var i = 0; i < 2; i++ )
-                GeneralActionReward[ i ] = new LazyRow< GeneralAction >( lumina, parser.ReadColumn< byte >( 1495 + i ), language );
-            SystemReward0 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1497 ), language );
-            OtherReward = new LazyRow< QuestRewardOther >( lumina, parser.ReadColumn< byte >( 1498 ), language );
-            SystemReward1 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1499 ), language );
-            GCTypeReward = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1500 ), language );
-            InstanceContentUnlock = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< uint >( 1501 ), language );
-            Unknown1502 = parser.ReadColumn< byte >( 1502 );
-            TomestoneReward = parser.ReadColumn< byte >( 1503 );
-            TomestoneCountReward = parser.ReadColumn< byte >( 1504 );
-            ReputationReward = parser.ReadColumn< byte >( 1505 );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 1506 ), language );
-            JournalGenre = new LazyRow< JournalGenre >( lumina, parser.ReadColumn< byte >( 1507 ), language );
-            Unknown1508 = parser.ReadColumn< byte >( 1508 );
-            Icon = parser.ReadColumn< uint >( 1509 );
-            IconSpecial = parser.ReadColumn< uint >( 1510 );
-            Introduction = parser.ReadColumn< bool >( 1511 );
-            HideOfferIcon = parser.ReadColumn< bool >( 1512 );
-            EventIconType = new LazyRow< EventIconType >( lumina, parser.ReadColumn< byte >( 1513 ), language );
-            Unknown1514 = parser.ReadColumn< byte >( 1514 );
-            SortKey = parser.ReadColumn< ushort >( 1515 );
+                GeneralActionReward[ i ] = new LazyRow< GeneralAction >( lumina, parser.ReadColumn< byte >( 1494 + i ), language );
+            SystemReward0 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1496 ), language );
+            OtherReward = new LazyRow< QuestRewardOther >( lumina, parser.ReadColumn< byte >( 1497 ), language );
+            SystemReward1 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1498 ), language );
+            GCTypeReward = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1499 ), language );
+            InstanceContentUnlock = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< uint >( 1500 ), language );
+            Unknown1501 = parser.ReadColumn< byte >( 1501 );
+            TomestoneReward = parser.ReadColumn< byte >( 1502 );
+            TomestoneCountReward = parser.ReadColumn< byte >( 1503 );
+            ReputationReward = parser.ReadColumn< byte >( 1504 );
+            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 1505 ), language );
+            JournalGenre = new LazyRow< JournalGenre >( lumina, parser.ReadColumn< byte >( 1506 ), language );
+            Unknown1507 = parser.ReadColumn< byte >( 1507 );
+            Icon = parser.ReadColumn< uint >( 1508 );
+            IconSpecial = parser.ReadColumn< uint >( 1509 );
+            Introduction = parser.ReadColumn< bool >( 1510 );
+            HideOfferIcon = parser.ReadColumn< bool >( 1511 );
+            EventIconType = new LazyRow< EventIconType >( lumina, parser.ReadColumn< byte >( 1512 ), language );
+            Unknown1513 = parser.ReadColumn< byte >( 1513 );
+            SortKey = parser.ReadColumn< ushort >( 1514 );
         }
     }
 }

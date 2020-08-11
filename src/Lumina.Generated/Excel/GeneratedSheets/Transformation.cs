@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Transformation", columnHash: 0xa9f5ba48 )]
+    [Sheet( "Transformation", columnHash: 0xcd364718 )]
     public class Transformation : IExcelRow
     {
         
@@ -22,23 +24,27 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Action > Action3;
         public bool Unknown13;
         public LazyRow< Action > Action4;
+        public bool Unknown15;
         public LazyRow< Action > Action5;
-        public bool Unknown16;
         public bool Unknown17;
         public LazyRow< RPParameter > RPParameter;
+        public LazyRow< Action > RemoveAction;
+        public bool Unknown20;
+        public bool Unknown21;
+        public byte Unknown22;
         public float Speed;
         public float Scale;
         public bool IsPvP;
         public bool IsEvent;
         public bool PlayerCamera;
+        public bool Unknown28;
+        public bool Unknown29;
         public LazyRow< VFX > StartVFX;
         public LazyRow< VFX > EndVFX;
-        public ushort Unknown26;
-        public ushort Unknown27;
-        public uint Unknown28;
-        public sbyte Unknown29;
-        public ushort Unknown30;
-        public byte Unknown31;
+        public LazyRow< Action > Action6;
+        public sbyte Unknown33;
+        public LazyRow< Action > Action7;
+        public byte Unknown35;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -63,23 +69,27 @@ namespace Lumina.Excel.GeneratedSheets
             Action3 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 12 ), language );
             Unknown13 = parser.ReadColumn< bool >( 13 );
             Action4 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 14 ), language );
-            Action5 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 15 ), language );
-            Unknown16 = parser.ReadColumn< bool >( 16 );
+            Unknown15 = parser.ReadColumn< bool >( 15 );
+            Action5 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 16 ), language );
             Unknown17 = parser.ReadColumn< bool >( 17 );
-            RPParameter = new LazyRow< RPParameter >( lumina, parser.ReadColumn< byte >( 18 ), language );
-            Speed = parser.ReadColumn< float >( 19 );
-            Scale = parser.ReadColumn< float >( 20 );
-            IsPvP = parser.ReadColumn< bool >( 21 );
-            IsEvent = parser.ReadColumn< bool >( 22 );
-            PlayerCamera = parser.ReadColumn< bool >( 23 );
-            #warning generator error: the definition for this field (StartVFX) has an invalid type for a LazyRow
-            #warning generator error: the definition for this field (EndVFX) has an invalid type for a LazyRow
-            Unknown26 = parser.ReadColumn< ushort >( 26 );
-            Unknown27 = parser.ReadColumn< ushort >( 27 );
-            Unknown28 = parser.ReadColumn< uint >( 28 );
-            Unknown29 = parser.ReadColumn< sbyte >( 29 );
-            Unknown30 = parser.ReadColumn< ushort >( 30 );
-            Unknown31 = parser.ReadColumn< byte >( 31 );
+            RPParameter = new LazyRow< RPParameter >( lumina, parser.ReadColumn< ushort >( 18 ), language );
+            RemoveAction = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 19 ), language );
+            Unknown20 = parser.ReadColumn< bool >( 20 );
+            Unknown21 = parser.ReadColumn< bool >( 21 );
+            Unknown22 = parser.ReadColumn< byte >( 22 );
+            Speed = parser.ReadColumn< float >( 23 );
+            Scale = parser.ReadColumn< float >( 24 );
+            IsPvP = parser.ReadColumn< bool >( 25 );
+            IsEvent = parser.ReadColumn< bool >( 26 );
+            PlayerCamera = parser.ReadColumn< bool >( 27 );
+            Unknown28 = parser.ReadColumn< bool >( 28 );
+            Unknown29 = parser.ReadColumn< bool >( 29 );
+            StartVFX = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 30 ), language );
+            EndVFX = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 31 ), language );
+            Action6 = new LazyRow< Action >( lumina, parser.ReadColumn< uint >( 32 ), language );
+            Unknown33 = parser.ReadColumn< sbyte >( 33 );
+            Action7 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 34 ), language );
+            Unknown35 = parser.ReadColumn< byte >( 35 );
         }
     }
 }

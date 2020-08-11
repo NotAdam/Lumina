@@ -1,3 +1,5 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -8,12 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< DeepDungeon > DeepDungeon;
-        public byte Unknown1;
-        public ushort Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public byte Unknown5;
-        public byte Unknown6;
+        public byte FloorSet;
+        public LazyRow< DeepDungeonMap5X > RoomA;
+        public LazyRow< DeepDungeonMap5X > RoomB;
+        public LazyRow< DeepDungeonMap5X > RoomC;
+        public byte WepMinLv;
+        public byte ArmourMinLv;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -24,12 +26,12 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             DeepDungeon = new LazyRow< DeepDungeon >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
-            Unknown2 = parser.ReadColumn< ushort >( 2 );
-            Unknown3 = parser.ReadColumn< ushort >( 3 );
-            Unknown4 = parser.ReadColumn< ushort >( 4 );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
-            Unknown6 = parser.ReadColumn< byte >( 6 );
+            FloorSet = parser.ReadColumn< byte >( 1 );
+            RoomA = new LazyRow< DeepDungeonMap5X >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            RoomB = new LazyRow< DeepDungeonMap5X >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            RoomC = new LazyRow< DeepDungeonMap5X >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            WepMinLv = parser.ReadColumn< byte >( 5 );
+            ArmourMinLv = parser.ReadColumn< byte >( 6 );
         }
     }
 }

@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Status", columnHash: 0xd8ae9831 )]
+    [Sheet( "Status", columnHash: 0x6a0f00f4 )]
     public class Status : IExcelRow
     {
         
@@ -27,15 +29,16 @@ namespace Lumina.Excel.GeneratedSheets
         public byte PartyListPriority;
         public bool Unknown18;
         public bool Unknown19;
-        public short Unknown20;
-        public byte Unknown21;
-        public bool Unknown22;
+        public bool Unknown20;
+        public short Unknown21;
+        public byte Unknown22;
+        public bool Unknown23;
         public ushort Log;
         public bool IsFcBuff;
         public bool Invisibility;
-        public byte Unknown26;
         public byte Unknown27;
-        public bool Unknown28;
+        public byte Unknown28;
+        public bool Unknown29;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -65,15 +68,16 @@ namespace Lumina.Excel.GeneratedSheets
             PartyListPriority = parser.ReadColumn< byte >( 17 );
             Unknown18 = parser.ReadColumn< bool >( 18 );
             Unknown19 = parser.ReadColumn< bool >( 19 );
-            Unknown20 = parser.ReadColumn< short >( 20 );
-            Unknown21 = parser.ReadColumn< byte >( 21 );
-            Unknown22 = parser.ReadColumn< bool >( 22 );
-            Log = parser.ReadColumn< ushort >( 23 );
-            IsFcBuff = parser.ReadColumn< bool >( 24 );
-            Invisibility = parser.ReadColumn< bool >( 25 );
-            Unknown26 = parser.ReadColumn< byte >( 26 );
+            Unknown20 = parser.ReadColumn< bool >( 20 );
+            Unknown21 = parser.ReadColumn< short >( 21 );
+            Unknown22 = parser.ReadColumn< byte >( 22 );
+            Unknown23 = parser.ReadColumn< bool >( 23 );
+            Log = parser.ReadColumn< ushort >( 24 );
+            IsFcBuff = parser.ReadColumn< bool >( 25 );
+            Invisibility = parser.ReadColumn< bool >( 26 );
             Unknown27 = parser.ReadColumn< byte >( 27 );
-            Unknown28 = parser.ReadColumn< bool >( 28 );
+            Unknown28 = parser.ReadColumn< byte >( 28 );
+            Unknown29 = parser.ReadColumn< bool >( 29 );
         }
     }
 }

@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Fate", columnHash: 0x22c39fbf )]
+    [Sheet( "Fate", columnHash: 0x9d62892b )]
     public class Fate : IExcelRow
     {
         
@@ -23,23 +25,24 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ScreenImage > ScreenImageAccept;
         public LazyRow< ScreenImage > ScreenImageComplete;
         public LazyRow< ScreenImage > ScreenImageFailed;
-        public bool HasWorldMapIcon;
-        public bool IsQuest;
+        public byte Unknown18;
+        public uint Unknown19;
         public bool SpecialFate;
+        public bool Unknown21;
         public LazyRow< Status > GivenStatus;
-        public ushort Unknown22;
+        public ushort Unknown23;
         public bool AdventEvent;
         public bool MoonFaireEvent;
-        public bool Unknown25;
+        public bool Unknown26;
         public uint FATEChain;
-        public byte Unknown27;
-        public ushort Unknown28;
+        public byte Unknown28;
+        public ushort Unknown29;
         public string Name;
         public string Description;
         public string Objective;
         public string[] StatusText;
         public LazyRow< ArrayEventHandler > ArrayIndex;
-        public uint Unknown36;
+        public uint Unknown37;
         public LazyRow< EventItem > ReqEventItem;
         public LazyRow< EventItem > TurnInEventItem;
         public ushort[] ObjectiveIcon;
@@ -70,30 +73,31 @@ namespace Lumina.Excel.GeneratedSheets
             ScreenImageAccept = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 15 ), language );
             ScreenImageComplete = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 16 ), language );
             ScreenImageFailed = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 17 ), language );
-            HasWorldMapIcon = parser.ReadColumn< bool >( 18 );
-            IsQuest = parser.ReadColumn< bool >( 19 );
+            Unknown18 = parser.ReadColumn< byte >( 18 );
+            Unknown19 = parser.ReadColumn< uint >( 19 );
             SpecialFate = parser.ReadColumn< bool >( 20 );
-            GivenStatus = new LazyRow< Status >( lumina, parser.ReadColumn< ushort >( 21 ), language );
-            Unknown22 = parser.ReadColumn< ushort >( 22 );
-            AdventEvent = parser.ReadColumn< bool >( 23 );
-            MoonFaireEvent = parser.ReadColumn< bool >( 24 );
-            Unknown25 = parser.ReadColumn< bool >( 25 );
-            FATEChain = parser.ReadColumn< uint >( 26 );
-            Unknown27 = parser.ReadColumn< byte >( 27 );
-            Unknown28 = parser.ReadColumn< ushort >( 28 );
-            Name = parser.ReadColumn< string >( 29 );
-            Description = parser.ReadColumn< string >( 30 );
-            Objective = parser.ReadColumn< string >( 31 );
+            Unknown21 = parser.ReadColumn< bool >( 21 );
+            GivenStatus = new LazyRow< Status >( lumina, parser.ReadColumn< ushort >( 22 ), language );
+            Unknown23 = parser.ReadColumn< ushort >( 23 );
+            AdventEvent = parser.ReadColumn< bool >( 24 );
+            MoonFaireEvent = parser.ReadColumn< bool >( 25 );
+            Unknown26 = parser.ReadColumn< bool >( 26 );
+            FATEChain = parser.ReadColumn< uint >( 27 );
+            Unknown28 = parser.ReadColumn< byte >( 28 );
+            Unknown29 = parser.ReadColumn< ushort >( 29 );
+            Name = parser.ReadColumn< string >( 30 );
+            Description = parser.ReadColumn< string >( 31 );
+            Objective = parser.ReadColumn< string >( 32 );
             StatusText = new string[ 3 ];
             for( var i = 0; i < 3; i++ )
-                StatusText[ i ] = parser.ReadColumn< string >( 32 + i );
-            ArrayIndex = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< uint >( 35 ), language );
-            Unknown36 = parser.ReadColumn< uint >( 36 );
-            ReqEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 37 ), language );
-            TurnInEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 38 ), language );
+                StatusText[ i ] = parser.ReadColumn< string >( 33 + i );
+            ArrayIndex = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< uint >( 36 ), language );
+            Unknown37 = parser.ReadColumn< uint >( 37 );
+            ReqEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 38 ), language );
+            TurnInEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 39 ), language );
             ObjectiveIcon = new ushort[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ObjectiveIcon[ i ] = parser.ReadColumn< ushort >( 39 + i );
+                ObjectiveIcon[ i ] = parser.ReadColumn< ushort >( 40 + i );
         }
     }
 }
