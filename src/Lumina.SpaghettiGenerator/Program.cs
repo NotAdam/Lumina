@@ -32,6 +32,7 @@ namespace Lumina.SpaghettiGenerator
                 .Replace( "]", "" )
                 .Replace( " ", "" )
                 .Replace( "'", "" )
+                .Replace( "-", "" )
                 .Replace( "%", "Pct" );
 
             if( char.IsDigit( str[ 0 ] ) )
