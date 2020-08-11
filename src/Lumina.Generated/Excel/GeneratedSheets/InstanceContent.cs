@@ -1,18 +1,20 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InstanceContent", columnHash: 0xe8f48f92 )]
+    [Sheet( "InstanceContent", columnHash: 0xb0609d31 )]
     public class InstanceContent : IExcelRow
     {
         public struct UnkStruct25Struct
         {
-            public uint BossExp;
+            public ushort BossExp;
         }
         public struct UnkStruct30Struct
         {
-            public ushort BossCurrencyA;
+            public uint BossCurrencyA;
         }
         public struct UnkStruct35Struct
         {
@@ -45,28 +47,29 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort NewPlayerBonusA;
         public ushort FinalBossCurrencyC;
         public uint Unknown21;
-        public ushort FinalBossCurrencyA;
+        public uint FinalBossCurrencyA;
         public ushort FinalBossCurrencyB;
         public ushort NewPlayerBonusB;
         public UnkStruct25Struct[] UnkStruct25;
         public UnkStruct30Struct[] UnkStruct30;
         public UnkStruct35Struct[] UnkStruct35;
         public UnkStruct40Struct[] UnkStruct40;
-        public uint Unknown45;
+        public ushort Unknown45;
         public uint InstanceClearGil;
         public uint InstanceContentRewardItem;
-        public byte Unknown48;
-        public uint FinalBossExp;
+        public uint Unknown48;
+        public byte FinalBossExp;
         public LazyRow< InstanceContentBuff > InstanceContentBuff;
         public LazyRow< InstanceContent > ReqInstance;
-        public short Unknown52;
-        public byte PartyCondition;
+        public uint Unknown52;
+        public short PartyCondition;
         public byte Unknown54;
         public byte Unknown55;
         public byte Unknown56;
-        public bool Unknown57;
-        public ushort Unknown58;
+        public byte Unknown57;
+        public bool Unknown58;
         public ushort Unknown59;
+        public ushort Unknown60;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -98,20 +101,20 @@ namespace Lumina.Excel.GeneratedSheets
             NewPlayerBonusA = parser.ReadColumn< ushort >( 19 );
             FinalBossCurrencyC = parser.ReadColumn< ushort >( 20 );
             Unknown21 = parser.ReadColumn< uint >( 21 );
-            FinalBossCurrencyA = parser.ReadColumn< ushort >( 22 );
+            FinalBossCurrencyA = parser.ReadColumn< uint >( 22 );
             FinalBossCurrencyB = parser.ReadColumn< ushort >( 23 );
             NewPlayerBonusB = parser.ReadColumn< ushort >( 24 );
             UnkStruct25 = new UnkStruct25Struct[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
                 UnkStruct25[ i ] = new UnkStruct25Struct();
-                UnkStruct25[ i ].BossExp = parser.ReadColumn< uint >( 25 + ( i * 1 + 0 ) );
+                UnkStruct25[ i ].BossExp = parser.ReadColumn< ushort >( 25 + ( i * 1 + 0 ) );
             }
             UnkStruct30 = new UnkStruct30Struct[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
                 UnkStruct30[ i ] = new UnkStruct30Struct();
-                UnkStruct30[ i ].BossCurrencyA = parser.ReadColumn< ushort >( 30 + ( i * 1 + 0 ) );
+                UnkStruct30[ i ].BossCurrencyA = parser.ReadColumn< uint >( 30 + ( i * 1 + 0 ) );
             }
             UnkStruct35 = new UnkStruct35Struct[ 5 ];
             for( var i = 0; i < 5; i++ )
@@ -125,21 +128,22 @@ namespace Lumina.Excel.GeneratedSheets
                 UnkStruct40[ i ] = new UnkStruct40Struct();
                 UnkStruct40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 1 + 0 ) );
             }
-            Unknown45 = parser.ReadColumn< uint >( 45 );
+            Unknown45 = parser.ReadColumn< ushort >( 45 );
             InstanceClearGil = parser.ReadColumn< uint >( 46 );
             InstanceContentRewardItem = parser.ReadColumn< uint >( 47 );
-            Unknown48 = parser.ReadColumn< byte >( 48 );
-            FinalBossExp = parser.ReadColumn< uint >( 49 );
-            InstanceContentBuff = new LazyRow< InstanceContentBuff >( lumina, parser.ReadColumn< int >( 50 ), language );
-            ReqInstance = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< uint >( 51 ), language );
-            Unknown52 = parser.ReadColumn< short >( 52 );
-            PartyCondition = parser.ReadColumn< byte >( 53 );
+            Unknown48 = parser.ReadColumn< uint >( 48 );
+            FinalBossExp = parser.ReadColumn< byte >( 49 );
+            InstanceContentBuff = new LazyRow< InstanceContentBuff >( lumina, parser.ReadColumn< uint >( 50 ), language );
+            ReqInstance = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< int >( 51 ), language );
+            Unknown52 = parser.ReadColumn< uint >( 52 );
+            PartyCondition = parser.ReadColumn< short >( 53 );
             Unknown54 = parser.ReadColumn< byte >( 54 );
             Unknown55 = parser.ReadColumn< byte >( 55 );
             Unknown56 = parser.ReadColumn< byte >( 56 );
-            Unknown57 = parser.ReadColumn< bool >( 57 );
-            Unknown58 = parser.ReadColumn< ushort >( 58 );
+            Unknown57 = parser.ReadColumn< byte >( 57 );
+            Unknown58 = parser.ReadColumn< bool >( 58 );
             Unknown59 = parser.ReadColumn< ushort >( 59 );
+            Unknown60 = parser.ReadColumn< ushort >( 60 );
         }
     }
 }

@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SatisfactionNpc", columnHash: 0x7a8036fa )]
+    [Sheet( "SatisfactionNpc", columnHash: 0xbee4c3b1 )]
     public class SatisfactionNpc : IExcelRow
     {
         public struct UnkStruct16Struct
@@ -67,6 +69,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown69;
         public int Icon;
         public byte Unknown71;
+        public byte AddedIn530;
+        public byte AddedIn531;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -141,6 +145,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown69 = parser.ReadColumn< bool >( 69 );
             Icon = parser.ReadColumn< int >( 70 );
             Unknown71 = parser.ReadColumn< byte >( 71 );
+            AddedIn530 = parser.ReadColumn< byte >( 72 );
+            AddedIn531 = parser.ReadColumn< byte >( 73 );
         }
     }
 }

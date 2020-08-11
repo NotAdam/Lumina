@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestClassJobReward", columnHash: 0x1eed8c67 )]
+    [Sheet( "QuestClassJobReward", columnHash: 0x3d96093f )]
     public class QuestClassJobReward : IExcelRow
     {
         
@@ -16,6 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown18;
         public bool Unknown19;
         public bool Unknown20;
+        public bool Unknown21;
+        public bool Unknown22;
+        public bool Unknown23;
+        public bool Unknown24;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -42,6 +48,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown18 = parser.ReadColumn< bool >( 18 );
             Unknown19 = parser.ReadColumn< bool >( 19 );
             Unknown20 = parser.ReadColumn< bool >( 20 );
+            Unknown21 = parser.ReadColumn< bool >( 21 );
+            Unknown22 = parser.ReadColumn< bool >( 22 );
+            Unknown23 = parser.ReadColumn< bool >( 23 );
+            Unknown24 = parser.ReadColumn< bool >( 24 );
         }
     }
 }

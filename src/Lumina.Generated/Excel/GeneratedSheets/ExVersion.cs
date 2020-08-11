@@ -1,3 +1,5 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -8,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public string Name;
-        public ushort Unknown1;
-        public ushort Unknown2;
+        public LazyRow< ScreenImage > AcceptJingle;
+        public LazyRow< ScreenImage > CompleteJingle;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -20,8 +22,8 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Name = parser.ReadColumn< string >( 0 );
-            Unknown1 = parser.ReadColumn< ushort >( 1 );
-            Unknown2 = parser.ReadColumn< ushort >( 2 );
+            AcceptJingle = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            CompleteJingle = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 2 ), language );
         }
     }
 }

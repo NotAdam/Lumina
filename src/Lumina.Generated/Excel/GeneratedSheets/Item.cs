@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Item", columnHash: 0x9f2e970b )]
+    [Sheet( "Item", columnHash: 0x788b5e72 )]
     public class Item : IExcelRow
     {
         public struct UnkStruct59Struct
@@ -35,7 +37,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ItemUICategory > ItemUICategory;
         public LazyRow< ItemSearchCategory > ItemSearchCategory;
         public LazyRow< EquipSlotCategory > EquipSlotCategory;
-        public ushort Unknown18;
+        public byte Unknown18;
+        public ushort AddedIn53;
         public uint StackSize;
         public bool IsUnique;
         public bool IsUntradable;
@@ -47,13 +50,12 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsDyeable;
         public bool IsCrestWorthy;
         public LazyRow< ItemAction > ItemAction;
-        public byte Unknown30;
+        public byte Unknown31;
         public ushort Cooldowns;
         public LazyRow< ClassJob > ClassJobRepair;
         public LazyRow< Item > ItemRepair;
         public LazyRow< Item > ItemGlamour;
-        public ushort Unknown35;
-        public LazyRow< Salvage > Salvage;
+        public ushort Unknown36;
         public bool IsCollectable;
         public bool AlwaysCollectable;
         public ushort AetherialReduce;
@@ -113,25 +115,25 @@ namespace Lumina.Excel.GeneratedSheets
             ItemUICategory = new LazyRow< ItemUICategory >( lumina, parser.ReadColumn< byte >( 15 ), language );
             ItemSearchCategory = new LazyRow< ItemSearchCategory >( lumina, parser.ReadColumn< byte >( 16 ), language );
             EquipSlotCategory = new LazyRow< EquipSlotCategory >( lumina, parser.ReadColumn< byte >( 17 ), language );
-            Unknown18 = parser.ReadColumn< ushort >( 18 );
-            StackSize = parser.ReadColumn< uint >( 19 );
-            IsUnique = parser.ReadColumn< bool >( 20 );
-            IsUntradable = parser.ReadColumn< bool >( 21 );
-            IsIndisposable = parser.ReadColumn< bool >( 22 );
-            Lot = parser.ReadColumn< bool >( 23 );
-            PriceMid = parser.ReadColumn< uint >( 24 );
-            PriceLow = parser.ReadColumn< uint >( 25 );
-            CanBeHq = parser.ReadColumn< bool >( 26 );
-            IsDyeable = parser.ReadColumn< bool >( 27 );
-            IsCrestWorthy = parser.ReadColumn< bool >( 28 );
-            ItemAction = new LazyRow< ItemAction >( lumina, parser.ReadColumn< ushort >( 29 ), language );
-            Unknown30 = parser.ReadColumn< byte >( 30 );
-            Cooldowns = parser.ReadColumn< ushort >( 31 );
-            ClassJobRepair = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 32 ), language );
-            ItemRepair = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 33 ), language );
-            ItemGlamour = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 34 ), language );
-            Unknown35 = parser.ReadColumn< ushort >( 35 );
-            Salvage = new LazyRow< Salvage >( lumina, parser.ReadColumn< ushort >( 36 ), language );
+            Unknown18 = parser.ReadColumn< byte >( 18 );
+            AddedIn53 = parser.ReadColumn< ushort >( 19 );
+            StackSize = parser.ReadColumn< uint >( 20 );
+            IsUnique = parser.ReadColumn< bool >( 21 );
+            IsUntradable = parser.ReadColumn< bool >( 22 );
+            IsIndisposable = parser.ReadColumn< bool >( 23 );
+            Lot = parser.ReadColumn< bool >( 24 );
+            PriceMid = parser.ReadColumn< uint >( 25 );
+            PriceLow = parser.ReadColumn< uint >( 26 );
+            CanBeHq = parser.ReadColumn< bool >( 27 );
+            IsDyeable = parser.ReadColumn< bool >( 28 );
+            IsCrestWorthy = parser.ReadColumn< bool >( 29 );
+            ItemAction = new LazyRow< ItemAction >( lumina, parser.ReadColumn< ushort >( 30 ), language );
+            Unknown31 = parser.ReadColumn< byte >( 31 );
+            Cooldowns = parser.ReadColumn< ushort >( 32 );
+            ClassJobRepair = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 33 ), language );
+            ItemRepair = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 34 ), language );
+            ItemGlamour = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 35 ), language );
+            Unknown36 = parser.ReadColumn< ushort >( 36 );
             IsCollectable = parser.ReadColumn< bool >( 37 );
             AlwaysCollectable = parser.ReadColumn< bool >( 38 );
             AetherialReduce = parser.ReadColumn< ushort >( 39 );

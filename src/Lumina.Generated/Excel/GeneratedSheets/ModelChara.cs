@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ModelChara", columnHash: 0xc49c9dc2 )]
+    [Sheet( "ModelChara", columnHash: 0xc7ed51f9 )]
     public class ModelChara : IExcelRow
     {
         
@@ -23,6 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown13;
         public bool Unknown14;
         public byte Unknown15;
+        public bool Unknown16;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -48,6 +51,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown13 = parser.ReadColumn< bool >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
             Unknown15 = parser.ReadColumn< byte >( 15 );
+            Unknown16 = parser.ReadColumn< bool >( 16 );
         }
     }
 }

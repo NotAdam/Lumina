@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EObj", columnHash: 0x9335c666 )]
+    [Sheet( "EObj", columnHash: 0xa71f030e )]
     public class EObj : IExcelRow
     {
         
@@ -25,6 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte EventHighAddition;
         public bool Unknown16;
         public byte Unknown17;
+        public bool AddedIn53;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -52,6 +55,7 @@ namespace Lumina.Excel.GeneratedSheets
             EventHighAddition = parser.ReadColumn< byte >( 15 );
             Unknown16 = parser.ReadColumn< bool >( 16 );
             Unknown17 = parser.ReadColumn< byte >( 17 );
+            AddedIn53 = parser.ReadColumn< bool >( 18 );
         }
     }
 }

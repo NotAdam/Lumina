@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActionTimelineMove", columnHash: 0x4a51230b )]
+    [Sheet( "ActionTimelineMove", columnHash: 0x789014d3 )]
     public class ActionTimelineMove : IExcelRow
     {
         
@@ -11,7 +13,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown1;
         public byte Unknown2;
         public byte Unknown3;
-        public bool Unknown4;
+        public byte Unknown4;
+        public bool Unknown5;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -25,7 +28,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< bool >( 4 );
+            Unknown4 = parser.ReadColumn< byte >( 4 );
+            Unknown5 = parser.ReadColumn< bool >( 5 );
         }
     }
 }

@@ -1,14 +1,17 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Channeling", columnHash: 0x9ff65ad6 )]
+    [Sheet( "Channeling", columnHash: 0x23dfe9bd )]
     public class Channeling : IExcelRow
     {
         
         public string File;
         public byte WidthScale;
+        public bool AddedIn53;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -20,6 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             File = parser.ReadColumn< string >( 0 );
             WidthScale = parser.ReadColumn< byte >( 1 );
+            AddedIn53 = parser.ReadColumn< bool >( 2 );
         }
     }
 }

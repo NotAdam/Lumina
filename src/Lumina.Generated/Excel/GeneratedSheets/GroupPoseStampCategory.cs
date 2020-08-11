@@ -1,13 +1,16 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Salvage", columnHash: 0xd870e208 )]
-    public class Salvage : IExcelRow
+    [Sheet( "GroupPoseStampCategory", columnHash: 0x5eb59ccb )]
+    public class GroupPoseStampCategory : IExcelRow
     {
         
-        public ushort OptimalSkill;
+        public byte Unknown0;
+        public string Name;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -17,7 +20,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            OptimalSkill = parser.ReadColumn< ushort >( 0 );
+            Unknown0 = parser.ReadColumn< byte >( 0 );
+            Name = parser.ReadColumn< string >( 1 );
         }
     }
 }

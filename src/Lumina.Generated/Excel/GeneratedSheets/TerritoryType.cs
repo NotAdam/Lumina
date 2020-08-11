@@ -1,9 +1,11 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TerritoryType", columnHash: 0x7dff1ae4 )]
+    [Sheet( "TerritoryType", columnHash: 0x5cbd7b58 )]
     public class TerritoryType : IExcelRow
     {
         
@@ -36,15 +38,17 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Resident;
         public sbyte AchievementIndex;
         public bool IsPvpZone;
-        public byte Unknown29;
+        public LazyRow< ExVersion > ExVersion;
         public byte Unknown30;
         public byte Unknown31;
-        public byte Unknown32;
-        public bool Unknown33;
+        public byte AddedIn53;
+        public LazyRow< MountSpeed > MountSpeed;
         public bool Unknown34;
-        public byte Unknown35;
-        public bool Unknown36;
+        public bool Unknown35;
+        public byte Unknown36;
         public bool Unknown37;
+        public bool Unknown38;
+        public bool Unknown39;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -83,15 +87,17 @@ namespace Lumina.Excel.GeneratedSheets
             Resident = parser.ReadColumn< ushort >( 26 );
             AchievementIndex = parser.ReadColumn< sbyte >( 27 );
             IsPvpZone = parser.ReadColumn< bool >( 28 );
-            Unknown29 = parser.ReadColumn< byte >( 29 );
+            ExVersion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 29 ), language );
             Unknown30 = parser.ReadColumn< byte >( 30 );
             Unknown31 = parser.ReadColumn< byte >( 31 );
-            Unknown32 = parser.ReadColumn< byte >( 32 );
-            Unknown33 = parser.ReadColumn< bool >( 33 );
+            AddedIn53 = parser.ReadColumn< byte >( 32 );
+            MountSpeed = new LazyRow< MountSpeed >( lumina, parser.ReadColumn< byte >( 33 ), language );
             Unknown34 = parser.ReadColumn< bool >( 34 );
-            Unknown35 = parser.ReadColumn< byte >( 35 );
-            Unknown36 = parser.ReadColumn< bool >( 36 );
+            Unknown35 = parser.ReadColumn< bool >( 35 );
+            Unknown36 = parser.ReadColumn< byte >( 36 );
             Unknown37 = parser.ReadColumn< bool >( 37 );
+            Unknown38 = parser.ReadColumn< bool >( 38 );
+            Unknown39 = parser.ReadColumn< bool >( 39 );
         }
     }
 }

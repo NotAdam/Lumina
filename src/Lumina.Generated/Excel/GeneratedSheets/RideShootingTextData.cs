@@ -1,13 +1,15 @@
+// ReSharper disable All
+
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ScenarioTreeTipsQuest", columnHash: 0xdbf43666 )]
-    public class ScenarioTreeTipsQuest : IExcelRow
+    [Sheet( "RideShootingTextData", columnHash: 0xdebb20e3 )]
+    public class RideShootingTextData : IExcelRow
     {
         
-        public LazyRow< Level > Level;
+        public string String;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -17,7 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Level = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            String = parser.ReadColumn< string >( 0 );
         }
     }
 }
