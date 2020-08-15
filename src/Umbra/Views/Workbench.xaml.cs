@@ -1,9 +1,11 @@
 using System;
 using System.Linq;
 using System.Reactive.Disposables;
+using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using AvalonDock.Layout;
+using DynamicData.Binding;
 using ReactiveUI;
 using Umbra.Controls.Explorer;
 using Umbra.ViewModels;
@@ -57,6 +59,7 @@ namespace Umbra.Views
                 Content = content
             } );
 
+            // todo: can probably just move this to an observable instead, which would then work for any source of new tabs
             if( focusNewTab )
             {
                 // this seems to work fine but feels mega dodgy

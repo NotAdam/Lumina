@@ -58,15 +58,10 @@
                 <LayoutPanel Orientation="Horizontal">
                     <LayoutDocumentPaneGroup x:Name="RootDocumentPaneGroup">
                         <LayoutDocumentPane>
-                            <LayoutDocument Title="test tab" ContentId="document1">
+                            <LayoutDocument Title="Workbench">
                                 <StackPanel>
                                     <TextBlock>this is where i would put cool shit, if i had any</TextBlock>
                                 </StackPanel>
-                            </LayoutDocument>
-                            <LayoutDocument Title="test tab 2" ContentId="document2">
-                                <TextBlock>
-                                    hello world !!!!!
-                                </TextBlock>
                             </LayoutDocument>
                         </LayoutDocumentPane>
                     </LayoutDocumentPaneGroup>
@@ -76,8 +71,8 @@
                 <LayoutRoot.LeftSide>
                     <LayoutAnchorSide>
                         <LayoutAnchorGroup x:Name="LeftSideAnchorGroup">
-                            <LayoutAnchorable Title="File Browser" AutoHideWidth="350" CanClose="False" x:Name="FileBrowserAnchorable" />
-                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" x:Name="ExcelSheetListAnchorable" />
+                            <LayoutAnchorable Title="File Browser" AutoHideWidth="600" CanClose="False" x:Name="FileBrowserAnchorable" />
+                            <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="400" CanClose="False" x:Name="ExcelSheetListAnchorable" />
                         </LayoutAnchorGroup>
                     </LayoutAnchorSide>
                 </LayoutRoot.LeftSide>

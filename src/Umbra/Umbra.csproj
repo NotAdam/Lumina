@@ -37,6 +37,7 @@
       <PackageReference Include="AdonisUI.ClassicTheme" Version="1.16.0" />
       <PackageReference Include="Dirkster.AvalonDock" Version="4.30.0" />
       <PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.30.0" />
+      <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.4.0" />
       <PackageReference Include="ReactiveUI" Version="11.5.6" />
       <PackageReference Include="ReactiveUI.Events.WPF" Version="11.5.6" />
       <PackageReference Include="ReactiveUI.WPF" Version="11.5.6" />
