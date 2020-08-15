@@ -155,7 +155,7 @@ namespace Lumina.Data
             Reader.Seek( baseOffset + mdlBlock.StackOffset );
             long stackStart = ms.Position;
             for( int i = 0; i < mdlBlock.StackBlockNum; i++ ) {
-                long lastPos = ms.Position;
+                long lastPos = Reader.BaseStream.Position;
                 ReadFileBlock( ms );
                 Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                 currentBlock++;
@@ -167,7 +167,7 @@ namespace Lumina.Data
             Reader.Seek( baseOffset + mdlBlock.RuntimeOffset );
             long runtimeStart = ms.Position;
             for( int i = 0; i < mdlBlock.RuntimeBlockNum; i++ ) {
-                long lastPos = ms.Position;
+                long lastPos = Reader.BaseStream.Position;
                 ReadFileBlock( ms );
                 Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                 currentBlock++;
