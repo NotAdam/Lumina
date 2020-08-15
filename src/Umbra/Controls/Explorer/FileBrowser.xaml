@@ -11,10 +11,43 @@
     mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="300">
     <DockPanel>
-        <TextBox DockPanel.Dock="Top" Padding="4" Style="{DynamicResource TextBoxPlaceholder}" Tag="Search files..." />
+        <TextBox DockPanel.Dock="Top" Padding="4" />
         <TreeView DockPanel.Dock="Bottom">
             <TreeView.Items>
                 <TreeViewItem Header="hello">
+                    <TreeViewItem Header="world"><TreeViewItem>test</TreeViewItem></TreeViewItem>
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                </TreeViewItem>
+                <TreeViewItem Header="hello">
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                </TreeViewItem>
+                <TreeViewItem Header="hello">
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                </TreeViewItem>
+                <TreeViewItem Header="hello">
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
+                    <TreeViewItem Header="world" />
                     <TreeViewItem Header="world" />
                 </TreeViewItem>
             </TreeView.Items>

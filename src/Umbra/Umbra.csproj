@@ -33,6 +33,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="AdonisUI" Version="1.16.0" />
+      <PackageReference Include="AdonisUI.ClassicTheme" Version="1.16.0" />
       <PackageReference Include="Dirkster.AvalonDock" Version="4.30.0" />
       <PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.30.0" />
       <PackageReference Include="ReactiveUI" Version="11.5.6" />

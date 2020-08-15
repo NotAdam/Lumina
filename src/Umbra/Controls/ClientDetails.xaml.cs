@@ -1,4 +1,5 @@
 using System.Reactive.Disposables;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using ReactiveUI;
@@ -47,10 +48,8 @@ namespace Umbra.Controls
             }
 
             var explorer = new Views.Workbench( ViewModel.Path );
-            // todo: wtf? this still doesn't even fucking work right
+            //explorer.Owner = Window.GetWindow( this );
             explorer.Show();
-            explorer.Activate();
-            explorer.Focus();
         }
     }
 }

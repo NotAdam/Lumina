@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AdonisUI;
 using Microsoft.Win32;
 using ReactiveUI;
 using Serilog;
@@ -28,27 +29,25 @@ namespace Umbra.Views
         {
             InitializeComponent();
             
-            //var themeKey = Registry.CurrentUser.OpenSubKey( @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" );
-            //if( themeKey != null )
-            //{
-            //    var themePref = themeKey.GetValue(
-            //        "AppsUseLightTheme",
-            //        1
-            //    );
+            var themeKey = Registry.CurrentUser.OpenSubKey( @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" );
+            if( themeKey != null )
+            {
+                var themePref = themeKey.GetValue(
+                    "AppsUseLightTheme",
+                    1
+                );
 
-            //    Log.Debug( "use light theme: {AppsUseLightTheme}", themePref );
+                Log.Debug( "use light theme: {AppsUseLightTheme}", themePref );
 
-            //    if( (int)themePref != 0 )
-            //    {
-            //        return;
-            //    }
+                if( (int)themePref != 0 )
+                {
+                    return;
+                }
                 
-            //    Log.Verbose("adding darktheme resource dictionary");
+                Log.Verbose("adding darktheme resource dictionary");
                 
-            //    Application.Current.Resources.MergedDictionaries.Add( 
-            //        new ResourceDictionary { Source = new Uri( "/Styles/DarkTheme.xaml", UriKind.RelativeOrAbsolute ) }
-            //    );
-            //}
+                AdonisUI.ResourceLocator.SetColorScheme( Application.Current.Resources, ResourceLocator.DarkColorScheme );
+            }
             
             ViewModel = new ClientBrowserViewModel();
 

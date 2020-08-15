@@ -62,13 +62,13 @@
                         <TextBlock Grid.Row="0" Grid.Column="1" x:Name="HeaderFilePath" />
 
                         <TextBlock FontWeight="Bold" Grid.Row="2" Grid.Column="0">Languages</TextBlock>
-                        <ListView Grid.Row="2" Grid.Column="1" x:Name="SheetLanguagesListView">
+                        <ListBox Grid.Row="2" Grid.Column="1" x:Name="SheetLanguagesListView">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}" />
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
-                        </ListView>
+                        </ListBox>
 
                         <!-- data pages -->
                         <TextBlock FontWeight="Bold" Grid.Row="4" Grid.Column="0">Data Pages</TextBlock>

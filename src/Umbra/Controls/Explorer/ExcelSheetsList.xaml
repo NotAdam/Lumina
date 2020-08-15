@@ -14,14 +14,14 @@
         <TextBox 
             DockPanel.Dock="Top"
             x:Name="SearchInput"
-            Style="{StaticResource TextBoxPlaceholder}"
             Padding="4"
             Tag="Search sheets..." />
-        <ListView
+        <ListBox
             DockPanel.Dock="Bottom"
             x:Name="SheetList"
             DisplayMemberPath="."
             MouseDoubleClick="SheetList_OnMouseDoubleClick"
-            SelectionMode="Single" />
+            SelectionMode="Single">
+        </ListBox>
     </DockPanel>
 </rxui:ReactiveUserControl>

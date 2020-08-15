@@ -12,6 +12,10 @@
     d:DesignWidth="800" d:DesignHeight="450"
     Width="800" Height="450">
     
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
+    
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Umbra">
