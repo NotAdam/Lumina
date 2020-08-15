@@ -24,6 +24,9 @@ namespace Umbra.Views
 #endif
 
             ViewModel = new WorkbenchViewModel( path );
+            
+            
+            
             ExcelSheetListAnchorable.Content = new ExcelSheetsList( ViewModel.Lumina );
             FileBrowserAnchorable.Content = new FileBrowser();
 
@@ -34,7 +37,13 @@ namespace Umbra.Views
                     vm => vm.Title,
                     v => v.Title
                 ).DisposeWith( reg );
-                
+
+                this.BindCommand(
+                    ViewModel,
+                    vm => vm.DiscoverGameFiles,
+                    v => v.DiscoverFiles
+                ).DisposeWith( reg );
+
             } );
         }
 
@@ -76,6 +85,21 @@ namespace Umbra.Views
         {
             var sheetPage = new Controls.Explorer.Files.ExcelSheetPage( sheetName, ViewModel.Lumina );
             AddTabContent( $"Sheet: {sheetName}", sheetPage );
+        }
+
+        public void RequestOpenFile( string filePath )
+        {
+            // ew
+            var extension = filePath.Split( '.' )[ ^1 ];
+
+            object view = extension switch
+            {
+                // todo: add & implement other file type viewers
+                // "mdl" => null,
+                _ => new Controls.Explorer.Files.RawFile( filePath, ViewModel.Lumina )
+            };
+
+            AddTabContent( filePath, view );
         }
     }
 }

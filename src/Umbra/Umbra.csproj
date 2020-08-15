@@ -49,6 +49,7 @@
       <PackageReference Include="Serilog.Sinks.Debug" Version="1.0.1" />
       <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
       <PackageReference Include="Splat.Serilog" Version="9.5.13" />
+      <PackageReference Include="WPFHexaEditor" Version="2.0.2" />
     </ItemGroup>
 
     <ItemGroup>

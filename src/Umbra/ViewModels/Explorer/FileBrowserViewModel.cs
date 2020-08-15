@@ -14,8 +14,6 @@ namespace Umbra.ViewModels.Explorer
     {
         public FileBrowserViewModel()
         {
-            FileSystemNodes.Add( DebugCreateTree() );
-
             DebugAddNode = ReactiveCommand.Create( () =>
             {
                 // FileSystemNodes.Add( DebugCreateTree() );
@@ -55,7 +53,7 @@ namespace Umbra.ViewModels.Explorer
             // todo: probably a file but a shit way of checking lmao
             if( currentFragment.Contains( "." ) )
             {
-                newNode.Kind = FileBrowserNodeViewModel.NodeKind.File;
+                newNode.Kind = FileBrowserNodeViewModel.NodeKind.GameFile;
                 newNode.IconKind = PackIconFontAwesomeKind.FileSolid;
             }
             
@@ -112,42 +110,6 @@ namespace Umbra.ViewModels.Explorer
             }
 
             return null;
-        }
-
-
-        private FileBrowserNodeViewModel DebugCreateTree(string rootName = "bg")
-        {
-            var node1 = new FileBrowserNodeViewModel
-            {
-                Fragment = rootName,
-                FullPath = rootName,
-                Kind = FileBrowserNodeViewModel.NodeKind.Folder
-            };
-
-            var node11 = new FileBrowserNodeViewModel
-            {
-                Fragment = "ffxiv",
-                FullPath = "bg/ffxiv",
-                Kind = FileBrowserNodeViewModel.NodeKind.Folder
-            };
-            
-            var node12 = new FileBrowserNodeViewModel
-            {
-                Fragment = "ex1",
-                FullPath = "bg/ex1",
-                Kind = FileBrowserNodeViewModel.NodeKind.Folder
-            };
-            
-            var node13 = new FileBrowserNodeViewModel
-            {
-                Fragment = "ex2",
-                FullPath = "bg/ex2",
-                Kind = FileBrowserNodeViewModel.NodeKind.Folder
-            };
-
-            node1.Children = new ObservableCollection< FileBrowserNodeViewModel > { node11, node12, node13 };
-
-            return node1;
         }
     }
 }

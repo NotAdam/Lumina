@@ -65,6 +65,7 @@ namespace Umbra
             RegisterViewsForViewModels( Locator.CurrentMutable, Assembly.GetCallingAssembly() );
             Locator.CurrentMutable.RegisterConstant( new Services.LuminaProviderService() );
             Locator.CurrentMutable.RegisterConstant( new Services.GarbageSettingsService() );
+            Locator.CurrentMutable.RegisterConstant( new Services.GameFileDiscoveryService() );
 
             Locator.CurrentMutable.Register( () => new CustomPropertyResolver(), typeof( ICreatesObservableForProperty ) );
 

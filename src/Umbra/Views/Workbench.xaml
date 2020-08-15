@@ -25,6 +25,8 @@
             <MenuItem Header="_Tools">
                 <MenuItem Header="Open file from offset and type" />
                 <MenuItem Header="Open file from hash" />
+                <Separator/>
+                <MenuItem Header="Discover (some) Files (slow and shit)" x:Name="DiscoverFiles"/>
             </MenuItem>
             <MenuItem Header="Debug" x:Name="DebugMenu">
                 <MenuItem Header="Add tab" Click="AddTab_OnClick" />

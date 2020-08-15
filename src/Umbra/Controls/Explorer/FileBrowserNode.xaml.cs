@@ -5,7 +5,7 @@ using System.Windows.Input;
 using MahApps.Metro.IconPacks;
 using ReactiveUI;
 using Umbra.ViewModels.Explorer;
-using Console = System.Console;
+using Umbra.Views;
 
 namespace Umbra.Controls.Explorer
 {
@@ -28,18 +28,20 @@ namespace Umbra.Controls.Explorer
                     vm => vm.IconKind,
                     v => v.NodeIcon.Kind
                 ).DisposeWith( reg );
+                
             } );
         }
 
         private void Control_OnMouseDoubleClick( object sender, MouseButtonEventArgs e )
         {
             // don't care about anything that isn't a file basically
-            if( ViewModel.Kind != FileBrowserNodeViewModel.NodeKind.File )
+            if( ViewModel.Kind != FileBrowserNodeViewModel.NodeKind.GameFile )
             {
                 return;
             }
             
-            MessageBox.Show( ViewModel?.FullPath ?? "unknown file" );
+            var window = Window.GetWindow( this ) as Workbench;
+            window?.RequestOpenFile( ViewModel?.FullPath );
         }
     }
 }

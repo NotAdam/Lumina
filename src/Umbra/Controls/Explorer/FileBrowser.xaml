@@ -13,7 +13,11 @@
     <DockPanel>
         <TextBox DockPanel.Dock="Top" Padding="4" />
         <Button DockPanel.Dock="Top" Content="Add debug nodes" x:Name="AddNodeBtn"/>
-        <TreeView DockPanel.Dock="Bottom" x:Name="FileTreeView">
+        <TreeView 
+            DockPanel.Dock="Bottom"
+            x:Name="FileTreeView"
+            VirtualizingStackPanel.IsVirtualizing="True"
+            VirtualizingStackPanel.VirtualizationMode="Recycling">
             <TreeView.Resources>
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type vms:FileBrowserNodeViewModel}">
                     <rxui:ViewModelViewHost ViewModel="{Binding CurrentNode}"/>

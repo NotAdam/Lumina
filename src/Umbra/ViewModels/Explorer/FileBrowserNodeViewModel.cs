@@ -10,7 +10,7 @@ namespace Umbra.ViewModels.Explorer
         public enum NodeKind
         {
             Folder,
-            File,
+            GameFile,
         }
         
         public FileBrowserNodeViewModel()

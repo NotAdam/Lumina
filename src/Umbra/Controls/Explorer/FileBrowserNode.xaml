@@ -14,12 +14,16 @@
 
     <ContentControl MouseDoubleClick="Control_OnMouseDoubleClick">
         <StackPanel Orientation="Horizontal">
-            <!-- todo: put file/folder icon here :DDD -->
-            <iconPacks:PackIconFontAwesome x:Name="NodeIcon" Kind="FolderSolid" Margin="-5,0,5,0">
-                
-            </iconPacks:PackIconFontAwesome>
+            <iconPacks:PackIconFontAwesome x:Name="NodeIcon" Kind="FolderSolid" Margin="-6,0,5,0"/>
             <TextBlock Name="FileName" />
         </StackPanel>
+        <ContentControl.ContextMenu>
+            <ContextMenu x:Name="FileContextMenu">
+                <MenuItem Header="Open File" x:Name="OpenFileBtn"/>
+                <MenuItem Header="Export (Raw)" x:Name="ExportRawBtn"/>
+                <MenuItem Header="Copy to Mod" x:Name="CopyToModBtn"/>
+            </ContextMenu>
+        </ContentControl.ContextMenu>
     </ContentControl>
 
 
