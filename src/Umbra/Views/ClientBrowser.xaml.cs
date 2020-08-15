@@ -4,7 +4,9 @@ using System.Reactive.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Microsoft.Win32;
 using ReactiveUI;
+using Serilog;
 using Umbra.Models;
 using Umbra.ViewModels;
 
@@ -15,7 +17,7 @@ namespace Umbra.Views
     /// </summary>
     public partial class MainWindow : ReactiveWindow< ClientBrowserViewModel >
     {
-        static readonly Key[] secret = new[]
+        static readonly Key[] secret = 
         {
             Key.Up, Key.Up, Key.Down, Key.Down, Key.Left, Key.Right, Key.Left, Key.Right, Key.B, Key.A
         };
@@ -25,6 +27,29 @@ namespace Umbra.Views
         public MainWindow()
         {
             InitializeComponent();
+            
+            //var themeKey = Registry.CurrentUser.OpenSubKey( @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" );
+            //if( themeKey != null )
+            //{
+            //    var themePref = themeKey.GetValue(
+            //        "AppsUseLightTheme",
+            //        1
+            //    );
+
+            //    Log.Debug( "use light theme: {AppsUseLightTheme}", themePref );
+
+            //    if( (int)themePref != 0 )
+            //    {
+            //        return;
+            //    }
+                
+            //    Log.Verbose("adding darktheme resource dictionary");
+                
+            //    Application.Current.Resources.MergedDictionaries.Add( 
+            //        new ResourceDictionary { Source = new Uri( "/Styles/DarkTheme.xaml", UriKind.RelativeOrAbsolute ) }
+            //    );
+            //}
+            
             ViewModel = new ClientBrowserViewModel();
 
             this.WhenActivated( reg =>
@@ -65,23 +90,15 @@ namespace Umbra.Views
                     v => v.GameClientListBox.SelectedItem
                 ).DisposeWith( reg );
 
-                this.Events().KeyUp
-                    .Select( x => x.Key )
-                    .Window( 10 )
-                    .SelectMany( x => x.SequenceEqual( secret ) )
-                    .Where( x => x && !_activatedDarkTheme )
-                    .Do( x => EnableDarkTheme() )
-                    .Subscribe( x => { } )
-                    .DisposeWith( reg );
+                // this.Events().KeyUp
+                //     .Select( x => x.Key )
+                //     .Window( 10 )
+                //     .SelectMany( x => x.SequenceEqual( secret ) )
+                //     .Where( x => x && !_activatedDarkTheme )
+                //     .Do( x => EnableDarkTheme() )
+                //     .Subscribe( x => { } )
+                //     .DisposeWith( reg );
             } );
-        }
-
-        private void EnableDarkTheme()
-        {
-            _activatedDarkTheme = true;
-            Application.Current.Resources.MergedDictionaries.Add( 
-                new ResourceDictionary { Source = new Uri( "/Styles/DarkTheme.xaml", UriKind.RelativeOrAbsolute ) }
-            );
         }
     }
 }

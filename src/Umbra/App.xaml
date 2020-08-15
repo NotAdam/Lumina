@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/BaseLayout.xaml"/>
-                <!-- <ResourceDictionary Source="Styles/DarkTheme.xaml"/> -->
+                 <ResourceDictionary Source="Styles/DarkTheme.xaml"/> 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

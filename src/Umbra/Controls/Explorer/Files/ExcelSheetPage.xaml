@@ -30,6 +30,9 @@
                         EnableRowVirtualization="True"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch"
+                        RowHeight="20" 
+                        ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                        ScrollViewer.VerticalScrollBarVisibility="Visible"
                         IsReadOnly="True" />
                 </TabItem>
                 <TabItem Header="Typed" x:Name="StronglyTypedSheetContainer" Visibility="Collapsed">

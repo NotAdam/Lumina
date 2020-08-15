@@ -1,6 +1,11 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:rxui="http://reactiveui.net">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="./DarkControls/DataGrid.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <Color x:Key="ThemeAccentColor">#CC119EDA</Color>
     <Color x:Key="ThemeAccentColor2">#99119EDA</Color>
     <Color x:Key="ThemeAccentColor3">#66119EDA</Color>
@@ -46,53 +51,84 @@
     <SolidColorBrush x:Key="ThemeForegroundBrush" Color="{DynamicResource ThemeForegroundColor}"></SolidColorBrush>
     <SolidColorBrush x:Key="ThemeForegroundLowBrush" Color="{DynamicResource ThemeForegroundLowColor}"></SolidColorBrush>
 
-    <Style TargetType="Button">
-        <Setter Property="Padding" Value="5, 2, 5, 2"/>
-        <Setter Property="Margin" Value="1"/>
-        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+    <!-- new styles -->
+    <Color x:Key="SystemForegroundColour">#FFF1F1F1</Color>
+    
+    <SolidColorBrush x:Key="SystemBackground" Color="#303030"/>
+    <SolidColorBrush x:Key="SystemForeground" Color="{DynamicResource SystemForegroundColour}"/>
+
+    <SolidColorBrush x:Key="ControlBackground" Color="#FF3F3F46"/>
+    <SolidColorBrush x:Key="ControlForeground" Color="{DynamicResource SystemForegroundColour}"/>
+    <SolidColorBrush x:Key="ControlBorderBrush" Color="#FF555555"/>
+
+    <SolidColorBrush x:Key="ControlDefaultedBackground" Color="#FF3F3F46"/>
+    <SolidColorBrush x:Key="ControlDefaultedForeground" Color="{DynamicResource SystemForegroundColour}"/>
+    <SolidColorBrush x:Key="ControlDefaultedBorder" Color="#FF007ACC"/>
+
+    <SolidColorBrush x:Key="ControlDisabledBackground" Color="#FF2D2D30"/>
+    <SolidColorBrush x:Key="ControlDisabledForeground" Color="#FF656565"/>
+    <SolidColorBrush x:Key="ControlDisabledBorder" Color="#FF3F3F46"/>
+
+    <SolidColorBrush x:Key="ControlFocusedBackground" Color="#FF3F3F46"/>
+    <SolidColorBrush x:Key="ControlFocusedForeground" Color="{DynamicResource SystemForegroundColour}"/>
+    <SolidColorBrush x:Key="ControlFocusedBorder" Color="#FF0097FB"/>
+
+    <SolidColorBrush x:Key="ControlHoverBackground" Color="#FF3F3F46"/>
+    <SolidColorBrush x:Key="ControlHoverForeground" Color="{DynamicResource SystemForegroundColour}"/>
+    <SolidColorBrush x:Key="ControlHoverBorder" Color="#FF0097FB"/>
+
+    <SolidColorBrush x:Key="ControlPressedBackground" Color="#FF007ACC"/>
+    <SolidColorBrush x:Key="ControlPressedForeground" Color="{DynamicResource SystemForegroundColour}"/>
+    <SolidColorBrush x:Key="ControlPressedBorder" Color="#FF007ACC"/>
+
+    <Style TargetType="{x:Type rxui:ReactiveWindow`1}">
+        <Setter Property="Background" Value="{DynamicResource SystemBackground}"/>
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
     </Style>
-    
-    <Style TargetType="{x:Type rxui:ReactiveWindow`1}">
-        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}"/>
     </Style>
 
     <Style TargetType="Menu">
-        <Setter Property="Background" Value="{DynamicResource ThemeControlMidBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource SystemBackground}"/>
         <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
+    </Style>
+
+    <Style TargetType="MenuItem">
+        <Setter Property="MinHeight" Value="25"/>
     </Style>
 
     <Style TargetType="DockPanel">
-        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource SystemBackground}"/>
     </Style>
     
     <Style TargetType="ListBox">
-        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
     </Style>
 
     <Style TargetType="ListView">
-        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
     </Style>
 
     <Style TargetType="TextBox">
-        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
     </Style>
 
     <Style TargetType="TreeView">
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeBorderMidBrush}"/>
-        <Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}"/>
     </Style>
 
     <Style TargetType="TreeViewItem">
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}"/>
     </Style>
 
     <Style TargetType="TabItem">
@@ -108,5 +144,62 @@
 
     <Style TargetType="GridSplitter">
         <Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}"/>
+    </Style>
+
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{DynamicResource ControlBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ControlBorderBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource ControlForeground}" />
+        <Setter Property="Padding" Value="5, 2, 5, 2" />
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        SnapsToDevicePixels="True">
+                        <ContentPresenter
+                            RecognizesAccessKey="True"
+                            Margin="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Focusable="False">
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Button.IsDefaulted" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ControlDefaultedBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource ControlDefaultedForeground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlDefaultedBorder}" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource ControlDefaultedForeground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlDisabledBorder}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ControlHoverBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource ControlFocusedForeground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlHoverBorder}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ControlPressedBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource ControlPressedForeground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlPressedBorder}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource ControlDisabledBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource ControlDisabledForeground}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource ControlDisabledBorder}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>

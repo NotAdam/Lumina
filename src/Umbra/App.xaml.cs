@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using Microsoft.Win32;
 using ReactiveUI;
 using Sentry;
 using Serilog;
@@ -71,7 +72,7 @@ namespace Umbra
         }
 
 
-        public static void RegisterViewsForViewModels( IMutableDependencyResolver resolver, Assembly assembly )
+        private static void RegisterViewsForViewModels( IMutableDependencyResolver resolver, Assembly assembly )
         {
             if( resolver == null )
             {

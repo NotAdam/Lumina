@@ -41,20 +41,27 @@ namespace Umbra.Views
             AddTabContent( "new tab", new TextBlock { Text = "hello from new tab!" } );
         }
 
-        public void AddTabContent( string title, object content )
+        public void AddTabContent( string title, object content, bool focusNewTab = true )
         {
             var group = RootDocumentPaneGroup.Children.FirstOrDefault();
-            if( group == null )
+
+            var pane = group as LayoutDocumentPane;
+            if( pane == null )
             {
                 return;
             }
-
-            var pane = group as LayoutDocumentPane;
-            pane?.Children.Add( new LayoutDocument
+            
+            pane.Children.Add( new LayoutDocument
             {
                 Title = title,
                 Content = content
             } );
+
+            if( focusNewTab )
+            {
+                // this seems to work fine but feels mega dodgy
+                pane.SelectedContentIndex = pane.ChildrenCount - 1;
+            }
         }
 
         private void ThrowException_OnClick( object sender, RoutedEventArgs e )

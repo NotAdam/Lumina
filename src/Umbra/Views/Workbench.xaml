@@ -37,7 +37,7 @@
             IsVirtualizingDocument="True">
 
             <DockingManager.Theme>
-                <Vs2013LightTheme />
+                <Vs2013DarkTheme />
             </DockingManager.Theme>
 
             <DockingManager.DocumentHeaderTemplate>
@@ -71,7 +71,7 @@
                 <!-- left sidebar -->
                 <LayoutRoot.LeftSide>
                     <LayoutAnchorSide>
-                        <LayoutAnchorGroup>
+                        <LayoutAnchorGroup x:Name="LeftSideAnchorGroup">
                             <LayoutAnchorable Title="File Browser" AutoHideWidth="350" CanClose="False" x:Name="FileBrowserAnchorable" />
                             <LayoutAnchorable Title="Excel Sheets" AutoHideWidth="350" CanClose="False" x:Name="ExcelSheetListAnchorable" />
                         </LayoutAnchorGroup>
