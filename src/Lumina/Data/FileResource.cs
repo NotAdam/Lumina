@@ -30,6 +30,7 @@ namespace Lumina.Data
         /// </summary>
         public virtual void LoadFile()
         {
+            // this function is intentionally left blank
         }
 
         public virtual void SaveFile( string path )

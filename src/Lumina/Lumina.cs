@@ -152,6 +152,32 @@ namespace Lumina
         }
 
         /// <summary>
+        /// Load a defined file given a filesystem path
+        /// </summary>
+        /// <param name="path">A relative or absolute path to the file to load</param>
+        /// <typeparam name="T">The type of <see cref="FileResource"/> to load the raw file in to</typeparam>
+        /// <returns>The requested file if found, null if not</returns>
+        /// <exception cref="FileNotFoundException">The path given doesn't point to an existing file</exception>
+        public T GetFileFromDisk< T >( string path ) where T : FileResource
+        {
+            if( !File.Exists( path ) )
+            {
+                throw new FileNotFoundException( "the file at the specified path doesn't exist" );
+            }
+
+            var fileContent = File.ReadAllBytes( path );
+
+            var file = Activator.CreateInstance< T >();
+            file.Data = fileContent;
+            // todo: this is kind of fucked, we should probably choose one or the other and not both
+            file.FileStream = new MemoryStream( file.Data, false );
+            file.Reader = new BinaryReader( file.FileStream );
+            file.LoadFile();
+
+            return file;
+        }
+
+        /// <summary>
         /// Returns file metadata pulled directly from the file header inside the SqPack
         /// </summary>
         /// <param name="path">A path to a file located inside the game's filesystem</param>
