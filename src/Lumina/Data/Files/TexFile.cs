@@ -6,8 +6,6 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using Lumina.Data.Parsing.Tex;
 using Lumina.Extensions;
 
@@ -110,20 +108,6 @@ namespace Lumina.Data.Files
             ImageData = Convert( DataSpan.Slice( HeaderLength ), Header.Width, Header.Height );
         }
 
-        public unsafe Image GetImage()
-        {
-            // this is terrible please find something better or get rid of .net imaging altogether
-            Image image;
-            fixed( byte* p = ImageData )
-            {
-                var ptr = (IntPtr)p;
-                using var tempImage = new Bitmap( Header.Width, Header.Height, Header.Width * 4, PixelFormat.Format32bppArgb, ptr );
-                image = new Bitmap( tempImage );
-            }
-
-            return image;
-        }
-
         // converts various formats to A8R8G8B8
         private byte[] Convert( Span< byte > src, int width, int height )
         {
@@ -152,11 +136,33 @@ namespace Lumina.Data.Files
                 case TextureFormat.TEXTURE_FORMAT_L8:
                     ProcessR3G3B2( src, dst, width, height );
                     break;
+                case TextureFormat.TEXTURE_FORMAT_R8G8B8A8:
+                    ProcessR8G8B8A8( src, dst, width, height );
+                    break;
                 default:
                     throw new NotImplementedException( $"TextureFormat {Header.Format.ToString()} is not supported for image conversion." );
             }
 
             return dst;
+        }
+
+        private static unsafe void ProcessR8G8B8A8( Span< byte > src, byte[] dst, int width, int height )
+        {
+            fixed( byte* sb = &src[ 0 ] )
+            fixed( byte* db = &dst[ 0 ] )
+            {
+                var pSrc = (uint*)sb;
+                var pDst = (uint*)db;
+
+                for( var i = 0; i < (width * height) / 4; i++ )
+                {
+                    var d = *pSrc;
+                    *pDst = ( ( d & 0xffffff00 ) >> 8 ) | ( ( d & 0xff ) << 24 );
+
+                    pSrc++;
+                    pDst++;
+                }
+            }
         }
 
         // #region shamelessly copied from coinach

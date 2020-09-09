@@ -1,11 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lumina.Data.Parsing.Tex {
     // From DotSquish
@@ -84,53 +78,7 @@ namespace Lumina.Data.Parsing.Tex {
             }
             return argb;
         }
-        public static Image DecompressToBitmap(byte[] blocks, int width, int height, SquishOptions flags) {
-            return DecompressToBitmap(blocks, 0, width, height, flags);
-        }
-        public static unsafe Image DecompressToBitmap(byte[] blocks, int offset, int width, int height, SquishOptions flags) {
-            var fullBuffer = new byte[4 * width * height];
-            var bufferOffset = 0;
-
-            var bytesPerBlock = flags.HasFlag(SquishOptions.DXT1) ? 8 : 16;
-            var blockOffset = offset;
-            // Loop over blocks.
-            for (int y = 0; y < height; y += 4) {
-                for (int x = 0; x < width; x += 4) {
-                    // Decompress the block.
-                    var targetRgba = DecompressBlock(blocks, blockOffset, flags);
-
-
-                    // Write the decompressed pixels to the correct image locations.
-                    var sourcePixelOffset = 0;
-                    for (int py = 0; py < 4; ++py) {
-                        for (int px = 0; px < 4; ++px) {
-                            // Get the target location.
-                            var sx = x + px;
-                            var sy = y + py;
-                            if (sx < width && sy < height) {
-                                var i = 4 * (sx + (sy * width));
-                                fullBuffer[bufferOffset + i + 0] = targetRgba[sourcePixelOffset + 2];
-                                fullBuffer[bufferOffset + i + 1] = targetRgba[sourcePixelOffset + 1];
-                                fullBuffer[bufferOffset + i + 2] = targetRgba[sourcePixelOffset + 0];
-                                fullBuffer[bufferOffset + i + 3] = targetRgba[sourcePixelOffset + 3];
-                            }
-
-                            sourcePixelOffset += 4; // Skip this pixel as it is outside the image.
-                        }
-                    }
-
-                    // advance
-                    blockOffset += bytesPerBlock;
-                }
-            }
-            Image ret;
-            fixed (byte* p = fullBuffer) {
-                var ptr = (IntPtr)p;
-                var tempImage = new Bitmap(width, height, 4 * width, System.Drawing.Imaging.PixelFormat.Format32bppArgb, ptr);
-                ret = new Bitmap(tempImage);
-            }
-            return ret;
-        }
+        
         #endregion
 
         #region On stream
