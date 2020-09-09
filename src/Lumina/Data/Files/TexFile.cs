@@ -15,65 +15,69 @@ namespace Lumina.Data.Files
     {
         public enum Attribute : uint
         {
-            ATTRIBUTE_DISCARD_PER_FRAME = 0x1,
-            ATTRIBUTE_DISCARD_PER_MAP = 0x2,
-            ATTRIBUTE_MANAGED = 0x4,
-            ATTRIBUTE_USER_MANAGED = 0x8,
-            ATTRIBUTE_CPU_READ = 0x10,
-            ATTRIBUTE_LOCATION_MAIN = 0x20,
-            ATTRIBUTE_NO_GPU_READ = 0x40,
-            ATTRIBUTE_ALIGNED_SIZE = 0x80,
-            ATTRIBUTE_EDGE_CULLING = 0x100,
-            ATTRIBUTE_LOCATION_ONION = 0x200,
-            ATTRIBUTE_READ_WRITE = 0x400,
-            ATTRIBUTE_IMMUTABLE = 0x800,
-            ATTRIBUTE_TEXTURE_RENDER_TARGET = 0x100000,
-            ATTRIBUTE_TEXTURE_DEPTH_STENCIL = 0x200000,
-            ATTRIBUTE_TEXTURE_TYPE_1D = 0x400000,
-            ATTRIBUTE_TEXTURE_TYPE_2D = 0x800000,
-            ATTRIBUTE_TEXTURE_TYPE_3D = 0x1000000,
-            ATTRIBUTE_TEXTURE_TYPE_CUBE = 0x2000000,
-            ATTRIBUTE_TEXTURE_TYPE_MASK = 0x3C00000,
-            ATTRIBUTE_TEXTURE_SWIZZLE = 0x4000000,
-            ATTRIBUTE_TEXTURE_NO_TILED = 0x8000000,
-            ATTRIBUTE_TEXTURE_NO_SWIZZLE = 0x80000000,
+            DiscardPerFrame = 0x1,
+            DiscardPerMap = 0x2,
+            Managed = 0x4,
+            UserManaged = 0x8,
+            CpuRead = 0x10,
+            LocationMain = 0x20,
+            NoGpuRead = 0x40,
+            AlignedSize = 0x80,
+            EdgeCulling = 0x100,
+            LocationOnion = 0x200,
+            ReadWrite = 0x400,
+            Immutable = 0x800,
+            TextureRenderTarget = 0x100000,
+            TextureDepthStencil = 0x200000,
+            TextureType1D = 0x400000,
+            TextureType2D = 0x800000,
+            TextureType3D = 0x1000000,
+            TextureTypeCube = 0x2000000,
+            TextureTypeMask = 0x3C00000,
+            TextureSwizzle = 0x4000000,
+            TextureNoTiled = 0x8000000,
+            TextureNoSwizzle = 0x80000000,
         }
 
         public enum TextureFormat
         {
-            TEXTURE_FORMAT_UNKNOWN = 0x0,
-            TEXTURE_FORMAT_TYPE_SHIFT = 0xC,
-            TEXTURE_FORMAT_TYPE_MASK = 0xF000,
-            TEXTURE_FORMAT_COMPONENT_SHIFT = 0x8,
-            TEXTURE_FORMAT_COMPONENT_MASK = 0xF00,
-            TEXTURE_FORMAT_BPP_SHIFT = 0x4,
-            TEXTURE_FORMAT_BPP_MASK = 0xF0,
-            TEXTURE_FORMAT_ENUM_SHIFT = 0x0,
-            TEXTURE_FORMAT_ENUM_MASK = 0xF,
-            TEXTURE_FORMAT_TYPE_INTEGER = 0x1,
-            TEXTURE_FORMAT_TYPE_FLOAT = 0x2,
-            TEXTURE_FORMAT_TYPE_DXT = 0x3,
-            TEXTURE_FORMAT_TYPE_DEPTH_STENCIL = 0x4,
-            TEXTURE_FORMAT_TYPE_SPECIAL = 0x5,
-            TEXTURE_FORMAT_R8G8B8A8 = 0x1450,
-            TEXTURE_FORMAT_R8G8B8X8 = 0x1451,
-            TEXTURE_FORMAT_A8R8G8B8 = 0x1452,
-            TEXTURE_FORMAT_R4G4B4A4 = 0x1440,
-            TEXTURE_FORMAT_R5G5B5A1 = 0x1441,
-            TEXTURE_FORMAT_L8 = 0x1130,
-            TEXTURE_FORMAT_A8 = 0x1131,
-            TEXTURE_FORMAT_R32F = 0x2150,
-            TEXTURE_FORMAT_R32G32B32A32F = 0x2470,
-            TEXTURE_FORMAT_R16G16F = 0x2250,
-            TEXTURE_FORMAT_R16G16B16A16F = 0x2460,
-            TEXTURE_FORMAT_DXT1 = 0x3420,
-            TEXTURE_FORMAT_DXT3 = 0x3430,
-            TEXTURE_FORMAT_DXT5 = 0x3431,
-            TEXTURE_FORMAT_D16 = 0x4140,
-            TEXTURE_FORMAT_D24S8 = 0x4250,
-            TEXTURE_FORMAT_NULL = 0x5100,
-            TEXTURE_FORMAT_SHADOW16 = 0x5140,
-            TEXTURE_FORMAT_SHADOW24 = 0x5150,
+            Unknown = 0x0,
+            TypeShift = 0xC,
+            TypeMask = 0xF000,
+            ComponentShift = 0x8,
+            ComponentMask = 0xF00,
+            BppShift = 0x4,
+            BppMask = 0xF0,
+            EnumShift = 0x0,
+            EnumMask = 0xF,
+            TypeInteger = 0x1,
+            TypeFloat = 0x2,
+            TypeDxt = 0x3,
+            TypeDepthStencil = 0x4,
+            TypeSpecial = 0x5,
+            A8R8G8B8 = 0x1450,
+            // todo:
+            R8G8B8X8 = 0x1451,
+            A8R8G8B82 = 0x1452,
+            R4G4B4A4 = 0x1440,
+            R5G5B5A1 = 0x1441,
+            L8 = 0x1130,
+            // todo:
+            A8 = 0x1131,
+            // todo:
+            R32F = 0x2150,
+            R32G32B32A32F = 0x2470,
+            R16G16F = 0x2250,
+            R16G16B16A16F = 0x2460,
+            DXT1 = 0x3420,
+            DXT3 = 0x3430,
+            DXT5 = 0x3431,
+            D16 = 0x4140,
+            D24S8 = 0x4250,
+            //todo: RGBA8 0x4401
+            Null = 0x5100,
+            Shadow16 = 0x5140,
+            Shadow24 = 0x5150,
         }
 
         [StructLayout(LayoutKind.Sequential)]
@@ -89,7 +93,7 @@ namespace Lumina.Data.Files
             public fixed uint OffsetToSurface[13];
         };
 
-        public TexHeader Header { get; private set; }
+        public TexHeader Header;
 
         public int HeaderLength => Unsafe.SizeOf< TexHeader >();
 
@@ -115,54 +119,35 @@ namespace Lumina.Data.Files
 
             switch( Header.Format )
             {
-                case TextureFormat.TEXTURE_FORMAT_DXT1:
+                case TextureFormat.DXT1:
                     ProcessDxt1( src, dst, width, height );
                     break;
-                case TextureFormat.TEXTURE_FORMAT_DXT3:
+                case TextureFormat.DXT3:
                     ProcessDxt3( src, dst, width, height );
                     break;
-                case TextureFormat.TEXTURE_FORMAT_DXT5:
+                case TextureFormat.DXT5:
                     ProcessDxt5( src, dst, width, height );
                     break;
-                case TextureFormat.TEXTURE_FORMAT_R16G16B16A16F:
+                case TextureFormat.R16G16B16A16F:
                     ProcessA16R16G16B16_Float( src, dst, width, height);
                     break;
-                case TextureFormat.TEXTURE_FORMAT_R5G5B5A1:
+                case TextureFormat.R5G5B5A1:
                     ProcessA1R5G5B5( src, dst, width, height );
                     break;
-                case TextureFormat.TEXTURE_FORMAT_R4G4B4A4:
+                case TextureFormat.R4G4B4A4:
                     ProcessA4R4G4B4( src, dst, width, height );
                     break;
-                case TextureFormat.TEXTURE_FORMAT_L8:
+                case TextureFormat.L8:
                     ProcessR3G3B2( src, dst, width, height );
                     break;
-                case TextureFormat.TEXTURE_FORMAT_R8G8B8A8:
-                    ProcessR8G8B8A8( src, dst, width, height );
+                case TextureFormat.A8R8G8B8:
+                    src.CopyTo( dst );
                     break;
                 default:
                     throw new NotImplementedException( $"TextureFormat {Header.Format.ToString()} is not supported for image conversion." );
             }
 
             return dst;
-        }
-
-        private static unsafe void ProcessR8G8B8A8( Span< byte > src, byte[] dst, int width, int height )
-        {
-            fixed( byte* sb = &src[ 0 ] )
-            fixed( byte* db = &dst[ 0 ] )
-            {
-                var pSrc = (uint*)sb;
-                var pDst = (uint*)db;
-
-                for( var i = 0; i < (width * height) / 4; i++ )
-                {
-                    var d = *pSrc;
-                    *pDst = ( ( d & 0xffffff00 ) >> 8 ) | ( ( d & 0xff ) << 24 );
-
-                    pSrc++;
-                    pDst++;
-                }
-            }
         }
 
         // #region shamelessly copied from coinach
