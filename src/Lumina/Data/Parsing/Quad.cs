@@ -7,10 +7,10 @@ namespace Lumina.Data.Parsing
     {
         public ulong Data;
 
-        public ushort A => (ushort)( Data >> 48 );
-        public ushort B => (ushort)( Data >> 32 );
-        public ushort C => (ushort)( Data >> 16 );
-        public ushort D => (ushort)Data;
+        public ushort A => (ushort)Data;
+        public ushort B => (ushort)( Data >> 16 );
+        public ushort C => (ushort)( Data >> 32 );
+        public ushort D => (ushort)( Data >> 48 );
 
         public override string ToString()
         {
