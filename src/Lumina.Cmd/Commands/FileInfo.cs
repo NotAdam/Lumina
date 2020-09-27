@@ -46,6 +46,9 @@ namespace Lumina.Cmd.Commands
 
                 case ".tex":
                     return lumina.GetFile< TexFile >( path );
+                
+                case ".hwc":
+                    return lumina.GetFile< HwcFile >( path );
             }
 
             return null;
