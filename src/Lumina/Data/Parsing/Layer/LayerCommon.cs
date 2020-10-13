@@ -1576,7 +1576,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte ToolModeReadOnly;
             public byte IsBushLayer;
             public byte PS3Visible;
-            public uint _LayerSetReferencedList;
+            public int _LayerSetReferencedList;
             public ushort FestivalID;
             public ushort FestivalPhaseID;
             public byte IsTemporary;
@@ -1607,7 +1607,7 @@ namespace Lumina.Data.Parsing.Layer
                 ret.ToolModeReadOnly = br.ReadByte();
                 ret.IsBushLayer = br.ReadByte();
                 ret.PS3Visible = br.ReadByte();
-                ret._LayerSetReferencedList = br.ReadUInt32();
+                ret._LayerSetReferencedList = br.ReadInt32();
                 ret.FestivalID = br.ReadUInt16();
                 ret.FestivalPhaseID = br.ReadUInt16();
                 ret.IsTemporary = br.ReadByte();
