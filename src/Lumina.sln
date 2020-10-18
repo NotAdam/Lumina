@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.SpaghettiGenerator",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Cmd", "Lumina.Cmd\Lumina.Cmd.csproj", "{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Generated", "Lumina.Generated\Lumina.Generated.csproj", "{74F94760-A77E-496D-9D6F-98BD20EABE26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Excel", "Lumina.Excel\Lumina.Excel.csproj", "{74F94760-A77E-496D-9D6F-98BD20EABE26}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Umbra", "Umbra", "{22E62586-7547-4F23-B4FC-B919ED20CB1D}"
 EndProject
