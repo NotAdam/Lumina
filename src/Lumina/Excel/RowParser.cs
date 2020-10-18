@@ -18,7 +18,7 @@ namespace Lumina.Excel
 
         private ExcelDataOffset _offset;
         private ExcelDataRowHeader _rowHeader;
-        
+
         private long _rowOffset;
 
         public uint Row;
@@ -26,7 +26,7 @@ namespace Lumina.Excel
         public uint RowCount => _rowHeader.RowCount;
 
         private MemoryStream Stream => _dataFile.FileStream;
-        
+
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
             _sheet = sheet;
@@ -79,7 +79,7 @@ namespace Lumina.Excel
         public void SeekToRow( uint row, uint subRow )
         {
             SeekToRow( row );
-            
+
             SubRow = subRow;
 
             if( subRow > _rowHeader.RowCount )
@@ -90,7 +90,7 @@ namespace Lumina.Excel
             _rowOffset = CalculateSubRowOffset( subRow );
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public long CalculateSubRowOffset( uint subRow )
         {
             // +6 is the ExcelDataRowHeader
@@ -106,7 +106,7 @@ namespace Lumina.Excel
         public byte[] ReadBytes( int offset, int count )
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadBytes( count );
@@ -121,7 +121,7 @@ namespace Lumina.Excel
         public T ReadStructure< T >( int offset ) where T : struct
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadStructure< T >();
@@ -137,12 +137,12 @@ namespace Lumina.Excel
         public List< T > ReadStructures< T >( int offset, int count ) where T : struct
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadStructures< T >( count );
         }
-        
+
         /// <summary>
         /// Reads structures from an offset inside the current row
         /// </summary>
@@ -153,7 +153,7 @@ namespace Lumina.Excel
         public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadStructuresAsArray< T >( count );
@@ -270,6 +270,13 @@ namespace Lumina.Excel
                 return (T)data;
             }
 
+            // todo: this is fucking shit but is a wip fix so that you can still ReadField< string > and get something back because 1am brain can't figure it out rn
+            if( typeof( T ) == typeof( string ) && data is SeString seString )
+            {
+                // haha fuck you c#
+                return (T)(object)seString.RawString;
+            }
+
             if( data is T castedData )
             {
                 return castedData;
@@ -283,7 +290,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="flag"></param>
         /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
         private byte GetBitPosition( byte flag )
         {
             byte count = 0;
@@ -316,7 +323,7 @@ namespace Lumina.Excel
                 return ReadField< T >( flag );
             }
 
-            return ReadField< T >( _sheet.ColumnsByOffset[offset].Type );
+            return ReadField< T >( _sheet.ColumnsByOffset[ offset ].Type );
         }
 
         /// <summary>
@@ -328,7 +335,7 @@ namespace Lumina.Excel
         public T ReadOffset< T >( int offset, ExcelColumnDataType type )
         {
             Stream.Position = _rowOffset + offset;
-            
+
             return ReadField< T >( type );
         }
 
@@ -350,7 +357,7 @@ namespace Lumina.Excel
         public object ReadColumnRaw( int column )
         {
             var col = _sheet.Columns[ column ];
-            
+
             Stream.Position = _rowOffset + col.Offset;
 
             return ReadFieldInternal( col.Type );

@@ -125,8 +125,6 @@ namespace Lumina.Excel
 
         private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
         {
-            name = name.ToLowerInvariant();
-
             var cacheName = typeof( T ).FullName;
 
             var idNoLanguage = Tuple.Create( Language.None, cacheName );
