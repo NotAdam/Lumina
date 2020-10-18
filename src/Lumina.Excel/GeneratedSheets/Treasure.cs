@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,9 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class Treasure : IExcelRow
     {
         
-        public string Unknown0;
+        public SeString Unknown0;
         public sbyte Unknown1;
-        public string Unknown2;
+        public SeString Unknown2;
         public sbyte Unknown3;
         public sbyte Unknown4;
         public sbyte Unknown5;
@@ -29,9 +30,9 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Unknown0 = parser.ReadColumn< string >( 0 );
+            Unknown0 = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< sbyte >( 1 );
-            Unknown2 = parser.ReadColumn< string >( 2 );
+            Unknown2 = parser.ReadColumn< SeString >( 2 );
             Unknown3 = parser.ReadColumn< sbyte >( 3 );
             Unknown4 = parser.ReadColumn< sbyte >( 4 );
             Unknown5 = parser.ReadColumn< sbyte >( 5 );

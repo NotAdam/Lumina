@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class Pet : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public ushort Unknown1;
         public ushort Unknown2;
         public ushort Unknown3;
@@ -31,7 +32,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< ushort >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );

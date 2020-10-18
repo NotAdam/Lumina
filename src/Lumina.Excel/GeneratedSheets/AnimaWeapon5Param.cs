@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -10,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< BaseParam > BaseParam;
-        public string Name;
+        public SeString Name;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -21,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             BaseParam = new LazyRow< BaseParam >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            Name = parser.ReadColumn< string >( 1 );
+            Name = parser.ReadColumn< SeString >( 1 );
         }
     }
 }

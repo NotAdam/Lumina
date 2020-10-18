@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,11 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActivityFeedImages : IExcelRow
     {
         
-        public string ExpansionImage;
-        public string ActivityFeedJA;
-        public string ActivityFeedEN;
-        public string ActivityFeedDE;
-        public string ActivityFeedFR;
+        public SeString ExpansionImage;
+        public SeString ActivityFeedJA;
+        public SeString ActivityFeedEN;
+        public SeString ActivityFeedDE;
+        public SeString ActivityFeedFR;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -23,11 +24,11 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ExpansionImage = parser.ReadColumn< string >( 0 );
-            ActivityFeedJA = parser.ReadColumn< string >( 1 );
-            ActivityFeedEN = parser.ReadColumn< string >( 2 );
-            ActivityFeedDE = parser.ReadColumn< string >( 3 );
-            ActivityFeedFR = parser.ReadColumn< string >( 4 );
+            ExpansionImage = parser.ReadColumn< SeString >( 0 );
+            ActivityFeedJA = parser.ReadColumn< SeString >( 1 );
+            ActivityFeedEN = parser.ReadColumn< SeString >( 2 );
+            ActivityFeedDE = parser.ReadColumn< SeString >( 3 );
+            ActivityFeedFR = parser.ReadColumn< SeString >( 4 );
         }
     }
 }

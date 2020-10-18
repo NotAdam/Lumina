@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class Quest : IExcelRow
     {
         
-        public string Name;
-        public string Id;
+        public SeString Name;
+        public SeString Id;
         public LazyRow< ExVersion > Expansion;
         public LazyRow< ClassJobCategory > ClassJobCategory0;
         public ushort ClassJobLevel0;
@@ -46,8 +47,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsHouseRequired;
         public LazyRow< DeliveryQuest > DeliveryQuest;
         public uint IssuerStart;
-        public LazyRow< Behavior > Behavior;
-        public ushort Unknown41;
+        public LazyRow< Level > IssuerLocation;
+        public LazyRow< Behavior > ClientBehavior;
         public uint TargetEnd;
         public bool IsRepeatable;
         public byte RepeatIntervalType;
@@ -55,7 +56,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool CanCancel;
         public byte Type;
         public LazyRow< QuestClassJobSupply > QuestClassJobSupply;
-        public string[] ScriptInstruction;
+        public SeString[] ScriptInstruction;
         public uint[] ScriptArg;
         public byte[] ActorSpawnSeq;
         public byte[] ActorDespawnSeq;
@@ -65,7 +66,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] ConditionType;
         public uint[] ConditionValue;
         public byte[] ConditionOperator;
-        //public ushort[] Behavior;
+        public ushort[] Behavior;
         public bool[] VisibleBool;
         public bool[] ConditionBool;
         public bool[] ItemBool;
@@ -290,8 +291,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            Id = parser.ReadColumn< string >( 1 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Id = parser.ReadColumn< SeString >( 1 );
             Expansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 2 ), language );
             ClassJobCategory0 = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 3 ), language );
             ClassJobLevel0 = parser.ReadColumn< ushort >( 4 );
@@ -331,8 +332,8 @@ namespace Lumina.Excel.GeneratedSheets
             IsHouseRequired = parser.ReadColumn< bool >( 37 );
             DeliveryQuest = new LazyRow< DeliveryQuest >( lumina, parser.ReadColumn< byte >( 38 ), language );
             IssuerStart = parser.ReadColumn< uint >( 39 );
-            Behavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< uint >( 40 ), language );
-            Unknown41 = parser.ReadColumn< ushort >( 41 );
+            IssuerLocation = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 40 ), language );
+            ClientBehavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< ushort >( 41 ), language );
             TargetEnd = parser.ReadColumn< uint >( 42 );
             IsRepeatable = parser.ReadColumn< bool >( 43 );
             RepeatIntervalType = parser.ReadColumn< byte >( 44 );
@@ -340,9 +341,9 @@ namespace Lumina.Excel.GeneratedSheets
             CanCancel = parser.ReadColumn< bool >( 46 );
             Type = parser.ReadColumn< byte >( 47 );
             QuestClassJobSupply = new LazyRow< QuestClassJobSupply >( lumina, parser.ReadColumn< ushort >( 48 ), language );
-            ScriptInstruction = new string[ 50 ];
+            ScriptInstruction = new SeString[ 50 ];
             for( var i = 0; i < 50; i++ )
-                ScriptInstruction[ i ] = parser.ReadColumn< string >( 49 + i );
+                ScriptInstruction[ i ] = parser.ReadColumn< SeString >( 49 + i );
             ScriptArg = new uint[ 50 ];
             for( var i = 0; i < 50; i++ )
                 ScriptArg[ i ] = parser.ReadColumn< uint >( 99 + i );
@@ -370,9 +371,9 @@ namespace Lumina.Excel.GeneratedSheets
             ConditionOperator = new byte[ 64 ];
             for( var i = 0; i < 64; i++ )
                 ConditionOperator[ i ] = parser.ReadColumn< byte >( 533 + i );
-            //Behavior = new ushort[ 64 ];
-            //for( var i = 0; i < 64; i++ )
-            //Behavior[ i ] = parser.ReadColumn< ushort >( 597 + i );
+            Behavior = new ushort[ 64 ];
+            for( var i = 0; i < 64; i++ )
+                Behavior[ i ] = parser.ReadColumn< ushort >( 597 + i );
             VisibleBool = new bool[ 64 ];
             for( var i = 0; i < 64; i++ )
                 VisibleBool[ i ] = parser.ReadColumn< bool >( 661 + i );

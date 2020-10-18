@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -11,12 +12,12 @@ namespace Lumina.Excel.GeneratedSheets
         
         public uint IconActor;
         public uint IconMap;
-        public string Name;
-        public string[] ScriptInstruction;
+        public SeString Name;
+        public SeString[] ScriptInstruction;
         public uint[] ScriptArg;
         public bool Unknown63;
-        public string Unknown64;
-        public string Unknown65;
+        public SeString Unknown64;
+        public SeString Unknown65;
         public bool Text;
         public bool Unknown67;
         public bool Unknown68;
@@ -40,16 +41,16 @@ namespace Lumina.Excel.GeneratedSheets
 
             IconActor = parser.ReadColumn< uint >( 0 );
             IconMap = parser.ReadColumn< uint >( 1 );
-            Name = parser.ReadColumn< string >( 2 );
-            ScriptInstruction = new string[ 30 ];
+            Name = parser.ReadColumn< SeString >( 2 );
+            ScriptInstruction = new SeString[ 30 ];
             for( var i = 0; i < 30; i++ )
-                ScriptInstruction[ i ] = parser.ReadColumn< string >( 3 + i );
+                ScriptInstruction[ i ] = parser.ReadColumn< SeString >( 3 + i );
             ScriptArg = new uint[ 30 ];
             for( var i = 0; i < 30; i++ )
                 ScriptArg[ i ] = parser.ReadColumn< uint >( 33 + i );
             Unknown63 = parser.ReadColumn< bool >( 63 );
-            Unknown64 = parser.ReadColumn< string >( 64 );
-            Unknown65 = parser.ReadColumn< string >( 65 );
+            Unknown64 = parser.ReadColumn< SeString >( 64 );
+            Unknown65 = parser.ReadColumn< SeString >( 65 );
             Text = parser.ReadColumn< bool >( 66 );
             Unknown67 = parser.ReadColumn< bool >( 67 );
             Unknown68 = parser.ReadColumn< bool >( 68 );

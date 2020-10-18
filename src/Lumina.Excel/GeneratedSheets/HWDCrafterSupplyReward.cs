@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -11,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public ushort ScriptRewardAmount;
         public uint ExpReward;
-        public ushort Unknown2;
+        public ushort Points;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             ScriptRewardAmount = parser.ReadColumn< ushort >( 0 );
             ExpReward = parser.ReadColumn< uint >( 1 );
-            Unknown2 = parser.ReadColumn< ushort >( 2 );
+            Points = parser.ReadColumn< ushort >( 2 );
         }
     }
 }

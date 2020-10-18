@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingEmploymentNpcRace : IExcelRow
     {
         
-        public string Race;
+        public SeString Race;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -19,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Race = parser.ReadColumn< string >( 0 );
+            Race = parser.ReadColumn< SeString >( 0 );
         }
     }
 }

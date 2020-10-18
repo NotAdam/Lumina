@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,10 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActivityFeedCaptions : IExcelRow
     {
         
-        public string JA;
-        public string EN;
-        public string DE;
-        public string FR;
+        public SeString JA;
+        public SeString EN;
+        public SeString DE;
+        public SeString FR;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -22,10 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            JA = parser.ReadColumn< string >( 0 );
-            EN = parser.ReadColumn< string >( 1 );
-            DE = parser.ReadColumn< string >( 2 );
-            FR = parser.ReadColumn< string >( 3 );
+            JA = parser.ReadColumn< SeString >( 0 );
+            EN = parser.ReadColumn< SeString >( 1 );
+            DE = parser.ReadColumn< SeString >( 2 );
+            FR = parser.ReadColumn< SeString >( 3 );
         }
     }
 }

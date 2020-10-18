@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -12,7 +13,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< MonsterNoteTarget >[] MonsterNoteTarget;
         public byte[] Count;
         public uint Reward;
-        public string Name;
+        public SeString Name;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -29,7 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 4; i++ )
                 Count[ i ] = parser.ReadColumn< byte >( 4 + i );
             Reward = parser.ReadColumn< uint >( 8 );
-            Name = parser.ReadColumn< string >( 9 );
+            Name = parser.ReadColumn< SeString >( 9 );
         }
     }
 }

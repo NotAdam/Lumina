@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class NotebookDivision : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public LazyRow< NotebookDivisionCategory > NotebookDivisionCategory;
         public byte CraftOpeningLevel;
         public byte GatheringOpeningLevel;
@@ -33,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             NotebookDivisionCategory = new LazyRow< NotebookDivisionCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
             CraftOpeningLevel = parser.ReadColumn< byte >( 2 );
             GatheringOpeningLevel = parser.ReadColumn< byte >( 3 );

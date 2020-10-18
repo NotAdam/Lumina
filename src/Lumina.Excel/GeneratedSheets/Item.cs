@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -19,16 +20,16 @@ namespace Lumina.Excel.GeneratedSheets
             public short BaseParamValueSpecial;
         }
         
-        public string Singular;
+        public SeString Singular;
         public sbyte Adjective;
-        public string Plural;
+        public SeString Plural;
         public sbyte PossessivePronoun;
         public sbyte StartsWithVowel;
         public sbyte Unknown5;
         public sbyte Pronoun;
         public sbyte Article;
-        public string Description;
-        public string Name;
+        public SeString Description;
+        public SeString Name;
         public ushort Icon;
         public LazyRow< ItemLevel > LevelItem;
         public byte Rarity;
@@ -37,8 +38,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ItemUICategory > ItemUICategory;
         public LazyRow< ItemSearchCategory > ItemSearchCategory;
         public LazyRow< EquipSlotCategory > EquipSlotCategory;
-        public byte Unknown18;
-        public ushort AddedIn53;
+        public LazyRow< ItemSortCategory > ItemSortCategory;
+        public ushort Unknown19;
         public uint StackSize;
         public bool IsUnique;
         public bool IsUntradable;
@@ -55,7 +56,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ClassJob > ClassJobRepair;
         public LazyRow< Item > ItemRepair;
         public LazyRow< Item > ItemGlamour;
-        public ushort Unknown36;
+        public ushort Desynth;
         public bool IsCollectable;
         public bool AlwaysCollectable;
         public ushort AetherialReduce;
@@ -97,16 +98,16 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Singular = parser.ReadColumn< string >( 0 );
+            Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
-            Plural = parser.ReadColumn< string >( 2 );
+            Plural = parser.ReadColumn< SeString >( 2 );
             PossessivePronoun = parser.ReadColumn< sbyte >( 3 );
             StartsWithVowel = parser.ReadColumn< sbyte >( 4 );
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
-            Description = parser.ReadColumn< string >( 8 );
-            Name = parser.ReadColumn< string >( 9 );
+            Description = parser.ReadColumn< SeString >( 8 );
+            Name = parser.ReadColumn< SeString >( 9 );
             Icon = parser.ReadColumn< ushort >( 10 );
             LevelItem = new LazyRow< ItemLevel >( lumina, parser.ReadColumn< ushort >( 11 ), language );
             Rarity = parser.ReadColumn< byte >( 12 );
@@ -115,8 +116,8 @@ namespace Lumina.Excel.GeneratedSheets
             ItemUICategory = new LazyRow< ItemUICategory >( lumina, parser.ReadColumn< byte >( 15 ), language );
             ItemSearchCategory = new LazyRow< ItemSearchCategory >( lumina, parser.ReadColumn< byte >( 16 ), language );
             EquipSlotCategory = new LazyRow< EquipSlotCategory >( lumina, parser.ReadColumn< byte >( 17 ), language );
-            Unknown18 = parser.ReadColumn< byte >( 18 );
-            AddedIn53 = parser.ReadColumn< ushort >( 19 );
+            ItemSortCategory = new LazyRow< ItemSortCategory >( lumina, parser.ReadColumn< byte >( 18 ), language );
+            Unknown19 = parser.ReadColumn< ushort >( 19 );
             StackSize = parser.ReadColumn< uint >( 20 );
             IsUnique = parser.ReadColumn< bool >( 21 );
             IsUntradable = parser.ReadColumn< bool >( 22 );
@@ -133,7 +134,7 @@ namespace Lumina.Excel.GeneratedSheets
             ClassJobRepair = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 33 ), language );
             ItemRepair = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 34 ), language );
             ItemGlamour = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 35 ), language );
-            Unknown36 = parser.ReadColumn< ushort >( 36 );
+            Desynth = parser.ReadColumn< ushort >( 36 );
             IsCollectable = parser.ReadColumn< bool >( 37 );
             AlwaysCollectable = parser.ReadColumn< bool >( 38 );
             AetherialReduce = parser.ReadColumn< ushort >( 39 );

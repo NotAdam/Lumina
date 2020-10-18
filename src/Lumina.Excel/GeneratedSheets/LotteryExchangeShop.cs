@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class LotteryExchangeShop : IExcelRow
     {
         
-        public string Unknown0;
+        public SeString Unknown0;
         public LazyRow< Item >[] ItemAccepted;
         public uint[] AmountAccepted;
         public byte Unknown33;
@@ -44,7 +45,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown62;
         public byte Unknown63;
         public byte Unknown64;
-        public string Lua;
+        public SeString Lua;
         public LazyRow< LogMessage >[] LogMessage;
         public uint Unknown68;
         public bool Unknown69;
@@ -57,7 +58,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Unknown0 = parser.ReadColumn< string >( 0 );
+            Unknown0 = parser.ReadColumn< SeString >( 0 );
             ItemAccepted = new LazyRow< Item >[ 16 ];
             for( var i = 0; i < 16; i++ )
                 ItemAccepted[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 1 + i ), language );
@@ -96,7 +97,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown62 = parser.ReadColumn< byte >( 62 );
             Unknown63 = parser.ReadColumn< byte >( 63 );
             Unknown64 = parser.ReadColumn< byte >( 64 );
-            Lua = parser.ReadColumn< string >( 65 );
+            Lua = parser.ReadColumn< SeString >( 65 );
             LogMessage = new LazyRow< LogMessage >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 LogMessage[ i ] = new LazyRow< LogMessage >( lumina, parser.ReadColumn< uint >( 66 + i ), language );

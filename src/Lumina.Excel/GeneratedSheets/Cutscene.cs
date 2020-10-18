@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class Cutscene : IExcelRow
     {
         
-        public string Path;
+        public SeString Path;
         public byte Unknown1;
         public byte Unknown2;
         public bool Unknown3;
@@ -26,7 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Path = parser.ReadColumn< string >( 0 );
+            Path = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -15,7 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte MapIndex;
         public byte Hierarchy;
         public ushort MapMarkerRange;
-        public string Id;
+        public SeString Id;
         public ushort SizeFactor;
         public short OffsetX;
         public short OffsetY;
@@ -42,7 +43,7 @@ namespace Lumina.Excel.GeneratedSheets
             MapIndex = parser.ReadColumn< sbyte >( 3 );
             Hierarchy = parser.ReadColumn< byte >( 4 );
             MapMarkerRange = parser.ReadColumn< ushort >( 5 );
-            Id = parser.ReadColumn< string >( 6 );
+            Id = parser.ReadColumn< SeString >( 6 );
             SizeFactor = parser.ReadColumn< ushort >( 7 );
             OffsetX = parser.ReadColumn< short >( 8 );
             OffsetY = parser.ReadColumn< short >( 9 );

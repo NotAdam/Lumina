@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class AchievementCategory : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public LazyRow< AchievementKind > AchievementKind;
         public bool ShowComplete;
         public bool HideCategory;
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             AchievementKind = new LazyRow< AchievementKind >( lumina, parser.ReadColumn< byte >( 1 ), language );
             ShowComplete = parser.ReadColumn< bool >( 2 );
             HideCategory = parser.ReadColumn< bool >( 3 );

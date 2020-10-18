@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,9 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class DawnMemberUIParam : IExcelRow
     {
         
-        public string ClassSingular;
+        public SeString ClassSingular;
         public uint VoiceLine;
-        public string ClassPlural;
+        public SeString ClassPlural;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -21,9 +22,9 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ClassSingular = parser.ReadColumn< string >( 0 );
+            ClassSingular = parser.ReadColumn< SeString >( 0 );
             VoiceLine = parser.ReadColumn< uint >( 1 );
-            ClassPlural = parser.ReadColumn< string >( 2 );
+            ClassPlural = parser.ReadColumn< SeString >( 2 );
         }
     }
 }

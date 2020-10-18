@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -11,8 +12,8 @@ namespace Lumina.Excel.GeneratedSheets
         
         public byte Number;
         public uint Icon;
-        public string Stats;
-        public string Description;
+        public SeString Stats;
+        public SeString Description;
         public byte Unknown4;
         public LazyRow< ContentFinderCondition > Location;
         public LazyRow< Quest > StartQuest;
@@ -40,8 +41,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             Number = parser.ReadColumn< byte >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );
-            Stats = parser.ReadColumn< string >( 2 );
-            Description = parser.ReadColumn< string >( 3 );
+            Stats = parser.ReadColumn< SeString >( 2 );
+            Description = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Location = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 5 ), language );
             StartQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 6 ), language );

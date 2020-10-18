@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -15,7 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Stance;
         public byte Slot;
         public byte LookAtMode;
-        public string Key;
+        public SeString Key;
         public byte ActionTimelineIDMode;
         public LazyRow< WeaponTimeline > WeaponTimeline;
         public byte LoadType;
@@ -44,7 +45,7 @@ namespace Lumina.Excel.GeneratedSheets
             Stance = parser.ReadColumn< byte >( 3 );
             Slot = parser.ReadColumn< byte >( 4 );
             LookAtMode = parser.ReadColumn< byte >( 5 );
-            Key = parser.ReadColumn< string >( 6 );
+            Key = parser.ReadColumn< SeString >( 6 );
             ActionTimelineIDMode = parser.ReadColumn< byte >( 7 );
             WeaponTimeline = new LazyRow< WeaponTimeline >( lumina, parser.ReadColumn< byte >( 8 ), language );
             LoadType = parser.ReadColumn< byte >( 9 );

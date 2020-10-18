@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -12,7 +13,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool List;
         public bool Unknown1;
         public byte Priority;
-        public string Name;
+        public SeString Name;
         public uint Icon;
         
         public uint RowId { get; set; }
@@ -26,7 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
             List = parser.ReadColumn< bool >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Priority = parser.ReadColumn< byte >( 2 );
-            Name = parser.ReadColumn< string >( 3 );
+            Name = parser.ReadColumn< SeString >( 3 );
             Icon = parser.ReadColumn< uint >( 4 );
         }
     }

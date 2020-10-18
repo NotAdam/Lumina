@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class ClassJobCategory : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public bool ADV;
         public bool GLA;
         public bool PGL;
@@ -58,7 +59,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             ADV = parser.ReadColumn< bool >( 1 );
             GLA = parser.ReadColumn< bool >( 2 );
             PGL = parser.ReadColumn< bool >( 3 );

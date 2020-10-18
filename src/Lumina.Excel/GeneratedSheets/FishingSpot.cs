@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -10,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public byte GatheringLevel;
-        public string BigFishOnReach;
-        public string BigFishOnEnd;
+        public SeString BigFishOnReach;
+        public SeString BigFishOnEnd;
         public byte FishingSpotCategory;
         public bool Rare;
         public LazyRow< TerritoryType > TerritoryType;
@@ -34,8 +35,8 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             GatheringLevel = parser.ReadColumn< byte >( 0 );
-            BigFishOnReach = parser.ReadColumn< string >( 1 );
-            BigFishOnEnd = parser.ReadColumn< string >( 2 );
+            BigFishOnReach = parser.ReadColumn< SeString >( 1 );
+            BigFishOnEnd = parser.ReadColumn< SeString >( 2 );
             FishingSpotCategory = parser.ReadColumn< byte >( 3 );
             Rare = parser.ReadColumn< bool >( 4 );
             TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 5 ), language );

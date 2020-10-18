@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -14,11 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Unknown2;
         public sbyte Unknown3;
         public sbyte Unknown4;
-        public string Command;
-        public string ShortCommand;
-        public string Description;
-        public string Alias;
-        public string ShortAlias;
+        public SeString Command;
+        public SeString ShortCommand;
+        public SeString Description;
+        public SeString Alias;
+        public SeString ShortAlias;
         public ushort Unknown10;
         public uint Unknown11;
         
@@ -35,11 +36,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< sbyte >( 2 );
             Unknown3 = parser.ReadColumn< sbyte >( 3 );
             Unknown4 = parser.ReadColumn< sbyte >( 4 );
-            Command = parser.ReadColumn< string >( 5 );
-            ShortCommand = parser.ReadColumn< string >( 6 );
-            Description = parser.ReadColumn< string >( 7 );
-            Alias = parser.ReadColumn< string >( 8 );
-            ShortAlias = parser.ReadColumn< string >( 9 );
+            Command = parser.ReadColumn< SeString >( 5 );
+            ShortCommand = parser.ReadColumn< SeString >( 6 );
+            Description = parser.ReadColumn< SeString >( 7 );
+            Alias = parser.ReadColumn< SeString >( 8 );
+            ShortAlias = parser.ReadColumn< SeString >( 9 );
             Unknown10 = parser.ReadColumn< ushort >( 10 );
             Unknown11 = parser.ReadColumn< uint >( 11 );
         }

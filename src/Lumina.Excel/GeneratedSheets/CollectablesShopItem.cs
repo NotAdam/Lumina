@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -10,13 +11,13 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< Item > Item;
-        public byte CollectablesShopItemGroup;
+        public LazyRow< CollectablesShopItemGroup > CollectablesShopItemGroup;
         public ushort LevelMin;
         public ushort LevelMax;
         public byte Unknown4;
         public byte Unknown5;
-        public ushort CollectablesShopRefine;
-        public ushort CollectablesShopRewardScrip;
+        public LazyRow< CollectablesShopRefine > CollectablesShopRefine;
+        public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -27,13 +28,13 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            CollectablesShopItemGroup = parser.ReadColumn< byte >( 1 );
+            CollectablesShopItemGroup = new LazyRow< CollectablesShopItemGroup >( lumina, parser.ReadColumn< byte >( 1 ), language );
             LevelMin = parser.ReadColumn< ushort >( 2 );
             LevelMax = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
-            CollectablesShopRefine = parser.ReadColumn< ushort >( 6 );
-            CollectablesShopRewardScrip = parser.ReadColumn< ushort >( 7 );
+            CollectablesShopRefine = new LazyRow< CollectablesShopRefine >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            CollectablesShopRewardScrip = new LazyRow< CollectablesShopRewardScrip >( lumina, parser.ReadColumn< ushort >( 7 ), language );
         }
     }
 }

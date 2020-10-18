@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentFinderCondition : IExcelRow
     {
         
-        public string ShortCode;
+        public SeString ShortCode;
         public LazyRow< TerritoryType > TerritoryType;
         public byte ContentLinkType;
         public ushort Content;
@@ -45,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown33;
         public bool Unknown34;
         public bool Unknown35;
-        public string Name;
+        public SeString Name;
         public LazyRow< ContentType > ContentType;
         public byte TransientKey;
         public uint Transient;
@@ -101,7 +102,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ShortCode = parser.ReadColumn< string >( 0 );
+            ShortCode = parser.ReadColumn< SeString >( 0 );
             TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ), language );
             ContentLinkType = parser.ReadColumn< byte >( 2 );
             Content = parser.ReadColumn< ushort >( 3 );
@@ -137,7 +138,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown33 = parser.ReadColumn< bool >( 33 );
             Unknown34 = parser.ReadColumn< bool >( 34 );
             Unknown35 = parser.ReadColumn< bool >( 35 );
-            Name = parser.ReadColumn< string >( 36 );
+            Name = parser.ReadColumn< SeString >( 36 );
             ContentType = new LazyRow< ContentType >( lumina, parser.ReadColumn< byte >( 37 ), language );
             TransientKey = parser.ReadColumn< byte >( 38 );
             Transient = parser.ReadColumn< uint >( 39 );

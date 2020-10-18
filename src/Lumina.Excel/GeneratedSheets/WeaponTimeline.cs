@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeaponTimeline : IExcelRow
     {
         
-        public string File;
+        public SeString File;
         public short NextWeaponTimeline;
         
         public uint RowId { get; set; }
@@ -20,7 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            File = parser.ReadColumn< string >( 0 );
+            File = parser.ReadColumn< SeString >( 0 );
             NextWeaponTimeline = parser.ReadColumn< short >( 1 );
         }
     }

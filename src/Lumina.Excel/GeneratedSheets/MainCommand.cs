@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,8 +14,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Category;
         public LazyRow< MainCommandCategory > MainCommandCategory;
         public sbyte SortID;
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -28,8 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
             Category = parser.ReadColumn< byte >( 1 );
             MainCommandCategory = new LazyRow< MainCommandCategory >( lumina, parser.ReadColumn< byte >( 2 ), language );
             SortID = parser.ReadColumn< sbyte >( 3 );
-            Name = parser.ReadColumn< string >( 4 );
-            Description = parser.ReadColumn< string >( 5 );
+            Name = parser.ReadColumn< SeString >( 4 );
+            Description = parser.ReadColumn< SeString >( 5 );
         }
     }
 }

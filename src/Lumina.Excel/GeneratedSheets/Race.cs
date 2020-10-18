@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class Race : IExcelRow
     {
         
-        public string Masculine;
-        public string Feminine;
+        public SeString Masculine;
+        public SeString Feminine;
         public LazyRow< Item > RSEMBody;
         public LazyRow< Item > RSEMHands;
         public LazyRow< Item > RSEMLegs;
@@ -29,8 +30,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Masculine = parser.ReadColumn< string >( 0 );
-            Feminine = parser.ReadColumn< string >( 1 );
+            Masculine = parser.ReadColumn< SeString >( 0 );
+            Feminine = parser.ReadColumn< SeString >( 1 );
             RSEMBody = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 2 ), language );
             RSEMHands = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 3 ), language );
             RSEMLegs = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 4 ), language );

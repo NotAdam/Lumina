@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class Title : IExcelRow
     {
         
-        public string Masculine;
-        public string Feminine;
+        public SeString Masculine;
+        public SeString Feminine;
         public bool IsPrefix;
         public ushort Order;
         
@@ -22,8 +23,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Masculine = parser.ReadColumn< string >( 0 );
-            Feminine = parser.ReadColumn< string >( 1 );
+            Masculine = parser.ReadColumn< SeString >( 0 );
+            Feminine = parser.ReadColumn< SeString >( 1 );
             IsPrefix = parser.ReadColumn< bool >( 2 );
             Order = parser.ReadColumn< ushort >( 3 );
         }

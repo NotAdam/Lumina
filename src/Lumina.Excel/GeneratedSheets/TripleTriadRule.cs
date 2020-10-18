@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class TripleTriadRule : IExcelRow
     {
         
-        public string Name;
-        public string Unknown1;
+        public SeString Name;
+        public SeString Unknown1;
         public byte Unknown2;
         public byte Unknown3;
         public byte Unknown4;
@@ -24,8 +25,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            Unknown1 = parser.ReadColumn< string >( 1 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Unknown1 = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );

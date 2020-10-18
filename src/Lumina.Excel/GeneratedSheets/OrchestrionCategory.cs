@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class OrchestrionCategory : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public byte HideCategory;
         public uint Unknown2;
         public byte Order;
@@ -22,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             HideCategory = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< uint >( 2 );
             Order = parser.ReadColumn< byte >( 3 );

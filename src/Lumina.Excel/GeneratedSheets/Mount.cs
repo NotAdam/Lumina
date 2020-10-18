@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,9 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class Mount : IExcelRow
     {
         
-        public string Singular;
+        public SeString Singular;
         public sbyte Adjective;
-        public string Plural;
+        public SeString Plural;
         public sbyte PossessivePronoun;
         public sbyte StartsWithVowel;
         public sbyte Unknown5;
@@ -27,9 +28,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown15;
         public LazyRow< MountCustomize > MountCustomize;
         public LazyRow< BGM > RideBGM;
-        public string Unknown18;
-        public string Unknown19;
-        public string Unknown20;
+        public SeString Unknown18;
+        public SeString Unknown19;
+        public SeString Unknown20;
         public byte ExitMoveDist;
         public byte ExitMoveSpeed;
         public bool Unknown23;
@@ -63,9 +64,9 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Singular = parser.ReadColumn< string >( 0 );
+            Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
-            Plural = parser.ReadColumn< string >( 2 );
+            Plural = parser.ReadColumn< SeString >( 2 );
             PossessivePronoun = parser.ReadColumn< sbyte >( 3 );
             StartsWithVowel = parser.ReadColumn< sbyte >( 4 );
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
@@ -81,9 +82,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown15 = parser.ReadColumn< byte >( 15 );
             MountCustomize = new LazyRow< MountCustomize >( lumina, parser.ReadColumn< byte >( 16 ), language );
             RideBGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 17 ), language );
-            Unknown18 = parser.ReadColumn< string >( 18 );
-            Unknown19 = parser.ReadColumn< string >( 19 );
-            Unknown20 = parser.ReadColumn< string >( 20 );
+            Unknown18 = parser.ReadColumn< SeString >( 18 );
+            Unknown19 = parser.ReadColumn< SeString >( 19 );
+            Unknown20 = parser.ReadColumn< SeString >( 20 );
             ExitMoveDist = parser.ReadColumn< byte >( 21 );
             ExitMoveSpeed = parser.ReadColumn< byte >( 22 );
             Unknown23 = parser.ReadColumn< bool >( 23 );

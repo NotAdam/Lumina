@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -48,10 +49,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Good;
         public uint Great;
         public uint Excellent;
-        public string Unknown39;
-        public string Unknown40;
-        public string Unknown41;
-        public string Unknown42;
+        public SeString Unknown39;
+        public SeString Unknown40;
+        public SeString Unknown41;
+        public SeString Unknown42;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -100,10 +101,10 @@ namespace Lumina.Excel.GeneratedSheets
             Good = parser.ReadColumn< uint >( 36 );
             Great = parser.ReadColumn< uint >( 37 );
             Excellent = parser.ReadColumn< uint >( 38 );
-            Unknown39 = parser.ReadColumn< string >( 39 );
-            Unknown40 = parser.ReadColumn< string >( 40 );
-            Unknown41 = parser.ReadColumn< string >( 41 );
-            Unknown42 = parser.ReadColumn< string >( 42 );
+            Unknown39 = parser.ReadColumn< SeString >( 39 );
+            Unknown40 = parser.ReadColumn< SeString >( 40 );
+            Unknown41 = parser.ReadColumn< SeString >( 41 );
+            Unknown42 = parser.ReadColumn< SeString >( 42 );
         }
     }
 }

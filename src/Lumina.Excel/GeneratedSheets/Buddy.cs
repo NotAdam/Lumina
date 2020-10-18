@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,10 +14,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Quest > QuestRequirement2;
         public LazyRow< Quest > QuestRequirement1;
         public int BaseEquip;
-        public string SoundEffect4;
-        public string SoundEffect3;
-        public string SoundEffect2;
-        public string SoundEffect1;
+        public SeString SoundEffect4;
+        public SeString SoundEffect3;
+        public SeString SoundEffect2;
+        public SeString SoundEffect1;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -30,10 +31,10 @@ namespace Lumina.Excel.GeneratedSheets
             QuestRequirement2 = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ), language );
             QuestRequirement1 = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 2 ), language );
             BaseEquip = parser.ReadColumn< int >( 3 );
-            SoundEffect4 = parser.ReadColumn< string >( 4 );
-            SoundEffect3 = parser.ReadColumn< string >( 5 );
-            SoundEffect2 = parser.ReadColumn< string >( 6 );
-            SoundEffect1 = parser.ReadColumn< string >( 7 );
+            SoundEffect4 = parser.ReadColumn< SeString >( 4 );
+            SoundEffect3 = parser.ReadColumn< SeString >( 5 );
+            SoundEffect2 = parser.ReadColumn< SeString >( 6 );
+            SoundEffect1 = parser.ReadColumn< SeString >( 7 );
         }
     }
 }

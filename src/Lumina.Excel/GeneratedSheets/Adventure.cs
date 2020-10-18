@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -18,9 +19,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< PlaceName > PlaceName;
         public int IconList;
         public int IconDiscovered;
-        public string Name;
-        public string Impression;
-        public string Description;
+        public SeString Name;
+        public SeString Impression;
+        public SeString Description;
         public int IconUndiscovered;
         public bool IsInitial;
         
@@ -41,9 +42,9 @@ namespace Lumina.Excel.GeneratedSheets
             PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 6 ), language );
             IconList = parser.ReadColumn< int >( 7 );
             IconDiscovered = parser.ReadColumn< int >( 8 );
-            Name = parser.ReadColumn< string >( 9 );
-            Impression = parser.ReadColumn< string >( 10 );
-            Description = parser.ReadColumn< string >( 11 );
+            Name = parser.ReadColumn< SeString >( 9 );
+            Impression = parser.ReadColumn< SeString >( 10 );
+            Description = parser.ReadColumn< SeString >( 11 );
             IconUndiscovered = parser.ReadColumn< int >( 12 );
             IsInitial = parser.ReadColumn< bool >( 13 );
         }

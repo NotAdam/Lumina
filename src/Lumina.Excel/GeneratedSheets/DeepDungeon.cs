@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,7 +14,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DeepDungeonEquipment > AetherpoolArmor;
         public LazyRow< DeepDungeonItem >[] PomanderSlot;
         public LazyRow< DeepDungeonMagicStone >[] MagiciteSlot;
-        public string Name;
+        public SeString Name;
         public LazyRow< ContentFinderCondition > ContentFinderConditionStart;
         public bool Unknown24;
         
@@ -33,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             MagiciteSlot = new LazyRow< DeepDungeonMagicStone >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 MagiciteSlot[ i ] = new LazyRow< DeepDungeonMagicStone >( lumina, parser.ReadColumn< byte >( 18 + i ), language );
-            Name = parser.ReadColumn< string >( 22 );
+            Name = parser.ReadColumn< SeString >( 22 );
             ContentFinderConditionStart = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 23 ), language );
             Unknown24 = parser.ReadColumn< bool >( 24 );
         }

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class MotionTimeline : IExcelRow
     {
         
-        public string Filename;
+        public SeString Filename;
         public byte BlendGroup;
         public bool IsLoop;
         public bool IsBlinkEnable;
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Filename = parser.ReadColumn< string >( 0 );
+            Filename = parser.ReadColumn< SeString >( 0 );
             BlendGroup = parser.ReadColumn< byte >( 1 );
             IsLoop = parser.ReadColumn< bool >( 2 );
             IsBlinkEnable = parser.ReadColumn< bool >( 3 );

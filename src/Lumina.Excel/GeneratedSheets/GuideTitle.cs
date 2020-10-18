@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuideTitle : IExcelRow
     {
         
-        public string Title;
-        public string Unknown1;
+        public SeString Title;
+        public SeString Unknown1;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -20,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Title = parser.ReadColumn< string >( 0 );
-            Unknown1 = parser.ReadColumn< string >( 1 );
+            Title = parser.ReadColumn< SeString >( 0 );
+            Unknown1 = parser.ReadColumn< SeString >( 1 );
         }
     }
 }

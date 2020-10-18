@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -14,7 +15,7 @@ namespace Lumina.Excel.GeneratedSheets
             public byte RequiredItemCount;
         }
         
-        public string Name;
+        public SeString Name;
         public LazyRow< CompanyCraftDraftCategory > CompanyCraftDraftCategory;
         public UnkStruct2Struct[] UnkStruct2;
         public uint Order;
@@ -27,7 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             CompanyCraftDraftCategory = new LazyRow< CompanyCraftDraftCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
             UnkStruct2 = new UnkStruct2Struct[ 3 ];
             for( var i = 0; i < 3; i++ )

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -20,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort LevelUnlock;
         public LazyRow< HowTo > HowTo;
         public uint ReqUnlock;
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         public int ExpCap;
         
         public uint RowId { get; set; }
@@ -43,8 +44,8 @@ namespace Lumina.Excel.GeneratedSheets
             LevelUnlock = parser.ReadColumn< ushort >( 8 );
             HowTo = new LazyRow< HowTo >( lumina, parser.ReadColumn< ushort >( 9 ), language );
             ReqUnlock = parser.ReadColumn< uint >( 10 );
-            Name = parser.ReadColumn< string >( 11 );
-            Description = parser.ReadColumn< string >( 12 );
+            Name = parser.ReadColumn< SeString >( 11 );
+            Description = parser.ReadColumn< SeString >( 12 );
             ExpCap = parser.ReadColumn< int >( 13 );
         }
     }

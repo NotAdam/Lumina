@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class ItemSearchCategory : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public int Icon;
         public byte Category;
         public byte Order;
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
             Category = parser.ReadColumn< byte >( 2 );
             Order = parser.ReadColumn< byte >( 3 );

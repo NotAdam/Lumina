@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -77,11 +78,23 @@ namespace Lumina.Extensions
         /// <returns></returns>
         public static string ReadStringOffsetData( this BinaryReader br, long offset )
         {
+            return Encoding.UTF8.GetString( ReadRawOffsetData( br, offset ) );
+        }
+
+        /// <summary>
+        /// Moves the BinaryReader position to offset, reads raw bytes until a null byte, then
+        /// sets the reader position back to where it was when it started
+        /// </summary>
+        /// <param name="br"></param>
+        /// <param name="offset">The offset to read data starting from.</param>
+        /// <returns></returns>
+        public static byte[] ReadRawOffsetData( this BinaryReader br, long offset )
+        {
             var originalPosition = br.BaseStream.Position;
             br.BaseStream.Position = offset;
-
+            
             var chars = new List< byte >();
-
+            
             byte current;
             while( ( current = br.ReadByte() ) != 0 )
             {
@@ -89,8 +102,8 @@ namespace Lumina.Extensions
             }
 
             br.BaseStream.Position = originalPosition;
-            
-            return Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
+
+            return chars.ToArray();
         }
 
         /// <summary>

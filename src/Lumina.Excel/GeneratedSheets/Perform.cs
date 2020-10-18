@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class Perform : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public bool Unknown1;
         public ulong ModelKey;
         public LazyRow< ActionTimeline > AnimationStart;
@@ -18,7 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ActionTimeline > AnimationPlay01;
         public LazyRow< ActionTimeline > AnimationPlay02;
         public LazyRow< ActionTimeline > StopAnimation;
-        public string Instrument;
+        public SeString Instrument;
         public int Unknown10;
         public LazyRow< PerformTransient > Transient;
         
@@ -30,7 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             ModelKey = parser.ReadColumn< ulong >( 2 );
             AnimationStart = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 ), language );
@@ -39,7 +40,7 @@ namespace Lumina.Excel.GeneratedSheets
             AnimationPlay01 = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 6 ), language );
             AnimationPlay02 = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 7 ), language );
             StopAnimation = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< int >( 8 ), language );
-            Instrument = parser.ReadColumn< string >( 9 );
+            Instrument = parser.ReadColumn< SeString >( 9 );
             Unknown10 = parser.ReadColumn< int >( 10 );
             Transient = new LazyRow< PerformTransient >( lumina, parser.ReadColumn< byte >( 11 ), language );
         }

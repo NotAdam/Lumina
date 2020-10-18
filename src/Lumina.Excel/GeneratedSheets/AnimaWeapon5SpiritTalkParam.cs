@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class AnimaWeapon5SpiritTalkParam : IExcelRow
     {
         
-        public string Prologue;
-        public string Epilogue;
+        public SeString Prologue;
+        public SeString Epilogue;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -20,8 +21,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Prologue = parser.ReadColumn< string >( 0 );
-            Epilogue = parser.ReadColumn< string >( 1 );
+            Prologue = parser.ReadColumn< SeString >( 0 );
+            Epilogue = parser.ReadColumn< SeString >( 1 );
         }
     }
 }

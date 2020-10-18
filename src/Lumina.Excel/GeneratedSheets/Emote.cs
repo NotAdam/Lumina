@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class Emote : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public LazyRow< ActionTimeline >[] ActionTimeline;
         public bool Unknown8;
         public bool Unknown9;
@@ -35,7 +36,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             ActionTimeline = new LazyRow< ActionTimeline >[ 7 ];
             for( var i = 0; i < 7; i++ )
                 ActionTimeline[ i ] = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 1 + i ), language );

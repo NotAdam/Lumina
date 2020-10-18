@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class AirshipExplorationPoint : IExcelRow
     {
         
-        public string Name;
-        public string NameShort;
+        public SeString Name;
+        public SeString NameShort;
         public bool Unknown2;
         public short Unknown3;
         public short Unknown4;
@@ -32,8 +33,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            NameShort = parser.ReadColumn< string >( 1 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            NameShort = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< short >( 3 );
             Unknown4 = parser.ReadColumn< short >( 4 );

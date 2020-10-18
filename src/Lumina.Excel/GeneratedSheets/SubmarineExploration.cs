@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,14 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class SubmarineExploration : IExcelRow
     {
         
-        public string Destination;
-        public string Location;
+        public SeString Destination;
+        public SeString Location;
         public short Unknown2;
         public short Unknown3;
         public short Unknown4;
-        public byte Unknown5;
+        public LazyRow< SubmarineMap > Map;
         public bool Unknown6;
-        public byte Unknown7;
+        public byte Stars;
         public byte RankReq;
         public byte CeruleumTankReq;
         public ushort Durationmin;
@@ -31,14 +32,14 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Destination = parser.ReadColumn< string >( 0 );
-            Location = parser.ReadColumn< string >( 1 );
+            Destination = parser.ReadColumn< SeString >( 0 );
+            Location = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< short >( 2 );
             Unknown3 = parser.ReadColumn< short >( 3 );
             Unknown4 = parser.ReadColumn< short >( 4 );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
+            Map = new LazyRow< SubmarineMap >( lumina, parser.ReadColumn< byte >( 5 ), language );
             Unknown6 = parser.ReadColumn< bool >( 6 );
-            Unknown7 = parser.ReadColumn< byte >( 7 );
+            Stars = parser.ReadColumn< byte >( 7 );
             RankReq = parser.ReadColumn< byte >( 8 );
             CeruleumTankReq = parser.ReadColumn< byte >( 9 );
             Durationmin = parser.ReadColumn< ushort >( 10 );

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,7 +14,7 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort CompanyCraftType;
         }
         
-        public string Name;
+        public SeString Name;
         public UnkStruct1Struct[] UnkStruct1;
         
         public uint RowId { get; set; }
@@ -24,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
             {

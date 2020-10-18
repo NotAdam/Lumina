@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -12,9 +13,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint TYPE;
         public uint PARAM;
         public uint LINK;
-        public string Text;
-        public string Unknown4;
-        public string Unknown5;
+        public SeString Text;
+        public SeString Unknown4;
+        public SeString Unknown5;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -27,9 +28,9 @@ namespace Lumina.Excel.GeneratedSheets
             TYPE = parser.ReadColumn< uint >( 0 );
             PARAM = parser.ReadColumn< uint >( 1 );
             LINK = parser.ReadColumn< uint >( 2 );
-            Text = parser.ReadColumn< string >( 3 );
-            Unknown4 = parser.ReadColumn< string >( 4 );
-            Unknown5 = parser.ReadColumn< string >( 5 );
+            Text = parser.ReadColumn< SeString >( 3 );
+            Unknown4 = parser.ReadColumn< SeString >( 4 );
+            Unknown5 = parser.ReadColumn< SeString >( 5 );
         }
     }
 }

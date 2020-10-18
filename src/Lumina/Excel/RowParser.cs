@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
+using Lumina.Text;
 
 namespace Lumina.Excel
 {
@@ -169,7 +170,8 @@ namespace Lumina.Excel
                 case ExcelColumnDataType.String:
                 {
                     var stringOffset = br.ReadUInt32();
-                    data = br.ReadStringOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
+                    var raw = br.ReadRawOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
+                    data = new SeString( raw );
 
                     break;
                 }

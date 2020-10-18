@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -12,7 +13,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Type;
         public ushort TimeLimit;
         public uint MapIcon;
-        public string Name;
+        public SeString Name;
         public LazyRow< PublicContentTextData > TextDataStart;
         public LazyRow< PublicContentTextData > TextDataEnd;
         public ushort Unknown6;
@@ -34,7 +35,7 @@ namespace Lumina.Excel.GeneratedSheets
             Type = parser.ReadColumn< byte >( 0 );
             TimeLimit = parser.ReadColumn< ushort >( 1 );
             MapIcon = parser.ReadColumn< uint >( 2 );
-            Name = parser.ReadColumn< string >( 3 );
+            Name = parser.ReadColumn< SeString >( 3 );
             TextDataStart = new LazyRow< PublicContentTextData >( lumina, parser.ReadColumn< uint >( 4 ), language );
             TextDataEnd = new LazyRow< PublicContentTextData >( lumina, parser.ReadColumn< uint >( 5 ), language );
             Unknown6 = parser.ReadColumn< ushort >( 6 );

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             public int CollectabilityRatingCost;
         }
         
-        public string Name;
+        public SeString Name;
         public UnkStruct1Struct[] UnkStruct1;
         public int Unknown9;
         public int Unknown10;
@@ -498,10 +499,6 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown479;
         public bool Unknown480;
         public UnkStruct481Struct[] UnkStruct481;
-        public int Unknown489;
-        public int Unknown490;
-        public int Unknown491;
-        public int Unknown492;
         public int Unknown493;
         public int Unknown494;
         public int Unknown495;
@@ -1289,7 +1286,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
@@ -1771,8 +1768,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown478 = parser.ReadColumn< bool >( 478 );
             Unknown479 = parser.ReadColumn< bool >( 479 );
             Unknown480 = parser.ReadColumn< bool >( 480 );
-            UnkStruct481 = new UnkStruct481Struct[ 2 ];
-            for( var i = 0; i < 2; i++ )
+            UnkStruct481 = new UnkStruct481Struct[ 3 ];
+            for( var i = 0; i < 3; i++ )
             {
                 UnkStruct481[ i ] = new UnkStruct481Struct();
                 UnkStruct481[ i ].ItemCost = parser.ReadColumn< int >( 481 + ( i * 4 + 0 ) );
@@ -1780,10 +1777,6 @@ namespace Lumina.Excel.GeneratedSheets
                 UnkStruct481[ i ].HQCost = parser.ReadColumn< int >( 481 + ( i * 4 + 2 ) );
                 UnkStruct481[ i ].CollectabilityRatingCost = parser.ReadColumn< int >( 481 + ( i * 4 + 3 ) );
             }
-            Unknown489 = parser.ReadColumn< int >( 489 );
-            Unknown490 = parser.ReadColumn< int >( 490 );
-            Unknown491 = parser.ReadColumn< int >( 491 );
-            Unknown492 = parser.ReadColumn< int >( 492 );
             Unknown493 = parser.ReadColumn< int >( 493 );
             Unknown494 = parser.ReadColumn< int >( 494 );
             Unknown495 = parser.ReadColumn< int >( 495 );

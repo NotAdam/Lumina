@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingAppeal : IExcelRow
     {
         
-        public string Tag;
+        public SeString Tag;
         public uint Icon;
         public byte Order;
         
@@ -21,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Tag = parser.ReadColumn< string >( 0 );
+            Tag = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );
             Order = parser.ReadColumn< byte >( 2 );
         }

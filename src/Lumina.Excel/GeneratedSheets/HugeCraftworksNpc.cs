@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -77,7 +78,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown80;
         public byte Unknown81;
         public byte[] QtyItemUnkown;
-        public string Transient;
+        public SeString Transient;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -167,7 +168,7 @@ namespace Lumina.Excel.GeneratedSheets
             QtyItemUnkown = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 QtyItemUnkown[ i ] = parser.ReadColumn< byte >( 82 + i );
-            Transient = parser.ReadColumn< string >( 86 );
+            Transient = parser.ReadColumn< SeString >( 86 );
         }
     }
 }

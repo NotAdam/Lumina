@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,8 +14,8 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte MentalBonus;
         public sbyte TacticalBonus;
         public uint Experience;
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -28,8 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
             MentalBonus = parser.ReadColumn< sbyte >( 1 );
             TacticalBonus = parser.ReadColumn< sbyte >( 2 );
             Experience = parser.ReadColumn< uint >( 3 );
-            Name = parser.ReadColumn< string >( 4 );
-            Description = parser.ReadColumn< string >( 5 );
+            Name = parser.ReadColumn< SeString >( 4 );
+            Description = parser.ReadColumn< SeString >( 5 );
         }
     }
 }

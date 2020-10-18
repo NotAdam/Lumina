@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class CraftAction : IExcelRow
     {
         
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         public LazyRow< ActionTimeline > AnimationStart;
         public LazyRow< ActionTimeline > AnimationEnd;
         public ushort Icon;
@@ -38,8 +39,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            Description = parser.ReadColumn< string >( 1 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Description = parser.ReadColumn< SeString >( 1 );
             AnimationStart = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 2 ), language );
             AnimationEnd = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 ), language );
             Icon = parser.ReadColumn< ushort >( 4 );

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -16,9 +17,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint QuestRedoUISmall;
         public uint QuestRedoUILarge;
         public uint QuestRedoUIWide;
-        public string ChapterName;
-        public string ChapterPart;
-        public string Transient;
+        public SeString ChapterName;
+        public SeString ChapterPart;
+        public SeString Transient;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -35,9 +36,9 @@ namespace Lumina.Excel.GeneratedSheets
             QuestRedoUISmall = parser.ReadColumn< uint >( 4 );
             QuestRedoUILarge = parser.ReadColumn< uint >( 5 );
             QuestRedoUIWide = parser.ReadColumn< uint >( 6 );
-            ChapterName = parser.ReadColumn< string >( 7 );
-            ChapterPart = parser.ReadColumn< string >( 8 );
-            Transient = parser.ReadColumn< string >( 9 );
+            ChapterName = parser.ReadColumn< SeString >( 7 );
+            ChapterPart = parser.ReadColumn< SeString >( 8 );
+            Transient = parser.ReadColumn< SeString >( 9 );
         }
     }
 }

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -10,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public sbyte PacketIndex;
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         public byte OrderPriority;
         public byte oneHWpnPct;
         public byte OHPct;
@@ -46,8 +47,8 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             PacketIndex = parser.ReadColumn< sbyte >( 0 );
-            Name = parser.ReadColumn< string >( 1 );
-            Description = parser.ReadColumn< string >( 2 );
+            Name = parser.ReadColumn< SeString >( 1 );
+            Description = parser.ReadColumn< SeString >( 2 );
             OrderPriority = parser.ReadColumn< byte >( 3 );
             oneHWpnPct = parser.ReadColumn< byte >( 4 );
             OHPct = parser.ReadColumn< byte >( 5 );

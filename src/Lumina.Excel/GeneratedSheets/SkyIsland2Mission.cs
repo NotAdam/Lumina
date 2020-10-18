@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -30,11 +31,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown18;
         public uint Unknown19;
         public uint Image;
-        public string Unknown21;
-        public string Unknown22;
-        public string Unknown23;
-        public string Unknown24;
-        public string Unknown25;
+        public SeString Unknown21;
+        public SeString Unknown22;
+        public SeString Unknown23;
+        public SeString Unknown24;
+        public SeString Unknown25;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -65,11 +66,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown18 = parser.ReadColumn< byte >( 18 );
             Unknown19 = parser.ReadColumn< uint >( 19 );
             Image = parser.ReadColumn< uint >( 20 );
-            Unknown21 = parser.ReadColumn< string >( 21 );
-            Unknown22 = parser.ReadColumn< string >( 22 );
-            Unknown23 = parser.ReadColumn< string >( 23 );
-            Unknown24 = parser.ReadColumn< string >( 24 );
-            Unknown25 = parser.ReadColumn< string >( 25 );
+            Unknown21 = parser.ReadColumn< SeString >( 21 );
+            Unknown22 = parser.ReadColumn< SeString >( 22 );
+            Unknown23 = parser.ReadColumn< SeString >( 23 );
+            Unknown24 = parser.ReadColumn< SeString >( 24 );
+            Unknown25 = parser.ReadColumn< SeString >( 25 );
         }
     }
 }

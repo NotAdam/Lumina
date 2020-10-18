@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanyLeveRule : IExcelRow
     {
         
-        public string Type;
+        public SeString Type;
         public LazyRow< LeveString > Objective;
         public LazyRow< LeveString > Help;
         
@@ -21,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Type = parser.ReadColumn< string >( 0 );
+            Type = parser.ReadColumn< SeString >( 0 );
             Objective = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 1 ), language );
             Help = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 2 ), language );
         }

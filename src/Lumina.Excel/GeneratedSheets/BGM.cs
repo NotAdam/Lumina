@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGM : IExcelRow
     {
         
-        public string File;
+        public SeString File;
         public byte Priority;
         public bool DisableRestartTimeOut;
         public bool DisableRestart;
@@ -25,7 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            File = parser.ReadColumn< string >( 0 );
+            File = parser.ReadColumn< SeString >( 0 );
             Priority = parser.ReadColumn< byte >( 1 );
             DisableRestartTimeOut = parser.ReadColumn< bool >( 2 );
             DisableRestart = parser.ReadColumn< bool >( 3 );

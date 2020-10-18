@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class BuddyAction : IExcelRow
     {
         
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         public int Icon;
         public int IconStatus;
         public ushort Reward;
@@ -24,8 +25,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            Description = parser.ReadColumn< string >( 1 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Description = parser.ReadColumn< SeString >( 1 );
             Icon = parser.ReadColumn< int >( 2 );
             IconStatus = parser.ReadColumn< int >( 3 );
             Reward = parser.ReadColumn< ushort >( 4 );

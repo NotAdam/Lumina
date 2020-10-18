@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -16,10 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< EObjName > EObj;
         public uint Unknown5;
         public uint Unknown6;
-        public string Objective;
-        public string Unknown8;
-        public string Unknown9;
-        public string Unknown10;
+        public SeString Objective;
+        public SeString Unknown8;
+        public SeString Unknown9;
+        public SeString Unknown10;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -36,10 +37,10 @@ namespace Lumina.Excel.GeneratedSheets
             EObj = new LazyRow< EObjName >( lumina, parser.ReadColumn< uint >( 4 ), language );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
-            Objective = parser.ReadColumn< string >( 7 );
-            Unknown8 = parser.ReadColumn< string >( 8 );
-            Unknown9 = parser.ReadColumn< string >( 9 );
-            Unknown10 = parser.ReadColumn< string >( 10 );
+            Objective = parser.ReadColumn< SeString >( 7 );
+            Unknown8 = parser.ReadColumn< SeString >( 8 );
+            Unknown9 = parser.ReadColumn< SeString >( 9 );
+            Unknown10 = parser.ReadColumn< SeString >( 10 );
         }
     }
 }

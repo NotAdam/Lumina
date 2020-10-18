@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -19,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsBalloonSlow;
         public bool BattleTalkTime;
         public float Text;
-        public string Unknown10;
+        public SeString Unknown10;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -39,7 +40,7 @@ namespace Lumina.Excel.GeneratedSheets
             IsBalloonSlow = parser.ReadColumn< bool >( 7 );
             BattleTalkTime = parser.ReadColumn< bool >( 8 );
             Text = parser.ReadColumn< float >( 9 );
-            Unknown10 = parser.ReadColumn< string >( 10 );
+            Unknown10 = parser.ReadColumn< SeString >( 10 );
         }
     }
 }

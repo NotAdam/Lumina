@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -10,10 +11,10 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< ENpcResident > ENpcName;
-        public string Objective;
-        public string Description1;
-        public string Description2;
-        public string Description3;
+        public SeString Objective;
+        public SeString Description1;
+        public SeString Description2;
+        public SeString Description3;
         public uint CompletionBonusExp;
         public uint RewardExp;
         public uint CompletionBonusGil;
@@ -36,10 +37,10 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             ENpcName = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            Objective = parser.ReadColumn< string >( 1 );
-            Description1 = parser.ReadColumn< string >( 2 );
-            Description2 = parser.ReadColumn< string >( 3 );
-            Description3 = parser.ReadColumn< string >( 4 );
+            Objective = parser.ReadColumn< SeString >( 1 );
+            Description1 = parser.ReadColumn< SeString >( 2 );
+            Description2 = parser.ReadColumn< SeString >( 3 );
+            Description3 = parser.ReadColumn< SeString >( 4 );
             CompletionBonusExp = parser.ReadColumn< uint >( 5 );
             RewardExp = parser.ReadColumn< uint >( 6 );
             CompletionBonusGil = parser.ReadColumn< uint >( 7 );

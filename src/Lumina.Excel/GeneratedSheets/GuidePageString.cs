@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuidePageString : IExcelRow
     {
         
-        public string String;
+        public SeString String;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -19,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            String = parser.ReadColumn< string >( 0 );
+            String = parser.ReadColumn< SeString >( 0 );
         }
     }
 }

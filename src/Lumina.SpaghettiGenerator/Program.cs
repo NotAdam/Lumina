@@ -52,7 +52,7 @@ namespace Lumina.SpaghettiGenerator
             switch( type )
             {
                 case ExcelColumnDataType.String:
-                    return "string";
+                    return "SeString";
                 case ExcelColumnDataType.Bool:
                     return "bool";
                 case ExcelColumnDataType.Int8:

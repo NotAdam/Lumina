@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,9 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class Aetheryte : IExcelRow
     {
         
-        public string Singular;
+        public SeString Singular;
         public sbyte Adjective;
-        public string Plural;
+        public SeString Plural;
         public sbyte PossessivePronoun;
         public sbyte StartsWithVowel;
         public sbyte Unknown5;
@@ -22,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< TerritoryType > Territory;
         public LazyRow< Level >[] Level;
         public bool IsAetheryte;
-        public string Unknown16;
+        public SeString Unknown16;
         public byte AethernetGroup;
         public bool Unknown18;
         public LazyRow< Quest > RequiredQuest;
@@ -39,9 +40,9 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Singular = parser.ReadColumn< string >( 0 );
+            Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
-            Plural = parser.ReadColumn< string >( 2 );
+            Plural = parser.ReadColumn< SeString >( 2 );
             PossessivePronoun = parser.ReadColumn< sbyte >( 3 );
             StartsWithVowel = parser.ReadColumn< sbyte >( 4 );
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
@@ -54,7 +55,7 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 4; i++ )
                 Level[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 11 + i ), language );
             IsAetheryte = parser.ReadColumn< bool >( 15 );
-            Unknown16 = parser.ReadColumn< string >( 16 );
+            Unknown16 = parser.ReadColumn< SeString >( 16 );
             AethernetGroup = parser.ReadColumn< byte >( 17 );
             Unknown18 = parser.ReadColumn< bool >( 18 );
             RequiredQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 19 ), language );

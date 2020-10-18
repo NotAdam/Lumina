@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -16,7 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int[] Shape;
         public bool[] IsAutoShake;
         public byte[] WidgetType;
-        public string[] Text;
+        public SeString[] Text;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -47,9 +48,9 @@ namespace Lumina.Excel.GeneratedSheets
             WidgetType = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 WidgetType[ i ] = parser.ReadColumn< byte >( 48 + i );
-            Text = new string[ 8 ];
+            Text = new SeString[ 8 ];
             for( var i = 0; i < 8; i++ )
-                Text[ i ] = parser.ReadColumn< string >( 56 + i );
+                Text[ i ] = parser.ReadColumn< SeString >( 56 + i );
         }
     }
 }

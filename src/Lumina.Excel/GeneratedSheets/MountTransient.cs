@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,9 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class MountTransient : IExcelRow
     {
         
-        public string Description;
-        public string DescriptionEnhanced;
-        public string Tooltip;
+        public SeString Description;
+        public SeString DescriptionEnhanced;
+        public SeString Tooltip;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -21,9 +22,9 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Description = parser.ReadColumn< string >( 0 );
-            DescriptionEnhanced = parser.ReadColumn< string >( 1 );
-            Tooltip = parser.ReadColumn< string >( 2 );
+            Description = parser.ReadColumn< SeString >( 0 );
+            DescriptionEnhanced = parser.ReadColumn< SeString >( 1 );
+            Tooltip = parser.ReadColumn< SeString >( 2 );
         }
     }
 }

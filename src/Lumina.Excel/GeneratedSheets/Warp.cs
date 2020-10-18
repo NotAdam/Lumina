@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -19,8 +20,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Cutscene > StartCutscene;
         public LazyRow< Cutscene > EndCutscene;
         public bool CanSkipCutscene;
-        public string Name;
-        public string Question;
+        public SeString Name;
+        public SeString Question;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -40,8 +41,8 @@ namespace Lumina.Excel.GeneratedSheets
             StartCutscene = new LazyRow< Cutscene >( lumina, parser.ReadColumn< ushort >( 7 ), language );
             EndCutscene = new LazyRow< Cutscene >( lumina, parser.ReadColumn< ushort >( 8 ), language );
             CanSkipCutscene = parser.ReadColumn< bool >( 9 );
-            Name = parser.ReadColumn< string >( 10 );
-            Question = parser.ReadColumn< string >( 11 );
+            Name = parser.ReadColumn< SeString >( 10 );
+            Question = parser.ReadColumn< SeString >( 11 );
         }
     }
 }

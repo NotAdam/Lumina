@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,7 +14,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte TimeDefine;
         public uint Image;
         public LazyRow< TerritoryType > TerritoryType;
-        public string Name;
+        public SeString Name;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -29,7 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
             TimeDefine = parser.ReadColumn< byte >( 5 );
             Image = parser.ReadColumn< uint >( 6 );
             TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< uint >( 7 ), language );
-            Name = parser.ReadColumn< string >( 8 );
+            Name = parser.ReadColumn< SeString >( 8 );
         }
     }
 }

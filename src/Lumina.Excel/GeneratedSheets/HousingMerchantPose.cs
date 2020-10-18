@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -10,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< ActionTimeline > ActionTimeline;
-        public string Pose;
+        public SeString Pose;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -21,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             SubRowId = parser.SubRow;
 
             ActionTimeline = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            Pose = parser.ReadColumn< string >( 1 );
+            Pose = parser.ReadColumn< SeString >( 1 );
         }
     }
 }

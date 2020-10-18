@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class HowTo : IExcelRow
     {
         
-        public string Unknown0;
+        public SeString Unknown0;
         public bool Unknown1;
         public LazyRow< HowToPage >[] Images;
         public LazyRow< HowToCategory > Category;
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Unknown0 = parser.ReadColumn< string >( 0 );
+            Unknown0 = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Images = new LazyRow< HowToPage >[ 10 ];
             for( var i = 0; i < 10; i++ )

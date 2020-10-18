@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCActivity : IExcelRow
     {
         
-        public string Text;
+        public SeString Text;
         public byte SelfKind;
         public byte TargetKind;
         public byte NumParam;
@@ -24,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Text = parser.ReadColumn< string >( 0 );
+            Text = parser.ReadColumn< SeString >( 0 );
             SelfKind = parser.ReadColumn< byte >( 1 );
             TargetKind = parser.ReadColumn< byte >( 2 );
             NumParam = parser.ReadColumn< byte >( 3 );

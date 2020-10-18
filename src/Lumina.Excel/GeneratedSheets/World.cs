@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class World : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public byte UserType;
         public LazyRow< WorldDCGroupType > DataCenter;
         public bool IsPublic;
@@ -22,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             UserType = parser.ReadColumn< byte >( 1 );
             DataCenter = new LazyRow< WorldDCGroupType >( lumina, parser.ReadColumn< byte >( 2 ), language );
             IsPublic = parser.ReadColumn< bool >( 3 );

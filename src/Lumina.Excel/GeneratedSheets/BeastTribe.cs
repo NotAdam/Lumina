@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -18,15 +19,15 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ExVersion > Expansion;
         public LazyRow< Item > CurrencyItem;
         public byte DisplayOrder;
-        public string Name;
+        public SeString Name;
         public sbyte Adjective;
-        public string Plural;
+        public SeString Plural;
         public sbyte PossessivePronoun;
         public sbyte StartsWithVowel;
         public sbyte Pronoun;
         public sbyte Article;
         public sbyte DEF;
-        public string NameRelation;
+        public SeString NameRelation;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -45,15 +46,15 @@ namespace Lumina.Excel.GeneratedSheets
             Expansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 6 ), language );
             CurrencyItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ), language );
             DisplayOrder = parser.ReadColumn< byte >( 8 );
-            Name = parser.ReadColumn< string >( 9 );
+            Name = parser.ReadColumn< SeString >( 9 );
             Adjective = parser.ReadColumn< sbyte >( 10 );
-            Plural = parser.ReadColumn< string >( 11 );
+            Plural = parser.ReadColumn< SeString >( 11 );
             PossessivePronoun = parser.ReadColumn< sbyte >( 12 );
             StartsWithVowel = parser.ReadColumn< sbyte >( 13 );
             Pronoun = parser.ReadColumn< sbyte >( 14 );
             Article = parser.ReadColumn< sbyte >( 15 );
             DEF = parser.ReadColumn< sbyte >( 16 );
-            NameRelation = parser.ReadColumn< string >( 17 );
+            NameRelation = parser.ReadColumn< SeString >( 17 );
         }
     }
 }

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,16 +10,16 @@ namespace Lumina.Excel.GeneratedSheets
     public class EventItem : IExcelRow
     {
         
-        public string Singular;
+        public SeString Singular;
         public sbyte Adjective;
-        public string Plural;
+        public SeString Plural;
         public sbyte PossessivePronoun;
         public sbyte StartsWithVowel;
         public sbyte Unknown5;
         public sbyte Pronoun;
         public sbyte Article;
         public bool Unknown8;
-        public string Name;
+        public SeString Name;
         public ushort Icon;
         public LazyRow< Action > Action;
         public byte StackSize;
@@ -36,16 +37,16 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Singular = parser.ReadColumn< string >( 0 );
+            Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
-            Plural = parser.ReadColumn< string >( 2 );
+            Plural = parser.ReadColumn< SeString >( 2 );
             PossessivePronoun = parser.ReadColumn< sbyte >( 3 );
             StartsWithVowel = parser.ReadColumn< sbyte >( 4 );
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
             Unknown8 = parser.ReadColumn< bool >( 8 );
-            Name = parser.ReadColumn< string >( 9 );
+            Name = parser.ReadColumn< SeString >( 9 );
             Icon = parser.ReadColumn< ushort >( 10 );
             Action = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 11 ), language );
             StackSize = parser.ReadColumn< byte >( 12 );

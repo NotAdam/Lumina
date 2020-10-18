@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class IKDContentBonus : IExcelRow
     {
         
-        public string Objective;
-        public string Requirement;
+        public SeString Objective;
+        public SeString Requirement;
         public ushort Unknown2;
         public uint Image;
         public byte Order;
@@ -23,8 +24,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Objective = parser.ReadColumn< string >( 0 );
-            Requirement = parser.ReadColumn< string >( 1 );
+            Objective = parser.ReadColumn< SeString >( 0 );
+            Requirement = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Image = parser.ReadColumn< uint >( 3 );
             Order = parser.ReadColumn< byte >( 4 );

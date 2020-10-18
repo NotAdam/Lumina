@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -11,11 +12,11 @@ namespace Lumina.Excel.GeneratedSheets
         
         public ushort Rank;
         public uint ExpToNext;
-        public byte Unknown2;
-        public byte Unknown3;
-        public byte Unknown4;
-        public byte Unknown5;
-        public byte Unknown6;
+        public byte SurveillanceBonus;
+        public byte RetrievalBonus;
+        public byte SpeedBonus;
+        public byte RangeBonus;
+        public byte FavorBonus;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -27,11 +28,11 @@ namespace Lumina.Excel.GeneratedSheets
 
             Rank = parser.ReadColumn< ushort >( 0 );
             ExpToNext = parser.ReadColumn< uint >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
-            Unknown3 = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
-            Unknown6 = parser.ReadColumn< byte >( 6 );
+            SurveillanceBonus = parser.ReadColumn< byte >( 2 );
+            RetrievalBonus = parser.ReadColumn< byte >( 3 );
+            SpeedBonus = parser.ReadColumn< byte >( 4 );
+            RangeBonus = parser.ReadColumn< byte >( 5 );
+            FavorBonus = parser.ReadColumn< byte >( 6 );
         }
     }
 }

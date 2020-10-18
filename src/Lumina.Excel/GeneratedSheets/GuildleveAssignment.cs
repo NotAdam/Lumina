@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuildleveAssignment : IExcelRow
     {
         
-        public string Unknown0;
+        public SeString Unknown0;
         public byte AddedIn53;
         public uint AssignmentTalk;
         public LazyRow< Quest >[] Quest;
@@ -28,7 +29,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Unknown0 = parser.ReadColumn< string >( 0 );
+            Unknown0 = parser.ReadColumn< SeString >( 0 );
             AddedIn53 = parser.ReadColumn< byte >( 1 );
             AssignmentTalk = parser.ReadColumn< uint >( 2 );
             Quest = new LazyRow< Quest >[ 2 ];

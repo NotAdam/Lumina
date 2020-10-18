@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -13,8 +14,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< PlaceName > PlaceName;
         public uint Icon;
         public ushort Order;
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -28,8 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
             PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 1 ), language );
             Icon = parser.ReadColumn< uint >( 2 );
             Order = parser.ReadColumn< ushort >( 3 );
-            Name = parser.ReadColumn< string >( 4 );
-            Description = parser.ReadColumn< string >( 5 );
+            Name = parser.ReadColumn< SeString >( 4 );
+            Description = parser.ReadColumn< SeString >( 5 );
         }
     }
 }

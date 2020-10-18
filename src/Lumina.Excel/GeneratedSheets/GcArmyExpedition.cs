@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -53,8 +54,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte PercentBase;
         public byte Unknown6;
         public LazyRow< GcArmyExpeditionType > GcArmyExpeditionType;
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         public UnkStruct10Struct[] UnkStruct10;
         public UnkStruct16Struct[] UnkStruct16;
         public UnkStruct22Struct[] UnkStruct22;
@@ -81,8 +82,8 @@ namespace Lumina.Excel.GeneratedSheets
             PercentBase = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
             GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( lumina, parser.ReadColumn< byte >( 7 ), language );
-            Name = parser.ReadColumn< string >( 8 );
-            Description = parser.ReadColumn< string >( 9 );
+            Name = parser.ReadColumn< SeString >( 8 );
+            Description = parser.ReadColumn< SeString >( 9 );
             UnkStruct10 = new UnkStruct10Struct[ 6 ];
             for( var i = 0; i < 6; i++ )
             {

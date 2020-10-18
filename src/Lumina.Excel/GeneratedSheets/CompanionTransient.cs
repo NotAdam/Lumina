@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,11 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanionTransient : IExcelRow
     {
         
-        public string Description;
-        public string DescriptionEnhanced;
-        public string Tooltip;
-        public string SpecialActionName;
-        public string SpecialActionDescription;
+        public SeString Description;
+        public SeString DescriptionEnhanced;
+        public SeString Tooltip;
+        public SeString SpecialActionName;
+        public SeString SpecialActionDescription;
         public byte Attack;
         public byte Defense;
         public byte Speed;
@@ -32,11 +33,11 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Description = parser.ReadColumn< string >( 0 );
-            DescriptionEnhanced = parser.ReadColumn< string >( 1 );
-            Tooltip = parser.ReadColumn< string >( 2 );
-            SpecialActionName = parser.ReadColumn< string >( 3 );
-            SpecialActionDescription = parser.ReadColumn< string >( 4 );
+            Description = parser.ReadColumn< SeString >( 0 );
+            DescriptionEnhanced = parser.ReadColumn< SeString >( 1 );
+            Tooltip = parser.ReadColumn< SeString >( 2 );
+            SpecialActionName = parser.ReadColumn< SeString >( 3 );
+            SpecialActionDescription = parser.ReadColumn< SeString >( 4 );
             Attack = parser.ReadColumn< byte >( 5 );
             Defense = parser.ReadColumn< byte >( 6 );
             Speed = parser.ReadColumn< byte >( 7 );

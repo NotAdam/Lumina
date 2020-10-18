@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -12,7 +13,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int Icon;
         public LazyRow< JournalCategory > JournalCategory;
         public bool Unknown2;
-        public string Name;
+        public SeString Name;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -25,7 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             Icon = parser.ReadColumn< int >( 0 );
             JournalCategory = new LazyRow< JournalCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
             Unknown2 = parser.ReadColumn< bool >( 2 );
-            Name = parser.ReadColumn< string >( 3 );
+            Name = parser.ReadColumn< SeString >( 3 );
         }
     }
 }

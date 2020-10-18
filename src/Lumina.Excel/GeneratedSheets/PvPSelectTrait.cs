@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class PvPSelectTrait : IExcelRow
     {
         
-        public string Effect;
+        public SeString Effect;
         public uint Icon;
         public short Value;
         
@@ -21,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Effect = parser.ReadColumn< string >( 0 );
+            Effect = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );
             Value = parser.ReadColumn< short >( 2 );
         }

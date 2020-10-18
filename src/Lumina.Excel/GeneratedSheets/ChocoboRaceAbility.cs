@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceAbility : IExcelRow
     {
         
-        public string Name;
-        public string Description;
+        public SeString Name;
+        public SeString Description;
         public uint Icon;
         public LazyRow< ChocoboRaceAbilityType > ChocoboRaceAbilityType;
         public byte Value;
@@ -23,8 +24,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            Description = parser.ReadColumn< string >( 1 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Description = parser.ReadColumn< SeString >( 1 );
             Icon = parser.ReadColumn< uint >( 2 );
             ChocoboRaceAbilityType = new LazyRow< ChocoboRaceAbilityType >( lumina, parser.ReadColumn< sbyte >( 3 ), language );
             Value = parser.ReadColumn< byte >( 4 );

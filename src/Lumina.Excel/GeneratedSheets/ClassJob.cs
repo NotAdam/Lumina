@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,9 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class ClassJob : IExcelRow
     {
         
-        public string Name;
-        public string Abbreviation;
-        public string Unknown2;
+        public SeString Name;
+        public SeString Abbreviation;
+        public SeString Unknown2;
         public LazyRow< ClassJobCategory > ClassJobCategory;
         public sbyte ExpArrayIndex;
         public sbyte BattleClassIndex;
@@ -36,7 +37,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown24;
         public byte Unknown25;
         public LazyRow< ClassJob > ClassJobParent;
-        public string NameEnglish;
+        public SeString NameEnglish;
         public LazyRow< Item > ItemStartingWeapon;
         public int Unknown29;
         public byte Role;
@@ -64,9 +65,9 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            Abbreviation = parser.ReadColumn< string >( 1 );
-            Unknown2 = parser.ReadColumn< string >( 2 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Abbreviation = parser.ReadColumn< SeString >( 1 );
+            Unknown2 = parser.ReadColumn< SeString >( 2 );
             ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 3 ), language );
             ExpArrayIndex = parser.ReadColumn< sbyte >( 4 );
             BattleClassIndex = parser.ReadColumn< sbyte >( 5 );
@@ -91,7 +92,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown24 = parser.ReadColumn< byte >( 24 );
             Unknown25 = parser.ReadColumn< byte >( 25 );
             ClassJobParent = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 26 ), language );
-            NameEnglish = parser.ReadColumn< string >( 27 );
+            NameEnglish = parser.ReadColumn< SeString >( 27 );
             ItemStartingWeapon = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 28 ), language );
             Unknown29 = parser.ReadColumn< int >( 29 );
             Role = parser.ReadColumn< byte >( 30 );

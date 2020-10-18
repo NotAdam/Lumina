@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -37,10 +38,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint FATEChain;
         public byte Unknown28;
         public ushort Unknown29;
-        public string Name;
-        public string Description;
-        public string Objective;
-        public string[] StatusText;
+        public SeString Name;
+        public SeString Description;
+        public SeString Objective;
+        public SeString[] StatusText;
         public LazyRow< ArrayEventHandler > ArrayIndex;
         public uint Unknown37;
         public LazyRow< EventItem > ReqEventItem;
@@ -85,12 +86,12 @@ namespace Lumina.Excel.GeneratedSheets
             FATEChain = parser.ReadColumn< uint >( 27 );
             Unknown28 = parser.ReadColumn< byte >( 28 );
             Unknown29 = parser.ReadColumn< ushort >( 29 );
-            Name = parser.ReadColumn< string >( 30 );
-            Description = parser.ReadColumn< string >( 31 );
-            Objective = parser.ReadColumn< string >( 32 );
-            StatusText = new string[ 3 ];
+            Name = parser.ReadColumn< SeString >( 30 );
+            Description = parser.ReadColumn< SeString >( 31 );
+            Objective = parser.ReadColumn< SeString >( 32 );
+            StatusText = new SeString[ 3 ];
             for( var i = 0; i < 3; i++ )
-                StatusText[ i ] = parser.ReadColumn< string >( 33 + i );
+                StatusText[ i ] = parser.ReadColumn< SeString >( 33 + i );
             ArrayIndex = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< uint >( 36 ), language );
             Unknown37 = parser.ReadColumn< uint >( 37 );
             ReqEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 38 ), language );

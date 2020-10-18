@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class Omen : IExcelRow
     {
         
-        public string Path;
-        public string PathAlly;
+        public SeString Path;
+        public SeString PathAlly;
         public byte Type;
         public bool RestrictYScale;
         public bool LargeScale;
@@ -24,8 +25,8 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Path = parser.ReadColumn< string >( 0 );
-            PathAlly = parser.ReadColumn< string >( 1 );
+            Path = parser.ReadColumn< SeString >( 0 );
+            PathAlly = parser.ReadColumn< SeString >( 1 );
             Type = parser.ReadColumn< byte >( 2 );
             RestrictYScale = parser.ReadColumn< bool >( 3 );
             LargeScale = parser.ReadColumn< bool >( 4 );

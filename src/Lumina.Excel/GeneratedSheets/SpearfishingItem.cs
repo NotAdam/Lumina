@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class SpearfishingItem : IExcelRow
     {
         
-        public string Description;
+        public SeString Description;
         public LazyRow< Item > Item;
         public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel;
         public LazyRow< FishingRecordType > FishingRecordType;
@@ -24,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Description = parser.ReadColumn< string >( 0 );
+            Description = parser.ReadColumn< SeString >( 0 );
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 1 ), language );
             GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( lumina, parser.ReadColumn< ushort >( 2 ), language );
             FishingRecordType = new LazyRow< FishingRecordType >( lumina, parser.ReadColumn< byte >( 3 ), language );

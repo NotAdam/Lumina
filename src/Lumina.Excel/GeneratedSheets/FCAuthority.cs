@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCAuthority : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public LazyRow< FCAuthorityCategory > FCAuthorityCategory;
         public byte Unknown2;
         
@@ -21,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             FCAuthorityCategory = new LazyRow< FCAuthorityCategory >( lumina, parser.ReadColumn< int >( 1 ), language );
             Unknown2 = parser.ReadColumn< byte >( 2 );
         }

@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,10 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentRoulette : IExcelRow
     {
         
-        public string Name;
-        public string Unknown1;
-        public string Description;
-        public string DutyType;
+        public SeString Name;
+        public SeString Unknown1;
+        public SeString Description;
+        public SeString DutyType;
         public byte Unknown4;
         public uint Unknown5;
         public bool IsInDutyFinder;
@@ -57,10 +58,10 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
-            Unknown1 = parser.ReadColumn< string >( 1 );
-            Description = parser.ReadColumn< string >( 2 );
-            DutyType = parser.ReadColumn< string >( 3 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Unknown1 = parser.ReadColumn< SeString >( 1 );
+            Description = parser.ReadColumn< SeString >( 2 );
+            DutyType = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             IsInDutyFinder = parser.ReadColumn< bool >( 6 );

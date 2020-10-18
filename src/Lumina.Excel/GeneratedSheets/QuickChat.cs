@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuickChat : IExcelRow
     {
         
-        public string NameAction;
+        public SeString NameAction;
         public int Icon;
         public LazyRow< Addon > Addon;
         public LazyRow< QuickChatTransient > QuickChatTransient;
@@ -23,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            NameAction = parser.ReadColumn< string >( 0 );
+            NameAction = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
             Addon = new LazyRow< Addon >( lumina, parser.ReadColumn< int >( 2 ), language );
             QuickChatTransient = new LazyRow< QuickChatTransient >( lumina, parser.ReadColumn< sbyte >( 3 ), language );

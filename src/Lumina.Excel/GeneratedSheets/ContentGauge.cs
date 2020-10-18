@@ -1,5 +1,6 @@
 // ReSharper disable All
 
+using Lumina.Text;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
 
@@ -9,10 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentGauge : IExcelRow
     {
         
-        public string Name;
+        public SeString Name;
         public LazyRow< ContentGaugeColor > Color;
         public bool Unknown2;
-        public string TextString;
+        public SeString TextString;
         public sbyte Unknown4;
         public sbyte Unknown5;
         public byte Unknown6;
@@ -28,10 +29,10 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Name = parser.ReadColumn< string >( 0 );
+            Name = parser.ReadColumn< SeString >( 0 );
             Color = new LazyRow< ContentGaugeColor >( lumina, parser.ReadColumn< byte >( 1 ), language );
             Unknown2 = parser.ReadColumn< bool >( 2 );
-            TextString = parser.ReadColumn< string >( 3 );
+            TextString = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< sbyte >( 4 );
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );

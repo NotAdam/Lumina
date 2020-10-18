@@ -1,5 +1,6 @@
 using Lumina.Data;
 using Lumina.Excel;
+using Lumina.Text;
 
 namespace Lumina.Example
 {
