@@ -66,10 +66,10 @@ namespace Lumina.Excel
         /// <remarks>
         /// If something fails to load, this will still be false regardless.
         /// </remarks>
-        [Obsolete("Use IsValueCreated instead - HasValue is too ambiguous")]
+        [Obsolete( "Use IsValueCreated instead - HasValue is too ambiguous" )]
         public bool HasValue => _value != null;
-        
-        
+
+
         /// <summary>
         /// Checks whether something has loaded successfully.
         /// </summary>
@@ -77,5 +77,10 @@ namespace Lumina.Excel
         /// If something fails to load, this will still be false regardless.
         /// </remarks>
         public bool IsValueCreated => _value != null;
+
+        public override string ToString()
+        {
+            return $"{typeof( T ).FullName}#{_row}";
+        }
     }
 }
