@@ -127,8 +127,10 @@ namespace Lumina.Excel
         {
             name = name.ToLowerInvariant();
 
-            var idNoLanguage = Tuple.Create( Language.None, name );
-            var id = Tuple.Create( language, name );
+            var cacheName = typeof( T ).FullName;
+
+            var idNoLanguage = Tuple.Create( Language.None, cacheName );
+            var id = Tuple.Create( language, cacheName );
 
             // attempt to get non-localised sheet first, then attempt to fetch a localised sheet from the cache
             if( _sheetCache.TryGetValue( idNoLanguage, out var sheet ) )
