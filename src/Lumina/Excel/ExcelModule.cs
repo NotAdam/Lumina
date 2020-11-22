@@ -206,5 +206,33 @@ namespace Lumina.Excel
 
             return newSheet;
         }
+
+        /// <summary>
+        /// Checks whether a given <see cref="IExcelRow"/> decorated with a <see cref="SheetAttribute"/> has a column hash that matches a newly created hash
+        /// of the column data from the <see cref="ExcelHeaderFile"/>.
+        /// </summary>
+        /// <typeparam name="T">The <see cref="IExcelRow"/> to check</typeparam>
+        /// <returns>true if the hash matches</returns>
+        /// <remarks>This function will return false if the <see cref="SheetAttribute"/> is missing or a column hash isn't specified in the attribute</remarks>
+        public bool SheetHashMatchesColumnDefinition< T >() where T : IExcelRow
+        {
+            var type = typeof( T );
+            var attr = type.GetCustomAttribute< SheetAttribute >();
+
+            if( attr == null )
+            {
+                return false;
+            }
+            
+            var path = BuildExcelHeaderPath( attr.Name );
+            var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
+
+            if( headerFile == null )
+            {
+                return false;
+            }
+
+            return attr.ColumnHash == headerFile.GetColumnsHash();
+        }
     }
 }
