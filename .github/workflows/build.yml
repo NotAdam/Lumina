@@ -15,6 +15,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.100
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.9.7
       with:
