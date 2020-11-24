@@ -17,9 +17,9 @@ namespace Lumina.Data
         }
 
         protected FileState _state = FileState.None;
-        protected Lumina _lumina;
-        protected string _path;
-        protected object _instance;
+        protected readonly Lumina _lumina;
+        protected readonly string _path;
+        protected object _instance = null!;
 
         public FileState State => _state;
 
@@ -63,7 +63,7 @@ namespace Lumina.Data
         /// <summary>
         /// Returns the <see cref="FileResource"/> or null if it isn't loaded or failed to load.
         /// </summary>
-        public T Value
+        public T? Value
         {
             get
             {

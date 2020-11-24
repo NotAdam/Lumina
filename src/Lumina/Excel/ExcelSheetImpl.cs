@@ -100,7 +100,7 @@ namespace Lumina.Excel
         /// <param name="startId">The page row start index</param>
         /// <param name="language">The requested language</param>
         /// <returns>An absolute path to the file</returns>
-        protected string GenerateFilePath( string name, uint startId, Language language )
+        public static string GenerateFilePath( string name, uint startId, Language language )
         {
             if( language == Language.None )
             {
@@ -257,7 +257,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="row">The row id to fetch the parent page for</param>
         /// <returns>The <see cref="ExcelPage"/> if found, null otherwise</returns>
-        public ExcelPage GetPageForRow( uint row )
+        public ExcelPage? GetPageForRow( uint row )
         {
             var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
 

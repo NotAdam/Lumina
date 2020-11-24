@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Lumina.Data
 {
@@ -40,7 +38,7 @@ namespace Lumina.Data
             while( HasPendingFileLoads )
             {
                 var res = _fileQueue.TryDequeue( out var weakRef );
-                if( res && weakRef.TryGetTarget( out var handle ) )
+                if( weakRef != null && res && weakRef.TryGetTarget( out var handle ) )
                 {
                     handle.Load();
                 }

@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 
+// ReSharper disable InconsistentNaming
+
 namespace Lumina.Data.Structs
 {
     public enum PlatformId : byte

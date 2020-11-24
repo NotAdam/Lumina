@@ -1,8 +1,6 @@
-using Lumina.Data;
-
 namespace Lumina
 {
-    public class ParsedFilePath
+    public sealed record ParsedFilePath
     {
         /// <summary>
         /// The repository (or expansion) that a file belongs to.
