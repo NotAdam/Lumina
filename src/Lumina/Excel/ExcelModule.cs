@@ -22,13 +22,13 @@ namespace Lumina.Excel
         /// Not actually used for anything in lumina, but kept for reference
         /// </remarks>
         public readonly Dictionary< int, string > ImmutableIdToSheetMap;
-        
+
         /// <summary>
         /// A list of all available sheets, pulled from root.exl
         /// </summary>
         public readonly List< string > SheetNames;
 
-        private readonly Dictionary< Tuple< Language, string >, ExcelSheetImpl > _sheetCache;
+        private readonly Dictionary< Tuple< Language, ulong >, ExcelSheetImpl > _sheetCache;
 
         private readonly object _sheetCreateLock = new object();
 
@@ -38,7 +38,7 @@ namespace Lumina.Excel
             ImmutableIdToSheetMap = new Dictionary< int, string >();
             SheetNames = new List< string >();
 
-            _sheetCache = new Dictionary< Tuple< Language, string >, ExcelSheetImpl >();
+            _sheetCache = new Dictionary< Tuple< Language, ulong >, ExcelSheetImpl >();
 
             // load all sheet names first
             var files = _lumina.GetFile< ExcelListFile >( "exd/root.exl" );
@@ -99,11 +99,7 @@ namespace Lumina.Excel
                 return null;
             }
 
-            // todo: shit place for a lock, probably should move this into private getsheet
-            lock( _sheetCreateLock )
-            {
-                return GetSheet< T >( attr.Name, language, attr.ColumnHash );
-            }
+            return GetSheet< T >( attr.Name, language, attr.ColumnHash );
         }
 
         /// <summary>
@@ -116,19 +112,19 @@ namespace Lumina.Excel
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >( string name ) where T : class, IExcelRow
         {
-            // todo: shit place for a lock, probably should move this into private getsheet
-            lock( _sheetCreateLock )
-            {
-                return GetSheet< T >( name, _lumina.Options.DefaultExcelLanguage, null );
-            }
+            return GetSheet< T >( name, _lumina.Options.DefaultExcelLanguage, null );
+        }
+
+        private ulong BuildTypeIdentifier( Type type )
+        {
+            return (ulong)type.Assembly.Location.GetHashCode() << 32 | (ulong)type.MetadataToken;
         }
 
         private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
         {
-            var cacheName = typeof( T ).FullName;
-
-            var idNoLanguage = Tuple.Create( Language.None, cacheName );
-            var id = Tuple.Create( language, cacheName );
+            var tid = BuildTypeIdentifier( typeof( T ) );
+            var idNoLanguage = Tuple.Create( Language.None, tid );
+            var id = Tuple.Create( language, tid );
 
             // attempt to get non-localised sheet first, then attempt to fetch a localised sheet from the cache
             if( _sheetCache.TryGetValue( idNoLanguage, out var sheet ) )
@@ -145,6 +141,20 @@ namespace Lumina.Excel
             }
 
             // create new sheet
+            lock( _sheetCreateLock )
+            {
+                return CreateNewSheet< T >( name, language, expectedHash, id, idNoLanguage );
+            }
+        }
+
+        private ExcelSheet< T > CreateNewSheet< T >(
+            string name,
+            Language language,
+            uint? expectedHash,
+            Tuple< Language, ulong > key,
+            Tuple< Language, ulong > noLangKey
+        ) where T : class, IExcelRow
+        {
             var path = BuildExcelHeaderPath( name );
             var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
 
@@ -166,6 +176,8 @@ namespace Lumina.Excel
             var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _lumina );
             newSheet.GenerateFilePages();
 
+            var id = key;
+
             // kinda a shit hack but basically this enforces a single language for a sheet that has no localisation
             // because it's possible to then load a single sheet many times if someone isn't careful
             // so we rewrite the language field on the id so we can hit the cache in the event that this happens
@@ -173,7 +185,7 @@ namespace Lumina.Excel
             var langs = newSheet.Languages;
             if( langs.Length == 1 && langs[ 0 ] == Language.None )
             {
-                id = idNoLanguage;
+                id = noLangKey;
             }
 
             _sheetCache[ id ] = newSheet;
@@ -223,7 +235,7 @@ namespace Lumina.Excel
             {
                 return false;
             }
-            
+
             var path = BuildExcelHeaderPath( attr.Name );
             var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
 
