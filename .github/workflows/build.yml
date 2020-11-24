@@ -29,7 +29,7 @@ jobs:
       with:
         useConfigFile: true
     - name: Build with dotnet
-      run: dotnet build --configuration Release --nologo -p:PackageVersion={{ steps.gitversion.outputs.semVer }} -p:FileVersion={{ steps.gitversion.outputs.assemblySemVer }} ./src/Lumina.sln
+      run: dotnet build --configuration Release --nologo -p:PackageVersion=${{ steps.gitversion.outputs.semVer }} -p:FileVersion=${{ steps.gitversion.outputs.assemblySemVer }} ./src/Lumina.sln
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.1
       with:
