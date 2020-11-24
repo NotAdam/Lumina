@@ -19,3 +19,12 @@ jobs:
       run: dotnet build --configuration Release --nologo ./src/Lumina.sln
     - name: dotnet test
       run: dotnet test --configuration Release --nologo ./src/Lumina.sln
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        path: |
+          ./src/Lumina/bin/Release/*.nupkg
+          ./src/Lumina/bin/Release/*.snupkg
+          ./src/Lumina/bin/Release/**/Lumina.dll
+          ./src/Lumina/bin/Release/**/Lumina.pdb
+          ./src/Lumina/bin/Release/**/Lumina.deps.json
