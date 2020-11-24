@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Lumina.Data.Structs;
 using Lumina.Extensions;
 
@@ -13,8 +16,8 @@ namespace Lumina.Data
 
         public SqPackIndexHeader IndexHeader { get; private set; }
 
-        public Dictionary< ulong, IndexHashTableEntry >? HashTableEntries { get; set; }
-        public Dictionary< uint, Index2HashTableEntry >? HashTableEntries2 { get; set; }
+        public Dictionary< ulong, IndexHashTableEntry > HashTableEntries { get; set; }
+        public Dictionary< uint, Index2HashTableEntry > HashTableEntries2 { get; set; }
 
         internal SqPackIndex( FileInfo indexFile, Lumina lumina ) : base( indexFile, lumina )
         {

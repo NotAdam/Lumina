@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Lumina.Data.Structs;
+using Microsoft.VisualBasic;
 
 namespace Lumina.Data
 {
@@ -20,8 +22,8 @@ namespace Lumina.Data
 
         public SqPackIndex Index { get; }
         
-        public Dictionary< UInt64, IndexHashTableEntry >? IndexHashTableEntries { get; set; }
-        public Dictionary< uint, Index2HashTableEntry >? Index2HashTableEntries { get; set; }
+        public Dictionary< UInt64, IndexHashTableEntry > IndexHashTableEntries { get; set; }
+        public Dictionary< uint, Index2HashTableEntry > Index2HashTableEntries { get; set; }
 
         public Dictionary< byte, SqPack > DatFiles { get; }
 
@@ -74,23 +76,18 @@ namespace Lumina.Data
 
         public bool FileExists( UInt64 hash )
         {
-            return IndexHashTableEntries != null && IndexHashTableEntries.ContainsKey( hash );
+            return IndexHashTableEntries.ContainsKey( hash );
         }
 
         public bool FileExists( uint hash )
         {
-            return Index2HashTableEntries != null && Index2HashTableEntries.ContainsKey( hash );
+            return Index2HashTableEntries.ContainsKey( hash );
         }
 
         private bool TryGetFileDatOffset( ParsedFilePath path, out byte dataFileId, out long offset )
         {
             if( !Index.IsIndex2 )
             {
-                if( IndexHashTableEntries == null )
-                {
-                    goto cleanup;
-                }
-                
                 if( IndexHashTableEntries.TryGetValue( path.IndexHash, out var hashTableEntry ) )
                 {
                     dataFileId = hashTableEntry.DataFileId;
@@ -100,11 +97,6 @@ namespace Lumina.Data
             }
             else
             {
-                if( Index2HashTableEntries == null )
-                {
-                    goto cleanup;
-                }
-                
                 if( Index2HashTableEntries.TryGetValue( path.Index2Hash, out var hashTableEntry2 ) )
                 {
                     dataFileId = hashTableEntry2.DataFileId;
@@ -112,15 +104,14 @@ namespace Lumina.Data
                     return true;
                 }
             }
-            
-            cleanup:
+
             dataFileId = 0;
             offset = 0;
 
             return false;
         }
 
-        public T? GetFile< T >( ParsedFilePath path ) where T : FileResource
+        public T GetFile< T >( ParsedFilePath path ) where T : FileResource
         {
             var status = TryGetFileDatOffset( path, out var dataFileId, out var offset );
             if( !status )
@@ -151,7 +142,7 @@ namespace Lumina.Data
             return dat.GetFileMetadata( offset );
         }
 
-        public SqPack? GetDat( byte datId )
+        public SqPack GetDat( byte datId )
         {
             return DatFiles.TryGetValue( datId, out var dat ) ? dat : null;
         }

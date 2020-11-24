@@ -2,6 +2,7 @@ using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
@@ -158,11 +159,11 @@ namespace Lumina.Excel
             return br.ReadStructuresAsArray< T >( count );
         }
 
-        private object? ReadFieldInternal( ExcelColumnDataType type )
+        private object ReadFieldInternal( ExcelColumnDataType type )
         {
             var br = _dataFile.Reader;
 
-            object? data = null;
+            object data = null;
 
             switch( type )
             {
@@ -260,13 +261,9 @@ namespace Lumina.Excel
         /// <typeparam name="T">The CLR type to store the read data in</typeparam>
         /// <returns>The read data stored in the provided type</returns>
         /// <exception cref="ArgumentOutOfRangeException">An invalid column type was provided</exception>
-        private T? ReadField< T >( ExcelColumnDataType type )
+        private T ReadField< T >( ExcelColumnDataType type )
         {
             var data = ReadFieldInternal( type );
-            if( data == null )
-            {
-                return default;
-            }
 
             if( _sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
             {
@@ -314,7 +311,7 @@ namespace Lumina.Excel
         /// <param name="bit">Read a specific bit from the underlying position - useful for bools</param>
         /// <typeparam name="T">The type to store the data in</typeparam>
         /// <returns>The read data contained in the provided type</returns>
-        public T? ReadOffset< T >( ushort offset, byte bit = 0 )
+        public T ReadOffset< T >( ushort offset, byte bit = 0 )
         {
             Stream.Position = _rowOffset + offset;
 
@@ -335,7 +332,7 @@ namespace Lumina.Excel
         /// <param name="offset">The offset to read from</param>
         /// <param name="type">The excel column type to read</param>
         /// <returns>The read data contained in the provided type</returns>
-        public T? ReadOffset< T >( int offset, ExcelColumnDataType type )
+        public T ReadOffset< T >( int offset, ExcelColumnDataType type )
         {
             Stream.Position = _rowOffset + offset;
 
@@ -348,7 +345,7 @@ namespace Lumina.Excel
         /// <param name="column">The column index to lookup</param>
         /// <typeparam name="T">The type to store the read data in</typeparam>
         /// <returns>The read data contained in the provided type</returns>
-        public T? ReadColumn< T >( int column )
+        public T ReadColumn< T >( int column )
         {
             var col = _sheet.Columns[ column ];
 
@@ -357,7 +354,7 @@ namespace Lumina.Excel
             return ReadField< T >( col.Type );
         }
 
-        public object? ReadColumnRaw( int column )
+        public object ReadColumnRaw( int column )
         {
             var col = _sheet.Columns[ column ];
 

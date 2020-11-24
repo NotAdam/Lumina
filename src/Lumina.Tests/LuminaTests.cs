@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace Lumina.Tests

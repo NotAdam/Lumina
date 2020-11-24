@@ -17,17 +17,17 @@ namespace Lumina.Excel
         {
         }
 
-        public T? GetRow( uint row )
+        public T GetRow( uint row )
         {
             return GetRow( row, UInt32.MaxValue );
         }
 
-        public T? GetRow( uint row, uint subRow )
+        public T GetRow( uint row, uint subRow )
         {
             return GetRowInternal( row, subRow );
         }
 
-        internal T? GetRowInternal( uint row, uint subRow )
+        internal T GetRowInternal( uint row, uint subRow )
         {
             var cacheKey = GetCacheKey( row, subRow );
 

@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
 using Lumina.Excel.Exceptions;
+using Lumina.Extensions;
 
 namespace Lumina.Excel
 {
@@ -38,8 +42,8 @@ namespace Lumina.Excel
 
             // load all sheet names first
             var files = _lumina.GetFile< ExcelListFile >( "exd/root.exl" );
-            
-            _lumina.Logger?.Debug("got {ExltCount} exlt entries", files?.ExdMap.Count);
+
+            Debug.WriteLine( $"got {files.ExdMap.Count} exlt entries" );
 
             foreach( var map in files.ExdMap )
             {
@@ -62,7 +66,7 @@ namespace Lumina.Excel
         /// </remarks>
         /// <param name="name">A sheet name</param>
         /// <returns>An absolute path to an excel header file</returns>
-        public static string BuildExcelHeaderPath( string name )
+        public string BuildExcelHeaderPath( string name )
         {
             return $"exd/{name}.exh";
         }
@@ -72,7 +76,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T >? GetSheet< T >() where T : class, IExcelRow
+        public ExcelSheet< T > GetSheet< T >() where T : class, IExcelRow
         {
             return GetSheet< T >( _lumina.Options.DefaultExcelLanguage );
         }
@@ -86,7 +90,7 @@ namespace Lumina.Excel
         /// <param name="language">The requested sheet language</param>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T >? GetSheet< T >( Language language ) where T : class, IExcelRow
+        public ExcelSheet< T > GetSheet< T >( Language language ) where T : class, IExcelRow
         {
             var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
 
@@ -106,7 +110,7 @@ namespace Lumina.Excel
         /// <param name="name">The name of a sheet</param>
         /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T >? GetSheet< T >( string name ) where T : class, IExcelRow
+        public ExcelSheet< T > GetSheet< T >( string name ) where T : class, IExcelRow
         {
             return GetSheet< T >( name, _lumina.Options.DefaultExcelLanguage, null );
         }
@@ -116,7 +120,7 @@ namespace Lumina.Excel
             return (ulong)type.Assembly.Location.GetHashCode() << 32 | (ulong)type.MetadataToken;
         }
 
-        private ExcelSheet< T >? GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
+        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
             var idNoLanguage = Tuple.Create( Language.None, tid );
@@ -143,7 +147,7 @@ namespace Lumina.Excel
             }
         }
 
-        private ExcelSheet< T >? CreateNewSheet< T >(
+        private ExcelSheet< T > CreateNewSheet< T >(
             string name,
             Language language,
             uint? expectedHash,
@@ -205,7 +209,7 @@ namespace Lumina.Excel
         /// <param name="name">Name of the sheet to load</param>
         /// <param name="language">The requested language to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl? GetSheetRaw( string name, Language language = Language.None )
+        public ExcelSheetImpl GetSheetRaw( string name, Language language = Language.None )
         {
             // todo: duped code is a bit ass but zzz
             // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on

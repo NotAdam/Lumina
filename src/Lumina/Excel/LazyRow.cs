@@ -13,7 +13,7 @@ namespace Lumina.Excel
         private readonly uint _row;
         private readonly Language _language;
 
-        private T? _value;
+        private T _value;
 
         /// <summary>
         /// The backing value/row that was passed through when creating the reference
@@ -38,7 +38,6 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="lumina">The Lumina instance to load from</param>
         /// <param name="row">The row id to load if/when the value is fetched</param>
-        /// <param name="language">The language to use when fetching the row</param>
         public LazyRow( Lumina lumina, int row, Language language = Language.None ) : this( lumina, (uint)row, language )
         {
         }
@@ -46,7 +45,7 @@ namespace Lumina.Excel
         /// <summary>
         /// Lazily load the referenced sheet/row, otherwise return the existing row.
         /// </summary>
-        public T? Value
+        public T Value
         {
             get
             {

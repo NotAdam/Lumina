@@ -44,7 +44,7 @@ namespace Lumina.Data.Files.Excel
             Version = int.Parse( headerData[ 1 ] );
 
             // read exd mappings
-            string? row;
+            string row;
             while( ( row = sr.ReadLine() ) != null )
             {
                 var data = row.Split( ',' );

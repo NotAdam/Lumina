@@ -56,7 +56,7 @@ namespace Lumina
         /// <param name="dataPath">Path to the sqpack directory</param>
         /// <param name="options">Options object to provide additional configuration</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
-        public Lumina( string dataPath, LuminaOptions? options = null )
+        public Lumina( string dataPath, LuminaOptions options = null )
         {
             Options = options ?? new LuminaOptions();
 
@@ -99,7 +99,7 @@ namespace Lumina
         /// </summary>
         /// <param name="path">A game filesystem path</param>
         /// <returns>A <see cref="ParsedFilePath"/> which contains extracted info from the path, along with the hashes used to access the file index</returns>
-        public static ParsedFilePath? ParseFilePath( string path )
+        public static ParsedFilePath ParseFilePath( string path )
         {
             if( string.IsNullOrWhiteSpace( path ) )
                 return null;
@@ -138,7 +138,7 @@ namespace Lumina
         /// </summary>
         /// <param name="path">A path to a file located inside the game's filesystem</param>
         /// <returns>The base <see cref="FileResource"/> if it was found, or null if it wasn't found</returns>
-        public FileResource? GetFile( string path )
+        public FileResource GetFile( string path )
         {
             return GetFile< FileResource >( path );
         }
@@ -149,7 +149,7 @@ namespace Lumina
         /// <param name="path">A path to a file located inside the game's filesystem</param>
         /// <typeparam name="T">The type of <see cref="FileResource"/> to load the raw file in to</typeparam>
         /// <returns>Returns the requested file if found, null if not</returns>
-        public T? GetFile< T >( string path ) where T : FileResource
+        public T GetFile< T >( string path ) where T : FileResource
         {
             var parsed = ParseFilePath( path );
             if( parsed == null )
