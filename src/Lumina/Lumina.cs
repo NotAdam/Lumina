@@ -47,6 +47,8 @@ namespace Lumina
         /// easily defer file loading onto another thread.
         /// </summary>
         public FileHandleManager FileHandleManager { get; private set; }
+        
+        internal ILogger Logger { get; private set; }
 
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
@@ -78,6 +80,18 @@ namespace Lumina
 
             Excel = new ExcelModule( this );
             FileHandleManager = new FileHandleManager( this );
+        }
+
+        /// <summary>
+        /// Constructs a new Lumina object allowing access to game data.
+        /// </summary>
+        /// <param name="dataPath">Path to the sqpack directory</param>
+        /// <param name="logger">An <see cref="ILogger"/> implementation that Lumina can send log events to</param>
+        /// <param name="options">Options object to provide additional configuration</param>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
+        public Lumina( string dataPath, ILogger logger, LuminaOptions options = null ) : this(dataPath, options)
+        {
+            Logger = logger ?? throw new ArgumentNullException( nameof( logger ) );
         }
 
         /// <summary>

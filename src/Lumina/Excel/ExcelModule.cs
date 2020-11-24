@@ -164,12 +164,22 @@ namespace Lumina.Excel
             }
 
             // validate checksum if enabled and we have a hash that we expect to find
-            if( _lumina.Options.PanicOnSheetChecksumMismatch && expectedHash.HasValue )
+            if( expectedHash.HasValue )
             {
                 var actualHash = headerFile.GetColumnsHash();
                 if( actualHash != expectedHash )
                 {
-                    throw new ExcelSheetColumnChecksumMismatchException( name, expectedHash.Value, actualHash );
+                    _lumina.Logger?.Warning(
+                        "The sheet impl {SheetImplName} hash doesn't match the hash generated from the header. Expected: {ExpectedHash} actual: {ActualHash}",
+                        typeof( T ).FullName,
+                        expectedHash,
+                        actualHash
+                    );
+                    
+                    if( _lumina.Options.PanicOnSheetChecksumMismatch )
+                    {
+                        throw new ExcelSheetColumnChecksumMismatchException( name, expectedHash.Value, actualHash );
+                    }
                 }
             }
 
