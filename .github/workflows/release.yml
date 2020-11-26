@@ -10,15 +10,51 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Lumina ${{ github.ref }}
-          draft: false
-          prerelease: false
+    - name: Checkout code
+      uses: actions/checkout@master
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.100
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.7
+      with:
+        versionSpec: '5.x'
+    - name: Determine Version
+      id: gitversion
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true
+    - name: Build with dotnet
+      run: dotnet build --configuration Release --nologo -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersion }} -p:FileVersion=${{ steps.gitversion.outputs.assemblySemVer }} ./src/Lumina.sln
+    - name: dotnet test
+      run: dotnet test --configuration Release --nologo -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersion }} -p:FileVersion=${{ steps.gitversion.outputs.assemblySemVer }} ./src/Lumina.sln
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.1
+      with:
+        path: |
+          ./src/Lumina/bin/Release/*.nupkg
+          ./src/Lumina/bin/Release/*.snupkg
+          ./src/Lumina/bin/Release/**/Lumina.dll
+          ./src/Lumina/bin/Release/**/Lumina.pdb
+          ./src/Lumina/bin/Release/**/Lumina.deps.json
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Lumina ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: add build artifact to release
+      uses: actions/upload-release-asset@v1.0.2
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_name: build.zip

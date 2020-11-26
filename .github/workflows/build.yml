@@ -29,7 +29,9 @@ jobs:
       with:
         useConfigFile: true
     - name: Build with dotnet
-      run: dotnet build --configuration Release --nologo -p:PackageVersion=${{ steps.gitversion.outputs.semVer }} -p:FileVersion=${{ steps.gitversion.outputs.assemblySemVer }} ./src/Lumina.sln
+      run: dotnet build --configuration Release --nologo -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersion }} -p:FileVersion=${{ steps.gitversion.outputs.assemblySemVer }} ./src/Lumina.sln
+    - name: dotnet test
+      run: dotnet test --configuration Release --nologo -p:PackageVersion=${{ steps.gitversion.outputs.nuGetVersion }} -p:FileVersion=${{ steps.gitversion.outputs.assemblySemVer }} ./src/Lumina.sln
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.1
       with:
@@ -39,18 +41,3 @@ jobs:
           ./src/Lumina/bin/Release/**/Lumina.dll
           ./src/Lumina/bin/Release/**/Lumina.pdb
           ./src/Lumina/bin/Release/**/Lumina.deps.json
-
-  test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest]
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.100
-    - name: dotnet test
-      run: dotnet test --configuration Release --nologo ./src/Lumina.sln
