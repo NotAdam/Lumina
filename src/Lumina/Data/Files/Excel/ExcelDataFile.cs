@@ -3,7 +3,6 @@ using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
 
@@ -18,6 +17,11 @@ namespace Lumina.Data.Files.Excel
         public ExcelDataHeader Header { get; protected set; }
 
         public Dictionary< uint, ExcelDataOffset > RowData { get; protected set; }
+        
+        /// <summary>
+        /// Whether the endianness of the underlying data has been swapped so it doesn't happen twice
+        /// </summary>
+        public bool SwappedEndianness { get; internal set; }
 
         public override unsafe void LoadFile()
         {

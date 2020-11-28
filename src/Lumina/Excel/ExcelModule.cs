@@ -66,7 +66,7 @@ namespace Lumina.Excel
         /// </remarks>
         /// <param name="name">A sheet name</param>
         /// <returns>An absolute path to an excel header file</returns>
-        public string BuildExcelHeaderPath( string name )
+        public static string BuildExcelHeaderPath( string name )
         {
             return $"exd/{name}.exh";
         }
@@ -155,6 +155,12 @@ namespace Lumina.Excel
             Tuple< Language, ulong > noLangKey
         ) where T : class, IExcelRow
         {
+            _lumina.Logger?.Debug(
+                "sheet {SheetName} not in cache - creating new sheet for language {Language}",
+                name,
+                language
+            );
+            
             var path = BuildExcelHeaderPath( name );
             var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
 
