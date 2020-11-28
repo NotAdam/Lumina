@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -72,19 +71,19 @@ namespace Lumina.Data
 
         public T GetFile< T >( byte cat, ParsedFilePath path ) where T : FileResource
         {
-            if( Categories.TryGetValue( cat, out var categories ) )
+            if( !Categories.TryGetValue( cat, out var categories ) )
             {
-                foreach( var category in categories )
-                {
-                    var file = category.GetFile< T >( path );
-                    if( file != null )
-                        return file;
-                }
+                return null;
+            }
+
+            foreach( var category in categories )
+            {
+                return category.GetFile< T >( path );
             }
 
             return null;
         }
-        
+
         public SqPackFileInfo? GetFileMetadata( string cat, ParsedFilePath path )
         {
             if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
@@ -97,15 +96,17 @@ namespace Lumina.Data
 
         public SqPackFileInfo? GetFileMetadata( byte cat, ParsedFilePath path )
         {
-            if( Categories.TryGetValue( cat, out var categories ) )
+            if( !Categories.TryGetValue( cat, out var categories ) )
             {
-                foreach( var category in categories )
+                return null;
+            }
+
+            foreach( var category in categories )
+            {
+                var file = category.GetFileMetadata( path );
+                if( file != null )
                 {
-                    var file = category.GetFileMetadata( path );
-                    if( file != null )
-                    {
-                        return file;
-                    }
+                    return file;
                 }
             }
 
@@ -125,7 +126,10 @@ namespace Lumina.Data
             }
             catch( FormatException e )
             {
-                Trace.TraceWarning( "failed to parse expansionid, e: {0}", e.Message );
+                _Lumina.Logger?.Error(
+                    "failed to parse expansionid, value: {Value} e: {ExceptionMessage}",
+                    e.Message
+                );
             }
         }
 
@@ -174,7 +178,7 @@ namespace Lumina.Data
                     {
                         continue;
                     }
-                    
+
                     // grab first index from the discovered indexes, this should be index if you have both
                     // otherwise it _should_ be index2
                     var file = indexFiles.FirstOrDefault();
@@ -185,7 +189,7 @@ namespace Lumina.Data
 
                     var index = new SqPackIndex( file, _Lumina );
 
-                    var dat = new Category( 
+                    var dat = new Category(
                         cat.Value,
                         ExpansionId,
                         chunk,
@@ -225,7 +229,7 @@ namespace Lumina.Data
         public List< FileInfo > FindIndexes( byte cat, int ex, int chunk )
         {
             var files = new List< FileInfo >();
-            
+
             foreach( var type in new[] { "index", "index2" } )
             {
                 var index = BuildDatStr( cat, ex, chunk, _Lumina.Options.CurrentPlatform, type );
@@ -248,7 +252,7 @@ namespace Lumina.Data
             {
                 return false;
             }
-            
+
             var categories = Categories[ catId ];
 
             foreach( var cat in categories )

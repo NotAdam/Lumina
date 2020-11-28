@@ -212,12 +212,19 @@ namespace Lumina.Excel
         /// Reverses the endianness of a data file on LE machines so the underlying stream can be copied from as is
         /// </summary>
         /// <param name="file">The file to swap endianness for</param>
+        // todo: refactor and move into ExceLDataFile
         protected void ProcessDataEndianness( ExcelDataFile file )
         {
             if( !BitConverter.IsLittleEndian )
             {
                 return;
             }
+
+            if( file.SwappedEndianness )
+            {
+                return;
+            }
+            
 
             var stream = new MemoryStream( file.Data );
             var writer = new BinaryWriter( stream );
@@ -250,6 +257,8 @@ namespace Lumina.Excel
                     ProcessDataRow( offset + 6, stream, writer, reader );
                 }
             }
+
+            file.SwappedEndianness = true;
         }
         
         /// <summary>
