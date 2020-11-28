@@ -117,7 +117,7 @@ namespace Lumina.Excel
 
         private ulong BuildTypeIdentifier( Type type )
         {
-            return (ulong)type.Assembly.Location.GetHashCode() << 32 | (ulong)type.MetadataToken;
+            return (ulong)type.Assembly.Location.GetHashCode() << 32 | (uint)type.MetadataToken;
         }
 
         private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
