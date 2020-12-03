@@ -39,9 +39,9 @@ namespace Lumina.SpaghettiGenerator.CodeGen
                 // todo: ^ still fucked up though
                 var col = _columns[ ColumnId + i ];
 
-                var type = Program.ExcelTypeToManaged( col.Type );
+                var type = SpaghettiGenerator.ExcelTypeToManaged( col.Type );
 
-                sb.AppendLine( $"    {FieldName}[ i ].{Program.Clean( member.Name )} = parser.ReadColumn< {type} >( {ColumnId} + ( i * {_members.Count} + {i} ) );" );
+                sb.AppendLine( $"    {FieldName}[ i ].{SpaghettiGenerator.Clean( member.Name )} = parser.ReadColumn< {type} >( {ColumnId} + ( i * {_members.Count} + {i} ) );" );
             }
 
             sb.AppendLine( "}" );
@@ -58,9 +58,9 @@ namespace Lumina.SpaghettiGenerator.CodeGen
                 // todo: see todo in writereaders
                 var col = _columns[ ColumnId + i ];
                 
-                var type = Program.ExcelTypeToManaged( col.Type );
+                var type = SpaghettiGenerator.ExcelTypeToManaged( col.Type );
 
-                sb.AppendLine( $"    public {type} {Program.Clean( member.Name )};" );
+                sb.AppendLine( $"    public {type} {SpaghettiGenerator.Clean( member.Name )};" );
             }
 
             sb.AppendLine( "}" );
