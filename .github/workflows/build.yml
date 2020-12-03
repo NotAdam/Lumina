@@ -37,4 +37,4 @@ jobs:
     - name: publish nuget package
       # for some cursed reason this fails on windows ???????????
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest' }}
-      run: dotnet nuget push ./src/Lumina/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} --skip-duplicate
+      run: dotnet nuget push ./src/Lumina/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
