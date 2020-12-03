@@ -91,7 +91,7 @@ namespace Lumina.Data.Files.Excel
             var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();
             var span = DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
 
-            return Crc32.Get( span.ToArray() );
+            return Crc32.Get( span );
         }
 
         public string GetColumnsHashString()
