@@ -78,7 +78,11 @@ namespace Lumina.Data
 
             foreach( var category in categories )
             {
-                return category.GetFile< T >( path );
+                var file = category.GetFile< T >( path );
+                if( file != null )
+                {
+                    return file;
+                }
             }
 
             return null;
