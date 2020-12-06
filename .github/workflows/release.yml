@@ -45,6 +45,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_name: Lumina.${{ github.ref }}.zip
+        asset_path: ./Lumina.${{ github.ref }}.zip
     - name: publish nuget package
       # for some cursed reason this fails on windows ???????????
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest' }}
