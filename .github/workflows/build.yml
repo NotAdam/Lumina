@@ -10,7 +10,8 @@ jobs:
         os: [windows-latest, ubuntu-latest]
 
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout code
+      uses: actions/checkout@v2
       with:
         fetch-depth: 0
     - name: Setup .NET Core
