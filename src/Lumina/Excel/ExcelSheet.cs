@@ -35,37 +35,15 @@ namespace Lumina.Excel
             {
                 return cachedRow;
             }
+
+            var parser = GetRowParser( row, subRow );
             
-            var data = GetPageForRow( row );
-
-            if( data == null )
-            {
-                return null;
-            }
-
             var rowObj = Activator.CreateInstance< T >();
-
-            RowParser parser;
-
-            if( subRow != UInt32.MaxValue )
-            {
-                parser = new RowParser( this, data.File, row, subRow );
-            }
-            else
-            {
-                parser = new RowParser( this, data.File, row );
-            }
-
             rowObj.PopulateData( parser, _Lumina, RequestedLanguage );
-            
+
             _rowCache[ cacheKey ] = rowObj;
 
             return rowObj;
-        }
-
-        private static UInt64 GetCacheKey( uint rowId, uint subrowId = UInt32.MaxValue )
-        {
-            return (UInt64)rowId << 32 | subrowId;
         }
 
         private T ReadRowObj( RowParser parser, uint rowId )

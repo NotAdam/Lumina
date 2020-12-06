@@ -49,11 +49,31 @@ namespace Lumina.Excel
         /// Moves the parser to a row in the current page given its index
         /// </summary>
         /// <param name="row">The row index to seek to</param>
+        /// /// <exception cref="IndexOutOfRangeException">Given row index was out of bounds</exception>
         public void SeekToRow( uint row )
         {
+            if( !TrySeekToRow( row ) )
+            {
+                throw new IndexOutOfRangeException( $"the row {row} could not be found in the sheet!" );
+            }
+        }
+        
+        /// <summary>
+        /// Moves the parser to a row in the current page given its index
+        /// </summary>
+        /// <param name="row">The row index to seek to</param>
+        /// <returns>true if the row was seeked to successfully, false if the row wasn't found or otherwise</returns>
+        public bool TrySeekToRow( uint row )
+        {
             Row = row;
-            _offset = _dataFile.RowData[ Row ];
 
+            if( !_dataFile.RowData.TryGetValue( Row, out var offset ) )
+            {
+                return false;
+            }
+
+            _offset = offset;
+            
             var br = _dataFile.Reader;
 
             Stream.Position = _offset.Offset;
@@ -68,6 +88,8 @@ namespace Lumina.Excel
 
             // header is 6 bytes large, data normally starts here except in the case of variant 2 sheets but we'll keep it anyway
             _rowOffset = _offset.Offset + 6;
+
+            return true;
         }
 
         /// <summary>
@@ -78,16 +100,35 @@ namespace Lumina.Excel
         /// <exception cref="IndexOutOfRangeException">Given subrow index was out of bounds</exception>
         public void SeekToRow( uint row, uint subRow )
         {
-            SeekToRow( row );
-
-            SubRow = subRow;
-
-            if( subRow > _rowHeader.RowCount )
+            if( !TrySeekToRow( row, subRow ) )
             {
                 throw new IndexOutOfRangeException( $"subrow {subRow} > {_rowHeader.RowCount}!" );
             }
+        }
 
+        /// <summary>
+        /// Moves the parser to a row + subrow in the current page given their indexes
+        /// </summary>
+        /// <param name="row">The row index to seek to</param>
+        /// <param name="subRow">The subrow index to seek to</param>
+        /// /// <returns>true if the row and subrow was seeked to successfully, false if the row or subrow wasn't found or otherwise</returns>
+        public bool TrySeekToRow( uint row, uint subRow )
+        {
+            if( !TrySeekToRow( row ) )
+            {
+                return false;
+            }
+            
+            SubRow = subRow;
+            
+            if( subRow > _rowHeader.RowCount )
+            {
+                return false;
+            }
+            
             _rowOffset = CalculateSubRowOffset( subRow );
+
+            return true;
         }
 
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
