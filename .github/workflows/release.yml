@@ -18,9 +18,9 @@ jobs:
       with:
         dotnet-version: 5.0.100
     - name: Build with dotnet
-      run: dotnet build --configuration Release --nologo -p:PackageVersion=${{ github.ref }} -p:FileVersion=${{ github.ref }} ./src/Lumina.sln
+      run: dotnet build --configuration Release --nologo ./src/Lumina.sln
     - name: dotnet test
-      run: dotnet test --configuration Release --nologo -p:PackageVersion=${{ github.ref }} -p:FileVersion=${{ github.ref }} ./src/Lumina.sln
+      run: dotnet test --configuration Release --nologo ./src/Lumina.sln
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.1
       with:
