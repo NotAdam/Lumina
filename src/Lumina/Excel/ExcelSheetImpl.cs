@@ -277,5 +277,38 @@ namespace Lumina.Excel
 
             return data;
         }
+        
+        protected static ulong GetCacheKey( uint rowId, uint subrowId = UInt32.MaxValue )
+        {
+            return (ulong)rowId << 32 | subrowId;
+        }
+
+        /// <summary>
+        /// Provides direct access to the underlying row parser for any row or subrow
+        /// </summary>
+        /// <param name="row">The row id to seek to</param>
+        /// <param name="subRow">The subrow id to seek to</param>
+        /// <returns>A <see cref="RowParser"/> instance</returns>
+        public RowParser GetRowParser( uint row, uint subRow = UInt32.MaxValue )
+        {
+            var page = GetPageForRow( row );
+            if( page == null )
+            {
+                return null;
+            }
+
+            RowParser parser = null!;
+
+            if( subRow != UInt32.MaxValue )
+            {
+                parser = new RowParser( this, page.File, row, subRow );
+            }
+            else
+            {
+                parser = new RowParser( this, page.File, row );
+            }
+
+            return parser;
+        }
     }
 }
