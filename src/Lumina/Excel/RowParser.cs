@@ -395,6 +395,15 @@ namespace Lumina.Excel
             return ReadField< T >( col.Type );
         }
 
+        /// <summary>
+        /// Grab the raw value from the sheet.
+        /// </summary>
+        /// <remarks>
+        /// This effectively acts as a variant and the object encapsulates it. You'll still need to do a type check or safely cast it to avoid exceptions
+        /// but this can be useful when you don't need to care about it's type and can use it as is - e.g. ToString and so on
+        /// </remarks>
+        /// <param name="column">The column index to read from</param>
+        /// <returns>An object containing the data from the row.</returns>
         public object ReadColumnRaw( int column )
         {
             var col = _sheet.Columns[ column ];
