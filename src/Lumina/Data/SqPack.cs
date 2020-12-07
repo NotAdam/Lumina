@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.IO.Compression;
+using System.Reflection;
 using Lumina.Data.Structs;
 using Lumina.Extensions;
 
@@ -103,7 +104,15 @@ namespace Lumina.Data
 
         public T ReadFile< T >( long offset ) where T : FileResource
         {
-            if( !_Lumina.Options.CacheFileResources )
+            var cacheBehaviour = FileOptionsAttribute.FileCacheBehaviour.None;
+            
+            var fileOpts = typeof( T ).GetCustomAttribute< FileOptionsAttribute >();
+            if( fileOpts != null )
+            {
+                cacheBehaviour = fileOpts.CacheBehaviour;
+            }
+            
+            if( !_Lumina.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
                 using var ss = new SqPackStream( File );
                 return ss.ReadFile<T>( offset );

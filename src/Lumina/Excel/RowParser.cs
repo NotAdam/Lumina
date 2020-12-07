@@ -356,15 +356,15 @@ namespace Lumina.Excel
         {
             Stream.Position = _rowOffset + offset;
 
-            if( bit > 0 )
+            if( bit == 0 )
             {
-                var pos = GetBitPosition( bit );
-                var flag = ExcelColumnDataType.PackedBool0 + pos;
-
-                return ReadField< T >( flag );
+                return ReadField< T >( _sheet.ColumnsByOffset[ offset ].Type );
             }
+            
+            var pos = GetBitPosition( bit );
+            var flag = ExcelColumnDataType.PackedBool0 + pos;
 
-            return ReadField< T >( _sheet.ColumnsByOffset[ offset ].Type );
+            return ReadField< T >( flag );
         }
 
         /// <summary>

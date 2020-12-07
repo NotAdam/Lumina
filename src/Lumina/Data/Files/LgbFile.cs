@@ -20,9 +20,11 @@ namespace Lumina.Data.Files
 
             public static FileHeader Read( BinaryReader br )
             {
-                return new FileHeader
+                return new()
                 {
-                    FileID = br.ReadChars( 4 ), FileSize = br.ReadInt32(), TotalChunkCount = br.ReadInt32()
+                    FileID = br.ReadChars( 4 ),
+                    FileSize = br.ReadInt32(),
+                    TotalChunkCount = br.ReadInt32()
                 };
             }
         }
@@ -37,10 +39,10 @@ namespace Lumina.Data.Files
             ChunkHeader = LayerCommon.LayerChunk.Read( Reader );
             Layers = new LayerCommon.Layer[ChunkHeader.LayersCount];
 
-            long start = FileStream.Position;
-            var layerOffsets = Reader.ReadStructures< Int32 >( ChunkHeader.LayersCount );
+            var start = FileStream.Position;
+            var layerOffsets = Reader.ReadStructures< int >( ChunkHeader.LayersCount );
 
-            for( int i = 0; i < ChunkHeader.LayersCount; i++ )
+            for( var i = 0; i < ChunkHeader.LayersCount; i++ )
             {
                 FileStream.Position = start + layerOffsets[ i ];
                 Layers[ i ] = LayerCommon.Layer.Read( Reader );
