@@ -6,36 +6,48 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDCrafterSupply", columnHash: 0x888c75d1 )]
+    [Sheet( "HWDCrafterSupply", columnHash: 0xa04b4cc9 )]
     public class HWDCrafterSupply : IExcelRow
     {
         
         public LazyRow< Item >[] ItemTradeIn;
         public byte[] Level;
         public byte[] LevelMax;
-        public byte Unknown51;
-        public byte Unknown52;
-        public byte Unknown53;
-        public byte Unknown54;
-        public byte Unknown55;
-        public byte Unknown56;
-        public byte Unknown57;
-        public byte Unknown58;
-        public byte Unknown59;
-        public byte Unknown60;
-        public byte Unknown61;
-        public byte Unknown62;
-        public byte Unknown63;
-        public byte Unknown64;
-        public byte Unknown65;
-        public byte Unknown66;
-        public byte Unknown67;
-        public ushort[] BaseCollectableRating;
+        public byte[] BaseCollectableRating;
         public ushort[] MidCollectableRating;
         public ushort[] HighCollectableRating;
-        public LazyRow< HWDCrafterSupplyReward >[] BaseCollectableReward;
-        public LazyRow< HWDCrafterSupplyReward >[] MidCollectableReward;
-        public LazyRow< HWDCrafterSupplyReward >[] HighCollectableReward;
+        public ushort Unknown138;
+        public ushort Unknown139;
+        public ushort Unknown140;
+        public ushort Unknown141;
+        public ushort Unknown142;
+        public ushort Unknown143;
+        public ushort Unknown144;
+        public ushort Unknown145;
+        public ushort Unknown146;
+        public ushort Unknown147;
+        public ushort Unknown148;
+        public ushort Unknown149;
+        public ushort Unknown150;
+        public ushort Unknown151;
+        public ushort Unknown152;
+        public ushort Unknown153;
+        public ushort Unknown154;
+        public ushort Unknown155;
+        public ushort Unknown156;
+        public ushort Unknown157;
+        public ushort Unknown158;
+        public ushort Unknown159;
+        public ushort Unknown160;
+        public ushort Unknown161;
+        public ushort Unknown162;
+        public ushort Unknown163;
+        public ushort Unknown164;
+        public ushort Unknown165;
+        public ushort Unknown166;
+        public ushort Unknown167;
+        public ushort Unknown168;
+        public ushort Unknown169;
         public ushort Unknown170;
         public ushort Unknown171;
         public ushort Unknown172;
@@ -87,6 +99,18 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown218;
         public ushort Unknown219;
         public ushort Unknown220;
+        public ushort Unknown221;
+        public ushort Unknown222;
+        public ushort Unknown223;
+        public ushort Unknown224;
+        public ushort Unknown225;
+        public ushort Unknown226;
+        public ushort Unknown227;
+        public ushort Unknown228;
+        public ushort Unknown229;
+        public LazyRow< HWDCrafterSupplyReward >[] BaseCollectableReward;
+        public LazyRow< HWDCrafterSupplyReward >[] MidCollectableReward;
+        public LazyRow< HWDCrafterSupplyReward >[] HighCollectableReward;
         public LazyRow< HWDCrafterSupplyTerm >[] TermName;
         
         public uint RowId { get; set; }
@@ -97,50 +121,56 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            ItemTradeIn = new LazyRow< Item >[ 17 ];
-            for( var i = 0; i < 17; i++ )
+            ItemTradeIn = new LazyRow< Item >[ 23 ];
+            for( var i = 0; i < 23; i++ )
                 ItemTradeIn[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 + i ), language );
-            Level = new byte[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                Level[ i ] = parser.ReadColumn< byte >( 17 + i );
-            LevelMax = new byte[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                LevelMax[ i ] = parser.ReadColumn< byte >( 34 + i );
-            Unknown51 = parser.ReadColumn< byte >( 51 );
-            Unknown52 = parser.ReadColumn< byte >( 52 );
-            Unknown53 = parser.ReadColumn< byte >( 53 );
-            Unknown54 = parser.ReadColumn< byte >( 54 );
-            Unknown55 = parser.ReadColumn< byte >( 55 );
-            Unknown56 = parser.ReadColumn< byte >( 56 );
-            Unknown57 = parser.ReadColumn< byte >( 57 );
-            Unknown58 = parser.ReadColumn< byte >( 58 );
-            Unknown59 = parser.ReadColumn< byte >( 59 );
-            Unknown60 = parser.ReadColumn< byte >( 60 );
-            Unknown61 = parser.ReadColumn< byte >( 61 );
-            Unknown62 = parser.ReadColumn< byte >( 62 );
-            Unknown63 = parser.ReadColumn< byte >( 63 );
-            Unknown64 = parser.ReadColumn< byte >( 64 );
-            Unknown65 = parser.ReadColumn< byte >( 65 );
-            Unknown66 = parser.ReadColumn< byte >( 66 );
-            Unknown67 = parser.ReadColumn< byte >( 67 );
-            BaseCollectableRating = new ushort[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                BaseCollectableRating[ i ] = parser.ReadColumn< ushort >( 68 + i );
-            MidCollectableRating = new ushort[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                MidCollectableRating[ i ] = parser.ReadColumn< ushort >( 85 + i );
-            HighCollectableRating = new ushort[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                HighCollectableRating[ i ] = parser.ReadColumn< ushort >( 102 + i );
-            BaseCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                BaseCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 119 + i ), language );
-            MidCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                MidCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 136 + i ), language );
-            HighCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                HighCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 153 + i ), language );
+            Level = new byte[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                Level[ i ] = parser.ReadColumn< byte >( 23 + i );
+            LevelMax = new byte[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                LevelMax[ i ] = parser.ReadColumn< byte >( 46 + i );
+            BaseCollectableRating = new byte[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                BaseCollectableRating[ i ] = parser.ReadColumn< byte >( 69 + i );
+            MidCollectableRating = new ushort[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                MidCollectableRating[ i ] = parser.ReadColumn< ushort >( 92 + i );
+            HighCollectableRating = new ushort[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                HighCollectableRating[ i ] = parser.ReadColumn< ushort >( 115 + i );
+            Unknown138 = parser.ReadColumn< ushort >( 138 );
+            Unknown139 = parser.ReadColumn< ushort >( 139 );
+            Unknown140 = parser.ReadColumn< ushort >( 140 );
+            Unknown141 = parser.ReadColumn< ushort >( 141 );
+            Unknown142 = parser.ReadColumn< ushort >( 142 );
+            Unknown143 = parser.ReadColumn< ushort >( 143 );
+            Unknown144 = parser.ReadColumn< ushort >( 144 );
+            Unknown145 = parser.ReadColumn< ushort >( 145 );
+            Unknown146 = parser.ReadColumn< ushort >( 146 );
+            Unknown147 = parser.ReadColumn< ushort >( 147 );
+            Unknown148 = parser.ReadColumn< ushort >( 148 );
+            Unknown149 = parser.ReadColumn< ushort >( 149 );
+            Unknown150 = parser.ReadColumn< ushort >( 150 );
+            Unknown151 = parser.ReadColumn< ushort >( 151 );
+            Unknown152 = parser.ReadColumn< ushort >( 152 );
+            Unknown153 = parser.ReadColumn< ushort >( 153 );
+            Unknown154 = parser.ReadColumn< ushort >( 154 );
+            Unknown155 = parser.ReadColumn< ushort >( 155 );
+            Unknown156 = parser.ReadColumn< ushort >( 156 );
+            Unknown157 = parser.ReadColumn< ushort >( 157 );
+            Unknown158 = parser.ReadColumn< ushort >( 158 );
+            Unknown159 = parser.ReadColumn< ushort >( 159 );
+            Unknown160 = parser.ReadColumn< ushort >( 160 );
+            Unknown161 = parser.ReadColumn< ushort >( 161 );
+            Unknown162 = parser.ReadColumn< ushort >( 162 );
+            Unknown163 = parser.ReadColumn< ushort >( 163 );
+            Unknown164 = parser.ReadColumn< ushort >( 164 );
+            Unknown165 = parser.ReadColumn< ushort >( 165 );
+            Unknown166 = parser.ReadColumn< ushort >( 166 );
+            Unknown167 = parser.ReadColumn< ushort >( 167 );
+            Unknown168 = parser.ReadColumn< ushort >( 168 );
+            Unknown169 = parser.ReadColumn< ushort >( 169 );
             Unknown170 = parser.ReadColumn< ushort >( 170 );
             Unknown171 = parser.ReadColumn< ushort >( 171 );
             Unknown172 = parser.ReadColumn< ushort >( 172 );
@@ -192,9 +222,27 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown218 = parser.ReadColumn< ushort >( 218 );
             Unknown219 = parser.ReadColumn< ushort >( 219 );
             Unknown220 = parser.ReadColumn< ushort >( 220 );
-            TermName = new LazyRow< HWDCrafterSupplyTerm >[ 17 ];
-            for( var i = 0; i < 17; i++ )
-                TermName[ i ] = new LazyRow< HWDCrafterSupplyTerm >( lumina, parser.ReadColumn< byte >( 221 + i ), language );
+            Unknown221 = parser.ReadColumn< ushort >( 221 );
+            Unknown222 = parser.ReadColumn< ushort >( 222 );
+            Unknown223 = parser.ReadColumn< ushort >( 223 );
+            Unknown224 = parser.ReadColumn< ushort >( 224 );
+            Unknown225 = parser.ReadColumn< ushort >( 225 );
+            Unknown226 = parser.ReadColumn< ushort >( 226 );
+            Unknown227 = parser.ReadColumn< ushort >( 227 );
+            Unknown228 = parser.ReadColumn< ushort >( 228 );
+            Unknown229 = parser.ReadColumn< ushort >( 229 );
+            BaseCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                BaseCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 230 + i ), language );
+            MidCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                MidCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 253 + i ), language );
+            HighCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                HighCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 276 + i ), language );
+            TermName = new LazyRow< HWDCrafterSupplyTerm >[ 23 ];
+            for( var i = 0; i < 23; i++ )
+                TermName[ i ] = new LazyRow< HWDCrafterSupplyTerm >( lumina, parser.ReadColumn< byte >( 299 + i ), language );
         }
     }
 }

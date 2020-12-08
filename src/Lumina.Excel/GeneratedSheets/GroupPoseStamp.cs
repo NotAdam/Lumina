@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GroupPoseStamp", columnHash: 0xf11408ee )]
+    [Sheet( "GroupPoseStamp", columnHash: 0x168074a1 )]
     public class GroupPoseStamp : IExcelRow
     {
         
@@ -14,8 +14,10 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown1;
         public LazyRow< GroupPoseStampCategory > Category;
         public ushort Unknown3;
-        public bool Unknown4;
-        public bool Unknown5;
+        public int Unknown540;
+        public bool Unknown541;
+        public bool Unknown6;
+        public bool Unknown7;
         public SeString Name;
         
         public uint RowId { get; set; }
@@ -30,9 +32,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1 = parser.ReadColumn< int >( 1 );
             Category = new LazyRow< GroupPoseStampCategory >( lumina, parser.ReadColumn< int >( 2 ), language );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
-            Unknown4 = parser.ReadColumn< bool >( 4 );
-            Unknown5 = parser.ReadColumn< bool >( 5 );
-            Name = parser.ReadColumn< SeString >( 6 );
+            Unknown540 = parser.ReadColumn< int >( 4 );
+            Unknown541 = parser.ReadColumn< bool >( 5 );
+            Unknown6 = parser.ReadColumn< bool >( 6 );
+            Unknown7 = parser.ReadColumn< bool >( 7 );
+            Name = parser.ReadColumn< SeString >( 8 );
         }
     }
 }

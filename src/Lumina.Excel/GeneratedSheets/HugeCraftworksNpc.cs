@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HugeCraftworksNpc", columnHash: 0x79685419 )]
+    [Sheet( "HugeCraftworksNpc", columnHash: 0xb9ae7ade )]
     public class HugeCraftworksNpc : IExcelRow
     {
         

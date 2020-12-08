@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentMemberType", columnHash: 0x48587c6d )]
+    [Sheet( "ContentMemberType", columnHash: 0x65d5ee00 )]
     public class ContentMemberType : IExcelRow
     {
         
@@ -23,11 +23,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte HealersPerParty;
         public byte MeleesPerParty;
         public byte RangedPerParty;
-        public bool Unknown13;
+        public byte Unknown54;
         public bool Unknown14;
         public bool Unknown15;
         public bool Unknown16;
         public bool Unknown17;
+        public bool Unknown18;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -50,11 +51,12 @@ namespace Lumina.Excel.GeneratedSheets
             HealersPerParty = parser.ReadColumn< byte >( 10 );
             MeleesPerParty = parser.ReadColumn< byte >( 11 );
             RangedPerParty = parser.ReadColumn< byte >( 12 );
-            Unknown13 = parser.ReadColumn< bool >( 13 );
+            Unknown54 = parser.ReadColumn< byte >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
             Unknown15 = parser.ReadColumn< bool >( 15 );
             Unknown16 = parser.ReadColumn< bool >( 16 );
             Unknown17 = parser.ReadColumn< bool >( 17 );
+            Unknown18 = parser.ReadColumn< bool >( 18 );
         }
     }
 }

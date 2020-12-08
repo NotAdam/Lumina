@@ -10,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class AirshipExplorationLevel : IExcelRow
     {
         
-        public ushort Unknown0;
+        public ushort Capacity;
         public uint ExpToNext;
         
         public uint RowId { get; set; }
@@ -21,7 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Unknown0 = parser.ReadColumn< ushort >( 0 );
+            Capacity = parser.ReadColumn< ushort >( 0 );
             ExpToNext = parser.ReadColumn< uint >( 1 );
         }
     }

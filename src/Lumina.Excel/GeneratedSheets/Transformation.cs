@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Transformation", columnHash: 0xcd364718 )]
+    [Sheet( "Transformation", columnHash: 0xebf905a5 )]
     public class Transformation : IExcelRow
     {
         
@@ -46,6 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Unknown33;
         public LazyRow< Action > Action7;
         public byte Unknown35;
+        public bool Unknown54;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -91,6 +92,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown33 = parser.ReadColumn< sbyte >( 33 );
             Action7 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 34 ), language );
             Unknown35 = parser.ReadColumn< byte >( 35 );
+            Unknown54 = parser.ReadColumn< bool >( 36 );
         }
     }
 }

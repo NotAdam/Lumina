@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentFinderCondition", columnHash: 0x2b65936c )]
+    [Sheet( "ContentFinderCondition", columnHash: 0x5d623828 )]
     public class ContentFinderCondition : IExcelRow
     {
         
@@ -35,17 +35,18 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown22;
         public bool Unknown23;
         public bool Unknown24;
-        public byte Unknown25;
-        public bool Unknown26;
+        public bool Unknown25;
+        public byte Unknown26;
+        public bool Unknown27;
         public bool HighEndDuty;
-        public bool Unknown28;
         public bool Unknown29;
         public bool Unknown30;
+        public bool Unknown31;
         public bool DutyRecorderAllowed;
-        public bool Unknown32;
         public bool Unknown33;
         public bool Unknown34;
         public bool Unknown35;
+        public bool Unknown36;
         public SeString Name;
         public LazyRow< ContentType > ContentType;
         public byte TransientKey;
@@ -53,7 +54,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort SortKey;
         public uint Image;
         public uint Icon;
-        public sbyte Unknown43;
+        public sbyte Unknown44;
         public bool LevelingRoulette;
         public bool Level5060Roulette;
         public bool MSQRoulette;
@@ -63,15 +64,14 @@ namespace Lumina.Excel.GeneratedSheets
         public bool DailyFrontlineChallenge;
         public bool Level70Roulette;
         public bool MentorRoulette;
-        public bool Unknown53;
         public bool Unknown54;
         public bool Unknown55;
         public bool Unknown56;
         public bool Unknown57;
+        public bool Unknown58;
         public bool AllianceRoulette;
-        public bool Unknown59;
+        public bool Unknown60;
         public bool NormalRaidRoulette;
-        public bool Unknown61;
         public bool Unknown62;
         public bool Unknown63;
         public bool Unknown64;
@@ -93,6 +93,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown80;
         public bool Unknown81;
         public bool Unknown82;
+        public bool Unknown83;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -127,43 +128,43 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown22 = parser.ReadColumn< bool >( 22 );
             Unknown23 = parser.ReadColumn< bool >( 23 );
             Unknown24 = parser.ReadColumn< bool >( 24 );
-            Unknown25 = parser.ReadColumn< byte >( 25 );
-            Unknown26 = parser.ReadColumn< bool >( 26 );
-            HighEndDuty = parser.ReadColumn< bool >( 27 );
-            Unknown28 = parser.ReadColumn< bool >( 28 );
+            Unknown25 = parser.ReadColumn< bool >( 25 );
+            Unknown26 = parser.ReadColumn< byte >( 26 );
+            Unknown27 = parser.ReadColumn< bool >( 27 );
+            HighEndDuty = parser.ReadColumn< bool >( 28 );
             Unknown29 = parser.ReadColumn< bool >( 29 );
             Unknown30 = parser.ReadColumn< bool >( 30 );
-            DutyRecorderAllowed = parser.ReadColumn< bool >( 31 );
-            Unknown32 = parser.ReadColumn< bool >( 32 );
+            Unknown31 = parser.ReadColumn< bool >( 31 );
+            DutyRecorderAllowed = parser.ReadColumn< bool >( 32 );
             Unknown33 = parser.ReadColumn< bool >( 33 );
             Unknown34 = parser.ReadColumn< bool >( 34 );
             Unknown35 = parser.ReadColumn< bool >( 35 );
-            Name = parser.ReadColumn< SeString >( 36 );
-            ContentType = new LazyRow< ContentType >( lumina, parser.ReadColumn< byte >( 37 ), language );
-            TransientKey = parser.ReadColumn< byte >( 38 );
-            Transient = parser.ReadColumn< uint >( 39 );
-            SortKey = parser.ReadColumn< ushort >( 40 );
-            Image = parser.ReadColumn< uint >( 41 );
-            Icon = parser.ReadColumn< uint >( 42 );
-            Unknown43 = parser.ReadColumn< sbyte >( 43 );
-            LevelingRoulette = parser.ReadColumn< bool >( 44 );
-            Level5060Roulette = parser.ReadColumn< bool >( 45 );
-            MSQRoulette = parser.ReadColumn< bool >( 46 );
-            GuildHestRoulette = parser.ReadColumn< bool >( 47 );
-            ExpertRoulette = parser.ReadColumn< bool >( 48 );
-            TrialRoulette = parser.ReadColumn< bool >( 49 );
-            DailyFrontlineChallenge = parser.ReadColumn< bool >( 50 );
-            Level70Roulette = parser.ReadColumn< bool >( 51 );
-            MentorRoulette = parser.ReadColumn< bool >( 52 );
-            Unknown53 = parser.ReadColumn< bool >( 53 );
+            Unknown36 = parser.ReadColumn< bool >( 36 );
+            Name = parser.ReadColumn< SeString >( 37 );
+            ContentType = new LazyRow< ContentType >( lumina, parser.ReadColumn< byte >( 38 ), language );
+            TransientKey = parser.ReadColumn< byte >( 39 );
+            Transient = parser.ReadColumn< uint >( 40 );
+            SortKey = parser.ReadColumn< ushort >( 41 );
+            Image = parser.ReadColumn< uint >( 42 );
+            Icon = parser.ReadColumn< uint >( 43 );
+            Unknown44 = parser.ReadColumn< sbyte >( 44 );
+            LevelingRoulette = parser.ReadColumn< bool >( 45 );
+            Level5060Roulette = parser.ReadColumn< bool >( 46 );
+            MSQRoulette = parser.ReadColumn< bool >( 47 );
+            GuildHestRoulette = parser.ReadColumn< bool >( 48 );
+            ExpertRoulette = parser.ReadColumn< bool >( 49 );
+            TrialRoulette = parser.ReadColumn< bool >( 50 );
+            DailyFrontlineChallenge = parser.ReadColumn< bool >( 51 );
+            Level70Roulette = parser.ReadColumn< bool >( 52 );
+            MentorRoulette = parser.ReadColumn< bool >( 53 );
             Unknown54 = parser.ReadColumn< bool >( 54 );
             Unknown55 = parser.ReadColumn< bool >( 55 );
             Unknown56 = parser.ReadColumn< bool >( 56 );
             Unknown57 = parser.ReadColumn< bool >( 57 );
-            AllianceRoulette = parser.ReadColumn< bool >( 58 );
-            Unknown59 = parser.ReadColumn< bool >( 59 );
-            NormalRaidRoulette = parser.ReadColumn< bool >( 60 );
-            Unknown61 = parser.ReadColumn< bool >( 61 );
+            Unknown58 = parser.ReadColumn< bool >( 58 );
+            AllianceRoulette = parser.ReadColumn< bool >( 59 );
+            Unknown60 = parser.ReadColumn< bool >( 60 );
+            NormalRaidRoulette = parser.ReadColumn< bool >( 61 );
             Unknown62 = parser.ReadColumn< bool >( 62 );
             Unknown63 = parser.ReadColumn< bool >( 63 );
             Unknown64 = parser.ReadColumn< bool >( 64 );
@@ -185,6 +186,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown80 = parser.ReadColumn< bool >( 80 );
             Unknown81 = parser.ReadColumn< bool >( 81 );
             Unknown82 = parser.ReadColumn< bool >( 82 );
+            Unknown83 = parser.ReadColumn< bool >( 83 );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Frontline04", columnHash: 0xdb491bc6 )]
+    [Sheet( "Frontline04", columnHash: 0x26885afa )]
     public class Frontline04 : IExcelRow
     {
         

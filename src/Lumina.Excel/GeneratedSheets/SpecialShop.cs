@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SpecialShop", columnHash: 0x133a5f81 )]
+    [Sheet( "SpecialShop", columnHash: 0x86d645dc )]
     public class SpecialShop : IExcelRow
     {
         public struct UnkStruct1Struct
@@ -1271,7 +1271,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown1439;
         public byte Unknown1440;
         public ushort[] PatchNumber;
-        public bool UseCurrencyType;
+        public byte UseCurrencyType;
         public LazyRow< Quest > QuestUnlock;
         public LazyRow< DefaultTalk > CompleteText;
         public LazyRow< DefaultTalk > NotCompleteText;
@@ -2557,7 +2557,7 @@ namespace Lumina.Excel.GeneratedSheets
             PatchNumber = new ushort[ 60 ];
             for( var i = 0; i < 60; i++ )
                 PatchNumber[ i ] = parser.ReadColumn< ushort >( 1441 + i );
-            UseCurrencyType = parser.ReadColumn< bool >( 1501 );
+            UseCurrencyType = parser.ReadColumn< byte >( 1501 );
             QuestUnlock = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1502 ), language );
             CompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< int >( 1503 ), language );
             NotCompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< int >( 1504 ), language );

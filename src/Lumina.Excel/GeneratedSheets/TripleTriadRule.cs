@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TripleTriadRule", columnHash: 0x48d210b8 )]
+    [Sheet( "TripleTriadRule", columnHash: 0x83e50db1 )]
     public class TripleTriadRule : IExcelRow
     {
         
@@ -14,8 +14,9 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown1;
         public byte Unknown2;
         public byte Unknown3;
-        public byte Unknown4;
-        public int Unknown5;
+        public bool Unknown54;
+        public byte Unknown5;
+        public int Unknown6;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -29,8 +30,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1 = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
-            Unknown5 = parser.ReadColumn< int >( 5 );
+            Unknown54 = parser.ReadColumn< bool >( 4 );
+            Unknown5 = parser.ReadColumn< byte >( 5 );
+            Unknown6 = parser.ReadColumn< int >( 6 );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "WarpLogic", columnHash: 0x4684fa1c )]
+    [Sheet( "WarpLogic", columnHash: 0x78e83215 )]
     public class WarpLogic : IExcelRow
     {
         public struct UnkStruct13Struct

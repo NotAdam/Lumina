@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BenchmarkOverrideEquipment", columnHash: 0xdbb462d8 )]
+    [Sheet( "BenchmarkOverrideEquipment", columnHash: 0xd0ed99de )]
     public class BenchmarkOverrideEquipment : IExcelRow
     {
         

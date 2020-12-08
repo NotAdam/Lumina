@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Race", columnHash: 0x3cc6df2e )]
+    [Sheet( "Race", columnHash: 0x3403807a )]
     public class Race : IExcelRow
     {
         
@@ -20,6 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > RSEFHands;
         public LazyRow< Item > RSEFLegs;
         public LazyRow< Item > RSEFFeet;
+        public byte Unknown54;
         public LazyRow< ExVersion > ExPac;
         
         public uint RowId { get; set; }
@@ -40,7 +41,8 @@ namespace Lumina.Excel.GeneratedSheets
             RSEFHands = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 7 ), language );
             RSEFLegs = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 8 ), language );
             RSEFFeet = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 9 ), language );
-            ExPac = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 10 ), language );
+            Unknown54 = parser.ReadColumn< byte >( 10 );
+            ExPac = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 11 ), language );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Quest", columnHash: 0xfc57448f )]
+    [Sheet( "Quest", columnHash: 0x3ca4d6c2 )]
     public class Quest : IExcelRow
     {
         
@@ -282,6 +282,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< EventIconType > EventIconType;
         public byte Unknown1513;
         public ushort SortKey;
+        public bool Unknown54;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -635,6 +636,7 @@ namespace Lumina.Excel.GeneratedSheets
             EventIconType = new LazyRow< EventIconType >( lumina, parser.ReadColumn< byte >( 1512 ), language );
             Unknown1513 = parser.ReadColumn< byte >( 1513 );
             SortKey = parser.ReadColumn< ushort >( 1514 );
+            Unknown54 = parser.ReadColumn< bool >( 1515 );
         }
     }
 }

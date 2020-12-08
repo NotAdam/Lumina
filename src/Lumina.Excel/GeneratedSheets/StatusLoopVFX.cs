@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "StatusLoopVFX", columnHash: 0xe9330973 )]
+    [Sheet( "StatusLoopVFX", columnHash: 0xaa82c4a9 )]
     public class StatusLoopVFX : IExcelRow
     {
         
@@ -18,6 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown5;
         public byte Unknown6;
         public bool Unknown7;
+        public bool Unknown8;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -35,6 +36,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< bool >( 7 );
+            Unknown8 = parser.ReadColumn< bool >( 8 );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "NpcYell", columnHash: 0xbd07b3cb )]
+    [Sheet( "NpcYell", columnHash: 0xec4840d6 )]
     public class NpcYell : IExcelRow
     {
         
@@ -19,8 +19,8 @@ namespace Lumina.Excel.GeneratedSheets
         public float BalloonTime;
         public bool IsBalloonSlow;
         public bool BattleTalkTime;
-        public float Text;
-        public SeString Unknown10;
+        public byte Unknown54;
+        public SeString Text;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -39,8 +39,8 @@ namespace Lumina.Excel.GeneratedSheets
             BalloonTime = parser.ReadColumn< float >( 6 );
             IsBalloonSlow = parser.ReadColumn< bool >( 7 );
             BattleTalkTime = parser.ReadColumn< bool >( 8 );
-            Text = parser.ReadColumn< float >( 9 );
-            Unknown10 = parser.ReadColumn< SeString >( 10 );
+            Unknown54 = parser.ReadColumn< byte >( 9 );
+            Text = parser.ReadColumn< SeString >( 10 );
         }
     }
 }

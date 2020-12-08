@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringPointBonus", columnHash: 0xc7bd9244 )]
+    [Sheet( "GatheringPointBonus", columnHash: 0xcd832c29 )]
     public class GatheringPointBonus : IExcelRow
     {
         
@@ -16,7 +16,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< GatheringPointBonusType > BonusType;
         public ushort BonusValue;
         public ushort Unknown5;
-        public bool AddedIn53;
+        public bool Unknown53;
+        public uint Unknown54;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -32,7 +33,8 @@ namespace Lumina.Excel.GeneratedSheets
             BonusType = new LazyRow< GatheringPointBonusType >( lumina, parser.ReadColumn< byte >( 3 ), language );
             BonusValue = parser.ReadColumn< ushort >( 4 );
             Unknown5 = parser.ReadColumn< ushort >( 5 );
-            AddedIn53 = parser.ReadColumn< bool >( 6 );
+            Unknown53 = parser.ReadColumn< bool >( 6 );
+            Unknown54 = parser.ReadColumn< uint >( 7 );
         }
     }
 }

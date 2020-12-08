@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PartyContent", columnHash: 0x54e6a214 )]
+    [Sheet( "PartyContent", columnHash: 0x0fe3ae35 )]
     public class PartyContent : IExcelRow
     {
         

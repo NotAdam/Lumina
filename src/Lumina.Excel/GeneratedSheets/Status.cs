@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Status", columnHash: 0x6a0f00f4 )]
+    [Sheet( "Status", columnHash: 0xec4473bc )]
     public class Status : IExcelRow
     {
         
@@ -56,7 +56,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Category = parser.ReadColumn< byte >( 5 );
             HitEffect = new LazyRow< StatusHitEffect >( lumina, parser.ReadColumn< byte >( 6 ), language );
-            VFX = new LazyRow< StatusLoopVFX >( lumina, parser.ReadColumn< byte >( 7 ), language );
+            VFX = new LazyRow< StatusLoopVFX >( lumina, parser.ReadColumn< ushort >( 7 ), language );
             LockMovement = parser.ReadColumn< bool >( 8 );
             Unknown9 = parser.ReadColumn< bool >( 9 );
             LockActions = parser.ReadColumn< bool >( 10 );

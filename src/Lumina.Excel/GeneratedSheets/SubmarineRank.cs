@@ -10,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class SubmarineRank : IExcelRow
     {
         
-        public ushort Rank;
+        public ushort Capacity;
         public uint ExpToNext;
         public byte SurveillanceBonus;
         public byte RetrievalBonus;
@@ -26,7 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             RowId = parser.Row;
             SubRowId = parser.SubRow;
 
-            Rank = parser.ReadColumn< ushort >( 0 );
+            Capacity = parser.ReadColumn< ushort >( 0 );
             ExpToNext = parser.ReadColumn< uint >( 1 );
             SurveillanceBonus = parser.ReadColumn< byte >( 2 );
             RetrievalBonus = parser.ReadColumn< byte >( 3 );

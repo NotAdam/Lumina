@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CustomTalk", columnHash: 0x74541fa8 )]
+    [Sheet( "CustomTalk", columnHash: 0x2a751293 )]
     public class CustomTalk : IExcelRow
     {
         
@@ -29,7 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown74;
         public uint Unknown75;
         public byte Unknown76;
-        public bool Unknown77;
+        public bool Unknown54;
+        public bool Unknown78;
         
         public uint RowId { get; set; }
         public uint SubRowId { get; set; }
@@ -62,7 +63,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown74 = parser.ReadColumn< bool >( 74 );
             Unknown75 = parser.ReadColumn< uint >( 75 );
             Unknown76 = parser.ReadColumn< byte >( 76 );
-            Unknown77 = parser.ReadColumn< bool >( 77 );
+            Unknown54 = parser.ReadColumn< bool >( 77 );
+            Unknown78 = parser.ReadColumn< bool >( 78 );
         }
     }
 }

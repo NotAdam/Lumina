@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CompanyCraftProcess", columnHash: 0x090b916f )]
+    [Sheet( "CompanyCraftProcess", columnHash: 0x3135b48e )]
     public class CompanyCraftProcess : IExcelRow
     {
         public struct UnkStruct0Struct

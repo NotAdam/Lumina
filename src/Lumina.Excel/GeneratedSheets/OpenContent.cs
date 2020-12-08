@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "OpenContent", columnHash: 0xbdff33b7 )]
+    [Sheet( "OpenContent", columnHash: 0x170b114d )]
     public class OpenContent : IExcelRow
     {
         
