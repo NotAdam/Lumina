@@ -1,0 +1,26 @@
+// ReSharper disable All
+
+using Lumina.Text;
+using Lumina.Data;
+using Lumina.Data.Structs.Excel;
+
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "WebURL", columnHash: 0xdebb20e3 )]
+    public class WebURL : IExcelRow
+    {
+        
+        public SeString URL;
+        
+        public uint RowId { get; set; }
+        public uint SubRowId { get; set; }
+
+        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        {
+            RowId = parser.Row;
+            SubRowId = parser.SubRow;
+
+            URL = parser.ReadColumn< SeString >( 0 );
+        }
+    }
+}
