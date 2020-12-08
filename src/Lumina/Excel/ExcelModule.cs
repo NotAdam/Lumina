@@ -43,7 +43,7 @@ namespace Lumina.Excel
             // load all sheet names first
             var files = _lumina.GetFile< ExcelListFile >( "exd/root.exl" );
 
-            Debug.WriteLine( $"got {files.ExdMap.Count} exlt entries" );
+            _lumina.Logger?.Information("got {ExltEntryCount} exlt entries", files.ExdMap.Count);
 
             foreach( var map in files.ExdMap )
             {
@@ -213,9 +213,19 @@ namespace Lumina.Excel
         /// Returns a raw accessor to an excel sheet allowing you to skip templated row access entirely.
         /// </summary>
         /// <param name="name">Name of the sheet to load</param>
+        /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
+        public ExcelSheetImpl GetSheetRaw( string name )
+        {
+            return GetSheetRaw( name, _lumina.Options.DefaultExcelLanguage );
+        }
+
+        /// <summary>
+        /// Returns a raw accessor to an excel sheet allowing you to skip templated row access entirely.
+        /// </summary>
+        /// <param name="name">Name of the sheet to load</param>
         /// <param name="language">The requested language to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl GetSheetRaw( string name, Language language = Language.None )
+        public ExcelSheetImpl GetSheetRaw( string name, Language language )
         {
             // todo: duped code is a bit ass but zzz
             // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on

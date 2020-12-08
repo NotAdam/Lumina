@@ -113,6 +113,7 @@ namespace Lumina.Extensions
             br.BaseStream.Position = offset;
         }
 
+        /// <summary>
         /// Constructs a StringOffset in place and reads the string for you given an start offset
         /// </summary>
         /// <param name="br">The reader to use to read the string</param>
@@ -121,6 +122,31 @@ namespace Lumina.Extensions
         public static StringOffset ReadStringOffset( this BinaryReader br, long offset )
         {
             return new StringOffset( br, offset );
+        }
+
+        /// <summary>
+        /// Reads a byte and moves the stream position back to where it started before the operation
+        /// </summary>
+        /// <param name="br">The reader to use to read the byte</param>
+        /// <returns>The byte that was read</returns>
+        public static byte PeekByte( this BinaryReader br )
+        {
+            var data = br.ReadByte();
+            br.BaseStream.Position--;
+            return data;
+        }
+
+        /// <summary>
+        /// Reads bytes and moves the stream position back to where it started before the operation
+        /// </summary>
+        /// <param name="br">The reader to use to read the bytes</param>
+        /// <param name="count">The number of bytes to read</param>
+        /// <returns>The read bytes</returns>
+        public static byte[] PeekBytes( this BinaryReader br, int count )
+        {
+            var data = br.ReadBytes( count );
+            br.BaseStream.Position -= count;
+            return data;
         }
     }
 }
