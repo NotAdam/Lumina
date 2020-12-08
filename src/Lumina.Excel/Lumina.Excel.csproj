@@ -9,7 +9,7 @@
         <RepositoryUrl>https://github.com/NotAdam/Lumina</RepositoryUrl>
         <PackageVersion>5.40.0</PackageVersion>
         <FileVersion>5.40.0</FileVersion>
-        <Description>Generated structures for Lumina.</Description>
+        <Description>Typed definitions to access excel sheet data in FINAL FANTASY XIV.</Description>
     </PropertyGroup>
 
     <ItemGroup>
