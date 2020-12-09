@@ -37,6 +37,10 @@ namespace Lumina.Excel
             }
 
             var parser = GetRowParser( row, subRow );
+            if( parser == null )
+            {
+                return null;
+            }
             
             var rowObj = Activator.CreateInstance< T >();
             rowObj.PopulateData( parser, _Lumina, RequestedLanguage );
