@@ -120,6 +120,22 @@ namespace Lumina.Excel
             return (ulong)type.Assembly.Location.GetHashCode() << 32 | (uint)type.MetadataToken;
         }
 
+        /// <summary>
+        /// Remove a sheet from the cache completely and free any related resources
+        /// </summary>
+        /// <typeparam name="T">The sheet type</typeparam>
+        public void RemoveSheetFromCache< T >() where T : class, IExcelRow
+        {
+            var tid = BuildTypeIdentifier( typeof( T ) );
+            
+            foreach( Language language in Enum.GetValues( typeof( Language ) ) )
+            {
+                var id = Tuple.Create( language, tid );
+
+                _sheetCache.Remove( id );
+            }
+        }
+
         private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
