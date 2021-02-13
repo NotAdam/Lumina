@@ -25,7 +25,7 @@ namespace Lumina.Excel
     /// Allows for sheet definitions to contain entries which will lazily load the referenced sheet row
     /// </summary>
     /// <typeparam name="T">The row type to load</typeparam>
-    public class LazyRow< T > : ILazyRow where T : class, IExcelRow
+    public class LazyRow< T > : ILazyRow where T : ExcelRow
     {
         private readonly Lumina _lumina;
         private readonly uint _row;

@@ -27,6 +27,11 @@ namespace Lumina.Excel
 
         private MemoryStream Stream => _dataFile.FileStream;
 
+        /// <summary>
+        /// Provides access to the base data generated for a sheet
+        /// </summary>
+        public ExcelSheetImpl Sheet => _sheet;
+
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
             _sheet = sheet;

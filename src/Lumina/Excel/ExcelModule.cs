@@ -74,9 +74,9 @@ namespace Lumina.Excel
         /// <summary>
         /// Attempts to load the base excel sheet given it's implementing row parser
         /// </summary>
-        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >() where T : class, IExcelRow
+        public ExcelSheet< T > GetSheet< T >() where T : ExcelRow
         {
             return GetSheet< T >( _lumina.Options.DefaultExcelLanguage );
         }
@@ -88,9 +88,9 @@ namespace Lumina.Excel
         /// If the language requested doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
         /// </remarks>
         /// <param name="language">The requested sheet language</param>
-        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( Language language ) where T : class, IExcelRow
+        public ExcelSheet< T > GetSheet< T >( Language language ) where T : ExcelRow
         {
             var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
 
@@ -108,9 +108,9 @@ namespace Lumina.Excel
         /// Useful for when a schema is shared (e.g. in the case of quest text sheets) as redefining loads of classes is wasteful.
         /// </summary>
         /// <param name="name">The name of a sheet</param>
-        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( string name ) where T : class, IExcelRow
+        public ExcelSheet< T > GetSheet< T >( string name ) where T : ExcelRow
         {
             return GetSheet< T >( name, _lumina.Options.DefaultExcelLanguage, null );
         }
@@ -124,7 +124,7 @@ namespace Lumina.Excel
         /// Remove a sheet from the cache completely and free any related resources
         /// </summary>
         /// <typeparam name="T">The sheet type</typeparam>
-        public void RemoveSheetFromCache< T >() where T : class, IExcelRow
+        public void RemoveSheetFromCache< T >() where T : ExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
             
@@ -136,7 +136,7 @@ namespace Lumina.Excel
             }
         }
 
-        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : class, IExcelRow
+        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : ExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
             var idNoLanguage = Tuple.Create( Language.None, tid );
@@ -169,7 +169,7 @@ namespace Lumina.Excel
             uint? expectedHash,
             Tuple< Language, ulong > key,
             Tuple< Language, ulong > noLangKey
-        ) where T : class, IExcelRow
+        ) where T : ExcelRow
         {
             _lumina.Logger?.Debug(
                 "sheet {SheetName} not in cache - creating new sheet for language {Language}",
@@ -262,13 +262,13 @@ namespace Lumina.Excel
         }
 
         /// <summary>
-        /// Checks whether a given <see cref="IExcelRow"/> decorated with a <see cref="SheetAttribute"/> has a column hash that matches a newly created hash
+        /// Checks whether a given <see cref="ExcelRow"/> decorated with a <see cref="SheetAttribute"/> has a column hash that matches a newly created hash
         /// of the column data from the <see cref="ExcelHeaderFile"/>.
         /// </summary>
-        /// <typeparam name="T">The <see cref="IExcelRow"/> to check</typeparam>
+        /// <typeparam name="T">The <see cref="ExcelRow"/> to check</typeparam>
         /// <returns>true if the hash matches</returns>
         /// <remarks>This function will return false if the <see cref="SheetAttribute"/> is missing or a column hash isn't specified in the attribute</remarks>
-        public bool SheetHashMatchesColumnDefinition< T >() where T : IExcelRow
+        public bool SheetHashMatchesColumnDefinition< T >() where T : ExcelRow
         {
             var type = typeof( T );
             var attr = type.GetCustomAttribute< SheetAttribute >();
