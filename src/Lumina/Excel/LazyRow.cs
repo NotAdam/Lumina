@@ -3,11 +3,29 @@ using Lumina.Data;
 
 namespace Lumina.Excel
 {
+    public interface ILazyRow
+    {
+        /// <summary>
+        /// The backing value/row that was passed through when creating the reference
+        /// </summary>
+        public uint Row { get; }
+        
+        /// <summary>
+        /// Checks whether something has loaded successfully.
+        /// </summary>
+        /// <remarks>
+        /// If something fails to load, this will still be false regardless.
+        /// </remarks>
+        public bool IsValueCreated { get; }
+        
+        public Language Language { get; }
+    }
+
     /// <summary>
     /// Allows for sheet definitions to contain entries which will lazily load the referenced sheet row
     /// </summary>
     /// <typeparam name="T">The row type to load</typeparam>
-    public class LazyRow< T > where T : class, IExcelRow
+    public class LazyRow< T > : ILazyRow where T : class, IExcelRow
     {
         private readonly Lumina _lumina;
         private readonly uint _row;
@@ -19,6 +37,8 @@ namespace Lumina.Excel
         /// The backing value/row that was passed through when creating the reference
         /// </summary>
         public uint Row => _row;
+
+        public Language Language => _language;
 
         /// <summary>
         /// Construct a new LazyRow instance
