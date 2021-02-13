@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SatisfactionSupplyReward", columnHash: 0xc81395f9 )]
-    public class SatisfactionSupplyReward : IExcelRow
+    public class SatisfactionSupplyReward : ExcelRow
     {
         public struct UnkStruct1Struct
         {
@@ -27,13 +27,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort GilMid;
         public ushort GilHigh;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 2 ];

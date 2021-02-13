@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftAction", columnHash: 0x6057073b )]
-    public class CraftAction : IExcelRow
+    public class CraftAction : ExcelRow
     {
         
         public SeString Name;
@@ -31,13 +31,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CraftAction > ALC;
         public LazyRow< CraftAction > CUL;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );

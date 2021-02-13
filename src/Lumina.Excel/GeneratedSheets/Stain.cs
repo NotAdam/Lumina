@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Stain", columnHash: 0xa2420e68 )]
-    public class Stain : IExcelRow
+    public class Stain : ExcelRow
     {
         
         public uint Color;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown4;
         public bool Unknown5;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Color = parser.ReadColumn< uint >( 0 );
             Shade = parser.ReadColumn< byte >( 1 );

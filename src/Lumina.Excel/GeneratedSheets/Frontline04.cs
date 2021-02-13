@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Frontline04", columnHash: 0x26885afa )]
-    public class Frontline04 : IExcelRow
+    public class Frontline04 : ExcelRow
     {
         
         public LazyRow< Level > Level1;
@@ -354,13 +354,10 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown367;
         public int Unknown368;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Level1 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ), language );
             Level2 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 1 ), language );

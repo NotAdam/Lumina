@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapMarkerRegion", columnHash: 0xe2747195 )]
-    public class MapMarkerRegion : IExcelRow
+    public class MapMarkerRegion : ExcelRow
     {
         
         public byte Unknown0;
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public short Unknown10;
         public bool Unknown11;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             X = parser.ReadColumn< short >( 1 );

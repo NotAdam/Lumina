@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcBase", columnHash: 0xdd911c47 )]
-    public class BNpcBase : IExcelRow
+    public class BNpcBase : ExcelRow
     {
         
         public LazyRow< Behavior > Behavior;
@@ -32,13 +32,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown19;
         public byte Unknown20;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Behavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Battalion = parser.ReadColumn< byte >( 1 );

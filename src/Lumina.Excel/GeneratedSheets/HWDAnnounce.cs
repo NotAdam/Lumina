@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDAnnounce", columnHash: 0x1d91a784 )]
-    public class HWDAnnounce : IExcelRow
+    public class HWDAnnounce : ExcelRow
     {
         
         public SeString Name;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown2;
         public byte Unknown3;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             ENPC = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 1 ), language );

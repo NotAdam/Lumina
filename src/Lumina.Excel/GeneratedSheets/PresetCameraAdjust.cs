@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PresetCameraAdjust", columnHash: 0x4cdff077 )]
-    public class PresetCameraAdjust : IExcelRow
+    public class PresetCameraAdjust : ExcelRow
     {
         
         public float Hyur_M;
@@ -25,13 +25,10 @@ namespace Lumina.Excel.GeneratedSheets
         public float Viera_M;
         public float Viera_F;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Hyur_M = parser.ReadColumn< float >( 0 );
             Hyur_F = parser.ReadColumn< float >( 1 );

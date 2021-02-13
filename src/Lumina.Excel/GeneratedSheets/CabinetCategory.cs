@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CabinetCategory", columnHash: 0xc6207018 )]
-    public class CabinetCategory : IExcelRow
+    public class CabinetCategory : ExcelRow
     {
         
         public byte MenuOrder;
         public int Icon;
         public LazyRow< Addon > Category;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             MenuOrder = parser.ReadColumn< byte >( 0 );
             Icon = parser.ReadColumn< int >( 1 );

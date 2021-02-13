@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Fate", columnHash: 0x7448945f )]
-    public class Fate : IExcelRow
+    public class Fate : ExcelRow
     {
         
         public byte EurekaFate;
@@ -48,13 +48,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< EventItem > TurnInEventItem;
         public ushort[] ObjectiveIcon;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             EurekaFate = parser.ReadColumn< byte >( 0 );
             Rule = parser.ReadColumn< byte >( 1 );

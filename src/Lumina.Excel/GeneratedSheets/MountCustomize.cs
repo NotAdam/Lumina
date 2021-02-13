@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MountCustomize", columnHash: 0x82bd7e3f )]
-    public class MountCustomize : IExcelRow
+    public class MountCustomize : ExcelRow
     {
         
         public bool Unknown0;
@@ -44,13 +44,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte VieraMaleCameraHeight;
         public byte VieraFemaleCameraHeight;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             HyurMaleScale = parser.ReadColumn< ushort >( 1 );

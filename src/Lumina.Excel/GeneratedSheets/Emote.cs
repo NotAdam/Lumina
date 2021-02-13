@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Emote", columnHash: 0xc4735d67 )]
-    public class Emote : IExcelRow
+    public class Emote : ExcelRow
     {
         
         public SeString Name;
@@ -21,20 +21,17 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown14;
         public bool HasCancelEmote;
         public bool DrawsWeapon;
-        public ushort Unknown17;
+        public ushort Order;
         public LazyRow< TextCommand > TextCommand;
         public ushort Icon;
         public LazyRow< LogMessage > LogMessageTargeted;
         public LazyRow< LogMessage > LogMessageUntargeted;
         public uint UnlockLink;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             ActionTimeline = new LazyRow< ActionTimeline >[ 7 ];
@@ -49,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown14 = parser.ReadColumn< bool >( 14 );
             HasCancelEmote = parser.ReadColumn< bool >( 15 );
             DrawsWeapon = parser.ReadColumn< bool >( 16 );
-            Unknown17 = parser.ReadColumn< ushort >( 17 );
+            Order = parser.ReadColumn< ushort >( 17 );
             TextCommand = new LazyRow< TextCommand >( lumina, parser.ReadColumn< int >( 18 ), language );
             Icon = parser.ReadColumn< ushort >( 19 );
             LogMessageTargeted = new LazyRow< LogMessage >( lumina, parser.ReadColumn< ushort >( 20 ), language );

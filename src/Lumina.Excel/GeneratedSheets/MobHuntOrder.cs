@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntOrder", columnHash: 0xa9aa9ab5 )]
-    public class MobHuntOrder : IExcelRow
+    public class MobHuntOrder : ExcelRow
     {
         
         public LazyRow< MobHuntTarget > Target;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Rank;
         public LazyRow< MobHuntReward > MobHuntReward;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Target = new LazyRow< MobHuntTarget >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             NeededKills = parser.ReadColumn< byte >( 1 );

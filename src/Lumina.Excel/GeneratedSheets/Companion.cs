@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Companion", columnHash: 0x776048c3 )]
-    public class Companion : IExcelRow
+    public class Companion : ExcelRow
     {
         
         public SeString Singular;
@@ -49,13 +49,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown36;
         public LazyRow< MinionRace > MinionRace;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );

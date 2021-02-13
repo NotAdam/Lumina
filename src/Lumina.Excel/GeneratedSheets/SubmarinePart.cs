@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SubmarinePart", columnHash: 0xc971f464 )]
-    public class SubmarinePart : IExcelRow
+    public class SubmarinePart : ExcelRow
     {
         
         public byte Slot;
@@ -18,16 +18,13 @@ namespace Lumina.Excel.GeneratedSheets
         public short Speed;
         public short Range;
         public short Favor;
-        public ushort Unknown8;
+        public ushort Class;
         public byte RepairMaterials;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Slot = parser.ReadColumn< byte >( 0 );
             Rank = parser.ReadColumn< byte >( 1 );
@@ -37,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             Speed = parser.ReadColumn< short >( 5 );
             Range = parser.ReadColumn< short >( 6 );
             Favor = parser.ReadColumn< short >( 7 );
-            Unknown8 = parser.ReadColumn< ushort >( 8 );
+            Class = parser.ReadColumn< ushort >( 8 );
             RepairMaterials = parser.ReadColumn< byte >( 9 );
         }
     }

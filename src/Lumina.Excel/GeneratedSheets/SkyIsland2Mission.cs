@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SkyIsland2Mission", columnHash: 0xec50a29c )]
-    public class SkyIsland2Mission : IExcelRow
+    public class SkyIsland2Mission : ExcelRow
     {
         
         public LazyRow< EventItem > Item1;
@@ -37,13 +37,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown24;
         public SeString Unknown25;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Item1 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 0 ), language );
             Item2 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 1 ), language );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyCraftProcess", columnHash: 0x3135b48e )]
-    public class CompanyCraftProcess : IExcelRow
+    public class CompanyCraftProcess : ExcelRow
     {
         public struct UnkStruct0Struct
         {
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         
         public UnkStruct0Struct[] UnkStruct0;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             UnkStruct0 = new UnkStruct0Struct[ 12 ];
             for( var i = 0; i < 12; i++ )

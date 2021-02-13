@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RelicNote", columnHash: 0xb557320e )]
-    public class RelicNote : IExcelRow
+    public class RelicNote : ExcelRow
     {
         public struct UnkStruct1Struct
         {
@@ -27,13 +27,10 @@ namespace Lumina.Excel.GeneratedSheets
         public UnkStruct25Struct[] UnkStruct25;
         public LazyRow< Leve >[] Leve;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 0 ), language );
             UnkStruct1 = new UnkStruct1Struct[ 10 ];

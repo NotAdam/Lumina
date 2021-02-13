@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FateTokenType", columnHash: 0xdbf43666 )]
-    public class FateTokenType : IExcelRow
+    public class FateTokenType : ExcelRow
     {
         
         public LazyRow< Item > Currency;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Currency = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 ), language );
         }

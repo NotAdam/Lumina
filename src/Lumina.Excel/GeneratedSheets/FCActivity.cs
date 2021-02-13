@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCActivity", columnHash: 0xe45dc889 )]
-    public class FCActivity : IExcelRow
+    public class FCActivity : ExcelRow
     {
         
         public SeString Text;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< FCActivityCategory > FCActivityCategory;
         public sbyte IconType;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Text = parser.ReadColumn< SeString >( 0 );
             SelfKind = parser.ReadColumn< byte >( 1 );

@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeapon5Param", columnHash: 0x5eb59ccb )]
-    public class AnimaWeapon5Param : IExcelRow
+    public class AnimaWeapon5Param : ExcelRow
     {
         
         public LazyRow< BaseParam > BaseParam;
         public SeString Name;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             BaseParam = new LazyRow< BaseParam >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Name = parser.ReadColumn< SeString >( 1 );

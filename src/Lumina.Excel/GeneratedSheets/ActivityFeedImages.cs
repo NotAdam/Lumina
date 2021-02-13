@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActivityFeedImages", columnHash: 0x530c5199 )]
-    public class ActivityFeedImages : IExcelRow
+    public class ActivityFeedImages : ExcelRow
     {
         
         public SeString ExpansionImage;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString ActivityFeedDE;
         public SeString ActivityFeedFR;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ExpansionImage = parser.ReadColumn< SeString >( 0 );
             ActivityFeedJA = parser.ReadColumn< SeString >( 1 );

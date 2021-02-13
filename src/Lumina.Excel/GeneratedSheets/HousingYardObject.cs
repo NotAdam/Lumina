@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingYardObject", columnHash: 0xe15fd4d0 )]
-    public class HousingYardObject : IExcelRow
+    public class HousingYardObject : ExcelRow
     {
         
         public byte ModelKey;
@@ -25,13 +25,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown12;
         public bool Unknown13;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ModelKey = parser.ReadColumn< byte >( 0 );
             HousingItemCategory = parser.ReadColumn< byte >( 1 );

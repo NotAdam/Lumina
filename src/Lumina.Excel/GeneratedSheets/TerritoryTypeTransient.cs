@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TerritoryTypeTransient", columnHash: 0xd9b2883f )]
-    public class TerritoryTypeTransient : IExcelRow
+    public class TerritoryTypeTransient : ExcelRow
     {
         
         public short OffsetZ;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             OffsetZ = parser.ReadColumn< short >( 0 );
         }

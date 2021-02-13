@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboRaceRank", columnHash: 0xf840eabf )]
-    public class ChocoboRaceRank : IExcelRow
+    public class ChocoboRaceRank : ExcelRow
     {
         
         public ushort RatingMin;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Fee;
         public int Icon;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             RatingMin = parser.ReadColumn< ushort >( 0 );
             RatingMax = parser.ReadColumn< ushort >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActivityFeedGroupCaptions", columnHash: 0x776ee24c )]
-    public class ActivityFeedGroupCaptions : IExcelRow
+    public class ActivityFeedGroupCaptions : ExcelRow
     {
         
         public SeString JA;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString DE;
         public SeString FR;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             JA = parser.ReadColumn< SeString >( 0 );
             EN = parser.ReadColumn< SeString >( 1 );

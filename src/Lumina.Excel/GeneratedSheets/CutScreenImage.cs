@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutScreenImage", columnHash: 0xe4a523cd )]
-    public class CutScreenImage : IExcelRow
+    public class CutScreenImage : ExcelRow
     {
         
         public short Type;
         public int Image;
         public short Unknown2;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Type = parser.ReadColumn< short >( 0 );
             Image = parser.ReadColumn< int >( 1 );

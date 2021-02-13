@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LogFilter", columnHash: 0x6ef5ba16 )]
-    public class LogFilter : IExcelRow
+    public class LogFilter : ExcelRow
     {
         
         public byte LogKind;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         public SeString Example;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             LogKind = parser.ReadColumn< byte >( 0 );
             Caster = parser.ReadColumn< ushort >( 1 );

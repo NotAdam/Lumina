@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "UIColor", columnHash: 0x05bcd0de )]
-    public class UIColor : IExcelRow
+    public class UIColor : ExcelRow
     {
         
         public uint UIForeground;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown2;
         public uint Unknown3;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             UIForeground = parser.ReadColumn< uint >( 0 );
             UIGlow = parser.ReadColumn< uint >( 1 );

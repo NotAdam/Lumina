@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Omen", columnHash: 0xd79b6c3f )]
-    public class Omen : IExcelRow
+    public class Omen : ExcelRow
     {
         
         public SeString Path;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool LargeScale;
         public sbyte Unknown5;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Path = parser.ReadColumn< SeString >( 0 );
             PathAlly = parser.ReadColumn< SeString >( 1 );

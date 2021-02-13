@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddyEquip", columnHash: 0xb429792a )]
-    public class BuddyEquip : IExcelRow
+    public class BuddyEquip : ExcelRow
     {
         
         public SeString Singular;
@@ -26,15 +26,12 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort IconHead;
         public ushort IconBody;
         public ushort IconLegs;
-        public byte Unknown16;
+        public byte Order;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -52,7 +49,7 @@ namespace Lumina.Excel.GeneratedSheets
             IconHead = parser.ReadColumn< ushort >( 13 );
             IconBody = parser.ReadColumn< ushort >( 14 );
             IconLegs = parser.ReadColumn< ushort >( 15 );
-            Unknown16 = parser.ReadColumn< byte >( 16 );
+            Order = parser.ReadColumn< byte >( 16 );
         }
     }
 }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeapon5", columnHash: 0xe777b7a6 )]
-    public class AnimaWeapon5 : IExcelRow
+    public class AnimaWeapon5 : ExcelRow
     {
         
         public LazyRow< Item > Item;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte SecondaryStatTotal;
         public LazyRow< AnimaWeapon5Param >[] Parameter;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );

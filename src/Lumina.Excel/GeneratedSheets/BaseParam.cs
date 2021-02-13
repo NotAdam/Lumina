@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BaseParam", columnHash: 0xedef6dbb )]
-    public class BaseParam : IExcelRow
+    public class BaseParam : ExcelRow
     {
         
         public sbyte PacketIndex;
@@ -38,13 +38,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] MeldParam;
         public bool Unknown38;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             PacketIndex = parser.ReadColumn< sbyte >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

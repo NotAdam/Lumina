@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionTimelineMove", columnHash: 0x789014d3 )]
-    public class ActionTimelineMove : IExcelRow
+    public class ActionTimelineMove : ExcelRow
     {
         
         public byte Unknown0;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown4;
         public bool Unknown5;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ClassJobCategory", columnHash: 0xd6e993c1 )]
-    public class ClassJobCategory : IExcelRow
+    public class ClassJobCategory : ExcelRow
     {
         
         public SeString Name;
@@ -51,13 +51,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool GNB;
         public bool DNC;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             ADV = parser.ReadColumn< bool >( 1 );

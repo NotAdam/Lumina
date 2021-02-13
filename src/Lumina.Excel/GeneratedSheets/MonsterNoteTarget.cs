@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MonsterNoteTarget", columnHash: 0x4157404f )]
-    public class MonsterNoteTarget : IExcelRow
+    public class MonsterNoteTarget : ExcelRow
     {
         public struct UnkStruct3Struct
         {
@@ -20,13 +20,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Town > Town;
         public UnkStruct3Struct[] UnkStruct3;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Icon = parser.ReadColumn< int >( 1 );

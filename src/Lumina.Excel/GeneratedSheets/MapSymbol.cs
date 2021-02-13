@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapSymbol", columnHash: 0xe7e370e4 )]
-    public class MapSymbol : IExcelRow
+    public class MapSymbol : ExcelRow
     {
         
         public int Icon;
         public LazyRow< PlaceName > PlaceName;
         public bool DisplayNavi;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Icon = parser.ReadColumn< int >( 0 );
             PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 1 ), language );

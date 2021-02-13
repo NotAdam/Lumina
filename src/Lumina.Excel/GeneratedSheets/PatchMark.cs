@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PatchMark", columnHash: 0x4b87e076 )]
-    public class PatchMark : IExcelRow
+    public class PatchMark : ExcelRow
     {
         
         public sbyte Category;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Version;
         public ushort Unknown7;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Category = parser.ReadColumn< sbyte >( 0 );
             SubCategoryType = parser.ReadColumn< byte >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ScenarioTree", columnHash: 0x6840e93a )]
-    public class ScenarioTree : IExcelRow
+    public class ScenarioTree : ExcelRow
     {
         
         public LazyRow< ScenarioType > Type;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown541;
         public int Unknown542;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Type = new LazyRow< ScenarioType >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Image = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 1 ), language );

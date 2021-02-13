@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HairMakeType", columnHash: 0x12b0d41a )]
-    public class HairMakeType : IExcelRow
+    public class HairMakeType : ExcelRow
     {
         
         public LazyRow< Race > Race;
@@ -1123,13 +1123,10 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown1110;
         public int Unknown1111;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Race = new LazyRow< Race >( lumina, parser.ReadColumn< int >( 0 ), language );
             Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< int >( 1 ), language );

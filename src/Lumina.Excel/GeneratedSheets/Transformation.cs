@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Transformation", columnHash: 0xebf905a5 )]
-    public class Transformation : IExcelRow
+    public class Transformation : ExcelRow
     {
         
         public byte Unknown0;
@@ -48,13 +48,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown35;
         public bool Unknown54;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Model = new LazyRow< ModelChara >( lumina, parser.ReadColumn< short >( 1 ), language );

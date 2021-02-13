@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecipeLevelTable", columnHash: 0xdc8d702b )]
-    public class RecipeLevelTable : IExcelRow
+    public class RecipeLevelTable : ExcelRow
     {
         
         public byte ClassJobLevel;
@@ -17,15 +17,12 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Difficulty;
         public uint Quality;
         public ushort Durability;
-        public ushort Unknown54;
+        public ushort ConditionsFlag;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ClassJobLevel = parser.ReadColumn< byte >( 0 );
             Stars = parser.ReadColumn< byte >( 1 );
@@ -34,7 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
             Difficulty = parser.ReadColumn< ushort >( 4 );
             Quality = parser.ReadColumn< uint >( 5 );
             Durability = parser.ReadColumn< ushort >( 6 );
-            Unknown54 = parser.ReadColumn< ushort >( 7 );
+            ConditionsFlag = parser.ReadColumn< ushort >( 7 );
         }
     }
 }

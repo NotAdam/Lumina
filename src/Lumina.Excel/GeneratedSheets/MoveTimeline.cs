@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MoveTimeline", columnHash: 0xf057da9c )]
-    public class MoveTimeline : IExcelRow
+    public class MoveTimeline : ExcelRow
     {
         
         public LazyRow< ActionTimeline > Idle;
@@ -21,13 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ActionTimeline > MoveTurnRight;
         public LazyRow< ActionTimeline > Extra;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Idle = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             MoveForward = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 1 ), language );

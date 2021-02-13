@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompleteJournal", columnHash: 0x8741e36a )]
-    public class CompleteJournal : IExcelRow
+    public class CompleteJournal : ExcelRow
     {
         
         public uint Unknown0;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         public LazyRow< Cutscene >[] Cutscene;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             RequiredLevel = parser.ReadColumn< ushort >( 1 );

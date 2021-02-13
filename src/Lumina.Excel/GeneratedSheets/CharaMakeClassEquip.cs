@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeClassEquip", columnHash: 0x41dafacb )]
-    public class CharaMakeClassEquip : IExcelRow
+    public class CharaMakeClassEquip : ExcelRow
     {
         
         public ulong Helmet;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ulong SubWeapon;
         public LazyRow< ClassJob > Class;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Helmet = parser.ReadColumn< ulong >( 0 );
             Top = parser.ReadColumn< ulong >( 1 );

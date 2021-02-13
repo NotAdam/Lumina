@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ENpcBase", columnHash: 0x927347d8 )]
-    public class ENpcBase : IExcelRow
+    public class ENpcBase : ExcelRow
     {
         
         public ushort EventHandler;
@@ -75,13 +75,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte DefaultBalloon;
         public byte Unknown94;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             EventHandler = parser.ReadColumn< ushort >( 0 );
             Important = parser.ReadColumn< bool >( 1 );

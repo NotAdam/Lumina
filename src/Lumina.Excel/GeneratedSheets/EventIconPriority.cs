@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EventIconPriority", columnHash: 0xf16871d0 )]
-    public class EventIconPriority : IExcelRow
+    public class EventIconPriority : ExcelRow
     {
         
         public uint[] Icon;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Icon = new uint[ 19 ];
             for( var i = 0; i < 19; i++ )

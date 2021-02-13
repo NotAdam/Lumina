@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemLevel", columnHash: 0xe216399f )]
-    public class ItemLevel : IExcelRow
+    public class ItemLevel : ExcelRow
     {
         
         public ushort Strength;
@@ -85,13 +85,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Perception;
         public ushort Unknown73;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Strength = parser.ReadColumn< ushort >( 0 );
             Dexterity = parser.ReadColumn< ushort >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeType", columnHash: 0x80d7db6d )]
-    public class CharaMakeType : IExcelRow
+    public class CharaMakeType : ExcelRow
     {
         public struct UnkStruct199Struct
         {
@@ -3077,13 +3077,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ulong Unknown3366;
         public ulong Unknown3367;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Race = new LazyRow< Race >( lumina, parser.ReadColumn< int >( 0 ), language );
             Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< int >( 1 ), language );

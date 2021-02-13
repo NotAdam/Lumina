@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestClassJobReward", columnHash: 0x3d96093f )]
-    public class QuestClassJobReward : IExcelRow
+    public class QuestClassJobReward : ExcelRow
     {
         
         public LazyRow< ClassJobCategory > ClassJobCategory;
@@ -24,13 +24,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown23;
         public bool Unknown24;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 0 ), language );
             RewardItem = new LazyRow< Item >[ 4 ];

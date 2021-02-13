@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SkyIsland2RangeType", columnHash: 0xdcfd9eba )]
-    public class SkyIsland2RangeType : IExcelRow
+    public class SkyIsland2RangeType : ExcelRow
     {
         
         public byte Type;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Type = parser.ReadColumn< byte >( 0 );
         }

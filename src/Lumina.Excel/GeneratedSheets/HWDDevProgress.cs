@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDDevProgress", columnHash: 0xcd4cb81c )]
-    public class HWDDevProgress : IExcelRow
+    public class HWDDevProgress : ExcelRow
     {
         
         public bool CanGoNext;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             CanGoNext = parser.ReadColumn< bool >( 0 );
         }

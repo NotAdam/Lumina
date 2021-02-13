@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "NpcEquip", columnHash: 0xe91c87ba )]
-    public class NpcEquip : IExcelRow
+    public class NpcEquip : ExcelRow
     {
         
         public ulong ModelMainHand;
@@ -36,13 +36,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint ModelRightRing;
         public LazyRow< Stain > DyeRightRing;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ModelMainHand = parser.ReadColumn< ulong >( 0 );
             DyeMainHand = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 1 ), language );

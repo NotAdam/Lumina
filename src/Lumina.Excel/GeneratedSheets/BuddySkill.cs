@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddySkill", columnHash: 0xe3220ddc )]
-    public class BuddySkill : IExcelRow
+    public class BuddySkill : ExcelRow
     {
         
         public byte BuddyLevel;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Attacker;
         public ushort Healer;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             BuddyLevel = parser.ReadColumn< byte >( 0 );
             IsActive = parser.ReadColumn< bool >( 1 );

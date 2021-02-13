@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecastNavimesh", columnHash: 0x98c040df )]
-    public class RecastNavimesh : IExcelRow
+    public class RecastNavimesh : ExcelRow
     {
         
         public SeString Unknown0;
@@ -46,13 +46,10 @@ namespace Lumina.Excel.GeneratedSheets
         public float Unknown33;
         public bool Unknown34;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             TileSize = parser.ReadColumn< float >( 1 );

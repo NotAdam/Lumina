@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Race", columnHash: 0x3403807a )]
-    public class Race : IExcelRow
+    public class Race : ExcelRow
     {
         
         public SeString Masculine;
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown54;
         public LazyRow< ExVersion > ExPac;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Masculine = parser.ReadColumn< SeString >( 0 );
             Feminine = parser.ReadColumn< SeString >( 1 );

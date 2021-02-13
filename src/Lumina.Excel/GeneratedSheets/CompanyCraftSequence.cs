@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyCraftSequence", columnHash: 0x6d444cc1 )]
-    public class CompanyCraftSequence : IExcelRow
+    public class CompanyCraftSequence : ExcelRow
     {
         
         public LazyRow< Item > ResultItem;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CompanyCraftPart >[] CompanyCraftPart;
         public uint Order;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ResultItem = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
             Category = parser.ReadColumn< int >( 1 );

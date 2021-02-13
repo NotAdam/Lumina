@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OpenContent", columnHash: 0x170b114d )]
-    public class OpenContent : IExcelRow
+    public class OpenContent : ExcelRow
     {
         
         public LazyRow< ContentFinderCondition >[] Content;
         public LazyRow< OpenContentCandidateName >[] CandidateName;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Content = new LazyRow< ContentFinderCondition >[ 16 ];
             for( var i = 0; i < 16; i++ )

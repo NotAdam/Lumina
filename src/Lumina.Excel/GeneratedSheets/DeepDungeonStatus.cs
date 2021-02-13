@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonStatus", columnHash: 0xdc23efe7 )]
-    public class DeepDungeonStatus : IExcelRow
+    public class DeepDungeonStatus : ExcelRow
     {
         
         public LazyRow< ScreenImage > ScreenImage;
         public LazyRow< LogMessage > LogMessage;
         public LazyRow< DeepDungeonFloorEffectUI > Name;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ScreenImage = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             LogMessage = new LazyRow< LogMessage >( lumina, parser.ReadColumn< ushort >( 1 ), language );

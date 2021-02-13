@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GFATE", columnHash: 0x440a2c22 )]
-    public class GFATE : IExcelRow
+    public class GFATE : ExcelRow
     {
         
         public byte Unknown0;
@@ -83,13 +83,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown85;
         public bool Unknown86;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

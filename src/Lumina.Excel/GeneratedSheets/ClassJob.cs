@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ClassJob", columnHash: 0x590ba68f )]
-    public class ClassJob : IExcelRow
+    public class ClassJob : ExcelRow
     {
         
         public SeString Name;
@@ -18,7 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte BattleClassIndex;
         public byte Unknown6;
         public byte JobIndex;
-        public sbyte Unknown8;
+        public sbyte DohDolJobIndex;
         public ushort ModifierHitPoints;
         public ushort ModifierManaPoints;
         public ushort ModifierStrength;
@@ -57,13 +57,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsLimitedJob;
         public bool CanQueueForDuty;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Abbreviation = parser.ReadColumn< SeString >( 1 );
@@ -73,7 +70,7 @@ namespace Lumina.Excel.GeneratedSheets
             BattleClassIndex = parser.ReadColumn< sbyte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
             JobIndex = parser.ReadColumn< byte >( 7 );
-            Unknown8 = parser.ReadColumn< sbyte >( 8 );
+            DohDolJobIndex = parser.ReadColumn< sbyte >( 8 );
             ModifierHitPoints = parser.ReadColumn< ushort >( 9 );
             ModifierManaPoints = parser.ReadColumn< ushort >( 10 );
             ModifierStrength = parser.ReadColumn< ushort >( 11 );

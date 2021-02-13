@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GimmickAccessor", columnHash: 0xc4f527f3 )]
-    public class GimmickAccessor : IExcelRow
+    public class GimmickAccessor : ExcelRow
     {
         
         public int Param0;
@@ -20,13 +20,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown7;
         public bool Unknown8;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Param0 = parser.ReadColumn< int >( 0 );
             Param1 = parser.ReadColumn< uint >( 1 );

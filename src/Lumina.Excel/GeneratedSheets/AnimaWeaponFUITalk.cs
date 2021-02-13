@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeaponFUITalk", columnHash: 0xda365c51 )]
-    public class AnimaWeaponFUITalk : IExcelRow
+    public class AnimaWeaponFUITalk : ExcelRow
     {
         
         public LazyRow< AnimaWeaponFUITalkParam > Dialogue;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Dialogue = new LazyRow< AnimaWeaponFUITalkParam >( lumina, parser.ReadColumn< int >( 0 ), language );
         }

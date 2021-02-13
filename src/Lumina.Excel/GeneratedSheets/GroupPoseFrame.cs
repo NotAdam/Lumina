@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GroupPoseFrame", columnHash: 0x1771561e )]
-    public class GroupPoseFrame : IExcelRow
+    public class GroupPoseFrame : ExcelRow
     {
         
         public int Unknown0;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown54;
         public SeString Text;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< int >( 0 );
             Image = parser.ReadColumn< int >( 1 );

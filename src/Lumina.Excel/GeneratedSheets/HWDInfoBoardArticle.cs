@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDInfoBoardArticle", columnHash: 0x76cb5660 )]
-    public class HWDInfoBoardArticle : IExcelRow
+    public class HWDInfoBoardArticle : ExcelRow
     {
         
         public LazyRow< HWDInfoBoardArticleType > Type;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown3;
         public SeString Text;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Type = new LazyRow< HWDInfoBoardArticleType >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );

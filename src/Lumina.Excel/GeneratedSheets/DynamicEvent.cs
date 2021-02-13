@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DynamicEvent", columnHash: 0xb5601716 )]
-    public class DynamicEvent : IExcelRow
+    public class DynamicEvent : ExcelRow
     {
         
         public LazyRow< DynamicEventType > EventType;
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         public SeString Description;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             EventType = new LazyRow< DynamicEventType >( lumina, parser.ReadColumn< byte >( 0 ), language );
             EnemyType = new LazyRow< DynamicEventEnemyType >( lumina, parser.ReadColumn< byte >( 1 ), language );

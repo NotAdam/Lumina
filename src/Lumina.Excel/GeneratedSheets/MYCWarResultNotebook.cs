@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MYCWarResultNotebook", columnHash: 0x446c84d6 )]
-    public class MYCWarResultNotebook : IExcelRow
+    public class MYCWarResultNotebook : ExcelRow
     {
         
         public byte Number;
@@ -21,13 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         public SeString Description;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Number = parser.ReadColumn< byte >( 0 );
             Unknown540 = parser.ReadColumn< byte >( 1 );

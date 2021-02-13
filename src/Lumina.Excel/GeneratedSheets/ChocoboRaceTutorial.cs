@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboRaceTutorial", columnHash: 0xef6c7b71 )]
-    public class ChocoboRaceTutorial : IExcelRow
+    public class ChocoboRaceTutorial : ExcelRow
     {
         
         public LazyRow< NpcYell >[] NpcYell;
         public ushort Unknown8;
         public ushort Unknown9;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             NpcYell = new LazyRow< NpcYell >[ 8 ];
             for( var i = 0; i < 8; i++ )

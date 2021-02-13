@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Recipe", columnHash: 0xf56e5856 )]
-    public class Recipe : IExcelRow
+    public class Recipe : ExcelRow
     {
         public struct UnkStruct5Struct
         {
@@ -43,13 +43,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsExpert;
         public ushort PatchNumber;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Number = parser.ReadColumn< int >( 0 );
             CraftType = new LazyRow< CraftType >( lumina, parser.ReadColumn< int >( 1 ), language );

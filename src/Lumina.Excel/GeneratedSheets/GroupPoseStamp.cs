@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GroupPoseStamp", columnHash: 0x168074a1 )]
-    public class GroupPoseStamp : IExcelRow
+    public class GroupPoseStamp : ExcelRow
     {
         
         public int StampIcon;
@@ -20,13 +20,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown7;
         public SeString Name;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             StampIcon = parser.ReadColumn< int >( 0 );
             Unknown1 = parser.ReadColumn< int >( 1 );

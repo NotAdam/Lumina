@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MateriaJoinRateGatherCraft", columnHash: 0xab31b42e )]
-    public class MateriaJoinRateGatherCraft : IExcelRow
+    public class MateriaJoinRateGatherCraft : ExcelRow
     {
         
         public float[] NQOvermeldPctSlot;
         public float[] HQOvermeldPctSlot;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             NQOvermeldPctSlot = new float[ 4 ];
             for( var i = 0; i < 4; i++ )

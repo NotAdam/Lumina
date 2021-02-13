@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDGathererInspection", columnHash: 0xad239733 )]
-    public class HWDGathererInspection : IExcelRow
+    public class HWDGathererInspection : ExcelRow
     {
         
         public LazyRow< GatheringItem >[] ItemRequired;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< HWDGathererInspectionReward >[] Reward2;
         public LazyRow< HWDGathereInspectTerm >[] Phase;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ItemRequired = new LazyRow< GatheringItem >[ 79 ];
             for( var i = 0; i < 79; i++ )

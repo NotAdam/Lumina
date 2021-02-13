@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastRankBonus", columnHash: 0x4d6cbdc3 )]
-    public class BeastRankBonus : IExcelRow
+    public class BeastRankBonus : ExcelRow
     {
         
         public ushort Neutral;
@@ -21,13 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > Item;
         public byte[] ItemQuantity;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Neutral = parser.ReadColumn< ushort >( 0 );
             Recognized = parser.ReadColumn< ushort >( 1 );

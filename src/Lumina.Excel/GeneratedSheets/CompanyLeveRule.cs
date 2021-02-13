@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyLeveRule", columnHash: 0xcc3ad729 )]
-    public class CompanyLeveRule : IExcelRow
+    public class CompanyLeveRule : ExcelRow
     {
         
         public SeString Type;
         public LazyRow< LeveString > Objective;
         public LazyRow< LeveString > Help;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Type = parser.ReadColumn< SeString >( 0 );
             Objective = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 1 ), language );

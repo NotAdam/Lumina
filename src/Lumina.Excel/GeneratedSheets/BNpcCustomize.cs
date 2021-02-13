@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcCustomize", columnHash: 0x18f060d4 )]
-    public class BNpcCustomize : IExcelRow
+    public class BNpcCustomize : ExcelRow
     {
         
         public LazyRow< Race > Race;
@@ -37,13 +37,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte FacePaint;
         public byte FacePaintColor;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Race = new LazyRow< Race >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Gender = parser.ReadColumn< byte >( 1 );

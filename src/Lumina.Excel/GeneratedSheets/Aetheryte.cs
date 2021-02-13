@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Aetheryte", columnHash: 0xcd1e31a4 )]
-    public class Aetheryte : IExcelRow
+    public class Aetheryte : ExcelRow
     {
         
         public SeString Singular;
@@ -32,13 +32,10 @@ namespace Lumina.Excel.GeneratedSheets
         public short AetherstreamY;
         public byte Unknown23;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );

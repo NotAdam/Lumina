@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentFinderCondition", columnHash: 0x5d623828 )]
-    public class ContentFinderCondition : IExcelRow
+    public class ContentFinderCondition : ExcelRow
     {
         
         public SeString ShortCode;
@@ -33,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool AllowUndersized;
         public bool AllowReplacement;
         public bool Unknown22;
-        public bool Unknown23;
+        public bool AllowExplorerMode;
         public bool Unknown24;
         public bool Unknown25;
         public byte Unknown26;
@@ -56,13 +56,13 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Icon;
         public sbyte Unknown44;
         public bool LevelingRoulette;
-        public bool Level5060Roulette;
+        public bool Level506070Roulette;
         public bool MSQRoulette;
         public bool GuildHestRoulette;
         public bool ExpertRoulette;
         public bool TrialRoulette;
         public bool DailyFrontlineChallenge;
-        public bool Level70Roulette;
+        public bool Level80Roulette;
         public bool MentorRoulette;
         public bool Unknown54;
         public bool Unknown55;
@@ -95,13 +95,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown82;
         public bool Unknown83;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ShortCode = parser.ReadColumn< SeString >( 0 );
             TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ), language );
@@ -126,7 +123,7 @@ namespace Lumina.Excel.GeneratedSheets
             AllowUndersized = parser.ReadColumn< bool >( 20 );
             AllowReplacement = parser.ReadColumn< bool >( 21 );
             Unknown22 = parser.ReadColumn< bool >( 22 );
-            Unknown23 = parser.ReadColumn< bool >( 23 );
+            AllowExplorerMode = parser.ReadColumn< bool >( 23 );
             Unknown24 = parser.ReadColumn< bool >( 24 );
             Unknown25 = parser.ReadColumn< bool >( 25 );
             Unknown26 = parser.ReadColumn< byte >( 26 );
@@ -149,13 +146,13 @@ namespace Lumina.Excel.GeneratedSheets
             Icon = parser.ReadColumn< uint >( 43 );
             Unknown44 = parser.ReadColumn< sbyte >( 44 );
             LevelingRoulette = parser.ReadColumn< bool >( 45 );
-            Level5060Roulette = parser.ReadColumn< bool >( 46 );
+            Level506070Roulette = parser.ReadColumn< bool >( 46 );
             MSQRoulette = parser.ReadColumn< bool >( 47 );
             GuildHestRoulette = parser.ReadColumn< bool >( 48 );
             ExpertRoulette = parser.ReadColumn< bool >( 49 );
             TrialRoulette = parser.ReadColumn< bool >( 50 );
             DailyFrontlineChallenge = parser.ReadColumn< bool >( 51 );
-            Level70Roulette = parser.ReadColumn< bool >( 52 );
+            Level80Roulette = parser.ReadColumn< bool >( 52 );
             MentorRoulette = parser.ReadColumn< bool >( 53 );
             Unknown54 = parser.ReadColumn< bool >( 54 );
             Unknown55 = parser.ReadColumn< bool >( 55 );

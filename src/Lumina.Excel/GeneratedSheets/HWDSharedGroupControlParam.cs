@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDSharedGroupControlParam", columnHash: 0xde74b4c4 )]
-    public class HWDSharedGroupControlParam : IExcelRow
+    public class HWDSharedGroupControlParam : ExcelRow
     {
         
         public byte Unknown0;
         public byte ParamValue;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             ParamValue = parser.ReadColumn< byte >( 1 );

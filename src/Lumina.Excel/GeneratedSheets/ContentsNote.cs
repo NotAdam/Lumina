@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentsNote", columnHash: 0x748963d8 )]
-    public class ContentsNote : IExcelRow
+    public class ContentsNote : ExcelRow
     {
         
         public byte ContentType;
@@ -25,13 +25,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Description;
         public int ExpCap;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ContentType = parser.ReadColumn< byte >( 0 );
             Icon = parser.ReadColumn< int >( 1 );

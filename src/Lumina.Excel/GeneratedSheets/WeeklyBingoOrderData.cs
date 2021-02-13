@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WeeklyBingoOrderData", columnHash: 0xe0f2b530 )]
-    public class WeeklyBingoOrderData : IExcelRow
+    public class WeeklyBingoOrderData : ExcelRow
     {
         
         public uint Type;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Icon;
         public byte Unknown5;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Type = parser.ReadColumn< uint >( 0 );
             Data = parser.ReadColumn< uint >( 1 );

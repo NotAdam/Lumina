@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingLandSet", columnHash: 0xc557f79e )]
-    public class HousingLandSet : IExcelRow
+    public class HousingLandSet : ExcelRow
     {
         
         public byte[] PlotSize;
@@ -136,13 +136,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown300;
         public uint Unknown301;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             PlotSize = new byte[ 60 ];
             for( var i = 0; i < 60; i++ )

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CollectablesShopItem", columnHash: 0x392f49a3 )]
-    public class CollectablesShopItem : IExcelRow
+    public class CollectablesShopItem : ExcelRow
     {
         
         public LazyRow< Item > Item;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CollectablesShopRefine > CollectablesShopRefine;
         public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 ), language );
             CollectablesShopItemGroup = new LazyRow< CollectablesShopItemGroup >( lumina, parser.ReadColumn< byte >( 1 ), language );

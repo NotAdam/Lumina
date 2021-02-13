@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AirshipExplorationPoint", columnHash: 0x307f38a2 )]
-    public class AirshipExplorationPoint : IExcelRow
+    public class AirshipExplorationPoint : ExcelRow
     {
         
         public SeString Name;
@@ -25,13 +25,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown12;
         public uint ExpReward;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             NameShort = parser.ReadColumn< SeString >( 1 );

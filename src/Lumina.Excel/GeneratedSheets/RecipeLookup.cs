@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecipeLookup", columnHash: 0xa708a4a0 )]
-    public class RecipeLookup : IExcelRow
+    public class RecipeLookup : ExcelRow
     {
         
         public LazyRow< Recipe > CRP;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Recipe > ALC;
         public LazyRow< Recipe > CUL;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             CRP = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             BSM = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 1 ), language );

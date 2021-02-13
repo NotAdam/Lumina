@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeName", columnHash: 0x8230a5a1 )]
-    public class CharaMakeName : IExcelRow
+    public class CharaMakeName : ExcelRow
     {
         
         public SeString HyurMidlanderMale;
@@ -55,13 +55,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString VieraRavaLastName;
         public SeString VieraVeenaLastName;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             HyurMidlanderMale = parser.ReadColumn< SeString >( 0 );
             HyurMidlanderFemale = parser.ReadColumn< SeString >( 1 );

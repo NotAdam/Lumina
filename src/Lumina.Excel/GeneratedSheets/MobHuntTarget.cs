@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntTarget", columnHash: 0x83a7f541 )]
-    public class MobHuntTarget : IExcelRow
+    public class MobHuntTarget : ExcelRow
     {
         
         public LazyRow< BNpcName > Name;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Map > TerritoryType;
         public LazyRow< PlaceName > PlaceName;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             FATE = new LazyRow< Fate >( lumina, parser.ReadColumn< ushort >( 1 ), language );

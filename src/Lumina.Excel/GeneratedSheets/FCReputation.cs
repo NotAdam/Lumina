@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCReputation", columnHash: 0x3d6be37e )]
-    public class FCReputation : IExcelRow
+    public class FCReputation : ExcelRow
     {
         
         public uint PointsToNext;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< UIColor > Color;
         public SeString Name;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             PointsToNext = parser.ReadColumn< uint >( 0 );
             RequiredPoints = parser.ReadColumn< uint >( 1 );

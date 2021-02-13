@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CustomTalk", columnHash: 0x2a751293 )]
-    public class CustomTalk : IExcelRow
+    public class CustomTalk : ExcelRow
     {
         
         public uint IconActor;
@@ -32,13 +32,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown54;
         public bool Unknown78;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             IconActor = parser.ReadColumn< uint >( 0 );
             IconMap = parser.ReadColumn< uint >( 1 );

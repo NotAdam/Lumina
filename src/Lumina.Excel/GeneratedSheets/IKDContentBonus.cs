@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDContentBonus", columnHash: 0xb7d9b7a3 )]
-    public class IKDContentBonus : IExcelRow
+    public class IKDContentBonus : ExcelRow
     {
         
         public SeString Objective;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Image;
         public byte Order;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Objective = parser.ReadColumn< SeString >( 0 );
             Requirement = parser.ReadColumn< SeString >( 1 );

@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ArrayEventHandler", columnHash: 0xb404681e )]
-    public class ArrayEventHandler : IExcelRow
+    public class ArrayEventHandler : ExcelRow
     {
         
         public uint[] Data;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Data = new uint[ 16 ];
             for( var i = 0; i < 16; i++ )

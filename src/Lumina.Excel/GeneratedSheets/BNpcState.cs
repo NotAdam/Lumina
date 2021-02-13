@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcState", columnHash: 0x439de63e )]
-    public class BNpcState : IExcelRow
+    public class BNpcState : ExcelRow
     {
         
         public byte Slot;
@@ -26,13 +26,10 @@ namespace Lumina.Excel.GeneratedSheets
         public int LoopTimeline;
         public bool Unknown14;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Slot = parser.ReadColumn< byte >( 0 );
             OverRay = parser.ReadColumn< sbyte >( 1 );

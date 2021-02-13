@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyLeve", columnHash: 0x688cf3da )]
-    public class CompanyLeve : IExcelRow
+    public class CompanyLeve : ExcelRow
     {
         public struct UnkStruct56Struct
         {
@@ -129,13 +129,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CompanyLeveRule > Rule;
         public byte RuleParam;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             RoutePointTime = new ushort[ 8 ];
             for( var i = 0; i < 8; i++ )

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentCloseCycle", columnHash: 0xd3032cdb )]
-    public class ContentCloseCycle : IExcelRow
+    public class ContentCloseCycle : ExcelRow
     {
         
         public uint Unixtime;
@@ -24,13 +24,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown11;
         public bool Unknown12;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unixtime = parser.ReadColumn< uint >( 0 );
             TimeSeconds = parser.ReadColumn< uint >( 1 );

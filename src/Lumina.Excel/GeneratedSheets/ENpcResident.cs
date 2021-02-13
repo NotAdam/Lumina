@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ENpcResident", columnHash: 0xf74fa88c )]
-    public class ENpcResident : IExcelRow
+    public class ENpcResident : ExcelRow
     {
         
         public SeString Singular;
@@ -22,13 +22,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Map;
         public bool Unknown10;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );

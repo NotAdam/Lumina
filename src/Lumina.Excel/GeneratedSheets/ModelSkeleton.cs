@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ModelSkeleton", columnHash: 0x94cc54f1 )]
-    public class ModelSkeleton : IExcelRow
+    public class ModelSkeleton : ExcelRow
     {
         
         public float Radius;
@@ -28,13 +28,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool MotionBlendType;
         public byte LoopFlySE;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Radius = parser.ReadColumn< float >( 0 );
             Height = parser.ReadColumn< float >( 1 );

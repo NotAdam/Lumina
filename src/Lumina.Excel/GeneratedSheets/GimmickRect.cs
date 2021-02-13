@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GimmickRect", columnHash: 0x9be6d434 )]
-    public class GimmickRect : IExcelRow
+    public class GimmickRect : ExcelRow
     {
         
         public uint LayoutID;
@@ -22,13 +22,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown9;
         public uint Unknown10;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             LayoutID = parser.ReadColumn< uint >( 0 );
             TriggerIn = parser.ReadColumn< byte >( 1 );

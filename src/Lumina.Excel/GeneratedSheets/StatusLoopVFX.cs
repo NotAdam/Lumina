@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "StatusLoopVFX", columnHash: 0xaa82c4a9 )]
-    public class StatusLoopVFX : IExcelRow
+    public class StatusLoopVFX : ExcelRow
     {
         
         public LazyRow< VFX > VFX;
@@ -20,13 +20,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown7;
         public bool Unknown8;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             VFX = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );

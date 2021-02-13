@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastTribe", columnHash: 0x336849f0 )]
-    public class BeastTribe : IExcelRow
+    public class BeastTribe : ExcelRow
     {
         
         public bool Unknown0;
@@ -29,13 +29,10 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte DEF;
         public SeString NameRelation;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             MinLevel = parser.ReadColumn< byte >( 1 );

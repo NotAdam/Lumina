@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GcArmyExpedition", columnHash: 0x852cc288 )]
-    public class GcArmyExpedition : IExcelRow
+    public class GcArmyExpedition : ExcelRow
     {
         public struct UnkStruct10Struct
         {
@@ -66,13 +66,10 @@ namespace Lumina.Excel.GeneratedSheets
         public UnkStruct52Struct[] UnkStruct52;
         public UnkStruct58Struct[] UnkStruct58;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             RequiredFlag = parser.ReadColumn< byte >( 0 );
             UnlockFlag = parser.ReadColumn< byte >( 1 );

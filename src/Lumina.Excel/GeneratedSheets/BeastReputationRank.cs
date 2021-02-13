@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastReputationRank", columnHash: 0x446d8bad )]
-    public class BeastReputationRank : IExcelRow
+    public class BeastReputationRank : ExcelRow
     {
         
         public ushort RequiredReputation;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString AlliedNames;
         public LazyRow< UIColor > Color;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             RequiredReputation = parser.ReadColumn< ushort >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

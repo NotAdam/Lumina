@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InclusionShop", columnHash: 0x0ebdee42 )]
-    public class InclusionShop : IExcelRow
+    public class InclusionShop : ExcelRow
     {
         
         public uint Unknown0;
         public SeString Unknown1;
         public LazyRow< InclusionShopCategory >[] Category;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             Unknown1 = parser.ReadColumn< SeString >( 1 );

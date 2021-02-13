@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentExAction", columnHash: 0x8690a89e )]
-    public class ContentExAction : IExcelRow
+    public class ContentExAction : ExcelRow
     {
         
         public LazyRow< Action > Name;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Charges;
         public byte Unknown3;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = new LazyRow< Action >( lumina, parser.ReadColumn< uint >( 0 ), language );
             Unknown1 = parser.ReadColumn< uint >( 1 );

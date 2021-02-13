@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ScenarioTreeTips", columnHash: 0x71371b8c )]
-    public class ScenarioTreeTips : IExcelRow
+    public class ScenarioTreeTips : ExcelRow
     {
         
         public byte Unknown0;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown2;
         public LazyRow< ScenarioTree > Tips2;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Tips1 = parser.ReadColumn< uint >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InstanceContent", columnHash: 0xa4243e29 )]
-    public class InstanceContent : IExcelRow
+    public class InstanceContent : ExcelRow
     {
         public struct UnkStruct25Struct
         {
@@ -74,13 +74,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown540;
         public ushort Unknown541;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             InstanceContentType = parser.ReadColumn< byte >( 0 );
             WeekRestriction = parser.ReadColumn< byte >( 1 );

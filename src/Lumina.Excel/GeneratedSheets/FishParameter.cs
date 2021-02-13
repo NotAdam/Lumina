@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishParameter", columnHash: 0x019385c9 )]
-    public class FishParameter : IExcelRow
+    public class FishParameter : ExcelRow
     {
         
         public SeString Text;
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool TimeRestricted;
         public bool WeatherRestricted;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Text = parser.ReadColumn< SeString >( 0 );
             Item = parser.ReadColumn< int >( 1 );

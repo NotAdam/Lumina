@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DpsChallengeOfficer", columnHash: 0xef9733d1 )]
-    public class DpsChallengeOfficer : IExcelRow
+    public class DpsChallengeOfficer : ExcelRow
     {
         
         public LazyRow< Quest > UnlockQuest;
         public LazyRow< DpsChallenge >[] ChallengeName;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             UnlockQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
             ChallengeName = new LazyRow< DpsChallenge >[ 25 ];

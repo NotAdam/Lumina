@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WeatherReportReplace", columnHash: 0x2020acf6 )]
-    public class WeatherReportReplace : IExcelRow
+    public class WeatherReportReplace : ExcelRow
     {
         
         public LazyRow< PlaceName > PlaceNameSub;
         public LazyRow< PlaceName > PlaceNameParent;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             PlaceNameSub = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             PlaceNameParent = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 1 ), language );

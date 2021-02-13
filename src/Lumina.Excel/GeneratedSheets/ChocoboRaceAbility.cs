@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboRaceAbility", columnHash: 0xc68f9e95 )]
-    public class ChocoboRaceAbility : IExcelRow
+    public class ChocoboRaceAbility : ExcelRow
     {
         
         public SeString Name;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ChocoboRaceAbilityType > ChocoboRaceAbilityType;
         public byte Value;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );

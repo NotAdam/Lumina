@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Tribe", columnHash: 0xe74759fb )]
-    public class Tribe : IExcelRow
+    public class Tribe : ExcelRow
     {
         
         public SeString Masculine;
@@ -21,13 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte MND;
         public sbyte PIE;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Masculine = parser.ReadColumn< SeString >( 0 );
             Feminine = parser.ReadColumn< SeString >( 1 );

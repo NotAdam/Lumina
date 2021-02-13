@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Marker", columnHash: 0x0c8db36c )]
-    public class Marker : IExcelRow
+    public class Marker : ExcelRow
     {
         
         public int Icon;
         public SeString Name;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Icon = parser.ReadColumn< int >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

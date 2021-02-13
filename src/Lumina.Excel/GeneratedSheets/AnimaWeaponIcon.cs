@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeaponIcon", columnHash: 0x63c20db3 )]
-    public class AnimaWeaponIcon : IExcelRow
+    public class AnimaWeaponIcon : ExcelRow
     {
         
         public int Hyperconductive;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public int Zodiac;
         public int ZodiacLux;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Hyperconductive = parser.ReadColumn< int >( 0 );
             Reborn = parser.ReadColumn< int >( 1 );

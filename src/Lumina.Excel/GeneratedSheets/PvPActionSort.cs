@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PvPActionSort", columnHash: 0xc3af756b )]
-    public class PvPActionSort : IExcelRow
+    public class PvPActionSort : ExcelRow
     {
         
         public byte Name;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown3;
         public int Unknown4;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< byte >( 0 );
             Action = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1 ), language );

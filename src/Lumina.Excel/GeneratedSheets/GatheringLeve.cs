@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringLeve", columnHash: 0xfa74e4d0 )]
-    public class GatheringLeve : IExcelRow
+    public class GatheringLeve : ExcelRow
     {
         
         public LazyRow< GatheringLeveRoute >[] Route;
@@ -27,13 +27,10 @@ namespace Lumina.Excel.GeneratedSheets
         public int BNpcEntry;
         public bool UseSecondaryTool;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Route = new LazyRow< GatheringLeveRoute >[ 4 ];
             for( var i = 0; i < 4; i++ )

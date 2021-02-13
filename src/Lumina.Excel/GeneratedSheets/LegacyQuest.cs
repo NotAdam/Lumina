@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LegacyQuest", columnHash: 0x6624322e )]
-    public class LegacyQuest : IExcelRow
+    public class LegacyQuest : ExcelRow
     {
         
         public ushort LegacyQuestID;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort SortKey;
         public byte Genre;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             LegacyQuestID = parser.ReadColumn< ushort >( 0 );
             Text = parser.ReadColumn< SeString >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DynamicEventType", columnHash: 0x6be0e840 )]
-    public class DynamicEventType : IExcelRow
+    public class DynamicEventType : ExcelRow
     {
         
         public uint IconObjective0;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown3;
         public uint Unknown4;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             IconObjective0 = parser.ReadColumn< uint >( 0 );
             IconObjective1 = parser.ReadColumn< uint >( 1 );

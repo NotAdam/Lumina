@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PreHandler", columnHash: 0x724c1806 )]
-    public class PreHandler : IExcelRow
+    public class PreHandler : ExcelRow
     {
         
         public SeString Unknown0;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DefaultTalk > DenyMessage;
         public byte Unknown6;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             Image = parser.ReadColumn< uint >( 1 );

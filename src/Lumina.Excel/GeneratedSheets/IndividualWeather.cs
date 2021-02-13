@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IndividualWeather", columnHash: 0x4532afe5 )]
-    public class IndividualWeather : IExcelRow
+    public class IndividualWeather : ExcelRow
     {
         
         public LazyRow< Weather >[] Weather;
@@ -29,13 +29,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown26;
         public uint Unknown27;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Weather = new LazyRow< Weather >[ 6 ];
             for( var i = 0; i < 6; i++ )

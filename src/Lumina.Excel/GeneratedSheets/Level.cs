@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Level", columnHash: 0xd3d8d868 )]
-    public class Level : IExcelRow
+    public class Level : ExcelRow
     {
         
         public float X;
@@ -21,13 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint EventId;
         public LazyRow< TerritoryType > Territory;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             X = parser.ReadColumn< float >( 0 );
             Y = parser.ReadColumn< float >( 1 );

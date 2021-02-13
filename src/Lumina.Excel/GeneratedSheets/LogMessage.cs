@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LogMessage", columnHash: 0xf3a6d024 )]
-    public class LogMessage : IExcelRow
+    public class LogMessage : ExcelRow
     {
         
         public ushort LogKind;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown3;
         public SeString Text;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             LogKind = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< ushort >( 1 );

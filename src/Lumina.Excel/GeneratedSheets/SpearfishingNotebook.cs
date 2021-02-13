@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpearfishingNotebook", columnHash: 0x0f196a4a )]
-    public class SpearfishingNotebook : IExcelRow
+    public class SpearfishingNotebook : ExcelRow
     {
         
         public byte GatheringLevel;
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown10;
         public ushort Unknown11;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             GatheringLevel = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );

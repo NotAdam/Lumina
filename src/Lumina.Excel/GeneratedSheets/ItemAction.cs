@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemAction", columnHash: 0xb1f26af0 )]
-    public class ItemAction : IExcelRow
+    public class ItemAction : ExcelRow
     {
         
         public byte CondLv;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort[] Data;
         public ushort[] DataHQ;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             CondLv = parser.ReadColumn< byte >( 0 );
             CondBattle = parser.ReadColumn< bool >( 1 );

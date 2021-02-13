@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTaskParameter", columnHash: 0xcbd32284 )]
-    public class RetainerTaskParameter : IExcelRow
+    public class RetainerTaskParameter : ExcelRow
     {
         
         public short[] ItemLevelDoW;
         public short[] GatheringDoL;
         public short[] GatheringFSH;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ItemLevelDoW = new short[ 2 ];
             for( var i = 0; i < 2; i++ )

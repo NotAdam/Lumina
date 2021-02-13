@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZContent", columnHash: 0x615a9876 )]
-    public class AOZContent : IExcelRow
+    public class AOZContent : ExcelRow
     {
         
         public ushort StandardFinishTime;
@@ -27,13 +27,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort AlliedSealsReward;
         public ushort TomestonesReward;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             StandardFinishTime = parser.ReadColumn< ushort >( 0 );
             IdealFinishTime = parser.ReadColumn< ushort >( 1 );

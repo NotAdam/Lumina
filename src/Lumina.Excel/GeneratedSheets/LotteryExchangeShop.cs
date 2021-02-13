@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LotteryExchangeShop", columnHash: 0xfd7b4ce5 )]
-    public class LotteryExchangeShop : IExcelRow
+    public class LotteryExchangeShop : ExcelRow
     {
         
         public SeString Unknown0;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< LogMessage >[] LogMessage;
         public bool Unknown133;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             ItemAccepted = new LazyRow< Item >[ 32 ];

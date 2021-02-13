@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutsceneMotion", columnHash: 0x3d86ce33 )]
-    public class CutsceneMotion : IExcelRow
+    public class CutsceneMotion : ExcelRow
     {
         
         public float WALK_LOOP_SPEED;
@@ -22,13 +22,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte TURN_CW180_FRAME;
         public byte TURN_CCW180_FRAME;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             WALK_LOOP_SPEED = parser.ReadColumn< float >( 0 );
             RUN_LOOP_SPEED = parser.ReadColumn< float >( 1 );

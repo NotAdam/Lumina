@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutsceneWorkIndex", columnHash: 0xd870e208 )]
-    public class CutsceneWorkIndex : IExcelRow
+    public class CutsceneWorkIndex : ExcelRow
     {
         
         public ushort WorkIndex;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             WorkIndex = parser.ReadColumn< ushort >( 0 );
         }

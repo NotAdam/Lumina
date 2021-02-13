@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SatisfactionNpc", columnHash: 0x652420ba )]
-    public class SatisfactionNpc : IExcelRow
+    public class SatisfactionNpc : ExcelRow
     {
         public struct UnkStruct16Struct
         {
@@ -73,13 +73,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte AddedIn530;
         public byte AddedIn531;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Npc = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< int >( 0 ), language );
             QuestRequired = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ), language );

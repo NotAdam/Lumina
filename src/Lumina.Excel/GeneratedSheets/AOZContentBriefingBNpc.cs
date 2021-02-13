@@ -7,13 +7,13 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZContentBriefingBNpc", columnHash: 0xfc0810d7 )]
-    public class AOZContentBriefingBNpc : IExcelRow
+    public class AOZContentBriefingBNpc : ExcelRow
     {
         
         public LazyRow< BNpcName > BNpcName;
         public uint TargetSmall;
         public uint TargetLarge;
-        public bool Unknown3;
+        public bool HideStats;
         public byte Endurance;
         public byte Fire;
         public byte Ice;
@@ -25,29 +25,26 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Piercing;
         public byte Blunt;
         public byte Magic;
-        public bool SlowResistance;
-        public bool PetrificationResistance;
-        public bool ParalysisResistance;
-        public bool SilenceResistance;
-        public bool BlindResistance;
-        public bool StunResistance;
-        public bool SleepResistance;
-        public bool BindResistance;
-        public bool HeavyResistance;
-        public bool InstaDeathResistance;
+        public bool SlowVuln;
+        public bool PetrificationVuln;
+        public bool ParalysisVuln;
+        public bool InterruptionVuln;
+        public bool BlindVuln;
+        public bool StunVuln;
+        public bool SleepVuln;
+        public bool BindVuln;
+        public bool HeavyVuln;
+        public bool FlatOrDeathVuln;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 0 ), language );
             TargetSmall = parser.ReadColumn< uint >( 1 );
             TargetLarge = parser.ReadColumn< uint >( 2 );
-            Unknown3 = parser.ReadColumn< bool >( 3 );
+            HideStats = parser.ReadColumn< bool >( 3 );
             Endurance = parser.ReadColumn< byte >( 4 );
             Fire = parser.ReadColumn< byte >( 5 );
             Ice = parser.ReadColumn< byte >( 6 );
@@ -59,16 +56,16 @@ namespace Lumina.Excel.GeneratedSheets
             Piercing = parser.ReadColumn< byte >( 12 );
             Blunt = parser.ReadColumn< byte >( 13 );
             Magic = parser.ReadColumn< byte >( 14 );
-            SlowResistance = parser.ReadColumn< bool >( 15 );
-            PetrificationResistance = parser.ReadColumn< bool >( 16 );
-            ParalysisResistance = parser.ReadColumn< bool >( 17 );
-            SilenceResistance = parser.ReadColumn< bool >( 18 );
-            BlindResistance = parser.ReadColumn< bool >( 19 );
-            StunResistance = parser.ReadColumn< bool >( 20 );
-            SleepResistance = parser.ReadColumn< bool >( 21 );
-            BindResistance = parser.ReadColumn< bool >( 22 );
-            HeavyResistance = parser.ReadColumn< bool >( 23 );
-            InstaDeathResistance = parser.ReadColumn< bool >( 24 );
+            SlowVuln = parser.ReadColumn< bool >( 15 );
+            PetrificationVuln = parser.ReadColumn< bool >( 16 );
+            ParalysisVuln = parser.ReadColumn< bool >( 17 );
+            InterruptionVuln = parser.ReadColumn< bool >( 18 );
+            BlindVuln = parser.ReadColumn< bool >( 19 );
+            StunVuln = parser.ReadColumn< bool >( 20 );
+            SleepVuln = parser.ReadColumn< bool >( 21 );
+            BindVuln = parser.ReadColumn< bool >( 22 );
+            HeavyVuln = parser.ReadColumn< bool >( 23 );
+            FlatOrDeathVuln = parser.ReadColumn< bool >( 24 );
         }
     }
 }

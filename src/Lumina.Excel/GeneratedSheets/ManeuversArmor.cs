@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ManeuversArmor", columnHash: 0xc8b98ed4 )]
-    public class ManeuversArmor : IExcelRow
+    public class ManeuversArmor : ExcelRow
     {
         
         public ushort Unknown0;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown10;
         public SeString Unknown11;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             BNpcBase = new LazyRow< BNpcName >[ 2 ];

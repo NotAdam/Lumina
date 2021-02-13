@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuildleveAssignment", columnHash: 0x129d93fa )]
-    public class GuildleveAssignment : IExcelRow
+    public class GuildleveAssignment : ExcelRow
     {
         
         public SeString Unknown0;
@@ -21,13 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown9;
         public byte Unknown10;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             AddedIn53 = parser.ReadColumn< byte >( 1 );

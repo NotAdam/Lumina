@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GcArmyMemberGrow", columnHash: 0xaf66261c )]
-    public class GcArmyMemberGrow : IExcelRow
+    public class GcArmyMemberGrow : ExcelRow
     {
         
         public LazyRow< ClassJob > ClassJob;
@@ -257,13 +257,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown244;
         public byte Unknown245;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 0 ), language );
             ClassBook = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 1 ), language );

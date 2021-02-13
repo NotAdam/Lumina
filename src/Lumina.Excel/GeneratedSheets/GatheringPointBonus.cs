@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringPointBonus", columnHash: 0xcd832c29 )]
-    public class GatheringPointBonus : IExcelRow
+    public class GatheringPointBonus : ExcelRow
     {
         
         public LazyRow< GatheringCondition > Condition;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown53;
         public uint Unknown54;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Condition = new LazyRow< GatheringCondition >( lumina, parser.ReadColumn< byte >( 0 ), language );
             ConditionValue = parser.ReadColumn< uint >( 1 );

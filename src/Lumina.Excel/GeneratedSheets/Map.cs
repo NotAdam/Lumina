@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Map", columnHash: 0x56a0aa07 )]
-    public class Map : IExcelRow
+    public class Map : ExcelRow
     {
         
         public byte MapCondition;
@@ -29,13 +29,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool DiscoveryArrayByte;
         public bool IsEvent;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             MapCondition = parser.ReadColumn< byte >( 0 );
             PriorityCategoryUI = parser.ReadColumn< byte >( 1 );

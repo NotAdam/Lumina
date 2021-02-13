@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BattleLeve", columnHash: 0x1ce99cea )]
-    public class BattleLeve : IExcelRow
+    public class BattleLeve : ExcelRow
     {
         public struct UnkStruct64Struct
         {
@@ -128,13 +128,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Help0;
         public ushort Help1;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Time = new ushort[ 8 ];
             for( var i = 0; i < 8; i++ )

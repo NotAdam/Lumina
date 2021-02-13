@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuildOrder", columnHash: 0xbdf9fa30 )]
-    public class GuildOrder : IExcelRow
+    public class GuildOrder : ExcelRow
     {
         
         public LazyRow< ENpcResident > ENpcName;
@@ -28,13 +28,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown15;
         public bool Unknown16;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ENpcName = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
             Objective = parser.ReadColumn< SeString >( 1 );

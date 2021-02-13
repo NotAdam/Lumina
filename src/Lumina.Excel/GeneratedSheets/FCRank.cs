@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCRank", columnHash: 0x0105b558 )]
-    public class FCRank : IExcelRow
+    public class FCRank : ExcelRow
     {
         
         public uint NextPoint;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte FCActionStockNum;
         public byte Unknown7;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             NextPoint = parser.ReadColumn< uint >( 0 );
             CurrentPoint = parser.ReadColumn< uint >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpearfishingItem", columnHash: 0xd17632b4 )]
-    public class SpearfishingItem : IExcelRow
+    public class SpearfishingItem : ExcelRow
     {
         
         public SeString Description;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< TerritoryType > TerritoryType;
         public bool IsVisible;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Description = parser.ReadColumn< SeString >( 0 );
             Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 1 ), language );

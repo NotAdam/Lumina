@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeapon5TradeItem", columnHash: 0x40f1e693 )]
-    public class AnimaWeapon5TradeItem : IExcelRow
+    public class AnimaWeapon5TradeItem : ExcelRow
     {
         public struct UnkStruct3Struct
         {
@@ -22,13 +22,10 @@ namespace Lumina.Excel.GeneratedSheets
         public UnkStruct3Struct[] UnkStruct3;
         public LazyRow< AnimaWeapon5PatternGroup > Category;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             CrystalSand = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 ), language );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PresetCamera", columnHash: 0x7d6930eb )]
-    public class PresetCamera : IExcelRow
+    public class PresetCamera : ExcelRow
     {
         
         public ushort EID;
@@ -28,13 +28,10 @@ namespace Lumina.Excel.GeneratedSheets
         public float Hrothgar_F;
         public float Viera_F;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             EID = parser.ReadColumn< ushort >( 0 );
             PosX = parser.ReadColumn< float >( 1 );

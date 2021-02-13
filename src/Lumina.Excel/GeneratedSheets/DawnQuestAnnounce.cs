@@ -7,20 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DawnQuestAnnounce", columnHash: 0xf8bddb48 )]
-    public class DawnQuestAnnounce : IExcelRow
+    public class DawnQuestAnnounce : ExcelRow
     {
         
         public LazyRow< Quest > Quest;
         public LazyRow< DawnContent > Content;
         public LazyRow< ENpcResident >[] ENPC;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
             Content = new LazyRow< DawnContent >( lumina, parser.ReadColumn< byte >( 1 ), language );

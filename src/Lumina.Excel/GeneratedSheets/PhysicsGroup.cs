@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PhysicsGroup", columnHash: 0xfa594271 )]
-    public class PhysicsGroup : IExcelRow
+    public class PhysicsGroup : ExcelRow
     {
         
         public float[] SimulationTime;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte[] ConfigSwitch;
         public bool ForceAttractByPhysicsOff;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             SimulationTime = new float[ 6 ];
             for( var i = 0; i < 6; i++ )

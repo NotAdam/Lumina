@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddyRank", columnHash: 0xdbf43666 )]
-    public class BuddyRank : IExcelRow
+    public class BuddyRank : ExcelRow
     {
         
         public uint ExpRequired;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ExpRequired = parser.ReadColumn< uint >( 0 );
         }

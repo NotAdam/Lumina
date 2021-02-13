@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GCRankLimsaFemaleText", columnHash: 0xd573cba6 )]
-    public class GCRankLimsaFemaleText : IExcelRow
+    public class GCRankLimsaFemaleText : ExcelRow
     {
         
         public SeString Singular;
@@ -21,13 +21,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString NameRank;
         public SeString Unknown9;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );

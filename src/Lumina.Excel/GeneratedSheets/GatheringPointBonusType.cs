@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringPointBonusType", columnHash: 0xdebb20e3 )]
-    public class GatheringPointBonusType : IExcelRow
+    public class GatheringPointBonusType : ExcelRow
     {
         
         public SeString Text;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Text = parser.ReadColumn< SeString >( 0 );
         }

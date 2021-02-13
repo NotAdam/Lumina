@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Buddy", columnHash: 0xd2892cc5 )]
-    public class Buddy : IExcelRow
+    public class Buddy : ExcelRow
     {
         
         public byte Base;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString SoundEffect2;
         public SeString SoundEffect1;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Base = parser.ReadColumn< byte >( 0 );
             QuestRequirement2 = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ), language );

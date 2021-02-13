@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Weather", columnHash: 0x02cf2541 )]
-    public class Weather : IExcelRow
+    public class Weather : ExcelRow
     {
         
         public int Icon;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown5;
         public SeString Unknown6;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Icon = parser.ReadColumn< int >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

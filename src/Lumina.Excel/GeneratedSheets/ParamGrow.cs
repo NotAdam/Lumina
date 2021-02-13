@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ParamGrow", columnHash: 0x64a92445 )]
-    public class ParamGrow : IExcelRow
+    public class ParamGrow : ExcelRow
     {
         
         public int ExpToNext;
@@ -26,13 +26,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort ProperGuildOrder;
         public ushort CraftingLevel;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ExpToNext = parser.ReadColumn< int >( 0 );
             AdditionalActions = parser.ReadColumn< byte >( 1 );

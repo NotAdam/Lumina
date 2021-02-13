@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMSwitch", columnHash: 0x0989d4f2 )]
-    public class BGMSwitch : IExcelRow
+    public class BGMSwitch : ExcelRow
     {
         
         public LazyRow< BGMSystemDefine > BGMSystemDefine;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown2;
         public LazyRow< BGM > BGM;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             BGMSystemDefine = new LazyRow< BGMSystemDefine >( lumina, parser.ReadColumn< byte >( 0 ), language );
             Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ), language );

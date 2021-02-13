@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGM", columnHash: 0xc9fc6953 )]
-    public class BGM : IExcelRow
+    public class BGM : ExcelRow
     {
         
         public SeString File;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public float DisableRestartResetTime;
         public byte SpecialMode;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             File = parser.ReadColumn< SeString >( 0 );
             Priority = parser.ReadColumn< byte >( 1 );

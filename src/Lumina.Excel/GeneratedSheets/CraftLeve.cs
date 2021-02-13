@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftLeve", columnHash: 0x51a3acc3 )]
-    public class CraftLeve : IExcelRow
+    public class CraftLeve : ExcelRow
     {
         public struct UnkStruct3Struct
         {
@@ -20,13 +20,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Repeats;
         public UnkStruct3Struct[] UnkStruct3;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Leve = new LazyRow< Leve >( lumina, parser.ReadColumn< int >( 0 ), language );
             CraftLeveTalk = parser.ReadColumn< int >( 1 );

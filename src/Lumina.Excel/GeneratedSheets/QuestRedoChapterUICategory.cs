@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestRedoChapterUICategory", columnHash: 0x5eb59ccb )]
-    public class QuestRedoChapterUICategory : IExcelRow
+    public class QuestRedoChapterUICategory : ExcelRow
     {
         
         public byte Unknown0;
         public SeString Expac;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Expac = parser.ReadColumn< SeString >( 1 );

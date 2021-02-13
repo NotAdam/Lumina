@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcAnnounceIcon", columnHash: 0xdbf43666 )]
-    public class BNpcAnnounceIcon : IExcelRow
+    public class BNpcAnnounceIcon : ExcelRow
     {
         
         public uint Icon;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Icon = parser.ReadColumn< uint >( 0 );
         }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Relic", columnHash: 0x8080ef57 )]
-    public class Relic : IExcelRow
+    public class Relic : ExcelRow
     {
         
         public LazyRow< Item > ItemAtma;
@@ -27,13 +27,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Materia > Materia3;
         public LazyRow< RelicNote > NoteSelection3;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ItemAtma = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 ), language );
             ItemAnimus = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 ), language );

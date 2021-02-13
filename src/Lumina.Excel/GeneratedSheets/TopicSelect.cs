@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TopicSelect", columnHash: 0xc312c89f )]
-    public class TopicSelect : IExcelRow
+    public class TopicSelect : ExcelRow
     {
         public struct UnkStruct4Struct
         {
@@ -20,13 +20,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown3;
         public UnkStruct4Struct[] UnkStruct4;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );

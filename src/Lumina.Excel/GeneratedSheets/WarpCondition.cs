@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WarpCondition", columnHash: 0xc096f9d0 )]
-    public class WarpCondition : IExcelRow
+    public class WarpCondition : ExcelRow
     {
         
         public ushort Gil;
@@ -19,13 +19,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort QuestReward;
         public ushort ClassLevel;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Gil = parser.ReadColumn< ushort >( 0 );
             CompleteParam = parser.ReadColumn< byte >( 1 );

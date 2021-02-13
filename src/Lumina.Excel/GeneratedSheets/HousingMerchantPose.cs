@@ -7,19 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingMerchantPose", columnHash: 0x3d65a9f1 )]
-    public class HousingMerchantPose : IExcelRow
+    public class HousingMerchantPose : ExcelRow
     {
         
         public LazyRow< ActionTimeline > ActionTimeline;
         public SeString Pose;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ActionTimeline = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Pose = parser.ReadColumn< SeString >( 1 );

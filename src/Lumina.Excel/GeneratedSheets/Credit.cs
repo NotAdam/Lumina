@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Credit", columnHash: 0x1fe6ec22 )]
-    public class Credit : IExcelRow
+    public class Credit : ExcelRow
     {
         
         public byte Unknown0;
@@ -22,13 +22,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CreditCast > FrenchCast2;
         public LazyRow< CreditCast > GermanCast2;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Roles1 = new LazyRow< CreditCast >( lumina, parser.ReadColumn< ushort >( 1 ), language );

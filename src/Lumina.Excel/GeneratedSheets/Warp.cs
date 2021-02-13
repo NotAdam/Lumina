@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Warp", columnHash: 0x1a234b7b )]
-    public class Warp : IExcelRow
+    public class Warp : ExcelRow
     {
         
         public LazyRow< Level > PopRange;
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         public SeString Question;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             PopRange = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 0 ), language );
             TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ), language );

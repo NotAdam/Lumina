@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DpsChallenge", columnHash: 0x944cf024 )]
-    public class DpsChallenge : IExcelRow
+    public class DpsChallenge : ExcelRow
     {
         
         public ushort PlayerLevel;
@@ -17,13 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         public SeString Description;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             PlayerLevel = parser.ReadColumn< ushort >( 0 );
             PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 1 ), language );

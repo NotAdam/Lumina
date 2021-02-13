@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpearfishingRecordPage", columnHash: 0x4f78acda )]
-    public class SpearfishingRecordPage : IExcelRow
+    public class SpearfishingRecordPage : ExcelRow
     {
         
         public byte Unknown0;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< PlaceName > PlaceName;
         public int Image;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

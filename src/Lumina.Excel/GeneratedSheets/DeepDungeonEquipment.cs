@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonEquipment", columnHash: 0xc638f2bf )]
-    public class DeepDungeonEquipment : IExcelRow
+    public class DeepDungeonEquipment : ExcelRow
     {
         
         public uint Icon;
@@ -22,13 +22,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         public SeString Description;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Icon = parser.ReadColumn< uint >( 0 );
             Singular = parser.ReadColumn< SeString >( 1 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "NotebookDivision", columnHash: 0xb4638be9 )]
-    public class NotebookDivision : IExcelRow
+    public class NotebookDivision : ExcelRow
     {
         
         public SeString Name;
@@ -26,13 +26,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool ALCCraft;
         public bool CULCraft;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             NotebookDivisionCategory = new LazyRow< NotebookDivisionCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );

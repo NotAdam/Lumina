@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TripleTriad", columnHash: 0x646dde20 )]
-    public class TripleTriad : IExcelRow
+    public class TripleTriad : ExcelRow
     {
         
         public LazyRow< TripleTriadCard >[] TripleTriadCardFixed;
@@ -27,13 +27,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown25;
         public LazyRow< Item >[] ItemPossibleReward;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             TripleTriadCardFixed = new LazyRow< TripleTriadCard >[ 5 ];
             for( var i = 0; i < 5; i++ )

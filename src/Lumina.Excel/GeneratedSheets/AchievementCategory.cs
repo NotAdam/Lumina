@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AchievementCategory", columnHash: 0xb98d9baf )]
-    public class AchievementCategory : IExcelRow
+    public class AchievementCategory : ExcelRow
     {
         
         public SeString Name;
@@ -16,13 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool HideCategory;
         public byte Order;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             AchievementKind = new LazyRow< AchievementKind >( lumina, parser.ReadColumn< byte >( 1 ), language );

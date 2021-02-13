@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "JournalGenre", columnHash: 0x2c6b75bb )]
-    public class JournalGenre : IExcelRow
+    public class JournalGenre : ExcelRow
     {
         
         public int Icon;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown2;
         public SeString Name;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Icon = parser.ReadColumn< int >( 0 );
             JournalCategory = new LazyRow< JournalCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );

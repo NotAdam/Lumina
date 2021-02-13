@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Ballista", columnHash: 0xcac0c160 )]
-    public class Ballista : IExcelRow
+    public class Ballista : ExcelRow
     {
         
         public LazyRow< BNpcBase > BNPC;
@@ -22,13 +22,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Action > Action2;
         public LazyRow< Action > Action3;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             BNPC = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Near = parser.ReadColumn< sbyte >( 1 );

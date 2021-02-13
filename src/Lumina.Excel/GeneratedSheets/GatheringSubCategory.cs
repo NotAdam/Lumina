@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringSubCategory", columnHash: 0x6dac8145 )]
-    public class GatheringSubCategory : IExcelRow
+    public class GatheringSubCategory : ExcelRow
     {
         
         public LazyRow< GatheringType > GatheringType;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString FolkloreBook;
         public byte Unknown6;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             GatheringType = new LazyRow< GatheringType >( lumina, parser.ReadColumn< byte >( 0 ), language );
             ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 1 ), language );

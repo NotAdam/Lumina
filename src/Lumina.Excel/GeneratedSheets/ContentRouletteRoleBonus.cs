@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentRouletteRoleBonus", columnHash: 0x8c1eab22 )]
-    public class ContentRouletteRoleBonus : IExcelRow
+    public class ContentRouletteRoleBonus : ExcelRow
     {
         
         public ushort Unknown0;
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown10;
         public byte Unknown11;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< ushort >( 1 );

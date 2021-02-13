@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SatisfactionSupply", columnHash: 0x2d608ea2 )]
-    public class SatisfactionSupply : IExcelRow
+    public class SatisfactionSupply : ExcelRow
     {
         
         public byte Slot;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort CollectabilityHigh;
         public LazyRow< SatisfactionSupplyReward > Reward;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Slot = parser.ReadColumn< byte >( 0 );
             ProbabilityPct = parser.ReadColumn< byte >( 1 );

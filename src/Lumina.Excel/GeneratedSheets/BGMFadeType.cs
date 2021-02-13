@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMFadeType", columnHash: 0xe018b5fa )]
-    public class BGMFadeType : IExcelRow
+    public class BGMFadeType : ExcelRow
     {
         
         public float FadeOutTime;
@@ -15,13 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public float FadeInStartTime;
         public float ResumeFadeInTime;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             FadeOutTime = parser.ReadColumn< float >( 0 );
             FadeInTime = parser.ReadColumn< float >( 1 );

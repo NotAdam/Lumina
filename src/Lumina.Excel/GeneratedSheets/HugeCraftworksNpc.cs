@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HugeCraftworksNpc", columnHash: 0xb9ae7ade )]
-    public class HugeCraftworksNpc : IExcelRow
+    public class HugeCraftworksNpc : ExcelRow
     {
         
         public LazyRow< ENpcResident > ENpcResident;
@@ -80,13 +80,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] QtyItemUnkown;
         public SeString Transient;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             ENpcResident = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
             ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< ushort >( 1 ), language );

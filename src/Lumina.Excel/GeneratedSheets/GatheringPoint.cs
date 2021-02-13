@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringPoint", columnHash: 0x4f531171 )]
-    public class GatheringPoint : IExcelRow
+    public class GatheringPoint : ExcelRow
     {
         
         public byte Type;
@@ -18,13 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< PlaceName > PlaceName;
         public LazyRow< GatheringSubCategory > GatheringSubCategory;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Type = parser.ReadColumn< byte >( 0 );
             GatheringPointBase = new LazyRow< GatheringPointBase >( lumina, parser.ReadColumn< int >( 1 ), language );

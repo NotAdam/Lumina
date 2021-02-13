@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WarpLogic", columnHash: 0x78e83215 )]
-    public class WarpLogic : IExcelRow
+    public class WarpLogic : ExcelRow
     {
         public struct UnkStruct13Struct
         {
@@ -23,13 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString ResponseYes;
         public SeString ResponseNo;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             WarpName = parser.ReadColumn< SeString >( 1 );

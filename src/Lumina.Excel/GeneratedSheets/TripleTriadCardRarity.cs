@@ -7,18 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TripleTriadCardRarity", columnHash: 0xdcfd9eba )]
-    public class TripleTriadCardRarity : IExcelRow
+    public class TripleTriadCardRarity : ExcelRow
     {
         
         public byte Stars;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Stars = parser.ReadColumn< byte >( 0 );
         }

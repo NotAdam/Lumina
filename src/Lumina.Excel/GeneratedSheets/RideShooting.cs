@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RideShooting", columnHash: 0xdd593ecd )]
-    public class RideShooting : IExcelRow
+    public class RideShooting : ExcelRow
     {
         
         public LazyRow< GFateRideShooting > GFateRideShooting;
@@ -108,13 +108,10 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown116;
         public byte Unknown117;
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             GFateRideShooting = new LazyRow< GFateRideShooting >( lumina, parser.ReadColumn< ushort >( 0 ), language );
             Unknown1 = parser.ReadColumn< short >( 1 );
