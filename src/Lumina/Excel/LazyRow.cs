@@ -19,6 +19,8 @@ namespace Lumina.Excel
         public bool IsValueCreated { get; }
         
         public Language Language { get; }
+        
+        public ExcelRow RawRow { get; }
     }
 
     /// <summary>
@@ -80,6 +82,11 @@ namespace Lumina.Excel
             }
         }
 
+        /// <summary>
+        /// Provides access to the raw row without any fuckery, useful for serialisation and etc.
+        /// </summary>
+        public ExcelRow RawRow => Value;
+        
         /// <summary>
         /// Checks whether something has loaded successfully.
         /// </summary>
