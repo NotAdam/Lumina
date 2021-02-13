@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Lumina.Data.Parsing.Layer;
 using Lumina.Extensions;
 

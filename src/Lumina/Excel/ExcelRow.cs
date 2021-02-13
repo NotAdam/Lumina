@@ -9,13 +9,13 @@ namespace Lumina.Excel
         
         public string SheetName { get; protected set; }
         
-        public Language Language { get; set; }
+        public Language SheetLanguage { get; set; }
 
         public virtual void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;
-            Language = language;
+            SheetLanguage = language;
 
             SheetName = parser.Sheet.Name;
         }

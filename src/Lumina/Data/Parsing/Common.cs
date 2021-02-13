@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Lumina.Data.Parsing
 {
@@ -9,11 +6,11 @@ namespace Lumina.Data.Parsing
     {
         public struct Vector3
         {
-            public float x, y, z;
+            public float X, Y, Z;
 
             public static Vector3 Read( BinaryReader br )
             {
-                return new Vector3 { x = br.ReadSingle(), y = br.ReadSingle(), z = br.ReadSingle() };
+                return new Vector3 { X = br.ReadSingle(), Y = br.ReadSingle(), Z = br.ReadSingle() };
             }
         };
 

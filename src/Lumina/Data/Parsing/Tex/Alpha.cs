@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lumina.Data.Parsing.Tex {
     // From DotSquish
@@ -84,7 +80,7 @@ namespace Lumina.Data.Parsing.Tex {
                 var index = 0;
                 for (int j = 0; j < 8; ++j) {
                     // Get the squared error from this code.
-                    var dist = ((int)value) - ((int)codes[j]);
+                    var dist = value - codes[j];
                     dist *= dist;
 
                     // Compare with the best so far.

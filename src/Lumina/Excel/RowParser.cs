@@ -2,7 +2,6 @@ using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
@@ -311,7 +310,7 @@ namespace Lumina.Excel
         {
             var data = ReadFieldInternal( type );
 
-            if( _sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
+            if( _sheet.Lumina.Options.ExcelSheetStrictCastingEnabled )
             {
                 return (T)data;
             }

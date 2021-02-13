@@ -37,7 +37,7 @@ namespace Lumina.Text.Payloads
             {
                 var d = br.ReadByte();
                 data.Add( d );
-                if( d == SeString.END_BYTE )
+                if( d == SeString.EndByte )
                 {
                     // data.Add( d );
                     // br.BaseStream.Position++;

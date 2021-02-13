@@ -19,7 +19,7 @@ namespace Lumina.Excel
             HeaderFile = headerFile;
             Name = name;
             RequestedLanguage = requestedLanguage;
-            _Lumina = lumina;
+            Lumina = lumina;
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Lumina.Excel
         /// </summary>
         public Language RequestedLanguage { get; protected set; }
 
-        internal readonly Lumina _Lumina;
+        internal readonly Lumina Lumina;
 
         /// <summary>
         /// Generates an absolute path to a data file for a sheet
@@ -131,7 +131,7 @@ namespace Lumina.Excel
                 var filePath = GenerateFilePath( Name, bp.StartId, lang );
 
                 // ignore languages that don't exist in this client build
-                if( !_Lumina.FileExists( filePath ) )
+                if( !Lumina.FileExists( filePath ) )
                 {
                     continue;
                 }
@@ -143,7 +143,7 @@ namespace Lumina.Excel
                     StartId = bp.StartId
                 };
 
-                segment.File = _Lumina.GetFile< ExcelDataFile >( segment.FilePath );
+                segment.File = Lumina.GetFile< ExcelDataFile >( segment.FilePath );
 
                 // convert big endian to little endian on le systems
                 ProcessDataEndianness( segment.File );

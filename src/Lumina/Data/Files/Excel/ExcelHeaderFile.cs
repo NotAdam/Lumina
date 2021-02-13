@@ -1,14 +1,10 @@
 using System;
 using System.Buffers.Binary;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
-using System.Net;
-using System.Text;
 using Lumina.Misc;
 
 namespace Lumina.Data.Files.Excel

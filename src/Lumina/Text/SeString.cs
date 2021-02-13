@@ -10,8 +10,8 @@ namespace Lumina.Text
 {
     public class SeString
     {
-        public const byte START_BYTE = 0x02;
-        public const byte END_BYTE = 0x03;
+        public const byte StartByte = 0x02;
+        public const byte EndByte = 0x03;
 
         public SeString( byte[] data )
         {
@@ -68,7 +68,7 @@ namespace Lumina.Text
             while( ms.Position < _rawData.Length )
             {
                 var marker = br.PeekByte();
-                if( marker != START_BYTE )
+                if( marker != StartByte )
                 {
                     payloads.Add( new TextPayload( br ) );
                 }

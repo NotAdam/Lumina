@@ -15,7 +15,7 @@ namespace Lumina.Text.Payloads
             while( br.BaseStream.Position < br.BaseStream.Length )
             {
                 var d = br.PeekByte();
-                if( d != SeString.START_BYTE )
+                if( d != SeString.StartByte )
                 {
                     data.Add( d );
                     br.BaseStream.Position++;

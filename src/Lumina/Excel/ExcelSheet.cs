@@ -43,7 +43,7 @@ namespace Lumina.Excel
             }
             
             var rowObj = Activator.CreateInstance< T >();
-            rowObj.PopulateData( parser, _Lumina, RequestedLanguage );
+            rowObj.PopulateData( parser, Lumina, RequestedLanguage );
 
             _rowCache[ cacheKey ] = rowObj;
 
@@ -56,7 +56,7 @@ namespace Lumina.Excel
             
             var obj = Activator.CreateInstance< T >();
                         
-            obj.PopulateData( parser, _Lumina, RequestedLanguage );
+            obj.PopulateData( parser, Lumina, RequestedLanguage );
 
             return obj;
         }
@@ -66,7 +66,7 @@ namespace Lumina.Excel
             parser.SeekToRow( rowId, subRowId );
             var obj = Activator.CreateInstance< T >();
 
-            obj.PopulateData( parser, _Lumina, RequestedLanguage );
+            obj.PopulateData( parser, Lumina, RequestedLanguage );
 
             return obj;
         }
