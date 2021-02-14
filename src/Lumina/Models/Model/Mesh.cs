@@ -61,8 +61,8 @@ namespace Lumina.Models.Model {
         private void ReadSubmeshes()
         {
             var currentMesh = Model.File.Meshes[ MeshIndex ];
-            Submeshes = new Submesh[ currentMesh.SubMeshNum ];
-            for( int i = 0; i < currentMesh.SubMeshNum; i++ )
+            Submeshes = new Submesh[ currentMesh.SubMeshCount ];
+            for( int i = 0; i < currentMesh.SubMeshCount; i++ )
                 Submeshes[i] = new Submesh(Model, MeshIndex, i);
         }
         
@@ -84,7 +84,7 @@ namespace Lumina.Models.Model {
             // Read indices because they're easy
             BinaryReader reader = new BinaryReader( new MemoryStream( Model.File.IndexBuffers[ (int) Model.Lod ] ) );
             reader.Seek( currentMesh.StartIndex * 2 );
-            Indices = reader.ReadStructures< UInt16 >( (int) currentMesh.IndexNum ).ToArray();
+            Indices = reader.ReadStructures< UInt16 >( (int) currentMesh.IndexCount ).ToArray();
         }
 
         private void ReadVertices()
@@ -98,7 +98,7 @@ namespace Lumina.Models.Model {
             // TODO is this slow? this sort's purpose is to avoid copying every vertex out
             var orderedElements = currentDecl.VertexElements.ToList();
             orderedElements.Sort( ( e1, e2 ) => e1.Offset.CompareTo( e2.Offset ) );
-            Vertices = new Vertex[currentMesh.VertexNum];
+            Vertices = new Vertex[currentMesh.VertexCount];
 
             // Vertices may be defined across at most 3 streams defined by a Mesh's VertexDeclarations
             var vertexStreamReader = new BinaryReader[3];

@@ -17,12 +17,12 @@ namespace Lumina.Models.Model
             var currentSubMesh = model.File.Submeshes[ subMeshListIndex ];
 
             IndexOffset = currentSubMesh.IndexOffset;
-            IndexNum = currentSubMesh.IndexNum;
+            IndexNum = currentSubMesh.IndexCount;
 
             // AttributeIndexMask is a bit-based index mask
             // i.e. "5" is 0101 so it applies attrs 0 and 2
             var attributeList = new List< string >();
-            for( int i = 0; i < 32; i++ )
+            for( int i = 0; i < model.File.ModelHeader.AttributeCount; i++ )
             {
                 if( ( ( 1 << i ) & currentSubMesh.AttributeIndexMask ) > 0 )
                 {
@@ -36,7 +36,7 @@ namespace Lumina.Models.Model
             // I don't know what this is for
             if( currentSubMesh.BoneStartIndex == 65535 ) return;
             var affectedBoneTable = new List< string >();
-            int boneEndIndex = currentSubMesh.BoneStartIndex + currentSubMesh.BoneNum;
+            int boneEndIndex = currentSubMesh.BoneStartIndex + currentSubMesh.BoneCount;
             for( int i = currentSubMesh.BoneStartIndex; i < boneEndIndex; i++ )
             {
                 var boneIndex = model.File.SubmeshBoneMap[ i ];

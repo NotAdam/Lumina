@@ -14,13 +14,13 @@ namespace Lumina.Data.Parsing.Mdl
             public uint Version;
             public uint StackSize;
             public uint RuntimeSize;
-            public ushort VertexDeclarationNum;
-            public ushort MaterialNum;
+            public ushort VertexDeclarationCount;
+            public ushort MaterialCount;
             public uint[] VertexOffset;
             public uint[] IndexOffset;
             public uint[] VertexBufferSize;
             public uint[] IndexBufferSize;
-            public byte LodNum;
+            public byte LodCount;
             public bool EnableIndexBufferStreaming;
             public bool EnableEdgeGeometry;
             private byte Padding;
@@ -31,13 +31,13 @@ namespace Lumina.Data.Parsing.Mdl
                 ret.Version = br.ReadUInt32();
                 ret.StackSize = br.ReadUInt32();
                 ret.RuntimeSize = br.ReadUInt32();
-                ret.VertexDeclarationNum = br.ReadUInt16();
-                ret.MaterialNum = br.ReadUInt16();
+                ret.VertexDeclarationCount = br.ReadUInt16();
+                ret.MaterialCount = br.ReadUInt16();
                 ret.VertexOffset = br.ReadStructures< UInt32 >( 3 ).ToArray();
                 ret.IndexOffset = br.ReadStructures< UInt32 >( 3 ).ToArray();
                 ret.VertexBufferSize = br.ReadStructures< UInt32 >( 3 ).ToArray();
                 ret.IndexBufferSize = br.ReadStructures< UInt32 >( 3 ).ToArray();
-                ret.LodNum = br.ReadByte();
+                ret.LodCount = br.ReadByte();
                 ret.EnableIndexBufferStreaming = br.ReadBoolean();
                 ret.EnableEdgeGeometry = br.ReadBoolean();
                 ret.Padding = br.ReadByte();
@@ -103,16 +103,16 @@ namespace Lumina.Data.Parsing.Mdl
         {
             // MeshHeader
             public float Radius;
-            public ushort MeshNum;
-            public ushort AttributeNum;
-            public ushort SubmeshNum;
-            public ushort MaterialNum;
-            public ushort BoneNum;
-            public ushort BoneTableNum;
-            public ushort ShapeNum;
-            public ushort ShapeMeshNum;
-            public ushort ShapeValueNum;
-            public byte LodNum;
+            public ushort MeshCount;
+            public ushort AttributeCount;
+            public ushort SubmeshCount;
+            public ushort MaterialCount;
+            public ushort BoneCount;
+            public ushort BoneTableCount;
+            public ushort ShapeCount;
+            public ushort ShapeMeshCount;
+            public ushort ShapeValueCount;
+            public byte LodCount;
 
             private byte bitfield1;
 
@@ -124,8 +124,8 @@ namespace Lumina.Data.Parsing.Mdl
             public bool WavingAnimationDisabled;
             public bool LightShadowDisabled;
             public bool ShadowDisabled;
-            public ushort ElementIdNum;
-            public byte TerrainShadowMeshNum;
+            public ushort ElementIdCount;
+            public byte TerrainShadowMeshCount;
 
             private byte bitfield2;
 
@@ -141,7 +141,7 @@ namespace Lumina.Data.Parsing.Mdl
             public float ModelClipOutDistance;
             public float ShadowClipOutDistance;
             public ushort Unknown4;
-            public ushort TerrainShadowSubmeshNum;
+            public ushort TerrainShadowSubmeshCount;
 
             private byte Unknown5;
 
@@ -157,16 +157,16 @@ namespace Lumina.Data.Parsing.Mdl
             {
                 ModelHeader ret = new ModelHeader();
                 ret.Radius = br.ReadSingle();
-                ret.MeshNum = br.ReadUInt16();
-                ret.AttributeNum = br.ReadUInt16();
-                ret.SubmeshNum = br.ReadUInt16();
-                ret.MaterialNum = br.ReadUInt16();
-                ret.BoneNum = br.ReadUInt16();
-                ret.BoneTableNum = br.ReadUInt16();
-                ret.ShapeNum = br.ReadUInt16();
-                ret.ShapeMeshNum = br.ReadUInt16();
-                ret.ShapeValueNum = br.ReadUInt16();
-                ret.LodNum = br.ReadByte();
+                ret.MeshCount = br.ReadUInt16();
+                ret.AttributeCount = br.ReadUInt16();
+                ret.SubmeshCount = br.ReadUInt16();
+                ret.MaterialCount = br.ReadUInt16();
+                ret.BoneCount = br.ReadUInt16();
+                ret.BoneTableCount = br.ReadUInt16();
+                ret.ShapeCount = br.ReadUInt16();
+                ret.ShapeMeshCount = br.ReadUInt16();
+                ret.ShapeValueCount = br.ReadUInt16();
+                ret.LodCount = br.ReadByte();
 
                 ret.bitfield1 = br.ReadByte();
                 ret.DustOcclusionEnabled = ( ret.bitfield1 & 0x80 ) == 0x80;
@@ -178,8 +178,8 @@ namespace Lumina.Data.Parsing.Mdl
                 ret.LightShadowDisabled = ( ret.bitfield1 & 0x02 ) == 0x02;
                 ret.ShadowDisabled = ( ret.bitfield1 & 0x01 ) == 0x01;
 
-                ret.ElementIdNum = br.ReadUInt16();
-                ret.TerrainShadowMeshNum = br.ReadByte();
+                ret.ElementIdCount = br.ReadUInt16();
+                ret.TerrainShadowMeshCount = br.ReadByte();
 
                 ret.bitfield2 = br.ReadByte();
                 ret.Unknown2 = ( ret.bitfield2 & 0x80 ) == 0x80;
@@ -194,7 +194,7 @@ namespace Lumina.Data.Parsing.Mdl
                 ret.ModelClipOutDistance = br.ReadSingle();
                 ret.ShadowClipOutDistance = br.ReadSingle();
                 ret.Unknown4 = br.ReadUInt16();
-                ret.TerrainShadowSubmeshNum = br.ReadUInt16();
+                ret.TerrainShadowSubmeshCount = br.ReadUInt16();
                 ret.Unknown5 = br.ReadByte();
                 ret.BGChangeMaterialIndex = br.ReadByte();
                 ret.BGCrestChangeMaterialIndex = br.ReadByte();
@@ -228,21 +228,21 @@ namespace Lumina.Data.Parsing.Mdl
         public struct LodStruct
         {
             public ushort MeshIndex;
-            public ushort MeshNum;
+            public ushort MeshCount;
             public float ModelLodRange;
             public float TextureLodRange;
             public ushort WaterMeshIndex;
-            public ushort WaterMeshNum;
+            public ushort WaterMeshCount;
             public ushort ShadowMeshIndex;
-            public ushort ShadowMeshNum;
+            public ushort ShadowMeshCount;
             public ushort TerrainShadowMeshIndex;
-            public ushort TerrainShadowMeshNum;
+            public ushort TerrainShadowMeshCount;
             public ushort VerticalFogMeshIndex;
-            public ushort VerticalFogMeshNum;
+            public ushort VerticalFogMeshCount;
             // Yell at me if this ever exists on Win32
             public uint EdgeGeometrySize;
             public uint EdgeGeometryDataOffset;
-            public uint PolygonNum;
+            public uint PolygonCount;
             public uint Unknown1;
             public uint VertexBufferSize;
             public uint IndexBufferSize;
@@ -253,20 +253,20 @@ namespace Lumina.Data.Parsing.Mdl
             {
                 LodStruct ret = new LodStruct();
                 ret.MeshIndex = br.ReadUInt16();
-                ret.MeshNum = br.ReadUInt16();
+                ret.MeshCount = br.ReadUInt16();
                 ret.ModelLodRange = br.ReadSingle();
                 ret.TextureLodRange = br.ReadSingle();
                 ret.WaterMeshIndex = br.ReadUInt16();
-                ret.WaterMeshNum = br.ReadUInt16();
+                ret.WaterMeshCount = br.ReadUInt16();
                 ret.ShadowMeshIndex = br.ReadUInt16();
-                ret.ShadowMeshNum = br.ReadUInt16();
+                ret.ShadowMeshCount = br.ReadUInt16();
                 ret.TerrainShadowMeshIndex = br.ReadUInt16();
-                ret.TerrainShadowMeshNum = br.ReadUInt16();
+                ret.TerrainShadowMeshCount = br.ReadUInt16();
                 ret.VerticalFogMeshIndex = br.ReadUInt16();
-                ret.VerticalFogMeshNum = br.ReadUInt16();
+                ret.VerticalFogMeshCount = br.ReadUInt16();
                 ret.EdgeGeometrySize = br.ReadUInt32();
                 ret.EdgeGeometryDataOffset = br.ReadUInt32();
-                ret.PolygonNum = br.ReadUInt32();
+                ret.PolygonCount = br.ReadUInt32();
                 ret.Unknown1 = br.ReadUInt32();
                 ret.VertexBufferSize = br.ReadUInt32();
                 ret.IndexBufferSize = br.ReadUInt32();
@@ -279,13 +279,13 @@ namespace Lumina.Data.Parsing.Mdl
         public struct ExtraLodStruct
         {
             public ushort LightShaftMeshIndex;
-            public ushort LightShaftMeshNum;
+            public ushort LightShaftMeshCount;
             public ushort GlassMeshIndex;
-            public ushort GlassMeshNum;
+            public ushort GlassMeshCount;
             public ushort MaterialChangeMeshIndex;
-            public ushort MaterialChangeMeshNum;
+            public ushort MaterialChangeMeshCount;
             public ushort CrestChangeMeshIndex;
-            public ushort CrestChangeMeshNum;
+            public ushort CrestChangeMeshCount;
             public ushort Unknown1;
             public ushort Unknown2;
             public ushort Unknown3;
@@ -303,13 +303,13 @@ namespace Lumina.Data.Parsing.Mdl
             {
                 ExtraLodStruct ret = new ExtraLodStruct();
                 ret.LightShaftMeshIndex = br.ReadUInt16();
-                ret.LightShaftMeshNum = br.ReadUInt16();
+                ret.LightShaftMeshCount = br.ReadUInt16();
                 ret.GlassMeshIndex = br.ReadUInt16();
-                ret.GlassMeshNum = br.ReadUInt16();
+                ret.GlassMeshCount = br.ReadUInt16();
                 ret.MaterialChangeMeshIndex = br.ReadUInt16();
-                ret.MaterialChangeMeshNum = br.ReadUInt16();
+                ret.MaterialChangeMeshCount = br.ReadUInt16();
                 ret.CrestChangeMeshIndex = br.ReadUInt16();
-                ret.CrestChangeMeshNum = br.ReadUInt16();
+                ret.CrestChangeMeshCount = br.ReadUInt16();
                 ret.Unknown1 = br.ReadUInt16();
                 ret.Unknown2 = br.ReadUInt16();
                 ret.Unknown3 = br.ReadUInt16();
@@ -328,33 +328,33 @@ namespace Lumina.Data.Parsing.Mdl
 
         public struct MeshStruct
         {
-            public ushort VertexNum;
+            public ushort VertexCount;
             private ushort padding;
-            public uint IndexNum;
+            public uint IndexCount;
             public ushort MaterialIndex;
             public ushort SubMeshIndex;
-            public ushort SubMeshNum;
+            public ushort SubMeshCount;
             public ushort BoneTableIndex;
             public uint StartIndex;
             public uint[] VertexBufferOffset;
             public byte[] VertexBufferStride;
 
-            public byte VertexStreamNum;
+            public byte VertexStreamCount;
 
             public static MeshStruct Read( BinaryReader br )
             {
                 MeshStruct ret = new MeshStruct();
-                ret.VertexNum = br.ReadUInt16();
+                ret.VertexCount = br.ReadUInt16();
                 ret.padding = br.ReadUInt16();
-                ret.IndexNum = br.ReadUInt32();
+                ret.IndexCount = br.ReadUInt32();
                 ret.MaterialIndex = br.ReadUInt16();
                 ret.SubMeshIndex = br.ReadUInt16();
-                ret.SubMeshNum = br.ReadUInt16();
+                ret.SubMeshCount = br.ReadUInt16();
                 ret.BoneTableIndex = br.ReadUInt16();
                 ret.StartIndex = br.ReadUInt32();
                 ret.VertexBufferOffset = br.ReadStructures< UInt32 >( 3 ).ToArray();
                 ret.VertexBufferStride = br.ReadBytes( 3 );
-                ret.VertexStreamNum = br.ReadByte();
+                ret.VertexStreamCount = br.ReadByte();
                 return ret;
             }
         }
@@ -362,43 +362,43 @@ namespace Lumina.Data.Parsing.Mdl
         public struct SubmeshStruct
         {
             public uint IndexOffset;
-            public uint IndexNum;
+            public uint IndexCount;
             public uint AttributeIndexMask;
             public ushort BoneStartIndex;
-            public ushort BoneNum;
+            public ushort BoneCount;
 
             public static SubmeshStruct Read( BinaryReader br )
             {
                 SubmeshStruct ret = new SubmeshStruct();
                 ret.IndexOffset = br.ReadUInt32();
-                ret.IndexNum = br.ReadUInt32();
+                ret.IndexCount = br.ReadUInt32();
                 ret.AttributeIndexMask = br.ReadUInt32();
                 ret.BoneStartIndex = br.ReadUInt16();
-                ret.BoneNum = br.ReadUInt16();
+                ret.BoneCount = br.ReadUInt16();
                 return ret;
             }
         }
 
         public struct TerrainShadowMeshStruct
         {
-            public uint IndexNum;
+            public uint IndexCount;
             public uint StartIndex;
             public uint VertexBufferOffset;
-            public ushort VertexNum;
+            public ushort VertexCount;
             public ushort SubMeshIndex;
-            public ushort SubMeshNum;
+            public ushort SubMeshCount;
             public byte VertexBufferStride;
             private byte Padding;
 
             public static TerrainShadowMeshStruct Read( BinaryReader br )
             {
                 TerrainShadowMeshStruct ret = new TerrainShadowMeshStruct();
-                ret.IndexNum = br.ReadUInt32();
+                ret.IndexCount = br.ReadUInt32();
                 ret.StartIndex = br.ReadUInt32();
                 ret.VertexBufferOffset = br.ReadUInt32();
-                ret.VertexNum = br.ReadUInt16();
+                ret.VertexCount = br.ReadUInt16();
                 ret.SubMeshIndex = br.ReadUInt16();
-                ret.SubMeshNum = br.ReadUInt16();
+                ret.SubMeshCount = br.ReadUInt16();
                 ret.VertexBufferStride = br.ReadByte();
                 ret.Padding = br.ReadByte();
                 return ret;
@@ -408,7 +408,7 @@ namespace Lumina.Data.Parsing.Mdl
         public struct TerrainShadowSubmeshStruct
         {
             public uint IndexOffset;
-            public uint IndexNum;
+            public uint IndexCount;
             public ushort Unknown1;
             public ushort Unknown2;
 
@@ -416,7 +416,7 @@ namespace Lumina.Data.Parsing.Mdl
             {
                 TerrainShadowSubmeshStruct ret = new TerrainShadowSubmeshStruct();
                 ret.IndexOffset = br.ReadUInt32();
-                ret.IndexNum = br.ReadUInt32();
+                ret.IndexCount = br.ReadUInt32();
                 ret.Unknown1 = br.ReadUInt16();
                 ret.Unknown2 = br.ReadUInt16();
                 return ret;
@@ -426,14 +426,14 @@ namespace Lumina.Data.Parsing.Mdl
         public struct BoneTableStruct
         {
             public ushort[] BoneIndex;
-            public byte BoneNum;
+            public byte BoneCount;
             private byte[] Padding;
 
             public static BoneTableStruct Read( BinaryReader br )
             {
                 BoneTableStruct ret = new BoneTableStruct();
                 ret.BoneIndex = br.ReadStructures< UInt16 >( 64 ).ToArray();
-                ret.BoneNum = br.ReadByte();
+                ret.BoneCount = br.ReadByte();
                 ret.Padding = br.ReadBytes( 3 );
                 return ret;
             }
@@ -443,14 +443,14 @@ namespace Lumina.Data.Parsing.Mdl
         {
             public uint StringOffset;
             public ushort[] ShapeMeshStartIndex;
-            public ushort[] ShapeMeshNum;
+            public ushort[] ShapeMeshCount;
 
             public static ShapeStruct Read( BinaryReader br )
             {
                 ShapeStruct ret = new ShapeStruct();
                 ret.StringOffset = br.ReadUInt32();
                 ret.ShapeMeshStartIndex = br.ReadStructures< UInt16 >( 3 ).ToArray();
-                ret.ShapeMeshNum = br.ReadStructures< UInt16 >( 3 ).ToArray();
+                ret.ShapeMeshCount = br.ReadStructures< UInt16 >( 3 ).ToArray();
                 return ret;
             }
         }
@@ -458,14 +458,14 @@ namespace Lumina.Data.Parsing.Mdl
         public struct ShapeMeshStruct
         {
             public uint StartIndex;
-            public uint ShapeValueNum;
+            public uint ShapeValueCount;
             public uint ShapeValueOffset;
 
             public static ShapeMeshStruct Read( BinaryReader br )
             {
                 ShapeMeshStruct ret = new ShapeMeshStruct();
                 ret.StartIndex = br.ReadUInt32();
-                ret.ShapeValueNum = br.ReadUInt32();
+                ret.ShapeValueCount = br.ReadUInt32();
                 ret.ShapeValueOffset = br.ReadUInt32();
                 return ret;
             }

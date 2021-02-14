@@ -50,8 +50,8 @@ namespace Lumina.Data.Files {
 
             FileHeader = ModelFileHeader.Read( Reader );
 
-            VertexDeclarations = new VertexDeclarationStruct[FileHeader.VertexDeclarationNum];
-            for( int i = 0; i < FileHeader.VertexDeclarationNum; i++ ) VertexDeclarations[ i ] = VertexDeclarationStruct.Read( Reader );
+            VertexDeclarations = new VertexDeclarationStruct[FileHeader.VertexDeclarationCount];
+            for( int i = 0; i < FileHeader.VertexDeclarationCount; i++ ) VertexDeclarations[ i ] = VertexDeclarationStruct.Read( Reader );
 
             StringCount = Reader.ReadUInt16();
             Reader.ReadUInt16();
@@ -59,22 +59,22 @@ namespace Lumina.Data.Files {
             Strings = Reader.ReadBytes( (int) stringSize );
 
             ModelHeader = ModelHeader.Read( Reader );
-            ElementIds = new ElementIdStruct[ModelHeader.ElementIdNum];
+            ElementIds = new ElementIdStruct[ModelHeader.ElementIdCount];
             Lods = new LodStruct[3];
-            Meshes = new MeshStruct[ModelHeader.MeshNum];
-            Submeshes = new SubmeshStruct[ModelHeader.SubmeshNum];
-            TerrainShadowMeshes = new TerrainShadowMeshStruct[ModelHeader.TerrainShadowMeshNum];
-            TerrainShadowSubmeshes = new TerrainShadowSubmeshStruct[ModelHeader.TerrainShadowSubmeshNum];
-            BoneTables = new BoneTableStruct[ModelHeader.BoneTableNum];
-            Shapes = new ShapeStruct[ModelHeader.ShapeNum];
-            ShapeMeshes = new ShapeMeshStruct[ModelHeader.ShapeMeshNum];
-            ShapeValues = new ShapeValueStruct[ModelHeader.ShapeValueNum];
-            BoneBoundingBoxes = new BoundingBoxStruct[ModelHeader.BoneNum];
+            Meshes = new MeshStruct[ModelHeader.MeshCount];
+            Submeshes = new SubmeshStruct[ModelHeader.SubmeshCount];
+            TerrainShadowMeshes = new TerrainShadowMeshStruct[ModelHeader.TerrainShadowMeshCount];
+            TerrainShadowSubmeshes = new TerrainShadowSubmeshStruct[ModelHeader.TerrainShadowSubmeshCount];
+            BoneTables = new BoneTableStruct[ModelHeader.BoneTableCount];
+            Shapes = new ShapeStruct[ModelHeader.ShapeCount];
+            ShapeMeshes = new ShapeMeshStruct[ModelHeader.ShapeMeshCount];
+            ShapeValues = new ShapeValueStruct[ModelHeader.ShapeValueCount];
+            BoneBoundingBoxes = new BoundingBoxStruct[ModelHeader.BoneCount];
 
             VertexBuffers = new byte[3][];
             IndexBuffers = new byte[3][];
 
-            for( int i = 0; i < ModelHeader.ElementIdNum; i++ ) ElementIds[ i ] = ElementIdStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.ElementIdCount; i++ ) ElementIds[ i ] = ElementIdStruct.Read( Reader );
             for( int i = 0; i < 3; i++ ) Lods[ i ] = LodStruct.Read( Reader );
 
             if( ModelHeader.ExtraLodEnabled ) {
@@ -82,19 +82,19 @@ namespace Lumina.Data.Files {
                 for( int i = 0; i < 3; i++ ) ExtraLods[ i ] = ExtraLodStruct.Read( Reader );
             }
 
-            for( int i = 0; i < ModelHeader.MeshNum; i++ ) Meshes[ i ] = MeshStruct.Read( Reader );
-            AttributeNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.AttributeNum ).ToArray();
-            for( int i = 0; i < ModelHeader.SubmeshNum; i++ ) Submeshes[ i ] = SubmeshStruct.Read( Reader );
-            for( int i = 0; i < ModelHeader.TerrainShadowMeshNum; i++ ) TerrainShadowMeshes[ i ] = TerrainShadowMeshStruct.Read( Reader );
-            for( int i = 0; i < ModelHeader.TerrainShadowSubmeshNum; i++ ) TerrainShadowSubmeshes[ i ] = TerrainShadowSubmeshStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.MeshCount; i++ ) Meshes[ i ] = MeshStruct.Read( Reader );
+            AttributeNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.AttributeCount ).ToArray();
+            for( int i = 0; i < ModelHeader.SubmeshCount; i++ ) Submeshes[ i ] = SubmeshStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.TerrainShadowMeshCount; i++ ) TerrainShadowMeshes[ i ] = TerrainShadowMeshStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.TerrainShadowSubmeshCount; i++ ) TerrainShadowSubmeshes[ i ] = TerrainShadowSubmeshStruct.Read( Reader );
 
-            MaterialNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.MaterialNum ).ToArray();
-            BoneNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.BoneNum ).ToArray();
-            for( int i = 0; i < ModelHeader.BoneTableNum; i++ ) BoneTables[ i ] = BoneTableStruct.Read( Reader );
+            MaterialNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.MaterialCount ).ToArray();
+            BoneNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.BoneCount ).ToArray();
+            for( int i = 0; i < ModelHeader.BoneTableCount; i++ ) BoneTables[ i ] = BoneTableStruct.Read( Reader );
 
-            for( int i = 0; i < ModelHeader.ShapeNum; i++ ) Shapes[ i ] = ShapeStruct.Read( Reader );
-            for( int i = 0; i < ModelHeader.ShapeMeshNum; i++ ) ShapeMeshes[ i ] = ShapeMeshStruct.Read( Reader );
-            for( int i = 0; i < ModelHeader.ShapeValueNum; i++ ) ShapeValues[ i ] = ShapeValueStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.ShapeCount; i++ ) Shapes[ i ] = ShapeStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.ShapeMeshCount; i++ ) ShapeMeshes[ i ] = ShapeMeshStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.ShapeValueCount; i++ ) ShapeValues[ i ] = ShapeValueStruct.Read( Reader );
 
             uint submeshBoneMapSize = Reader.ReadUInt32();
             SubmeshBoneMap = Reader.ReadStructures< UInt16 >( (int) submeshBoneMapSize / 2 ).ToArray();
@@ -107,7 +107,7 @@ namespace Lumina.Data.Files {
             ModelBoundingBoxes = BoundingBoxStruct.Read( Reader );
             WaterBoundingBoxes = BoundingBoxStruct.Read( Reader );
             VerticalFogBoundingBoxes = BoundingBoxStruct.Read( Reader );
-            for( int i = 0; i < ModelHeader.BoneNum; i++ ) BoneBoundingBoxes[ i ] = BoundingBoxStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.BoneCount; i++ ) BoneBoundingBoxes[ i ] = BoundingBoxStruct.Read( Reader );
 
             for( int i = 0; i < 3; i++ ) {
                 Reader.BaseStream.Position = FileHeader.VertexOffset[ i ];

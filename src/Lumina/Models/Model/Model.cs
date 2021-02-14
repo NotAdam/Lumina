@@ -30,7 +30,7 @@ namespace Lumina.Models.Model
 
         public Model( MdlFile mdlFile, ModelLod lod = ModelLod.High )
         {
-            if( (uint) lod > mdlFile.FileHeader.LodNum )
+            if( (uint) lod > mdlFile.FileHeader.LodCount )
                 throw new ArgumentException( "The given model does not have the requested LoD.", nameof( lod ) );
 
             File = mdlFile;
@@ -84,19 +84,19 @@ namespace Lumina.Models.Model
             // I think this is a constant order, and this is the correct order
             MdlStructs.LodStruct CurrentLod = File.Lods[ (int) Lod ];
 
-            int totalMeshes = CurrentLod.MeshNum;
-            totalMeshes += CurrentLod.WaterMeshNum;
-            totalMeshes += CurrentLod.ShadowMeshNum;
-            totalMeshes += CurrentLod.TerrainShadowMeshNum;
-            totalMeshes += CurrentLod.VerticalFogMeshNum;
+            int totalMeshes = CurrentLod.MeshCount;
+            totalMeshes += CurrentLod.WaterMeshCount;
+            totalMeshes += CurrentLod.ShadowMeshCount;
+            totalMeshes += CurrentLod.TerrainShadowMeshCount;
+            totalMeshes += CurrentLod.VerticalFogMeshCount;
 
             if( File.ModelHeader.ExtraLodEnabled )
             {
                 MdlStructs.ExtraLodStruct ExtraLod = File.ExtraLods[ (int) Lod ];
-                totalMeshes += ExtraLod.LightShaftMeshNum;
-                totalMeshes += ExtraLod.GlassMeshNum;
-                totalMeshes += ExtraLod.MaterialChangeMeshNum;
-                totalMeshes += ExtraLod.CrestChangeMeshNum;
+                totalMeshes += ExtraLod.LightShaftMeshCount;
+                totalMeshes += ExtraLod.GlassMeshCount;
+                totalMeshes += ExtraLod.MaterialChangeMeshCount;
+                totalMeshes += ExtraLod.CrestChangeMeshCount;
             }
 
             Meshes = new Mesh[totalMeshes];
@@ -111,32 +111,32 @@ namespace Lumina.Models.Model
         {
             // I could create arrays for the ranges for cleaner code, but all this is doing is checking ranges
 
-            if( index > File.Lods[ (int) Lod ].MeshIndex && index < File.Lods[ (int) Lod ].MeshIndex + File.Lods[ (int) Lod ].MeshNum )
+            if( index > File.Lods[ (int) Lod ].MeshIndex && index < File.Lods[ (int) Lod ].MeshIndex + File.Lods[ (int) Lod ].MeshCount )
                 return Mesh.MeshType.Main;
-            if( index > File.Lods[ (int) Lod ].WaterMeshIndex && index < File.Lods[ (int) Lod ].WaterMeshIndex + File.Lods[ (int) Lod ].WaterMeshNum )
+            if( index > File.Lods[ (int) Lod ].WaterMeshIndex && index < File.Lods[ (int) Lod ].WaterMeshIndex + File.Lods[ (int) Lod ].WaterMeshCount )
                 return Mesh.MeshType.Water;
-            if( index > File.Lods[ (int) Lod ].ShadowMeshIndex && index < File.Lods[ (int) Lod ].ShadowMeshIndex + File.Lods[ (int) Lod ].ShadowMeshNum )
+            if( index > File.Lods[ (int) Lod ].ShadowMeshIndex && index < File.Lods[ (int) Lod ].ShadowMeshIndex + File.Lods[ (int) Lod ].ShadowMeshCount )
                 return Mesh.MeshType.Shadow;
             if( index > File.Lods[ (int) Lod ].TerrainShadowMeshIndex &&
-                index < File.Lods[ (int) Lod ].TerrainShadowMeshIndex + File.Lods[ (int) Lod ].TerrainShadowMeshNum )
+                index < File.Lods[ (int) Lod ].TerrainShadowMeshIndex + File.Lods[ (int) Lod ].TerrainShadowMeshCount )
                 return Mesh.MeshType.TerrainShadow;
             if( index > File.Lods[ (int) Lod ].VerticalFogMeshIndex &&
-                index < File.Lods[ (int) Lod ].VerticalFogMeshIndex + File.Lods[ (int) Lod ].VerticalFogMeshNum )
+                index < File.Lods[ (int) Lod ].VerticalFogMeshIndex + File.Lods[ (int) Lod ].VerticalFogMeshCount )
                 return Mesh.MeshType.VerticalFog;
 
             if( File.ModelHeader.ExtraLodEnabled )
             {
                 if( index > File.ExtraLods[ (int) Lod ].LightShaftMeshIndex &&
-                    index < File.ExtraLods[ (int) Lod ].LightShaftMeshIndex + File.ExtraLods[ (int) Lod ].LightShaftMeshNum )
+                    index < File.ExtraLods[ (int) Lod ].LightShaftMeshIndex + File.ExtraLods[ (int) Lod ].LightShaftMeshCount )
                     return Mesh.MeshType.LightShaft;
                 if( index > File.ExtraLods[ (int) Lod ].GlassMeshIndex &&
-                    index < File.ExtraLods[ (int) Lod ].GlassMeshIndex + File.ExtraLods[ (int) Lod ].GlassMeshNum )
+                    index < File.ExtraLods[ (int) Lod ].GlassMeshIndex + File.ExtraLods[ (int) Lod ].GlassMeshCount )
                     return Mesh.MeshType.Glass;
                 if( index > File.ExtraLods[ (int) Lod ].MaterialChangeMeshIndex &&
-                    index < File.ExtraLods[ (int) Lod ].MaterialChangeMeshIndex + File.ExtraLods[ (int) Lod ].MaterialChangeMeshNum )
+                    index < File.ExtraLods[ (int) Lod ].MaterialChangeMeshIndex + File.ExtraLods[ (int) Lod ].MaterialChangeMeshCount )
                     return Mesh.MeshType.MaterialChange;
                 if( index > File.ExtraLods[ (int) Lod ].CrestChangeMeshIndex &&
-                    index < File.ExtraLods[ (int) Lod ].CrestChangeMeshIndex + File.ExtraLods[ (int) Lod ].CrestChangeMeshNum )
+                    index < File.ExtraLods[ (int) Lod ].CrestChangeMeshIndex + File.ExtraLods[ (int) Lod ].CrestChangeMeshCount )
                     return Mesh.MeshType.CrestChange;
             }
 
