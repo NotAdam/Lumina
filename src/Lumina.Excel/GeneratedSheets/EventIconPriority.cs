@@ -1,0 +1,25 @@
+// ReSharper disable All
+
+using Lumina.Text;
+using Lumina.Data;
+using Lumina.Data.Structs.Excel;
+
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "EventIconPriority", columnHash: 0xf16871d0 )]
+    public class EventIconPriority : ExcelRow
+    {
+        
+        public uint[] Icon;
+        
+
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        {
+            base.PopulateData( parser, lumina, language );
+
+            Icon = new uint[ 19 ];
+            for( var i = 0; i < 19; i++ )
+                Icon[ i ] = parser.ReadColumn< uint >( 0 + i );
+        }
+    }
+}

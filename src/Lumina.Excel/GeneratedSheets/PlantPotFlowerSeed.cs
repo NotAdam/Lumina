@@ -1,0 +1,25 @@
+// ReSharper disable All
+
+using Lumina.Text;
+using Lumina.Data;
+using Lumina.Data.Structs.Excel;
+
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "PlantPotFlowerSeed", columnHash: 0x84d0ceef )]
+    public class PlantPotFlowerSeed : ExcelRow
+    {
+        
+        public uint[] SeedIcon;
+        
+
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        {
+            base.PopulateData( parser, lumina, language );
+
+            SeedIcon = new uint[ 9 ];
+            for( var i = 0; i < 9; i++ )
+                SeedIcon[ i ] = parser.ReadColumn< uint >( 0 + i );
+        }
+    }
+}

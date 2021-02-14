@@ -15,6 +15,6 @@ namespace Lumina.Excel.Exceptions
             ActualHash = actualHash;
         }
 
-        public override string Message => $"sheet {SheetName} column hash mismatch! expected hash: {ExpectedHash}, actual hash: {ActualHash}!";
+        public override string Message => $"sheet {SheetName} column hash mismatch! expected hash: {ExpectedHash:x8}, actual hash: {ActualHash:x8}!";
     }
 }

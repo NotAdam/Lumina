@@ -2,12 +2,12 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Lumina.Generated\Lumina.Generated.csproj" />
+      <ProjectReference Include="..\Lumina.Excel\Lumina.Excel.csproj" />
       <ProjectReference Include="..\Lumina\Lumina.csproj" />
     </ItemGroup>
 

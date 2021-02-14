@@ -3,25 +3,21 @@ using Lumina.Excel;
 
 namespace Lumina.Example
 {
-    [Sheet("Condition" )]
-    public class Condition : IExcelRow
+    [Sheet( "Condition" )]
+    public class Condition : ExcelRow
     {
         public int Index;
 
         public uint LogMessageId;
-        
+
         public LazyRow< LogMessage > LogMessage;
 
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-        
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Index = parser.ReadColumn< int >( 0 );
-            
+
             LogMessageId = parser.ReadColumn< uint >( 2 );
             LogMessage = new LazyRow< LogMessage >( lumina, LogMessageId, language );
         }

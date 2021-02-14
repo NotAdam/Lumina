@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -77,11 +76,23 @@ namespace Lumina.Extensions
         /// <returns></returns>
         public static string ReadStringOffsetData( this BinaryReader br, long offset )
         {
+            return Encoding.UTF8.GetString( ReadRawOffsetData( br, offset ) );
+        }
+
+        /// <summary>
+        /// Moves the BinaryReader position to offset, reads raw bytes until a null byte, then
+        /// sets the reader position back to where it was when it started
+        /// </summary>
+        /// <param name="br"></param>
+        /// <param name="offset">The offset to read data starting from.</param>
+        /// <returns></returns>
+        public static byte[] ReadRawOffsetData( this BinaryReader br, long offset )
+        {
             var originalPosition = br.BaseStream.Position;
             br.BaseStream.Position = offset;
-
+            
             var chars = new List< byte >();
-
+            
             byte current;
             while( ( current = br.ReadByte() ) != 0 )
             {
@@ -89,8 +100,8 @@ namespace Lumina.Extensions
             }
 
             br.BaseStream.Position = originalPosition;
-            
-            return Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
+
+            return chars.ToArray();
         }
         
         public static string ReadStringData( this BinaryReader br )
@@ -113,6 +124,7 @@ namespace Lumina.Extensions
             br.BaseStream.Position = offset;
         }
 
+        /// <summary>
         /// Constructs a StringOffset in place and reads the string for you given an start offset
         /// </summary>
         /// <param name="br">The reader to use to read the string</param>
@@ -121,6 +133,31 @@ namespace Lumina.Extensions
         public static StringOffset ReadStringOffset( this BinaryReader br, long offset )
         {
             return new StringOffset( br, offset );
+        }
+
+        /// <summary>
+        /// Reads a byte and moves the stream position back to where it started before the operation
+        /// </summary>
+        /// <param name="br">The reader to use to read the byte</param>
+        /// <returns>The byte that was read</returns>
+        public static byte PeekByte( this BinaryReader br )
+        {
+            var data = br.ReadByte();
+            br.BaseStream.Position--;
+            return data;
+        }
+
+        /// <summary>
+        /// Reads bytes and moves the stream position back to where it started before the operation
+        /// </summary>
+        /// <param name="br">The reader to use to read the bytes</param>
+        /// <param name="count">The number of bytes to read</param>
+        /// <returns>The read bytes</returns>
+        public static byte[] PeekBytes( this BinaryReader br, int count )
+        {
+            var data = br.ReadBytes( count );
+            br.BaseStream.Position -= count;
+            return data;
         }
     }
 }

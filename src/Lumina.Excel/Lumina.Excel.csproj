@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>NotAdam</Authors>
+        <PackageProjectUrl>https://github.com/NotAdam/Lumina</PackageProjectUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <RepositoryUrl>https://github.com/NotAdam/Lumina</RepositoryUrl>
+        <PackageVersion>5.40.0</PackageVersion>
+        <FileVersion>5.40.0</FileVersion>
+        <Description>Typed definitions to access excel sheet data in FINAL FANTASY XIV.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../LICENSE" Pack="true" PackagePath=""/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Lumina\Lumina.csproj"/>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Configuration" />
+    </ItemGroup>
+
+</Project>

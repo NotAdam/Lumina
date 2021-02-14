@@ -8,7 +8,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel
 {
-    public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : class, IExcelRow
+    public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : ExcelRow
     {
         private readonly Dictionary< UInt64, T > _rowCache = new Dictionary< UInt64, T >();
 
@@ -35,37 +35,19 @@ namespace Lumina.Excel
             {
                 return cachedRow;
             }
-            
-            var data = GetPageForRow( row );
 
-            if( data == null )
+            var parser = GetRowParser( row, subRow );
+            if( parser == null )
             {
                 return null;
             }
-
-            var rowObj = Activator.CreateInstance< T >();
-
-            RowParser parser;
-
-            if( subRow != UInt32.MaxValue )
-            {
-                parser = new RowParser( this, data.File, row, subRow );
-            }
-            else
-            {
-                parser = new RowParser( this, data.File, row );
-            }
-
-            rowObj.PopulateData( parser, _Lumina, RequestedLanguage );
             
+            var rowObj = Activator.CreateInstance< T >();
+            rowObj.PopulateData( parser, Lumina, RequestedLanguage );
+
             _rowCache[ cacheKey ] = rowObj;
 
             return rowObj;
-        }
-
-        private static UInt64 GetCacheKey( uint rowId, uint subrowId = UInt32.MaxValue )
-        {
-            return (UInt64)rowId << 32 | subrowId;
         }
 
         private T ReadRowObj( RowParser parser, uint rowId )
@@ -74,7 +56,7 @@ namespace Lumina.Excel
             
             var obj = Activator.CreateInstance< T >();
                         
-            obj.PopulateData( parser, _Lumina, RequestedLanguage );
+            obj.PopulateData( parser, Lumina, RequestedLanguage );
 
             return obj;
         }
@@ -84,7 +66,7 @@ namespace Lumina.Excel
             parser.SeekToRow( rowId, subRowId );
             var obj = Activator.CreateInstance< T >();
 
-            obj.PopulateData( parser, _Lumina, RequestedLanguage );
+            obj.PopulateData( parser, Lumina, RequestedLanguage );
 
             return obj;
         }

@@ -2,11 +2,11 @@ using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
+using Lumina.Text;
 
 namespace Lumina.Excel
 {
@@ -17,7 +17,7 @@ namespace Lumina.Excel
 
         private ExcelDataOffset _offset;
         private ExcelDataRowHeader _rowHeader;
-        
+
         private long _rowOffset;
 
         public uint Row;
@@ -25,7 +25,12 @@ namespace Lumina.Excel
         public uint RowCount => _rowHeader.RowCount;
 
         private MemoryStream Stream => _dataFile.FileStream;
-        
+
+        /// <summary>
+        /// Provides access to the base data generated for a sheet
+        /// </summary>
+        public ExcelSheetImpl Sheet => _sheet;
+
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
             _sheet = sheet;
@@ -48,11 +53,31 @@ namespace Lumina.Excel
         /// Moves the parser to a row in the current page given its index
         /// </summary>
         /// <param name="row">The row index to seek to</param>
+        /// /// <exception cref="IndexOutOfRangeException">Given row index was out of bounds</exception>
         public void SeekToRow( uint row )
         {
+            if( !TrySeekToRow( row ) )
+            {
+                throw new IndexOutOfRangeException( $"the row {row} could not be found in the sheet!" );
+            }
+        }
+        
+        /// <summary>
+        /// Moves the parser to a row in the current page given its index
+        /// </summary>
+        /// <param name="row">The row index to seek to</param>
+        /// <returns>true if the row was seeked to successfully, false if the row wasn't found or otherwise</returns>
+        public bool TrySeekToRow( uint row )
+        {
             Row = row;
-            _offset = _dataFile.RowData[ Row ];
 
+            if( !_dataFile.RowData.TryGetValue( Row, out var offset ) )
+            {
+                return false;
+            }
+
+            _offset = offset;
+            
             var br = _dataFile.Reader;
 
             Stream.Position = _offset.Offset;
@@ -67,6 +92,8 @@ namespace Lumina.Excel
 
             // header is 6 bytes large, data normally starts here except in the case of variant 2 sheets but we'll keep it anyway
             _rowOffset = _offset.Offset + 6;
+
+            return true;
         }
 
         /// <summary>
@@ -77,19 +104,38 @@ namespace Lumina.Excel
         /// <exception cref="IndexOutOfRangeException">Given subrow index was out of bounds</exception>
         public void SeekToRow( uint row, uint subRow )
         {
-            SeekToRow( row );
-            
-            SubRow = subRow;
-
-            if( subRow > _rowHeader.RowCount )
+            if( !TrySeekToRow( row, subRow ) )
             {
                 throw new IndexOutOfRangeException( $"subrow {subRow} > {_rowHeader.RowCount}!" );
             }
-
-            _rowOffset = CalculateSubRowOffset( subRow );
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        /// <summary>
+        /// Moves the parser to a row + subrow in the current page given their indexes
+        /// </summary>
+        /// <param name="row">The row index to seek to</param>
+        /// <param name="subRow">The subrow index to seek to</param>
+        /// /// <returns>true if the row and subrow was seeked to successfully, false if the row or subrow wasn't found or otherwise</returns>
+        public bool TrySeekToRow( uint row, uint subRow )
+        {
+            if( !TrySeekToRow( row ) )
+            {
+                return false;
+            }
+            
+            SubRow = subRow;
+            
+            if( subRow > _rowHeader.RowCount )
+            {
+                return false;
+            }
+            
+            _rowOffset = CalculateSubRowOffset( subRow );
+
+            return true;
+        }
+
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public long CalculateSubRowOffset( uint subRow )
         {
             // +6 is the ExcelDataRowHeader
@@ -105,7 +151,7 @@ namespace Lumina.Excel
         public byte[] ReadBytes( int offset, int count )
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadBytes( count );
@@ -120,7 +166,7 @@ namespace Lumina.Excel
         public T ReadStructure< T >( int offset ) where T : struct
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadStructure< T >();
@@ -136,12 +182,12 @@ namespace Lumina.Excel
         public List< T > ReadStructures< T >( int offset, int count ) where T : struct
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadStructures< T >( count );
         }
-        
+
         /// <summary>
         /// Reads structures from an offset inside the current row
         /// </summary>
@@ -152,7 +198,7 @@ namespace Lumina.Excel
         public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct
         {
             var br = _dataFile.Reader;
-            
+
             Stream.Position = _rowOffset + offset;
 
             return br.ReadStructuresAsArray< T >( count );
@@ -169,7 +215,8 @@ namespace Lumina.Excel
                 case ExcelColumnDataType.String:
                 {
                     var stringOffset = br.ReadUInt32();
-                    data = br.ReadStringOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
+                    var raw = br.ReadRawOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
+                    data = new SeString( raw );
 
                     break;
                 }
@@ -263,9 +310,16 @@ namespace Lumina.Excel
         {
             var data = ReadFieldInternal( type );
 
-            if( _sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
+            if( _sheet.Lumina.Options.ExcelSheetStrictCastingEnabled )
             {
                 return (T)data;
+            }
+
+            // todo: this is fucking shit but is a wip fix so that you can still ReadField< string > and get something back because 1am brain can't figure it out rn
+            if( typeof( T ) == typeof( string ) && data is SeString seString )
+            {
+                // haha fuck you c#
+                return (T)(object)seString.RawString;
             }
 
             if( data is T castedData )
@@ -281,7 +335,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="flag"></param>
         /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
         private byte GetBitPosition( byte flag )
         {
             byte count = 0;
@@ -306,15 +360,15 @@ namespace Lumina.Excel
         {
             Stream.Position = _rowOffset + offset;
 
-            if( bit > 0 )
+            if( bit == 0 )
             {
-                var pos = GetBitPosition( bit );
-                var flag = ExcelColumnDataType.PackedBool0 + pos;
-
-                return ReadField< T >( flag );
+                return ReadField< T >( _sheet.ColumnsByOffset[ offset ].Type );
             }
+            
+            var pos = GetBitPosition( bit );
+            var flag = ExcelColumnDataType.PackedBool0 + pos;
 
-            return ReadField< T >( _sheet.ColumnsByOffset[offset].Type );
+            return ReadField< T >( flag );
         }
 
         /// <summary>
@@ -326,7 +380,7 @@ namespace Lumina.Excel
         public T ReadOffset< T >( int offset, ExcelColumnDataType type )
         {
             Stream.Position = _rowOffset + offset;
-            
+
             return ReadField< T >( type );
         }
 
@@ -345,10 +399,19 @@ namespace Lumina.Excel
             return ReadField< T >( col.Type );
         }
 
+        /// <summary>
+        /// Grab the raw value from the sheet.
+        /// </summary>
+        /// <remarks>
+        /// This effectively acts as a variant and the object encapsulates it. You'll still need to do a type check or safely cast it to avoid exceptions
+        /// but this can be useful when you don't need to care about it's type and can use it as is - e.g. ToString and so on
+        /// </remarks>
+        /// <param name="column">The column index to read from</param>
+        /// <returns>An object containing the data from the row.</returns>
         public object ReadColumnRaw( int column )
         {
             var col = _sheet.Columns[ column ];
-            
+
             Stream.Position = _rowOffset + col.Offset;
 
             return ReadFieldInternal( col.Type );

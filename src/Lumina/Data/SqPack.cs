@@ -1,12 +1,9 @@
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.IO.Compression;
+using System.Reflection;
 using Lumina.Data.Structs;
-using Lumina.Extensions;
 
 namespace Lumina.Data
 {
@@ -19,7 +16,7 @@ namespace Lumina.Data
 
     public class SqPack
     {
-        private readonly Lumina _Lumina;
+        private readonly Lumina _lumina;
 
         /// <summary>
         /// Where the actual file is located on disk
@@ -62,7 +59,7 @@ namespace Lumina.Data
                 throw new FileNotFoundException( $"SqPack file {file.FullName} could not be found." );
             }
 
-            _Lumina = lumina;
+            _lumina = lumina;
 
             // always init the cache just in case the should cache setting is changed later
             FileCache = new Dictionary< long, WeakReference< FileResource > >();
@@ -103,7 +100,15 @@ namespace Lumina.Data
 
         public T ReadFile< T >( long offset ) where T : FileResource
         {
-            if( !_Lumina.Options.CacheFileResources )
+            var cacheBehaviour = FileOptionsAttribute.FileCacheBehaviour.None;
+            
+            var fileOpts = typeof( T ).GetCustomAttribute< FileOptionsAttribute >();
+            if( fileOpts != null )
+            {
+                cacheBehaviour = fileOpts.CacheBehaviour;
+            }
+            
+            if( !_lumina.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
                 using var ss = new SqPackStream( File );
                 return ss.ReadFile<T>( offset );

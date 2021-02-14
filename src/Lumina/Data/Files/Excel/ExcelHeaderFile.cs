@@ -1,14 +1,10 @@
 using System;
 using System.Buffers.Binary;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
-using System.Net;
-using System.Text;
 using Lumina.Misc;
 
 namespace Lumina.Data.Files.Excel
@@ -91,7 +87,7 @@ namespace Lumina.Data.Files.Excel
             var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();
             var span = DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
 
-            return Crc32.Get( span.ToArray() );
+            return Crc32.Get( span );
         }
 
         public string GetColumnsHashString()

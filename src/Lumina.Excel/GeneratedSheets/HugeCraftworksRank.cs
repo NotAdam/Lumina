@@ -1,0 +1,27 @@
+// ReSharper disable All
+
+using Lumina.Text;
+using Lumina.Data;
+using Lumina.Data.Structs.Excel;
+
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "HugeCraftworksRank", columnHash: 0xf7af7ac5 )]
+    public class HugeCraftworksRank : ExcelRow
+    {
+        
+        public byte CrafterLevel;
+        public uint ExpRewardPerItem;
+        public byte Unknown2;
+        
+
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        {
+            base.PopulateData( parser, lumina, language );
+
+            CrafterLevel = parser.ReadColumn< byte >( 0 );
+            ExpRewardPerItem = parser.ReadColumn< uint >( 1 );
+            Unknown2 = parser.ReadColumn< byte >( 2 );
+        }
+    }
+}

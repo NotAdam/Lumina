@@ -1,13 +1,10 @@
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
 using Lumina.Data;
 using Lumina.Data.Files;
 using Lumina.Data.Files.Excel;
-using Pastel;
 
 namespace Lumina.Cmd.Commands
 {
@@ -46,6 +43,9 @@ namespace Lumina.Cmd.Commands
 
                 case ".tex":
                     return lumina.GetFile< TexFile >( path );
+                
+                case ".hwc":
+                    return lumina.GetFile< HwcFile >( path );
             }
 
             return null;

@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Text;
 using Lumina.Extensions;
 using Vector3 = Lumina.Data.Parsing.Common.Vector3;
 using Transformation = Lumina.Data.Parsing.Common.Transformation;

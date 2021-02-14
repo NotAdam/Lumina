@@ -21,36 +21,37 @@ namespace Lumina.Data.Files {
         public UldRoot.WidgetData WidgetData;
 
         public override void LoadFile() {
-            long basePos = Reader.BaseStream.Position;
+            var basePos = Reader.BaseStream.Position;
             CombineHeader = UldRoot.UldHeader.Read( Reader );
-            long preComponentPos = Reader.BaseStream.Position;
+            var preComponentPos = Reader.BaseStream.Position;
 
             ComponentHeader = UldRoot.AtkHeader.Read( Reader );
+            
             Reader.Seek( preComponentPos + ComponentHeader.AssetListOffset );
             AssetList = UldRoot.PartHeader.Read( Reader );
             AssetData = new UldRoot.TextureEntry[AssetList.ElementCount];
-            for( int i = 0; i < AssetList.ElementCount; i++ )
+            for( var i = 0; i < AssetList.ElementCount; i++ )
                 AssetData[ i ] = UldRoot.TextureEntry.Read( Reader );
 
             Reader.Seek( preComponentPos + ComponentHeader.PartListOffset );
             PartList = UldRoot.PartHeader.Read( Reader );
             Parts = new UldRoot.PartsData[PartList.ElementCount];
-            for( int i = 0; i < PartList.ElementCount; i++ )
+            for( var i = 0; i < PartList.ElementCount; i++ )
                 Parts[ i ] = UldRoot.PartsData.Read( Reader );
 
             Reader.Seek( preComponentPos + ComponentHeader.ComponentListOffset );
             ComponentList = UldRoot.PartHeader.Read( Reader );
             Components = new UldRoot.ComponentData[ComponentList.ElementCount];
-            for( int i = 0; i < ComponentList.ElementCount; i++ )
+            for( var i = 0; i < ComponentList.ElementCount; i++ )
                 Components[ i ] = UldRoot.ComponentData.Read( Reader, Components );
 
             Reader.Seek( preComponentPos + ComponentHeader.TimelineListOffset );
             TimelineList = UldRoot.PartHeader.Read( Reader );
             Timelines = new UldRoot.Timeline[TimelineList.ElementCount];
-            for( int i = 0; i < TimelineList.ElementCount; i++ )
+            for( var i = 0; i < TimelineList.ElementCount; i++ )
                 Timelines[ i ] = UldRoot.Timeline.Read( Reader );
 
-            long preSecondHeader = Reader.BaseStream.Position;
+            var preSecondHeader = Reader.BaseStream.Position;
             Reader.Seek( basePos + CombineHeader.WidgetOffset );
             SecondHeader = UldRoot.AtkHeader.Read( Reader );
 

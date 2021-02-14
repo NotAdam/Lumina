@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
-using Lumina.Data;
-using Lumina.Excel;
 using Lumina.Excel.GeneratedSheets;
 
 namespace Lumina.Example

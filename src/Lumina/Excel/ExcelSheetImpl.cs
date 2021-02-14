@@ -19,7 +19,7 @@ namespace Lumina.Excel
             HeaderFile = headerFile;
             Name = name;
             RequestedLanguage = requestedLanguage;
-            _Lumina = lumina;
+            Lumina = lumina;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Lumina.Excel
         /// A quick accessor to the data available in the sheet header
         /// </summary>
         public ExcelHeaderHeader Header => HeaderFile.Header;
-        
+
         /// <summary>
         /// The total count of rows irrespective of paging
         /// </summary>
@@ -59,8 +59,9 @@ namespace Lumina.Excel
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
-        private Dictionary<ushort, ExcelColumnDefinition> _columnsByOffset;
-        public Dictionary<ushort, ExcelColumnDefinition> ColumnsByOffset
+        private Dictionary< ushort, ExcelColumnDefinition > _columnsByOffset;
+
+        public Dictionary< ushort, ExcelColumnDefinition > ColumnsByOffset
         {
             get
             {
@@ -68,6 +69,7 @@ namespace Lumina.Excel
                 {
                     _columnsByOffset = Columns.GroupBy( p => p.Offset ).ToDictionary( c => c.Key, c => c.First() );
                 }
+
                 return _columnsByOffset;
             }
         }
@@ -85,13 +87,13 @@ namespace Lumina.Excel
         /// You will need to reload this sheet with a different language if you want to access a single sheet in more than 1 language at a time.
         /// </remarks>
         public Language[] Languages => HeaderFile.Languages;
-        
+
         /// <summary>
         /// The language that was requested for this sheet when it was loaded
         /// </summary>
         public Language RequestedLanguage { get; protected set; }
 
-        internal readonly Lumina _Lumina;
+        internal readonly Lumina Lumina;
 
         /// <summary>
         /// Generates an absolute path to a data file for a sheet
@@ -129,7 +131,7 @@ namespace Lumina.Excel
                 var filePath = GenerateFilePath( Name, bp.StartId, lang );
 
                 // ignore languages that don't exist in this client build
-                if( !_Lumina.FileExists( filePath ) )
+                if( !Lumina.FileExists( filePath ) )
                 {
                     continue;
                 }
@@ -141,8 +143,8 @@ namespace Lumina.Excel
                     StartId = bp.StartId
                 };
 
-                segment.File = _Lumina.GetFile< ExcelDataFile >( segment.FilePath );
-                    
+                segment.File = Lumina.GetFile< ExcelDataFile >( segment.FilePath );
+
                 // convert big endian to little endian on le systems
                 ProcessDataEndianness( segment.File );
 
@@ -162,7 +164,7 @@ namespace Lumina.Excel
             foreach( var row in Columns )
             {
                 var type = row.Type;
-                
+
                 ms.Position = offset + row.Offset;
 
                 byte[] data;
@@ -189,7 +191,7 @@ namespace Lumina.Excel
                         data = br.ReadBytes( Unsafe.SizeOf< UInt64 >() );
                         break;
                     }
-                    
+
                     default:
                         continue;
                 }
@@ -207,17 +209,24 @@ namespace Lumina.Excel
                 bw.Write( data );
             }
         }
-        
+
         /// <summary>
         /// Reverses the endianness of a data file on LE machines so the underlying stream can be copied from as is
         /// </summary>
         /// <param name="file">The file to swap endianness for</param>
+        // todo: refactor and move into ExceLDataFile
         protected void ProcessDataEndianness( ExcelDataFile file )
         {
             if( !BitConverter.IsLittleEndian )
             {
                 return;
             }
+
+            if( file.SwappedEndianness )
+            {
+                return;
+            }
+
 
             var stream = new MemoryStream( file.Data );
             var writer = new BinaryWriter( stream );
@@ -240,7 +249,7 @@ namespace Lumina.Excel
                         var subRowOffset = row.Offset + 6 + ( i * Header.DataOffset + 2 * ( i + 1 ) );
 
                         stream.Position = subRowOffset;
-                        
+
                         ProcessDataRow( subRowOffset, stream, writer, reader );
                     }
                 }
@@ -250,8 +259,10 @@ namespace Lumina.Excel
                     ProcessDataRow( offset + 6, stream, writer, reader );
                 }
             }
+
+            file.SwappedEndianness = true;
         }
-        
+
         /// <summary>
         /// Gets the corresponding data page for a given row
         /// </summary>
@@ -267,6 +278,69 @@ namespace Lumina.Excel
             // }
 
             return data;
+        }
+
+        protected static ulong GetCacheKey( uint rowId, uint subrowId = UInt32.MaxValue )
+        {
+            return (ulong)rowId << 32 | subrowId;
+        }
+
+        /// <summary>
+        /// Provides direct access to the underlying row parser for any row or subrow
+        /// </summary>
+        /// <param name="row">The row id to seek to</param>
+        /// <param name="subRow">The subrow id to seek to</param>
+        /// <returns>A <see cref="RowParser"/> instance</returns>
+        public RowParser GetRowParser( uint row, uint subRow = uint.MaxValue )
+        {
+            var page = GetPageForRow( row );
+            if( page == null )
+            {
+                return null;
+            }
+
+            RowParser parser = null!;
+
+            if( subRow != uint.MaxValue )
+            {
+                parser = new RowParser( this, page.File, row, subRow );
+            }
+            else
+            {
+                parser = new RowParser( this, page.File, row );
+            }
+
+            return parser;
+        }
+
+        public IEnumerable< RowParser > EnumerateRowParsers()
+        {
+            foreach( var page in DataPages )
+            {
+                var file = page.File;
+                var rowPtrs = file.RowData;
+
+                var parser = new RowParser( this, file );
+
+                foreach( var rowPtr in rowPtrs.Values )
+                {
+                    if( Header.Variant == ExcelVariant.Subrows )
+                    {
+                        // required to read the row header out and know how many subrows there is
+                        parser.SeekToRow( rowPtr.RowId );
+
+                        // read subrows
+                        for( uint i = 0; i < parser.RowCount; i++ )
+                        {
+                            yield return GetRowParser( rowPtr.RowId, i );
+                        }
+                    }
+                    else
+                    {
+                        yield return GetRowParser( rowPtr.RowId );
+                    }
+                }
+            }
         }
     }
 }

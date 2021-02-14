@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Lumina.Data.Structs;
-using Microsoft.VisualBasic;
 
 namespace Lumina.Data
 {

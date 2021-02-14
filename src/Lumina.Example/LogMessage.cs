@@ -4,17 +4,13 @@ using Lumina.Excel;
 namespace Lumina.Example
 {
     [Sheet( "LogMessage" )]
-    public class LogMessage : IExcelRow
+    public class LogMessage : ExcelRow
     {
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
         public string Text;
 
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, lumina, language );
 
             Text = parser.ReadColumn< string >( 4 );
         }

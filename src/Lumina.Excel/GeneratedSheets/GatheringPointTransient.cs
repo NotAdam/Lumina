@@ -1,0 +1,27 @@
+// ReSharper disable All
+
+using Lumina.Text;
+using Lumina.Data;
+using Lumina.Data.Structs.Excel;
+
+namespace Lumina.Excel.GeneratedSheets
+{
+    [Sheet( "GatheringPointTransient", columnHash: 0x7164626b )]
+    public class GatheringPointTransient : ExcelRow
+    {
+        
+        public ushort EphemeralStartTime;
+        public ushort EphemeralEndTime;
+        public LazyRow< GatheringRarePopTimeTable > GatheringRarePopTimeTable;
+        
+
+        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        {
+            base.PopulateData( parser, lumina, language );
+
+            EphemeralStartTime = parser.ReadColumn< ushort >( 0 );
+            EphemeralEndTime = parser.ReadColumn< ushort >( 1 );
+            GatheringRarePopTimeTable = new LazyRow< GatheringRarePopTimeTable >( lumina, parser.ReadColumn< int >( 2 ), language );
+        }
+    }
+}

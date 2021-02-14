@@ -22,7 +22,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
         public override void WriteReaders( StringBuilder sb )
         {
             // todo: this won't be the same column for each but assuming the types are the same and the repeat is correct, this will just work™
-            var type = Program.ExcelTypeToManaged( _cols[ ColumnId ].Type );
+            var type = SpaghettiGenerator.ExcelTypeToManaged( _cols[ ColumnId ].Type );
 
             if( _cols[ ColumnId ].IsBoolType )
             {

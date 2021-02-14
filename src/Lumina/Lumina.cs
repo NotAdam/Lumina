@@ -47,6 +47,8 @@ namespace Lumina
         /// easily defer file loading onto another thread.
         /// </summary>
         public FileHandleManager FileHandleManager { get; private set; }
+        
+        internal ILogger Logger { get; private set; }
 
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
@@ -78,6 +80,18 @@ namespace Lumina
 
             Excel = new ExcelModule( this );
             FileHandleManager = new FileHandleManager( this );
+        }
+
+        /// <summary>
+        /// Constructs a new Lumina object allowing access to game data.
+        /// </summary>
+        /// <param name="dataPath">Path to the sqpack directory</param>
+        /// <param name="logger">An <see cref="ILogger"/> implementation that Lumina can send log events to</param>
+        /// <param name="options">Options object to provide additional configuration</param>
+        /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
+        public Lumina( string dataPath, ILogger logger, LuminaOptions options = null ) : this(dataPath, options)
+        {
+            Logger = logger ?? throw new ArgumentNullException( nameof( logger ) );
         }
 
         /// <summary>
@@ -234,9 +248,9 @@ namespace Lumina
         /// <summary>
         /// Attempts to load the base excel sheet given it's implementing row parser
         /// </summary>
-        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >() where T : class, IExcelRow
+        public ExcelSheet< T > GetExcelSheet< T >() where T : ExcelRow
         {
             return Excel.GetSheet< T >();
         }
@@ -248,9 +262,9 @@ namespace Lumina
         /// If the language requested doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
         /// </remarks>
         /// <param name="language">The requested sheet language</param>
-        /// <typeparam name="T">A class that implements <see cref="IExcelRow"/> to parse rows</typeparam>
+        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : class, IExcelRow
+        public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : ExcelRow
         {
             return Excel.GetSheet< T >( language );
         }
