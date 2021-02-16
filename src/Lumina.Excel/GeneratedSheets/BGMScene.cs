@@ -17,9 +17,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IgnoreBattle;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             EnableDisableRestart = parser.ReadColumn< bool >( 0 );
             Resume = parser.ReadColumn< bool >( 1 );

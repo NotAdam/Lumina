@@ -74,12 +74,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte AddedIn531;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Npc = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< int >( 0 ), language );
-            QuestRequired = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ), language );
+            Npc = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< int >( 0 ), language );
+            QuestRequired = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 1 ), language );
             LevelUnlock = parser.ReadColumn< byte >( 2 );
             DeliveriesPerWeek = parser.ReadColumn< byte >( 3 );
             SupplyIndex = new int[ 6 ];

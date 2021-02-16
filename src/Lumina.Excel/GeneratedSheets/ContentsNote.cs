@@ -26,9 +26,9 @@ namespace Lumina.Excel.GeneratedSheets
         public int ExpCap;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ContentType = parser.ReadColumn< byte >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
@@ -39,7 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             Reward1 = parser.ReadColumn< byte >( 6 );
             GilRward = parser.ReadColumn< int >( 7 );
             LevelUnlock = parser.ReadColumn< ushort >( 8 );
-            HowTo = new LazyRow< HowTo >( lumina, parser.ReadColumn< ushort >( 9 ), language );
+            HowTo = new LazyRow< HowTo >( gameData, parser.ReadColumn< ushort >( 9 ), language );
             ReqUnlock = parser.ReadColumn< uint >( 10 );
             Name = parser.ReadColumn< SeString >( 11 );
             Description = parser.ReadColumn< SeString >( 12 );

@@ -27,26 +27,26 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Order;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             GatheringLevel = parser.ReadColumn< byte >( 0 );
             BigFishOnReach = parser.ReadColumn< SeString >( 1 );
             BigFishOnEnd = parser.ReadColumn< SeString >( 2 );
             FishingSpotCategory = parser.ReadColumn< byte >( 3 );
             Rare = parser.ReadColumn< bool >( 4 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 5 ), language );
-            PlaceNameMain = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 6 ), language );
-            PlaceNameSub = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 5 ), language );
+            PlaceNameMain = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            PlaceNameSub = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 7 ), language );
             X = parser.ReadColumn< short >( 8 );
             Z = parser.ReadColumn< short >( 9 );
             Radius = parser.ReadColumn< ushort >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Item = new LazyRow< Item >[ 10 ];
             for( var i = 0; i < 10; i++ )
-                Item[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 12 + i ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 22 ), language );
+                Item[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 12 + i ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 22 ), language );
             Order = parser.ReadColumn< byte >( 23 );
         }
     }

@@ -19,17 +19,17 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< SatisfactionSupplyReward > Reward;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Slot = parser.ReadColumn< byte >( 0 );
             ProbabilityPct = parser.ReadColumn< byte >( 1 );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 2 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 2 ), language );
             CollectabilityLow = parser.ReadColumn< ushort >( 3 );
             CollectabilityMid = parser.ReadColumn< ushort >( 4 );
             CollectabilityHigh = parser.ReadColumn< ushort >( 5 );
-            Reward = new LazyRow< SatisfactionSupplyReward >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            Reward = new LazyRow< SatisfactionSupplyReward >( gameData, parser.ReadColumn< ushort >( 6 ), language );
         }
     }
 }

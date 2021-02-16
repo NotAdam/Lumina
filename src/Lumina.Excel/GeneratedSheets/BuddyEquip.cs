@@ -29,9 +29,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Order;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -45,7 +45,7 @@ namespace Lumina.Excel.GeneratedSheets
             ModelTop = parser.ReadColumn< int >( 9 );
             ModelBody = parser.ReadColumn< int >( 10 );
             ModelLegs = parser.ReadColumn< int >( 11 );
-            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< byte >( 12 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< byte >( 12 ), language );
             IconHead = parser.ReadColumn< ushort >( 13 );
             IconBody = parser.ReadColumn< ushort >( 14 );
             IconLegs = parser.ReadColumn< ushort >( 15 );

@@ -26,9 +26,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< MinionSkillType > MinionSkillType;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Description = parser.ReadColumn< SeString >( 0 );
             DescriptionEnhanced = parser.ReadColumn< SeString >( 1 );
@@ -43,7 +43,7 @@ namespace Lumina.Excel.GeneratedSheets
             StrengthEye = parser.ReadColumn< bool >( 10 );
             StrengthShield = parser.ReadColumn< bool >( 11 );
             StrengthArcana = parser.ReadColumn< bool >( 12 );
-            MinionSkillType = new LazyRow< MinionSkillType >( lumina, parser.ReadColumn< byte >( 13 ), language );
+            MinionSkillType = new LazyRow< MinionSkillType >( gameData, parser.ReadColumn< byte >( 13 ), language );
         }
     }
 }

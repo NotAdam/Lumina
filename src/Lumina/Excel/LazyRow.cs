@@ -29,7 +29,7 @@ namespace Lumina.Excel
     /// <typeparam name="T">The row type to load</typeparam>
     public class LazyRow< T > : ILazyRow where T : ExcelRow
     {
-        private readonly Lumina _lumina;
+        private readonly GameData _gameData;
         private readonly uint _row;
         private readonly Language _language;
 
@@ -45,12 +45,12 @@ namespace Lumina.Excel
         /// <summary>
         /// Construct a new LazyRow instance
         /// </summary>
-        /// <param name="lumina">The Lumina instance to load from</param>
+        /// <param name="gameData">The Lumina instance to load from</param>
         /// <param name="row">The row id to load if/when the value is fetched</param>
         /// <param name="language">The requested language to use when resolving row references</param>
-        public LazyRow( Lumina lumina, uint row, Language language = Language.None )
+        public LazyRow( GameData gameData, uint row, Language language = Language.None )
         {
-            _lumina = lumina;
+            _gameData = gameData;
             _row = row;
             _language = language;
         }
@@ -58,9 +58,9 @@ namespace Lumina.Excel
         /// <summary>
         /// Construct a new LazyRow instance
         /// </summary>
-        /// <param name="lumina">The Lumina instance to load from</param>
+        /// <param name="gameData">The Lumina instance to load from</param>
         /// <param name="row">The row id to load if/when the value is fetched</param>
-        public LazyRow( Lumina lumina, int row, Language language = Language.None ) : this( lumina, (uint)row, language )
+        public LazyRow( GameData gameData, int row, Language language = Language.None ) : this( gameData, (uint)row, language )
         {
         }
 
@@ -76,7 +76,7 @@ namespace Lumina.Excel
                     return _value;
                 }
 
-                _value = _lumina.GetExcelSheet< T >( _language ).GetRow( _row );
+                _value = _gameData.GetExcelSheet< T >( _language ).GetRow( _row );
 
                 return _value;
             }

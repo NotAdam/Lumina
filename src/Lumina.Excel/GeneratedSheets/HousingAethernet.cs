@@ -16,13 +16,13 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Order;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Level = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Level = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Order = parser.ReadColumn< byte >( 3 );
         }
     }

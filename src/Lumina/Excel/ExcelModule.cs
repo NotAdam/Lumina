@@ -9,7 +9,7 @@ namespace Lumina.Excel
 {
     public class ExcelModule
     {
-        private readonly Lumina _lumina;
+        private readonly GameData _gameData;
 
         /// <summary>
         /// Mapping between internal IDs used to index sheets loaded at startup to their name.
@@ -28,18 +28,18 @@ namespace Lumina.Excel
 
         private readonly object _sheetCreateLock = new object();
 
-        public ExcelModule( Lumina lumina )
+        public ExcelModule( GameData gameData )
         {
-            _lumina = lumina;
+            _gameData = gameData;
             ImmutableIdToSheetMap = new Dictionary< int, string >();
             SheetNames = new List< string >();
 
             _sheetCache = new Dictionary< Tuple< Language, ulong >, ExcelSheetImpl >();
 
             // load all sheet names first
-            var files = _lumina.GetFile< ExcelListFile >( "exd/root.exl" );
+            var files = _gameData.GetFile< ExcelListFile >( "exd/root.exl" );
 
-            _lumina.Logger?.Information("got {ExltEntryCount} exlt entries", files.ExdMap.Count);
+            _gameData.Logger?.Information("got {ExltEntryCount} exlt entries", files.ExdMap.Count);
 
             foreach( var map in files.ExdMap )
             {
@@ -74,7 +74,7 @@ namespace Lumina.Excel
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >() where T : ExcelRow
         {
-            return GetSheet< T >( _lumina.Options.DefaultExcelLanguage );
+            return GetSheet< T >( _gameData.Options.DefaultExcelLanguage );
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Lumina.Excel
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         public ExcelSheet< T > GetSheet< T >( string name ) where T : ExcelRow
         {
-            return GetSheet< T >( name, _lumina.Options.DefaultExcelLanguage, null );
+            return GetSheet< T >( name, _gameData.Options.DefaultExcelLanguage, null );
         }
 
         private ulong BuildTypeIdentifier( Type type )
@@ -167,14 +167,14 @@ namespace Lumina.Excel
             Tuple< Language, ulong > noLangKey
         ) where T : ExcelRow
         {
-            _lumina.Logger?.Debug(
+            _gameData.Logger?.Debug(
                 "sheet {SheetName} not in cache - creating new sheet for language {Language}",
                 name,
                 language
             );
             
             var path = BuildExcelHeaderPath( name );
-            var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
+            var headerFile = _gameData.GetFile< ExcelHeaderFile >( path );
 
             if( headerFile == null )
             {
@@ -187,21 +187,21 @@ namespace Lumina.Excel
                 var actualHash = headerFile.GetColumnsHash();
                 if( actualHash != expectedHash )
                 {
-                    _lumina.Logger?.Warning(
+                    _gameData.Logger?.Warning(
                         "The sheet impl {SheetImplName} hash doesn't match the hash generated from the header. Expected: {ExpectedHash} actual: {ActualHash}",
                         typeof( T ).FullName,
                         expectedHash,
                         actualHash
                     );
                     
-                    if( _lumina.Options.PanicOnSheetChecksumMismatch )
+                    if( _gameData.Options.PanicOnSheetChecksumMismatch )
                     {
                         throw new ExcelSheetColumnChecksumMismatchException( name, expectedHash.Value, actualHash );
                     }
                 }
             }
 
-            var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _lumina );
+            var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _gameData );
             newSheet.GenerateFilePages();
 
             var id = key;
@@ -228,7 +228,7 @@ namespace Lumina.Excel
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
         public ExcelSheetImpl GetSheetRaw( string name )
         {
-            return GetSheetRaw( name, _lumina.Options.DefaultExcelLanguage );
+            return GetSheetRaw( name, _gameData.Options.DefaultExcelLanguage );
         }
 
         /// <summary>
@@ -244,14 +244,14 @@ namespace Lumina.Excel
 
             // create new sheet
             var path = BuildExcelHeaderPath( name );
-            var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
+            var headerFile = _gameData.GetFile< ExcelHeaderFile >( path );
 
             if( headerFile == null )
             {
                 return null;
             }
 
-            var newSheet = new ExcelSheetImpl( headerFile, name, language, _lumina );
+            var newSheet = new ExcelSheetImpl( headerFile, name, language, _gameData );
             newSheet.GenerateFilePages();
 
             return newSheet;
@@ -275,7 +275,7 @@ namespace Lumina.Excel
             }
 
             var path = BuildExcelHeaderPath( attr.Name );
-            var headerFile = _lumina.GetFile< ExcelHeaderFile >( path );
+            var headerFile = _gameData.GetFile< ExcelHeaderFile >( path );
 
             if( headerFile == null )
             {

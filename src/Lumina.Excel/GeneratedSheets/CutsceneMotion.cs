@@ -23,9 +23,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte TURN_CCW180_FRAME;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             WALK_LOOP_SPEED = parser.ReadColumn< float >( 0 );
             RUN_LOOP_SPEED = parser.ReadColumn< float >( 1 );

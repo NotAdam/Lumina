@@ -22,9 +22,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< InstanceContentTextData > Objective;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
@@ -32,10 +32,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Exp = parser.ReadColumn< uint >( 4 );
             Gil = parser.ReadColumn< uint >( 5 );
-            RewardTank = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ), language );
-            RewardMelee = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ), language );
-            RewardRanged = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 8 ), language );
-            Objective = new LazyRow< InstanceContentTextData >( lumina, parser.ReadColumn< uint >( 9 ), language );
+            RewardTank = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 6 ), language );
+            RewardMelee = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 7 ), language );
+            RewardRanged = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 8 ), language );
+            Objective = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 9 ), language );
         }
     }
 }

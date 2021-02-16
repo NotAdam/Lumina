@@ -19,14 +19,14 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown11;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             BNpcBase = new LazyRow< BNpcName >[ 2 ];
             for( var i = 0; i < 2; i++ )
-                BNpcBase[ i ] = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 1 + i ), language );
+                BNpcBase[ i ] = new LazyRow< BNpcName >( gameData, parser.ReadColumn< uint >( 1 + i ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
             Icon = new uint[ 5 ];

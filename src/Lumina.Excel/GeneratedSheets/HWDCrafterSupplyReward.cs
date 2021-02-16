@@ -15,9 +15,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Points;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ScriptRewardAmount = parser.ReadColumn< ushort >( 0 );
             ExpReward = parser.ReadColumn< uint >( 1 );

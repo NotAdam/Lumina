@@ -19,9 +19,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool ForceAttractByPhysicsOff;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             SimulationTime = new float[ 6 ];
             for( var i = 0; i < 6; i++ )

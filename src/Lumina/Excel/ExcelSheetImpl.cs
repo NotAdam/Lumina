@@ -13,13 +13,13 @@ namespace Lumina.Excel
 {
     public class ExcelSheetImpl
     {
-        internal ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina )
+        internal ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage, GameData gameData )
         {
             DataPages = new List< ExcelPage >();
             HeaderFile = headerFile;
             Name = name;
             RequestedLanguage = requestedLanguage;
-            Lumina = lumina;
+            GameData = gameData;
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Lumina.Excel
         /// </summary>
         public Language RequestedLanguage { get; protected set; }
 
-        internal readonly Lumina Lumina;
+        internal readonly GameData GameData;
 
         /// <summary>
         /// Generates an absolute path to a data file for a sheet
@@ -131,7 +131,7 @@ namespace Lumina.Excel
                 var filePath = GenerateFilePath( Name, bp.StartId, lang );
 
                 // ignore languages that don't exist in this client build
-                if( !Lumina.FileExists( filePath ) )
+                if( !GameData.FileExists( filePath ) )
                 {
                     continue;
                 }
@@ -143,7 +143,7 @@ namespace Lumina.Excel
                     StartId = bp.StartId
                 };
 
-                segment.File = Lumina.GetFile< ExcelDataFile >( segment.FilePath );
+                segment.File = GameData.GetFile< ExcelDataFile >( segment.FilePath );
 
                 // convert big endian to little endian on le systems
                 ProcessDataEndianness( segment.File );

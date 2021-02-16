@@ -28,17 +28,17 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Quest > Quest;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             Top = parser.ReadColumn< byte >( 1 );
             Bottom = parser.ReadColumn< byte >( 2 );
             Left = parser.ReadColumn< byte >( 3 );
             Right = parser.ReadColumn< byte >( 4 );
-            TripleTriadCardRarity = new LazyRow< TripleTriadCardRarity >( lumina, parser.ReadColumn< byte >( 5 ), language );
-            TripleTriadCardType = new LazyRow< TripleTriadCardType >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            TripleTriadCardRarity = new LazyRow< TripleTriadCardRarity >( gameData, parser.ReadColumn< byte >( 5 ), language );
+            TripleTriadCardType = new LazyRow< TripleTriadCardType >( gameData, parser.ReadColumn< byte >( 6 ), language );
             SaleValue = parser.ReadColumn< ushort >( 7 );
             SortKey = parser.ReadColumn< byte >( 8 );
             Order = parser.ReadColumn< ushort >( 9 );
@@ -47,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             AcquisitionType = parser.ReadColumn< byte >( 12 );
             Acquisition = parser.ReadColumn< uint >( 13 );
             Location = parser.ReadColumn< uint >( 14 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 15 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 15 ), language );
         }
     }
 }

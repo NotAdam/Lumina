@@ -37,11 +37,11 @@ namespace Lumina.Excel.GeneratedSheets
         public bool FlatOrDeathVuln;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            BNpcName = new LazyRow< BNpcName >( gameData, parser.ReadColumn< uint >( 0 ), language );
             TargetSmall = parser.ReadColumn< uint >( 1 );
             TargetLarge = parser.ReadColumn< uint >( 2 );
             HideStats = parser.ReadColumn< bool >( 3 );

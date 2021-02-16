@@ -15,11 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort TimeRequired;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Location = new LazyRow< ChocoboTaxiStand >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Location = new LazyRow< ChocoboTaxiStand >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Fare = parser.ReadColumn< byte >( 1 );
             TimeRequired = parser.ReadColumn< ushort >( 2 );
         }

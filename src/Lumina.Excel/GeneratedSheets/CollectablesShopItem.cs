@@ -20,18 +20,18 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            CollectablesShopItemGroup = new LazyRow< CollectablesShopItemGroup >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            CollectablesShopItemGroup = new LazyRow< CollectablesShopItemGroup >( gameData, parser.ReadColumn< byte >( 1 ), language );
             LevelMin = parser.ReadColumn< ushort >( 2 );
             LevelMax = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
-            CollectablesShopRefine = new LazyRow< CollectablesShopRefine >( lumina, parser.ReadColumn< ushort >( 6 ), language );
-            CollectablesShopRewardScrip = new LazyRow< CollectablesShopRewardScrip >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            CollectablesShopRefine = new LazyRow< CollectablesShopRefine >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            CollectablesShopRewardScrip = new LazyRow< CollectablesShopRewardScrip >( gameData, parser.ReadColumn< ushort >( 7 ), language );
         }
     }
 }

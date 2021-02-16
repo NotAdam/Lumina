@@ -16,13 +16,13 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             MonsterNoteTarget = new LazyRow< MonsterNoteTarget >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
             Count = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 Count[ i ] = parser.ReadColumn< byte >( 4 + i );

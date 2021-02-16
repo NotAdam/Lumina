@@ -21,13 +21,13 @@ namespace Lumina.Excel.GeneratedSheets
         public UnkStruct3Struct[] UnkStruct3;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            BNpcName = new LazyRow< BNpcName >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Icon = parser.ReadColumn< int >( 1 );
-            Town = new LazyRow< Town >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            Town = new LazyRow< Town >( gameData, parser.ReadColumn< byte >( 2 ), language );
             UnkStruct3 = new UnkStruct3Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {

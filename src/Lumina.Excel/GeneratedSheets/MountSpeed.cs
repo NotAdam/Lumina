@@ -15,11 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown2;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Unknown1 = parser.ReadColumn< uint >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
         }

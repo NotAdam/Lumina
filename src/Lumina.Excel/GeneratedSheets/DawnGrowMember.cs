@@ -19,17 +19,17 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DawnMemberUIParam > Class;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Member = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Member = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 0 ), language );
             ImageName = parser.ReadColumn< uint >( 1 );
             BigImageOld = parser.ReadColumn< uint >( 2 );
             BigImageNew = parser.ReadColumn< uint >( 3 );
             SmallImageOld = parser.ReadColumn< uint >( 4 );
             SmallImageNew = parser.ReadColumn< uint >( 5 );
-            Class = new LazyRow< DawnMemberUIParam >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            Class = new LazyRow< DawnMemberUIParam >( gameData, parser.ReadColumn< byte >( 6 ), language );
         }
     }
 }

@@ -26,15 +26,15 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Task;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             IsRandom = parser.ReadColumn< bool >( 0 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 1 ), language );
             RetainerLevel = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
-            RetainerTaskParameter = new LazyRow< RetainerTaskParameter >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            RetainerTaskParameter = new LazyRow< RetainerTaskParameter >( gameData, parser.ReadColumn< ushort >( 4 ), language );
             VentureCost = parser.ReadColumn< ushort >( 5 );
             MaxTimemin = parser.ReadColumn< ushort >( 6 );
             Experience = parser.ReadColumn< int >( 7 );

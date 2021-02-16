@@ -22,9 +22,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< TerritoryType > Territory;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             X = parser.ReadColumn< float >( 0 );
             Y = parser.ReadColumn< float >( 1 );
@@ -33,9 +33,9 @@ namespace Lumina.Excel.GeneratedSheets
             Radius = parser.ReadColumn< float >( 4 );
             Type = parser.ReadColumn< byte >( 5 );
             Object = parser.ReadColumn< uint >( 6 );
-            Map = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 7 ), language );
             EventId = parser.ReadColumn< uint >( 8 );
-            Territory = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 9 ), language );
+            Territory = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 9 ), language );
         }
     }
 }

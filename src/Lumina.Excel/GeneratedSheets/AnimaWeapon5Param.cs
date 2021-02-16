@@ -14,11 +14,11 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            BaseParam = new LazyRow< BaseParam >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            BaseParam = new LazyRow< BaseParam >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Name = parser.ReadColumn< SeString >( 1 );
         }
     }

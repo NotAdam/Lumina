@@ -49,9 +49,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort[] ObjectiveIcon;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             EurekaFate = parser.ReadColumn< byte >( 0 );
             Rule = parser.ReadColumn< byte >( 1 );
@@ -59,23 +59,23 @@ namespace Lumina.Excel.GeneratedSheets
             Location = parser.ReadColumn< uint >( 3 );
             ClassJobLevel = parser.ReadColumn< byte >( 4 );
             ClassJobLevelMax = parser.ReadColumn< byte >( 5 );
-            EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 6 ), language );
+            EventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 6 ), language );
             TypeToDoValue = new byte[ 3 ];
             for( var i = 0; i < 3; i++ )
                 TypeToDoValue[ i ] = parser.ReadColumn< byte >( 7 + i );
             IconObjective = parser.ReadColumn< uint >( 10 );
             IconMap = parser.ReadColumn< uint >( 11 );
             IconInactiveMap = parser.ReadColumn< uint >( 12 );
-            Music = new LazyRow< BGM >( lumina, parser.ReadColumn< int >( 13 ), language );
+            Music = new LazyRow< BGM >( gameData, parser.ReadColumn< int >( 13 ), language );
             LGBGuardNPCLocation = parser.ReadColumn< uint >( 14 );
-            ScreenImageAccept = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 15 ), language );
-            ScreenImageComplete = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 16 ), language );
-            ScreenImageFailed = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 17 ), language );
+            ScreenImageAccept = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 15 ), language );
+            ScreenImageComplete = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 16 ), language );
+            ScreenImageFailed = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 17 ), language );
             Unknown18 = parser.ReadColumn< byte >( 18 );
             Unknown19 = parser.ReadColumn< uint >( 19 );
             SpecialFate = parser.ReadColumn< bool >( 20 );
             Unknown21 = parser.ReadColumn< bool >( 21 );
-            GivenStatus = new LazyRow< Status >( lumina, parser.ReadColumn< ushort >( 22 ), language );
+            GivenStatus = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 22 ), language );
             Unknown23 = parser.ReadColumn< ushort >( 23 );
             AdventEvent = parser.ReadColumn< bool >( 24 );
             MoonFaireEvent = parser.ReadColumn< bool >( 25 );
@@ -89,10 +89,10 @@ namespace Lumina.Excel.GeneratedSheets
             StatusText = new SeString[ 3 ];
             for( var i = 0; i < 3; i++ )
                 StatusText[ i ] = parser.ReadColumn< SeString >( 33 + i );
-            ArrayIndex = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< uint >( 36 ), language );
+            ArrayIndex = new LazyRow< ArrayEventHandler >( gameData, parser.ReadColumn< uint >( 36 ), language );
             Unknown37 = parser.ReadColumn< uint >( 37 );
-            ReqEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 38 ), language );
-            TurnInEventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 39 ), language );
+            ReqEventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 38 ), language );
+            TurnInEventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 39 ), language );
             ObjectiveIcon = new ushort[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ObjectiveIcon[ i ] = parser.ReadColumn< ushort >( 40 + i );

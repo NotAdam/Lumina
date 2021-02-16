@@ -13,9 +13,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint[] Icon;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Icon = new uint[ 19 ];
             for( var i = 0; i < 19; i++ )

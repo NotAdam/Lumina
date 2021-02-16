@@ -23,9 +23,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown10;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< sbyte >( 1 );
@@ -35,7 +35,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Unknown6 = parser.ReadColumn< sbyte >( 6 );
             Unknown7 = parser.ReadColumn< sbyte >( 7 );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 8 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 8 ), language );
             Unknown9 = parser.ReadColumn< bool >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
         }

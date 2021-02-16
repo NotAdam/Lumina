@@ -3078,12 +3078,12 @@ namespace Lumina.Excel.GeneratedSheets
         public ulong Unknown3367;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Race = new LazyRow< Race >( lumina, parser.ReadColumn< int >( 0 ), language );
-            Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< int >( 1 ), language );
+            Race = new LazyRow< Race >( gameData, parser.ReadColumn< int >( 0 ), language );
+            Tribe = new LazyRow< Tribe >( gameData, parser.ReadColumn< int >( 1 ), language );
             Gender = parser.ReadColumn< sbyte >( 2 );
             Menu = new uint[ 28 ];
             for( var i = 0; i < 28; i++ )

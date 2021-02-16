@@ -92,9 +92,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsGlamourous;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -107,14 +107,14 @@ namespace Lumina.Excel.GeneratedSheets
             Description = parser.ReadColumn< SeString >( 8 );
             Name = parser.ReadColumn< SeString >( 9 );
             Icon = parser.ReadColumn< ushort >( 10 );
-            LevelItem = new LazyRow< ItemLevel >( lumina, parser.ReadColumn< ushort >( 11 ), language );
+            LevelItem = new LazyRow< ItemLevel >( gameData, parser.ReadColumn< ushort >( 11 ), language );
             Rarity = parser.ReadColumn< byte >( 12 );
             FilterGroup = parser.ReadColumn< byte >( 13 );
             AdditionalData = parser.ReadColumn< uint >( 14 );
-            ItemUICategory = new LazyRow< ItemUICategory >( lumina, parser.ReadColumn< byte >( 15 ), language );
-            ItemSearchCategory = new LazyRow< ItemSearchCategory >( lumina, parser.ReadColumn< byte >( 16 ), language );
-            EquipSlotCategory = new LazyRow< EquipSlotCategory >( lumina, parser.ReadColumn< byte >( 17 ), language );
-            ItemSortCategory = new LazyRow< ItemSortCategory >( lumina, parser.ReadColumn< byte >( 18 ), language );
+            ItemUICategory = new LazyRow< ItemUICategory >( gameData, parser.ReadColumn< byte >( 15 ), language );
+            ItemSearchCategory = new LazyRow< ItemSearchCategory >( gameData, parser.ReadColumn< byte >( 16 ), language );
+            EquipSlotCategory = new LazyRow< EquipSlotCategory >( gameData, parser.ReadColumn< byte >( 17 ), language );
+            ItemSortCategory = new LazyRow< ItemSortCategory >( gameData, parser.ReadColumn< byte >( 18 ), language );
             Unknown19 = parser.ReadColumn< ushort >( 19 );
             StackSize = parser.ReadColumn< uint >( 20 );
             IsUnique = parser.ReadColumn< bool >( 21 );
@@ -126,12 +126,12 @@ namespace Lumina.Excel.GeneratedSheets
             CanBeHq = parser.ReadColumn< bool >( 27 );
             IsDyeable = parser.ReadColumn< bool >( 28 );
             IsCrestWorthy = parser.ReadColumn< bool >( 29 );
-            ItemAction = new LazyRow< ItemAction >( lumina, parser.ReadColumn< ushort >( 30 ), language );
+            ItemAction = new LazyRow< ItemAction >( gameData, parser.ReadColumn< ushort >( 30 ), language );
             Unknown31 = parser.ReadColumn< byte >( 31 );
             Cooldowns = parser.ReadColumn< ushort >( 32 );
-            ClassJobRepair = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 33 ), language );
-            ItemRepair = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 34 ), language );
-            ItemGlamour = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 35 ), language );
+            ClassJobRepair = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 33 ), language );
+            ItemRepair = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 34 ), language );
+            ItemGlamour = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 35 ), language );
             Desynth = parser.ReadColumn< ushort >( 36 );
             IsCollectable = parser.ReadColumn< bool >( 37 );
             AlwaysCollectable = parser.ReadColumn< bool >( 38 );
@@ -140,13 +140,13 @@ namespace Lumina.Excel.GeneratedSheets
             LevelEquip = parser.ReadColumn< byte >( 41 );
             Unknown42 = parser.ReadColumn< byte >( 42 );
             EquipRestriction = parser.ReadColumn< byte >( 43 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 44 ), language );
-            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< byte >( 45 ), language );
-            ItemSeries = new LazyRow< ItemSeries >( lumina, parser.ReadColumn< byte >( 46 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 44 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< byte >( 45 ), language );
+            ItemSeries = new LazyRow< ItemSeries >( gameData, parser.ReadColumn< byte >( 46 ), language );
             BaseParamModifier = parser.ReadColumn< byte >( 47 );
             ModelMain = parser.ReadColumn< ulong >( 48 );
             ModelSub = parser.ReadColumn< ulong >( 49 );
-            ClassJobUse = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 50 ), language );
+            ClassJobUse = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 50 ), language );
             Unknown51 = parser.ReadColumn< byte >( 51 );
             DamagePhys = parser.ReadColumn< ushort >( 52 );
             DamageMag = parser.ReadColumn< ushort >( 53 );
@@ -163,7 +163,7 @@ namespace Lumina.Excel.GeneratedSheets
                 UnkStruct60[ i ].BaseParam = parser.ReadColumn< byte >( 60 + ( i * 2 + 0 ) );
                 UnkStruct60[ i ].BaseParamValue = parser.ReadColumn< short >( 60 + ( i * 2 + 1 ) );
             }
-            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( lumina, parser.ReadColumn< byte >( 72 ), language );
+            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( gameData, parser.ReadColumn< byte >( 72 ), language );
             ItemSpecialBonusParam = parser.ReadColumn< byte >( 73 );
             UnkStruct74 = new UnkStruct74Struct[ 6 ];
             for( var i = 0; i < 6; i++ )

@@ -78,21 +78,21 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsPlayerAction;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Icon = parser.ReadColumn< ushort >( 2 );
-            ActionCategory = new LazyRow< ActionCategory >( lumina, parser.ReadColumn< byte >( 3 ), language );
+            ActionCategory = new LazyRow< ActionCategory >( gameData, parser.ReadColumn< byte >( 3 ), language );
             Unknown4 = parser.ReadColumn< byte >( 4 );
-            AnimationStart = new LazyRow< ActionCastTimeline >( lumina, parser.ReadColumn< byte >( 5 ), language );
-            VFX = new LazyRow< ActionCastVFX >( lumina, parser.ReadColumn< byte >( 6 ), language );
-            AnimationEnd = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< short >( 7 ), language );
-            ActionTimelineHit = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            AnimationStart = new LazyRow< ActionCastTimeline >( gameData, parser.ReadColumn< byte >( 5 ), language );
+            VFX = new LazyRow< ActionCastVFX >( gameData, parser.ReadColumn< byte >( 6 ), language );
+            AnimationEnd = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< short >( 7 ), language );
+            ActionTimelineHit = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             Unknown9 = parser.ReadColumn< byte >( 9 );
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< sbyte >( 10 ), language );
+            ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< sbyte >( 10 ), language );
             BehaviourType = parser.ReadColumn< byte >( 11 );
             ClassJobLevel = parser.ReadColumn< byte >( 12 );
             IsRoleAction = parser.ReadColumn< bool >( 13 );
@@ -117,24 +117,24 @@ namespace Lumina.Excel.GeneratedSheets
             PrimaryCostValue = parser.ReadColumn< ushort >( 32 );
             SecondaryCostType = parser.ReadColumn< byte >( 33 );
             SecondaryCostValue = parser.ReadColumn< ushort >( 34 );
-            ActionCombo = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 35 ), language );
+            ActionCombo = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 35 ), language );
             PreservesCombo = parser.ReadColumn< bool >( 36 );
             Cast100ms = parser.ReadColumn< ushort >( 37 );
             Recast100ms = parser.ReadColumn< ushort >( 38 );
             CooldownGroup = parser.ReadColumn< byte >( 39 );
             Unknown40 = parser.ReadColumn< byte >( 40 );
             MaxCharges = parser.ReadColumn< byte >( 41 );
-            AttackType = new LazyRow< AttackType >( lumina, parser.ReadColumn< sbyte >( 42 ), language );
+            AttackType = new LazyRow< AttackType >( gameData, parser.ReadColumn< sbyte >( 42 ), language );
             Aspect = parser.ReadColumn< byte >( 43 );
-            ActionProcStatus = new LazyRow< ActionProcStatus >( lumina, parser.ReadColumn< byte >( 44 ), language );
+            ActionProcStatus = new LazyRow< ActionProcStatus >( gameData, parser.ReadColumn< byte >( 44 ), language );
             Unknown45 = parser.ReadColumn< byte >( 45 );
-            StatusGainSelf = new LazyRow< Status >( lumina, parser.ReadColumn< ushort >( 46 ), language );
+            StatusGainSelf = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 46 ), language );
             UnlockLink = parser.ReadColumn< uint >( 47 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 48 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 48 ), language );
             Unknown49 = parser.ReadColumn< byte >( 49 );
             Unknown50 = parser.ReadColumn< bool >( 50 );
             AffectsPosition = parser.ReadColumn< bool >( 51 );
-            Omen = new LazyRow< Omen >( lumina, parser.ReadColumn< ushort >( 52 ), language );
+            Omen = new LazyRow< Omen >( gameData, parser.ReadColumn< ushort >( 52 ), language );
             IsPvP = parser.ReadColumn< bool >( 53 );
             Unknown54 = parser.ReadColumn< bool >( 54 );
             Unknown55 = parser.ReadColumn< bool >( 55 );

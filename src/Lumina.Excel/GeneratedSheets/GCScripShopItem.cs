@@ -16,12 +16,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte SortKey;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
-            RequiredGrandCompanyRank = new LazyRow< GrandCompanyRank >( lumina, parser.ReadColumn< int >( 1 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
+            RequiredGrandCompanyRank = new LazyRow< GrandCompanyRank >( gameData, parser.ReadColumn< int >( 1 ), language );
             CostGCSeals = parser.ReadColumn< uint >( 2 );
             SortKey = parser.ReadColumn< byte >( 3 );
         }

@@ -17,14 +17,14 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown4;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             NameAction = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
-            Addon = new LazyRow< Addon >( lumina, parser.ReadColumn< int >( 2 ), language );
-            QuickChatTransient = new LazyRow< QuickChatTransient >( lumina, parser.ReadColumn< sbyte >( 3 ), language );
+            Addon = new LazyRow< Addon >( gameData, parser.ReadColumn< int >( 2 ), language );
+            QuickChatTransient = new LazyRow< QuickChatTransient >( gameData, parser.ReadColumn< sbyte >( 3 ), language );
             Unknown4 = parser.ReadColumn< ushort >( 4 );
         }
     }

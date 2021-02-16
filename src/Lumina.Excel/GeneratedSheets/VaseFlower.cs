@@ -16,14 +16,14 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > Item;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }
     }
 }

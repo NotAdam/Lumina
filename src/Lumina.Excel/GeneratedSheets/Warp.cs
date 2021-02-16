@@ -24,19 +24,19 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Question;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            PopRange = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            ConditionSuccessEvent = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< uint >( 2 ), language );
-            ConditionFailEvent = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< uint >( 3 ), language );
-            ConfirmEvent = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< uint >( 4 ), language );
-            WarpCondition = new LazyRow< WarpCondition >( lumina, parser.ReadColumn< ushort >( 5 ), language );
-            WarpLogic = new LazyRow< WarpLogic >( lumina, parser.ReadColumn< ushort >( 6 ), language );
-            StartCutscene = new LazyRow< Cutscene >( lumina, parser.ReadColumn< ushort >( 7 ), language );
-            EndCutscene = new LazyRow< Cutscene >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            PopRange = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            ConditionSuccessEvent = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            ConditionFailEvent = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< uint >( 3 ), language );
+            ConfirmEvent = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< uint >( 4 ), language );
+            WarpCondition = new LazyRow< WarpCondition >( gameData, parser.ReadColumn< ushort >( 5 ), language );
+            WarpLogic = new LazyRow< WarpLogic >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            StartCutscene = new LazyRow< Cutscene >( gameData, parser.ReadColumn< ushort >( 7 ), language );
+            EndCutscene = new LazyRow< Cutscene >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             CanSkipCutscene = parser.ReadColumn< bool >( 9 );
             Name = parser.ReadColumn< SeString >( 10 );
             Question = parser.ReadColumn< SeString >( 11 );

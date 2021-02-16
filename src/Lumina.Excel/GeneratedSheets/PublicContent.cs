@@ -28,20 +28,20 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown542;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< byte >( 0 );
             TimeLimit = parser.ReadColumn< ushort >( 1 );
             MapIcon = parser.ReadColumn< uint >( 2 );
             Name = parser.ReadColumn< SeString >( 3 );
-            TextDataStart = new LazyRow< PublicContentTextData >( lumina, parser.ReadColumn< uint >( 4 ), language );
-            TextDataEnd = new LazyRow< PublicContentTextData >( lumina, parser.ReadColumn< uint >( 5 ), language );
+            TextDataStart = new LazyRow< PublicContentTextData >( gameData, parser.ReadColumn< uint >( 4 ), language );
+            TextDataEnd = new LazyRow< PublicContentTextData >( gameData, parser.ReadColumn< uint >( 5 ), language );
             Unknown6 = parser.ReadColumn< ushort >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< uint >( 8 );
-            ContentFinderCondition = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 9 ), language );
+            ContentFinderCondition = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< ushort >( 9 ), language );
             AdditionalData = parser.ReadColumn< ushort >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< ushort >( 12 );

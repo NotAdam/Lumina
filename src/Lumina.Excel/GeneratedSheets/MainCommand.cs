@@ -18,13 +18,13 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Description;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Icon = parser.ReadColumn< int >( 0 );
             Category = parser.ReadColumn< byte >( 1 );
-            MainCommandCategory = new LazyRow< MainCommandCategory >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            MainCommandCategory = new LazyRow< MainCommandCategory >( gameData, parser.ReadColumn< byte >( 2 ), language );
             SortID = parser.ReadColumn< sbyte >( 3 );
             Name = parser.ReadColumn< SeString >( 4 );
             Description = parser.ReadColumn< SeString >( 5 );

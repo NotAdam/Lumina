@@ -29,9 +29,9 @@ namespace Lumina.Excel.GeneratedSheets
         public float Viera_F;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             EID = parser.ReadColumn< ushort >( 0 );
             PosX = parser.ReadColumn< float >( 1 );

@@ -16,9 +16,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool[] AnimationEnable;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             CameraDistance = parser.ReadColumn< float >( 0 );
             SampleInterval = parser.ReadColumn< float >( 1 );

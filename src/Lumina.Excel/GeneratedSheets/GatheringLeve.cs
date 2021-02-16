@@ -28,23 +28,23 @@ namespace Lumina.Excel.GeneratedSheets
         public bool UseSecondaryTool;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Route = new LazyRow< GatheringLeveRoute >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                Route[ i ] = new LazyRow< GatheringLeveRoute >( lumina, parser.ReadColumn< int >( 0 + i ), language );
-            RequiredItem0 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 4 ), language );
+                Route[ i ] = new LazyRow< GatheringLeveRoute >( gameData, parser.ReadColumn< int >( 0 + i ), language );
+            RequiredItem0 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 4 ), language );
             RequiredItemQty0 = parser.ReadColumn< byte >( 5 );
-            RequiredItem1 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 6 ), language );
+            RequiredItem1 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 6 ), language );
             RequiredItemQty1 = parser.ReadColumn< byte >( 7 );
-            RequiredItem2 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 8 ), language );
+            RequiredItem2 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 8 ), language );
             RequiredItemQty2 = parser.ReadColumn< byte >( 9 );
-            RequiredItem3 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 10 ), language );
+            RequiredItem3 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 10 ), language );
             RequiredItemQty3 = parser.ReadColumn< byte >( 11 );
             ItemNumber = parser.ReadColumn< byte >( 12 );
-            Rule = new LazyRow< GatheringLeveRule >( lumina, parser.ReadColumn< int >( 13 ), language );
+            Rule = new LazyRow< GatheringLeveRule >( gameData, parser.ReadColumn< int >( 13 ), language );
             Varient = parser.ReadColumn< byte >( 14 );
             Objective0 = parser.ReadColumn< ushort >( 15 );
             Objective1 = parser.ReadColumn< ushort >( 16 );

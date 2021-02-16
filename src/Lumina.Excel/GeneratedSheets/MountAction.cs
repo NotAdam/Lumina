@@ -13,13 +13,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Action >[] Action;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Action = new LazyRow< Action >[ 6 ];
             for( var i = 0; i < 6; i++ )
-                Action[ i ] = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                Action[ i ] = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
         }
     }
 }

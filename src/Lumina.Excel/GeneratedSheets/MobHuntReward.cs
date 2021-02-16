@@ -16,13 +16,13 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort CurrencyReward;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ExpReward = parser.ReadColumn< uint >( 0 );
             GilReward = parser.ReadColumn< ushort >( 1 );
-            Expansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            Expansion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 2 ), language );
             CurrencyReward = parser.ReadColumn< ushort >( 3 );
         }
     }

@@ -26,17 +26,17 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsInitial;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Level = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Level = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 0 ), language );
             MinLevel = parser.ReadColumn< int >( 1 );
             MaxLevel = parser.ReadColumn< byte >( 2 );
-            Emote = new LazyRow< Emote >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            Emote = new LazyRow< Emote >( gameData, parser.ReadColumn< ushort >( 3 ), language );
             MinTime = parser.ReadColumn< ushort >( 4 );
             MaxTime = parser.ReadColumn< ushort >( 5 );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< int >( 6 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 6 ), language );
             IconList = parser.ReadColumn< int >( 7 );
             IconDiscovered = parser.ReadColumn< int >( 8 );
             Name = parser.ReadColumn< SeString >( 9 );

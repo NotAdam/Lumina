@@ -58,14 +58,14 @@ namespace Lumina.Excel.GeneratedSheets
         public bool CanQueueForDuty;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Abbreviation = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< SeString >( 2 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 3 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 3 ), language );
             ExpArrayIndex = parser.ReadColumn< sbyte >( 4 );
             BattleClassIndex = parser.ReadColumn< sbyte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
@@ -88,22 +88,22 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown23 = parser.ReadColumn< byte >( 23 );
             Unknown24 = parser.ReadColumn< byte >( 24 );
             Unknown25 = parser.ReadColumn< byte >( 25 );
-            ClassJobParent = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 26 ), language );
+            ClassJobParent = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 26 ), language );
             NameEnglish = parser.ReadColumn< SeString >( 27 );
-            ItemStartingWeapon = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 28 ), language );
+            ItemStartingWeapon = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 28 ), language );
             Unknown29 = parser.ReadColumn< int >( 29 );
             Role = parser.ReadColumn< byte >( 30 );
-            StartingTown = new LazyRow< Town >( lumina, parser.ReadColumn< byte >( 31 ), language );
-            MonsterNote = new LazyRow< MonsterNote >( lumina, parser.ReadColumn< sbyte >( 32 ), language );
+            StartingTown = new LazyRow< Town >( gameData, parser.ReadColumn< byte >( 31 ), language );
+            MonsterNote = new LazyRow< MonsterNote >( gameData, parser.ReadColumn< sbyte >( 32 ), language );
             PrimaryStat = parser.ReadColumn< byte >( 33 );
-            LimitBreak1 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 34 ), language );
-            LimitBreak2 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 35 ), language );
-            LimitBreak3 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 36 ), language );
+            LimitBreak1 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 34 ), language );
+            LimitBreak2 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 35 ), language );
+            LimitBreak3 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 36 ), language );
             UIPriority = parser.ReadColumn< byte >( 37 );
-            ItemSoulCrystal = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 38 ), language );
-            UnlockQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 39 ), language );
-            RelicQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 40 ), language );
-            Prerequisite = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 41 ), language );
+            ItemSoulCrystal = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 38 ), language );
+            UnlockQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 39 ), language );
+            RelicQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 40 ), language );
+            Prerequisite = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 41 ), language );
             StartingLevel = parser.ReadColumn< byte >( 42 );
             PartyBonus = parser.ReadColumn< byte >( 43 );
             IsLimitedJob = parser.ReadColumn< bool >( 44 );

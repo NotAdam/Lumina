@@ -14,9 +14,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Stars;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             GatheringItemLevel = parser.ReadColumn< byte >( 0 );
             Stars = parser.ReadColumn< byte >( 1 );

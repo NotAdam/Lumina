@@ -13,11 +13,11 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< IKDRoute > Route;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Route = new LazyRow< IKDRoute >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Route = new LazyRow< IKDRoute >( gameData, parser.ReadColumn< uint >( 0 ), language );
         }
     }
 }

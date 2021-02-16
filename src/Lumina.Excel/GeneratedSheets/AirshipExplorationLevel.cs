@@ -14,9 +14,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint ExpToNext;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Capacity = parser.ReadColumn< ushort >( 0 );
             ExpToNext = parser.ReadColumn< uint >( 1 );

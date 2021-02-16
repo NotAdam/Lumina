@@ -14,12 +14,12 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< LogMessage > DenyMessage;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Requirement = parser.ReadColumn< uint >( 0 );
-            DenyMessage = new LazyRow< LogMessage >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            DenyMessage = new LazyRow< LogMessage >( gameData, parser.ReadColumn< uint >( 1 ), language );
         }
     }
 }

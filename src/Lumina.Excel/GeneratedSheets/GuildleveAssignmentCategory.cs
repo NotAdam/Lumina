@@ -13,13 +13,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< LeveAssignmentType >[] Category;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Category = new LazyRow< LeveAssignmentType >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                Category[ i ] = new LazyRow< LeveAssignmentType >( lumina, parser.ReadColumn< int >( 0 + i ), language );
+                Category[ i ] = new LazyRow< LeveAssignmentType >( gameData, parser.ReadColumn< int >( 0 + i ), language );
         }
     }
 }

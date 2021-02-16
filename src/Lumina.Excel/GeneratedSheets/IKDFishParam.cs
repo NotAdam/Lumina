@@ -15,12 +15,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown54;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Fish = new LazyRow< FishParameter >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            IKDContentBonus = new LazyRow< IKDContentBonus >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Fish = new LazyRow< FishParameter >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            IKDContentBonus = new LazyRow< IKDContentBonus >( gameData, parser.ReadColumn< byte >( 1 ), language );
             Unknown54 = parser.ReadColumn< byte >( 2 );
         }
     }

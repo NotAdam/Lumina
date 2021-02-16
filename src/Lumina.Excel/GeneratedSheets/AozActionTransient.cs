@@ -32,9 +32,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool CauseDeath;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Number = parser.ReadColumn< byte >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );
@@ -42,8 +42,8 @@ namespace Lumina.Excel.GeneratedSheets
             Description = parser.ReadColumn< SeString >( 3 );
             LocationKey = parser.ReadColumn< byte >( 4 );
             Location = parser.ReadColumn< ushort >( 5 );
-            RequiredForQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 6 ), language );
-            PreviousQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 7 ), language );
+            RequiredForQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 6 ), language );
+            PreviousQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 7 ), language );
             TargetsEnemy = parser.ReadColumn< bool >( 8 );
             TargetsSelfOrAlly = parser.ReadColumn< bool >( 9 );
             CauseSlow = parser.ReadColumn< bool >( 10 );

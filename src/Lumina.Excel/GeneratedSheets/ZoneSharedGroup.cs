@@ -41,33 +41,33 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown28;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            Quest1 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            Quest1 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Unknown3 = parser.ReadColumn< uint >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
-            Quest2 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 6 ), language );
+            Quest2 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 6 ), language );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< bool >( 8 );
             Unknown9 = parser.ReadColumn< byte >( 9 );
-            Quest3 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 10 ), language );
+            Quest3 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 10 ), language );
             Unknown11 = parser.ReadColumn< uint >( 11 );
             Unknown12 = parser.ReadColumn< bool >( 12 );
             Unknown13 = parser.ReadColumn< byte >( 13 );
-            Quest4 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 14 ), language );
+            Quest4 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 14 ), language );
             Unknown15 = parser.ReadColumn< uint >( 15 );
             Unknown16 = parser.ReadColumn< bool >( 16 );
             Unknown17 = parser.ReadColumn< byte >( 17 );
-            Quest5 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 18 ), language );
+            Quest5 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 18 ), language );
             Unknown19 = parser.ReadColumn< uint >( 19 );
             Unknown20 = parser.ReadColumn< bool >( 20 );
             Unknown21 = parser.ReadColumn< byte >( 21 );
-            Quest6 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 22 ), language );
+            Quest6 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 22 ), language );
             Unknown23 = parser.ReadColumn< uint >( 23 );
             Unknown24 = parser.ReadColumn< bool >( 24 );
             Unknown25 = parser.ReadColumn< byte >( 25 );

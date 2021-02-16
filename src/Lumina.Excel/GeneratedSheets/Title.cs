@@ -16,9 +16,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Order;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Masculine = parser.ReadColumn< SeString >( 0 );
             Feminine = parser.ReadColumn< SeString >( 1 );

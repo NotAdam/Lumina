@@ -50,9 +50,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< MinionRace > MinionRace;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -62,13 +62,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
-            Model = new LazyRow< ModelChara >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            Model = new LazyRow< ModelChara >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             Scale = parser.ReadColumn< byte >( 9 );
             InactiveIdle0 = parser.ReadColumn< byte >( 10 );
             InactiveIdle1 = parser.ReadColumn< byte >( 11 );
             InactiveBattle = parser.ReadColumn< byte >( 12 );
             InactiveWandering = parser.ReadColumn< byte >( 13 );
-            Behavior = new LazyRow< CompanionMove >( lumina, parser.ReadColumn< byte >( 14 ), language );
+            Behavior = new LazyRow< CompanionMove >( gameData, parser.ReadColumn< byte >( 14 ), language );
             Special = parser.ReadColumn< byte >( 15 );
             WanderingWait = parser.ReadColumn< byte >( 16 );
             Priority = parser.ReadColumn< ushort >( 17 );
@@ -91,7 +91,7 @@ namespace Lumina.Excel.GeneratedSheets
             SkillCost = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
             Unknown36 = parser.ReadColumn< ushort >( 36 );
-            MinionRace = new LazyRow< MinionRace >( lumina, parser.ReadColumn< byte >( 37 ), language );
+            MinionRace = new LazyRow< MinionRace >( gameData, parser.ReadColumn< byte >( 37 ), language );
         }
     }
 }

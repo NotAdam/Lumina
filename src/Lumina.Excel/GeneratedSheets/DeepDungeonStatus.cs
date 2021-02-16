@@ -15,13 +15,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DeepDungeonFloorEffectUI > Name;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ScreenImage = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            LogMessage = new LazyRow< LogMessage >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            Name = new LazyRow< DeepDungeonFloorEffectUI >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            ScreenImage = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            LogMessage = new LazyRow< LogMessage >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            Name = new LazyRow< DeepDungeonFloorEffectUI >( gameData, parser.ReadColumn< ushort >( 2 ), language );
         }
     }
 }

@@ -15,9 +15,9 @@ namespace Lumina.Excel.GeneratedSheets
         public short QualityFactor;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Difference = parser.ReadColumn< short >( 0 );
             ProgressFactor = parser.ReadColumn< short >( 1 );

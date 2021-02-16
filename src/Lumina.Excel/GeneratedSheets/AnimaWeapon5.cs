@@ -16,16 +16,16 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< AnimaWeapon5Param >[] Parameter;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             SecondaryStatTotal = parser.ReadColumn< byte >( 2 );
             Parameter = new LazyRow< AnimaWeapon5Param >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                Parameter[ i ] = new LazyRow< AnimaWeapon5Param >( lumina, parser.ReadColumn< byte >( 3 + i ), language );
+                Parameter[ i ] = new LazyRow< AnimaWeapon5Param >( gameData, parser.ReadColumn< byte >( 3 + i ), language );
         }
     }
 }

@@ -33,9 +33,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown78;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             IconActor = parser.ReadColumn< uint >( 0 );
             IconMap = parser.ReadColumn< uint >( 1 );

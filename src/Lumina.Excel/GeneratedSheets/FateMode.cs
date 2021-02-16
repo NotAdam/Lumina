@@ -17,9 +17,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint ObjectiveMapMarker;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             MotivationIcon = parser.ReadColumn< uint >( 1 );

@@ -22,9 +22,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Female;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Hyur = parser.ReadColumn< bool >( 0 );
             Elezen = parser.ReadColumn< bool >( 1 );

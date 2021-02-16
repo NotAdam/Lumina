@@ -15,9 +15,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint AndroidColor3;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             AndroidColor1 = parser.ReadColumn< uint >( 0 );
             AndroidColor2 = parser.ReadColumn< uint >( 1 );

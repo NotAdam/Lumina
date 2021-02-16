@@ -23,9 +23,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown10;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Tier = parser.ReadColumn< byte >( 0 );
             Order = parser.ReadColumn< byte >( 1 );
@@ -34,9 +34,9 @@ namespace Lumina.Excel.GeneratedSheets
             IconMaelstrom = parser.ReadColumn< int >( 4 );
             IconSerpents = parser.ReadColumn< int >( 5 );
             IconFlames = parser.ReadColumn< int >( 6 );
-            QuestMaelstrom = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 7 ), language );
-            QuestSerpents = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 8 ), language );
-            QuestFlames = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 9 ), language );
+            QuestMaelstrom = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 7 ), language );
+            QuestSerpents = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 8 ), language );
+            QuestFlames = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 9 ), language );
             Unknown10 = parser.ReadColumn< byte >( 10 );
         }
     }

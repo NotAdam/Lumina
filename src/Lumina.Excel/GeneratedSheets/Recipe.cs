@@ -44,14 +44,14 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort PatchNumber;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Number = parser.ReadColumn< int >( 0 );
-            CraftType = new LazyRow< CraftType >( lumina, parser.ReadColumn< int >( 1 ), language );
-            RecipeLevelTable = new LazyRow< RecipeLevelTable >( lumina, parser.ReadColumn< ushort >( 2 ), language );
-            ItemResult = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 3 ), language );
+            CraftType = new LazyRow< CraftType >( gameData, parser.ReadColumn< int >( 1 ), language );
+            RecipeLevelTable = new LazyRow< RecipeLevelTable >( gameData, parser.ReadColumn< ushort >( 2 ), language );
+            ItemResult = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 3 ), language );
             AmountResult = parser.ReadColumn< byte >( 4 );
             UnkStruct5 = new UnkStruct5Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
@@ -71,13 +71,13 @@ namespace Lumina.Excel.GeneratedSheets
             RequiredControl = parser.ReadColumn< ushort >( 33 );
             QuickSynthCraftsmanship = parser.ReadColumn< ushort >( 34 );
             QuickSynthControl = parser.ReadColumn< ushort >( 35 );
-            SecretRecipeBook = new LazyRow< SecretRecipeBook >( lumina, parser.ReadColumn< ushort >( 36 ), language );
+            SecretRecipeBook = new LazyRow< SecretRecipeBook >( gameData, parser.ReadColumn< ushort >( 36 ), language );
             Unknown37 = parser.ReadColumn< uint >( 37 );
             CanQuickSynth = parser.ReadColumn< bool >( 38 );
             CanHq = parser.ReadColumn< bool >( 39 );
             ExpRewarded = parser.ReadColumn< bool >( 40 );
-            StatusRequired = new LazyRow< Status >( lumina, parser.ReadColumn< int >( 41 ), language );
-            ItemRequired = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 42 ), language );
+            StatusRequired = new LazyRow< Status >( gameData, parser.ReadColumn< int >( 41 ), language );
+            ItemRequired = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 42 ), language );
             IsSpecializationRequired = parser.ReadColumn< bool >( 43 );
             IsExpert = parser.ReadColumn< bool >( 44 );
             PatchNumber = parser.ReadColumn< ushort >( 45 );

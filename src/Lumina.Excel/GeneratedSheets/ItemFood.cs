@@ -23,9 +23,9 @@ namespace Lumina.Excel.GeneratedSheets
         public UnkStruct1Struct[] UnkStruct1;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             EXPBonusPct = parser.ReadColumn< byte >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 3 ];

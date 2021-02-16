@@ -15,13 +15,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< BGMFadeType > BGMFadeType;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             SceneOut = parser.ReadColumn< int >( 0 );
             SceneIn = parser.ReadColumn< int >( 1 );
-            BGMFadeType = new LazyRow< BGMFadeType >( lumina, parser.ReadColumn< int >( 2 ), language );
+            BGMFadeType = new LazyRow< BGMFadeType >( gameData, parser.ReadColumn< int >( 2 ), language );
         }
     }
 }

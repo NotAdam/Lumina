@@ -17,15 +17,15 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< BGM > TwilightID;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            DaytimeID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            NightID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            BattleID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 2 ), language );
-            DaybreakID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 3 ), language );
-            TwilightID = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            DaytimeID = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            NightID = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            BattleID = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 2 ), language );
+            DaybreakID = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            TwilightID = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 4 ), language );
         }
     }
 }

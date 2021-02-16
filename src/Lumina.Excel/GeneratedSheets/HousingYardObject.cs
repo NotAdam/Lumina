@@ -26,17 +26,17 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown13;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ModelKey = parser.ReadColumn< byte >( 0 );
             HousingItemCategory = parser.ReadColumn< byte >( 1 );
             UsageType = parser.ReadColumn< byte >( 2 );
             UsageParameter = parser.ReadColumn< uint >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
-            CustomTalk = new LazyRow< CustomTalk >( lumina, parser.ReadColumn< uint >( 5 ), language );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ), language );
+            CustomTalk = new LazyRow< CustomTalk >( gameData, parser.ReadColumn< uint >( 5 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 6 ), language );
             DestroyOnRemoval = parser.ReadColumn< bool >( 7 );
             Unknown8 = parser.ReadColumn< bool >( 8 );
             Unknown9 = parser.ReadColumn< bool >( 9 );

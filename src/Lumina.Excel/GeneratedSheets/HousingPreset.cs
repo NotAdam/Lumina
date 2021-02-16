@@ -36,9 +36,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > MansionLighting;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -48,22 +48,22 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             HousingSize = parser.ReadColumn< byte >( 9 );
-            ExteriorRoof = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 10 ), language );
-            ExteriorWall = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 11 ), language );
-            ExteriorWindow = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 12 ), language );
-            ExteriorDoor = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 13 ), language );
-            InteriorWall = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 14 ), language );
-            InteriorFlooring = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 15 ), language );
-            InteriorLighting = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 16 ), language );
-            OtherFloorWall = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 17 ), language );
-            OtherFloorFlooring = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 18 ), language );
-            OtherFloorLighting = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 19 ), language );
-            BasementWall = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 20 ), language );
-            BasementFlooring = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 21 ), language );
-            BasementLighting = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 22 ), language );
-            MansionLighting = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 23 ), language );
+            ExteriorRoof = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 10 ), language );
+            ExteriorWall = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 11 ), language );
+            ExteriorWindow = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 12 ), language );
+            ExteriorDoor = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 13 ), language );
+            InteriorWall = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 14 ), language );
+            InteriorFlooring = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 15 ), language );
+            InteriorLighting = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 16 ), language );
+            OtherFloorWall = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 17 ), language );
+            OtherFloorFlooring = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 18 ), language );
+            OtherFloorLighting = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 19 ), language );
+            BasementWall = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 20 ), language );
+            BasementFlooring = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 21 ), language );
+            BasementLighting = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 22 ), language );
+            MansionLighting = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 23 ), language );
         }
     }
 }

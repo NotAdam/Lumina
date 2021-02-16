@@ -20,13 +20,13 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString SoundEffect1;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Base = parser.ReadColumn< byte >( 0 );
-            QuestRequirement2 = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1 ), language );
-            QuestRequirement1 = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 2 ), language );
+            QuestRequirement2 = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 1 ), language );
+            QuestRequirement1 = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 2 ), language );
             BaseEquip = parser.ReadColumn< int >( 3 );
             SoundEffect4 = parser.ReadColumn< SeString >( 4 );
             SoundEffect3 = parser.ReadColumn< SeString >( 5 );

@@ -29,15 +29,15 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown16;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Condition0Target = parser.ReadColumn< byte >( 2 );
             Condition0Type = parser.ReadColumn< byte >( 3 );
-            Balloon = new LazyRow< Balloon >( lumina, parser.ReadColumn< int >( 4 ), language );
+            Balloon = new LazyRow< Balloon >( gameData, parser.ReadColumn< int >( 4 ), language );
             Unknown5 = parser.ReadColumn< short >( 5 );
             Unknown6 = parser.ReadColumn< int >( 6 );
             Unknown7 = parser.ReadColumn< ushort >( 7 );

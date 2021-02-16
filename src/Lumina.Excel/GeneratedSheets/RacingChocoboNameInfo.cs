@@ -20,11 +20,11 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown7;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            RacingChocoboNameCategory = new LazyRow< RacingChocoboNameCategory >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            RacingChocoboNameCategory = new LazyRow< RacingChocoboNameCategory >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );

@@ -49,30 +49,30 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown54;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            Model = new LazyRow< ModelChara >( lumina, parser.ReadColumn< short >( 1 ), language );
-            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 2 ), language );
-            BNpcCustomize = new LazyRow< BNpcCustomize >( lumina, parser.ReadColumn< int >( 3 ), language );
-            NpcEquip = new LazyRow< NpcEquip >( lumina, parser.ReadColumn< int >( 4 ), language );
+            Model = new LazyRow< ModelChara >( gameData, parser.ReadColumn< short >( 1 ), language );
+            BNpcName = new LazyRow< BNpcName >( gameData, parser.ReadColumn< ushort >( 2 ), language );
+            BNpcCustomize = new LazyRow< BNpcCustomize >( gameData, parser.ReadColumn< int >( 3 ), language );
+            NpcEquip = new LazyRow< NpcEquip >( gameData, parser.ReadColumn< int >( 4 ), language );
             ExHotbarEnableConfig = parser.ReadColumn< bool >( 5 );
-            Action0 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            Action0 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 6 ), language );
             Unknown7 = parser.ReadColumn< bool >( 7 );
-            Action1 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            Action1 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             Unknown9 = parser.ReadColumn< bool >( 9 );
-            Action2 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 10 ), language );
+            Action2 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 10 ), language );
             Unknown11 = parser.ReadColumn< bool >( 11 );
-            Action3 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 12 ), language );
+            Action3 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 12 ), language );
             Unknown13 = parser.ReadColumn< bool >( 13 );
-            Action4 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 14 ), language );
+            Action4 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 14 ), language );
             Unknown15 = parser.ReadColumn< bool >( 15 );
-            Action5 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 16 ), language );
+            Action5 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 16 ), language );
             Unknown17 = parser.ReadColumn< bool >( 17 );
-            RPParameter = new LazyRow< RPParameter >( lumina, parser.ReadColumn< ushort >( 18 ), language );
-            RemoveAction = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 19 ), language );
+            RPParameter = new LazyRow< RPParameter >( gameData, parser.ReadColumn< ushort >( 18 ), language );
+            RemoveAction = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 19 ), language );
             Unknown20 = parser.ReadColumn< bool >( 20 );
             Unknown21 = parser.ReadColumn< bool >( 21 );
             Unknown22 = parser.ReadColumn< byte >( 22 );
@@ -83,11 +83,11 @@ namespace Lumina.Excel.GeneratedSheets
             PlayerCamera = parser.ReadColumn< bool >( 27 );
             Unknown28 = parser.ReadColumn< bool >( 28 );
             Unknown29 = parser.ReadColumn< bool >( 29 );
-            StartVFX = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 30 ), language );
-            EndVFX = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 31 ), language );
-            Action6 = new LazyRow< Action >( lumina, parser.ReadColumn< uint >( 32 ), language );
+            StartVFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 30 ), language );
+            EndVFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 31 ), language );
+            Action6 = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 32 ), language );
             Unknown33 = parser.ReadColumn< sbyte >( 33 );
-            Action7 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 34 ), language );
+            Action7 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 34 ), language );
             Unknown35 = parser.ReadColumn< byte >( 35 );
             Unknown54 = parser.ReadColumn< bool >( 36 );
         }

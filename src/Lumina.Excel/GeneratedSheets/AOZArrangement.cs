@@ -14,11 +14,11 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Position;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            AOZContentBriefingBNpc = new LazyRow< AOZContentBriefingBNpc >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            AOZContentBriefingBNpc = new LazyRow< AOZContentBriefingBNpc >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Position = parser.ReadColumn< ushort >( 1 );
         }
     }

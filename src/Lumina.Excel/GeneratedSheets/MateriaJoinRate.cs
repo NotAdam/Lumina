@@ -14,9 +14,9 @@ namespace Lumina.Excel.GeneratedSheets
         public float[] HQOvermeldPctSlot;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             NQOvermeldPctSlot = new float[ 4 ];
             for( var i = 0; i < 4; i++ )

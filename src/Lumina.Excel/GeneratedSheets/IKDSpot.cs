@@ -15,13 +15,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< PlaceName > PlaceName;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            SpotMain = new LazyRow< FishingSpot >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            SpotSub = new LazyRow< FishingSpot >( lumina, parser.ReadColumn< uint >( 1 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            SpotMain = new LazyRow< FishingSpot >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            SpotSub = new LazyRow< FishingSpot >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< uint >( 2 ), language );
         }
     }
 }

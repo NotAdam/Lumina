@@ -13,11 +13,11 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< AnimaWeaponFUITalkParam > Dialogue;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Dialogue = new LazyRow< AnimaWeaponFUITalkParam >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Dialogue = new LazyRow< AnimaWeaponFUITalkParam >( gameData, parser.ReadColumn< int >( 0 ), language );
         }
     }
 }

@@ -14,13 +14,13 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString PlaceName;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             TargetLocations = new LazyRow< ChocoboTaxi >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                TargetLocations[ i ] = new LazyRow< ChocoboTaxi >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                TargetLocations[ i ] = new LazyRow< ChocoboTaxi >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
             PlaceName = parser.ReadColumn< SeString >( 8 );
         }
     }

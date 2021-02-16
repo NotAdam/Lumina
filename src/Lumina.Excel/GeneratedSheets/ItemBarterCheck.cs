@@ -15,13 +15,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Addon > Confirm;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Category = parser.ReadColumn< ushort >( 0 );
             Question = parser.ReadColumn< uint >( 1 );
-            Confirm = new LazyRow< Addon >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            Confirm = new LazyRow< Addon >( gameData, parser.ReadColumn< uint >( 2 ), language );
         }
     }
 }

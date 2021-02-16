@@ -11,7 +11,7 @@ using Lumina.Misc;
 
 namespace Lumina
 {
-    public class Lumina
+    public class GameData
     {
         /// <summary>
         /// The current data path that Lumina is using to load files.
@@ -56,7 +56,7 @@ namespace Lumina
         /// <param name="dataPath">Path to the sqpack directory</param>
         /// <param name="options">Options object to provide additional configuration</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
-        public Lumina( string dataPath, LuminaOptions options = null )
+        public GameData( string dataPath, LuminaOptions options = null )
         {
             Options = options ?? new LuminaOptions();
 
@@ -89,7 +89,7 @@ namespace Lumina
         /// <param name="logger">An <see cref="ILogger"/> implementation that Lumina can send log events to</param>
         /// <param name="options">Options object to provide additional configuration</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
-        public Lumina( string dataPath, ILogger logger, LuminaOptions options = null ) : this(dataPath, options)
+        public GameData( string dataPath, ILogger logger, LuminaOptions options = null ) : this(dataPath, options)
         {
             Logger = logger ?? throw new ArgumentNullException( nameof( logger ) );
         }

@@ -16,16 +16,16 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ActionTimeline >[] Animation;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< ushort >( 1 );
             CastTime = parser.ReadColumn< byte >( 2 );
             Animation = new LazyRow< ActionTimeline >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                Animation[ i ] = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 + i ), language );
+                Animation[ i ] = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 3 + i ), language );
         }
     }
 }

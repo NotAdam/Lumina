@@ -19,9 +19,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Cutscene >[] Cutscene;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             RequiredLevel = parser.ReadColumn< ushort >( 1 );
@@ -31,7 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< SeString >( 5 );
             Cutscene = new LazyRow< Cutscene >[ 24 ];
             for( var i = 0; i < 24; i++ )
-                Cutscene[ i ] = new LazyRow< Cutscene >( lumina, parser.ReadColumn< int >( 6 + i ), language );
+                Cutscene[ i ] = new LazyRow< Cutscene >( gameData, parser.ReadColumn< int >( 6 + i ), language );
         }
     }
 }

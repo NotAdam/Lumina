@@ -24,9 +24,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Action > Action;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Icon = parser.ReadColumn< uint >( 0 );
             Singular = parser.ReadColumn< SeString >( 1 );
@@ -39,7 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             Article = parser.ReadColumn< sbyte >( 8 );
             Name = parser.ReadColumn< SeString >( 9 );
             Tooltip = parser.ReadColumn< SeString >( 10 );
-            Action = new LazyRow< Action >( lumina, parser.ReadColumn< uint >( 11 ), language );
+            Action = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 11 ), language );
         }
     }
 }

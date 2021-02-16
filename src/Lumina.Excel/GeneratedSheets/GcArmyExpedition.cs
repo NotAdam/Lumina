@@ -67,9 +67,9 @@ namespace Lumina.Excel.GeneratedSheets
         public UnkStruct58Struct[] UnkStruct58;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             RequiredFlag = parser.ReadColumn< byte >( 0 );
             UnlockFlag = parser.ReadColumn< byte >( 1 );
@@ -78,7 +78,7 @@ namespace Lumina.Excel.GeneratedSheets
             RewardExperience = parser.ReadColumn< uint >( 4 );
             PercentBase = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
-            GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( lumina, parser.ReadColumn< byte >( 7 ), language );
+            GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( gameData, parser.ReadColumn< byte >( 7 ), language );
             Name = parser.ReadColumn< SeString >( 8 );
             Description = parser.ReadColumn< SeString >( 9 );
             UnkStruct10 = new UnkStruct10Struct[ 6 ];

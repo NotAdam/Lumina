@@ -20,9 +20,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ClassJob > Class;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Helmet = parser.ReadColumn< ulong >( 0 );
             Top = parser.ReadColumn< ulong >( 1 );
@@ -31,7 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
             Shoes = parser.ReadColumn< ulong >( 4 );
             Weapon = parser.ReadColumn< ulong >( 5 );
             SubWeapon = parser.ReadColumn< ulong >( 6 );
-            Class = new LazyRow< ClassJob >( lumina, parser.ReadColumn< int >( 7 ), language );
+            Class = new LazyRow< ClassJob >( gameData, parser.ReadColumn< int >( 7 ), language );
         }
     }
 }

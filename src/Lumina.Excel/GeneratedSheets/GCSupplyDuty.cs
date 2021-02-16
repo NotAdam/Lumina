@@ -68,9 +68,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown65;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = new int[ 11 ];
             for( var i = 0; i < 11; i++ )

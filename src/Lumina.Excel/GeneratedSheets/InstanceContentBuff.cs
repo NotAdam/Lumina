@@ -14,9 +14,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort EchoDeath;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             EchoStart = parser.ReadColumn< ushort >( 0 );
             EchoDeath = parser.ReadColumn< ushort >( 1 );

@@ -137,9 +137,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown301;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             PlotSize = new byte[ 60 ];
             for( var i = 0; i < 60; i++ )

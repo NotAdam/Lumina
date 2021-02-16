@@ -16,12 +16,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MaxLevel;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Level = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ), language );
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Level = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 0 ), language );
+            ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 1 ), language );
             MinLevel = parser.ReadColumn< byte >( 2 );
             MaxLevel = parser.ReadColumn< byte >( 3 );
         }

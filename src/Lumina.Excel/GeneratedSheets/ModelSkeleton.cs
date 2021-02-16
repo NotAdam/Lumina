@@ -29,9 +29,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte LoopFlySE;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Radius = parser.ReadColumn< float >( 0 );
             Height = parser.ReadColumn< float >( 1 );

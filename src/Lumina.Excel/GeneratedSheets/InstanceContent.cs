@@ -75,26 +75,26 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown541;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             InstanceContentType = parser.ReadColumn< byte >( 0 );
             WeekRestriction = parser.ReadColumn< byte >( 1 );
             TimeLimitmin = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );
-            BGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 4 ), language );
-            WinBGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 5 ), language );
-            Cutscene = new LazyRow< Cutscene >( lumina, parser.ReadColumn< uint >( 6 ), language );
+            BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 4 ), language );
+            WinBGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 5 ), language );
+            Cutscene = new LazyRow< Cutscene >( gameData, parser.ReadColumn< uint >( 6 ), language );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Order = parser.ReadColumn< ushort >( 8 );
             Colosseum = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
-            InstanceContentTextDataBossStart = new LazyRow< InstanceContentTextData >( lumina, parser.ReadColumn< uint >( 11 ), language );
-            InstanceContentTextDataBossEnd = new LazyRow< InstanceContentTextData >( lumina, parser.ReadColumn< uint >( 12 ), language );
-            BNpcBaseBoss = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< uint >( 13 ), language );
-            InstanceContentTextDataObjectiveStart = new LazyRow< InstanceContentTextData >( lumina, parser.ReadColumn< uint >( 14 ), language );
-            InstanceContentTextDataObjectiveEnd = new LazyRow< InstanceContentTextData >( lumina, parser.ReadColumn< uint >( 15 ), language );
+            InstanceContentTextDataBossStart = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 11 ), language );
+            InstanceContentTextDataBossEnd = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 12 ), language );
+            BNpcBaseBoss = new LazyRow< BNpcBase >( gameData, parser.ReadColumn< uint >( 13 ), language );
+            InstanceContentTextDataObjectiveStart = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 14 ), language );
+            InstanceContentTextDataObjectiveEnd = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 15 ), language );
             SortKey = parser.ReadColumn< ushort >( 16 );
             InstanceClearExp = parser.ReadColumn< uint >( 17 );
             Unknown18 = parser.ReadColumn< uint >( 18 );
@@ -133,8 +133,8 @@ namespace Lumina.Excel.GeneratedSheets
             InstanceContentRewardItem = parser.ReadColumn< uint >( 47 );
             Unknown48 = parser.ReadColumn< uint >( 48 );
             FinalBossExp = parser.ReadColumn< byte >( 49 );
-            InstanceContentBuff = new LazyRow< InstanceContentBuff >( lumina, parser.ReadColumn< uint >( 50 ), language );
-            ReqInstance = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< int >( 51 ), language );
+            InstanceContentBuff = new LazyRow< InstanceContentBuff >( gameData, parser.ReadColumn< uint >( 50 ), language );
+            ReqInstance = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< int >( 51 ), language );
             Unknown52 = parser.ReadColumn< uint >( 52 );
             PartyCondition = parser.ReadColumn< short >( 53 );
             Unknown54 = parser.ReadColumn< byte >( 54 );

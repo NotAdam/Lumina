@@ -18,9 +18,9 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Unknown5;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Path = parser.ReadColumn< SeString >( 0 );
             PathAlly = parser.ReadColumn< SeString >( 1 );

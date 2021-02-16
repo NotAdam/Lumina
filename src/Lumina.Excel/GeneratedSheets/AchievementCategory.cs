@@ -17,12 +17,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Order;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            AchievementKind = new LazyRow< AchievementKind >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            AchievementKind = new LazyRow< AchievementKind >( gameData, parser.ReadColumn< byte >( 1 ), language );
             ShowComplete = parser.ReadColumn< bool >( 2 );
             HideCategory = parser.ReadColumn< bool >( 3 );
             Order = parser.ReadColumn< byte >( 4 );

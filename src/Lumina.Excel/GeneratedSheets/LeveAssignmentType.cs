@@ -15,9 +15,9 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             IsFaction = parser.ReadColumn< bool >( 0 );
             Icon = parser.ReadColumn< int >( 1 );

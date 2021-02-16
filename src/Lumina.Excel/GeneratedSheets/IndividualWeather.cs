@@ -30,13 +30,13 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown27;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Weather = new LazyRow< Weather >[ 6 ];
             for( var i = 0; i < 6; i++ )
-                Weather[ i ] = new LazyRow< Weather >( lumina, parser.ReadColumn< byte >( 0 + i ), language );
+                Weather[ i ] = new LazyRow< Weather >( gameData, parser.ReadColumn< byte >( 0 + i ), language );
             Unknown6 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< byte >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
@@ -48,7 +48,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown14 = parser.ReadColumn< uint >( 14 );
             Quest = new LazyRow< Quest >[ 6 ];
             for( var i = 0; i < 6; i++ )
-                Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 15 + i ), language );
+                Quest[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 15 + i ), language );
             Unknown21 = parser.ReadColumn< uint >( 21 );
             Unknown22 = parser.ReadColumn< uint >( 22 );
             Unknown23 = parser.ReadColumn< uint >( 23 );

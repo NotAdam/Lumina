@@ -18,15 +18,15 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte IconType;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Text = parser.ReadColumn< SeString >( 0 );
             SelfKind = parser.ReadColumn< byte >( 1 );
             TargetKind = parser.ReadColumn< byte >( 2 );
             NumParam = parser.ReadColumn< byte >( 3 );
-            FCActivityCategory = new LazyRow< FCActivityCategory >( lumina, parser.ReadColumn< byte >( 4 ), language );
+            FCActivityCategory = new LazyRow< FCActivityCategory >( gameData, parser.ReadColumn< byte >( 4 ), language );
             IconType = parser.ReadColumn< sbyte >( 5 );
         }
     }

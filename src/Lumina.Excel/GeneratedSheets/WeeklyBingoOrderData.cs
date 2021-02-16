@@ -18,14 +18,14 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown5;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< uint >( 0 );
             Data = parser.ReadColumn< uint >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
-            Text = new LazyRow< WeeklyBingoText >( lumina, parser.ReadColumn< byte >( 3 ), language );
+            Text = new LazyRow< WeeklyBingoText >( gameData, parser.ReadColumn< byte >( 3 ), language );
             Icon = parser.ReadColumn< uint >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
         }

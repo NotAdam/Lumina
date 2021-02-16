@@ -21,12 +21,12 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Order;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            CompanyCraftDraftCategory = new LazyRow< CompanyCraftDraftCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            CompanyCraftDraftCategory = new LazyRow< CompanyCraftDraftCategory >( gameData, parser.ReadColumn< byte >( 1 ), language );
             UnkStruct2 = new UnkStruct2Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {

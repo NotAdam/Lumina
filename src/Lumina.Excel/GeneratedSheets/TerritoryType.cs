@@ -53,17 +53,17 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown54;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Bg = parser.ReadColumn< SeString >( 1 );
             BattalionMode = parser.ReadColumn< byte >( 2 );
-            PlaceNameRegion = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 3 ), language );
-            PlaceNameZone = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 4 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 5 ), language );
-            Map = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 6 ), language );
+            PlaceNameRegion = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            PlaceNameZone = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 4 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 5 ), language );
+            Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 6 ), language );
             LoadingImage = parser.ReadColumn< byte >( 7 );
             ExclusiveType = parser.ReadColumn< byte >( 8 );
             TerritoryIntendedUse = parser.ReadColumn< byte >( 9 );
@@ -76,21 +76,21 @@ namespace Lumina.Excel.GeneratedSheets
             Stealth = parser.ReadColumn< bool >( 16 );
             Mount = parser.ReadColumn< bool >( 17 );
             Unknown18 = parser.ReadColumn< bool >( 18 );
-            BGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 19 ), language );
+            BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 19 ), language );
             PlaceNameRegionIcon = parser.ReadColumn< int >( 20 );
             PlaceNameIcon = parser.ReadColumn< int >( 21 );
-            ArrayEventHandler = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< uint >( 22 ), language );
-            QuestBattle = new LazyRow< QuestBattle >( lumina, parser.ReadColumn< ushort >( 23 ), language );
-            Aetheryte = new LazyRow< Aetheryte >( lumina, parser.ReadColumn< int >( 24 ), language );
+            ArrayEventHandler = new LazyRow< ArrayEventHandler >( gameData, parser.ReadColumn< uint >( 22 ), language );
+            QuestBattle = new LazyRow< QuestBattle >( gameData, parser.ReadColumn< ushort >( 23 ), language );
+            Aetheryte = new LazyRow< Aetheryte >( gameData, parser.ReadColumn< int >( 24 ), language );
             FixedTime = parser.ReadColumn< int >( 25 );
             Resident = parser.ReadColumn< ushort >( 26 );
             AchievementIndex = parser.ReadColumn< sbyte >( 27 );
             IsPvpZone = parser.ReadColumn< bool >( 28 );
-            ExVersion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 29 ), language );
+            ExVersion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 29 ), language );
             Unknown30 = parser.ReadColumn< byte >( 30 );
             Unknown31 = parser.ReadColumn< byte >( 31 );
             AddedIn53 = parser.ReadColumn< byte >( 32 );
-            MountSpeed = new LazyRow< MountSpeed >( lumina, parser.ReadColumn< byte >( 33 ), language );
+            MountSpeed = new LazyRow< MountSpeed >( gameData, parser.ReadColumn< byte >( 33 ), language );
             Unknown34 = parser.ReadColumn< bool >( 34 );
             Unknown35 = parser.ReadColumn< bool >( 35 );
             Unknown36 = parser.ReadColumn< byte >( 36 );

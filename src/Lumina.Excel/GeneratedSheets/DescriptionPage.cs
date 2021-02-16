@@ -36,28 +36,28 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown23;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            Text1 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            Text1 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Image1 = parser.ReadColumn< uint >( 2 );
-            Text2 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            Text2 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 3 ), language );
             Image2 = parser.ReadColumn< uint >( 4 );
-            Text3 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            Text3 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 5 ), language );
             Image3 = parser.ReadColumn< uint >( 6 );
-            Text4 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            Text4 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 7 ), language );
             Image4 = parser.ReadColumn< uint >( 8 );
-            Text5 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 9 ), language );
+            Text5 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 9 ), language );
             Image5 = parser.ReadColumn< uint >( 10 );
-            Text6 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 11 ), language );
+            Text6 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 11 ), language );
             Image6 = parser.ReadColumn< uint >( 12 );
-            Text7 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 13 ), language );
+            Text7 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 13 ), language );
             Image7 = parser.ReadColumn< uint >( 14 );
-            Text8 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 15 ), language );
+            Text8 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 15 ), language );
             Image8 = parser.ReadColumn< uint >( 16 );
-            Text9 = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 17 ), language );
+            Text9 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 17 ), language );
             Image9 = parser.ReadColumn< uint >( 18 );
             Unknown19 = parser.ReadColumn< ushort >( 19 );
             Unknown20 = parser.ReadColumn< uint >( 20 );

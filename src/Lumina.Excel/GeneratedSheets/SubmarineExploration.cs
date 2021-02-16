@@ -25,16 +25,16 @@ namespace Lumina.Excel.GeneratedSheets
         public uint ExpReward;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Destination = parser.ReadColumn< SeString >( 0 );
             Location = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< short >( 2 );
             Unknown3 = parser.ReadColumn< short >( 3 );
             Unknown4 = parser.ReadColumn< short >( 4 );
-            Map = new LazyRow< SubmarineMap >( lumina, parser.ReadColumn< byte >( 5 ), language );
+            Map = new LazyRow< SubmarineMap >( gameData, parser.ReadColumn< byte >( 5 ), language );
             Unknown6 = parser.ReadColumn< bool >( 6 );
             Stars = parser.ReadColumn< byte >( 7 );
             RankReq = parser.ReadColumn< byte >( 8 );

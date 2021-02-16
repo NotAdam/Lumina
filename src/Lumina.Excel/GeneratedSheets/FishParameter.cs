@@ -24,19 +24,19 @@ namespace Lumina.Excel.GeneratedSheets
         public bool WeatherRestricted;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Text = parser.ReadColumn< SeString >( 0 );
             Item = parser.ReadColumn< int >( 1 );
-            GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             IsHidden = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
-            FishingRecordType = new LazyRow< FishingRecordType >( lumina, parser.ReadColumn< byte >( 6 ), language );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< int >( 7 ), language );
-            GatheringSubCategory = new LazyRow< GatheringSubCategory >( lumina, parser.ReadColumn< ushort >( 8 ), language );
+            FishingRecordType = new LazyRow< FishingRecordType >( gameData, parser.ReadColumn< byte >( 6 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< int >( 7 ), language );
+            GatheringSubCategory = new LazyRow< GatheringSubCategory >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             IsInLog = parser.ReadColumn< bool >( 9 );
             TimeRestricted = parser.ReadColumn< bool >( 10 );
             WeatherRestricted = parser.ReadColumn< bool >( 11 );

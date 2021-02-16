@@ -24,15 +24,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown35;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Key = parser.ReadColumn< byte >( 0 );
             TimeLimit = parser.ReadColumn< ushort >( 1 );
             Name = parser.ReadColumn< bool >( 2 );
-            TextDataStart = new LazyRow< PartyContentTextData >( lumina, parser.ReadColumn< uint >( 3 ), language );
-            TextDataEnd = new LazyRow< PartyContentTextData >( lumina, parser.ReadColumn< uint >( 4 ), language );
+            TextDataStart = new LazyRow< PartyContentTextData >( gameData, parser.ReadColumn< uint >( 3 ), language );
+            TextDataEnd = new LazyRow< PartyContentTextData >( gameData, parser.ReadColumn< uint >( 4 ), language );
             LGBEventObject0 = new uint[ 9 ];
             for( var i = 0; i < 9; i++ )
                 LGBEventObject0[ i ] = parser.ReadColumn< uint >( 5 + i );
@@ -43,7 +43,7 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 9; i++ )
                 LGBEventObject1[ i ] = parser.ReadColumn< uint >( 23 + i );
             Unknown32 = parser.ReadColumn< ushort >( 32 );
-            ContentFinderCondition = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 33 ), language );
+            ContentFinderCondition = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< ushort >( 33 ), language );
             Image = parser.ReadColumn< uint >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
         }

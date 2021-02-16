@@ -15,15 +15,15 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< InclusionShopCategory >[] Category;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             Unknown1 = parser.ReadColumn< SeString >( 1 );
             Category = new LazyRow< InclusionShopCategory >[ 30 ];
             for( var i = 0; i < 30; i++ )
-                Category[ i ] = new LazyRow< InclusionShopCategory >( lumina, parser.ReadColumn< ushort >( 2 + i ), language );
+                Category[ i ] = new LazyRow< InclusionShopCategory >( gameData, parser.ReadColumn< ushort >( 2 + i ), language );
         }
     }
 }

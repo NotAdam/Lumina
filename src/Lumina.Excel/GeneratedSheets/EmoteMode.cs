@@ -20,12 +20,12 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown7;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            StartEmote = new LazyRow< Emote >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            EndEmote = new LazyRow< Emote >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            StartEmote = new LazyRow< Emote >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            EndEmote = new LazyRow< Emote >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Move = parser.ReadColumn< bool >( 2 );
             Camera = parser.ReadColumn< bool >( 3 );
             EndOnRotate = parser.ReadColumn< bool >( 4 );

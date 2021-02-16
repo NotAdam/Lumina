@@ -38,15 +38,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte FacePaintColor;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Race = new LazyRow< Race >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            Race = new LazyRow< Race >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Gender = parser.ReadColumn< byte >( 1 );
             BodyType = parser.ReadColumn< byte >( 2 );
             Height = parser.ReadColumn< byte >( 3 );
-            Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< byte >( 4 ), language );
+            Tribe = new LazyRow< Tribe >( gameData, parser.ReadColumn< byte >( 4 ), language );
             Face = parser.ReadColumn< byte >( 5 );
             HairStyle = parser.ReadColumn< byte >( 6 );
             HairHighlight = parser.ReadColumn< byte >( 7 );

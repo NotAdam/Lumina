@@ -20,18 +20,18 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Recipe > CUL;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            CRP = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            BSM = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            ARM = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 2 ), language );
-            GSM = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 3 ), language );
-            LTW = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 4 ), language );
-            WVR = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 5 ), language );
-            ALC = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 6 ), language );
-            CUL = new LazyRow< Recipe >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            CRP = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            BSM = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            ARM = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 2 ), language );
+            GSM = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            LTW = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 4 ), language );
+            WVR = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 5 ), language );
+            ALC = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            CUL = new LazyRow< Recipe >( gameData, parser.ReadColumn< ushort >( 7 ), language );
         }
     }
 }

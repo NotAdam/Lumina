@@ -33,9 +33,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown23;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -45,18 +45,18 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 8 ), language );
-            AethernetName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 9 ), language );
-            Territory = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 10 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 8 ), language );
+            AethernetName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 9 ), language );
+            Territory = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 10 ), language );
             Level = new LazyRow< Level >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                Level[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 11 + i ), language );
+                Level[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 11 + i ), language );
             IsAetheryte = parser.ReadColumn< bool >( 15 );
             Unknown16 = parser.ReadColumn< SeString >( 16 );
             AethernetGroup = parser.ReadColumn< byte >( 17 );
             Unknown18 = parser.ReadColumn< bool >( 18 );
-            RequiredQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 19 ), language );
-            Map = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 20 ), language );
+            RequiredQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 19 ), language );
+            Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 20 ), language );
             AetherstreamX = parser.ReadColumn< short >( 21 );
             AetherstreamY = parser.ReadColumn< short >( 22 );
             Unknown23 = parser.ReadColumn< byte >( 23 );

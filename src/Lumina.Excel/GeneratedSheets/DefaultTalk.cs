@@ -31,9 +31,9 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString[] Text;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
@@ -42,7 +42,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown4 = parser.ReadColumn< byte >( 4 );
             ActionTimelinePose = new LazyRow< ActionTimeline >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                ActionTimelinePose[ i ] = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 5 + i ), language );
+                ActionTimelinePose[ i ] = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 5 + i ), language );
             Unknown8 = parser.ReadColumn< byte >( 8 );
             Unknown9 = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< byte >( 10 );

@@ -16,9 +16,9 @@ namespace Lumina.Excel.GeneratedSheets
         public float ResumeFadeInTime;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             FadeOutTime = parser.ReadColumn< float >( 0 );
             FadeInTime = parser.ReadColumn< float >( 1 );

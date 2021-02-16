@@ -14,11 +14,11 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Exp;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Content = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Content = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Exp = parser.ReadColumn< uint >( 1 );
         }
     }

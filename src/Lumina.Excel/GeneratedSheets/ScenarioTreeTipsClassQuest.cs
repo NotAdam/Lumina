@@ -18,14 +18,14 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown5;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
             RequiredLevel = parser.ReadColumn< ushort >( 1 );
-            RequiredExpansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 2 ), language );
-            RequiredQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            RequiredExpansion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 2 ), language );
+            RequiredQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 3 ), language );
             Unknown4 = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
         }

@@ -22,14 +22,14 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Description;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Number = parser.ReadColumn< byte >( 0 );
             Unknown540 = parser.ReadColumn< byte >( 1 );
             Unknown541 = parser.ReadColumn< byte >( 2 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 3 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 3 ), language );
             Icon = parser.ReadColumn< int >( 4 );
             Image = parser.ReadColumn< int >( 5 );
             Rarity = parser.ReadColumn< byte >( 6 );

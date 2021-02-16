@@ -17,11 +17,11 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Text;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Type = new LazyRow< HWDInfoBoardArticleType >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            Type = new LazyRow< HWDInfoBoardArticleType >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );

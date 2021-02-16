@@ -23,15 +23,15 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown10;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Type = new LazyRow< SkyIsland2MissionType >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            Type = new LazyRow< SkyIsland2MissionType >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            Range = new LazyRow< SkyIsland2RangeType >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            Range = new LazyRow< SkyIsland2RangeType >( gameData, parser.ReadColumn< byte >( 2 ), language );
             Unknown3 = parser.ReadColumn< sbyte >( 3 );
-            EObj = new LazyRow< EObjName >( lumina, parser.ReadColumn< uint >( 4 ), language );
+            EObj = new LazyRow< EObjName >( gameData, parser.ReadColumn< uint >( 4 ), language );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Objective = parser.ReadColumn< SeString >( 7 );

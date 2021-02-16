@@ -20,17 +20,17 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown7;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 2 ), language );
             Level = parser.ReadColumn< byte >( 3 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 4 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 4 ), language );
             Value = parser.ReadColumn< short >( 5 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 6 ), language );
             Unknown7 = parser.ReadColumn< byte >( 7 );
         }
     }

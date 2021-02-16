@@ -15,15 +15,15 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ENpcResident >[] ENPC;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            Content = new LazyRow< DawnContent >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            Content = new LazyRow< DawnContent >( gameData, parser.ReadColumn< byte >( 1 ), language );
             ENPC = new LazyRow< ENpcResident >[ 6 ];
             for( var i = 0; i < 6; i++ )
-                ENPC[ i ] = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 2 + i ), language );
+                ENPC[ i ] = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 2 + i ), language );
         }
     }
 }

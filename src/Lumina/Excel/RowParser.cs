@@ -310,7 +310,7 @@ namespace Lumina.Excel
         {
             var data = ReadFieldInternal( type );
 
-            if( _sheet.Lumina.Options.ExcelSheetStrictCastingEnabled )
+            if( _sheet.GameData.Options.ExcelSheetStrictCastingEnabled )
             {
                 return (T)data;
             }

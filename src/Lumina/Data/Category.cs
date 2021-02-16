@@ -7,7 +7,7 @@ namespace Lumina.Data
 {
     public class Category
     {
-        private readonly Lumina _Lumina;
+        private readonly GameData _gameData;
         public DirectoryInfo RootDir { get; }
 
         public byte CategoryId { get; }
@@ -32,9 +32,9 @@ namespace Lumina.Data
             PlatformId platform,
             SqPackIndex index,
             DirectoryInfo rootDir,
-            Lumina lumina )
+            GameData gameData )
         {
-            _Lumina = lumina;
+            _gameData = gameData;
             CategoryId = category;
             Expansion = expansion;
             Chunk = chunk;
@@ -55,7 +55,7 @@ namespace Lumina.Data
 
                 if( fileInfo.Exists )
                 {
-                    DatFiles[ id ] = new SqPack( fileInfo, _Lumina );
+                    DatFiles[ id ] = new SqPack( fileInfo, _gameData );
                 }
             }
             

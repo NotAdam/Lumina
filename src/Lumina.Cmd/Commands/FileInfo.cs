@@ -20,32 +20,32 @@ namespace Lumina.Cmd.Commands
             EnvironmentVariableName = "LUMINA_CMD_CLIENT_PATH" )]
         public string DataPath { get; set; }
 
-        private FileResource LoadResource( Lumina lumina, string path )
+        private FileResource LoadResource( GameData gameData, string path )
         {
             var ext = Path.GetExtension( path );
 
             switch( ext )
             {
                 case ".exh":
-                    return lumina.GetFile< ExcelHeaderFile >( path );
+                    return gameData.GetFile< ExcelHeaderFile >( path );
 
                 case ".exd":
-                    return lumina.GetFile< ExcelDataFile >( path );
+                    return gameData.GetFile< ExcelDataFile >( path );
 
                 case ".exl":
-                    return lumina.GetFile< ExcelListFile >( path );
+                    return gameData.GetFile< ExcelListFile >( path );
 
                 case ".imc":
-                    return lumina.GetFile< ImcFile >( path );
+                    return gameData.GetFile< ImcFile >( path );
 
                 case ".lgb":
-                    return lumina.GetFile< LgbFile >( path );
+                    return gameData.GetFile< LgbFile >( path );
 
                 case ".tex":
-                    return lumina.GetFile< TexFile >( path );
+                    return gameData.GetFile< TexFile >( path );
                 
                 case ".hwc":
-                    return lumina.GetFile< HwcFile >( path );
+                    return gameData.GetFile< HwcFile >( path );
             }
 
             return null;
@@ -53,7 +53,7 @@ namespace Lumina.Cmd.Commands
 
         public ValueTask ExecuteAsync( IConsole console )
         {
-            var lumina = new Lumina( DataPath );
+            var lumina = new GameData( DataPath );
 
             var file = LoadResource( lumina, FilePath );
 

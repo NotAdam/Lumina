@@ -28,9 +28,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort GilHigh;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 2 ];

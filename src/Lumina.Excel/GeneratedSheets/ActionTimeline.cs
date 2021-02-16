@@ -32,9 +32,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown19;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< byte >( 0 );
             Priority = parser.ReadColumn< byte >( 1 );
@@ -44,7 +44,7 @@ namespace Lumina.Excel.GeneratedSheets
             LookAtMode = parser.ReadColumn< byte >( 5 );
             Key = parser.ReadColumn< SeString >( 6 );
             ActionTimelineIDMode = parser.ReadColumn< byte >( 7 );
-            WeaponTimeline = new LazyRow< WeaponTimeline >( lumina, parser.ReadColumn< byte >( 8 ), language );
+            WeaponTimeline = new LazyRow< WeaponTimeline >( gameData, parser.ReadColumn< byte >( 8 ), language );
             LoadType = parser.ReadColumn< byte >( 9 );
             StartAttach = parser.ReadColumn< byte >( 10 );
             ResidentPap = parser.ReadColumn< byte >( 11 );

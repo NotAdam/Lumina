@@ -21,11 +21,11 @@ namespace Lumina.Excel.GeneratedSheets
         public UnkStruct3Struct[] UnkStruct3;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Leve = new LazyRow< Leve >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Leve = new LazyRow< Leve >( gameData, parser.ReadColumn< int >( 0 ), language );
             CraftLeveTalk = parser.ReadColumn< int >( 1 );
             Repeats = parser.ReadColumn< byte >( 2 );
             UnkStruct3 = new UnkStruct3Struct[ 4 ];

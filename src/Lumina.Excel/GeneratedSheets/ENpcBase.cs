@@ -76,9 +76,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown94;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             EventHandler = parser.ReadColumn< ushort >( 0 );
             Important = parser.ReadColumn< bool >( 1 );
@@ -86,12 +86,12 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 32; i++ )
                 ENpcData[ i ] = parser.ReadColumn< uint >( 2 + i );
             Scale = parser.ReadColumn< float >( 34 );
-            ModelChara = new LazyRow< ModelChara >( lumina, parser.ReadColumn< ushort >( 35 ), language );
-            Race = new LazyRow< Race >( lumina, parser.ReadColumn< byte >( 36 ), language );
+            ModelChara = new LazyRow< ModelChara >( gameData, parser.ReadColumn< ushort >( 35 ), language );
+            Race = new LazyRow< Race >( gameData, parser.ReadColumn< byte >( 36 ), language );
             Gender = parser.ReadColumn< byte >( 37 );
             BodyType = parser.ReadColumn< byte >( 38 );
             Height = parser.ReadColumn< byte >( 39 );
-            Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< byte >( 40 ), language );
+            Tribe = new LazyRow< Tribe >( gameData, parser.ReadColumn< byte >( 40 ), language );
             Face = parser.ReadColumn< byte >( 41 );
             HairStyle = parser.ReadColumn< byte >( 42 );
             HairHighlight = parser.ReadColumn< byte >( 43 );
@@ -114,35 +114,35 @@ namespace Lumina.Excel.GeneratedSheets
             FacePaint = parser.ReadColumn< byte >( 60 );
             FacePaintColor = parser.ReadColumn< byte >( 61 );
             Unknown62 = parser.ReadColumn< byte >( 62 );
-            NpcEquip = new LazyRow< NpcEquip >( lumina, parser.ReadColumn< ushort >( 63 ), language );
-            Behavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< ushort >( 64 ), language );
+            NpcEquip = new LazyRow< NpcEquip >( gameData, parser.ReadColumn< ushort >( 63 ), language );
+            Behavior = new LazyRow< Behavior >( gameData, parser.ReadColumn< ushort >( 64 ), language );
             ModelMainHand = parser.ReadColumn< ulong >( 65 );
-            DyeMainHand = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 66 ), language );
+            DyeMainHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 66 ), language );
             ModelOffHand = parser.ReadColumn< ulong >( 67 );
-            DyeOffHand = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 68 ), language );
+            DyeOffHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 68 ), language );
             ModelHead = parser.ReadColumn< uint >( 69 );
-            DyeHead = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 70 ), language );
+            DyeHead = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 70 ), language );
             Visor = parser.ReadColumn< bool >( 71 );
             ModelBody = parser.ReadColumn< uint >( 72 );
-            DyeBody = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 73 ), language );
+            DyeBody = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 73 ), language );
             ModelHands = parser.ReadColumn< uint >( 74 );
-            DyeHands = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 75 ), language );
+            DyeHands = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 75 ), language );
             ModelLegs = parser.ReadColumn< uint >( 76 );
-            DyeLegs = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 77 ), language );
+            DyeLegs = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 77 ), language );
             ModelFeet = parser.ReadColumn< uint >( 78 );
-            DyeFeet = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 79 ), language );
+            DyeFeet = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 79 ), language );
             ModelEars = parser.ReadColumn< uint >( 80 );
-            DyeEars = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 81 ), language );
+            DyeEars = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 81 ), language );
             ModelNeck = parser.ReadColumn< uint >( 82 );
-            DyeNeck = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 83 ), language );
+            DyeNeck = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 83 ), language );
             ModelWrists = parser.ReadColumn< uint >( 84 );
-            DyeWrists = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 85 ), language );
+            DyeWrists = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 85 ), language );
             ModelLeftRing = parser.ReadColumn< uint >( 86 );
-            DyeLeftRing = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 87 ), language );
+            DyeLeftRing = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 87 ), language );
             ModelRightRing = parser.ReadColumn< uint >( 88 );
-            DyeRightRing = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 89 ), language );
+            DyeRightRing = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 89 ), language );
             Invisibility = parser.ReadColumn< byte >( 90 );
-            Balloon = new LazyRow< Balloon >( lumina, parser.ReadColumn< ushort >( 91 ), language );
+            Balloon = new LazyRow< Balloon >( gameData, parser.ReadColumn< ushort >( 91 ), language );
             NotRewriteHeight = parser.ReadColumn< bool >( 92 );
             DefaultBalloon = parser.ReadColumn< byte >( 93 );
             Unknown94 = parser.ReadColumn< byte >( 94 );

@@ -30,9 +30,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsEvent;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             MapCondition = parser.ReadColumn< byte >( 0 );
             PriorityCategoryUI = parser.ReadColumn< byte >( 1 );
@@ -44,12 +44,12 @@ namespace Lumina.Excel.GeneratedSheets
             SizeFactor = parser.ReadColumn< ushort >( 7 );
             OffsetX = parser.ReadColumn< short >( 8 );
             OffsetY = parser.ReadColumn< short >( 9 );
-            PlaceNameRegion = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 10 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 11 ), language );
-            PlaceNameSub = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 12 ), language );
+            PlaceNameRegion = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 10 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 11 ), language );
+            PlaceNameSub = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 12 ), language );
             DiscoveryIndex = parser.ReadColumn< short >( 13 );
             DiscoveryFlag = parser.ReadColumn< uint >( 14 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 15 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 15 ), language );
             DiscoveryArrayByte = parser.ReadColumn< bool >( 16 );
             IsEvent = parser.ReadColumn< bool >( 17 );
         }

@@ -20,9 +20,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown7;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             NextPoint = parser.ReadColumn< uint >( 0 );
             CurrentPoint = parser.ReadColumn< uint >( 1 );

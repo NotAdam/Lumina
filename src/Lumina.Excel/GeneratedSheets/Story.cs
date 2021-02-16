@@ -34,9 +34,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< TerritoryType > LayerSetTerritoryType1;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Script = parser.ReadColumn< SeString >( 0 );
             Instruction = new SeString[ 40 ];
@@ -53,31 +53,31 @@ namespace Lumina.Excel.GeneratedSheets
                 CompletedQuestOperator[ i ] = parser.ReadColumn< byte >( 191 + i );
             CompletedQuest0 = new LazyRow< Quest >[ 110 ];
             for( var i = 0; i < 110; i++ )
-                CompletedQuest0[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 301 + i ), language );
+                CompletedQuest0[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 301 + i ), language );
             CompletedQuest1 = new LazyRow< Quest >[ 110 ];
             for( var i = 0; i < 110; i++ )
-                CompletedQuest1[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 411 + i ), language );
+                CompletedQuest1[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 411 + i ), language );
             CompletedQuest2 = new LazyRow< Quest >[ 110 ];
             for( var i = 0; i < 110; i++ )
-                CompletedQuest2[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 521 + i ), language );
+                CompletedQuest2[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 521 + i ), language );
             AcceptedQuestOperator = new byte[ 110 ];
             for( var i = 0; i < 110; i++ )
                 AcceptedQuestOperator[ i ] = parser.ReadColumn< byte >( 631 + i );
             AcceptedQuest0 = new LazyRow< Quest >[ 110 ];
             for( var i = 0; i < 110; i++ )
-                AcceptedQuest0[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 741 + i ), language );
+                AcceptedQuest0[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 741 + i ), language );
             AcceptedQuestSequence0 = new byte[ 110 ];
             for( var i = 0; i < 110; i++ )
                 AcceptedQuestSequence0[ i ] = parser.ReadColumn< byte >( 851 + i );
             AcceptedQuest1 = new LazyRow< Quest >[ 110 ];
             for( var i = 0; i < 110; i++ )
-                AcceptedQuest1[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 961 + i ), language );
+                AcceptedQuest1[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 961 + i ), language );
             AcceptedQuestSequence1 = new byte[ 110 ];
             for( var i = 0; i < 110; i++ )
                 AcceptedQuestSequence1[ i ] = parser.ReadColumn< byte >( 1071 + i );
             AcceptedQuest2 = new LazyRow< Quest >[ 110 ];
             for( var i = 0; i < 110; i++ )
-                AcceptedQuest2[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1181 + i ), language );
+                AcceptedQuest2[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1181 + i ), language );
             AcceptedQuestSequence2 = new byte[ 110 ];
             for( var i = 0; i < 110; i++ )
                 AcceptedQuestSequence2[ i ] = parser.ReadColumn< byte >( 1291 + i );
@@ -96,8 +96,8 @@ namespace Lumina.Excel.GeneratedSheets
             Listener = new uint[ 80 ];
             for( var i = 0; i < 80; i++ )
                 Listener[ i ] = parser.ReadColumn< uint >( 1781 + i );
-            LayerSetTerritoryType0 = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1861 ), language );
-            LayerSetTerritoryType1 = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1862 ), language );
+            LayerSetTerritoryType0 = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 1861 ), language );
+            LayerSetTerritoryType1 = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 1862 ), language );
         }
     }
 }

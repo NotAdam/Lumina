@@ -24,20 +24,20 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Description;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            EventType = new LazyRow< DynamicEventType >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            EnemyType = new LazyRow< DynamicEventEnemyType >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            EventType = new LazyRow< DynamicEventType >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            EnemyType = new LazyRow< DynamicEventEnemyType >( gameData, parser.ReadColumn< byte >( 1 ), language );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             LGBEventObject = parser.ReadColumn< uint >( 4 );
             LGBMapRange = parser.ReadColumn< uint >( 5 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 6 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 6 ), language );
             Unknown7 = parser.ReadColumn< byte >( 7 );
-            SingleBattle = new LazyRow< DynamicEventSingleBattle >( lumina, parser.ReadColumn< byte >( 8 ), language );
-            Announce = new LazyRow< LogMessage >( lumina, parser.ReadColumn< uint >( 9 ), language );
+            SingleBattle = new LazyRow< DynamicEventSingleBattle >( gameData, parser.ReadColumn< byte >( 8 ), language );
+            Announce = new LazyRow< LogMessage >( gameData, parser.ReadColumn< uint >( 9 ), language );
             Name = parser.ReadColumn< SeString >( 10 );
             Description = parser.ReadColumn< SeString >( 11 );
         }

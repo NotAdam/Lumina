@@ -17,12 +17,12 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Description;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Image = parser.ReadColumn< int >( 0 );
-            Url = new LazyRow< WebURL >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Url = new LazyRow< WebURL >( gameData, parser.ReadColumn< byte >( 1 ), language );
             Name = parser.ReadColumn< SeString >( 2 );
             Unknown54 = parser.ReadColumn< SeString >( 3 );
             Description = parser.ReadColumn< SeString >( 4 );

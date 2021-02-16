@@ -27,9 +27,9 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Article;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Model = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

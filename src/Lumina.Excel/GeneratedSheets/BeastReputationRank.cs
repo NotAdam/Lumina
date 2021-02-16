@@ -16,14 +16,14 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< UIColor > Color;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             RequiredReputation = parser.ReadColumn< ushort >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );
             AlliedNames = parser.ReadColumn< SeString >( 2 );
-            Color = new LazyRow< UIColor >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            Color = new LazyRow< UIColor >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }
     }
 }

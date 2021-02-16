@@ -16,16 +16,16 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CollectablesShopItem >[] ShopItems;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             ShopItems = new LazyRow< CollectablesShopItem >[ 11 ];
             for( var i = 0; i < 11; i++ )
-                ShopItems[ i ] = new LazyRow< CollectablesShopItem >( lumina, parser.ReadColumn< ushort >( 3 + i ), language );
+                ShopItems[ i ] = new LazyRow< CollectablesShopItem >( gameData, parser.ReadColumn< ushort >( 3 + i ), language );
         }
     }
 }

@@ -1124,12 +1124,12 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown1111;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Race = new LazyRow< Race >( lumina, parser.ReadColumn< int >( 0 ), language );
-            Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< int >( 1 ), language );
+            Race = new LazyRow< Race >( gameData, parser.ReadColumn< int >( 0 ), language );
+            Tribe = new LazyRow< Tribe >( gameData, parser.ReadColumn< int >( 1 ), language );
             Gender = parser.ReadColumn< sbyte >( 2 );
             Unknown3 = parser.ReadColumn< uint >( 3 );
             Unknown4 = parser.ReadColumn< uint >( 4 );

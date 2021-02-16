@@ -15,11 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte SubCategory;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< sbyte >( 0 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< sbyte >( 0 ), language );
             Tier = parser.ReadColumn< sbyte >( 1 );
             SubCategory = parser.ReadColumn< sbyte >( 2 );
         }

@@ -17,15 +17,15 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< PlaceName > PlaceName;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Name = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            FATE = new LazyRow< Fate >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            Name = new LazyRow< BNpcName >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            FATE = new LazyRow< Fate >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Icon = parser.ReadColumn< uint >( 2 );
-            TerritoryType = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 3 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            TerritoryType = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 4 ), language );
         }
     }
 }

@@ -25,20 +25,20 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown24;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 0 ), language );
             RewardItem = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                RewardItem[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 + i ), language );
+                RewardItem[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 1 + i ), language );
             RewardAmount = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RewardAmount[ i ] = parser.ReadColumn< byte >( 5 + i );
             RequiredItem = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                RequiredItem[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 9 + i ), language );
+                RequiredItem[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 9 + i ), language );
             RequiredAmount = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RequiredAmount[ i ] = parser.ReadColumn< byte >( 13 + i );

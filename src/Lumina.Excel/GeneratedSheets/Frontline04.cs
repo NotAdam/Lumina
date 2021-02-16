@@ -355,19 +355,19 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown368;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Level1 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ), language );
-            Level2 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 1 ), language );
-            Level3 = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 2 ), language );
+            Level1 = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 0 ), language );
+            Level2 = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 1 ), language );
+            Level3 = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 2 ), language );
             Unknown3 = parser.ReadColumn< int >( 3 );
             Unknown4 = parser.ReadColumn< int >( 4 );
             Unknown5 = parser.ReadColumn< int >( 5 );
             UnknownLevel = new LazyRow< Level >[ 27 ];
             for( var i = 0; i < 27; i++ )
-                UnknownLevel[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 6 + i ), language );
+                UnknownLevel[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 6 + i ), language );
             Unknown33 = parser.ReadColumn< int >( 33 );
             Unknown34 = parser.ReadColumn< int >( 34 );
             Unknown35 = parser.ReadColumn< int >( 35 );

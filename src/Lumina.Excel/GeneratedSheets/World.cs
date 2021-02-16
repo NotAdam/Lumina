@@ -16,13 +16,13 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsPublic;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             UserType = parser.ReadColumn< byte >( 1 );
-            DataCenter = new LazyRow< WorldDCGroupType >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            DataCenter = new LazyRow< WorldDCGroupType >( gameData, parser.ReadColumn< byte >( 2 ), language );
             IsPublic = parser.ReadColumn< bool >( 3 );
         }
     }

@@ -42,9 +42,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown29;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );
@@ -52,8 +52,8 @@ namespace Lumina.Excel.GeneratedSheets
             MaxStacks = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Category = parser.ReadColumn< byte >( 5 );
-            HitEffect = new LazyRow< StatusHitEffect >( lumina, parser.ReadColumn< byte >( 6 ), language );
-            VFX = new LazyRow< StatusLoopVFX >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            HitEffect = new LazyRow< StatusHitEffect >( gameData, parser.ReadColumn< byte >( 6 ), language );
+            VFX = new LazyRow< StatusLoopVFX >( gameData, parser.ReadColumn< ushort >( 7 ), language );
             LockMovement = parser.ReadColumn< bool >( 8 );
             Unknown9 = parser.ReadColumn< bool >( 9 );
             LockActions = parser.ReadColumn< bool >( 10 );

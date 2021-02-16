@@ -9,7 +9,7 @@ namespace Lumina.Data
 {
     public class Repository
     {
-        private readonly Lumina _lumina;
+        private readonly GameData _gameData;
         public DirectoryInfo RootDir { get; private set; }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace Lumina.Data
         /// </summary>
         public Dictionary< byte, List< Category > > Categories { get; set; }
 
-        internal Repository( DirectoryInfo rootDir, Lumina lumina )
+        internal Repository( DirectoryInfo rootDir, GameData gameData )
         {
-            _lumina = lumina;
+            _gameData = gameData;
             RootDir = rootDir;
 
             GetExpansionId();
@@ -130,7 +130,7 @@ namespace Lumina.Data
             }
             catch( FormatException e )
             {
-                _lumina.Logger?.Error(
+                _gameData.Logger?.Error(
                     "failed to parse expansionid, value: {Value} e: {ExceptionMessage}",
                     e.Message
                 );
@@ -191,16 +191,16 @@ namespace Lumina.Data
                         continue;
                     }
 
-                    var index = new SqPackIndex( file, _lumina );
+                    var index = new SqPackIndex( file, _gameData );
 
                     var dat = new Category(
                         cat.Value,
                         ExpansionId,
                         chunk,
-                        _lumina.Options.CurrentPlatform,
+                        _gameData.Options.CurrentPlatform,
                         index,
                         RootDir,
-                        _lumina );
+                        _gameData );
 
                     catList.Add( dat );
                 }
@@ -236,7 +236,7 @@ namespace Lumina.Data
 
             foreach( var type in new[] { "index", "index2" } )
             {
-                var index = BuildDatStr( cat, ex, chunk, _lumina.Options.CurrentPlatform, type );
+                var index = BuildDatStr( cat, ex, chunk, _gameData.Options.CurrentPlatform, type );
                 var path = Path.Combine( RootDir.FullName, index );
 
                 var fileInfo = new FileInfo( path );

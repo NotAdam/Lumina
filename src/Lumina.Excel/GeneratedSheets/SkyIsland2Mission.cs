@@ -38,25 +38,25 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown25;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Item1 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            Item2 = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 1 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Item1 = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            Item2 = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
-            Objective1 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            Objective1 = new LazyRow< SkyIsland2MissionDetail >( gameData, parser.ReadColumn< ushort >( 4 ), language );
             PopRange0 = parser.ReadColumn< uint >( 5 );
             RequiredAmount1 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
-            Objective2 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 9 ), language );
+            Objective2 = new LazyRow< SkyIsland2MissionDetail >( gameData, parser.ReadColumn< ushort >( 9 ), language );
             PopRange1 = parser.ReadColumn< uint >( 10 );
             RequiredAmount2 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< uint >( 12 );
             Unknown13 = parser.ReadColumn< byte >( 13 );
-            Objective3 = new LazyRow< SkyIsland2MissionDetail >( lumina, parser.ReadColumn< ushort >( 14 ), language );
+            Objective3 = new LazyRow< SkyIsland2MissionDetail >( gameData, parser.ReadColumn< ushort >( 14 ), language );
             PopRange2 = parser.ReadColumn< uint >( 15 );
             Unknown16 = parser.ReadColumn< byte >( 16 );
             Unknown17 = parser.ReadColumn< uint >( 17 );

@@ -15,13 +15,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ScreenImage > CompleteJingle;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            AcceptJingle = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            CompleteJingle = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            AcceptJingle = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            CompleteJingle = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 2 ), language );
         }
     }
 }

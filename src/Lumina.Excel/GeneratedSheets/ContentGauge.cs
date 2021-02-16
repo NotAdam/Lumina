@@ -22,12 +22,12 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown9;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            Color = new LazyRow< ContentGaugeColor >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Color = new LazyRow< ContentGaugeColor >( gameData, parser.ReadColumn< byte >( 1 ), language );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             TextString = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< sbyte >( 4 );

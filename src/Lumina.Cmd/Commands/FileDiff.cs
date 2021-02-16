@@ -27,8 +27,8 @@ namespace Lumina.Cmd.Commands
                 CacheFileResources = false
             };
 
-            var ol = new Lumina( Path, opts );
-            var nl = new Lumina( NewPath, opts );
+            var ol = new GameData( Path, opts );
+            var nl = new GameData( NewPath, opts );
 
             if( !File.Exists( PathsFile ) )
             {

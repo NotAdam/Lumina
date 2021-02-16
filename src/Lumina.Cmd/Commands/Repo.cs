@@ -17,7 +17,7 @@ namespace Lumina.Cmd.Commands
 
         public ValueTask ExecuteAsync( IConsole console )
         {
-            var lumina = new Lumina( DataPath );
+            var lumina = new GameData( DataPath );
 
             var totalFiles = 0;
 

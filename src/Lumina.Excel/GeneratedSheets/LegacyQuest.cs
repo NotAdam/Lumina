@@ -17,9 +17,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Genre;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             LegacyQuestID = parser.ReadColumn< ushort >( 0 );
             Text = parser.ReadColumn< SeString >( 1 );

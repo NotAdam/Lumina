@@ -29,11 +29,11 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown16;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ENpcName = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            ENpcName = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Objective = parser.ReadColumn< SeString >( 1 );
             Description1 = parser.ReadColumn< SeString >( 2 );
             Description2 = parser.ReadColumn< SeString >( 3 );

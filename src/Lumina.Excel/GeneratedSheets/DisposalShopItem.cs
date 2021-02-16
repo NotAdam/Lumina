@@ -18,13 +18,13 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown5;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ItemDisposed = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
+            ItemDisposed = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
             Unknown1 = parser.ReadColumn< bool >( 1 );
-            ItemReceived = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 2 ), language );
+            ItemReceived = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 2 ), language );
             Unknown3 = parser.ReadColumn< bool >( 3 );
             QuantityReceived = parser.ReadColumn< uint >( 4 );
             Unknown5 = parser.ReadColumn< ushort >( 5 );

@@ -109,16 +109,16 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown117;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            GFateRideShooting = new LazyRow< GFateRideShooting >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            GFateRideShooting = new LazyRow< GFateRideShooting >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Unknown1 = parser.ReadColumn< short >( 1 );
             Unknown2 = parser.ReadColumn< short >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< ushort >( 4 );
-            StartText = new LazyRow< RideShootingTextData >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            StartText = new LazyRow< RideShootingTextData >( gameData, parser.ReadColumn< ushort >( 5 ), language );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< uint >( 8 );
@@ -132,7 +132,7 @@ namespace Lumina.Excel.GeneratedSheets
                 PopRange[ i ] = parser.ReadColumn< uint >( 14 + i );
             ENpc = new LazyRow< ENpcBase >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ENpc[ i ] = new LazyRow< ENpcBase >( lumina, parser.ReadColumn< uint >( 22 + i ), language );
+                ENpc[ i ] = new LazyRow< ENpcBase >( gameData, parser.ReadColumn< uint >( 22 + i ), language );
             ENpcScale = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ENpcScale[ i ] = parser.ReadColumn< byte >( 30 + i );

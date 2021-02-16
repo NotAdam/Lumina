@@ -19,18 +19,18 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Order;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ResultItem = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
+            ResultItem = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
             Category = parser.ReadColumn< int >( 1 );
-            CompanyCraftDraftCategory = new LazyRow< CompanyCraftDraftCategory >( lumina, parser.ReadColumn< int >( 2 ), language );
-            CompanyCraftType = new LazyRow< CompanyCraftType >( lumina, parser.ReadColumn< int >( 3 ), language );
-            CompanyCraftDraft = new LazyRow< CompanyCraftDraft >( lumina, parser.ReadColumn< int >( 4 ), language );
+            CompanyCraftDraftCategory = new LazyRow< CompanyCraftDraftCategory >( gameData, parser.ReadColumn< int >( 2 ), language );
+            CompanyCraftType = new LazyRow< CompanyCraftType >( gameData, parser.ReadColumn< int >( 3 ), language );
+            CompanyCraftDraft = new LazyRow< CompanyCraftDraft >( gameData, parser.ReadColumn< int >( 4 ), language );
             CompanyCraftPart = new LazyRow< CompanyCraftPart >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                CompanyCraftPart[ i ] = new LazyRow< CompanyCraftPart >( lumina, parser.ReadColumn< ushort >( 5 + i ), language );
+                CompanyCraftPart[ i ] = new LazyRow< CompanyCraftPart >( gameData, parser.ReadColumn< ushort >( 5 + i ), language );
             Order = parser.ReadColumn< uint >( 13 );
         }
     }

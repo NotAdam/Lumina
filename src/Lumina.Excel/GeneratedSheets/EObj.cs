@@ -31,9 +31,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool AddedIn53;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
@@ -46,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
             PopType = parser.ReadColumn< byte >( 8 );
             Data = parser.ReadColumn< uint >( 9 );
             Invisibility = parser.ReadColumn< byte >( 10 );
-            SgbPath = new LazyRow< ExportedSG >( lumina, parser.ReadColumn< ushort >( 11 ), language );
+            SgbPath = new LazyRow< ExportedSG >( gameData, parser.ReadColumn< ushort >( 11 ), language );
             EyeCollision = parser.ReadColumn< bool >( 12 );
             DirectorControl = parser.ReadColumn< bool >( 13 );
             Target = parser.ReadColumn< bool >( 14 );

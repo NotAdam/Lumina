@@ -33,14 +33,14 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown20;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< int >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
             Image = parser.ReadColumn< int >( 2 );
-            BGM = new LazyRow< BGM >( lumina, parser.ReadColumn< int >( 3 ), language );
+            BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< int >( 3 ), language );
             Unknown4 = parser.ReadColumn< int >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );

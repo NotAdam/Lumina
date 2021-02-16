@@ -17,14 +17,14 @@ namespace Lumina.Excel.GeneratedSheets
         public byte OrderAmount;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< byte >( 0 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ), language );
-            EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 2 ), language );
-            OrderStart = new LazyRow< MobHuntOrder >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            EventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            OrderStart = new LazyRow< MobHuntOrder >( gameData, parser.ReadColumn< ushort >( 3 ), language );
             OrderAmount = parser.ReadColumn< byte >( 4 );
         }
     }

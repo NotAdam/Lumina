@@ -15,13 +15,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CabinetCategory > Category;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
             Order = parser.ReadColumn< ushort >( 1 );
-            Category = new LazyRow< CabinetCategory >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            Category = new LazyRow< CabinetCategory >( gameData, parser.ReadColumn< byte >( 2 ), language );
         }
     }
 }

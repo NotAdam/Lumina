@@ -11,7 +11,7 @@ namespace Lumina.Excel
         
         public Language SheetLanguage { get; set; }
 
-        public virtual void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public virtual void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             RowId = parser.Row;
             SubRowId = parser.SubRow;

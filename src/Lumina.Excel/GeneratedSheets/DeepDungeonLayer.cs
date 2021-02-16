@@ -19,15 +19,15 @@ namespace Lumina.Excel.GeneratedSheets
         public byte ArmourMinLv;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            DeepDungeon = new LazyRow< DeepDungeon >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            DeepDungeon = new LazyRow< DeepDungeon >( gameData, parser.ReadColumn< byte >( 0 ), language );
             FloorSet = parser.ReadColumn< byte >( 1 );
-            RoomA = new LazyRow< DeepDungeonMap5X >( lumina, parser.ReadColumn< ushort >( 2 ), language );
-            RoomB = new LazyRow< DeepDungeonMap5X >( lumina, parser.ReadColumn< ushort >( 3 ), language );
-            RoomC = new LazyRow< DeepDungeonMap5X >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            RoomA = new LazyRow< DeepDungeonMap5X >( gameData, parser.ReadColumn< ushort >( 2 ), language );
+            RoomB = new LazyRow< DeepDungeonMap5X >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            RoomC = new LazyRow< DeepDungeonMap5X >( gameData, parser.ReadColumn< ushort >( 4 ), language );
             WepMinLv = parser.ReadColumn< byte >( 5 );
             ArmourMinLv = parser.ReadColumn< byte >( 6 );
         }

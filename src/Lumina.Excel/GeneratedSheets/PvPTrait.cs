@@ -15,13 +15,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Trait > Trait3;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Trait1 = new LazyRow< Trait >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            Trait2 = new LazyRow< Trait >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            Trait3 = new LazyRow< Trait >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Trait1 = new LazyRow< Trait >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            Trait2 = new LazyRow< Trait >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            Trait3 = new LazyRow< Trait >( gameData, parser.ReadColumn< ushort >( 2 ), language );
         }
     }
 }

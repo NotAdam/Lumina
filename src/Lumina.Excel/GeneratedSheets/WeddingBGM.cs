@@ -14,11 +14,11 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString SongName;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Song = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            Song = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             SongName = parser.ReadColumn< SeString >( 1 );
         }
     }

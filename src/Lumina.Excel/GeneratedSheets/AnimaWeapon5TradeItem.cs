@@ -23,12 +23,12 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< AnimaWeapon5PatternGroup > Category;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            CrystalSand = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            CrystalSand = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Qty = parser.ReadColumn< byte >( 2 );
             UnkStruct3 = new UnkStruct3Struct[ 8 ];
             for( var i = 0; i < 8; i++ )
@@ -38,7 +38,7 @@ namespace Lumina.Excel.GeneratedSheets
                 UnkStruct3[ i ].IsHQ = parser.ReadColumn< bool >( 3 + ( i * 3 + 1 ) );
                 UnkStruct3[ i ].Quantity = parser.ReadColumn< byte >( 3 + ( i * 3 + 2 ) );
             }
-            Category = new LazyRow< AnimaWeapon5PatternGroup >( lumina, parser.ReadColumn< byte >( 27 ), language );
+            Category = new LazyRow< AnimaWeapon5PatternGroup >( gameData, parser.ReadColumn< byte >( 27 ), language );
         }
     }
 }

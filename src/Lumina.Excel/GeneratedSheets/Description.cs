@@ -18,16 +18,16 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DescriptionSection > Section;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
             TextLong = parser.ReadColumn< SeString >( 1 );
             TextShort = parser.ReadColumn< SeString >( 2 );
             TextCommentary = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
-            Section = new LazyRow< DescriptionSection >( lumina, parser.ReadColumn< uint >( 5 ), language );
+            Section = new LazyRow< DescriptionSection >( gameData, parser.ReadColumn< uint >( 5 ), language );
         }
     }
 }

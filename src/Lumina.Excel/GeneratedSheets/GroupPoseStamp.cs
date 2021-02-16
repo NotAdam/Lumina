@@ -21,13 +21,13 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             StampIcon = parser.ReadColumn< int >( 0 );
             Unknown1 = parser.ReadColumn< int >( 1 );
-            Category = new LazyRow< GroupPoseStampCategory >( lumina, parser.ReadColumn< int >( 2 ), language );
+            Category = new LazyRow< GroupPoseStampCategory >( gameData, parser.ReadColumn< int >( 2 ), language );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
             Unknown540 = parser.ReadColumn< int >( 4 );
             Unknown541 = parser.ReadColumn< bool >( 5 );

@@ -24,9 +24,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort RewardQuantity2;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             UnkStruct0 = new UnkStruct0Struct[ 2 ];
             for( var i = 0; i < 2; i++ )

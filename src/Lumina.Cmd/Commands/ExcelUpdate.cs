@@ -21,8 +21,8 @@ namespace Lumina.Cmd.Commands
         public ValueTask ExecuteAsync( IConsole console )
         {
             var co = console.Output;
-            var ol = new Lumina( OldPath );
-            var nl = new Lumina( NewPath );
+            var ol = new GameData( OldPath );
+            var nl = new GameData( NewPath );
 
             co.WriteLine( $"old sheets: {ol.Excel.SheetNames.Count} new sheets: {nl.Excel.SheetNames.Count}" );
 

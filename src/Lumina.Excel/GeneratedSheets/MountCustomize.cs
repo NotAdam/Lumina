@@ -45,9 +45,9 @@ namespace Lumina.Excel.GeneratedSheets
         public byte VieraFemaleCameraHeight;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             HyurMaleScale = parser.ReadColumn< ushort >( 1 );

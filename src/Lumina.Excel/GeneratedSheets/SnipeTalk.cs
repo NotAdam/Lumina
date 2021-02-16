@@ -18,13 +18,13 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Unknown5;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            Name = new LazyRow< SnipeTalkName >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Name = new LazyRow< SnipeTalkName >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Text = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< SeString >( 4 );
             Unknown5 = parser.ReadColumn< SeString >( 5 );

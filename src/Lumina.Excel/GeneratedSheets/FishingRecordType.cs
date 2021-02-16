@@ -19,11 +19,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown6;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Addon = new LazyRow< Addon >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Addon = new LazyRow< Addon >( gameData, parser.ReadColumn< int >( 0 ), language );
             RankBRequirement = parser.ReadColumn< ushort >( 1 );
             RankARequirement = parser.ReadColumn< ushort >( 2 );
             RankAARequirement = parser.ReadColumn< ushort >( 3 );

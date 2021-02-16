@@ -13,11 +13,11 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< GatheringPoint > GatheringPoint;
         
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            GatheringPoint = new LazyRow< GatheringPoint >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            GatheringPoint = new LazyRow< GatheringPoint >( gameData, parser.ReadColumn< uint >( 0 ), language );
         }
     }
 }
