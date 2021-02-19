@@ -9,7 +9,8 @@ namespace Lumina.Models.Model
             var currentShape = model.File.Shapes[ shapeIndex ];
             ShapeName = model.StringOffsetToStringMap[ (int) currentShape.StringOffset ];
             
-            
+            // TODO: shape index modifier things
+            // someone else do this pls
         }
     }
 }

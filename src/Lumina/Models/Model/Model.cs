@@ -62,7 +62,12 @@ namespace Lumina.Models.Model
 
         private void ReadShapes()
         {
-            
+            Shapes = new Dictionary< string, Shape >();
+            for( int i = 0; i < File.Shapes.Length; i++ )
+            {
+                var shape = new Shape( this, i );
+                Shapes[ shape.ShapeName ] = shape;
+            }
         }
 
         private void ReadStrings()
