@@ -84,8 +84,8 @@ namespace Lumina.Data.Files {
 
             for( int i = 0; i < ModelHeader.MeshCount; i++ ) Meshes[ i ] = MeshStruct.Read( Reader );
             AttributeNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.AttributeCount ).ToArray();
-            for( int i = 0; i < ModelHeader.SubmeshCount; i++ ) Submeshes[ i ] = SubmeshStruct.Read( Reader );
             for( int i = 0; i < ModelHeader.TerrainShadowMeshCount; i++ ) TerrainShadowMeshes[ i ] = TerrainShadowMeshStruct.Read( Reader );
+            for( int i = 0; i < ModelHeader.SubmeshCount; i++ ) Submeshes[ i ] = SubmeshStruct.Read( Reader );
             for( int i = 0; i < ModelHeader.TerrainShadowSubmeshCount; i++ ) TerrainShadowSubmeshes[ i ] = TerrainShadowSubmeshStruct.Read( Reader );
 
             MaterialNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.MaterialCount ).ToArray();

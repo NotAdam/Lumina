@@ -85,19 +85,19 @@ namespace Lumina.Models.Model
             MdlStructs.LodStruct CurrentLod = File.Lods[ (int) Lod ];
 
             int totalMeshes = CurrentLod.MeshCount;
-            totalMeshes += CurrentLod.WaterMeshCount;
-            totalMeshes += CurrentLod.ShadowMeshCount;
-            totalMeshes += CurrentLod.TerrainShadowMeshCount;
-            totalMeshes += CurrentLod.VerticalFogMeshCount;
-
-            if( File.ModelHeader.ExtraLodEnabled )
-            {
-                MdlStructs.ExtraLodStruct ExtraLod = File.ExtraLods[ (int) Lod ];
-                totalMeshes += ExtraLod.LightShaftMeshCount;
-                totalMeshes += ExtraLod.GlassMeshCount;
-                totalMeshes += ExtraLod.MaterialChangeMeshCount;
-                totalMeshes += ExtraLod.CrestChangeMeshCount;
-            }
+            // totalMeshes += CurrentLod.WaterMeshCount;
+            // totalMeshes += CurrentLod.ShadowMeshCount;
+            // totalMeshes += CurrentLod.TerrainShadowMeshCount;
+            // totalMeshes += CurrentLod.VerticalFogMeshCount;
+            //
+            // if( File.ModelHeader.ExtraLodEnabled )
+            // {
+            //     MdlStructs.ExtraLodStruct ExtraLod = File.ExtraLods[ (int) Lod ];
+            //     totalMeshes += ExtraLod.LightShaftMeshCount;
+            //     totalMeshes += ExtraLod.GlassMeshCount;
+            //     totalMeshes += ExtraLod.MaterialChangeMeshCount;
+            //     totalMeshes += ExtraLod.CrestChangeMeshCount;
+            // }
 
             Meshes = new Mesh[totalMeshes];
 
