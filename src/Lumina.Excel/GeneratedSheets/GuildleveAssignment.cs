@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuildleveAssignment : ExcelRow
     {
         
-        public SeString Unknown0;
-        public byte AddedIn53;
-        public uint AssignmentTalk;
-        public LazyRow< Quest >[] Quest;
-        public bool Unknown5;
-        public bool Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
-        public bool Unknown9;
-        public byte Unknown10;
+        public SeString Unknown0 { get; set; }
+        public byte AddedIn53 { get; set; }
+        public uint AssignmentTalk { get; set; }
+        public LazyRow< Quest >[] Quest { get; set; }
+        public bool Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
+        public bool Unknown9 { get; set; }
+        public byte Unknown10 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

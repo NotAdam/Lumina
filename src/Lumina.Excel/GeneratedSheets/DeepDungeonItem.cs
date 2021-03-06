@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class DeepDungeonItem : ExcelRow
     {
         
-        public uint Icon;
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown6;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public SeString Name;
-        public SeString Tooltip;
-        public LazyRow< Action > Action;
+        public uint Icon { get; set; }
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown6 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public SeString Name { get; set; }
+        public SeString Tooltip { get; set; }
+        public LazyRow< Action > Action { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

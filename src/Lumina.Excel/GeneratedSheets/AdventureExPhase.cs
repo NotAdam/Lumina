@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class AdventureExPhase : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public LazyRow< Adventure > AdventureBegin;
-        public LazyRow< Adventure > AdventureEnd;
-        public byte Unknown3;
-        public uint Unknown4;
+        public LazyRow< Quest > Quest { get; set; }
+        public LazyRow< Adventure > AdventureBegin { get; set; }
+        public LazyRow< Adventure > AdventureEnd { get; set; }
+        public byte Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

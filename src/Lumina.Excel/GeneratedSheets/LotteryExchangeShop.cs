@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class LotteryExchangeShop : ExcelRow
     {
         
-        public SeString Unknown0;
-        public LazyRow< Item >[] ItemAccepted;
-        public uint[] AmountAccepted;
-        public byte[] Unknown540;
-        public byte[] Unknown541;
-        public SeString Lua;
-        public LazyRow< LogMessage >[] LogMessage;
-        public bool Unknown133;
+        public SeString Unknown0 { get; set; }
+        public LazyRow< Item >[] ItemAccepted { get; set; }
+        public uint[] AmountAccepted { get; set; }
+        public byte[] Unknown540 { get; set; }
+        public byte[] Unknown541 { get; set; }
+        public SeString Lua { get; set; }
+        public LazyRow< LogMessage >[] LogMessage { get; set; }
+        public bool Unknown133 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

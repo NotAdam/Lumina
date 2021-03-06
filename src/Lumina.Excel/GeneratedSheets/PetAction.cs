@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class PetAction : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public int Icon;
-        public LazyRow< Action > Action;
-        public LazyRow< Pet > Pet;
-        public bool MasterOrder;
-        public bool DisableOrder;
-        public bool Unknown7;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< Action > Action { get; set; }
+        public LazyRow< Pet > Pet { get; set; }
+        public bool MasterOrder { get; set; }
+        public bool DisableOrder { get; set; }
+        public bool Unknown7 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

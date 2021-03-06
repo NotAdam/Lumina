@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestClassJobReward : ExcelRow
     {
         
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public LazyRow< Item >[] RewardItem;
-        public byte[] RewardAmount;
-        public LazyRow< Item >[] RequiredItem;
-        public byte[] RequiredAmount;
-        public bool Unknown17;
-        public bool Unknown18;
-        public bool Unknown19;
-        public bool Unknown20;
-        public bool Unknown21;
-        public bool Unknown22;
-        public bool Unknown23;
-        public bool Unknown24;
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public LazyRow< Item >[] RewardItem { get; set; }
+        public byte[] RewardAmount { get; set; }
+        public LazyRow< Item >[] RequiredItem { get; set; }
+        public byte[] RequiredAmount { get; set; }
+        public bool Unknown17 { get; set; }
+        public bool Unknown18 { get; set; }
+        public bool Unknown19 { get; set; }
+        public bool Unknown20 { get; set; }
+        public bool Unknown21 { get; set; }
+        public bool Unknown22 { get; set; }
+        public bool Unknown23 { get; set; }
+        public bool Unknown24 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

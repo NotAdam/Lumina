@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class Materia : ExcelRow
     {
         
-        public LazyRow< Item >[] Item;
-        public LazyRow< BaseParam > BaseParam;
-        public short[] Value;
+        public LazyRow< Item >[] Item { get; set; }
+        public LazyRow< BaseParam > BaseParam { get; set; }
+        public short[] Value { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

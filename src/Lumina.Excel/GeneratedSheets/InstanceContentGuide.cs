@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class InstanceContentGuide : ExcelRow
     {
         
-        public LazyRow< InstanceContent > Instance;
-        public uint Unknown1;
+        public LazyRow< InstanceContent > Instance { get; set; }
+        public uint Unknown1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

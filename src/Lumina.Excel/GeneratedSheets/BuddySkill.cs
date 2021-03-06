@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class BuddySkill : ExcelRow
     {
         
-        public byte BuddyLevel;
-        public bool IsActive;
-        public ushort Defender;
-        public ushort Attacker;
-        public ushort Healer;
+        public byte BuddyLevel { get; set; }
+        public bool IsActive { get; set; }
+        public ushort Defender { get; set; }
+        public ushort Attacker { get; set; }
+        public ushort Healer { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

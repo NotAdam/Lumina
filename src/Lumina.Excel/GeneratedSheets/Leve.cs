@@ -10,40 +10,39 @@ namespace Lumina.Excel.GeneratedSheets
     public class Leve : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public LazyRow< LeveClient > LeveClient;
-        public LazyRow< LeveAssignmentType > LeveAssignmentType;
-        public LazyRow< Town > Town;
-        public int Unknown5;
-        public ushort ClassJobLevel;
-        public byte TimeLimit;
-        public byte AllowanceCost;
-        public int Evaluation;
-        public LazyRow< PlaceName > PlaceNameStart;
-        public LazyRow< PlaceName > PlaceNameIssued;
-        public bool Unknown12;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public LazyRow< JournalGenre > JournalGenre;
-        public int Unknown15;
-        public LazyRow< PlaceName > PlaceNameStartZone;
-        public int IconCityState;
-        public int DataId;
-        public bool CanCancel;
-        public byte MaxDifficulty;
-        public float ExpFactor;
-        public uint ExpReward;
-        public uint GilReward;
-        public LazyRow< LeveRewardItem > LeveRewardItem;
-        public LazyRow< LeveVfx > LeveVfx;
-        public LazyRow< LeveVfx > LeveVfxFrame;
-        public LazyRow< Level > LevelLevemete;
-        public int IconIssuer;
-        public bool LockedLeve;
-        public LazyRow< Level > LevelStart;
-        public LazyRow< BGM > BGM;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public LazyRow< LeveClient > LeveClient { get; set; }
+        public LazyRow< LeveAssignmentType > LeveAssignmentType { get; set; }
+        public LazyRow< Town > Town { get; set; }
+        public int Unknown5 { get; set; }
+        public ushort ClassJobLevel { get; set; }
+        public byte TimeLimit { get; set; }
+        public byte AllowanceCost { get; set; }
+        public int Evaluation { get; set; }
+        public LazyRow< PlaceName > PlaceNameStart { get; set; }
+        public LazyRow< PlaceName > PlaceNameIssued { get; set; }
+        public bool Unknown12 { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public LazyRow< JournalGenre > JournalGenre { get; set; }
+        public int Unknown15 { get; set; }
+        public LazyRow< PlaceName > PlaceNameStartZone { get; set; }
+        public int IconCityState { get; set; }
+        public int DataId { get; set; }
+        public bool CanCancel { get; set; }
+        public byte MaxDifficulty { get; set; }
+        public float ExpFactor { get; set; }
+        public uint ExpReward { get; set; }
+        public uint GilReward { get; set; }
+        public LazyRow< LeveRewardItem > LeveRewardItem { get; set; }
+        public LazyRow< LeveVfx > LeveVfx { get; set; }
+        public LazyRow< LeveVfx > LeveVfxFrame { get; set; }
+        public LazyRow< Level > LevelLevemete { get; set; }
+        public int IconIssuer { get; set; }
+        public bool LockedLeve { get; set; }
+        public LazyRow< Level > LevelStart { get; set; }
+        public LazyRow< BGM > BGM { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

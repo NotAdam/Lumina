@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class SatisfactionSupply : ExcelRow
     {
         
-        public byte Slot;
-        public byte ProbabilityPct;
-        public LazyRow< Item > Item;
-        public ushort CollectabilityLow;
-        public ushort CollectabilityMid;
-        public ushort CollectabilityHigh;
-        public LazyRow< SatisfactionSupplyReward > Reward;
+        public byte Slot { get; set; }
+        public byte ProbabilityPct { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public ushort CollectabilityLow { get; set; }
+        public ushort CollectabilityMid { get; set; }
+        public ushort CollectabilityHigh { get; set; }
+        public LazyRow< SatisfactionSupplyReward > Reward { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

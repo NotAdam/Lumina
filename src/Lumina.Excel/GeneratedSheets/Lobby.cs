@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class Lobby : ExcelRow
     {
         
-        public uint TYPE;
-        public uint PARAM;
-        public uint LINK;
-        public SeString Text;
-        public SeString Unknown4;
-        public SeString Unknown5;
+        public uint TYPE { get; set; }
+        public uint PARAM { get; set; }
+        public uint LINK { get; set; }
+        public SeString Text { get; set; }
+        public SeString Unknown4 { get; set; }
+        public SeString Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

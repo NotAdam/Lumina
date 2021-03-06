@@ -15,12 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort ItemCount;
         }
         
-        public LazyRow< Leve > Leve;
-        public int CraftLeveTalk;
-        public byte Repeats;
-        public UnkStruct3Struct[] UnkStruct3;
+        public LazyRow< Leve > Leve { get; set; }
+        public int CraftLeveTalk { get; set; }
+        public byte Repeats { get; set; }
+        public UnkStruct3Struct[] UnkStruct3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

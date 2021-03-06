@@ -18,12 +18,11 @@ namespace Lumina.Excel.GeneratedSheets
             public byte RewardOption;
         }
         
-        public UnkStruct0Struct[] UnkStruct0;
-        public uint RewardItem2;
-        public bool RewardHQ2;
-        public ushort RewardQuantity2;
+        public UnkStruct0Struct[] UnkStruct0 { get; set; }
+        public uint RewardItem2 { get; set; }
+        public bool RewardHQ2 { get; set; }
+        public ushort RewardQuantity2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

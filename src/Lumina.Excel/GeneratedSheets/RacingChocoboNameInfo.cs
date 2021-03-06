@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class RacingChocoboNameInfo : ExcelRow
     {
         
-        public LazyRow< RacingChocoboNameCategory > RacingChocoboNameCategory;
-        public bool Unknown1;
-        public bool Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public ushort Unknown5;
-        public ushort Unknown6;
-        public ushort Unknown7;
+        public LazyRow< RacingChocoboNameCategory > RacingChocoboNameCategory { get; set; }
+        public bool Unknown1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
+        public ushort Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

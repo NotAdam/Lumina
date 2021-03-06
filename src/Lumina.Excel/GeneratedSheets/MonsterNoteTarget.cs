@@ -15,12 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort PlaceNameLocation;
         }
         
-        public LazyRow< BNpcName > BNpcName;
-        public int Icon;
-        public LazyRow< Town > Town;
-        public UnkStruct3Struct[] UnkStruct3;
+        public LazyRow< BNpcName > BNpcName { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< Town > Town { get; set; }
+        public UnkStruct3Struct[] UnkStruct3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class TraitRecast : ExcelRow
     {
         
-        public LazyRow< Trait > Trait;
-        public LazyRow< Action > Action;
-        public ushort Timeds;
+        public LazyRow< Trait > Trait { get; set; }
+        public LazyRow< Action > Action { get; set; }
+        public ushort Timeds { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

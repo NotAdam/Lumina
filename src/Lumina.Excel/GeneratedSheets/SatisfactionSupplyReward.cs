@@ -17,17 +17,16 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort QuantityHigh;
         }
         
-        public byte Unknown0;
-        public UnkStruct1Struct[] UnkStruct1;
-        public byte Unknown9;
-        public ushort SatisfactionLow;
-        public ushort SatisfactionMid;
-        public ushort SatisfactionHigh;
-        public ushort GilLow;
-        public ushort GilMid;
-        public ushort GilHigh;
+        public byte Unknown0 { get; set; }
+        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public byte Unknown9 { get; set; }
+        public ushort SatisfactionLow { get; set; }
+        public ushort SatisfactionMid { get; set; }
+        public ushort SatisfactionHigh { get; set; }
+        public ushort GilLow { get; set; }
+        public ushort GilMid { get; set; }
+        public ushort GilHigh { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

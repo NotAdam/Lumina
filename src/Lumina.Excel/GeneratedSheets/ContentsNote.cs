@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentsNote : ExcelRow
     {
         
-        public byte ContentType;
-        public int Icon;
-        public byte MenuOrder;
-        public int RequiredAmount;
-        public byte Reward0;
-        public int ExpMultiplier;
-        public byte Reward1;
-        public int GilRward;
-        public ushort LevelUnlock;
-        public LazyRow< HowTo > HowTo;
-        public uint ReqUnlock;
-        public SeString Name;
-        public SeString Description;
-        public int ExpCap;
+        public byte ContentType { get; set; }
+        public int Icon { get; set; }
+        public byte MenuOrder { get; set; }
+        public int RequiredAmount { get; set; }
+        public byte Reward0 { get; set; }
+        public int ExpMultiplier { get; set; }
+        public byte Reward1 { get; set; }
+        public int GilRward { get; set; }
+        public ushort LevelUnlock { get; set; }
+        public LazyRow< HowTo > HowTo { get; set; }
+        public uint ReqUnlock { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public int ExpCap { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class WarpCondition : ExcelRow
     {
         
-        public ushort Gil;
-        public byte CompleteParam;
-        public LazyRow< Quest > RequiredQuest1;
-        public LazyRow< Quest > RequiredQuest2;
-        public LazyRow< Quest > DRequiredQuest3;
-        public LazyRow< Quest > RequiredQuest4;
-        public ushort QuestReward;
-        public ushort ClassLevel;
+        public ushort Gil { get; set; }
+        public byte CompleteParam { get; set; }
+        public LazyRow< Quest > RequiredQuest1 { get; set; }
+        public LazyRow< Quest > RequiredQuest2 { get; set; }
+        public LazyRow< Quest > DRequiredQuest3 { get; set; }
+        public LazyRow< Quest > RequiredQuest4 { get; set; }
+        public ushort QuestReward { get; set; }
+        public ushort ClassLevel { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

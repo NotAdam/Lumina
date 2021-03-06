@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class RetainerTask : ExcelRow
     {
         
-        public bool IsRandom;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public byte RetainerLevel;
-        public ushort Unknown3;
-        public LazyRow< RetainerTaskParameter > RetainerTaskParameter;
-        public ushort VentureCost;
-        public ushort MaxTimemin;
-        public int Experience;
-        public ushort RequiredItemLevel;
-        public byte ConditionParam0;
-        public byte ConditionParam1;
-        public ushort RequiredGathering;
-        public ushort Unknown12;
-        public ushort Task;
+        public bool IsRandom { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public byte RetainerLevel { get; set; }
+        public ushort Unknown3 { get; set; }
+        public LazyRow< RetainerTaskParameter > RetainerTaskParameter { get; set; }
+        public ushort VentureCost { get; set; }
+        public ushort MaxTimemin { get; set; }
+        public int Experience { get; set; }
+        public ushort RequiredItemLevel { get; set; }
+        public byte ConditionParam0 { get; set; }
+        public byte ConditionParam1 { get; set; }
+        public ushort RequiredGathering { get; set; }
+        public ushort Unknown12 { get; set; }
+        public ushort Task { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

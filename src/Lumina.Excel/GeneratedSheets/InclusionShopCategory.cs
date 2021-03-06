@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class InclusionShopCategory : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public LazyRow< InclusionShopSeries > InclusionShopSeries;
+        public SeString Name { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public LazyRow< InclusionShopSeries > InclusionShopSeries { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceItem : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public uint Icon;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public uint Icon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

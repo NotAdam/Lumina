@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class DawnMemberUIParam : ExcelRow
     {
         
-        public SeString ClassSingular;
-        public uint VoiceLine;
-        public SeString ClassPlural;
+        public SeString ClassSingular { get; set; }
+        public uint VoiceLine { get; set; }
+        public SeString ClassPlural { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

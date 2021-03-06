@@ -10,72 +10,71 @@ namespace Lumina.Excel.GeneratedSheets
     public class ENpcBase : ExcelRow
     {
         
-        public ushort EventHandler;
-        public bool Important;
-        public uint[] ENpcData;
-        public float Scale;
-        public LazyRow< ModelChara > ModelChara;
-        public LazyRow< Race > Race;
-        public byte Gender;
-        public byte BodyType;
-        public byte Height;
-        public LazyRow< Tribe > Tribe;
-        public byte Face;
-        public byte HairStyle;
-        public byte HairHighlight;
-        public byte SkinColor;
-        public byte EyeHeterochromia;
-        public byte HairColor;
-        public byte HairHighlightColor;
-        public byte FacialFeature;
-        public byte FacialFeatureColor;
-        public byte Eyebrows;
-        public byte EyeColor;
-        public byte EyeShape;
-        public byte Nose;
-        public byte Jaw;
-        public byte Mouth;
-        public byte LipColor;
-        public byte BustOrTone1;
-        public byte ExtraFeature1;
-        public byte ExtraFeature2OrBust;
-        public byte FacePaint;
-        public byte FacePaintColor;
-        public byte Unknown62;
-        public LazyRow< NpcEquip > NpcEquip;
-        public LazyRow< Behavior > Behavior;
-        public ulong ModelMainHand;
-        public LazyRow< Stain > DyeMainHand;
-        public ulong ModelOffHand;
-        public LazyRow< Stain > DyeOffHand;
-        public uint ModelHead;
-        public LazyRow< Stain > DyeHead;
-        public bool Visor;
-        public uint ModelBody;
-        public LazyRow< Stain > DyeBody;
-        public uint ModelHands;
-        public LazyRow< Stain > DyeHands;
-        public uint ModelLegs;
-        public LazyRow< Stain > DyeLegs;
-        public uint ModelFeet;
-        public LazyRow< Stain > DyeFeet;
-        public uint ModelEars;
-        public LazyRow< Stain > DyeEars;
-        public uint ModelNeck;
-        public LazyRow< Stain > DyeNeck;
-        public uint ModelWrists;
-        public LazyRow< Stain > DyeWrists;
-        public uint ModelLeftRing;
-        public LazyRow< Stain > DyeLeftRing;
-        public uint ModelRightRing;
-        public LazyRow< Stain > DyeRightRing;
-        public byte Invisibility;
-        public LazyRow< Balloon > Balloon;
-        public bool NotRewriteHeight;
-        public byte DefaultBalloon;
-        public byte Unknown94;
+        public ushort EventHandler { get; set; }
+        public bool Important { get; set; }
+        public uint[] ENpcData { get; set; }
+        public float Scale { get; set; }
+        public LazyRow< ModelChara > ModelChara { get; set; }
+        public LazyRow< Race > Race { get; set; }
+        public byte Gender { get; set; }
+        public byte BodyType { get; set; }
+        public byte Height { get; set; }
+        public LazyRow< Tribe > Tribe { get; set; }
+        public byte Face { get; set; }
+        public byte HairStyle { get; set; }
+        public byte HairHighlight { get; set; }
+        public byte SkinColor { get; set; }
+        public byte EyeHeterochromia { get; set; }
+        public byte HairColor { get; set; }
+        public byte HairHighlightColor { get; set; }
+        public byte FacialFeature { get; set; }
+        public byte FacialFeatureColor { get; set; }
+        public byte Eyebrows { get; set; }
+        public byte EyeColor { get; set; }
+        public byte EyeShape { get; set; }
+        public byte Nose { get; set; }
+        public byte Jaw { get; set; }
+        public byte Mouth { get; set; }
+        public byte LipColor { get; set; }
+        public byte BustOrTone1 { get; set; }
+        public byte ExtraFeature1 { get; set; }
+        public byte ExtraFeature2OrBust { get; set; }
+        public byte FacePaint { get; set; }
+        public byte FacePaintColor { get; set; }
+        public byte Unknown62 { get; set; }
+        public LazyRow< NpcEquip > NpcEquip { get; set; }
+        public LazyRow< Behavior > Behavior { get; set; }
+        public ulong ModelMainHand { get; set; }
+        public LazyRow< Stain > DyeMainHand { get; set; }
+        public ulong ModelOffHand { get; set; }
+        public LazyRow< Stain > DyeOffHand { get; set; }
+        public uint ModelHead { get; set; }
+        public LazyRow< Stain > DyeHead { get; set; }
+        public bool Visor { get; set; }
+        public uint ModelBody { get; set; }
+        public LazyRow< Stain > DyeBody { get; set; }
+        public uint ModelHands { get; set; }
+        public LazyRow< Stain > DyeHands { get; set; }
+        public uint ModelLegs { get; set; }
+        public LazyRow< Stain > DyeLegs { get; set; }
+        public uint ModelFeet { get; set; }
+        public LazyRow< Stain > DyeFeet { get; set; }
+        public uint ModelEars { get; set; }
+        public LazyRow< Stain > DyeEars { get; set; }
+        public uint ModelNeck { get; set; }
+        public LazyRow< Stain > DyeNeck { get; set; }
+        public uint ModelWrists { get; set; }
+        public LazyRow< Stain > DyeWrists { get; set; }
+        public uint ModelLeftRing { get; set; }
+        public LazyRow< Stain > DyeLeftRing { get; set; }
+        public uint ModelRightRing { get; set; }
+        public LazyRow< Stain > DyeRightRing { get; set; }
+        public byte Invisibility { get; set; }
+        public LazyRow< Balloon > Balloon { get; set; }
+        public bool NotRewriteHeight { get; set; }
+        public byte DefaultBalloon { get; set; }
+        public byte Unknown94 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class PatchMark : ExcelRow
     {
         
-        public sbyte Category;
-        public byte SubCategoryType;
-        public ushort SubCategory;
-        public byte Unknown3;
-        public uint Unknown4;
-        public uint MarkID;
-        public byte Version;
-        public ushort Unknown7;
+        public sbyte Category { get; set; }
+        public byte SubCategoryType { get; set; }
+        public ushort SubCategory { get; set; }
+        public byte Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
+        public uint MarkID { get; set; }
+        public byte Version { get; set; }
+        public ushort Unknown7 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

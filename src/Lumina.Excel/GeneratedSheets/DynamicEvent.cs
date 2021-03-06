@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class DynamicEvent : ExcelRow
     {
         
-        public LazyRow< DynamicEventType > EventType;
-        public LazyRow< DynamicEventEnemyType > EnemyType;
-        public byte Unknown2;
-        public byte Unknown3;
-        public uint LGBEventObject;
-        public uint LGBMapRange;
-        public LazyRow< Quest > Quest;
-        public byte Unknown7;
-        public LazyRow< DynamicEventSingleBattle > SingleBattle;
-        public LazyRow< LogMessage > Announce;
-        public SeString Name;
-        public SeString Description;
+        public LazyRow< DynamicEventType > EventType { get; set; }
+        public LazyRow< DynamicEventEnemyType > EnemyType { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public uint LGBEventObject { get; set; }
+        public uint LGBMapRange { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public byte Unknown7 { get; set; }
+        public LazyRow< DynamicEventSingleBattle > SingleBattle { get; set; }
+        public LazyRow< LogMessage > Announce { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

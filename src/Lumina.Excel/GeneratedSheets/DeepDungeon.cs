@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class DeepDungeon : ExcelRow
     {
         
-        public LazyRow< DeepDungeonEquipment > AetherpoolArm;
-        public LazyRow< DeepDungeonEquipment > AetherpoolArmor;
-        public LazyRow< DeepDungeonItem >[] PomanderSlot;
-        public LazyRow< DeepDungeonMagicStone >[] MagiciteSlot;
-        public SeString Name;
-        public LazyRow< ContentFinderCondition > ContentFinderConditionStart;
-        public bool Unknown24;
+        public LazyRow< DeepDungeonEquipment > AetherpoolArm { get; set; }
+        public LazyRow< DeepDungeonEquipment > AetherpoolArmor { get; set; }
+        public LazyRow< DeepDungeonItem >[] PomanderSlot { get; set; }
+        public LazyRow< DeepDungeonMagicStone >[] MagiciteSlot { get; set; }
+        public SeString Name { get; set; }
+        public LazyRow< ContentFinderCondition > ContentFinderConditionStart { get; set; }
+        public bool Unknown24 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class Buddy : ExcelRow
     {
         
-        public byte Base;
-        public LazyRow< Quest > QuestRequirement2;
-        public LazyRow< Quest > QuestRequirement1;
-        public int BaseEquip;
-        public SeString SoundEffect4;
-        public SeString SoundEffect3;
-        public SeString SoundEffect2;
-        public SeString SoundEffect1;
+        public byte Base { get; set; }
+        public LazyRow< Quest > QuestRequirement2 { get; set; }
+        public LazyRow< Quest > QuestRequirement1 { get; set; }
+        public int BaseEquip { get; set; }
+        public SeString SoundEffect4 { get; set; }
+        public SeString SoundEffect3 { get; set; }
+        public SeString SoundEffect2 { get; set; }
+        public SeString SoundEffect1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

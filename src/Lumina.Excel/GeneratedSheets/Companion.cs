@@ -10,46 +10,45 @@ namespace Lumina.Excel.GeneratedSheets
     public class Companion : ExcelRow
     {
         
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown5;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public LazyRow< ModelChara > Model;
-        public byte Scale;
-        public byte InactiveIdle0;
-        public byte InactiveIdle1;
-        public byte InactiveBattle;
-        public byte InactiveWandering;
-        public LazyRow< CompanionMove > Behavior;
-        public byte Special;
-        public byte WanderingWait;
-        public ushort Priority;
-        public bool Roulette;
-        public bool Unknown19;
-        public bool Battle;
-        public bool LookAt;
-        public bool Poke;
-        public ushort Enemy;
-        public bool Stroke;
-        public bool Clapping;
-        public ushort Icon;
-        public ushort Order;
-        public bool Unknown28;
-        public byte Unknown29;
-        public byte Cost;
-        public ushort HP;
-        public byte Unknown32;
-        public ushort SkillAngle;
-        public byte SkillCost;
-        public byte Unknown35;
-        public ushort Unknown36;
-        public LazyRow< MinionRace > MinionRace;
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public LazyRow< ModelChara > Model { get; set; }
+        public byte Scale { get; set; }
+        public byte InactiveIdle0 { get; set; }
+        public byte InactiveIdle1 { get; set; }
+        public byte InactiveBattle { get; set; }
+        public byte InactiveWandering { get; set; }
+        public LazyRow< CompanionMove > Behavior { get; set; }
+        public byte Special { get; set; }
+        public byte WanderingWait { get; set; }
+        public ushort Priority { get; set; }
+        public bool Roulette { get; set; }
+        public bool Unknown19 { get; set; }
+        public bool Battle { get; set; }
+        public bool LookAt { get; set; }
+        public bool Poke { get; set; }
+        public ushort Enemy { get; set; }
+        public bool Stroke { get; set; }
+        public bool Clapping { get; set; }
+        public ushort Icon { get; set; }
+        public ushort Order { get; set; }
+        public bool Unknown28 { get; set; }
+        public byte Unknown29 { get; set; }
+        public byte Cost { get; set; }
+        public ushort HP { get; set; }
+        public byte Unknown32 { get; set; }
+        public ushort SkillAngle { get; set; }
+        public byte SkillCost { get; set; }
+        public byte Unknown35 { get; set; }
+        public ushort Unknown36 { get; set; }
+        public LazyRow< MinionRace > MinionRace { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

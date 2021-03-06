@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class AnimaWeaponIcon : ExcelRow
     {
         
-        public int Hyperconductive;
-        public int Reborn;
-        public int Sharpened;
-        public int Zodiac;
-        public int ZodiacLux;
+        public int Hyperconductive { get; set; }
+        public int Reborn { get; set; }
+        public int Sharpened { get; set; }
+        public int Zodiac { get; set; }
+        public int ZodiacLux { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,24 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public class TripleTriad : ExcelRow
     {
         
-        public LazyRow< TripleTriadCard >[] TripleTriadCardFixed;
-        public LazyRow< TripleTriadCard >[] TripleTriadCardVariable;
-        public LazyRow< TripleTriadRule >[] TripleTriadRule;
-        public bool UsesRegionalRules;
-        public ushort Fee;
-        public byte PreviousQuestJoin;
-        public LazyRow< Quest >[] PreviousQuest;
-        public ushort StartTime;
-        public ushort EndTime;
-        public LazyRow< DefaultTalk > DefaultTalkChallenge;
-        public LazyRow< DefaultTalk > DefaultTalkUnavailable;
-        public LazyRow< DefaultTalk > DefaultTalkNPCWin;
-        public LazyRow< DefaultTalk > DefaultTalkDraw;
-        public LazyRow< DefaultTalk > DefaultTalkPCWin;
-        public bool Unknown25;
-        public LazyRow< Item >[] ItemPossibleReward;
+        public LazyRow< TripleTriadCard >[] TripleTriadCardFixed { get; set; }
+        public LazyRow< TripleTriadCard >[] TripleTriadCardVariable { get; set; }
+        public LazyRow< TripleTriadRule >[] TripleTriadRule { get; set; }
+        public bool UsesRegionalRules { get; set; }
+        public ushort Fee { get; set; }
+        public byte PreviousQuestJoin { get; set; }
+        public LazyRow< Quest >[] PreviousQuest { get; set; }
+        public ushort StartTime { get; set; }
+        public ushort EndTime { get; set; }
+        public LazyRow< DefaultTalk > DefaultTalkChallenge { get; set; }
+        public LazyRow< DefaultTalk > DefaultTalkUnavailable { get; set; }
+        public LazyRow< DefaultTalk > DefaultTalkNPCWin { get; set; }
+        public LazyRow< DefaultTalk > DefaultTalkDraw { get; set; }
+        public LazyRow< DefaultTalk > DefaultTalkPCWin { get; set; }
+        public bool Unknown25 { get; set; }
+        public LazyRow< Item >[] ItemPossibleReward { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class EventAction : ExcelRow
     {
         
-        public SeString Name;
-        public ushort Icon;
-        public byte CastTime;
-        public LazyRow< ActionTimeline >[] Animation;
+        public SeString Name { get; set; }
+        public ushort Icon { get; set; }
+        public byte CastTime { get; set; }
+        public LazyRow< ActionTimeline >[] Animation { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class MobHuntOrderType : ExcelRow
     {
         
-        public byte Type;
-        public LazyRow< Quest > Quest;
-        public LazyRow< EventItem > EventItem;
-        public LazyRow< MobHuntOrder > OrderStart;
-        public byte OrderAmount;
+        public byte Type { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public LazyRow< EventItem > EventItem { get; set; }
+        public LazyRow< MobHuntOrder > OrderStart { get; set; }
+        public byte OrderAmount { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

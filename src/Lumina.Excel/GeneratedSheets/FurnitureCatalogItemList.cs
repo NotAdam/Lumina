@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class FurnitureCatalogItemList : ExcelRow
     {
         
-        public LazyRow< FurnitureCatalogCategory > Category;
-        public LazyRow< Item > Item;
-        public ushort Patch;
+        public LazyRow< FurnitureCatalogCategory > Category { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public ushort Patch { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

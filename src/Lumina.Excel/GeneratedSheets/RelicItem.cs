@@ -10,25 +10,24 @@ namespace Lumina.Excel.GeneratedSheets
     public class RelicItem : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< Item > GladiatorItem;
-        public LazyRow< Item > PugilistItem;
-        public LazyRow< Item > MarauderItem;
-        public LazyRow< Item > LancerItem;
-        public LazyRow< Item > ArcherItem;
-        public LazyRow< Item > ConjurerItem;
-        public LazyRow< Item > ThaumaturgeItem;
-        public LazyRow< Item > ArcanistSMNItem;
-        public LazyRow< Item > ArcanistSCHItem;
-        public LazyRow< Item > ShieldItem;
-        public LazyRow< Item > RogueItem;
-        public uint Unknown12;
-        public uint Unknown13;
-        public uint Unknown14;
-        public uint Unknown15;
-        public uint Unknown16;
+        public byte Unknown0 { get; set; }
+        public LazyRow< Item > GladiatorItem { get; set; }
+        public LazyRow< Item > PugilistItem { get; set; }
+        public LazyRow< Item > MarauderItem { get; set; }
+        public LazyRow< Item > LancerItem { get; set; }
+        public LazyRow< Item > ArcherItem { get; set; }
+        public LazyRow< Item > ConjurerItem { get; set; }
+        public LazyRow< Item > ThaumaturgeItem { get; set; }
+        public LazyRow< Item > ArcanistSMNItem { get; set; }
+        public LazyRow< Item > ArcanistSCHItem { get; set; }
+        public LazyRow< Item > ShieldItem { get; set; }
+        public LazyRow< Item > RogueItem { get; set; }
+        public uint Unknown12 { get; set; }
+        public uint Unknown13 { get; set; }
+        public uint Unknown14 { get; set; }
+        public uint Unknown15 { get; set; }
+        public uint Unknown16 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class PhysicsGroup : ExcelRow
     {
         
-        public float[] SimulationTime;
-        public float[] PS3SimulationTime;
-        public bool ResetByLookAt;
-        public float RootFollowingGame;
-        public float RootFollowingCutScene;
-        public sbyte[] ConfigSwitch;
-        public bool ForceAttractByPhysicsOff;
+        public float[] SimulationTime { get; set; }
+        public float[] PS3SimulationTime { get; set; }
+        public bool ResetByLookAt { get; set; }
+        public float RootFollowingGame { get; set; }
+        public float RootFollowingCutScene { get; set; }
+        public sbyte[] ConfigSwitch { get; set; }
+        public bool ForceAttractByPhysicsOff { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class FishParameter : ExcelRow
     {
         
-        public SeString Text;
-        public int Item;
-        public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel;
-        public byte Unknown3;
-        public bool IsHidden;
-        public bool Unknown5;
-        public LazyRow< FishingRecordType > FishingRecordType;
-        public LazyRow< TerritoryType > TerritoryType;
-        public LazyRow< GatheringSubCategory > GatheringSubCategory;
-        public bool IsInLog;
-        public bool TimeRestricted;
-        public bool WeatherRestricted;
+        public SeString Text { get; set; }
+        public int Item { get; set; }
+        public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel { get; set; }
+        public byte Unknown3 { get; set; }
+        public bool IsHidden { get; set; }
+        public bool Unknown5 { get; set; }
+        public LazyRow< FishingRecordType > FishingRecordType { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public LazyRow< GatheringSubCategory > GatheringSubCategory { get; set; }
+        public bool IsInLog { get; set; }
+        public bool TimeRestricted { get; set; }
+        public bool WeatherRestricted { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

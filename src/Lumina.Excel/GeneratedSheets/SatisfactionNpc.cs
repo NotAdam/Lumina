@@ -16,64 +16,63 @@ namespace Lumina.Excel.GeneratedSheets
             public int IsHQ;
         }
         
-        public LazyRow< ENpcResident > Npc;
-        public LazyRow< Quest > QuestRequired;
-        public byte LevelUnlock;
-        public byte DeliveriesPerWeek;
-        public int[] SupplyIndex;
-        public ushort[] SatisfactionRequired;
-        public UnkStruct16Struct[] UnkStruct16;
-        public byte Unknown25;
-        public byte Unknown26;
-        public byte Unknown27;
-        public bool Unknown28;
-        public bool Unknown29;
-        public bool Unknown30;
-        public bool Unknown31;
-        public bool Unknown32;
-        public bool Unknown33;
-        public int Unknown34;
-        public int Unknown35;
-        public int Unknown36;
-        public int Unknown37;
-        public int Unknown38;
-        public int Unknown39;
-        public byte Unknown40;
-        public byte Unknown41;
-        public byte Unknown42;
-        public byte Unknown43;
-        public byte Unknown44;
-        public byte Unknown45;
-        public bool Unknown46;
-        public bool Unknown47;
-        public bool Unknown48;
-        public bool Unknown49;
-        public bool Unknown50;
-        public bool Unknown51;
-        public int Unknown52;
-        public int Unknown53;
-        public int Unknown54;
-        public int Unknown55;
-        public int Unknown56;
-        public int Unknown57;
-        public byte Unknown58;
-        public byte Unknown59;
-        public byte Unknown60;
-        public byte Unknown61;
-        public byte Unknown62;
-        public byte Unknown63;
-        public bool Unknown64;
-        public bool Unknown65;
-        public bool Unknown66;
-        public bool Unknown67;
-        public bool Unknown68;
-        public bool Unknown69;
-        public int Icon;
-        public byte Unknown71;
-        public byte AddedIn530;
-        public byte AddedIn531;
+        public LazyRow< ENpcResident > Npc { get; set; }
+        public LazyRow< Quest > QuestRequired { get; set; }
+        public byte LevelUnlock { get; set; }
+        public byte DeliveriesPerWeek { get; set; }
+        public int[] SupplyIndex { get; set; }
+        public ushort[] SatisfactionRequired { get; set; }
+        public UnkStruct16Struct[] UnkStruct16 { get; set; }
+        public byte Unknown25 { get; set; }
+        public byte Unknown26 { get; set; }
+        public byte Unknown27 { get; set; }
+        public bool Unknown28 { get; set; }
+        public bool Unknown29 { get; set; }
+        public bool Unknown30 { get; set; }
+        public bool Unknown31 { get; set; }
+        public bool Unknown32 { get; set; }
+        public bool Unknown33 { get; set; }
+        public int Unknown34 { get; set; }
+        public int Unknown35 { get; set; }
+        public int Unknown36 { get; set; }
+        public int Unknown37 { get; set; }
+        public int Unknown38 { get; set; }
+        public int Unknown39 { get; set; }
+        public byte Unknown40 { get; set; }
+        public byte Unknown41 { get; set; }
+        public byte Unknown42 { get; set; }
+        public byte Unknown43 { get; set; }
+        public byte Unknown44 { get; set; }
+        public byte Unknown45 { get; set; }
+        public bool Unknown46 { get; set; }
+        public bool Unknown47 { get; set; }
+        public bool Unknown48 { get; set; }
+        public bool Unknown49 { get; set; }
+        public bool Unknown50 { get; set; }
+        public bool Unknown51 { get; set; }
+        public int Unknown52 { get; set; }
+        public int Unknown53 { get; set; }
+        public int Unknown54 { get; set; }
+        public int Unknown55 { get; set; }
+        public int Unknown56 { get; set; }
+        public int Unknown57 { get; set; }
+        public byte Unknown58 { get; set; }
+        public byte Unknown59 { get; set; }
+        public byte Unknown60 { get; set; }
+        public byte Unknown61 { get; set; }
+        public byte Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public bool Unknown64 { get; set; }
+        public bool Unknown65 { get; set; }
+        public bool Unknown66 { get; set; }
+        public bool Unknown67 { get; set; }
+        public bool Unknown68 { get; set; }
+        public bool Unknown69 { get; set; }
+        public int Icon { get; set; }
+        public byte Unknown71 { get; set; }
+        public byte AddedIn530 { get; set; }
+        public byte AddedIn531 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

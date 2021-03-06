@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class PvPAction : ExcelRow
     {
         
-        public LazyRow< Action > Action;
-        public byte Unknown1;
-        public ushort Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public bool[] GrandCompany;
-        public byte Unknown8;
+        public LazyRow< Action > Action { get; set; }
+        public byte Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public bool[] GrandCompany { get; set; }
+        public byte Unknown8 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

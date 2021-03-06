@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringType : ExcelRow
     {
         
-        public SeString Name;
-        public int IconMain;
-        public int IconOff;
+        public SeString Name { get; set; }
+        public int IconMain { get; set; }
+        public int IconOff { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

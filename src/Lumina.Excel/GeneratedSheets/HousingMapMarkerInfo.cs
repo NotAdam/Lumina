@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingMapMarkerInfo : ExcelRow
     {
         
-        public float X;
-        public float Y;
-        public float Z;
-        public float Unknown3;
-        public LazyRow< Map > Map;
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Z { get; set; }
+        public float Unknown3 { get; set; }
+        public LazyRow< Map > Map { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

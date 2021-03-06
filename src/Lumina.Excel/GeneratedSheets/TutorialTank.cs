@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class TutorialTank : ExcelRow
     {
         
-        public LazyRow< Tutorial > Objective;
+        public LazyRow< Tutorial > Objective { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

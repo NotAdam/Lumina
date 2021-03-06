@@ -16,13 +16,12 @@ namespace Lumina.Excel.GeneratedSheets
             public byte Quantity;
         }
         
-        public byte Unknown0;
-        public LazyRow< Item > CrystalSand;
-        public byte Qty;
-        public UnkStruct3Struct[] UnkStruct3;
-        public LazyRow< AnimaWeapon5PatternGroup > Category;
+        public byte Unknown0 { get; set; }
+        public LazyRow< Item > CrystalSand { get; set; }
+        public byte Qty { get; set; }
+        public UnkStruct3Struct[] UnkStruct3 { get; set; }
+        public LazyRow< AnimaWeapon5PatternGroup > Category { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

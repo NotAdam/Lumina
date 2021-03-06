@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeeklyBingoText : ExcelRow
     {
         
-        public SeString Description;
+        public SeString Description { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

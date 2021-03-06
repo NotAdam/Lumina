@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class TomestonesItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public sbyte Unknown1;
-        public LazyRow< Tomestones > Tomestones;
+        public LazyRow< Item > Item { get; set; }
+        public sbyte Unknown1 { get; set; }
+        public LazyRow< Tomestones > Tomestones { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

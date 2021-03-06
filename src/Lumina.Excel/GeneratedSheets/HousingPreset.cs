@@ -10,32 +10,31 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingPreset : ExcelRow
     {
         
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown5;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public LazyRow< PlaceName > PlaceName;
-        public byte HousingSize;
-        public LazyRow< Item > ExteriorRoof;
-        public LazyRow< Item > ExteriorWall;
-        public LazyRow< Item > ExteriorWindow;
-        public LazyRow< Item > ExteriorDoor;
-        public LazyRow< Item > InteriorWall;
-        public LazyRow< Item > InteriorFlooring;
-        public LazyRow< Item > InteriorLighting;
-        public LazyRow< Item > OtherFloorWall;
-        public LazyRow< Item > OtherFloorFlooring;
-        public LazyRow< Item > OtherFloorLighting;
-        public LazyRow< Item > BasementWall;
-        public LazyRow< Item > BasementFlooring;
-        public LazyRow< Item > BasementLighting;
-        public LazyRow< Item > MansionLighting;
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public byte HousingSize { get; set; }
+        public LazyRow< Item > ExteriorRoof { get; set; }
+        public LazyRow< Item > ExteriorWall { get; set; }
+        public LazyRow< Item > ExteriorWindow { get; set; }
+        public LazyRow< Item > ExteriorDoor { get; set; }
+        public LazyRow< Item > InteriorWall { get; set; }
+        public LazyRow< Item > InteriorFlooring { get; set; }
+        public LazyRow< Item > InteriorLighting { get; set; }
+        public LazyRow< Item > OtherFloorWall { get; set; }
+        public LazyRow< Item > OtherFloorFlooring { get; set; }
+        public LazyRow< Item > OtherFloorLighting { get; set; }
+        public LazyRow< Item > BasementWall { get; set; }
+        public LazyRow< Item > BasementFlooring { get; set; }
+        public LazyRow< Item > BasementLighting { get; set; }
+        public LazyRow< Item > MansionLighting { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class RelicNoteCategory : ExcelRow
     {
         
-        public sbyte Unknown0;
-        public SeString Text;
+        public sbyte Unknown0 { get; set; }
+        public SeString Text { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

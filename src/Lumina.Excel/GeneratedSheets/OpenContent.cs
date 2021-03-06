@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class OpenContent : ExcelRow
     {
         
-        public LazyRow< ContentFinderCondition >[] Content;
-        public LazyRow< OpenContentCandidateName >[] CandidateName;
+        public LazyRow< ContentFinderCondition >[] Content { get; set; }
+        public LazyRow< OpenContentCandidateName >[] CandidateName { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

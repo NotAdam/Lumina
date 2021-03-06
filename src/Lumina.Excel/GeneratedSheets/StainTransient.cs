@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class StainTransient : ExcelRow
     {
         
-        public LazyRow< Item > Item1;
-        public LazyRow< Item > Item2;
+        public LazyRow< Item > Item1 { get; set; }
+        public LazyRow< Item > Item2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDGathererInspection : ExcelRow
     {
         
-        public LazyRow< GatheringItem >[] ItemRequired;
-        public LazyRow< FishParameter >[] FishParameter;
-        public byte[] AmountRequired;
-        public LazyRow< Item >[] ItemReceived;
-        public LazyRow< HWDGathererInspectionReward >[] Reward1;
-        public LazyRow< HWDGathererInspectionReward >[] Reward2;
-        public LazyRow< HWDGathereInspectTerm >[] Phase;
+        public LazyRow< GatheringItem >[] ItemRequired { get; set; }
+        public LazyRow< FishParameter >[] FishParameter { get; set; }
+        public byte[] AmountRequired { get; set; }
+        public LazyRow< Item >[] ItemReceived { get; set; }
+        public LazyRow< HWDGathererInspectionReward >[] Reward1 { get; set; }
+        public LazyRow< HWDGathererInspectionReward >[] Reward2 { get; set; }
+        public LazyRow< HWDGathereInspectTerm >[] Phase { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

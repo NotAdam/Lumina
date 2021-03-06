@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class AirshipExplorationPoint : ExcelRow
     {
         
-        public SeString Name;
-        public SeString NameShort;
-        public bool Unknown2;
-        public short Unknown3;
-        public short Unknown4;
-        public byte RequiredLevel;
-        public ushort RequiredFuel;
-        public ushort Durationmin;
-        public ushort Unknown8;
-        public byte Unknown9;
-        public byte RequiredSurveillance;
-        public byte Unknown11;
-        public byte Unknown12;
-        public uint ExpReward;
+        public SeString Name { get; set; }
+        public SeString NameShort { get; set; }
+        public bool Unknown2 { get; set; }
+        public short Unknown3 { get; set; }
+        public short Unknown4 { get; set; }
+        public byte RequiredLevel { get; set; }
+        public ushort RequiredFuel { get; set; }
+        public ushort Durationmin { get; set; }
+        public ushort Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
+        public byte RequiredSurveillance { get; set; }
+        public byte Unknown11 { get; set; }
+        public byte Unknown12 { get; set; }
+        public uint ExpReward { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

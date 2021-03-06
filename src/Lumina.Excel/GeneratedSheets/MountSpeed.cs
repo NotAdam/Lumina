@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class MountSpeed : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public uint Unknown1;
-        public byte Unknown2;
+        public LazyRow< Quest > Quest { get; set; }
+        public uint Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

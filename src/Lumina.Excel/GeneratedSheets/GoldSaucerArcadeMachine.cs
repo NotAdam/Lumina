@@ -10,51 +10,50 @@ namespace Lumina.Excel.GeneratedSheets
     public class GoldSaucerArcadeMachine : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public byte Unknown2;
-        public byte Unknown3;
-        public ushort Unknown4;
-        public byte Unknown5;
-        public uint FailImage;
-        public sbyte Unknown7;
-        public sbyte Unknown8;
-        public sbyte Unknown9;
-        public uint Unknown10;
-        public byte Unknown11;
-        public sbyte Unknown12;
-        public sbyte Unknown13;
-        public sbyte Unknown14;
-        public byte Unknown15;
-        public byte Unknown16;
-        public byte Unknown17;
-        public byte Unknown18;
-        public byte Unknown19;
-        public byte Unknown20;
-        public byte Unknown21;
-        public byte Unknown22;
-        public byte Unknown23;
-        public byte Unknown24;
-        public byte Unknown25;
-        public byte Unknown26;
-        public uint Unknown27;
-        public uint Unknown28;
-        public uint Unknown29;
-        public uint Unknown30;
-        public byte Unknown31;
-        public byte Unknown32;
-        public byte Unknown33;
-        public byte Unknown34;
-        public uint Poor;
-        public uint Good;
-        public uint Great;
-        public uint Excellent;
-        public SeString Unknown39;
-        public SeString Unknown40;
-        public SeString Unknown41;
-        public SeString Unknown42;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public uint FailImage { get; set; }
+        public sbyte Unknown7 { get; set; }
+        public sbyte Unknown8 { get; set; }
+        public sbyte Unknown9 { get; set; }
+        public uint Unknown10 { get; set; }
+        public byte Unknown11 { get; set; }
+        public sbyte Unknown12 { get; set; }
+        public sbyte Unknown13 { get; set; }
+        public sbyte Unknown14 { get; set; }
+        public byte Unknown15 { get; set; }
+        public byte Unknown16 { get; set; }
+        public byte Unknown17 { get; set; }
+        public byte Unknown18 { get; set; }
+        public byte Unknown19 { get; set; }
+        public byte Unknown20 { get; set; }
+        public byte Unknown21 { get; set; }
+        public byte Unknown22 { get; set; }
+        public byte Unknown23 { get; set; }
+        public byte Unknown24 { get; set; }
+        public byte Unknown25 { get; set; }
+        public byte Unknown26 { get; set; }
+        public uint Unknown27 { get; set; }
+        public uint Unknown28 { get; set; }
+        public uint Unknown29 { get; set; }
+        public uint Unknown30 { get; set; }
+        public byte Unknown31 { get; set; }
+        public byte Unknown32 { get; set; }
+        public byte Unknown33 { get; set; }
+        public byte Unknown34 { get; set; }
+        public uint Poor { get; set; }
+        public uint Good { get; set; }
+        public uint Great { get; set; }
+        public uint Excellent { get; set; }
+        public SeString Unknown39 { get; set; }
+        public SeString Unknown40 { get; set; }
+        public SeString Unknown41 { get; set; }
+        public SeString Unknown42 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class RecipeNotebookList : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< Recipe >[] Recipe;
+        public byte Unknown0 { get; set; }
+        public LazyRow< Recipe >[] Recipe { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

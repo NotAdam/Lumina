@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActivityFeedButtons : ExcelRow
     {
         
-        public byte Unknown0;
-        public SeString BannerURL;
-        public SeString Description;
-        public SeString Language;
-        public SeString PictureURL;
+        public byte Unknown0 { get; set; }
+        public SeString BannerURL { get; set; }
+        public SeString Description { get; set; }
+        public SeString Language { get; set; }
+        public SeString PictureURL { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

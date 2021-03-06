@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestBattle : ExcelRow
     {
         
-        public int Quest;
-        public byte QuestBattleScene;
-        public ushort TimeLimit;
-        public ushort LevelSync;
-        public SeString[] ScriptInstruction;
-        public uint[] ScriptValue;
+        public int Quest { get; set; }
+        public byte QuestBattleScene { get; set; }
+        public ushort TimeLimit { get; set; }
+        public ushort LevelSync { get; set; }
+        public SeString[] ScriptInstruction { get; set; }
+        public uint[] ScriptValue { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

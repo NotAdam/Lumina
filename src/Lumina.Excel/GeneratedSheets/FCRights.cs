@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCRights : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public ushort Icon;
-        public LazyRow< FCRank > FCRank;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< FCRank > FCRank { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

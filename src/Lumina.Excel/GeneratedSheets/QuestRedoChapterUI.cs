@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestRedoChapterUI : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public byte Unknown1;
-        public LazyRow< QuestRedoChapterUICategory > Category;
-        public byte Unknown3;
-        public uint QuestRedoUISmall;
-        public uint QuestRedoUILarge;
-        public uint QuestRedoUIWide;
-        public SeString ChapterName;
-        public SeString ChapterPart;
-        public SeString Transient;
+        public LazyRow< Quest > Quest { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< QuestRedoChapterUICategory > Category { get; set; }
+        public byte Unknown3 { get; set; }
+        public uint QuestRedoUISmall { get; set; }
+        public uint QuestRedoUILarge { get; set; }
+        public uint QuestRedoUIWide { get; set; }
+        public SeString ChapterName { get; set; }
+        public SeString ChapterPart { get; set; }
+        public SeString Transient { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

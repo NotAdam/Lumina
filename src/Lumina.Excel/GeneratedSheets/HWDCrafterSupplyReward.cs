@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDCrafterSupplyReward : ExcelRow
     {
         
-        public ushort ScriptRewardAmount;
-        public uint ExpReward;
-        public ushort Points;
+        public ushort ScriptRewardAmount { get; set; }
+        public uint ExpReward { get; set; }
+        public ushort Points { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

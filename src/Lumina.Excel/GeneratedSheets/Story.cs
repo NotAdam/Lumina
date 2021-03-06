@@ -10,30 +10,29 @@ namespace Lumina.Excel.GeneratedSheets
     public class Story : ExcelRow
     {
         
-        public SeString Script;
-        public SeString[] Instruction;
-        public uint[] Argument;
-        public ushort[] Sequence;
-        public byte[] CompletedQuestOperator;
-        public LazyRow< Quest >[] CompletedQuest0;
-        public LazyRow< Quest >[] CompletedQuest1;
-        public LazyRow< Quest >[] CompletedQuest2;
-        public byte[] AcceptedQuestOperator;
-        public LazyRow< Quest >[] AcceptedQuest0;
-        public byte[] AcceptedQuestSequence0;
-        public LazyRow< Quest >[] AcceptedQuest1;
-        public byte[] AcceptedQuestSequence1;
-        public LazyRow< Quest >[] AcceptedQuest2;
-        public byte[] AcceptedQuestSequence2;
-        public uint[] LayerSet0;
-        public uint[] LayerSet1;
-        public ushort[] SequenceBegin;
-        public ushort[] SequenceEnd;
-        public uint[] Listener;
-        public LazyRow< TerritoryType > LayerSetTerritoryType0;
-        public LazyRow< TerritoryType > LayerSetTerritoryType1;
+        public SeString Script { get; set; }
+        public SeString[] Instruction { get; set; }
+        public uint[] Argument { get; set; }
+        public ushort[] Sequence { get; set; }
+        public byte[] CompletedQuestOperator { get; set; }
+        public LazyRow< Quest >[] CompletedQuest0 { get; set; }
+        public LazyRow< Quest >[] CompletedQuest1 { get; set; }
+        public LazyRow< Quest >[] CompletedQuest2 { get; set; }
+        public byte[] AcceptedQuestOperator { get; set; }
+        public LazyRow< Quest >[] AcceptedQuest0 { get; set; }
+        public byte[] AcceptedQuestSequence0 { get; set; }
+        public LazyRow< Quest >[] AcceptedQuest1 { get; set; }
+        public byte[] AcceptedQuestSequence1 { get; set; }
+        public LazyRow< Quest >[] AcceptedQuest2 { get; set; }
+        public byte[] AcceptedQuestSequence2 { get; set; }
+        public uint[] LayerSet0 { get; set; }
+        public uint[] LayerSet1 { get; set; }
+        public ushort[] SequenceBegin { get; set; }
+        public ushort[] SequenceEnd { get; set; }
+        public uint[] Listener { get; set; }
+        public LazyRow< TerritoryType > LayerSetTerritoryType0 { get; set; }
+        public LazyRow< TerritoryType > LayerSetTerritoryType1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

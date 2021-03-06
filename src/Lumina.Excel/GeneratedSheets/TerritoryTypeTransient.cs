@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class TerritoryTypeTransient : ExcelRow
     {
         
-        public short OffsetZ;
+        public short OffsetZ { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

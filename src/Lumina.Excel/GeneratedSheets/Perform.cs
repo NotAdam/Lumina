@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class Perform : ExcelRow
     {
         
-        public SeString Name;
-        public bool Unknown1;
-        public ulong ModelKey;
-        public LazyRow< ActionTimeline > AnimationStart;
-        public LazyRow< ActionTimeline > AnimationEnd;
-        public LazyRow< ActionTimeline > AnimationIdle;
-        public LazyRow< ActionTimeline > AnimationPlay01;
-        public LazyRow< ActionTimeline > AnimationPlay02;
-        public LazyRow< ActionTimeline > StopAnimation;
-        public SeString Instrument;
-        public int Unknown10;
-        public LazyRow< PerformTransient > Transient;
+        public SeString Name { get; set; }
+        public bool Unknown1 { get; set; }
+        public ulong ModelKey { get; set; }
+        public LazyRow< ActionTimeline > AnimationStart { get; set; }
+        public LazyRow< ActionTimeline > AnimationEnd { get; set; }
+        public LazyRow< ActionTimeline > AnimationIdle { get; set; }
+        public LazyRow< ActionTimeline > AnimationPlay01 { get; set; }
+        public LazyRow< ActionTimeline > AnimationPlay02 { get; set; }
+        public LazyRow< ActionTimeline > StopAnimation { get; set; }
+        public SeString Instrument { get; set; }
+        public int Unknown10 { get; set; }
+        public LazyRow< PerformTransient > Transient { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

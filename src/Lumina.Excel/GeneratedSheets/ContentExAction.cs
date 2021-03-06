@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentExAction : ExcelRow
     {
         
-        public LazyRow< Action > Name;
-        public uint Unknown1;
-        public byte Charges;
-        public byte Unknown3;
+        public LazyRow< Action > Name { get; set; }
+        public uint Unknown1 { get; set; }
+        public byte Charges { get; set; }
+        public byte Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

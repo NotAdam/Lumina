@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class AirshipExplorationLevel : ExcelRow
     {
         
-        public ushort Capacity;
-        public uint ExpToNext;
+        public ushort Capacity { get; set; }
+        public uint ExpToNext { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

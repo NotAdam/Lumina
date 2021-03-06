@@ -10,32 +10,31 @@ namespace Lumina.Excel.GeneratedSheets
     public class DescriptionPage : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public LazyRow< DescriptionString > Text1;
-        public uint Image1;
-        public LazyRow< DescriptionString > Text2;
-        public uint Image2;
-        public LazyRow< DescriptionString > Text3;
-        public uint Image3;
-        public LazyRow< DescriptionString > Text4;
-        public uint Image4;
-        public LazyRow< DescriptionString > Text5;
-        public uint Image5;
-        public LazyRow< DescriptionString > Text6;
-        public uint Image6;
-        public LazyRow< DescriptionString > Text7;
-        public uint Image7;
-        public LazyRow< DescriptionString > Text8;
-        public uint Image8;
-        public LazyRow< DescriptionString > Text9;
-        public uint Image9;
-        public ushort Unknown19;
-        public uint Unknown20;
-        public ushort Unknown21;
-        public uint Unknown22;
-        public ushort Unknown23;
+        public LazyRow< Quest > Quest { get; set; }
+        public LazyRow< DescriptionString > Text1 { get; set; }
+        public uint Image1 { get; set; }
+        public LazyRow< DescriptionString > Text2 { get; set; }
+        public uint Image2 { get; set; }
+        public LazyRow< DescriptionString > Text3 { get; set; }
+        public uint Image3 { get; set; }
+        public LazyRow< DescriptionString > Text4 { get; set; }
+        public uint Image4 { get; set; }
+        public LazyRow< DescriptionString > Text5 { get; set; }
+        public uint Image5 { get; set; }
+        public LazyRow< DescriptionString > Text6 { get; set; }
+        public uint Image6 { get; set; }
+        public LazyRow< DescriptionString > Text7 { get; set; }
+        public uint Image7 { get; set; }
+        public LazyRow< DescriptionString > Text8 { get; set; }
+        public uint Image8 { get; set; }
+        public LazyRow< DescriptionString > Text9 { get; set; }
+        public uint Image9 { get; set; }
+        public ushort Unknown19 { get; set; }
+        public uint Unknown20 { get; set; }
+        public ushort Unknown21 { get; set; }
+        public uint Unknown22 { get; set; }
+        public ushort Unknown23 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

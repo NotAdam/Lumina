@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class ScenarioTreeTipsClassQuest : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public ushort RequiredLevel;
-        public LazyRow< ExVersion > RequiredExpansion;
-        public LazyRow< Quest > RequiredQuest;
-        public bool Unknown4;
-        public bool Unknown5;
+        public LazyRow< Quest > Quest { get; set; }
+        public ushort RequiredLevel { get; set; }
+        public LazyRow< ExVersion > RequiredExpansion { get; set; }
+        public LazyRow< Quest > RequiredQuest { get; set; }
+        public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

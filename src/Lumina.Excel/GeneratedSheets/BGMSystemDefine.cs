@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGMSystemDefine : ExcelRow
     {
         
-        public float Define;
+        public float Define { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestChapter : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public ushort Redo;
+        public LazyRow< Quest > Quest { get; set; }
+        public ushort Redo { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

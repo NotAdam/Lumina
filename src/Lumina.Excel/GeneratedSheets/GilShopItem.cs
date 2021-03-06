@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class GilShopItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public bool Unknown1;
-        public int Unknown2;
-        public int[] RowRequired;
-        public byte Unknown6;
-        public ushort StateRequired;
-        public ushort Patch;
+        public LazyRow< Item > Item { get; set; }
+        public bool Unknown1 { get; set; }
+        public int Unknown2 { get; set; }
+        public int[] RowRequired { get; set; }
+        public byte Unknown6 { get; set; }
+        public ushort StateRequired { get; set; }
+        public ushort Patch { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringExp : ExcelRow
     {
         
-        public int Exp;
+        public int Exp { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -15,35 +15,34 @@ namespace Lumina.Excel.GeneratedSheets
             public byte AmountIngredient;
         }
         
-        public int Number;
-        public LazyRow< CraftType > CraftType;
-        public LazyRow< RecipeLevelTable > RecipeLevelTable;
-        public LazyRow< Item > ItemResult;
-        public byte AmountResult;
-        public UnkStruct5Struct[] UnkStruct5;
-        public ushort Unknown25;
-        public bool IsSecondary;
-        public byte MaterialQualityFactor;
-        public ushort DifficultyFactor;
-        public ushort QualityFactor;
-        public ushort DurabilityFactor;
-        public ushort Unknown31;
-        public ushort RequiredCraftsmanship;
-        public ushort RequiredControl;
-        public ushort QuickSynthCraftsmanship;
-        public ushort QuickSynthControl;
-        public LazyRow< SecretRecipeBook > SecretRecipeBook;
-        public uint Unknown37;
-        public bool CanQuickSynth;
-        public bool CanHq;
-        public bool ExpRewarded;
-        public LazyRow< Status > StatusRequired;
-        public LazyRow< Item > ItemRequired;
-        public bool IsSpecializationRequired;
-        public bool IsExpert;
-        public ushort PatchNumber;
+        public int Number { get; set; }
+        public LazyRow< CraftType > CraftType { get; set; }
+        public LazyRow< RecipeLevelTable > RecipeLevelTable { get; set; }
+        public LazyRow< Item > ItemResult { get; set; }
+        public byte AmountResult { get; set; }
+        public UnkStruct5Struct[] UnkStruct5 { get; set; }
+        public ushort Unknown25 { get; set; }
+        public bool IsSecondary { get; set; }
+        public byte MaterialQualityFactor { get; set; }
+        public ushort DifficultyFactor { get; set; }
+        public ushort QualityFactor { get; set; }
+        public ushort DurabilityFactor { get; set; }
+        public ushort Unknown31 { get; set; }
+        public ushort RequiredCraftsmanship { get; set; }
+        public ushort RequiredControl { get; set; }
+        public ushort QuickSynthCraftsmanship { get; set; }
+        public ushort QuickSynthControl { get; set; }
+        public LazyRow< SecretRecipeBook > SecretRecipeBook { get; set; }
+        public uint Unknown37 { get; set; }
+        public bool CanQuickSynth { get; set; }
+        public bool CanHq { get; set; }
+        public bool ExpRewarded { get; set; }
+        public LazyRow< Status > StatusRequired { get; set; }
+        public LazyRow< Item > ItemRequired { get; set; }
+        public bool IsSpecializationRequired { get; set; }
+        public bool IsExpert { get; set; }
+        public ushort PatchNumber { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

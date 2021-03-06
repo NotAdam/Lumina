@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class GCSupplyDutyReward : ExcelRow
     {
         
-        public uint ExperienceSupply;
-        public uint ExperienceProvisioning;
-        public uint SealsExpertDelivery;
-        public uint SealsSupply;
-        public uint SealsProvisioning;
+        public uint ExperienceSupply { get; set; }
+        public uint ExperienceProvisioning { get; set; }
+        public uint SealsExpertDelivery { get; set; }
+        public uint SealsSupply { get; set; }
+        public uint SealsProvisioning { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

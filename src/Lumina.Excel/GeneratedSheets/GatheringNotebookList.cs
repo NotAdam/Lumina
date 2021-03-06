@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringNotebookList : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< GatheringItem >[] GatheringItem;
+        public byte Unknown0 { get; set; }
+        public LazyRow< GatheringItem >[] GatheringItem { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

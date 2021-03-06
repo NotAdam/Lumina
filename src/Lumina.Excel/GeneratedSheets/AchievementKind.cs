@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class AchievementKind : ExcelRow
     {
         
-        public SeString Name;
-        public byte Order;
+        public SeString Name { get; set; }
+        public byte Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

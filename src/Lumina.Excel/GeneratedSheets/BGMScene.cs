@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGMScene : ExcelRow
     {
         
-        public bool EnableDisableRestart;
-        public bool Resume;
-        public bool EnablePassEnd;
-        public bool ForceAutoReset;
-        public bool IgnoreBattle;
+        public bool EnableDisableRestart { get; set; }
+        public bool Resume { get; set; }
+        public bool EnablePassEnd { get; set; }
+        public bool ForceAutoReset { get; set; }
+        public bool IgnoreBattle { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

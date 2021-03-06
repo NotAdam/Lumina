@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class ExportedSG : ExcelRow
     {
         
-        public SeString SgbPath;
+        public SeString SgbPath { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

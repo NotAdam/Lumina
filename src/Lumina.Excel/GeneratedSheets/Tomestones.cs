@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class Tomestones : ExcelRow
     {
         
-        public ushort WeeklyLimit;
+        public ushort WeeklyLimit { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

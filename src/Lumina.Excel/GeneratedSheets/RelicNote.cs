@@ -20,14 +20,13 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort PlaceNameFate;
         }
         
-        public LazyRow< EventItem > EventItem;
-        public UnkStruct1Struct[] UnkStruct1;
-        public LazyRow< MonsterNoteTarget >[] MonsterNoteTargetNM;
-        public ushort Unknown24;
-        public UnkStruct25Struct[] UnkStruct25;
-        public LazyRow< Leve >[] Leve;
+        public LazyRow< EventItem > EventItem { get; set; }
+        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public LazyRow< MonsterNoteTarget >[] MonsterNoteTargetNM { get; set; }
+        public ushort Unknown24 { get; set; }
+        public UnkStruct25Struct[] UnkStruct25 { get; set; }
+        public LazyRow< Leve >[] Leve { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

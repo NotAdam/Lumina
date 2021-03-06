@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class AnimaWeapon5SpiritTalk : ExcelRow
     {
         
-        public LazyRow< AnimaWeapon5SpiritTalkParam > Dialogue;
+        public LazyRow< AnimaWeapon5SpiritTalkParam > Dialogue { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

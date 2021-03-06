@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentGaugeColor : ExcelRow
     {
         
-        public uint AndroidColor1;
-        public uint AndroidColor2;
-        public uint AndroidColor3;
+        public uint AndroidColor1 { get; set; }
+        public uint AndroidColor2 { get; set; }
+        public uint AndroidColor3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class Weather : ExcelRow
     {
         
-        public int Icon;
-        public SeString Name;
-        public SeString Description;
-        public SeString Unknown3;
-        public SeString Unknown4;
-        public SeString Unknown5;
-        public SeString Unknown6;
+        public int Icon { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public SeString Unknown3 { get; set; }
+        public SeString Unknown4 { get; set; }
+        public SeString Unknown5 { get; set; }
+        public SeString Unknown6 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

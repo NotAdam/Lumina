@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class ScenarioType : ExcelRow
     {
         
-        public SeString Type;
-        public sbyte Unknown1;
+        public SeString Type { get; set; }
+        public sbyte Unknown1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

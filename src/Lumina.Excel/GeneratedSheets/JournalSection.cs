@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class JournalSection : ExcelRow
     {
         
-        public SeString Name;
-        public bool Unknown1;
-        public bool Unknown2;
+        public SeString Name { get; set; }
+        public bool Unknown1 { get; set; }
+        public bool Unknown2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

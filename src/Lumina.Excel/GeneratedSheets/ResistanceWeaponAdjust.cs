@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class ResistanceWeaponAdjust : ExcelRow
     {
         
-        public ushort MaxTotalStats;
-        public ushort MaxEachStat;
-        public LazyRow< BaseParam >[] BaseParam;
-        public uint Image;
+        public ushort MaxTotalStats { get; set; }
+        public ushort MaxEachStat { get; set; }
+        public LazyRow< BaseParam >[] BaseParam { get; set; }
+        public uint Image { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

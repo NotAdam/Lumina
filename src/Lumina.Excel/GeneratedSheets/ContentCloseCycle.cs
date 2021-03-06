@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentCloseCycle : ExcelRow
     {
         
-        public uint Unixtime;
-        public uint TimeSeconds;
-        public uint Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public bool Unknown5;
-        public bool Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
-        public bool Unknown9;
-        public bool Unknown10;
-        public bool Unknown11;
-        public bool Unknown12;
+        public uint Unixtime { get; set; }
+        public uint TimeSeconds { get; set; }
+        public uint Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
+        public bool Unknown9 { get; set; }
+        public bool Unknown10 { get; set; }
+        public bool Unknown11 { get; set; }
+        public bool Unknown12 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

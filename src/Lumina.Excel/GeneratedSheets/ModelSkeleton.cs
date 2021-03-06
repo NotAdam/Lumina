@@ -10,25 +10,24 @@ namespace Lumina.Excel.GeneratedSheets
     public class ModelSkeleton : ExcelRow
     {
         
-        public float Radius;
-        public float Height;
-        public float VFXScale;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public ushort Unknown5;
-        public ushort Unknown6;
-        public ushort Unknown7;
-        public ushort Unknown8;
-        public ushort Unknown9;
-        public ushort Unknown10;
-        public float FloatHeight;
-        public float FloatDown;
-        public ushort FloatUp;
-        public byte Unknown14;
-        public bool MotionBlendType;
-        public byte LoopFlySE;
+        public float Radius { get; set; }
+        public float Height { get; set; }
+        public float VFXScale { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
+        public ushort Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
+        public ushort Unknown8 { get; set; }
+        public ushort Unknown9 { get; set; }
+        public ushort Unknown10 { get; set; }
+        public float FloatHeight { get; set; }
+        public float FloatDown { get; set; }
+        public ushort FloatUp { get; set; }
+        public byte Unknown14 { get; set; }
+        public bool MotionBlendType { get; set; }
+        public byte LoopFlySE { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class AetheryteSystemDefine : ExcelRow
     {
         
-        public SeString Text;
-        public uint DefineValue;
+        public SeString Text { get; set; }
+        public uint DefineValue { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

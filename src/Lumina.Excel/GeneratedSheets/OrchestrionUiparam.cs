@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class OrchestrionUiparam : ExcelRow
     {
         
-        public LazyRow< OrchestrionCategory > OrchestrionCategory;
-        public ushort Order;
+        public LazyRow< OrchestrionCategory > OrchestrionCategory { get; set; }
+        public ushort Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

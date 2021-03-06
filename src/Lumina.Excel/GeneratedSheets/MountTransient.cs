@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class MountTransient : ExcelRow
     {
         
-        public SeString Description;
-        public SeString DescriptionEnhanced;
-        public SeString Tooltip;
+        public SeString Description { get; set; }
+        public SeString DescriptionEnhanced { get; set; }
+        public SeString Tooltip { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceAbility : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public uint Icon;
-        public LazyRow< ChocoboRaceAbilityType > ChocoboRaceAbilityType;
-        public byte Value;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public uint Icon { get; set; }
+        public LazyRow< ChocoboRaceAbilityType > ChocoboRaceAbilityType { get; set; }
+        public byte Value { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,29 +10,28 @@ namespace Lumina.Excel.GeneratedSheets
     public class Aetheryte : ExcelRow
     {
         
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown5;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public LazyRow< PlaceName > PlaceName;
-        public LazyRow< PlaceName > AethernetName;
-        public LazyRow< TerritoryType > Territory;
-        public LazyRow< Level >[] Level;
-        public bool IsAetheryte;
-        public SeString Unknown16;
-        public byte AethernetGroup;
-        public bool Unknown18;
-        public LazyRow< Quest > RequiredQuest;
-        public LazyRow< Map > Map;
-        public short AetherstreamX;
-        public short AetherstreamY;
-        public byte Unknown23;
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public LazyRow< PlaceName > AethernetName { get; set; }
+        public LazyRow< TerritoryType > Territory { get; set; }
+        public LazyRow< Level >[] Level { get; set; }
+        public bool IsAetheryte { get; set; }
+        public SeString Unknown16 { get; set; }
+        public byte AethernetGroup { get; set; }
+        public bool Unknown18 { get; set; }
+        public LazyRow< Quest > RequiredQuest { get; set; }
+        public LazyRow< Map > Map { get; set; }
+        public short AetherstreamX { get; set; }
+        public short AetherstreamY { get; set; }
+        public byte Unknown23 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

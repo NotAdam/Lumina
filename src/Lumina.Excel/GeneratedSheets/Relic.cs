@@ -10,24 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public class Relic : ExcelRow
     {
         
-        public LazyRow< Item > ItemAtma;
-        public LazyRow< Item > ItemAnimus;
-        public int Icon;
-        public LazyRow< Materia > Materia0;
-        public LazyRow< RelicNote > NoteMain0;
-        public LazyRow< RelicNote > NoteSub0;
-        public LazyRow< RelicNote > NoteSelection10;
-        public LazyRow< Materia > Materia1;
-        public LazyRow< RelicNote > NoteMain1;
-        public LazyRow< RelicNote > NoteSub1;
-        public LazyRow< RelicNote > NoteSelection1;
-        public LazyRow< Materia > Materia2;
-        public LazyRow< RelicNote > NoteMain2;
-        public LazyRow< RelicNote > NoteSub2;
-        public LazyRow< Materia > Materia3;
-        public LazyRow< RelicNote > NoteSelection3;
+        public LazyRow< Item > ItemAtma { get; set; }
+        public LazyRow< Item > ItemAnimus { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< Materia > Materia0 { get; set; }
+        public LazyRow< RelicNote > NoteMain0 { get; set; }
+        public LazyRow< RelicNote > NoteSub0 { get; set; }
+        public LazyRow< RelicNote > NoteSelection10 { get; set; }
+        public LazyRow< Materia > Materia1 { get; set; }
+        public LazyRow< RelicNote > NoteMain1 { get; set; }
+        public LazyRow< RelicNote > NoteSub1 { get; set; }
+        public LazyRow< RelicNote > NoteSelection1 { get; set; }
+        public LazyRow< Materia > Materia2 { get; set; }
+        public LazyRow< RelicNote > NoteMain2 { get; set; }
+        public LazyRow< RelicNote > NoteSub2 { get; set; }
+        public LazyRow< Materia > Materia3 { get; set; }
+        public LazyRow< RelicNote > NoteSelection3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingMerchantPose : ExcelRow
     {
         
-        public LazyRow< ActionTimeline > ActionTimeline;
-        public SeString Pose;
+        public LazyRow< ActionTimeline > ActionTimeline { get; set; }
+        public SeString Pose { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

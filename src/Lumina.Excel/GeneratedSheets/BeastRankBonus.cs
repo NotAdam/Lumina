@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class BeastRankBonus : ExcelRow
     {
         
-        public ushort Neutral;
-        public ushort Recognized;
-        public ushort Friendly;
-        public ushort Trusted;
-        public ushort Respected;
-        public ushort Honored;
-        public ushort Sworn;
-        public ushort AlliedBloodsworn;
-        public LazyRow< Item > Item;
-        public byte[] ItemQuantity;
+        public ushort Neutral { get; set; }
+        public ushort Recognized { get; set; }
+        public ushort Friendly { get; set; }
+        public ushort Trusted { get; set; }
+        public ushort Respected { get; set; }
+        public ushort Honored { get; set; }
+        public ushort Sworn { get; set; }
+        public ushort AlliedBloodsworn { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public byte[] ItemQuantity { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

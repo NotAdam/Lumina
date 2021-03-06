@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGMSituation : ExcelRow
     {
         
-        public LazyRow< BGM > DaytimeID;
-        public LazyRow< BGM > NightID;
-        public LazyRow< BGM > BattleID;
-        public LazyRow< BGM > DaybreakID;
-        public LazyRow< BGM > TwilightID;
+        public LazyRow< BGM > DaytimeID { get; set; }
+        public LazyRow< BGM > NightID { get; set; }
+        public LazyRow< BGM > BattleID { get; set; }
+        public LazyRow< BGM > DaybreakID { get; set; }
+        public LazyRow< BGM > TwilightID { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

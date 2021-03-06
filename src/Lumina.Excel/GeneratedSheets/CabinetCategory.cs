@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class CabinetCategory : ExcelRow
     {
         
-        public byte MenuOrder;
-        public int Icon;
-        public LazyRow< Addon > Category;
+        public byte MenuOrder { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< Addon > Category { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

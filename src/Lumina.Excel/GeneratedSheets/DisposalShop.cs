@@ -10,26 +10,25 @@ namespace Lumina.Excel.GeneratedSheets
     public class DisposalShop : ExcelRow
     {
         
-        public SeString ShopName;
-        public int Unknown1;
-        public int Unknown2;
-        public int Unknown3;
-        public int Unknown4;
-        public int Unknown5;
-        public int Unknown6;
-        public int Unknown7;
-        public int Unknown8;
-        public ushort Unknown9;
-        public ushort Unknown10;
-        public ushort Unknown11;
-        public ushort Unknown12;
-        public ushort Unknown13;
-        public ushort Unknown14;
-        public ushort Unknown15;
-        public ushort Unknown16;
-        public bool Unknown17;
+        public SeString ShopName { get; set; }
+        public int Unknown1 { get; set; }
+        public int Unknown2 { get; set; }
+        public int Unknown3 { get; set; }
+        public int Unknown4 { get; set; }
+        public int Unknown5 { get; set; }
+        public int Unknown6 { get; set; }
+        public int Unknown7 { get; set; }
+        public int Unknown8 { get; set; }
+        public ushort Unknown9 { get; set; }
+        public ushort Unknown10 { get; set; }
+        public ushort Unknown11 { get; set; }
+        public ushort Unknown12 { get; set; }
+        public ushort Unknown13 { get; set; }
+        public ushort Unknown14 { get; set; }
+        public ushort Unknown15 { get; set; }
+        public ushort Unknown16 { get; set; }
+        public bool Unknown17 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

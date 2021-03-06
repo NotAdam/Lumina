@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class MYCTemporaryItem : ExcelRow
     {
         
-        public LazyRow< MYCTemporaryItemUICategory > Category;
-        public byte Type;
-        public LazyRow< Action > Action;
-        public byte Max;
-        public byte Weight;
-        public byte Order;
+        public LazyRow< MYCTemporaryItemUICategory > Category { get; set; }
+        public byte Type { get; set; }
+        public LazyRow< Action > Action { get; set; }
+        public byte Max { get; set; }
+        public byte Weight { get; set; }
+        public byte Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

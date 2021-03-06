@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class GCScripShopItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public LazyRow< GrandCompanyRank > RequiredGrandCompanyRank;
-        public uint CostGCSeals;
-        public byte SortKey;
+        public LazyRow< Item > Item { get; set; }
+        public LazyRow< GrandCompanyRank > RequiredGrandCompanyRank { get; set; }
+        public uint CostGCSeals { get; set; }
+        public byte SortKey { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

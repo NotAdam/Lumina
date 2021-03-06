@@ -10,24 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public class PublicContent : ExcelRow
     {
         
-        public byte Type;
-        public ushort TimeLimit;
-        public uint MapIcon;
-        public SeString Name;
-        public LazyRow< PublicContentTextData > TextDataStart;
-        public LazyRow< PublicContentTextData > TextDataEnd;
-        public ushort Unknown6;
-        public uint Unknown7;
-        public uint Unknown8;
-        public LazyRow< ContentFinderCondition > ContentFinderCondition;
-        public ushort AdditionalData;
-        public byte Unknown11;
-        public ushort Unknown12;
-        public int Unknown540;
-        public ushort Unknown541;
-        public ushort Unknown542;
+        public byte Type { get; set; }
+        public ushort TimeLimit { get; set; }
+        public uint MapIcon { get; set; }
+        public SeString Name { get; set; }
+        public LazyRow< PublicContentTextData > TextDataStart { get; set; }
+        public LazyRow< PublicContentTextData > TextDataEnd { get; set; }
+        public ushort Unknown6 { get; set; }
+        public uint Unknown7 { get; set; }
+        public uint Unknown8 { get; set; }
+        public LazyRow< ContentFinderCondition > ContentFinderCondition { get; set; }
+        public ushort AdditionalData { get; set; }
+        public byte Unknown11 { get; set; }
+        public ushort Unknown12 { get; set; }
+        public int Unknown540 { get; set; }
+        public ushort Unknown541 { get; set; }
+        public ushort Unknown542 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

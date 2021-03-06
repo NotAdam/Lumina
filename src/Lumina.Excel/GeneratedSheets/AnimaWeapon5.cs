@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class AnimaWeapon5 : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public byte Unknown1;
-        public byte SecondaryStatTotal;
-        public LazyRow< AnimaWeapon5Param >[] Parameter;
+        public LazyRow< Item > Item { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte SecondaryStatTotal { get; set; }
+        public LazyRow< AnimaWeapon5Param >[] Parameter { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

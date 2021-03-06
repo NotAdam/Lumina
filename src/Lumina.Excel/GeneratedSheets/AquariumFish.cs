@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class AquariumFish : ExcelRow
     {
         
-        public LazyRow< AquariumWater > AquariumWater;
-        public byte Size;
-        public LazyRow< Item > Item;
-        public ushort Unknown3;
+        public LazyRow< AquariumWater > AquariumWater { get; set; }
+        public byte Size { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public ushort Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class FateProgressUI : ExcelRow
     {
         
-        public LazyRow< TerritoryType > Location;
-        public LazyRow< Achievement > Achievement;
-        public byte ReqFatesToRank2;
-        public byte ReqFatesToRank3;
-        public byte DisplayOrder;
+        public LazyRow< TerritoryType > Location { get; set; }
+        public LazyRow< Achievement > Achievement { get; set; }
+        public byte ReqFatesToRank2 { get; set; }
+        public byte ReqFatesToRank3 { get; set; }
+        public byte DisplayOrder { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

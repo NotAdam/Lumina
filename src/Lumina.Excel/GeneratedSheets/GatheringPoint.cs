@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringPoint : ExcelRow
     {
         
-        public byte Type;
-        public LazyRow< GatheringPointBase > GatheringPointBase;
-        public byte Count;
-        public LazyRow< GatheringPointBonus >[] GatheringPointBonus;
-        public LazyRow< TerritoryType > TerritoryType;
-        public LazyRow< PlaceName > PlaceName;
-        public LazyRow< GatheringSubCategory > GatheringSubCategory;
+        public byte Type { get; set; }
+        public LazyRow< GatheringPointBase > GatheringPointBase { get; set; }
+        public byte Count { get; set; }
+        public LazyRow< GatheringPointBonus >[] GatheringPointBonus { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public LazyRow< GatheringSubCategory > GatheringSubCategory { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

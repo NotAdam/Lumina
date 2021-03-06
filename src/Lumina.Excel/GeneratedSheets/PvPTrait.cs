@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class PvPTrait : ExcelRow
     {
         
-        public LazyRow< Trait > Trait1;
-        public LazyRow< Trait > Trait2;
-        public LazyRow< Trait > Trait3;
+        public LazyRow< Trait > Trait1 { get; set; }
+        public LazyRow< Trait > Trait2 { get; set; }
+        public LazyRow< Trait > Trait3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

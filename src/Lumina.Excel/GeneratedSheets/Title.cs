@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class Title : ExcelRow
     {
         
-        public SeString Masculine;
-        public SeString Feminine;
-        public bool IsPrefix;
-        public ushort Order;
+        public SeString Masculine { get; set; }
+        public SeString Feminine { get; set; }
+        public bool IsPrefix { get; set; }
+        public ushort Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class CustomTalkNestHandlers : ExcelRow
     {
         
-        public uint NestHandler;
+        public uint NestHandler { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

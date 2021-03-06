@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class GardeningSeed : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public ushort ModelID;
-        public uint Icon;
-        public bool SE;
-        public bool Unknown4;
-        public byte Unknown5;
+        public LazyRow< Item > Item { get; set; }
+        public ushort ModelID { get; set; }
+        public uint Icon { get; set; }
+        public bool SE { get; set; }
+        public bool Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

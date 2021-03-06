@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class RetainerTaskRandom : ExcelRow
     {
         
-        public SeString Name;
-        public short Requirement;
+        public SeString Name { get; set; }
+        public short Requirement { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

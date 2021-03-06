@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class MacroIconRedirectOld : ExcelRow
     {
         
-        public uint IconOld;
-        public int IconNew;
+        public uint IconOld { get; set; }
+        public int IconNew { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

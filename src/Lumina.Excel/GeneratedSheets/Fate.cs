@@ -10,45 +10,44 @@ namespace Lumina.Excel.GeneratedSheets
     public class Fate : ExcelRow
     {
         
-        public byte EurekaFate;
-        public byte Rule;
-        public ushort FateRuleEx;
-        public uint Location;
-        public byte ClassJobLevel;
-        public byte ClassJobLevelMax;
-        public LazyRow< EventItem > EventItem;
-        public byte[] TypeToDoValue;
-        public uint IconObjective;
-        public uint IconMap;
-        public uint IconInactiveMap;
-        public LazyRow< BGM > Music;
-        public uint LGBGuardNPCLocation;
-        public LazyRow< ScreenImage > ScreenImageAccept;
-        public LazyRow< ScreenImage > ScreenImageComplete;
-        public LazyRow< ScreenImage > ScreenImageFailed;
-        public byte Unknown18;
-        public uint Unknown19;
-        public bool SpecialFate;
-        public bool Unknown21;
-        public LazyRow< Status > GivenStatus;
-        public ushort Unknown23;
-        public bool AdventEvent;
-        public bool MoonFaireEvent;
-        public bool Unknown26;
-        public uint FATEChain;
-        public byte Unknown28;
-        public ushort Unknown29;
-        public SeString Name;
-        public SeString Description;
-        public SeString Objective;
-        public SeString[] StatusText;
-        public LazyRow< ArrayEventHandler > ArrayIndex;
-        public uint Unknown37;
-        public LazyRow< EventItem > ReqEventItem;
-        public LazyRow< EventItem > TurnInEventItem;
-        public ushort[] ObjectiveIcon;
+        public byte EurekaFate { get; set; }
+        public byte Rule { get; set; }
+        public ushort FateRuleEx { get; set; }
+        public uint Location { get; set; }
+        public byte ClassJobLevel { get; set; }
+        public byte ClassJobLevelMax { get; set; }
+        public LazyRow< EventItem > EventItem { get; set; }
+        public byte[] TypeToDoValue { get; set; }
+        public uint IconObjective { get; set; }
+        public uint IconMap { get; set; }
+        public uint IconInactiveMap { get; set; }
+        public LazyRow< BGM > Music { get; set; }
+        public uint LGBGuardNPCLocation { get; set; }
+        public LazyRow< ScreenImage > ScreenImageAccept { get; set; }
+        public LazyRow< ScreenImage > ScreenImageComplete { get; set; }
+        public LazyRow< ScreenImage > ScreenImageFailed { get; set; }
+        public byte Unknown18 { get; set; }
+        public uint Unknown19 { get; set; }
+        public bool SpecialFate { get; set; }
+        public bool Unknown21 { get; set; }
+        public LazyRow< Status > GivenStatus { get; set; }
+        public ushort Unknown23 { get; set; }
+        public bool AdventEvent { get; set; }
+        public bool MoonFaireEvent { get; set; }
+        public bool Unknown26 { get; set; }
+        public uint FATEChain { get; set; }
+        public byte Unknown28 { get; set; }
+        public ushort Unknown29 { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public SeString Objective { get; set; }
+        public SeString[] StatusText { get; set; }
+        public LazyRow< ArrayEventHandler > ArrayIndex { get; set; }
+        public uint Unknown37 { get; set; }
+        public LazyRow< EventItem > ReqEventItem { get; set; }
+        public LazyRow< EventItem > TurnInEventItem { get; set; }
+        public ushort[] ObjectiveIcon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

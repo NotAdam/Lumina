@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class GoldSaucerTextData : ExcelRow
     {
         
-        public SeString Text;
+        public SeString Text { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,26 +10,25 @@ namespace Lumina.Excel.GeneratedSheets
     public class EventItem : ExcelRow
     {
         
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown5;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public bool Unknown8;
-        public SeString Name;
-        public ushort Icon;
-        public LazyRow< Action > Action;
-        public byte StackSize;
-        public byte Unknown13;
-        public LazyRow< Quest > Quest;
-        public byte CastTime;
-        public LazyRow< EventItemCastTimeline > CastTimeline;
-        public byte Timeline;
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public bool Unknown8 { get; set; }
+        public SeString Name { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< Action > Action { get; set; }
+        public byte StackSize { get; set; }
+        public byte Unknown13 { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public byte CastTime { get; set; }
+        public LazyRow< EventItemCastTimeline > CastTimeline { get; set; }
+        public byte Timeline { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

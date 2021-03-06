@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class GrandCompanyRank : ExcelRow
     {
         
-        public byte Tier;
-        public byte Order;
-        public uint MaxSeals;
-        public uint RequiredSeals;
-        public int IconMaelstrom;
-        public int IconSerpents;
-        public int IconFlames;
-        public LazyRow< Quest > QuestMaelstrom;
-        public LazyRow< Quest > QuestSerpents;
-        public LazyRow< Quest > QuestFlames;
-        public byte Unknown10;
+        public byte Tier { get; set; }
+        public byte Order { get; set; }
+        public uint MaxSeals { get; set; }
+        public uint RequiredSeals { get; set; }
+        public int IconMaelstrom { get; set; }
+        public int IconSerpents { get; set; }
+        public int IconFlames { get; set; }
+        public LazyRow< Quest > QuestMaelstrom { get; set; }
+        public LazyRow< Quest > QuestSerpents { get; set; }
+        public LazyRow< Quest > QuestFlames { get; set; }
+        public byte Unknown10 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

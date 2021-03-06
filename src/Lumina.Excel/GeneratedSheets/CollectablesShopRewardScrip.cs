@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class CollectablesShopRewardScrip : ExcelRow
     {
         
-        public ushort Currency;
-        public ushort LowReward;
-        public ushort MidReward;
-        public ushort HighReward;
-        public ushort ExpRatioLow;
-        public ushort ExpRatioMid;
-        public ushort ExpRatioHigh;
+        public ushort Currency { get; set; }
+        public ushort LowReward { get; set; }
+        public ushort MidReward { get; set; }
+        public ushort HighReward { get; set; }
+        public ushort ExpRatioLow { get; set; }
+        public ushort ExpRatioMid { get; set; }
+        public ushort ExpRatioHigh { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

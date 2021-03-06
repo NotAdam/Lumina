@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class DpsChallengeTransient : ExcelRow
     {
         
-        public LazyRow< InstanceContent > InstanceContent;
+        public LazyRow< InstanceContent > InstanceContent { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

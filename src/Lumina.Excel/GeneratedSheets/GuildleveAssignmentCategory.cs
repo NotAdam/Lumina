@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuildleveAssignmentCategory : ExcelRow
     {
         
-        public LazyRow< LeveAssignmentType >[] Category;
+        public LazyRow< LeveAssignmentType >[] Category { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class Relic3 : ExcelRow
     {
         
-        public LazyRow< Item > ItemAnimus;
-        public LazyRow< Item > ItemScroll;
-        public byte MateriaLimit;
-        public LazyRow< Item > ItemNovus;
-        public int Icon;
-        public sbyte Unknown5;
+        public LazyRow< Item > ItemAnimus { get; set; }
+        public LazyRow< Item > ItemScroll { get; set; }
+        public byte MateriaLimit { get; set; }
+        public LazyRow< Item > ItemNovus { get; set; }
+        public int Icon { get; set; }
+        public sbyte Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

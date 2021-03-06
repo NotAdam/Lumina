@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCRank : ExcelRow
     {
         
-        public uint NextPoint;
-        public uint CurrentPoint;
-        public ushort Rights;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public byte FCActionActiveNum;
-        public byte FCActionStockNum;
-        public byte Unknown7;
+        public uint NextPoint { get; set; }
+        public uint CurrentPoint { get; set; }
+        public ushort Rights { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public byte FCActionActiveNum { get; set; }
+        public byte FCActionStockNum { get; set; }
+        public byte Unknown7 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

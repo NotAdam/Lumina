@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class MovieSubtitle : ExcelRow
     {
         
-        public float StartTime;
-        public float EndTime;
+        public float StartTime { get; set; }
+        public float EndTime { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

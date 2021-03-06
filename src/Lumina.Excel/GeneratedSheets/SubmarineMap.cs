@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class SubmarineMap : ExcelRow
     {
         
-        public SeString Name;
-        public uint Image;
+        public SeString Name { get; set; }
+        public uint Image { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

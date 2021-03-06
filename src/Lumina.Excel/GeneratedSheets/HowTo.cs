@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class HowTo : ExcelRow
     {
         
-        public SeString Unknown0;
-        public bool Unknown1;
-        public LazyRow< HowToPage >[] Images;
-        public LazyRow< HowToCategory > Category;
-        public byte Unknown13;
+        public SeString Unknown0 { get; set; }
+        public bool Unknown1 { get; set; }
+        public LazyRow< HowToPage >[] Images { get; set; }
+        public LazyRow< HowToCategory > Category { get; set; }
+        public byte Unknown13 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionIndirection : ExcelRow
     {
         
-        public LazyRow< Action > Name;
-        public sbyte Unknown1;
+        public LazyRow< Action > Name { get; set; }
+        public sbyte Unknown1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

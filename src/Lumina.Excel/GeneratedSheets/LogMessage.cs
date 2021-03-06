@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class LogMessage : ExcelRow
     {
         
-        public ushort LogKind;
-        public ushort Unknown1;
-        public byte Unknown2;
-        public bool Unknown3;
-        public SeString Text;
+        public ushort LogKind { get; set; }
+        public ushort Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public SeString Text { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

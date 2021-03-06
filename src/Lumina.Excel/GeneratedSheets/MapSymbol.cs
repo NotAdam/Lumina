@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class MapSymbol : ExcelRow
     {
         
-        public int Icon;
-        public LazyRow< PlaceName > PlaceName;
-        public bool DisplayNavi;
+        public int Icon { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public bool DisplayNavi { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

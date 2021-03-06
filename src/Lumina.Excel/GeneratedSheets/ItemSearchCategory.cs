@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class ItemSearchCategory : ExcelRow
     {
         
-        public SeString Name;
-        public int Icon;
-        public byte Category;
-        public byte Order;
-        public LazyRow< ClassJob > ClassJob;
+        public SeString Name { get; set; }
+        public int Icon { get; set; }
+        public byte Category { get; set; }
+        public byte Order { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

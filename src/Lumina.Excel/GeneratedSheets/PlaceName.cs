@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class PlaceName : ExcelRow
     {
         
-        public SeString Name;
-        public sbyte Unknown1;
-        public SeString NameNoArticle;
-        public sbyte Unknown3;
-        public sbyte Unknown4;
-        public sbyte Unknown5;
-        public sbyte Unknown6;
-        public sbyte Unknown7;
-        public SeString Unknown8;
-        public byte Unknown9;
+        public SeString Name { get; set; }
+        public sbyte Unknown1 { get; set; }
+        public SeString NameNoArticle { get; set; }
+        public sbyte Unknown3 { get; set; }
+        public sbyte Unknown4 { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Unknown6 { get; set; }
+        public sbyte Unknown7 { get; set; }
+        public SeString Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

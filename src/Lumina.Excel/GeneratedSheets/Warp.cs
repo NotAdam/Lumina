@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class Warp : ExcelRow
     {
         
-        public LazyRow< Level > PopRange;
-        public LazyRow< TerritoryType > TerritoryType;
-        public LazyRow< DefaultTalk > ConditionSuccessEvent;
-        public LazyRow< DefaultTalk > ConditionFailEvent;
-        public LazyRow< DefaultTalk > ConfirmEvent;
-        public LazyRow< WarpCondition > WarpCondition;
-        public LazyRow< WarpLogic > WarpLogic;
-        public LazyRow< Cutscene > StartCutscene;
-        public LazyRow< Cutscene > EndCutscene;
-        public bool CanSkipCutscene;
-        public SeString Name;
-        public SeString Question;
+        public LazyRow< Level > PopRange { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public LazyRow< DefaultTalk > ConditionSuccessEvent { get; set; }
+        public LazyRow< DefaultTalk > ConditionFailEvent { get; set; }
+        public LazyRow< DefaultTalk > ConfirmEvent { get; set; }
+        public LazyRow< WarpCondition > WarpCondition { get; set; }
+        public LazyRow< WarpLogic > WarpLogic { get; set; }
+        public LazyRow< Cutscene > StartCutscene { get; set; }
+        public LazyRow< Cutscene > EndCutscene { get; set; }
+        public bool CanSkipCutscene { get; set; }
+        public SeString Name { get; set; }
+        public SeString Question { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class StatusHitEffect : ExcelRow
     {
         
-        public LazyRow< VFX > Location;
+        public LazyRow< VFX > Location { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

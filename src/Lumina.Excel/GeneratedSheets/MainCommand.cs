@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class MainCommand : ExcelRow
     {
         
-        public int Icon;
-        public byte Category;
-        public LazyRow< MainCommandCategory > MainCommandCategory;
-        public sbyte SortID;
-        public SeString Name;
-        public SeString Description;
+        public int Icon { get; set; }
+        public byte Category { get; set; }
+        public LazyRow< MainCommandCategory > MainCommandCategory { get; set; }
+        public sbyte SortID { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

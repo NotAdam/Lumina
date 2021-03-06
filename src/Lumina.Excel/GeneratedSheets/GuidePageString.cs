@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuidePageString : ExcelRow
     {
         
-        public SeString String;
+        public SeString String { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

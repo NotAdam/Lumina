@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class SwitchTalk : ExcelRow
     {
         
-        public uint Unknown0;
-        public bool Unknown1;
+        public uint Unknown0 { get; set; }
+        public bool Unknown1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

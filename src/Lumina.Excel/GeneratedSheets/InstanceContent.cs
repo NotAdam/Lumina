@@ -26,55 +26,54 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort BossCurrencyC;
         }
         
-        public byte InstanceContentType;
-        public byte WeekRestriction;
-        public ushort TimeLimitmin;
-        public bool Unknown3;
-        public LazyRow< BGM > BGM;
-        public LazyRow< BGM > WinBGM;
-        public LazyRow< Cutscene > Cutscene;
-        public uint Unknown7;
-        public ushort Order;
-        public byte Colosseum;
-        public bool Unknown10;
-        public LazyRow< InstanceContentTextData > InstanceContentTextDataBossStart;
-        public LazyRow< InstanceContentTextData > InstanceContentTextDataBossEnd;
-        public LazyRow< BNpcBase > BNpcBaseBoss;
-        public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveStart;
-        public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveEnd;
-        public ushort SortKey;
-        public uint InstanceClearExp;
-        public uint Unknown18;
-        public ushort NewPlayerBonusA;
-        public ushort FinalBossCurrencyC;
-        public uint Unknown21;
-        public uint FinalBossCurrencyA;
-        public ushort FinalBossCurrencyB;
-        public ushort NewPlayerBonusB;
-        public UnkStruct25Struct[] UnkStruct25;
-        public UnkStruct30Struct[] UnkStruct30;
-        public UnkStruct35Struct[] UnkStruct35;
-        public UnkStruct40Struct[] UnkStruct40;
-        public ushort Unknown45;
-        public uint InstanceClearGil;
-        public uint InstanceContentRewardItem;
-        public uint Unknown48;
-        public byte FinalBossExp;
-        public LazyRow< InstanceContentBuff > InstanceContentBuff;
-        public LazyRow< InstanceContent > ReqInstance;
-        public uint Unknown52;
-        public short PartyCondition;
-        public byte Unknown54;
-        public byte Unknown55;
-        public byte Unknown56;
-        public byte Unknown57;
-        public bool Unknown58;
-        public ushort Unknown59;
-        public ushort Unknown60;
-        public ushort Unknown540;
-        public ushort Unknown541;
+        public byte InstanceContentType { get; set; }
+        public byte WeekRestriction { get; set; }
+        public ushort TimeLimitmin { get; set; }
+        public bool Unknown3 { get; set; }
+        public LazyRow< BGM > BGM { get; set; }
+        public LazyRow< BGM > WinBGM { get; set; }
+        public LazyRow< Cutscene > Cutscene { get; set; }
+        public uint Unknown7 { get; set; }
+        public ushort Order { get; set; }
+        public byte Colosseum { get; set; }
+        public bool Unknown10 { get; set; }
+        public LazyRow< InstanceContentTextData > InstanceContentTextDataBossStart { get; set; }
+        public LazyRow< InstanceContentTextData > InstanceContentTextDataBossEnd { get; set; }
+        public LazyRow< BNpcBase > BNpcBaseBoss { get; set; }
+        public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveStart { get; set; }
+        public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveEnd { get; set; }
+        public ushort SortKey { get; set; }
+        public uint InstanceClearExp { get; set; }
+        public uint Unknown18 { get; set; }
+        public ushort NewPlayerBonusA { get; set; }
+        public ushort FinalBossCurrencyC { get; set; }
+        public uint Unknown21 { get; set; }
+        public uint FinalBossCurrencyA { get; set; }
+        public ushort FinalBossCurrencyB { get; set; }
+        public ushort NewPlayerBonusB { get; set; }
+        public UnkStruct25Struct[] UnkStruct25 { get; set; }
+        public UnkStruct30Struct[] UnkStruct30 { get; set; }
+        public UnkStruct35Struct[] UnkStruct35 { get; set; }
+        public UnkStruct40Struct[] UnkStruct40 { get; set; }
+        public ushort Unknown45 { get; set; }
+        public uint InstanceClearGil { get; set; }
+        public uint InstanceContentRewardItem { get; set; }
+        public uint Unknown48 { get; set; }
+        public byte FinalBossExp { get; set; }
+        public LazyRow< InstanceContentBuff > InstanceContentBuff { get; set; }
+        public LazyRow< InstanceContent > ReqInstance { get; set; }
+        public uint Unknown52 { get; set; }
+        public short PartyCondition { get; set; }
+        public byte Unknown54 { get; set; }
+        public byte Unknown55 { get; set; }
+        public byte Unknown56 { get; set; }
+        public byte Unknown57 { get; set; }
+        public bool Unknown58 { get; set; }
+        public ushort Unknown59 { get; set; }
+        public ushort Unknown60 { get; set; }
+        public ushort Unknown540 { get; set; }
+        public ushort Unknown541 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

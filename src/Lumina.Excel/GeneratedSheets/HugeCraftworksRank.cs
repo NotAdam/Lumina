@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class HugeCraftworksRank : ExcelRow
     {
         
-        public byte CrafterLevel;
-        public uint ExpRewardPerItem;
-        public byte Unknown2;
+        public byte CrafterLevel { get; set; }
+        public uint ExpRewardPerItem { get; set; }
+        public byte Unknown2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

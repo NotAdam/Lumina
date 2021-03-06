@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class FishingRecordTypeTransient : ExcelRow
     {
         
-        public int Image;
+        public int Image { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

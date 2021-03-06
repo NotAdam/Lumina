@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class Cutscene : ExcelRow
     {
         
-        public SeString Path;
-        public byte Unknown1;
-        public byte Unknown2;
-        public bool Unknown3;
-        public int Unknown4;
-        public int Unknown5;
-        public int Unknown6;
-        public int Unknown7;
+        public SeString Path { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public int Unknown4 { get; set; }
+        public int Unknown5 { get; set; }
+        public int Unknown6 { get; set; }
+        public int Unknown7 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

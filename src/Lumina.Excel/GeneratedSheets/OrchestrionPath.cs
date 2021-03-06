@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class OrchestrionPath : ExcelRow
     {
         
-        public SeString File;
+        public SeString File { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

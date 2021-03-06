@@ -10,74 +10,73 @@ namespace Lumina.Excel.GeneratedSheets
     public class Action : ExcelRow
     {
         
-        public SeString Name;
-        public bool Unknown1;
-        public ushort Icon;
-        public LazyRow< ActionCategory > ActionCategory;
-        public byte Unknown4;
-        public LazyRow< ActionCastTimeline > AnimationStart;
-        public LazyRow< ActionCastVFX > VFX;
-        public LazyRow< ActionTimeline > AnimationEnd;
-        public LazyRow< ActionTimeline > ActionTimelineHit;
-        public byte Unknown9;
-        public LazyRow< ClassJob > ClassJob;
-        public byte BehaviourType;
-        public byte ClassJobLevel;
-        public bool IsRoleAction;
-        public sbyte Range;
-        public bool CanTargetSelf;
-        public bool CanTargetParty;
-        public bool CanTargetFriendly;
-        public bool CanTargetHostile;
-        public bool Unknown19;
-        public bool Unknown20;
-        public bool TargetArea;
-        public bool Unknown22;
-        public bool Unknown23;
-        public sbyte Unknown24;
-        public bool CanTargetDead;
-        public bool Unknown26;
-        public byte CastType;
-        public byte EffectRange;
-        public byte XAxisModifier;
-        public bool Unknown30;
-        public byte PrimaryCostType;
-        public ushort PrimaryCostValue;
-        public byte SecondaryCostType;
-        public ushort SecondaryCostValue;
-        public LazyRow< Action > ActionCombo;
-        public bool PreservesCombo;
-        public ushort Cast100ms;
-        public ushort Recast100ms;
-        public byte CooldownGroup;
-        public byte Unknown40;
-        public byte MaxCharges;
-        public LazyRow< AttackType > AttackType;
-        public byte Aspect;
-        public LazyRow< ActionProcStatus > ActionProcStatus;
-        public byte Unknown45;
-        public LazyRow< Status > StatusGainSelf;
-        public uint UnlockLink;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public byte Unknown49;
-        public bool Unknown50;
-        public bool AffectsPosition;
-        public LazyRow< Omen > Omen;
-        public bool IsPvP;
-        public bool Unknown54;
-        public bool Unknown55;
-        public bool Unknown56;
-        public bool Unknown57;
-        public bool Unknown58;
-        public bool Unknown59;
-        public bool Unknown60;
-        public bool Unknown61;
-        public byte Unknown62;
-        public bool Unknown63;
-        public bool Unknown64;
-        public bool IsPlayerAction;
+        public SeString Name { get; set; }
+        public bool Unknown1 { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< ActionCategory > ActionCategory { get; set; }
+        public byte Unknown4 { get; set; }
+        public LazyRow< ActionCastTimeline > AnimationStart { get; set; }
+        public LazyRow< ActionCastVFX > VFX { get; set; }
+        public LazyRow< ActionTimeline > AnimationEnd { get; set; }
+        public LazyRow< ActionTimeline > ActionTimelineHit { get; set; }
+        public byte Unknown9 { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public byte BehaviourType { get; set; }
+        public byte ClassJobLevel { get; set; }
+        public bool IsRoleAction { get; set; }
+        public sbyte Range { get; set; }
+        public bool CanTargetSelf { get; set; }
+        public bool CanTargetParty { get; set; }
+        public bool CanTargetFriendly { get; set; }
+        public bool CanTargetHostile { get; set; }
+        public bool Unknown19 { get; set; }
+        public bool Unknown20 { get; set; }
+        public bool TargetArea { get; set; }
+        public bool Unknown22 { get; set; }
+        public bool Unknown23 { get; set; }
+        public sbyte Unknown24 { get; set; }
+        public bool CanTargetDead { get; set; }
+        public bool Unknown26 { get; set; }
+        public byte CastType { get; set; }
+        public byte EffectRange { get; set; }
+        public byte XAxisModifier { get; set; }
+        public bool Unknown30 { get; set; }
+        public byte PrimaryCostType { get; set; }
+        public ushort PrimaryCostValue { get; set; }
+        public byte SecondaryCostType { get; set; }
+        public ushort SecondaryCostValue { get; set; }
+        public LazyRow< Action > ActionCombo { get; set; }
+        public bool PreservesCombo { get; set; }
+        public ushort Cast100ms { get; set; }
+        public ushort Recast100ms { get; set; }
+        public byte CooldownGroup { get; set; }
+        public byte Unknown40 { get; set; }
+        public byte MaxCharges { get; set; }
+        public LazyRow< AttackType > AttackType { get; set; }
+        public byte Aspect { get; set; }
+        public LazyRow< ActionProcStatus > ActionProcStatus { get; set; }
+        public byte Unknown45 { get; set; }
+        public LazyRow< Status > StatusGainSelf { get; set; }
+        public uint UnlockLink { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public byte Unknown49 { get; set; }
+        public bool Unknown50 { get; set; }
+        public bool AffectsPosition { get; set; }
+        public LazyRow< Omen > Omen { get; set; }
+        public bool IsPvP { get; set; }
+        public bool Unknown54 { get; set; }
+        public bool Unknown55 { get; set; }
+        public bool Unknown56 { get; set; }
+        public bool Unknown57 { get; set; }
+        public bool Unknown58 { get; set; }
+        public bool Unknown59 { get; set; }
+        public bool Unknown60 { get; set; }
+        public bool Unknown61 { get; set; }
+        public byte Unknown62 { get; set; }
+        public bool Unknown63 { get; set; }
+        public bool Unknown64 { get; set; }
+        public bool IsPlayerAction { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

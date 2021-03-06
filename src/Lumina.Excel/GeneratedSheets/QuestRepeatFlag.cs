@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestRepeatFlag : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
+        public LazyRow< Quest > Quest { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class IKDSpot : ExcelRow
     {
         
-        public LazyRow< FishingSpot > SpotMain;
-        public LazyRow< FishingSpot > SpotSub;
-        public LazyRow< PlaceName > PlaceName;
+        public LazyRow< FishingSpot > SpotMain { get; set; }
+        public LazyRow< FishingSpot > SpotSub { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

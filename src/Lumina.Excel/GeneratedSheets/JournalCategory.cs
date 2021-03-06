@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class JournalCategory : ExcelRow
     {
         
-        public SeString Name;
-        public byte SeparateType;
-        public byte DataType;
-        public LazyRow< JournalSection > JournalSection;
+        public SeString Name { get; set; }
+        public byte SeparateType { get; set; }
+        public byte DataType { get; set; }
+        public LazyRow< JournalSection > JournalSection { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

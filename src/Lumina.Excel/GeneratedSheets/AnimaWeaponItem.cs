@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class AnimaWeaponItem : ExcelRow
     {
         
-        public LazyRow< Item >[] Item;
+        public LazyRow< Item >[] Item { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

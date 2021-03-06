@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class DpsChallenge : ExcelRow
     {
         
-        public ushort PlayerLevel;
-        public LazyRow< PlaceName > PlaceName;
-        public uint Icon;
-        public ushort Order;
-        public SeString Name;
-        public SeString Description;
+        public ushort PlayerLevel { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public uint Icon { get; set; }
+        public ushort Order { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class DeepDungeonDanger : ExcelRow
     {
         
-        public LazyRow< ScreenImage > ScreenImage;
-        public LazyRow< LogMessage > LogMessage;
-        public LazyRow< DeepDungeonFloorEffectUI > Name;
+        public LazyRow< ScreenImage > ScreenImage { get; set; }
+        public LazyRow< LogMessage > LogMessage { get; set; }
+        public LazyRow< DeepDungeonFloorEffectUI > Name { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

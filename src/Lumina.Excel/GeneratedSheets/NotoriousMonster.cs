@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class NotoriousMonster : ExcelRow
     {
         
-        public LazyRow< BNpcBase > BNpcBase;
-        public byte Rank;
-        public LazyRow< BNpcName > BNpcName;
-        public ushort Unknown3;
+        public LazyRow< BNpcBase > BNpcBase { get; set; }
+        public byte Rank { get; set; }
+        public LazyRow< BNpcName > BNpcName { get; set; }
+        public ushort Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

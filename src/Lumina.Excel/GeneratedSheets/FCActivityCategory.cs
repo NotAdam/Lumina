@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCActivityCategory : ExcelRow
     {
         
-        public byte Priority;
-        public SeString Name;
+        public byte Priority { get; set; }
+        public SeString Name { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

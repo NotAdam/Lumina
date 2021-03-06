@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class BehaviorPath : ExcelRow
     {
         
-        public bool IsTurnTransition;
-        public bool IsFadeOut;
-        public bool IsFadeIn;
-        public bool IsWalking;
-        public bool Unknown4;
-        public float Speed;
+        public bool IsTurnTransition { get; set; }
+        public bool IsFadeOut { get; set; }
+        public bool IsFadeIn { get; set; }
+        public bool IsWalking { get; set; }
+        public bool Unknown4 { get; set; }
+        public float Speed { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class MotionTimelineBlendTable : ExcelRow
     {
         
-        public byte DestBlendGroup;
-        public byte SrcBlendGroup;
-        public byte BlendFrame_PC;
-        public byte BlendFram_TypeA;
-        public byte BlendFram_TypeB;
-        public byte BlendFram_TypeC;
+        public byte DestBlendGroup { get; set; }
+        public byte SrcBlendGroup { get; set; }
+        public byte BlendFrame_PC { get; set; }
+        public byte BlendFram_TypeA { get; set; }
+        public byte BlendFram_TypeB { get; set; }
+        public byte BlendFram_TypeC { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

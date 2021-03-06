@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class CustomTalkDynamicIcon : ExcelRow
     {
         
-        public uint SmallIcon;
-        public uint LargeIcon;
+        public uint SmallIcon { get; set; }
+        public uint LargeIcon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

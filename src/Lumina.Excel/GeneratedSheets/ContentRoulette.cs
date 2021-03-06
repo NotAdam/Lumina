@@ -10,48 +10,47 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentRoulette : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Category;
-        public SeString Unknown2;
-        public SeString Description;
-        public SeString DutyType;
-        public byte Unknown5;
-        public uint Unknown6;
-        public bool Unknown7;
-        public bool IsInDutyFinder;
-        public LazyRow< ContentRouletteOpenRule > OpenRule;
-        public bool Unknown10;
-        public byte RequiredLevel;
-        public byte Unknown12;
-        public ushort ItemLevelRequired;
-        public ushort Unknown14;
-        public uint Icon;
-        public LazyRow< ContentRouletteRoleBonus > ContentRouletteRoleBonus;
-        public ushort RewardTomeA;
-        public ushort RewardTomeB;
-        public ushort RewardTomeC;
-        public uint Unknown20;
-        public ushort Unknown21;
-        public byte SortKey;
-        public byte Unknown23;
-        public LazyRow< ContentMemberType > ContentMemberType;
-        public byte Unknown25;
-        public byte Unknown26;
-        public sbyte Unknown27;
-        public byte Unknown28;
-        public byte Unknown29;
-        public byte Unknown30;
-        public byte Unknown31;
-        public bool Unknown32;
-        public bool Unknown33;
-        public bool RequireAllDuties;
-        public bool Unknown35;
-        public byte ContentRouletteOpenRule;
-        public LazyRow< InstanceContent > InstanceContent;
-        public bool Unknown38;
-        public byte Unknown39;
+        public SeString Name { get; set; }
+        public SeString Category { get; set; }
+        public SeString Unknown2 { get; set; }
+        public SeString Description { get; set; }
+        public SeString DutyType { get; set; }
+        public byte Unknown5 { get; set; }
+        public uint Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool IsInDutyFinder { get; set; }
+        public LazyRow< ContentRouletteOpenRule > OpenRule { get; set; }
+        public bool Unknown10 { get; set; }
+        public byte RequiredLevel { get; set; }
+        public byte Unknown12 { get; set; }
+        public ushort ItemLevelRequired { get; set; }
+        public ushort Unknown14 { get; set; }
+        public uint Icon { get; set; }
+        public LazyRow< ContentRouletteRoleBonus > ContentRouletteRoleBonus { get; set; }
+        public ushort RewardTomeA { get; set; }
+        public ushort RewardTomeB { get; set; }
+        public ushort RewardTomeC { get; set; }
+        public uint Unknown20 { get; set; }
+        public ushort Unknown21 { get; set; }
+        public byte SortKey { get; set; }
+        public byte Unknown23 { get; set; }
+        public LazyRow< ContentMemberType > ContentMemberType { get; set; }
+        public byte Unknown25 { get; set; }
+        public byte Unknown26 { get; set; }
+        public sbyte Unknown27 { get; set; }
+        public byte Unknown28 { get; set; }
+        public byte Unknown29 { get; set; }
+        public byte Unknown30 { get; set; }
+        public byte Unknown31 { get; set; }
+        public bool Unknown32 { get; set; }
+        public bool Unknown33 { get; set; }
+        public bool RequireAllDuties { get; set; }
+        public bool Unknown35 { get; set; }
+        public byte ContentRouletteOpenRule { get; set; }
+        public LazyRow< InstanceContent > InstanceContent { get; set; }
+        public bool Unknown38 { get; set; }
+        public byte Unknown39 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringSubCategory : ExcelRow
     {
         
-        public LazyRow< GatheringType > GatheringType;
-        public LazyRow< ClassJob > ClassJob;
-        public uint Unknown2;
-        public ushort Division;
-        public LazyRow< Item > Item;
-        public SeString FolkloreBook;
-        public byte Unknown6;
+        public LazyRow< GatheringType > GatheringType { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public uint Unknown2 { get; set; }
+        public ushort Division { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public SeString FolkloreBook { get; set; }
+        public byte Unknown6 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

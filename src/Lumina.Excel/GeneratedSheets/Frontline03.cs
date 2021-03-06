@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class Frontline03 : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public byte Unknown2;
-        public byte Unknown3;
-        public byte Unknown4;
-        public byte Unknown5;
-        public byte Unknown6;
-        public byte Unknown7;
-        public byte Unknown8;
-        public uint[] EmptyIcon;
-        public uint[] MaelstromIcon;
-        public uint[] TwinAdderIcon;
-        public uint[] ImmortalFlamesIcon;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public byte Unknown7 { get; set; }
+        public byte Unknown8 { get; set; }
+        public uint[] EmptyIcon { get; set; }
+        public uint[] MaelstromIcon { get; set; }
+        public uint[] TwinAdderIcon { get; set; }
+        public uint[] ImmortalFlamesIcon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

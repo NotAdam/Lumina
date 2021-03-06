@@ -10,29 +10,28 @@ namespace Lumina.Excel.GeneratedSheets
     public class BNpcBase : ExcelRow
     {
         
-        public LazyRow< Behavior > Behavior;
-        public byte Battalion;
-        public byte LinkRace;
-        public byte Rank;
-        public float Scale;
-        public LazyRow< ModelChara > ModelChara;
-        public LazyRow< BNpcCustomize > BNpcCustomize;
-        public LazyRow< NpcEquip > NpcEquip;
-        public ushort Special;
-        public byte SEPack;
-        public bool Unknown10;
-        public LazyRow< ArrayEventHandler > ArrayEventHandler;
-        public LazyRow< BNpcParts > BNpcParts;
-        public bool Unknown13;
-        public bool IsTargetLine;
-        public bool IsDisplayLevel;
-        public bool Unknown16;
-        public bool Unknown17;
-        public byte Unknown18;
-        public byte Unknown19;
-        public byte Unknown20;
+        public LazyRow< Behavior > Behavior { get; set; }
+        public byte Battalion { get; set; }
+        public byte LinkRace { get; set; }
+        public byte Rank { get; set; }
+        public float Scale { get; set; }
+        public LazyRow< ModelChara > ModelChara { get; set; }
+        public LazyRow< BNpcCustomize > BNpcCustomize { get; set; }
+        public LazyRow< NpcEquip > NpcEquip { get; set; }
+        public ushort Special { get; set; }
+        public byte SEPack { get; set; }
+        public bool Unknown10 { get; set; }
+        public LazyRow< ArrayEventHandler > ArrayEventHandler { get; set; }
+        public LazyRow< BNpcParts > BNpcParts { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool IsTargetLine { get; set; }
+        public bool IsDisplayLevel { get; set; }
+        public bool Unknown16 { get; set; }
+        public bool Unknown17 { get; set; }
+        public byte Unknown18 { get; set; }
+        public byte Unknown19 { get; set; }
+        public byte Unknown20 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

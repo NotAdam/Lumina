@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class CollectablesShopRefine : ExcelRow
     {
         
-        public ushort LowCollectability;
-        public ushort MidCollectability;
-        public ushort HighCollectability;
+        public ushort LowCollectability { get; set; }
+        public ushort MidCollectability { get; set; }
+        public ushort HighCollectability { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

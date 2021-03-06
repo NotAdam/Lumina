@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingAppeal : ExcelRow
     {
         
-        public SeString Tag;
-        public uint Icon;
-        public byte Order;
+        public SeString Tag { get; set; }
+        public uint Icon { get; set; }
+        public byte Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

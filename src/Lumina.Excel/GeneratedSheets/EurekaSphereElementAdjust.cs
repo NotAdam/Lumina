@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class EurekaSphereElementAdjust : ExcelRow
     {
         
-        public ushort PowerModifier;
+        public ushort PowerModifier { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,28 +10,27 @@ namespace Lumina.Excel.GeneratedSheets
     public class AozActionTransient : ExcelRow
     {
         
-        public byte Number;
-        public uint Icon;
-        public SeString Stats;
-        public SeString Description;
-        public byte LocationKey;
-        public ushort Location;
-        public LazyRow< Quest > RequiredForQuest;
-        public LazyRow< Quest > PreviousQuest;
-        public bool TargetsEnemy;
-        public bool TargetsSelfOrAlly;
-        public bool CauseSlow;
-        public bool CausePetrify;
-        public bool CauseParalysis;
-        public bool CauseInterrupt;
-        public bool CauseBlind;
-        public bool CauseStun;
-        public bool CauseSleep;
-        public bool CauseBind;
-        public bool CauseHeavy;
-        public bool CauseDeath;
+        public byte Number { get; set; }
+        public uint Icon { get; set; }
+        public SeString Stats { get; set; }
+        public SeString Description { get; set; }
+        public byte LocationKey { get; set; }
+        public ushort Location { get; set; }
+        public LazyRow< Quest > RequiredForQuest { get; set; }
+        public LazyRow< Quest > PreviousQuest { get; set; }
+        public bool TargetsEnemy { get; set; }
+        public bool TargetsSelfOrAlly { get; set; }
+        public bool CauseSlow { get; set; }
+        public bool CausePetrify { get; set; }
+        public bool CauseParalysis { get; set; }
+        public bool CauseInterrupt { get; set; }
+        public bool CauseBlind { get; set; }
+        public bool CauseStun { get; set; }
+        public bool CauseSleep { get; set; }
+        public bool CauseBind { get; set; }
+        public bool CauseHeavy { get; set; }
+        public bool CauseDeath { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

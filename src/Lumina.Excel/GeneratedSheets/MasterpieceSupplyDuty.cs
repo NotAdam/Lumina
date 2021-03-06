@@ -24,12 +24,11 @@ namespace Lumina.Excel.GeneratedSheets
             public byte Stars;
         }
         
-        public LazyRow< ClassJob > ClassJob;
-        public byte ClassJobLevel;
-        public ushort RewardCurrency;
-        public UnkStruct3Struct[] UnkStruct3;
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public byte ClassJobLevel { get; set; }
+        public ushort RewardCurrency { get; set; }
+        public UnkStruct3Struct[] UnkStruct3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

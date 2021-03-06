@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class Channeling : ExcelRow
     {
         
-        public SeString File;
-        public byte WidthScale;
-        public bool AddedIn53;
-        public bool Unknown3;
+        public SeString File { get; set; }
+        public byte WidthScale { get; set; }
+        public bool AddedIn53 { get; set; }
+        public bool Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

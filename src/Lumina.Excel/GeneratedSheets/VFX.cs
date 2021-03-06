@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class VFX : ExcelRow
     {
         
-        public SeString Location;
+        public SeString Location { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

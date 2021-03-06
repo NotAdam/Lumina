@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanionTransient : ExcelRow
     {
         
-        public SeString Description;
-        public SeString DescriptionEnhanced;
-        public SeString Tooltip;
-        public SeString SpecialActionName;
-        public SeString SpecialActionDescription;
-        public byte Attack;
-        public byte Defense;
-        public byte Speed;
-        public bool HasAreaAttack;
-        public bool StrengthGate;
-        public bool StrengthEye;
-        public bool StrengthShield;
-        public bool StrengthArcana;
-        public LazyRow< MinionSkillType > MinionSkillType;
+        public SeString Description { get; set; }
+        public SeString DescriptionEnhanced { get; set; }
+        public SeString Tooltip { get; set; }
+        public SeString SpecialActionName { get; set; }
+        public SeString SpecialActionDescription { get; set; }
+        public byte Attack { get; set; }
+        public byte Defense { get; set; }
+        public byte Speed { get; set; }
+        public bool HasAreaAttack { get; set; }
+        public bool StrengthGate { get; set; }
+        public bool StrengthEye { get; set; }
+        public bool StrengthShield { get; set; }
+        public bool StrengthArcana { get; set; }
+        public LazyRow< MinionSkillType > MinionSkillType { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

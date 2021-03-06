@@ -10,54 +10,53 @@ namespace Lumina.Excel.GeneratedSheets
     public class ClassJob : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Abbreviation;
-        public SeString Unknown2;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public sbyte ExpArrayIndex;
-        public sbyte BattleClassIndex;
-        public byte Unknown6;
-        public byte JobIndex;
-        public sbyte DohDolJobIndex;
-        public ushort ModifierHitPoints;
-        public ushort ModifierManaPoints;
-        public ushort ModifierStrength;
-        public ushort ModifierVitality;
-        public ushort ModifierDexterity;
-        public ushort ModifierIntelligence;
-        public ushort ModifierMind;
-        public ushort ModifierPiety;
-        public ushort Unknown17;
-        public ushort Unknown18;
-        public ushort Unknown19;
-        public ushort Unknown20;
-        public ushort Unknown21;
-        public ushort Unknown22;
-        public byte Unknown23;
-        public byte Unknown24;
-        public byte Unknown25;
-        public LazyRow< ClassJob > ClassJobParent;
-        public SeString NameEnglish;
-        public LazyRow< Item > ItemStartingWeapon;
-        public int Unknown29;
-        public byte Role;
-        public LazyRow< Town > StartingTown;
-        public LazyRow< MonsterNote > MonsterNote;
-        public byte PrimaryStat;
-        public LazyRow< Action > LimitBreak1;
-        public LazyRow< Action > LimitBreak2;
-        public LazyRow< Action > LimitBreak3;
-        public byte UIPriority;
-        public LazyRow< Item > ItemSoulCrystal;
-        public LazyRow< Quest > UnlockQuest;
-        public LazyRow< Quest > RelicQuest;
-        public LazyRow< Quest > Prerequisite;
-        public byte StartingLevel;
-        public byte PartyBonus;
-        public bool IsLimitedJob;
-        public bool CanQueueForDuty;
+        public SeString Name { get; set; }
+        public SeString Abbreviation { get; set; }
+        public SeString Unknown2 { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public sbyte ExpArrayIndex { get; set; }
+        public sbyte BattleClassIndex { get; set; }
+        public byte Unknown6 { get; set; }
+        public byte JobIndex { get; set; }
+        public sbyte DohDolJobIndex { get; set; }
+        public ushort ModifierHitPoints { get; set; }
+        public ushort ModifierManaPoints { get; set; }
+        public ushort ModifierStrength { get; set; }
+        public ushort ModifierVitality { get; set; }
+        public ushort ModifierDexterity { get; set; }
+        public ushort ModifierIntelligence { get; set; }
+        public ushort ModifierMind { get; set; }
+        public ushort ModifierPiety { get; set; }
+        public ushort Unknown17 { get; set; }
+        public ushort Unknown18 { get; set; }
+        public ushort Unknown19 { get; set; }
+        public ushort Unknown20 { get; set; }
+        public ushort Unknown21 { get; set; }
+        public ushort Unknown22 { get; set; }
+        public byte Unknown23 { get; set; }
+        public byte Unknown24 { get; set; }
+        public byte Unknown25 { get; set; }
+        public LazyRow< ClassJob > ClassJobParent { get; set; }
+        public SeString NameEnglish { get; set; }
+        public LazyRow< Item > ItemStartingWeapon { get; set; }
+        public int Unknown29 { get; set; }
+        public byte Role { get; set; }
+        public LazyRow< Town > StartingTown { get; set; }
+        public LazyRow< MonsterNote > MonsterNote { get; set; }
+        public byte PrimaryStat { get; set; }
+        public LazyRow< Action > LimitBreak1 { get; set; }
+        public LazyRow< Action > LimitBreak2 { get; set; }
+        public LazyRow< Action > LimitBreak3 { get; set; }
+        public byte UIPriority { get; set; }
+        public LazyRow< Item > ItemSoulCrystal { get; set; }
+        public LazyRow< Quest > UnlockQuest { get; set; }
+        public LazyRow< Quest > RelicQuest { get; set; }
+        public LazyRow< Quest > Prerequisite { get; set; }
+        public byte StartingLevel { get; set; }
+        public byte PartyBonus { get; set; }
+        public bool IsLimitedJob { get; set; }
+        public bool CanQueueForDuty { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

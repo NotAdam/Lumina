@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class InstanceContentCSBonus : ExcelRow
     {
         
-        public LazyRow< InstanceContent > Instance;
-        public LazyRow< Item > Item;
-        public byte Unknown2;
-        public byte Unknown540;
-        public byte Unknown541;
+        public LazyRow< InstanceContent > Instance { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown540 { get; set; }
+        public byte Unknown541 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

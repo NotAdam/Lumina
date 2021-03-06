@@ -10,17 +10,16 @@ namespace Lumina.Excel.GeneratedSheets
     public class StatusLoopVFX : ExcelRow
     {
         
-        public LazyRow< VFX > VFX;
-        public byte Unknown1;
-        public LazyRow< VFX > VFX2;
-        public byte Unknown3;
-        public LazyRow< VFX > VFX3;
-        public byte Unknown5;
-        public byte Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
+        public LazyRow< VFX > VFX { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< VFX > VFX2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public LazyRow< VFX > VFX3 { get; set; }
+        public byte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

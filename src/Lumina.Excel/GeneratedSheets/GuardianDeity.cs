@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuardianDeity : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public ushort Icon;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public ushort Icon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

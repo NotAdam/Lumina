@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class Description : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public SeString TextLong;
-        public SeString TextShort;
-        public SeString TextCommentary;
-        public bool Unknown4;
-        public LazyRow< DescriptionSection > Section;
+        public LazyRow< Quest > Quest { get; set; }
+        public SeString TextLong { get; set; }
+        public SeString TextShort { get; set; }
+        public SeString TextCommentary { get; set; }
+        public bool Unknown4 { get; set; }
+        public LazyRow< DescriptionSection > Section { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

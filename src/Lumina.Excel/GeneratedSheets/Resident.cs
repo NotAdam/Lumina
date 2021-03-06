@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class Resident : ExcelRow
     {
         
-        public byte Unknown0;
-        public ulong Model;
-        public LazyRow< NpcYell > NpcYell;
-        public ushort AddedIn53;
-        public byte ResidentMotionType;
+        public byte Unknown0 { get; set; }
+        public ulong Model { get; set; }
+        public LazyRow< NpcYell > NpcYell { get; set; }
+        public ushort AddedIn53 { get; set; }
+        public byte ResidentMotionType { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

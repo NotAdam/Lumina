@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringPointBonus : ExcelRow
     {
         
-        public LazyRow< GatheringCondition > Condition;
-        public uint ConditionValue;
-        public ushort Unknown2;
-        public LazyRow< GatheringPointBonusType > BonusType;
-        public ushort BonusValue;
-        public ushort Unknown5;
-        public bool Unknown53;
-        public uint Unknown54;
+        public LazyRow< GatheringCondition > Condition { get; set; }
+        public uint ConditionValue { get; set; }
+        public ushort Unknown2 { get; set; }
+        public LazyRow< GatheringPointBonusType > BonusType { get; set; }
+        public ushort BonusValue { get; set; }
+        public ushort Unknown5 { get; set; }
+        public bool Unknown53 { get; set; }
+        public uint Unknown54 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

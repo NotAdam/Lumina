@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringPointTransient : ExcelRow
     {
         
-        public ushort EphemeralStartTime;
-        public ushort EphemeralEndTime;
-        public LazyRow< GatheringRarePopTimeTable > GatheringRarePopTimeTable;
+        public ushort EphemeralStartTime { get; set; }
+        public ushort EphemeralEndTime { get; set; }
+        public LazyRow< GatheringRarePopTimeTable > GatheringRarePopTimeTable { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

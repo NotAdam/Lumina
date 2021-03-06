@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class SatisfactionArbitration : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public LazyRow< Quest > Quest;
-        public byte Unknown3;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public byte Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

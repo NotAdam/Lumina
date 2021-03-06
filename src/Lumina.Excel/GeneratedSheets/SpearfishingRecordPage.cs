@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class SpearfishingRecordPage : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public byte Unknown2;
-        public LazyRow< PlaceName > PlaceName;
-        public int Image;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public int Image { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

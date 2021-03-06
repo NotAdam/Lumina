@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class EmjDani : ExcelRow
     {
         
-        public uint Icon;
-        public ushort Unknown1;
-        public ushort Unknown2;
-        public bool Unknown3;
-        public short Unknown4;
-        public short Unknown5;
-        public short Unknown6;
-        public short Unknown7;
-        public short Unknown8;
-        public short Unknown9;
-        public short Unknown10;
-        public short Unknown11;
+        public uint Icon { get; set; }
+        public ushort Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public short Unknown4 { get; set; }
+        public short Unknown5 { get; set; }
+        public short Unknown6 { get; set; }
+        public short Unknown7 { get; set; }
+        public short Unknown8 { get; set; }
+        public short Unknown9 { get; set; }
+        public short Unknown10 { get; set; }
+        public short Unknown11 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

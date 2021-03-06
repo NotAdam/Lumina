@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class Guide : ExcelRow
     {
         
-        public LazyRow< GuideTitle > GuideTitle;
-        public LazyRow< GuidePage > GuidePage;
+        public LazyRow< GuideTitle > GuideTitle { get; set; }
+        public LazyRow< GuidePage > GuidePage { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

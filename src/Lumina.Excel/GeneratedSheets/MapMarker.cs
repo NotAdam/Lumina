@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class MapMarker : ExcelRow
     {
         
-        public short X;
-        public short Y;
-        public ushort Icon;
-        public LazyRow< PlaceName > PlaceNameSubtext;
-        public byte SubtextOrientation;
-        public LazyRow< MapMarkerRegion > MapMarkerRegion;
-        public byte Type;
-        public byte DataType;
-        public ushort DataKey;
-        public byte Unknown9;
-        public byte Unknown10;
+        public short X { get; set; }
+        public short Y { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< PlaceName > PlaceNameSubtext { get; set; }
+        public byte SubtextOrientation { get; set; }
+        public LazyRow< MapMarkerRegion > MapMarkerRegion { get; set; }
+        public byte Type { get; set; }
+        public byte DataType { get; set; }
+        public ushort DataKey { get; set; }
+        public byte Unknown9 { get; set; }
+        public byte Unknown10 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

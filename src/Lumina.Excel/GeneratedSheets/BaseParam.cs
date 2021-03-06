@@ -10,35 +10,34 @@ namespace Lumina.Excel.GeneratedSheets
     public class BaseParam : ExcelRow
     {
         
-        public sbyte PacketIndex;
-        public SeString Name;
-        public SeString Description;
-        public byte OrderPriority;
-        public byte oneHWpnPct;
-        public byte OHPct;
-        public byte HeadPct;
-        public byte ChestPct;
-        public byte HandsPct;
-        public byte WaistPct;
-        public byte LegsPct;
-        public byte FeetPct;
-        public byte EarringPct;
-        public byte NecklacePct;
-        public byte BraceletPct;
-        public byte RingPct;
-        public byte twoHWpnPct;
-        public byte UnderArmorPct;
-        public byte ChestHeadPct;
-        public byte ChestHeadLegsFeetPct;
-        public byte Unknown20;
-        public byte LegsFeetPct;
-        public byte HeadChestHandsLegsFeetPct;
-        public byte ChestLegsGlovesPct;
-        public byte ChestLegsFeetPct;
-        public byte[] MeldParam;
-        public bool Unknown38;
+        public sbyte PacketIndex { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public byte OrderPriority { get; set; }
+        public byte oneHWpnPct { get; set; }
+        public byte OHPct { get; set; }
+        public byte HeadPct { get; set; }
+        public byte ChestPct { get; set; }
+        public byte HandsPct { get; set; }
+        public byte WaistPct { get; set; }
+        public byte LegsPct { get; set; }
+        public byte FeetPct { get; set; }
+        public byte EarringPct { get; set; }
+        public byte NecklacePct { get; set; }
+        public byte BraceletPct { get; set; }
+        public byte RingPct { get; set; }
+        public byte twoHWpnPct { get; set; }
+        public byte UnderArmorPct { get; set; }
+        public byte ChestHeadPct { get; set; }
+        public byte ChestHeadLegsFeetPct { get; set; }
+        public byte Unknown20 { get; set; }
+        public byte LegsFeetPct { get; set; }
+        public byte HeadChestHandsLegsFeetPct { get; set; }
+        public byte ChestLegsGlovesPct { get; set; }
+        public byte ChestLegsFeetPct { get; set; }
+        public byte[] MeldParam { get; set; }
+        public bool Unknown38 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

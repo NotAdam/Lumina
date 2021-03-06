@@ -10,92 +10,91 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentFinderCondition : ExcelRow
     {
         
-        public SeString ShortCode;
-        public LazyRow< TerritoryType > TerritoryType;
-        public byte ContentLinkType;
-        public ushort Content;
-        public bool PvP;
-        public byte Unknown5;
-        public uint Unknown6;
-        public uint Unknown7;
-        public LazyRow< ClassJobCategory > AcceptClassJobCategory;
-        public LazyRow< ContentMemberType > ContentMemberType;
-        public byte Unknown10;
-        public byte Unknown11;
-        public byte Unknown12;
-        public LazyRow< Quest > UnlockQuest;
-        public ushort Unknown14;
-        public byte ClassJobLevelRequired;
-        public byte ClassJobLevelSync;
-        public ushort ItemLevelRequired;
-        public ushort ItemLevelSync;
-        public bool AddedIn53;
-        public bool AllowUndersized;
-        public bool AllowReplacement;
-        public bool Unknown22;
-        public bool AllowExplorerMode;
-        public bool Unknown24;
-        public bool Unknown25;
-        public byte Unknown26;
-        public bool Unknown27;
-        public bool HighEndDuty;
-        public bool Unknown29;
-        public bool Unknown30;
-        public bool Unknown31;
-        public bool DutyRecorderAllowed;
-        public bool Unknown33;
-        public bool Unknown34;
-        public bool Unknown35;
-        public bool Unknown36;
-        public SeString Name;
-        public LazyRow< ContentType > ContentType;
-        public byte TransientKey;
-        public uint Transient;
-        public ushort SortKey;
-        public uint Image;
-        public uint Icon;
-        public sbyte Unknown44;
-        public bool LevelingRoulette;
-        public bool Level506070Roulette;
-        public bool MSQRoulette;
-        public bool GuildHestRoulette;
-        public bool ExpertRoulette;
-        public bool TrialRoulette;
-        public bool DailyFrontlineChallenge;
-        public bool Level80Roulette;
-        public bool MentorRoulette;
-        public bool Unknown54;
-        public bool Unknown55;
-        public bool Unknown56;
-        public bool Unknown57;
-        public bool Unknown58;
-        public bool AllianceRoulette;
-        public bool Unknown60;
-        public bool NormalRaidRoulette;
-        public bool Unknown62;
-        public bool Unknown63;
-        public bool Unknown64;
-        public bool Unknown65;
-        public bool Unknown66;
-        public bool Unknown67;
-        public bool Unknown68;
-        public bool Unknown69;
-        public bool Unknown70;
-        public bool Unknown71;
-        public bool Unknown72;
-        public bool Unknown73;
-        public bool Unknown74;
-        public bool Unknown75;
-        public bool Unknown76;
-        public bool Unknown77;
-        public bool Unknown78;
-        public bool Unknown79;
-        public bool Unknown80;
-        public bool Unknown81;
-        public bool Unknown82;
-        public bool Unknown83;
+        public SeString ShortCode { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public byte ContentLinkType { get; set; }
+        public ushort Content { get; set; }
+        public bool PvP { get; set; }
+        public byte Unknown5 { get; set; }
+        public uint Unknown6 { get; set; }
+        public uint Unknown7 { get; set; }
+        public LazyRow< ClassJobCategory > AcceptClassJobCategory { get; set; }
+        public LazyRow< ContentMemberType > ContentMemberType { get; set; }
+        public byte Unknown10 { get; set; }
+        public byte Unknown11 { get; set; }
+        public byte Unknown12 { get; set; }
+        public LazyRow< Quest > UnlockQuest { get; set; }
+        public ushort Unknown14 { get; set; }
+        public byte ClassJobLevelRequired { get; set; }
+        public byte ClassJobLevelSync { get; set; }
+        public ushort ItemLevelRequired { get; set; }
+        public ushort ItemLevelSync { get; set; }
+        public bool AddedIn53 { get; set; }
+        public bool AllowUndersized { get; set; }
+        public bool AllowReplacement { get; set; }
+        public bool Unknown22 { get; set; }
+        public bool AllowExplorerMode { get; set; }
+        public bool Unknown24 { get; set; }
+        public bool Unknown25 { get; set; }
+        public byte Unknown26 { get; set; }
+        public bool Unknown27 { get; set; }
+        public bool HighEndDuty { get; set; }
+        public bool Unknown29 { get; set; }
+        public bool Unknown30 { get; set; }
+        public bool Unknown31 { get; set; }
+        public bool DutyRecorderAllowed { get; set; }
+        public bool Unknown33 { get; set; }
+        public bool Unknown34 { get; set; }
+        public bool Unknown35 { get; set; }
+        public bool Unknown36 { get; set; }
+        public SeString Name { get; set; }
+        public LazyRow< ContentType > ContentType { get; set; }
+        public byte TransientKey { get; set; }
+        public uint Transient { get; set; }
+        public ushort SortKey { get; set; }
+        public uint Image { get; set; }
+        public uint Icon { get; set; }
+        public sbyte Unknown44 { get; set; }
+        public bool LevelingRoulette { get; set; }
+        public bool Level506070Roulette { get; set; }
+        public bool MSQRoulette { get; set; }
+        public bool GuildHestRoulette { get; set; }
+        public bool ExpertRoulette { get; set; }
+        public bool TrialRoulette { get; set; }
+        public bool DailyFrontlineChallenge { get; set; }
+        public bool Level80Roulette { get; set; }
+        public bool MentorRoulette { get; set; }
+        public bool Unknown54 { get; set; }
+        public bool Unknown55 { get; set; }
+        public bool Unknown56 { get; set; }
+        public bool Unknown57 { get; set; }
+        public bool Unknown58 { get; set; }
+        public bool AllianceRoulette { get; set; }
+        public bool Unknown60 { get; set; }
+        public bool NormalRaidRoulette { get; set; }
+        public bool Unknown62 { get; set; }
+        public bool Unknown63 { get; set; }
+        public bool Unknown64 { get; set; }
+        public bool Unknown65 { get; set; }
+        public bool Unknown66 { get; set; }
+        public bool Unknown67 { get; set; }
+        public bool Unknown68 { get; set; }
+        public bool Unknown69 { get; set; }
+        public bool Unknown70 { get; set; }
+        public bool Unknown71 { get; set; }
+        public bool Unknown72 { get; set; }
+        public bool Unknown73 { get; set; }
+        public bool Unknown74 { get; set; }
+        public bool Unknown75 { get; set; }
+        public bool Unknown76 { get; set; }
+        public bool Unknown77 { get; set; }
+        public bool Unknown78 { get; set; }
+        public bool Unknown79 { get; set; }
+        public bool Unknown80 { get; set; }
+        public bool Unknown81 { get; set; }
+        public bool Unknown82 { get; set; }
+        public bool Unknown83 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

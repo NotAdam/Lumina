@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class BuddyItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public bool UseField;
-        public bool UseTraining;
-        public bool Unknown3;
-        public byte Status;
+        public LazyRow< Item > Item { get; set; }
+        public bool UseField { get; set; }
+        public bool UseTraining { get; set; }
+        public bool Unknown3 { get; set; }
+        public byte Status { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,26 +10,25 @@ namespace Lumina.Excel.GeneratedSheets
     public class BeastTribe : ExcelRow
     {
         
-        public bool Unknown0;
-        public byte MinLevel;
-        public LazyRow< BeastRankBonus > BeastRankBonus;
-        public uint IconReputation;
-        public uint Icon;
-        public byte MaxRank;
-        public LazyRow< ExVersion > Expansion;
-        public LazyRow< Item > CurrencyItem;
-        public byte DisplayOrder;
-        public SeString Name;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public sbyte DEF;
-        public SeString NameRelation;
+        public bool Unknown0 { get; set; }
+        public byte MinLevel { get; set; }
+        public LazyRow< BeastRankBonus > BeastRankBonus { get; set; }
+        public uint IconReputation { get; set; }
+        public uint Icon { get; set; }
+        public byte MaxRank { get; set; }
+        public LazyRow< ExVersion > Expansion { get; set; }
+        public LazyRow< Item > CurrencyItem { get; set; }
+        public byte DisplayOrder { get; set; }
+        public SeString Name { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public sbyte DEF { get; set; }
+        public SeString NameRelation { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

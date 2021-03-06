@@ -10,25 +10,24 @@ namespace Lumina.Excel.GeneratedSheets
     public class Emote : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< ActionTimeline >[] ActionTimeline;
-        public bool Unknown8;
-        public bool Unknown9;
-        public bool Unknown10;
-        public LazyRow< EmoteCategory > EmoteCategory;
-        public LazyRow< EmoteMode > EmoteMode;
-        public bool Unknown13;
-        public bool Unknown14;
-        public bool HasCancelEmote;
-        public bool DrawsWeapon;
-        public ushort Order;
-        public LazyRow< TextCommand > TextCommand;
-        public ushort Icon;
-        public LazyRow< LogMessage > LogMessageTargeted;
-        public LazyRow< LogMessage > LogMessageUntargeted;
-        public uint UnlockLink;
+        public SeString Name { get; set; }
+        public LazyRow< ActionTimeline >[] ActionTimeline { get; set; }
+        public bool Unknown8 { get; set; }
+        public bool Unknown9 { get; set; }
+        public bool Unknown10 { get; set; }
+        public LazyRow< EmoteCategory > EmoteCategory { get; set; }
+        public LazyRow< EmoteMode > EmoteMode { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool Unknown14 { get; set; }
+        public bool HasCancelEmote { get; set; }
+        public bool DrawsWeapon { get; set; }
+        public ushort Order { get; set; }
+        public LazyRow< TextCommand > TextCommand { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< LogMessage > LogMessageTargeted { get; set; }
+        public LazyRow< LogMessage > LogMessageUntargeted { get; set; }
+        public uint UnlockLink { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

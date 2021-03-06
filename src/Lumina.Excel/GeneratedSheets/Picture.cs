@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class Picture : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public int Image;
+        public LazyRow< Item > Item { get; set; }
+        public int Image { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

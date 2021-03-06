@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class AetherCurrentCompFlgSet : ExcelRow
     {
         
-        public LazyRow< TerritoryType > Territory;
-        public byte Unknown1;
-        public LazyRow< AetherCurrent >[] AetherCurrent;
+        public LazyRow< TerritoryType > Territory { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< AetherCurrent >[] AetherCurrent { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

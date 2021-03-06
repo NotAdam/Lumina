@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDDevLively : ExcelRow
     {
         
-        public LazyRow< ENpcBase > ENPC;
-        public ushort Unknown1;
-        public byte Unknown2;
+        public LazyRow< ENpcBase > ENPC { get; set; }
+        public ushort Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

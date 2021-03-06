@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class BeastReputationRank : ExcelRow
     {
         
-        public ushort RequiredReputation;
-        public SeString Name;
-        public SeString AlliedNames;
-        public LazyRow< UIColor > Color;
+        public ushort RequiredReputation { get; set; }
+        public SeString Name { get; set; }
+        public SeString AlliedNames { get; set; }
+        public LazyRow< UIColor > Color { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

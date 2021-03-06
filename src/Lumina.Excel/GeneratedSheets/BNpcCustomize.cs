@@ -10,34 +10,33 @@ namespace Lumina.Excel.GeneratedSheets
     public class BNpcCustomize : ExcelRow
     {
         
-        public LazyRow< Race > Race;
-        public byte Gender;
-        public byte BodyType;
-        public byte Height;
-        public LazyRow< Tribe > Tribe;
-        public byte Face;
-        public byte HairStyle;
-        public byte HairHighlight;
-        public byte SkinColor;
-        public byte EyeHeterochromia;
-        public byte HairColor;
-        public byte HairHighlightColor;
-        public byte FacialFeature;
-        public byte FacialFeatureColor;
-        public byte Eyebrows;
-        public byte EyeColor;
-        public byte EyeShape;
-        public byte Nose;
-        public byte Jaw;
-        public byte Mouth;
-        public byte LipColor;
-        public byte BustOrTone1;
-        public byte ExtraFeature1;
-        public byte ExtraFeature2OrBust;
-        public byte FacePaint;
-        public byte FacePaintColor;
+        public LazyRow< Race > Race { get; set; }
+        public byte Gender { get; set; }
+        public byte BodyType { get; set; }
+        public byte Height { get; set; }
+        public LazyRow< Tribe > Tribe { get; set; }
+        public byte Face { get; set; }
+        public byte HairStyle { get; set; }
+        public byte HairHighlight { get; set; }
+        public byte SkinColor { get; set; }
+        public byte EyeHeterochromia { get; set; }
+        public byte HairColor { get; set; }
+        public byte HairHighlightColor { get; set; }
+        public byte FacialFeature { get; set; }
+        public byte FacialFeatureColor { get; set; }
+        public byte Eyebrows { get; set; }
+        public byte EyeColor { get; set; }
+        public byte EyeShape { get; set; }
+        public byte Nose { get; set; }
+        public byte Jaw { get; set; }
+        public byte Mouth { get; set; }
+        public byte LipColor { get; set; }
+        public byte BustOrTone1 { get; set; }
+        public byte ExtraFeature1 { get; set; }
+        public byte ExtraFeature2OrBust { get; set; }
+        public byte FacePaint { get; set; }
+        public byte FacePaintColor { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

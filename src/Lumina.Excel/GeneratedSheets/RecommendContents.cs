@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class RecommendContents : ExcelRow
     {
         
-        public LazyRow< Level > Level;
-        public LazyRow< ClassJob > ClassJob;
-        public byte MinLevel;
-        public byte MaxLevel;
+        public LazyRow< Level > Level { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public byte MinLevel { get; set; }
+        public byte MaxLevel { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

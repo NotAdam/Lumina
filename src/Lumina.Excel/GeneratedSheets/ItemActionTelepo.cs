@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class ItemActionTelepo : ExcelRow
     {
         
-        public uint Requirement;
-        public LazyRow< LogMessage > DenyMessage;
+        public uint Requirement { get; set; }
+        public LazyRow< LogMessage > DenyMessage { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

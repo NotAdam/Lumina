@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuildOrderOfficer : ExcelRow
     {
         
-        public uint Unknown0;
-        public uint Unknown1;
-        public uint Unknown2;
-        public uint Unknown3;
-        public uint Unknown4;
-        public uint Unknown5;
+        public uint Unknown0 { get; set; }
+        public uint Unknown1 { get; set; }
+        public uint Unknown2 { get; set; }
+        public uint Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
+        public uint Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

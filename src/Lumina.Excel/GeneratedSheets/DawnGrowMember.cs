@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class DawnGrowMember : ExcelRow
     {
         
-        public LazyRow< ENpcResident > Member;
-        public uint ImageName;
-        public uint BigImageOld;
-        public uint BigImageNew;
-        public uint SmallImageOld;
-        public uint SmallImageNew;
-        public LazyRow< DawnMemberUIParam > Class;
+        public LazyRow< ENpcResident > Member { get; set; }
+        public uint ImageName { get; set; }
+        public uint BigImageOld { get; set; }
+        public uint BigImageNew { get; set; }
+        public uint SmallImageOld { get; set; }
+        public uint SmallImageNew { get; set; }
+        public LazyRow< DawnMemberUIParam > Class { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

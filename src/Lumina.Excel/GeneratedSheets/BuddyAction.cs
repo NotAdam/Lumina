@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class BuddyAction : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public int Icon;
-        public int IconStatus;
-        public ushort Reward;
-        public byte Sort;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public int Icon { get; set; }
+        public int IconStatus { get; set; }
+        public ushort Reward { get; set; }
+        public byte Sort { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class GcArmyCaptureTactics : ExcelRow
     {
         
-        public LazyRow< Status > Name;
-        public byte HP;
-        public byte DamageDealt;
-        public byte DamageReceived;
-        public LazyRow< Addon > Tactic;
-        public uint Icon;
+        public LazyRow< Status > Name { get; set; }
+        public byte HP { get; set; }
+        public byte DamageDealt { get; set; }
+        public byte DamageReceived { get; set; }
+        public LazyRow< Addon > Tactic { get; set; }
+        public uint Icon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

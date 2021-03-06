@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class RetainerTaskLvRange : ExcelRow
     {
         
-        public byte Min;
-        public byte Max;
+        public byte Min { get; set; }
+        public byte Max { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

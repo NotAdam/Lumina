@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class Achievement : ExcelRow
     {
         
-        public LazyRow< AchievementCategory > AchievementCategory;
-        public SeString Name;
-        public SeString Description;
-        public byte Points;
-        public LazyRow< Title > Title;
-        public LazyRow< Item > Item;
-        public ushort Icon;
-        public byte Unknown7;
-        public byte Type;
-        public int Key;
-        public int[] Data;
-        public ushort Order;
-        public byte Unknown19;
-        public LazyRow< AchievementHideCondition > AchievementHideCondition;
+        public LazyRow< AchievementCategory > AchievementCategory { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public byte Points { get; set; }
+        public LazyRow< Title > Title { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public ushort Icon { get; set; }
+        public byte Unknown7 { get; set; }
+        public byte Type { get; set; }
+        public int Key { get; set; }
+        public int[] Data { get; set; }
+        public ushort Order { get; set; }
+        public byte Unknown19 { get; set; }
+        public LazyRow< AchievementHideCondition > AchievementHideCondition { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

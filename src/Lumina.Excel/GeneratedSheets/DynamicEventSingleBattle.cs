@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class DynamicEventSingleBattle : ExcelRow
     {
         
-        public int ActionIcon;
-        public uint Icon;
-        public SeString Text;
+        public int ActionIcon { get; set; }
+        public uint Icon { get; set; }
+        public SeString Text { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

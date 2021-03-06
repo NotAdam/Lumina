@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuickChatTransient : ExcelRow
     {
         
-        public SeString TextOutput;
+        public SeString TextOutput { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

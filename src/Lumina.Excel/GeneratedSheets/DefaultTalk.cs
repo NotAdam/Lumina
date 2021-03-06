@@ -10,27 +10,26 @@ namespace Lumina.Excel.GeneratedSheets
     public class DefaultTalk : ExcelRow
     {
         
-        public uint Unknown0;
-        public byte Unknown1;
-        public byte Unknown2;
-        public byte Unknown3;
-        public byte Unknown4;
-        public LazyRow< ActionTimeline >[] ActionTimelinePose;
-        public byte Unknown8;
-        public byte Unknown9;
-        public byte Unknown10;
-        public ushort Unknown11;
-        public ushort Unknown12;
-        public ushort Unknown13;
-        public byte Unknown14;
-        public byte Unknown15;
-        public byte Unknown16;
-        public bool Unknown17;
-        public bool Unknown18;
-        public bool Unknown19;
-        public SeString[] Text;
+        public uint Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
+        public LazyRow< ActionTimeline >[] ActionTimelinePose { get; set; }
+        public byte Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
+        public byte Unknown10 { get; set; }
+        public ushort Unknown11 { get; set; }
+        public ushort Unknown12 { get; set; }
+        public ushort Unknown13 { get; set; }
+        public byte Unknown14 { get; set; }
+        public byte Unknown15 { get; set; }
+        public byte Unknown16 { get; set; }
+        public bool Unknown17 { get; set; }
+        public bool Unknown18 { get; set; }
+        public bool Unknown19 { get; set; }
+        public SeString[] Text { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

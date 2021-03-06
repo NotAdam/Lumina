@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class GimmickRect : ExcelRow
     {
         
-        public uint LayoutID;
-        public byte TriggerIn;
-        public uint Param0;
-        public uint Unknown3;
-        public uint Unknown4;
-        public uint Unknown5;
-        public byte TriggerOut;
-        public uint Param1;
-        public uint Unknown8;
-        public uint Unknown9;
-        public uint Unknown10;
+        public uint LayoutID { get; set; }
+        public byte TriggerIn { get; set; }
+        public uint Param0 { get; set; }
+        public uint Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
+        public uint Unknown5 { get; set; }
+        public byte TriggerOut { get; set; }
+        public uint Param1 { get; set; }
+        public uint Unknown8 { get; set; }
+        public uint Unknown9 { get; set; }
+        public uint Unknown10 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

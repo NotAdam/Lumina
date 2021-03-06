@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class AetherialWheel : ExcelRow
     {
         
-        public LazyRow< Item > ItemUnprimed;
-        public LazyRow< Item > ItemPrimed;
-        public byte Grade;
-        public byte HoursRequired;
+        public LazyRow< Item > ItemUnprimed { get; set; }
+        public LazyRow< Item > ItemPrimed { get; set; }
+        public byte Grade { get; set; }
+        public byte HoursRequired { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

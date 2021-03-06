@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class Carry : ExcelRow
     {
         
-        public ulong Model;
-        public byte Timeline;
-        public byte Unknown2;
-        public byte Unknown3;
+        public ulong Model { get; set; }
+        public byte Timeline { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class Knockback : ExcelRow
     {
         
-        public byte Distance;
-        public byte Speed;
-        public bool Motion;
-        public byte NearDistance;
-        public byte Direction;
-        public byte DirectionArg;
-        public bool CancelMove;
+        public byte Distance { get; set; }
+        public byte Speed { get; set; }
+        public bool Motion { get; set; }
+        public byte NearDistance { get; set; }
+        public byte Direction { get; set; }
+        public byte DirectionArg { get; set; }
+        public bool CancelMove { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

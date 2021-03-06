@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class SubmarineExploration : ExcelRow
     {
         
-        public SeString Destination;
-        public SeString Location;
-        public short Unknown2;
-        public short Unknown3;
-        public short Unknown4;
-        public LazyRow< SubmarineMap > Map;
-        public bool Unknown6;
-        public byte Stars;
-        public byte RankReq;
-        public byte CeruleumTankReq;
-        public ushort Durationmin;
-        public byte DistanceForSurvey;
-        public uint ExpReward;
+        public SeString Destination { get; set; }
+        public SeString Location { get; set; }
+        public short Unknown2 { get; set; }
+        public short Unknown3 { get; set; }
+        public short Unknown4 { get; set; }
+        public LazyRow< SubmarineMap > Map { get; set; }
+        public bool Unknown6 { get; set; }
+        public byte Stars { get; set; }
+        public byte RankReq { get; set; }
+        public byte CeruleumTankReq { get; set; }
+        public ushort Durationmin { get; set; }
+        public byte DistanceForSurvey { get; set; }
+        public uint ExpReward { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

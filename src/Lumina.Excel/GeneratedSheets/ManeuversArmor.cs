@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class ManeuversArmor : ExcelRow
     {
         
-        public ushort Unknown0;
-        public LazyRow< BNpcName >[] BNpcBase;
-        public byte Unknown3;
-        public bool Unknown4;
-        public uint[] Icon;
-        public SeString Unknown10;
-        public SeString Unknown11;
+        public ushort Unknown0 { get; set; }
+        public LazyRow< BNpcName >[] BNpcBase { get; set; }
+        public byte Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public uint[] Icon { get; set; }
+        public SeString Unknown10 { get; set; }
+        public SeString Unknown11 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

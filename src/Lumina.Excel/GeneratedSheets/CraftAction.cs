@@ -10,28 +10,27 @@ namespace Lumina.Excel.GeneratedSheets
     public class CraftAction : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public LazyRow< ActionTimeline > AnimationStart;
-        public LazyRow< ActionTimeline > AnimationEnd;
-        public ushort Icon;
-        public LazyRow< ClassJob > ClassJob;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public byte ClassJobLevel;
-        public LazyRow< Quest > QuestRequirement;
-        public bool Specialist;
-        public ushort Unknown10;
-        public byte Cost;
-        public LazyRow< CraftAction > CRP;
-        public LazyRow< CraftAction > BSM;
-        public LazyRow< CraftAction > ARM;
-        public LazyRow< CraftAction > GSM;
-        public LazyRow< CraftAction > LTW;
-        public LazyRow< CraftAction > WVR;
-        public LazyRow< CraftAction > ALC;
-        public LazyRow< CraftAction > CUL;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public LazyRow< ActionTimeline > AnimationStart { get; set; }
+        public LazyRow< ActionTimeline > AnimationEnd { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public byte ClassJobLevel { get; set; }
+        public LazyRow< Quest > QuestRequirement { get; set; }
+        public bool Specialist { get; set; }
+        public ushort Unknown10 { get; set; }
+        public byte Cost { get; set; }
+        public LazyRow< CraftAction > CRP { get; set; }
+        public LazyRow< CraftAction > BSM { get; set; }
+        public LazyRow< CraftAction > ARM { get; set; }
+        public LazyRow< CraftAction > GSM { get; set; }
+        public LazyRow< CraftAction > LTW { get; set; }
+        public LazyRow< CraftAction > WVR { get; set; }
+        public LazyRow< CraftAction > ALC { get; set; }
+        public LazyRow< CraftAction > CUL { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

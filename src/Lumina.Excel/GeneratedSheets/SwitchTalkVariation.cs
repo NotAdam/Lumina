@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class SwitchTalkVariation : ExcelRow
     {
         
-        public uint Quest0;
-        public LazyRow< Quest > Quest1;
-        public byte Unknown2;
-        public LazyRow< DefaultTalk > DefaultTalk;
+        public uint Quest0 { get; set; }
+        public LazyRow< Quest > Quest1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public LazyRow< DefaultTalk > DefaultTalk { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

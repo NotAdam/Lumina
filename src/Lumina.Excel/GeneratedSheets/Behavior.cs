@@ -10,25 +10,24 @@ namespace Lumina.Excel.GeneratedSheets
     public class Behavior : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public byte Condition0Target;
-        public byte Condition0Type;
-        public LazyRow< Balloon > Balloon;
-        public short Unknown5;
-        public int Unknown6;
-        public ushort Unknown7;
-        public ushort Unknown8;
-        public byte Condition1Target;
-        public byte Condition1Type;
-        public uint ContentArgument0;
-        public byte ContentArgument1;
-        public byte Unknown13;
-        public byte Unknown14;
-        public uint Unknown15;
-        public ushort Unknown16;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Condition0Target { get; set; }
+        public byte Condition0Type { get; set; }
+        public LazyRow< Balloon > Balloon { get; set; }
+        public short Unknown5 { get; set; }
+        public int Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
+        public ushort Unknown8 { get; set; }
+        public byte Condition1Target { get; set; }
+        public byte Condition1Type { get; set; }
+        public uint ContentArgument0 { get; set; }
+        public byte ContentArgument1 { get; set; }
+        public byte Unknown13 { get; set; }
+        public byte Unknown14 { get; set; }
+        public uint Unknown15 { get; set; }
+        public ushort Unknown16 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class JobHudManual : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public LazyRow< Action > Action;
-        public byte Unknown3;
-        public uint Unknown4;
-        public LazyRow< Guide > Guide;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< Action > Action { get; set; }
+        public byte Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
+        public LazyRow< Guide > Guide { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

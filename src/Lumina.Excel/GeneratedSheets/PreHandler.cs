@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class PreHandler : ExcelRow
     {
         
-        public SeString Unknown0;
-        public uint Image;
-        public uint Target;
-        public LazyRow< Quest > UnlockQuest;
-        public LazyRow< DefaultTalk > AcceptMessage;
-        public LazyRow< DefaultTalk > DenyMessage;
-        public byte Unknown6;
+        public SeString Unknown0 { get; set; }
+        public uint Image { get; set; }
+        public uint Target { get; set; }
+        public LazyRow< Quest > UnlockQuest { get; set; }
+        public LazyRow< DefaultTalk > AcceptMessage { get; set; }
+        public LazyRow< DefaultTalk > DenyMessage { get; set; }
+        public byte Unknown6 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

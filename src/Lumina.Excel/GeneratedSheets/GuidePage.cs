@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class GuidePage : ExcelRow
     {
         
-        public byte Key;
-        public uint Output;
+        public byte Key { get; set; }
+        public uint Output { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

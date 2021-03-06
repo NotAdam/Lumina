@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class PartyContent : ExcelRow
     {
         
-        public byte Key;
-        public ushort TimeLimit;
-        public bool Name;
-        public LazyRow< PartyContentTextData > TextDataStart;
-        public LazyRow< PartyContentTextData > TextDataEnd;
-        public uint[] LGBEventObject0;
-        public uint[] LGBEventRange;
-        public uint[] LGBEventObject1;
-        public ushort Unknown32;
-        public LazyRow< ContentFinderCondition > ContentFinderCondition;
-        public uint Image;
-        public byte Unknown35;
+        public byte Key { get; set; }
+        public ushort TimeLimit { get; set; }
+        public bool Name { get; set; }
+        public LazyRow< PartyContentTextData > TextDataStart { get; set; }
+        public LazyRow< PartyContentTextData > TextDataEnd { get; set; }
+        public uint[] LGBEventObject0 { get; set; }
+        public uint[] LGBEventRange { get; set; }
+        public uint[] LGBEventObject1 { get; set; }
+        public ushort Unknown32 { get; set; }
+        public LazyRow< ContentFinderCondition > ContentFinderCondition { get; set; }
+        public uint Image { get; set; }
+        public byte Unknown35 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentsTutorial : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public LazyRow< ContentsTutorialPage >[] Page;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public LazyRow< ContentsTutorialPage >[] Page { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

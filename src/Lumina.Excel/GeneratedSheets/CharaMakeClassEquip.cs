@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class CharaMakeClassEquip : ExcelRow
     {
         
-        public ulong Helmet;
-        public ulong Top;
-        public ulong Glove;
-        public ulong Down;
-        public ulong Shoes;
-        public ulong Weapon;
-        public ulong SubWeapon;
-        public LazyRow< ClassJob > Class;
+        public ulong Helmet { get; set; }
+        public ulong Top { get; set; }
+        public ulong Glove { get; set; }
+        public ulong Down { get; set; }
+        public ulong Shoes { get; set; }
+        public ulong Weapon { get; set; }
+        public ulong SubWeapon { get; set; }
+        public LazyRow< ClassJob > Class { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

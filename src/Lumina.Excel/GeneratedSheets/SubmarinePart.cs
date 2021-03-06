@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class SubmarinePart : ExcelRow
     {
         
-        public byte Slot;
-        public byte Rank;
-        public byte Components;
-        public short Surveillance;
-        public short Retrieval;
-        public short Speed;
-        public short Range;
-        public short Favor;
-        public ushort Class;
-        public byte RepairMaterials;
+        public byte Slot { get; set; }
+        public byte Rank { get; set; }
+        public byte Components { get; set; }
+        public short Surveillance { get; set; }
+        public short Retrieval { get; set; }
+        public short Speed { get; set; }
+        public short Range { get; set; }
+        public short Favor { get; set; }
+        public ushort Class { get; set; }
+        public byte RepairMaterials { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

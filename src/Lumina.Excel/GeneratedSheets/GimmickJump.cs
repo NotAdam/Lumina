@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class GimmickJump : ExcelRow
     {
         
-        public ushort FallDamage;
-        public sbyte Height;
-        public LazyRow< ActionTimeline > LoopMotion;
-        public LazyRow< ActionTimeline > EndMotion;
-        public bool StartClient;
-        public bool Unknown5;
+        public ushort FallDamage { get; set; }
+        public sbyte Height { get; set; }
+        public LazyRow< ActionTimeline > LoopMotion { get; set; }
+        public LazyRow< ActionTimeline > EndMotion { get; set; }
+        public bool StartClient { get; set; }
+        public bool Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

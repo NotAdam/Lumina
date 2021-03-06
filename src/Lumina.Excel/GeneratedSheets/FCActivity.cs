@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCActivity : ExcelRow
     {
         
-        public SeString Text;
-        public byte SelfKind;
-        public byte TargetKind;
-        public byte NumParam;
-        public LazyRow< FCActivityCategory > FCActivityCategory;
-        public sbyte IconType;
+        public SeString Text { get; set; }
+        public byte SelfKind { get; set; }
+        public byte TargetKind { get; set; }
+        public byte NumParam { get; set; }
+        public LazyRow< FCActivityCategory > FCActivityCategory { get; set; }
+        public sbyte IconType { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

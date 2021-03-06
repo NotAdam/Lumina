@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class RPParameter : ExcelRow
     {
         
-        public LazyRow< BNpcName > BNpcName;
-        public LazyRow< ClassJob > ClassJob;
-        public byte Unknown2;
+        public LazyRow< BNpcName > BNpcName { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public byte Unknown2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

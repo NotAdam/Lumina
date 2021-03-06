@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class Purify : ExcelRow
     {
         
-        public LazyRow< ClassJob > Class;
-        public byte Level;
+        public LazyRow< ClassJob > Class { get; set; }
+        public byte Level { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

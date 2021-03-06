@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class Pet : ExcelRow
     {
         
-        public SeString Name;
-        public ushort Unknown1;
-        public ushort Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public ushort Unknown5;
-        public bool Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
-        public sbyte Unknown9;
-        public byte Unknown10;
-        public byte Unknown11;
-        public byte Unknown12;
+        public SeString Name { get; set; }
+        public ushort Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
+        public sbyte Unknown9 { get; set; }
+        public byte Unknown10 { get; set; }
+        public byte Unknown11 { get; set; }
+        public byte Unknown12 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

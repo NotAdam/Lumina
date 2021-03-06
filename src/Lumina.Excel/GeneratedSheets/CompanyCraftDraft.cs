@@ -15,12 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
             public byte RequiredItemCount;
         }
         
-        public SeString Name;
-        public LazyRow< CompanyCraftDraftCategory > CompanyCraftDraftCategory;
-        public UnkStruct2Struct[] UnkStruct2;
-        public uint Order;
+        public SeString Name { get; set; }
+        public LazyRow< CompanyCraftDraftCategory > CompanyCraftDraftCategory { get; set; }
+        public UnkStruct2Struct[] UnkStruct2 { get; set; }
+        public uint Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

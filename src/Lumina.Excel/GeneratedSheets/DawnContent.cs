@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class DawnContent : ExcelRow
     {
         
-        public LazyRow< ContentFinderCondition > Content;
-        public uint Exp;
+        public LazyRow< ContentFinderCondition > Content { get; set; }
+        public uint Exp { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

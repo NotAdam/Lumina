@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class MobHuntTarget : ExcelRow
     {
         
-        public LazyRow< BNpcName > Name;
-        public LazyRow< Fate > FATE;
-        public uint Icon;
-        public LazyRow< Map > TerritoryType;
-        public LazyRow< PlaceName > PlaceName;
+        public LazyRow< BNpcName > Name { get; set; }
+        public LazyRow< Fate > FATE { get; set; }
+        public uint Icon { get; set; }
+        public LazyRow< Map > TerritoryType { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

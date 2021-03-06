@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class MYCTemporaryItemUICategory : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Unknown1;
+        public SeString Name { get; set; }
+        public SeString Unknown1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

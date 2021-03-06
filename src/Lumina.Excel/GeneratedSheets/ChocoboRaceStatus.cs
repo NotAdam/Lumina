@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceStatus : ExcelRow
     {
         
-        public LazyRow< Status > Status;
-        public ushort Unknown1;
+        public LazyRow< Status > Status { get; set; }
+        public ushort Unknown1 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeddingBGM : ExcelRow
     {
         
-        public LazyRow< BGM > Song;
-        public SeString SongName;
+        public LazyRow< BGM > Song { get; set; }
+        public SeString SongName { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

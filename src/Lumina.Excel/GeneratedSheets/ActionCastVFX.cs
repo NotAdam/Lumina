@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionCastVFX : ExcelRow
     {
         
-        public LazyRow< VFX > VFX;
+        public LazyRow< VFX > VFX { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

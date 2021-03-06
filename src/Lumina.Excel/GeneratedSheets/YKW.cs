@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class YKW : ExcelRow
     {
         
-        public ushort Unknown0;
-        public LazyRow< Item > Item;
-        public LazyRow< TerritoryType >[] Location;
-        public SeString Unknown8;
+        public ushort Unknown0 { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public LazyRow< TerritoryType >[] Location { get; set; }
+        public SeString Unknown8 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActivityFeedGroupCaptions : ExcelRow
     {
         
-        public SeString JA;
-        public SeString EN;
-        public SeString DE;
-        public SeString FR;
+        public SeString JA { get; set; }
+        public SeString EN { get; set; }
+        public SeString DE { get; set; }
+        public SeString FR { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

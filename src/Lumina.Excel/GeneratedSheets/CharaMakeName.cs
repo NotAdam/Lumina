@@ -10,52 +10,51 @@ namespace Lumina.Excel.GeneratedSheets
     public class CharaMakeName : ExcelRow
     {
         
-        public SeString HyurMidlanderMale;
-        public SeString HyurMidlanderFemale;
-        public SeString HyurMidlanderLastName;
-        public SeString HyurHighlanderMale;
-        public SeString HyurHighlanderFemale;
-        public SeString HyurHighlanderLastName;
-        public SeString ElezenMale;
-        public SeString ElezenFemale;
-        public SeString ElezenWildwoodLastName;
-        public SeString ElezenDuskwightLastName;
-        public SeString MiqoteSunMale;
-        public SeString MiqoteSunFemale;
-        public SeString MiqoteSunMaleLastName;
-        public SeString MiqoteSunFemaleLastName;
-        public SeString MiqoteMoonMale;
-        public SeString MiqoteMoonFemale;
-        public SeString MiqoteMoonLastname;
-        public SeString LalafellPlainsfolkFirstNameStart;
-        public SeString LalafellPlainsfolkLastNameStart;
-        public SeString LalafellPlainsfolkEndOfNames;
-        public SeString LalafellDunesfolkMale;
-        public SeString LalafellDunesfolkMaleLastName;
-        public SeString LalafellDunesfolkFemale;
-        public SeString LalafellDunesfolkFemaleLastName;
-        public SeString RoegadynSeaWolfMale;
-        public SeString RoegadynSeaWolfMaleLastName;
-        public SeString RoegadynSeaWolfFemale;
-        public SeString RoegadynSeaWolfFemaleLastName;
-        public SeString RoegadynHellsguardFirstName;
-        public SeString RoegadynHellsguardMaleLastName;
-        public SeString RoegadynHellsguardFemaleLastName;
-        public SeString AuRaRaenMale;
-        public SeString AuRaRaenFemale;
-        public SeString AuRaRaenLastName;
-        public SeString AuRaXaelaMale;
-        public SeString AuRaXaelaFemale;
-        public SeString AuRaXaelaLastName;
-        public SeString HrothgarHellionsFirstName;
-        public SeString HrothgarHellionsLastName;
-        public SeString HrothgarLostFirstName;
-        public SeString HrothgarLostLastName;
-        public SeString VieraFirstName;
-        public SeString VieraRavaLastName;
-        public SeString VieraVeenaLastName;
+        public SeString HyurMidlanderMale { get; set; }
+        public SeString HyurMidlanderFemale { get; set; }
+        public SeString HyurMidlanderLastName { get; set; }
+        public SeString HyurHighlanderMale { get; set; }
+        public SeString HyurHighlanderFemale { get; set; }
+        public SeString HyurHighlanderLastName { get; set; }
+        public SeString ElezenMale { get; set; }
+        public SeString ElezenFemale { get; set; }
+        public SeString ElezenWildwoodLastName { get; set; }
+        public SeString ElezenDuskwightLastName { get; set; }
+        public SeString MiqoteSunMale { get; set; }
+        public SeString MiqoteSunFemale { get; set; }
+        public SeString MiqoteSunMaleLastName { get; set; }
+        public SeString MiqoteSunFemaleLastName { get; set; }
+        public SeString MiqoteMoonMale { get; set; }
+        public SeString MiqoteMoonFemale { get; set; }
+        public SeString MiqoteMoonLastname { get; set; }
+        public SeString LalafellPlainsfolkFirstNameStart { get; set; }
+        public SeString LalafellPlainsfolkLastNameStart { get; set; }
+        public SeString LalafellPlainsfolkEndOfNames { get; set; }
+        public SeString LalafellDunesfolkMale { get; set; }
+        public SeString LalafellDunesfolkMaleLastName { get; set; }
+        public SeString LalafellDunesfolkFemale { get; set; }
+        public SeString LalafellDunesfolkFemaleLastName { get; set; }
+        public SeString RoegadynSeaWolfMale { get; set; }
+        public SeString RoegadynSeaWolfMaleLastName { get; set; }
+        public SeString RoegadynSeaWolfFemale { get; set; }
+        public SeString RoegadynSeaWolfFemaleLastName { get; set; }
+        public SeString RoegadynHellsguardFirstName { get; set; }
+        public SeString RoegadynHellsguardMaleLastName { get; set; }
+        public SeString RoegadynHellsguardFemaleLastName { get; set; }
+        public SeString AuRaRaenMale { get; set; }
+        public SeString AuRaRaenFemale { get; set; }
+        public SeString AuRaRaenLastName { get; set; }
+        public SeString AuRaXaelaMale { get; set; }
+        public SeString AuRaXaelaFemale { get; set; }
+        public SeString AuRaXaelaLastName { get; set; }
+        public SeString HrothgarHellionsFirstName { get; set; }
+        public SeString HrothgarHellionsLastName { get; set; }
+        public SeString HrothgarLostFirstName { get; set; }
+        public SeString HrothgarLostLastName { get; set; }
+        public SeString VieraFirstName { get; set; }
+        public SeString VieraRavaLastName { get; set; }
+        public SeString VieraVeenaLastName { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

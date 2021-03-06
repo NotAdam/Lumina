@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDSharedGroupControlParam : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte ParamValue;
+        public byte Unknown0 { get; set; }
+        public byte ParamValue { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -22,12 +22,11 @@ namespace Lumina.Excel.GeneratedSheets
             public byte FCRankRequired;
         }
         
-        public SeString Name;
-        public UnkStruct1Struct[] UnkStruct1;
-        public UnkStruct11Struct[] UnkStruct11;
-        public UnkStruct21Struct[] UnkStruct21;
+        public SeString Name { get; set; }
+        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public UnkStruct11Struct[] UnkStruct11 { get; set; }
+        public UnkStruct21Struct[] UnkStruct21 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

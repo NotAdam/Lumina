@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceRank : ExcelRow
     {
         
-        public ushort RatingMin;
-        public ushort RatingMax;
-        public LazyRow< GoldSaucerTextData > Name;
-        public ushort Fee;
-        public int Icon;
+        public ushort RatingMin { get; set; }
+        public ushort RatingMax { get; set; }
+        public LazyRow< GoldSaucerTextData > Name { get; set; }
+        public ushort Fee { get; set; }
+        public int Icon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

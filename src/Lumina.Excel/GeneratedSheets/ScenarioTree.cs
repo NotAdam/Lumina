@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class ScenarioTree : ExcelRow
     {
         
-        public LazyRow< ScenarioType > Type;
-        public LazyRow< ScreenImage > Image;
-        public uint Unknown2;
-        public uint Unknown540;
-        public SeString Unknown541;
-        public int Unknown542;
+        public LazyRow< ScenarioType > Type { get; set; }
+        public LazyRow< ScreenImage > Image { get; set; }
+        public uint Unknown2 { get; set; }
+        public uint Unknown540 { get; set; }
+        public SeString Unknown541 { get; set; }
+        public int Unknown542 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

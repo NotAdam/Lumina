@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentRandomSelect : ExcelRow
     {
         
-        public LazyRow< ContentFinderCondition > Name;
+        public LazyRow< ContentFinderCondition > Name { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

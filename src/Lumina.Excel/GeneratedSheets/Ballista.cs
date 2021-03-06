@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class Ballista : ExcelRow
     {
         
-        public LazyRow< BNpcBase > BNPC;
-        public sbyte Near;
-        public sbyte Far;
-        public ushort Angle;
-        public byte Bullet;
-        public byte Unknown5;
-        public byte Unknown6;
-        public LazyRow< Action > Action0;
-        public LazyRow< Action > Action1;
-        public LazyRow< Action > Action2;
-        public LazyRow< Action > Action3;
+        public LazyRow< BNpcBase > BNPC { get; set; }
+        public sbyte Near { get; set; }
+        public sbyte Far { get; set; }
+        public ushort Angle { get; set; }
+        public byte Bullet { get; set; }
+        public byte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public LazyRow< Action > Action0 { get; set; }
+        public LazyRow< Action > Action1 { get; set; }
+        public LazyRow< Action > Action2 { get; set; }
+        public LazyRow< Action > Action3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

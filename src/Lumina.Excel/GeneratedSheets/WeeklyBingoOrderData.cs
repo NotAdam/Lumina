@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeeklyBingoOrderData : ExcelRow
     {
         
-        public uint Type;
-        public uint Data;
-        public byte Unknown2;
-        public LazyRow< WeeklyBingoText > Text;
-        public uint Icon;
-        public byte Unknown5;
+        public uint Type { get; set; }
+        public uint Data { get; set; }
+        public byte Unknown2 { get; set; }
+        public LazyRow< WeeklyBingoText > Text { get; set; }
+        public uint Icon { get; set; }
+        public byte Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

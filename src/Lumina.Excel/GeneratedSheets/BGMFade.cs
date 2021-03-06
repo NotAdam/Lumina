@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGMFade : ExcelRow
     {
         
-        public int SceneOut;
-        public int SceneIn;
-        public LazyRow< BGMFadeType > BGMFadeType;
+        public int SceneOut { get; set; }
+        public int SceneIn { get; set; }
+        public LazyRow< BGMFadeType > BGMFadeType { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

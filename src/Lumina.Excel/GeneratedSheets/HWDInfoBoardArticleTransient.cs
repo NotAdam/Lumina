@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDInfoBoardArticleTransient : ExcelRow
     {
         
-        public uint Image;
-        public SeString Text;
-        public SeString NpcName;
+        public uint Image { get; set; }
+        public SeString Text { get; set; }
+        public SeString NpcName { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

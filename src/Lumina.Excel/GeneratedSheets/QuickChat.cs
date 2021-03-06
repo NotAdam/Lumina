@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuickChat : ExcelRow
     {
         
-        public SeString NameAction;
-        public int Icon;
-        public LazyRow< Addon > Addon;
-        public LazyRow< QuickChatTransient > QuickChatTransient;
-        public ushort Unknown4;
+        public SeString NameAction { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< Addon > Addon { get; set; }
+        public LazyRow< QuickChatTransient > QuickChatTransient { get; set; }
+        public ushort Unknown4 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

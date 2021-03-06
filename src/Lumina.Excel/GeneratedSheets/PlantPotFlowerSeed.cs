@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class PlantPotFlowerSeed : ExcelRow
     {
         
-        public uint[] SeedIcon;
+        public uint[] SeedIcon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

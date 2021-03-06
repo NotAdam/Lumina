@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanyCraftSequence : ExcelRow
     {
         
-        public LazyRow< Item > ResultItem;
-        public int Category;
-        public LazyRow< CompanyCraftDraftCategory > CompanyCraftDraftCategory;
-        public LazyRow< CompanyCraftType > CompanyCraftType;
-        public LazyRow< CompanyCraftDraft > CompanyCraftDraft;
-        public LazyRow< CompanyCraftPart >[] CompanyCraftPart;
-        public uint Order;
+        public LazyRow< Item > ResultItem { get; set; }
+        public int Category { get; set; }
+        public LazyRow< CompanyCraftDraftCategory > CompanyCraftDraftCategory { get; set; }
+        public LazyRow< CompanyCraftType > CompanyCraftType { get; set; }
+        public LazyRow< CompanyCraftDraft > CompanyCraftDraft { get; set; }
+        public LazyRow< CompanyCraftPart >[] CompanyCraftPart { get; set; }
+        public uint Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

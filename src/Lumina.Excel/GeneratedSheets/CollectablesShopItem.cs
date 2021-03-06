@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class CollectablesShopItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public LazyRow< CollectablesShopItemGroup > CollectablesShopItemGroup;
-        public ushort LevelMin;
-        public ushort LevelMax;
-        public byte Unknown4;
-        public byte Unknown5;
-        public LazyRow< CollectablesShopRefine > CollectablesShopRefine;
-        public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip;
+        public LazyRow< Item > Item { get; set; }
+        public LazyRow< CollectablesShopItemGroup > CollectablesShopItemGroup { get; set; }
+        public ushort LevelMin { get; set; }
+        public ushort LevelMax { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public LazyRow< CollectablesShopRefine > CollectablesShopRefine { get; set; }
+        public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

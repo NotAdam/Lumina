@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeatherGroup : ExcelRow
     {
         
-        public int Unknown0;
-        public LazyRow< WeatherRate > WeatherRate;
+        public int Unknown0 { get; set; }
+        public LazyRow< WeatherRate > WeatherRate { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

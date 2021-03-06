@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class EurekaMagiaAction : ExcelRow
     {
         
-        public LazyRow< Action > Action;
-        public byte MaxUses;
+        public LazyRow< Action > Action { get; set; }
+        public byte MaxUses { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

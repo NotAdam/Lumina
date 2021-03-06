@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanyCraftPart : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< CompanyCraftType > CompanyCraftType;
-        public LazyRow< CompanyCraftProcess >[] CompanyCraftProcess;
-        public ushort Unknown5;
+        public byte Unknown0 { get; set; }
+        public LazyRow< CompanyCraftType > CompanyCraftType { get; set; }
+        public LazyRow< CompanyCraftProcess >[] CompanyCraftProcess { get; set; }
+        public ushort Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

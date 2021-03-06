@@ -10,24 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringLeve : ExcelRow
     {
         
-        public LazyRow< GatheringLeveRoute >[] Route;
-        public LazyRow< EventItem > RequiredItem0;
-        public byte RequiredItemQty0;
-        public LazyRow< EventItem > RequiredItem1;
-        public byte RequiredItemQty1;
-        public LazyRow< EventItem > RequiredItem2;
-        public byte RequiredItemQty2;
-        public LazyRow< EventItem > RequiredItem3;
-        public byte RequiredItemQty3;
-        public byte ItemNumber;
-        public LazyRow< GatheringLeveRule > Rule;
-        public byte Varient;
-        public ushort Objective0;
-        public ushort Objective1;
-        public int BNpcEntry;
-        public bool UseSecondaryTool;
+        public LazyRow< GatheringLeveRoute >[] Route { get; set; }
+        public LazyRow< EventItem > RequiredItem0 { get; set; }
+        public byte RequiredItemQty0 { get; set; }
+        public LazyRow< EventItem > RequiredItem1 { get; set; }
+        public byte RequiredItemQty1 { get; set; }
+        public LazyRow< EventItem > RequiredItem2 { get; set; }
+        public byte RequiredItemQty2 { get; set; }
+        public LazyRow< EventItem > RequiredItem3 { get; set; }
+        public byte RequiredItemQty3 { get; set; }
+        public byte ItemNumber { get; set; }
+        public LazyRow< GatheringLeveRule > Rule { get; set; }
+        public byte Varient { get; set; }
+        public ushort Objective0 { get; set; }
+        public ushort Objective1 { get; set; }
+        public int BNpcEntry { get; set; }
+        public bool UseSecondaryTool { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

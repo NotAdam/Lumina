@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class DawnQuestAnnounce : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public LazyRow< DawnContent > Content;
-        public LazyRow< ENpcResident >[] ENPC;
+        public LazyRow< Quest > Quest { get; set; }
+        public LazyRow< DawnContent > Content { get; set; }
+        public LazyRow< ENpcResident >[] ENPC { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

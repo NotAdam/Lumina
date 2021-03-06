@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentRouletteOpenRule : ExcelRow
     {
         
-        public bool Unknown0;
-        public uint Type;
+        public bool Unknown0 { get; set; }
+        public uint Type { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

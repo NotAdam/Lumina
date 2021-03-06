@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class CollectablesShopRewardItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public bool Unknown1;
-        public byte Unknown2;
-        public byte Unknown3;
-        public byte Unknown4;
-        public uint Unknown5;
-        public bool Unknown6;
-        public byte Unknown7;
-        public byte Unknown8;
-        public byte Unknown9;
+        public LazyRow< Item > Item { get; set; }
+        public bool Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
+        public uint Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public byte Unknown7 { get; set; }
+        public byte Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

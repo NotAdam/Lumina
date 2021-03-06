@@ -10,24 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public class TripleTriadCardResident : ExcelRow
     {
         
-        public ushort Unknown0;
-        public byte Top;
-        public byte Bottom;
-        public byte Left;
-        public byte Right;
-        public LazyRow< TripleTriadCardRarity > TripleTriadCardRarity;
-        public LazyRow< TripleTriadCardType > TripleTriadCardType;
-        public ushort SaleValue;
-        public byte SortKey;
-        public ushort Order;
-        public byte UIPriority;
-        public bool Unknown54;
-        public byte AcquisitionType;
-        public uint Acquisition;
-        public uint Location;
-        public LazyRow< Quest > Quest;
+        public ushort Unknown0 { get; set; }
+        public byte Top { get; set; }
+        public byte Bottom { get; set; }
+        public byte Left { get; set; }
+        public byte Right { get; set; }
+        public LazyRow< TripleTriadCardRarity > TripleTriadCardRarity { get; set; }
+        public LazyRow< TripleTriadCardType > TripleTriadCardType { get; set; }
+        public ushort SaleValue { get; set; }
+        public byte SortKey { get; set; }
+        public ushort Order { get; set; }
+        public byte UIPriority { get; set; }
+        public bool Unknown54 { get; set; }
+        public byte AcquisitionType { get; set; }
+        public uint Acquisition { get; set; }
+        public uint Location { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

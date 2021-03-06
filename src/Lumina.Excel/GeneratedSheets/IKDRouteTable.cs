@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class IKDRouteTable : ExcelRow
     {
         
-        public LazyRow< IKDRoute > Route;
+        public LazyRow< IKDRoute > Route { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class EurekaAethernet : ExcelRow
     {
         
-        public LazyRow< PlaceName > Location;
+        public LazyRow< PlaceName > Location { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class ItemSortCategory : ExcelRow
     {
         
-        public byte Param;
+        public byte Param { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

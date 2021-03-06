@@ -10,74 +10,73 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeeklyLotBonus : ExcelRow
     {
         
-        public byte[] WeeklyLotBonusThreshold;
-        public byte Unknown31;
-        public ushort Unknown32;
-        public ushort Unknown33;
-        public ushort Unknown34;
-        public ushort Unknown35;
-        public ushort Unknown36;
-        public ushort Unknown37;
-        public ushort Unknown38;
-        public ushort Unknown39;
-        public ushort Unknown40;
-        public ushort Unknown41;
-        public ushort Unknown42;
-        public ushort Unknown43;
-        public ushort Unknown44;
-        public ushort Unknown45;
-        public ushort Unknown46;
-        public ushort Unknown47;
-        public ushort Unknown48;
-        public ushort Unknown49;
-        public ushort Unknown50;
-        public ushort Unknown51;
-        public ushort Unknown52;
-        public ushort Unknown53;
-        public ushort Unknown54;
-        public ushort Unknown55;
-        public ushort Unknown56;
-        public ushort Unknown57;
-        public ushort Unknown58;
-        public ushort Unknown59;
-        public ushort Unknown60;
-        public ushort Unknown61;
-        public ushort Unknown62;
-        public ushort Unknown63;
-        public byte Unknown64;
-        public byte Unknown65;
-        public byte Unknown66;
-        public byte Unknown67;
-        public byte Unknown68;
-        public byte Unknown69;
-        public byte Unknown70;
-        public byte Unknown71;
-        public byte Unknown72;
-        public byte Unknown73;
-        public byte Unknown74;
-        public byte Unknown75;
-        public byte Unknown76;
-        public byte Unknown77;
-        public byte Unknown78;
-        public byte Unknown79;
-        public byte Unknown80;
-        public byte Unknown81;
-        public byte Unknown82;
-        public byte Unknown83;
-        public byte Unknown84;
-        public byte Unknown85;
-        public byte Unknown86;
-        public byte Unknown87;
-        public byte Unknown88;
-        public byte Unknown89;
-        public byte Unknown90;
-        public byte Unknown91;
-        public byte Unknown92;
-        public byte Unknown93;
-        public byte Unknown94;
-        public byte Unknown95;
+        public byte[] WeeklyLotBonusThreshold { get; set; }
+        public byte Unknown31 { get; set; }
+        public ushort Unknown32 { get; set; }
+        public ushort Unknown33 { get; set; }
+        public ushort Unknown34 { get; set; }
+        public ushort Unknown35 { get; set; }
+        public ushort Unknown36 { get; set; }
+        public ushort Unknown37 { get; set; }
+        public ushort Unknown38 { get; set; }
+        public ushort Unknown39 { get; set; }
+        public ushort Unknown40 { get; set; }
+        public ushort Unknown41 { get; set; }
+        public ushort Unknown42 { get; set; }
+        public ushort Unknown43 { get; set; }
+        public ushort Unknown44 { get; set; }
+        public ushort Unknown45 { get; set; }
+        public ushort Unknown46 { get; set; }
+        public ushort Unknown47 { get; set; }
+        public ushort Unknown48 { get; set; }
+        public ushort Unknown49 { get; set; }
+        public ushort Unknown50 { get; set; }
+        public ushort Unknown51 { get; set; }
+        public ushort Unknown52 { get; set; }
+        public ushort Unknown53 { get; set; }
+        public ushort Unknown54 { get; set; }
+        public ushort Unknown55 { get; set; }
+        public ushort Unknown56 { get; set; }
+        public ushort Unknown57 { get; set; }
+        public ushort Unknown58 { get; set; }
+        public ushort Unknown59 { get; set; }
+        public ushort Unknown60 { get; set; }
+        public ushort Unknown61 { get; set; }
+        public ushort Unknown62 { get; set; }
+        public ushort Unknown63 { get; set; }
+        public byte Unknown64 { get; set; }
+        public byte Unknown65 { get; set; }
+        public byte Unknown66 { get; set; }
+        public byte Unknown67 { get; set; }
+        public byte Unknown68 { get; set; }
+        public byte Unknown69 { get; set; }
+        public byte Unknown70 { get; set; }
+        public byte Unknown71 { get; set; }
+        public byte Unknown72 { get; set; }
+        public byte Unknown73 { get; set; }
+        public byte Unknown74 { get; set; }
+        public byte Unknown75 { get; set; }
+        public byte Unknown76 { get; set; }
+        public byte Unknown77 { get; set; }
+        public byte Unknown78 { get; set; }
+        public byte Unknown79 { get; set; }
+        public byte Unknown80 { get; set; }
+        public byte Unknown81 { get; set; }
+        public byte Unknown82 { get; set; }
+        public byte Unknown83 { get; set; }
+        public byte Unknown84 { get; set; }
+        public byte Unknown85 { get; set; }
+        public byte Unknown86 { get; set; }
+        public byte Unknown87 { get; set; }
+        public byte Unknown88 { get; set; }
+        public byte Unknown89 { get; set; }
+        public byte Unknown90 { get; set; }
+        public byte Unknown91 { get; set; }
+        public byte Unknown92 { get; set; }
+        public byte Unknown93 { get; set; }
+        public byte Unknown94 { get; set; }
+        public byte Unknown95 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

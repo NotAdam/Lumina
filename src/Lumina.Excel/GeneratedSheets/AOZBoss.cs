@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class AOZBoss : ExcelRow
     {
         
-        public LazyRow< AOZContentBriefingBNpc > Boss;
-        public ushort Position;
+        public LazyRow< AOZContentBriefingBNpc > Boss { get; set; }
+        public ushort Position { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class ItemUICategory : ExcelRow
     {
         
-        public SeString Name;
-        public int Icon;
-        public byte OrderMinor;
-        public byte OrderMajor;
+        public SeString Name { get; set; }
+        public int Icon { get; set; }
+        public byte OrderMinor { get; set; }
+        public byte OrderMajor { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

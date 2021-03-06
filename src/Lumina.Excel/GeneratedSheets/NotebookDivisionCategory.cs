@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class NotebookDivisionCategory : ExcelRow
     {
         
-        public SeString Name;
-        public byte Index;
+        public SeString Name { get; set; }
+        public byte Index { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

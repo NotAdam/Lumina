@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class LeveVfx : ExcelRow
     {
         
-        public SeString Effect;
-        public int Icon;
+        public SeString Effect { get; set; }
+        public int Icon { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

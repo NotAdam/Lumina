@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionProcStatus : ExcelRow
     {
         
-        public LazyRow< Status > Status;
+        public LazyRow< Status > Status { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

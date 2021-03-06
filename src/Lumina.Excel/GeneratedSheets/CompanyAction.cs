@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanyAction : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public int Icon;
-        public LazyRow< FCRank > FCRank;
-        public uint Cost;
-        public byte Order;
-        public bool Purchasable;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< FCRank > FCRank { get; set; }
+        public uint Cost { get; set; }
+        public byte Order { get; set; }
+        public bool Purchasable { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

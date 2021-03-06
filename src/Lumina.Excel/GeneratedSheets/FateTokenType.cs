@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class FateTokenType : ExcelRow
     {
         
-        public LazyRow< Item > Currency;
+        public LazyRow< Item > Currency { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

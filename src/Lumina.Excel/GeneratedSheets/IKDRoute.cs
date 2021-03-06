@@ -15,12 +15,11 @@ namespace Lumina.Excel.GeneratedSheets
             public byte Time;
         }
         
-        public UnkStruct0Struct[] UnkStruct0;
-        public uint Image;
-        public LazyRow< TerritoryType > TerritoryType;
-        public SeString Name;
+        public UnkStruct0Struct[] UnkStruct0 { get; set; }
+        public uint Image { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public SeString Name { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

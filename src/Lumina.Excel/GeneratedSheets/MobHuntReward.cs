@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class MobHuntReward : ExcelRow
     {
         
-        public uint ExpReward;
-        public ushort GilReward;
-        public LazyRow< ExVersion > Expansion;
-        public ushort CurrencyReward;
+        public uint ExpReward { get; set; }
+        public ushort GilReward { get; set; }
+        public LazyRow< ExVersion > Expansion { get; set; }
+        public ushort CurrencyReward { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

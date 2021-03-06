@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ExVersion : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< ScreenImage > AcceptJingle;
-        public LazyRow< ScreenImage > CompleteJingle;
+        public SeString Name { get; set; }
+        public LazyRow< ScreenImage > AcceptJingle { get; set; }
+        public LazyRow< ScreenImage > CompleteJingle { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionComboRoute : ExcelRow
     {
         
-        public SeString Name;
-        public sbyte Unknown1;
-        public LazyRow< Action >[] Action;
-        public bool Unknown6;
+        public SeString Name { get; set; }
+        public sbyte Unknown1 { get; set; }
+        public LazyRow< Action >[] Action { get; set; }
+        public bool Unknown6 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

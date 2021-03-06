@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeaponTimeline : ExcelRow
     {
         
-        public SeString File;
-        public short NextWeaponTimeline;
+        public SeString File { get; set; }
+        public short NextWeaponTimeline { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

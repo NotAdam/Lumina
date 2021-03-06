@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class UIColor : ExcelRow
     {
         
-        public uint UIForeground;
-        public uint UIGlow;
-        public uint Unknown2;
-        public uint Unknown3;
+        public uint UIForeground { get; set; }
+        public uint UIGlow { get; set; }
+        public uint Unknown2 { get; set; }
+        public uint Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class AchievementCategory : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< AchievementKind > AchievementKind;
-        public bool ShowComplete;
-        public bool HideCategory;
-        public byte Order;
+        public SeString Name { get; set; }
+        public LazyRow< AchievementKind > AchievementKind { get; set; }
+        public bool ShowComplete { get; set; }
+        public bool HideCategory { get; set; }
+        public byte Order { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringItemPoint : ExcelRow
     {
         
-        public LazyRow< GatheringPoint > GatheringPoint;
+        public LazyRow< GatheringPoint > GatheringPoint { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDLevelChangeDeception : ExcelRow
     {
         
-        public LazyRow< ScreenImage > Image;
+        public LazyRow< ScreenImage > Image { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

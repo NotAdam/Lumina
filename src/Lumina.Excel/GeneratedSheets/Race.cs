@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class Race : ExcelRow
     {
         
-        public SeString Masculine;
-        public SeString Feminine;
-        public LazyRow< Item > RSEMBody;
-        public LazyRow< Item > RSEMHands;
-        public LazyRow< Item > RSEMLegs;
-        public LazyRow< Item > RSEMFeet;
-        public LazyRow< Item > RSEFBody;
-        public LazyRow< Item > RSEFHands;
-        public LazyRow< Item > RSEFLegs;
-        public LazyRow< Item > RSEFFeet;
-        public byte Unknown54;
-        public LazyRow< ExVersion > ExPac;
+        public SeString Masculine { get; set; }
+        public SeString Feminine { get; set; }
+        public LazyRow< Item > RSEMBody { get; set; }
+        public LazyRow< Item > RSEMHands { get; set; }
+        public LazyRow< Item > RSEMLegs { get; set; }
+        public LazyRow< Item > RSEMFeet { get; set; }
+        public LazyRow< Item > RSEFBody { get; set; }
+        public LazyRow< Item > RSEFHands { get; set; }
+        public LazyRow< Item > RSEFLegs { get; set; }
+        public LazyRow< Item > RSEFFeet { get; set; }
+        public byte Unknown54 { get; set; }
+        public LazyRow< ExVersion > ExPac { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

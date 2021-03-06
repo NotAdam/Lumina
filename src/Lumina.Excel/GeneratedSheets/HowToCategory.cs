@@ -10,9 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class HowToCategory : ExcelRow
     {
         
-        public SeString Category;
+        public SeString Category { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class LegacyQuest : ExcelRow
     {
         
-        public ushort LegacyQuestID;
-        public SeString Text;
-        public SeString String;
-        public ushort SortKey;
-        public byte Genre;
+        public ushort LegacyQuestID { get; set; }
+        public SeString Text { get; set; }
+        public SeString String { get; set; }
+        public ushort SortKey { get; set; }
+        public byte Genre { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class WorldDCGroupType : ExcelRow
     {
         
-        public SeString Name;
-        public byte Region;
+        public SeString Name { get; set; }
+        public byte Region { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

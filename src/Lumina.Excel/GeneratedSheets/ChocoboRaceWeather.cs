@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceWeather : ExcelRow
     {
         
-        public LazyRow< Weather > WeatherType1;
-        public LazyRow< Weather > WeatherType2;
+        public LazyRow< Weather > WeatherType1 { get; set; }
+        public LazyRow< Weather > WeatherType2 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

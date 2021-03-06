@@ -10,63 +10,62 @@ namespace Lumina.Excel.GeneratedSheets
     public class BNpcParts : ExcelRow
     {
         
-        public LazyRow< BNpcBase > BNpcBase1;
-        public byte PartSlot1;
-        public bool Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public bool Unknown5;
-        public float X1;
-        public float Y1;
-        public float Z1;
-        public short Unknown9;
-        public float Scale1;
-        public LazyRow< BNpcBase > BNpcBase2;
-        public byte PartSlot2;
-        public bool Unknown13;
-        public bool Unknown14;
-        public bool Unknown15;
-        public bool Unknown16;
-        public float X2;
-        public float Y2;
-        public float Z2;
-        public short Unknown20;
-        public float Scale2;
-        public LazyRow< BNpcBase > BNpcBase3;
-        public byte PartSlot3;
-        public bool Unknown24;
-        public bool Unknown25;
-        public bool Unknown26;
-        public bool Unknown27;
-        public float X3;
-        public float Y3;
-        public float Z3;
-        public short Scale3;
-        public float Unknown32;
-        public LazyRow< BNpcBase > BNpcBase4;
-        public byte PartSlot4;
-        public bool Unknown35;
-        public bool Unknown36;
-        public bool Unknown37;
-        public bool Unknown38;
-        public float X4;
-        public float Y4;
-        public float Z4;
-        public short Unknown42;
-        public float Scale4;
-        public LazyRow< BNpcBase > BNpcBase5;
-        public byte PartSlot5;
-        public bool Unknown46;
-        public bool Unknown47;
-        public bool Unknown48;
-        public bool Unknown49;
-        public float X5;
-        public float Y5;
-        public float Z5;
-        public short Unknown53;
-        public float Scale5;
+        public LazyRow< BNpcBase > BNpcBase1 { get; set; }
+        public byte PartSlot1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
+        public float X1 { get; set; }
+        public float Y1 { get; set; }
+        public float Z1 { get; set; }
+        public short Unknown9 { get; set; }
+        public float Scale1 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase2 { get; set; }
+        public byte PartSlot2 { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool Unknown14 { get; set; }
+        public bool Unknown15 { get; set; }
+        public bool Unknown16 { get; set; }
+        public float X2 { get; set; }
+        public float Y2 { get; set; }
+        public float Z2 { get; set; }
+        public short Unknown20 { get; set; }
+        public float Scale2 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase3 { get; set; }
+        public byte PartSlot3 { get; set; }
+        public bool Unknown24 { get; set; }
+        public bool Unknown25 { get; set; }
+        public bool Unknown26 { get; set; }
+        public bool Unknown27 { get; set; }
+        public float X3 { get; set; }
+        public float Y3 { get; set; }
+        public float Z3 { get; set; }
+        public short Scale3 { get; set; }
+        public float Unknown32 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase4 { get; set; }
+        public byte PartSlot4 { get; set; }
+        public bool Unknown35 { get; set; }
+        public bool Unknown36 { get; set; }
+        public bool Unknown37 { get; set; }
+        public bool Unknown38 { get; set; }
+        public float X4 { get; set; }
+        public float Y4 { get; set; }
+        public float Z4 { get; set; }
+        public short Unknown42 { get; set; }
+        public float Scale4 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase5 { get; set; }
+        public byte PartSlot5 { get; set; }
+        public bool Unknown46 { get; set; }
+        public bool Unknown47 { get; set; }
+        public bool Unknown48 { get; set; }
+        public bool Unknown49 { get; set; }
+        public float X5 { get; set; }
+        public float Y5 { get; set; }
+        public float Z5 { get; set; }
+        public short Unknown53 { get; set; }
+        public float Scale5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

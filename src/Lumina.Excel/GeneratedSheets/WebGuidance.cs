@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class WebGuidance : ExcelRow
     {
         
-        public int Image;
-        public LazyRow< WebURL > Url;
-        public SeString Name;
-        public SeString Unknown54;
-        public SeString Description;
+        public int Image { get; set; }
+        public LazyRow< WebURL > Url { get; set; }
+        public SeString Name { get; set; }
+        public SeString Unknown54 { get; set; }
+        public SeString Description { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

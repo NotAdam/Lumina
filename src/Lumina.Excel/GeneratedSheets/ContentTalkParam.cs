@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentTalkParam : ExcelRow
     {
         
-        public bool Param;
-        public byte Unknown1;
-        public LazyRow< ActionTimeline > TestAction;
-        public sbyte Unknown3;
-        public sbyte Unknown4;
-        public byte Unknown5;
+        public bool Param { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< ActionTimeline > TestAction { get; set; }
+        public sbyte Unknown3 { get; set; }
+        public sbyte Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

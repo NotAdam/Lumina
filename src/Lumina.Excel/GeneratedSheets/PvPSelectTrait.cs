@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class PvPSelectTrait : ExcelRow
     {
         
-        public SeString Effect;
-        public uint Icon;
-        public short Value;
+        public SeString Effect { get; set; }
+        public uint Icon { get; set; }
+        public short Value { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

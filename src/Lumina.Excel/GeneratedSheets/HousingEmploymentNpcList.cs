@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingEmploymentNpcList : ExcelRow
     {
         
-        public LazyRow< HousingEmploymentNpcRace > Race;
-        public LazyRow< ENpcBase >[] ENpcBase;
+        public LazyRow< HousingEmploymentNpcRace > Race { get; set; }
+        public LazyRow< ENpcBase >[] ENpcBase { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,37 +10,36 @@ namespace Lumina.Excel.GeneratedSheets
     public class ZoneSharedGroup : ExcelRow
     {
         
-        public uint Unknown0;
-        public byte Unknown1;
-        public LazyRow< Quest > Quest1;
-        public uint Unknown3;
-        public bool Unknown4;
-        public byte Unknown5;
-        public LazyRow< Quest > Quest2;
-        public uint Unknown7;
-        public bool Unknown8;
-        public byte Unknown9;
-        public LazyRow< Quest > Quest3;
-        public uint Unknown11;
-        public bool Unknown12;
-        public byte Unknown13;
-        public LazyRow< Quest > Quest4;
-        public uint Unknown15;
-        public bool Unknown16;
-        public byte Unknown17;
-        public LazyRow< Quest > Quest5;
-        public uint Unknown19;
-        public bool Unknown20;
-        public byte Unknown21;
-        public LazyRow< Quest > Quest6;
-        public uint Unknown23;
-        public bool Unknown24;
-        public byte Unknown25;
-        public uint Unknown26;
-        public uint Unknown27;
-        public bool Unknown28;
+        public uint Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< Quest > Quest1 { get; set; }
+        public uint Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public LazyRow< Quest > Quest2 { get; set; }
+        public uint Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
+        public LazyRow< Quest > Quest3 { get; set; }
+        public uint Unknown11 { get; set; }
+        public bool Unknown12 { get; set; }
+        public byte Unknown13 { get; set; }
+        public LazyRow< Quest > Quest4 { get; set; }
+        public uint Unknown15 { get; set; }
+        public bool Unknown16 { get; set; }
+        public byte Unknown17 { get; set; }
+        public LazyRow< Quest > Quest5 { get; set; }
+        public uint Unknown19 { get; set; }
+        public bool Unknown20 { get; set; }
+        public byte Unknown21 { get; set; }
+        public LazyRow< Quest > Quest6 { get; set; }
+        public uint Unknown23 { get; set; }
+        public bool Unknown24 { get; set; }
+        public byte Unknown25 { get; set; }
+        public uint Unknown26 { get; set; }
+        public uint Unknown27 { get; set; }
+        public bool Unknown28 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

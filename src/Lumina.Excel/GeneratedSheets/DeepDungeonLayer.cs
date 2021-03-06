@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class DeepDungeonLayer : ExcelRow
     {
         
-        public LazyRow< DeepDungeon > DeepDungeon;
-        public byte FloorSet;
-        public LazyRow< DeepDungeonMap5X > RoomA;
-        public LazyRow< DeepDungeonMap5X > RoomB;
-        public LazyRow< DeepDungeonMap5X > RoomC;
-        public byte WepMinLv;
-        public byte ArmourMinLv;
+        public LazyRow< DeepDungeon > DeepDungeon { get; set; }
+        public byte FloorSet { get; set; }
+        public LazyRow< DeepDungeonMap5X > RoomA { get; set; }
+        public LazyRow< DeepDungeonMap5X > RoomB { get; set; }
+        public LazyRow< DeepDungeonMap5X > RoomC { get; set; }
+        public byte WepMinLv { get; set; }
+        public byte ArmourMinLv { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

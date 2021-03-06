@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class Condition : ExcelRow
     {
         
-        public bool Unknown0;
-        public byte Unknown1;
-        public LazyRow< LogMessage > LogMessage;
-        public byte Unknown3;
+        public bool Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< LogMessage > LogMessage { get; set; }
+        public byte Unknown3 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

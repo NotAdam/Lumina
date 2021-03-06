@@ -10,29 +10,28 @@ namespace Lumina.Excel.GeneratedSheets
     public class MiniGameRA : ExcelRow
     {
         
-        public int Unknown0;
-        public int Icon;
-        public int Image;
-        public LazyRow< BGM > BGM;
-        public int Unknown4;
-        public bool Unknown5;
-        public uint Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
-        public bool Unknown9;
-        public ushort Unknown10;
-        public ushort Unknown11;
-        public ushort Unknown12;
-        public short Unknown13;
-        public short Unknown14;
-        public short Unknown15;
-        public short Unknown16;
-        public byte Unknown17;
-        public byte Unknown18;
-        public byte Unknown19;
-        public byte Unknown20;
+        public int Unknown0 { get; set; }
+        public int Icon { get; set; }
+        public int Image { get; set; }
+        public LazyRow< BGM > BGM { get; set; }
+        public int Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
+        public uint Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
+        public bool Unknown9 { get; set; }
+        public ushort Unknown10 { get; set; }
+        public ushort Unknown11 { get; set; }
+        public ushort Unknown12 { get; set; }
+        public short Unknown13 { get; set; }
+        public short Unknown14 { get; set; }
+        public short Unknown15 { get; set; }
+        public short Unknown16 { get; set; }
+        public byte Unknown17 { get; set; }
+        public byte Unknown18 { get; set; }
+        public byte Unknown19 { get; set; }
+        public byte Unknown20 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

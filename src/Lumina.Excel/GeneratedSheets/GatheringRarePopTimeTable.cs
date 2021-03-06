@@ -15,9 +15,8 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort Durationm;
         }
         
-        public UnkStruct0Struct[] UnkStruct0;
+        public UnkStruct0Struct[] UnkStruct0 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

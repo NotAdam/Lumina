@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCReputation : ExcelRow
     {
         
-        public uint PointsToNext;
-        public uint RequiredPoints;
-        public byte DiscountRate;
-        public LazyRow< UIColor > Color;
-        public SeString Name;
+        public uint PointsToNext { get; set; }
+        public uint RequiredPoints { get; set; }
+        public byte DiscountRate { get; set; }
+        public LazyRow< UIColor > Color { get; set; }
+        public SeString Name { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

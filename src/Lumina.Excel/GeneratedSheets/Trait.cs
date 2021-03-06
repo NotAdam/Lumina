@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class Trait : ExcelRow
     {
         
-        public SeString Name;
-        public int Icon;
-        public LazyRow< ClassJob > ClassJob;
-        public byte Level;
-        public LazyRow< Quest > Quest;
-        public short Value;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public byte Unknown7;
+        public SeString Name { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public byte Level { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public short Value { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public byte Unknown7 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class GcArmyTraining : ExcelRow
     {
         
-        public sbyte PhysicalBonus;
-        public sbyte MentalBonus;
-        public sbyte TacticalBonus;
-        public uint Experience;
-        public SeString Name;
-        public SeString Description;
+        public sbyte PhysicalBonus { get; set; }
+        public sbyte MentalBonus { get; set; }
+        public sbyte TacticalBonus { get; set; }
+        public uint Experience { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

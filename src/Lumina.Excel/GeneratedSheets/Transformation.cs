@@ -10,45 +10,44 @@ namespace Lumina.Excel.GeneratedSheets
     public class Transformation : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< ModelChara > Model;
-        public LazyRow< BNpcName > BNpcName;
-        public LazyRow< BNpcCustomize > BNpcCustomize;
-        public LazyRow< NpcEquip > NpcEquip;
-        public bool ExHotbarEnableConfig;
-        public LazyRow< Action > Action0;
-        public bool Unknown7;
-        public LazyRow< Action > Action1;
-        public bool Unknown9;
-        public LazyRow< Action > Action2;
-        public bool Unknown11;
-        public LazyRow< Action > Action3;
-        public bool Unknown13;
-        public LazyRow< Action > Action4;
-        public bool Unknown15;
-        public LazyRow< Action > Action5;
-        public bool Unknown17;
-        public LazyRow< RPParameter > RPParameter;
-        public LazyRow< Action > RemoveAction;
-        public bool Unknown20;
-        public bool Unknown21;
-        public byte Unknown22;
-        public float Speed;
-        public float Scale;
-        public bool IsPvP;
-        public bool IsEvent;
-        public bool PlayerCamera;
-        public bool Unknown28;
-        public bool Unknown29;
-        public LazyRow< VFX > StartVFX;
-        public LazyRow< VFX > EndVFX;
-        public LazyRow< Action > Action6;
-        public sbyte Unknown33;
-        public LazyRow< Action > Action7;
-        public byte Unknown35;
-        public bool Unknown54;
+        public byte Unknown0 { get; set; }
+        public LazyRow< ModelChara > Model { get; set; }
+        public LazyRow< BNpcName > BNpcName { get; set; }
+        public LazyRow< BNpcCustomize > BNpcCustomize { get; set; }
+        public LazyRow< NpcEquip > NpcEquip { get; set; }
+        public bool ExHotbarEnableConfig { get; set; }
+        public LazyRow< Action > Action0 { get; set; }
+        public bool Unknown7 { get; set; }
+        public LazyRow< Action > Action1 { get; set; }
+        public bool Unknown9 { get; set; }
+        public LazyRow< Action > Action2 { get; set; }
+        public bool Unknown11 { get; set; }
+        public LazyRow< Action > Action3 { get; set; }
+        public bool Unknown13 { get; set; }
+        public LazyRow< Action > Action4 { get; set; }
+        public bool Unknown15 { get; set; }
+        public LazyRow< Action > Action5 { get; set; }
+        public bool Unknown17 { get; set; }
+        public LazyRow< RPParameter > RPParameter { get; set; }
+        public LazyRow< Action > RemoveAction { get; set; }
+        public bool Unknown20 { get; set; }
+        public bool Unknown21 { get; set; }
+        public byte Unknown22 { get; set; }
+        public float Speed { get; set; }
+        public float Scale { get; set; }
+        public bool IsPvP { get; set; }
+        public bool IsEvent { get; set; }
+        public bool PlayerCamera { get; set; }
+        public bool Unknown28 { get; set; }
+        public bool Unknown29 { get; set; }
+        public LazyRow< VFX > StartVFX { get; set; }
+        public LazyRow< VFX > EndVFX { get; set; }
+        public LazyRow< Action > Action6 { get; set; }
+        public sbyte Unknown33 { get; set; }
+        public LazyRow< Action > Action7 { get; set; }
+        public byte Unknown35 { get; set; }
+        public bool Unknown54 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

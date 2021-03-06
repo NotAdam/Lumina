@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class DpsChallengeOfficer : ExcelRow
     {
         
-        public LazyRow< Quest > UnlockQuest;
-        public LazyRow< DpsChallenge >[] ChallengeName;
+        public LazyRow< Quest > UnlockQuest { get; set; }
+        public LazyRow< DpsChallenge >[] ChallengeName { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

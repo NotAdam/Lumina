@@ -10,25 +10,24 @@ namespace Lumina.Excel.GeneratedSheets
     public class PresetCamera : ExcelRow
     {
         
-        public ushort EID;
-        public float PosX;
-        public float PosY;
-        public float PosZ;
-        public float Elezen;
-        public float Lalafell;
-        public float Miqote;
-        public float Roe;
-        public float Hrothgar;
-        public float Viera;
-        public float Hyur_F;
-        public float Elezen_F;
-        public float Lalafell_F;
-        public float Miqote_F;
-        public float Roe_F;
-        public float Hrothgar_F;
-        public float Viera_F;
+        public ushort EID { get; set; }
+        public float PosX { get; set; }
+        public float PosY { get; set; }
+        public float PosZ { get; set; }
+        public float Elezen { get; set; }
+        public float Lalafell { get; set; }
+        public float Miqote { get; set; }
+        public float Roe { get; set; }
+        public float Hrothgar { get; set; }
+        public float Viera { get; set; }
+        public float Hyur_F { get; set; }
+        public float Elezen_F { get; set; }
+        public float Lalafell_F { get; set; }
+        public float Miqote_F { get; set; }
+        public float Roe_F { get; set; }
+        public float Hrothgar_F { get; set; }
+        public float Viera_F { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

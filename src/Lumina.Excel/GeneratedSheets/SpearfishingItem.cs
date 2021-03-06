@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class SpearfishingItem : ExcelRow
     {
         
-        public SeString Description;
-        public LazyRow< Item > Item;
-        public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel;
-        public LazyRow< FishingRecordType > FishingRecordType;
-        public LazyRow< TerritoryType > TerritoryType;
-        public bool IsVisible;
+        public SeString Description { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel { get; set; }
+        public LazyRow< FishingRecordType > FishingRecordType { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public bool IsVisible { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

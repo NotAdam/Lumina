@@ -10,10 +10,9 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingUnitedExterior : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< HousingExterior >[] Item;
+        public byte Unknown0 { get; set; }
+        public LazyRow< HousingExterior >[] Item { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

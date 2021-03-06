@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentGauge : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< ContentGaugeColor > Color;
-        public bool Unknown2;
-        public SeString TextString;
-        public sbyte Unknown4;
-        public sbyte Unknown5;
-        public byte Unknown6;
-        public sbyte Unknown7;
-        public sbyte Unknown8;
-        public byte Unknown9;
+        public SeString Name { get; set; }
+        public LazyRow< ContentGaugeColor > Color { get; set; }
+        public bool Unknown2 { get; set; }
+        public SeString TextString { get; set; }
+        public sbyte Unknown4 { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public sbyte Unknown7 { get; set; }
+        public sbyte Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

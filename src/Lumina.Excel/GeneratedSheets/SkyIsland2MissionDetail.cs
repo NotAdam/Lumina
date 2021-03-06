@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class SkyIsland2MissionDetail : ExcelRow
     {
         
-        public LazyRow< SkyIsland2MissionType > Type;
-        public byte Unknown1;
-        public LazyRow< SkyIsland2RangeType > Range;
-        public sbyte Unknown3;
-        public LazyRow< EObjName > EObj;
-        public uint Unknown5;
-        public uint Unknown6;
-        public SeString Objective;
-        public SeString Unknown8;
-        public SeString Unknown9;
-        public SeString Unknown10;
+        public LazyRow< SkyIsland2MissionType > Type { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< SkyIsland2RangeType > Range { get; set; }
+        public sbyte Unknown3 { get; set; }
+        public LazyRow< EObjName > EObj { get; set; }
+        public uint Unknown5 { get; set; }
+        public uint Unknown6 { get; set; }
+        public SeString Objective { get; set; }
+        public SeString Unknown8 { get; set; }
+        public SeString Unknown9 { get; set; }
+        public SeString Unknown10 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

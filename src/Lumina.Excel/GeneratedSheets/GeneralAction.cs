@@ -10,17 +10,16 @@ namespace Lumina.Excel.GeneratedSheets
     public class GeneralAction : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public byte Unknown2;
-        public LazyRow< Action > Action;
-        public ushort UnlockLink;
-        public byte Recast;
-        public byte UIPriority;
-        public int Icon;
-        public bool Unknown8;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public byte Unknown2 { get; set; }
+        public LazyRow< Action > Action { get; set; }
+        public ushort UnlockLink { get; set; }
+        public byte Recast { get; set; }
+        public byte UIPriority { get; set; }
+        public int Icon { get; set; }
+        public bool Unknown8 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

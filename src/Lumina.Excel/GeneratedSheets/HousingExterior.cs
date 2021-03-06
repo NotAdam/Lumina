@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingExterior : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public LazyRow< PlaceName > PlaceName;
-        public byte HousingSize;
-        public SeString Model;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public byte HousingSize { get; set; }
+        public SeString Model { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

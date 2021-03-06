@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDInfoBoardArticle : ExcelRow
     {
         
-        public LazyRow< HWDInfoBoardArticleType > Type;
-        public byte Unknown1;
-        public ushort Unknown2;
-        public bool Unknown3;
-        public SeString Text;
+        public LazyRow< HWDInfoBoardArticleType > Type { get; set; }
+        public byte Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public SeString Text { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

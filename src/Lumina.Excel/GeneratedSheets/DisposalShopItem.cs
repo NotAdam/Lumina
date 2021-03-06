@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class DisposalShopItem : ExcelRow
     {
         
-        public LazyRow< Item > ItemDisposed;
-        public bool Unknown1;
-        public LazyRow< Item > ItemReceived;
-        public bool Unknown3;
-        public uint QuantityReceived;
-        public ushort Unknown5;
+        public LazyRow< Item > ItemDisposed { get; set; }
+        public bool Unknown1 { get; set; }
+        public LazyRow< Item > ItemReceived { get; set; }
+        public bool Unknown3 { get; set; }
+        public uint QuantityReceived { get; set; }
+        public ushort Unknown5 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

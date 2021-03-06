@@ -10,49 +10,48 @@ namespace Lumina.Excel.GeneratedSheets
     public class TerritoryType : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Bg;
-        public byte BattalionMode;
-        public LazyRow< PlaceName > PlaceNameRegion;
-        public LazyRow< PlaceName > PlaceNameZone;
-        public LazyRow< PlaceName > PlaceName;
-        public LazyRow< Map > Map;
-        public byte LoadingImage;
-        public byte ExclusiveType;
-        public byte TerritoryIntendedUse;
-        public ushort Unknown10;
-        public bool Unknown11;
-        public byte WeatherRate;
-        public bool Unknown13;
-        public byte Unknown14;
-        public bool PCSearch;
-        public bool Stealth;
-        public bool Mount;
-        public bool Unknown18;
-        public LazyRow< BGM > BGM;
-        public int PlaceNameRegionIcon;
-        public int PlaceNameIcon;
-        public LazyRow< ArrayEventHandler > ArrayEventHandler;
-        public LazyRow< QuestBattle > QuestBattle;
-        public LazyRow< Aetheryte > Aetheryte;
-        public int FixedTime;
-        public ushort Resident;
-        public sbyte AchievementIndex;
-        public bool IsPvpZone;
-        public LazyRow< ExVersion > ExVersion;
-        public byte Unknown30;
-        public byte Unknown31;
-        public byte AddedIn53;
-        public LazyRow< MountSpeed > MountSpeed;
-        public bool Unknown34;
-        public bool Unknown35;
-        public byte Unknown36;
-        public bool Unknown37;
-        public bool Unknown38;
-        public bool Unknown39;
-        public bool Unknown54;
+        public SeString Name { get; set; }
+        public SeString Bg { get; set; }
+        public byte BattalionMode { get; set; }
+        public LazyRow< PlaceName > PlaceNameRegion { get; set; }
+        public LazyRow< PlaceName > PlaceNameZone { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public LazyRow< Map > Map { get; set; }
+        public byte LoadingImage { get; set; }
+        public byte ExclusiveType { get; set; }
+        public byte TerritoryIntendedUse { get; set; }
+        public ushort Unknown10 { get; set; }
+        public bool Unknown11 { get; set; }
+        public byte WeatherRate { get; set; }
+        public bool Unknown13 { get; set; }
+        public byte Unknown14 { get; set; }
+        public bool PCSearch { get; set; }
+        public bool Stealth { get; set; }
+        public bool Mount { get; set; }
+        public bool Unknown18 { get; set; }
+        public LazyRow< BGM > BGM { get; set; }
+        public int PlaceNameRegionIcon { get; set; }
+        public int PlaceNameIcon { get; set; }
+        public LazyRow< ArrayEventHandler > ArrayEventHandler { get; set; }
+        public LazyRow< QuestBattle > QuestBattle { get; set; }
+        public LazyRow< Aetheryte > Aetheryte { get; set; }
+        public int FixedTime { get; set; }
+        public ushort Resident { get; set; }
+        public sbyte AchievementIndex { get; set; }
+        public bool IsPvpZone { get; set; }
+        public LazyRow< ExVersion > ExVersion { get; set; }
+        public byte Unknown30 { get; set; }
+        public byte Unknown31 { get; set; }
+        public byte AddedIn53 { get; set; }
+        public LazyRow< MountSpeed > MountSpeed { get; set; }
+        public bool Unknown34 { get; set; }
+        public bool Unknown35 { get; set; }
+        public byte Unknown36 { get; set; }
+        public bool Unknown37 { get; set; }
+        public bool Unknown38 { get; set; }
+        public bool Unknown39 { get; set; }
+        public bool Unknown54 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

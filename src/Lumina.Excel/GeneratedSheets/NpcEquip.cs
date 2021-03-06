@@ -10,33 +10,32 @@ namespace Lumina.Excel.GeneratedSheets
     public class NpcEquip : ExcelRow
     {
         
-        public ulong ModelMainHand;
-        public LazyRow< Stain > DyeMainHand;
-        public ulong ModelOffHand;
-        public LazyRow< Stain > DyeOffHand;
-        public uint ModelHead;
-        public LazyRow< Stain > DyeHead;
-        public bool Visor;
-        public uint ModelBody;
-        public LazyRow< Stain > DyeBody;
-        public uint ModelHands;
-        public LazyRow< Stain > DyeHands;
-        public uint ModelLegs;
-        public LazyRow< Stain > DyeLegs;
-        public uint ModelFeet;
-        public LazyRow< Stain > DyeFeet;
-        public uint ModelEars;
-        public LazyRow< Stain > DyeEars;
-        public uint ModelNeck;
-        public LazyRow< Stain > DyeNeck;
-        public uint ModelWrists;
-        public LazyRow< Stain > DyeWrists;
-        public uint ModelLeftRing;
-        public LazyRow< Stain > DyeLeftRing;
-        public uint ModelRightRing;
-        public LazyRow< Stain > DyeRightRing;
+        public ulong ModelMainHand { get; set; }
+        public LazyRow< Stain > DyeMainHand { get; set; }
+        public ulong ModelOffHand { get; set; }
+        public LazyRow< Stain > DyeOffHand { get; set; }
+        public uint ModelHead { get; set; }
+        public LazyRow< Stain > DyeHead { get; set; }
+        public bool Visor { get; set; }
+        public uint ModelBody { get; set; }
+        public LazyRow< Stain > DyeBody { get; set; }
+        public uint ModelHands { get; set; }
+        public LazyRow< Stain > DyeHands { get; set; }
+        public uint ModelLegs { get; set; }
+        public LazyRow< Stain > DyeLegs { get; set; }
+        public uint ModelFeet { get; set; }
+        public LazyRow< Stain > DyeFeet { get; set; }
+        public uint ModelEars { get; set; }
+        public LazyRow< Stain > DyeEars { get; set; }
+        public uint ModelNeck { get; set; }
+        public LazyRow< Stain > DyeNeck { get; set; }
+        public uint ModelWrists { get; set; }
+        public LazyRow< Stain > DyeWrists { get; set; }
+        public uint ModelLeftRing { get; set; }
+        public LazyRow< Stain > DyeLeftRing { get; set; }
+        public uint ModelRightRing { get; set; }
+        public LazyRow< Stain > DyeRightRing { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

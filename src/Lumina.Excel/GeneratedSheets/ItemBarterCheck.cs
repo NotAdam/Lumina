@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class ItemBarterCheck : ExcelRow
     {
         
-        public ushort Category;
-        public uint Question;
-        public LazyRow< Addon > Confirm;
+        public ushort Category { get; set; }
+        public uint Question { get; set; }
+        public LazyRow< Addon > Confirm { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

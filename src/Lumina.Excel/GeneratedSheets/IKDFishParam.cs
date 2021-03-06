@@ -10,11 +10,10 @@ namespace Lumina.Excel.GeneratedSheets
     public class IKDFishParam : ExcelRow
     {
         
-        public LazyRow< FishParameter > Fish;
-        public LazyRow< IKDContentBonus > IKDContentBonus;
-        public byte Unknown54;
+        public LazyRow< FishParameter > Fish { get; set; }
+        public LazyRow< IKDContentBonus > IKDContentBonus { get; set; }
+        public byte Unknown54 { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

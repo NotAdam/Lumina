@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class LogFilter : ExcelRow
     {
         
-        public byte LogKind;
-        public ushort Caster;
-        public ushort Target;
-        public byte Category;
-        public byte DisplayOrder;
-        public byte Preset;
-        public SeString Name;
-        public SeString Example;
+        public byte LogKind { get; set; }
+        public ushort Caster { get; set; }
+        public ushort Target { get; set; }
+        public byte Category { get; set; }
+        public byte DisplayOrder { get; set; }
+        public byte Preset { get; set; }
+        public SeString Name { get; set; }
+        public SeString Example { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );

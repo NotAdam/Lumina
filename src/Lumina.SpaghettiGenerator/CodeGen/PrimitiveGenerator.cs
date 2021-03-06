@@ -10,7 +10,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
         public override void WriteFields( StringBuilder sb )
         {
-            sb.AppendLine( $"public {TypeName} {FieldName};" );
+            sb.AppendLine( $"public {TypeName} {FieldName} {{ get; set; }}" );
         }
 
         public override void WriteReaders( StringBuilder sb )

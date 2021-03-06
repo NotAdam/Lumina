@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class EquipRaceCategory : ExcelRow
     {
         
-        public bool Hyur;
-        public bool Elezen;
-        public bool Lalafell;
-        public bool Miqote;
-        public bool Roegadyn;
-        public bool AuRa;
-        public bool Unknown6;
-        public bool Unknown7;
-        public bool Male;
-        public bool Female;
+        public bool Hyur { get; set; }
+        public bool Elezen { get; set; }
+        public bool Lalafell { get; set; }
+        public bool Miqote { get; set; }
+        public bool Roegadyn { get; set; }
+        public bool AuRa { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Male { get; set; }
+        public bool Female { get; set; }
         
-
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
