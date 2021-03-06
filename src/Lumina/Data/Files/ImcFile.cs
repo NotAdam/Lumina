@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Lumina.Data.Attributes;
 
 namespace Lumina.Data.Files
 {
     //TODO: add gear-specific functionality, hopefully when we get 
     //useful enums like GearSlot.Mainhand or something
+    [FileExtension( "imc" )]
     public class ImcFile : FileResource
     {
         public struct ImageChangeData
@@ -16,12 +18,12 @@ namespace Lumina.Data.Files
 
             // AttrMask : 10, SoundId : 6
             private ushort _AttributeAndSound;
-            public ushort AttributeMask => (ushort) ( _AttributeAndSound & 0x3FF );
-            public ushort SoundId => (ushort) ( _AttributeAndSound & 0xFC00 );
+            public ushort AttributeMask => (ushort)( _AttributeAndSound & 0x3FF );
+            public ushort SoundId => (ushort)( _AttributeAndSound & 0xFC00 );
 
             public byte VfxId;
             private byte _MaterialAnimationIdMask;
-            public byte MaterialAnimationId => (byte) ( _MaterialAnimationIdMask & 0xF000 );
+            public byte MaterialAnimationId => (byte)( _MaterialAnimationIdMask & 0xF000 );
 
             public static ImageChangeData Read( BinaryReader br )
             {

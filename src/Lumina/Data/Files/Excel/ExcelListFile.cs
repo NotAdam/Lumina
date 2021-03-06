@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Lumina.Data.Attributes;
 
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace Lumina.Data.Files.Excel
 {
+    [FileExtension( "exl" )]
     public class ExcelListFile : FileResource
     {
         public readonly Dictionary< string, int > ExdMap;

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.IO;
 using System.Reflection;
+using Lumina.Data.Attributes;
 using Lumina.Data.Structs;
 
 namespace Lumina.Data
@@ -51,9 +51,6 @@ namespace Lumina.Data
 
         internal SqPack( FileInfo file, GameData gameData )
         {
-            Contract.Requires( file != null );
-            Contract.Requires( file.Exists );
-
             if( !file.Exists )
             {
                 throw new FileNotFoundException( $"SqPack file {file.FullName} could not be found." );

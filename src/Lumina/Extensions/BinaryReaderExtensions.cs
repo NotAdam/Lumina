@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using Lumina.Data.Parsing;
+// ReSharper disable RedundantAssignment
 
 namespace Lumina.Extensions
 {
@@ -121,6 +122,20 @@ namespace Lumina.Extensions
         public static StringOffset ReadStringOffset( this BinaryReader br, long offset )
         {
             return new StringOffset( br, offset );
+        }
+
+        public static BinaryReader ReadStringOffset( this BinaryReader br, long offset, ref string value )
+        {
+            value = new StringOffset( br, offset );
+
+            return br;
+        }
+        
+        public static BinaryReader ReadStringOffset( this BinaryReader br, long offset, ref StringOffset value )
+        {
+            value = new StringOffset( br, offset );
+
+            return br;
         }
 
         public static BinaryReader Read( this BinaryReader br, ref ulong field )

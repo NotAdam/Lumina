@@ -1,4 +1,5 @@
 using System.IO;
+using Lumina.Data.Attributes;
 using Lumina.Data.Parsing.Layer;
 using Lumina.Extensions;
 
@@ -7,6 +8,7 @@ using Lumina.Extensions;
 
 namespace Lumina.Data.Files
 {
+    [FileExtension( "lgb" )]
     public class LgbFile : FileResource
     {
         public struct FileHeader
