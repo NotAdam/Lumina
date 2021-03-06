@@ -7,7 +7,7 @@ using Lumina.Extensions;
 
 namespace Lumina.Data.Files
 {
-    [FileExtension( "tex" )]
+    [FileExtension( ".tex" )]
     public class TexFile : FileResource
     {
         public enum Attribute : uint

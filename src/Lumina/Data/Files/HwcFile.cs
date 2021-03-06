@@ -2,7 +2,7 @@ using Lumina.Data.Attributes;
 
 namespace Lumina.Data.Files
 {
-    [FileExtension( "hwc" )]
+    [FileExtension( ".hwc" )]
     public class HwcFile : FileResource
     {
         // Hardware Cursors have a fixed size

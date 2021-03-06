@@ -7,7 +7,7 @@ namespace Lumina.Data.Files
 {
     //TODO: add gear-specific functionality, hopefully when we get 
     //useful enums like GearSlot.Mainhand or something
-    [FileExtension( "imc" )]
+    [FileExtension( ".imc" )]
     public class ImcFile : FileResource
     {
         public struct ImageChangeData

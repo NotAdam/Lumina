@@ -8,7 +8,7 @@ using Lumina.Extensions;
 
 namespace Lumina.Data.Files
 {
-    [FileExtension( "lgb" )]
+    [FileExtension( ".lgb" )]
     public class LgbFile : FileResource
     {
         public struct FileHeader

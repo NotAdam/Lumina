@@ -10,7 +10,7 @@ using Lumina.Misc;
 
 namespace Lumina.Data.Files.Excel
 {
-    [FileExtension( "exh" )]
+    [FileExtension( ".exh" )]
     public class ExcelHeaderFile : FileResource
     {
         public ExcelHeaderFile()

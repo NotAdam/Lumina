@@ -9,7 +9,7 @@ using Lumina.Extensions;
 
 namespace Lumina.Data.Files.Excel
 {
-    [FileExtension( "exd" )]
+    [FileExtension( ".exd" )]
     public class ExcelDataFile : FileResource
     {
         public ExcelDataFile()

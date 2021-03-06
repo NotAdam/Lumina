@@ -6,7 +6,7 @@ using Lumina.Extensions;
 // ReSharper disable MemberCanBePrivate.Global
 namespace Lumina.Data.Files
 {
-    [FileExtension( "uld" )]
+    [FileExtension( ".uld" )]
     public class UldFile : FileResource
     {
         public UldRoot.UldHeader CombineHeader;

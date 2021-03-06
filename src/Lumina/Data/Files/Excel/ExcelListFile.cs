@@ -7,7 +7,7 @@ using Lumina.Data.Attributes;
 
 namespace Lumina.Data.Files.Excel
 {
-    [FileExtension( "exl" )]
+    [FileExtension( ".exl" )]
     public class ExcelListFile : FileResource
     {
         public readonly Dictionary< string, int > ExdMap;
