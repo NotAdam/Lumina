@@ -113,7 +113,7 @@ namespace Lumina.Excel
 
         private ulong BuildTypeIdentifier( Type type )
         {
-            return (ulong)type.Assembly.Location.GetHashCode() << 32 | (uint)type.MetadataToken;
+            return (ulong)type.Assembly.GetHashCode() << 32 | (uint)type.MetadataToken;
         }
 
         /// <summary>
