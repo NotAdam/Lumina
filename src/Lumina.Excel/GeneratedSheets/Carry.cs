@@ -7,21 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Carry", columnHash: 0x31e1f9e6 )]
-    public class Carry : IExcelRow
+    public class Carry : ExcelRow
     {
         
-        public ulong Model;
-        public byte Timeline;
-        public byte Unknown2;
-        public byte Unknown3;
+        public ulong Model { get; set; }
+        public byte Timeline { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Model = parser.ReadColumn< ulong >( 0 );
             Timeline = parser.ReadColumn< byte >( 1 );

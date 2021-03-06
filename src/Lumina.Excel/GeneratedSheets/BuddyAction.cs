@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddyAction", columnHash: 0x9a695bec )]
-    public class BuddyAction : IExcelRow
+    public class BuddyAction : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public int Icon;
-        public int IconStatus;
-        public ushort Reward;
-        public byte Sort;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public int Icon { get; set; }
+        public int IconStatus { get; set; }
+        public ushort Reward { get; set; }
+        public byte Sort { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );

@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PhysicsWind", columnHash: 0x3bc4120f )]
-    public class PhysicsWind : IExcelRow
+    public class PhysicsWind : ExcelRow
     {
         
-        public float Threshold;
-        public float Amplitude;
-        public float AmplitudeFrequency;
-        public float PowerMin;
-        public float PowerMax;
-        public float PowerFrequency;
+        public float Threshold { get; set; }
+        public float Amplitude { get; set; }
+        public float AmplitudeFrequency { get; set; }
+        public float PowerMin { get; set; }
+        public float PowerMax { get; set; }
+        public float PowerFrequency { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Threshold = parser.ReadColumn< float >( 0 );
             Amplitude = parser.ReadColumn< float >( 1 );

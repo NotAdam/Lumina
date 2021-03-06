@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FateMode", columnHash: 0x6be0e840 )]
-    public class FateMode : IExcelRow
+    public class FateMode : ExcelRow
     {
         
-        public uint Unknown0;
-        public uint MotivationIcon;
-        public uint MotivationMapMarker;
-        public uint ObjectiveIcon;
-        public uint ObjectiveMapMarker;
+        public uint Unknown0 { get; set; }
+        public uint MotivationIcon { get; set; }
+        public uint MotivationMapMarker { get; set; }
+        public uint ObjectiveIcon { get; set; }
+        public uint ObjectiveMapMarker { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             MotivationIcon = parser.ReadColumn< uint >( 1 );

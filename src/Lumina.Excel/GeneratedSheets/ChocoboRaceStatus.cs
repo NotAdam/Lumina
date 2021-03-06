@@ -7,21 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboRaceStatus", columnHash: 0xf8ab135e )]
-    public class ChocoboRaceStatus : IExcelRow
+    public class ChocoboRaceStatus : ExcelRow
     {
         
-        public LazyRow< Status > Status;
-        public ushort Unknown1;
+        public LazyRow< Status > Status { get; set; }
+        public ushort Unknown1 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Status = new LazyRow< Status >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Status = new LazyRow< Status >( gameData, parser.ReadColumn< int >( 0 ), language );
             Unknown1 = parser.ReadColumn< ushort >( 1 );
         }
     }

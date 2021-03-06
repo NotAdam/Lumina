@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Stain", columnHash: 0xa2420e68 )]
-    public class Stain : IExcelRow
+    public class Stain : ExcelRow
     {
         
-        public uint Color;
-        public byte Shade;
-        public byte Unknown2;
-        public SeString Name;
-        public bool Unknown4;
-        public bool Unknown5;
+        public uint Color { get; set; }
+        public byte Shade { get; set; }
+        public byte Unknown2 { get; set; }
+        public SeString Name { get; set; }
+        public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Color = parser.ReadColumn< uint >( 0 );
             Shade = parser.ReadColumn< byte >( 1 );

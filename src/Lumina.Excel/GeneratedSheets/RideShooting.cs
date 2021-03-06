@@ -7,121 +7,117 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RideShooting", columnHash: 0xdd593ecd )]
-    public class RideShooting : IExcelRow
+    public class RideShooting : ExcelRow
     {
         
-        public LazyRow< GFateRideShooting > GFateRideShooting;
-        public short Unknown1;
-        public short Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public LazyRow< RideShootingTextData > StartText;
-        public uint Unknown6;
-        public uint Unknown7;
-        public uint Unknown8;
-        public uint Unknown9;
-        public uint Unknown10;
-        public uint Unknown11;
-        public uint Unknown12;
-        public uint Unknown13;
-        public uint[] PopRange;
-        public LazyRow< ENpcBase >[] ENpc;
-        public byte[] ENpcScale;
-        public uint Unknown38;
-        public uint Unknown39;
-        public uint Unknown40;
-        public uint Unknown41;
-        public uint Unknown42;
-        public uint Unknown43;
-        public uint Unknown44;
-        public uint Unknown45;
-        public byte Unknown46;
-        public byte Unknown47;
-        public byte Unknown48;
-        public byte Unknown49;
-        public byte Unknown50;
-        public byte Unknown51;
-        public byte Unknown52;
-        public byte Unknown53;
-        public uint Unknown54;
-        public uint Unknown55;
-        public uint Unknown56;
-        public uint Unknown57;
-        public uint Unknown58;
-        public uint Unknown59;
-        public uint Unknown60;
-        public uint Unknown61;
-        public byte Unknown62;
-        public byte Unknown63;
-        public byte Unknown64;
-        public byte Unknown65;
-        public byte Unknown66;
-        public byte Unknown67;
-        public byte Unknown68;
-        public byte Unknown69;
-        public uint Unknown70;
-        public uint Unknown71;
-        public uint Unknown72;
-        public uint Unknown73;
-        public uint Unknown74;
-        public uint Unknown75;
-        public uint Unknown76;
-        public uint Unknown77;
-        public byte Unknown78;
-        public byte Unknown79;
-        public byte Unknown80;
-        public byte Unknown81;
-        public byte Unknown82;
-        public byte Unknown83;
-        public byte Unknown84;
-        public byte Unknown85;
-        public uint Unknown86;
-        public uint Unknown87;
-        public uint Unknown88;
-        public uint Unknown89;
-        public uint Unknown90;
-        public uint Unknown91;
-        public uint Unknown92;
-        public uint Unknown93;
-        public byte Unknown94;
-        public byte Unknown95;
-        public byte Unknown96;
-        public byte Unknown97;
-        public byte Unknown98;
-        public byte Unknown99;
-        public byte Unknown100;
-        public byte Unknown101;
-        public uint Unknown102;
-        public uint Unknown103;
-        public uint Unknown104;
-        public uint Unknown105;
-        public uint Unknown106;
-        public uint Unknown107;
-        public uint Unknown108;
-        public uint Unknown109;
-        public byte Unknown110;
-        public byte Unknown111;
-        public byte Unknown112;
-        public byte Unknown113;
-        public byte Unknown114;
-        public byte Unknown115;
-        public byte Unknown116;
-        public byte Unknown117;
+        public LazyRow< GFateRideShooting > GFateRideShooting { get; set; }
+        public short Unknown1 { get; set; }
+        public short Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public LazyRow< RideShootingTextData > StartText { get; set; }
+        public uint Unknown6 { get; set; }
+        public uint Unknown7 { get; set; }
+        public uint Unknown8 { get; set; }
+        public uint Unknown9 { get; set; }
+        public uint Unknown10 { get; set; }
+        public uint Unknown11 { get; set; }
+        public uint Unknown12 { get; set; }
+        public uint Unknown13 { get; set; }
+        public uint[] PopRange { get; set; }
+        public LazyRow< ENpcBase >[] ENpc { get; set; }
+        public byte[] ENpcScale { get; set; }
+        public uint Unknown38 { get; set; }
+        public uint Unknown39 { get; set; }
+        public uint Unknown40 { get; set; }
+        public uint Unknown41 { get; set; }
+        public uint Unknown42 { get; set; }
+        public uint Unknown43 { get; set; }
+        public uint Unknown44 { get; set; }
+        public uint Unknown45 { get; set; }
+        public byte Unknown46 { get; set; }
+        public byte Unknown47 { get; set; }
+        public byte Unknown48 { get; set; }
+        public byte Unknown49 { get; set; }
+        public byte Unknown50 { get; set; }
+        public byte Unknown51 { get; set; }
+        public byte Unknown52 { get; set; }
+        public byte Unknown53 { get; set; }
+        public uint Unknown54 { get; set; }
+        public uint Unknown55 { get; set; }
+        public uint Unknown56 { get; set; }
+        public uint Unknown57 { get; set; }
+        public uint Unknown58 { get; set; }
+        public uint Unknown59 { get; set; }
+        public uint Unknown60 { get; set; }
+        public uint Unknown61 { get; set; }
+        public byte Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public byte Unknown64 { get; set; }
+        public byte Unknown65 { get; set; }
+        public byte Unknown66 { get; set; }
+        public byte Unknown67 { get; set; }
+        public byte Unknown68 { get; set; }
+        public byte Unknown69 { get; set; }
+        public uint Unknown70 { get; set; }
+        public uint Unknown71 { get; set; }
+        public uint Unknown72 { get; set; }
+        public uint Unknown73 { get; set; }
+        public uint Unknown74 { get; set; }
+        public uint Unknown75 { get; set; }
+        public uint Unknown76 { get; set; }
+        public uint Unknown77 { get; set; }
+        public byte Unknown78 { get; set; }
+        public byte Unknown79 { get; set; }
+        public byte Unknown80 { get; set; }
+        public byte Unknown81 { get; set; }
+        public byte Unknown82 { get; set; }
+        public byte Unknown83 { get; set; }
+        public byte Unknown84 { get; set; }
+        public byte Unknown85 { get; set; }
+        public uint Unknown86 { get; set; }
+        public uint Unknown87 { get; set; }
+        public uint Unknown88 { get; set; }
+        public uint Unknown89 { get; set; }
+        public uint Unknown90 { get; set; }
+        public uint Unknown91 { get; set; }
+        public uint Unknown92 { get; set; }
+        public uint Unknown93 { get; set; }
+        public byte Unknown94 { get; set; }
+        public byte Unknown95 { get; set; }
+        public byte Unknown96 { get; set; }
+        public byte Unknown97 { get; set; }
+        public byte Unknown98 { get; set; }
+        public byte Unknown99 { get; set; }
+        public byte Unknown100 { get; set; }
+        public byte Unknown101 { get; set; }
+        public uint Unknown102 { get; set; }
+        public uint Unknown103 { get; set; }
+        public uint Unknown104 { get; set; }
+        public uint Unknown105 { get; set; }
+        public uint Unknown106 { get; set; }
+        public uint Unknown107 { get; set; }
+        public uint Unknown108 { get; set; }
+        public uint Unknown109 { get; set; }
+        public byte Unknown110 { get; set; }
+        public byte Unknown111 { get; set; }
+        public byte Unknown112 { get; set; }
+        public byte Unknown113 { get; set; }
+        public byte Unknown114 { get; set; }
+        public byte Unknown115 { get; set; }
+        public byte Unknown116 { get; set; }
+        public byte Unknown117 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            GFateRideShooting = new LazyRow< GFateRideShooting >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            GFateRideShooting = new LazyRow< GFateRideShooting >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Unknown1 = parser.ReadColumn< short >( 1 );
             Unknown2 = parser.ReadColumn< short >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< ushort >( 4 );
-            StartText = new LazyRow< RideShootingTextData >( lumina, parser.ReadColumn< ushort >( 5 ), language );
+            StartText = new LazyRow< RideShootingTextData >( gameData, parser.ReadColumn< ushort >( 5 ), language );
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< uint >( 8 );
@@ -135,7 +131,7 @@ namespace Lumina.Excel.GeneratedSheets
                 PopRange[ i ] = parser.ReadColumn< uint >( 14 + i );
             ENpc = new LazyRow< ENpcBase >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ENpc[ i ] = new LazyRow< ENpcBase >( lumina, parser.ReadColumn< uint >( 22 + i ), language );
+                ENpc[ i ] = new LazyRow< ENpcBase >( gameData, parser.ReadColumn< uint >( 22 + i ), language );
             ENpcScale = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ENpcScale[ i ] = parser.ReadColumn< byte >( 30 + i );

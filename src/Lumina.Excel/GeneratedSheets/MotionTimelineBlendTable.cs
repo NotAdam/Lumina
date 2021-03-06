@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MotionTimelineBlendTable", columnHash: 0x69213275 )]
-    public class MotionTimelineBlendTable : IExcelRow
+    public class MotionTimelineBlendTable : ExcelRow
     {
         
-        public byte DestBlendGroup;
-        public byte SrcBlendGroup;
-        public byte BlendFrame_PC;
-        public byte BlendFram_TypeA;
-        public byte BlendFram_TypeB;
-        public byte BlendFram_TypeC;
+        public byte DestBlendGroup { get; set; }
+        public byte SrcBlendGroup { get; set; }
+        public byte BlendFrame_PC { get; set; }
+        public byte BlendFram_TypeA { get; set; }
+        public byte BlendFram_TypeB { get; set; }
+        public byte BlendFram_TypeC { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             DestBlendGroup = parser.ReadColumn< byte >( 0 );
             SrcBlendGroup = parser.ReadColumn< byte >( 1 );

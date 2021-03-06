@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDLevelChangeDeception", columnHash: 0xda365c51 )]
-    public class HWDLevelChangeDeception : IExcelRow
+    public class HWDLevelChangeDeception : ExcelRow
     {
         
-        public LazyRow< ScreenImage > Image;
+        public LazyRow< ScreenImage > Image { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Image = new LazyRow< ScreenImage >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Image = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< int >( 0 ), language );
         }
     }
 }

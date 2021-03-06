@@ -9,7 +9,7 @@ namespace Lumina.Data
 {
     public class Repository
     {
-        private readonly Lumina _Lumina;
+        private readonly GameData _gameData;
         public DirectoryInfo RootDir { get; private set; }
 
         /// <summary>
@@ -48,9 +48,9 @@ namespace Lumina.Data
         /// </summary>
         public Dictionary< byte, List< Category > > Categories { get; set; }
 
-        internal Repository( DirectoryInfo rootDir, Lumina lumina )
+        internal Repository( DirectoryInfo rootDir, GameData gameData )
         {
-            _Lumina = lumina;
+            _gameData = gameData;
             RootDir = rootDir;
 
             GetExpansionId();
@@ -130,7 +130,7 @@ namespace Lumina.Data
             }
             catch( FormatException e )
             {
-                _Lumina.Logger?.Error(
+                _gameData.Logger?.Error(
                     "failed to parse expansionid, value: {Value} e: {ExceptionMessage}",
                     e.Message
                 );
@@ -191,16 +191,16 @@ namespace Lumina.Data
                         continue;
                     }
 
-                    var index = new SqPackIndex( file, _Lumina );
+                    var index = new SqPackIndex( file, _gameData );
 
                     var dat = new Category(
                         cat.Value,
                         ExpansionId,
                         chunk,
-                        _Lumina.Options.CurrentPlatform,
+                        _gameData.Options.CurrentPlatform,
                         index,
                         RootDir,
-                        _Lumina );
+                        _gameData );
 
                     catList.Add( dat );
                 }
@@ -218,7 +218,7 @@ namespace Lumina.Data
         /// <param name="platform">Current platform</param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static string BuildDatStr( byte cat, int ex, int chunk, Structs.PlatformId platform, string type )
+        public static string BuildDatStr( byte cat, int ex, int chunk, PlatformId platform, string type )
         {
             return $"{cat:x02}{ex:x02}{chunk:x02}.{platform.ToString().ToLowerInvariant()}.{type}";
         }
@@ -236,7 +236,7 @@ namespace Lumina.Data
 
             foreach( var type in new[] { "index", "index2" } )
             {
-                var index = BuildDatStr( cat, ex, chunk, _Lumina.Options.CurrentPlatform, type );
+                var index = BuildDatStr( cat, ex, chunk, _gameData.Options.CurrentPlatform, type );
                 var path = Path.Combine( RootDir.FullName, index );
 
                 var fileInfo = new FileInfo( path );

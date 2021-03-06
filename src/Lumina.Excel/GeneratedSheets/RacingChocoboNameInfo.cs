@@ -7,27 +7,23 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RacingChocoboNameInfo", columnHash: 0x171828cf )]
-    public class RacingChocoboNameInfo : IExcelRow
+    public class RacingChocoboNameInfo : ExcelRow
     {
         
-        public LazyRow< RacingChocoboNameCategory > RacingChocoboNameCategory;
-        public bool Unknown1;
-        public bool Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public ushort Unknown5;
-        public ushort Unknown6;
-        public ushort Unknown7;
+        public LazyRow< RacingChocoboNameCategory > RacingChocoboNameCategory { get; set; }
+        public bool Unknown1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
+        public ushort Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            RacingChocoboNameCategory = new LazyRow< RacingChocoboNameCategory >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            RacingChocoboNameCategory = new LazyRow< RacingChocoboNameCategory >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Unknown1 = parser.ReadColumn< bool >( 1 );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );

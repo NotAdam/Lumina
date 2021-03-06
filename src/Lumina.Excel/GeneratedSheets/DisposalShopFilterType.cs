@@ -7,18 +7,14 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DisposalShopFilterType", columnHash: 0xdebb20e3 )]
-    public class DisposalShopFilterType : IExcelRow
+    public class DisposalShopFilterType : ExcelRow
     {
         
-        public SeString Category;
+        public SeString Category { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Category = parser.ReadColumn< SeString >( 0 );
         }

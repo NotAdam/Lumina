@@ -7,28 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutsceneMotion", columnHash: 0x3d86ce33 )]
-    public class CutsceneMotion : IExcelRow
+    public class CutsceneMotion : ExcelRow
     {
         
-        public float WALK_LOOP_SPEED;
-        public float RUN_LOOP_SPEED;
-        public float SLOWWALK_LOOP_SPEED;
-        public float SLOWRUN_LOOP_SPEED;
-        public float BATTLEWALK_LOOP_SPEED;
-        public float BATTLERUN_LOOP_SPEED;
-        public float DASH_LOOP_SPEED;
-        public byte TURN_CW90_FRAME;
-        public byte TURN_CCW90_FRAME;
-        public byte TURN_CW180_FRAME;
-        public byte TURN_CCW180_FRAME;
+        public float WALK_LOOP_SPEED { get; set; }
+        public float RUN_LOOP_SPEED { get; set; }
+        public float SLOWWALK_LOOP_SPEED { get; set; }
+        public float SLOWRUN_LOOP_SPEED { get; set; }
+        public float BATTLEWALK_LOOP_SPEED { get; set; }
+        public float BATTLERUN_LOOP_SPEED { get; set; }
+        public float DASH_LOOP_SPEED { get; set; }
+        public byte TURN_CW90_FRAME { get; set; }
+        public byte TURN_CCW90_FRAME { get; set; }
+        public byte TURN_CW180_FRAME { get; set; }
+        public byte TURN_CCW180_FRAME { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             WALK_LOOP_SPEED = parser.ReadColumn< float >( 0 );
             RUN_LOOP_SPEED = parser.ReadColumn< float >( 1 );

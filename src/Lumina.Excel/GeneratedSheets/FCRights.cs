@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCRights", columnHash: 0xce73d687 )]
-    public class FCRights : IExcelRow
+    public class FCRights : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public ushort Icon;
-        public LazyRow< FCRank > FCRank;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< FCRank > FCRank { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );
             Icon = parser.ReadColumn< ushort >( 2 );
-            FCRank = new LazyRow< FCRank >( lumina, parser.ReadColumn< byte >( 3 ), language );
+            FCRank = new LazyRow< FCRank >( gameData, parser.ReadColumn< byte >( 3 ), language );
         }
     }
 }

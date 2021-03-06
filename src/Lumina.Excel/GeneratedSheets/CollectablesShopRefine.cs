@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CollectablesShopRefine", columnHash: 0xdc23efe7 )]
-    public class CollectablesShopRefine : IExcelRow
+    public class CollectablesShopRefine : ExcelRow
     {
         
-        public ushort LowCollectability;
-        public ushort MidCollectability;
-        public ushort HighCollectability;
+        public ushort LowCollectability { get; set; }
+        public ushort MidCollectability { get; set; }
+        public ushort HighCollectability { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             LowCollectability = parser.ReadColumn< ushort >( 0 );
             MidCollectability = parser.ReadColumn< ushort >( 1 );

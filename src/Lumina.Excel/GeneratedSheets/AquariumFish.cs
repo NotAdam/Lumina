@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AquariumFish", columnHash: 0x9b5e32ba )]
-    public class AquariumFish : IExcelRow
+    public class AquariumFish : ExcelRow
     {
         
-        public LazyRow< AquariumWater > AquariumWater;
-        public byte Size;
-        public LazyRow< Item > Item;
-        public ushort Unknown3;
+        public LazyRow< AquariumWater > AquariumWater { get; set; }
+        public byte Size { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public ushort Unknown3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            AquariumWater = new LazyRow< AquariumWater >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            AquariumWater = new LazyRow< AquariumWater >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Size = parser.ReadColumn< byte >( 1 );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
         }
     }

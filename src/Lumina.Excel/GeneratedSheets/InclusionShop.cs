@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InclusionShop", columnHash: 0x0ebdee42 )]
-    public class InclusionShop : IExcelRow
+    public class InclusionShop : ExcelRow
     {
         
-        public uint Unknown0;
-        public SeString Unknown1;
-        public LazyRow< InclusionShopCategory >[] Category;
+        public uint Unknown0 { get; set; }
+        public SeString Unknown1 { get; set; }
+        public LazyRow< InclusionShopCategory >[] Category { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             Unknown1 = parser.ReadColumn< SeString >( 1 );
             Category = new LazyRow< InclusionShopCategory >[ 30 ];
             for( var i = 0; i < 30; i++ )
-                Category[ i ] = new LazyRow< InclusionShopCategory >( lumina, parser.ReadColumn< ushort >( 2 + i ), language );
+                Category[ i ] = new LazyRow< InclusionShopCategory >( gameData, parser.ReadColumn< ushort >( 2 + i ), language );
         }
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace Lumina.Data
+namespace Lumina.Data.Attributes
 {
     [AttributeUsage( AttributeTargets.Class )]
     public class FileOptionsAttribute : Attribute

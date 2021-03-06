@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MovieSubtitle", columnHash: 0x07f99ad3 )]
-    public class MovieSubtitle : IExcelRow
+    public class MovieSubtitle : ExcelRow
     {
         
-        public float StartTime;
-        public float EndTime;
+        public float StartTime { get; set; }
+        public float EndTime { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             StartTime = parser.ReadColumn< float >( 0 );
             EndTime = parser.ReadColumn< float >( 1 );

@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DynamicEventType", columnHash: 0x6be0e840 )]
-    public class DynamicEventType : IExcelRow
+    public class DynamicEventType : ExcelRow
     {
         
-        public uint IconObjective0;
-        public uint IconObjective1;
-        public uint Unknown2;
-        public uint Unknown3;
-        public uint Unknown4;
+        public uint IconObjective0 { get; set; }
+        public uint IconObjective1 { get; set; }
+        public uint Unknown2 { get; set; }
+        public uint Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             IconObjective0 = parser.ReadColumn< uint >( 0 );
             IconObjective1 = parser.ReadColumn< uint >( 1 );

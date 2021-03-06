@@ -7,32 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ParamGrow", columnHash: 0x64a92445 )]
-    public class ParamGrow : IExcelRow
+    public class ParamGrow : ExcelRow
     {
         
-        public int ExpToNext;
-        public byte AdditionalActions;
-        public byte ApplyAction;
-        public ushort ScaledQuestXP;
-        public int MpModifier;
-        public int BaseSpeed;
-        public int LevelModifier;
-        public byte QuestExpModifier;
-        public ushort HpModifier;
-        public int HuntingLogExpReward;
-        public int MonsterNoteSeals;
-        public ushort ItemLevelSync;
-        public ushort ProperDungeon;
-        public ushort ProperGuildOrder;
-        public ushort CraftingLevel;
+        public int ExpToNext { get; set; }
+        public byte AdditionalActions { get; set; }
+        public byte ApplyAction { get; set; }
+        public ushort ScaledQuestXP { get; set; }
+        public int MpModifier { get; set; }
+        public int BaseSpeed { get; set; }
+        public int LevelModifier { get; set; }
+        public byte QuestExpModifier { get; set; }
+        public ushort HpModifier { get; set; }
+        public int HuntingLogExpReward { get; set; }
+        public int MonsterNoteSeals { get; set; }
+        public ushort ItemLevelSync { get; set; }
+        public ushort ProperDungeon { get; set; }
+        public ushort ProperGuildOrder { get; set; }
+        public ushort CraftingLevel { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             ExpToNext = parser.ReadColumn< int >( 0 );
             AdditionalActions = parser.ReadColumn< byte >( 1 );

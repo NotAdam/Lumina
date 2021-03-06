@@ -7,18 +7,14 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentFinderConditionTransient", columnHash: 0xdebb20e3 )]
-    public class ContentFinderConditionTransient : IExcelRow
+    public class ContentFinderConditionTransient : ExcelRow
     {
         
-        public SeString Description;
+        public SeString Description { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Description = parser.ReadColumn< SeString >( 0 );
         }

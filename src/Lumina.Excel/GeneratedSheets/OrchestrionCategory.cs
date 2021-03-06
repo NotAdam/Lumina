@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OrchestrionCategory", columnHash: 0x7ac3ee00 )]
-    public class OrchestrionCategory : IExcelRow
+    public class OrchestrionCategory : ExcelRow
     {
         
-        public SeString Name;
-        public byte HideCategory;
-        public uint Unknown2;
-        public byte Order;
+        public SeString Name { get; set; }
+        public byte HideOrder { get; set; }
+        public uint Icon { get; set; }
+        public byte Order { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            HideCategory = parser.ReadColumn< byte >( 1 );
-            Unknown2 = parser.ReadColumn< uint >( 2 );
+            HideOrder = parser.ReadColumn< byte >( 1 );
+            Icon = parser.ReadColumn< uint >( 2 );
             Order = parser.ReadColumn< byte >( 3 );
         }
     }

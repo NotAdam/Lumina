@@ -7,32 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TreasureHuntRank", columnHash: 0x3997d502 )]
-    public class TreasureHuntRank : IExcelRow
+    public class TreasureHuntRank : ExcelRow
     {
         
-        public byte Unknown0;
-        public uint Icon;
-        public LazyRow< Item > ItemName;
-        public LazyRow< EventItem > KeyItemName;
-        public LazyRow< EventItem > InstanceMap;
-        public byte MaxPartySize;
-        public byte TreasureHuntTexture;
-        public ushort Unknown7;
-        public bool Unknown8;
+        public byte Unknown0 { get; set; }
+        public uint Icon { get; set; }
+        public LazyRow< Item > ItemName { get; set; }
+        public LazyRow< EventItem > KeyItemName { get; set; }
+        public LazyRow< EventItem > InstanceMap { get; set; }
+        public byte MaxPartySize { get; set; }
+        public byte TreasureHuntTexture { get; set; }
+        public ushort Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );
-            ItemName = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 2 ), language );
-            KeyItemName = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 3 ), language );
-            InstanceMap = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 4 ), language );
+            ItemName = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 2 ), language );
+            KeyItemName = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 3 ), language );
+            InstanceMap = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 4 ), language );
             MaxPartySize = parser.ReadColumn< byte >( 5 );
             TreasureHuntTexture = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< ushort >( 7 );

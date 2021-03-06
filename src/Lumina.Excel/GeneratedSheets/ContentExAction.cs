@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentExAction", columnHash: 0x8690a89e )]
-    public class ContentExAction : IExcelRow
+    public class ContentExAction : ExcelRow
     {
         
-        public LazyRow< Action > Name;
-        public uint Unknown1;
-        public byte Charges;
-        public byte Unknown3;
+        public LazyRow< Action > Name { get; set; }
+        public uint Unknown1 { get; set; }
+        public byte Charges { get; set; }
+        public byte Unknown3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Name = new LazyRow< Action >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Name = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Unknown1 = parser.ReadColumn< uint >( 1 );
             Charges = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );

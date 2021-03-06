@@ -3,7 +3,6 @@ using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
@@ -13,13 +12,13 @@ namespace Lumina.Excel
 {
     public class ExcelSheetImpl
     {
-        internal ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina )
+        internal ExcelSheetImpl( ExcelHeaderFile headerFile, string name, Language requestedLanguage, GameData gameData )
         {
             DataPages = new List< ExcelPage >();
             HeaderFile = headerFile;
             Name = name;
             RequestedLanguage = requestedLanguage;
-            _Lumina = lumina;
+            GameData = gameData;
         }
 
         /// <summary>
@@ -93,7 +92,7 @@ namespace Lumina.Excel
         /// </summary>
         public Language RequestedLanguage { get; protected set; }
 
-        internal readonly Lumina _Lumina;
+        internal readonly GameData GameData;
 
         /// <summary>
         /// Generates an absolute path to a data file for a sheet
@@ -131,7 +130,7 @@ namespace Lumina.Excel
                 var filePath = GenerateFilePath( Name, bp.StartId, lang );
 
                 // ignore languages that don't exist in this client build
-                if( !_Lumina.FileExists( filePath ) )
+                if( !GameData.FileExists( filePath ) )
                 {
                     continue;
                 }
@@ -143,7 +142,7 @@ namespace Lumina.Excel
                     StartId = bp.StartId
                 };
 
-                segment.File = _Lumina.GetFile< ExcelDataFile >( segment.FilePath );
+                segment.File = GameData.GetFile< ExcelDataFile >( segment.FilePath );
 
                 // convert big endian to little endian on le systems
                 ProcessDataEndianness( segment.File );
@@ -156,57 +155,57 @@ namespace Lumina.Excel
         /// Reverses an inner segment of data based on the column size
         /// </summary>
         /// <param name="offset">The row offset to start from</param>
-        /// <param name="ms">The underlying <see cref="System.IO.MemoryStream"/> that contains the file data</param>
-        /// <param name="bw">Used to write the correct data back into the <see cref="System.IO.MemoryStream"/></param>
-        /// <param name="br">Used to read the correctly sized data from the underlying <see cref="System.IO.MemoryStream"/></param>
-        protected void ProcessDataRow( long offset, MemoryStream ms, BinaryWriter bw, BinaryReader br )
+        /// <param name="fileData">The underlying file data</param>
+        protected unsafe void ProcessDataRow( long offset, byte[] fileData )
         {
             foreach( var row in Columns )
             {
-                var type = row.Type;
-
-                ms.Position = offset + row.Offset;
-
-                byte[] data;
-
-                switch( type )
+                fixed( byte* ptr = &fileData[ offset + row.Offset ] )
                 {
-                    case ExcelColumnDataType.Int16:
-                    case ExcelColumnDataType.UInt16:
+                    switch( row.Type )
                     {
-                        data = br.ReadBytes( Unsafe.SizeOf< UInt16 >() );
-                        break;
-                    }
-                    case ExcelColumnDataType.String:
-                    case ExcelColumnDataType.Int32:
-                    case ExcelColumnDataType.UInt32:
-                    case ExcelColumnDataType.Float32:
-                    {
-                        data = br.ReadBytes( Unsafe.SizeOf< UInt32 >() );
-                        break;
-                    }
-                    case ExcelColumnDataType.Int64:
-                    case ExcelColumnDataType.UInt64:
-                    {
-                        data = br.ReadBytes( Unsafe.SizeOf< UInt64 >() );
-                        break;
-                    }
+                        case ExcelColumnDataType.Int16:
+                        case ExcelColumnDataType.UInt16:
+                        {
+                            var pData = (ushort*)ptr;
+                            *pData = BinaryPrimitives.ReverseEndianness( *pData );
 
-                    default:
-                        continue;
+                            break;
+                        }
+                        case ExcelColumnDataType.String:
+                        case ExcelColumnDataType.Int32:
+                        case ExcelColumnDataType.UInt32:
+                        case ExcelColumnDataType.Float32:
+                        {
+                            var pData = (uint*)ptr;
+                            *pData = BinaryPrimitives.ReverseEndianness( *pData );
+
+                            break;
+                        }
+                        case ExcelColumnDataType.Int64:
+                        case ExcelColumnDataType.UInt64:
+                        {
+                            var pData = (ulong*)ptr;
+                            *pData = BinaryPrimitives.ReverseEndianness( *pData );
+                            break;
+                        }
+
+                        default:
+                            continue;
+                    }
                 }
 
                 // not really sure why but this sometimes happens, but it'll read 0 bytes and then try and write it to the end
                 // and crash because it's attempting to alloc memory for some retarded reason, makes 0 sense to me
                 // todo: figure out why (item sheet, maybe quest?)
                 // todo: potentially fixed by accident but don't want to remove
-                if( data.Length == 0 )
-                    continue;
+                // if( data.Length == 0 )
+                // continue;
 
-                Array.Reverse( data );
+                // Array.Reverse( data );
 
-                ms.Position -= data.Length;
-                bw.Write( data );
+                // ms.Position -= data.Length;
+                // bw.Write( data );
             }
         }
 
@@ -227,9 +226,8 @@ namespace Lumina.Excel
                 return;
             }
 
-
+            // todo: clean this shit up too
             var stream = new MemoryStream( file.Data );
-            var writer = new BinaryWriter( stream );
             var reader = new BinaryReader( stream );
 
             foreach( var row in file.RowData.Values )
@@ -250,13 +248,13 @@ namespace Lumina.Excel
 
                         stream.Position = subRowOffset;
 
-                        ProcessDataRow( subRowOffset, stream, writer, reader );
+                        ProcessDataRow( subRowOffset, file.Data );
                     }
                 }
                 else
                 {
-                    // skip header
-                    ProcessDataRow( offset + 6, stream, writer, reader );
+                    // skip (unused) header
+                    ProcessDataRow( offset + 6, file.Data );
                 }
             }
 

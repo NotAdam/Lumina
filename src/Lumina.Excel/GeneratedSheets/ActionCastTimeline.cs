@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionCastTimeline", columnHash: 0x2020acf6 )]
-    public class ActionCastTimeline : IExcelRow
+    public class ActionCastTimeline : ExcelRow
     {
         
-        public LazyRow< ActionTimeline > Name;
-        public LazyRow< VFX > VFX;
+        public LazyRow< ActionTimeline > Name { get; set; }
+        public LazyRow< VFX > VFX { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Name = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            VFX = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            Name = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            VFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 1 ), language );
         }
     }
 }

@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCProfile", columnHash: 0x5eb59ccb )]
-    public class FCProfile : IExcelRow
+    public class FCProfile : ExcelRow
     {
         
-        public byte Priority;
-        public SeString Name;
+        public byte Priority { get; set; }
+        public SeString Name { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Priority = parser.ReadColumn< byte >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

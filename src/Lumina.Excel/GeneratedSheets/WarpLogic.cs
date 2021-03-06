@@ -7,29 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WarpLogic", columnHash: 0x78e83215 )]
-    public class WarpLogic : IExcelRow
+    public class WarpLogic : ExcelRow
     {
         public struct UnkStruct13Struct
         {
             public uint Argument;
         }
         
-        public uint Unknown0;
-        public SeString WarpName;
-        public bool CanSkipCutscene;
-        public SeString[] Function;
-        public UnkStruct13Struct[] UnkStruct13;
-        public SeString Question;
-        public SeString ResponseYes;
-        public SeString ResponseNo;
+        public uint Unknown0 { get; set; }
+        public SeString WarpName { get; set; }
+        public bool CanSkipCutscene { get; set; }
+        public SeString[] Function { get; set; }
+        public UnkStruct13Struct[] UnkStruct13 { get; set; }
+        public SeString Question { get; set; }
+        public SeString ResponseYes { get; set; }
+        public SeString ResponseNo { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             WarpName = parser.ReadColumn< SeString >( 1 );

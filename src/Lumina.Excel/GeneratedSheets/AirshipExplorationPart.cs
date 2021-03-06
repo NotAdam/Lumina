@@ -7,29 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AirshipExplorationPart", columnHash: 0xc971f464 )]
-    public class AirshipExplorationPart : IExcelRow
+    public class AirshipExplorationPart : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Rank;
-        public byte Components;
-        public short Surveillance;
-        public short Retrieval;
-        public short Speed;
-        public short Range;
-        public short Favor;
-        public ushort Unknown8;
-        public byte RepairMaterials;
+        public byte Slot { get; set; }
+        public byte Rank { get; set; }
+        public byte Components { get; set; }
+        public short Surveillance { get; set; }
+        public short Retrieval { get; set; }
+        public short Speed { get; set; }
+        public short Range { get; set; }
+        public short Favor { get; set; }
+        public ushort Class { get; set; }
+        public byte RepairMaterials { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< byte >( 0 );
+            Slot = parser.ReadColumn< byte >( 0 );
             Rank = parser.ReadColumn< byte >( 1 );
             Components = parser.ReadColumn< byte >( 2 );
             Surveillance = parser.ReadColumn< short >( 3 );
@@ -37,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
             Speed = parser.ReadColumn< short >( 5 );
             Range = parser.ReadColumn< short >( 6 );
             Favor = parser.ReadColumn< short >( 7 );
-            Unknown8 = parser.ReadColumn< ushort >( 8 );
+            Class = parser.ReadColumn< ushort >( 8 );
             RepairMaterials = parser.ReadColumn< byte >( 9 );
         }
     }

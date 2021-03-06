@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeClassEquip", columnHash: 0x41dafacb )]
-    public class CharaMakeClassEquip : IExcelRow
+    public class CharaMakeClassEquip : ExcelRow
     {
         
-        public ulong Helmet;
-        public ulong Top;
-        public ulong Glove;
-        public ulong Down;
-        public ulong Shoes;
-        public ulong Weapon;
-        public ulong SubWeapon;
-        public LazyRow< ClassJob > Class;
+        public ulong Helmet { get; set; }
+        public ulong Top { get; set; }
+        public ulong Glove { get; set; }
+        public ulong Down { get; set; }
+        public ulong Shoes { get; set; }
+        public ulong Weapon { get; set; }
+        public ulong SubWeapon { get; set; }
+        public LazyRow< ClassJob > Class { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Helmet = parser.ReadColumn< ulong >( 0 );
             Top = parser.ReadColumn< ulong >( 1 );
@@ -34,7 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
             Shoes = parser.ReadColumn< ulong >( 4 );
             Weapon = parser.ReadColumn< ulong >( 5 );
             SubWeapon = parser.ReadColumn< ulong >( 6 );
-            Class = new LazyRow< ClassJob >( lumina, parser.ReadColumn< int >( 7 ), language );
+            Class = new LazyRow< ClassJob >( gameData, parser.ReadColumn< int >( 7 ), language );
         }
     }
 }

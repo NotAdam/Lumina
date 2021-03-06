@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RelicNoteCategory", columnHash: 0xf8c2977f )]
-    public class RelicNoteCategory : IExcelRow
+    public class RelicNoteCategory : ExcelRow
     {
         
-        public sbyte Unknown0;
-        public SeString Text;
+        public sbyte Unknown0 { get; set; }
+        public SeString Text { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< sbyte >( 0 );
             Text = parser.ReadColumn< SeString >( 1 );

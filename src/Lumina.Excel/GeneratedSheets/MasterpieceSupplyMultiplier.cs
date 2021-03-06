@@ -7,27 +7,23 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MasterpieceSupplyMultiplier", columnHash: 0x1b64fcf8 )]
-    public class MasterpieceSupplyMultiplier : IExcelRow
+    public class MasterpieceSupplyMultiplier : ExcelRow
     {
         
-        public ushort[] XpMultiplier;
-        public ushort Unknown2;
-        public ushort Unknown3;
-        public ushort[] CurrencyMultiplier;
-        public ushort Unknown6;
-        public ushort Unknown7;
-        public ushort Unknown8;
-        public ushort Unknown9;
-        public ushort Unknown10;
-        public ushort Unknown11;
+        public ushort[] XpMultiplier { get; set; }
+        public ushort Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort[] CurrencyMultiplier { get; set; }
+        public ushort Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
+        public ushort Unknown8 { get; set; }
+        public ushort Unknown9 { get; set; }
+        public ushort Unknown10 { get; set; }
+        public ushort Unknown11 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             XpMultiplier = new ushort[ 2 ];
             for( var i = 0; i < 2; i++ )

@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EurekaMagiciteItem", columnHash: 0xbc638df5 )]
-    public class EurekaMagiciteItem : IExcelRow
+    public class EurekaMagiciteItem : ExcelRow
     {
         
-        public LazyRow< EurekaMagiciteItemType > EurekaMagiciteItemType;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public LazyRow< Item > Item;
+        public LazyRow< EurekaMagiciteItemType > EurekaMagiciteItemType { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public LazyRow< Item > Item { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            EurekaMagiciteItemType = new LazyRow< EurekaMagiciteItemType >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            EurekaMagiciteItemType = new LazyRow< EurekaMagiciteItemType >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 1 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 2 ), language );
         }
     }
 }

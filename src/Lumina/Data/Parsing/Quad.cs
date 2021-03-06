@@ -1,5 +1,8 @@
 using System.Runtime.InteropServices;
 
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable FieldCanBeMadeReadOnly.Global
+
 namespace Lumina.Data.Parsing
 {
     [StructLayout( LayoutKind.Explicit )]
@@ -36,7 +39,7 @@ namespace Lumina.Data.Parsing
         
         [FieldOffset(0x0)]
         public uint U32A;
-        [FieldOffset(0x1)]
+        [FieldOffset(0x4)]
         public uint U32B;
 
         public ushort A => U16A;

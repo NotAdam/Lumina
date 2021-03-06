@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGM", columnHash: 0xc9fc6953 )]
-    public class BGM : IExcelRow
+    public class BGM : ExcelRow
     {
         
-        public SeString File;
-        public byte Priority;
-        public bool DisableRestartTimeOut;
-        public bool DisableRestart;
-        public bool PassEnd;
-        public float DisableRestartResetTime;
-        public byte SpecialMode;
+        public SeString File { get; set; }
+        public byte Priority { get; set; }
+        public bool DisableRestartTimeOut { get; set; }
+        public bool DisableRestart { get; set; }
+        public bool PassEnd { get; set; }
+        public float DisableRestartResetTime { get; set; }
+        public byte SpecialMode { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             File = parser.ReadColumn< SeString >( 0 );
             Priority = parser.ReadColumn< byte >( 1 );

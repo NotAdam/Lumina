@@ -7,31 +7,27 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestRedoChapterUI", columnHash: 0x4d7d2656 )]
-    public class QuestRedoChapterUI : IExcelRow
+    public class QuestRedoChapterUI : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public byte Unknown1;
-        public LazyRow< QuestRedoChapterUICategory > Category;
-        public byte Unknown3;
-        public uint QuestRedoUISmall;
-        public uint QuestRedoUILarge;
-        public uint QuestRedoUIWide;
-        public SeString ChapterName;
-        public SeString ChapterPart;
-        public SeString Transient;
+        public LazyRow< Quest > Quest { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< QuestRedoChapterUICategory > Category { get; set; }
+        public byte Unknown3 { get; set; }
+        public uint QuestRedoUISmall { get; set; }
+        public uint QuestRedoUILarge { get; set; }
+        public uint QuestRedoUIWide { get; set; }
+        public SeString ChapterName { get; set; }
+        public SeString ChapterPart { get; set; }
+        public SeString Transient { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            Category = new LazyRow< QuestRedoChapterUICategory >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            Category = new LazyRow< QuestRedoChapterUICategory >( gameData, parser.ReadColumn< byte >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             QuestRedoUISmall = parser.ReadColumn< uint >( 4 );
             QuestRedoUILarge = parser.ReadColumn< uint >( 5 );

@@ -7,52 +7,48 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcBase", columnHash: 0xdd911c47 )]
-    public class BNpcBase : IExcelRow
+    public class BNpcBase : ExcelRow
     {
         
-        public LazyRow< Behavior > Behavior;
-        public byte Battalion;
-        public byte LinkRace;
-        public byte Rank;
-        public float Scale;
-        public LazyRow< ModelChara > ModelChara;
-        public LazyRow< BNpcCustomize > BNpcCustomize;
-        public LazyRow< NpcEquip > NpcEquip;
-        public ushort Special;
-        public byte SEPack;
-        public bool Unknown10;
-        public LazyRow< ArrayEventHandler > ArrayEventHandler;
-        public LazyRow< BNpcParts > BNpcParts;
-        public bool Unknown13;
-        public bool IsTargetLine;
-        public bool IsDisplayLevel;
-        public bool Unknown16;
-        public bool Unknown17;
-        public byte Unknown18;
-        public byte Unknown19;
-        public byte Unknown20;
+        public LazyRow< Behavior > Behavior { get; set; }
+        public byte Battalion { get; set; }
+        public byte LinkRace { get; set; }
+        public byte Rank { get; set; }
+        public float Scale { get; set; }
+        public LazyRow< ModelChara > ModelChara { get; set; }
+        public LazyRow< BNpcCustomize > BNpcCustomize { get; set; }
+        public LazyRow< NpcEquip > NpcEquip { get; set; }
+        public ushort Special { get; set; }
+        public byte SEPack { get; set; }
+        public bool Unknown10 { get; set; }
+        public LazyRow< ArrayEventHandler > ArrayEventHandler { get; set; }
+        public LazyRow< BNpcParts > BNpcParts { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool IsTargetLine { get; set; }
+        public bool IsDisplayLevel { get; set; }
+        public bool Unknown16 { get; set; }
+        public bool Unknown17 { get; set; }
+        public byte Unknown18 { get; set; }
+        public byte Unknown19 { get; set; }
+        public byte Unknown20 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Behavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            Behavior = new LazyRow< Behavior >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Battalion = parser.ReadColumn< byte >( 1 );
             LinkRace = parser.ReadColumn< byte >( 2 );
             Rank = parser.ReadColumn< byte >( 3 );
             Scale = parser.ReadColumn< float >( 4 );
-            ModelChara = new LazyRow< ModelChara >( lumina, parser.ReadColumn< ushort >( 5 ), language );
-            BNpcCustomize = new LazyRow< BNpcCustomize >( lumina, parser.ReadColumn< ushort >( 6 ), language );
-            NpcEquip = new LazyRow< NpcEquip >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            ModelChara = new LazyRow< ModelChara >( gameData, parser.ReadColumn< ushort >( 5 ), language );
+            BNpcCustomize = new LazyRow< BNpcCustomize >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            NpcEquip = new LazyRow< NpcEquip >( gameData, parser.ReadColumn< ushort >( 7 ), language );
             Special = parser.ReadColumn< ushort >( 8 );
             SEPack = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
-            ArrayEventHandler = new LazyRow< ArrayEventHandler >( lumina, parser.ReadColumn< int >( 11 ), language );
-            BNpcParts = new LazyRow< BNpcParts >( lumina, parser.ReadColumn< byte >( 12 ), language );
+            ArrayEventHandler = new LazyRow< ArrayEventHandler >( gameData, parser.ReadColumn< int >( 11 ), language );
+            BNpcParts = new LazyRow< BNpcParts >( gameData, parser.ReadColumn< byte >( 12 ), language );
             Unknown13 = parser.ReadColumn< bool >( 13 );
             IsTargetLine = parser.ReadColumn< bool >( 14 );
             IsDisplayLevel = parser.ReadColumn< bool >( 15 );

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpecialShop", columnHash: 0x86d645dc )]
-    public class SpecialShop : IExcelRow
+    public class SpecialShop : ExcelRow
     {
         public struct UnkStruct1Struct
         {
@@ -24,1267 +24,1263 @@ namespace Lumina.Excel.GeneratedSheets
             public int CollectabilityRatingCost;
         }
         
-        public SeString Name;
-        public UnkStruct1Struct[] UnkStruct1;
-        public int Unknown9;
-        public int Unknown10;
-        public int Unknown11;
-        public int Unknown12;
-        public int Unknown13;
-        public int Unknown14;
-        public int Unknown15;
-        public int Unknown16;
-        public int Unknown17;
-        public int Unknown18;
-        public int Unknown19;
-        public int Unknown20;
-        public int Unknown21;
-        public int Unknown22;
-        public int Unknown23;
-        public int Unknown24;
-        public int Unknown25;
-        public int Unknown26;
-        public int Unknown27;
-        public int Unknown28;
-        public int Unknown29;
-        public int Unknown30;
-        public int Unknown31;
-        public int Unknown32;
-        public int Unknown33;
-        public int Unknown34;
-        public int Unknown35;
-        public int Unknown36;
-        public int Unknown37;
-        public int Unknown38;
-        public int Unknown39;
-        public int Unknown40;
-        public int Unknown41;
-        public int Unknown42;
-        public int Unknown43;
-        public int Unknown44;
-        public int Unknown45;
-        public int Unknown46;
-        public int Unknown47;
-        public int Unknown48;
-        public int Unknown49;
-        public int Unknown50;
-        public int Unknown51;
-        public int Unknown52;
-        public int Unknown53;
-        public int Unknown54;
-        public int Unknown55;
-        public int Unknown56;
-        public int Unknown57;
-        public int Unknown58;
-        public int Unknown59;
-        public int Unknown60;
-        public uint Unknown61;
-        public uint Unknown62;
-        public uint Unknown63;
-        public uint Unknown64;
-        public uint Unknown65;
-        public uint Unknown66;
-        public uint Unknown67;
-        public uint Unknown68;
-        public uint Unknown69;
-        public uint Unknown70;
-        public uint Unknown71;
-        public uint Unknown72;
-        public uint Unknown73;
-        public uint Unknown74;
-        public uint Unknown75;
-        public uint Unknown76;
-        public uint Unknown77;
-        public uint Unknown78;
-        public uint Unknown79;
-        public uint Unknown80;
-        public uint Unknown81;
-        public uint Unknown82;
-        public uint Unknown83;
-        public uint Unknown84;
-        public uint Unknown85;
-        public uint Unknown86;
-        public uint Unknown87;
-        public uint Unknown88;
-        public uint Unknown89;
-        public uint Unknown90;
-        public uint Unknown91;
-        public uint Unknown92;
-        public uint Unknown93;
-        public uint Unknown94;
-        public uint Unknown95;
-        public uint Unknown96;
-        public uint Unknown97;
-        public uint Unknown98;
-        public uint Unknown99;
-        public uint Unknown100;
-        public uint Unknown101;
-        public uint Unknown102;
-        public uint Unknown103;
-        public uint Unknown104;
-        public uint Unknown105;
-        public uint Unknown106;
-        public uint Unknown107;
-        public uint Unknown108;
-        public uint Unknown109;
-        public uint Unknown110;
-        public uint Unknown111;
-        public uint Unknown112;
-        public uint Unknown113;
-        public uint Unknown114;
-        public uint Unknown115;
-        public uint Unknown116;
-        public uint Unknown117;
-        public uint Unknown118;
-        public uint Unknown119;
-        public uint Unknown120;
-        public int Unknown121;
-        public int Unknown122;
-        public int Unknown123;
-        public int Unknown124;
-        public int Unknown125;
-        public int Unknown126;
-        public int Unknown127;
-        public int Unknown128;
-        public int Unknown129;
-        public int Unknown130;
-        public int Unknown131;
-        public int Unknown132;
-        public int Unknown133;
-        public int Unknown134;
-        public int Unknown135;
-        public int Unknown136;
-        public int Unknown137;
-        public int Unknown138;
-        public int Unknown139;
-        public int Unknown140;
-        public int Unknown141;
-        public int Unknown142;
-        public int Unknown143;
-        public int Unknown144;
-        public int Unknown145;
-        public int Unknown146;
-        public int Unknown147;
-        public int Unknown148;
-        public int Unknown149;
-        public int Unknown150;
-        public int Unknown151;
-        public int Unknown152;
-        public int Unknown153;
-        public int Unknown154;
-        public int Unknown155;
-        public int Unknown156;
-        public int Unknown157;
-        public int Unknown158;
-        public int Unknown159;
-        public int Unknown160;
-        public int Unknown161;
-        public int Unknown162;
-        public int Unknown163;
-        public int Unknown164;
-        public int Unknown165;
-        public int Unknown166;
-        public int Unknown167;
-        public int Unknown168;
-        public int Unknown169;
-        public int Unknown170;
-        public int Unknown171;
-        public int Unknown172;
-        public int Unknown173;
-        public int Unknown174;
-        public int Unknown175;
-        public int Unknown176;
-        public int Unknown177;
-        public int Unknown178;
-        public int Unknown179;
-        public int Unknown180;
-        public bool Unknown181;
-        public bool Unknown182;
-        public bool Unknown183;
-        public bool Unknown184;
-        public bool Unknown185;
-        public bool Unknown186;
-        public bool Unknown187;
-        public bool Unknown188;
-        public bool Unknown189;
-        public bool Unknown190;
-        public bool Unknown191;
-        public bool Unknown192;
-        public bool Unknown193;
-        public bool Unknown194;
-        public bool Unknown195;
-        public bool Unknown196;
-        public bool Unknown197;
-        public bool Unknown198;
-        public bool Unknown199;
-        public bool Unknown200;
-        public bool Unknown201;
-        public bool Unknown202;
-        public bool Unknown203;
-        public bool Unknown204;
-        public bool Unknown205;
-        public bool Unknown206;
-        public bool Unknown207;
-        public bool Unknown208;
-        public bool Unknown209;
-        public bool Unknown210;
-        public bool Unknown211;
-        public bool Unknown212;
-        public bool Unknown213;
-        public bool Unknown214;
-        public bool Unknown215;
-        public bool Unknown216;
-        public bool Unknown217;
-        public bool Unknown218;
-        public bool Unknown219;
-        public bool Unknown220;
-        public bool Unknown221;
-        public bool Unknown222;
-        public bool Unknown223;
-        public bool Unknown224;
-        public bool Unknown225;
-        public bool Unknown226;
-        public bool Unknown227;
-        public bool Unknown228;
-        public bool Unknown229;
-        public bool Unknown230;
-        public bool Unknown231;
-        public bool Unknown232;
-        public bool Unknown233;
-        public bool Unknown234;
-        public bool Unknown235;
-        public bool Unknown236;
-        public bool Unknown237;
-        public bool Unknown238;
-        public bool Unknown239;
-        public bool Unknown240;
-        public int Unknown241;
-        public int Unknown242;
-        public int Unknown243;
-        public int Unknown244;
-        public int Unknown245;
-        public int Unknown246;
-        public int Unknown247;
-        public int Unknown248;
-        public int Unknown249;
-        public int Unknown250;
-        public int Unknown251;
-        public int Unknown252;
-        public int Unknown253;
-        public int Unknown254;
-        public int Unknown255;
-        public int Unknown256;
-        public int Unknown257;
-        public int Unknown258;
-        public int Unknown259;
-        public int Unknown260;
-        public int Unknown261;
-        public int Unknown262;
-        public int Unknown263;
-        public int Unknown264;
-        public int Unknown265;
-        public int Unknown266;
-        public int Unknown267;
-        public int Unknown268;
-        public int Unknown269;
-        public int Unknown270;
-        public int Unknown271;
-        public int Unknown272;
-        public int Unknown273;
-        public int Unknown274;
-        public int Unknown275;
-        public int Unknown276;
-        public int Unknown277;
-        public int Unknown278;
-        public int Unknown279;
-        public int Unknown280;
-        public int Unknown281;
-        public int Unknown282;
-        public int Unknown283;
-        public int Unknown284;
-        public int Unknown285;
-        public int Unknown286;
-        public int Unknown287;
-        public int Unknown288;
-        public int Unknown289;
-        public int Unknown290;
-        public int Unknown291;
-        public int Unknown292;
-        public int Unknown293;
-        public int Unknown294;
-        public int Unknown295;
-        public int Unknown296;
-        public int Unknown297;
-        public int Unknown298;
-        public int Unknown299;
-        public int Unknown300;
-        public uint Unknown301;
-        public uint Unknown302;
-        public uint Unknown303;
-        public uint Unknown304;
-        public uint Unknown305;
-        public uint Unknown306;
-        public uint Unknown307;
-        public uint Unknown308;
-        public uint Unknown309;
-        public uint Unknown310;
-        public uint Unknown311;
-        public uint Unknown312;
-        public uint Unknown313;
-        public uint Unknown314;
-        public uint Unknown315;
-        public uint Unknown316;
-        public uint Unknown317;
-        public uint Unknown318;
-        public uint Unknown319;
-        public uint Unknown320;
-        public uint Unknown321;
-        public uint Unknown322;
-        public uint Unknown323;
-        public uint Unknown324;
-        public uint Unknown325;
-        public uint Unknown326;
-        public uint Unknown327;
-        public uint Unknown328;
-        public uint Unknown329;
-        public uint Unknown330;
-        public uint Unknown331;
-        public uint Unknown332;
-        public uint Unknown333;
-        public uint Unknown334;
-        public uint Unknown335;
-        public uint Unknown336;
-        public uint Unknown337;
-        public uint Unknown338;
-        public uint Unknown339;
-        public uint Unknown340;
-        public uint Unknown341;
-        public uint Unknown342;
-        public uint Unknown343;
-        public uint Unknown344;
-        public uint Unknown345;
-        public uint Unknown346;
-        public uint Unknown347;
-        public uint Unknown348;
-        public uint Unknown349;
-        public uint Unknown350;
-        public uint Unknown351;
-        public uint Unknown352;
-        public uint Unknown353;
-        public uint Unknown354;
-        public uint Unknown355;
-        public uint Unknown356;
-        public uint Unknown357;
-        public uint Unknown358;
-        public uint Unknown359;
-        public uint Unknown360;
-        public int Unknown361;
-        public int Unknown362;
-        public int Unknown363;
-        public int Unknown364;
-        public int Unknown365;
-        public int Unknown366;
-        public int Unknown367;
-        public int Unknown368;
-        public int Unknown369;
-        public int Unknown370;
-        public int Unknown371;
-        public int Unknown372;
-        public int Unknown373;
-        public int Unknown374;
-        public int Unknown375;
-        public int Unknown376;
-        public int Unknown377;
-        public int Unknown378;
-        public int Unknown379;
-        public int Unknown380;
-        public int Unknown381;
-        public int Unknown382;
-        public int Unknown383;
-        public int Unknown384;
-        public int Unknown385;
-        public int Unknown386;
-        public int Unknown387;
-        public int Unknown388;
-        public int Unknown389;
-        public int Unknown390;
-        public int Unknown391;
-        public int Unknown392;
-        public int Unknown393;
-        public int Unknown394;
-        public int Unknown395;
-        public int Unknown396;
-        public int Unknown397;
-        public int Unknown398;
-        public int Unknown399;
-        public int Unknown400;
-        public int Unknown401;
-        public int Unknown402;
-        public int Unknown403;
-        public int Unknown404;
-        public int Unknown405;
-        public int Unknown406;
-        public int Unknown407;
-        public int Unknown408;
-        public int Unknown409;
-        public int Unknown410;
-        public int Unknown411;
-        public int Unknown412;
-        public int Unknown413;
-        public int Unknown414;
-        public int Unknown415;
-        public int Unknown416;
-        public int Unknown417;
-        public int Unknown418;
-        public int Unknown419;
-        public int Unknown420;
-        public bool Unknown421;
-        public bool Unknown422;
-        public bool Unknown423;
-        public bool Unknown424;
-        public bool Unknown425;
-        public bool Unknown426;
-        public bool Unknown427;
-        public bool Unknown428;
-        public bool Unknown429;
-        public bool Unknown430;
-        public bool Unknown431;
-        public bool Unknown432;
-        public bool Unknown433;
-        public bool Unknown434;
-        public bool Unknown435;
-        public bool Unknown436;
-        public bool Unknown437;
-        public bool Unknown438;
-        public bool Unknown439;
-        public bool Unknown440;
-        public bool Unknown441;
-        public bool Unknown442;
-        public bool Unknown443;
-        public bool Unknown444;
-        public bool Unknown445;
-        public bool Unknown446;
-        public bool Unknown447;
-        public bool Unknown448;
-        public bool Unknown449;
-        public bool Unknown450;
-        public bool Unknown451;
-        public bool Unknown452;
-        public bool Unknown453;
-        public bool Unknown454;
-        public bool Unknown455;
-        public bool Unknown456;
-        public bool Unknown457;
-        public bool Unknown458;
-        public bool Unknown459;
-        public bool Unknown460;
-        public bool Unknown461;
-        public bool Unknown462;
-        public bool Unknown463;
-        public bool Unknown464;
-        public bool Unknown465;
-        public bool Unknown466;
-        public bool Unknown467;
-        public bool Unknown468;
-        public bool Unknown469;
-        public bool Unknown470;
-        public bool Unknown471;
-        public bool Unknown472;
-        public bool Unknown473;
-        public bool Unknown474;
-        public bool Unknown475;
-        public bool Unknown476;
-        public bool Unknown477;
-        public bool Unknown478;
-        public bool Unknown479;
-        public bool Unknown480;
-        public UnkStruct481Struct[] UnkStruct481;
-        public int Unknown493;
-        public int Unknown494;
-        public int Unknown495;
-        public int Unknown496;
-        public int Unknown497;
-        public int Unknown498;
-        public int Unknown499;
-        public int Unknown500;
-        public int Unknown501;
-        public int Unknown502;
-        public int Unknown503;
-        public int Unknown504;
-        public int Unknown505;
-        public int Unknown506;
-        public int Unknown507;
-        public int Unknown508;
-        public int Unknown509;
-        public int Unknown510;
-        public int Unknown511;
-        public int Unknown512;
-        public int Unknown513;
-        public int Unknown514;
-        public int Unknown515;
-        public int Unknown516;
-        public int Unknown517;
-        public int Unknown518;
-        public int Unknown519;
-        public int Unknown520;
-        public int Unknown521;
-        public int Unknown522;
-        public int Unknown523;
-        public int Unknown524;
-        public int Unknown525;
-        public int Unknown526;
-        public int Unknown527;
-        public int Unknown528;
-        public int Unknown529;
-        public int Unknown530;
-        public int Unknown531;
-        public int Unknown532;
-        public int Unknown533;
-        public int Unknown534;
-        public int Unknown535;
-        public int Unknown536;
-        public int Unknown537;
-        public int Unknown538;
-        public int Unknown539;
-        public int Unknown540;
-        public uint Unknown541;
-        public uint Unknown542;
-        public uint Unknown543;
-        public uint Unknown544;
-        public uint Unknown545;
-        public uint Unknown546;
-        public uint Unknown547;
-        public uint Unknown548;
-        public uint Unknown549;
-        public uint Unknown550;
-        public uint Unknown551;
-        public uint Unknown552;
-        public uint Unknown553;
-        public uint Unknown554;
-        public uint Unknown555;
-        public uint Unknown556;
-        public uint Unknown557;
-        public uint Unknown558;
-        public uint Unknown559;
-        public uint Unknown560;
-        public uint Unknown561;
-        public uint Unknown562;
-        public uint Unknown563;
-        public uint Unknown564;
-        public uint Unknown565;
-        public uint Unknown566;
-        public uint Unknown567;
-        public uint Unknown568;
-        public uint Unknown569;
-        public uint Unknown570;
-        public uint Unknown571;
-        public uint Unknown572;
-        public uint Unknown573;
-        public uint Unknown574;
-        public uint Unknown575;
-        public uint Unknown576;
-        public uint Unknown577;
-        public uint Unknown578;
-        public uint Unknown579;
-        public uint Unknown580;
-        public uint Unknown581;
-        public uint Unknown582;
-        public uint Unknown583;
-        public uint Unknown584;
-        public uint Unknown585;
-        public uint Unknown586;
-        public uint Unknown587;
-        public uint Unknown588;
-        public uint Unknown589;
-        public uint Unknown590;
-        public uint Unknown591;
-        public uint Unknown592;
-        public uint Unknown593;
-        public uint Unknown594;
-        public uint Unknown595;
-        public uint Unknown596;
-        public uint Unknown597;
-        public uint Unknown598;
-        public uint Unknown599;
-        public uint Unknown600;
-        public bool Unknown601;
-        public bool Unknown602;
-        public bool Unknown603;
-        public bool Unknown604;
-        public bool Unknown605;
-        public bool Unknown606;
-        public bool Unknown607;
-        public bool Unknown608;
-        public bool Unknown609;
-        public bool Unknown610;
-        public bool Unknown611;
-        public bool Unknown612;
-        public bool Unknown613;
-        public bool Unknown614;
-        public bool Unknown615;
-        public bool Unknown616;
-        public bool Unknown617;
-        public bool Unknown618;
-        public bool Unknown619;
-        public bool Unknown620;
-        public bool Unknown621;
-        public bool Unknown622;
-        public bool Unknown623;
-        public bool Unknown624;
-        public bool Unknown625;
-        public bool Unknown626;
-        public bool Unknown627;
-        public bool Unknown628;
-        public bool Unknown629;
-        public bool Unknown630;
-        public bool Unknown631;
-        public bool Unknown632;
-        public bool Unknown633;
-        public bool Unknown634;
-        public bool Unknown635;
-        public bool Unknown636;
-        public bool Unknown637;
-        public bool Unknown638;
-        public bool Unknown639;
-        public bool Unknown640;
-        public bool Unknown641;
-        public bool Unknown642;
-        public bool Unknown643;
-        public bool Unknown644;
-        public bool Unknown645;
-        public bool Unknown646;
-        public bool Unknown647;
-        public bool Unknown648;
-        public bool Unknown649;
-        public bool Unknown650;
-        public bool Unknown651;
-        public bool Unknown652;
-        public bool Unknown653;
-        public bool Unknown654;
-        public bool Unknown655;
-        public bool Unknown656;
-        public bool Unknown657;
-        public bool Unknown658;
-        public bool Unknown659;
-        public bool Unknown660;
-        public ushort Unknown661;
-        public ushort Unknown662;
-        public ushort Unknown663;
-        public ushort Unknown664;
-        public ushort Unknown665;
-        public ushort Unknown666;
-        public ushort Unknown667;
-        public ushort Unknown668;
-        public ushort Unknown669;
-        public ushort Unknown670;
-        public ushort Unknown671;
-        public ushort Unknown672;
-        public ushort Unknown673;
-        public ushort Unknown674;
-        public ushort Unknown675;
-        public ushort Unknown676;
-        public ushort Unknown677;
-        public ushort Unknown678;
-        public ushort Unknown679;
-        public ushort Unknown680;
-        public ushort Unknown681;
-        public ushort Unknown682;
-        public ushort Unknown683;
-        public ushort Unknown684;
-        public ushort Unknown685;
-        public ushort Unknown686;
-        public ushort Unknown687;
-        public ushort Unknown688;
-        public ushort Unknown689;
-        public ushort Unknown690;
-        public ushort Unknown691;
-        public ushort Unknown692;
-        public ushort Unknown693;
-        public ushort Unknown694;
-        public ushort Unknown695;
-        public ushort Unknown696;
-        public ushort Unknown697;
-        public ushort Unknown698;
-        public ushort Unknown699;
-        public ushort Unknown700;
-        public ushort Unknown701;
-        public ushort Unknown702;
-        public ushort Unknown703;
-        public ushort Unknown704;
-        public ushort Unknown705;
-        public ushort Unknown706;
-        public ushort Unknown707;
-        public ushort Unknown708;
-        public ushort Unknown709;
-        public ushort Unknown710;
-        public ushort Unknown711;
-        public ushort Unknown712;
-        public ushort Unknown713;
-        public ushort Unknown714;
-        public ushort Unknown715;
-        public ushort Unknown716;
-        public ushort Unknown717;
-        public ushort Unknown718;
-        public ushort Unknown719;
-        public ushort Unknown720;
-        public int Unknown721;
-        public int Unknown722;
-        public int Unknown723;
-        public int Unknown724;
-        public int Unknown725;
-        public int Unknown726;
-        public int Unknown727;
-        public int Unknown728;
-        public int Unknown729;
-        public int Unknown730;
-        public int Unknown731;
-        public int Unknown732;
-        public int Unknown733;
-        public int Unknown734;
-        public int Unknown735;
-        public int Unknown736;
-        public int Unknown737;
-        public int Unknown738;
-        public int Unknown739;
-        public int Unknown740;
-        public int Unknown741;
-        public int Unknown742;
-        public int Unknown743;
-        public int Unknown744;
-        public int Unknown745;
-        public int Unknown746;
-        public int Unknown747;
-        public int Unknown748;
-        public int Unknown749;
-        public int Unknown750;
-        public int Unknown751;
-        public int Unknown752;
-        public int Unknown753;
-        public int Unknown754;
-        public int Unknown755;
-        public int Unknown756;
-        public int Unknown757;
-        public int Unknown758;
-        public int Unknown759;
-        public int Unknown760;
-        public int Unknown761;
-        public int Unknown762;
-        public int Unknown763;
-        public int Unknown764;
-        public int Unknown765;
-        public int Unknown766;
-        public int Unknown767;
-        public int Unknown768;
-        public int Unknown769;
-        public int Unknown770;
-        public int Unknown771;
-        public int Unknown772;
-        public int Unknown773;
-        public int Unknown774;
-        public int Unknown775;
-        public int Unknown776;
-        public int Unknown777;
-        public int Unknown778;
-        public int Unknown779;
-        public int Unknown780;
-        public uint Unknown781;
-        public uint Unknown782;
-        public uint Unknown783;
-        public uint Unknown784;
-        public uint Unknown785;
-        public uint Unknown786;
-        public uint Unknown787;
-        public uint Unknown788;
-        public uint Unknown789;
-        public uint Unknown790;
-        public uint Unknown791;
-        public uint Unknown792;
-        public uint Unknown793;
-        public uint Unknown794;
-        public uint Unknown795;
-        public uint Unknown796;
-        public uint Unknown797;
-        public uint Unknown798;
-        public uint Unknown799;
-        public uint Unknown800;
-        public uint Unknown801;
-        public uint Unknown802;
-        public uint Unknown803;
-        public uint Unknown804;
-        public uint Unknown805;
-        public uint Unknown806;
-        public uint Unknown807;
-        public uint Unknown808;
-        public uint Unknown809;
-        public uint Unknown810;
-        public uint Unknown811;
-        public uint Unknown812;
-        public uint Unknown813;
-        public uint Unknown814;
-        public uint Unknown815;
-        public uint Unknown816;
-        public uint Unknown817;
-        public uint Unknown818;
-        public uint Unknown819;
-        public uint Unknown820;
-        public uint Unknown821;
-        public uint Unknown822;
-        public uint Unknown823;
-        public uint Unknown824;
-        public uint Unknown825;
-        public uint Unknown826;
-        public uint Unknown827;
-        public uint Unknown828;
-        public uint Unknown829;
-        public uint Unknown830;
-        public uint Unknown831;
-        public uint Unknown832;
-        public uint Unknown833;
-        public uint Unknown834;
-        public uint Unknown835;
-        public uint Unknown836;
-        public uint Unknown837;
-        public uint Unknown838;
-        public uint Unknown839;
-        public uint Unknown840;
-        public bool Unknown841;
-        public bool Unknown842;
-        public bool Unknown843;
-        public bool Unknown844;
-        public bool Unknown845;
-        public bool Unknown846;
-        public bool Unknown847;
-        public bool Unknown848;
-        public bool Unknown849;
-        public bool Unknown850;
-        public bool Unknown851;
-        public bool Unknown852;
-        public bool Unknown853;
-        public bool Unknown854;
-        public bool Unknown855;
-        public bool Unknown856;
-        public bool Unknown857;
-        public bool Unknown858;
-        public bool Unknown859;
-        public bool Unknown860;
-        public bool Unknown861;
-        public bool Unknown862;
-        public bool Unknown863;
-        public bool Unknown864;
-        public bool Unknown865;
-        public bool Unknown866;
-        public bool Unknown867;
-        public bool Unknown868;
-        public bool Unknown869;
-        public bool Unknown870;
-        public bool Unknown871;
-        public bool Unknown872;
-        public bool Unknown873;
-        public bool Unknown874;
-        public bool Unknown875;
-        public bool Unknown876;
-        public bool Unknown877;
-        public bool Unknown878;
-        public bool Unknown879;
-        public bool Unknown880;
-        public bool Unknown881;
-        public bool Unknown882;
-        public bool Unknown883;
-        public bool Unknown884;
-        public bool Unknown885;
-        public bool Unknown886;
-        public bool Unknown887;
-        public bool Unknown888;
-        public bool Unknown889;
-        public bool Unknown890;
-        public bool Unknown891;
-        public bool Unknown892;
-        public bool Unknown893;
-        public bool Unknown894;
-        public bool Unknown895;
-        public bool Unknown896;
-        public bool Unknown897;
-        public bool Unknown898;
-        public bool Unknown899;
-        public bool Unknown900;
-        public ushort Unknown901;
-        public ushort Unknown902;
-        public ushort Unknown903;
-        public ushort Unknown904;
-        public ushort Unknown905;
-        public ushort Unknown906;
-        public ushort Unknown907;
-        public ushort Unknown908;
-        public ushort Unknown909;
-        public ushort Unknown910;
-        public ushort Unknown911;
-        public ushort Unknown912;
-        public ushort Unknown913;
-        public ushort Unknown914;
-        public ushort Unknown915;
-        public ushort Unknown916;
-        public ushort Unknown917;
-        public ushort Unknown918;
-        public ushort Unknown919;
-        public ushort Unknown920;
-        public ushort Unknown921;
-        public ushort Unknown922;
-        public ushort Unknown923;
-        public ushort Unknown924;
-        public ushort Unknown925;
-        public ushort Unknown926;
-        public ushort Unknown927;
-        public ushort Unknown928;
-        public ushort Unknown929;
-        public ushort Unknown930;
-        public ushort Unknown931;
-        public ushort Unknown932;
-        public ushort Unknown933;
-        public ushort Unknown934;
-        public ushort Unknown935;
-        public ushort Unknown936;
-        public ushort Unknown937;
-        public ushort Unknown938;
-        public ushort Unknown939;
-        public ushort Unknown940;
-        public ushort Unknown941;
-        public ushort Unknown942;
-        public ushort Unknown943;
-        public ushort Unknown944;
-        public ushort Unknown945;
-        public ushort Unknown946;
-        public ushort Unknown947;
-        public ushort Unknown948;
-        public ushort Unknown949;
-        public ushort Unknown950;
-        public ushort Unknown951;
-        public ushort Unknown952;
-        public ushort Unknown953;
-        public ushort Unknown954;
-        public ushort Unknown955;
-        public ushort Unknown956;
-        public ushort Unknown957;
-        public ushort Unknown958;
-        public ushort Unknown959;
-        public ushort Unknown960;
-        public int Unknown961;
-        public int Unknown962;
-        public int Unknown963;
-        public int Unknown964;
-        public int Unknown965;
-        public int Unknown966;
-        public int Unknown967;
-        public int Unknown968;
-        public int Unknown969;
-        public int Unknown970;
-        public int Unknown971;
-        public int Unknown972;
-        public int Unknown973;
-        public int Unknown974;
-        public int Unknown975;
-        public int Unknown976;
-        public int Unknown977;
-        public int Unknown978;
-        public int Unknown979;
-        public int Unknown980;
-        public int Unknown981;
-        public int Unknown982;
-        public int Unknown983;
-        public int Unknown984;
-        public int Unknown985;
-        public int Unknown986;
-        public int Unknown987;
-        public int Unknown988;
-        public int Unknown989;
-        public int Unknown990;
-        public int Unknown991;
-        public int Unknown992;
-        public int Unknown993;
-        public int Unknown994;
-        public int Unknown995;
-        public int Unknown996;
-        public int Unknown997;
-        public int Unknown998;
-        public int Unknown999;
-        public int Unknown1000;
-        public int Unknown1001;
-        public int Unknown1002;
-        public int Unknown1003;
-        public int Unknown1004;
-        public int Unknown1005;
-        public int Unknown1006;
-        public int Unknown1007;
-        public int Unknown1008;
-        public int Unknown1009;
-        public int Unknown1010;
-        public int Unknown1011;
-        public int Unknown1012;
-        public int Unknown1013;
-        public int Unknown1014;
-        public int Unknown1015;
-        public int Unknown1016;
-        public int Unknown1017;
-        public int Unknown1018;
-        public int Unknown1019;
-        public int Unknown1020;
-        public uint Unknown1021;
-        public uint Unknown1022;
-        public uint Unknown1023;
-        public uint Unknown1024;
-        public uint Unknown1025;
-        public uint Unknown1026;
-        public uint Unknown1027;
-        public uint Unknown1028;
-        public uint Unknown1029;
-        public uint Unknown1030;
-        public uint Unknown1031;
-        public uint Unknown1032;
-        public uint Unknown1033;
-        public uint Unknown1034;
-        public uint Unknown1035;
-        public uint Unknown1036;
-        public uint Unknown1037;
-        public uint Unknown1038;
-        public uint Unknown1039;
-        public uint Unknown1040;
-        public uint Unknown1041;
-        public uint Unknown1042;
-        public uint Unknown1043;
-        public uint Unknown1044;
-        public uint Unknown1045;
-        public uint Unknown1046;
-        public uint Unknown1047;
-        public uint Unknown1048;
-        public uint Unknown1049;
-        public uint Unknown1050;
-        public uint Unknown1051;
-        public uint Unknown1052;
-        public uint Unknown1053;
-        public uint Unknown1054;
-        public uint Unknown1055;
-        public uint Unknown1056;
-        public uint Unknown1057;
-        public uint Unknown1058;
-        public uint Unknown1059;
-        public uint Unknown1060;
-        public uint Unknown1061;
-        public uint Unknown1062;
-        public uint Unknown1063;
-        public uint Unknown1064;
-        public uint Unknown1065;
-        public uint Unknown1066;
-        public uint Unknown1067;
-        public uint Unknown1068;
-        public uint Unknown1069;
-        public uint Unknown1070;
-        public uint Unknown1071;
-        public uint Unknown1072;
-        public uint Unknown1073;
-        public uint Unknown1074;
-        public uint Unknown1075;
-        public uint Unknown1076;
-        public uint Unknown1077;
-        public uint Unknown1078;
-        public uint Unknown1079;
-        public uint Unknown1080;
-        public bool Unknown1081;
-        public bool Unknown1082;
-        public bool Unknown1083;
-        public bool Unknown1084;
-        public bool Unknown1085;
-        public bool Unknown1086;
-        public bool Unknown1087;
-        public bool Unknown1088;
-        public bool Unknown1089;
-        public bool Unknown1090;
-        public bool Unknown1091;
-        public bool Unknown1092;
-        public bool Unknown1093;
-        public bool Unknown1094;
-        public bool Unknown1095;
-        public bool Unknown1096;
-        public bool Unknown1097;
-        public bool Unknown1098;
-        public bool Unknown1099;
-        public bool Unknown1100;
-        public bool Unknown1101;
-        public bool Unknown1102;
-        public bool Unknown1103;
-        public bool Unknown1104;
-        public bool Unknown1105;
-        public bool Unknown1106;
-        public bool Unknown1107;
-        public bool Unknown1108;
-        public bool Unknown1109;
-        public bool Unknown1110;
-        public bool Unknown1111;
-        public bool Unknown1112;
-        public bool Unknown1113;
-        public bool Unknown1114;
-        public bool Unknown1115;
-        public bool Unknown1116;
-        public bool Unknown1117;
-        public bool Unknown1118;
-        public bool Unknown1119;
-        public bool Unknown1120;
-        public bool Unknown1121;
-        public bool Unknown1122;
-        public bool Unknown1123;
-        public bool Unknown1124;
-        public bool Unknown1125;
-        public bool Unknown1126;
-        public bool Unknown1127;
-        public bool Unknown1128;
-        public bool Unknown1129;
-        public bool Unknown1130;
-        public bool Unknown1131;
-        public bool Unknown1132;
-        public bool Unknown1133;
-        public bool Unknown1134;
-        public bool Unknown1135;
-        public bool Unknown1136;
-        public bool Unknown1137;
-        public bool Unknown1138;
-        public bool Unknown1139;
-        public bool Unknown1140;
-        public ushort Unknown1141;
-        public ushort Unknown1142;
-        public ushort Unknown1143;
-        public ushort Unknown1144;
-        public ushort Unknown1145;
-        public ushort Unknown1146;
-        public ushort Unknown1147;
-        public ushort Unknown1148;
-        public ushort Unknown1149;
-        public ushort Unknown1150;
-        public ushort Unknown1151;
-        public ushort Unknown1152;
-        public ushort Unknown1153;
-        public ushort Unknown1154;
-        public ushort Unknown1155;
-        public ushort Unknown1156;
-        public ushort Unknown1157;
-        public ushort Unknown1158;
-        public ushort Unknown1159;
-        public ushort Unknown1160;
-        public ushort Unknown1161;
-        public ushort Unknown1162;
-        public ushort Unknown1163;
-        public ushort Unknown1164;
-        public ushort Unknown1165;
-        public ushort Unknown1166;
-        public ushort Unknown1167;
-        public ushort Unknown1168;
-        public ushort Unknown1169;
-        public ushort Unknown1170;
-        public ushort Unknown1171;
-        public ushort Unknown1172;
-        public ushort Unknown1173;
-        public ushort Unknown1174;
-        public ushort Unknown1175;
-        public ushort Unknown1176;
-        public ushort Unknown1177;
-        public ushort Unknown1178;
-        public ushort Unknown1179;
-        public ushort Unknown1180;
-        public ushort Unknown1181;
-        public ushort Unknown1182;
-        public ushort Unknown1183;
-        public ushort Unknown1184;
-        public ushort Unknown1185;
-        public ushort Unknown1186;
-        public ushort Unknown1187;
-        public ushort Unknown1188;
-        public ushort Unknown1189;
-        public ushort Unknown1190;
-        public ushort Unknown1191;
-        public ushort Unknown1192;
-        public ushort Unknown1193;
-        public ushort Unknown1194;
-        public ushort Unknown1195;
-        public ushort Unknown1196;
-        public ushort Unknown1197;
-        public ushort Unknown1198;
-        public ushort Unknown1199;
-        public ushort Unknown1200;
-        public LazyRow< Quest >[] QuestItem;
-        public int[] Unknown;
-        public LazyRow< Achievement >[] AchievementUnlock;
-        public byte Unknown1381;
-        public byte Unknown1382;
-        public byte Unknown1383;
-        public byte Unknown1384;
-        public byte Unknown1385;
-        public byte Unknown1386;
-        public byte Unknown1387;
-        public byte Unknown1388;
-        public byte Unknown1389;
-        public byte Unknown1390;
-        public byte Unknown1391;
-        public byte Unknown1392;
-        public byte Unknown1393;
-        public byte Unknown1394;
-        public byte Unknown1395;
-        public byte Unknown1396;
-        public byte Unknown1397;
-        public byte Unknown1398;
-        public byte Unknown1399;
-        public byte Unknown1400;
-        public byte Unknown1401;
-        public byte Unknown1402;
-        public byte Unknown1403;
-        public byte Unknown1404;
-        public byte Unknown1405;
-        public byte Unknown1406;
-        public byte Unknown1407;
-        public byte Unknown1408;
-        public byte Unknown1409;
-        public byte Unknown1410;
-        public byte Unknown1411;
-        public byte Unknown1412;
-        public byte Unknown1413;
-        public byte Unknown1414;
-        public byte Unknown1415;
-        public byte Unknown1416;
-        public byte Unknown1417;
-        public byte Unknown1418;
-        public byte Unknown1419;
-        public byte Unknown1420;
-        public byte Unknown1421;
-        public byte Unknown1422;
-        public byte Unknown1423;
-        public byte Unknown1424;
-        public byte Unknown1425;
-        public byte Unknown1426;
-        public byte Unknown1427;
-        public byte Unknown1428;
-        public byte Unknown1429;
-        public byte Unknown1430;
-        public byte Unknown1431;
-        public byte Unknown1432;
-        public byte Unknown1433;
-        public byte Unknown1434;
-        public byte Unknown1435;
-        public byte Unknown1436;
-        public byte Unknown1437;
-        public byte Unknown1438;
-        public byte Unknown1439;
-        public byte Unknown1440;
-        public ushort[] PatchNumber;
-        public byte UseCurrencyType;
-        public LazyRow< Quest > QuestUnlock;
-        public LazyRow< DefaultTalk > CompleteText;
-        public LazyRow< DefaultTalk > NotCompleteText;
-        public uint Unknown1505;
-        public bool Unknown1506;
+        public SeString Name { get; set; }
+        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public int Unknown9 { get; set; }
+        public int Unknown10 { get; set; }
+        public int Unknown11 { get; set; }
+        public int Unknown12 { get; set; }
+        public int Unknown13 { get; set; }
+        public int Unknown14 { get; set; }
+        public int Unknown15 { get; set; }
+        public int Unknown16 { get; set; }
+        public int Unknown17 { get; set; }
+        public int Unknown18 { get; set; }
+        public int Unknown19 { get; set; }
+        public int Unknown20 { get; set; }
+        public int Unknown21 { get; set; }
+        public int Unknown22 { get; set; }
+        public int Unknown23 { get; set; }
+        public int Unknown24 { get; set; }
+        public int Unknown25 { get; set; }
+        public int Unknown26 { get; set; }
+        public int Unknown27 { get; set; }
+        public int Unknown28 { get; set; }
+        public int Unknown29 { get; set; }
+        public int Unknown30 { get; set; }
+        public int Unknown31 { get; set; }
+        public int Unknown32 { get; set; }
+        public int Unknown33 { get; set; }
+        public int Unknown34 { get; set; }
+        public int Unknown35 { get; set; }
+        public int Unknown36 { get; set; }
+        public int Unknown37 { get; set; }
+        public int Unknown38 { get; set; }
+        public int Unknown39 { get; set; }
+        public int Unknown40 { get; set; }
+        public int Unknown41 { get; set; }
+        public int Unknown42 { get; set; }
+        public int Unknown43 { get; set; }
+        public int Unknown44 { get; set; }
+        public int Unknown45 { get; set; }
+        public int Unknown46 { get; set; }
+        public int Unknown47 { get; set; }
+        public int Unknown48 { get; set; }
+        public int Unknown49 { get; set; }
+        public int Unknown50 { get; set; }
+        public int Unknown51 { get; set; }
+        public int Unknown52 { get; set; }
+        public int Unknown53 { get; set; }
+        public int Unknown54 { get; set; }
+        public int Unknown55 { get; set; }
+        public int Unknown56 { get; set; }
+        public int Unknown57 { get; set; }
+        public int Unknown58 { get; set; }
+        public int Unknown59 { get; set; }
+        public int Unknown60 { get; set; }
+        public uint Unknown61 { get; set; }
+        public uint Unknown62 { get; set; }
+        public uint Unknown63 { get; set; }
+        public uint Unknown64 { get; set; }
+        public uint Unknown65 { get; set; }
+        public uint Unknown66 { get; set; }
+        public uint Unknown67 { get; set; }
+        public uint Unknown68 { get; set; }
+        public uint Unknown69 { get; set; }
+        public uint Unknown70 { get; set; }
+        public uint Unknown71 { get; set; }
+        public uint Unknown72 { get; set; }
+        public uint Unknown73 { get; set; }
+        public uint Unknown74 { get; set; }
+        public uint Unknown75 { get; set; }
+        public uint Unknown76 { get; set; }
+        public uint Unknown77 { get; set; }
+        public uint Unknown78 { get; set; }
+        public uint Unknown79 { get; set; }
+        public uint Unknown80 { get; set; }
+        public uint Unknown81 { get; set; }
+        public uint Unknown82 { get; set; }
+        public uint Unknown83 { get; set; }
+        public uint Unknown84 { get; set; }
+        public uint Unknown85 { get; set; }
+        public uint Unknown86 { get; set; }
+        public uint Unknown87 { get; set; }
+        public uint Unknown88 { get; set; }
+        public uint Unknown89 { get; set; }
+        public uint Unknown90 { get; set; }
+        public uint Unknown91 { get; set; }
+        public uint Unknown92 { get; set; }
+        public uint Unknown93 { get; set; }
+        public uint Unknown94 { get; set; }
+        public uint Unknown95 { get; set; }
+        public uint Unknown96 { get; set; }
+        public uint Unknown97 { get; set; }
+        public uint Unknown98 { get; set; }
+        public uint Unknown99 { get; set; }
+        public uint Unknown100 { get; set; }
+        public uint Unknown101 { get; set; }
+        public uint Unknown102 { get; set; }
+        public uint Unknown103 { get; set; }
+        public uint Unknown104 { get; set; }
+        public uint Unknown105 { get; set; }
+        public uint Unknown106 { get; set; }
+        public uint Unknown107 { get; set; }
+        public uint Unknown108 { get; set; }
+        public uint Unknown109 { get; set; }
+        public uint Unknown110 { get; set; }
+        public uint Unknown111 { get; set; }
+        public uint Unknown112 { get; set; }
+        public uint Unknown113 { get; set; }
+        public uint Unknown114 { get; set; }
+        public uint Unknown115 { get; set; }
+        public uint Unknown116 { get; set; }
+        public uint Unknown117 { get; set; }
+        public uint Unknown118 { get; set; }
+        public uint Unknown119 { get; set; }
+        public uint Unknown120 { get; set; }
+        public int Unknown121 { get; set; }
+        public int Unknown122 { get; set; }
+        public int Unknown123 { get; set; }
+        public int Unknown124 { get; set; }
+        public int Unknown125 { get; set; }
+        public int Unknown126 { get; set; }
+        public int Unknown127 { get; set; }
+        public int Unknown128 { get; set; }
+        public int Unknown129 { get; set; }
+        public int Unknown130 { get; set; }
+        public int Unknown131 { get; set; }
+        public int Unknown132 { get; set; }
+        public int Unknown133 { get; set; }
+        public int Unknown134 { get; set; }
+        public int Unknown135 { get; set; }
+        public int Unknown136 { get; set; }
+        public int Unknown137 { get; set; }
+        public int Unknown138 { get; set; }
+        public int Unknown139 { get; set; }
+        public int Unknown140 { get; set; }
+        public int Unknown141 { get; set; }
+        public int Unknown142 { get; set; }
+        public int Unknown143 { get; set; }
+        public int Unknown144 { get; set; }
+        public int Unknown145 { get; set; }
+        public int Unknown146 { get; set; }
+        public int Unknown147 { get; set; }
+        public int Unknown148 { get; set; }
+        public int Unknown149 { get; set; }
+        public int Unknown150 { get; set; }
+        public int Unknown151 { get; set; }
+        public int Unknown152 { get; set; }
+        public int Unknown153 { get; set; }
+        public int Unknown154 { get; set; }
+        public int Unknown155 { get; set; }
+        public int Unknown156 { get; set; }
+        public int Unknown157 { get; set; }
+        public int Unknown158 { get; set; }
+        public int Unknown159 { get; set; }
+        public int Unknown160 { get; set; }
+        public int Unknown161 { get; set; }
+        public int Unknown162 { get; set; }
+        public int Unknown163 { get; set; }
+        public int Unknown164 { get; set; }
+        public int Unknown165 { get; set; }
+        public int Unknown166 { get; set; }
+        public int Unknown167 { get; set; }
+        public int Unknown168 { get; set; }
+        public int Unknown169 { get; set; }
+        public int Unknown170 { get; set; }
+        public int Unknown171 { get; set; }
+        public int Unknown172 { get; set; }
+        public int Unknown173 { get; set; }
+        public int Unknown174 { get; set; }
+        public int Unknown175 { get; set; }
+        public int Unknown176 { get; set; }
+        public int Unknown177 { get; set; }
+        public int Unknown178 { get; set; }
+        public int Unknown179 { get; set; }
+        public int Unknown180 { get; set; }
+        public bool Unknown181 { get; set; }
+        public bool Unknown182 { get; set; }
+        public bool Unknown183 { get; set; }
+        public bool Unknown184 { get; set; }
+        public bool Unknown185 { get; set; }
+        public bool Unknown186 { get; set; }
+        public bool Unknown187 { get; set; }
+        public bool Unknown188 { get; set; }
+        public bool Unknown189 { get; set; }
+        public bool Unknown190 { get; set; }
+        public bool Unknown191 { get; set; }
+        public bool Unknown192 { get; set; }
+        public bool Unknown193 { get; set; }
+        public bool Unknown194 { get; set; }
+        public bool Unknown195 { get; set; }
+        public bool Unknown196 { get; set; }
+        public bool Unknown197 { get; set; }
+        public bool Unknown198 { get; set; }
+        public bool Unknown199 { get; set; }
+        public bool Unknown200 { get; set; }
+        public bool Unknown201 { get; set; }
+        public bool Unknown202 { get; set; }
+        public bool Unknown203 { get; set; }
+        public bool Unknown204 { get; set; }
+        public bool Unknown205 { get; set; }
+        public bool Unknown206 { get; set; }
+        public bool Unknown207 { get; set; }
+        public bool Unknown208 { get; set; }
+        public bool Unknown209 { get; set; }
+        public bool Unknown210 { get; set; }
+        public bool Unknown211 { get; set; }
+        public bool Unknown212 { get; set; }
+        public bool Unknown213 { get; set; }
+        public bool Unknown214 { get; set; }
+        public bool Unknown215 { get; set; }
+        public bool Unknown216 { get; set; }
+        public bool Unknown217 { get; set; }
+        public bool Unknown218 { get; set; }
+        public bool Unknown219 { get; set; }
+        public bool Unknown220 { get; set; }
+        public bool Unknown221 { get; set; }
+        public bool Unknown222 { get; set; }
+        public bool Unknown223 { get; set; }
+        public bool Unknown224 { get; set; }
+        public bool Unknown225 { get; set; }
+        public bool Unknown226 { get; set; }
+        public bool Unknown227 { get; set; }
+        public bool Unknown228 { get; set; }
+        public bool Unknown229 { get; set; }
+        public bool Unknown230 { get; set; }
+        public bool Unknown231 { get; set; }
+        public bool Unknown232 { get; set; }
+        public bool Unknown233 { get; set; }
+        public bool Unknown234 { get; set; }
+        public bool Unknown235 { get; set; }
+        public bool Unknown236 { get; set; }
+        public bool Unknown237 { get; set; }
+        public bool Unknown238 { get; set; }
+        public bool Unknown239 { get; set; }
+        public bool Unknown240 { get; set; }
+        public int Unknown241 { get; set; }
+        public int Unknown242 { get; set; }
+        public int Unknown243 { get; set; }
+        public int Unknown244 { get; set; }
+        public int Unknown245 { get; set; }
+        public int Unknown246 { get; set; }
+        public int Unknown247 { get; set; }
+        public int Unknown248 { get; set; }
+        public int Unknown249 { get; set; }
+        public int Unknown250 { get; set; }
+        public int Unknown251 { get; set; }
+        public int Unknown252 { get; set; }
+        public int Unknown253 { get; set; }
+        public int Unknown254 { get; set; }
+        public int Unknown255 { get; set; }
+        public int Unknown256 { get; set; }
+        public int Unknown257 { get; set; }
+        public int Unknown258 { get; set; }
+        public int Unknown259 { get; set; }
+        public int Unknown260 { get; set; }
+        public int Unknown261 { get; set; }
+        public int Unknown262 { get; set; }
+        public int Unknown263 { get; set; }
+        public int Unknown264 { get; set; }
+        public int Unknown265 { get; set; }
+        public int Unknown266 { get; set; }
+        public int Unknown267 { get; set; }
+        public int Unknown268 { get; set; }
+        public int Unknown269 { get; set; }
+        public int Unknown270 { get; set; }
+        public int Unknown271 { get; set; }
+        public int Unknown272 { get; set; }
+        public int Unknown273 { get; set; }
+        public int Unknown274 { get; set; }
+        public int Unknown275 { get; set; }
+        public int Unknown276 { get; set; }
+        public int Unknown277 { get; set; }
+        public int Unknown278 { get; set; }
+        public int Unknown279 { get; set; }
+        public int Unknown280 { get; set; }
+        public int Unknown281 { get; set; }
+        public int Unknown282 { get; set; }
+        public int Unknown283 { get; set; }
+        public int Unknown284 { get; set; }
+        public int Unknown285 { get; set; }
+        public int Unknown286 { get; set; }
+        public int Unknown287 { get; set; }
+        public int Unknown288 { get; set; }
+        public int Unknown289 { get; set; }
+        public int Unknown290 { get; set; }
+        public int Unknown291 { get; set; }
+        public int Unknown292 { get; set; }
+        public int Unknown293 { get; set; }
+        public int Unknown294 { get; set; }
+        public int Unknown295 { get; set; }
+        public int Unknown296 { get; set; }
+        public int Unknown297 { get; set; }
+        public int Unknown298 { get; set; }
+        public int Unknown299 { get; set; }
+        public int Unknown300 { get; set; }
+        public uint Unknown301 { get; set; }
+        public uint Unknown302 { get; set; }
+        public uint Unknown303 { get; set; }
+        public uint Unknown304 { get; set; }
+        public uint Unknown305 { get; set; }
+        public uint Unknown306 { get; set; }
+        public uint Unknown307 { get; set; }
+        public uint Unknown308 { get; set; }
+        public uint Unknown309 { get; set; }
+        public uint Unknown310 { get; set; }
+        public uint Unknown311 { get; set; }
+        public uint Unknown312 { get; set; }
+        public uint Unknown313 { get; set; }
+        public uint Unknown314 { get; set; }
+        public uint Unknown315 { get; set; }
+        public uint Unknown316 { get; set; }
+        public uint Unknown317 { get; set; }
+        public uint Unknown318 { get; set; }
+        public uint Unknown319 { get; set; }
+        public uint Unknown320 { get; set; }
+        public uint Unknown321 { get; set; }
+        public uint Unknown322 { get; set; }
+        public uint Unknown323 { get; set; }
+        public uint Unknown324 { get; set; }
+        public uint Unknown325 { get; set; }
+        public uint Unknown326 { get; set; }
+        public uint Unknown327 { get; set; }
+        public uint Unknown328 { get; set; }
+        public uint Unknown329 { get; set; }
+        public uint Unknown330 { get; set; }
+        public uint Unknown331 { get; set; }
+        public uint Unknown332 { get; set; }
+        public uint Unknown333 { get; set; }
+        public uint Unknown334 { get; set; }
+        public uint Unknown335 { get; set; }
+        public uint Unknown336 { get; set; }
+        public uint Unknown337 { get; set; }
+        public uint Unknown338 { get; set; }
+        public uint Unknown339 { get; set; }
+        public uint Unknown340 { get; set; }
+        public uint Unknown341 { get; set; }
+        public uint Unknown342 { get; set; }
+        public uint Unknown343 { get; set; }
+        public uint Unknown344 { get; set; }
+        public uint Unknown345 { get; set; }
+        public uint Unknown346 { get; set; }
+        public uint Unknown347 { get; set; }
+        public uint Unknown348 { get; set; }
+        public uint Unknown349 { get; set; }
+        public uint Unknown350 { get; set; }
+        public uint Unknown351 { get; set; }
+        public uint Unknown352 { get; set; }
+        public uint Unknown353 { get; set; }
+        public uint Unknown354 { get; set; }
+        public uint Unknown355 { get; set; }
+        public uint Unknown356 { get; set; }
+        public uint Unknown357 { get; set; }
+        public uint Unknown358 { get; set; }
+        public uint Unknown359 { get; set; }
+        public uint Unknown360 { get; set; }
+        public int Unknown361 { get; set; }
+        public int Unknown362 { get; set; }
+        public int Unknown363 { get; set; }
+        public int Unknown364 { get; set; }
+        public int Unknown365 { get; set; }
+        public int Unknown366 { get; set; }
+        public int Unknown367 { get; set; }
+        public int Unknown368 { get; set; }
+        public int Unknown369 { get; set; }
+        public int Unknown370 { get; set; }
+        public int Unknown371 { get; set; }
+        public int Unknown372 { get; set; }
+        public int Unknown373 { get; set; }
+        public int Unknown374 { get; set; }
+        public int Unknown375 { get; set; }
+        public int Unknown376 { get; set; }
+        public int Unknown377 { get; set; }
+        public int Unknown378 { get; set; }
+        public int Unknown379 { get; set; }
+        public int Unknown380 { get; set; }
+        public int Unknown381 { get; set; }
+        public int Unknown382 { get; set; }
+        public int Unknown383 { get; set; }
+        public int Unknown384 { get; set; }
+        public int Unknown385 { get; set; }
+        public int Unknown386 { get; set; }
+        public int Unknown387 { get; set; }
+        public int Unknown388 { get; set; }
+        public int Unknown389 { get; set; }
+        public int Unknown390 { get; set; }
+        public int Unknown391 { get; set; }
+        public int Unknown392 { get; set; }
+        public int Unknown393 { get; set; }
+        public int Unknown394 { get; set; }
+        public int Unknown395 { get; set; }
+        public int Unknown396 { get; set; }
+        public int Unknown397 { get; set; }
+        public int Unknown398 { get; set; }
+        public int Unknown399 { get; set; }
+        public int Unknown400 { get; set; }
+        public int Unknown401 { get; set; }
+        public int Unknown402 { get; set; }
+        public int Unknown403 { get; set; }
+        public int Unknown404 { get; set; }
+        public int Unknown405 { get; set; }
+        public int Unknown406 { get; set; }
+        public int Unknown407 { get; set; }
+        public int Unknown408 { get; set; }
+        public int Unknown409 { get; set; }
+        public int Unknown410 { get; set; }
+        public int Unknown411 { get; set; }
+        public int Unknown412 { get; set; }
+        public int Unknown413 { get; set; }
+        public int Unknown414 { get; set; }
+        public int Unknown415 { get; set; }
+        public int Unknown416 { get; set; }
+        public int Unknown417 { get; set; }
+        public int Unknown418 { get; set; }
+        public int Unknown419 { get; set; }
+        public int Unknown420 { get; set; }
+        public bool Unknown421 { get; set; }
+        public bool Unknown422 { get; set; }
+        public bool Unknown423 { get; set; }
+        public bool Unknown424 { get; set; }
+        public bool Unknown425 { get; set; }
+        public bool Unknown426 { get; set; }
+        public bool Unknown427 { get; set; }
+        public bool Unknown428 { get; set; }
+        public bool Unknown429 { get; set; }
+        public bool Unknown430 { get; set; }
+        public bool Unknown431 { get; set; }
+        public bool Unknown432 { get; set; }
+        public bool Unknown433 { get; set; }
+        public bool Unknown434 { get; set; }
+        public bool Unknown435 { get; set; }
+        public bool Unknown436 { get; set; }
+        public bool Unknown437 { get; set; }
+        public bool Unknown438 { get; set; }
+        public bool Unknown439 { get; set; }
+        public bool Unknown440 { get; set; }
+        public bool Unknown441 { get; set; }
+        public bool Unknown442 { get; set; }
+        public bool Unknown443 { get; set; }
+        public bool Unknown444 { get; set; }
+        public bool Unknown445 { get; set; }
+        public bool Unknown446 { get; set; }
+        public bool Unknown447 { get; set; }
+        public bool Unknown448 { get; set; }
+        public bool Unknown449 { get; set; }
+        public bool Unknown450 { get; set; }
+        public bool Unknown451 { get; set; }
+        public bool Unknown452 { get; set; }
+        public bool Unknown453 { get; set; }
+        public bool Unknown454 { get; set; }
+        public bool Unknown455 { get; set; }
+        public bool Unknown456 { get; set; }
+        public bool Unknown457 { get; set; }
+        public bool Unknown458 { get; set; }
+        public bool Unknown459 { get; set; }
+        public bool Unknown460 { get; set; }
+        public bool Unknown461 { get; set; }
+        public bool Unknown462 { get; set; }
+        public bool Unknown463 { get; set; }
+        public bool Unknown464 { get; set; }
+        public bool Unknown465 { get; set; }
+        public bool Unknown466 { get; set; }
+        public bool Unknown467 { get; set; }
+        public bool Unknown468 { get; set; }
+        public bool Unknown469 { get; set; }
+        public bool Unknown470 { get; set; }
+        public bool Unknown471 { get; set; }
+        public bool Unknown472 { get; set; }
+        public bool Unknown473 { get; set; }
+        public bool Unknown474 { get; set; }
+        public bool Unknown475 { get; set; }
+        public bool Unknown476 { get; set; }
+        public bool Unknown477 { get; set; }
+        public bool Unknown478 { get; set; }
+        public bool Unknown479 { get; set; }
+        public bool Unknown480 { get; set; }
+        public UnkStruct481Struct[] UnkStruct481 { get; set; }
+        public int Unknown493 { get; set; }
+        public int Unknown494 { get; set; }
+        public int Unknown495 { get; set; }
+        public int Unknown496 { get; set; }
+        public int Unknown497 { get; set; }
+        public int Unknown498 { get; set; }
+        public int Unknown499 { get; set; }
+        public int Unknown500 { get; set; }
+        public int Unknown501 { get; set; }
+        public int Unknown502 { get; set; }
+        public int Unknown503 { get; set; }
+        public int Unknown504 { get; set; }
+        public int Unknown505 { get; set; }
+        public int Unknown506 { get; set; }
+        public int Unknown507 { get; set; }
+        public int Unknown508 { get; set; }
+        public int Unknown509 { get; set; }
+        public int Unknown510 { get; set; }
+        public int Unknown511 { get; set; }
+        public int Unknown512 { get; set; }
+        public int Unknown513 { get; set; }
+        public int Unknown514 { get; set; }
+        public int Unknown515 { get; set; }
+        public int Unknown516 { get; set; }
+        public int Unknown517 { get; set; }
+        public int Unknown518 { get; set; }
+        public int Unknown519 { get; set; }
+        public int Unknown520 { get; set; }
+        public int Unknown521 { get; set; }
+        public int Unknown522 { get; set; }
+        public int Unknown523 { get; set; }
+        public int Unknown524 { get; set; }
+        public int Unknown525 { get; set; }
+        public int Unknown526 { get; set; }
+        public int Unknown527 { get; set; }
+        public int Unknown528 { get; set; }
+        public int Unknown529 { get; set; }
+        public int Unknown530 { get; set; }
+        public int Unknown531 { get; set; }
+        public int Unknown532 { get; set; }
+        public int Unknown533 { get; set; }
+        public int Unknown534 { get; set; }
+        public int Unknown535 { get; set; }
+        public int Unknown536 { get; set; }
+        public int Unknown537 { get; set; }
+        public int Unknown538 { get; set; }
+        public int Unknown539 { get; set; }
+        public int Unknown540 { get; set; }
+        public uint Unknown541 { get; set; }
+        public uint Unknown542 { get; set; }
+        public uint Unknown543 { get; set; }
+        public uint Unknown544 { get; set; }
+        public uint Unknown545 { get; set; }
+        public uint Unknown546 { get; set; }
+        public uint Unknown547 { get; set; }
+        public uint Unknown548 { get; set; }
+        public uint Unknown549 { get; set; }
+        public uint Unknown550 { get; set; }
+        public uint Unknown551 { get; set; }
+        public uint Unknown552 { get; set; }
+        public uint Unknown553 { get; set; }
+        public uint Unknown554 { get; set; }
+        public uint Unknown555 { get; set; }
+        public uint Unknown556 { get; set; }
+        public uint Unknown557 { get; set; }
+        public uint Unknown558 { get; set; }
+        public uint Unknown559 { get; set; }
+        public uint Unknown560 { get; set; }
+        public uint Unknown561 { get; set; }
+        public uint Unknown562 { get; set; }
+        public uint Unknown563 { get; set; }
+        public uint Unknown564 { get; set; }
+        public uint Unknown565 { get; set; }
+        public uint Unknown566 { get; set; }
+        public uint Unknown567 { get; set; }
+        public uint Unknown568 { get; set; }
+        public uint Unknown569 { get; set; }
+        public uint Unknown570 { get; set; }
+        public uint Unknown571 { get; set; }
+        public uint Unknown572 { get; set; }
+        public uint Unknown573 { get; set; }
+        public uint Unknown574 { get; set; }
+        public uint Unknown575 { get; set; }
+        public uint Unknown576 { get; set; }
+        public uint Unknown577 { get; set; }
+        public uint Unknown578 { get; set; }
+        public uint Unknown579 { get; set; }
+        public uint Unknown580 { get; set; }
+        public uint Unknown581 { get; set; }
+        public uint Unknown582 { get; set; }
+        public uint Unknown583 { get; set; }
+        public uint Unknown584 { get; set; }
+        public uint Unknown585 { get; set; }
+        public uint Unknown586 { get; set; }
+        public uint Unknown587 { get; set; }
+        public uint Unknown588 { get; set; }
+        public uint Unknown589 { get; set; }
+        public uint Unknown590 { get; set; }
+        public uint Unknown591 { get; set; }
+        public uint Unknown592 { get; set; }
+        public uint Unknown593 { get; set; }
+        public uint Unknown594 { get; set; }
+        public uint Unknown595 { get; set; }
+        public uint Unknown596 { get; set; }
+        public uint Unknown597 { get; set; }
+        public uint Unknown598 { get; set; }
+        public uint Unknown599 { get; set; }
+        public uint Unknown600 { get; set; }
+        public bool Unknown601 { get; set; }
+        public bool Unknown602 { get; set; }
+        public bool Unknown603 { get; set; }
+        public bool Unknown604 { get; set; }
+        public bool Unknown605 { get; set; }
+        public bool Unknown606 { get; set; }
+        public bool Unknown607 { get; set; }
+        public bool Unknown608 { get; set; }
+        public bool Unknown609 { get; set; }
+        public bool Unknown610 { get; set; }
+        public bool Unknown611 { get; set; }
+        public bool Unknown612 { get; set; }
+        public bool Unknown613 { get; set; }
+        public bool Unknown614 { get; set; }
+        public bool Unknown615 { get; set; }
+        public bool Unknown616 { get; set; }
+        public bool Unknown617 { get; set; }
+        public bool Unknown618 { get; set; }
+        public bool Unknown619 { get; set; }
+        public bool Unknown620 { get; set; }
+        public bool Unknown621 { get; set; }
+        public bool Unknown622 { get; set; }
+        public bool Unknown623 { get; set; }
+        public bool Unknown624 { get; set; }
+        public bool Unknown625 { get; set; }
+        public bool Unknown626 { get; set; }
+        public bool Unknown627 { get; set; }
+        public bool Unknown628 { get; set; }
+        public bool Unknown629 { get; set; }
+        public bool Unknown630 { get; set; }
+        public bool Unknown631 { get; set; }
+        public bool Unknown632 { get; set; }
+        public bool Unknown633 { get; set; }
+        public bool Unknown634 { get; set; }
+        public bool Unknown635 { get; set; }
+        public bool Unknown636 { get; set; }
+        public bool Unknown637 { get; set; }
+        public bool Unknown638 { get; set; }
+        public bool Unknown639 { get; set; }
+        public bool Unknown640 { get; set; }
+        public bool Unknown641 { get; set; }
+        public bool Unknown642 { get; set; }
+        public bool Unknown643 { get; set; }
+        public bool Unknown644 { get; set; }
+        public bool Unknown645 { get; set; }
+        public bool Unknown646 { get; set; }
+        public bool Unknown647 { get; set; }
+        public bool Unknown648 { get; set; }
+        public bool Unknown649 { get; set; }
+        public bool Unknown650 { get; set; }
+        public bool Unknown651 { get; set; }
+        public bool Unknown652 { get; set; }
+        public bool Unknown653 { get; set; }
+        public bool Unknown654 { get; set; }
+        public bool Unknown655 { get; set; }
+        public bool Unknown656 { get; set; }
+        public bool Unknown657 { get; set; }
+        public bool Unknown658 { get; set; }
+        public bool Unknown659 { get; set; }
+        public bool Unknown660 { get; set; }
+        public ushort Unknown661 { get; set; }
+        public ushort Unknown662 { get; set; }
+        public ushort Unknown663 { get; set; }
+        public ushort Unknown664 { get; set; }
+        public ushort Unknown665 { get; set; }
+        public ushort Unknown666 { get; set; }
+        public ushort Unknown667 { get; set; }
+        public ushort Unknown668 { get; set; }
+        public ushort Unknown669 { get; set; }
+        public ushort Unknown670 { get; set; }
+        public ushort Unknown671 { get; set; }
+        public ushort Unknown672 { get; set; }
+        public ushort Unknown673 { get; set; }
+        public ushort Unknown674 { get; set; }
+        public ushort Unknown675 { get; set; }
+        public ushort Unknown676 { get; set; }
+        public ushort Unknown677 { get; set; }
+        public ushort Unknown678 { get; set; }
+        public ushort Unknown679 { get; set; }
+        public ushort Unknown680 { get; set; }
+        public ushort Unknown681 { get; set; }
+        public ushort Unknown682 { get; set; }
+        public ushort Unknown683 { get; set; }
+        public ushort Unknown684 { get; set; }
+        public ushort Unknown685 { get; set; }
+        public ushort Unknown686 { get; set; }
+        public ushort Unknown687 { get; set; }
+        public ushort Unknown688 { get; set; }
+        public ushort Unknown689 { get; set; }
+        public ushort Unknown690 { get; set; }
+        public ushort Unknown691 { get; set; }
+        public ushort Unknown692 { get; set; }
+        public ushort Unknown693 { get; set; }
+        public ushort Unknown694 { get; set; }
+        public ushort Unknown695 { get; set; }
+        public ushort Unknown696 { get; set; }
+        public ushort Unknown697 { get; set; }
+        public ushort Unknown698 { get; set; }
+        public ushort Unknown699 { get; set; }
+        public ushort Unknown700 { get; set; }
+        public ushort Unknown701 { get; set; }
+        public ushort Unknown702 { get; set; }
+        public ushort Unknown703 { get; set; }
+        public ushort Unknown704 { get; set; }
+        public ushort Unknown705 { get; set; }
+        public ushort Unknown706 { get; set; }
+        public ushort Unknown707 { get; set; }
+        public ushort Unknown708 { get; set; }
+        public ushort Unknown709 { get; set; }
+        public ushort Unknown710 { get; set; }
+        public ushort Unknown711 { get; set; }
+        public ushort Unknown712 { get; set; }
+        public ushort Unknown713 { get; set; }
+        public ushort Unknown714 { get; set; }
+        public ushort Unknown715 { get; set; }
+        public ushort Unknown716 { get; set; }
+        public ushort Unknown717 { get; set; }
+        public ushort Unknown718 { get; set; }
+        public ushort Unknown719 { get; set; }
+        public ushort Unknown720 { get; set; }
+        public int Unknown721 { get; set; }
+        public int Unknown722 { get; set; }
+        public int Unknown723 { get; set; }
+        public int Unknown724 { get; set; }
+        public int Unknown725 { get; set; }
+        public int Unknown726 { get; set; }
+        public int Unknown727 { get; set; }
+        public int Unknown728 { get; set; }
+        public int Unknown729 { get; set; }
+        public int Unknown730 { get; set; }
+        public int Unknown731 { get; set; }
+        public int Unknown732 { get; set; }
+        public int Unknown733 { get; set; }
+        public int Unknown734 { get; set; }
+        public int Unknown735 { get; set; }
+        public int Unknown736 { get; set; }
+        public int Unknown737 { get; set; }
+        public int Unknown738 { get; set; }
+        public int Unknown739 { get; set; }
+        public int Unknown740 { get; set; }
+        public int Unknown741 { get; set; }
+        public int Unknown742 { get; set; }
+        public int Unknown743 { get; set; }
+        public int Unknown744 { get; set; }
+        public int Unknown745 { get; set; }
+        public int Unknown746 { get; set; }
+        public int Unknown747 { get; set; }
+        public int Unknown748 { get; set; }
+        public int Unknown749 { get; set; }
+        public int Unknown750 { get; set; }
+        public int Unknown751 { get; set; }
+        public int Unknown752 { get; set; }
+        public int Unknown753 { get; set; }
+        public int Unknown754 { get; set; }
+        public int Unknown755 { get; set; }
+        public int Unknown756 { get; set; }
+        public int Unknown757 { get; set; }
+        public int Unknown758 { get; set; }
+        public int Unknown759 { get; set; }
+        public int Unknown760 { get; set; }
+        public int Unknown761 { get; set; }
+        public int Unknown762 { get; set; }
+        public int Unknown763 { get; set; }
+        public int Unknown764 { get; set; }
+        public int Unknown765 { get; set; }
+        public int Unknown766 { get; set; }
+        public int Unknown767 { get; set; }
+        public int Unknown768 { get; set; }
+        public int Unknown769 { get; set; }
+        public int Unknown770 { get; set; }
+        public int Unknown771 { get; set; }
+        public int Unknown772 { get; set; }
+        public int Unknown773 { get; set; }
+        public int Unknown774 { get; set; }
+        public int Unknown775 { get; set; }
+        public int Unknown776 { get; set; }
+        public int Unknown777 { get; set; }
+        public int Unknown778 { get; set; }
+        public int Unknown779 { get; set; }
+        public int Unknown780 { get; set; }
+        public uint Unknown781 { get; set; }
+        public uint Unknown782 { get; set; }
+        public uint Unknown783 { get; set; }
+        public uint Unknown784 { get; set; }
+        public uint Unknown785 { get; set; }
+        public uint Unknown786 { get; set; }
+        public uint Unknown787 { get; set; }
+        public uint Unknown788 { get; set; }
+        public uint Unknown789 { get; set; }
+        public uint Unknown790 { get; set; }
+        public uint Unknown791 { get; set; }
+        public uint Unknown792 { get; set; }
+        public uint Unknown793 { get; set; }
+        public uint Unknown794 { get; set; }
+        public uint Unknown795 { get; set; }
+        public uint Unknown796 { get; set; }
+        public uint Unknown797 { get; set; }
+        public uint Unknown798 { get; set; }
+        public uint Unknown799 { get; set; }
+        public uint Unknown800 { get; set; }
+        public uint Unknown801 { get; set; }
+        public uint Unknown802 { get; set; }
+        public uint Unknown803 { get; set; }
+        public uint Unknown804 { get; set; }
+        public uint Unknown805 { get; set; }
+        public uint Unknown806 { get; set; }
+        public uint Unknown807 { get; set; }
+        public uint Unknown808 { get; set; }
+        public uint Unknown809 { get; set; }
+        public uint Unknown810 { get; set; }
+        public uint Unknown811 { get; set; }
+        public uint Unknown812 { get; set; }
+        public uint Unknown813 { get; set; }
+        public uint Unknown814 { get; set; }
+        public uint Unknown815 { get; set; }
+        public uint Unknown816 { get; set; }
+        public uint Unknown817 { get; set; }
+        public uint Unknown818 { get; set; }
+        public uint Unknown819 { get; set; }
+        public uint Unknown820 { get; set; }
+        public uint Unknown821 { get; set; }
+        public uint Unknown822 { get; set; }
+        public uint Unknown823 { get; set; }
+        public uint Unknown824 { get; set; }
+        public uint Unknown825 { get; set; }
+        public uint Unknown826 { get; set; }
+        public uint Unknown827 { get; set; }
+        public uint Unknown828 { get; set; }
+        public uint Unknown829 { get; set; }
+        public uint Unknown830 { get; set; }
+        public uint Unknown831 { get; set; }
+        public uint Unknown832 { get; set; }
+        public uint Unknown833 { get; set; }
+        public uint Unknown834 { get; set; }
+        public uint Unknown835 { get; set; }
+        public uint Unknown836 { get; set; }
+        public uint Unknown837 { get; set; }
+        public uint Unknown838 { get; set; }
+        public uint Unknown839 { get; set; }
+        public uint Unknown840 { get; set; }
+        public bool Unknown841 { get; set; }
+        public bool Unknown842 { get; set; }
+        public bool Unknown843 { get; set; }
+        public bool Unknown844 { get; set; }
+        public bool Unknown845 { get; set; }
+        public bool Unknown846 { get; set; }
+        public bool Unknown847 { get; set; }
+        public bool Unknown848 { get; set; }
+        public bool Unknown849 { get; set; }
+        public bool Unknown850 { get; set; }
+        public bool Unknown851 { get; set; }
+        public bool Unknown852 { get; set; }
+        public bool Unknown853 { get; set; }
+        public bool Unknown854 { get; set; }
+        public bool Unknown855 { get; set; }
+        public bool Unknown856 { get; set; }
+        public bool Unknown857 { get; set; }
+        public bool Unknown858 { get; set; }
+        public bool Unknown859 { get; set; }
+        public bool Unknown860 { get; set; }
+        public bool Unknown861 { get; set; }
+        public bool Unknown862 { get; set; }
+        public bool Unknown863 { get; set; }
+        public bool Unknown864 { get; set; }
+        public bool Unknown865 { get; set; }
+        public bool Unknown866 { get; set; }
+        public bool Unknown867 { get; set; }
+        public bool Unknown868 { get; set; }
+        public bool Unknown869 { get; set; }
+        public bool Unknown870 { get; set; }
+        public bool Unknown871 { get; set; }
+        public bool Unknown872 { get; set; }
+        public bool Unknown873 { get; set; }
+        public bool Unknown874 { get; set; }
+        public bool Unknown875 { get; set; }
+        public bool Unknown876 { get; set; }
+        public bool Unknown877 { get; set; }
+        public bool Unknown878 { get; set; }
+        public bool Unknown879 { get; set; }
+        public bool Unknown880 { get; set; }
+        public bool Unknown881 { get; set; }
+        public bool Unknown882 { get; set; }
+        public bool Unknown883 { get; set; }
+        public bool Unknown884 { get; set; }
+        public bool Unknown885 { get; set; }
+        public bool Unknown886 { get; set; }
+        public bool Unknown887 { get; set; }
+        public bool Unknown888 { get; set; }
+        public bool Unknown889 { get; set; }
+        public bool Unknown890 { get; set; }
+        public bool Unknown891 { get; set; }
+        public bool Unknown892 { get; set; }
+        public bool Unknown893 { get; set; }
+        public bool Unknown894 { get; set; }
+        public bool Unknown895 { get; set; }
+        public bool Unknown896 { get; set; }
+        public bool Unknown897 { get; set; }
+        public bool Unknown898 { get; set; }
+        public bool Unknown899 { get; set; }
+        public bool Unknown900 { get; set; }
+        public ushort Unknown901 { get; set; }
+        public ushort Unknown902 { get; set; }
+        public ushort Unknown903 { get; set; }
+        public ushort Unknown904 { get; set; }
+        public ushort Unknown905 { get; set; }
+        public ushort Unknown906 { get; set; }
+        public ushort Unknown907 { get; set; }
+        public ushort Unknown908 { get; set; }
+        public ushort Unknown909 { get; set; }
+        public ushort Unknown910 { get; set; }
+        public ushort Unknown911 { get; set; }
+        public ushort Unknown912 { get; set; }
+        public ushort Unknown913 { get; set; }
+        public ushort Unknown914 { get; set; }
+        public ushort Unknown915 { get; set; }
+        public ushort Unknown916 { get; set; }
+        public ushort Unknown917 { get; set; }
+        public ushort Unknown918 { get; set; }
+        public ushort Unknown919 { get; set; }
+        public ushort Unknown920 { get; set; }
+        public ushort Unknown921 { get; set; }
+        public ushort Unknown922 { get; set; }
+        public ushort Unknown923 { get; set; }
+        public ushort Unknown924 { get; set; }
+        public ushort Unknown925 { get; set; }
+        public ushort Unknown926 { get; set; }
+        public ushort Unknown927 { get; set; }
+        public ushort Unknown928 { get; set; }
+        public ushort Unknown929 { get; set; }
+        public ushort Unknown930 { get; set; }
+        public ushort Unknown931 { get; set; }
+        public ushort Unknown932 { get; set; }
+        public ushort Unknown933 { get; set; }
+        public ushort Unknown934 { get; set; }
+        public ushort Unknown935 { get; set; }
+        public ushort Unknown936 { get; set; }
+        public ushort Unknown937 { get; set; }
+        public ushort Unknown938 { get; set; }
+        public ushort Unknown939 { get; set; }
+        public ushort Unknown940 { get; set; }
+        public ushort Unknown941 { get; set; }
+        public ushort Unknown942 { get; set; }
+        public ushort Unknown943 { get; set; }
+        public ushort Unknown944 { get; set; }
+        public ushort Unknown945 { get; set; }
+        public ushort Unknown946 { get; set; }
+        public ushort Unknown947 { get; set; }
+        public ushort Unknown948 { get; set; }
+        public ushort Unknown949 { get; set; }
+        public ushort Unknown950 { get; set; }
+        public ushort Unknown951 { get; set; }
+        public ushort Unknown952 { get; set; }
+        public ushort Unknown953 { get; set; }
+        public ushort Unknown954 { get; set; }
+        public ushort Unknown955 { get; set; }
+        public ushort Unknown956 { get; set; }
+        public ushort Unknown957 { get; set; }
+        public ushort Unknown958 { get; set; }
+        public ushort Unknown959 { get; set; }
+        public ushort Unknown960 { get; set; }
+        public int Unknown961 { get; set; }
+        public int Unknown962 { get; set; }
+        public int Unknown963 { get; set; }
+        public int Unknown964 { get; set; }
+        public int Unknown965 { get; set; }
+        public int Unknown966 { get; set; }
+        public int Unknown967 { get; set; }
+        public int Unknown968 { get; set; }
+        public int Unknown969 { get; set; }
+        public int Unknown970 { get; set; }
+        public int Unknown971 { get; set; }
+        public int Unknown972 { get; set; }
+        public int Unknown973 { get; set; }
+        public int Unknown974 { get; set; }
+        public int Unknown975 { get; set; }
+        public int Unknown976 { get; set; }
+        public int Unknown977 { get; set; }
+        public int Unknown978 { get; set; }
+        public int Unknown979 { get; set; }
+        public int Unknown980 { get; set; }
+        public int Unknown981 { get; set; }
+        public int Unknown982 { get; set; }
+        public int Unknown983 { get; set; }
+        public int Unknown984 { get; set; }
+        public int Unknown985 { get; set; }
+        public int Unknown986 { get; set; }
+        public int Unknown987 { get; set; }
+        public int Unknown988 { get; set; }
+        public int Unknown989 { get; set; }
+        public int Unknown990 { get; set; }
+        public int Unknown991 { get; set; }
+        public int Unknown992 { get; set; }
+        public int Unknown993 { get; set; }
+        public int Unknown994 { get; set; }
+        public int Unknown995 { get; set; }
+        public int Unknown996 { get; set; }
+        public int Unknown997 { get; set; }
+        public int Unknown998 { get; set; }
+        public int Unknown999 { get; set; }
+        public int Unknown1000 { get; set; }
+        public int Unknown1001 { get; set; }
+        public int Unknown1002 { get; set; }
+        public int Unknown1003 { get; set; }
+        public int Unknown1004 { get; set; }
+        public int Unknown1005 { get; set; }
+        public int Unknown1006 { get; set; }
+        public int Unknown1007 { get; set; }
+        public int Unknown1008 { get; set; }
+        public int Unknown1009 { get; set; }
+        public int Unknown1010 { get; set; }
+        public int Unknown1011 { get; set; }
+        public int Unknown1012 { get; set; }
+        public int Unknown1013 { get; set; }
+        public int Unknown1014 { get; set; }
+        public int Unknown1015 { get; set; }
+        public int Unknown1016 { get; set; }
+        public int Unknown1017 { get; set; }
+        public int Unknown1018 { get; set; }
+        public int Unknown1019 { get; set; }
+        public int Unknown1020 { get; set; }
+        public uint Unknown1021 { get; set; }
+        public uint Unknown1022 { get; set; }
+        public uint Unknown1023 { get; set; }
+        public uint Unknown1024 { get; set; }
+        public uint Unknown1025 { get; set; }
+        public uint Unknown1026 { get; set; }
+        public uint Unknown1027 { get; set; }
+        public uint Unknown1028 { get; set; }
+        public uint Unknown1029 { get; set; }
+        public uint Unknown1030 { get; set; }
+        public uint Unknown1031 { get; set; }
+        public uint Unknown1032 { get; set; }
+        public uint Unknown1033 { get; set; }
+        public uint Unknown1034 { get; set; }
+        public uint Unknown1035 { get; set; }
+        public uint Unknown1036 { get; set; }
+        public uint Unknown1037 { get; set; }
+        public uint Unknown1038 { get; set; }
+        public uint Unknown1039 { get; set; }
+        public uint Unknown1040 { get; set; }
+        public uint Unknown1041 { get; set; }
+        public uint Unknown1042 { get; set; }
+        public uint Unknown1043 { get; set; }
+        public uint Unknown1044 { get; set; }
+        public uint Unknown1045 { get; set; }
+        public uint Unknown1046 { get; set; }
+        public uint Unknown1047 { get; set; }
+        public uint Unknown1048 { get; set; }
+        public uint Unknown1049 { get; set; }
+        public uint Unknown1050 { get; set; }
+        public uint Unknown1051 { get; set; }
+        public uint Unknown1052 { get; set; }
+        public uint Unknown1053 { get; set; }
+        public uint Unknown1054 { get; set; }
+        public uint Unknown1055 { get; set; }
+        public uint Unknown1056 { get; set; }
+        public uint Unknown1057 { get; set; }
+        public uint Unknown1058 { get; set; }
+        public uint Unknown1059 { get; set; }
+        public uint Unknown1060 { get; set; }
+        public uint Unknown1061 { get; set; }
+        public uint Unknown1062 { get; set; }
+        public uint Unknown1063 { get; set; }
+        public uint Unknown1064 { get; set; }
+        public uint Unknown1065 { get; set; }
+        public uint Unknown1066 { get; set; }
+        public uint Unknown1067 { get; set; }
+        public uint Unknown1068 { get; set; }
+        public uint Unknown1069 { get; set; }
+        public uint Unknown1070 { get; set; }
+        public uint Unknown1071 { get; set; }
+        public uint Unknown1072 { get; set; }
+        public uint Unknown1073 { get; set; }
+        public uint Unknown1074 { get; set; }
+        public uint Unknown1075 { get; set; }
+        public uint Unknown1076 { get; set; }
+        public uint Unknown1077 { get; set; }
+        public uint Unknown1078 { get; set; }
+        public uint Unknown1079 { get; set; }
+        public uint Unknown1080 { get; set; }
+        public bool Unknown1081 { get; set; }
+        public bool Unknown1082 { get; set; }
+        public bool Unknown1083 { get; set; }
+        public bool Unknown1084 { get; set; }
+        public bool Unknown1085 { get; set; }
+        public bool Unknown1086 { get; set; }
+        public bool Unknown1087 { get; set; }
+        public bool Unknown1088 { get; set; }
+        public bool Unknown1089 { get; set; }
+        public bool Unknown1090 { get; set; }
+        public bool Unknown1091 { get; set; }
+        public bool Unknown1092 { get; set; }
+        public bool Unknown1093 { get; set; }
+        public bool Unknown1094 { get; set; }
+        public bool Unknown1095 { get; set; }
+        public bool Unknown1096 { get; set; }
+        public bool Unknown1097 { get; set; }
+        public bool Unknown1098 { get; set; }
+        public bool Unknown1099 { get; set; }
+        public bool Unknown1100 { get; set; }
+        public bool Unknown1101 { get; set; }
+        public bool Unknown1102 { get; set; }
+        public bool Unknown1103 { get; set; }
+        public bool Unknown1104 { get; set; }
+        public bool Unknown1105 { get; set; }
+        public bool Unknown1106 { get; set; }
+        public bool Unknown1107 { get; set; }
+        public bool Unknown1108 { get; set; }
+        public bool Unknown1109 { get; set; }
+        public bool Unknown1110 { get; set; }
+        public bool Unknown1111 { get; set; }
+        public bool Unknown1112 { get; set; }
+        public bool Unknown1113 { get; set; }
+        public bool Unknown1114 { get; set; }
+        public bool Unknown1115 { get; set; }
+        public bool Unknown1116 { get; set; }
+        public bool Unknown1117 { get; set; }
+        public bool Unknown1118 { get; set; }
+        public bool Unknown1119 { get; set; }
+        public bool Unknown1120 { get; set; }
+        public bool Unknown1121 { get; set; }
+        public bool Unknown1122 { get; set; }
+        public bool Unknown1123 { get; set; }
+        public bool Unknown1124 { get; set; }
+        public bool Unknown1125 { get; set; }
+        public bool Unknown1126 { get; set; }
+        public bool Unknown1127 { get; set; }
+        public bool Unknown1128 { get; set; }
+        public bool Unknown1129 { get; set; }
+        public bool Unknown1130 { get; set; }
+        public bool Unknown1131 { get; set; }
+        public bool Unknown1132 { get; set; }
+        public bool Unknown1133 { get; set; }
+        public bool Unknown1134 { get; set; }
+        public bool Unknown1135 { get; set; }
+        public bool Unknown1136 { get; set; }
+        public bool Unknown1137 { get; set; }
+        public bool Unknown1138 { get; set; }
+        public bool Unknown1139 { get; set; }
+        public bool Unknown1140 { get; set; }
+        public ushort Unknown1141 { get; set; }
+        public ushort Unknown1142 { get; set; }
+        public ushort Unknown1143 { get; set; }
+        public ushort Unknown1144 { get; set; }
+        public ushort Unknown1145 { get; set; }
+        public ushort Unknown1146 { get; set; }
+        public ushort Unknown1147 { get; set; }
+        public ushort Unknown1148 { get; set; }
+        public ushort Unknown1149 { get; set; }
+        public ushort Unknown1150 { get; set; }
+        public ushort Unknown1151 { get; set; }
+        public ushort Unknown1152 { get; set; }
+        public ushort Unknown1153 { get; set; }
+        public ushort Unknown1154 { get; set; }
+        public ushort Unknown1155 { get; set; }
+        public ushort Unknown1156 { get; set; }
+        public ushort Unknown1157 { get; set; }
+        public ushort Unknown1158 { get; set; }
+        public ushort Unknown1159 { get; set; }
+        public ushort Unknown1160 { get; set; }
+        public ushort Unknown1161 { get; set; }
+        public ushort Unknown1162 { get; set; }
+        public ushort Unknown1163 { get; set; }
+        public ushort Unknown1164 { get; set; }
+        public ushort Unknown1165 { get; set; }
+        public ushort Unknown1166 { get; set; }
+        public ushort Unknown1167 { get; set; }
+        public ushort Unknown1168 { get; set; }
+        public ushort Unknown1169 { get; set; }
+        public ushort Unknown1170 { get; set; }
+        public ushort Unknown1171 { get; set; }
+        public ushort Unknown1172 { get; set; }
+        public ushort Unknown1173 { get; set; }
+        public ushort Unknown1174 { get; set; }
+        public ushort Unknown1175 { get; set; }
+        public ushort Unknown1176 { get; set; }
+        public ushort Unknown1177 { get; set; }
+        public ushort Unknown1178 { get; set; }
+        public ushort Unknown1179 { get; set; }
+        public ushort Unknown1180 { get; set; }
+        public ushort Unknown1181 { get; set; }
+        public ushort Unknown1182 { get; set; }
+        public ushort Unknown1183 { get; set; }
+        public ushort Unknown1184 { get; set; }
+        public ushort Unknown1185 { get; set; }
+        public ushort Unknown1186 { get; set; }
+        public ushort Unknown1187 { get; set; }
+        public ushort Unknown1188 { get; set; }
+        public ushort Unknown1189 { get; set; }
+        public ushort Unknown1190 { get; set; }
+        public ushort Unknown1191 { get; set; }
+        public ushort Unknown1192 { get; set; }
+        public ushort Unknown1193 { get; set; }
+        public ushort Unknown1194 { get; set; }
+        public ushort Unknown1195 { get; set; }
+        public ushort Unknown1196 { get; set; }
+        public ushort Unknown1197 { get; set; }
+        public ushort Unknown1198 { get; set; }
+        public ushort Unknown1199 { get; set; }
+        public ushort Unknown1200 { get; set; }
+        public LazyRow< Quest >[] QuestItem { get; set; }
+        public int[] Unknown { get; set; }
+        public LazyRow< Achievement >[] AchievementUnlock { get; set; }
+        public byte Unknown1381 { get; set; }
+        public byte Unknown1382 { get; set; }
+        public byte Unknown1383 { get; set; }
+        public byte Unknown1384 { get; set; }
+        public byte Unknown1385 { get; set; }
+        public byte Unknown1386 { get; set; }
+        public byte Unknown1387 { get; set; }
+        public byte Unknown1388 { get; set; }
+        public byte Unknown1389 { get; set; }
+        public byte Unknown1390 { get; set; }
+        public byte Unknown1391 { get; set; }
+        public byte Unknown1392 { get; set; }
+        public byte Unknown1393 { get; set; }
+        public byte Unknown1394 { get; set; }
+        public byte Unknown1395 { get; set; }
+        public byte Unknown1396 { get; set; }
+        public byte Unknown1397 { get; set; }
+        public byte Unknown1398 { get; set; }
+        public byte Unknown1399 { get; set; }
+        public byte Unknown1400 { get; set; }
+        public byte Unknown1401 { get; set; }
+        public byte Unknown1402 { get; set; }
+        public byte Unknown1403 { get; set; }
+        public byte Unknown1404 { get; set; }
+        public byte Unknown1405 { get; set; }
+        public byte Unknown1406 { get; set; }
+        public byte Unknown1407 { get; set; }
+        public byte Unknown1408 { get; set; }
+        public byte Unknown1409 { get; set; }
+        public byte Unknown1410 { get; set; }
+        public byte Unknown1411 { get; set; }
+        public byte Unknown1412 { get; set; }
+        public byte Unknown1413 { get; set; }
+        public byte Unknown1414 { get; set; }
+        public byte Unknown1415 { get; set; }
+        public byte Unknown1416 { get; set; }
+        public byte Unknown1417 { get; set; }
+        public byte Unknown1418 { get; set; }
+        public byte Unknown1419 { get; set; }
+        public byte Unknown1420 { get; set; }
+        public byte Unknown1421 { get; set; }
+        public byte Unknown1422 { get; set; }
+        public byte Unknown1423 { get; set; }
+        public byte Unknown1424 { get; set; }
+        public byte Unknown1425 { get; set; }
+        public byte Unknown1426 { get; set; }
+        public byte Unknown1427 { get; set; }
+        public byte Unknown1428 { get; set; }
+        public byte Unknown1429 { get; set; }
+        public byte Unknown1430 { get; set; }
+        public byte Unknown1431 { get; set; }
+        public byte Unknown1432 { get; set; }
+        public byte Unknown1433 { get; set; }
+        public byte Unknown1434 { get; set; }
+        public byte Unknown1435 { get; set; }
+        public byte Unknown1436 { get; set; }
+        public byte Unknown1437 { get; set; }
+        public byte Unknown1438 { get; set; }
+        public byte Unknown1439 { get; set; }
+        public byte Unknown1440 { get; set; }
+        public ushort[] PatchNumber { get; set; }
+        public byte UseCurrencyType { get; set; }
+        public LazyRow< Quest > QuestUnlock { get; set; }
+        public LazyRow< DefaultTalk > CompleteText { get; set; }
+        public LazyRow< DefaultTalk > NotCompleteText { get; set; }
+        public uint Unknown1505 { get; set; }
+        public bool Unknown1506 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 2 ];
@@ -2487,13 +2483,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1200 = parser.ReadColumn< ushort >( 1200 );
             QuestItem = new LazyRow< Quest >[ 60 ];
             for( var i = 0; i < 60; i++ )
-                QuestItem[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 1201 + i ), language );
+                QuestItem[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 1201 + i ), language );
             Unknown = new int[ 60 ];
             for( var i = 0; i < 60; i++ )
                 Unknown[ i ] = parser.ReadColumn< int >( 1261 + i );
             AchievementUnlock = new LazyRow< Achievement >[ 60 ];
             for( var i = 0; i < 60; i++ )
-                AchievementUnlock[ i ] = new LazyRow< Achievement >( lumina, parser.ReadColumn< int >( 1321 + i ), language );
+                AchievementUnlock[ i ] = new LazyRow< Achievement >( gameData, parser.ReadColumn< int >( 1321 + i ), language );
             Unknown1381 = parser.ReadColumn< byte >( 1381 );
             Unknown1382 = parser.ReadColumn< byte >( 1382 );
             Unknown1383 = parser.ReadColumn< byte >( 1383 );
@@ -2558,9 +2554,9 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 60; i++ )
                 PatchNumber[ i ] = parser.ReadColumn< ushort >( 1441 + i );
             UseCurrencyType = parser.ReadColumn< byte >( 1501 );
-            QuestUnlock = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1502 ), language );
-            CompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< int >( 1503 ), language );
-            NotCompleteText = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< int >( 1504 ), language );
+            QuestUnlock = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1502 ), language );
+            CompleteText = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 1503 ), language );
+            NotCompleteText = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 1504 ), language );
             Unknown1505 = parser.ReadColumn< uint >( 1505 );
             Unknown1506 = parser.ReadColumn< bool >( 1506 );
         }

@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ConfigKey", columnHash: 0x927ebfb7 )]
-    public class ConfigKey : IExcelRow
+    public class ConfigKey : ExcelRow
     {
         
-        public SeString Label;
-        public byte Param;
-        public byte Platform;
-        public bool Required;
-        public byte Category;
-        public ushort Unknown5;
-        public byte Unknown6;
-        public SeString Text;
+        public SeString Label { get; set; }
+        public byte Param { get; set; }
+        public byte Platform { get; set; }
+        public bool Required { get; set; }
+        public byte Category { get; set; }
+        public ushort Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public SeString Text { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Label = parser.ReadColumn< SeString >( 0 );
             Param = parser.ReadColumn< byte >( 1 );

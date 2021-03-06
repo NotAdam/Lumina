@@ -7,32 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingFurniture", columnHash: 0xccfbe5ff )]
-    public class HousingFurniture : IExcelRow
+    public class HousingFurniture : ExcelRow
     {
         
-        public ushort ModelKey;
-        public byte HousingItemCategory;
-        public byte UsageType;
-        public uint UsageParameter;
-        public byte Unknown4;
-        public byte AquariumTier;
-        public LazyRow< CustomTalk > CustomTalk;
-        public LazyRow< Item > Item;
-        public bool DestroyOnRemoval;
-        public LazyRow< HousingPlacement > Tooltip;
-        public byte Unknown10;
-        public byte Unknown11;
-        public byte Unknown12;
-        public bool Unknown13;
-        public bool Unknown14;
+        public ushort ModelKey { get; set; }
+        public byte HousingItemCategory { get; set; }
+        public byte UsageType { get; set; }
+        public uint UsageParameter { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte AquariumTier { get; set; }
+        public LazyRow< CustomTalk > CustomTalk { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public bool DestroyOnRemoval { get; set; }
+        public LazyRow< HousingPlacement > Tooltip { get; set; }
+        public byte Unknown10 { get; set; }
+        public byte Unknown11 { get; set; }
+        public byte Unknown12 { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool Unknown14 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             ModelKey = parser.ReadColumn< ushort >( 0 );
             HousingItemCategory = parser.ReadColumn< byte >( 1 );
@@ -40,8 +36,8 @@ namespace Lumina.Excel.GeneratedSheets
             UsageParameter = parser.ReadColumn< uint >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             AquariumTier = parser.ReadColumn< byte >( 5 );
-            CustomTalk = new LazyRow< CustomTalk >( lumina, parser.ReadColumn< uint >( 6 ), language );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ), language );
+            CustomTalk = new LazyRow< CustomTalk >( gameData, parser.ReadColumn< uint >( 6 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 7 ), language );
             DestroyOnRemoval = parser.ReadColumn< bool >( 8 );
             #warning generator error: the definition for this field (Tooltip) has an invalid type for a LazyRow
             Unknown10 = parser.ReadColumn< byte >( 10 );

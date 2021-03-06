@@ -7,28 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Treasure", columnHash: 0x030e840a )]
-    public class Treasure : IExcelRow
+    public class Treasure : ExcelRow
     {
         
-        public SeString Unknown0;
-        public sbyte Unknown1;
-        public SeString Unknown2;
-        public sbyte Unknown3;
-        public sbyte Unknown4;
-        public sbyte Unknown5;
-        public sbyte Unknown6;
-        public sbyte Unknown7;
-        public LazyRow< Item > Item;
-        public bool Unknown9;
-        public bool Unknown10;
+        public SeString Unknown0 { get; set; }
+        public sbyte Unknown1 { get; set; }
+        public SeString Unknown2 { get; set; }
+        public sbyte Unknown3 { get; set; }
+        public sbyte Unknown4 { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Unknown6 { get; set; }
+        public sbyte Unknown7 { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public bool Unknown9 { get; set; }
+        public bool Unknown10 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< sbyte >( 1 );
@@ -38,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Unknown6 = parser.ReadColumn< sbyte >( 6 );
             Unknown7 = parser.ReadColumn< sbyte >( 7 );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 8 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 8 ), language );
             Unknown9 = parser.ReadColumn< bool >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
         }

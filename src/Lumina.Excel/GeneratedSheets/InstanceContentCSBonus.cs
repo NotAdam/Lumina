@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InstanceContentCSBonus", columnHash: 0x43042e70 )]
-    public class InstanceContentCSBonus : IExcelRow
+    public class InstanceContentCSBonus : ExcelRow
     {
         
-        public LazyRow< InstanceContent > Instance;
-        public LazyRow< Item > Item;
-        public byte Unknown2;
-        public byte Unknown540;
-        public byte Unknown541;
+        public LazyRow< InstanceContent > Instance { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown540 { get; set; }
+        public byte Unknown541 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Instance = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            Instance = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown540 = parser.ReadColumn< byte >( 3 );
             Unknown541 = parser.ReadColumn< byte >( 4 );

@@ -7,34 +7,30 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CollectablesShopItem", columnHash: 0x392f49a3 )]
-    public class CollectablesShopItem : IExcelRow
+    public class CollectablesShopItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public LazyRow< CollectablesShopItemGroup > CollectablesShopItemGroup;
-        public ushort LevelMin;
-        public ushort LevelMax;
-        public byte Unknown4;
-        public byte Unknown5;
-        public LazyRow< CollectablesShopRefine > CollectablesShopRefine;
-        public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip;
+        public LazyRow< Item > Item { get; set; }
+        public LazyRow< CollectablesShopItemGroup > CollectablesShopItemGroup { get; set; }
+        public ushort LevelMin { get; set; }
+        public ushort LevelMax { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public LazyRow< CollectablesShopRefine > CollectablesShopRefine { get; set; }
+        public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            CollectablesShopItemGroup = new LazyRow< CollectablesShopItemGroup >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            CollectablesShopItemGroup = new LazyRow< CollectablesShopItemGroup >( gameData, parser.ReadColumn< byte >( 1 ), language );
             LevelMin = parser.ReadColumn< ushort >( 2 );
             LevelMax = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
-            CollectablesShopRefine = new LazyRow< CollectablesShopRefine >( lumina, parser.ReadColumn< ushort >( 6 ), language );
-            CollectablesShopRewardScrip = new LazyRow< CollectablesShopRewardScrip >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            CollectablesShopRefine = new LazyRow< CollectablesShopRefine >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            CollectablesShopRewardScrip = new LazyRow< CollectablesShopRewardScrip >( gameData, parser.ReadColumn< ushort >( 7 ), language );
         }
     }
 }

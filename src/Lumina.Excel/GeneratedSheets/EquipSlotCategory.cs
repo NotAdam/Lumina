@@ -7,31 +7,27 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EquipSlotCategory", columnHash: 0xf4ab6454 )]
-    public class EquipSlotCategory : IExcelRow
+    public class EquipSlotCategory : ExcelRow
     {
         
-        public sbyte MainHand;
-        public sbyte OffHand;
-        public sbyte Head;
-        public sbyte Body;
-        public sbyte Gloves;
-        public sbyte Waist;
-        public sbyte Legs;
-        public sbyte Feet;
-        public sbyte Ears;
-        public sbyte Neck;
-        public sbyte Wrists;
-        public sbyte FingerL;
-        public sbyte FingerR;
-        public sbyte SoulCrystal;
+        public sbyte MainHand { get; set; }
+        public sbyte OffHand { get; set; }
+        public sbyte Head { get; set; }
+        public sbyte Body { get; set; }
+        public sbyte Gloves { get; set; }
+        public sbyte Waist { get; set; }
+        public sbyte Legs { get; set; }
+        public sbyte Feet { get; set; }
+        public sbyte Ears { get; set; }
+        public sbyte Neck { get; set; }
+        public sbyte Wrists { get; set; }
+        public sbyte FingerL { get; set; }
+        public sbyte FingerR { get; set; }
+        public sbyte SoulCrystal { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             MainHand = parser.ReadColumn< sbyte >( 0 );
             OffHand = parser.ReadColumn< sbyte >( 1 );

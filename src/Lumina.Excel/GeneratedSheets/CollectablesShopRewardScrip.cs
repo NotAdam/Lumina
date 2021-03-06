@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CollectablesShopRewardScrip", columnHash: 0x0c33ce97 )]
-    public class CollectablesShopRewardScrip : IExcelRow
+    public class CollectablesShopRewardScrip : ExcelRow
     {
         
-        public LazyRow< Currency > Currency;
-        public ushort LowReward;
-        public ushort MidReward;
-        public ushort HighReward;
-        public ushort ExpRatioLow;
-        public ushort ExpRatioMid;
-        public ushort ExpRatioHigh;
+        public ushort Currency { get; set; }
+        public ushort LowReward { get; set; }
+        public ushort MidReward { get; set; }
+        public ushort HighReward { get; set; }
+        public ushort ExpRatioLow { get; set; }
+        public ushort ExpRatioMid { get; set; }
+        public ushort ExpRatioHigh { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Currency = new LazyRow< Currency >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            Currency = parser.ReadColumn< ushort >( 0 );
             LowReward = parser.ReadColumn< ushort >( 1 );
             MidReward = parser.ReadColumn< ushort >( 2 );
             HighReward = parser.ReadColumn< ushort >( 3 );

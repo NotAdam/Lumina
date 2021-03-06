@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringPointBase", columnHash: 0x73fa0924 )]
-    public class GatheringPointBase : IExcelRow
+    public class GatheringPointBase : ExcelRow
     {
         
-        public LazyRow< GatheringType > GatheringType;
-        public byte GatheringLevel;
-        public int[] Item;
-        public bool IsLimited;
+        public LazyRow< GatheringType > GatheringType { get; set; }
+        public byte GatheringLevel { get; set; }
+        public int[] Item { get; set; }
+        public bool IsLimited { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            GatheringType = new LazyRow< GatheringType >( lumina, parser.ReadColumn< int >( 0 ), language );
+            GatheringType = new LazyRow< GatheringType >( gameData, parser.ReadColumn< int >( 0 ), language );
             GatheringLevel = parser.ReadColumn< byte >( 1 );
             Item = new int[ 8 ];
             for( var i = 0; i < 8; i++ )

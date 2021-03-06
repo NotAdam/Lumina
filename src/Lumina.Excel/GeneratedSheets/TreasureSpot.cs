@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TreasureSpot", columnHash: 0x4a63eb8e )]
-    public class TreasureSpot : IExcelRow
+    public class TreasureSpot : ExcelRow
     {
         
-        public LazyRow< Level > Location;
-        public float MapOffsetX;
-        public float MapOffsetY;
+        public LazyRow< Level > Location { get; set; }
+        public float MapOffsetX { get; set; }
+        public float MapOffsetY { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Location = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Location = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 0 ), language );
             MapOffsetX = parser.ReadColumn< float >( 1 );
             MapOffsetY = parser.ReadColumn< float >( 2 );
         }

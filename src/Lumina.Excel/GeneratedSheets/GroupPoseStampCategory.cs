@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GroupPoseStampCategory", columnHash: 0x5eb59ccb )]
-    public class GroupPoseStampCategory : IExcelRow
+    public class GroupPoseStampCategory : ExcelRow
     {
         
-        public byte Unknown0;
-        public SeString Name;
+        public byte Unknown0 { get; set; }
+        public SeString Name { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

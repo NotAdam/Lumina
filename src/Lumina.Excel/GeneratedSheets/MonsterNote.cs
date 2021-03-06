@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MonsterNote", columnHash: 0x50b4cd8f )]
-    public class MonsterNote : IExcelRow
+    public class MonsterNote : ExcelRow
     {
         
-        public LazyRow< MonsterNoteTarget >[] MonsterNoteTarget;
-        public byte[] Count;
-        public uint Reward;
-        public SeString Name;
+        public LazyRow< MonsterNoteTarget >[] MonsterNoteTarget { get; set; }
+        public byte[] Count { get; set; }
+        public uint Reward { get; set; }
+        public SeString Name { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             MonsterNoteTarget = new LazyRow< MonsterNoteTarget >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
             Count = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 Count[ i ] = parser.ReadColumn< byte >( 4 + i );

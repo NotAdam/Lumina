@@ -7,34 +7,30 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ModelChara", columnHash: 0xc7ed51f9 )]
-    public class ModelChara : IExcelRow
+    public class ModelChara : ExcelRow
     {
         
-        public byte Type;
-        public ushort Model;
-        public byte Base;
-        public byte Variant;
-        public ushort SEPack;
-        public byte Unknown5;
-        public bool Unknown6;
-        public bool PapVariation;
-        public byte Unknown8;
-        public sbyte Unknown9;
-        public bool Unknown10;
-        public bool Unknown11;
-        public bool Unknown12;
-        public bool Unknown13;
-        public bool Unknown14;
-        public byte Unknown15;
-        public bool Unknown16;
+        public byte Type { get; set; }
+        public ushort Model { get; set; }
+        public byte Base { get; set; }
+        public byte Variant { get; set; }
+        public ushort SEPack { get; set; }
+        public byte Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool PapVariation { get; set; }
+        public byte Unknown8 { get; set; }
+        public sbyte Unknown9 { get; set; }
+        public bool Unknown10 { get; set; }
+        public bool Unknown11 { get; set; }
+        public bool Unknown12 { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool Unknown14 { get; set; }
+        public byte Unknown15 { get; set; }
+        public bool Unknown16 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< byte >( 0 );
             Model = parser.ReadColumn< ushort >( 1 );

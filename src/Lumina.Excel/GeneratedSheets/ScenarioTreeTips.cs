@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ScenarioTreeTips", columnHash: 0x71371b8c )]
-    public class ScenarioTreeTips : IExcelRow
+    public class ScenarioTreeTips : ExcelRow
     {
         
-        public byte Unknown0;
-        public uint Tips1;
-        public ushort Unknown2;
-        public LazyRow< ScenarioTree > Tips2;
+        public byte Unknown0 { get; set; }
+        public uint Tips1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public LazyRow< ScenarioTree > Tips2 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Tips1 = parser.ReadColumn< uint >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
-            Tips2 = new LazyRow< ScenarioTree >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            Tips2 = new LazyRow< ScenarioTree >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }
     }
 }

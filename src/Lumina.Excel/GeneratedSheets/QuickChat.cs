@@ -7,27 +7,23 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuickChat", columnHash: 0x66d693c5 )]
-    public class QuickChat : IExcelRow
+    public class QuickChat : ExcelRow
     {
         
-        public SeString NameAction;
-        public int Icon;
-        public LazyRow< Addon > Addon;
-        public LazyRow< QuickChatTransient > QuickChatTransient;
-        public ushort Unknown4;
+        public SeString NameAction { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< Addon > Addon { get; set; }
+        public LazyRow< QuickChatTransient > QuickChatTransient { get; set; }
+        public ushort Unknown4 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             NameAction = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
-            Addon = new LazyRow< Addon >( lumina, parser.ReadColumn< int >( 2 ), language );
-            QuickChatTransient = new LazyRow< QuickChatTransient >( lumina, parser.ReadColumn< sbyte >( 3 ), language );
+            Addon = new LazyRow< Addon >( gameData, parser.ReadColumn< int >( 2 ), language );
+            QuickChatTransient = new LazyRow< QuickChatTransient >( gameData, parser.ReadColumn< sbyte >( 3 ), language );
             Unknown4 = parser.ReadColumn< ushort >( 4 );
         }
     }

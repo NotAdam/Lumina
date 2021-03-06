@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonRoom", columnHash: 0x6be0e840 )]
-    public class DeepDungeonRoom : IExcelRow
+    public class DeepDungeonRoom : ExcelRow
     {
         
-        public LazyRow< Level >[] Level;
+        public LazyRow< Level >[] Level { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Level = new LazyRow< Level >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                Level[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 0 + i ), language );
+                Level[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 0 + i ), language );
         }
     }
 }

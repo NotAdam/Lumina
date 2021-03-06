@@ -7,89 +7,85 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GFATE", columnHash: 0x440a2c22 )]
-    public class GFATE : IExcelRow
+    public class GFATE : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public uint Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public ushort Unknown5;
-        public uint Unknown6;
-        public uint Unknown7;
-        public uint Unknown8;
-        public uint Unknown9;
-        public uint Unknown10;
-        public uint Unknown11;
-        public uint Unknown12;
-        public uint Unknown13;
-        public uint Unknown14;
-        public uint Unknown15;
-        public uint Unknown16;
-        public uint Unknown17;
-        public uint Unknown18;
-        public uint Unknown19;
-        public uint Unknown20;
-        public uint Unknown21;
-        public uint[] Icon;
-        public uint Unknown38;
-        public bool Unknown39;
-        public bool Unknown40;
-        public bool Unknown41;
-        public bool Unknown42;
-        public bool Unknown43;
-        public bool Unknown44;
-        public bool Unknown45;
-        public bool Unknown46;
-        public bool Unknown47;
-        public bool Unknown48;
-        public bool Unknown49;
-        public bool Unknown50;
-        public bool Unknown51;
-        public bool Unknown52;
-        public bool Unknown53;
-        public bool Unknown54;
-        public bool Unknown55;
-        public bool Unknown56;
-        public bool Unknown57;
-        public bool Unknown58;
-        public bool Unknown59;
-        public bool Unknown60;
-        public bool Unknown61;
-        public bool Unknown62;
-        public bool Unknown63;
-        public bool Unknown64;
-        public bool Unknown65;
-        public bool Unknown66;
-        public bool Unknown67;
-        public bool Unknown68;
-        public bool Unknown69;
-        public bool Unknown70;
-        public bool Unknown71;
-        public bool Unknown72;
-        public bool Unknown73;
-        public bool Unknown74;
-        public bool Unknown75;
-        public bool Unknown76;
-        public bool Unknown77;
-        public bool Unknown78;
-        public bool Unknown79;
-        public bool Unknown80;
-        public bool Unknown81;
-        public bool Unknown82;
-        public bool Unknown83;
-        public bool Unknown84;
-        public bool Unknown85;
-        public bool Unknown86;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public uint Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
+        public uint Unknown6 { get; set; }
+        public uint Unknown7 { get; set; }
+        public uint Unknown8 { get; set; }
+        public uint Unknown9 { get; set; }
+        public uint Unknown10 { get; set; }
+        public uint Unknown11 { get; set; }
+        public uint Unknown12 { get; set; }
+        public uint Unknown13 { get; set; }
+        public uint Unknown14 { get; set; }
+        public uint Unknown15 { get; set; }
+        public uint Unknown16 { get; set; }
+        public uint Unknown17 { get; set; }
+        public uint Unknown18 { get; set; }
+        public uint Unknown19 { get; set; }
+        public uint Unknown20 { get; set; }
+        public uint Unknown21 { get; set; }
+        public uint[] Icon { get; set; }
+        public uint Unknown38 { get; set; }
+        public bool Unknown39 { get; set; }
+        public bool Unknown40 { get; set; }
+        public bool Unknown41 { get; set; }
+        public bool Unknown42 { get; set; }
+        public bool Unknown43 { get; set; }
+        public bool Unknown44 { get; set; }
+        public bool Unknown45 { get; set; }
+        public bool Unknown46 { get; set; }
+        public bool Unknown47 { get; set; }
+        public bool Unknown48 { get; set; }
+        public bool Unknown49 { get; set; }
+        public bool Unknown50 { get; set; }
+        public bool Unknown51 { get; set; }
+        public bool Unknown52 { get; set; }
+        public bool Unknown53 { get; set; }
+        public bool Unknown54 { get; set; }
+        public bool Unknown55 { get; set; }
+        public bool Unknown56 { get; set; }
+        public bool Unknown57 { get; set; }
+        public bool Unknown58 { get; set; }
+        public bool Unknown59 { get; set; }
+        public bool Unknown60 { get; set; }
+        public bool Unknown61 { get; set; }
+        public bool Unknown62 { get; set; }
+        public bool Unknown63 { get; set; }
+        public bool Unknown64 { get; set; }
+        public bool Unknown65 { get; set; }
+        public bool Unknown66 { get; set; }
+        public bool Unknown67 { get; set; }
+        public bool Unknown68 { get; set; }
+        public bool Unknown69 { get; set; }
+        public bool Unknown70 { get; set; }
+        public bool Unknown71 { get; set; }
+        public bool Unknown72 { get; set; }
+        public bool Unknown73 { get; set; }
+        public bool Unknown74 { get; set; }
+        public bool Unknown75 { get; set; }
+        public bool Unknown76 { get; set; }
+        public bool Unknown77 { get; set; }
+        public bool Unknown78 { get; set; }
+        public bool Unknown79 { get; set; }
+        public bool Unknown80 { get; set; }
+        public bool Unknown81 { get; set; }
+        public bool Unknown82 { get; set; }
+        public bool Unknown83 { get; set; }
+        public bool Unknown84 { get; set; }
+        public bool Unknown85 { get; set; }
+        public bool Unknown86 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

@@ -7,29 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapMarkerRegion", columnHash: 0xe2747195 )]
-    public class MapMarkerRegion : IExcelRow
+    public class MapMarkerRegion : ExcelRow
     {
         
-        public byte Unknown0;
-        public short X;
-        public short Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public short Unknown5;
-        public short Unknown6;
-        public ushort Unknown7;
-        public ushort Unknown8;
-        public short Unknown9;
-        public short Unknown10;
-        public bool Unknown11;
+        public byte Unknown0 { get; set; }
+        public short X { get; set; }
+        public short Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public short Unknown5 { get; set; }
+        public short Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
+        public ushort Unknown8 { get; set; }
+        public short Unknown9 { get; set; }
+        public short Unknown10 { get; set; }
+        public bool Unknown11 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             X = parser.ReadColumn< short >( 1 );

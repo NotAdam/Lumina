@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeapon5SpiritTalk", columnHash: 0xda365c51 )]
-    public class AnimaWeapon5SpiritTalk : IExcelRow
+    public class AnimaWeapon5SpiritTalk : ExcelRow
     {
         
-        public LazyRow< AnimaWeapon5SpiritTalkParam > Dialogue;
+        public LazyRow< AnimaWeapon5SpiritTalkParam > Dialogue { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Dialogue = new LazyRow< AnimaWeapon5SpiritTalkParam >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Dialogue = new LazyRow< AnimaWeapon5SpiritTalkParam >( gameData, parser.ReadColumn< int >( 0 ), language );
         }
     }
 }

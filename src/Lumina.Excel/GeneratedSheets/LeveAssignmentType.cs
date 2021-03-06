@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LeveAssignmentType", columnHash: 0x7c19f23c )]
-    public class LeveAssignmentType : IExcelRow
+    public class LeveAssignmentType : ExcelRow
     {
         
-        public bool IsFaction;
-        public int Icon;
-        public SeString Name;
+        public bool IsFaction { get; set; }
+        public int Icon { get; set; }
+        public SeString Name { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             IsFaction = parser.ReadColumn< bool >( 0 );
             Icon = parser.ReadColumn< int >( 1 );

@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDDevLively", columnHash: 0xe18cbe18 )]
-    public class HWDDevLively : IExcelRow
+    public class HWDDevLively : ExcelRow
     {
         
-        public LazyRow< ENpcBase > ENPC;
-        public ushort Unknown1;
-        public byte Unknown2;
+        public LazyRow< ENpcBase > ENPC { get; set; }
+        public ushort Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            ENPC = new LazyRow< ENpcBase >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            ENPC = new LazyRow< ENpcBase >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Unknown1 = parser.ReadColumn< ushort >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
         }

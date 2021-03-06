@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RacingChocoboItem", columnHash: 0xe79dd9d4 )]
-    public class RacingChocoboItem : IExcelRow
+    public class RacingChocoboItem : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public byte Category;
-        public byte[] Param;
+        public LazyRow< Item > Item { get; set; }
+        public byte Category { get; set; }
+        public byte[] Param { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
             Category = parser.ReadColumn< byte >( 1 );
             Param = new byte[ 2 ];
             for( var i = 0; i < 2; i++ )

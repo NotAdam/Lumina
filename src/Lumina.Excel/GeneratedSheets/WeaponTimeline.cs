@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WeaponTimeline", columnHash: 0x9ab94c53 )]
-    public class WeaponTimeline : IExcelRow
+    public class WeaponTimeline : ExcelRow
     {
         
-        public SeString File;
-        public short NextWeaponTimeline;
+        public SeString File { get; set; }
+        public short NextWeaponTimeline { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             File = parser.ReadColumn< SeString >( 0 );
             NextWeaponTimeline = parser.ReadColumn< short >( 1 );

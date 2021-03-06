@@ -7,18 +7,14 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishingRecordTypeTransient", columnHash: 0xda365c51 )]
-    public class FishingRecordTypeTransient : IExcelRow
+    public class FishingRecordTypeTransient : ExcelRow
     {
         
-        public int Image;
+        public int Image { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Image = parser.ReadColumn< int >( 0 );
         }

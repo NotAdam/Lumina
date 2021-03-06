@@ -7,21 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActivityFeedCaptions", columnHash: 0x776ee24c )]
-    public class ActivityFeedCaptions : IExcelRow
+    public class ActivityFeedCaptions : ExcelRow
     {
         
-        public SeString JA;
-        public SeString EN;
-        public SeString DE;
-        public SeString FR;
+        public SeString JA { get; set; }
+        public SeString EN { get; set; }
+        public SeString DE { get; set; }
+        public SeString FR { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             JA = parser.ReadColumn< SeString >( 0 );
             EN = parser.ReadColumn< SeString >( 1 );

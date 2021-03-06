@@ -7,31 +7,27 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AirshipExplorationPoint", columnHash: 0x307f38a2 )]
-    public class AirshipExplorationPoint : IExcelRow
+    public class AirshipExplorationPoint : ExcelRow
     {
         
-        public SeString Name;
-        public SeString NameShort;
-        public bool Unknown2;
-        public short Unknown3;
-        public short Unknown4;
-        public byte RequiredLevel;
-        public ushort RequiredFuel;
-        public ushort Durationmin;
-        public ushort Unknown8;
-        public byte Unknown9;
-        public byte RequiredSurveillance;
-        public byte Unknown11;
-        public byte Unknown12;
-        public uint ExpReward;
+        public SeString Name { get; set; }
+        public SeString NameShort { get; set; }
+        public bool Unknown2 { get; set; }
+        public short Unknown3 { get; set; }
+        public short Unknown4 { get; set; }
+        public byte RequiredLevel { get; set; }
+        public ushort RequiredFuel { get; set; }
+        public ushort Durationmin { get; set; }
+        public ushort Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
+        public byte RequiredSurveillance { get; set; }
+        public byte Unknown11 { get; set; }
+        public byte Unknown12 { get; set; }
+        public uint ExpReward { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             NameShort = parser.ReadColumn< SeString >( 1 );

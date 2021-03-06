@@ -7,28 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemSearchCategory", columnHash: 0xeffa5b93 )]
-    public class ItemSearchCategory : IExcelRow
+    public class ItemSearchCategory : ExcelRow
     {
         
-        public SeString Name;
-        public int Icon;
-        public byte Category;
-        public byte Order;
-        public LazyRow< ClassJob > ClassJob;
+        public SeString Name { get; set; }
+        public int Icon { get; set; }
+        public byte Category { get; set; }
+        public byte Order { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< int >( 1 );
             Category = parser.ReadColumn< byte >( 2 );
             Order = parser.ReadColumn< byte >( 3 );
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< sbyte >( 4 ), language );
+            ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< sbyte >( 4 ), language );
         }
     }
 }

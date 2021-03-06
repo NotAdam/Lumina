@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PhysicsGroup", columnHash: 0xfa594271 )]
-    public class PhysicsGroup : IExcelRow
+    public class PhysicsGroup : ExcelRow
     {
         
-        public float[] SimulationTime;
-        public float[] PS3SimulationTime;
-        public bool ResetByLookAt;
-        public float RootFollowingGame;
-        public float RootFollowingCutScene;
-        public sbyte[] ConfigSwitch;
-        public bool ForceAttractByPhysicsOff;
+        public float[] SimulationTime { get; set; }
+        public float[] PS3SimulationTime { get; set; }
+        public bool ResetByLookAt { get; set; }
+        public float RootFollowingGame { get; set; }
+        public float RootFollowingCutScene { get; set; }
+        public sbyte[] ConfigSwitch { get; set; }
+        public bool ForceAttractByPhysicsOff { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             SimulationTime = new float[ 6 ];
             for( var i = 0; i < 6; i++ )

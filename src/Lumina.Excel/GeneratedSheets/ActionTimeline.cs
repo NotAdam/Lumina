@@ -7,37 +7,33 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionTimeline", columnHash: 0x7402d920 )]
-    public class ActionTimeline : IExcelRow
+    public class ActionTimeline : ExcelRow
     {
         
-        public byte Type;
-        public byte Priority;
-        public bool Pause;
-        public byte Stance;
-        public byte Slot;
-        public byte LookAtMode;
-        public SeString Key;
-        public byte ActionTimelineIDMode;
-        public LazyRow< WeaponTimeline > WeaponTimeline;
-        public byte LoadType;
-        public byte StartAttach;
-        public byte ResidentPap;
-        public bool Resident;
-        public ushort KillUpper;
-        public bool IsMotionCanceledByMoving;
-        public bool Unknown15;
-        public byte IsLoop;
-        public bool Unknown17;
-        public bool Unknown18;
-        public bool Unknown19;
+        public byte Type { get; set; }
+        public byte Priority { get; set; }
+        public bool Pause { get; set; }
+        public byte Stance { get; set; }
+        public byte Slot { get; set; }
+        public byte LookAtMode { get; set; }
+        public SeString Key { get; set; }
+        public byte ActionTimelineIDMode { get; set; }
+        public LazyRow< WeaponTimeline > WeaponTimeline { get; set; }
+        public byte LoadType { get; set; }
+        public byte StartAttach { get; set; }
+        public byte ResidentPap { get; set; }
+        public bool Resident { get; set; }
+        public ushort KillUpper { get; set; }
+        public bool IsMotionCanceledByMoving { get; set; }
+        public bool Unknown15 { get; set; }
+        public byte IsLoop { get; set; }
+        public bool Unknown17 { get; set; }
+        public bool Unknown18 { get; set; }
+        public bool Unknown19 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< byte >( 0 );
             Priority = parser.ReadColumn< byte >( 1 );
@@ -47,7 +43,7 @@ namespace Lumina.Excel.GeneratedSheets
             LookAtMode = parser.ReadColumn< byte >( 5 );
             Key = parser.ReadColumn< SeString >( 6 );
             ActionTimelineIDMode = parser.ReadColumn< byte >( 7 );
-            WeaponTimeline = new LazyRow< WeaponTimeline >( lumina, parser.ReadColumn< byte >( 8 ), language );
+            WeaponTimeline = new LazyRow< WeaponTimeline >( gameData, parser.ReadColumn< byte >( 8 ), language );
             LoadType = parser.ReadColumn< byte >( 9 );
             StartAttach = parser.ReadColumn< byte >( 10 );
             ResidentPap = parser.ReadColumn< byte >( 11 );

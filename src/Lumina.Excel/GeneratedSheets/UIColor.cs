@@ -7,21 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "UIColor", columnHash: 0x05bcd0de )]
-    public class UIColor : IExcelRow
+    public class UIColor : ExcelRow
     {
         
-        public uint UIForeground;
-        public uint UIGlow;
-        public uint Unknown2;
-        public uint Unknown3;
+        public uint UIForeground { get; set; }
+        public uint UIGlow { get; set; }
+        public uint Unknown2 { get; set; }
+        public uint Unknown3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             UIForeground = parser.ReadColumn< uint >( 0 );
             UIGlow = parser.ReadColumn< uint >( 1 );

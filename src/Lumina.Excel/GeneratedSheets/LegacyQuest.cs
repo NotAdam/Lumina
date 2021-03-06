@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LegacyQuest", columnHash: 0x6624322e )]
-    public class LegacyQuest : IExcelRow
+    public class LegacyQuest : ExcelRow
     {
         
-        public ushort LegacyQuestID;
-        public SeString Text;
-        public SeString String;
-        public ushort SortKey;
-        public byte Genre;
+        public ushort LegacyQuestID { get; set; }
+        public SeString Text { get; set; }
+        public SeString String { get; set; }
+        public ushort SortKey { get; set; }
+        public byte Genre { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             LegacyQuestID = parser.ReadColumn< ushort >( 0 );
             Text = parser.ReadColumn< SeString >( 1 );

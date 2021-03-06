@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace Lumina.Tests
@@ -13,7 +12,7 @@ namespace Lumina.Tests
         [InlineData( "exd", "ffxiv", 16400836168543909290, "exd/exportedsg.exh")]
         public void FilePathsAreParsedCorrectly( string category, string repo, ulong hash, string path )
         {
-            var parsed = Lumina.ParseFilePath( path );
+            var parsed = GameData.ParseFilePath( path );
             
             Assert.Equal( category, parsed.Category );
             Assert.Equal( repo, parsed.Repository );

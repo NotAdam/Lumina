@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BehaviorPath", columnHash: 0x96572d0d )]
-    public class BehaviorPath : IExcelRow
+    public class BehaviorPath : ExcelRow
     {
         
-        public bool IsTurnTransition;
-        public bool IsFadeOut;
-        public bool IsFadeIn;
-        public bool IsWalking;
-        public bool Unknown4;
-        public float Speed;
+        public bool IsTurnTransition { get; set; }
+        public bool IsFadeOut { get; set; }
+        public bool IsFadeIn { get; set; }
+        public bool IsWalking { get; set; }
+        public bool Unknown4 { get; set; }
+        public float Speed { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             IsTurnTransition = parser.ReadColumn< bool >( 0 );
             IsFadeOut = parser.ReadColumn< bool >( 1 );

@@ -7,91 +7,87 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemLevel", columnHash: 0xe216399f )]
-    public class ItemLevel : IExcelRow
+    public class ItemLevel : ExcelRow
     {
         
-        public ushort Strength;
-        public ushort Dexterity;
-        public ushort Vitality;
-        public ushort Intelligence;
-        public ushort Mind;
-        public ushort Piety;
-        public ushort HP;
-        public ushort MP;
-        public ushort TP;
-        public ushort GP;
-        public ushort CP;
-        public ushort PhysicalDamage;
-        public ushort MagicalDamage;
-        public ushort Delay;
-        public ushort AdditionalEffect;
-        public ushort AttackSpeed;
-        public ushort BlockRate;
-        public ushort BlockStrength;
-        public ushort Tenacity;
-        public ushort AttackPower;
-        public ushort Defense;
-        public ushort DirectHitRate;
-        public ushort Evasion;
-        public ushort MagicDefense;
-        public ushort CriticalHitPower;
-        public ushort CriticalHitResilience;
-        public ushort CriticalHit;
-        public ushort CriticalHitEvasion;
-        public ushort SlashingResistance;
-        public ushort PiercingResistance;
-        public ushort BluntResistance;
-        public ushort ProjectileResistance;
-        public ushort AttackMagicPotency;
-        public ushort HealingMagicPotency;
-        public ushort EnhancementMagicPotency;
-        public ushort EnfeeblingMagicPotency;
-        public ushort FireResistance;
-        public ushort IceResistance;
-        public ushort WindResistance;
-        public ushort EarthResistance;
-        public ushort LightningResistance;
-        public ushort WaterResistance;
-        public ushort MagicResistance;
-        public ushort Determination;
-        public ushort SkillSpeed;
-        public ushort SpellSpeed;
-        public ushort Haste;
-        public ushort Morale;
-        public ushort Enmity;
-        public ushort EnmityReduction;
-        public ushort CarefulDesynthesis;
-        public ushort EXPBonus;
-        public ushort Regen;
-        public ushort Refresh;
-        public ushort MovementSpeed;
-        public ushort Spikes;
-        public ushort SlowResistance;
-        public ushort PetrificationResistance;
-        public ushort ParalysisResistance;
-        public ushort SilenceResistance;
-        public ushort BlindResistance;
-        public ushort PoisonResistance;
-        public ushort StunResistance;
-        public ushort SleepResistance;
-        public ushort BindResistance;
-        public ushort HeavyResistance;
-        public ushort DoomResistance;
-        public ushort ReducedDurabilityLoss;
-        public ushort IncreasedSpiritbondGain;
-        public ushort Craftsmanship;
-        public ushort Control;
-        public ushort Gathering;
-        public ushort Perception;
-        public ushort Unknown73;
+        public ushort Strength { get; set; }
+        public ushort Dexterity { get; set; }
+        public ushort Vitality { get; set; }
+        public ushort Intelligence { get; set; }
+        public ushort Mind { get; set; }
+        public ushort Piety { get; set; }
+        public ushort HP { get; set; }
+        public ushort MP { get; set; }
+        public ushort TP { get; set; }
+        public ushort GP { get; set; }
+        public ushort CP { get; set; }
+        public ushort PhysicalDamage { get; set; }
+        public ushort MagicalDamage { get; set; }
+        public ushort Delay { get; set; }
+        public ushort AdditionalEffect { get; set; }
+        public ushort AttackSpeed { get; set; }
+        public ushort BlockRate { get; set; }
+        public ushort BlockStrength { get; set; }
+        public ushort Tenacity { get; set; }
+        public ushort AttackPower { get; set; }
+        public ushort Defense { get; set; }
+        public ushort DirectHitRate { get; set; }
+        public ushort Evasion { get; set; }
+        public ushort MagicDefense { get; set; }
+        public ushort CriticalHitPower { get; set; }
+        public ushort CriticalHitResilience { get; set; }
+        public ushort CriticalHit { get; set; }
+        public ushort CriticalHitEvasion { get; set; }
+        public ushort SlashingResistance { get; set; }
+        public ushort PiercingResistance { get; set; }
+        public ushort BluntResistance { get; set; }
+        public ushort ProjectileResistance { get; set; }
+        public ushort AttackMagicPotency { get; set; }
+        public ushort HealingMagicPotency { get; set; }
+        public ushort EnhancementMagicPotency { get; set; }
+        public ushort EnfeeblingMagicPotency { get; set; }
+        public ushort FireResistance { get; set; }
+        public ushort IceResistance { get; set; }
+        public ushort WindResistance { get; set; }
+        public ushort EarthResistance { get; set; }
+        public ushort LightningResistance { get; set; }
+        public ushort WaterResistance { get; set; }
+        public ushort MagicResistance { get; set; }
+        public ushort Determination { get; set; }
+        public ushort SkillSpeed { get; set; }
+        public ushort SpellSpeed { get; set; }
+        public ushort Haste { get; set; }
+        public ushort Morale { get; set; }
+        public ushort Enmity { get; set; }
+        public ushort EnmityReduction { get; set; }
+        public ushort CarefulDesynthesis { get; set; }
+        public ushort EXPBonus { get; set; }
+        public ushort Regen { get; set; }
+        public ushort Refresh { get; set; }
+        public ushort MovementSpeed { get; set; }
+        public ushort Spikes { get; set; }
+        public ushort SlowResistance { get; set; }
+        public ushort PetrificationResistance { get; set; }
+        public ushort ParalysisResistance { get; set; }
+        public ushort SilenceResistance { get; set; }
+        public ushort BlindResistance { get; set; }
+        public ushort PoisonResistance { get; set; }
+        public ushort StunResistance { get; set; }
+        public ushort SleepResistance { get; set; }
+        public ushort BindResistance { get; set; }
+        public ushort HeavyResistance { get; set; }
+        public ushort DoomResistance { get; set; }
+        public ushort ReducedDurabilityLoss { get; set; }
+        public ushort IncreasedSpiritbondGain { get; set; }
+        public ushort Craftsmanship { get; set; }
+        public ushort Control { get; set; }
+        public ushort Gathering { get; set; }
+        public ushort Perception { get; set; }
+        public ushort Unknown73 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Strength = parser.ReadColumn< ushort >( 0 );
             Dexterity = parser.ReadColumn< ushort >( 1 );

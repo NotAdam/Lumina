@@ -7,47 +7,43 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZContentBriefingBNpc", columnHash: 0xfc0810d7 )]
-    public class AOZContentBriefingBNpc : IExcelRow
+    public class AOZContentBriefingBNpc : ExcelRow
     {
         
-        public LazyRow< BNpcName > BNpcName;
-        public uint TargetSmall;
-        public uint TargetLarge;
-        public bool Unknown3;
-        public byte Endurance;
-        public byte Fire;
-        public byte Ice;
-        public byte Wind;
-        public byte Earth;
-        public byte Thunder;
-        public byte Water;
-        public byte Slashing;
-        public byte Piercing;
-        public byte Blunt;
-        public byte Magic;
-        public bool SlowResistance;
-        public bool PetrificationResistance;
-        public bool ParalysisResistance;
-        public bool SilenceResistance;
-        public bool BlindResistance;
-        public bool StunResistance;
-        public bool SleepResistance;
-        public bool BindResistance;
-        public bool HeavyResistance;
-        public bool InstaDeathResistance;
+        public LazyRow< BNpcName > BNpcName { get; set; }
+        public uint TargetSmall { get; set; }
+        public uint TargetLarge { get; set; }
+        public bool HideStats { get; set; }
+        public byte Endurance { get; set; }
+        public byte Fire { get; set; }
+        public byte Ice { get; set; }
+        public byte Wind { get; set; }
+        public byte Earth { get; set; }
+        public byte Thunder { get; set; }
+        public byte Water { get; set; }
+        public byte Slashing { get; set; }
+        public byte Piercing { get; set; }
+        public byte Blunt { get; set; }
+        public byte Magic { get; set; }
+        public bool SlowVuln { get; set; }
+        public bool PetrificationVuln { get; set; }
+        public bool ParalysisVuln { get; set; }
+        public bool InterruptionVuln { get; set; }
+        public bool BlindVuln { get; set; }
+        public bool StunVuln { get; set; }
+        public bool SleepVuln { get; set; }
+        public bool BindVuln { get; set; }
+        public bool HeavyVuln { get; set; }
+        public bool FlatOrDeathVuln { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            BNpcName = new LazyRow< BNpcName >( gameData, parser.ReadColumn< uint >( 0 ), language );
             TargetSmall = parser.ReadColumn< uint >( 1 );
             TargetLarge = parser.ReadColumn< uint >( 2 );
-            Unknown3 = parser.ReadColumn< bool >( 3 );
+            HideStats = parser.ReadColumn< bool >( 3 );
             Endurance = parser.ReadColumn< byte >( 4 );
             Fire = parser.ReadColumn< byte >( 5 );
             Ice = parser.ReadColumn< byte >( 6 );
@@ -59,16 +55,16 @@ namespace Lumina.Excel.GeneratedSheets
             Piercing = parser.ReadColumn< byte >( 12 );
             Blunt = parser.ReadColumn< byte >( 13 );
             Magic = parser.ReadColumn< byte >( 14 );
-            SlowResistance = parser.ReadColumn< bool >( 15 );
-            PetrificationResistance = parser.ReadColumn< bool >( 16 );
-            ParalysisResistance = parser.ReadColumn< bool >( 17 );
-            SilenceResistance = parser.ReadColumn< bool >( 18 );
-            BlindResistance = parser.ReadColumn< bool >( 19 );
-            StunResistance = parser.ReadColumn< bool >( 20 );
-            SleepResistance = parser.ReadColumn< bool >( 21 );
-            BindResistance = parser.ReadColumn< bool >( 22 );
-            HeavyResistance = parser.ReadColumn< bool >( 23 );
-            InstaDeathResistance = parser.ReadColumn< bool >( 24 );
+            SlowVuln = parser.ReadColumn< bool >( 15 );
+            PetrificationVuln = parser.ReadColumn< bool >( 16 );
+            ParalysisVuln = parser.ReadColumn< bool >( 17 );
+            InterruptionVuln = parser.ReadColumn< bool >( 18 );
+            BlindVuln = parser.ReadColumn< bool >( 19 );
+            StunVuln = parser.ReadColumn< bool >( 20 );
+            SleepVuln = parser.ReadColumn< bool >( 21 );
+            BindVuln = parser.ReadColumn< bool >( 22 );
+            HeavyVuln = parser.ReadColumn< bool >( 23 );
+            FlatOrDeathVuln = parser.ReadColumn< bool >( 24 );
         }
     }
 }

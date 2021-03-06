@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BattleLeve", columnHash: 0x1ce99cea )]
-    public class BattleLeve : IExcelRow
+    public class BattleLeve : ExcelRow
     {
         public struct UnkStruct64Struct
         {
@@ -18,123 +18,119 @@ namespace Lumina.Excel.GeneratedSheets
             public byte NumOfAppearance;
         }
         
-        public ushort[] Time;
-        public int[] BaseID;
-        public ushort[] EnemyLevel;
-        public LazyRow< BNpcName >[] BNpcName;
-        public LazyRow< EventItem >[] ItemsInvolved;
-        public byte[] ItemsInvolvedQty;
-        public byte[] ItemDropRate;
-        public uint[] ToDoNumberInvolved;
-        public UnkStruct64Struct[] UnkStruct64;
-        public uint Unknown69;
-        public uint Unknown70;
-        public uint Unknown71;
-        public uint Unknown72;
-        public uint Unknown73;
-        public uint Unknown74;
-        public uint Unknown75;
-        public uint Unknown76;
-        public uint Unknown77;
-        public uint Unknown78;
-        public uint Unknown79;
-        public uint Unknown80;
-        public uint Unknown81;
-        public uint Unknown82;
-        public uint Unknown83;
-        public uint Unknown84;
-        public uint Unknown85;
-        public uint Unknown86;
-        public uint Unknown87;
-        public uint Unknown88;
-        public uint Unknown89;
-        public uint Unknown90;
-        public uint Unknown91;
-        public uint Unknown92;
-        public uint Unknown93;
-        public uint Unknown94;
-        public uint Unknown95;
-        public uint Unknown96;
-        public uint Unknown97;
-        public uint Unknown98;
-        public uint Unknown99;
-        public uint Unknown100;
-        public uint Unknown101;
-        public uint Unknown102;
-        public uint Unknown103;
-        public UnkStruct104Struct[] UnkStruct104;
-        public byte Unknown112;
-        public byte Unknown113;
-        public byte Unknown114;
-        public byte Unknown115;
-        public byte Unknown116;
-        public byte Unknown117;
-        public byte Unknown118;
-        public byte Unknown119;
-        public byte Unknown120;
-        public byte Unknown121;
-        public byte Unknown122;
-        public byte Unknown123;
-        public byte Unknown124;
-        public byte Unknown125;
-        public byte Unknown126;
-        public byte Unknown127;
-        public byte Unknown128;
-        public byte Unknown129;
-        public byte Unknown130;
-        public byte Unknown131;
-        public byte Unknown132;
-        public byte Unknown133;
-        public byte Unknown134;
-        public byte Unknown135;
-        public byte Unknown136;
-        public byte Unknown137;
-        public byte Unknown138;
-        public byte Unknown139;
-        public byte Unknown140;
-        public byte Unknown141;
-        public byte Unknown142;
-        public byte Unknown143;
-        public byte Unknown144;
-        public byte Unknown145;
-        public byte Unknown146;
-        public byte Unknown147;
-        public byte Unknown148;
-        public byte Unknown149;
-        public byte Unknown150;
-        public byte Unknown151;
-        public byte Unknown152;
-        public byte Unknown153;
-        public byte Unknown154;
-        public byte Unknown155;
-        public byte Unknown156;
-        public byte Unknown157;
-        public byte Unknown158;
-        public byte Unknown159;
-        public byte Unknown160;
-        public byte Unknown161;
-        public byte Unknown162;
-        public byte Unknown163;
-        public byte Unknown164;
-        public byte Unknown165;
-        public byte Unknown166;
-        public byte Unknown167;
-        public byte[] ToDoSequence;
-        public LazyRow< BattleLeveRule > Rule;
-        public byte Varient;
-        public LazyRow< LeveString > Objective0;
-        public LazyRow< LeveString > Objective1;
-        public LazyRow< LeveString > Objective2;
-        public ushort Help0;
-        public ushort Help1;
+        public ushort[] Time { get; set; }
+        public int[] BaseID { get; set; }
+        public ushort[] EnemyLevel { get; set; }
+        public LazyRow< BNpcName >[] BNpcName { get; set; }
+        public LazyRow< EventItem >[] ItemsInvolved { get; set; }
+        public byte[] ItemsInvolvedQty { get; set; }
+        public byte[] ItemDropRate { get; set; }
+        public uint[] ToDoNumberInvolved { get; set; }
+        public UnkStruct64Struct[] UnkStruct64 { get; set; }
+        public uint Unknown69 { get; set; }
+        public uint Unknown70 { get; set; }
+        public uint Unknown71 { get; set; }
+        public uint Unknown72 { get; set; }
+        public uint Unknown73 { get; set; }
+        public uint Unknown74 { get; set; }
+        public uint Unknown75 { get; set; }
+        public uint Unknown76 { get; set; }
+        public uint Unknown77 { get; set; }
+        public uint Unknown78 { get; set; }
+        public uint Unknown79 { get; set; }
+        public uint Unknown80 { get; set; }
+        public uint Unknown81 { get; set; }
+        public uint Unknown82 { get; set; }
+        public uint Unknown83 { get; set; }
+        public uint Unknown84 { get; set; }
+        public uint Unknown85 { get; set; }
+        public uint Unknown86 { get; set; }
+        public uint Unknown87 { get; set; }
+        public uint Unknown88 { get; set; }
+        public uint Unknown89 { get; set; }
+        public uint Unknown90 { get; set; }
+        public uint Unknown91 { get; set; }
+        public uint Unknown92 { get; set; }
+        public uint Unknown93 { get; set; }
+        public uint Unknown94 { get; set; }
+        public uint Unknown95 { get; set; }
+        public uint Unknown96 { get; set; }
+        public uint Unknown97 { get; set; }
+        public uint Unknown98 { get; set; }
+        public uint Unknown99 { get; set; }
+        public uint Unknown100 { get; set; }
+        public uint Unknown101 { get; set; }
+        public uint Unknown102 { get; set; }
+        public uint Unknown103 { get; set; }
+        public UnkStruct104Struct[] UnkStruct104 { get; set; }
+        public byte Unknown112 { get; set; }
+        public byte Unknown113 { get; set; }
+        public byte Unknown114 { get; set; }
+        public byte Unknown115 { get; set; }
+        public byte Unknown116 { get; set; }
+        public byte Unknown117 { get; set; }
+        public byte Unknown118 { get; set; }
+        public byte Unknown119 { get; set; }
+        public byte Unknown120 { get; set; }
+        public byte Unknown121 { get; set; }
+        public byte Unknown122 { get; set; }
+        public byte Unknown123 { get; set; }
+        public byte Unknown124 { get; set; }
+        public byte Unknown125 { get; set; }
+        public byte Unknown126 { get; set; }
+        public byte Unknown127 { get; set; }
+        public byte Unknown128 { get; set; }
+        public byte Unknown129 { get; set; }
+        public byte Unknown130 { get; set; }
+        public byte Unknown131 { get; set; }
+        public byte Unknown132 { get; set; }
+        public byte Unknown133 { get; set; }
+        public byte Unknown134 { get; set; }
+        public byte Unknown135 { get; set; }
+        public byte Unknown136 { get; set; }
+        public byte Unknown137 { get; set; }
+        public byte Unknown138 { get; set; }
+        public byte Unknown139 { get; set; }
+        public byte Unknown140 { get; set; }
+        public byte Unknown141 { get; set; }
+        public byte Unknown142 { get; set; }
+        public byte Unknown143 { get; set; }
+        public byte Unknown144 { get; set; }
+        public byte Unknown145 { get; set; }
+        public byte Unknown146 { get; set; }
+        public byte Unknown147 { get; set; }
+        public byte Unknown148 { get; set; }
+        public byte Unknown149 { get; set; }
+        public byte Unknown150 { get; set; }
+        public byte Unknown151 { get; set; }
+        public byte Unknown152 { get; set; }
+        public byte Unknown153 { get; set; }
+        public byte Unknown154 { get; set; }
+        public byte Unknown155 { get; set; }
+        public byte Unknown156 { get; set; }
+        public byte Unknown157 { get; set; }
+        public byte Unknown158 { get; set; }
+        public byte Unknown159 { get; set; }
+        public byte Unknown160 { get; set; }
+        public byte Unknown161 { get; set; }
+        public byte Unknown162 { get; set; }
+        public byte Unknown163 { get; set; }
+        public byte Unknown164 { get; set; }
+        public byte Unknown165 { get; set; }
+        public byte Unknown166 { get; set; }
+        public byte Unknown167 { get; set; }
+        public byte[] ToDoSequence { get; set; }
+        public LazyRow< BattleLeveRule > Rule { get; set; }
+        public byte Varient { get; set; }
+        public LazyRow< LeveString > Objective0 { get; set; }
+        public LazyRow< LeveString > Objective1 { get; set; }
+        public LazyRow< LeveString > Objective2 { get; set; }
+        public ushort Help0 { get; set; }
+        public ushort Help1 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Time = new ushort[ 8 ];
             for( var i = 0; i < 8; i++ )
@@ -147,10 +143,10 @@ namespace Lumina.Excel.GeneratedSheets
                 EnemyLevel[ i ] = parser.ReadColumn< ushort >( 16 + i );
             BNpcName = new LazyRow< BNpcName >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                BNpcName[ i ] = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 24 + i ), language );
+                BNpcName[ i ] = new LazyRow< BNpcName >( gameData, parser.ReadColumn< uint >( 24 + i ), language );
             ItemsInvolved = new LazyRow< EventItem >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ItemsInvolved[ i ] = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 32 + i ), language );
+                ItemsInvolved[ i ] = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 32 + i ), language );
             ItemsInvolvedQty = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ItemsInvolvedQty[ i ] = parser.ReadColumn< byte >( 40 + i );
@@ -266,11 +262,11 @@ namespace Lumina.Excel.GeneratedSheets
             ToDoSequence = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ToDoSequence[ i ] = parser.ReadColumn< byte >( 168 + i );
-            Rule = new LazyRow< BattleLeveRule >( lumina, parser.ReadColumn< int >( 176 ), language );
+            Rule = new LazyRow< BattleLeveRule >( gameData, parser.ReadColumn< int >( 176 ), language );
             Varient = parser.ReadColumn< byte >( 177 );
-            Objective0 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 178 ), language );
-            Objective1 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 179 ), language );
-            Objective2 = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 180 ), language );
+            Objective0 = new LazyRow< LeveString >( gameData, parser.ReadColumn< ushort >( 178 ), language );
+            Objective1 = new LazyRow< LeveString >( gameData, parser.ReadColumn< ushort >( 179 ), language );
+            Objective2 = new LazyRow< LeveString >( gameData, parser.ReadColumn< ushort >( 180 ), language );
             Help0 = parser.ReadColumn< ushort >( 181 );
             Help1 = parser.ReadColumn< ushort >( 182 );
         }

@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LogMessage", columnHash: 0xf3a6d024 )]
-    public class LogMessage : IExcelRow
+    public class LogMessage : ExcelRow
     {
         
-        public ushort LogKind;
-        public ushort Unknown1;
-        public byte Unknown2;
-        public bool Unknown3;
-        public SeString Text;
+        public ushort LogKind { get; set; }
+        public ushort Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public SeString Text { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             LogKind = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< ushort >( 1 );

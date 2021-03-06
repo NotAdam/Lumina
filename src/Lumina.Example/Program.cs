@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
-using Lumina.Data;
-using Lumina.Excel;
 using Lumina.Excel.GeneratedSheets;
 
 namespace Lumina.Example
@@ -60,7 +57,7 @@ namespace Lumina.Example
 
         static void Main( string[] args )
         {
-            var lumina = new Lumina( args[ 0 ] );
+            var lumina = new GameData( args[ 0 ] );
 
             bool exitThread = false;
             var handleThread = new Thread( () =>

@@ -7,60 +7,56 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestRedo", columnHash: 0xb199478e )]
-    public class QuestRedo : IExcelRow
+    public class QuestRedo : ExcelRow
     {
         
-        public LazyRow< Quest > FinalQuest;
-        public byte Unknown1;
-        public ushort Chapter;
-        public LazyRow< Quest >[] Quest;
-        public byte Unknown35;
-        public byte Unknown36;
-        public byte Unknown37;
-        public byte Unknown38;
-        public byte Unknown39;
-        public byte Unknown40;
-        public byte Unknown41;
-        public byte Unknown42;
-        public byte Unknown43;
-        public byte Unknown44;
-        public byte Unknown45;
-        public byte Unknown46;
-        public byte Unknown47;
-        public byte Unknown48;
-        public byte Unknown49;
-        public byte Unknown50;
-        public byte Unknown51;
-        public byte Unknown52;
-        public byte Unknown53;
-        public byte Unknown54;
-        public byte Unknown55;
-        public byte Unknown56;
-        public byte Unknown57;
-        public byte Unknown58;
-        public byte Unknown59;
-        public byte Unknown60;
-        public byte Unknown61;
-        public byte Unknown62;
-        public byte Unknown63;
-        public byte Unknown64;
-        public byte Unknown65;
-        public byte Unknown66;
+        public LazyRow< Quest > FinalQuest { get; set; }
+        public byte Unknown1 { get; set; }
+        public ushort Chapter { get; set; }
+        public LazyRow< Quest >[] Quest { get; set; }
+        public byte Unknown35 { get; set; }
+        public byte Unknown36 { get; set; }
+        public byte Unknown37 { get; set; }
+        public byte Unknown38 { get; set; }
+        public byte Unknown39 { get; set; }
+        public byte Unknown40 { get; set; }
+        public byte Unknown41 { get; set; }
+        public byte Unknown42 { get; set; }
+        public byte Unknown43 { get; set; }
+        public byte Unknown44 { get; set; }
+        public byte Unknown45 { get; set; }
+        public byte Unknown46 { get; set; }
+        public byte Unknown47 { get; set; }
+        public byte Unknown48 { get; set; }
+        public byte Unknown49 { get; set; }
+        public byte Unknown50 { get; set; }
+        public byte Unknown51 { get; set; }
+        public byte Unknown52 { get; set; }
+        public byte Unknown53 { get; set; }
+        public byte Unknown54 { get; set; }
+        public byte Unknown55 { get; set; }
+        public byte Unknown56 { get; set; }
+        public byte Unknown57 { get; set; }
+        public byte Unknown58 { get; set; }
+        public byte Unknown59 { get; set; }
+        public byte Unknown60 { get; set; }
+        public byte Unknown61 { get; set; }
+        public byte Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public byte Unknown64 { get; set; }
+        public byte Unknown65 { get; set; }
+        public byte Unknown66 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            FinalQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            FinalQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Chapter = parser.ReadColumn< ushort >( 2 );
             Quest = new LazyRow< Quest >[ 32 ];
             for( var i = 0; i < 32; i++ )
-                Quest[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 3 + i ), language );
+                Quest[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 3 + i ), language );
             Unknown35 = parser.ReadColumn< byte >( 35 );
             Unknown36 = parser.ReadColumn< byte >( 36 );
             Unknown37 = parser.ReadColumn< byte >( 37 );

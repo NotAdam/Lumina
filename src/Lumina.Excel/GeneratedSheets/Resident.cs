@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Resident", columnHash: 0x9af0b586 )]
-    public class Resident : IExcelRow
+    public class Resident : ExcelRow
     {
         
-        public byte Unknown0;
-        public ulong Model;
-        public LazyRow< NpcYell > NpcYell;
-        public ushort AddedIn53;
-        public byte ResidentMotionType;
+        public byte Unknown0 { get; set; }
+        public ulong Model { get; set; }
+        public LazyRow< NpcYell > NpcYell { get; set; }
+        public ushort AddedIn53 { get; set; }
+        public byte ResidentMotionType { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Model = parser.ReadColumn< ulong >( 1 );
-            NpcYell = new LazyRow< NpcYell >( lumina, parser.ReadColumn< int >( 2 ), language );
+            NpcYell = new LazyRow< NpcYell >( gameData, parser.ReadColumn< int >( 2 ), language );
             AddedIn53 = parser.ReadColumn< ushort >( 3 );
             ResidentMotionType = parser.ReadColumn< byte >( 4 );
         }

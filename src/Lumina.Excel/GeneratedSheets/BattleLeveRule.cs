@@ -7,18 +7,14 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BattleLeveRule", columnHash: 0xdebb20e3 )]
-    public class BattleLeveRule : IExcelRow
+    public class BattleLeveRule : ExcelRow
     {
         
-        public SeString Rule;
+        public SeString Rule { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Rule = parser.ReadColumn< SeString >( 0 );
         }

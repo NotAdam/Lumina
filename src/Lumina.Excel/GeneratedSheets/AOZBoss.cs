@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZBoss", columnHash: 0x2020acf6 )]
-    public class AOZBoss : IExcelRow
+    public class AOZBoss : ExcelRow
     {
         
-        public LazyRow< AOZContentBriefingBNpc > Boss;
-        public ushort Unknown1;
+        public LazyRow< AOZContentBriefingBNpc > Boss { get; set; }
+        public ushort Position { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Boss = new LazyRow< AOZContentBriefingBNpc >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            Unknown1 = parser.ReadColumn< ushort >( 1 );
+            Boss = new LazyRow< AOZContentBriefingBNpc >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            Position = parser.ReadColumn< ushort >( 1 );
         }
     }
 }

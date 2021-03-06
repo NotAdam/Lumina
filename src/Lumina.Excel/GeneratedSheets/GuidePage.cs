@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuidePage", columnHash: 0x5bfa8a4e )]
-    public class GuidePage : IExcelRow
+    public class GuidePage : ExcelRow
     {
         
-        public byte Key;
-        public uint Output;
+        public byte Key { get; set; }
+        public uint Output { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Key = parser.ReadColumn< byte >( 0 );
             Output = parser.ReadColumn< uint >( 1 );

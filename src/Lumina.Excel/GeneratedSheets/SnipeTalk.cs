@@ -7,27 +7,23 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SnipeTalk", columnHash: 0xcea69cac )]
-    public class SnipeTalk : IExcelRow
+    public class SnipeTalk : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public LazyRow< SnipeTalkName > Name;
-        public SeString Text;
-        public SeString Unknown4;
-        public SeString Unknown5;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< SnipeTalkName > Name { get; set; }
+        public SeString Text { get; set; }
+        public SeString Unknown4 { get; set; }
+        public SeString Unknown5 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            Name = new LazyRow< SnipeTalkName >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Name = new LazyRow< SnipeTalkName >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Text = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< SeString >( 4 );
             Unknown5 = parser.ReadColumn< SeString >( 5 );

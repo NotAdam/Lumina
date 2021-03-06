@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecipeLevelTable", columnHash: 0xdc8d702b )]
-    public class RecipeLevelTable : IExcelRow
+    public class RecipeLevelTable : ExcelRow
     {
         
-        public byte ClassJobLevel;
-        public byte Stars;
-        public ushort SuggestedCraftsmanship;
-        public ushort SuggestedControl;
-        public ushort Difficulty;
-        public uint Quality;
-        public ushort Durability;
-        public ushort Unknown54;
+        public byte ClassJobLevel { get; set; }
+        public byte Stars { get; set; }
+        public ushort SuggestedCraftsmanship { get; set; }
+        public ushort SuggestedControl { get; set; }
+        public ushort Difficulty { get; set; }
+        public uint Quality { get; set; }
+        public ushort Durability { get; set; }
+        public ushort ConditionsFlag { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             ClassJobLevel = parser.ReadColumn< byte >( 0 );
             Stars = parser.ReadColumn< byte >( 1 );
@@ -34,7 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
             Difficulty = parser.ReadColumn< ushort >( 4 );
             Quality = parser.ReadColumn< uint >( 5 );
             Durability = parser.ReadColumn< ushort >( 6 );
-            Unknown54 = parser.ReadColumn< ushort >( 7 );
+            ConditionsFlag = parser.ReadColumn< ushort >( 7 );
         }
     }
 }

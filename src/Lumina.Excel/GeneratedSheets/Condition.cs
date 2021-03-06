@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Condition", columnHash: 0xf234a002 )]
-    public class Condition : IExcelRow
+    public class Condition : ExcelRow
     {
         
-        public bool Unknown0;
-        public byte Unknown1;
-        public LazyRow< LogMessage > LogMessage;
-        public byte Unknown3;
+        public bool Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< LogMessage > LogMessage { get; set; }
+        public byte Unknown3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            LogMessage = new LazyRow< LogMessage >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            LogMessage = new LazyRow< LogMessage >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
         }
     }

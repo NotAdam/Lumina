@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemActionTelepo", columnHash: 0x5d58cc84 )]
-    public class ItemActionTelepo : IExcelRow
+    public class ItemActionTelepo : ExcelRow
     {
         
-        public uint Requirement;
-        public LazyRow< LogMessage > DenyMessage;
+        public uint Requirement { get; set; }
+        public LazyRow< LogMessage > DenyMessage { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Requirement = parser.ReadColumn< uint >( 0 );
-            DenyMessage = new LazyRow< LogMessage >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            DenyMessage = new LazyRow< LogMessage >( gameData, parser.ReadColumn< uint >( 1 ), language );
         }
     }
 }

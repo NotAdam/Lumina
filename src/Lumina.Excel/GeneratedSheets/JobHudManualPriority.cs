@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "JobHudManualPriority", columnHash: 0x5be005ad )]
-    public class JobHudManualPriority : IExcelRow
+    public class JobHudManualPriority : ExcelRow
     {
         
-        public LazyRow< JobHudManual >[] JobHudManual;
-        public byte Unknown3;
-        public byte Unknown4;
+        public LazyRow< JobHudManual >[] JobHudManual { get; set; }
+        public byte Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             JobHudManual = new LazyRow< JobHudManual >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                JobHudManual[ i ] = new LazyRow< JobHudManual >( lumina, parser.ReadColumn< byte >( 0 + i ), language );
+                JobHudManual[ i ] = new LazyRow< JobHudManual >( gameData, parser.ReadColumn< byte >( 0 + i ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
         }

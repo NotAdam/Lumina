@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MasterpieceSupplyDuty", columnHash: 0x9f2c0d7f )]
-    public class MasterpieceSupplyDuty : IExcelRow
+    public class MasterpieceSupplyDuty : ExcelRow
     {
         public struct UnkStruct3Struct
         {
@@ -24,22 +24,18 @@ namespace Lumina.Excel.GeneratedSheets
             public byte Stars;
         }
         
-        public LazyRow< ClassJob > ClassJob;
-        public byte ClassJobLevel;
-        public LazyRow< Currency > RewardCurrency;
-        public UnkStruct3Struct[] UnkStruct3;
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public byte ClassJobLevel { get; set; }
+        public ushort RewardCurrency { get; set; }
+        public UnkStruct3Struct[] UnkStruct3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 0 ), language );
             ClassJobLevel = parser.ReadColumn< byte >( 1 );
-            RewardCurrency = new LazyRow< Currency >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            RewardCurrency = parser.ReadColumn< ushort >( 2 );
             UnkStruct3 = new UnkStruct3Struct[ 8 ];
             for( var i = 0; i < 8; i++ )
             {

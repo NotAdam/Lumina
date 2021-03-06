@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "World", columnHash: 0xd4d62b80 )]
-    public class World : IExcelRow
+    public class World : ExcelRow
     {
         
-        public SeString Name;
-        public byte UserType;
-        public LazyRow< WorldDCGroupType > DataCenter;
-        public bool IsPublic;
+        public SeString Name { get; set; }
+        public byte UserType { get; set; }
+        public LazyRow< WorldDCGroupType > DataCenter { get; set; }
+        public bool IsPublic { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             UserType = parser.ReadColumn< byte >( 1 );
-            DataCenter = new LazyRow< WorldDCGroupType >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            DataCenter = new LazyRow< WorldDCGroupType >( gameData, parser.ReadColumn< byte >( 2 ), language );
             IsPublic = parser.ReadColumn< bool >( 3 );
         }
     }

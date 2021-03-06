@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonMap5X", columnHash: 0x64a88f98 )]
-    public class DeepDungeonMap5X : IExcelRow
+    public class DeepDungeonMap5X : ExcelRow
     {
         
-        public LazyRow< DeepDungeonRoom >[] DeepDungeonRoom;
+        public LazyRow< DeepDungeonRoom >[] DeepDungeonRoom { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             DeepDungeonRoom = new LazyRow< DeepDungeonRoom >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                DeepDungeonRoom[ i ] = new LazyRow< DeepDungeonRoom >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                DeepDungeonRoom[ i ] = new LazyRow< DeepDungeonRoom >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
         }
     }
 }

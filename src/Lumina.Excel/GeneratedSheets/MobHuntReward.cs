@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntReward", columnHash: 0x4ace707c )]
-    public class MobHuntReward : IExcelRow
+    public class MobHuntReward : ExcelRow
     {
         
-        public uint ExpReward;
-        public ushort GilReward;
-        public LazyRow< ExVersion > Expansion;
-        public ushort CurrencyReward;
+        public uint ExpReward { get; set; }
+        public ushort GilReward { get; set; }
+        public LazyRow< ExVersion > Expansion { get; set; }
+        public ushort CurrencyReward { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             ExpReward = parser.ReadColumn< uint >( 0 );
             GilReward = parser.ReadColumn< ushort >( 1 );
-            Expansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            Expansion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 2 ), language );
             CurrencyReward = parser.ReadColumn< ushort >( 3 );
         }
     }

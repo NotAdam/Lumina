@@ -7,18 +7,14 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OrchestrionPath", columnHash: 0xdebb20e3 )]
-    public class OrchestrionPath : IExcelRow
+    public class OrchestrionPath : ExcelRow
     {
         
-        public SeString File;
+        public SeString File { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             File = parser.ReadColumn< SeString >( 0 );
         }

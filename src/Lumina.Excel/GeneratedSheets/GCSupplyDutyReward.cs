@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GCSupplyDutyReward", columnHash: 0x6be0e840 )]
-    public class GCSupplyDutyReward : IExcelRow
+    public class GCSupplyDutyReward : ExcelRow
     {
         
-        public uint ExperienceSupply;
-        public uint ExperienceProvisioning;
-        public uint SealsExpertDelivery;
-        public uint SealsSupply;
-        public uint SealsProvisioning;
+        public uint ExperienceSupply { get; set; }
+        public uint ExperienceProvisioning { get; set; }
+        public uint SealsExpertDelivery { get; set; }
+        public uint SealsSupply { get; set; }
+        public uint SealsProvisioning { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             ExperienceSupply = parser.ReadColumn< uint >( 0 );
             ExperienceProvisioning = parser.ReadColumn< uint >( 1 );

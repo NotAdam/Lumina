@@ -7,27 +7,23 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCReputation", columnHash: 0x3d6be37e )]
-    public class FCReputation : IExcelRow
+    public class FCReputation : ExcelRow
     {
         
-        public uint PointsToNext;
-        public uint RequiredPoints;
-        public byte DiscountRate;
-        public LazyRow< UIColor > Color;
-        public SeString Name;
+        public uint PointsToNext { get; set; }
+        public uint RequiredPoints { get; set; }
+        public byte DiscountRate { get; set; }
+        public LazyRow< UIColor > Color { get; set; }
+        public SeString Name { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             PointsToNext = parser.ReadColumn< uint >( 0 );
             RequiredPoints = parser.ReadColumn< uint >( 1 );
             DiscountRate = parser.ReadColumn< byte >( 2 );
-            Color = new LazyRow< UIColor >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            Color = new LazyRow< UIColor >( gameData, parser.ReadColumn< uint >( 3 ), language );
             Name = parser.ReadColumn< SeString >( 4 );
         }
     }

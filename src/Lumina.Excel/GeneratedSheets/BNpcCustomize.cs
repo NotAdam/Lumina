@@ -7,49 +7,45 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcCustomize", columnHash: 0x18f060d4 )]
-    public class BNpcCustomize : IExcelRow
+    public class BNpcCustomize : ExcelRow
     {
         
-        public LazyRow< Race > Race;
-        public byte Gender;
-        public byte BodyType;
-        public byte Height;
-        public LazyRow< Tribe > Tribe;
-        public byte Face;
-        public byte HairStyle;
-        public byte HairHighlight;
-        public byte SkinColor;
-        public byte EyeHeterochromia;
-        public byte HairColor;
-        public byte HairHighlightColor;
-        public byte FacialFeature;
-        public byte FacialFeatureColor;
-        public byte Eyebrows;
-        public byte EyeColor;
-        public byte EyeShape;
-        public byte Nose;
-        public byte Jaw;
-        public byte Mouth;
-        public byte LipColor;
-        public byte BustOrTone1;
-        public byte ExtraFeature1;
-        public byte ExtraFeature2OrBust;
-        public byte FacePaint;
-        public byte FacePaintColor;
+        public LazyRow< Race > Race { get; set; }
+        public byte Gender { get; set; }
+        public byte BodyType { get; set; }
+        public byte Height { get; set; }
+        public LazyRow< Tribe > Tribe { get; set; }
+        public byte Face { get; set; }
+        public byte HairStyle { get; set; }
+        public byte HairHighlight { get; set; }
+        public byte SkinColor { get; set; }
+        public byte EyeHeterochromia { get; set; }
+        public byte HairColor { get; set; }
+        public byte HairHighlightColor { get; set; }
+        public byte FacialFeature { get; set; }
+        public byte FacialFeatureColor { get; set; }
+        public byte Eyebrows { get; set; }
+        public byte EyeColor { get; set; }
+        public byte EyeShape { get; set; }
+        public byte Nose { get; set; }
+        public byte Jaw { get; set; }
+        public byte Mouth { get; set; }
+        public byte LipColor { get; set; }
+        public byte BustOrTone1 { get; set; }
+        public byte ExtraFeature1 { get; set; }
+        public byte ExtraFeature2OrBust { get; set; }
+        public byte FacePaint { get; set; }
+        public byte FacePaintColor { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Race = new LazyRow< Race >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            Race = new LazyRow< Race >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Gender = parser.ReadColumn< byte >( 1 );
             BodyType = parser.ReadColumn< byte >( 2 );
             Height = parser.ReadColumn< byte >( 3 );
-            Tribe = new LazyRow< Tribe >( lumina, parser.ReadColumn< byte >( 4 ), language );
+            Tribe = new LazyRow< Tribe >( gameData, parser.ReadColumn< byte >( 4 ), language );
             Face = parser.ReadColumn< byte >( 5 );
             HairStyle = parser.ReadColumn< byte >( 6 );
             HairHighlight = parser.ReadColumn< byte >( 7 );

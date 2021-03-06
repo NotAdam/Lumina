@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Knockback", columnHash: 0x6876beaf )]
-    public class Knockback : IExcelRow
+    public class Knockback : ExcelRow
     {
         
-        public byte Distance;
-        public byte Speed;
-        public bool Motion;
-        public byte NearDistance;
-        public byte Direction;
-        public byte DirectionArg;
-        public bool CancelMove;
+        public byte Distance { get; set; }
+        public byte Speed { get; set; }
+        public bool Motion { get; set; }
+        public byte NearDistance { get; set; }
+        public byte Direction { get; set; }
+        public byte DirectionArg { get; set; }
+        public bool CancelMove { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Distance = parser.ReadColumn< byte >( 0 );
             Speed = parser.ReadColumn< byte >( 1 );

@@ -7,21 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Channeling", columnHash: 0x8c3707e3 )]
-    public class Channeling : IExcelRow
+    public class Channeling : ExcelRow
     {
         
-        public SeString File;
-        public byte WidthScale;
-        public bool AddedIn53;
-        public bool Unknown3;
+        public SeString File { get; set; }
+        public byte WidthScale { get; set; }
+        public bool AddedIn53 { get; set; }
+        public bool Unknown3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             File = parser.ReadColumn< SeString >( 0 );
             WidthScale = parser.ReadColumn< byte >( 1 );

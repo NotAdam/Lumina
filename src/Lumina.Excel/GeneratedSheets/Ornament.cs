@@ -7,32 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Ornament", columnHash: 0x6768819a )]
-    public class Ornament : IExcelRow
+    public class Ornament : ExcelRow
     {
         
-        public ushort Model;
-        public byte Unknown1;
-        public byte Unknown2;
-        public bool Unknown3;
-        public short Order;
-        public ushort Icon;
-        public ushort Transient;
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown12;
-        public sbyte Pronoun;
-        public sbyte Article;
+        public ushort Model { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public short Order { get; set; }
+        public ushort Icon { get; set; }
+        public ushort Transient { get; set; }
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown12 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Model = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

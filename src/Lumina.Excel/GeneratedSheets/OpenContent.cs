@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OpenContent", columnHash: 0x170b114d )]
-    public class OpenContent : IExcelRow
+    public class OpenContent : ExcelRow
     {
         
-        public LazyRow< ContentFinderCondition >[] Content;
-        public LazyRow< OpenContentCandidateName >[] CandidateName;
+        public LazyRow< ContentFinderCondition >[] Content { get; set; }
+        public LazyRow< OpenContentCandidateName >[] CandidateName { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Content = new LazyRow< ContentFinderCondition >[ 16 ];
             for( var i = 0; i < 16; i++ )
-                Content[ i ] = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                Content[ i ] = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
             CandidateName = new LazyRow< OpenContentCandidateName >[ 16 ];
             for( var i = 0; i < 16; i++ )
-                CandidateName[ i ] = new LazyRow< OpenContentCandidateName >( lumina, parser.ReadColumn< uint >( 16 + i ), language );
+                CandidateName[ i ] = new LazyRow< OpenContentCandidateName >( gameData, parser.ReadColumn< uint >( 16 + i ), language );
         }
     }
 }

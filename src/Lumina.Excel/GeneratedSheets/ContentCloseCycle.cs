@@ -7,30 +7,26 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentCloseCycle", columnHash: 0xd3032cdb )]
-    public class ContentCloseCycle : IExcelRow
+    public class ContentCloseCycle : ExcelRow
     {
         
-        public uint Unixtime;
-        public uint TimeSeconds;
-        public uint Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public bool Unknown5;
-        public bool Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
-        public bool Unknown9;
-        public bool Unknown10;
-        public bool Unknown11;
-        public bool Unknown12;
+        public uint Unixtime { get; set; }
+        public uint TimeSeconds { get; set; }
+        public uint Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
+        public bool Unknown9 { get; set; }
+        public bool Unknown10 { get; set; }
+        public bool Unknown11 { get; set; }
+        public bool Unknown12 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unixtime = parser.ReadColumn< uint >( 0 );
             TimeSeconds = parser.ReadColumn< uint >( 1 );

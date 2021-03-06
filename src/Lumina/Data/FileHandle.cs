@@ -10,14 +10,14 @@ namespace Lumina.Data
             Error
         }
         
-        internal BaseFileHandle( Lumina lumina, string path )
+        internal BaseFileHandle( GameData gameData, string path )
         {
-            _lumina = lumina;
+            GameData = gameData;
             _path = path;
         }
 
         protected FileState _state = FileState.None;
-        protected Lumina _lumina;
+        protected GameData GameData;
         protected string _path;
         protected object _instance;
 
@@ -41,14 +41,14 @@ namespace Lumina.Data
     /// <typeparam name="T">The type of FileResource to wrap</typeparam>
     public class FileHandle< T > : BaseFileHandle where T : FileResource
     {
-        internal FileHandle( Lumina lumina, string path ) : base( lumina, path )
+        internal FileHandle( GameData gameData, string path ) : base( gameData, path )
         {
         }
         
         public override void Load()
         {
             _state = FileState.Loading;
-            var file = _lumina.GetFile< T >( _path );
+            var file = GameData.GetFile< T >( _path );
 
             if( file == null )
             {

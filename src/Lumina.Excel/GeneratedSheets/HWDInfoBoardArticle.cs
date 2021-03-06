@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDInfoBoardArticle", columnHash: 0x76cb5660 )]
-    public class HWDInfoBoardArticle : IExcelRow
+    public class HWDInfoBoardArticle : ExcelRow
     {
         
-        public LazyRow< HWDInfoBoardArticleType > Type;
-        public byte Unknown1;
-        public ushort Unknown2;
-        public bool Unknown3;
-        public SeString Text;
+        public LazyRow< HWDInfoBoardArticleType > Type { get; set; }
+        public byte Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public SeString Text { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Type = new LazyRow< HWDInfoBoardArticleType >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            Type = new LazyRow< HWDInfoBoardArticleType >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );

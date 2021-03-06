@@ -7,32 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MYCWarResultNotebook", columnHash: 0x446c84d6 )]
-    public class MYCWarResultNotebook : IExcelRow
+    public class MYCWarResultNotebook : ExcelRow
     {
         
-        public byte Number;
-        public byte Unknown540;
-        public byte Unknown541;
-        public LazyRow< Quest > Quest;
-        public int Icon;
-        public int Image;
-        public byte Rarity;
-        public SeString NameJP;
-        public SeString Name;
-        public SeString Description;
+        public byte Number { get; set; }
+        public byte Unknown540 { get; set; }
+        public byte Unknown541 { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public int Icon { get; set; }
+        public int Image { get; set; }
+        public byte Rarity { get; set; }
+        public SeString NameJP { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Number = parser.ReadColumn< byte >( 0 );
             Unknown540 = parser.ReadColumn< byte >( 1 );
             Unknown541 = parser.ReadColumn< byte >( 2 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< int >( 3 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 3 ), language );
             Icon = parser.ReadColumn< int >( 4 );
             Image = parser.ReadColumn< int >( 5 );
             Rarity = parser.ReadColumn< byte >( 6 );

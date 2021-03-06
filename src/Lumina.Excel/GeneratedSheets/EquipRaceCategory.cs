@@ -7,27 +7,23 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EquipRaceCategory", columnHash: 0xf914b198 )]
-    public class EquipRaceCategory : IExcelRow
+    public class EquipRaceCategory : ExcelRow
     {
         
-        public bool Hyur;
-        public bool Elezen;
-        public bool Lalafell;
-        public bool Miqote;
-        public bool Roegadyn;
-        public bool AuRa;
-        public bool Unknown6;
-        public bool Unknown7;
-        public bool Male;
-        public bool Female;
+        public bool Hyur { get; set; }
+        public bool Elezen { get; set; }
+        public bool Lalafell { get; set; }
+        public bool Miqote { get; set; }
+        public bool Roegadyn { get; set; }
+        public bool AuRa { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Male { get; set; }
+        public bool Female { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Hyur = parser.ReadColumn< bool >( 0 );
             Elezen = parser.ReadColumn< bool >( 1 );

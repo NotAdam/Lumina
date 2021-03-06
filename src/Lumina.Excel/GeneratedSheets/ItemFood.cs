@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemFood", columnHash: 0xe09a474d )]
-    public class ItemFood : IExcelRow
+    public class ItemFood : ExcelRow
     {
         public struct UnkStruct1Struct
         {
@@ -19,16 +19,12 @@ namespace Lumina.Excel.GeneratedSheets
             public short MaxHQ;
         }
         
-        public byte EXPBonusPct;
-        public UnkStruct1Struct[] UnkStruct1;
+        public byte EXPBonusPct { get; set; }
+        public UnkStruct1Struct[] UnkStruct1 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             EXPBonusPct = parser.ReadColumn< byte >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 3 ];

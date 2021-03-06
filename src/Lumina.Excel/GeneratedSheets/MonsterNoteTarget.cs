@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MonsterNoteTarget", columnHash: 0x4157404f )]
-    public class MonsterNoteTarget : IExcelRow
+    public class MonsterNoteTarget : ExcelRow
     {
         public struct UnkStruct3Struct
         {
@@ -15,22 +15,18 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort PlaceNameLocation;
         }
         
-        public LazyRow< BNpcName > BNpcName;
-        public int Icon;
-        public LazyRow< Town > Town;
-        public UnkStruct3Struct[] UnkStruct3;
+        public LazyRow< BNpcName > BNpcName { get; set; }
+        public int Icon { get; set; }
+        public LazyRow< Town > Town { get; set; }
+        public UnkStruct3Struct[] UnkStruct3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            BNpcName = new LazyRow< BNpcName >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Icon = parser.ReadColumn< int >( 1 );
-            Town = new LazyRow< Town >( lumina, parser.ReadColumn< byte >( 2 ), language );
+            Town = new LazyRow< Town >( gameData, parser.ReadColumn< byte >( 2 ), language );
             UnkStruct3 = new UnkStruct3Struct[ 3 ];
             for( var i = 0; i < 3; i++ )
             {

@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastReputationRank", columnHash: 0x446d8bad )]
-    public class BeastReputationRank : IExcelRow
+    public class BeastReputationRank : ExcelRow
     {
         
-        public ushort RequiredReputation;
-        public SeString Name;
-        public SeString AlliedNames;
-        public LazyRow< UIColor > Color;
+        public ushort RequiredReputation { get; set; }
+        public SeString Name { get; set; }
+        public SeString AlliedNames { get; set; }
+        public LazyRow< UIColor > Color { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             RequiredReputation = parser.ReadColumn< ushort >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );
             AlliedNames = parser.ReadColumn< SeString >( 2 );
-            Color = new LazyRow< UIColor >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            Color = new LazyRow< UIColor >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }
     }
 }

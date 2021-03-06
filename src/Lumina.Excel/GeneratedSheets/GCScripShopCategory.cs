@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GCScripShopCategory", columnHash: 0x9b330d8a )]
-    public class GCScripShopCategory : IExcelRow
+    public class GCScripShopCategory : ExcelRow
     {
         
-        public LazyRow< GrandCompany > GrandCompany;
-        public sbyte Tier;
-        public sbyte SubCategory;
+        public LazyRow< GrandCompany > GrandCompany { get; set; }
+        public sbyte Tier { get; set; }
+        public sbyte SubCategory { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< sbyte >( 0 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< sbyte >( 0 ), language );
             Tier = parser.ReadColumn< sbyte >( 1 );
             SubCategory = parser.ReadColumn< sbyte >( 2 );
         }

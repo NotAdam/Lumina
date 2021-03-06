@@ -7,33 +7,29 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZContent", columnHash: 0x615a9876 )]
-    public class AOZContent : IExcelRow
+    public class AOZContent : ExcelRow
     {
         
-        public ushort StandardFinishTime;
-        public ushort IdealFinishTime;
-        public byte Act1FightType;
-        public ushort Act1;
-        public byte ArenaType1;
-        public byte Act2FightType;
-        public ushort Act2;
-        public byte ArenaType2;
-        public byte Act3FightType;
-        public ushort Act3;
-        public byte ArenaType3;
-        public uint ContentEntry;
-        public byte Order;
-        public ushort GilReward;
-        public ushort AlliedSealsReward;
-        public ushort TomestonesReward;
+        public ushort StandardFinishTime { get; set; }
+        public ushort IdealFinishTime { get; set; }
+        public byte Act1FightType { get; set; }
+        public ushort Act1 { get; set; }
+        public byte ArenaType1 { get; set; }
+        public byte Act2FightType { get; set; }
+        public ushort Act2 { get; set; }
+        public byte ArenaType2 { get; set; }
+        public byte Act3FightType { get; set; }
+        public ushort Act3 { get; set; }
+        public byte ArenaType3 { get; set; }
+        public uint ContentEntry { get; set; }
+        public byte Order { get; set; }
+        public ushort GilReward { get; set; }
+        public ushort AlliedSealsReward { get; set; }
+        public ushort TomestonesReward { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             StandardFinishTime = parser.ReadColumn< ushort >( 0 );
             IdealFinishTime = parser.ReadColumn< ushort >( 1 );

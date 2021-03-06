@@ -1,13 +1,9 @@
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Diagnostics.Contracts;
 using System.IO;
-using System.IO.Compression;
 using System.Reflection;
+using Lumina.Data.Attributes;
 using Lumina.Data.Structs;
-using Lumina.Extensions;
 
 namespace Lumina.Data
 {
@@ -20,7 +16,7 @@ namespace Lumina.Data
 
     public class SqPack
     {
-        private readonly Lumina _Lumina;
+        private readonly GameData _gameData;
 
         /// <summary>
         /// Where the actual file is located on disk
@@ -53,17 +49,14 @@ namespace Lumina.Data
         
         protected readonly object CacheLock = new object();
 
-        internal SqPack( FileInfo file, Lumina lumina )
+        internal SqPack( FileInfo file, GameData gameData )
         {
-            Contract.Requires( file != null );
-            Contract.Requires( file.Exists );
-
             if( !file.Exists )
             {
                 throw new FileNotFoundException( $"SqPack file {file.FullName} could not be found." );
             }
 
-            _Lumina = lumina;
+            _gameData = gameData;
 
             // always init the cache just in case the should cache setting is changed later
             FileCache = new Dictionary< long, WeakReference< FileResource > >();
@@ -112,7 +105,7 @@ namespace Lumina.Data
                 cacheBehaviour = fileOpts.CacheBehaviour;
             }
             
-            if( !_Lumina.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
+            if( !_gameData.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
                 using var ss = new SqPackStream( File );
                 return ss.ReadFile<T>( offset );

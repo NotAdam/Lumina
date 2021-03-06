@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MotionTimeline", columnHash: 0xd5952f72 )]
-    public class MotionTimeline : IExcelRow
+    public class MotionTimeline : ExcelRow
     {
         
-        public SeString Filename;
-        public byte BlendGroup;
-        public bool IsLoop;
-        public bool IsBlinkEnable;
-        public bool IsLipEnable;
+        public SeString Filename { get; set; }
+        public byte BlendGroup { get; set; }
+        public bool IsLoop { get; set; }
+        public bool IsBlinkEnable { get; set; }
+        public bool IsLipEnable { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Filename = parser.ReadColumn< SeString >( 0 );
             BlendGroup = parser.ReadColumn< byte >( 1 );

@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftType", columnHash: 0xb92c9b70 )]
-    public class CraftType : IExcelRow
+    public class CraftType : ExcelRow
     {
         
-        public byte MainPhysical;
-        public byte SubPhysical;
-        public SeString Name;
+        public byte MainPhysical { get; set; }
+        public byte SubPhysical { get; set; }
+        public SeString Name { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             MainPhysical = parser.ReadColumn< byte >( 0 );
             SubPhysical = parser.ReadColumn< byte >( 1 );

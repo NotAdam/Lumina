@@ -7,29 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonItem", columnHash: 0x878768c6 )]
-    public class DeepDungeonItem : IExcelRow
+    public class DeepDungeonItem : ExcelRow
     {
         
-        public uint Icon;
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown6;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public SeString Name;
-        public SeString Tooltip;
-        public LazyRow< Action > Action;
+        public uint Icon { get; set; }
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown6 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public SeString Name { get; set; }
+        public SeString Tooltip { get; set; }
+        public LazyRow< Action > Action { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Icon = parser.ReadColumn< uint >( 0 );
             Singular = parser.ReadColumn< SeString >( 1 );
@@ -42,7 +38,7 @@ namespace Lumina.Excel.GeneratedSheets
             Article = parser.ReadColumn< sbyte >( 8 );
             Name = parser.ReadColumn< SeString >( 9 );
             Tooltip = parser.ReadColumn< SeString >( 10 );
-            Action = new LazyRow< Action >( lumina, parser.ReadColumn< uint >( 11 ), language );
+            Action = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 11 ), language );
         }
     }
 }

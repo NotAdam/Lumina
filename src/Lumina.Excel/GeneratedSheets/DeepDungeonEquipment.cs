@@ -7,28 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonEquipment", columnHash: 0xc638f2bf )]
-    public class DeepDungeonEquipment : IExcelRow
+    public class DeepDungeonEquipment : ExcelRow
     {
         
-        public uint Icon;
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown6;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public SeString Name;
-        public SeString Description;
+        public uint Icon { get; set; }
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown6 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Icon = parser.ReadColumn< uint >( 0 );
             Singular = parser.ReadColumn< SeString >( 1 );

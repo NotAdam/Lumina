@@ -7,36 +7,32 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentMemberType", columnHash: 0x65d5ee00 )]
-    public class ContentMemberType : IExcelRow
+    public class ContentMemberType : ExcelRow
     {
         
-        public bool Unknown0;
-        public byte Unknown1;
-        public bool Unknown2;
-        public bool Unknown3;
-        public byte Unknown4;
-        public byte Unknown5;
-        public byte Unknown6;
-        public byte Unknown7;
-        public byte Unknown8;
-        public byte TanksPerParty;
-        public byte HealersPerParty;
-        public byte MeleesPerParty;
-        public byte RangedPerParty;
-        public byte Unknown54;
-        public bool Unknown14;
-        public bool Unknown15;
-        public bool Unknown16;
-        public bool Unknown17;
-        public bool Unknown18;
+        public bool Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public byte Unknown7 { get; set; }
+        public byte Unknown8 { get; set; }
+        public byte TanksPerParty { get; set; }
+        public byte HealersPerParty { get; set; }
+        public byte MeleesPerParty { get; set; }
+        public byte RangedPerParty { get; set; }
+        public byte Unknown54 { get; set; }
+        public bool Unknown14 { get; set; }
+        public bool Unknown15 { get; set; }
+        public bool Unknown16 { get; set; }
+        public bool Unknown17 { get; set; }
+        public bool Unknown18 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

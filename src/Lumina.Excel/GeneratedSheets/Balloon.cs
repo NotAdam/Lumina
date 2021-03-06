@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Balloon", columnHash: 0x9d1b5f4b )]
-    public class Balloon : IExcelRow
+    public class Balloon : ExcelRow
     {
         
-        public bool Slowly;
-        public SeString Dialogue;
+        public bool Slowly { get; set; }
+        public SeString Dialogue { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Slowly = parser.ReadColumn< bool >( 0 );
             Dialogue = parser.ReadColumn< SeString >( 1 );

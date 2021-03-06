@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PvPTrait", columnHash: 0xdc23efe7 )]
-    public class PvPTrait : IExcelRow
+    public class PvPTrait : ExcelRow
     {
         
-        public LazyRow< Trait > Trait1;
-        public LazyRow< Trait > Trait2;
-        public LazyRow< Trait > Trait3;
+        public LazyRow< Trait > Trait1 { get; set; }
+        public LazyRow< Trait > Trait2 { get; set; }
+        public LazyRow< Trait > Trait3 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Trait1 = new LazyRow< Trait >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            Trait2 = new LazyRow< Trait >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            Trait3 = new LazyRow< Trait >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Trait1 = new LazyRow< Trait >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            Trait2 = new LazyRow< Trait >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            Trait3 = new LazyRow< Trait >( gameData, parser.ReadColumn< ushort >( 2 ), language );
         }
     }
 }

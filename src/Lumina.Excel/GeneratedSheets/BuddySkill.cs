@@ -7,22 +7,18 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BuddySkill", columnHash: 0xe3220ddc )]
-    public class BuddySkill : IExcelRow
+    public class BuddySkill : ExcelRow
     {
         
-        public byte BuddyLevel;
-        public bool IsActive;
-        public ushort Defender;
-        public ushort Attacker;
-        public ushort Healer;
+        public byte BuddyLevel { get; set; }
+        public bool IsActive { get; set; }
+        public ushort Defender { get; set; }
+        public ushort Attacker { get; set; }
+        public ushort Healer { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             BuddyLevel = parser.ReadColumn< byte >( 0 );
             IsActive = parser.ReadColumn< bool >( 1 );

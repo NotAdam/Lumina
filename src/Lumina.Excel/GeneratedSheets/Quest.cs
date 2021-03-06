@@ -7,341 +7,337 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Quest", columnHash: 0x3ca4d6c2 )]
-    public class Quest : IExcelRow
+    public class Quest : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Id;
-        public LazyRow< ExVersion > Expansion;
-        public LazyRow< ClassJobCategory > ClassJobCategory0;
-        public ushort ClassJobLevel0;
-        public byte QuestLevelOffset;
-        public LazyRow< ClassJobCategory > ClassJobCategory1;
-        public ushort ClassJobLevel1;
-        public byte PreviousQuestJoin;
-        public LazyRow< Quest > PreviousQuest0;
-        public byte Unknown10;
-        public LazyRow< Quest > PreviousQuest1;
-        public LazyRow< Quest > PreviousQuest2;
-        public byte QuestLockJoin;
-        public LazyRow< Quest >[] QuestLock;
-        public ushort Header;
-        public byte Unknown17;
-        public byte Unknown18;
-        public LazyRow< ClassJob > ClassJobUnlock;
-        public LazyRow< GrandCompany > GrandCompany;
-        public LazyRow< GrandCompanyRank > GrandCompanyRank;
-        public byte InstanceContentJoin;
-        public LazyRow< InstanceContent >[] InstanceContent;
-        public LazyRow< Festival > Festival;
-        public byte FestivalBegin;
-        public byte FestivalEnd;
-        public ushort BellStart;
-        public ushort BellEnd;
-        public LazyRow< BeastTribe > BeastTribe;
-        public LazyRow< BeastReputationRank > BeastReputationRank;
-        public ushort BeastReputationValue;
-        public byte Unknown34;
-        public byte Unknown35;
-        public LazyRow< Mount > MountRequired;
-        public bool IsHouseRequired;
-        public LazyRow< DeliveryQuest > DeliveryQuest;
-        public uint IssuerStart;
-        public LazyRow< Level > IssuerLocation;
-        public LazyRow< Behavior > ClientBehavior;
-        public uint TargetEnd;
-        public bool IsRepeatable;
-        public byte RepeatIntervalType;
-        public LazyRow< QuestRepeatFlag > QuestRepeatFlag;
-        public bool CanCancel;
-        public byte Type;
-        public LazyRow< QuestClassJobSupply > QuestClassJobSupply;
-        public SeString[] ScriptInstruction;
-        public uint[] ScriptArg;
-        public byte[] ActorSpawnSeq;
-        public byte[] ActorDespawnSeq;
-        public uint[] Listener;
-        public byte[] QuestUInt8A;
-        public byte[] QuestUInt8B;
-        public byte[] ConditionType;
-        public uint[] ConditionValue;
-        public byte[] ConditionOperator;
-        public ushort[] Behavior;
-        public bool[] VisibleBool;
-        public bool[] ConditionBool;
-        public bool[] ItemBool;
-        public bool[] AnnounceBool;
-        public bool[] BehaviorBool;
-        public bool[] AcceptBool;
-        public bool[] QualifiedBool;
-        public bool[] CanTargetBool;
-        public byte[] ToDoCompleteSeq;
-        public byte[] ToDoQty;
-        public LazyRow< Level >[] ToDoMainLocation;
-        public uint[] Unknown1245;
-        public uint Unknown1252;
-        public uint Unknown1253;
-        public uint Unknown1254;
-        public uint Unknown1255;
-        public uint Unknown1256;
-        public uint Unknown1257;
-        public uint Unknown1258;
-        public uint Unknown1259;
-        public uint Unknown1260;
-        public uint Unknown1261;
-        public uint Unknown1262;
-        public uint Unknown1263;
-        public uint Unknown1264;
-        public uint Unknown1265;
-        public uint Unknown1266;
-        public uint Unknown1267;
-        public uint Unknown1268;
-        public uint Unknown1269;
-        public uint Unknown1270;
-        public uint Unknown1271;
-        public uint Unknown1272;
-        public uint Unknown1273;
-        public uint Unknown1274;
-        public uint Unknown1275;
-        public uint Unknown1276;
-        public uint Unknown1277;
-        public uint Unknown1278;
-        public uint Unknown1279;
-        public uint Unknown1280;
-        public uint Unknown1281;
-        public uint Unknown1282;
-        public uint Unknown1283;
-        public uint Unknown1284;
-        public uint Unknown1285;
-        public uint Unknown1286;
-        public uint Unknown1287;
-        public uint Unknown1288;
-        public uint Unknown1289;
-        public uint Unknown1290;
-        public uint Unknown1291;
-        public uint Unknown1292;
-        public uint Unknown1293;
-        public uint Unknown1294;
-        public uint Unknown1295;
-        public uint Unknown1296;
-        public uint Unknown1297;
-        public uint Unknown1298;
-        public uint Unknown1299;
-        public uint Unknown1300;
-        public uint Unknown1301;
-        public uint Unknown1302;
-        public uint Unknown1303;
-        public uint Unknown1304;
-        public uint Unknown1305;
-        public uint Unknown1306;
-        public uint Unknown1307;
-        public uint Unknown1308;
-        public uint Unknown1309;
-        public uint Unknown1310;
-        public uint Unknown1311;
-        public uint Unknown1312;
-        public uint Unknown1313;
-        public uint Unknown1314;
-        public uint Unknown1315;
-        public uint Unknown1316;
-        public uint Unknown1317;
-        public uint Unknown1318;
-        public uint Unknown1319;
-        public uint Unknown1320;
-        public uint Unknown1321;
-        public uint Unknown1322;
-        public uint Unknown1323;
-        public uint Unknown1324;
-        public uint Unknown1325;
-        public uint Unknown1326;
-        public uint Unknown1327;
-        public uint Unknown1328;
-        public uint Unknown1329;
-        public uint Unknown1330;
-        public uint Unknown1331;
-        public uint Unknown1332;
-        public uint Unknown1333;
-        public uint Unknown1334;
-        public uint Unknown1335;
-        public uint Unknown1336;
-        public uint Unknown1337;
-        public uint Unknown1338;
-        public uint Unknown1339;
-        public uint Unknown1340;
-        public uint Unknown1341;
-        public uint Unknown1342;
-        public uint Unknown1343;
-        public uint Unknown1344;
-        public uint Unknown1345;
-        public uint Unknown1346;
-        public uint Unknown1347;
-        public uint Unknown1348;
-        public uint Unknown1349;
-        public uint Unknown1350;
-        public uint Unknown1351;
-        public uint Unknown1352;
-        public uint Unknown1353;
-        public uint Unknown1354;
-        public uint Unknown1355;
-        public uint Unknown1356;
-        public uint Unknown1357;
-        public uint Unknown1358;
-        public uint Unknown1359;
-        public uint Unknown1360;
-        public uint Unknown1361;
-        public uint Unknown1362;
-        public uint Unknown1363;
-        public uint Unknown1364;
-        public uint Unknown1365;
-        public uint Unknown1366;
-        public uint Unknown1367;
-        public uint Unknown1368;
-        public uint Unknown1369;
-        public uint Unknown1370;
-        public uint Unknown1371;
-        public uint Unknown1372;
-        public uint Unknown1373;
-        public uint Unknown1374;
-        public uint Unknown1375;
-        public uint Unknown1376;
-        public uint Unknown1377;
-        public uint Unknown1378;
-        public uint Unknown1379;
-        public uint Unknown1380;
-        public uint Unknown1381;
-        public uint Unknown1382;
-        public uint Unknown1383;
-        public uint Unknown1384;
-        public uint Unknown1385;
-        public uint Unknown1386;
-        public uint Unknown1387;
-        public uint Unknown1388;
-        public uint Unknown1389;
-        public uint Unknown1390;
-        public uint Unknown1391;
-        public uint Unknown1392;
-        public uint Unknown1393;
-        public uint Unknown1394;
-        public uint Unknown1395;
-        public uint Unknown1396;
-        public uint Unknown1397;
-        public uint Unknown1398;
-        public uint Unknown1399;
-        public uint Unknown1400;
-        public uint Unknown1401;
-        public uint Unknown1402;
-        public uint Unknown1403;
-        public uint Unknown1404;
-        public uint Unknown1405;
-        public uint Unknown1406;
-        public uint Unknown1407;
-        public uint Unknown1408;
-        public uint Unknown1409;
-        public uint Unknown1410;
-        public uint Unknown1411;
-        public uint Unknown1412;
-        public byte[] CountableNum;
-        public byte LevelMax;
-        public LazyRow< ClassJob > ClassJobRequired;
-        public byte Unknown1439;
-        public ushort ExpFactor;
-        public uint GilReward;
-        public uint Unknown1442;
-        public ushort GCSeals;
-        public LazyRow< Item >[] ItemCatalyst;
-        public byte[] ItemCountCatalyst;
-        public byte ItemRewardType;
-        public uint[] ItemReward0;
-        public byte[] ItemCountReward0;
-        public byte Unknown1464;
-        public LazyRow< Stain >[] StainReward0;
-        public byte Unknown1471;
-        public LazyRow< Item >[] ItemReward1;
-        public byte[] ItemCountReward1;
-        public bool[] IsHQReward1;
-        public LazyRow< Stain >[] StainReward1;
-        public LazyRow< Emote > EmoteReward;
-        public LazyRow< Action > ActionReward;
-        public LazyRow< GeneralAction >[] GeneralActionReward;
-        public LazyRow< Action > SystemReward0;
-        public LazyRow< QuestRewardOther > OtherReward;
-        public LazyRow< Action > SystemReward1;
-        public LazyRow< Action > GCTypeReward;
-        public LazyRow< InstanceContent > InstanceContentUnlock;
-        public byte Unknown1501;
-        public byte TomestoneReward;
-        public byte TomestoneCountReward;
-        public byte ReputationReward;
-        public LazyRow< PlaceName > PlaceName;
-        public LazyRow< JournalGenre > JournalGenre;
-        public byte Unknown1507;
-        public uint Icon;
-        public uint IconSpecial;
-        public bool Introduction;
-        public bool HideOfferIcon;
-        public LazyRow< EventIconType > EventIconType;
-        public byte Unknown1513;
-        public ushort SortKey;
-        public bool Unknown54;
+        public SeString Name { get; set; }
+        public SeString Id { get; set; }
+        public LazyRow< ExVersion > Expansion { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory0 { get; set; }
+        public ushort ClassJobLevel0 { get; set; }
+        public byte QuestLevelOffset { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory1 { get; set; }
+        public ushort ClassJobLevel1 { get; set; }
+        public byte PreviousQuestJoin { get; set; }
+        public LazyRow< Quest > PreviousQuest0 { get; set; }
+        public byte Unknown10 { get; set; }
+        public LazyRow< Quest > PreviousQuest1 { get; set; }
+        public LazyRow< Quest > PreviousQuest2 { get; set; }
+        public byte QuestLockJoin { get; set; }
+        public LazyRow< Quest >[] QuestLock { get; set; }
+        public ushort Header { get; set; }
+        public byte Unknown17 { get; set; }
+        public byte Unknown18 { get; set; }
+        public LazyRow< ClassJob > ClassJobUnlock { get; set; }
+        public LazyRow< GrandCompany > GrandCompany { get; set; }
+        public LazyRow< GrandCompanyRank > GrandCompanyRank { get; set; }
+        public byte InstanceContentJoin { get; set; }
+        public LazyRow< InstanceContent >[] InstanceContent { get; set; }
+        public LazyRow< Festival > Festival { get; set; }
+        public byte FestivalBegin { get; set; }
+        public byte FestivalEnd { get; set; }
+        public ushort BellStart { get; set; }
+        public ushort BellEnd { get; set; }
+        public LazyRow< BeastTribe > BeastTribe { get; set; }
+        public LazyRow< BeastReputationRank > BeastReputationRank { get; set; }
+        public ushort BeastReputationValue { get; set; }
+        public byte Unknown34 { get; set; }
+        public byte Unknown35 { get; set; }
+        public LazyRow< Mount > MountRequired { get; set; }
+        public bool IsHouseRequired { get; set; }
+        public LazyRow< DeliveryQuest > DeliveryQuest { get; set; }
+        public uint IssuerStart { get; set; }
+        public LazyRow< Level > IssuerLocation { get; set; }
+        public LazyRow< Behavior > ClientBehavior { get; set; }
+        public uint TargetEnd { get; set; }
+        public bool IsRepeatable { get; set; }
+        public byte RepeatIntervalType { get; set; }
+        public LazyRow< QuestRepeatFlag > QuestRepeatFlag { get; set; }
+        public bool CanCancel { get; set; }
+        public byte Type { get; set; }
+        public LazyRow< QuestClassJobSupply > QuestClassJobSupply { get; set; }
+        public SeString[] ScriptInstruction { get; set; }
+        public uint[] ScriptArg { get; set; }
+        public byte[] ActorSpawnSeq { get; set; }
+        public byte[] ActorDespawnSeq { get; set; }
+        public uint[] Listener { get; set; }
+        public byte[] QuestUInt8A { get; set; }
+        public byte[] QuestUInt8B { get; set; }
+        public byte[] ConditionType { get; set; }
+        public uint[] ConditionValue { get; set; }
+        public byte[] ConditionOperator { get; set; }
+        public ushort[] Behavior { get; set; }
+        public bool[] VisibleBool { get; set; }
+        public bool[] ConditionBool { get; set; }
+        public bool[] ItemBool { get; set; }
+        public bool[] AnnounceBool { get; set; }
+        public bool[] BehaviorBool { get; set; }
+        public bool[] AcceptBool { get; set; }
+        public bool[] QualifiedBool { get; set; }
+        public bool[] CanTargetBool { get; set; }
+        public byte[] ToDoCompleteSeq { get; set; }
+        public byte[] ToDoQty { get; set; }
+        public LazyRow< Level >[] ToDoMainLocation { get; set; }
+        public uint[] Unknown1245 { get; set; }
+        public uint Unknown1252 { get; set; }
+        public uint Unknown1253 { get; set; }
+        public uint Unknown1254 { get; set; }
+        public uint Unknown1255 { get; set; }
+        public uint Unknown1256 { get; set; }
+        public uint Unknown1257 { get; set; }
+        public uint Unknown1258 { get; set; }
+        public uint Unknown1259 { get; set; }
+        public uint Unknown1260 { get; set; }
+        public uint Unknown1261 { get; set; }
+        public uint Unknown1262 { get; set; }
+        public uint Unknown1263 { get; set; }
+        public uint Unknown1264 { get; set; }
+        public uint Unknown1265 { get; set; }
+        public uint Unknown1266 { get; set; }
+        public uint Unknown1267 { get; set; }
+        public uint Unknown1268 { get; set; }
+        public uint Unknown1269 { get; set; }
+        public uint Unknown1270 { get; set; }
+        public uint Unknown1271 { get; set; }
+        public uint Unknown1272 { get; set; }
+        public uint Unknown1273 { get; set; }
+        public uint Unknown1274 { get; set; }
+        public uint Unknown1275 { get; set; }
+        public uint Unknown1276 { get; set; }
+        public uint Unknown1277 { get; set; }
+        public uint Unknown1278 { get; set; }
+        public uint Unknown1279 { get; set; }
+        public uint Unknown1280 { get; set; }
+        public uint Unknown1281 { get; set; }
+        public uint Unknown1282 { get; set; }
+        public uint Unknown1283 { get; set; }
+        public uint Unknown1284 { get; set; }
+        public uint Unknown1285 { get; set; }
+        public uint Unknown1286 { get; set; }
+        public uint Unknown1287 { get; set; }
+        public uint Unknown1288 { get; set; }
+        public uint Unknown1289 { get; set; }
+        public uint Unknown1290 { get; set; }
+        public uint Unknown1291 { get; set; }
+        public uint Unknown1292 { get; set; }
+        public uint Unknown1293 { get; set; }
+        public uint Unknown1294 { get; set; }
+        public uint Unknown1295 { get; set; }
+        public uint Unknown1296 { get; set; }
+        public uint Unknown1297 { get; set; }
+        public uint Unknown1298 { get; set; }
+        public uint Unknown1299 { get; set; }
+        public uint Unknown1300 { get; set; }
+        public uint Unknown1301 { get; set; }
+        public uint Unknown1302 { get; set; }
+        public uint Unknown1303 { get; set; }
+        public uint Unknown1304 { get; set; }
+        public uint Unknown1305 { get; set; }
+        public uint Unknown1306 { get; set; }
+        public uint Unknown1307 { get; set; }
+        public uint Unknown1308 { get; set; }
+        public uint Unknown1309 { get; set; }
+        public uint Unknown1310 { get; set; }
+        public uint Unknown1311 { get; set; }
+        public uint Unknown1312 { get; set; }
+        public uint Unknown1313 { get; set; }
+        public uint Unknown1314 { get; set; }
+        public uint Unknown1315 { get; set; }
+        public uint Unknown1316 { get; set; }
+        public uint Unknown1317 { get; set; }
+        public uint Unknown1318 { get; set; }
+        public uint Unknown1319 { get; set; }
+        public uint Unknown1320 { get; set; }
+        public uint Unknown1321 { get; set; }
+        public uint Unknown1322 { get; set; }
+        public uint Unknown1323 { get; set; }
+        public uint Unknown1324 { get; set; }
+        public uint Unknown1325 { get; set; }
+        public uint Unknown1326 { get; set; }
+        public uint Unknown1327 { get; set; }
+        public uint Unknown1328 { get; set; }
+        public uint Unknown1329 { get; set; }
+        public uint Unknown1330 { get; set; }
+        public uint Unknown1331 { get; set; }
+        public uint Unknown1332 { get; set; }
+        public uint Unknown1333 { get; set; }
+        public uint Unknown1334 { get; set; }
+        public uint Unknown1335 { get; set; }
+        public uint Unknown1336 { get; set; }
+        public uint Unknown1337 { get; set; }
+        public uint Unknown1338 { get; set; }
+        public uint Unknown1339 { get; set; }
+        public uint Unknown1340 { get; set; }
+        public uint Unknown1341 { get; set; }
+        public uint Unknown1342 { get; set; }
+        public uint Unknown1343 { get; set; }
+        public uint Unknown1344 { get; set; }
+        public uint Unknown1345 { get; set; }
+        public uint Unknown1346 { get; set; }
+        public uint Unknown1347 { get; set; }
+        public uint Unknown1348 { get; set; }
+        public uint Unknown1349 { get; set; }
+        public uint Unknown1350 { get; set; }
+        public uint Unknown1351 { get; set; }
+        public uint Unknown1352 { get; set; }
+        public uint Unknown1353 { get; set; }
+        public uint Unknown1354 { get; set; }
+        public uint Unknown1355 { get; set; }
+        public uint Unknown1356 { get; set; }
+        public uint Unknown1357 { get; set; }
+        public uint Unknown1358 { get; set; }
+        public uint Unknown1359 { get; set; }
+        public uint Unknown1360 { get; set; }
+        public uint Unknown1361 { get; set; }
+        public uint Unknown1362 { get; set; }
+        public uint Unknown1363 { get; set; }
+        public uint Unknown1364 { get; set; }
+        public uint Unknown1365 { get; set; }
+        public uint Unknown1366 { get; set; }
+        public uint Unknown1367 { get; set; }
+        public uint Unknown1368 { get; set; }
+        public uint Unknown1369 { get; set; }
+        public uint Unknown1370 { get; set; }
+        public uint Unknown1371 { get; set; }
+        public uint Unknown1372 { get; set; }
+        public uint Unknown1373 { get; set; }
+        public uint Unknown1374 { get; set; }
+        public uint Unknown1375 { get; set; }
+        public uint Unknown1376 { get; set; }
+        public uint Unknown1377 { get; set; }
+        public uint Unknown1378 { get; set; }
+        public uint Unknown1379 { get; set; }
+        public uint Unknown1380 { get; set; }
+        public uint Unknown1381 { get; set; }
+        public uint Unknown1382 { get; set; }
+        public uint Unknown1383 { get; set; }
+        public uint Unknown1384 { get; set; }
+        public uint Unknown1385 { get; set; }
+        public uint Unknown1386 { get; set; }
+        public uint Unknown1387 { get; set; }
+        public uint Unknown1388 { get; set; }
+        public uint Unknown1389 { get; set; }
+        public uint Unknown1390 { get; set; }
+        public uint Unknown1391 { get; set; }
+        public uint Unknown1392 { get; set; }
+        public uint Unknown1393 { get; set; }
+        public uint Unknown1394 { get; set; }
+        public uint Unknown1395 { get; set; }
+        public uint Unknown1396 { get; set; }
+        public uint Unknown1397 { get; set; }
+        public uint Unknown1398 { get; set; }
+        public uint Unknown1399 { get; set; }
+        public uint Unknown1400 { get; set; }
+        public uint Unknown1401 { get; set; }
+        public uint Unknown1402 { get; set; }
+        public uint Unknown1403 { get; set; }
+        public uint Unknown1404 { get; set; }
+        public uint Unknown1405 { get; set; }
+        public uint Unknown1406 { get; set; }
+        public uint Unknown1407 { get; set; }
+        public uint Unknown1408 { get; set; }
+        public uint Unknown1409 { get; set; }
+        public uint Unknown1410 { get; set; }
+        public uint Unknown1411 { get; set; }
+        public uint Unknown1412 { get; set; }
+        public byte[] CountableNum { get; set; }
+        public byte LevelMax { get; set; }
+        public LazyRow< ClassJob > ClassJobRequired { get; set; }
+        public byte Unknown1439 { get; set; }
+        public ushort ExpFactor { get; set; }
+        public uint GilReward { get; set; }
+        public uint Unknown1442 { get; set; }
+        public ushort GCSeals { get; set; }
+        public LazyRow< Item >[] ItemCatalyst { get; set; }
+        public byte[] ItemCountCatalyst { get; set; }
+        public byte ItemRewardType { get; set; }
+        public uint[] ItemReward0 { get; set; }
+        public byte[] ItemCountReward0 { get; set; }
+        public byte Unknown1464 { get; set; }
+        public LazyRow< Stain >[] StainReward0 { get; set; }
+        public byte Unknown1471 { get; set; }
+        public LazyRow< Item >[] ItemReward1 { get; set; }
+        public byte[] ItemCountReward1 { get; set; }
+        public bool[] IsHQReward1 { get; set; }
+        public LazyRow< Stain >[] StainReward1 { get; set; }
+        public LazyRow< Emote > EmoteReward { get; set; }
+        public LazyRow< Action > ActionReward { get; set; }
+        public LazyRow< GeneralAction >[] GeneralActionReward { get; set; }
+        public LazyRow< Action > SystemReward0 { get; set; }
+        public LazyRow< QuestRewardOther > OtherReward { get; set; }
+        public LazyRow< Action > SystemReward1 { get; set; }
+        public LazyRow< Action > GCTypeReward { get; set; }
+        public LazyRow< InstanceContent > InstanceContentUnlock { get; set; }
+        public byte Unknown1501 { get; set; }
+        public byte TomestoneReward { get; set; }
+        public byte TomestoneCountReward { get; set; }
+        public byte ReputationReward { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public LazyRow< JournalGenre > JournalGenre { get; set; }
+        public byte Unknown1507 { get; set; }
+        public uint Icon { get; set; }
+        public uint IconSpecial { get; set; }
+        public bool Introduction { get; set; }
+        public bool HideOfferIcon { get; set; }
+        public LazyRow< EventIconType > EventIconType { get; set; }
+        public byte Unknown1513 { get; set; }
+        public ushort SortKey { get; set; }
+        public bool Unknown54 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Id = parser.ReadColumn< SeString >( 1 );
-            Expansion = new LazyRow< ExVersion >( lumina, parser.ReadColumn< byte >( 2 ), language );
-            ClassJobCategory0 = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 3 ), language );
+            Expansion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 2 ), language );
+            ClassJobCategory0 = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 3 ), language );
             ClassJobLevel0 = parser.ReadColumn< ushort >( 4 );
             QuestLevelOffset = parser.ReadColumn< byte >( 5 );
-            ClassJobCategory1 = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 6 ), language );
+            ClassJobCategory1 = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 6 ), language );
             ClassJobLevel1 = parser.ReadColumn< ushort >( 7 );
             PreviousQuestJoin = parser.ReadColumn< byte >( 8 );
-            PreviousQuest0 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 9 ), language );
+            PreviousQuest0 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 9 ), language );
             Unknown10 = parser.ReadColumn< byte >( 10 );
-            PreviousQuest1 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 11 ), language );
-            PreviousQuest2 = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 12 ), language );
+            PreviousQuest1 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 11 ), language );
+            PreviousQuest2 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 12 ), language );
             QuestLockJoin = parser.ReadColumn< byte >( 13 );
             QuestLock = new LazyRow< Quest >[ 2 ];
             for( var i = 0; i < 2; i++ )
-                QuestLock[ i ] = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 14 + i ), language );
+                QuestLock[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 14 + i ), language );
             Header = parser.ReadColumn< ushort >( 16 );
             Unknown17 = parser.ReadColumn< byte >( 17 );
             Unknown18 = parser.ReadColumn< byte >( 18 );
-            ClassJobUnlock = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 19 ), language );
-            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< byte >( 20 ), language );
-            GrandCompanyRank = new LazyRow< GrandCompanyRank >( lumina, parser.ReadColumn< byte >( 21 ), language );
+            ClassJobUnlock = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 19 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< byte >( 20 ), language );
+            GrandCompanyRank = new LazyRow< GrandCompanyRank >( gameData, parser.ReadColumn< byte >( 21 ), language );
             InstanceContentJoin = parser.ReadColumn< byte >( 22 );
             InstanceContent = new LazyRow< InstanceContent >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                InstanceContent[ i ] = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< uint >( 23 + i ), language );
-            Festival = new LazyRow< Festival >( lumina, parser.ReadColumn< byte >( 26 ), language );
+                InstanceContent[ i ] = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< uint >( 23 + i ), language );
+            Festival = new LazyRow< Festival >( gameData, parser.ReadColumn< byte >( 26 ), language );
             FestivalBegin = parser.ReadColumn< byte >( 27 );
             FestivalEnd = parser.ReadColumn< byte >( 28 );
             BellStart = parser.ReadColumn< ushort >( 29 );
             BellEnd = parser.ReadColumn< ushort >( 30 );
-            BeastTribe = new LazyRow< BeastTribe >( lumina, parser.ReadColumn< byte >( 31 ), language );
-            BeastReputationRank = new LazyRow< BeastReputationRank >( lumina, parser.ReadColumn< byte >( 32 ), language );
+            BeastTribe = new LazyRow< BeastTribe >( gameData, parser.ReadColumn< byte >( 31 ), language );
+            BeastReputationRank = new LazyRow< BeastReputationRank >( gameData, parser.ReadColumn< byte >( 32 ), language );
             BeastReputationValue = parser.ReadColumn< ushort >( 33 );
             Unknown34 = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
-            MountRequired = new LazyRow< Mount >( lumina, parser.ReadColumn< int >( 36 ), language );
+            MountRequired = new LazyRow< Mount >( gameData, parser.ReadColumn< int >( 36 ), language );
             IsHouseRequired = parser.ReadColumn< bool >( 37 );
-            DeliveryQuest = new LazyRow< DeliveryQuest >( lumina, parser.ReadColumn< byte >( 38 ), language );
+            DeliveryQuest = new LazyRow< DeliveryQuest >( gameData, parser.ReadColumn< byte >( 38 ), language );
             IssuerStart = parser.ReadColumn< uint >( 39 );
-            IssuerLocation = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 40 ), language );
-            ClientBehavior = new LazyRow< Behavior >( lumina, parser.ReadColumn< ushort >( 41 ), language );
+            IssuerLocation = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 40 ), language );
+            ClientBehavior = new LazyRow< Behavior >( gameData, parser.ReadColumn< ushort >( 41 ), language );
             TargetEnd = parser.ReadColumn< uint >( 42 );
             IsRepeatable = parser.ReadColumn< bool >( 43 );
             RepeatIntervalType = parser.ReadColumn< byte >( 44 );
-            QuestRepeatFlag = new LazyRow< QuestRepeatFlag >( lumina, parser.ReadColumn< byte >( 45 ), language );
+            QuestRepeatFlag = new LazyRow< QuestRepeatFlag >( gameData, parser.ReadColumn< byte >( 45 ), language );
             CanCancel = parser.ReadColumn< bool >( 46 );
             Type = parser.ReadColumn< byte >( 47 );
-            QuestClassJobSupply = new LazyRow< QuestClassJobSupply >( lumina, parser.ReadColumn< ushort >( 48 ), language );
+            QuestClassJobSupply = new LazyRow< QuestClassJobSupply >( gameData, parser.ReadColumn< ushort >( 48 ), language );
             ScriptInstruction = new SeString[ 50 ];
             for( var i = 0; i < 50; i++ )
                 ScriptInstruction[ i ] = parser.ReadColumn< SeString >( 49 + i );
@@ -407,7 +403,7 @@ namespace Lumina.Excel.GeneratedSheets
                 ToDoQty[ i ] = parser.ReadColumn< byte >( 1197 + i );
             ToDoMainLocation = new LazyRow< Level >[ 24 ];
             for( var i = 0; i < 24; i++ )
-                ToDoMainLocation[ i ] = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 1221 + i ), language );
+                ToDoMainLocation[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 1221 + i ), language );
             Unknown1245 = new uint[ 7 ];
             for( var i = 0; i < 7; i++ )
                 Unknown1245[ i ] = parser.ReadColumn< uint >( 1245 + i );
@@ -576,7 +572,7 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 24; i++ )
                 CountableNum[ i ] = parser.ReadColumn< byte >( 1413 + i );
             LevelMax = parser.ReadColumn< byte >( 1437 );
-            ClassJobRequired = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 1438 ), language );
+            ClassJobRequired = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 1438 ), language );
             Unknown1439 = parser.ReadColumn< byte >( 1439 );
             ExpFactor = parser.ReadColumn< ushort >( 1440 );
             GilReward = parser.ReadColumn< uint >( 1441 );
@@ -584,7 +580,7 @@ namespace Lumina.Excel.GeneratedSheets
             GCSeals = parser.ReadColumn< ushort >( 1443 );
             ItemCatalyst = new LazyRow< Item >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                ItemCatalyst[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< byte >( 1444 + i ), language );
+                ItemCatalyst[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< byte >( 1444 + i ), language );
             ItemCountCatalyst = new byte[ 3 ];
             for( var i = 0; i < 3; i++ )
                 ItemCountCatalyst[ i ] = parser.ReadColumn< byte >( 1447 + i );
@@ -598,11 +594,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1464 = parser.ReadColumn< byte >( 1464 );
             StainReward0 = new LazyRow< Stain >[ 6 ];
             for( var i = 0; i < 6; i++ )
-                StainReward0[ i ] = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 1465 + i ), language );
+                StainReward0[ i ] = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 1465 + i ), language );
             Unknown1471 = parser.ReadColumn< byte >( 1471 );
             ItemReward1 = new LazyRow< Item >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                ItemReward1[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1472 + i ), language );
+                ItemReward1[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 1472 + i ), language );
             ItemCountReward1 = new byte[ 5 ];
             for( var i = 0; i < 5; i++ )
                 ItemCountReward1[ i ] = parser.ReadColumn< byte >( 1477 + i );
@@ -611,29 +607,29 @@ namespace Lumina.Excel.GeneratedSheets
                 IsHQReward1[ i ] = parser.ReadColumn< bool >( 1482 + i );
             StainReward1 = new LazyRow< Stain >[ 5 ];
             for( var i = 0; i < 5; i++ )
-                StainReward1[ i ] = new LazyRow< Stain >( lumina, parser.ReadColumn< byte >( 1487 + i ), language );
-            EmoteReward = new LazyRow< Emote >( lumina, parser.ReadColumn< byte >( 1492 ), language );
-            ActionReward = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1493 ), language );
+                StainReward1[ i ] = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 1487 + i ), language );
+            EmoteReward = new LazyRow< Emote >( gameData, parser.ReadColumn< byte >( 1492 ), language );
+            ActionReward = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 1493 ), language );
             GeneralActionReward = new LazyRow< GeneralAction >[ 2 ];
             for( var i = 0; i < 2; i++ )
-                GeneralActionReward[ i ] = new LazyRow< GeneralAction >( lumina, parser.ReadColumn< byte >( 1494 + i ), language );
-            SystemReward0 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1496 ), language );
-            OtherReward = new LazyRow< QuestRewardOther >( lumina, parser.ReadColumn< byte >( 1497 ), language );
-            SystemReward1 = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1498 ), language );
-            GCTypeReward = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 1499 ), language );
-            InstanceContentUnlock = new LazyRow< InstanceContent >( lumina, parser.ReadColumn< uint >( 1500 ), language );
+                GeneralActionReward[ i ] = new LazyRow< GeneralAction >( gameData, parser.ReadColumn< byte >( 1494 + i ), language );
+            SystemReward0 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 1496 ), language );
+            OtherReward = new LazyRow< QuestRewardOther >( gameData, parser.ReadColumn< byte >( 1497 ), language );
+            SystemReward1 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 1498 ), language );
+            GCTypeReward = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 1499 ), language );
+            InstanceContentUnlock = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< uint >( 1500 ), language );
             Unknown1501 = parser.ReadColumn< byte >( 1501 );
             TomestoneReward = parser.ReadColumn< byte >( 1502 );
             TomestoneCountReward = parser.ReadColumn< byte >( 1503 );
             ReputationReward = parser.ReadColumn< byte >( 1504 );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 1505 ), language );
-            JournalGenre = new LazyRow< JournalGenre >( lumina, parser.ReadColumn< byte >( 1506 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 1505 ), language );
+            JournalGenre = new LazyRow< JournalGenre >( gameData, parser.ReadColumn< byte >( 1506 ), language );
             Unknown1507 = parser.ReadColumn< byte >( 1507 );
             Icon = parser.ReadColumn< uint >( 1508 );
             IconSpecial = parser.ReadColumn< uint >( 1509 );
             Introduction = parser.ReadColumn< bool >( 1510 );
             HideOfferIcon = parser.ReadColumn< bool >( 1511 );
-            EventIconType = new LazyRow< EventIconType >( lumina, parser.ReadColumn< byte >( 1512 ), language );
+            EventIconType = new LazyRow< EventIconType >( gameData, parser.ReadColumn< byte >( 1512 ), language );
             Unknown1513 = parser.ReadColumn< byte >( 1513 );
             SortKey = parser.ReadColumn< ushort >( 1514 );
             Unknown54 = parser.ReadColumn< bool >( 1515 );

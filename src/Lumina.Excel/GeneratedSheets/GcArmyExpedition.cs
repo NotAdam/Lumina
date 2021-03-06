@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GcArmyExpedition", columnHash: 0x852cc288 )]
-    public class GcArmyExpedition : IExcelRow
+    public class GcArmyExpedition : ExcelRow
     {
         public struct UnkStruct10Struct
         {
@@ -46,33 +46,29 @@ namespace Lumina.Excel.GeneratedSheets
             public byte PercentAllMet;
         }
         
-        public byte RequiredFlag;
-        public byte UnlockFlag;
-        public byte RequiredLevel;
-        public ushort RequiredSeals;
-        public uint RewardExperience;
-        public byte PercentBase;
-        public byte Unknown6;
-        public LazyRow< GcArmyExpeditionType > GcArmyExpeditionType;
-        public SeString Name;
-        public SeString Description;
-        public UnkStruct10Struct[] UnkStruct10;
-        public UnkStruct16Struct[] UnkStruct16;
-        public UnkStruct22Struct[] UnkStruct22;
-        public UnkStruct28Struct[] UnkStruct28;
-        public UnkStruct34Struct[] UnkStruct34;
-        public UnkStruct40Struct[] UnkStruct40;
-        public UnkStruct46Struct[] UnkStruct46;
-        public UnkStruct52Struct[] UnkStruct52;
-        public UnkStruct58Struct[] UnkStruct58;
+        public byte RequiredFlag { get; set; }
+        public byte UnlockFlag { get; set; }
+        public byte RequiredLevel { get; set; }
+        public ushort RequiredSeals { get; set; }
+        public uint RewardExperience { get; set; }
+        public byte PercentBase { get; set; }
+        public byte Unknown6 { get; set; }
+        public LazyRow< GcArmyExpeditionType > GcArmyExpeditionType { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public UnkStruct10Struct[] UnkStruct10 { get; set; }
+        public UnkStruct16Struct[] UnkStruct16 { get; set; }
+        public UnkStruct22Struct[] UnkStruct22 { get; set; }
+        public UnkStruct28Struct[] UnkStruct28 { get; set; }
+        public UnkStruct34Struct[] UnkStruct34 { get; set; }
+        public UnkStruct40Struct[] UnkStruct40 { get; set; }
+        public UnkStruct46Struct[] UnkStruct46 { get; set; }
+        public UnkStruct52Struct[] UnkStruct52 { get; set; }
+        public UnkStruct58Struct[] UnkStruct58 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             RequiredFlag = parser.ReadColumn< byte >( 0 );
             UnlockFlag = parser.ReadColumn< byte >( 1 );
@@ -81,7 +77,7 @@ namespace Lumina.Excel.GeneratedSheets
             RewardExperience = parser.ReadColumn< uint >( 4 );
             PercentBase = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
-            GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( lumina, parser.ReadColumn< byte >( 7 ), language );
+            GcArmyExpeditionType = new LazyRow< GcArmyExpeditionType >( gameData, parser.ReadColumn< byte >( 7 ), language );
             Name = parser.ReadColumn< SeString >( 8 );
             Description = parser.ReadColumn< SeString >( 9 );
             UnkStruct10 = new UnkStruct10Struct[ 6 ];

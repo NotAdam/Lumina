@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDInfoBoardArticleTransient", columnHash: 0x11a44a12 )]
-    public class HWDInfoBoardArticleTransient : IExcelRow
+    public class HWDInfoBoardArticleTransient : ExcelRow
     {
         
-        public uint Image;
-        public SeString Text;
-        public SeString NpcName;
+        public uint Image { get; set; }
+        public SeString Text { get; set; }
+        public SeString NpcName { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Image = parser.ReadColumn< uint >( 0 );
             Text = parser.ReadColumn< SeString >( 1 );

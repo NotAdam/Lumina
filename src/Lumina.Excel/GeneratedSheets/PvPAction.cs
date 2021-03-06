@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PvPAction", columnHash: 0x3818ca1d )]
-    public class PvPAction : IExcelRow
+    public class PvPAction : ExcelRow
     {
         
-        public LazyRow< Action > Action;
-        public byte Unknown1;
-        public ushort Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public bool[] GrandCompany;
-        public byte Unknown8;
+        public LazyRow< Action > Action { get; set; }
+        public byte Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public bool[] GrandCompany { get; set; }
+        public byte Unknown8 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Action = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            Action = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );

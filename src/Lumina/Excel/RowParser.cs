@@ -2,7 +2,6 @@ using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
@@ -26,6 +25,11 @@ namespace Lumina.Excel
         public uint RowCount => _rowHeader.RowCount;
 
         private MemoryStream Stream => _dataFile.FileStream;
+
+        /// <summary>
+        /// Provides access to the base data generated for a sheet
+        /// </summary>
+        public ExcelSheetImpl Sheet => _sheet;
 
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
@@ -306,7 +310,7 @@ namespace Lumina.Excel
         {
             var data = ReadFieldInternal( type );
 
-            if( _sheet._Lumina.Options.ExcelSheetStrictCastingEnabled )
+            if( _sheet.GameData.Options.ExcelSheetStrictCastingEnabled )
             {
                 return (T)data;
             }

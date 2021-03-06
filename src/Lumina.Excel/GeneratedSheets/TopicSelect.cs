@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TopicSelect", columnHash: 0xc312c89f )]
-    public class TopicSelect : IExcelRow
+    public class TopicSelect : ExcelRow
     {
         public struct UnkStruct4Struct
         {
             public uint Shop;
         }
         
-        public SeString Name;
-        public bool Unknown1;
-        public byte Unknown2;
-        public ushort Unknown3;
-        public UnkStruct4Struct[] UnkStruct4;
+        public SeString Name { get; set; }
+        public bool Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public UnkStruct4Struct[] UnkStruct4 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );

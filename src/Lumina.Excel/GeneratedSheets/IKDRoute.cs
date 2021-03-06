@@ -7,29 +7,32 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDRoute", columnHash: 0x9a3e7720 )]
-    public class IKDRoute : IExcelRow
+    public class IKDRoute : ExcelRow
     {
-        
-        public LazyRow< IKDSpot >[] Spot;
-        public byte TimeDefine;
-        public uint Image;
-        public LazyRow< TerritoryType > TerritoryType;
-        public SeString Name;
-        
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public struct UnkStruct0Struct
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            public uint Spot;
+            public byte Time;
+        }
+        
+        public UnkStruct0Struct[] UnkStruct0 { get; set; }
+        public uint Image { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public SeString Name { get; set; }
+        
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
+        {
+            base.PopulateData( parser, gameData, language );
 
-            Spot = new LazyRow< IKDSpot >[ 5 ];
-            for( var i = 0; i < 5; i++ )
-                Spot[ i ] = new LazyRow< IKDSpot >( lumina, parser.ReadColumn< uint >( 0 + i ), language );
-            TimeDefine = parser.ReadColumn< byte >( 5 );
+            UnkStruct0 = new UnkStruct0Struct[ 3 ];
+            for( var i = 0; i < 3; i++ )
+            {
+                UnkStruct0[ i ] = new UnkStruct0Struct();
+                UnkStruct0[ i ].Spot = parser.ReadColumn< uint >( 0 + ( i * 2 + 0 ) );
+                UnkStruct0[ i ].Time = parser.ReadColumn< byte >( 0 + ( i * 2 + 1 ) );
+            }
             Image = parser.ReadColumn< uint >( 6 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< uint >( 7 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< uint >( 7 ), language );
             Name = parser.ReadColumn< SeString >( 8 );
         }
     }

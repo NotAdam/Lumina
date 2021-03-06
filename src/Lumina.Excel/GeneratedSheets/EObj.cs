@@ -7,36 +7,32 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EObj", columnHash: 0xa71f030e )]
-    public class EObj : IExcelRow
+    public class EObj : ExcelRow
     {
         
-        public bool Unknown0;
-        public bool Unknown1;
-        public bool Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public bool Unknown5;
-        public bool Unknown6;
-        public bool Unknown7;
-        public byte PopType;
-        public uint Data;
-        public byte Invisibility;
-        public LazyRow< ExportedSG > SgbPath;
-        public bool EyeCollision;
-        public bool DirectorControl;
-        public bool Target;
-        public byte EventHighAddition;
-        public bool Unknown16;
-        public byte Unknown17;
-        public bool AddedIn53;
+        public bool Unknown0 { get; set; }
+        public bool Unknown1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public byte PopType { get; set; }
+        public uint Data { get; set; }
+        public byte Invisibility { get; set; }
+        public LazyRow< ExportedSG > SgbPath { get; set; }
+        public bool EyeCollision { get; set; }
+        public bool DirectorControl { get; set; }
+        public bool Target { get; set; }
+        public byte EventHighAddition { get; set; }
+        public bool Unknown16 { get; set; }
+        public byte Unknown17 { get; set; }
+        public bool AddedIn53 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );
@@ -49,7 +45,7 @@ namespace Lumina.Excel.GeneratedSheets
             PopType = parser.ReadColumn< byte >( 8 );
             Data = parser.ReadColumn< uint >( 9 );
             Invisibility = parser.ReadColumn< byte >( 10 );
-            SgbPath = new LazyRow< ExportedSG >( lumina, parser.ReadColumn< ushort >( 11 ), language );
+            SgbPath = new LazyRow< ExportedSG >( gameData, parser.ReadColumn< ushort >( 11 ), language );
             EyeCollision = parser.ReadColumn< bool >( 12 );
             DirectorControl = parser.ReadColumn< bool >( 13 );
             Target = parser.ReadColumn< bool >( 14 );

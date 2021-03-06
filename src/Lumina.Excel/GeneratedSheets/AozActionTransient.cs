@@ -7,58 +7,54 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AozActionTransient", columnHash: 0x4921bb28 )]
-    public class AozActionTransient : IExcelRow
+    public class AozActionTransient : ExcelRow
     {
         
-        public byte Number;
-        public uint Icon;
-        public SeString Stats;
-        public SeString Description;
-        public byte Unknown4;
-        public LazyRow< ContentFinderCondition > Location;
-        public LazyRow< Quest > StartQuest;
-        public LazyRow< Quest > NextQuest;
-        public bool Unknown8;
-        public bool Unknown9;
-        public bool Unknown10;
-        public bool Unknown11;
-        public bool Unknown12;
-        public bool Unknown13;
-        public bool Unknown14;
-        public bool Unknown15;
-        public bool Unknown16;
-        public bool Unknown17;
-        public bool Unknown18;
-        public bool Unknown19;
+        public byte Number { get; set; }
+        public uint Icon { get; set; }
+        public SeString Stats { get; set; }
+        public SeString Description { get; set; }
+        public byte LocationKey { get; set; }
+        public ushort Location { get; set; }
+        public LazyRow< Quest > RequiredForQuest { get; set; }
+        public LazyRow< Quest > PreviousQuest { get; set; }
+        public bool TargetsEnemy { get; set; }
+        public bool TargetsSelfOrAlly { get; set; }
+        public bool CauseSlow { get; set; }
+        public bool CausePetrify { get; set; }
+        public bool CauseParalysis { get; set; }
+        public bool CauseInterrupt { get; set; }
+        public bool CauseBlind { get; set; }
+        public bool CauseStun { get; set; }
+        public bool CauseSleep { get; set; }
+        public bool CauseBind { get; set; }
+        public bool CauseHeavy { get; set; }
+        public bool CauseDeath { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Number = parser.ReadColumn< byte >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );
             Stats = parser.ReadColumn< SeString >( 2 );
             Description = parser.ReadColumn< SeString >( 3 );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
-            Location = new LazyRow< ContentFinderCondition >( lumina, parser.ReadColumn< ushort >( 5 ), language );
-            StartQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 6 ), language );
-            NextQuest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 7 ), language );
-            Unknown8 = parser.ReadColumn< bool >( 8 );
-            Unknown9 = parser.ReadColumn< bool >( 9 );
-            Unknown10 = parser.ReadColumn< bool >( 10 );
-            Unknown11 = parser.ReadColumn< bool >( 11 );
-            Unknown12 = parser.ReadColumn< bool >( 12 );
-            Unknown13 = parser.ReadColumn< bool >( 13 );
-            Unknown14 = parser.ReadColumn< bool >( 14 );
-            Unknown15 = parser.ReadColumn< bool >( 15 );
-            Unknown16 = parser.ReadColumn< bool >( 16 );
-            Unknown17 = parser.ReadColumn< bool >( 17 );
-            Unknown18 = parser.ReadColumn< bool >( 18 );
-            Unknown19 = parser.ReadColumn< bool >( 19 );
+            LocationKey = parser.ReadColumn< byte >( 4 );
+            Location = parser.ReadColumn< ushort >( 5 );
+            RequiredForQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 6 ), language );
+            PreviousQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 7 ), language );
+            TargetsEnemy = parser.ReadColumn< bool >( 8 );
+            TargetsSelfOrAlly = parser.ReadColumn< bool >( 9 );
+            CauseSlow = parser.ReadColumn< bool >( 10 );
+            CausePetrify = parser.ReadColumn< bool >( 11 );
+            CauseParalysis = parser.ReadColumn< bool >( 12 );
+            CauseInterrupt = parser.ReadColumn< bool >( 13 );
+            CauseBlind = parser.ReadColumn< bool >( 14 );
+            CauseStun = parser.ReadColumn< bool >( 15 );
+            CauseSleep = parser.ReadColumn< bool >( 16 );
+            CauseBind = parser.ReadColumn< bool >( 17 );
+            CauseHeavy = parser.ReadColumn< bool >( 18 );
+            CauseDeath = parser.ReadColumn< bool >( 19 );
         }
     }
 }

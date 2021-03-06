@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDSpot", columnHash: 0x96a22aea )]
-    public class IKDSpot : IExcelRow
+    public class IKDSpot : ExcelRow
     {
         
-        public LazyRow< FishingSpot > SpotMain;
-        public LazyRow< FishingSpot > SpotSub;
-        public LazyRow< PlaceName > PlaceName;
+        public LazyRow< FishingSpot > SpotMain { get; set; }
+        public LazyRow< FishingSpot > SpotSub { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            SpotMain = new LazyRow< FishingSpot >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            SpotSub = new LazyRow< FishingSpot >( lumina, parser.ReadColumn< uint >( 1 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            SpotMain = new LazyRow< FishingSpot >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            SpotSub = new LazyRow< FishingSpot >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< uint >( 2 ), language );
         }
     }
 }

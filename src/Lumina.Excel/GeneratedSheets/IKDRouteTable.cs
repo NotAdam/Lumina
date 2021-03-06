@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDRouteTable", columnHash: 0xdbf43666 )]
-    public class IKDRouteTable : IExcelRow
+    public class IKDRouteTable : ExcelRow
     {
         
-        public LazyRow< IKDRoute > Route;
+        public LazyRow< IKDRoute > Route { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Route = new LazyRow< IKDRoute >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Route = new LazyRow< IKDRoute >( gameData, parser.ReadColumn< uint >( 0 ), language );
         }
     }
 }

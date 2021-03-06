@@ -7,29 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GilShop", columnHash: 0xa0969241 )]
-    public class GilShop : IExcelRow
+    public class GilShop : ExcelRow
     {
         
-        public SeString Name;
-        public uint Icon;
-        public LazyRow< Quest > Quest;
-        public LazyRow< DefaultTalk > AcceptTalk;
-        public LazyRow< DefaultTalk > FailTalk;
-        public bool Unknown5;
+        public SeString Name { get; set; }
+        public uint Icon { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public LazyRow< DefaultTalk > AcceptTalk { get; set; }
+        public LazyRow< DefaultTalk > FailTalk { get; set; }
+        public bool Unknown5 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 2 ), language );
-            AcceptTalk = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< int >( 3 ), language );
-            FailTalk = new LazyRow< DefaultTalk >( lumina, parser.ReadColumn< int >( 4 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            AcceptTalk = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 3 ), language );
+            FailTalk = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 4 ), language );
             Unknown5 = parser.ReadColumn< bool >( 5 );
         }
     }

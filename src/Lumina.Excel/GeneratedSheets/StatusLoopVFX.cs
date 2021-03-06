@@ -7,32 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "StatusLoopVFX", columnHash: 0xaa82c4a9 )]
-    public class StatusLoopVFX : IExcelRow
+    public class StatusLoopVFX : ExcelRow
     {
         
-        public LazyRow< VFX > VFX;
-        public byte Unknown1;
-        public LazyRow< VFX > VFX2;
-        public byte Unknown3;
-        public LazyRow< VFX > VFX3;
-        public byte Unknown5;
-        public byte Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
+        public LazyRow< VFX > VFX { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< VFX > VFX2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public LazyRow< VFX > VFX3 { get; set; }
+        public byte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            VFX = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            VFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            VFX2 = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            VFX2 = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
-            VFX3 = new LazyRow< VFX >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            VFX3 = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 4 ), language );
             Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< bool >( 7 );

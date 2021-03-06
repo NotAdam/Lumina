@@ -7,52 +7,48 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecastNavimesh", columnHash: 0x98c040df )]
-    public class RecastNavimesh : IExcelRow
+    public class RecastNavimesh : ExcelRow
     {
         
-        public SeString Unknown0;
-        public float TileSize;
-        public float CellSize;
-        public float CellHeight;
-        public float AgentHeight;
-        public float AgentRadius;
-        public float AgentMaxClimb;
-        public float AgentMaxSlope;
-        public bool Unknown8;
-        public float RegionMinSize;
-        public float RegionMergedSize;
-        public bool Unknown11;
-        public float MaxEdgeLength;
-        public float MaxEdgeError;
-        public float VertsPerPoly;
-        public float DetailMeshSampleDistance;
-        public float DetailMeshMaxSampleError;
-        public float Unknown17;
-        public float Unknown18;
-        public float Unknown19;
-        public float Unknown20;
-        public float Unknown21;
-        public float Unknown22;
-        public float Unknown23;
-        public float Unknown24;
-        public float Unknown25;
-        public float Unknown26;
-        public float Unknown27;
-        public float Unknown28;
-        public float Unknown29;
-        public bool Unknown30;
-        public float Unknown31;
-        public float Unknown32;
-        public float Unknown33;
-        public bool Unknown34;
+        public SeString Unknown0 { get; set; }
+        public float TileSize { get; set; }
+        public float CellSize { get; set; }
+        public float CellHeight { get; set; }
+        public float AgentHeight { get; set; }
+        public float AgentRadius { get; set; }
+        public float AgentMaxClimb { get; set; }
+        public float AgentMaxSlope { get; set; }
+        public bool Unknown8 { get; set; }
+        public float RegionMinSize { get; set; }
+        public float RegionMergedSize { get; set; }
+        public bool Unknown11 { get; set; }
+        public float MaxEdgeLength { get; set; }
+        public float MaxEdgeError { get; set; }
+        public float VertsPerPoly { get; set; }
+        public float DetailMeshSampleDistance { get; set; }
+        public float DetailMeshMaxSampleError { get; set; }
+        public float Unknown17 { get; set; }
+        public float Unknown18 { get; set; }
+        public float Unknown19 { get; set; }
+        public float Unknown20 { get; set; }
+        public float Unknown21 { get; set; }
+        public float Unknown22 { get; set; }
+        public float Unknown23 { get; set; }
+        public float Unknown24 { get; set; }
+        public float Unknown25 { get; set; }
+        public float Unknown26 { get; set; }
+        public float Unknown27 { get; set; }
+        public float Unknown28 { get; set; }
+        public float Unknown29 { get; set; }
+        public bool Unknown30 { get; set; }
+        public float Unknown31 { get; set; }
+        public float Unknown32 { get; set; }
+        public float Unknown33 { get; set; }
+        public bool Unknown34 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             TileSize = parser.ReadColumn< float >( 1 );

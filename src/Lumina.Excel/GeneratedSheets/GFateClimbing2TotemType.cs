@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GFateClimbing2TotemType", columnHash: 0xdbf43666 )]
-    public class GFateClimbing2TotemType : IExcelRow
+    public class GFateClimbing2TotemType : ExcelRow
     {
         
-        public LazyRow< PublicContentTextData > PublicContentTextData;
+        public LazyRow< PublicContentTextData > PublicContentTextData { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            PublicContentTextData = new LazyRow< PublicContentTextData >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            PublicContentTextData = new LazyRow< PublicContentTextData >( gameData, parser.ReadColumn< uint >( 0 ), language );
         }
     }
 }

@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboTaxiStand", columnHash: 0x233d23d9 )]
-    public class ChocoboTaxiStand : IExcelRow
+    public class ChocoboTaxiStand : ExcelRow
     {
         
-        public LazyRow< ChocoboTaxi >[] TargetLocations;
-        public SeString PlaceName;
+        public LazyRow< ChocoboTaxi >[] TargetLocations { get; set; }
+        public SeString PlaceName { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             TargetLocations = new LazyRow< ChocoboTaxi >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                TargetLocations[ i ] = new LazyRow< ChocoboTaxi >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                TargetLocations[ i ] = new LazyRow< ChocoboTaxi >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
             PlaceName = parser.ReadColumn< SeString >( 8 );
         }
     }

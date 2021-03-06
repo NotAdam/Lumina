@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Calendar", columnHash: 0x005cfabb )]
-    public class Calendar : IExcelRow
+    public class Calendar : ExcelRow
     {
         
-        public byte[] Month;
-        public byte[] Day;
+        public byte[] Month { get; set; }
+        public byte[] Day { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Month = new byte[ 32 ];
             for( var i = 0; i < 32; i++ )

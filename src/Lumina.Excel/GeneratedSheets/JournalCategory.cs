@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "JournalCategory", columnHash: 0xc5670d26 )]
-    public class JournalCategory : IExcelRow
+    public class JournalCategory : ExcelRow
     {
         
-        public SeString Name;
-        public byte SeparateType;
-        public byte DataType;
-        public LazyRow< JournalSection > JournalSection;
+        public SeString Name { get; set; }
+        public byte SeparateType { get; set; }
+        public byte DataType { get; set; }
+        public LazyRow< JournalSection > JournalSection { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             SeparateType = parser.ReadColumn< byte >( 1 );
             DataType = parser.ReadColumn< byte >( 2 );
-            JournalSection = new LazyRow< JournalSection >( lumina, parser.ReadColumn< byte >( 3 ), language );
+            JournalSection = new LazyRow< JournalSection >( gameData, parser.ReadColumn< byte >( 3 ), language );
         }
     }
 }

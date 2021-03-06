@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentType", columnHash: 0xf75a9d4b )]
-    public class ContentType : IExcelRow
+    public class ContentType : ExcelRow
     {
         
-        public SeString Name;
-        public uint Icon;
-        public uint IconDutyFinder;
-        public byte Unknown3;
-        public byte Unknown4;
-        public byte Unknown5;
+        public SeString Name { get; set; }
+        public uint Icon { get; set; }
+        public uint IconDutyFinder { get; set; }
+        public byte Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );

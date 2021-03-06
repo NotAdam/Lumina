@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FccShop", columnHash: 0xccd13846 )]
-    public class FccShop : IExcelRow
+    public class FccShop : ExcelRow
     {
         public struct UnkStruct1Struct
         {
@@ -22,18 +22,14 @@ namespace Lumina.Excel.GeneratedSheets
             public byte FCRankRequired;
         }
         
-        public SeString Name;
-        public UnkStruct1Struct[] UnkStruct1;
-        public UnkStruct11Struct[] UnkStruct11;
-        public UnkStruct21Struct[] UnkStruct21;
+        public SeString Name { get; set; }
+        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public UnkStruct11Struct[] UnkStruct11 { get; set; }
+        public UnkStruct21Struct[] UnkStruct21 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 10 ];

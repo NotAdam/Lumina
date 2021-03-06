@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SubmarineRank", columnHash: 0x697b9c75 )]
-    public class SubmarineRank : IExcelRow
+    public class SubmarineRank : ExcelRow
     {
         
-        public ushort Capacity;
-        public uint ExpToNext;
-        public byte SurveillanceBonus;
-        public byte RetrievalBonus;
-        public byte SpeedBonus;
-        public byte RangeBonus;
-        public byte FavorBonus;
+        public ushort Capacity { get; set; }
+        public uint ExpToNext { get; set; }
+        public byte SurveillanceBonus { get; set; }
+        public byte RetrievalBonus { get; set; }
+        public byte SpeedBonus { get; set; }
+        public byte RangeBonus { get; set; }
+        public byte FavorBonus { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Capacity = parser.ReadColumn< ushort >( 0 );
             ExpToNext = parser.ReadColumn< uint >( 1 );

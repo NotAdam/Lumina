@@ -7,18 +7,14 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMSystemDefine", columnHash: 0xd16a1b6c )]
-    public class BGMSystemDefine : IExcelRow
+    public class BGMSystemDefine : ExcelRow
     {
         
-        public float Define;
+        public float Define { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Define = parser.ReadColumn< float >( 0 );
         }

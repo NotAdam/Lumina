@@ -7,28 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GimmickJump", columnHash: 0x4858f2f1 )]
-    public class GimmickJump : IExcelRow
+    public class GimmickJump : ExcelRow
     {
         
-        public ushort FallDamage;
-        public sbyte Height;
-        public LazyRow< ActionTimeline > LoopMotion;
-        public LazyRow< ActionTimeline > EndMotion;
-        public bool StartClient;
-        public bool Unknown5;
+        public ushort FallDamage { get; set; }
+        public sbyte Height { get; set; }
+        public LazyRow< ActionTimeline > LoopMotion { get; set; }
+        public LazyRow< ActionTimeline > EndMotion { get; set; }
+        public bool StartClient { get; set; }
+        public bool Unknown5 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             FallDamage = parser.ReadColumn< ushort >( 0 );
             Height = parser.ReadColumn< sbyte >( 1 );
-            LoopMotion = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< uint >( 2 ), language );
-            EndMotion = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            LoopMotion = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            EndMotion = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< uint >( 3 ), language );
             StartClient = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );
         }

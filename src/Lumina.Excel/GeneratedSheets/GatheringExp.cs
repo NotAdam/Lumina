@@ -7,18 +7,14 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringExp", columnHash: 0xda365c51 )]
-    public class GatheringExp : IExcelRow
+    public class GatheringExp : ExcelRow
     {
         
-        public int Exp;
+        public int Exp { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Exp = parser.ReadColumn< int >( 0 );
         }

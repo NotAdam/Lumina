@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SatisfactionSupplyReward", columnHash: 0xc81395f9 )]
-    public class SatisfactionSupplyReward : IExcelRow
+    public class SatisfactionSupplyReward : ExcelRow
     {
         public struct UnkStruct1Struct
         {
@@ -17,23 +17,19 @@ namespace Lumina.Excel.GeneratedSheets
             public ushort QuantityHigh;
         }
         
-        public byte Unknown0;
-        public UnkStruct1Struct[] UnkStruct1;
-        public byte Unknown9;
-        public ushort SatisfactionLow;
-        public ushort SatisfactionMid;
-        public ushort SatisfactionHigh;
-        public ushort GilLow;
-        public ushort GilMid;
-        public ushort GilHigh;
+        public byte Unknown0 { get; set; }
+        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public byte Unknown9 { get; set; }
+        public ushort SatisfactionLow { get; set; }
+        public ushort SatisfactionMid { get; set; }
+        public ushort SatisfactionHigh { get; set; }
+        public ushort GilLow { get; set; }
+        public ushort GilMid { get; set; }
+        public ushort GilHigh { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             UnkStruct1 = new UnkStruct1Struct[ 2 ];

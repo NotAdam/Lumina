@@ -7,28 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntTarget", columnHash: 0x83a7f541 )]
-    public class MobHuntTarget : IExcelRow
+    public class MobHuntTarget : ExcelRow
     {
         
-        public LazyRow< BNpcName > Name;
-        public LazyRow< Fate > FATE;
-        public uint Icon;
-        public LazyRow< Map > TerritoryType;
-        public LazyRow< PlaceName > PlaceName;
+        public LazyRow< BNpcName > Name { get; set; }
+        public LazyRow< Fate > FATE { get; set; }
+        public uint Icon { get; set; }
+        public LazyRow< Map > TerritoryType { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
-            Name = new LazyRow< BNpcName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            FATE = new LazyRow< Fate >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            Name = new LazyRow< BNpcName >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            FATE = new LazyRow< Fate >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Icon = parser.ReadColumn< uint >( 2 );
-            TerritoryType = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 3 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            TerritoryType = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 4 ), language );
         }
     }
 }

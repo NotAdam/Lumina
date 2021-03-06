@@ -7,28 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingMapMarkerInfo", columnHash: 0x13236296 )]
-    public class HousingMapMarkerInfo : IExcelRow
+    public class HousingMapMarkerInfo : ExcelRow
     {
         
-        public float X;
-        public float Y;
-        public float Z;
-        public float Unknown3;
-        public LazyRow< Map > Map;
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Z { get; set; }
+        public float Unknown3 { get; set; }
+        public LazyRow< Map > Map { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             X = parser.ReadColumn< float >( 0 );
             Y = parser.ReadColumn< float >( 1 );
             Z = parser.ReadColumn< float >( 2 );
             Unknown3 = parser.ReadColumn< float >( 3 );
-            Map = new LazyRow< Map >( lumina, parser.ReadColumn< ushort >( 4 ), language );
+            Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 4 ), language );
         }
     }
 }

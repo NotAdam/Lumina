@@ -7,30 +7,26 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentGauge", columnHash: 0xf678f7f7 )]
-    public class ContentGauge : IExcelRow
+    public class ContentGauge : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< ContentGaugeColor > Color;
-        public bool Unknown2;
-        public SeString TextString;
-        public sbyte Unknown4;
-        public sbyte Unknown5;
-        public byte Unknown6;
-        public sbyte Unknown7;
-        public sbyte Unknown8;
-        public byte Unknown9;
+        public SeString Name { get; set; }
+        public LazyRow< ContentGaugeColor > Color { get; set; }
+        public bool Unknown2 { get; set; }
+        public SeString TextString { get; set; }
+        public sbyte Unknown4 { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public sbyte Unknown7 { get; set; }
+        public sbyte Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            Color = new LazyRow< ContentGaugeColor >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Color = new LazyRow< ContentGaugeColor >( gameData, parser.ReadColumn< byte >( 1 ), language );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             TextString = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< sbyte >( 4 );

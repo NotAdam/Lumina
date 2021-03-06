@@ -7,24 +7,20 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentNpcTalk", columnHash: 0xcfa3d5cd )]
-    public class ContentNpcTalk : IExcelRow
+    public class ContentNpcTalk : ExcelRow
     {
         
-        public int Type;
-        public LazyRow< ContentTalk >[] ContentTalk;
+        public int Type { get; set; }
+        public LazyRow< ContentTalk >[] ContentTalk { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< int >( 0 );
             ContentTalk = new LazyRow< ContentTalk >[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ContentTalk[ i ] = new LazyRow< ContentTalk >( lumina, parser.ReadColumn< uint >( 1 + i ), language );
+                ContentTalk[ i ] = new LazyRow< ContentTalk >( gameData, parser.ReadColumn< uint >( 1 + i ), language );
         }
     }
 }

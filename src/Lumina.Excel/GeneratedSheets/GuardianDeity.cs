@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuardianDeity", columnHash: 0x79bad589 )]
-    public class GuardianDeity : IExcelRow
+    public class GuardianDeity : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public ushort Icon;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public ushort Icon { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );

@@ -7,38 +7,34 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "NotebookDivision", columnHash: 0xb4638be9 )]
-    public class NotebookDivision : IExcelRow
+    public class NotebookDivision : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< NotebookDivisionCategory > NotebookDivisionCategory;
-        public byte CraftOpeningLevel;
-        public byte GatheringOpeningLevel;
-        public LazyRow< Quest > QuestUnlock;
-        public byte Unknown5;
-        public bool Unknown6;
-        public bool CRPCraft;
-        public bool BSMCraft;
-        public bool ARMCraft;
-        public bool GSMCraft;
-        public bool LTWCraft;
-        public bool WVRCraft;
-        public bool ALCCraft;
-        public bool CULCraft;
+        public SeString Name { get; set; }
+        public LazyRow< NotebookDivisionCategory > NotebookDivisionCategory { get; set; }
+        public byte CraftOpeningLevel { get; set; }
+        public byte GatheringOpeningLevel { get; set; }
+        public LazyRow< Quest > QuestUnlock { get; set; }
+        public byte Unknown5 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool CRPCraft { get; set; }
+        public bool BSMCraft { get; set; }
+        public bool ARMCraft { get; set; }
+        public bool GSMCraft { get; set; }
+        public bool LTWCraft { get; set; }
+        public bool WVRCraft { get; set; }
+        public bool ALCCraft { get; set; }
+        public bool CULCraft { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            NotebookDivisionCategory = new LazyRow< NotebookDivisionCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            NotebookDivisionCategory = new LazyRow< NotebookDivisionCategory >( gameData, parser.ReadColumn< byte >( 1 ), language );
             CraftOpeningLevel = parser.ReadColumn< byte >( 2 );
             GatheringOpeningLevel = parser.ReadColumn< byte >( 3 );
-            QuestUnlock = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 4 ), language );
+            QuestUnlock = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 4 ), language );
             Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< bool >( 6 );
             CRPCraft = parser.ReadColumn< bool >( 7 );

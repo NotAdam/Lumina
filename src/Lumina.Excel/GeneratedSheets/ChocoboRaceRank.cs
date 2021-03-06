@@ -7,26 +7,22 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ChocoboRaceRank", columnHash: 0xf840eabf )]
-    public class ChocoboRaceRank : IExcelRow
+    public class ChocoboRaceRank : ExcelRow
     {
         
-        public ushort RatingMin;
-        public ushort RatingMax;
-        public LazyRow< GoldSaucerTextData > Name;
-        public ushort Fee;
-        public int Icon;
+        public ushort RatingMin { get; set; }
+        public ushort RatingMax { get; set; }
+        public LazyRow< GoldSaucerTextData > Name { get; set; }
+        public ushort Fee { get; set; }
+        public int Icon { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             RatingMin = parser.ReadColumn< ushort >( 0 );
             RatingMax = parser.ReadColumn< ushort >( 1 );
-            Name = new LazyRow< GoldSaucerTextData >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Name = new LazyRow< GoldSaucerTextData >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Fee = parser.ReadColumn< ushort >( 3 );
             Icon = parser.ReadColumn< int >( 4 );
         }

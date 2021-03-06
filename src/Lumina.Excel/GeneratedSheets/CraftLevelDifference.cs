@@ -7,20 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftLevelDifference", columnHash: 0xba1851a4 )]
-    public class CraftLevelDifference : IExcelRow
+    public class CraftLevelDifference : ExcelRow
     {
         
-        public short Difference;
-        public short ProgressFactor;
-        public short QualityFactor;
+        public short Difference { get; set; }
+        public short ProgressFactor { get; set; }
+        public short QualityFactor { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Difference = parser.ReadColumn< short >( 0 );
             ProgressFactor = parser.ReadColumn< short >( 1 );

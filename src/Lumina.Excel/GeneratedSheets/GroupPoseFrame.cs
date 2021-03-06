@@ -7,25 +7,21 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GroupPoseFrame", columnHash: 0x1771561e )]
-    public class GroupPoseFrame : IExcelRow
+    public class GroupPoseFrame : ExcelRow
     {
         
-        public int Unknown0;
-        public int Image;
-        public SeString GridText;
-        public int Unknown3;
-        public uint Unknown4;
-        public byte Unknown5;
-        public int Unknown54;
-        public SeString Text;
+        public int Unknown0 { get; set; }
+        public int Image { get; set; }
+        public SeString GridText { get; set; }
+        public int Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public int Unknown54 { get; set; }
+        public SeString Text { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< int >( 0 );
             Image = parser.ReadColumn< int >( 1 );

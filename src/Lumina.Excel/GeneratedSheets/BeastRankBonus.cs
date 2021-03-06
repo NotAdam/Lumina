@@ -7,27 +7,23 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastRankBonus", columnHash: 0x4d6cbdc3 )]
-    public class BeastRankBonus : IExcelRow
+    public class BeastRankBonus : ExcelRow
     {
         
-        public ushort Neutral;
-        public ushort Recognized;
-        public ushort Friendly;
-        public ushort Trusted;
-        public ushort Respected;
-        public ushort Honored;
-        public ushort Sworn;
-        public ushort AlliedBloodsworn;
-        public LazyRow< Item > Item;
-        public byte[] ItemQuantity;
+        public ushort Neutral { get; set; }
+        public ushort Recognized { get; set; }
+        public ushort Friendly { get; set; }
+        public ushort Trusted { get; set; }
+        public ushort Respected { get; set; }
+        public ushort Honored { get; set; }
+        public ushort Sworn { get; set; }
+        public ushort AlliedBloodsworn { get; set; }
+        public LazyRow< Item > Item { get; set; }
+        public byte[] ItemQuantity { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Neutral = parser.ReadColumn< ushort >( 0 );
             Recognized = parser.ReadColumn< ushort >( 1 );
@@ -37,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
             Honored = parser.ReadColumn< ushort >( 5 );
             Sworn = parser.ReadColumn< ushort >( 6 );
             AlliedBloodsworn = parser.ReadColumn< ushort >( 7 );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 8 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 8 ), language );
             ItemQuantity = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ItemQuantity[ i ] = parser.ReadColumn< byte >( 9 + i );

@@ -1,13 +1,8 @@
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
 using Lumina.Data;
-using Lumina.Data.Files;
-using Lumina.Data.Files.Excel;
-using Pastel;
 
 namespace Lumina.Cmd.Commands
 {
@@ -22,7 +17,7 @@ namespace Lumina.Cmd.Commands
 
         public ValueTask ExecuteAsync( IConsole console )
         {
-            var lumina = new Lumina( DataPath );
+            var lumina = new GameData( DataPath );
 
             var totalFiles = 0;
 

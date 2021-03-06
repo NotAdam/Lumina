@@ -1,16 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Drawing;
+using Lumina.Data.Attributes;
 using Lumina.Data.Parsing.Tex;
 using Lumina.Extensions;
 
 namespace Lumina.Data.Files
 {
+    [FileExtension( ".tex" )]
     public class TexFile : FileResource
     {
         public enum Attribute : uint
@@ -56,14 +53,17 @@ namespace Lumina.Data.Files
             TypeDepthStencil = 0x4,
             TypeSpecial = 0x5,
             A8R8G8B8 = 0x1450,
+
             // todo:
             R8G8B8X8 = 0x1451,
             A8R8G8B82 = 0x1452,
             R4G4B4A4 = 0x1440,
             R5G5B5A1 = 0x1441,
             L8 = 0x1130,
+
             // todo:
             A8 = 0x1131,
+
             // todo:
             R32F = 0x2150,
             R32G32B32A32F = 0x2470,
@@ -74,13 +74,14 @@ namespace Lumina.Data.Files
             DXT5 = 0x3431,
             D16 = 0x4140,
             D24S8 = 0x4250,
+
             //todo: RGBA8 0x4401
             Null = 0x5100,
             Shadow16 = 0x5140,
             Shadow24 = 0x5150,
         }
 
-        [StructLayout(LayoutKind.Sequential)]
+        [StructLayout( LayoutKind.Sequential )]
         public unsafe struct TexHeader
         {
             public Attribute Type;
@@ -115,7 +116,7 @@ namespace Lumina.Data.Files
         // converts various formats to A8R8G8B8
         private byte[] Convert( Span< byte > src, int width, int height )
         {
-            byte[] dst = new byte[ width * height * 4 ];
+            byte[] dst = new byte[width * height * 4];
 
             switch( Header.Format )
             {
@@ -129,7 +130,7 @@ namespace Lumina.Data.Files
                     ProcessDxt5( src, dst, width, height );
                     break;
                 case TextureFormat.R16G16B16A16F:
-                    ProcessA16R16G16B16_Float( src, dst, width, height);
+                    ProcessA16R16G16B16_Float( src, dst, width, height );
                     break;
                 case TextureFormat.R5G5B5A1:
                     ProcessA1R5G5B5( src, dst, width, height );
@@ -161,11 +162,11 @@ namespace Lumina.Data.Files
                 var dstOff = i * 4;
 
                 for( var j = 0; j < 4; ++j )
-                    dst[dstOff + j] = (byte)(src.Unpack( srcOff + j * 2 ) * byte.MaxValue );
+                    dst[ dstOff + j ] = (byte)( src.Unpack( srcOff + j * 2 ) * byte.MaxValue );
             }
         }
 
-        private static void ProcessA1R5G5B5( Span<byte> src, byte[] dst, int width, int height )
+        private static void ProcessA1R5G5B5( Span< byte > src, byte[] dst, int width, int height )
         {
             for( var i = 0; ( i + 2 ) <= 2 * width * height; i += 2 )
             {
@@ -180,58 +181,58 @@ namespace Lumina.Data.Files
                 var argbValue = ( a * 0x1FE00 | rgb | ( ( rgb >> 5 ) & 0x070707 ) );
 
                 for( var j = 0; j < 4; ++j )
-                    dst[i * 2 + j] = (byte)( argbValue >> ( 8 * j ) );
+                    dst[ i * 2 + j ] = (byte)( argbValue >> ( 8 * j ) );
             }
         }
 
-        private static void ProcessA4R4G4B4( Span<byte> src, byte[] dst, int width, int height )
+        private static void ProcessA4R4G4B4( Span< byte > src, byte[] dst, int width, int height )
         {
             for( var i = 0; ( i + 2 ) <= 2 * width * height; i += 2 )
             {
                 var v = BitConverter.ToUInt16( src.Slice( i, sizeof( UInt16 ) ).ToArray(), 0 );
 
                 for( var j = 0; j < 4; ++j )
-                    dst[i * 2 + j] = (byte)( ( ( v >> ( 4 * j ) ) & 0x0F ) << 4 );
+                    dst[ i * 2 + j ] = (byte)( ( ( v >> ( 4 * j ) ) & 0x0F ) << 4 );
             }
         }
 
-        private static void ProcessA8R8G8B8( Span<byte> src, byte[] dst, int width, int height )
+        private static void ProcessA8R8G8B8( Span< byte > src, byte[] dst, int width, int height )
         {
             // Some transparent images have larger dst lengths than their src.
             var length = Math.Min( src.Length, dst.Length );
-            src.Slice( 0, length ).CopyTo(dst.AsSpan());
+            src.Slice( 0, length ).CopyTo( dst.AsSpan() );
         }
 
-        private static void ProcessDxt1( Span<byte> src, byte[] dst, int width, int height )
+        private static void ProcessDxt1( Span< byte > src, byte[] dst, int width, int height )
         {
             var dec = Squish.DecompressImage( src.ToArray(), width, height, SquishOptions.DXT1 );
             Array.Copy( dec, dst, dst.Length );
         }
 
-        private static void ProcessDxt3( Span<byte> src, byte[] dst, int width, int height )
+        private static void ProcessDxt3( Span< byte > src, byte[] dst, int width, int height )
         {
             var dec = Squish.DecompressImage( src.ToArray(), width, height, SquishOptions.DXT3 );
             Array.Copy( dec, dst, dst.Length );
         }
 
-        private static void ProcessDxt5( Span<byte> src, byte[] dst, int width, int height )
+        private static void ProcessDxt5( Span< byte > src, byte[] dst, int width, int height )
         {
             var dec = Squish.DecompressImage( src.ToArray(), width, height, SquishOptions.DXT5 );
             Array.Copy( dec, dst, dst.Length );
         }
 
-        private static void ProcessR3G3B2( Span<byte> src, byte[] dst, int width, int height )
+        private static void ProcessR3G3B2( Span< byte > src, byte[] dst, int width, int height )
         {
             for( var i = 0; i < width * height; ++i )
             {
-                var r = (uint)( src[i] & 0xE0 );
-                var g = (uint)( src[i] & 0x1C );
-                var b = (uint)( src[i] & 0x03 );
+                var r = (uint)( src[ i ] & 0xE0 );
+                var g = (uint)( src[ i ] & 0x1C );
+                var b = (uint)( src[ i ] & 0x03 );
 
-                dst[i * 4 + 0] = (byte)( b | ( b << 2 ) | ( b << 4 ) | ( b << 6 ) );
-                dst[i * 4 + 1] = (byte)( g | ( g << 3 ) | ( g << 6 ) );
-                dst[i * 4 + 2] = (byte)( r | ( r << 3 ) | ( r << 6 ) );
-                dst[i * 4 + 3] = 0xFF;
+                dst[ i * 4 + 0 ] = (byte)( b | ( b << 2 ) | ( b << 4 ) | ( b << 6 ) );
+                dst[ i * 4 + 1 ] = (byte)( g | ( g << 3 ) | ( g << 6 ) );
+                dst[ i * 4 + 2 ] = (byte)( r | ( r << 3 ) | ( r << 6 ) );
+                dst[ i * 4 + 3 ] = 0xFF;
             }
         }
     }

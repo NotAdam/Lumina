@@ -7,19 +7,15 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AirshipExplorationLevel", columnHash: 0x382abf74 )]
-    public class AirshipExplorationLevel : IExcelRow
+    public class AirshipExplorationLevel : ExcelRow
     {
         
-        public ushort Capacity;
-        public uint ExpToNext;
+        public ushort Capacity { get; set; }
+        public uint ExpToNext { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Capacity = parser.ReadColumn< ushort >( 0 );
             ExpToNext = parser.ReadColumn< uint >( 1 );

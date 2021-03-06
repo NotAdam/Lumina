@@ -1,10 +1,14 @@
+using Lumina.Data.Attributes;
 using Lumina.Data.Parsing.Uld;
 using Lumina.Extensions;
 
 // ReSharper disable NotAccessedField.Global
 // ReSharper disable MemberCanBePrivate.Global
-namespace Lumina.Data.Files {
-    public class UldFile : FileResource {
+namespace Lumina.Data.Files
+{
+    [FileExtension( ".uld" )]
+    public class UldFile : FileResource
+    {
         public UldRoot.UldHeader CombineHeader;
         public UldRoot.AtkHeader ComponentHeader;
         public UldRoot.PartHeader AssetList;
@@ -20,13 +24,14 @@ namespace Lumina.Data.Files {
         public UldRoot.PartHeader WidgetHeader;
         public UldRoot.WidgetData WidgetData;
 
-        public override void LoadFile() {
+        public override void LoadFile()
+        {
             var basePos = Reader.BaseStream.Position;
             CombineHeader = UldRoot.UldHeader.Read( Reader );
             var preComponentPos = Reader.BaseStream.Position;
 
             ComponentHeader = UldRoot.AtkHeader.Read( Reader );
-            
+
             Reader.Seek( preComponentPos + ComponentHeader.AssetListOffset );
             AssetList = UldRoot.PartHeader.Read( Reader );
             AssetData = new UldRoot.TextureEntry[AssetList.ElementCount];

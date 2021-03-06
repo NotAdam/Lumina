@@ -7,29 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TextCommand", columnHash: 0x5d4b4e4b )]
-    public class TextCommand : IExcelRow
+    public class TextCommand : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public sbyte Unknown2;
-        public sbyte Unknown3;
-        public sbyte Unknown4;
-        public SeString Command;
-        public SeString ShortCommand;
-        public SeString Description;
-        public SeString Alias;
-        public SeString ShortAlias;
-        public ushort Unknown10;
-        public uint Unknown11;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public sbyte Unknown2 { get; set; }
+        public sbyte Unknown3 { get; set; }
+        public sbyte Unknown4 { get; set; }
+        public SeString Command { get; set; }
+        public SeString ShortCommand { get; set; }
+        public SeString Description { get; set; }
+        public SeString Alias { get; set; }
+        public SeString ShortAlias { get; set; }
+        public ushort Unknown10 { get; set; }
+        public uint Unknown11 { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

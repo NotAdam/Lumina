@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Recipe", columnHash: 0xf56e5856 )]
-    public class Recipe : IExcelRow
+    public class Recipe : ExcelRow
     {
         public struct UnkStruct5Struct
         {
@@ -15,46 +15,42 @@ namespace Lumina.Excel.GeneratedSheets
             public byte AmountIngredient;
         }
         
-        public int Number;
-        public LazyRow< CraftType > CraftType;
-        public LazyRow< RecipeLevelTable > RecipeLevelTable;
-        public LazyRow< Item > ItemResult;
-        public byte AmountResult;
-        public UnkStruct5Struct[] UnkStruct5;
-        public ushort Unknown25;
-        public bool IsSecondary;
-        public byte MaterialQualityFactor;
-        public ushort DifficultyFactor;
-        public ushort QualityFactor;
-        public ushort DurabilityFactor;
-        public ushort Unknown31;
-        public ushort RequiredCraftsmanship;
-        public ushort RequiredControl;
-        public ushort QuickSynthCraftsmanship;
-        public ushort QuickSynthControl;
-        public LazyRow< SecretRecipeBook > SecretRecipeBook;
-        public uint Unknown37;
-        public bool CanQuickSynth;
-        public bool CanHq;
-        public bool ExpRewarded;
-        public LazyRow< Status > StatusRequired;
-        public LazyRow< Item > ItemRequired;
-        public bool IsSpecializationRequired;
-        public bool IsExpert;
-        public ushort PatchNumber;
+        public int Number { get; set; }
+        public LazyRow< CraftType > CraftType { get; set; }
+        public LazyRow< RecipeLevelTable > RecipeLevelTable { get; set; }
+        public LazyRow< Item > ItemResult { get; set; }
+        public byte AmountResult { get; set; }
+        public UnkStruct5Struct[] UnkStruct5 { get; set; }
+        public ushort Unknown25 { get; set; }
+        public bool IsSecondary { get; set; }
+        public byte MaterialQualityFactor { get; set; }
+        public ushort DifficultyFactor { get; set; }
+        public ushort QualityFactor { get; set; }
+        public ushort DurabilityFactor { get; set; }
+        public ushort Unknown31 { get; set; }
+        public ushort RequiredCraftsmanship { get; set; }
+        public ushort RequiredControl { get; set; }
+        public ushort QuickSynthCraftsmanship { get; set; }
+        public ushort QuickSynthControl { get; set; }
+        public LazyRow< SecretRecipeBook > SecretRecipeBook { get; set; }
+        public uint Unknown37 { get; set; }
+        public bool CanQuickSynth { get; set; }
+        public bool CanHq { get; set; }
+        public bool ExpRewarded { get; set; }
+        public LazyRow< Status > StatusRequired { get; set; }
+        public LazyRow< Item > ItemRequired { get; set; }
+        public bool IsSpecializationRequired { get; set; }
+        public bool IsExpert { get; set; }
+        public ushort PatchNumber { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Number = parser.ReadColumn< int >( 0 );
-            CraftType = new LazyRow< CraftType >( lumina, parser.ReadColumn< int >( 1 ), language );
-            RecipeLevelTable = new LazyRow< RecipeLevelTable >( lumina, parser.ReadColumn< ushort >( 2 ), language );
-            ItemResult = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 3 ), language );
+            CraftType = new LazyRow< CraftType >( gameData, parser.ReadColumn< int >( 1 ), language );
+            RecipeLevelTable = new LazyRow< RecipeLevelTable >( gameData, parser.ReadColumn< ushort >( 2 ), language );
+            ItemResult = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 3 ), language );
             AmountResult = parser.ReadColumn< byte >( 4 );
             UnkStruct5 = new UnkStruct5Struct[ 10 ];
             for( var i = 0; i < 10; i++ )
@@ -74,13 +70,13 @@ namespace Lumina.Excel.GeneratedSheets
             RequiredControl = parser.ReadColumn< ushort >( 33 );
             QuickSynthCraftsmanship = parser.ReadColumn< ushort >( 34 );
             QuickSynthControl = parser.ReadColumn< ushort >( 35 );
-            SecretRecipeBook = new LazyRow< SecretRecipeBook >( lumina, parser.ReadColumn< ushort >( 36 ), language );
+            SecretRecipeBook = new LazyRow< SecretRecipeBook >( gameData, parser.ReadColumn< ushort >( 36 ), language );
             Unknown37 = parser.ReadColumn< uint >( 37 );
             CanQuickSynth = parser.ReadColumn< bool >( 38 );
             CanHq = parser.ReadColumn< bool >( 39 );
             ExpRewarded = parser.ReadColumn< bool >( 40 );
-            StatusRequired = new LazyRow< Status >( lumina, parser.ReadColumn< int >( 41 ), language );
-            ItemRequired = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 42 ), language );
+            StatusRequired = new LazyRow< Status >( gameData, parser.ReadColumn< int >( 41 ), language );
+            ItemRequired = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 42 ), language );
             IsSpecializationRequired = parser.ReadColumn< bool >( 43 );
             IsExpert = parser.ReadColumn< bool >( 44 );
             PatchNumber = parser.ReadColumn< ushort >( 45 );

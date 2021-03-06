@@ -7,23 +7,19 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestBattle", columnHash: 0xd46e8441 )]
-    public class QuestBattle : IExcelRow
+    public class QuestBattle : ExcelRow
     {
         
-        public int Quest;
-        public byte QuestBattleScene;
-        public ushort TimeLimit;
-        public ushort LevelSync;
-        public SeString[] ScriptInstruction;
-        public uint[] ScriptValue;
+        public int Quest { get; set; }
+        public byte QuestBattleScene { get; set; }
+        public ushort TimeLimit { get; set; }
+        public ushort LevelSync { get; set; }
+        public SeString[] ScriptInstruction { get; set; }
+        public uint[] ScriptValue { get; set; }
         
-        public uint RowId { get; set; }
-        public uint SubRowId { get; set; }
-
-        public void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            base.PopulateData( parser, gameData, language );
 
             Quest = parser.ReadColumn< int >( 0 );
             QuestBattleScene = parser.ReadColumn< byte >( 1 );
