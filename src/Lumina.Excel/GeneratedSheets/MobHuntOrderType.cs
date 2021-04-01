@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class MobHuntOrderType : ExcelRow
     {
         
-        public byte Type;
-        public LazyRow< Quest > Quest;
-        public LazyRow< EventItem > EventItem;
-        public LazyRow< MobHuntOrder > OrderStart;
-        public byte OrderAmount;
+        public byte Type { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public LazyRow< EventItem > EventItem { get; set; }
+        public LazyRow< MobHuntOrder > OrderStart { get; set; }
+        public byte OrderAmount { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< byte >( 0 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ), language );
-            EventItem = new LazyRow< EventItem >( lumina, parser.ReadColumn< uint >( 2 ), language );
-            OrderStart = new LazyRow< MobHuntOrder >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            EventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            OrderStart = new LazyRow< MobHuntOrder >( gameData, parser.ReadColumn< ushort >( 3 ), language );
             OrderAmount = parser.ReadColumn< byte >( 4 );
         }
     }

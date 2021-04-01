@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class JournalCategory : ExcelRow
     {
         
-        public SeString Name;
-        public byte SeparateType;
-        public byte DataType;
-        public LazyRow< JournalSection > JournalSection;
+        public SeString Name { get; set; }
+        public byte SeparateType { get; set; }
+        public byte DataType { get; set; }
+        public LazyRow< JournalSection > JournalSection { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             SeparateType = parser.ReadColumn< byte >( 1 );
             DataType = parser.ReadColumn< byte >( 2 );
-            JournalSection = new LazyRow< JournalSection >( lumina, parser.ReadColumn< byte >( 3 ), language );
+            JournalSection = new LazyRow< JournalSection >( gameData, parser.ReadColumn< byte >( 3 ), language );
         }
     }
 }

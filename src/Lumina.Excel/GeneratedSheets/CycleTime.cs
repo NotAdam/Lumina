@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class CycleTime : ExcelRow
     {
         
-        public uint FirstCycle;
-        public uint Cycle;
+        public uint FirstCycle { get; set; }
+        public uint Cycle { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             FirstCycle = parser.ReadColumn< uint >( 0 );
             Cycle = parser.ReadColumn< uint >( 1 );

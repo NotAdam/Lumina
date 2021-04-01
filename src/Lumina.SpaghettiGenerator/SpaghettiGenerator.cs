@@ -11,12 +11,12 @@ namespace Lumina.SpaghettiGenerator
 {
     public class SpaghettiGenerator
     {
-        public Lumina _lumina;
+        public GameData GameData;
         public string _sheetTemplate;
 
         public SpaghettiGenerator(string path, string tmplPath = null)
         {
-            _lumina = new Lumina( path );
+            GameData = new GameData( path );
             _sheetTemplate = File.ReadAllText( tmplPath ?? "class.tmpl" );
         }
 
@@ -104,7 +104,7 @@ namespace Lumina.SpaghettiGenerator
             var def = File.ReadAllText( path );
             var tmpl = _sheetTemplate;
 
-            var sheet = _lumina.Excel.GetSheetRaw( name );
+            var sheet = GameData.Excel.GetSheetRaw( name );
             if( sheet == null )
             {
                 Console.WriteLine( $" - sheet {name} no longer exists!" );

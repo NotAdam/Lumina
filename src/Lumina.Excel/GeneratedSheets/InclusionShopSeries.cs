@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class InclusionShopSeries : ExcelRow
     {
         
-        public LazyRow< SpecialShop > SpecialShop;
+        public LazyRow< SpecialShop > SpecialShop { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            SpecialShop = new LazyRow< SpecialShop >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            SpecialShop = new LazyRow< SpecialShop >( gameData, parser.ReadColumn< uint >( 0 ), language );
         }
     }
 }

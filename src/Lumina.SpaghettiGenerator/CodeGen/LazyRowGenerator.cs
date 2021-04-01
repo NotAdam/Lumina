@@ -14,7 +14,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
         
         public override void WriteFields( StringBuilder sb )
         {
-            sb.AppendLine( $"public LazyRow< {TypeName} > {FieldName};" );
+            sb.AppendLine( $"public LazyRow< {TypeName} > {FieldName} {{ get; set; }}" );
         }
 
         public override void WriteReaders( StringBuilder sb )
@@ -26,7 +26,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
             }
             
             var type = SpaghettiGenerator.ExcelTypeToManaged( _cols[ ColumnId ].Type );
-            sb.AppendLine( $"{FieldName} = new LazyRow< {TypeName} >( lumina, parser.ReadColumn< {type} >( {ColumnId} ), language );" );
+            sb.AppendLine( $"{FieldName} = new LazyRow< {TypeName} >( gameData, parser.ReadColumn< {type} >( {ColumnId} ), language );" );
         }
     }
 }

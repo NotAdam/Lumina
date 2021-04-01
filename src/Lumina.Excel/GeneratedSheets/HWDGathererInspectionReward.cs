@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDGathererInspectionReward : ExcelRow
     {
         
-        public ushort Scrips;
-        public ushort Points;
+        public ushort Scrips { get; set; }
+        public ushort Points { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Scrips = parser.ReadColumn< ushort >( 0 );
             Points = parser.ReadColumn< ushort >( 1 );

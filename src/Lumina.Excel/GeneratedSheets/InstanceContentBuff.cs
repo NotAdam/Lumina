@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class InstanceContentBuff : ExcelRow
     {
         
-        public ushort EchoStart;
-        public ushort EchoDeath;
+        public ushort EchoStart { get; set; }
+        public ushort EchoDeath { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             EchoStart = parser.ReadColumn< ushort >( 0 );
             EchoDeath = parser.ReadColumn< ushort >( 1 );

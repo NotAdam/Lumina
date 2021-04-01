@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionParam : ExcelRow
     {
         
-        public short Name;
-        public short Unknown1;
+        public short Name { get; set; }
+        public short Unknown1 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< short >( 0 );
             Unknown1 = parser.ReadColumn< short >( 1 );

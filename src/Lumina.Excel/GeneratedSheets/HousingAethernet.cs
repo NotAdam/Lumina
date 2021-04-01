@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingAethernet : ExcelRow
     {
         
-        public LazyRow< Level > Level;
-        public LazyRow< TerritoryType > TerritoryType;
-        public LazyRow< PlaceName > PlaceName;
-        public byte Order;
+        public LazyRow< Level > Level { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public byte Order { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Level = new LazyRow< Level >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Level = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             Order = parser.ReadColumn< byte >( 3 );
         }
     }

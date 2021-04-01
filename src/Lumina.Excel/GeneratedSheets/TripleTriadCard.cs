@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class TripleTriadCard : ExcelRow
     {
         
-        public SeString Name;
-        public sbyte Unknown1;
-        public SeString Unknown2;
-        public sbyte Unknown3;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown5;
-        public sbyte Unknown6;
-        public sbyte Unknown7;
-        public SeString Description;
+        public SeString Name { get; set; }
+        public sbyte Unknown1 { get; set; }
+        public SeString Unknown2 { get; set; }
+        public sbyte Unknown3 { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Unknown6 { get; set; }
+        public sbyte Unknown7 { get; set; }
+        public SeString Description { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< sbyte >( 1 );

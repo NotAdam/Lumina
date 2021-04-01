@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class NpcYell : ExcelRow
     {
         
-        public uint Unknown0;
-        public byte Unknown1;
-        public bool Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public byte OutputType;
-        public float BalloonTime;
-        public bool IsBalloonSlow;
-        public bool BattleTalkTime;
-        public byte Unknown54;
-        public SeString Text;
+        public uint Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public byte OutputType { get; set; }
+        public float BalloonTime { get; set; }
+        public bool IsBalloonSlow { get; set; }
+        public bool BattleTalkTime { get; set; }
+        public byte Unknown54 { get; set; }
+        public SeString Text { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class DescriptionSection : ExcelRow
     {
         
-        public LazyRow< DescriptionString > String;
-        public LazyRow< DescriptionPage > Page;
+        public LazyRow< DescriptionString > String { get; set; }
+        public LazyRow< DescriptionPage > Page { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            String = new LazyRow< DescriptionString >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            Page = new LazyRow< DescriptionPage >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            String = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            Page = new LazyRow< DescriptionPage >( gameData, parser.ReadColumn< ushort >( 1 ), language );
         }
     }
 }

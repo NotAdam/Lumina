@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActivityFeedImages : ExcelRow
     {
         
-        public SeString ExpansionImage;
-        public SeString ActivityFeedJA;
-        public SeString ActivityFeedEN;
-        public SeString ActivityFeedDE;
-        public SeString ActivityFeedFR;
+        public SeString ExpansionImage { get; set; }
+        public SeString ActivityFeedJA { get; set; }
+        public SeString ActivityFeedEN { get; set; }
+        public SeString ActivityFeedDE { get; set; }
+        public SeString ActivityFeedFR { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ExpansionImage = parser.ReadColumn< SeString >( 0 );
             ActivityFeedJA = parser.ReadColumn< SeString >( 1 );

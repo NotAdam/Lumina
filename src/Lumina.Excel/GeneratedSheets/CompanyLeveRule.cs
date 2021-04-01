@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanyLeveRule : ExcelRow
     {
         
-        public SeString Type;
-        public LazyRow< LeveString > Objective;
-        public LazyRow< LeveString > Help;
+        public SeString Type { get; set; }
+        public LazyRow< LeveString > Objective { get; set; }
+        public LazyRow< LeveString > Help { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< SeString >( 0 );
-            Objective = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 1 ), language );
-            Help = new LazyRow< LeveString >( lumina, parser.ReadColumn< ushort >( 2 ), language );
+            Objective = new LazyRow< LeveString >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            Help = new LazyRow< LeveString >( gameData, parser.ReadColumn< ushort >( 2 ), language );
         }
     }
 }

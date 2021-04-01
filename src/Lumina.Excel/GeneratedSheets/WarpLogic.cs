@@ -14,19 +14,18 @@ namespace Lumina.Excel.GeneratedSheets
             public uint Argument;
         }
         
-        public uint Unknown0;
-        public SeString WarpName;
-        public bool CanSkipCutscene;
-        public SeString[] Function;
-        public UnkStruct13Struct[] UnkStruct13;
-        public SeString Question;
-        public SeString ResponseYes;
-        public SeString ResponseNo;
+        public uint Unknown0 { get; set; }
+        public SeString WarpName { get; set; }
+        public bool CanSkipCutscene { get; set; }
+        public SeString[] Function { get; set; }
+        public UnkStruct13Struct[] UnkStruct13 { get; set; }
+        public SeString Question { get; set; }
+        public SeString ResponseYes { get; set; }
+        public SeString ResponseNo { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             WarpName = parser.ReadColumn< SeString >( 1 );

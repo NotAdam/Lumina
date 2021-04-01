@@ -10,17 +10,16 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionTimelineMove : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public byte Unknown2;
-        public byte Unknown3;
-        public byte Unknown4;
-        public bool Unknown5;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

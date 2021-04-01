@@ -10,41 +10,40 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringLeve : ExcelRow
     {
         
-        public LazyRow< GatheringLeveRoute >[] Route;
-        public LazyRow< EventItem > RequiredItem0;
-        public byte RequiredItemQty0;
-        public LazyRow< EventItem > RequiredItem1;
-        public byte RequiredItemQty1;
-        public LazyRow< EventItem > RequiredItem2;
-        public byte RequiredItemQty2;
-        public LazyRow< EventItem > RequiredItem3;
-        public byte RequiredItemQty3;
-        public byte ItemNumber;
-        public LazyRow< GatheringLeveRule > Rule;
-        public byte Varient;
-        public ushort Objective0;
-        public ushort Objective1;
-        public int BNpcEntry;
-        public bool UseSecondaryTool;
+        public LazyRow< GatheringLeveRoute >[] Route { get; set; }
+        public LazyRow< EventItem > RequiredItem0 { get; set; }
+        public byte RequiredItemQty0 { get; set; }
+        public LazyRow< EventItem > RequiredItem1 { get; set; }
+        public byte RequiredItemQty1 { get; set; }
+        public LazyRow< EventItem > RequiredItem2 { get; set; }
+        public byte RequiredItemQty2 { get; set; }
+        public LazyRow< EventItem > RequiredItem3 { get; set; }
+        public byte RequiredItemQty3 { get; set; }
+        public byte ItemNumber { get; set; }
+        public LazyRow< GatheringLeveRule > Rule { get; set; }
+        public byte Varient { get; set; }
+        public ushort Objective0 { get; set; }
+        public ushort Objective1 { get; set; }
+        public int BNpcEntry { get; set; }
+        public bool UseSecondaryTool { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Route = new LazyRow< GatheringLeveRoute >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                Route[ i ] = new LazyRow< GatheringLeveRoute >( lumina, parser.ReadColumn< int >( 0 + i ), language );
-            RequiredItem0 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 4 ), language );
+                Route[ i ] = new LazyRow< GatheringLeveRoute >( gameData, parser.ReadColumn< int >( 0 + i ), language );
+            RequiredItem0 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 4 ), language );
             RequiredItemQty0 = parser.ReadColumn< byte >( 5 );
-            RequiredItem1 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 6 ), language );
+            RequiredItem1 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 6 ), language );
             RequiredItemQty1 = parser.ReadColumn< byte >( 7 );
-            RequiredItem2 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 8 ), language );
+            RequiredItem2 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 8 ), language );
             RequiredItemQty2 = parser.ReadColumn< byte >( 9 );
-            RequiredItem3 = new LazyRow< EventItem >( lumina, parser.ReadColumn< int >( 10 ), language );
+            RequiredItem3 = new LazyRow< EventItem >( gameData, parser.ReadColumn< int >( 10 ), language );
             RequiredItemQty3 = parser.ReadColumn< byte >( 11 );
             ItemNumber = parser.ReadColumn< byte >( 12 );
-            Rule = new LazyRow< GatheringLeveRule >( lumina, parser.ReadColumn< int >( 13 ), language );
+            Rule = new LazyRow< GatheringLeveRule >( gameData, parser.ReadColumn< int >( 13 ), language );
             Varient = parser.ReadColumn< byte >( 14 );
             Objective0 = parser.ReadColumn< ushort >( 15 );
             Objective1 = parser.ReadColumn< ushort >( 16 );

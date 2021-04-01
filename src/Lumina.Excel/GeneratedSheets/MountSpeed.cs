@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class MountSpeed : ExcelRow
     {
         
-        public LazyRow< Quest > Quest;
-        public uint Unknown1;
-        public byte Unknown2;
+        public LazyRow< Quest > Quest { get; set; }
+        public uint Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
             Unknown1 = parser.ReadColumn< uint >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
         }

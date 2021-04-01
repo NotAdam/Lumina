@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class PublicContentCutscene : ExcelRow
     {
         
-        public LazyRow< Cutscene > Cutscene;
-        public LazyRow< Cutscene > Cutscene2;
+        public LazyRow< Cutscene > Cutscene { get; set; }
+        public LazyRow< Cutscene > Cutscene2 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Cutscene = new LazyRow< Cutscene >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            Cutscene2 = new LazyRow< Cutscene >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            Cutscene = new LazyRow< Cutscene >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            Cutscene2 = new LazyRow< Cutscene >( gameData, parser.ReadColumn< uint >( 1 ), language );
         }
     }
 }

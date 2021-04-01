@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class FateProgressUI : ExcelRow
     {
         
-        public LazyRow< TerritoryType > Location;
-        public LazyRow< Achievement > Achievement;
-        public byte ReqFatesToRank2;
-        public byte ReqFatesToRank3;
-        public byte DisplayOrder;
+        public LazyRow< TerritoryType > Location { get; set; }
+        public LazyRow< Achievement > Achievement { get; set; }
+        public byte ReqFatesToRank2 { get; set; }
+        public byte ReqFatesToRank3 { get; set; }
+        public byte DisplayOrder { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Location = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< int >( 0 ), language );
-            Achievement = new LazyRow< Achievement >( lumina, parser.ReadColumn< int >( 1 ), language );
+            Location = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< int >( 0 ), language );
+            Achievement = new LazyRow< Achievement >( gameData, parser.ReadColumn< int >( 1 ), language );
             ReqFatesToRank2 = parser.ReadColumn< byte >( 2 );
             ReqFatesToRank3 = parser.ReadColumn< byte >( 3 );
             DisplayOrder = parser.ReadColumn< byte >( 4 );

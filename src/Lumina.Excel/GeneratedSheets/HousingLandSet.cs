@@ -10,136 +10,135 @@ namespace Lumina.Excel.GeneratedSheets
     public class HousingLandSet : ExcelRow
     {
         
-        public byte[] PlotSize;
-        public uint[] MinPrice;
-        public uint Unknown120;
-        public uint Unknown121;
-        public uint Unknown122;
-        public uint Unknown123;
-        public uint Unknown124;
-        public uint Unknown125;
-        public uint Unknown126;
-        public uint Unknown127;
-        public uint Unknown128;
-        public uint Unknown129;
-        public uint Unknown130;
-        public uint Unknown131;
-        public uint Unknown132;
-        public uint Unknown133;
-        public uint Unknown134;
-        public uint Unknown135;
-        public uint Unknown136;
-        public uint Unknown137;
-        public uint Unknown138;
-        public uint Unknown139;
-        public uint Unknown140;
-        public uint Unknown141;
-        public uint Unknown142;
-        public uint Unknown143;
-        public uint Unknown144;
-        public uint Unknown145;
-        public uint Unknown146;
-        public uint Unknown147;
-        public uint Unknown148;
-        public uint Unknown149;
-        public uint Unknown150;
-        public uint Unknown151;
-        public uint Unknown152;
-        public uint Unknown153;
-        public uint Unknown154;
-        public uint Unknown155;
-        public uint Unknown156;
-        public uint Unknown157;
-        public uint Unknown158;
-        public uint Unknown159;
-        public uint Unknown160;
-        public uint Unknown161;
-        public uint Unknown162;
-        public uint Unknown163;
-        public uint Unknown164;
-        public uint Unknown165;
-        public uint Unknown166;
-        public uint Unknown167;
-        public uint Unknown168;
-        public uint Unknown169;
-        public uint Unknown170;
-        public uint Unknown171;
-        public uint Unknown172;
-        public uint Unknown173;
-        public uint Unknown174;
-        public uint Unknown175;
-        public uint Unknown176;
-        public uint Unknown177;
-        public uint Unknown178;
-        public uint Unknown179;
-        public uint Unknown180;
-        public uint Unknown181;
-        public uint Unknown182;
-        public uint Unknown183;
-        public uint Unknown184;
-        public uint Unknown185;
-        public uint Unknown186;
-        public uint Unknown187;
-        public uint Unknown188;
-        public uint Unknown189;
-        public uint Unknown190;
-        public uint Unknown191;
-        public uint Unknown192;
-        public uint Unknown193;
-        public uint Unknown194;
-        public uint Unknown195;
-        public uint Unknown196;
-        public uint Unknown197;
-        public uint Unknown198;
-        public uint Unknown199;
-        public uint Unknown200;
-        public uint Unknown201;
-        public uint Unknown202;
-        public uint Unknown203;
-        public uint Unknown204;
-        public uint Unknown205;
-        public uint Unknown206;
-        public uint Unknown207;
-        public uint Unknown208;
-        public uint Unknown209;
-        public uint Unknown210;
-        public uint Unknown211;
-        public uint Unknown212;
-        public uint Unknown213;
-        public uint Unknown214;
-        public uint Unknown215;
-        public uint Unknown216;
-        public uint Unknown217;
-        public uint Unknown218;
-        public uint Unknown219;
-        public uint Unknown220;
-        public uint Unknown221;
-        public uint Unknown222;
-        public uint Unknown223;
-        public uint Unknown224;
-        public uint Unknown225;
-        public uint Unknown226;
-        public uint Unknown227;
-        public uint Unknown228;
-        public uint Unknown229;
-        public uint Unknown230;
-        public uint Unknown231;
-        public uint Unknown232;
-        public uint Unknown233;
-        public uint Unknown234;
-        public uint Unknown235;
-        public uint Unknown236;
-        public uint Unknown237;
-        public uint Unknown238;
-        public uint Unknown239;
-        public uint[] InitialPrice;
-        public uint Unknown300;
-        public uint Unknown301;
+        public byte[] PlotSize { get; set; }
+        public uint[] MinPrice { get; set; }
+        public uint Unknown120 { get; set; }
+        public uint Unknown121 { get; set; }
+        public uint Unknown122 { get; set; }
+        public uint Unknown123 { get; set; }
+        public uint Unknown124 { get; set; }
+        public uint Unknown125 { get; set; }
+        public uint Unknown126 { get; set; }
+        public uint Unknown127 { get; set; }
+        public uint Unknown128 { get; set; }
+        public uint Unknown129 { get; set; }
+        public uint Unknown130 { get; set; }
+        public uint Unknown131 { get; set; }
+        public uint Unknown132 { get; set; }
+        public uint Unknown133 { get; set; }
+        public uint Unknown134 { get; set; }
+        public uint Unknown135 { get; set; }
+        public uint Unknown136 { get; set; }
+        public uint Unknown137 { get; set; }
+        public uint Unknown138 { get; set; }
+        public uint Unknown139 { get; set; }
+        public uint Unknown140 { get; set; }
+        public uint Unknown141 { get; set; }
+        public uint Unknown142 { get; set; }
+        public uint Unknown143 { get; set; }
+        public uint Unknown144 { get; set; }
+        public uint Unknown145 { get; set; }
+        public uint Unknown146 { get; set; }
+        public uint Unknown147 { get; set; }
+        public uint Unknown148 { get; set; }
+        public uint Unknown149 { get; set; }
+        public uint Unknown150 { get; set; }
+        public uint Unknown151 { get; set; }
+        public uint Unknown152 { get; set; }
+        public uint Unknown153 { get; set; }
+        public uint Unknown154 { get; set; }
+        public uint Unknown155 { get; set; }
+        public uint Unknown156 { get; set; }
+        public uint Unknown157 { get; set; }
+        public uint Unknown158 { get; set; }
+        public uint Unknown159 { get; set; }
+        public uint Unknown160 { get; set; }
+        public uint Unknown161 { get; set; }
+        public uint Unknown162 { get; set; }
+        public uint Unknown163 { get; set; }
+        public uint Unknown164 { get; set; }
+        public uint Unknown165 { get; set; }
+        public uint Unknown166 { get; set; }
+        public uint Unknown167 { get; set; }
+        public uint Unknown168 { get; set; }
+        public uint Unknown169 { get; set; }
+        public uint Unknown170 { get; set; }
+        public uint Unknown171 { get; set; }
+        public uint Unknown172 { get; set; }
+        public uint Unknown173 { get; set; }
+        public uint Unknown174 { get; set; }
+        public uint Unknown175 { get; set; }
+        public uint Unknown176 { get; set; }
+        public uint Unknown177 { get; set; }
+        public uint Unknown178 { get; set; }
+        public uint Unknown179 { get; set; }
+        public uint Unknown180 { get; set; }
+        public uint Unknown181 { get; set; }
+        public uint Unknown182 { get; set; }
+        public uint Unknown183 { get; set; }
+        public uint Unknown184 { get; set; }
+        public uint Unknown185 { get; set; }
+        public uint Unknown186 { get; set; }
+        public uint Unknown187 { get; set; }
+        public uint Unknown188 { get; set; }
+        public uint Unknown189 { get; set; }
+        public uint Unknown190 { get; set; }
+        public uint Unknown191 { get; set; }
+        public uint Unknown192 { get; set; }
+        public uint Unknown193 { get; set; }
+        public uint Unknown194 { get; set; }
+        public uint Unknown195 { get; set; }
+        public uint Unknown196 { get; set; }
+        public uint Unknown197 { get; set; }
+        public uint Unknown198 { get; set; }
+        public uint Unknown199 { get; set; }
+        public uint Unknown200 { get; set; }
+        public uint Unknown201 { get; set; }
+        public uint Unknown202 { get; set; }
+        public uint Unknown203 { get; set; }
+        public uint Unknown204 { get; set; }
+        public uint Unknown205 { get; set; }
+        public uint Unknown206 { get; set; }
+        public uint Unknown207 { get; set; }
+        public uint Unknown208 { get; set; }
+        public uint Unknown209 { get; set; }
+        public uint Unknown210 { get; set; }
+        public uint Unknown211 { get; set; }
+        public uint Unknown212 { get; set; }
+        public uint Unknown213 { get; set; }
+        public uint Unknown214 { get; set; }
+        public uint Unknown215 { get; set; }
+        public uint Unknown216 { get; set; }
+        public uint Unknown217 { get; set; }
+        public uint Unknown218 { get; set; }
+        public uint Unknown219 { get; set; }
+        public uint Unknown220 { get; set; }
+        public uint Unknown221 { get; set; }
+        public uint Unknown222 { get; set; }
+        public uint Unknown223 { get; set; }
+        public uint Unknown224 { get; set; }
+        public uint Unknown225 { get; set; }
+        public uint Unknown226 { get; set; }
+        public uint Unknown227 { get; set; }
+        public uint Unknown228 { get; set; }
+        public uint Unknown229 { get; set; }
+        public uint Unknown230 { get; set; }
+        public uint Unknown231 { get; set; }
+        public uint Unknown232 { get; set; }
+        public uint Unknown233 { get; set; }
+        public uint Unknown234 { get; set; }
+        public uint Unknown235 { get; set; }
+        public uint Unknown236 { get; set; }
+        public uint Unknown237 { get; set; }
+        public uint Unknown238 { get; set; }
+        public uint Unknown239 { get; set; }
+        public uint[] InitialPrice { get; set; }
+        public uint Unknown300 { get; set; }
+        public uint Unknown301 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             PlotSize = new byte[ 60 ];
             for( var i = 0; i < 60; i++ )

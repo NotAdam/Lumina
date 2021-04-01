@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class TreasureSpot : ExcelRow
     {
         
-        public LazyRow< Level > Location;
-        public float MapOffsetX;
-        public float MapOffsetY;
+        public LazyRow< Level > Location { get; set; }
+        public float MapOffsetX { get; set; }
+        public float MapOffsetY { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Location = new LazyRow< Level >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Location = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 0 ), language );
             MapOffsetX = parser.ReadColumn< float >( 1 );
             MapOffsetY = parser.ReadColumn< float >( 2 );
         }

@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class WeatherReportReplace : ExcelRow
     {
         
-        public LazyRow< PlaceName > PlaceNameSub;
-        public LazyRow< PlaceName > PlaceNameParent;
+        public LazyRow< PlaceName > PlaceNameSub { get; set; }
+        public LazyRow< PlaceName > PlaceNameParent { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            PlaceNameSub = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            PlaceNameParent = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            PlaceNameSub = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            PlaceNameParent = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 1 ), language );
         }
     }
 }

@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringItemLevelConvertTable : ExcelRow
     {
         
-        public byte GatheringItemLevel;
-        public byte Stars;
+        public byte GatheringItemLevel { get; set; }
+        public byte Stars { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             GatheringItemLevel = parser.ReadColumn< byte >( 0 );
             Stars = parser.ReadColumn< byte >( 1 );

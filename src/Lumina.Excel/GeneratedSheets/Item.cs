@@ -20,81 +20,80 @@ namespace Lumina.Excel.GeneratedSheets
             public short BaseParamValueSpecial;
         }
         
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown5;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public SeString Description;
-        public SeString Name;
-        public ushort Icon;
-        public LazyRow< ItemLevel > LevelItem;
-        public byte Rarity;
-        public byte FilterGroup;
-        public uint AdditionalData;
-        public LazyRow< ItemUICategory > ItemUICategory;
-        public LazyRow< ItemSearchCategory > ItemSearchCategory;
-        public LazyRow< EquipSlotCategory > EquipSlotCategory;
-        public LazyRow< ItemSortCategory > ItemSortCategory;
-        public ushort Unknown19;
-        public uint StackSize;
-        public bool IsUnique;
-        public bool IsUntradable;
-        public bool IsIndisposable;
-        public bool Lot;
-        public uint PriceMid;
-        public uint PriceLow;
-        public bool CanBeHq;
-        public bool IsDyeable;
-        public bool IsCrestWorthy;
-        public LazyRow< ItemAction > ItemAction;
-        public byte Unknown31;
-        public ushort Cooldowns;
-        public LazyRow< ClassJob > ClassJobRepair;
-        public LazyRow< Item > ItemRepair;
-        public LazyRow< Item > ItemGlamour;
-        public ushort Desynth;
-        public bool IsCollectable;
-        public bool AlwaysCollectable;
-        public ushort AetherialReduce;
-        public ushort Unknown54;
-        public byte LevelEquip;
-        public byte Unknown42;
-        public byte EquipRestriction;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public LazyRow< GrandCompany > GrandCompany;
-        public LazyRow< ItemSeries > ItemSeries;
-        public byte BaseParamModifier;
-        public ulong ModelMain;
-        public ulong ModelSub;
-        public LazyRow< ClassJob > ClassJobUse;
-        public byte Unknown51;
-        public ushort DamagePhys;
-        public ushort DamageMag;
-        public ushort Delayms;
-        public byte Unknown55;
-        public ushort BlockRate;
-        public ushort Block;
-        public ushort DefensePhys;
-        public ushort DefenseMag;
-        public UnkStruct60Struct[] UnkStruct60;
-        public LazyRow< ItemSpecialBonus > ItemSpecialBonus;
-        public byte ItemSpecialBonusParam;
-        public UnkStruct74Struct[] UnkStruct74;
-        public byte MaterializeType;
-        public byte MateriaSlotCount;
-        public bool IsAdvancedMeldingPermitted;
-        public bool IsPvP;
-        public byte Unknown90;
-        public bool IsGlamourous;
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public SeString Description { get; set; }
+        public SeString Name { get; set; }
+        public ushort Icon { get; set; }
+        public LazyRow< ItemLevel > LevelItem { get; set; }
+        public byte Rarity { get; set; }
+        public byte FilterGroup { get; set; }
+        public uint AdditionalData { get; set; }
+        public LazyRow< ItemUICategory > ItemUICategory { get; set; }
+        public LazyRow< ItemSearchCategory > ItemSearchCategory { get; set; }
+        public LazyRow< EquipSlotCategory > EquipSlotCategory { get; set; }
+        public LazyRow< ItemSortCategory > ItemSortCategory { get; set; }
+        public ushort Unknown19 { get; set; }
+        public uint StackSize { get; set; }
+        public bool IsUnique { get; set; }
+        public bool IsUntradable { get; set; }
+        public bool IsIndisposable { get; set; }
+        public bool Lot { get; set; }
+        public uint PriceMid { get; set; }
+        public uint PriceLow { get; set; }
+        public bool CanBeHq { get; set; }
+        public bool IsDyeable { get; set; }
+        public bool IsCrestWorthy { get; set; }
+        public LazyRow< ItemAction > ItemAction { get; set; }
+        public byte Unknown31 { get; set; }
+        public ushort Cooldowns { get; set; }
+        public LazyRow< ClassJob > ClassJobRepair { get; set; }
+        public LazyRow< Item > ItemRepair { get; set; }
+        public LazyRow< Item > ItemGlamour { get; set; }
+        public ushort Desynth { get; set; }
+        public bool IsCollectable { get; set; }
+        public bool AlwaysCollectable { get; set; }
+        public ushort AetherialReduce { get; set; }
+        public ushort Unknown54 { get; set; }
+        public byte LevelEquip { get; set; }
+        public byte Unknown42 { get; set; }
+        public byte EquipRestriction { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public LazyRow< GrandCompany > GrandCompany { get; set; }
+        public LazyRow< ItemSeries > ItemSeries { get; set; }
+        public byte BaseParamModifier { get; set; }
+        public ulong ModelMain { get; set; }
+        public ulong ModelSub { get; set; }
+        public LazyRow< ClassJob > ClassJobUse { get; set; }
+        public byte Unknown51 { get; set; }
+        public ushort DamagePhys { get; set; }
+        public ushort DamageMag { get; set; }
+        public ushort Delayms { get; set; }
+        public byte Unknown55 { get; set; }
+        public ushort BlockRate { get; set; }
+        public ushort Block { get; set; }
+        public ushort DefensePhys { get; set; }
+        public ushort DefenseMag { get; set; }
+        public UnkStruct60Struct[] UnkStruct60 { get; set; }
+        public LazyRow< ItemSpecialBonus > ItemSpecialBonus { get; set; }
+        public byte ItemSpecialBonusParam { get; set; }
+        public UnkStruct74Struct[] UnkStruct74 { get; set; }
+        public byte MaterializeType { get; set; }
+        public byte MateriaSlotCount { get; set; }
+        public bool IsAdvancedMeldingPermitted { get; set; }
+        public bool IsPvP { get; set; }
+        public byte Unknown90 { get; set; }
+        public bool IsGlamourous { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -107,14 +106,14 @@ namespace Lumina.Excel.GeneratedSheets
             Description = parser.ReadColumn< SeString >( 8 );
             Name = parser.ReadColumn< SeString >( 9 );
             Icon = parser.ReadColumn< ushort >( 10 );
-            LevelItem = new LazyRow< ItemLevel >( lumina, parser.ReadColumn< ushort >( 11 ), language );
+            LevelItem = new LazyRow< ItemLevel >( gameData, parser.ReadColumn< ushort >( 11 ), language );
             Rarity = parser.ReadColumn< byte >( 12 );
             FilterGroup = parser.ReadColumn< byte >( 13 );
             AdditionalData = parser.ReadColumn< uint >( 14 );
-            ItemUICategory = new LazyRow< ItemUICategory >( lumina, parser.ReadColumn< byte >( 15 ), language );
-            ItemSearchCategory = new LazyRow< ItemSearchCategory >( lumina, parser.ReadColumn< byte >( 16 ), language );
-            EquipSlotCategory = new LazyRow< EquipSlotCategory >( lumina, parser.ReadColumn< byte >( 17 ), language );
-            ItemSortCategory = new LazyRow< ItemSortCategory >( lumina, parser.ReadColumn< byte >( 18 ), language );
+            ItemUICategory = new LazyRow< ItemUICategory >( gameData, parser.ReadColumn< byte >( 15 ), language );
+            ItemSearchCategory = new LazyRow< ItemSearchCategory >( gameData, parser.ReadColumn< byte >( 16 ), language );
+            EquipSlotCategory = new LazyRow< EquipSlotCategory >( gameData, parser.ReadColumn< byte >( 17 ), language );
+            ItemSortCategory = new LazyRow< ItemSortCategory >( gameData, parser.ReadColumn< byte >( 18 ), language );
             Unknown19 = parser.ReadColumn< ushort >( 19 );
             StackSize = parser.ReadColumn< uint >( 20 );
             IsUnique = parser.ReadColumn< bool >( 21 );
@@ -126,12 +125,12 @@ namespace Lumina.Excel.GeneratedSheets
             CanBeHq = parser.ReadColumn< bool >( 27 );
             IsDyeable = parser.ReadColumn< bool >( 28 );
             IsCrestWorthy = parser.ReadColumn< bool >( 29 );
-            ItemAction = new LazyRow< ItemAction >( lumina, parser.ReadColumn< ushort >( 30 ), language );
+            ItemAction = new LazyRow< ItemAction >( gameData, parser.ReadColumn< ushort >( 30 ), language );
             Unknown31 = parser.ReadColumn< byte >( 31 );
             Cooldowns = parser.ReadColumn< ushort >( 32 );
-            ClassJobRepair = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 33 ), language );
-            ItemRepair = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 34 ), language );
-            ItemGlamour = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 35 ), language );
+            ClassJobRepair = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 33 ), language );
+            ItemRepair = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 34 ), language );
+            ItemGlamour = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 35 ), language );
             Desynth = parser.ReadColumn< ushort >( 36 );
             IsCollectable = parser.ReadColumn< bool >( 37 );
             AlwaysCollectable = parser.ReadColumn< bool >( 38 );
@@ -140,13 +139,13 @@ namespace Lumina.Excel.GeneratedSheets
             LevelEquip = parser.ReadColumn< byte >( 41 );
             Unknown42 = parser.ReadColumn< byte >( 42 );
             EquipRestriction = parser.ReadColumn< byte >( 43 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 44 ), language );
-            GrandCompany = new LazyRow< GrandCompany >( lumina, parser.ReadColumn< byte >( 45 ), language );
-            ItemSeries = new LazyRow< ItemSeries >( lumina, parser.ReadColumn< byte >( 46 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 44 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< byte >( 45 ), language );
+            ItemSeries = new LazyRow< ItemSeries >( gameData, parser.ReadColumn< byte >( 46 ), language );
             BaseParamModifier = parser.ReadColumn< byte >( 47 );
             ModelMain = parser.ReadColumn< ulong >( 48 );
             ModelSub = parser.ReadColumn< ulong >( 49 );
-            ClassJobUse = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 50 ), language );
+            ClassJobUse = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 50 ), language );
             Unknown51 = parser.ReadColumn< byte >( 51 );
             DamagePhys = parser.ReadColumn< ushort >( 52 );
             DamageMag = parser.ReadColumn< ushort >( 53 );
@@ -163,7 +162,7 @@ namespace Lumina.Excel.GeneratedSheets
                 UnkStruct60[ i ].BaseParam = parser.ReadColumn< byte >( 60 + ( i * 2 + 0 ) );
                 UnkStruct60[ i ].BaseParamValue = parser.ReadColumn< short >( 60 + ( i * 2 + 1 ) );
             }
-            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( lumina, parser.ReadColumn< byte >( 72 ), language );
+            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( gameData, parser.ReadColumn< byte >( 72 ), language );
             ItemSpecialBonusParam = parser.ReadColumn< byte >( 73 );
             UnkStruct74 = new UnkStruct74Struct[ 6 ];
             for( var i = 0; i < 6; i++ )

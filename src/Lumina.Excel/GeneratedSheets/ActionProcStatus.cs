@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionProcStatus : ExcelRow
     {
         
-        public LazyRow< Status > Status;
+        public LazyRow< Status > Status { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Status = new LazyRow< Status >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            Status = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 0 ), language );
         }
     }
 }

@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using Lumina.Data.Parsing;
+// ReSharper disable RedundantAssignment
 
 namespace Lumina.Extensions
 {
@@ -133,6 +135,83 @@ namespace Lumina.Extensions
         public static StringOffset ReadStringOffset( this BinaryReader br, long offset )
         {
             return new StringOffset( br, offset );
+        }
+
+        public static BinaryReader ReadStringOffset( this BinaryReader br, long offset, ref string value )
+        {
+            value = new StringOffset( br, offset );
+
+            return br;
+        }
+        
+        public static BinaryReader ReadStringOffset( this BinaryReader br, long offset, ref StringOffset value )
+        {
+            value = new StringOffset( br, offset );
+
+            return br;
+        }
+
+        public static BinaryReader Read( this BinaryReader br, ref ulong field )
+        {
+            field = br.ReadUInt64();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref long field )
+        {
+            field = br.ReadInt64();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref uint field )
+        {
+            field = br.ReadUInt32();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref int field )
+        {
+            field = br.ReadInt32();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref ushort field )
+        {
+            field = br.ReadUInt16();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref short field )
+        {
+            field = br.ReadInt16();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref byte field )
+        {
+            field = br.ReadByte();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref float field )
+        {
+            field = br.ReadSingle();
+
+            return br;
+        }
+        
+        public static BinaryReader Read( this BinaryReader br, ref double field )
+        {
+            field = br.ReadDouble();
+
+            return br;
         }
 
         /// <summary>

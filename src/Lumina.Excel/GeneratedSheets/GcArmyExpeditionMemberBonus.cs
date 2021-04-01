@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class GcArmyExpeditionMemberBonus : ExcelRow
     {
         
-        public LazyRow< Race > Race;
-        public LazyRow< ClassJob > ClassJob;
+        public LazyRow< Race > Race { get; set; }
+        public LazyRow< ClassJob > ClassJob { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Race = new LazyRow< Race >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Race = new LazyRow< Race >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 1 ), language );
         }
     }
 }

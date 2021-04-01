@@ -10,51 +10,50 @@ namespace Lumina.Excel.GeneratedSheets
     public class ClassJobCategory : ExcelRow
     {
         
-        public SeString Name;
-        public bool ADV;
-        public bool GLA;
-        public bool PGL;
-        public bool MRD;
-        public bool LNC;
-        public bool ARC;
-        public bool CNJ;
-        public bool THM;
-        public bool CRP;
-        public bool BSM;
-        public bool ARM;
-        public bool GSM;
-        public bool LTW;
-        public bool WVR;
-        public bool ALC;
-        public bool CUL;
-        public bool MIN;
-        public bool BTN;
-        public bool FSH;
-        public bool PLD;
-        public bool MNK;
-        public bool WAR;
-        public bool DRG;
-        public bool BRD;
-        public bool WHM;
-        public bool BLM;
-        public bool ACN;
-        public bool SMN;
-        public bool SCH;
-        public bool ROG;
-        public bool NIN;
-        public bool MCH;
-        public bool DRK;
-        public bool AST;
-        public bool SAM;
-        public bool RDM;
-        public bool BLU;
-        public bool GNB;
-        public bool DNC;
+        public SeString Name { get; set; }
+        public bool ADV { get; set; }
+        public bool GLA { get; set; }
+        public bool PGL { get; set; }
+        public bool MRD { get; set; }
+        public bool LNC { get; set; }
+        public bool ARC { get; set; }
+        public bool CNJ { get; set; }
+        public bool THM { get; set; }
+        public bool CRP { get; set; }
+        public bool BSM { get; set; }
+        public bool ARM { get; set; }
+        public bool GSM { get; set; }
+        public bool LTW { get; set; }
+        public bool WVR { get; set; }
+        public bool ALC { get; set; }
+        public bool CUL { get; set; }
+        public bool MIN { get; set; }
+        public bool BTN { get; set; }
+        public bool FSH { get; set; }
+        public bool PLD { get; set; }
+        public bool MNK { get; set; }
+        public bool WAR { get; set; }
+        public bool DRG { get; set; }
+        public bool BRD { get; set; }
+        public bool WHM { get; set; }
+        public bool BLM { get; set; }
+        public bool ACN { get; set; }
+        public bool SMN { get; set; }
+        public bool SCH { get; set; }
+        public bool ROG { get; set; }
+        public bool NIN { get; set; }
+        public bool MCH { get; set; }
+        public bool DRK { get; set; }
+        public bool AST { get; set; }
+        public bool SAM { get; set; }
+        public bool RDM { get; set; }
+        public bool BLU { get; set; }
+        public bool GNB { get; set; }
+        public bool DNC { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             ADV = parser.ReadColumn< bool >( 1 );

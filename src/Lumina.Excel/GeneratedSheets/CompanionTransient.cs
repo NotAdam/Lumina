@@ -10,25 +10,24 @@ namespace Lumina.Excel.GeneratedSheets
     public class CompanionTransient : ExcelRow
     {
         
-        public SeString Description;
-        public SeString DescriptionEnhanced;
-        public SeString Tooltip;
-        public SeString SpecialActionName;
-        public SeString SpecialActionDescription;
-        public byte Attack;
-        public byte Defense;
-        public byte Speed;
-        public bool HasAreaAttack;
-        public bool StrengthGate;
-        public bool StrengthEye;
-        public bool StrengthShield;
-        public bool StrengthArcana;
-        public LazyRow< MinionSkillType > MinionSkillType;
+        public SeString Description { get; set; }
+        public SeString DescriptionEnhanced { get; set; }
+        public SeString Tooltip { get; set; }
+        public SeString SpecialActionName { get; set; }
+        public SeString SpecialActionDescription { get; set; }
+        public byte Attack { get; set; }
+        public byte Defense { get; set; }
+        public byte Speed { get; set; }
+        public bool HasAreaAttack { get; set; }
+        public bool StrengthGate { get; set; }
+        public bool StrengthEye { get; set; }
+        public bool StrengthShield { get; set; }
+        public bool StrengthArcana { get; set; }
+        public LazyRow< MinionSkillType > MinionSkillType { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Description = parser.ReadColumn< SeString >( 0 );
             DescriptionEnhanced = parser.ReadColumn< SeString >( 1 );
@@ -43,7 +42,7 @@ namespace Lumina.Excel.GeneratedSheets
             StrengthEye = parser.ReadColumn< bool >( 10 );
             StrengthShield = parser.ReadColumn< bool >( 11 );
             StrengthArcana = parser.ReadColumn< bool >( 12 );
-            MinionSkillType = new LazyRow< MinionSkillType >( lumina, parser.ReadColumn< byte >( 13 ), language );
+            MinionSkillType = new LazyRow< MinionSkillType >( gameData, parser.ReadColumn< byte >( 13 ), language );
         }
     }
 }

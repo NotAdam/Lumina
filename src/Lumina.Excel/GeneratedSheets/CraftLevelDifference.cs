@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class CraftLevelDifference : ExcelRow
     {
         
-        public short Difference;
-        public short ProgressFactor;
-        public short QualityFactor;
+        public short Difference { get; set; }
+        public short ProgressFactor { get; set; }
+        public short QualityFactor { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Difference = parser.ReadColumn< short >( 0 );
             ProgressFactor = parser.ReadColumn< short >( 1 );

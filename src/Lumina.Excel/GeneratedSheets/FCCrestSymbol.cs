@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCCrestSymbol : ExcelRow
     {
         
-        public byte ColorNum;
-        public byte FCRight;
-        public ushort Unknown2;
+        public byte ColorNum { get; set; }
+        public byte FCRight { get; set; }
+        public ushort Unknown2 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ColorNum = parser.ReadColumn< byte >( 0 );
             FCRight = parser.ReadColumn< byte >( 1 );

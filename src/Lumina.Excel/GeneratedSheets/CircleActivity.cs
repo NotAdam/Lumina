@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class CircleActivity : ExcelRow
     {
         
-        public SeString Name;
-        public int Icon;
-        public ushort Order;
+        public SeString Name { get; set; }
+        public int Icon { get; set; }
+        public ushort Order { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< int >( 1 );

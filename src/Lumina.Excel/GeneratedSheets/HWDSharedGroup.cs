@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDSharedGroup : ExcelRow
     {
         
-        public uint LGB;
-        public LazyRow< HWDSharedGroupControlParam > Param;
+        public uint LGB { get; set; }
+        public LazyRow< HWDSharedGroupControlParam > Param { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             LGB = parser.ReadColumn< uint >( 0 );
-            Param = new LazyRow< HWDSharedGroupControlParam >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            Param = new LazyRow< HWDSharedGroupControlParam >( gameData, parser.ReadColumn< byte >( 1 ), language );
         }
     }
 }

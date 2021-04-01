@@ -10,17 +10,16 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentType : ExcelRow
     {
         
-        public SeString Name;
-        public uint Icon;
-        public uint IconDutyFinder;
-        public byte Unknown3;
-        public byte Unknown4;
-        public byte Unknown5;
+        public SeString Name { get; set; }
+        public uint Icon { get; set; }
+        public uint IconDutyFinder { get; set; }
+        public byte Unknown3 { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< uint >( 1 );

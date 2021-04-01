@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class BattleLeveRule : ExcelRow
     {
         
-        public SeString Rule;
+        public SeString Rule { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Rule = parser.ReadColumn< SeString >( 0 );
         }

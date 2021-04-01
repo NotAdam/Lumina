@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class DeepDungeonFloorEffectUI : ExcelRow
     {
         
-        public uint Icon;
-        public SeString Name;
-        public SeString Description;
+        public uint Icon { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Icon = parser.ReadColumn< uint >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

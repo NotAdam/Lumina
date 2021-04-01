@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGMSwitch : ExcelRow
     {
         
-        public LazyRow< BGMSystemDefine > BGMSystemDefine;
-        public LazyRow< Quest > Quest;
-        public byte Unknown2;
-        public LazyRow< BGM > BGM;
+        public LazyRow< BGMSystemDefine > BGMSystemDefine { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public byte Unknown2 { get; set; }
+        public LazyRow< BGM > BGM { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            BGMSystemDefine = new LazyRow< BGMSystemDefine >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            BGMSystemDefine = new LazyRow< BGMSystemDefine >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Unknown2 = parser.ReadColumn< byte >( 2 );
-            BGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 3 ), language );
+            BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 3 ), language );
         }
     }
 }

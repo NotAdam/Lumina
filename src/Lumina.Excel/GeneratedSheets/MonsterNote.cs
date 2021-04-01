@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class MonsterNote : ExcelRow
     {
         
-        public LazyRow< MonsterNoteTarget >[] MonsterNoteTarget;
-        public byte[] Count;
-        public uint Reward;
-        public SeString Name;
+        public LazyRow< MonsterNoteTarget >[] MonsterNoteTarget { get; set; }
+        public byte[] Count { get; set; }
+        public uint Reward { get; set; }
+        public SeString Name { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             MonsterNoteTarget = new LazyRow< MonsterNoteTarget >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( lumina, parser.ReadColumn< ushort >( 0 + i ), language );
+                MonsterNoteTarget[ i ] = new LazyRow< MonsterNoteTarget >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
             Count = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 Count[ i ] = parser.ReadColumn< byte >( 4 + i );

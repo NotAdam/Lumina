@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestRedoChapterUITab : ExcelRow
     {
         
-        public byte Unknown0;
-        public uint Icon1;
-        public uint Icon2;
-        public SeString Text;
+        public byte Unknown0 { get; set; }
+        public uint Icon1 { get; set; }
+        public uint Icon2 { get; set; }
+        public SeString Text { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Icon1 = parser.ReadColumn< uint >( 1 );

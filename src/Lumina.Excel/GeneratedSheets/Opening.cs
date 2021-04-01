@@ -10,96 +10,95 @@ namespace Lumina.Excel.GeneratedSheets
     public class Opening : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< Quest > Quest;
-        public SeString Unknown2;
-        public SeString Unknown3;
-        public SeString Unknown4;
-        public SeString Unknown5;
-        public SeString Unknown6;
-        public SeString Unknown7;
-        public SeString Unknown8;
-        public SeString Unknown9;
-        public SeString Unknown10;
-        public SeString Unknown11;
-        public SeString Unknown12;
-        public SeString Unknown13;
-        public SeString Unknown14;
-        public SeString Unknown15;
-        public SeString Unknown16;
-        public SeString Unknown17;
-        public SeString Unknown18;
-        public SeString Unknown19;
-        public SeString Unknown20;
-        public SeString Unknown21;
-        public SeString Unknown22;
-        public SeString Unknown23;
-        public SeString Unknown24;
-        public SeString Unknown25;
-        public SeString Unknown26;
-        public SeString Unknown27;
-        public SeString Unknown28;
-        public SeString Unknown29;
-        public SeString Unknown30;
-        public SeString Unknown31;
-        public SeString Unknown32;
-        public SeString Unknown33;
-        public SeString Unknown34;
-        public SeString Unknown35;
-        public SeString Unknown36;
-        public SeString Unknown37;
-        public SeString Unknown38;
-        public SeString Unknown39;
-        public SeString Unknown40;
-        public SeString Unknown41;
-        public uint Unknown42;
-        public uint Unknown43;
-        public uint Unknown44;
-        public uint Unknown45;
-        public uint Unknown46;
-        public uint Unknown47;
-        public uint Unknown48;
-        public uint Unknown49;
-        public uint Unknown50;
-        public uint Unknown51;
-        public uint Unknown52;
-        public uint Unknown53;
-        public uint Unknown54;
-        public uint Unknown55;
-        public uint Unknown56;
-        public uint Unknown57;
-        public uint Unknown58;
-        public uint Unknown59;
-        public uint Unknown60;
-        public uint Unknown61;
-        public uint Unknown62;
-        public uint Unknown63;
-        public uint Unknown64;
-        public uint Unknown65;
-        public uint Unknown66;
-        public uint Unknown67;
-        public uint Unknown68;
-        public uint Unknown69;
-        public uint Unknown70;
-        public uint Unknown71;
-        public uint Unknown72;
-        public uint Unknown73;
-        public uint Unknown74;
-        public uint Unknown75;
-        public uint Unknown76;
-        public uint Unknown77;
-        public uint Unknown78;
-        public uint Unknown79;
-        public uint Unknown80;
-        public uint Unknown81;
+        public SeString Name { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
+        public SeString Unknown2 { get; set; }
+        public SeString Unknown3 { get; set; }
+        public SeString Unknown4 { get; set; }
+        public SeString Unknown5 { get; set; }
+        public SeString Unknown6 { get; set; }
+        public SeString Unknown7 { get; set; }
+        public SeString Unknown8 { get; set; }
+        public SeString Unknown9 { get; set; }
+        public SeString Unknown10 { get; set; }
+        public SeString Unknown11 { get; set; }
+        public SeString Unknown12 { get; set; }
+        public SeString Unknown13 { get; set; }
+        public SeString Unknown14 { get; set; }
+        public SeString Unknown15 { get; set; }
+        public SeString Unknown16 { get; set; }
+        public SeString Unknown17 { get; set; }
+        public SeString Unknown18 { get; set; }
+        public SeString Unknown19 { get; set; }
+        public SeString Unknown20 { get; set; }
+        public SeString Unknown21 { get; set; }
+        public SeString Unknown22 { get; set; }
+        public SeString Unknown23 { get; set; }
+        public SeString Unknown24 { get; set; }
+        public SeString Unknown25 { get; set; }
+        public SeString Unknown26 { get; set; }
+        public SeString Unknown27 { get; set; }
+        public SeString Unknown28 { get; set; }
+        public SeString Unknown29 { get; set; }
+        public SeString Unknown30 { get; set; }
+        public SeString Unknown31 { get; set; }
+        public SeString Unknown32 { get; set; }
+        public SeString Unknown33 { get; set; }
+        public SeString Unknown34 { get; set; }
+        public SeString Unknown35 { get; set; }
+        public SeString Unknown36 { get; set; }
+        public SeString Unknown37 { get; set; }
+        public SeString Unknown38 { get; set; }
+        public SeString Unknown39 { get; set; }
+        public SeString Unknown40 { get; set; }
+        public SeString Unknown41 { get; set; }
+        public uint Unknown42 { get; set; }
+        public uint Unknown43 { get; set; }
+        public uint Unknown44 { get; set; }
+        public uint Unknown45 { get; set; }
+        public uint Unknown46 { get; set; }
+        public uint Unknown47 { get; set; }
+        public uint Unknown48 { get; set; }
+        public uint Unknown49 { get; set; }
+        public uint Unknown50 { get; set; }
+        public uint Unknown51 { get; set; }
+        public uint Unknown52 { get; set; }
+        public uint Unknown53 { get; set; }
+        public uint Unknown54 { get; set; }
+        public uint Unknown55 { get; set; }
+        public uint Unknown56 { get; set; }
+        public uint Unknown57 { get; set; }
+        public uint Unknown58 { get; set; }
+        public uint Unknown59 { get; set; }
+        public uint Unknown60 { get; set; }
+        public uint Unknown61 { get; set; }
+        public uint Unknown62 { get; set; }
+        public uint Unknown63 { get; set; }
+        public uint Unknown64 { get; set; }
+        public uint Unknown65 { get; set; }
+        public uint Unknown66 { get; set; }
+        public uint Unknown67 { get; set; }
+        public uint Unknown68 { get; set; }
+        public uint Unknown69 { get; set; }
+        public uint Unknown70 { get; set; }
+        public uint Unknown71 { get; set; }
+        public uint Unknown72 { get; set; }
+        public uint Unknown73 { get; set; }
+        public uint Unknown74 { get; set; }
+        public uint Unknown75 { get; set; }
+        public uint Unknown76 { get; set; }
+        public uint Unknown77 { get; set; }
+        public uint Unknown78 { get; set; }
+        public uint Unknown79 { get; set; }
+        public uint Unknown80 { get; set; }
+        public uint Unknown81 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            Quest = new LazyRow< Quest >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Unknown2 = parser.ReadColumn< SeString >( 2 );
             Unknown3 = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< SeString >( 4 );

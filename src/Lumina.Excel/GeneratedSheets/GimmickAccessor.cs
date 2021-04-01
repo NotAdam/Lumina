@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class GimmickAccessor : ExcelRow
     {
         
-        public int Param0;
-        public uint Param1;
-        public uint Param2;
-        public uint Type;
-        public uint Unknown4;
-        public uint Unknown5;
-        public uint Unknown6;
-        public bool Unknown7;
-        public bool Unknown8;
+        public int Param0 { get; set; }
+        public uint Param1 { get; set; }
+        public uint Param2 { get; set; }
+        public uint Type { get; set; }
+        public uint Unknown4 { get; set; }
+        public uint Unknown5 { get; set; }
+        public uint Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public bool Unknown8 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Param0 = parser.ReadColumn< int >( 0 );
             Param1 = parser.ReadColumn< uint >( 1 );

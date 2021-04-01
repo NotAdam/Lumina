@@ -10,44 +10,43 @@ namespace Lumina.Excel.GeneratedSheets
     public class MountCustomize : ExcelRow
     {
         
-        public bool Unknown0;
-        public ushort HyurMaleScale;
-        public ushort HyurFemaleScale;
-        public ushort ElezenMaleScale;
-        public ushort ElezenFemaleScale;
-        public ushort LalaMaleScale;
-        public ushort LalaFemaleScale;
-        public ushort MiqoMaleScale;
-        public ushort MiqoFemaleScale;
-        public ushort RoeMaleScale;
-        public ushort RoeFemaleScale;
-        public ushort AuRaMaleScale;
-        public ushort AuRaFemaleScale;
-        public ushort HrothgarMaleScale;
-        public ushort HrothgarFemaleScale;
-        public ushort VieraMaleScale;
-        public ushort VieraFemaleScale;
-        public byte HyurMaleCameraHeight;
-        public byte HyurFemaleCameraHeight;
-        public byte ElezenMaleCameraHeight;
-        public byte ElezenFemaleCameraHeight;
-        public byte LalaMaleCameraHeight;
-        public byte LalaFemaleCameraHeight;
-        public byte MiqoMaleCameraHeight;
-        public byte MiqoFemaleCameraHeight;
-        public byte RoeMaleCameraHeight;
-        public byte RoeFemaleCameraHeight;
-        public byte AuRaMaleCameraHeight;
-        public byte AuRaFemaleCameraHeight;
-        public byte HrothgarMaleCameraHeight;
-        public byte HrothgarRoeFemaleCameraHeight;
-        public byte VieraMaleCameraHeight;
-        public byte VieraFemaleCameraHeight;
+        public bool Unknown0 { get; set; }
+        public ushort HyurMaleScale { get; set; }
+        public ushort HyurFemaleScale { get; set; }
+        public ushort ElezenMaleScale { get; set; }
+        public ushort ElezenFemaleScale { get; set; }
+        public ushort LalaMaleScale { get; set; }
+        public ushort LalaFemaleScale { get; set; }
+        public ushort MiqoMaleScale { get; set; }
+        public ushort MiqoFemaleScale { get; set; }
+        public ushort RoeMaleScale { get; set; }
+        public ushort RoeFemaleScale { get; set; }
+        public ushort AuRaMaleScale { get; set; }
+        public ushort AuRaFemaleScale { get; set; }
+        public ushort HrothgarMaleScale { get; set; }
+        public ushort HrothgarFemaleScale { get; set; }
+        public ushort VieraMaleScale { get; set; }
+        public ushort VieraFemaleScale { get; set; }
+        public byte HyurMaleCameraHeight { get; set; }
+        public byte HyurFemaleCameraHeight { get; set; }
+        public byte ElezenMaleCameraHeight { get; set; }
+        public byte ElezenFemaleCameraHeight { get; set; }
+        public byte LalaMaleCameraHeight { get; set; }
+        public byte LalaFemaleCameraHeight { get; set; }
+        public byte MiqoMaleCameraHeight { get; set; }
+        public byte MiqoFemaleCameraHeight { get; set; }
+        public byte RoeMaleCameraHeight { get; set; }
+        public byte RoeFemaleCameraHeight { get; set; }
+        public byte AuRaMaleCameraHeight { get; set; }
+        public byte AuRaFemaleCameraHeight { get; set; }
+        public byte HrothgarMaleCameraHeight { get; set; }
+        public byte HrothgarRoeFemaleCameraHeight { get; set; }
+        public byte VieraMaleCameraHeight { get; set; }
+        public byte VieraFemaleCameraHeight { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< bool >( 0 );
             HyurMaleScale = parser.ReadColumn< ushort >( 1 );

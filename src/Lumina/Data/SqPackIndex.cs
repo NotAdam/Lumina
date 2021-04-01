@@ -16,7 +16,7 @@ namespace Lumina.Data
         public Dictionary< ulong, IndexHashTableEntry > HashTableEntries { get; set; }
         public Dictionary< uint, Index2HashTableEntry > HashTableEntries2 { get; set; }
 
-        internal SqPackIndex( FileInfo indexFile, Lumina lumina ) : base( indexFile, lumina )
+        internal SqPackIndex( FileInfo indexFile, GameData gameData ) : base( indexFile, gameData )
         {
             IsIndex2 = indexFile.Extension == ".index2";
 

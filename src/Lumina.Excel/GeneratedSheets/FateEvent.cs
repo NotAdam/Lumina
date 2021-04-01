@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class FateEvent : ExcelRow
     {
         
-        public byte[] Turn;
-        public uint[] Gesture;
-        public int[] LipSync;
-        public int[] Facial;
-        public int[] Shape;
-        public bool[] IsAutoShake;
-        public byte[] WidgetType;
-        public SeString[] Text;
+        public byte[] Turn { get; set; }
+        public uint[] Gesture { get; set; }
+        public int[] LipSync { get; set; }
+        public int[] Facial { get; set; }
+        public int[] Shape { get; set; }
+        public bool[] IsAutoShake { get; set; }
+        public byte[] WidgetType { get; set; }
+        public SeString[] Text { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Turn = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )

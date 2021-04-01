@@ -10,24 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public class GroupPoseStamp : ExcelRow
     {
         
-        public int StampIcon;
-        public int Unknown1;
-        public LazyRow< GroupPoseStampCategory > Category;
-        public ushort Unknown3;
-        public int Unknown540;
-        public bool Unknown541;
-        public bool Unknown6;
-        public bool Unknown7;
-        public SeString Name;
+        public int StampIcon { get; set; }
+        public int Unknown1 { get; set; }
+        public LazyRow< GroupPoseStampCategory > Category { get; set; }
+        public ushort Unknown3 { get; set; }
+        public int Unknown540 { get; set; }
+        public bool Unknown541 { get; set; }
+        public bool Unknown6 { get; set; }
+        public bool Unknown7 { get; set; }
+        public SeString Name { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             StampIcon = parser.ReadColumn< int >( 0 );
             Unknown1 = parser.ReadColumn< int >( 1 );
-            Category = new LazyRow< GroupPoseStampCategory >( lumina, parser.ReadColumn< int >( 2 ), language );
+            Category = new LazyRow< GroupPoseStampCategory >( gameData, parser.ReadColumn< int >( 2 ), language );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
             Unknown540 = parser.ReadColumn< int >( 4 );
             Unknown541 = parser.ReadColumn< bool >( 5 );

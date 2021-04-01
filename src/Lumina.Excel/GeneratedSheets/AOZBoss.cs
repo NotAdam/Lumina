@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class AOZBoss : ExcelRow
     {
         
-        public LazyRow< AOZContentBriefingBNpc > Boss;
-        public ushort Position;
+        public LazyRow< AOZContentBriefingBNpc > Boss { get; set; }
+        public ushort Position { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Boss = new LazyRow< AOZContentBriefingBNpc >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            Boss = new LazyRow< AOZContentBriefingBNpc >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Position = parser.ReadColumn< ushort >( 1 );
         }
     }

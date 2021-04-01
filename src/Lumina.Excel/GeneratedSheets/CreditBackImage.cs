@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class CreditBackImage : ExcelRow
     {
         
-        public ushort Unknown0;
-        public ushort Unknown1;
-        public bool Unknown54;
-        public uint BackImage;
-        public byte Unknown4;
+        public ushort Unknown0 { get; set; }
+        public ushort Unknown1 { get; set; }
+        public bool Unknown54 { get; set; }
+        public uint BackImage { get; set; }
+        public byte Unknown4 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< ushort >( 1 );

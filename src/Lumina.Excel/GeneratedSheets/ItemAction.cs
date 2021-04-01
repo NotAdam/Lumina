@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class ItemAction : ExcelRow
     {
         
-        public byte CondLv;
-        public bool CondBattle;
-        public bool CondPVP;
-        public bool CondPVPOnly;
-        public ushort Type;
-        public ushort[] Data;
-        public ushort[] DataHQ;
+        public byte CondLv { get; set; }
+        public bool CondBattle { get; set; }
+        public bool CondPVP { get; set; }
+        public bool CondPVPOnly { get; set; }
+        public ushort Type { get; set; }
+        public ushort[] Data { get; set; }
+        public ushort[] DataHQ { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             CondLv = parser.ReadColumn< byte >( 0 );
             CondBattle = parser.ReadColumn< bool >( 1 );

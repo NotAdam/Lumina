@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class RecipeLevelTable : ExcelRow
     {
         
-        public byte ClassJobLevel;
-        public byte Stars;
-        public ushort SuggestedCraftsmanship;
-        public ushort SuggestedControl;
-        public ushort Difficulty;
-        public uint Quality;
-        public ushort Durability;
-        public ushort ConditionsFlag;
+        public byte ClassJobLevel { get; set; }
+        public byte Stars { get; set; }
+        public ushort SuggestedCraftsmanship { get; set; }
+        public ushort SuggestedControl { get; set; }
+        public ushort Difficulty { get; set; }
+        public uint Quality { get; set; }
+        public ushort Durability { get; set; }
+        public ushort ConditionsFlag { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ClassJobLevel = parser.ReadColumn< byte >( 0 );
             Stars = parser.ReadColumn< byte >( 1 );

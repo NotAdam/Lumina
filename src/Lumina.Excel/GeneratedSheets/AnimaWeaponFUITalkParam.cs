@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class AnimaWeaponFUITalkParam : ExcelRow
     {
         
-        public SeString Prologue;
-        public SeString Epilogue;
+        public SeString Prologue { get; set; }
+        public SeString Epilogue { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Prologue = parser.ReadColumn< SeString >( 0 );
             Epilogue = parser.ReadColumn< SeString >( 1 );

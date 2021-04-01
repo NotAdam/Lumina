@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class CraftType : ExcelRow
     {
         
-        public byte MainPhysical;
-        public byte SubPhysical;
-        public SeString Name;
+        public byte MainPhysical { get; set; }
+        public byte SubPhysical { get; set; }
+        public SeString Name { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             MainPhysical = parser.ReadColumn< byte >( 0 );
             SubPhysical = parser.ReadColumn< byte >( 1 );

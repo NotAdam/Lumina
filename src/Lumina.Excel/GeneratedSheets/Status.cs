@@ -10,41 +10,40 @@ namespace Lumina.Excel.GeneratedSheets
     public class Status : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public ushort Icon;
-        public byte MaxStacks;
-        public byte Unknown4;
-        public byte Category;
-        public LazyRow< StatusHitEffect > HitEffect;
-        public LazyRow< StatusLoopVFX > VFX;
-        public bool LockMovement;
-        public bool Unknown9;
-        public bool LockActions;
-        public bool LockControl;
-        public bool Transfiguration;
-        public bool Unknown13;
-        public bool CanDispel;
-        public bool InflictedByActor;
-        public bool IsPermanent;
-        public byte PartyListPriority;
-        public bool Unknown18;
-        public bool Unknown19;
-        public bool Unknown20;
-        public short Unknown21;
-        public byte Unknown22;
-        public bool Unknown23;
-        public ushort Log;
-        public bool IsFcBuff;
-        public bool Invisibility;
-        public byte Unknown27;
-        public byte Unknown28;
-        public bool Unknown29;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public ushort Icon { get; set; }
+        public byte MaxStacks { get; set; }
+        public byte Unknown4 { get; set; }
+        public byte Category { get; set; }
+        public LazyRow< StatusHitEffect > HitEffect { get; set; }
+        public LazyRow< StatusLoopVFX > VFX { get; set; }
+        public bool LockMovement { get; set; }
+        public bool Unknown9 { get; set; }
+        public bool LockActions { get; set; }
+        public bool LockControl { get; set; }
+        public bool Transfiguration { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool CanDispel { get; set; }
+        public bool InflictedByActor { get; set; }
+        public bool IsPermanent { get; set; }
+        public byte PartyListPriority { get; set; }
+        public bool Unknown18 { get; set; }
+        public bool Unknown19 { get; set; }
+        public bool Unknown20 { get; set; }
+        public short Unknown21 { get; set; }
+        public byte Unknown22 { get; set; }
+        public bool Unknown23 { get; set; }
+        public ushort Log { get; set; }
+        public bool IsFcBuff { get; set; }
+        public bool Invisibility { get; set; }
+        public byte Unknown27 { get; set; }
+        public byte Unknown28 { get; set; }
+        public bool Unknown29 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );
@@ -52,8 +51,8 @@ namespace Lumina.Excel.GeneratedSheets
             MaxStacks = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Category = parser.ReadColumn< byte >( 5 );
-            HitEffect = new LazyRow< StatusHitEffect >( lumina, parser.ReadColumn< byte >( 6 ), language );
-            VFX = new LazyRow< StatusLoopVFX >( lumina, parser.ReadColumn< ushort >( 7 ), language );
+            HitEffect = new LazyRow< StatusHitEffect >( gameData, parser.ReadColumn< byte >( 6 ), language );
+            VFX = new LazyRow< StatusLoopVFX >( gameData, parser.ReadColumn< ushort >( 7 ), language );
             LockMovement = parser.ReadColumn< bool >( 8 );
             Unknown9 = parser.ReadColumn< bool >( 9 );
             LockActions = parser.ReadColumn< bool >( 10 );

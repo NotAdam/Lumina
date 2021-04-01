@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class ModelState : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< ActionTimeline > Start;
+        public byte Unknown0 { get; set; }
+        public LazyRow< ActionTimeline > Start { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            Start = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            Start = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 1 ), language );
         }
     }
 }

@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class ActionComboRoute : ExcelRow
     {
         
-        public SeString Name;
-        public sbyte Unknown1;
-        public LazyRow< Action >[] Action;
-        public bool Unknown6;
+        public SeString Name { get; set; }
+        public sbyte Unknown1 { get; set; }
+        public LazyRow< Action >[] Action { get; set; }
+        public bool Unknown6 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< sbyte >( 1 );
             Action = new LazyRow< Action >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                Action[ i ] = new LazyRow< Action >( lumina, parser.ReadColumn< ushort >( 2 + i ), language );
+                Action[ i ] = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 2 + i ), language );
             Unknown6 = parser.ReadColumn< bool >( 6 );
         }
     }

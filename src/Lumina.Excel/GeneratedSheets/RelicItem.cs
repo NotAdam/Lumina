@@ -10,41 +10,40 @@ namespace Lumina.Excel.GeneratedSheets
     public class RelicItem : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< Item > GladiatorItem;
-        public LazyRow< Item > PugilistItem;
-        public LazyRow< Item > MarauderItem;
-        public LazyRow< Item > LancerItem;
-        public LazyRow< Item > ArcherItem;
-        public LazyRow< Item > ConjurerItem;
-        public LazyRow< Item > ThaumaturgeItem;
-        public LazyRow< Item > ArcanistSMNItem;
-        public LazyRow< Item > ArcanistSCHItem;
-        public LazyRow< Item > ShieldItem;
-        public LazyRow< Item > RogueItem;
-        public uint Unknown12;
-        public uint Unknown13;
-        public uint Unknown14;
-        public uint Unknown15;
-        public uint Unknown16;
+        public byte Unknown0 { get; set; }
+        public LazyRow< Item > GladiatorItem { get; set; }
+        public LazyRow< Item > PugilistItem { get; set; }
+        public LazyRow< Item > MarauderItem { get; set; }
+        public LazyRow< Item > LancerItem { get; set; }
+        public LazyRow< Item > ArcherItem { get; set; }
+        public LazyRow< Item > ConjurerItem { get; set; }
+        public LazyRow< Item > ThaumaturgeItem { get; set; }
+        public LazyRow< Item > ArcanistSMNItem { get; set; }
+        public LazyRow< Item > ArcanistSCHItem { get; set; }
+        public LazyRow< Item > ShieldItem { get; set; }
+        public LazyRow< Item > RogueItem { get; set; }
+        public uint Unknown12 { get; set; }
+        public uint Unknown13 { get; set; }
+        public uint Unknown14 { get; set; }
+        public uint Unknown15 { get; set; }
+        public uint Unknown16 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            GladiatorItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 ), language );
-            PugilistItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 2 ), language );
-            MarauderItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 3 ), language );
-            LancerItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 4 ), language );
-            ArcherItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 5 ), language );
-            ConjurerItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ), language );
-            ThaumaturgeItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 7 ), language );
-            ArcanistSMNItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 8 ), language );
-            ArcanistSCHItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 9 ), language );
-            ShieldItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 10 ), language );
-            RogueItem = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 11 ), language );
+            GladiatorItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            PugilistItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            MarauderItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 3 ), language );
+            LancerItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 4 ), language );
+            ArcherItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 5 ), language );
+            ConjurerItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 6 ), language );
+            ThaumaturgeItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 7 ), language );
+            ArcanistSMNItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 8 ), language );
+            ArcanistSCHItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 9 ), language );
+            ShieldItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 10 ), language );
+            RogueItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 11 ), language );
             Unknown12 = parser.ReadColumn< uint >( 12 );
             Unknown13 = parser.ReadColumn< uint >( 13 );
             Unknown14 = parser.ReadColumn< uint >( 14 );

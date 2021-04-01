@@ -3,12 +3,14 @@ using System.Buffers.Binary;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Lumina.Data.Attributes;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
 using Lumina.Misc;
 
 namespace Lumina.Data.Files.Excel
 {
+    [FileExtension( ".exh" )]
     public class ExcelHeaderFile : FileResource
     {
         public ExcelHeaderFile()
@@ -57,7 +59,7 @@ namespace Lumina.Data.Files.Excel
 
             ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( header.ColumnCount );
             DataPages = Reader.ReadStructuresAsArray< ExcelDataPagination >( header.PageCount );
-            
+
             // todo: these are LE? what the fuck? am i going insane?
             Languages = Reader.ReadStructures< ushort >( header.LanguageCount ).Select( lang => (Language)lang ).ToArray();
 
@@ -81,7 +83,7 @@ namespace Lumina.Data.Files.Excel
                 db.StartId = BinaryPrimitives.ReverseEndianness( db.StartId );
             }
         }
-        
+
         public uint GetColumnsHash()
         {
             var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();

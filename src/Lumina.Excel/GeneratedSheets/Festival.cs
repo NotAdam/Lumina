@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class Festival : ExcelRow
     {
         
-        public SeString Name;
-        public byte Unknown1;
+        public SeString Name { get; set; }
+        public byte Unknown1 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

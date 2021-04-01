@@ -10,29 +10,28 @@ namespace Lumina.Excel.GeneratedSheets
     public class Map : ExcelRow
     {
         
-        public byte MapCondition;
-        public byte PriorityCategoryUI;
-        public byte PriorityUI;
-        public sbyte MapIndex;
-        public byte Hierarchy;
-        public ushort MapMarkerRange;
-        public SeString Id;
-        public ushort SizeFactor;
-        public short OffsetX;
-        public short OffsetY;
-        public LazyRow< PlaceName > PlaceNameRegion;
-        public LazyRow< PlaceName > PlaceName;
-        public LazyRow< PlaceName > PlaceNameSub;
-        public short DiscoveryIndex;
-        public uint DiscoveryFlag;
-        public LazyRow< TerritoryType > TerritoryType;
-        public bool DiscoveryArrayByte;
-        public bool IsEvent;
+        public byte MapCondition { get; set; }
+        public byte PriorityCategoryUI { get; set; }
+        public byte PriorityUI { get; set; }
+        public sbyte MapIndex { get; set; }
+        public byte Hierarchy { get; set; }
+        public ushort MapMarkerRange { get; set; }
+        public SeString Id { get; set; }
+        public ushort SizeFactor { get; set; }
+        public short OffsetX { get; set; }
+        public short OffsetY { get; set; }
+        public LazyRow< PlaceName > PlaceNameRegion { get; set; }
+        public LazyRow< PlaceName > PlaceName { get; set; }
+        public LazyRow< PlaceName > PlaceNameSub { get; set; }
+        public short DiscoveryIndex { get; set; }
+        public uint DiscoveryFlag { get; set; }
+        public LazyRow< TerritoryType > TerritoryType { get; set; }
+        public bool DiscoveryArrayByte { get; set; }
+        public bool IsEvent { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             MapCondition = parser.ReadColumn< byte >( 0 );
             PriorityCategoryUI = parser.ReadColumn< byte >( 1 );
@@ -44,12 +43,12 @@ namespace Lumina.Excel.GeneratedSheets
             SizeFactor = parser.ReadColumn< ushort >( 7 );
             OffsetX = parser.ReadColumn< short >( 8 );
             OffsetY = parser.ReadColumn< short >( 9 );
-            PlaceNameRegion = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 10 ), language );
-            PlaceName = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 11 ), language );
-            PlaceNameSub = new LazyRow< PlaceName >( lumina, parser.ReadColumn< ushort >( 12 ), language );
+            PlaceNameRegion = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 10 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 11 ), language );
+            PlaceNameSub = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 12 ), language );
             DiscoveryIndex = parser.ReadColumn< short >( 13 );
             DiscoveryFlag = parser.ReadColumn< uint >( 14 );
-            TerritoryType = new LazyRow< TerritoryType >( lumina, parser.ReadColumn< ushort >( 15 ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 15 ), language );
             DiscoveryArrayByte = parser.ReadColumn< bool >( 16 );
             IsEvent = parser.ReadColumn< bool >( 17 );
         }

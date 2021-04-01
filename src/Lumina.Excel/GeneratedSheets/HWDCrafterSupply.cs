@@ -10,51 +10,50 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDCrafterSupply : ExcelRow
     {
         
-        public LazyRow< Item >[] ItemTradeIn;
-        public byte[] Level;
-        public byte[] LevelMax;
-        public byte Unknown69;
-        public byte Unknown70;
-        public byte Unknown71;
-        public byte Unknown72;
-        public byte Unknown73;
-        public byte Unknown74;
-        public byte Unknown75;
-        public byte Unknown76;
-        public byte Unknown77;
-        public byte Unknown78;
-        public byte Unknown79;
-        public byte Unknown80;
-        public byte Unknown81;
-        public byte Unknown82;
-        public byte Unknown83;
-        public byte Unknown84;
-        public byte Unknown85;
-        public byte Unknown86;
-        public byte Unknown87;
-        public byte Unknown88;
-        public byte Unknown89;
-        public byte Unknown90;
-        public byte Unknown91;
-        public ushort[] BaseCollectableRating;
-        public ushort[] MidCollectableRating;
-        public ushort[] HighCollectableRating;
-        public LazyRow< HWDCrafterSupplyReward >[] BaseCollectableReward;
-        public LazyRow< HWDCrafterSupplyReward >[] MidCollectableReward;
-        public LazyRow< HWDCrafterSupplyReward >[] HighCollectableReward;
-        public LazyRow< HWDCrafterSupplyReward >[] BaseCollectableRewardPostPhase;
-        public LazyRow< HWDCrafterSupplyReward >[] MidCollectableRewardPostPhase;
-        public LazyRow< HWDCrafterSupplyReward >[] HighCollectableRewardPostPhase;
-        public LazyRow< HWDCrafterSupplyTerm >[] TermName;
+        public LazyRow< Item >[] ItemTradeIn { get; set; }
+        public byte[] Level { get; set; }
+        public byte[] LevelMax { get; set; }
+        public byte Unknown69 { get; set; }
+        public byte Unknown70 { get; set; }
+        public byte Unknown71 { get; set; }
+        public byte Unknown72 { get; set; }
+        public byte Unknown73 { get; set; }
+        public byte Unknown74 { get; set; }
+        public byte Unknown75 { get; set; }
+        public byte Unknown76 { get; set; }
+        public byte Unknown77 { get; set; }
+        public byte Unknown78 { get; set; }
+        public byte Unknown79 { get; set; }
+        public byte Unknown80 { get; set; }
+        public byte Unknown81 { get; set; }
+        public byte Unknown82 { get; set; }
+        public byte Unknown83 { get; set; }
+        public byte Unknown84 { get; set; }
+        public byte Unknown85 { get; set; }
+        public byte Unknown86 { get; set; }
+        public byte Unknown87 { get; set; }
+        public byte Unknown88 { get; set; }
+        public byte Unknown89 { get; set; }
+        public byte Unknown90 { get; set; }
+        public byte Unknown91 { get; set; }
+        public ushort[] BaseCollectableRating { get; set; }
+        public ushort[] MidCollectableRating { get; set; }
+        public ushort[] HighCollectableRating { get; set; }
+        public LazyRow< HWDCrafterSupplyReward >[] BaseCollectableReward { get; set; }
+        public LazyRow< HWDCrafterSupplyReward >[] MidCollectableReward { get; set; }
+        public LazyRow< HWDCrafterSupplyReward >[] HighCollectableReward { get; set; }
+        public LazyRow< HWDCrafterSupplyReward >[] BaseCollectableRewardPostPhase { get; set; }
+        public LazyRow< HWDCrafterSupplyReward >[] MidCollectableRewardPostPhase { get; set; }
+        public LazyRow< HWDCrafterSupplyReward >[] HighCollectableRewardPostPhase { get; set; }
+        public LazyRow< HWDCrafterSupplyTerm >[] TermName { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ItemTradeIn = new LazyRow< Item >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                ItemTradeIn[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 0 + i ), language );
+                ItemTradeIn[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 0 + i ), language );
             Level = new byte[ 23 ];
             for( var i = 0; i < 23; i++ )
                 Level[ i ] = parser.ReadColumn< byte >( 23 + i );
@@ -95,25 +94,25 @@ namespace Lumina.Excel.GeneratedSheets
                 HighCollectableRating[ i ] = parser.ReadColumn< ushort >( 138 + i );
             BaseCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                BaseCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 161 + i ), language );
+                BaseCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( gameData, parser.ReadColumn< ushort >( 161 + i ), language );
             MidCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                MidCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 184 + i ), language );
+                MidCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( gameData, parser.ReadColumn< ushort >( 184 + i ), language );
             HighCollectableReward = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                HighCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 207 + i ), language );
+                HighCollectableReward[ i ] = new LazyRow< HWDCrafterSupplyReward >( gameData, parser.ReadColumn< ushort >( 207 + i ), language );
             BaseCollectableRewardPostPhase = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                BaseCollectableRewardPostPhase[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 230 + i ), language );
+                BaseCollectableRewardPostPhase[ i ] = new LazyRow< HWDCrafterSupplyReward >( gameData, parser.ReadColumn< ushort >( 230 + i ), language );
             MidCollectableRewardPostPhase = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                MidCollectableRewardPostPhase[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 253 + i ), language );
+                MidCollectableRewardPostPhase[ i ] = new LazyRow< HWDCrafterSupplyReward >( gameData, parser.ReadColumn< ushort >( 253 + i ), language );
             HighCollectableRewardPostPhase = new LazyRow< HWDCrafterSupplyReward >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                HighCollectableRewardPostPhase[ i ] = new LazyRow< HWDCrafterSupplyReward >( lumina, parser.ReadColumn< ushort >( 276 + i ), language );
+                HighCollectableRewardPostPhase[ i ] = new LazyRow< HWDCrafterSupplyReward >( gameData, parser.ReadColumn< ushort >( 276 + i ), language );
             TermName = new LazyRow< HWDCrafterSupplyTerm >[ 23 ];
             for( var i = 0; i < 23; i++ )
-                TermName[ i ] = new LazyRow< HWDCrafterSupplyTerm >( lumina, parser.ReadColumn< byte >( 299 + i ), language );
+                TermName[ i ] = new LazyRow< HWDCrafterSupplyTerm >( gameData, parser.ReadColumn< byte >( 299 + i ), language );
         }
     }
 }

@@ -10,23 +10,22 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentRouletteRoleBonus : ExcelRow
     {
         
-        public ushort Unknown0;
-        public ushort Unknown1;
-        public ushort Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public ushort Unknown5;
-        public LazyRow< Item > ItemRewardType;
-        public byte RewardAmount;
-        public byte Unknown8;
-        public uint Unknown9;
-        public byte Unknown10;
-        public byte Unknown11;
+        public ushort Unknown0 { get; set; }
+        public ushort Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
+        public LazyRow< Item > ItemRewardType { get; set; }
+        public byte RewardAmount { get; set; }
+        public byte Unknown8 { get; set; }
+        public uint Unknown9 { get; set; }
+        public byte Unknown10 { get; set; }
+        public byte Unknown11 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< ushort >( 1 );
@@ -34,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3 = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< ushort >( 4 );
             Unknown5 = parser.ReadColumn< ushort >( 5 );
-            ItemRewardType = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 6 ), language );
+            ItemRewardType = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 6 ), language );
             RewardAmount = parser.ReadColumn< byte >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
             Unknown9 = parser.ReadColumn< uint >( 9 );

@@ -12,8 +12,8 @@ namespace Lumina.Excel
     {
         private readonly Dictionary< UInt64, T > _rowCache = new Dictionary< UInt64, T >();
 
-        public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage, Lumina lumina ) :
-            base( headerFile, name, requestedLanguage, lumina )
+        public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage, GameData gameData ) :
+            base( headerFile, name, requestedLanguage, gameData )
         {
         }
 
@@ -43,7 +43,7 @@ namespace Lumina.Excel
             }
             
             var rowObj = Activator.CreateInstance< T >();
-            rowObj.PopulateData( parser, Lumina, RequestedLanguage );
+            rowObj.PopulateData( parser, GameData, RequestedLanguage );
 
             _rowCache[ cacheKey ] = rowObj;
 
@@ -56,7 +56,7 @@ namespace Lumina.Excel
             
             var obj = Activator.CreateInstance< T >();
                         
-            obj.PopulateData( parser, Lumina, RequestedLanguage );
+            obj.PopulateData( parser, GameData, RequestedLanguage );
 
             return obj;
         }
@@ -66,7 +66,7 @@ namespace Lumina.Excel
             parser.SeekToRow( rowId, subRowId );
             var obj = Activator.CreateInstance< T >();
 
-            obj.PopulateData( parser, Lumina, RequestedLanguage );
+            obj.PopulateData( parser, GameData, RequestedLanguage );
 
             return obj;
         }

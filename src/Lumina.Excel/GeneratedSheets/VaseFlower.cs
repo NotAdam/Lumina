@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class VaseFlower : ExcelRow
     {
         
-        public ushort Unknown0;
-        public byte Unknown1;
-        public byte Unknown2;
-        public LazyRow< Item > Item;
+        public ushort Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public LazyRow< Item > Item { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< ushort >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< byte >( 2 );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }
     }
 }

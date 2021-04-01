@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentsTutorialPage : ExcelRow
     {
         
-        public int Image;
-        public SeString Description;
+        public int Image { get; set; }
+        public SeString Description { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Image = parser.ReadColumn< int >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );

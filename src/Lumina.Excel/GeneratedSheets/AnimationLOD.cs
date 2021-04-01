@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class AnimationLOD : ExcelRow
     {
         
-        public float CameraDistance;
-        public float SampleInterval;
-        public sbyte BoneLOD;
-        public bool[] AnimationEnable;
+        public float CameraDistance { get; set; }
+        public float SampleInterval { get; set; }
+        public sbyte BoneLOD { get; set; }
+        public bool[] AnimationEnable { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             CameraDistance = parser.ReadColumn< float >( 0 );
             SampleInterval = parser.ReadColumn< float >( 1 );

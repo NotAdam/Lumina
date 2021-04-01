@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class GatheringItem : ExcelRow
     {
         
-        public int Item;
-        public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel;
-        public bool Unknown2;
-        public uint Unknown3;
-        public bool IsHidden;
+        public int Item { get; set; }
+        public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel { get; set; }
+        public bool Unknown2 { get; set; }
+        public uint Unknown3 { get; set; }
+        public bool IsHidden { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Item = parser.ReadColumn< int >( 0 );
-            GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< uint >( 3 );
             IsHidden = parser.ReadColumn< bool >( 4 );

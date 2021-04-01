@@ -10,67 +10,66 @@ namespace Lumina.Excel.GeneratedSheets
     public class GCSupplyDuty : ExcelRow
     {
         
-        public int[] Unknown0;
-        public byte Unknown11;
-        public int Unknown12;
-        public byte Unknown13;
-        public int Unknown14;
-        public byte Unknown15;
-        public int Unknown16;
-        public byte Unknown17;
-        public int Unknown18;
-        public byte Unknown19;
-        public int Unknown20;
-        public byte Unknown21;
-        public int Unknown22;
-        public byte Unknown23;
-        public int Unknown24;
-        public byte Unknown25;
-        public int Unknown26;
-        public byte Unknown27;
-        public int Unknown28;
-        public byte Unknown29;
-        public int Unknown30;
-        public byte Unknown31;
-        public int Unknown32;
-        public byte Unknown33;
-        public int Unknown34;
-        public byte Unknown35;
-        public int Unknown36;
-        public byte Unknown37;
-        public int Unknown38;
-        public byte Unknown39;
-        public int Unknown40;
-        public byte Unknown41;
-        public int Unknown42;
-        public byte Unknown43;
-        public int Unknown44;
-        public byte Unknown45;
-        public int Unknown46;
-        public byte Unknown47;
-        public int Unknown48;
-        public byte Unknown49;
-        public int Unknown50;
-        public byte Unknown51;
-        public int Unknown52;
-        public byte Unknown53;
-        public int Unknown54;
-        public byte Unknown55;
-        public int Unknown56;
-        public byte Unknown57;
-        public int Unknown58;
-        public byte Unknown59;
-        public int Unknown60;
-        public byte Unknown61;
-        public int Unknown62;
-        public byte Unknown63;
-        public int Unknown64;
-        public byte Unknown65;
+        public int[] Unknown0 { get; set; }
+        public byte Unknown11 { get; set; }
+        public int Unknown12 { get; set; }
+        public byte Unknown13 { get; set; }
+        public int Unknown14 { get; set; }
+        public byte Unknown15 { get; set; }
+        public int Unknown16 { get; set; }
+        public byte Unknown17 { get; set; }
+        public int Unknown18 { get; set; }
+        public byte Unknown19 { get; set; }
+        public int Unknown20 { get; set; }
+        public byte Unknown21 { get; set; }
+        public int Unknown22 { get; set; }
+        public byte Unknown23 { get; set; }
+        public int Unknown24 { get; set; }
+        public byte Unknown25 { get; set; }
+        public int Unknown26 { get; set; }
+        public byte Unknown27 { get; set; }
+        public int Unknown28 { get; set; }
+        public byte Unknown29 { get; set; }
+        public int Unknown30 { get; set; }
+        public byte Unknown31 { get; set; }
+        public int Unknown32 { get; set; }
+        public byte Unknown33 { get; set; }
+        public int Unknown34 { get; set; }
+        public byte Unknown35 { get; set; }
+        public int Unknown36 { get; set; }
+        public byte Unknown37 { get; set; }
+        public int Unknown38 { get; set; }
+        public byte Unknown39 { get; set; }
+        public int Unknown40 { get; set; }
+        public byte Unknown41 { get; set; }
+        public int Unknown42 { get; set; }
+        public byte Unknown43 { get; set; }
+        public int Unknown44 { get; set; }
+        public byte Unknown45 { get; set; }
+        public int Unknown46 { get; set; }
+        public byte Unknown47 { get; set; }
+        public int Unknown48 { get; set; }
+        public byte Unknown49 { get; set; }
+        public int Unknown50 { get; set; }
+        public byte Unknown51 { get; set; }
+        public int Unknown52 { get; set; }
+        public byte Unknown53 { get; set; }
+        public int Unknown54 { get; set; }
+        public byte Unknown55 { get; set; }
+        public int Unknown56 { get; set; }
+        public byte Unknown57 { get; set; }
+        public int Unknown58 { get; set; }
+        public byte Unknown59 { get; set; }
+        public int Unknown60 { get; set; }
+        public byte Unknown61 { get; set; }
+        public int Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public int Unknown64 { get; set; }
+        public byte Unknown65 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = new int[ 11 ];
             for( var i = 0; i < 11; i++ )

@@ -12,14 +12,14 @@ namespace Lumina.Example
 
         public LazyRow< LogMessage > LogMessage;
 
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Index = parser.ReadColumn< int >( 0 );
 
             LogMessageId = parser.ReadColumn< uint >( 2 );
-            LogMessage = new LazyRow< LogMessage >( lumina, LogMessageId, language );
+            LogMessage = new LazyRow< LogMessage >( gameData, LogMessageId, language );
         }
     }
 }

@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class EurekaLogosMixerProbability : ExcelRow
     {
         
-        public byte ProbabilityPct;
+        public byte ProbabilityPct { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ProbabilityPct = parser.ReadColumn< byte >( 0 );
         }

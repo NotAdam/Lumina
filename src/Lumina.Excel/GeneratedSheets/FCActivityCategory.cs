@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCActivityCategory : ExcelRow
     {
         
-        public byte Priority;
-        public SeString Name;
+        public byte Priority { get; set; }
+        public SeString Name { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Priority = parser.ReadColumn< byte >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

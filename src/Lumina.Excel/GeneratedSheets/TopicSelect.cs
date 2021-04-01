@@ -14,16 +14,15 @@ namespace Lumina.Excel.GeneratedSheets
             public uint Shop;
         }
         
-        public SeString Name;
-        public bool Unknown1;
-        public byte Unknown2;
-        public ushort Unknown3;
-        public UnkStruct4Struct[] UnkStruct4;
+        public SeString Name { get; set; }
+        public bool Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public UnkStruct4Struct[] UnkStruct4 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Unknown1 = parser.ReadColumn< bool >( 1 );

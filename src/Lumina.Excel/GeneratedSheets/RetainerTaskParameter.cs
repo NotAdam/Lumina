@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class RetainerTaskParameter : ExcelRow
     {
         
-        public short[] ItemLevelDoW;
-        public short[] GatheringDoL;
-        public short[] GatheringFSH;
+        public short[] ItemLevelDoW { get; set; }
+        public short[] GatheringDoL { get; set; }
+        public short[] GatheringFSH { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ItemLevelDoW = new short[ 2 ];
             for( var i = 0; i < 2; i++ )

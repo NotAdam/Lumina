@@ -10,38 +10,37 @@ namespace Lumina.Excel.GeneratedSheets
     public class AOZContentBriefingBNpc : ExcelRow
     {
         
-        public LazyRow< BNpcName > BNpcName;
-        public uint TargetSmall;
-        public uint TargetLarge;
-        public bool HideStats;
-        public byte Endurance;
-        public byte Fire;
-        public byte Ice;
-        public byte Wind;
-        public byte Earth;
-        public byte Thunder;
-        public byte Water;
-        public byte Slashing;
-        public byte Piercing;
-        public byte Blunt;
-        public byte Magic;
-        public bool SlowVuln;
-        public bool PetrificationVuln;
-        public bool ParalysisVuln;
-        public bool InterruptionVuln;
-        public bool BlindVuln;
-        public bool StunVuln;
-        public bool SleepVuln;
-        public bool BindVuln;
-        public bool HeavyVuln;
-        public bool FlatOrDeathVuln;
+        public LazyRow< BNpcName > BNpcName { get; set; }
+        public uint TargetSmall { get; set; }
+        public uint TargetLarge { get; set; }
+        public bool HideStats { get; set; }
+        public byte Endurance { get; set; }
+        public byte Fire { get; set; }
+        public byte Ice { get; set; }
+        public byte Wind { get; set; }
+        public byte Earth { get; set; }
+        public byte Thunder { get; set; }
+        public byte Water { get; set; }
+        public byte Slashing { get; set; }
+        public byte Piercing { get; set; }
+        public byte Blunt { get; set; }
+        public byte Magic { get; set; }
+        public bool SlowVuln { get; set; }
+        public bool PetrificationVuln { get; set; }
+        public bool ParalysisVuln { get; set; }
+        public bool InterruptionVuln { get; set; }
+        public bool BlindVuln { get; set; }
+        public bool StunVuln { get; set; }
+        public bool SleepVuln { get; set; }
+        public bool BindVuln { get; set; }
+        public bool HeavyVuln { get; set; }
+        public bool FlatOrDeathVuln { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            BNpcName = new LazyRow< BNpcName >( lumina, parser.ReadColumn< uint >( 0 ), language );
+            BNpcName = new LazyRow< BNpcName >( gameData, parser.ReadColumn< uint >( 0 ), language );
             TargetSmall = parser.ReadColumn< uint >( 1 );
             TargetLarge = parser.ReadColumn< uint >( 2 );
             HideStats = parser.ReadColumn< bool >( 3 );

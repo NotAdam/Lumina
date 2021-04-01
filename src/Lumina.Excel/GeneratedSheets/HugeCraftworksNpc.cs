@@ -10,87 +10,86 @@ namespace Lumina.Excel.GeneratedSheets
     public class HugeCraftworksNpc : ExcelRow
     {
         
-        public LazyRow< ENpcResident > ENpcResident;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public uint Unknown2;
-        public LazyRow< Item >[] ItemRequested;
-        public uint Unknown7;
-        public byte Unknown8;
-        public byte[] QtyRequested;
-        public byte Unknown13;
-        public bool Unknown14;
-        public bool Unknown15;
-        public bool Unknown16;
-        public bool Unknown17;
-        public bool Unknown18;
-        public bool Unknown19;
-        public byte Unknown20;
-        public byte Unknown21;
-        public byte Unknown22;
-        public byte Unknown23;
-        public byte Unknown24;
-        public byte Unknown25;
-        public byte Unknown26;
-        public byte Unknown27;
-        public byte Unknown28;
-        public byte Unknown29;
-        public byte Unknown30;
-        public byte Unknown31;
-        public byte Unknown32;
-        public byte Unknown33;
-        public byte Unknown34;
-        public byte Unknown35;
-        public byte Unknown36;
-        public byte Unknown37;
-        public ushort Unknown38;
-        public ushort Unknown39;
-        public ushort Unknown40;
-        public ushort Unknown41;
-        public ushort Unknown42;
-        public ushort Unknown43;
-        public byte Unknown44;
-        public byte Unknown45;
-        public byte Unknown46;
-        public byte Unknown47;
-        public byte Unknown48;
-        public byte Unknown49;
-        public uint Unknown50;
-        public uint Unknown51;
-        public LazyRow< Item >[] ItemReward;
-        public bool Unknown56;
-        public bool Unknown57;
-        public bool Unknown58;
-        public bool Unknown59;
-        public bool Unknown60;
-        public bool Unknown61;
-        public byte Unknown62;
-        public byte Unknown63;
-        public byte[] QtyItemReward;
-        public uint Unknown68;
-        public uint Unknown69;
-        public LazyRow< Item >[] ItemUnkown;
-        public bool Unknown74;
-        public bool Unknown75;
-        public bool Unknown76;
-        public bool Unknown77;
-        public bool Unknown78;
-        public bool Unknown79;
-        public byte Unknown80;
-        public byte Unknown81;
-        public byte[] QtyItemUnkown;
-        public SeString Transient;
+        public LazyRow< ENpcResident > ENpcResident { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public uint Unknown2 { get; set; }
+        public LazyRow< Item >[] ItemRequested { get; set; }
+        public uint Unknown7 { get; set; }
+        public byte Unknown8 { get; set; }
+        public byte[] QtyRequested { get; set; }
+        public byte Unknown13 { get; set; }
+        public bool Unknown14 { get; set; }
+        public bool Unknown15 { get; set; }
+        public bool Unknown16 { get; set; }
+        public bool Unknown17 { get; set; }
+        public bool Unknown18 { get; set; }
+        public bool Unknown19 { get; set; }
+        public byte Unknown20 { get; set; }
+        public byte Unknown21 { get; set; }
+        public byte Unknown22 { get; set; }
+        public byte Unknown23 { get; set; }
+        public byte Unknown24 { get; set; }
+        public byte Unknown25 { get; set; }
+        public byte Unknown26 { get; set; }
+        public byte Unknown27 { get; set; }
+        public byte Unknown28 { get; set; }
+        public byte Unknown29 { get; set; }
+        public byte Unknown30 { get; set; }
+        public byte Unknown31 { get; set; }
+        public byte Unknown32 { get; set; }
+        public byte Unknown33 { get; set; }
+        public byte Unknown34 { get; set; }
+        public byte Unknown35 { get; set; }
+        public byte Unknown36 { get; set; }
+        public byte Unknown37 { get; set; }
+        public ushort Unknown38 { get; set; }
+        public ushort Unknown39 { get; set; }
+        public ushort Unknown40 { get; set; }
+        public ushort Unknown41 { get; set; }
+        public ushort Unknown42 { get; set; }
+        public ushort Unknown43 { get; set; }
+        public byte Unknown44 { get; set; }
+        public byte Unknown45 { get; set; }
+        public byte Unknown46 { get; set; }
+        public byte Unknown47 { get; set; }
+        public byte Unknown48 { get; set; }
+        public byte Unknown49 { get; set; }
+        public uint Unknown50 { get; set; }
+        public uint Unknown51 { get; set; }
+        public LazyRow< Item >[] ItemReward { get; set; }
+        public bool Unknown56 { get; set; }
+        public bool Unknown57 { get; set; }
+        public bool Unknown58 { get; set; }
+        public bool Unknown59 { get; set; }
+        public bool Unknown60 { get; set; }
+        public bool Unknown61 { get; set; }
+        public byte Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public byte[] QtyItemReward { get; set; }
+        public uint Unknown68 { get; set; }
+        public uint Unknown69 { get; set; }
+        public LazyRow< Item >[] ItemUnkown { get; set; }
+        public bool Unknown74 { get; set; }
+        public bool Unknown75 { get; set; }
+        public bool Unknown76 { get; set; }
+        public bool Unknown77 { get; set; }
+        public bool Unknown78 { get; set; }
+        public bool Unknown79 { get; set; }
+        public byte Unknown80 { get; set; }
+        public byte Unknown81 { get; set; }
+        public byte[] QtyItemUnkown { get; set; }
+        public SeString Transient { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ENpcResident = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 0 ), language );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            ENpcResident = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Unknown2 = parser.ReadColumn< uint >( 2 );
             ItemRequested = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                ItemRequested[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 3 + i ), language );
+                ItemRequested[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 3 + i ), language );
             Unknown7 = parser.ReadColumn< uint >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
             QtyRequested = new byte[ 4 ];
@@ -137,7 +136,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown51 = parser.ReadColumn< uint >( 51 );
             ItemReward = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                ItemReward[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 52 + i ), language );
+                ItemReward[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 52 + i ), language );
             Unknown56 = parser.ReadColumn< bool >( 56 );
             Unknown57 = parser.ReadColumn< bool >( 57 );
             Unknown58 = parser.ReadColumn< bool >( 58 );
@@ -153,7 +152,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown69 = parser.ReadColumn< uint >( 69 );
             ItemUnkown = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                ItemUnkown[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 70 + i ), language );
+                ItemUnkown[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 70 + i ), language );
             Unknown74 = parser.ReadColumn< bool >( 74 );
             Unknown75 = parser.ReadColumn< bool >( 75 );
             Unknown76 = parser.ReadColumn< bool >( 76 );

@@ -10,260 +10,259 @@ namespace Lumina.Excel.GeneratedSheets
     public class GcArmyMemberGrow : ExcelRow
     {
         
-        public LazyRow< ClassJob > ClassJob;
-        public LazyRow< Item > ClassBook;
-        public ushort Unknown2;
-        public ushort Unknown3;
-        public ushort Unknown4;
-        public ushort Unknown5;
-        public ushort Unknown6;
-        public ushort Unknown7;
-        public ushort Unknown8;
-        public ushort Unknown9;
-        public ushort Unknown10;
-        public ushort Unknown11;
-        public ushort Unknown12;
-        public ushort Unknown13;
-        public ushort Unknown14;
-        public ushort Unknown15;
-        public ushort Unknown16;
-        public ushort Unknown17;
-        public ushort Unknown18;
-        public ushort Unknown19;
-        public ushort Unknown20;
-        public ushort Unknown21;
-        public ushort Unknown22;
-        public ushort Unknown23;
-        public ushort Unknown24;
-        public ushort Unknown25;
-        public ushort Unknown26;
-        public ushort Unknown27;
-        public ushort Unknown28;
-        public ushort Unknown29;
-        public ushort Unknown30;
-        public ushort Unknown31;
-        public ushort Unknown32;
-        public ushort Unknown33;
-        public ushort Unknown34;
-        public ushort Unknown35;
-        public ushort Unknown36;
-        public ushort Unknown37;
-        public ushort Unknown38;
-        public ushort Unknown39;
-        public ushort Unknown40;
-        public ushort Unknown41;
-        public ushort Unknown42;
-        public ushort Unknown43;
-        public ushort Unknown44;
-        public ushort Unknown45;
-        public ushort Unknown46;
-        public ushort Unknown47;
-        public ushort Unknown48;
-        public ushort Unknown49;
-        public ushort Unknown50;
-        public ushort Unknown51;
-        public ushort Unknown52;
-        public ushort Unknown53;
-        public ushort Unknown54;
-        public ushort Unknown55;
-        public ushort Unknown56;
-        public ushort Unknown57;
-        public ushort Unknown58;
-        public ushort Unknown59;
-        public ushort Unknown60;
-        public ushort Unknown61;
-        public ushort Unknown62;
-        public byte Unknown63;
-        public byte Unknown64;
-        public byte Unknown65;
-        public byte Unknown66;
-        public byte Unknown67;
-        public byte Unknown68;
-        public byte Unknown69;
-        public byte Unknown70;
-        public byte Unknown71;
-        public byte Unknown72;
-        public byte Unknown73;
-        public byte Unknown74;
-        public byte Unknown75;
-        public byte Unknown76;
-        public byte Unknown77;
-        public byte Unknown78;
-        public byte Unknown79;
-        public byte Unknown80;
-        public byte Unknown81;
-        public byte Unknown82;
-        public byte Unknown83;
-        public byte Unknown84;
-        public byte Unknown85;
-        public byte Unknown86;
-        public byte Unknown87;
-        public byte Unknown88;
-        public byte Unknown89;
-        public byte Unknown90;
-        public byte Unknown91;
-        public byte Unknown92;
-        public byte Unknown93;
-        public byte Unknown94;
-        public byte Unknown95;
-        public byte Unknown96;
-        public byte Unknown97;
-        public byte Unknown98;
-        public byte Unknown99;
-        public byte Unknown100;
-        public byte Unknown101;
-        public byte Unknown102;
-        public byte Unknown103;
-        public byte Unknown104;
-        public byte Unknown105;
-        public byte Unknown106;
-        public byte Unknown107;
-        public byte Unknown108;
-        public byte Unknown109;
-        public byte Unknown110;
-        public byte Unknown111;
-        public byte Unknown112;
-        public byte Unknown113;
-        public byte Unknown114;
-        public byte Unknown115;
-        public byte Unknown116;
-        public byte Unknown117;
-        public byte Unknown118;
-        public byte Unknown119;
-        public byte Unknown120;
-        public byte Unknown121;
-        public byte Unknown122;
-        public byte Unknown123;
-        public byte Unknown124;
-        public byte Unknown125;
-        public byte Unknown126;
-        public byte Unknown127;
-        public byte Unknown128;
-        public byte Unknown129;
-        public byte Unknown130;
-        public byte Unknown131;
-        public byte Unknown132;
-        public byte Unknown133;
-        public byte Unknown134;
-        public byte Unknown135;
-        public byte Unknown136;
-        public byte Unknown137;
-        public byte Unknown138;
-        public byte Unknown139;
-        public byte Unknown140;
-        public byte Unknown141;
-        public byte Unknown142;
-        public byte Unknown143;
-        public byte Unknown144;
-        public byte Unknown145;
-        public byte Unknown146;
-        public byte Unknown147;
-        public byte Unknown148;
-        public byte Unknown149;
-        public byte Unknown150;
-        public byte Unknown151;
-        public byte Unknown152;
-        public byte Unknown153;
-        public byte Unknown154;
-        public byte Unknown155;
-        public byte Unknown156;
-        public byte Unknown157;
-        public byte Unknown158;
-        public byte Unknown159;
-        public byte Unknown160;
-        public byte Unknown161;
-        public byte Unknown162;
-        public byte Unknown163;
-        public byte Unknown164;
-        public byte Unknown165;
-        public byte Unknown166;
-        public byte Unknown167;
-        public byte Unknown168;
-        public byte Unknown169;
-        public byte Unknown170;
-        public byte Unknown171;
-        public byte Unknown172;
-        public byte Unknown173;
-        public byte Unknown174;
-        public byte Unknown175;
-        public byte Unknown176;
-        public byte Unknown177;
-        public byte Unknown178;
-        public byte Unknown179;
-        public byte Unknown180;
-        public byte Unknown181;
-        public byte Unknown182;
-        public byte Unknown183;
-        public byte Unknown184;
-        public byte Unknown185;
-        public byte Unknown186;
-        public byte Unknown187;
-        public byte Unknown188;
-        public byte Unknown189;
-        public byte Unknown190;
-        public byte Unknown191;
-        public byte Unknown192;
-        public byte Unknown193;
-        public byte Unknown194;
-        public byte Unknown195;
-        public byte Unknown196;
-        public byte Unknown197;
-        public byte Unknown198;
-        public byte Unknown199;
-        public byte Unknown200;
-        public byte Unknown201;
-        public byte Unknown202;
-        public byte Unknown203;
-        public byte Unknown204;
-        public byte Unknown205;
-        public byte Unknown206;
-        public byte Unknown207;
-        public byte Unknown208;
-        public byte Unknown209;
-        public byte Unknown210;
-        public byte Unknown211;
-        public byte Unknown212;
-        public byte Unknown213;
-        public byte Unknown214;
-        public byte Unknown215;
-        public byte Unknown216;
-        public byte Unknown217;
-        public byte Unknown218;
-        public byte Unknown219;
-        public byte Unknown220;
-        public byte Unknown221;
-        public byte Unknown222;
-        public byte Unknown223;
-        public byte Unknown224;
-        public byte Unknown225;
-        public byte Unknown226;
-        public byte Unknown227;
-        public byte Unknown228;
-        public byte Unknown229;
-        public byte Unknown230;
-        public byte Unknown231;
-        public byte Unknown232;
-        public byte Unknown233;
-        public byte Unknown234;
-        public byte Unknown235;
-        public byte Unknown236;
-        public byte Unknown237;
-        public byte Unknown238;
-        public byte Unknown239;
-        public byte Unknown240;
-        public byte Unknown241;
-        public byte Unknown242;
-        public byte Unknown243;
-        public byte Unknown244;
-        public byte Unknown245;
+        public LazyRow< ClassJob > ClassJob { get; set; }
+        public LazyRow< Item > ClassBook { get; set; }
+        public ushort Unknown2 { get; set; }
+        public ushort Unknown3 { get; set; }
+        public ushort Unknown4 { get; set; }
+        public ushort Unknown5 { get; set; }
+        public ushort Unknown6 { get; set; }
+        public ushort Unknown7 { get; set; }
+        public ushort Unknown8 { get; set; }
+        public ushort Unknown9 { get; set; }
+        public ushort Unknown10 { get; set; }
+        public ushort Unknown11 { get; set; }
+        public ushort Unknown12 { get; set; }
+        public ushort Unknown13 { get; set; }
+        public ushort Unknown14 { get; set; }
+        public ushort Unknown15 { get; set; }
+        public ushort Unknown16 { get; set; }
+        public ushort Unknown17 { get; set; }
+        public ushort Unknown18 { get; set; }
+        public ushort Unknown19 { get; set; }
+        public ushort Unknown20 { get; set; }
+        public ushort Unknown21 { get; set; }
+        public ushort Unknown22 { get; set; }
+        public ushort Unknown23 { get; set; }
+        public ushort Unknown24 { get; set; }
+        public ushort Unknown25 { get; set; }
+        public ushort Unknown26 { get; set; }
+        public ushort Unknown27 { get; set; }
+        public ushort Unknown28 { get; set; }
+        public ushort Unknown29 { get; set; }
+        public ushort Unknown30 { get; set; }
+        public ushort Unknown31 { get; set; }
+        public ushort Unknown32 { get; set; }
+        public ushort Unknown33 { get; set; }
+        public ushort Unknown34 { get; set; }
+        public ushort Unknown35 { get; set; }
+        public ushort Unknown36 { get; set; }
+        public ushort Unknown37 { get; set; }
+        public ushort Unknown38 { get; set; }
+        public ushort Unknown39 { get; set; }
+        public ushort Unknown40 { get; set; }
+        public ushort Unknown41 { get; set; }
+        public ushort Unknown42 { get; set; }
+        public ushort Unknown43 { get; set; }
+        public ushort Unknown44 { get; set; }
+        public ushort Unknown45 { get; set; }
+        public ushort Unknown46 { get; set; }
+        public ushort Unknown47 { get; set; }
+        public ushort Unknown48 { get; set; }
+        public ushort Unknown49 { get; set; }
+        public ushort Unknown50 { get; set; }
+        public ushort Unknown51 { get; set; }
+        public ushort Unknown52 { get; set; }
+        public ushort Unknown53 { get; set; }
+        public ushort Unknown54 { get; set; }
+        public ushort Unknown55 { get; set; }
+        public ushort Unknown56 { get; set; }
+        public ushort Unknown57 { get; set; }
+        public ushort Unknown58 { get; set; }
+        public ushort Unknown59 { get; set; }
+        public ushort Unknown60 { get; set; }
+        public ushort Unknown61 { get; set; }
+        public ushort Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public byte Unknown64 { get; set; }
+        public byte Unknown65 { get; set; }
+        public byte Unknown66 { get; set; }
+        public byte Unknown67 { get; set; }
+        public byte Unknown68 { get; set; }
+        public byte Unknown69 { get; set; }
+        public byte Unknown70 { get; set; }
+        public byte Unknown71 { get; set; }
+        public byte Unknown72 { get; set; }
+        public byte Unknown73 { get; set; }
+        public byte Unknown74 { get; set; }
+        public byte Unknown75 { get; set; }
+        public byte Unknown76 { get; set; }
+        public byte Unknown77 { get; set; }
+        public byte Unknown78 { get; set; }
+        public byte Unknown79 { get; set; }
+        public byte Unknown80 { get; set; }
+        public byte Unknown81 { get; set; }
+        public byte Unknown82 { get; set; }
+        public byte Unknown83 { get; set; }
+        public byte Unknown84 { get; set; }
+        public byte Unknown85 { get; set; }
+        public byte Unknown86 { get; set; }
+        public byte Unknown87 { get; set; }
+        public byte Unknown88 { get; set; }
+        public byte Unknown89 { get; set; }
+        public byte Unknown90 { get; set; }
+        public byte Unknown91 { get; set; }
+        public byte Unknown92 { get; set; }
+        public byte Unknown93 { get; set; }
+        public byte Unknown94 { get; set; }
+        public byte Unknown95 { get; set; }
+        public byte Unknown96 { get; set; }
+        public byte Unknown97 { get; set; }
+        public byte Unknown98 { get; set; }
+        public byte Unknown99 { get; set; }
+        public byte Unknown100 { get; set; }
+        public byte Unknown101 { get; set; }
+        public byte Unknown102 { get; set; }
+        public byte Unknown103 { get; set; }
+        public byte Unknown104 { get; set; }
+        public byte Unknown105 { get; set; }
+        public byte Unknown106 { get; set; }
+        public byte Unknown107 { get; set; }
+        public byte Unknown108 { get; set; }
+        public byte Unknown109 { get; set; }
+        public byte Unknown110 { get; set; }
+        public byte Unknown111 { get; set; }
+        public byte Unknown112 { get; set; }
+        public byte Unknown113 { get; set; }
+        public byte Unknown114 { get; set; }
+        public byte Unknown115 { get; set; }
+        public byte Unknown116 { get; set; }
+        public byte Unknown117 { get; set; }
+        public byte Unknown118 { get; set; }
+        public byte Unknown119 { get; set; }
+        public byte Unknown120 { get; set; }
+        public byte Unknown121 { get; set; }
+        public byte Unknown122 { get; set; }
+        public byte Unknown123 { get; set; }
+        public byte Unknown124 { get; set; }
+        public byte Unknown125 { get; set; }
+        public byte Unknown126 { get; set; }
+        public byte Unknown127 { get; set; }
+        public byte Unknown128 { get; set; }
+        public byte Unknown129 { get; set; }
+        public byte Unknown130 { get; set; }
+        public byte Unknown131 { get; set; }
+        public byte Unknown132 { get; set; }
+        public byte Unknown133 { get; set; }
+        public byte Unknown134 { get; set; }
+        public byte Unknown135 { get; set; }
+        public byte Unknown136 { get; set; }
+        public byte Unknown137 { get; set; }
+        public byte Unknown138 { get; set; }
+        public byte Unknown139 { get; set; }
+        public byte Unknown140 { get; set; }
+        public byte Unknown141 { get; set; }
+        public byte Unknown142 { get; set; }
+        public byte Unknown143 { get; set; }
+        public byte Unknown144 { get; set; }
+        public byte Unknown145 { get; set; }
+        public byte Unknown146 { get; set; }
+        public byte Unknown147 { get; set; }
+        public byte Unknown148 { get; set; }
+        public byte Unknown149 { get; set; }
+        public byte Unknown150 { get; set; }
+        public byte Unknown151 { get; set; }
+        public byte Unknown152 { get; set; }
+        public byte Unknown153 { get; set; }
+        public byte Unknown154 { get; set; }
+        public byte Unknown155 { get; set; }
+        public byte Unknown156 { get; set; }
+        public byte Unknown157 { get; set; }
+        public byte Unknown158 { get; set; }
+        public byte Unknown159 { get; set; }
+        public byte Unknown160 { get; set; }
+        public byte Unknown161 { get; set; }
+        public byte Unknown162 { get; set; }
+        public byte Unknown163 { get; set; }
+        public byte Unknown164 { get; set; }
+        public byte Unknown165 { get; set; }
+        public byte Unknown166 { get; set; }
+        public byte Unknown167 { get; set; }
+        public byte Unknown168 { get; set; }
+        public byte Unknown169 { get; set; }
+        public byte Unknown170 { get; set; }
+        public byte Unknown171 { get; set; }
+        public byte Unknown172 { get; set; }
+        public byte Unknown173 { get; set; }
+        public byte Unknown174 { get; set; }
+        public byte Unknown175 { get; set; }
+        public byte Unknown176 { get; set; }
+        public byte Unknown177 { get; set; }
+        public byte Unknown178 { get; set; }
+        public byte Unknown179 { get; set; }
+        public byte Unknown180 { get; set; }
+        public byte Unknown181 { get; set; }
+        public byte Unknown182 { get; set; }
+        public byte Unknown183 { get; set; }
+        public byte Unknown184 { get; set; }
+        public byte Unknown185 { get; set; }
+        public byte Unknown186 { get; set; }
+        public byte Unknown187 { get; set; }
+        public byte Unknown188 { get; set; }
+        public byte Unknown189 { get; set; }
+        public byte Unknown190 { get; set; }
+        public byte Unknown191 { get; set; }
+        public byte Unknown192 { get; set; }
+        public byte Unknown193 { get; set; }
+        public byte Unknown194 { get; set; }
+        public byte Unknown195 { get; set; }
+        public byte Unknown196 { get; set; }
+        public byte Unknown197 { get; set; }
+        public byte Unknown198 { get; set; }
+        public byte Unknown199 { get; set; }
+        public byte Unknown200 { get; set; }
+        public byte Unknown201 { get; set; }
+        public byte Unknown202 { get; set; }
+        public byte Unknown203 { get; set; }
+        public byte Unknown204 { get; set; }
+        public byte Unknown205 { get; set; }
+        public byte Unknown206 { get; set; }
+        public byte Unknown207 { get; set; }
+        public byte Unknown208 { get; set; }
+        public byte Unknown209 { get; set; }
+        public byte Unknown210 { get; set; }
+        public byte Unknown211 { get; set; }
+        public byte Unknown212 { get; set; }
+        public byte Unknown213 { get; set; }
+        public byte Unknown214 { get; set; }
+        public byte Unknown215 { get; set; }
+        public byte Unknown216 { get; set; }
+        public byte Unknown217 { get; set; }
+        public byte Unknown218 { get; set; }
+        public byte Unknown219 { get; set; }
+        public byte Unknown220 { get; set; }
+        public byte Unknown221 { get; set; }
+        public byte Unknown222 { get; set; }
+        public byte Unknown223 { get; set; }
+        public byte Unknown224 { get; set; }
+        public byte Unknown225 { get; set; }
+        public byte Unknown226 { get; set; }
+        public byte Unknown227 { get; set; }
+        public byte Unknown228 { get; set; }
+        public byte Unknown229 { get; set; }
+        public byte Unknown230 { get; set; }
+        public byte Unknown231 { get; set; }
+        public byte Unknown232 { get; set; }
+        public byte Unknown233 { get; set; }
+        public byte Unknown234 { get; set; }
+        public byte Unknown235 { get; set; }
+        public byte Unknown236 { get; set; }
+        public byte Unknown237 { get; set; }
+        public byte Unknown238 { get; set; }
+        public byte Unknown239 { get; set; }
+        public byte Unknown240 { get; set; }
+        public byte Unknown241 { get; set; }
+        public byte Unknown242 { get; set; }
+        public byte Unknown243 { get; set; }
+        public byte Unknown244 { get; set; }
+        public byte Unknown245 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ClassJob = new LazyRow< ClassJob >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            ClassBook = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 1 ), language );
+            ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            ClassBook = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 1 ), language );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< ushort >( 3 );
             Unknown4 = parser.ReadColumn< ushort >( 4 );

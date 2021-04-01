@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestRedoChapterUICategory : ExcelRow
     {
         
-        public byte Unknown0;
-        public SeString Expac;
+        public byte Unknown0 { get; set; }
+        public SeString Expac { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Expac = parser.ReadColumn< SeString >( 1 );

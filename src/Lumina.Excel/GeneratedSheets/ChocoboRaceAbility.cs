@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceAbility : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public uint Icon;
-        public LazyRow< ChocoboRaceAbilityType > ChocoboRaceAbilityType;
-        public byte Value;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public uint Icon { get; set; }
+        public LazyRow< ChocoboRaceAbilityType > ChocoboRaceAbilityType { get; set; }
+        public byte Value { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );
             Icon = parser.ReadColumn< uint >( 2 );
-            ChocoboRaceAbilityType = new LazyRow< ChocoboRaceAbilityType >( lumina, parser.ReadColumn< sbyte >( 3 ), language );
+            ChocoboRaceAbilityType = new LazyRow< ChocoboRaceAbilityType >( gameData, parser.ReadColumn< sbyte >( 3 ), language );
             Value = parser.ReadColumn< byte >( 4 );
         }
     }

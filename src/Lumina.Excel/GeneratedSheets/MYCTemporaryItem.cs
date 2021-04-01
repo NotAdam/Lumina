@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class MYCTemporaryItem : ExcelRow
     {
         
-        public LazyRow< MYCTemporaryItemUICategory > Category;
-        public byte Type;
-        public LazyRow< Action > Action;
-        public byte Max;
-        public byte Weight;
-        public byte Order;
+        public LazyRow< MYCTemporaryItemUICategory > Category { get; set; }
+        public byte Type { get; set; }
+        public LazyRow< Action > Action { get; set; }
+        public byte Max { get; set; }
+        public byte Weight { get; set; }
+        public byte Order { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Category = new LazyRow< MYCTemporaryItemUICategory >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            Category = new LazyRow< MYCTemporaryItemUICategory >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Type = parser.ReadColumn< byte >( 1 );
-            Action = new LazyRow< Action >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            Action = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Max = parser.ReadColumn< byte >( 3 );
             Weight = parser.ReadColumn< byte >( 4 );
             Order = parser.ReadColumn< byte >( 5 );

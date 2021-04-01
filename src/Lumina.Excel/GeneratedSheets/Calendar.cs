@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class Calendar : ExcelRow
     {
         
-        public byte[] Month;
-        public byte[] Day;
+        public byte[] Month { get; set; }
+        public byte[] Day { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Month = new byte[ 32 ];
             for( var i = 0; i < 32; i++ )

@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class IKDContentBonus : ExcelRow
     {
         
-        public SeString Objective;
-        public SeString Requirement;
-        public ushort Unknown2;
-        public uint Image;
-        public byte Order;
+        public SeString Objective { get; set; }
+        public SeString Requirement { get; set; }
+        public ushort Unknown2 { get; set; }
+        public uint Image { get; set; }
+        public byte Order { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Objective = parser.ReadColumn< SeString >( 0 );
             Requirement = parser.ReadColumn< SeString >( 1 );

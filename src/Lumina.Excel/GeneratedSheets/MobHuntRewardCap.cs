@@ -10,12 +10,11 @@ namespace Lumina.Excel.GeneratedSheets
     public class MobHuntRewardCap : ExcelRow
     {
         
-        public uint ExpCap;
+        public uint ExpCap { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             ExpCap = parser.ReadColumn< uint >( 0 );
         }

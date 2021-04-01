@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class HowToPage : ExcelRow
     {
         
-        public byte Unknown0;
-        public byte Unknown1;
-        public int Image;
-        public byte Unknown3;
-        public SeString Unknown4;
-        public SeString Unknown5;
-        public SeString Unknown6;
+        public byte Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
+        public int Image { get; set; }
+        public byte Unknown3 { get; set; }
+        public SeString Unknown4 { get; set; }
+        public SeString Unknown5 { get; set; }
+        public SeString Unknown6 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );

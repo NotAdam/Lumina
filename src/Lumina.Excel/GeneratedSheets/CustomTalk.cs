@@ -10,32 +10,31 @@ namespace Lumina.Excel.GeneratedSheets
     public class CustomTalk : ExcelRow
     {
         
-        public uint IconActor;
-        public uint IconMap;
-        public SeString Name;
-        public SeString[] ScriptInstruction;
-        public uint[] ScriptArg;
-        public bool Unknown63;
-        public SeString Unknown64;
-        public SeString Unknown65;
-        public bool Text;
-        public bool Unknown67;
-        public bool Unknown68;
-        public bool Unknown69;
-        public bool Unknown70;
-        public bool Unknown71;
-        public bool Unknown72;
-        public bool Unknown73;
-        public bool Unknown74;
-        public uint Unknown75;
-        public byte Unknown76;
-        public bool Unknown54;
-        public bool Unknown78;
+        public uint IconActor { get; set; }
+        public uint IconMap { get; set; }
+        public SeString Name { get; set; }
+        public SeString[] ScriptInstruction { get; set; }
+        public uint[] ScriptArg { get; set; }
+        public bool Unknown63 { get; set; }
+        public SeString Unknown64 { get; set; }
+        public SeString Unknown65 { get; set; }
+        public bool Text { get; set; }
+        public bool Unknown67 { get; set; }
+        public bool Unknown68 { get; set; }
+        public bool Unknown69 { get; set; }
+        public bool Unknown70 { get; set; }
+        public bool Unknown71 { get; set; }
+        public bool Unknown72 { get; set; }
+        public bool Unknown73 { get; set; }
+        public bool Unknown74 { get; set; }
+        public uint Unknown75 { get; set; }
+        public byte Unknown76 { get; set; }
+        public bool Unknown54 { get; set; }
+        public bool Unknown78 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             IconActor = parser.ReadColumn< uint >( 0 );
             IconMap = parser.ReadColumn< uint >( 1 );

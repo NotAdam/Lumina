@@ -10,24 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public class LotteryExchangeShop : ExcelRow
     {
         
-        public SeString Unknown0;
-        public LazyRow< Item >[] ItemAccepted;
-        public uint[] AmountAccepted;
-        public byte[] Unknown540;
-        public byte[] Unknown541;
-        public SeString Lua;
-        public LazyRow< LogMessage >[] LogMessage;
-        public bool Unknown133;
+        public SeString Unknown0 { get; set; }
+        public LazyRow< Item >[] ItemAccepted { get; set; }
+        public uint[] AmountAccepted { get; set; }
+        public byte[] Unknown540 { get; set; }
+        public byte[] Unknown541 { get; set; }
+        public SeString Lua { get; set; }
+        public LazyRow< LogMessage >[] LogMessage { get; set; }
+        public bool Unknown133 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< SeString >( 0 );
             ItemAccepted = new LazyRow< Item >[ 32 ];
             for( var i = 0; i < 32; i++ )
-                ItemAccepted[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 1 + i ), language );
+                ItemAccepted[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 1 + i ), language );
             AmountAccepted = new uint[ 32 ];
             for( var i = 0; i < 32; i++ )
                 AmountAccepted[ i ] = parser.ReadColumn< uint >( 33 + i );
@@ -40,7 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             Lua = parser.ReadColumn< SeString >( 129 );
             LogMessage = new LazyRow< LogMessage >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                LogMessage[ i ] = new LazyRow< LogMessage >( lumina, parser.ReadColumn< uint >( 130 + i ), language );
+                LogMessage[ i ] = new LazyRow< LogMessage >( gameData, parser.ReadColumn< uint >( 130 + i ), language );
             Unknown133 = parser.ReadColumn< bool >( 133 );
         }
     }

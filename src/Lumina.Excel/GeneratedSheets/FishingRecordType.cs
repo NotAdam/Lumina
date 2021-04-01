@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class FishingRecordType : ExcelRow
     {
         
-        public LazyRow< Addon > Addon;
-        public ushort RankBRequirement;
-        public ushort RankARequirement;
-        public ushort RankAARequirement;
-        public ushort RankAAARequirement;
-        public ushort Unknown5;
-        public byte Unknown6;
+        public LazyRow< Addon > Addon { get; set; }
+        public ushort RankBRequirement { get; set; }
+        public ushort RankARequirement { get; set; }
+        public ushort RankAARequirement { get; set; }
+        public ushort RankAAARequirement { get; set; }
+        public ushort Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Addon = new LazyRow< Addon >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Addon = new LazyRow< Addon >( gameData, parser.ReadColumn< int >( 0 ), language );
             RankBRequirement = parser.ReadColumn< ushort >( 1 );
             RankARequirement = parser.ReadColumn< ushort >( 2 );
             RankAARequirement = parser.ReadColumn< ushort >( 3 );

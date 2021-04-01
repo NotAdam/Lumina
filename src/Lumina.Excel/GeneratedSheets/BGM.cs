@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGM : ExcelRow
     {
         
-        public SeString File;
-        public byte Priority;
-        public bool DisableRestartTimeOut;
-        public bool DisableRestart;
-        public bool PassEnd;
-        public float DisableRestartResetTime;
-        public byte SpecialMode;
+        public SeString File { get; set; }
+        public byte Priority { get; set; }
+        public bool DisableRestartTimeOut { get; set; }
+        public bool DisableRestart { get; set; }
+        public bool PassEnd { get; set; }
+        public float DisableRestartResetTime { get; set; }
+        public byte SpecialMode { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             File = parser.ReadColumn< SeString >( 0 );
             Priority = parser.ReadColumn< byte >( 1 );

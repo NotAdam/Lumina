@@ -57,7 +57,7 @@ namespace Lumina.Example
 
         static void Main( string[] args )
         {
-            var lumina = new Lumina( args[ 0 ] );
+            var lumina = new GameData( args[ 0 ] );
 
             bool exitThread = false;
             var handleThread = new Thread( () =>

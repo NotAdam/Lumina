@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class Marker : ExcelRow
     {
         
-        public int Icon;
-        public SeString Name;
+        public int Icon { get; set; }
+        public SeString Name { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Icon = parser.ReadColumn< int >( 0 );
             Name = parser.ReadColumn< SeString >( 1 );

@@ -10,19 +10,18 @@ namespace Lumina.Excel.GeneratedSheets
     public class GroupPoseFrame : ExcelRow
     {
         
-        public int Unknown0;
-        public int Image;
-        public SeString GridText;
-        public int Unknown3;
-        public uint Unknown4;
-        public byte Unknown5;
-        public int Unknown54;
-        public SeString Text;
+        public int Unknown0 { get; set; }
+        public int Image { get; set; }
+        public SeString GridText { get; set; }
+        public int Unknown3 { get; set; }
+        public uint Unknown4 { get; set; }
+        public byte Unknown5 { get; set; }
+        public int Unknown54 { get; set; }
+        public SeString Text { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< int >( 0 );
             Image = parser.ReadColumn< int >( 1 );

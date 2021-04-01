@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class HWDAnnounce : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< ENpcResident > ENPC;
-        public byte Unknown2;
-        public byte Unknown3;
+        public SeString Name { get; set; }
+        public LazyRow< ENpcResident > ENPC { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            ENPC = new LazyRow< ENpcResident >( lumina, parser.ReadColumn< uint >( 1 ), language );
+            ENPC = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Unknown2 = parser.ReadColumn< byte >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
         }

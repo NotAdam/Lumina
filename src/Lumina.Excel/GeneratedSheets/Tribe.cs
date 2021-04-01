@@ -10,21 +10,20 @@ namespace Lumina.Excel.GeneratedSheets
     public class Tribe : ExcelRow
     {
         
-        public SeString Masculine;
-        public SeString Feminine;
-        public sbyte Hp;
-        public sbyte Mp;
-        public sbyte STR;
-        public sbyte VIT;
-        public sbyte DEX;
-        public sbyte INT;
-        public sbyte MND;
-        public sbyte PIE;
+        public SeString Masculine { get; set; }
+        public SeString Feminine { get; set; }
+        public sbyte Hp { get; set; }
+        public sbyte Mp { get; set; }
+        public sbyte STR { get; set; }
+        public sbyte VIT { get; set; }
+        public sbyte DEX { get; set; }
+        public sbyte INT { get; set; }
+        public sbyte MND { get; set; }
+        public sbyte PIE { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Masculine = parser.ReadColumn< SeString >( 0 );
             Feminine = parser.ReadColumn< SeString >( 1 );

@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class EmoteMode : ExcelRow
     {
         
-        public LazyRow< Emote > StartEmote;
-        public LazyRow< Emote > EndEmote;
-        public bool Move;
-        public bool Camera;
-        public bool EndOnRotate;
-        public bool EndOnEmote;
-        public byte ConditionMode;
-        public bool Unknown7;
+        public LazyRow< Emote > StartEmote { get; set; }
+        public LazyRow< Emote > EndEmote { get; set; }
+        public bool Move { get; set; }
+        public bool Camera { get; set; }
+        public bool EndOnRotate { get; set; }
+        public bool EndOnEmote { get; set; }
+        public byte ConditionMode { get; set; }
+        public bool Unknown7 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            StartEmote = new LazyRow< Emote >( lumina, parser.ReadColumn< ushort >( 0 ), language );
-            EndEmote = new LazyRow< Emote >( lumina, parser.ReadColumn< ushort >( 1 ), language );
+            StartEmote = new LazyRow< Emote >( gameData, parser.ReadColumn< ushort >( 0 ), language );
+            EndEmote = new LazyRow< Emote >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Move = parser.ReadColumn< bool >( 2 );
             Camera = parser.ReadColumn< bool >( 3 );
             EndOnRotate = parser.ReadColumn< bool >( 4 );

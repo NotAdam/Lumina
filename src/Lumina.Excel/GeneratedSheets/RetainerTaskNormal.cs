@@ -10,23 +10,22 @@ namespace Lumina.Excel.GeneratedSheets
     public class RetainerTaskNormal : ExcelRow
     {
         
-        public LazyRow< Item > Item;
-        public byte Quantity0;
-        public byte Quantity1;
-        public byte Quantity2;
-        public LazyRow< GatheringItem > GatheringLog;
-        public short FishingLog;
+        public LazyRow< Item > Item { get; set; }
+        public byte Quantity0 { get; set; }
+        public byte Quantity1 { get; set; }
+        public byte Quantity2 { get; set; }
+        public LazyRow< GatheringItem > GatheringLog { get; set; }
+        public short FishingLog { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< int >( 0 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 0 ), language );
             Quantity0 = parser.ReadColumn< byte >( 1 );
             Quantity1 = parser.ReadColumn< byte >( 2 );
             Quantity2 = parser.ReadColumn< byte >( 3 );
-            GatheringLog = new LazyRow< GatheringItem >( lumina, parser.ReadColumn< short >( 4 ), language );
+            GatheringLog = new LazyRow< GatheringItem >( gameData, parser.ReadColumn< short >( 4 ), language );
             FishingLog = parser.ReadColumn< short >( 5 );
         }
     }

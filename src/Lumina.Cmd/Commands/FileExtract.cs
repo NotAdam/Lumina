@@ -22,7 +22,7 @@ namespace Lumina.Cmd.Commands
 
         public ValueTask ExecuteAsync( IConsole console )
         {
-            var lumina = new Lumina( Path );
+            var lumina = new GameData( Path );
 
             var file = lumina.GetFile( FilePath );
 

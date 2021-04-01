@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class CutScreenImage : ExcelRow
     {
         
-        public short Type;
-        public int Image;
-        public short Unknown2;
+        public short Type { get; set; }
+        public int Image { get; set; }
+        public short Unknown2 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< short >( 0 );
             Image = parser.ReadColumn< int >( 1 );

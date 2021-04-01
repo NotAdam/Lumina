@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class ChocoboRaceTerritory : ExcelRow
     {
         
-        public LazyRow< GoldSaucerTextData > Name;
-        public int Icon;
+        public LazyRow< GoldSaucerTextData > Name { get; set; }
+        public int Icon { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            Name = new LazyRow< GoldSaucerTextData >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            Name = new LazyRow< GoldSaucerTextData >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             Icon = parser.ReadColumn< int >( 1 );
         }
     }

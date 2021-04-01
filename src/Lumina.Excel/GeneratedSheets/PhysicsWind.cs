@@ -10,17 +10,16 @@ namespace Lumina.Excel.GeneratedSheets
     public class PhysicsWind : ExcelRow
     {
         
-        public float Threshold;
-        public float Amplitude;
-        public float AmplitudeFrequency;
-        public float PowerMin;
-        public float PowerMax;
-        public float PowerFrequency;
+        public float Threshold { get; set; }
+        public float Amplitude { get; set; }
+        public float AmplitudeFrequency { get; set; }
+        public float PowerMin { get; set; }
+        public float PowerMax { get; set; }
+        public float PowerFrequency { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Threshold = parser.ReadColumn< float >( 0 );
             Amplitude = parser.ReadColumn< float >( 1 );

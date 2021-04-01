@@ -10,14 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public class AchievementHideCondition : ExcelRow
     {
         
-        public bool HideAchievement;
-        public bool HideName;
-        public bool HideConditions;
+        public bool HideAchievement { get; set; }
+        public bool HideName { get; set; }
+        public bool HideConditions { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             HideAchievement = parser.ReadColumn< bool >( 0 );
             HideName = parser.ReadColumn< bool >( 1 );

@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class ENpcDressUp : ExcelRow
     {
         
-        public byte Unknown0;
-        public LazyRow< ENpcDressUpDress > ENpcDressUpDress;
+        public byte Unknown0 { get; set; }
+        public LazyRow< ENpcDressUpDress > ENpcDressUpDress { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            ENpcDressUpDress = new LazyRow< ENpcDressUpDress >( lumina, parser.ReadColumn< byte >( 1 ), language );
+            ENpcDressUpDress = new LazyRow< ENpcDressUpDress >( gameData, parser.ReadColumn< byte >( 1 ), language );
         }
     }
 }

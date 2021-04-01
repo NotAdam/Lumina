@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class BGMFadeType : ExcelRow
     {
         
-        public float FadeOutTime;
-        public float FadeInTime;
-        public float FadeInStartTime;
-        public float ResumeFadeInTime;
+        public float FadeOutTime { get; set; }
+        public float FadeInTime { get; set; }
+        public float FadeInStartTime { get; set; }
+        public float ResumeFadeInTime { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             FadeOutTime = parser.ReadColumn< float >( 0 );
             FadeInTime = parser.ReadColumn< float >( 1 );

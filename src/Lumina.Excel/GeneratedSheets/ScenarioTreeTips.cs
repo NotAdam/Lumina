@@ -10,20 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class ScenarioTreeTips : ExcelRow
     {
         
-        public byte Unknown0;
-        public uint Tips1;
-        public ushort Unknown2;
-        public LazyRow< ScenarioTree > Tips2;
+        public byte Unknown0 { get; set; }
+        public uint Tips1 { get; set; }
+        public ushort Unknown2 { get; set; }
+        public LazyRow< ScenarioTree > Tips2 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
             Tips1 = parser.ReadColumn< uint >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
-            Tips2 = new LazyRow< ScenarioTree >( lumina, parser.ReadColumn< uint >( 3 ), language );
+            Tips2 = new LazyRow< ScenarioTree >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }
     }
 }

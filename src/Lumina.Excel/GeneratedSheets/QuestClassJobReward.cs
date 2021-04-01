@@ -10,35 +10,34 @@ namespace Lumina.Excel.GeneratedSheets
     public class QuestClassJobReward : ExcelRow
     {
         
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public LazyRow< Item >[] RewardItem;
-        public byte[] RewardAmount;
-        public LazyRow< Item >[] RequiredItem;
-        public byte[] RequiredAmount;
-        public bool Unknown17;
-        public bool Unknown18;
-        public bool Unknown19;
-        public bool Unknown20;
-        public bool Unknown21;
-        public bool Unknown22;
-        public bool Unknown23;
-        public bool Unknown24;
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public LazyRow< Item >[] RewardItem { get; set; }
+        public byte[] RewardAmount { get; set; }
+        public LazyRow< Item >[] RequiredItem { get; set; }
+        public byte[] RequiredAmount { get; set; }
+        public bool Unknown17 { get; set; }
+        public bool Unknown18 { get; set; }
+        public bool Unknown19 { get; set; }
+        public bool Unknown20 { get; set; }
+        public bool Unknown21 { get; set; }
+        public bool Unknown22 { get; set; }
+        public bool Unknown23 { get; set; }
+        public bool Unknown24 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 0 ), language );
             RewardItem = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                RewardItem[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 1 + i ), language );
+                RewardItem[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 1 + i ), language );
             RewardAmount = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RewardAmount[ i ] = parser.ReadColumn< byte >( 5 + i );
             RequiredItem = new LazyRow< Item >[ 4 ];
             for( var i = 0; i < 4; i++ )
-                RequiredItem[ i ] = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 9 + i ), language );
+                RequiredItem[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 9 + i ), language );
             RequiredAmount = new byte[ 4 ];
             for( var i = 0; i < 4; i++ )
                 RequiredAmount[ i ] = parser.ReadColumn< byte >( 13 + i );

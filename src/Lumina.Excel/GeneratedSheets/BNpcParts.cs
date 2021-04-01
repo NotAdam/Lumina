@@ -10,68 +10,67 @@ namespace Lumina.Excel.GeneratedSheets
     public class BNpcParts : ExcelRow
     {
         
-        public LazyRow< BNpcBase > BNpcBase1;
-        public byte PartSlot1;
-        public bool Unknown2;
-        public bool Unknown3;
-        public bool Unknown4;
-        public bool Unknown5;
-        public float X1;
-        public float Y1;
-        public float Z1;
-        public short Unknown9;
-        public float Scale1;
-        public LazyRow< BNpcBase > BNpcBase2;
-        public byte PartSlot2;
-        public bool Unknown13;
-        public bool Unknown14;
-        public bool Unknown15;
-        public bool Unknown16;
-        public float X2;
-        public float Y2;
-        public float Z2;
-        public short Unknown20;
-        public float Scale2;
-        public LazyRow< BNpcBase > BNpcBase3;
-        public byte PartSlot3;
-        public bool Unknown24;
-        public bool Unknown25;
-        public bool Unknown26;
-        public bool Unknown27;
-        public float X3;
-        public float Y3;
-        public float Z3;
-        public short Scale3;
-        public float Unknown32;
-        public LazyRow< BNpcBase > BNpcBase4;
-        public byte PartSlot4;
-        public bool Unknown35;
-        public bool Unknown36;
-        public bool Unknown37;
-        public bool Unknown38;
-        public float X4;
-        public float Y4;
-        public float Z4;
-        public short Unknown42;
-        public float Scale4;
-        public LazyRow< BNpcBase > BNpcBase5;
-        public byte PartSlot5;
-        public bool Unknown46;
-        public bool Unknown47;
-        public bool Unknown48;
-        public bool Unknown49;
-        public float X5;
-        public float Y5;
-        public float Z5;
-        public short Unknown53;
-        public float Scale5;
+        public LazyRow< BNpcBase > BNpcBase1 { get; set; }
+        public byte PartSlot1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public bool Unknown3 { get; set; }
+        public bool Unknown4 { get; set; }
+        public bool Unknown5 { get; set; }
+        public float X1 { get; set; }
+        public float Y1 { get; set; }
+        public float Z1 { get; set; }
+        public short Unknown9 { get; set; }
+        public float Scale1 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase2 { get; set; }
+        public byte PartSlot2 { get; set; }
+        public bool Unknown13 { get; set; }
+        public bool Unknown14 { get; set; }
+        public bool Unknown15 { get; set; }
+        public bool Unknown16 { get; set; }
+        public float X2 { get; set; }
+        public float Y2 { get; set; }
+        public float Z2 { get; set; }
+        public short Unknown20 { get; set; }
+        public float Scale2 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase3 { get; set; }
+        public byte PartSlot3 { get; set; }
+        public bool Unknown24 { get; set; }
+        public bool Unknown25 { get; set; }
+        public bool Unknown26 { get; set; }
+        public bool Unknown27 { get; set; }
+        public float X3 { get; set; }
+        public float Y3 { get; set; }
+        public float Z3 { get; set; }
+        public short Scale3 { get; set; }
+        public float Unknown32 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase4 { get; set; }
+        public byte PartSlot4 { get; set; }
+        public bool Unknown35 { get; set; }
+        public bool Unknown36 { get; set; }
+        public bool Unknown37 { get; set; }
+        public bool Unknown38 { get; set; }
+        public float X4 { get; set; }
+        public float Y4 { get; set; }
+        public float Z4 { get; set; }
+        public short Unknown42 { get; set; }
+        public float Scale4 { get; set; }
+        public LazyRow< BNpcBase > BNpcBase5 { get; set; }
+        public byte PartSlot5 { get; set; }
+        public bool Unknown46 { get; set; }
+        public bool Unknown47 { get; set; }
+        public bool Unknown48 { get; set; }
+        public bool Unknown49 { get; set; }
+        public float X5 { get; set; }
+        public float Y5 { get; set; }
+        public float Z5 { get; set; }
+        public short Unknown53 { get; set; }
+        public float Scale5 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            BNpcBase1 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 0 ), language );
+            BNpcBase1 = new LazyRow< BNpcBase >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             PartSlot1 = parser.ReadColumn< byte >( 1 );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );
@@ -82,7 +81,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z1 = parser.ReadColumn< float >( 8 );
             Unknown9 = parser.ReadColumn< short >( 9 );
             Scale1 = parser.ReadColumn< float >( 10 );
-            BNpcBase2 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 11 ), language );
+            BNpcBase2 = new LazyRow< BNpcBase >( gameData, parser.ReadColumn< ushort >( 11 ), language );
             PartSlot2 = parser.ReadColumn< byte >( 12 );
             Unknown13 = parser.ReadColumn< bool >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
@@ -93,7 +92,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z2 = parser.ReadColumn< float >( 19 );
             Unknown20 = parser.ReadColumn< short >( 20 );
             Scale2 = parser.ReadColumn< float >( 21 );
-            BNpcBase3 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 22 ), language );
+            BNpcBase3 = new LazyRow< BNpcBase >( gameData, parser.ReadColumn< ushort >( 22 ), language );
             PartSlot3 = parser.ReadColumn< byte >( 23 );
             Unknown24 = parser.ReadColumn< bool >( 24 );
             Unknown25 = parser.ReadColumn< bool >( 25 );
@@ -104,7 +103,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z3 = parser.ReadColumn< float >( 30 );
             Scale3 = parser.ReadColumn< short >( 31 );
             Unknown32 = parser.ReadColumn< float >( 32 );
-            BNpcBase4 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 33 ), language );
+            BNpcBase4 = new LazyRow< BNpcBase >( gameData, parser.ReadColumn< ushort >( 33 ), language );
             PartSlot4 = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< bool >( 35 );
             Unknown36 = parser.ReadColumn< bool >( 36 );
@@ -115,7 +114,7 @@ namespace Lumina.Excel.GeneratedSheets
             Z4 = parser.ReadColumn< float >( 41 );
             Unknown42 = parser.ReadColumn< short >( 42 );
             Scale4 = parser.ReadColumn< float >( 43 );
-            BNpcBase5 = new LazyRow< BNpcBase >( lumina, parser.ReadColumn< ushort >( 44 ), language );
+            BNpcBase5 = new LazyRow< BNpcBase >( gameData, parser.ReadColumn< ushort >( 44 ), language );
             PartSlot5 = parser.ReadColumn< byte >( 45 );
             Unknown46 = parser.ReadColumn< bool >( 46 );
             Unknown47 = parser.ReadColumn< bool >( 47 );

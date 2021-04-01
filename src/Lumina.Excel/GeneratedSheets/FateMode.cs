@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class FateMode : ExcelRow
     {
         
-        public uint Unknown0;
-        public uint MotivationIcon;
-        public uint MotivationMapMarker;
-        public uint ObjectiveIcon;
-        public uint ObjectiveMapMarker;
+        public uint Unknown0 { get; set; }
+        public uint MotivationIcon { get; set; }
+        public uint MotivationMapMarker { get; set; }
+        public uint ObjectiveIcon { get; set; }
+        public uint ObjectiveMapMarker { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< uint >( 0 );
             MotivationIcon = parser.ReadColumn< uint >( 1 );

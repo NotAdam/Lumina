@@ -10,56 +10,55 @@ namespace Lumina.Excel.GeneratedSheets
     public class Mount : ExcelRow
     {
         
-        public SeString Singular;
-        public sbyte Adjective;
-        public SeString Plural;
-        public sbyte PossessivePronoun;
-        public sbyte StartsWithVowel;
-        public sbyte Unknown5;
-        public sbyte Pronoun;
-        public sbyte Article;
-        public LazyRow< ModelChara > ModelChara;
-        public ushort Unknown9;
-        public LazyRow< MountFlyingCondition > FlyingCondition;
-        public byte Unknown11;
-        public byte Unknown12;
-        public byte Unknown13;
-        public byte IsFlying;
-        public byte Unknown15;
-        public LazyRow< MountCustomize > MountCustomize;
-        public LazyRow< BGM > RideBGM;
-        public SeString Unknown18;
-        public SeString Unknown19;
-        public SeString Unknown20;
-        public byte ExitMoveDist;
-        public byte ExitMoveSpeed;
-        public bool Unknown23;
-        public bool IsEmote;
-        public int EquipHead;
-        public int EquipBody;
-        public int EquipLeg;
-        public int EquipFoot;
-        public short Order;
-        public ushort Icon;
-        public byte UIPriority;
-        public byte RadiusRate;
-        public byte BaseMotionSpeed_Run;
-        public byte BaseMotionSpeed_Walk;
-        public byte Unknown35;
-        public byte ExtraSeats;
-        public LazyRow< MountAction > MountAction;
-        public bool IsAirborne;
-        public bool ExHotbarEnableConfig;
-        public bool UseEP;
-        public bool Unknown41;
-        public bool IsImmobile;
-        public byte Unknown43;
-        public byte Unknown44;
+        public SeString Singular { get; set; }
+        public sbyte Adjective { get; set; }
+        public SeString Plural { get; set; }
+        public sbyte PossessivePronoun { get; set; }
+        public sbyte StartsWithVowel { get; set; }
+        public sbyte Unknown5 { get; set; }
+        public sbyte Pronoun { get; set; }
+        public sbyte Article { get; set; }
+        public LazyRow< ModelChara > ModelChara { get; set; }
+        public ushort Unknown9 { get; set; }
+        public LazyRow< MountFlyingCondition > FlyingCondition { get; set; }
+        public byte Unknown11 { get; set; }
+        public byte Unknown12 { get; set; }
+        public byte Unknown13 { get; set; }
+        public byte IsFlying { get; set; }
+        public byte Unknown15 { get; set; }
+        public LazyRow< MountCustomize > MountCustomize { get; set; }
+        public LazyRow< BGM > RideBGM { get; set; }
+        public SeString Unknown18 { get; set; }
+        public SeString Unknown19 { get; set; }
+        public SeString Unknown20 { get; set; }
+        public byte ExitMoveDist { get; set; }
+        public byte ExitMoveSpeed { get; set; }
+        public bool Unknown23 { get; set; }
+        public bool IsEmote { get; set; }
+        public int EquipHead { get; set; }
+        public int EquipBody { get; set; }
+        public int EquipLeg { get; set; }
+        public int EquipFoot { get; set; }
+        public short Order { get; set; }
+        public ushort Icon { get; set; }
+        public byte UIPriority { get; set; }
+        public byte RadiusRate { get; set; }
+        public byte BaseMotionSpeed_Run { get; set; }
+        public byte BaseMotionSpeed_Walk { get; set; }
+        public byte Unknown35 { get; set; }
+        public byte ExtraSeats { get; set; }
+        public LazyRow< MountAction > MountAction { get; set; }
+        public bool IsAirborne { get; set; }
+        public bool ExHotbarEnableConfig { get; set; }
+        public bool UseEP { get; set; }
+        public bool Unknown41 { get; set; }
+        public bool IsImmobile { get; set; }
+        public byte Unknown43 { get; set; }
+        public byte Unknown44 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Singular = parser.ReadColumn< SeString >( 0 );
             Adjective = parser.ReadColumn< sbyte >( 1 );
@@ -69,16 +68,16 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Pronoun = parser.ReadColumn< sbyte >( 6 );
             Article = parser.ReadColumn< sbyte >( 7 );
-            ModelChara = new LazyRow< ModelChara >( lumina, parser.ReadColumn< int >( 8 ), language );
+            ModelChara = new LazyRow< ModelChara >( gameData, parser.ReadColumn< int >( 8 ), language );
             Unknown9 = parser.ReadColumn< ushort >( 9 );
-            FlyingCondition = new LazyRow< MountFlyingCondition >( lumina, parser.ReadColumn< byte >( 10 ), language );
+            FlyingCondition = new LazyRow< MountFlyingCondition >( gameData, parser.ReadColumn< byte >( 10 ), language );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );
             Unknown13 = parser.ReadColumn< byte >( 13 );
             IsFlying = parser.ReadColumn< byte >( 14 );
             Unknown15 = parser.ReadColumn< byte >( 15 );
-            MountCustomize = new LazyRow< MountCustomize >( lumina, parser.ReadColumn< byte >( 16 ), language );
-            RideBGM = new LazyRow< BGM >( lumina, parser.ReadColumn< ushort >( 17 ), language );
+            MountCustomize = new LazyRow< MountCustomize >( gameData, parser.ReadColumn< byte >( 16 ), language );
+            RideBGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 17 ), language );
             Unknown18 = parser.ReadColumn< SeString >( 18 );
             Unknown19 = parser.ReadColumn< SeString >( 19 );
             Unknown20 = parser.ReadColumn< SeString >( 20 );
@@ -98,7 +97,7 @@ namespace Lumina.Excel.GeneratedSheets
             BaseMotionSpeed_Walk = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
             ExtraSeats = parser.ReadColumn< byte >( 36 );
-            MountAction = new LazyRow< MountAction >( lumina, parser.ReadColumn< ushort >( 37 ), language );
+            MountAction = new LazyRow< MountAction >( gameData, parser.ReadColumn< ushort >( 37 ), language );
             IsAirborne = parser.ReadColumn< bool >( 38 );
             ExHotbarEnableConfig = parser.ReadColumn< bool >( 39 );
             UseEP = parser.ReadColumn< bool >( 40 );

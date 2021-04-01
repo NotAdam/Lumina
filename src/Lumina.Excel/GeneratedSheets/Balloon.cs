@@ -10,13 +10,12 @@ namespace Lumina.Excel.GeneratedSheets
     public class Balloon : ExcelRow
     {
         
-        public bool Slowly;
-        public SeString Dialogue;
+        public bool Slowly { get; set; }
+        public SeString Dialogue { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Slowly = parser.ReadColumn< bool >( 0 );
             Dialogue = parser.ReadColumn< SeString >( 1 );

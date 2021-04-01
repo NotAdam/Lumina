@@ -10,22 +10,21 @@ namespace Lumina.Excel.GeneratedSheets
     public class EventAction : ExcelRow
     {
         
-        public SeString Name;
-        public ushort Icon;
-        public byte CastTime;
-        public LazyRow< ActionTimeline >[] Animation;
+        public SeString Name { get; set; }
+        public ushort Icon { get; set; }
+        public byte CastTime { get; set; }
+        public LazyRow< ActionTimeline >[] Animation { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Icon = parser.ReadColumn< ushort >( 1 );
             CastTime = parser.ReadColumn< byte >( 2 );
             Animation = new LazyRow< ActionTimeline >[ 3 ];
             for( var i = 0; i < 3; i++ )
-                Animation[ i ] = new LazyRow< ActionTimeline >( lumina, parser.ReadColumn< ushort >( 3 + i ), language );
+                Animation[ i ] = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 3 + i ), language );
         }
     }
 }

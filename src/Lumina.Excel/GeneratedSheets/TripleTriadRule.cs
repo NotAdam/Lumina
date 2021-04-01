@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class TripleTriadRule : ExcelRow
     {
         
-        public SeString Name;
-        public SeString Description;
-        public byte Unknown2;
-        public byte Unknown3;
-        public bool Unknown54;
-        public byte Unknown5;
-        public int Unknown6;
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
+        public bool Unknown54 { get; set; }
+        public byte Unknown5 { get; set; }
+        public int Unknown6 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
             Description = parser.ReadColumn< SeString >( 1 );

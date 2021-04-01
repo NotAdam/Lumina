@@ -10,17 +10,16 @@ namespace Lumina.Excel.GeneratedSheets
     public class FCAuthority : ExcelRow
     {
         
-        public SeString Name;
-        public LazyRow< FCAuthorityCategory > FCAuthorityCategory;
-        public byte Unknown2;
+        public SeString Name { get; set; }
+        public LazyRow< FCAuthorityCategory > FCAuthorityCategory { get; set; }
+        public byte Unknown2 { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            FCAuthorityCategory = new LazyRow< FCAuthorityCategory >( lumina, parser.ReadColumn< int >( 1 ), language );
+            FCAuthorityCategory = new LazyRow< FCAuthorityCategory >( gameData, parser.ReadColumn< int >( 1 ), language );
             Unknown2 = parser.ReadColumn< byte >( 2 );
         }
     }

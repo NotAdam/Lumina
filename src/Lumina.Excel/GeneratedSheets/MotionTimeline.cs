@@ -10,16 +10,15 @@ namespace Lumina.Excel.GeneratedSheets
     public class MotionTimeline : ExcelRow
     {
         
-        public SeString Filename;
-        public byte BlendGroup;
-        public bool IsLoop;
-        public bool IsBlinkEnable;
-        public bool IsLipEnable;
+        public SeString Filename { get; set; }
+        public byte BlendGroup { get; set; }
+        public bool IsLoop { get; set; }
+        public bool IsBlinkEnable { get; set; }
+        public bool IsLipEnable { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
             Filename = parser.ReadColumn< SeString >( 0 );
             BlendGroup = parser.ReadColumn< byte >( 1 );

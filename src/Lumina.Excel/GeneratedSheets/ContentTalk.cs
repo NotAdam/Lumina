@@ -10,15 +10,14 @@ namespace Lumina.Excel.GeneratedSheets
     public class ContentTalk : ExcelRow
     {
         
-        public LazyRow< ContentTalkParam > ContentTalkParam;
-        public SeString Text;
+        public LazyRow< ContentTalkParam > ContentTalkParam { get; set; }
+        public SeString Text { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            ContentTalkParam = new LazyRow< ContentTalkParam >( lumina, parser.ReadColumn< byte >( 0 ), language );
+            ContentTalkParam = new LazyRow< ContentTalkParam >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Text = parser.ReadColumn< SeString >( 1 );
         }
     }

@@ -10,18 +10,17 @@ namespace Lumina.Excel.GeneratedSheets
     public class EurekaMagiciteItem : ExcelRow
     {
         
-        public LazyRow< EurekaMagiciteItemType > EurekaMagiciteItemType;
-        public LazyRow< ClassJobCategory > ClassJobCategory;
-        public LazyRow< Item > Item;
+        public LazyRow< EurekaMagiciteItemType > EurekaMagiciteItemType { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public LazyRow< Item > Item { get; set; }
         
-
-        public override void PopulateData( RowParser parser, Lumina lumina, Language language )
+        public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
-            base.PopulateData( parser, lumina, language );
+            base.PopulateData( parser, gameData, language );
 
-            EurekaMagiciteItemType = new LazyRow< EurekaMagiciteItemType >( lumina, parser.ReadColumn< byte >( 0 ), language );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( lumina, parser.ReadColumn< byte >( 1 ), language );
-            Item = new LazyRow< Item >( lumina, parser.ReadColumn< uint >( 2 ), language );
+            EurekaMagiciteItemType = new LazyRow< EurekaMagiciteItemType >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 1 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 2 ), language );
         }
     }
 }
