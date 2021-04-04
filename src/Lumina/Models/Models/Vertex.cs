@@ -2,9 +2,9 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using Lumina.Data.Files;
-using Lumina.Data.Parsing.Mdl;
+using Lumina.Data.Parsing;
 
-namespace Lumina.Models.Model {
+namespace Lumina.Models.Models {
 
     public struct Vertex {
         
@@ -27,8 +27,6 @@ namespace Lumina.Models.Model {
             Tangent1 = 6,
             Color = 7,
         }
-        
-        public static int[] ElementSizes = {0, 0, 12, 16, 4, 4, 4, 8};
         
         public Vector4? Position;
         public Vector4? BlendWeights;

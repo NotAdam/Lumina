@@ -1,4 +1,4 @@
-namespace Lumina.Models.Model
+namespace Lumina.Models.Models
 {
     public class Shape
     {

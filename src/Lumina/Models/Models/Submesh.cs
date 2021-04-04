@@ -1,13 +1,28 @@
 using System.Collections.Generic;
-using Lumina.Data.Parsing.Mdl;
+using Lumina.Data.Parsing;
 
-namespace Lumina.Models.Model
+namespace Lumina.Models.Models
 {
     public class Submesh
     {
+        /// <summary>
+        /// The offset to the index that this submesh begins.
+        /// </summary>
         public uint IndexOffset;
+        
+        /// <summary>
+        /// The number of indices present in this submesh.
+        /// </summary>
         public uint IndexNum;
+        
+        /// <summary>
+        /// The attributes that are enabled for this submesh.
+        /// </summary>
         public string[] Attributes;
+        
+        /// <summary>
+        /// The bones referenced by this submesh.
+        /// </summary>
         public string[] Bones;
 
         public Submesh( Model model, int meshIndex, int subMeshIndex )

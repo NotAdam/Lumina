@@ -1,13 +1,12 @@
 using System;
-using System.Collections.Generic;
-using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
-using Lumina.Data.Parsing.Mdl;
+using Lumina.Data.Parsing;
 using Lumina.Extensions;
+using Lumina.Models.Materials;
 
-namespace Lumina.Models.Model {
+namespace Lumina.Models.Models {
     public class Mesh {
         
         public enum MeshType
@@ -23,79 +22,107 @@ namespace Lumina.Models.Model {
             CrestChange
         }
         
-        public Model Model { get; private set; }
-        public int MeshIndex { get; private set; }
-        public MeshType Type { get; private set; }
+        /// <summary>
+        /// A convenience reference to the Model that instantiated this Mesh.
+        /// </summary>
+        public Model Parent { get; private set; }
         
+        /// <summary>
+        /// The mesh index within the Model it belongs to.
+        /// </summary>
+        public int MeshIndex { get; private set; }
+        
+        /// <summary>
+        /// The mesh type categories this mesh can be used for.
+        /// </summary>
+        public MeshType[] Types { get; private set; }
+        
+        /// <summary>
+        /// The list of mesh attributes applied to this mesh.
+        /// </summary>
         public string[] Attributes { get; private set; }
         
         // TODO: build submeshes from the index data
         // the information is available to build these, but it'd be nice
         // to have access to Mesh objects with pre-read submesh meshes
-        // public Mesh[] SubmeshesAsMesh { get; private set; }
+        // public Mesh SubmeshesAsMesh { get; private set; }
 
+        /// <summary>
+        /// The submeshes that make up this mesh.
+        /// </summary>
         public Submesh[] Submeshes { get; private set; }
         
+        /// <summary>
+        /// The bone remapping table for this mesh.
+        /// </summary>
         public ushort[] BoneTable { get; private set; }
 
+        /// <summary>
+        /// The array of all vertices for this mesh.
+        /// </summary>
         public Vertex[] Vertices;
+        
+        /// <summary>
+        /// The array of all indices for this mesh.
+        /// </summary>
         public ushort[] Indices;
-
-        // todo
-        // public Material Material { get; private set; }
-
-        public Mesh( Model model, int index, MeshType type ) {
-            Model = model;
+        
+        /// <summary>
+        /// A reference to the Material used by this mesh.
+        /// </summary>
+        public Material Material { get; private set; }
+        
+        public Mesh( Model model, int index, MeshType[] types ) {
+            Parent = model;
             MeshIndex = index;
-            Type = type;
+            Types = types;
             BuildMesh();
         }
 
-        public void BuildMesh() {
+        private void BuildMesh() {
             ReadBoneTable();
             ReadIndices();
             ReadVertices();
             ReadSubmeshes();
+
+            var matIndex = Parent.File.Meshes[ MeshIndex ].MaterialIndex;
+            Material = Parent.Materials[ matIndex ];
         }
 
         private void ReadSubmeshes()
         {
-            var currentMesh = Model.File.Meshes[ MeshIndex ];
+            var currentMesh = Parent.File.Meshes[ MeshIndex ];
             Submeshes = new Submesh[ currentMesh.SubMeshCount ];
             for( int i = 0; i < currentMesh.SubMeshCount; i++ )
-                Submeshes[i] = new Submesh(Model, MeshIndex, i);
+                Submeshes[i] = new Submesh(Parent, MeshIndex, i);
         }
         
         //TODO is this necessary?
         private void ReadBoneTable()
         {
-            var currentMesh = Model.File.Meshes[ MeshIndex ];
+            var currentMesh = Parent.File.Meshes[ MeshIndex ];
 
             // Copy over the bone table
             int boneTableIndex = currentMesh.BoneTableIndex;
             if (boneTableIndex != 255)
-                BoneTable = Model.File.BoneTables[ boneTableIndex ].BoneIndex;
+                BoneTable = Parent.File.BoneTables[ boneTableIndex ].BoneIndex;
         }
 
         private void ReadIndices()
         {
-            var currentMesh = Model.File.Meshes[ MeshIndex ];
+            var currentMesh = Parent.File.Meshes[ MeshIndex ];
             
-            // Read indices because they're easy
-            BinaryReader reader = new BinaryReader( new MemoryStream( Model.File.IndexBuffers[ (int) Model.Lod ] ) );
+            BinaryReader reader = new BinaryReader( new MemoryStream( Parent.File.IndexBuffers[ (int) Parent.Lod ] ) );
             reader.Seek( currentMesh.StartIndex * 2 );
             Indices = reader.ReadStructures< UInt16 >( (int) currentMesh.IndexCount ).ToArray();
         }
 
         private void ReadVertices()
         {
-            MdlStructs.MeshStruct currentMesh = Model.File.Meshes[ MeshIndex ];
-            
-            // Vertex reading stuff
-            MdlStructs.VertexDeclarationStruct currentDecl = Model.File.VertexDeclarations[ MeshIndex ];
+            MdlStructs.MeshStruct currentMesh = Parent.File.Meshes[ MeshIndex ];
+            MdlStructs.VertexDeclarationStruct currentDecl = Parent.File.VertexDeclarations[ MeshIndex ];
             
             // We have to go through these in order by offset with this implementation
-            // TODO is this slow? this sort's purpose is to avoid copying every vertex out
             var orderedElements = currentDecl.VertexElements.ToList();
             orderedElements.Sort( ( e1, e2 ) => e1.Offset.CompareTo( e2.Offset ) );
             Vertices = new Vertex[currentMesh.VertexCount];
@@ -103,7 +130,7 @@ namespace Lumina.Models.Model {
             // Vertices may be defined across at most 3 streams defined by a Mesh's VertexDeclarations
             var vertexStreamReader = new BinaryReader[3];
             for( int i = 0; i < 3; i++ ) {
-                vertexStreamReader[ i ] = new BinaryReader( new MemoryStream( Model.File.VertexBuffers[ (int) Model.Lod ] ) );
+                vertexStreamReader[ i ] = new BinaryReader( new MemoryStream( Parent.File.VertexBuffers[ (int) Parent.Lod ] ) );
                 vertexStreamReader[ i ].Seek( currentMesh.VertexBufferOffset[ i ] );
             }
 
