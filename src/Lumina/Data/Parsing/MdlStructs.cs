@@ -8,6 +8,32 @@ namespace Lumina.Data.Parsing
 {
     public static class MdlStructs
     {
+        [Flags]
+        public enum ModelFlags1 : byte
+        {
+            DustOcclusionEnabled = 0x80,
+            SnowOcclusionEnabled = 0x40,
+            RainOcclusionEnabled = 0x20,
+            Unknown1 = 0x10,
+            LightingReflectionEnabled = 0x08,
+            WavingAnimationDisabled = 0x04,
+            LightShadowDisabled = 0x02,
+            ShadowDisabled = 0x01,
+        }
+
+        [Flags]
+        public enum ModelFlags2 : byte
+        {
+            Unknown2 = 0x80,
+            BgUvScrollEnabled = 0x40,
+            EnableForceNonResident = 0x20,
+            ExtraLodEnabled = 0x10,
+            ShadowMaskEnabled = 0x08,
+            ForceLodRangeEnabled = 0x04,
+            EdgeGeometryEnabled = 0x02,
+            Unknown3 = 0x01
+        }
+        
         public struct ModelFileHeader
         {
             public uint Version;
@@ -58,11 +84,11 @@ namespace Lumina.Data.Parsing
                 var elems = new List< VertexElement >();
 
                 // Read the vertex elements that we need
-                var thisElem = VertexElement.Read( br );
+                var thisElem = br.ReadStructure<VertexElement>();
                 do
                 {
                     elems.Add( thisElem );
-                    thisElem = VertexElement.Read( br );
+                    thisElem = br.ReadStructure<VertexElement>();
                 } while( thisElem.Stream != 255 );
 
                 // Skip the number of bytes that we don't need to read
@@ -76,29 +102,17 @@ namespace Lumina.Data.Parsing
             }
         }
 
-        public struct VertexElement
+        public unsafe struct VertexElement
         {
             public byte Stream;
             public byte Offset;
             public byte Type;
             public byte Usage;
             public byte UsageIndex; // D3D9 remnant?
-            private byte[] Padding;
-
-            public static VertexElement Read( BinaryReader br )
-            {
-                VertexElement ret = new VertexElement();
-                ret.Stream = br.ReadByte();
-                ret.Offset = br.ReadByte();
-                ret.Type = br.ReadByte();
-                ret.Usage = br.ReadByte();
-                ret.UsageIndex = br.ReadByte();
-                ret.Padding = br.ReadBytes( 3 );
-                return ret;
-            }
+            private fixed byte Padding[3];
         }
 
-        public struct ModelHeader
+        public unsafe struct ModelHeader
         {
             // MeshHeader
             public float Radius;
@@ -113,29 +127,30 @@ namespace Lumina.Data.Parsing
             public ushort ShapeValueCount;
             public byte LodCount;
 
-            private byte bitfield1;
+            private ModelFlags1 Flags1;
 
-            public bool DustOcclusionEnabled;
-            public bool SnowOcclusionEnabled;
-            public bool RainOcclusionEnabled;
-            public bool Unknown1;
-            public bool BGLightingReflectionEnabled;
-            public bool WavingAnimationDisabled;
-            public bool LightShadowDisabled;
-            public bool ShadowDisabled;
+            public bool DustOcclusionEnabled => Flags1.HasFlag(ModelFlags1.DustOcclusionEnabled);
+            public bool SnowOcclusionEnabled => Flags1.HasFlag(ModelFlags1.SnowOcclusionEnabled);
+            public bool RainOcclusionEnabled => Flags1.HasFlag(ModelFlags1.RainOcclusionEnabled);
+            public bool Unknown1 => Flags1.HasFlag(ModelFlags1.Unknown1);
+            public bool BgLightingReflectionEnabled => Flags1.HasFlag(ModelFlags1.LightingReflectionEnabled);
+            public bool WavingAnimationDisabled => Flags1.HasFlag(ModelFlags1.WavingAnimationDisabled);
+            public bool LightShadowDisabled => Flags1.HasFlag(ModelFlags1.LightShadowDisabled);
+            public bool ShadowDisabled => Flags1.HasFlag(ModelFlags1.ShadowDisabled);
+
             public ushort ElementIdCount;
             public byte TerrainShadowMeshCount;
-
-            private byte bitfield2;
-
-            public bool Unknown2;
-            public bool BgUvScrollEnabled;
-            public bool EnableForceNonResident;
-            public bool ExtraLodEnabled;
-            public bool ShadowMaskEnabled;
-            public bool ForceLodRangeEnabled;
-            public bool EdgeGeometryEnabled;
-            public bool Unknown3;
+            
+            private ModelFlags2 Flags2;
+            
+            public bool Unknown2 => Flags2.HasFlag(ModelFlags2.Unknown2);
+            public bool BgUvScrollEnabled => Flags2.HasFlag(ModelFlags2.BgUvScrollEnabled);
+            public bool EnableForceNonResident => Flags2.HasFlag(ModelFlags2.EnableForceNonResident);
+            public bool ExtraLodEnabled => Flags2.HasFlag(ModelFlags2.ExtraLodEnabled);
+            public bool ShadowMaskEnabled => Flags2.HasFlag(ModelFlags2.ShadowMaskEnabled);
+            public bool ForceLodRangeEnabled => Flags2.HasFlag(ModelFlags2.ForceLodRangeEnabled);
+            public bool EdgeGeometryEnabled => Flags2.HasFlag(ModelFlags2.EdgeGeometryEnabled);
+            public bool Unknown3 => Flags2.HasFlag(ModelFlags2.Unknown3);
 
             public float ModelClipOutDistance;
             public float ShadowClipOutDistance;
@@ -150,60 +165,7 @@ namespace Lumina.Data.Parsing
             public ushort Unknown7;
             public ushort Unknown8;
             public ushort Unknown9;
-            private byte[] Padding00;
-
-            public static ModelHeader Read( BinaryReader br )
-            {
-                ModelHeader ret = new ModelHeader();
-                ret.Radius = br.ReadSingle();
-                ret.MeshCount = br.ReadUInt16();
-                ret.AttributeCount = br.ReadUInt16();
-                ret.SubmeshCount = br.ReadUInt16();
-                ret.MaterialCount = br.ReadUInt16();
-                ret.BoneCount = br.ReadUInt16();
-                ret.BoneTableCount = br.ReadUInt16();
-                ret.ShapeCount = br.ReadUInt16();
-                ret.ShapeMeshCount = br.ReadUInt16();
-                ret.ShapeValueCount = br.ReadUInt16();
-                ret.LodCount = br.ReadByte();
-
-                ret.bitfield1 = br.ReadByte();
-                ret.DustOcclusionEnabled = ( ret.bitfield1 & 0x80 ) == 0x80;
-                ret.SnowOcclusionEnabled = ( ret.bitfield1 & 0x40 ) == 0x40;
-                ret.RainOcclusionEnabled = ( ret.bitfield1 & 0x20 ) == 0x20;
-                ret.Unknown1 = ( ret.bitfield1 & 0x10 ) == 0x10;
-                ret.BGLightingReflectionEnabled = ( ret.bitfield1 & 0x08 ) == 0x08;
-                ret.WavingAnimationDisabled = ( ret.bitfield1 & 0x04 ) == 0x04;
-                ret.LightShadowDisabled = ( ret.bitfield1 & 0x02 ) == 0x02;
-                ret.ShadowDisabled = ( ret.bitfield1 & 0x01 ) == 0x01;
-
-                ret.ElementIdCount = br.ReadUInt16();
-                ret.TerrainShadowMeshCount = br.ReadByte();
-
-                ret.bitfield2 = br.ReadByte();
-                ret.Unknown2 = ( ret.bitfield2 & 0x80 ) == 0x80;
-                ret.BgUvScrollEnabled = ( ret.bitfield2 & 0x40 ) == 0x40;
-                ret.EnableForceNonResident = ( ret.bitfield2 & 0x20 ) == 0x20;
-                ret.ExtraLodEnabled = ( ret.bitfield2 & 0x10 ) == 0x10;
-                ret.ShadowMaskEnabled = ( ret.bitfield2 & 0x08 ) == 0x08;
-                ret.ForceLodRangeEnabled = ( ret.bitfield2 & 0x04 ) == 0x04;
-                ret.EdgeGeometryEnabled = ( ret.bitfield2 & 0x02 ) == 0x02;
-                ret.Unknown3 = ( ret.bitfield2 & 0x01 ) == 0x01;
-
-                ret.ModelClipOutDistance = br.ReadSingle();
-                ret.ShadowClipOutDistance = br.ReadSingle();
-                ret.Unknown4 = br.ReadUInt16();
-                ret.TerrainShadowSubmeshCount = br.ReadUInt16();
-                ret.Unknown5 = br.ReadByte();
-                ret.BGChangeMaterialIndex = br.ReadByte();
-                ret.BGCrestChangeMaterialIndex = br.ReadByte();
-                ret.Unknown6 = br.ReadByte();
-                ret.Unknown7 = br.ReadUInt16();
-                ret.Unknown8 = br.ReadUInt16();
-                ret.Unknown9 = br.ReadUInt16();
-                ret.Padding00 = br.ReadBytes( 6 ).ToArray();
-                return ret;
-            }
+            private fixed byte Padding[6];
         }
 
         public struct ElementIdStruct

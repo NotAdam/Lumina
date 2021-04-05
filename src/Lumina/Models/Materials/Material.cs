@@ -140,9 +140,9 @@ namespace Lumina.Models.Materials
         /// <returns>The resolved, absolute path to the requested material, or null if unsuccessful.</returns>
         public static string ResolveRelativeMaterialPath( string relativePath, int variantId )
         {
-            var id1 = char.Parse( relativePath.Substring( 4, 1 ) );
+            var id1 = relativePath[4];
             var val1 = relativePath.Substring( 5, 4 );
-            var id2 = char.Parse( relativePath.Substring( 9, 1 ) );
+            var id2 = relativePath[9];
             var val2 = relativePath.Substring( 10, 4 );
 
             return ( id1, id2 ) switch

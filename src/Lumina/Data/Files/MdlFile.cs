@@ -54,7 +54,7 @@ namespace Lumina.Data.Files {
             uint stringSize = Reader.ReadUInt32();
             Strings = Reader.ReadBytes( (int) stringSize );
 
-            ModelHeader = MdlStructs.ModelHeader.Read( Reader );
+            ModelHeader = Reader.ReadStructure<MdlStructs.ModelHeader>();
             ElementIds = new MdlStructs.ElementIdStruct[ModelHeader.ElementIdCount];
             Meshes = new MdlStructs.MeshStruct[ModelHeader.MeshCount];
             BoneTables = new MdlStructs.BoneTableStruct[ModelHeader.BoneTableCount];

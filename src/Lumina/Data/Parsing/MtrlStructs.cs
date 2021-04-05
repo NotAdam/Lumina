@@ -68,17 +68,10 @@
         public ushort ValueSize;
     }
 
-    public struct SamplerState
-    {
-        // Seems to be a bitfield, but no idea what the
-        // values are for
-        public uint Unknown;
-    }
-
     public unsafe struct Sampler
     {
         public uint SamplerId;
-        public SamplerState SamplerState;
+        public uint Flags; // Bitfield; values unknown
         public byte TextureIndex;
         private fixed byte Padding[3];
     }
