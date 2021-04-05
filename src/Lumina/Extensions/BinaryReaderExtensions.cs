@@ -105,6 +105,19 @@ namespace Lumina.Extensions
 
             return chars.ToArray();
         }
+        
+        public static string ReadStringData( this BinaryReader br )
+        {
+            var chars = new List< byte >();
+
+            byte current;
+            while( ( current = br.ReadByte() ) != 0 )
+            {
+                chars.Add( current );
+            }
+            
+            return Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
+        }
 
         /// <summary>
         /// Seeks this BinaryReader's position to the given offset. Syntactic sugar.
