@@ -35,9 +35,6 @@ namespace Lumina.Data.Files {
         public ushort StringCount;
         public byte[] Strings;
 
-        public byte[][] VertexBuffers;
-        public byte[][] IndexBuffers;
-
         public override void LoadFile()
         {
             // We can ensure based on content-type that files are models
@@ -63,9 +60,6 @@ namespace Lumina.Data.Files {
             BoneTables = new MdlStructs.BoneTableStruct[ModelHeader.BoneTableCount];
             Shapes = new MdlStructs.ShapeStruct[ModelHeader.ShapeCount];
             BoneBoundingBoxes = new MdlStructs.BoundingBoxStruct[ModelHeader.BoneCount];
-
-            VertexBuffers = new byte[3][];
-            IndexBuffers = new byte[3][];
 
             for( int i = 0; i < ModelHeader.ElementIdCount; i++ ) ElementIds[ i ] = MdlStructs.ElementIdStruct.Read( Reader );
             Lods = Reader.ReadStructuresAsArray< MdlStructs.LodStruct >( 3 );
@@ -99,14 +93,6 @@ namespace Lumina.Data.Files {
             WaterBoundingBoxes = MdlStructs.BoundingBoxStruct.Read( Reader );
             VerticalFogBoundingBoxes = MdlStructs.BoundingBoxStruct.Read( Reader );
             for( int i = 0; i < ModelHeader.BoneCount; i++ ) BoneBoundingBoxes[ i ] = MdlStructs.BoundingBoxStruct.Read( Reader );
-
-            for( int i = 0; i < 3; i++ ) {
-                Reader.BaseStream.Position = FileHeader.VertexOffset[ i ];
-                VertexBuffers[ i ] = Reader.ReadBytes( (int) FileHeader.VertexBufferSize[ i ] );
-
-                Reader.BaseStream.Position = FileHeader.IndexOffset[ i ];
-                IndexBuffers[ i ] = Reader.ReadBytes( (int) FileHeader.IndexBufferSize[ i ] );
-            }
         }
     }
 }

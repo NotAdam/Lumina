@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Text;
 using Lumina.Data.Parsing;
 using Lumina.Extensions;
 using Lumina.Models.Materials;
@@ -112,7 +114,9 @@ namespace Lumina.Models.Models {
         {
             var currentMesh = Parent.File.Meshes[ MeshIndex ];
             
-            BinaryReader reader = new BinaryReader( new MemoryStream( Parent.File.IndexBuffers[ (int) Parent.Lod ] ) );
+            BinaryReader reader = new BinaryReader( new MemoryStream( Parent.File.Data, 
+                    (int) Parent.File.FileHeader.IndexOffset[ (int) Parent.Lod ],
+                    (int) Parent.File.FileHeader.IndexBufferSize[ (int) Parent.Lod ] ) );
             reader.Seek( currentMesh.StartIndex * 2 );
             Indices = reader.ReadStructures< UInt16 >( (int) currentMesh.IndexCount ).ToArray();
         }
@@ -130,7 +134,9 @@ namespace Lumina.Models.Models {
             // Vertices may be defined across at most 3 streams defined by a Mesh's VertexDeclarations
             var vertexStreamReader = new BinaryReader[3];
             for( int i = 0; i < 3; i++ ) {
-                vertexStreamReader[ i ] = new BinaryReader( new MemoryStream( Parent.File.VertexBuffers[ (int) Parent.Lod ] ) );
+                vertexStreamReader[ i ] = new BinaryReader( new MemoryStream( Parent.File.Data, 
+                        (int) Parent.File.FileHeader.VertexOffset[ (int) Parent.Lod ],
+                        (int) Parent.File.FileHeader.VertexBufferSize[ (int) Parent.Lod ] ) );
                 vertexStreamReader[ i ].Seek( currentMesh.VertexBufferOffset[ i ] );
             }
 
@@ -186,6 +192,104 @@ namespace Lumina.Models.Models {
                 case Vector4 v4: return v4;
             }
             throw new ArgumentOutOfRangeException();
+        }
+        
+        /// <summary>
+        /// Writes a Mesh into a single Wavefront Object file. This is not recommended
+        /// for general use as the .obj format has very limited information, and does not
+        /// include vertex colors, materials, or textures.
+        /// </summary>
+        /// <returns>A string containing the entire .obj file, including newlines.</returns>
+        public string GetObjectFileText()
+        {
+            string nl = Environment.NewLine;
+
+            var vsList = new List< Vector3 >();
+            var vcList = new List< Vector4 >();
+            var vtList = new List< Vector4 >();
+            var nmList = new List< Vector3 >();
+            var inList = new List< Vector3 >();
+
+            foreach( var vert in Vertices )
+            {
+                Vector3 vs = new Vector3();
+                Vector4 vc = new Vector4();
+                Vector4 vt = new Vector4();
+                Vector3 nm = new Vector3();
+
+                vs.X = vert.Position.Value.X;
+                vs.Y = vert.Position.Value.Y;
+                vs.Z = vert.Position.Value.Z;
+
+                if( vert.Color == null )
+                {
+                    vc.X = 0;
+                    vc.Y = 0;
+                    vc.W = 0;
+                    vc.Z = 0;
+                }
+                else
+                {
+                    vc.X = vert.Color.Value.X;
+                    vc.Y = vert.Color.Value.Y;
+                    vc.W = vert.Color.Value.W;
+                    vc.Z = vert.Color.Value.Z;
+                }
+
+                if( vert.UV.HasValue )
+                {
+                    vt.X = vert.UV.Value.X;
+                    vt.Y = -1 * vert.UV.Value.Y;
+                    vt.W = ( vert.UV.Value.W == 0 ) ? vt.X : vert.UV.Value.W;
+                    vt.Z = ( vert.UV.Value.Z == 0 ) ? vt.Y : vert.UV.Value.Z;
+                }
+
+                if( vert.Normal.HasValue )
+                {
+                    nm.X = vert.Normal.Value.X;
+                    nm.Y = vert.Normal.Value.Y;
+                    nm.Z = vert.Normal.Value.Z;
+                }
+
+                vsList.Add( vs );
+                vcList.Add( vc );
+                vtList.Add( vt );
+                nmList.Add( nm );
+            }
+            
+            for( int j = 0; j < Indices.Length; j += 3 )
+            {
+                Vector3 ind = new Vector3
+                {
+                    X = Indices[ j + 0 ] + 1,
+                    Y = Indices[ j + 1 ] + 1,
+                    Z = Indices[ j + 2 ] + 1
+                };
+                inList.Add( ind );
+            }
+
+            var sb = new StringBuilder();
+            foreach( var vert in vsList )
+                sb.Append( $"v {(decimal) vert.X} {(decimal) vert.Y} {(decimal) vert.Z}{nl}" );
+
+            foreach( var color in vcList )
+                sb.Append( $"vc {(decimal) color.W} {(decimal) color.X} {(decimal) color.Y} {(decimal) color.Z}{nl}" );
+
+            foreach( var texCoord in vtList )
+                sb.Append( $"vt {(decimal) texCoord.X} {(decimal) texCoord.Y} {(decimal) texCoord.W} {(decimal) texCoord.Z}{nl}" );
+
+            foreach( var norm in nmList )
+                sb.Append( $"vn {(decimal) norm.X} {(decimal) norm.Y} {(decimal) norm.Z}{nl}" );
+
+            foreach( var ind in inList )
+            {
+                sb.Append( String.Format( "f {0}/{0}/{0} {1}/{1}/{1} {2}/{2}/{2}{3}",
+                    (ushort) ind.X,
+                    (ushort) ind.Y,
+                    (ushort) ind.Z,
+                    nl ) );
+            }
+            return sb.ToString();
         }
     }
 }
