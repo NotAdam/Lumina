@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Lumina.Data;
 using Lumina.Data.Structs;
 using Lumina.Excel;
@@ -49,6 +50,11 @@ namespace Lumina
         public FileHandleManager FileHandleManager { get; private set; }
         
         internal ILogger Logger { get; private set; }
+        
+        /// <summary>
+        /// Provides access to the current <see cref="GameData"/> object that was invoked on this thread (if any).
+        /// </summary>
+        public static ThreadLocal< GameData > CurrentContext { get; private set; }
 
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
@@ -151,6 +157,8 @@ namespace Lumina
         /// <returns>Returns the requested file if found, null if not</returns>
         public T GetFile< T >( string path ) where T : FileResource
         {
+            SetCurrentContext();
+            
             var parsed = ParseFilePath( path );
             if( parsed == null )
             {
@@ -174,6 +182,8 @@ namespace Lumina
         /// <exception cref="FileNotFoundException">The path given doesn't point to an existing file</exception>
         public T GetFileFromDisk< T >( string path ) where T : FileResource
         {
+            SetCurrentContext();
+            
             if( !File.Exists( path ) )
             {
                 throw new FileNotFoundException( "the file at the specified path doesn't exist" );
@@ -287,6 +297,16 @@ namespace Lumina
         public void ProcessFileHandleQueue()
         {
             FileHandleManager.ProcessQueue();
+        }
+
+        internal void SetCurrentContext()
+        {
+            SetCurrentContext( this );
+        }
+
+        internal static void SetCurrentContext( GameData gameData )
+        {
+            CurrentContext = new(() => gameData);
         }
     }
 }

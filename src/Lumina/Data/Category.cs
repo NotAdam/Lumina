@@ -19,7 +19,7 @@ namespace Lumina.Data
         public PlatformId Platform { get; }
 
         public SqPackIndex Index { get; }
-        
+
         public Dictionary< UInt64, IndexHashTableEntry > IndexHashTableEntries { get; set; }
         public Dictionary< uint, Index2HashTableEntry > Index2HashTableEntries { get; set; }
 
@@ -58,7 +58,7 @@ namespace Lumina.Data
                     DatFiles[ id ] = new SqPack( fileInfo, _gameData );
                 }
             }
-            
+
             // postprocess indexes into one hashlist
             IndexHashTableEntries = new Dictionary< ulong, IndexHashTableEntry >();
 
@@ -82,31 +82,66 @@ namespace Lumina.Data
             return Index2HashTableEntries.ContainsKey( hash );
         }
 
-        private bool TryGetFileDatOffset( ParsedFilePath path, out byte dataFileId, out long offset )
+        public bool TryGetFileDatOffset( ulong hash, out byte dataFileId, out long offset )
         {
-            if( !Index.IsIndex2 )
+            if( IndexHashTableEntries.TryGetValue( hash, out var hashTableEntry ) )
             {
-                if( IndexHashTableEntries.TryGetValue( path.IndexHash, out var hashTableEntry ) )
-                {
-                    dataFileId = hashTableEntry.DataFileId;
-                    offset = hashTableEntry.Offset;
-                    return true;
-                } 
-            }
-            else
-            {
-                if( Index2HashTableEntries.TryGetValue( path.Index2Hash, out var hashTableEntry2 ) )
-                {
-                    dataFileId = hashTableEntry2.DataFileId;
-                    offset = hashTableEntry2.Offset;
-                    return true;
-                }
+                dataFileId = hashTableEntry.DataFileId;
+                offset = hashTableEntry.Offset;
+                return true;
             }
 
             dataFileId = 0;
             offset = 0;
 
             return false;
+        }
+
+        public bool TryGetFileDatOffset( uint hash, out byte dataFileId, out long offset )
+        {
+            if( Index2HashTableEntries.TryGetValue( hash, out var hashTableEntry ) )
+            {
+                dataFileId = hashTableEntry.DataFileId;
+                offset = hashTableEntry.Offset;
+                return true;
+            }
+
+            dataFileId = 0;
+            offset = 0;
+
+            return false;
+        }
+
+        public bool TryGetFileDatOffset( ParsedFilePath path, out byte dataFileId, out long offset )
+        {
+            if( !Index.IsIndex2 )
+            {
+                return TryGetFileDatOffset( path.IndexHash, out dataFileId, out offset );
+            }
+
+            return TryGetFileDatOffset( path.Index2Hash, out dataFileId, out offset );
+        }
+
+        public T GetFile< T >( ulong hash ) where T : FileResource
+        {
+            var status = TryGetFileDatOffset( hash, out var dataFileId, out var offset );
+            if( !status )
+            {
+                return null;
+            }
+
+            return GetFile< T >( dataFileId, offset );
+        }
+
+        public T GetFile< T >( uint hash ) where T : FileResource
+        {
+            var status = TryGetFileDatOffset( hash, out var dataFileId, out var offset );
+            if( !status )
+            {
+                return null;
+            }
+
+            return GetFile< T >( dataFileId, offset );
         }
 
         public T GetFile< T >( ParsedFilePath path ) where T : FileResource
@@ -117,11 +152,17 @@ namespace Lumina.Data
                 return null;
             }
 
-            // get dat
-            var dat = DatFiles[ dataFileId ];
-            var file = dat.ReadFile< T >( offset );
+            var file = GetFile< T >( dataFileId, offset );
 
             file.FilePath = path;
+
+            return file;
+        }
+
+        public T GetFile< T >( byte dataFileId, long offset ) where T : FileResource
+        {
+            var dat = DatFiles[ dataFileId ];
+            var file = dat.ReadFile< T >( offset );
 
             return file;
         }
