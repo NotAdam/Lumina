@@ -13,8 +13,8 @@ namespace Lumina.Data
 
         public SqPackIndexHeader IndexHeader { get; private set; }
 
-        public Dictionary< ulong, IndexHashTableEntry > HashTableEntries { get; set; }
-        public Dictionary< uint, Index2HashTableEntry > HashTableEntries2 { get; set; }
+        public Dictionary< ulong, IndexHashTableEntry > HashTableEntries { get; set; } = null!;
+        public Dictionary< uint, Index2HashTableEntry > HashTableEntries2 { get; set; } = null!;
 
         internal SqPackIndex( FileInfo indexFile, GameData gameData ) : base( indexFile, gameData )
         {

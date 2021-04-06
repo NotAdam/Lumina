@@ -43,7 +43,7 @@ namespace Lumina.Data.Files
         {
             public ImageChangeData DefaultVariant;
             public ImageChangeData[] Variants;
-            internal List< ImageChangeData > VariantList;
+            internal List< ImageChangeData >? VariantList;
 
             public static ImageChangeParts Read( BinaryReader br, int variantCount )
             {

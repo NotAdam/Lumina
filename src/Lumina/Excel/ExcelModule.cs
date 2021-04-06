@@ -72,7 +72,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >() where T : ExcelRow
+        public ExcelSheet< T >? GetSheet< T >() where T : ExcelRow
         {
             return GetSheet< T >( _gameData.Options.DefaultExcelLanguage );
         }
@@ -86,7 +86,7 @@ namespace Lumina.Excel
         /// <param name="language">The requested sheet language</param>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( Language language ) where T : ExcelRow
+        public ExcelSheet< T >? GetSheet< T >( Language language ) where T : ExcelRow
         {
             var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
 
@@ -106,7 +106,7 @@ namespace Lumina.Excel
         /// <param name="name">The name of a sheet</param>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( string name ) where T : ExcelRow
+        public ExcelSheet< T >? GetSheet< T >( string name ) where T : ExcelRow
         {
             return GetSheet< T >( name, _gameData.Options.DefaultExcelLanguage, null );
         }
@@ -132,7 +132,7 @@ namespace Lumina.Excel
             }
         }
 
-        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : ExcelRow
+        private ExcelSheet< T >? GetSheet< T >( string name, Language language, uint? expectedHash ) where T : ExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
             var idNoLanguage = Tuple.Create( Language.None, tid );
@@ -159,7 +159,7 @@ namespace Lumina.Excel
             }
         }
 
-        private ExcelSheet< T > CreateNewSheet< T >(
+        private ExcelSheet< T >? CreateNewSheet< T >(
             string name,
             Language language,
             uint? expectedHash,
@@ -201,7 +201,7 @@ namespace Lumina.Excel
                 }
             }
 
-            var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _gameData );
+            var newSheet = (ExcelSheet< T >?)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _gameData );
             newSheet.GenerateFilePages();
 
             var id = key;
@@ -226,7 +226,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="name">Name of the sheet to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl GetSheetRaw( string name )
+        public ExcelSheetImpl? GetSheetRaw( string name )
         {
             return GetSheetRaw( name, _gameData.Options.DefaultExcelLanguage );
         }
@@ -237,7 +237,7 @@ namespace Lumina.Excel
         /// <param name="name">Name of the sheet to load</param>
         /// <param name="language">The requested language to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl GetSheetRaw( string name, Language language )
+        public ExcelSheetImpl? GetSheetRaw( string name, Language language )
         {
             // todo: duped code is a bit ass but zzz
             // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on

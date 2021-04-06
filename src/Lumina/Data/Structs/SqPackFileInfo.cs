@@ -13,7 +13,7 @@ namespace Lumina.Data.Structs
         Texture = 4,
     }
 
-    public enum LodLevel : int
+    public enum LodLevel
     {
         All = -1,
         Highest,

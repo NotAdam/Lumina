@@ -1,8 +1,10 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 namespace Lumina.Data.Structs
 {
+    [SuppressMessage( "ReSharper", "InconsistentNaming" )]
     public enum PlatformId : byte
     {
         Win32,

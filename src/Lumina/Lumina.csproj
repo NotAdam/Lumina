@@ -12,6 +12,7 @@
         <FileVersion>2.0.0</FileVersion>
         <Description>Lumina is a small, performant and simple library for interacting with FINAL FANTASY XIV game data.</Description>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

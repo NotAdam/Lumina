@@ -13,6 +13,7 @@ namespace Lumina.Example
         {
             public Dictionary< string, int > ExdMap;
 
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public int Version { get; private set; }
 
             public CustomFileType()
