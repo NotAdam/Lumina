@@ -129,7 +129,8 @@ namespace Lumina.Data
             ms.Position = 0;
         }
 
-        private unsafe void ReadModelFile( FileResource resource,  byte[] buffer, MemoryStream ms ) {
+        private unsafe void ReadModelFile( FileResource resource, byte[] buffer, MemoryStream ms )
+        {
             var mdlBlock = resource.FileInfo.ModelBlock;
             long baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
 
@@ -157,10 +158,11 @@ namespace Lumina.Data
             int[] indexBufferSizes = new int[3];
 
             ms.Seek( 0x44, SeekOrigin.Begin );
-            
+
             Reader.Seek( baseOffset + mdlBlock.StackOffset );
             long stackStart = ms.Position;
-            for( int i = 0; i < mdlBlock.StackBlockNum; i++ ) {
+            for( int i = 0; i < mdlBlock.StackBlockNum; i++ )
+            {
                 long lastPos = Reader.BaseStream.Position;
                 ReadFileBlock( ms, buffer );
                 Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
@@ -168,11 +170,12 @@ namespace Lumina.Data
             }
 
             long stackEnd = ms.Position;
-            stackSize = (int) ( stackEnd - stackStart );
+            stackSize = (int)( stackEnd - stackStart );
 
             Reader.Seek( baseOffset + mdlBlock.RuntimeOffset );
             long runtimeStart = ms.Position;
-            for( int i = 0; i < mdlBlock.RuntimeBlockNum; i++ ) {
+            for( int i = 0; i < mdlBlock.RuntimeBlockNum; i++ )
+            {
                 long lastPos = Reader.BaseStream.Position;
                 ReadFileBlock( ms, buffer );
                 Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
@@ -180,12 +183,13 @@ namespace Lumina.Data
             }
 
             long runtimeEnd = ms.Position;
-            runtimeSize = (int) ( runtimeEnd - runtimeStart );
+            runtimeSize = (int)( runtimeEnd - runtimeStart );
 
-            for( int i = 0; i < 3; i++ ) {
-
-                if( mdlBlock.VertexBufferBlockNum[ i ] != 0 ) {
-                    int currentVertexOffset = (int) ms.Position;
+            for( int i = 0; i < 3; i++ )
+            {
+                if( mdlBlock.VertexBufferBlockNum[ i ] != 0 )
+                {
+                    int currentVertexOffset = (int)ms.Position;
                     if( i == 0 || currentVertexOffset != vertexDataOffsets[ i - 1 ] )
                         vertexDataOffsets[ i ] = currentVertexOffset;
                     else
@@ -193,16 +197,19 @@ namespace Lumina.Data
 
                     Reader.Seek( baseOffset + mdlBlock.VertexBufferOffset[ i ] );
 
-                    for( int j = 0; j < mdlBlock.VertexBufferBlockNum[ i ]; j++ ) {
+                    for( int j = 0; j < mdlBlock.VertexBufferBlockNum[ i ]; j++ )
+                    {
                         long lastPos = Reader.BaseStream.Position;
-                        vertexBufferSizes[ i ] += (int) ReadFileBlock( ms, buffer );
+                        vertexBufferSizes[ i ] += (int)ReadFileBlock( ms, buffer );
                         Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                         currentBlock++;
                     }
                 }
 
-                if( mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ] != 0 ) {
-                    for( int j = 0; j < mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ]; j++ ) {
+                if( mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ] != 0 )
+                {
+                    for( int j = 0; j < mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ]; j++ )
+                    {
                         long lastPos = Reader.BaseStream.Position;
                         ReadFileBlock( ms, buffer );
                         Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
@@ -210,8 +217,9 @@ namespace Lumina.Data
                     }
                 }
 
-                if( mdlBlock.IndexBufferBlockNum[ i ] != 0 ) {
-                    int currentIndexOffset = (int) ms.Position;
+                if( mdlBlock.IndexBufferBlockNum[ i ] != 0 )
+                {
+                    int currentIndexOffset = (int)ms.Position;
                     if( i == 0 || currentIndexOffset != indexDataOffsets[ i - 1 ] )
                         indexDataOffsets[ i ] = currentIndexOffset;
                     else
@@ -220,7 +228,8 @@ namespace Lumina.Data
                     // i guess this is only needed in the vertex area, for i = 0
                     // Reader.Seek( baseOffset + mdlBlock.IndexBufferOffset[ i ] );
 
-                    for( int j = 0; j < mdlBlock.IndexBufferBlockNum[ i ]; j++ ) {
+                    for( int j = 0; j < mdlBlock.IndexBufferBlockNum[ i ]; j++ )
+                    {
                         long lastPos = Reader.BaseStream.Position;
                         indexBufferSizes[ i ] += (int)ReadFileBlock( ms, buffer );
                         Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
@@ -302,23 +311,23 @@ namespace Lumina.Data
             {
                 // fucking .net holy hell
                 var count = Reader.Read( buffer, (int)BaseStream.Position, (int)blockHeader.UncompressedSize );
-                
+
 #if DEBUG
                 if( count != (int)blockHeader.UncompressedSize )
                 {
                     throw new Exception( "written bytes != uncompressed size :(" );
                 }
 #endif
-                
+
                 return blockHeader.UncompressedSize;
             }
 
             {
                 using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
-                
+
                 // todo: check that this actually copies everything we need i guess
                 var count = zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
-                dest.Position += (int)blockHeader.UncompressedSize;     
+                dest.Position += (int)blockHeader.UncompressedSize;
             }
 
             if( resetPosition )
