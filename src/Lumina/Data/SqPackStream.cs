@@ -37,8 +37,6 @@ namespace Lumina.Data
 
         public T ReadFile< T >( long offset ) where T : FileResource
         {
-            using var ms = new MemoryStream();
-
             BaseStream.Position = offset;
 
             var fileInfo = Reader.ReadStructure< SqPackFileInfo >();
@@ -75,6 +73,8 @@ namespace Lumina.Data
                 };
             }
 
+            using var ms = new MemoryStream( (int)file.FileInfo.RawFileSize );
+
             switch( fileInfo.Type )
             {
                 case FileType.Empty:
@@ -98,7 +98,9 @@ namespace Lumina.Data
 
             file.Data = ms.ToArray();
             if( file.Data.Length != file.FileInfo.RawFileSize )
+            {
                 Debug.WriteLine( "Read data size does not match file size." );
+            }
 
             file.FileStream = new MemoryStream( file.Data, false );
             file.Reader = new BinaryReader( file.FileStream );
