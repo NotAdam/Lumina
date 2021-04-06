@@ -1,7 +1,9 @@
 using System;
+using System.Buffers;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Runtime.CompilerServices;
 using Lumina.Data.Structs;
 using Lumina.Extensions;
 
@@ -9,11 +11,13 @@ namespace Lumina.Data
 {
     public class SqPackStream : IDisposable
     {
-        public Stream BaseStream { get; protected set; }
+        public Stream BaseStream { get; }
 
-        protected BinaryReader Reader { get; set; }
+        protected BinaryReader Reader { get; }
 
-        public SqPackStream( FileInfo file ) : this( file.OpenRead() ) {}
+        public SqPackStream( FileInfo file ) : this( file.OpenRead() )
+        {
+        }
 
         public SqPackStream( Stream stream )
         {
@@ -73,7 +77,8 @@ namespace Lumina.Data
                 };
             }
 
-            using var ms = new MemoryStream( (int)file.FileInfo.RawFileSize );
+            var buffer = new byte[(int)file.FileInfo.RawFileSize];
+            using var ms = new MemoryStream( buffer );
 
             switch( fileInfo.Type )
             {
@@ -81,22 +86,22 @@ namespace Lumina.Data
                     throw new FileNotFoundException( $"The file located at 0x{offset:x} is empty." );
 
                 case FileType.Standard:
-                    ReadStandardFile( file, ms );
+                    ReadStandardFile( file, buffer, ms );
                     break;
 
                 case FileType.Model:
-                    ReadModelFile( file, ms );
+                    ReadModelFile( file, buffer, ms );
                     break;
 
                 case FileType.Texture:
-                    ReadTextureFile( file, ms );
+                    ReadTextureFile( file, buffer, ms );
                     break;
 
                 default:
                     throw new NotImplementedException( $"File Type {(UInt32)fileInfo.Type} is not implemented." );
             }
 
-            file.Data = ms.ToArray();
+            file.Data = buffer;
             if( file.Data.Length != file.FileInfo.RawFileSize )
             {
                 Debug.WriteLine( "Read data size does not match file size." );
@@ -111,20 +116,20 @@ namespace Lumina.Data
             return file;
         }
 
-        private void ReadStandardFile( FileResource resource, MemoryStream ms )
+        private void ReadStandardFile( FileResource resource, byte[] buffer, MemoryStream ms )
         {
             var blocks = Reader.ReadStructures< DatStdFileBlockInfos >( (int)resource.FileInfo.BlockCount );
 
             foreach( var block in blocks )
             {
-                ReadFileBlock( resource.FileInfo.Offset + resource.FileInfo.HeaderSize + block.Offset, ms );
+                ReadFileBlock( resource.FileInfo.Offset + resource.FileInfo.HeaderSize + block.Offset, ms, buffer );
             }
 
             // reset position ready for reading
             ms.Position = 0;
         }
 
-        private unsafe void ReadModelFile( FileResource resource, MemoryStream ms ) {
+        private unsafe void ReadModelFile( FileResource resource,  byte[] buffer, MemoryStream ms ) {
             var mdlBlock = resource.FileInfo.ModelBlock;
             long baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
 
@@ -157,7 +162,7 @@ namespace Lumina.Data
             long stackStart = ms.Position;
             for( int i = 0; i < mdlBlock.StackBlockNum; i++ ) {
                 long lastPos = Reader.BaseStream.Position;
-                ReadFileBlock( ms );
+                ReadFileBlock( ms, buffer );
                 Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                 currentBlock++;
             }
@@ -169,7 +174,7 @@ namespace Lumina.Data
             long runtimeStart = ms.Position;
             for( int i = 0; i < mdlBlock.RuntimeBlockNum; i++ ) {
                 long lastPos = Reader.BaseStream.Position;
-                ReadFileBlock( ms );
+                ReadFileBlock( ms, buffer );
                 Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                 currentBlock++;
             }
@@ -190,7 +195,7 @@ namespace Lumina.Data
 
                     for( int j = 0; j < mdlBlock.VertexBufferBlockNum[ i ]; j++ ) {
                         long lastPos = Reader.BaseStream.Position;
-                        vertexBufferSizes[ i ] += (int) ReadFileBlock( ms );
+                        vertexBufferSizes[ i ] += (int) ReadFileBlock( ms, buffer );
                         Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                         currentBlock++;
                     }
@@ -199,7 +204,7 @@ namespace Lumina.Data
                 if( mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ] != 0 ) {
                     for( int j = 0; j < mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ]; j++ ) {
                         long lastPos = Reader.BaseStream.Position;
-                        ReadFileBlock( ms );
+                        ReadFileBlock( ms, buffer );
                         Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                         currentBlock++;
                     }
@@ -217,7 +222,7 @@ namespace Lumina.Data
 
                     for( int j = 0; j < mdlBlock.IndexBufferBlockNum[ i ]; j++ ) {
                         long lastPos = Reader.BaseStream.Position;
-                        indexBufferSizes[ i ] += (int) ReadFileBlock( ms );
+                        indexBufferSizes[ i ] += (int)ReadFileBlock( ms, buffer );
                         Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
                         currentBlock++;
                     }
@@ -238,13 +243,13 @@ namespace Lumina.Data
                 ms.Write( BitConverter.GetBytes( vertexBufferSizes[ i ] ) );
             for( int i = 0; i < 3; i++ )
                 ms.Write( BitConverter.GetBytes( indexBufferSizes[ i ] ) );
-            ms.Write( new [] {mdlBlock.NumLods} );
+            ms.Write( new[] { mdlBlock.NumLods } );
             ms.Write( BitConverter.GetBytes( mdlBlock.IndexBufferStreamingEnabled ) );
             ms.Write( BitConverter.GetBytes( mdlBlock.EdgeGeometryEnabled ) );
-            ms.Write( new byte[] {0} );
+            ms.Write( new byte[] { 0 } );
         }
 
-        private void ReadTextureFile( FileResource resource, MemoryStream ms )
+        private void ReadTextureFile( FileResource resource, byte[] buffer, MemoryStream ms )
         {
             var blocks = Reader.ReadStructures< LodBlock >( (int)resource.FileInfo.BlockCount );
 
@@ -266,12 +271,12 @@ namespace Lumina.Data
             {
                 // start from comp_offset
                 long runningBlockTotal = blocks[ i ].CompressedOffset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-                ReadFileBlock( runningBlockTotal, ms, true );
+                ReadFileBlock( runningBlockTotal, ms, buffer, true );
 
                 for( int j = 1; j < blocks[ i ].BlockCount; j++ )
                 {
                     runningBlockTotal += (UInt32)Reader.ReadInt16();
-                    ReadFileBlock( runningBlockTotal, ms, true );
+                    ReadFileBlock( runningBlockTotal, ms, buffer, true );
                 }
 
                 // unknown
@@ -279,35 +284,47 @@ namespace Lumina.Data
             }
         }
 
-        protected uint ReadFileBlock( MemoryStream dest, bool resetPosition = false ) {
-            return ReadFileBlock( Reader.BaseStream.Position, dest, resetPosition );
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
+        protected uint ReadFileBlock( MemoryStream dest, byte[] buffer, bool resetPosition = false )
+        {
+            return ReadFileBlock( Reader.BaseStream.Position, dest, buffer, resetPosition );
         }
 
-        protected uint ReadFileBlock( long offset, MemoryStream dest, bool resetPosition = false )
+        protected uint ReadFileBlock( long offset, MemoryStream dest, byte[] buffer, bool resetPosition = false )
         {
-            long originalPosition = BaseStream.Position;
+            var originalPosition = BaseStream.Position;
             BaseStream.Position = offset;
 
             var blockHeader = Reader.ReadStructure< DatBlockHeader >();
-            
+
             // uncompressed block
             if( blockHeader.CompressedSize == 32000 )
             {
-                dest.Write( Reader.ReadBytes( (int)blockHeader.UncompressedSize ) );
+                // fucking .net holy hell
+                var count = Reader.Read( buffer, (int)BaseStream.Position, (int)blockHeader.UncompressedSize );
+                
+#if DEBUG
+                if( count != (int)blockHeader.UncompressedSize )
+                {
+                    throw new Exception( "written bytes != uncompressed size :(" );
+                }
+#endif
+                
                 return blockHeader.UncompressedSize;
             }
 
-            var data = Reader.ReadBytes( (int)blockHeader.UncompressedSize );
-
-            using( var compressedStream = new MemoryStream( data ) )
             {
-                using var zlibStream = new DeflateStream( compressedStream, CompressionMode.Decompress );
-                zlibStream.CopyTo( dest );
-                zlibStream.Close();
+                using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
+                
+                // todo: check that this actually copies everything we need i guess
+                var count = zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
+                dest.Position += (int)blockHeader.UncompressedSize;     
             }
 
             if( resetPosition )
+            {
                 BaseStream.Position = originalPosition;
+            }
 
             return blockHeader.UncompressedSize;
         }
