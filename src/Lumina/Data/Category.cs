@@ -122,7 +122,7 @@ namespace Lumina.Data
             return TryGetFileDatOffset( path.Index2Hash, out dataFileId, out offset );
         }
 
-        public T GetFile< T >( ulong hash ) where T : FileResource
+        public T? GetFile< T >( ulong hash ) where T : FileResource
         {
             var status = TryGetFileDatOffset( hash, out var dataFileId, out var offset );
             if( !status )
@@ -144,7 +144,7 @@ namespace Lumina.Data
             return GetFile< T >( dataFileId, offset );
         }
 
-        public T GetFile< T >( ParsedFilePath path ) where T : FileResource
+        public T? GetFile< T >( ParsedFilePath path ) where T : FileResource
         {
             var status = TryGetFileDatOffset( path, out var dataFileId, out var offset );
             if( !status )

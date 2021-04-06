@@ -59,7 +59,7 @@ namespace Lumina.Data
         }
 
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
-        public T GetFile< T >( string cat, ParsedFilePath path ) where T : FileResource
+        public T? GetFile< T >( string cat, ParsedFilePath path ) where T : FileResource
         {
             if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
             {
@@ -69,7 +69,7 @@ namespace Lumina.Data
             return null;
         }
 
-        public T GetFile< T >( byte cat, ParsedFilePath path ) where T : FileResource
+        public T? GetFile< T >( byte cat, ParsedFilePath path ) where T : FileResource
         {
             if( !Categories.TryGetValue( cat, out var categories ) )
             {
@@ -142,7 +142,7 @@ namespace Lumina.Data
         /// </summary>
         private void ParseVersion()
         {
-            string versionPath = null;
+            string versionPath;
 
             // haha what the fuck?
             if( Name == "ffxiv" )

@@ -20,7 +20,7 @@ namespace Lumina.Excel
         
         public Language Language { get; }
         
-        public ExcelRow RawRow { get; }
+        public ExcelRow? RawRow { get; }
     }
 
     /// <summary>
@@ -33,7 +33,7 @@ namespace Lumina.Excel
         private readonly uint _row;
         private readonly Language _language;
 
-        private T _value;
+        private T? _value;
 
         /// <summary>
         /// The backing value/row that was passed through when creating the reference
@@ -60,6 +60,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="gameData">The Lumina instance to load from</param>
         /// <param name="row">The row id to load if/when the value is fetched</param>
+        /// <param name="language">The language to load the row in</param>
         public LazyRow( GameData gameData, int row, Language language = Language.None ) : this( gameData, (uint)row, language )
         {
         }
@@ -67,7 +68,7 @@ namespace Lumina.Excel
         /// <summary>
         /// Lazily load the referenced sheet/row, otherwise return the existing row.
         /// </summary>
-        public T Value
+        public T? Value
         {
             get
             {
@@ -85,7 +86,7 @@ namespace Lumina.Excel
         /// <summary>
         /// Provides access to the raw row without any fuckery, useful for serialisation and etc.
         /// </summary>
-        public ExcelRow RawRow => Value;
+        public ExcelRow? RawRow => Value;
         
         /// <summary>
         /// Checks whether something has loaded successfully.

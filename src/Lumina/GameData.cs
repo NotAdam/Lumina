@@ -105,7 +105,7 @@ namespace Lumina
         /// </summary>
         /// <param name="path">A game filesystem path</param>
         /// <returns>A <see cref="ParsedFilePath"/> which contains extracted info from the path, along with the hashes used to access the file index</returns>
-        public static ParsedFilePath ParseFilePath( string path )
+        public static ParsedFilePath? ParseFilePath( string path )
         {
             if( string.IsNullOrWhiteSpace( path ) )
                 return null;
@@ -144,7 +144,7 @@ namespace Lumina
         /// </summary>
         /// <param name="path">A path to a file located inside the game's filesystem</param>
         /// <returns>The base <see cref="FileResource"/> if it was found, or null if it wasn't found</returns>
-        public FileResource GetFile( string path )
+        public FileResource? GetFile( string path )
         {
             return GetFile< FileResource >( path );
         }
@@ -155,7 +155,7 @@ namespace Lumina
         /// <param name="path">A path to a file located inside the game's filesystem</param>
         /// <typeparam name="T">The type of <see cref="FileResource"/> to load the raw file in to</typeparam>
         /// <returns>Returns the requested file if found, null if not</returns>
-        public T GetFile< T >( string path ) where T : FileResource
+        public T? GetFile< T >( string path ) where T : FileResource
         {
             SetCurrentContext();
             
@@ -260,7 +260,7 @@ namespace Lumina
         /// </summary>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >() where T : ExcelRow
+        public ExcelSheet< T >? GetExcelSheet< T >() where T : ExcelRow
         {
             return Excel.GetSheet< T >();
         }
@@ -274,7 +274,7 @@ namespace Lumina
         /// <param name="language">The requested sheet language</param>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : ExcelRow
+        public ExcelSheet< T >? GetExcelSheet< T >( Language language ) where T : ExcelRow
         {
             return Excel.GetSheet< T >( language );
         }

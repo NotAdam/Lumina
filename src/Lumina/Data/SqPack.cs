@@ -68,7 +68,7 @@ namespace Lumina.Data
             SqPackHeader = ss.GetSqPackHeader();
         }
 
-        protected T GetCachedFile< T >( long offset ) where T : FileResource
+        protected T? GetCachedFile< T >( long offset ) where T : FileResource
         {
             if( !FileCache.TryGetValue( offset, out var weakRef ) )
             {
@@ -83,7 +83,9 @@ namespace Lumina.Data
             // only return from cache if target type matches
             // otherwise we'll force a cache miss and parse it as per usual
             if( cachedFile is T obj )
+            {
                 return obj;
+            }
 
             return null;
         }
@@ -108,7 +110,7 @@ namespace Lumina.Data
             if( !_gameData.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
                 using var ss = new SqPackStream( File );
-                return ss.ReadFile<T>( offset );
+                return ss.ReadFile< T >( offset );
             }
             
             
