@@ -4,6 +4,8 @@ using System.IO;
 using Lumina.Extensions;
 using Vector3 = Lumina.Data.Parsing.Common.Vector3;
 using Transformation = Lumina.Data.Parsing.Common.Transformation;
+// ReSharper disable InconsistentNaming
+// ReSharper disable NotAccessedField.Local
 
 // x field is never used warning
 #pragma warning disable 169

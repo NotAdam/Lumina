@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Lumina.Extensions;
+#pragma warning disable 169
 
 namespace Lumina.Data.Parsing
 {
