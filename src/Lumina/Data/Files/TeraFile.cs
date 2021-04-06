@@ -1,12 +1,14 @@
 ﻿using System.Numerics;
 using Lumina.Extensions;
 
+#pragma warning disable 649
+
 namespace Lumina.Data.Files
 {
     struct PlatePos
     {
-        public short x;
-        public short y;
+        public short X;
+        public short Y;
     }
     
     public class TeraFile : FileResource
@@ -42,7 +44,7 @@ namespace Lumina.Data.Files
         public Vector2 GetPlatePosition( int plateIndex )
         {
             var pos = _positions[ plateIndex ];
-            return new Vector2( PlateSize * ( pos.x + 0.5f ), PlateSize * ( pos.y + 0.5f ) );
+            return new Vector2( PlateSize * ( pos.X + 0.5f ), PlateSize * ( pos.Y + 0.5f ) );
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Lumina.Data.Attributes;
 using Lumina.Data.Parsing.Tex;
 using Lumina.Extensions;
+// ReSharper disable InconsistentNaming
 
 namespace Lumina.Data.Files
 {
