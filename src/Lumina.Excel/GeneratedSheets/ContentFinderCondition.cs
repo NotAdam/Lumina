@@ -35,7 +35,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown22 { get; set; }
         public bool AllowExplorerMode { get; set; }
         public bool Unknown24 { get; set; }
-        public bool Unknown54 { get; set; }
+        public bool Unknown25 { get; set; }
         public byte Unknown26 { get; set; }
         public bool Unknown27 { get; set; }
         public bool HighEndDuty { get; set; }
@@ -124,7 +124,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown22 = parser.ReadColumn< bool >( 22 );
             AllowExplorerMode = parser.ReadColumn< bool >( 23 );
             Unknown24 = parser.ReadColumn< bool >( 24 );
-            Unknown54 = parser.ReadColumn< bool >( 25 );
+            Unknown25 = parser.ReadColumn< bool >( 25 );
             Unknown26 = parser.ReadColumn< byte >( 26 );
             Unknown27 = parser.ReadColumn< bool >( 27 );
             HighEndDuty = parser.ReadColumn< bool >( 28 );
