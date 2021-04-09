@@ -50,7 +50,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Cast100ms { get; set; }
         public ushort Recast100ms { get; set; }
         public byte CooldownGroup { get; set; }
-        public byte Unknown40 { get; set; }
+        public byte AdditionalCooldownGroup { get; set; }
         public byte MaxCharges { get; set; }
         public LazyRow< AttackType > AttackType { get; set; }
         public byte Aspect { get; set; }
@@ -121,7 +121,7 @@ namespace Lumina.Excel.GeneratedSheets
             Cast100ms = parser.ReadColumn< ushort >( 37 );
             Recast100ms = parser.ReadColumn< ushort >( 38 );
             CooldownGroup = parser.ReadColumn< byte >( 39 );
-            Unknown40 = parser.ReadColumn< byte >( 40 );
+            AdditionalCooldownGroup = parser.ReadColumn< byte >( 40 );
             MaxCharges = parser.ReadColumn< byte >( 41 );
             AttackType = new LazyRow< AttackType >( gameData, parser.ReadColumn< sbyte >( 42 ), language );
             Aspect = parser.ReadColumn< byte >( 43 );

@@ -34,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown21 { get; set; }
         public ushort Unknown22 { get; set; }
         public byte Unknown23 { get; set; }
-        public byte Unknown24 { get; set; }
+        public byte PvPActionSortRow { get; set; }
         public byte Unknown25 { get; set; }
         public LazyRow< ClassJob > ClassJobParent { get; set; }
         public SeString NameEnglish { get; set; }
@@ -85,7 +85,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown21 = parser.ReadColumn< ushort >( 21 );
             Unknown22 = parser.ReadColumn< ushort >( 22 );
             Unknown23 = parser.ReadColumn< byte >( 23 );
-            Unknown24 = parser.ReadColumn< byte >( 24 );
+            PvPActionSortRow = parser.ReadColumn< byte >( 24 );
             Unknown25 = parser.ReadColumn< byte >( 25 );
             ClassJobParent = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 26 ), language );
             NameEnglish = parser.ReadColumn< SeString >( 27 );
