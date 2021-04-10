@@ -133,7 +133,7 @@ namespace Lumina.Data
             return GetFile< T >( dataFileId, offset );
         }
 
-        public T GetFile< T >( uint hash ) where T : FileResource
+        public T? GetFile< T >( uint hash ) where T : FileResource
         {
             var status = TryGetFileDatOffset( hash, out var dataFileId, out var offset );
             if( !status )
@@ -181,7 +181,7 @@ namespace Lumina.Data
             return dat.GetFileMetadata( offset );
         }
 
-        public SqPack GetDat( byte datId )
+        public SqPack? GetDat( byte datId )
         {
             return DatFiles.TryGetValue( datId, out var dat ) ? dat : null;
         }

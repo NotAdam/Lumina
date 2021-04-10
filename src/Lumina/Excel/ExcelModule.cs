@@ -202,7 +202,7 @@ namespace Lumina.Excel
             }
 
             var newSheet = (ExcelSheet< T >?)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _gameData );
-            newSheet.GenerateFilePages();
+            newSheet!.GenerateFilePages();
 
             var id = key;
 

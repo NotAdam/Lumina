@@ -30,7 +30,7 @@ namespace Lumina.Models.Materials
         /// <summary>
         /// The MtrlFile backing this Material. May not be initialized.
         /// </summary>
-        public MtrlFile File { get; private set; }
+        public MtrlFile? File { get; private set; }
         
         /// <summary>
         /// The Textures for this Material. May not be initialized.
@@ -112,7 +112,7 @@ namespace Lumina.Models.Materials
         /// </summary>
         /// <param name="data">A reference to game data access.</param>
         /// <returns>The existing Material instance, for method chaining.</returns>
-        public Material Update( GameData data )
+        public Material? Update( GameData data )
         {
             if( MaterialPath.StartsWith( "/" ) )
             {
@@ -138,7 +138,7 @@ namespace Lumina.Models.Materials
         /// <param name="relativePath">The relative path of the provided material.</param>
         /// <param name="variantId">The variant to use in material resolution.</param>
         /// <returns>The resolved, absolute path to the requested material, or null if unsuccessful.</returns>
-        public static string ResolveRelativeMaterialPath( string relativePath, int variantId )
+        public static string? ResolveRelativeMaterialPath( string relativePath, int variantId )
         {
             var id1 = relativePath[4];
             var val1 = relativePath.Substring( 5, 4 );

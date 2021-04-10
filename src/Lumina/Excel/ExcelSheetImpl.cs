@@ -58,7 +58,7 @@ namespace Lumina.Excel
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
-        private Dictionary< ushort, ExcelColumnDefinition > _columnsByOffset;
+        private Dictionary< ushort, ExcelColumnDefinition > _columnsByOffset = null!;
 
         public Dictionary< ushort, ExcelColumnDefinition > ColumnsByOffset
         {
@@ -266,7 +266,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="row">The row id to fetch the parent page for</param>
         /// <returns>The <see cref="ExcelPage"/> if found, null otherwise</returns>
-        public ExcelPage GetPageForRow( uint row )
+        public ExcelPage? GetPageForRow( uint row )
         {
             var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
 
@@ -289,7 +289,7 @@ namespace Lumina.Excel
         /// <param name="row">The row id to seek to</param>
         /// <param name="subRow">The subrow id to seek to</param>
         /// <returns>A <see cref="RowParser"/> instance</returns>
-        public RowParser GetRowParser( uint row, uint subRow = uint.MaxValue )
+        public RowParser? GetRowParser( uint row, uint subRow = uint.MaxValue )
         {
             var page = GetPageForRow( row );
             if( page == null )

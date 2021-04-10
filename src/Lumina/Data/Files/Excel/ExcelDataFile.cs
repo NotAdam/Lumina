@@ -18,7 +18,7 @@ namespace Lumina.Data.Files.Excel
 
         public ExcelDataHeader Header { get; protected set; }
 
-        public Dictionary< uint, ExcelDataOffset > RowData { get; protected set; }
+        public Dictionary< uint, ExcelDataOffset > RowData { get; protected set; } = null!;
 
         /// <summary>
         /// Whether the endianness of the underlying data has been swapped so it doesn't happen twice

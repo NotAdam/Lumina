@@ -1,6 +1,6 @@
 namespace Lumina
 {
-    public class ParsedFilePath
+    public record ParsedFilePath
     {
         /// <summary>
         /// The repository (or expansion) that a file belongs to.

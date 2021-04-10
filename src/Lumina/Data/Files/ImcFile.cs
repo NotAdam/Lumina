@@ -59,7 +59,7 @@ namespace Lumina.Data.Files
 
             internal void Init()
             {
-                Variants = VariantList.ToArray();
+                Variants = VariantList!.ToArray();
                 VariantList = null;
             }
         }
