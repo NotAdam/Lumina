@@ -49,12 +49,12 @@ namespace Lumina
         /// </summary>
         public FileHandleManager FileHandleManager { get; private set; }
         
-        internal ILogger Logger { get; private set; }
+        internal ILogger? Logger { get; private set; }
         
         /// <summary>
         /// Provides access to the current <see cref="GameData"/> object that was invoked on this thread (if any).
         /// </summary>
-        public static ThreadLocal< GameData > CurrentContext { get; private set; }
+        public static ThreadLocal< GameData >? CurrentContext { get; private set; }
 
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
@@ -62,7 +62,7 @@ namespace Lumina
         /// <param name="dataPath">Path to the sqpack directory</param>
         /// <param name="options">Options object to provide additional configuration</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
-        public GameData( string dataPath, LuminaOptions options = null )
+        public GameData( string dataPath, LuminaOptions options = null! )
         {
             Options = options ?? new LuminaOptions();
 
@@ -95,7 +95,7 @@ namespace Lumina
         /// <param name="logger">An <see cref="ILogger"/> implementation that Lumina can send log events to</param>
         /// <param name="options">Options object to provide additional configuration</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
-        public GameData( string dataPath, ILogger logger, LuminaOptions options = null ) : this(dataPath, options)
+        public GameData( string dataPath, ILogger logger, LuminaOptions options = null! ) : this(dataPath, options)
         {
             Logger = logger ?? throw new ArgumentNullException( nameof( logger ) );
         }

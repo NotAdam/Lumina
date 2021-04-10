@@ -38,7 +38,7 @@ namespace Lumina.Data
             while( HasPendingFileLoads )
             {
                 var res = _fileQueue.TryDequeue( out var weakRef );
-                if( res && weakRef.TryGetTarget( out var handle ) )
+                if( res && weakRef!.TryGetTarget( out var handle ) )
                 {
                     handle.Load();
                 }

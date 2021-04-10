@@ -1,4 +1,3 @@
-using System;
 using Lumina.Data;
 
 namespace Lumina.Excel
@@ -77,7 +76,7 @@ namespace Lumina.Excel
                     return _value;
                 }
 
-                _value = _gameData.GetExcelSheet< T >( _language ).GetRow( _row );
+                _value = _gameData.GetExcelSheet< T >( _language )?.GetRow( _row );
 
                 return _value;
             }
