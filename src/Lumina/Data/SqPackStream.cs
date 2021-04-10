@@ -310,7 +310,7 @@ namespace Lumina.Data
             if( blockHeader.CompressedSize == 32000 )
             {
                 // fucking .net holy hell
-                var count = Reader.Read( buffer, (int)BaseStream.Position, (int)blockHeader.UncompressedSize );
+                var count = Reader.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
 
 #if DEBUG
                 if( count != (int)blockHeader.UncompressedSize )
