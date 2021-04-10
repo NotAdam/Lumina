@@ -2,6 +2,7 @@ using System.IO;
 using Lumina.Data.Attributes;
 using Lumina.Data.Parsing.Layer;
 using Lumina.Extensions;
+// ReSharper disable InconsistentNaming
 
 // field assigned but not read warning
 #pragma warning disable 414

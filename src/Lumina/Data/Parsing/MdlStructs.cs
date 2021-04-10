@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Lumina.Extensions;
+
 #pragma warning disable 169
 
 namespace Lumina.Data.Parsing
@@ -33,7 +34,7 @@ namespace Lumina.Data.Parsing
             EdgeGeometryEnabled = 0x02,
             Unknown3 = 0x01
         }
-        
+
         public struct ModelFileHeader
         {
             public uint Version;
@@ -84,11 +85,11 @@ namespace Lumina.Data.Parsing
                 var elems = new List< VertexElement >();
 
                 // Read the vertex elements that we need
-                var thisElem = br.ReadStructure<VertexElement>();
+                var thisElem = br.ReadStructure< VertexElement >();
                 do
                 {
                     elems.Add( thisElem );
-                    thisElem = br.ReadStructure<VertexElement>();
+                    thisElem = br.ReadStructure< VertexElement >();
                 } while( thisElem.Stream != 255 );
 
                 // Skip the number of bytes that we don't need to read
@@ -129,28 +130,28 @@ namespace Lumina.Data.Parsing
 
             private ModelFlags1 Flags1;
 
-            public bool DustOcclusionEnabled => Flags1.HasFlag(ModelFlags1.DustOcclusionEnabled);
-            public bool SnowOcclusionEnabled => Flags1.HasFlag(ModelFlags1.SnowOcclusionEnabled);
-            public bool RainOcclusionEnabled => Flags1.HasFlag(ModelFlags1.RainOcclusionEnabled);
-            public bool Unknown1 => Flags1.HasFlag(ModelFlags1.Unknown1);
-            public bool BgLightingReflectionEnabled => Flags1.HasFlag(ModelFlags1.LightingReflectionEnabled);
-            public bool WavingAnimationDisabled => Flags1.HasFlag(ModelFlags1.WavingAnimationDisabled);
-            public bool LightShadowDisabled => Flags1.HasFlag(ModelFlags1.LightShadowDisabled);
-            public bool ShadowDisabled => Flags1.HasFlag(ModelFlags1.ShadowDisabled);
+            public bool DustOcclusionEnabled => Flags1.HasFlag( ModelFlags1.DustOcclusionEnabled );
+            public bool SnowOcclusionEnabled => Flags1.HasFlag( ModelFlags1.SnowOcclusionEnabled );
+            public bool RainOcclusionEnabled => Flags1.HasFlag( ModelFlags1.RainOcclusionEnabled );
+            public bool Unknown1 => Flags1.HasFlag( ModelFlags1.Unknown1 );
+            public bool BgLightingReflectionEnabled => Flags1.HasFlag( ModelFlags1.LightingReflectionEnabled );
+            public bool WavingAnimationDisabled => Flags1.HasFlag( ModelFlags1.WavingAnimationDisabled );
+            public bool LightShadowDisabled => Flags1.HasFlag( ModelFlags1.LightShadowDisabled );
+            public bool ShadowDisabled => Flags1.HasFlag( ModelFlags1.ShadowDisabled );
 
             public ushort ElementIdCount;
             public byte TerrainShadowMeshCount;
-            
+
             private ModelFlags2 Flags2;
-            
-            public bool Unknown2 => Flags2.HasFlag(ModelFlags2.Unknown2);
-            public bool BgUvScrollEnabled => Flags2.HasFlag(ModelFlags2.BgUvScrollEnabled);
-            public bool EnableForceNonResident => Flags2.HasFlag(ModelFlags2.EnableForceNonResident);
-            public bool ExtraLodEnabled => Flags2.HasFlag(ModelFlags2.ExtraLodEnabled);
-            public bool ShadowMaskEnabled => Flags2.HasFlag(ModelFlags2.ShadowMaskEnabled);
-            public bool ForceLodRangeEnabled => Flags2.HasFlag(ModelFlags2.ForceLodRangeEnabled);
-            public bool EdgeGeometryEnabled => Flags2.HasFlag(ModelFlags2.EdgeGeometryEnabled);
-            public bool Unknown3 => Flags2.HasFlag(ModelFlags2.Unknown3);
+
+            public bool Unknown2 => Flags2.HasFlag( ModelFlags2.Unknown2 );
+            public bool BgUvScrollEnabled => Flags2.HasFlag( ModelFlags2.BgUvScrollEnabled );
+            public bool EnableForceNonResident => Flags2.HasFlag( ModelFlags2.EnableForceNonResident );
+            public bool ExtraLodEnabled => Flags2.HasFlag( ModelFlags2.ExtraLodEnabled );
+            public bool ShadowMaskEnabled => Flags2.HasFlag( ModelFlags2.ShadowMaskEnabled );
+            public bool ForceLodRangeEnabled => Flags2.HasFlag( ModelFlags2.ForceLodRangeEnabled );
+            public bool EdgeGeometryEnabled => Flags2.HasFlag( ModelFlags2.EdgeGeometryEnabled );
+            public bool Unknown3 => Flags2.HasFlag( ModelFlags2.Unknown3 );
 
             public float ModelClipOutDistance;
             public float ShadowClipOutDistance;
@@ -199,7 +200,9 @@ namespace Lumina.Data.Parsing
             public ushort TerrainShadowMeshIndex;
             public ushort TerrainShadowMeshCount;
             public ushort VerticalFogMeshIndex;
+
             public ushort VerticalFogMeshCount;
+
             // Yell at me if this ever exists on Win32
             public uint EdgeGeometrySize;
             public uint EdgeGeometryDataOffset;

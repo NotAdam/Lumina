@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Lumina.Data.Attributes;
+// ReSharper disable InconsistentNaming
 
 namespace Lumina.Data.Files
 {
