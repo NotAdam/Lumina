@@ -309,14 +309,7 @@ namespace Lumina.Data
             if( blockHeader.CompressedSize == 32000 )
             {
                 // fucking .net holy hell
-                var count = Reader.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
-
-#if DEBUG
-                if( count != (int)blockHeader.UncompressedSize )
-                {
-                    throw new Exception( "written bytes != uncompressed size :(" );
-                }
-#endif
+                Reader.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
 
                 return blockHeader.UncompressedSize;
             }
@@ -325,7 +318,7 @@ namespace Lumina.Data
                 using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
 
                 // todo: check that this actually copies everything we need i guess
-                var count = zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
+                zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
                 dest.Position += (int)blockHeader.UncompressedSize;
             }
 

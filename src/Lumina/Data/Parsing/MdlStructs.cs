@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using Lumina.Extensions;
 
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnassignedField.Global
+#pragma warning disable 649
 #pragma warning disable 169
 
 namespace Lumina.Data.Parsing

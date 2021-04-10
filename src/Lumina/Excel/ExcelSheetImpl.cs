@@ -330,12 +330,12 @@ namespace Lumina.Excel
                         // read subrows
                         for( uint i = 0; i < parser.RowCount; i++ )
                         {
-                            yield return GetRowParser( rowPtr.RowId, i );
+                            yield return GetRowParser( rowPtr.RowId, i )!;
                         }
                     }
                     else
                     {
-                        yield return GetRowParser( rowPtr.RowId );
+                        yield return GetRowParser( rowPtr.RowId )!;
                     }
                 }
             }
