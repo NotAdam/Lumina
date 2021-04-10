@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
@@ -38,6 +39,11 @@ namespace Lumina.Excel
 
             // load all sheet names first
             var files = _gameData.GetFile< ExcelListFile >( "exd/root.exl" );
+
+            if( files == null )
+            {
+                throw new FileNotFoundException( "Unable to load exd/root.exl!" );
+            }
 
             _gameData.Logger?.Information("got {ExltEntryCount} exlt entries", files.ExdMap.Count);
 
