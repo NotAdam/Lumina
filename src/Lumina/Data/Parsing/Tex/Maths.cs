@@ -196,6 +196,7 @@ namespace Lumina.Data.Parsing.Tex
         }
     }
 
+    // ReSharper disable once InconsistentNaming
     internal class Sym3x3
     {
         private float[] _X = new float[6];
