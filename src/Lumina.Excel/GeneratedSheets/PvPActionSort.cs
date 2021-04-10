@@ -10,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class PvPActionSort : ExcelRow
     {
         
-        public byte Name { get; set; }
-        public LazyRow< Action > Action { get; set; }
+        public byte ActionType { get; set; }
+        public ushort Action { get; set; }
         public bool Unknown2 { get; set; }
         public bool Unknown3 { get; set; }
         public int Unknown4 { get; set; }
@@ -20,8 +20,8 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Name = parser.ReadColumn< byte >( 0 );
-            Action = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 1 ), language );
+            ActionType = parser.ReadColumn< byte >( 0 );
+            Action = parser.ReadColumn< ushort >( 1 );
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );
             Unknown4 = parser.ReadColumn< int >( 4 );
