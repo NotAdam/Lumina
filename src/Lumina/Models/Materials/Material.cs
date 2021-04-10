@@ -20,7 +20,7 @@ namespace Lumina.Models.Materials
         /// The resolved path to this Material. Guaranteed to not be initialized
         /// in the case that <c>MaterialPath.StartsWith("/") == true</c>.
         /// </summary>
-        public string ResolvedPath { get; private set; }
+        public string? ResolvedPath { get; private set; }
         
         /// <summary>
         /// A convenience reference to the Model that instantiated this Material.
@@ -112,11 +112,17 @@ namespace Lumina.Models.Materials
         /// </summary>
         /// <param name="data">A reference to game data access.</param>
         /// <returns>The existing Material instance, for method chaining.</returns>
-        public Material? Update( GameData data )
+        public Material Update( GameData data )
         {
             if( MaterialPath.StartsWith( "/" ) )
             {
                 ResolvedPath = ResolveRelativeMaterialPath( MaterialPath, VariantId );
+
+                if( ResolvedPath == null )
+                {
+                    return this;
+                }
+                
                 File = data.GetFile< MtrlFile >( ResolvedPath );
             }
             else

@@ -81,7 +81,7 @@
         public uint Category;
         public uint Value;
     }
-    
+
     public struct UvColorSet
     {
         public ushort NameOffset;

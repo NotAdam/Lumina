@@ -13,17 +13,15 @@ namespace Lumina.Data
         internal BaseFileHandle( GameData gameData, string path )
         {
             GameData = gameData;
-            _path = path;
+            Path = path;
         }
 
-        protected FileState _state = FileState.None;
-        protected GameData GameData;
-        protected readonly string _path;
-        protected object? _instance;
+        public FileState State { get; protected set; } = FileState.None;
+        protected readonly GameData GameData;
+        protected readonly string Path;
+        protected object? Instance;
 
-        public FileState State => _state;
-
-        public bool HasValue => State == FileState.Loaded && _instance != null;
+        public bool HasValue => State == FileState.Loaded && Instance != null;
 
         /// <summary>
         /// Loads the underlying <see cref="FileResource"/>
@@ -47,17 +45,17 @@ namespace Lumina.Data
         
         public override void Load()
         {
-            _state = FileState.Loading;
-            var file = GameData.GetFile< T >( _path );
+            State = FileState.Loading;
+            var file = GameData.GetFile< T >( Path );
 
             if( file == null )
             {
-                _state = FileState.Error;
+                State = FileState.Error;
                 return;
             }
 
-            _state = FileState.Loaded;
-            _instance = file;
+            State = FileState.Loaded;
+            Instance = file;
         }
 
         /// <summary>
@@ -69,7 +67,7 @@ namespace Lumina.Data
             {
                 if( HasValue )
                 {
-                    return (T)_instance;
+                    return (T?)Instance;
                 }
 
                 return null;
