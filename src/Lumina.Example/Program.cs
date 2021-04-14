@@ -62,10 +62,6 @@ namespace Lumina.Example
             var gameData = new GameData( args[ 0 ] );
 
             typeof( ActionTimeline ).Assembly.RegisterRsvFiles( gameData );
-
-            var logMessage = gameData.GetExcelSheet< LogMessage >();
-            var fuckedRow = logMessage.GetRow( 2853 );
-            Console.WriteLine(fuckedRow.Text);
             
             // excel reading
             var actionTimeline = gameData.GetExcelSheet< ActionTimeline >();
