@@ -5,6 +5,7 @@ using System.Reflection;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
 using Lumina.Excel.Exceptions;
+using Lumina.Excel.RSV;
 
 namespace Lumina.Excel
 {
@@ -18,24 +19,22 @@ namespace Lumina.Excel
         /// <remarks>
         /// Not actually used for anything in lumina, but kept for reference
         /// </remarks>
-        public readonly Dictionary< int, string > ImmutableIdToSheetMap;
+        public readonly Dictionary< int, string > ImmutableIdToSheetMap = new();
 
         /// <summary>
         /// A list of all available sheets, pulled from root.exl
         /// </summary>
-        public readonly List< string > SheetNames;
+        public readonly List< string > SheetNames = new();
 
-        private readonly Dictionary< Tuple< Language, ulong >, ExcelSheetImpl > _sheetCache;
+        private readonly Dictionary< Tuple< Language, ulong >, ExcelSheetImpl > _sheetCache = new();
 
         private readonly object _sheetCreateLock = new object();
+
+        public RsvProvider RsvProvider { get; } = new();
 
         public ExcelModule( GameData gameData )
         {
             _gameData = gameData;
-            ImmutableIdToSheetMap = new Dictionary< int, string >();
-            SheetNames = new List< string >();
-
-            _sheetCache = new Dictionary< Tuple< Language, ulong >, ExcelSheetImpl >();
 
             // load all sheet names first
             var files = _gameData.GetFile< ExcelListFile >( "exd/root.exl" );

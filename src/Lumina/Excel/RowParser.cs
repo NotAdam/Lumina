@@ -3,6 +3,7 @@ using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
@@ -204,6 +205,35 @@ namespace Lumina.Excel
             return br.ReadStructuresAsArray< T >( count );
         }
 
+        // bit faster way of finding _rsv_ keys without having to convert the whole thing to a string first and shit
+        private readonly byte[] _rsvMagic = { 0x5f, 0x72, 0x73, 0x76, 0x5f };
+
+        private SeString? ReplaceRsvKeyWithValue( byte[] originalData )
+        {
+            if( originalData.Length < _rsvMagic.Length )
+            {
+                return null;
+            }
+            
+            for( var i = 0; i < _rsvMagic.Length; i++ )
+            {
+                if( originalData[ i ] != _rsvMagic[ i ] )
+                {
+                    return null;
+                }
+            }
+
+            var key = Encoding.ASCII.GetString( originalData );
+            var value = Sheet.GameData.Excel.RsvProvider.GetValue( key );
+
+            if( value == null )
+            {
+                return null;
+            }
+
+            return new SeString( value );
+        }
+
         private object ReadFieldInternal( ExcelColumnDataType type )
         {
             var br = _dataFile.Reader;
@@ -216,8 +246,18 @@ namespace Lumina.Excel
                 {
                     var stringOffset = br.ReadUInt32();
                     var raw = br.ReadRawOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
-                    data = new SeString( raw );
 
+                    if( Sheet.GameData.Options.ResolveKnownRsvSheetValues )
+                    {
+                        var replacement = ReplaceRsvKeyWithValue( raw );
+                        if( replacement != null )
+                        {
+                            data = replacement;
+                            break;
+                        }
+                    }
+                    
+                    data = new SeString( raw );
                     break;
                 }
                 case ExcelColumnDataType.Bool:

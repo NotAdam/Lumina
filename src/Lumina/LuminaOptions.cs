@@ -31,5 +31,10 @@ namespace Lumina
         /// If enabled, when a cast fails in an excel sheet, an InvalidCastException will be thrown instead of the types default value being inserted instead.
         /// </summary>
         public bool ExcelSheetStrictCastingEnabled { get; set; } = false;
+
+        /// <summary>
+        /// Whether or not known RSV values in sheets should be resolved when loading sheets
+        /// </summary>
+        public bool ResolveKnownRsvSheetValues { get; set; } = true;
     }
 }

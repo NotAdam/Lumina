@@ -83,38 +83,38 @@ namespace Lumina.Text
 
         public static implicit operator string( SeString str ) => str.RawString;
 
-        public static SeString operator +( SeString lhs, SeString rhs )
-        {
-            return null;
-        }
-
-        public static bool operator ==( SeString lhs, SeString rhs )
-        {
-            return false;
-        }
-
-        public static bool operator !=( SeString lhs, SeString rhs )
-        {
-            return !( lhs == rhs );
-        }
+        // public static SeString operator +( SeString lhs, SeString rhs )
+        // {
+        //     return null;
+        // }
+        //
+        // public static bool operator ==( SeString lhs, SeString rhs )
+        // {
+        //     return false;
+        // }
+        //
+        // public static bool operator !=( SeString lhs, SeString rhs )
+        // {
+        //     return !( lhs == rhs );
+        // }
         
-        protected bool Equals( SeString other )
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool Equals( object obj )
-        {
-            if( ReferenceEquals( null, obj ) ) return false;
-            if( ReferenceEquals( this, obj ) ) return true;
-            if( obj.GetType() != this.GetType() ) return false;
-            return Equals( (SeString)obj );
-        }
-
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
+        // protected bool Equals( SeString other )
+        // {
+        //     throw new NotImplementedException();
+        // }
+        //
+        // public override bool Equals( object obj )
+        // {
+        //     if( ReferenceEquals( null, obj ) ) return false;
+        //     if( ReferenceEquals( this, obj ) ) return true;
+        //     if( obj.GetType() != this.GetType() ) return false;
+        //     return Equals( (SeString)obj );
+        // }
+        //
+        // public override int GetHashCode()
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public override string ToString()
         {

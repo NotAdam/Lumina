@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using Lumina.Excel.GeneratedSheets;
+using Lumina.Extensions;
 
 namespace Lumina.Example
 {
@@ -58,22 +59,16 @@ namespace Lumina.Example
 
         static void Main( string[] args )
         {
-            var lumina = new GameData( args[ 0 ] );
+            var gameData = new GameData( args[ 0 ] );
 
-            bool exitThread = false;
-            var handleThread = new Thread( () =>
-            {
-                while( !exitThread )
-                {
-                    lumina.ProcessFileHandleQueue();
-                    Thread.Yield();
-                }
-            }  );
+            typeof( ActionTimeline ).Assembly.RegisterRsvFiles( gameData );
+
+            var logMessage = gameData.GetExcelSheet< LogMessage >();
+            var fuckedRow = logMessage.GetRow( 2853 );
+            Console.WriteLine(fuckedRow.Text);
             
-            handleThread.Start();
-
             // excel reading
-            var actionTimeline = lumina.GetExcelSheet< ActionTimeline >();
+            var actionTimeline = gameData.GetExcelSheet< ActionTimeline >();
             var atRows = actionTimeline.Take( 5 );
             
             foreach( var row in atRows )
@@ -81,7 +76,7 @@ namespace Lumina.Example
                 Console.WriteLine( $"name: {row.Key}" );
             }
             
-            var zoneSharedGroup = lumina.GetExcelSheet< ZoneSharedGroup >();
+            var zoneSharedGroup = gameData.GetExcelSheet< ZoneSharedGroup >();
             var zsgRows = zoneSharedGroup.Take( 5 );
             
             foreach( var row in zsgRows )
@@ -90,21 +85,19 @@ namespace Lumina.Example
             }
             
             // dump conditions
-            foreach( var condition in lumina.GetExcelSheet< Condition >() )
+            foreach( var condition in gameData.GetExcelSheet< Condition >() )
             {
                 Console.WriteLine( $"condition {condition.RowId:000}: {condition.LogMessage.Value?.Text}" );
             }
             
             
             // custom data type
-            var file = lumina.GetFile< CustomFileType >( "exd/root.exl" );
+            var file = gameData.GetFile< CustomFileType >( "exd/root.exl" );
             file.SaveFile( "root.exl" );
 
             var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
 
             Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
-
-            exitThread = true;
         }
     }
 }

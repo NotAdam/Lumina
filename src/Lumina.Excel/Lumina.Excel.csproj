@@ -31,12 +31,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Configuration" />
+        <None Remove="RSV\**\*.rsv" />
+        <EmbeddedResource Include="RSV\**\*.rsv" />
     </ItemGroup>
-
-<!--    <ItemGroup>-->
-<!--      <None Remove="RSV\*.rsv" />-->
-<!--      <EmbeddedResource Include="RSV\*.rsv" />-->
-<!--    </ItemGroup>-->
 
 </Project>
