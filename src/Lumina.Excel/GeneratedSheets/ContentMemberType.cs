@@ -23,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte HealersPerParty { get; set; }
         public byte MeleesPerParty { get; set; }
         public byte RangedPerParty { get; set; }
-        public byte Unknown54 { get; set; }
+        public byte Unknown13 { get; set; }
         public bool Unknown14 { get; set; }
         public bool Unknown15 { get; set; }
         public bool Unknown16 { get; set; }
@@ -47,7 +47,7 @@ namespace Lumina.Excel.GeneratedSheets
             HealersPerParty = parser.ReadColumn< byte >( 10 );
             MeleesPerParty = parser.ReadColumn< byte >( 11 );
             RangedPerParty = parser.ReadColumn< byte >( 12 );
-            Unknown54 = parser.ReadColumn< byte >( 13 );
+            Unknown13 = parser.ReadColumn< byte >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
             Unknown15 = parser.ReadColumn< bool >( 15 );
             Unknown16 = parser.ReadColumn< bool >( 16 );

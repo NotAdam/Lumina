@@ -16,8 +16,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< GatheringPointBonusType > BonusType { get; set; }
         public ushort BonusValue { get; set; }
         public ushort Unknown5 { get; set; }
-        public bool Unknown53 { get; set; }
-        public uint Unknown54 { get; set; }
+        public bool Unknown6 { get; set; }
+        public uint Unknown7 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -29,8 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
             BonusType = new LazyRow< GatheringPointBonusType >( gameData, parser.ReadColumn< byte >( 3 ), language );
             BonusValue = parser.ReadColumn< ushort >( 4 );
             Unknown5 = parser.ReadColumn< ushort >( 5 );
-            Unknown53 = parser.ReadColumn< bool >( 6 );
-            Unknown54 = parser.ReadColumn< uint >( 7 );
+            Unknown6 = parser.ReadColumn< bool >( 6 );
+            Unknown7 = parser.ReadColumn< uint >( 7 );
         }
     }
 }

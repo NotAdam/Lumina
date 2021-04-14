@@ -17,8 +17,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown9 { get; set; }
         public byte Unknown10 { get; set; }
         public byte Unknown11 { get; set; }
-        public byte AddedIn530 { get; set; }
-        public byte AddedIn531 { get; set; }
+        public byte Unknown12 { get; set; }
+        public byte Unknown13 { get; set; }
         public uint Unknown14 { get; set; }
         public LazyRow< Quest >[] Quest { get; set; }
         public uint Unknown21 { get; set; }
@@ -42,8 +42,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown9 = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< byte >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
-            AddedIn530 = parser.ReadColumn< byte >( 12 );
-            AddedIn531 = parser.ReadColumn< byte >( 13 );
+            Unknown12 = parser.ReadColumn< byte >( 12 );
+            Unknown13 = parser.ReadColumn< byte >( 13 );
             Unknown14 = parser.ReadColumn< uint >( 14 );
             Quest = new LazyRow< Quest >[ 6 ];
             for( var i = 0; i < 6; i++ )

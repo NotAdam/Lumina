@@ -15,10 +15,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown2 { get; set; }
         public bool Unknown3 { get; set; }
         public bool Unknown4 { get; set; }
-        public bool AddedIn530 { get; set; }
+        public bool Unknown5 { get; set; }
         public byte Unknown6 { get; set; }
         public LazyRow< ENpcResident > ENpc { get; set; }
-        public ushort AddedIn531 { get; set; }
+        public ushort Unknown8 { get; set; }
         public LazyRow< Behavior > Behavior { get; set; }
         public ushort Unknown10 { get; set; }
         public byte Unknown11 { get; set; }
@@ -46,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown33 { get; set; }
         public byte Unknown34 { get; set; }
         public byte Unknown35 { get; set; }
-        public byte AddedIn532 { get; set; }
+        public byte Unknown36 { get; set; }
         public ulong ModelMainHand { get; set; }
         public LazyRow< Stain > DyeMainHand { get; set; }
         public ulong ModelOffHand { get; set; }
@@ -81,10 +81,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< bool >( 2 );
             Unknown3 = parser.ReadColumn< bool >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
-            AddedIn530 = parser.ReadColumn< bool >( 5 );
+            Unknown5 = parser.ReadColumn< bool >( 5 );
             Unknown6 = parser.ReadColumn< byte >( 6 );
             ENpc = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 7 ), language );
-            AddedIn531 = parser.ReadColumn< ushort >( 8 );
+            Unknown8 = parser.ReadColumn< ushort >( 8 );
             Behavior = new LazyRow< Behavior >( gameData, parser.ReadColumn< ushort >( 9 ), language );
             Unknown10 = parser.ReadColumn< ushort >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
@@ -112,7 +112,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown33 = parser.ReadColumn< byte >( 33 );
             Unknown34 = parser.ReadColumn< byte >( 34 );
             Unknown35 = parser.ReadColumn< byte >( 35 );
-            AddedIn532 = parser.ReadColumn< byte >( 36 );
+            Unknown36 = parser.ReadColumn< byte >( 36 );
             ModelMainHand = parser.ReadColumn< ulong >( 37 );
             DyeMainHand = new LazyRow< Stain >( gameData, parser.ReadColumn< byte >( 38 ), language );
             ModelOffHand = parser.ReadColumn< ulong >( 39 );

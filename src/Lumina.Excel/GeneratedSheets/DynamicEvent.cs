@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DynamicEvent", columnHash: 0xb5601716 )]
+    [Sheet( "DynamicEvent", columnHash: 0x4f7339e4 )]
     public class DynamicEvent : ExcelRow
     {
         
@@ -22,6 +22,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< LogMessage > Announce { get; set; }
         public SeString Name { get; set; }
         public SeString Description { get; set; }
+        public short Unknown12 { get; set; }
+        public short Unknown13 { get; set; }
+        public short Unknown14 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -39,6 +42,9 @@ namespace Lumina.Excel.GeneratedSheets
             Announce = new LazyRow< LogMessage >( gameData, parser.ReadColumn< uint >( 9 ), language );
             Name = parser.ReadColumn< SeString >( 10 );
             Description = parser.ReadColumn< SeString >( 11 );
+            Unknown12 = parser.ReadColumn< short >( 12 );
+            Unknown13 = parser.ReadColumn< short >( 13 );
+            Unknown14 = parser.ReadColumn< short >( 14 );
         }
     }
 }

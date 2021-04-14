@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Transformation", columnHash: 0xebf905a5 )]
+    [Sheet( "Transformation", columnHash: 0xce5db832 )]
     public class Transformation : ExcelRow
     {
         
@@ -44,9 +44,11 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< VFX > EndVFX { get; set; }
         public LazyRow< Action > Action6 { get; set; }
         public sbyte Unknown33 { get; set; }
+        public sbyte Unknown34 { get; set; }
         public LazyRow< Action > Action7 { get; set; }
-        public byte Unknown35 { get; set; }
-        public bool Unknown54 { get; set; }
+        public byte Unknown36 { get; set; }
+        public bool Unknown37 { get; set; }
+        public bool Unknown38 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -86,9 +88,11 @@ namespace Lumina.Excel.GeneratedSheets
             EndVFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 31 ), language );
             Action6 = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 32 ), language );
             Unknown33 = parser.ReadColumn< sbyte >( 33 );
-            Action7 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 34 ), language );
-            Unknown35 = parser.ReadColumn< byte >( 35 );
-            Unknown54 = parser.ReadColumn< bool >( 36 );
+            Unknown34 = parser.ReadColumn< sbyte >( 34 );
+            Action7 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 35 ), language );
+            Unknown36 = parser.ReadColumn< byte >( 36 );
+            Unknown37 = parser.ReadColumn< bool >( 37 );
+            Unknown38 = parser.ReadColumn< bool >( 38 );
         }
     }
 }

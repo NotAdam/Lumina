@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public LazyRow< FishParameter > Fish { get; set; }
         public LazyRow< IKDContentBonus > IKDContentBonus { get; set; }
-        public byte Unknown54 { get; set; }
+        public byte Unknown2 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Fish = new LazyRow< FishParameter >( gameData, parser.ReadColumn< uint >( 0 ), language );
             IKDContentBonus = new LazyRow< IKDContentBonus >( gameData, parser.ReadColumn< byte >( 1 ), language );
-            Unknown54 = parser.ReadColumn< byte >( 2 );
+            Unknown2 = parser.ReadColumn< byte >( 2 );
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ExVersion > ExVersion { get; set; }
         public byte Unknown30 { get; set; }
         public byte Unknown31 { get; set; }
-        public byte AddedIn53 { get; set; }
+        public byte Unknown32 { get; set; }
         public LazyRow< MountSpeed > MountSpeed { get; set; }
         public bool Unknown34 { get; set; }
         public bool Unknown35 { get; set; }
@@ -50,7 +50,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown37 { get; set; }
         public bool Unknown38 { get; set; }
         public bool Unknown39 { get; set; }
-        public bool Unknown54 { get; set; }
+        public bool Unknown40 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -88,7 +88,7 @@ namespace Lumina.Excel.GeneratedSheets
             ExVersion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 29 ), language );
             Unknown30 = parser.ReadColumn< byte >( 30 );
             Unknown31 = parser.ReadColumn< byte >( 31 );
-            AddedIn53 = parser.ReadColumn< byte >( 32 );
+            Unknown32 = parser.ReadColumn< byte >( 32 );
             MountSpeed = new LazyRow< MountSpeed >( gameData, parser.ReadColumn< byte >( 33 ), language );
             Unknown34 = parser.ReadColumn< bool >( 34 );
             Unknown35 = parser.ReadColumn< bool >( 35 );
@@ -96,7 +96,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown37 = parser.ReadColumn< bool >( 37 );
             Unknown38 = parser.ReadColumn< bool >( 38 );
             Unknown39 = parser.ReadColumn< bool >( 39 );
-            Unknown54 = parser.ReadColumn< bool >( 40 );
+            Unknown40 = parser.ReadColumn< bool >( 40 );
         }
     }
 }

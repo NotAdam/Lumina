@@ -16,7 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         }
         
         public LazyRow< Leve > Leve { get; set; }
-        public int CraftLeveTalk { get; set; }
+        public LazyRow< CraftLeveTalk > CraftLeveTalk { get; set; }
         public byte Repeats { get; set; }
         public UnkStruct3Struct[] UnkStruct3 { get; set; }
         
@@ -25,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Leve = new LazyRow< Leve >( gameData, parser.ReadColumn< int >( 0 ), language );
-            CraftLeveTalk = parser.ReadColumn< int >( 1 );
+            CraftLeveTalk = new LazyRow< CraftLeveTalk >( gameData, parser.ReadColumn< int >( 1 ), language );
             Repeats = parser.ReadColumn< byte >( 2 );
             UnkStruct3 = new UnkStruct3Struct[ 4 ];
             for( var i = 0; i < 4; i++ )

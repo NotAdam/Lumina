@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Emote", columnHash: 0xc4735d67 )]
+    [Sheet( "Emote", columnHash: 0x2eda0cee )]
     public class Emote : ExcelRow
     {
         
@@ -27,6 +27,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< LogMessage > LogMessageTargeted { get; set; }
         public LazyRow< LogMessage > LogMessageUntargeted { get; set; }
         public uint UnlockLink { get; set; }
+        public ushort Unknown23 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -51,6 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             LogMessageTargeted = new LazyRow< LogMessage >( gameData, parser.ReadColumn< ushort >( 20 ), language );
             LogMessageUntargeted = new LazyRow< LogMessage >( gameData, parser.ReadColumn< ushort >( 21 ), language );
             UnlockLink = parser.ReadColumn< uint >( 22 );
+            Unknown23 = parser.ReadColumn< ushort >( 23 );
         }
     }
 }

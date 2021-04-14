@@ -70,8 +70,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown69 { get; set; }
         public int Icon { get; set; }
         public byte Unknown71 { get; set; }
-        public byte AddedIn530 { get; set; }
-        public byte AddedIn531 { get; set; }
+        public byte Unknown72 { get; set; }
+        public byte Unknown73 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -142,8 +142,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown69 = parser.ReadColumn< bool >( 69 );
             Icon = parser.ReadColumn< int >( 70 );
             Unknown71 = parser.ReadColumn< byte >( 71 );
-            AddedIn530 = parser.ReadColumn< byte >( 72 );
-            AddedIn531 = parser.ReadColumn< byte >( 73 );
+            Unknown72 = parser.ReadColumn< byte >( 72 );
+            Unknown73 = parser.ReadColumn< byte >( 73 );
         }
     }
 }

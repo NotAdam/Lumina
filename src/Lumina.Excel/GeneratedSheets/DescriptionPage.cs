@@ -6,13 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DescriptionPage", columnHash: 0x70c6f175 )]
+    [Sheet( "DescriptionPage", columnHash: 0xe721cad2 )]
     public class DescriptionPage : ExcelRow
     {
         
         public LazyRow< Quest > Quest { get; set; }
         public LazyRow< DescriptionString > Text1 { get; set; }
-        public uint Image1 { get; set; }
+        public byte Image1 { get; set; }
         public LazyRow< DescriptionString > Text2 { get; set; }
         public uint Image2 { get; set; }
         public LazyRow< DescriptionString > Text3 { get; set; }
@@ -34,14 +34,16 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown21 { get; set; }
         public uint Unknown22 { get; set; }
         public ushort Unknown23 { get; set; }
+        public uint Unknown24 { get; set; }
+        public ushort Unknown25 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
-            Text1 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 1 ), language );
-            Image1 = parser.ReadColumn< uint >( 2 );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< byte >( 0 ), language );
+            Text1 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< uint >( 1 ), language );
+            Image1 = parser.ReadColumn< byte >( 2 );
             Text2 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 3 ), language );
             Image2 = parser.ReadColumn< uint >( 4 );
             Text3 = new LazyRow< DescriptionString >( gameData, parser.ReadColumn< ushort >( 5 ), language );
@@ -63,6 +65,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown21 = parser.ReadColumn< ushort >( 21 );
             Unknown22 = parser.ReadColumn< uint >( 22 );
             Unknown23 = parser.ReadColumn< ushort >( 23 );
+            Unknown24 = parser.ReadColumn< uint >( 24 );
+            Unknown25 = parser.ReadColumn< ushort >( 25 );
         }
     }
 }

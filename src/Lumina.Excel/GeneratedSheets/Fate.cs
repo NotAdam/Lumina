@@ -6,10 +6,14 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Fate", columnHash: 0x7448945f )]
+    [Sheet( "Fate", columnHash: 0x76953587 )]
     public class Fate : ExcelRow
     {
         
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
+        public SeString Objective { get; set; }
+        public SeString[] StatusText { get; set; }
         public byte EurekaFate { get; set; }
         public byte Rule { get; set; }
         public ushort FateRuleEx { get; set; }
@@ -26,75 +30,77 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ScreenImage > ScreenImageAccept { get; set; }
         public LazyRow< ScreenImage > ScreenImageComplete { get; set; }
         public LazyRow< ScreenImage > ScreenImageFailed { get; set; }
-        public byte Unknown18 { get; set; }
-        public uint Unknown19 { get; set; }
+        public byte Unknown24 { get; set; }
+        public uint Unknown25 { get; set; }
         public bool SpecialFate { get; set; }
-        public bool Unknown21 { get; set; }
+        public bool Unknown27 { get; set; }
+        public ushort Unknown28 { get; set; }
         public LazyRow< Status > GivenStatus { get; set; }
-        public ushort Unknown23 { get; set; }
         public bool AdventEvent { get; set; }
         public bool MoonFaireEvent { get; set; }
-        public bool Unknown26 { get; set; }
+        public bool Unknown32 { get; set; }
         public uint FATEChain { get; set; }
-        public byte Unknown28 { get; set; }
-        public ushort Unknown29 { get; set; }
-        public SeString Name { get; set; }
-        public SeString Description { get; set; }
-        public SeString Objective { get; set; }
-        public SeString[] StatusText { get; set; }
+        public byte Unknown34 { get; set; }
+        public ushort Unknown35 { get; set; }
         public LazyRow< ArrayEventHandler > ArrayIndex { get; set; }
         public uint Unknown37 { get; set; }
         public LazyRow< EventItem > ReqEventItem { get; set; }
         public LazyRow< EventItem > TurnInEventItem { get; set; }
+        public uint Unknown40 { get; set; }
+        public uint Unknown41 { get; set; }
+        public uint Unknown42 { get; set; }
         public ushort[] ObjectiveIcon { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            EurekaFate = parser.ReadColumn< byte >( 0 );
-            Rule = parser.ReadColumn< byte >( 1 );
-            FateRuleEx = parser.ReadColumn< ushort >( 2 );
-            Location = parser.ReadColumn< uint >( 3 );
-            ClassJobLevel = parser.ReadColumn< byte >( 4 );
-            ClassJobLevelMax = parser.ReadColumn< byte >( 5 );
-            EventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 6 ), language );
-            TypeToDoValue = new byte[ 3 ];
-            for( var i = 0; i < 3; i++ )
-                TypeToDoValue[ i ] = parser.ReadColumn< byte >( 7 + i );
-            IconObjective = parser.ReadColumn< uint >( 10 );
-            IconMap = parser.ReadColumn< uint >( 11 );
-            IconInactiveMap = parser.ReadColumn< uint >( 12 );
-            Music = new LazyRow< BGM >( gameData, parser.ReadColumn< int >( 13 ), language );
-            LGBGuardNPCLocation = parser.ReadColumn< uint >( 14 );
-            ScreenImageAccept = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 15 ), language );
-            ScreenImageComplete = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 16 ), language );
-            ScreenImageFailed = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 17 ), language );
-            Unknown18 = parser.ReadColumn< byte >( 18 );
-            Unknown19 = parser.ReadColumn< uint >( 19 );
-            SpecialFate = parser.ReadColumn< bool >( 20 );
-            Unknown21 = parser.ReadColumn< bool >( 21 );
-            GivenStatus = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 22 ), language );
-            Unknown23 = parser.ReadColumn< ushort >( 23 );
-            AdventEvent = parser.ReadColumn< bool >( 24 );
-            MoonFaireEvent = parser.ReadColumn< bool >( 25 );
-            Unknown26 = parser.ReadColumn< bool >( 26 );
-            FATEChain = parser.ReadColumn< uint >( 27 );
-            Unknown28 = parser.ReadColumn< byte >( 28 );
-            Unknown29 = parser.ReadColumn< ushort >( 29 );
-            Name = parser.ReadColumn< SeString >( 30 );
-            Description = parser.ReadColumn< SeString >( 31 );
-            Objective = parser.ReadColumn< SeString >( 32 );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Description = parser.ReadColumn< SeString >( 1 );
+            Objective = parser.ReadColumn< SeString >( 2 );
             StatusText = new SeString[ 3 ];
             for( var i = 0; i < 3; i++ )
-                StatusText[ i ] = parser.ReadColumn< SeString >( 33 + i );
+                StatusText[ i ] = parser.ReadColumn< SeString >( 3 + i );
+            EurekaFate = parser.ReadColumn< byte >( 6 );
+            Rule = parser.ReadColumn< byte >( 7 );
+            FateRuleEx = parser.ReadColumn< ushort >( 8 );
+            Location = parser.ReadColumn< uint >( 9 );
+            ClassJobLevel = parser.ReadColumn< byte >( 10 );
+            ClassJobLevelMax = parser.ReadColumn< byte >( 11 );
+            EventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 12 ), language );
+            TypeToDoValue = new byte[ 3 ];
+            for( var i = 0; i < 3; i++ )
+                TypeToDoValue[ i ] = parser.ReadColumn< byte >( 13 + i );
+            IconObjective = parser.ReadColumn< uint >( 16 );
+            IconMap = parser.ReadColumn< uint >( 17 );
+            IconInactiveMap = parser.ReadColumn< uint >( 18 );
+            Music = new LazyRow< BGM >( gameData, parser.ReadColumn< int >( 19 ), language );
+            LGBGuardNPCLocation = parser.ReadColumn< uint >( 20 );
+            ScreenImageAccept = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 21 ), language );
+            ScreenImageComplete = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 22 ), language );
+            ScreenImageFailed = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 23 ), language );
+            Unknown24 = parser.ReadColumn< byte >( 24 );
+            Unknown25 = parser.ReadColumn< uint >( 25 );
+            SpecialFate = parser.ReadColumn< bool >( 26 );
+            Unknown27 = parser.ReadColumn< bool >( 27 );
+            Unknown28 = parser.ReadColumn< ushort >( 28 );
+            GivenStatus = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 29 ), language );
+            AdventEvent = parser.ReadColumn< bool >( 30 );
+            MoonFaireEvent = parser.ReadColumn< bool >( 31 );
+            Unknown32 = parser.ReadColumn< bool >( 32 );
+            FATEChain = parser.ReadColumn< uint >( 33 );
+            Unknown34 = parser.ReadColumn< byte >( 34 );
+            Unknown35 = parser.ReadColumn< ushort >( 35 );
             ArrayIndex = new LazyRow< ArrayEventHandler >( gameData, parser.ReadColumn< uint >( 36 ), language );
             Unknown37 = parser.ReadColumn< uint >( 37 );
             ReqEventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 38 ), language );
             TurnInEventItem = new LazyRow< EventItem >( gameData, parser.ReadColumn< uint >( 39 ), language );
+            Unknown40 = parser.ReadColumn< uint >( 40 );
+            Unknown41 = parser.ReadColumn< uint >( 41 );
+            Unknown42 = parser.ReadColumn< uint >( 42 );
             ObjectiveIcon = new ushort[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ObjectiveIcon[ i ] = parser.ReadColumn< ushort >( 40 + i );
+                ObjectiveIcon[ i ] = parser.ReadColumn< ushort >( 43 + i );
         }
     }
 }

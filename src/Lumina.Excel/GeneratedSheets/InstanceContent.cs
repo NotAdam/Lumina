@@ -33,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< BGM > BGM { get; set; }
         public LazyRow< BGM > WinBGM { get; set; }
         public LazyRow< Cutscene > Cutscene { get; set; }
-        public uint Unknown7 { get; set; }
+        public uint LGBEventRange { get; set; }
         public ushort Order { get; set; }
         public byte Colosseum { get; set; }
         public bool Unknown10 { get; set; }
@@ -71,8 +71,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown58 { get; set; }
         public ushort Unknown59 { get; set; }
         public ushort Unknown60 { get; set; }
-        public ushort Unknown540 { get; set; }
-        public ushort Unknown541 { get; set; }
+        public ushort Unknown61 { get; set; }
+        public ushort Unknown62 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -85,7 +85,7 @@ namespace Lumina.Excel.GeneratedSheets
             BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 4 ), language );
             WinBGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 5 ), language );
             Cutscene = new LazyRow< Cutscene >( gameData, parser.ReadColumn< uint >( 6 ), language );
-            Unknown7 = parser.ReadColumn< uint >( 7 );
+            LGBEventRange = parser.ReadColumn< uint >( 7 );
             Order = parser.ReadColumn< ushort >( 8 );
             Colosseum = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
@@ -143,8 +143,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown58 = parser.ReadColumn< bool >( 58 );
             Unknown59 = parser.ReadColumn< ushort >( 59 );
             Unknown60 = parser.ReadColumn< ushort >( 60 );
-            Unknown540 = parser.ReadColumn< ushort >( 61 );
-            Unknown541 = parser.ReadColumn< ushort >( 62 );
+            Unknown61 = parser.ReadColumn< ushort >( 61 );
+            Unknown62 = parser.ReadColumn< ushort >( 62 );
         }
     }
 }
