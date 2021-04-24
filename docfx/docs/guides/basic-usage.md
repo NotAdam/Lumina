@@ -17,7 +17,7 @@ Lumina has some advanced options that can provide preferred behaviour in differe
 To init Lumina, you need the absolute path of your FINAL FANTASY XIV install's `sqpack` folder. For example: `G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack`. Once you have that, initialisation is easy:
 
 ```cs
-var lumina = new Lumina.Lumina( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
+var lumina = new Lumina.GameData( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
 ```
 
 It's worth noting at this point that constructing a new Lumina instance isn't exactly cheap - it's at this stage where Lumina will try to discover all the expansion data and other game related files available at the path provided. While this process will only take about 250ms or so, you should reuse the same instance where possible.
@@ -41,7 +41,7 @@ Lumina can read nearly all files in the game with no problem and will let you wr
 
 To read a file raw, you can just use `GetFile` with no specialisation. Saving that file to disk is also very simple.
 ```cs
-var lumina = new Lumina.Lumina( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
+var lumina = new Lumina.GameData( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
 
 var file = lumina.GetFile( "exd/root.exl" );
 file.SaveFile( "absolute/or/relative/path/root.exl" );
@@ -54,7 +54,7 @@ The above will load the file and write it to disk immediately. In the event of a
 While you can load files raw, where implemented, files can be loaded and parsed by Lumina and provide access to the file data in a structural manner. It works (nearly) the same as the example provided above.
 
 ```cs
-var lumina = new Lumina.Lumina( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
+var lumina = new Lumina.GameData( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
 
 var lgb = lumina.GetFile< LgbFile >( "bg/ffxiv/sea_s1/twn/s1t1/level/bg.lgb" );
 
@@ -75,7 +75,7 @@ Firstly, the structures required to use this function live in a separate nuget p
 Once you've installed the `Lumina.Generated` package, reading sheets is akin to reading files.
 
 ```cs
-var lumina = new Lumina.Lumina( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
+var lumina = new Lumina.GameData( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
 
 var itemSheet = lumina.GetExcelSheet< Item >();
 
@@ -93,7 +93,7 @@ foreach( var row in itemSheet )
 As briefly mentioned before, Lumina provides lazily loaded references to other sheets where a reference has been identified. These sheets are encapsulated in a `LazyRow< T >` which allows you to fetch the underlying value which was used to make the reference, along with loading the reference and accessing the data.
 
 ```cs
-var lumina = new Lumina.Lumina( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
+var lumina = new Lumina.GameData( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
 
 var itemSheet = lumina.GetExcelSheet< Item >();
 
