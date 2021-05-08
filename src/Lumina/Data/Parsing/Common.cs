@@ -12,6 +12,11 @@ namespace Lumina.Data.Parsing
             {
                 return new Vector3 { X = br.ReadSingle(), Y = br.ReadSingle(), Z = br.ReadSingle() };
             }
+
+            public static Vector3 Read16( BinaryReader br )
+            {
+                return new Vector3 { X = (float)br.ReadUInt16() / 0xFFFF, Y = (float)br.ReadUInt16() / 0xFFFF, Z = (float)br.ReadUInt16() / 0xFFFF };
+            }
         };
 
         public struct Vector4
@@ -43,5 +48,20 @@ namespace Lumina.Data.Parsing
                 };
             }
         };
+        
+        public struct BoundingBox
+        {
+            public Vector3 Min;
+            public Vector3 Max;
+
+            public static BoundingBox Read( BinaryReader reader )
+            {
+                return new BoundingBox
+                {
+                    Min = Vector3.Read( reader ),
+                    Max = Vector3.Read( reader )
+                };
+            }
+        }
     }
 }
