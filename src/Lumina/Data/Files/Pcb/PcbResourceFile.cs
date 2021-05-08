@@ -148,8 +148,11 @@ namespace Lumina.Data.Files.Pcb
             var isList = Reader.ReadUInt32() != 0;
             Reader.BaseStream.Position = streamStart;
 
-            if( isList ) return;
-            
+            if( isList )
+            {
+                throw new InvalidOperationException( "Error parsing pcb file" );
+            }
+
             Nodes = PcbResourceHeader.Read( Reader );
         }
 

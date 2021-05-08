@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Lumina.Data.Attributes;
 using Lumina.Data.Parsing;
@@ -59,7 +60,9 @@ namespace Lumina.Data.Files.Pcb
             var isList = Reader.ReadUInt32() != 0;
             Reader.BaseStream.Position = streamStart;
 
-            if( !isList ) return;
+            if( !isList ) {
+                throw new InvalidOperationException( "Error parsing pcb list" );
+            }
             
             Nodes = PcbNodeList.Read( Reader );
         }
