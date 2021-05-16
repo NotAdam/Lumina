@@ -11,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public byte Unknown0 { get; set; }
-        public uint Tips1 { get; set; }
+        public LazyRow< ScenarioTreeTipsQuest > Tips1 { get; set; }
         public ushort Unknown2 { get; set; }
         public LazyRow< ScenarioTree > Tips2 { get; set; }
         
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            Tips1 = parser.ReadColumn< uint >( 1 );
+            Tips1 = new LazyRow< ScenarioTreeTipsQuest >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
             Tips2 = new LazyRow< ScenarioTree >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }

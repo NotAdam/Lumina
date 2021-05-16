@@ -49,7 +49,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
 
         public override void WriteStructs( StringBuilder sb )
         {
-            sb.AppendLine( $"public struct {TypeName}" );
+            sb.AppendLine( $"public class {TypeName}" );
             sb.AppendLine( "{" );
 
             for( var i = 0; i < _members.Count; i++ )

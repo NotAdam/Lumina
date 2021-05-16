@@ -13,7 +13,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< AchievementCategory > AchievementCategory { get; set; }
         public SeString Name { get; set; }
         public SeString Description { get; set; }
-        public byte Unknown3 { get; set; }
+        public LazyRow< AchievementTarget > AchievementTarget { get; set; }
         public byte Unknown4 { get; set; }
         public byte Points { get; set; }
         public LazyRow< Title > Title { get; set; }
@@ -37,7 +37,7 @@ namespace Lumina.Excel.GeneratedSheets
             AchievementCategory = new LazyRow< AchievementCategory >( gameData, parser.ReadColumn< byte >( 0 ), language );
             Name = parser.ReadColumn< SeString >( 1 );
             Description = parser.ReadColumn< SeString >( 2 );
-            Unknown3 = parser.ReadColumn< byte >( 3 );
+            AchievementTarget = new LazyRow< AchievementTarget >( gameData, parser.ReadColumn< byte >( 3 ), language );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Points = parser.ReadColumn< byte >( 5 );
             Title = new LazyRow< Title >( gameData, parser.ReadColumn< ushort >( 6 ), language );

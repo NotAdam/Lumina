@@ -31,11 +31,11 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ScreenImage > ScreenImageComplete { get; set; }
         public LazyRow< ScreenImage > ScreenImageFailed { get; set; }
         public byte Unknown24 { get; set; }
-        public uint Unknown25 { get; set; }
+        public LazyRow< Quest > RequiredQuest { get; set; }
         public bool SpecialFate { get; set; }
         public bool Unknown27 { get; set; }
-        public ushort Unknown28 { get; set; }
         public LazyRow< Status > GivenStatus { get; set; }
+        public ushort Unknown29 { get; set; }
         public bool AdventEvent { get; set; }
         public bool MoonFaireEvent { get; set; }
         public bool Unknown32 { get; set; }
@@ -80,11 +80,11 @@ namespace Lumina.Excel.GeneratedSheets
             ScreenImageComplete = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 22 ), language );
             ScreenImageFailed = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 23 ), language );
             Unknown24 = parser.ReadColumn< byte >( 24 );
-            Unknown25 = parser.ReadColumn< uint >( 25 );
+            RequiredQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 25 ), language );
             SpecialFate = parser.ReadColumn< bool >( 26 );
             Unknown27 = parser.ReadColumn< bool >( 27 );
-            Unknown28 = parser.ReadColumn< ushort >( 28 );
-            GivenStatus = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 29 ), language );
+            GivenStatus = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 28 ), language );
+            Unknown29 = parser.ReadColumn< ushort >( 29 );
             AdventEvent = parser.ReadColumn< bool >( 30 );
             MoonFaireEvent = parser.ReadColumn< bool >( 31 );
             Unknown32 = parser.ReadColumn< bool >( 32 );

@@ -9,14 +9,14 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "SpecialShop", columnHash: 0x86d645dc )]
     public class SpecialShop : ExcelRow
     {
-        public struct UnkStruct1Struct
+        public class UnkData1Obj
         {
             public int ItemReceive;
             public int CountReceive;
             public int SpecialShopItemCategory;
             public int HQReceive;
         }
-        public struct UnkStruct481Struct
+        public class UnkData481Obj
         {
             public int ItemCost;
             public int CountCost;
@@ -25,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
         }
         
         public SeString Name { get; set; }
-        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public UnkData1Obj[] UnkData1 { get; set; }
         public int Unknown9 { get; set; }
         public int Unknown10 { get; set; }
         public int Unknown11 { get; set; }
@@ -498,7 +498,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown478 { get; set; }
         public bool Unknown479 { get; set; }
         public bool Unknown480 { get; set; }
-        public UnkStruct481Struct[] UnkStruct481 { get; set; }
+        public UnkData481Obj[] UnkData481 { get; set; }
         public int Unknown493 { get; set; }
         public int Unknown494 { get; set; }
         public int Unknown495 { get; set; }
@@ -1342,14 +1342,14 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            UnkStruct1 = new UnkStruct1Struct[ 2 ];
+            UnkData1 = new UnkData1Obj[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
-                UnkStruct1[ i ] = new UnkStruct1Struct();
-                UnkStruct1[ i ].ItemReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 0 ) );
-                UnkStruct1[ i ].CountReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 1 ) );
-                UnkStruct1[ i ].SpecialShopItemCategory = parser.ReadColumn< int >( 1 + ( i * 4 + 2 ) );
-                UnkStruct1[ i ].HQReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 3 ) );
+                UnkData1[ i ] = new UnkData1Obj();
+                UnkData1[ i ].ItemReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 0 ) );
+                UnkData1[ i ].CountReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 1 ) );
+                UnkData1[ i ].SpecialShopItemCategory = parser.ReadColumn< int >( 1 + ( i * 4 + 2 ) );
+                UnkData1[ i ].HQReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 3 ) );
             }
             Unknown9 = parser.ReadColumn< int >( 9 );
             Unknown10 = parser.ReadColumn< int >( 10 );
@@ -1823,14 +1823,14 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown478 = parser.ReadColumn< bool >( 478 );
             Unknown479 = parser.ReadColumn< bool >( 479 );
             Unknown480 = parser.ReadColumn< bool >( 480 );
-            UnkStruct481 = new UnkStruct481Struct[ 3 ];
+            UnkData481 = new UnkData481Obj[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
-                UnkStruct481[ i ] = new UnkStruct481Struct();
-                UnkStruct481[ i ].ItemCost = parser.ReadColumn< int >( 481 + ( i * 4 + 0 ) );
-                UnkStruct481[ i ].CountCost = parser.ReadColumn< int >( 481 + ( i * 4 + 1 ) );
-                UnkStruct481[ i ].HQCost = parser.ReadColumn< int >( 481 + ( i * 4 + 2 ) );
-                UnkStruct481[ i ].CollectabilityRatingCost = parser.ReadColumn< int >( 481 + ( i * 4 + 3 ) );
+                UnkData481[ i ] = new UnkData481Obj();
+                UnkData481[ i ].ItemCost = parser.ReadColumn< int >( 481 + ( i * 4 + 0 ) );
+                UnkData481[ i ].CountCost = parser.ReadColumn< int >( 481 + ( i * 4 + 1 ) );
+                UnkData481[ i ].HQCost = parser.ReadColumn< int >( 481 + ( i * 4 + 2 ) );
+                UnkData481[ i ].CollectabilityRatingCost = parser.ReadColumn< int >( 481 + ( i * 4 + 3 ) );
             }
             Unknown493 = parser.ReadColumn< int >( 493 );
             Unknown494 = parser.ReadColumn< int >( 494 );

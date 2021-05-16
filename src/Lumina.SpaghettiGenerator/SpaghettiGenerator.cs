@@ -174,13 +174,13 @@ namespace Lumina.SpaghettiGenerator
                         string fieldName;
                         if( schemaDef.Definition.GroupName != null )
                         {
-                            structName = $"{schemaDef.Definition.GroupName}Struct";
+                            structName = $"{schemaDef.Definition.GroupName}Obj";
                             fieldName = schemaDef.Definition.GroupName;
                         }
                         else
                         {
-                            structName = $"UnkStruct{i}Struct";
-                            fieldName = $"UnkStruct{i}";
+                            structName = $"UnkData{i}Obj";
+                            fieldName = $"UnkData{i}";
                         }
 
                         // todo: add pluralisation to field name? lol

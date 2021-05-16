@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public LazyRow< Action > Name { get; set; }
         public LazyRow< ClassJob > ClassJob { get; set; }
-        public int Unknown2 { get; set; }
+        public LazyRow< Action > PreviousComboAction { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Name = new LazyRow< Action >( gameData, parser.ReadColumn< int >( 0 ), language );
             ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< sbyte >( 1 ), language );
-            Unknown2 = parser.ReadColumn< int >( 2 );
+            PreviousComboAction = new LazyRow< Action >( gameData, parser.ReadColumn< int >( 2 ), language );
         }
     }
 }

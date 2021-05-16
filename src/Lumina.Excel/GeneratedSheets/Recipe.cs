@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Recipe", columnHash: 0xf56e5856 )]
     public class Recipe : ExcelRow
     {
-        public struct UnkStruct5Struct
+        public class UnkData5Obj
         {
             public int ItemIngredient;
             public byte AmountIngredient;
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< RecipeLevelTable > RecipeLevelTable { get; set; }
         public LazyRow< Item > ItemResult { get; set; }
         public byte AmountResult { get; set; }
-        public UnkStruct5Struct[] UnkStruct5 { get; set; }
+        public UnkData5Obj[] UnkData5 { get; set; }
         public ushort Unknown25 { get; set; }
         public bool IsSecondary { get; set; }
         public byte MaterialQualityFactor { get; set; }
@@ -52,12 +52,12 @@ namespace Lumina.Excel.GeneratedSheets
             RecipeLevelTable = new LazyRow< RecipeLevelTable >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             ItemResult = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 3 ), language );
             AmountResult = parser.ReadColumn< byte >( 4 );
-            UnkStruct5 = new UnkStruct5Struct[ 10 ];
+            UnkData5 = new UnkData5Obj[ 10 ];
             for( var i = 0; i < 10; i++ )
             {
-                UnkStruct5[ i ] = new UnkStruct5Struct();
-                UnkStruct5[ i ].ItemIngredient = parser.ReadColumn< int >( 5 + ( i * 2 + 0 ) );
-                UnkStruct5[ i ].AmountIngredient = parser.ReadColumn< byte >( 5 + ( i * 2 + 1 ) );
+                UnkData5[ i ] = new UnkData5Obj();
+                UnkData5[ i ].ItemIngredient = parser.ReadColumn< int >( 5 + ( i * 2 + 0 ) );
+                UnkData5[ i ].AmountIngredient = parser.ReadColumn< byte >( 5 + ( i * 2 + 1 ) );
             }
             Unknown25 = parser.ReadColumn< ushort >( 25 );
             IsSecondary = parser.ReadColumn< bool >( 26 );

@@ -9,19 +9,19 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "InstanceContent", columnHash: 0xa4243e29 )]
     public class InstanceContent : ExcelRow
     {
-        public struct UnkStruct25Struct
+        public class UnkData25Obj
         {
             public ushort BossExp;
         }
-        public struct UnkStruct30Struct
+        public class UnkData30Obj
         {
             public uint BossCurrencyA;
         }
-        public struct UnkStruct35Struct
+        public class UnkData35Obj
         {
             public ushort BossCurrencyB;
         }
-        public struct UnkStruct40Struct
+        public class UnkData40Obj
         {
             public ushort BossCurrencyC;
         }
@@ -51,10 +51,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint FinalBossCurrencyA { get; set; }
         public ushort FinalBossCurrencyB { get; set; }
         public ushort NewPlayerBonusB { get; set; }
-        public UnkStruct25Struct[] UnkStruct25 { get; set; }
-        public UnkStruct30Struct[] UnkStruct30 { get; set; }
-        public UnkStruct35Struct[] UnkStruct35 { get; set; }
-        public UnkStruct40Struct[] UnkStruct40 { get; set; }
+        public UnkData25Obj[] UnkData25 { get; set; }
+        public UnkData30Obj[] UnkData30 { get; set; }
+        public UnkData35Obj[] UnkData35 { get; set; }
+        public UnkData40Obj[] UnkData40 { get; set; }
         public ushort Unknown45 { get; set; }
         public uint InstanceClearGil { get; set; }
         public uint InstanceContentRewardItem { get; set; }
@@ -103,29 +103,29 @@ namespace Lumina.Excel.GeneratedSheets
             FinalBossCurrencyA = parser.ReadColumn< uint >( 22 );
             FinalBossCurrencyB = parser.ReadColumn< ushort >( 23 );
             NewPlayerBonusB = parser.ReadColumn< ushort >( 24 );
-            UnkStruct25 = new UnkStruct25Struct[ 5 ];
+            UnkData25 = new UnkData25Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct25[ i ] = new UnkStruct25Struct();
-                UnkStruct25[ i ].BossExp = parser.ReadColumn< ushort >( 25 + ( i * 1 + 0 ) );
+                UnkData25[ i ] = new UnkData25Obj();
+                UnkData25[ i ].BossExp = parser.ReadColumn< ushort >( 25 + ( i * 1 + 0 ) );
             }
-            UnkStruct30 = new UnkStruct30Struct[ 5 ];
+            UnkData30 = new UnkData30Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct30[ i ] = new UnkStruct30Struct();
-                UnkStruct30[ i ].BossCurrencyA = parser.ReadColumn< uint >( 30 + ( i * 1 + 0 ) );
+                UnkData30[ i ] = new UnkData30Obj();
+                UnkData30[ i ].BossCurrencyA = parser.ReadColumn< uint >( 30 + ( i * 1 + 0 ) );
             }
-            UnkStruct35 = new UnkStruct35Struct[ 5 ];
+            UnkData35 = new UnkData35Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct35[ i ] = new UnkStruct35Struct();
-                UnkStruct35[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 35 + ( i * 1 + 0 ) );
+                UnkData35[ i ] = new UnkData35Obj();
+                UnkData35[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 35 + ( i * 1 + 0 ) );
             }
-            UnkStruct40 = new UnkStruct40Struct[ 5 ];
+            UnkData40 = new UnkData40Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct40[ i ] = new UnkStruct40Struct();
-                UnkStruct40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 1 + 0 ) );
+                UnkData40[ i ] = new UnkData40Obj();
+                UnkData40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 1 + 0 ) );
             }
             Unknown45 = parser.ReadColumn< ushort >( 45 );
             InstanceClearGil = parser.ReadColumn< uint >( 46 );
