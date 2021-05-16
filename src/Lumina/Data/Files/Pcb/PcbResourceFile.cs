@@ -11,14 +11,15 @@ namespace Lumina.Data.Files.Pcb
     [FileExtension( ".pcb" )]
     public class PcbResourceFile : FileResource
     {
-        public struct PcbResourceHeader {
+        public struct PcbResourceHeader
+        {
             public uint Magic;
             public uint Version;
             public uint TotalNodes;
             public uint TotalPolygons;
 
-            public List<ResourceNode> Children;
-            
+            public List< ResourceNode > Children;
+
             public static PcbResourceHeader Read( BinaryReader reader )
             {
                 var header = new PcbResourceHeader
@@ -31,8 +32,8 @@ namespace Lumina.Data.Files.Pcb
 
                 if( header.TotalNodes == 0 )
                     return header;
-                
-                header.Children = new List<ResourceNode>();
+
+                header.Children = new List< ResourceNode >();
 
                 var totalNodesRead = 0;
                 while( totalNodesRead <= header.TotalNodes )
@@ -40,11 +41,11 @@ namespace Lumina.Data.Files.Pcb
                     header.Children.Add( ResourceNode.ReadWithCount( reader, out var nodesRead ) );
                     totalNodesRead += nodesRead;
                 }
-                
+
                 return header;
             }
         }
-        
+
         public struct ResourceNode
         {
             public uint Magic;
@@ -56,14 +57,14 @@ namespace Lumina.Data.Files.Pcb
             public Common.Vector3[] Vertices;
             public Polygon[] Polygons;
 
-            public List<ResourceNode> Children;
-            
+            public List< ResourceNode > Children;
+
             public static ResourceNode ReadWithCount( BinaryReader reader, out int totalNodesRead )
             {
                 totalNodesRead = 1;
 
                 var initialPosition = reader.BaseStream.Position;
-                
+
                 var header = new ResourceNode
                 {
                     Magic = reader.ReadUInt32(),
@@ -75,16 +76,16 @@ namespace Lumina.Data.Files.Pcb
                 var numVertFloat16 = reader.ReadUInt16();
                 header.Polygons = new Polygon[reader.ReadUInt16()];
                 var numVertFloat32 = reader.ReadUInt16();
-                
+
                 header.Vertices = new Common.Vector3[numVertFloat16 + numVertFloat32];
 
                 // Padding
                 reader.BaseStream.Position += 2;
-                
-                
+
+
                 if( header.GroupLength != 0 )
                 {
-                    header.Children = new List<ResourceNode>();
+                    header.Children = new List< ResourceNode >();
 
                     var finalPosition = initialPosition + header.GroupLength;
                     while( reader.BaseStream.Position + header.HeaderSkip < finalPosition )
@@ -100,7 +101,7 @@ namespace Lumina.Data.Files.Pcb
                 {
                     header.Vertices[ i ] = Common.Vector3.Read( reader );
                 }
-                
+
                 for( var i = numVertFloat32; i < numVertFloat32 + numVertFloat16; i++ )
                 {
                     header.Vertices[ i ] = Common.Vector3.Read16( reader );
@@ -108,19 +109,19 @@ namespace Lumina.Data.Files.Pcb
 
                 for( var i = 0; i < header.Polygons.Length; i++ )
                 {
-                    header.Polygons[i] = Polygon.Read( reader );
+                    header.Polygons[ i ] = Polygon.Read( reader );
                 }
-                
-                
+
+
                 return header;
             }
         }
-        
+
         public struct Polygon
         {
             public byte[] VertexIndex;
             public ushort Unknown;
-            
+
             public static Polygon Read( BinaryReader reader )
             {
                 var polygon = new Polygon
@@ -158,9 +159,9 @@ namespace Lumina.Data.Files.Pcb
 
         public override string ToString()
         {
-            var sb = new StringBuilder($"Total Nodes: {Nodes.TotalNodes}; Total Polygons: {Nodes.TotalPolygons}.");
-            
-            foreach (var n in Nodes.Children)
+            var sb = new StringBuilder( $"Total Nodes: {Nodes.TotalNodes}; Total Polygons: {Nodes.TotalPolygons}." );
+
+            foreach( var n in Nodes.Children )
             {
                 Stringify( sb, n, "" );
             }
@@ -173,7 +174,7 @@ namespace Lumina.Data.Files.Pcb
             sb.AppendLine( $"{tabs}Bounding Box: " +
                            $"({r.BoundingBox.Min.X}, {r.BoundingBox.Min.Y}, {r.BoundingBox.Min.Z}) => " +
                            $"({r.BoundingBox.Max.X}, {r.BoundingBox.Max.Y}, {r.BoundingBox.Max.Z})" );
-            
+
             if( r.Polygons.Length > 0 )
             {
                 sb.AppendLine( $"{tabs}Polygons:" );
@@ -189,7 +190,7 @@ namespace Lumina.Data.Files.Pcb
             }
 
             if( !( r.Children?.Count > 0 ) ) return;
-            
+
             sb.AppendLine( $"{tabs}Children:" );
             foreach( var c in r.Children )
             {
