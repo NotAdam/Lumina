@@ -210,6 +210,12 @@ namespace Lumina.Excel
 
         private SeString? ReplaceRsvKeyWithValue( byte[] originalData )
         {
+            // so we don't do unnecessary array comparisons
+            if( !Sheet.GameData.Excel.RsvProvider.HasValues )
+            {
+                return null;
+            }
+            
             if( originalData.Length < _rsvMagic.Length )
             {
                 return null;

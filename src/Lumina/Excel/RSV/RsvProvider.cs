@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Lumina.Data;
 
 namespace Lumina.Excel.RSV
@@ -19,7 +20,12 @@ namespace Lumina.Excel.RSV
             _rsvEntries = new();
         }
 
-        private readonly Dictionary< string, string> _rsvEntries;
+        private readonly Dictionary< string, string > _rsvEntries;
+
+        /// <summary>
+        /// Returns true if there's any RSV values present, otherwise false.
+        /// </summary>
+        public bool HasValues => _rsvEntries.Any();
 
         /// <summary>
         /// Add a RSV mapping for a language to the collection
