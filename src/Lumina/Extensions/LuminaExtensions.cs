@@ -10,5 +10,12 @@ namespace Lumina.Extensions
 
             return gameData.GetFile< TexFile >( path );
         }
+        
+        public static TexFile? GetHqIcon( this GameData gameData, int iconId )
+        {
+            var path = $"ui/icon/{iconId / 1000 * 1000:000000}/{iconId:000000}_hr1.tex";
+
+            return gameData.GetFile< TexFile >( path );
+        }
     }
 }
