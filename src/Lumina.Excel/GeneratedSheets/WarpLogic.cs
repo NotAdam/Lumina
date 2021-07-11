@@ -11,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData13Obj
         {
-            public uint Argument;
+            public uint Argument { get; set; }
         }
         
         public uint Unknown0 { get; set; }

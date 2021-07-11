@@ -11,21 +11,21 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData199Obj
         {
-            public uint SubMenuParam;
+            public uint SubMenuParam { get; set; }
         }
         public class UnkData2999Obj
         {
-            public byte SubMenuGraphic;
+            public byte SubMenuGraphic { get; set; }
         }
         public class UnkData3347Obj
         {
-            public ulong Helmet;
-            public ulong Top;
-            public ulong Gloves;
-            public ulong Legs;
-            public ulong Shoes;
-            public ulong Weapon;
-            public ulong SubWeapon;
+            public ulong Helmet { get; set; }
+            public ulong Top { get; set; }
+            public ulong Gloves { get; set; }
+            public ulong Legs { get; set; }
+            public ulong Shoes { get; set; }
+            public ulong Weapon { get; set; }
+            public ulong SubWeapon { get; set; }
         }
         
         public LazyRow< Race > Race { get; set; }

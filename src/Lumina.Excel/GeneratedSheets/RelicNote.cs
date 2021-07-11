@@ -11,13 +11,13 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData1Obj
         {
-            public ushort MonsterNoteTargetCommon;
-            public byte MonsterCount;
+            public ushort MonsterNoteTargetCommon { get; set; }
+            public byte MonsterCount { get; set; }
         }
         public class UnkData25Obj
         {
-            public ushort Fate;
-            public ushort PlaceNameFate;
+            public ushort Fate { get; set; }
+            public ushort PlaceNameFate { get; set; }
         }
         
         public LazyRow< EventItem > EventItem { get; set; }

@@ -11,17 +11,17 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData1Obj
         {
-            public int ItemReceive;
-            public int CountReceive;
-            public int SpecialShopItemCategory;
-            public int HQReceive;
+            public int ItemReceive { get; set; }
+            public int CountReceive { get; set; }
+            public int SpecialShopItemCategory { get; set; }
+            public int HQReceive { get; set; }
         }
         public class UnkData481Obj
         {
-            public int ItemCost;
-            public int CountCost;
-            public int HQCost;
-            public int CollectabilityRatingCost;
+            public int ItemCost { get; set; }
+            public int CountCost { get; set; }
+            public int HQCost { get; set; }
+            public int CollectabilityRatingCost { get; set; }
         }
         
         public SeString Name { get; set; }

@@ -11,9 +11,9 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData16Obj
         {
-            public int Item;
-            public int ItemCount;
-            public int IsHQ;
+            public int Item { get; set; }
+            public int ItemCount { get; set; }
+            public int IsHQ { get; set; }
         }
         
         public LazyRow< ENpcResident > Npc { get; set; }

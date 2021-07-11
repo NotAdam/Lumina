@@ -11,12 +11,12 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData1Obj
         {
-            public byte BaseParam;
-            public bool IsRelative;
-            public sbyte Value;
-            public short Max;
-            public sbyte ValueHQ;
-            public short MaxHQ;
+            public byte BaseParam { get; set; }
+            public bool IsRelative { get; set; }
+            public sbyte Value { get; set; }
+            public short Max { get; set; }
+            public sbyte ValueHQ { get; set; }
+            public short MaxHQ { get; set; }
         }
         
         public byte EXPBonusPct { get; set; }

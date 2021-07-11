@@ -11,11 +11,11 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData0Obj
         {
-            public byte RewardType;
-            public uint RewardItem;
-            public bool RewardHQ;
-            public ushort RewardQuantity;
-            public byte RewardOption;
+            public byte RewardType { get; set; }
+            public uint RewardItem { get; set; }
+            public bool RewardHQ { get; set; }
+            public ushort RewardQuantity { get; set; }
+            public byte RewardOption { get; set; }
         }
         
         public UnkData0Obj[] UnkData0 { get; set; }

@@ -11,15 +11,15 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData1Obj
         {
-            public uint Item;
+            public uint Item { get; set; }
         }
         public class UnkData11Obj
         {
-            public uint Cost;
+            public uint Cost { get; set; }
         }
         public class UnkData21Obj
         {
-            public byte FCRankRequired;
+            public byte FCRankRequired { get; set; }
         }
         
         public SeString Name { get; set; }

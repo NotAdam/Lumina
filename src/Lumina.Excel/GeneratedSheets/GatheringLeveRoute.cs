@@ -11,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData0Obj
         {
-            public int GatheringPoint;
-            public int PopRange;
+            public int GatheringPoint { get; set; }
+            public int PopRange { get; set; }
         }
         
         public UnkData0Obj[] UnkData0 { get; set; }

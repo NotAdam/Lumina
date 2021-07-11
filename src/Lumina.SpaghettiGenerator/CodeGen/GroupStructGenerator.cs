@@ -60,7 +60,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
                 
                 var type = SpaghettiGenerator.ExcelTypeToManaged( col.Type );
 
-                sb.AppendLine( $"    public {type} {SpaghettiGenerator.Clean( member.Name )};" );
+                sb.AppendLine( $"    public {type} {SpaghettiGenerator.Clean( member.Name )} {{ get; set; }}" );
             }
 
             sb.AppendLine( "}" );

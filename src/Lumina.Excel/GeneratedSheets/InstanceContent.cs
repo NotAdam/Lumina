@@ -11,19 +11,19 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData25Obj
         {
-            public ushort BossExp;
+            public ushort BossExp { get; set; }
         }
         public class UnkData30Obj
         {
-            public uint BossCurrencyA;
+            public uint BossCurrencyA { get; set; }
         }
         public class UnkData35Obj
         {
-            public ushort BossCurrencyB;
+            public ushort BossCurrencyB { get; set; }
         }
         public class UnkData40Obj
         {
-            public ushort BossCurrencyC;
+            public ushort BossCurrencyC { get; set; }
         }
         
         public byte InstanceContentType { get; set; }

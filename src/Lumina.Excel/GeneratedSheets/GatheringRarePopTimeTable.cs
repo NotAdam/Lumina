@@ -11,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData0Obj
         {
-            public ushort StartTime;
-            public ushort Durationm;
+            public ushort StartTime { get; set; }
+            public ushort Durationm { get; set; }
         }
         
         public UnkData0Obj[] UnkData0 { get; set; }

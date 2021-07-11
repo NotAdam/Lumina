@@ -11,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData3Obj
         {
-            public ushort PlaceNameZone;
-            public ushort PlaceNameLocation;
+            public ushort PlaceNameZone { get; set; }
+            public ushort PlaceNameLocation { get; set; }
         }
         
         public LazyRow< BNpcName > BNpcName { get; set; }

@@ -11,11 +11,11 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData64Obj
         {
-            public uint ToDoParam;
+            public uint ToDoParam { get; set; }
         }
         public class UnkData104Obj
         {
-            public byte NumOfAppearance;
+            public byte NumOfAppearance { get; set; }
         }
         
         public ushort[] Time { get; set; }

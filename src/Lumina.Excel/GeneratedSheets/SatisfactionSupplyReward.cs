@@ -11,10 +11,10 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData1Obj
         {
-            public ushort RewardCurrency;
-            public ushort QuantityLow;
-            public ushort QuantityMid;
-            public ushort QuantityHigh;
+            public ushort RewardCurrency { get; set; }
+            public ushort QuantityLow { get; set; }
+            public ushort QuantityMid { get; set; }
+            public ushort QuantityHigh { get; set; }
         }
         
         public byte Unknown0 { get; set; }

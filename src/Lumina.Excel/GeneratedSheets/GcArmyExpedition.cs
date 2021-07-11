@@ -11,39 +11,39 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData10Obj
         {
-            public int RewardItem;
+            public int RewardItem { get; set; }
         }
         public class UnkData16Obj
         {
-            public byte RewardQuantity;
+            public byte RewardQuantity { get; set; }
         }
         public class UnkData22Obj
         {
-            public ushort RequiredPhysical;
+            public ushort RequiredPhysical { get; set; }
         }
         public class UnkData28Obj
         {
-            public byte PercentPhysicalMet;
+            public byte PercentPhysicalMet { get; set; }
         }
         public class UnkData34Obj
         {
-            public ushort RequiredMental;
+            public ushort RequiredMental { get; set; }
         }
         public class UnkData40Obj
         {
-            public byte PercentMentalMet;
+            public byte PercentMentalMet { get; set; }
         }
         public class UnkData46Obj
         {
-            public ushort RequiredTactical;
+            public ushort RequiredTactical { get; set; }
         }
         public class UnkData52Obj
         {
-            public byte PercentTacticalMet;
+            public byte PercentTacticalMet { get; set; }
         }
         public class UnkData58Obj
         {
-            public byte PercentAllMet;
+            public byte PercentAllMet { get; set; }
         }
         
         public byte RequiredFlag { get; set; }

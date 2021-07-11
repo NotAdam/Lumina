@@ -11,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData3Obj
         {
-            public ushort Text;
-            public uint Image;
+            public ushort Text { get; set; }
+            public uint Image { get; set; }
         }
         
         public byte Unknown0 { get; set; }

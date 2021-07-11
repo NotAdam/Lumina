@@ -11,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData4Obj
         {
-            public uint Shop;
+            public uint Shop { get; set; }
         }
         
         public SeString Name { get; set; }

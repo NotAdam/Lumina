@@ -11,13 +11,13 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData59Obj
         {
-            public byte BaseParam;
-            public short BaseParamValue;
+            public byte BaseParam { get; set; }
+            public short BaseParamValue { get; set; }
         }
         public class UnkData73Obj
         {
-            public byte BaseParamSpecial;
-            public short BaseParamValueSpecial;
+            public byte BaseParamSpecial { get; set; }
+            public short BaseParamValueSpecial { get; set; }
         }
         
         public SeString Singular { get; set; }

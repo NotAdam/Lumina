@@ -11,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData0Obj
         {
-            public int Weather;
-            public byte Rate;
+            public int Weather { get; set; }
+            public byte Rate { get; set; }
         }
         
         public UnkData0Obj[] UnkData0 { get; set; }

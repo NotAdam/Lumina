@@ -11,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData2Obj
         {
-            public int RequiredItem;
-            public byte RequiredItemCount;
+            public int RequiredItem { get; set; }
+            public byte RequiredItemCount { get; set; }
         }
         
         public SeString Name { get; set; }

@@ -11,8 +11,8 @@ namespace Lumina.Excel.GeneratedSheets
     {
         public class UnkData0Obj
         {
-            public ushort LeveRewardItemGroup;
-            public byte ProbabilityPct;
+            public ushort LeveRewardItemGroup { get; set; }
+            public byte ProbabilityPct { get; set; }
         }
         
         public UnkData0Obj[] UnkData0 { get; set; }
