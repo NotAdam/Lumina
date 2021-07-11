@@ -318,7 +318,7 @@ namespace Lumina.Data
                 using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
 
                 // todo: check that this actually copies everything we need i guess
-                zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
+                zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.CompressedSize );
                 dest.Position += (int)blockHeader.UncompressedSize;
             }
 
