@@ -47,6 +47,17 @@ namespace Lumina.Data.Files.Excel
             string? row;
             while( ( row = sr.ReadLine() ) != null )
             {
+                if( row.Length == 0 )
+                {
+                    continue;
+                }
+                
+                // ignore commented rows - thanks SE
+                if( row[ 0 ] == '#' )
+                {
+                    continue;
+                }
+                
                 var data = row.Split( ',' );
                 var id = int.Parse( data[ 1 ] );
 
