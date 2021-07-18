@@ -9,6 +9,8 @@ using Lumina.Excel.RSV;
 
 namespace Lumina.Excel
 {
+    using CacheKeyTuple = Tuple< Language, string, ulong >;
+
     public class ExcelModule
     {
         private readonly GameData _gameData;
@@ -26,7 +28,7 @@ namespace Lumina.Excel
         /// </summary>
         public readonly List< string > SheetNames = new();
 
-        private readonly Dictionary< Tuple< Language, ulong >, ExcelSheetImpl > _sheetCache = new();
+        private readonly Dictionary< CacheKeyTuple, ExcelSheetImpl > _sheetCache = new();
 
         private readonly object _sheetCreateLock = new object();
 
@@ -129,9 +131,28 @@ namespace Lumina.Excel
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
             
+            var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
+
+            if( attr == null )
+            {
+                return;
+            }
+            
+            RemoveSheetFromCache< T >( attr.Name );
+        }
+
+        /// <summary>
+        /// Remove a sheet from the cache by name and free any related resources
+        /// </summary>
+        /// <param name="name">The name of the sheet</param>
+        /// <typeparam name="T">The sheet type</typeparam>
+        public void RemoveSheetFromCache< T >( string name ) where T : ExcelRow
+        {
+            var tid = BuildTypeIdentifier( typeof( T ) );
+            
             foreach( Language language in Enum.GetValues( typeof( Language ) ) )
             {
-                var id = Tuple.Create( language, tid );
+                var id = Tuple.Create( language, name, tid );
 
                 _sheetCache.Remove( id );
             }
@@ -140,8 +161,9 @@ namespace Lumina.Excel
         private ExcelSheet< T >? GetSheet< T >( string name, Language language, uint? expectedHash ) where T : ExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
-            var idNoLanguage = Tuple.Create( Language.None, tid );
-            var id = Tuple.Create( language, tid );
+            var lowerName = name.ToLowerInvariant();
+            var idNoLanguage = Tuple.Create( Language.None, lowerName, tid );
+            var id = Tuple.Create( language, lowerName, tid );
 
             // attempt to get non-localised sheet first, then attempt to fetch a localised sheet from the cache
             if( _sheetCache.TryGetValue( idNoLanguage, out var sheet ) )
@@ -168,8 +190,8 @@ namespace Lumina.Excel
             string name,
             Language language,
             uint? expectedHash,
-            Tuple< Language, ulong > key,
-            Tuple< Language, ulong > noLangKey
+            CacheKeyTuple key,
+            CacheKeyTuple noLangKey
         ) where T : ExcelRow
         {
             _gameData.Logger?.Debug(
