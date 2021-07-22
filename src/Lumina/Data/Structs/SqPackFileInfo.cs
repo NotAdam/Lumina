@@ -40,13 +40,22 @@ namespace Lumina.Data.Structs
         public UInt16 UncompressedSize;
     };
 
+    /// <summary>
+    /// The type of block in the sqpack, indicates compression or not
+    /// </summary>
+    public enum DatBlockType : uint
+    {
+        Compressed = 16000,
+        Uncompressed = 32000,
+    }
+
     [StructLayout( LayoutKind.Sequential )]
     struct DatBlockHeader
     {
         public UInt32 Size;
         public UInt32 unknown1;
-        public UInt32 CompressedSize;
-        public UInt32 UncompressedSize;
+        public DatBlockType DatBlockType;
+        public UInt32 BlockDataSize;
     };
 
     [StructLayout( LayoutKind.Sequential )]

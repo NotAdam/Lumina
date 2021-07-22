@@ -306,20 +306,26 @@ namespace Lumina.Data
             var blockHeader = Reader.ReadStructure< DatBlockHeader >();
 
             // uncompressed block
-            if( blockHeader.CompressedSize == 32000 )
+            if( blockHeader.DatBlockType == DatBlockType.Uncompressed )
             {
                 // fucking .net holy hell
-                Reader.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
+                Reader.Read( buffer, (int)dest.Position, (int)blockHeader.BlockDataSize );
 
-                return blockHeader.UncompressedSize;
+                return blockHeader.BlockDataSize;
             }
 
             {
                 using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
 
-                // todo: check that this actually copies everything we need i guess
-                zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.CompressedSize );
-                dest.Position += (int)blockHeader.UncompressedSize;
+                var bytesRead = zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.BlockDataSize );
+                if( bytesRead != (int)blockHeader.BlockDataSize )
+                {
+                    throw new SqPackInflateException(
+                        $"failed to inflate block, bytesRead ({bytesRead}) != BlockDataSize ({blockHeader.BlockDataSize})"
+                    );
+                }
+
+                dest.Position += (int)blockHeader.BlockDataSize;
             }
 
             if( resetPosition )
@@ -327,7 +333,7 @@ namespace Lumina.Data
                 BaseStream.Position = originalPosition;
             }
 
-            return blockHeader.UncompressedSize;
+            return blockHeader.BlockDataSize;
         }
 
         public void Dispose()
