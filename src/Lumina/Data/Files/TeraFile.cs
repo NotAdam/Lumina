@@ -18,10 +18,11 @@ namespace Lumina.Data.Files
         public uint PlateSize;
         public float ClipDistance;
         public float Unknown;
-        public byte[] Padding;
+        private byte[] Padding;
 
         private PlatePos[] _positions; 
         
+        /// <inheritdoc cref="FileResource.LoadFile"/>
         public override void LoadFile()
         {
             Version = Reader.ReadUInt32();

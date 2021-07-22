@@ -2,6 +2,9 @@ using Lumina.Data;
 
 namespace Lumina
 {
+    /// <summary>
+    /// Options that can be provided to change the behaviour of caching, integrity checks and other behaviour.
+    /// </summary>
     public class LuminaOptions
     {
         /// <summary>

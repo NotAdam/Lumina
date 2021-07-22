@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Lumina.Data;
 
 namespace Lumina.Excel.RSV
 {
@@ -15,6 +13,9 @@ namespace Lumina.Excel.RSV
     /// </remarks>
     public class RsvProvider
     {
+        /// <summary>
+        /// Construct an empty <see cref="RsvProvider"/>. Will need to be seeded with data before this does anything.
+        /// </summary>
         public RsvProvider()
         {
             _rsvEntries = new();
@@ -54,6 +55,11 @@ namespace Lumina.Excel.RSV
                 
                 var data = entry.Split( delim, 2 );
                 var rsvKey = RsvUtil.ParseRsvKey( data[ 0 ] );
+                if( rsvKey == null )
+                {
+                    // todo: log error about invalid key
+                    continue;
+                }
 
                 Seed( new RSVPair( data[ 0 ], data[ 1 ] ) );
             }

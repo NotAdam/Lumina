@@ -53,6 +53,7 @@ namespace Lumina.Data.Structs
     struct DatBlockHeader
     {
         public UInt32 Size;
+        // always 0?
         public UInt32 unknown1;
         public DatBlockType DatBlockType;
         public UInt32 BlockDataSize;
