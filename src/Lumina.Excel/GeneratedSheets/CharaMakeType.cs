@@ -9,14 +9,6 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CharaMakeType", columnHash: 0x80d7db6d )]
     public class CharaMakeType : ExcelRow
     {
-        public class UnkData199Obj
-        {
-            public uint SubMenuParam { get; set; }
-        }
-        public class UnkData2999Obj
-        {
-            public byte SubMenuGraphic { get; set; }
-        }
         public class UnkData3347Obj
         {
             public ulong Helmet { get; set; }
@@ -31,14 +23,14 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Race > Race { get; set; }
         public LazyRow< Tribe > Tribe { get; set; }
         public sbyte Gender { get; set; }
-        public uint[] Menu { get; set; }
+        public LazyRow< Lobby >[] Menu { get; set; }
         public byte[] InitVal { get; set; }
         public byte[] SubMenuType { get; set; }
         public byte[] SubMenuNum { get; set; }
         public byte[] LookAt { get; set; }
         public uint[] SubMenuMask { get; set; }
         public uint[] Customize { get; set; }
-        public UnkData199Obj[] UnkData199 { get; set; }
+        public uint[] SubMenuParam { get; set; }
         public uint Unknown299 { get; set; }
         public uint Unknown300 { get; set; }
         public uint Unknown301 { get; set; }
@@ -2739,7 +2731,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown2996 { get; set; }
         public uint Unknown2997 { get; set; }
         public uint Unknown2998 { get; set; }
-        public UnkData2999Obj[] UnkData2999 { get; set; }
+        public byte[] SubMenuGraphic { get; set; }
         public byte Unknown3009 { get; set; }
         public byte Unknown3010 { get; set; }
         public byte Unknown3011 { get; set; }
@@ -3084,9 +3076,9 @@ namespace Lumina.Excel.GeneratedSheets
             Race = new LazyRow< Race >( gameData, parser.ReadColumn< int >( 0 ), language );
             Tribe = new LazyRow< Tribe >( gameData, parser.ReadColumn< int >( 1 ), language );
             Gender = parser.ReadColumn< sbyte >( 2 );
-            Menu = new uint[ 28 ];
+            Menu = new LazyRow< Lobby >[ 28 ];
             for( var i = 0; i < 28; i++ )
-                Menu[ i ] = parser.ReadColumn< uint >( 3 + i );
+                Menu[ i ] = new LazyRow< Lobby >( gameData, parser.ReadColumn< uint >( 3 + i ), language );
             InitVal = new byte[ 28 ];
             for( var i = 0; i < 28; i++ )
                 InitVal[ i ] = parser.ReadColumn< byte >( 31 + i );
@@ -3105,12 +3097,9 @@ namespace Lumina.Excel.GeneratedSheets
             Customize = new uint[ 28 ];
             for( var i = 0; i < 28; i++ )
                 Customize[ i ] = parser.ReadColumn< uint >( 171 + i );
-            UnkData199 = new UnkData199Obj[ 100 ];
+            SubMenuParam = new uint[ 100 ];
             for( var i = 0; i < 100; i++ )
-            {
-                UnkData199[ i ] = new UnkData199Obj();
-                UnkData199[ i ].SubMenuParam = parser.ReadColumn< uint >( 199 + ( i * 1 + 0 ) );
-            }
+                SubMenuParam[ i ] = parser.ReadColumn< uint >( 199 + i );
             Unknown299 = parser.ReadColumn< uint >( 299 );
             Unknown300 = parser.ReadColumn< uint >( 300 );
             Unknown301 = parser.ReadColumn< uint >( 301 );
@@ -5811,12 +5800,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2996 = parser.ReadColumn< uint >( 2996 );
             Unknown2997 = parser.ReadColumn< uint >( 2997 );
             Unknown2998 = parser.ReadColumn< uint >( 2998 );
-            UnkData2999 = new UnkData2999Obj[ 10 ];
+            SubMenuGraphic = new byte[ 10 ];
             for( var i = 0; i < 10; i++ )
-            {
-                UnkData2999[ i ] = new UnkData2999Obj();
-                UnkData2999[ i ].SubMenuGraphic = parser.ReadColumn< byte >( 2999 + ( i * 1 + 0 ) );
-            }
+                SubMenuGraphic[ i ] = parser.ReadColumn< byte >( 2999 + i );
             Unknown3009 = parser.ReadColumn< byte >( 3009 );
             Unknown3010 = parser.ReadColumn< byte >( 3010 );
             Unknown3011 = parser.ReadColumn< byte >( 3011 );

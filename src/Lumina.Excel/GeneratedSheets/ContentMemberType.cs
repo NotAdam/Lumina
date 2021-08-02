@@ -19,11 +19,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown6 { get; set; }
         public byte Unknown7 { get; set; }
         public byte Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
         public byte TanksPerParty { get; set; }
         public byte HealersPerParty { get; set; }
         public byte MeleesPerParty { get; set; }
         public byte RangedPerParty { get; set; }
-        public byte Unknown13 { get; set; }
         public bool Unknown14 { get; set; }
         public bool Unknown15 { get; set; }
         public bool Unknown16 { get; set; }
@@ -43,11 +43,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown6 = parser.ReadColumn< byte >( 6 );
             Unknown7 = parser.ReadColumn< byte >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
-            TanksPerParty = parser.ReadColumn< byte >( 9 );
-            HealersPerParty = parser.ReadColumn< byte >( 10 );
-            MeleesPerParty = parser.ReadColumn< byte >( 11 );
-            RangedPerParty = parser.ReadColumn< byte >( 12 );
-            Unknown13 = parser.ReadColumn< byte >( 13 );
+            Unknown9 = parser.ReadColumn< byte >( 9 );
+            TanksPerParty = parser.ReadColumn< byte >( 10 );
+            HealersPerParty = parser.ReadColumn< byte >( 11 );
+            MeleesPerParty = parser.ReadColumn< byte >( 12 );
+            RangedPerParty = parser.ReadColumn< byte >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
             Unknown15 = parser.ReadColumn< bool >( 15 );
             Unknown16 = parser.ReadColumn< bool >( 16 );

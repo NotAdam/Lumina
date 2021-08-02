@@ -28,17 +28,17 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Special { get; set; }
         public byte WanderingWait { get; set; }
         public ushort Priority { get; set; }
-        public bool Roulette { get; set; }
-        public bool Unknown19 { get; set; }
-        public bool Battle { get; set; }
-        public bool LookAt { get; set; }
+        public bool Handover { get; set; }
+        public bool Pet { get; set; }
+        public bool Beckon { get; set; }
         public bool Poke { get; set; }
+        public bool Slap { get; set; }
         public ushort Enemy { get; set; }
-        public bool Stroke { get; set; }
-        public bool Clapping { get; set; }
+        public bool Battle { get; set; }
+        public bool Roulette { get; set; }
         public ushort Icon { get; set; }
         public ushort Order { get; set; }
-        public bool Unknown28 { get; set; }
+        public bool IdleAnimation { get; set; }
         public byte Unknown29 { get; set; }
         public byte Cost { get; set; }
         public ushort HP { get; set; }
@@ -71,17 +71,17 @@ namespace Lumina.Excel.GeneratedSheets
             Special = parser.ReadColumn< byte >( 15 );
             WanderingWait = parser.ReadColumn< byte >( 16 );
             Priority = parser.ReadColumn< ushort >( 17 );
-            Roulette = parser.ReadColumn< bool >( 18 );
-            Unknown19 = parser.ReadColumn< bool >( 19 );
-            Battle = parser.ReadColumn< bool >( 20 );
-            LookAt = parser.ReadColumn< bool >( 21 );
-            Poke = parser.ReadColumn< bool >( 22 );
+            Handover = parser.ReadColumn< bool >( 18 );
+            Pet = parser.ReadColumn< bool >( 19 );
+            Beckon = parser.ReadColumn< bool >( 20 );
+            Poke = parser.ReadColumn< bool >( 21 );
+            Slap = parser.ReadColumn< bool >( 22 );
             Enemy = parser.ReadColumn< ushort >( 23 );
-            Stroke = parser.ReadColumn< bool >( 24 );
-            Clapping = parser.ReadColumn< bool >( 25 );
+            Battle = parser.ReadColumn< bool >( 24 );
+            Roulette = parser.ReadColumn< bool >( 25 );
             Icon = parser.ReadColumn< ushort >( 26 );
             Order = parser.ReadColumn< ushort >( 27 );
-            Unknown28 = parser.ReadColumn< bool >( 28 );
+            IdleAnimation = parser.ReadColumn< bool >( 28 );
             Unknown29 = parser.ReadColumn< byte >( 29 );
             Cost = parser.ReadColumn< byte >( 30 );
             HP = parser.ReadColumn< ushort >( 31 );

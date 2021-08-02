@@ -11,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< Quest > Quest { get; set; }
-        public byte Unknown1 { get; set; }
+        public LazyRow< QuestRedoChapterUITab > UITab { get; set; }
         public LazyRow< QuestRedoChapterUICategory > Category { get; set; }
         public byte Unknown3 { get; set; }
         public uint QuestRedoUISmall { get; set; }
@@ -26,7 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
+            UITab = new LazyRow< QuestRedoChapterUITab >( gameData, parser.ReadColumn< byte >( 1 ), language );
             Category = new LazyRow< QuestRedoChapterUICategory >( gameData, parser.ReadColumn< byte >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             QuestRedoUISmall = parser.ReadColumn< uint >( 4 );

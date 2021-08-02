@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "WeeklyBingoRewardData", columnHash: 0x02b099a0 )]
     public class WeeklyBingoRewardData : ExcelRow
     {
-        public class UnkData0Obj
+        public class BingoRewardData
         {
             public byte RewardType { get; set; }
             public uint RewardItem { get; set; }
@@ -18,7 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
             public byte RewardOption { get; set; }
         }
         
-        public UnkData0Obj[] UnkData0 { get; set; }
+        public BingoRewardData[] BingoRewards { get; set; }
         public uint RewardItem2 { get; set; }
         public bool RewardHQ2 { get; set; }
         public ushort RewardQuantity2 { get; set; }
@@ -27,15 +27,15 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            UnkData0 = new UnkData0Obj[ 2 ];
+            BingoRewards = new BingoRewardData[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
-                UnkData0[ i ] = new UnkData0Obj();
-                UnkData0[ i ].RewardType = parser.ReadColumn< byte >( 0 + ( i * 5 + 0 ) );
-                UnkData0[ i ].RewardItem = parser.ReadColumn< uint >( 0 + ( i * 5 + 1 ) );
-                UnkData0[ i ].RewardHQ = parser.ReadColumn< bool >( 0 + ( i * 5 + 2 ) );
-                UnkData0[ i ].RewardQuantity = parser.ReadColumn< ushort >( 0 + ( i * 5 + 3 ) );
-                UnkData0[ i ].RewardOption = parser.ReadColumn< byte >( 0 + ( i * 5 + 4 ) );
+                BingoRewards[ i ] = new BingoRewardData();
+                BingoRewards[ i ].RewardType = parser.ReadColumn< byte >( 0 + ( i * 5 + 0 ) );
+                BingoRewards[ i ].RewardItem = parser.ReadColumn< uint >( 0 + ( i * 5 + 1 ) );
+                BingoRewards[ i ].RewardHQ = parser.ReadColumn< bool >( 0 + ( i * 5 + 2 ) );
+                BingoRewards[ i ].RewardQuantity = parser.ReadColumn< ushort >( 0 + ( i * 5 + 3 ) );
+                BingoRewards[ i ].RewardOption = parser.ReadColumn< byte >( 0 + ( i * 5 + 4 ) );
             }
             RewardItem2 = parser.ReadColumn< uint >( 10 );
             RewardHQ2 = parser.ReadColumn< bool >( 11 );

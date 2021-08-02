@@ -14,8 +14,8 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Description { get; set; }
         public LazyRow< LeveClient > LeveClient { get; set; }
         public LazyRow< LeveAssignmentType > LeveAssignmentType { get; set; }
+        public int Unknown4 { get; set; }
         public LazyRow< Town > Town { get; set; }
-        public int Unknown5 { get; set; }
         public ushort ClassJobLevel { get; set; }
         public byte TimeLimit { get; set; }
         public byte AllowanceCost { get; set; }
@@ -51,8 +51,8 @@ namespace Lumina.Excel.GeneratedSheets
             Description = parser.ReadColumn< SeString >( 1 );
             LeveClient = new LazyRow< LeveClient >( gameData, parser.ReadColumn< int >( 2 ), language );
             LeveAssignmentType = new LazyRow< LeveAssignmentType >( gameData, parser.ReadColumn< byte >( 3 ), language );
-            Town = new LazyRow< Town >( gameData, parser.ReadColumn< int >( 4 ), language );
-            Unknown5 = parser.ReadColumn< int >( 5 );
+            Unknown4 = parser.ReadColumn< int >( 4 );
+            Town = new LazyRow< Town >( gameData, parser.ReadColumn< int >( 5 ), language );
             ClassJobLevel = parser.ReadColumn< ushort >( 6 );
             TimeLimit = parser.ReadColumn< byte >( 7 );
             AllowanceCost = parser.ReadColumn< byte >( 8 );

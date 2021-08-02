@@ -6,17 +6,17 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestRepeatFlag", columnHash: 0xdbf43666 )]
-    public class QuestRepeatFlag : ExcelRow
+    [Sheet( "QuestEffectDefine", columnHash: 0xd870e208 )]
+    public class QuestEffectDefine : ExcelRow
     {
         
-        public uint Quest { get; set; }
+        public LazyRow< QuestEffect > Effect { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Quest = parser.ReadColumn< uint >( 0 );
+            Effect = new LazyRow< QuestEffect >( gameData, parser.ReadColumn< ushort >( 0 ), language );
         }
     }
 }

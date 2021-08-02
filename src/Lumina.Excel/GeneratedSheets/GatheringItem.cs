@@ -13,7 +13,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int Item { get; set; }
         public LazyRow< GatheringItemLevelConvertTable > GatheringItemLevel { get; set; }
         public bool Unknown2 { get; set; }
-        public uint Unknown3 { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
         public bool IsHidden { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -23,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
             Item = parser.ReadColumn< int >( 0 );
             GatheringItemLevel = new LazyRow< GatheringItemLevelConvertTable >( gameData, parser.ReadColumn< ushort >( 1 ), language );
             Unknown2 = parser.ReadColumn< bool >( 2 );
-            Unknown3 = parser.ReadColumn< uint >( 3 );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 3 ), language );
             IsHidden = parser.ReadColumn< bool >( 4 );
         }
     }

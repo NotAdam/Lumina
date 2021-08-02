@@ -10,8 +10,8 @@ namespace Lumina.Excel.GeneratedSheets
     public class SatisfactionArbitration : ExcelRow
     {
         
-        public byte Unknown0 { get; set; }
-        public byte Unknown1 { get; set; }
+        public byte SatisfactionLevel { get; set; }
+        public LazyRow< SatisfactionNpc > SatisfactionNpc { get; set; }
         public LazyRow< Quest > Quest { get; set; }
         public byte Unknown3 { get; set; }
         
@@ -19,8 +19,8 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< byte >( 0 );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
+            SatisfactionLevel = parser.ReadColumn< byte >( 0 );
+            SatisfactionNpc = new LazyRow< SatisfactionNpc >( gameData, parser.ReadColumn< byte >( 1 ), language );
             Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
         }

@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public byte Number { get; set; }
         public byte Unknown1 { get; set; }
-        public byte Unknown2 { get; set; }
+        public byte Link { get; set; }
         public LazyRow< Quest > Quest { get; set; }
         public int Unknown4 { get; set; }
         public int Icon { get; set; }
@@ -28,7 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Number = parser.ReadColumn< byte >( 0 );
             Unknown1 = parser.ReadColumn< byte >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
+            Link = parser.ReadColumn< byte >( 2 );
             Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< int >( 3 ), language );
             Unknown4 = parser.ReadColumn< int >( 4 );
             Icon = parser.ReadColumn< int >( 5 );

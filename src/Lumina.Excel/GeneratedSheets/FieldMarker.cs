@@ -11,18 +11,18 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< VFX > VFX { get; set; }
-        public ushort Icon { get; set; }
-        public ushort Unknown2 { get; set; }
-        public SeString Unknown3 { get; set; }
+        public ushort UiIcon { get; set; }
+        public ushort MapIcon { get; set; }
+        public SeString Name { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             VFX = new LazyRow< VFX >( gameData, parser.ReadColumn< int >( 0 ), language );
-            Icon = parser.ReadColumn< ushort >( 1 );
-            Unknown2 = parser.ReadColumn< ushort >( 2 );
-            Unknown3 = parser.ReadColumn< SeString >( 3 );
+            UiIcon = parser.ReadColumn< ushort >( 1 );
+            MapIcon = parser.ReadColumn< ushort >( 2 );
+            Name = parser.ReadColumn< SeString >( 3 );
         }
     }
 }

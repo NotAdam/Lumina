@@ -12,9 +12,9 @@ namespace Lumina.Excel.GeneratedSheets
         
         public float X { get; set; }
         public float Y { get; set; }
-        public byte Unknown2 { get; set; }
-        public byte Unknown3 { get; set; }
-        public ushort Unknown4 { get; set; }
+        public LazyRow< GatheringType > GatheringType { get; set; }
+        public byte GatheringPointType { get; set; }
+        public ushort Radius { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -22,9 +22,9 @@ namespace Lumina.Excel.GeneratedSheets
 
             X = parser.ReadColumn< float >( 0 );
             Y = parser.ReadColumn< float >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
-            Unknown3 = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< ushort >( 4 );
+            GatheringType = new LazyRow< GatheringType >( gameData, parser.ReadColumn< byte >( 2 ), language );
+            GatheringPointType = parser.ReadColumn< byte >( 3 );
+            Radius = parser.ReadColumn< ushort >( 4 );
         }
     }
 }

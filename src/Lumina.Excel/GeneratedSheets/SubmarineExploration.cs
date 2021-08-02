@@ -12,8 +12,8 @@ namespace Lumina.Excel.GeneratedSheets
         
         public SeString Destination { get; set; }
         public SeString Location { get; set; }
-        public short Unknown2 { get; set; }
-        public short Unknown3 { get; set; }
+        public short X { get; set; }
+        public short Y { get; set; }
         public short Unknown4 { get; set; }
         public LazyRow< SubmarineMap > Map { get; set; }
         public bool Unknown6 { get; set; }
@@ -30,8 +30,8 @@ namespace Lumina.Excel.GeneratedSheets
 
             Destination = parser.ReadColumn< SeString >( 0 );
             Location = parser.ReadColumn< SeString >( 1 );
-            Unknown2 = parser.ReadColumn< short >( 2 );
-            Unknown3 = parser.ReadColumn< short >( 3 );
+            X = parser.ReadColumn< short >( 2 );
+            Y = parser.ReadColumn< short >( 3 );
             Unknown4 = parser.ReadColumn< short >( 4 );
             Map = new LazyRow< SubmarineMap >( gameData, parser.ReadColumn< byte >( 5 ), language );
             Unknown6 = parser.ReadColumn< bool >( 6 );

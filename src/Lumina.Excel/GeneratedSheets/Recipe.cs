@@ -33,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort QuickSynthCraftsmanship { get; set; }
         public ushort QuickSynthControl { get; set; }
         public LazyRow< SecretRecipeBook > SecretRecipeBook { get; set; }
-        public uint Unknown37 { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
         public bool CanQuickSynth { get; set; }
         public bool CanHq { get; set; }
         public bool ExpRewarded { get; set; }
@@ -71,7 +71,7 @@ namespace Lumina.Excel.GeneratedSheets
             QuickSynthCraftsmanship = parser.ReadColumn< ushort >( 34 );
             QuickSynthControl = parser.ReadColumn< ushort >( 35 );
             SecretRecipeBook = new LazyRow< SecretRecipeBook >( gameData, parser.ReadColumn< ushort >( 36 ), language );
-            Unknown37 = parser.ReadColumn< uint >( 37 );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 37 ), language );
             CanQuickSynth = parser.ReadColumn< bool >( 38 );
             CanHq = parser.ReadColumn< bool >( 39 );
             ExpRewarded = parser.ReadColumn< bool >( 40 );

@@ -56,9 +56,8 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Image { get; set; }
         public uint Icon { get; set; }
         public sbyte Unknown45 { get; set; }
-        public bool LevelingRoulette { get; set; }
-        public bool Unknown47 { get; set; }
         public bool Level506070Roulette { get; set; }
+        public bool LevelingRoulette { get; set; }
         public bool MSQRoulette { get; set; }
         public bool GuildHestRoulette { get; set; }
         public bool ExpertRoulette { get; set; }
@@ -66,14 +65,15 @@ namespace Lumina.Excel.GeneratedSheets
         public bool DailyFrontlineChallenge { get; set; }
         public bool Level80Roulette { get; set; }
         public bool MentorRoulette { get; set; }
+        public bool Unknown55 { get; set; }
         public bool Unknown56 { get; set; }
         public bool Unknown57 { get; set; }
         public bool Unknown58 { get; set; }
         public bool Unknown59 { get; set; }
-        public bool Unknown60 { get; set; }
         public bool AllianceRoulette { get; set; }
-        public bool Unknown62 { get; set; }
+        public bool FeastTeamRoulette { get; set; }
         public bool NormalRaidRoulette { get; set; }
+        public bool Unknown63 { get; set; }
         public bool Unknown64 { get; set; }
         public bool Unknown65 { get; set; }
         public bool Unknown66 { get; set; }
@@ -146,24 +146,24 @@ namespace Lumina.Excel.GeneratedSheets
             Image = parser.ReadColumn< uint >( 43 );
             Icon = parser.ReadColumn< uint >( 44 );
             Unknown45 = parser.ReadColumn< sbyte >( 45 );
-            LevelingRoulette = parser.ReadColumn< bool >( 46 );
-            Unknown47 = parser.ReadColumn< bool >( 47 );
-            Level506070Roulette = parser.ReadColumn< bool >( 48 );
-            MSQRoulette = parser.ReadColumn< bool >( 49 );
-            GuildHestRoulette = parser.ReadColumn< bool >( 50 );
-            ExpertRoulette = parser.ReadColumn< bool >( 51 );
-            TrialRoulette = parser.ReadColumn< bool >( 52 );
-            DailyFrontlineChallenge = parser.ReadColumn< bool >( 53 );
-            Level80Roulette = parser.ReadColumn< bool >( 54 );
-            MentorRoulette = parser.ReadColumn< bool >( 55 );
+            Level506070Roulette = parser.ReadColumn< bool >( 46 );
+            LevelingRoulette = parser.ReadColumn< bool >( 47 );
+            MSQRoulette = parser.ReadColumn< bool >( 48 );
+            GuildHestRoulette = parser.ReadColumn< bool >( 49 );
+            ExpertRoulette = parser.ReadColumn< bool >( 50 );
+            TrialRoulette = parser.ReadColumn< bool >( 51 );
+            DailyFrontlineChallenge = parser.ReadColumn< bool >( 52 );
+            Level80Roulette = parser.ReadColumn< bool >( 53 );
+            MentorRoulette = parser.ReadColumn< bool >( 54 );
+            Unknown55 = parser.ReadColumn< bool >( 55 );
             Unknown56 = parser.ReadColumn< bool >( 56 );
             Unknown57 = parser.ReadColumn< bool >( 57 );
             Unknown58 = parser.ReadColumn< bool >( 58 );
             Unknown59 = parser.ReadColumn< bool >( 59 );
-            Unknown60 = parser.ReadColumn< bool >( 60 );
-            AllianceRoulette = parser.ReadColumn< bool >( 61 );
-            Unknown62 = parser.ReadColumn< bool >( 62 );
-            NormalRaidRoulette = parser.ReadColumn< bool >( 63 );
+            AllianceRoulette = parser.ReadColumn< bool >( 60 );
+            FeastTeamRoulette = parser.ReadColumn< bool >( 61 );
+            NormalRaidRoulette = parser.ReadColumn< bool >( 62 );
+            Unknown63 = parser.ReadColumn< bool >( 63 );
             Unknown64 = parser.ReadColumn< bool >( 64 );
             Unknown65 = parser.ReadColumn< bool >( 65 );
             Unknown66 = parser.ReadColumn< bool >( 66 );

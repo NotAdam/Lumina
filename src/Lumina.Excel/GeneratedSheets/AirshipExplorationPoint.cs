@@ -13,8 +13,8 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Name { get; set; }
         public SeString NameShort { get; set; }
         public bool Unknown2 { get; set; }
-        public short Unknown3 { get; set; }
-        public short Unknown4 { get; set; }
+        public short X { get; set; }
+        public short Y { get; set; }
         public byte RequiredLevel { get; set; }
         public ushort RequiredFuel { get; set; }
         public ushort Durationmin { get; set; }
@@ -32,8 +32,8 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< SeString >( 0 );
             NameShort = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< bool >( 2 );
-            Unknown3 = parser.ReadColumn< short >( 3 );
-            Unknown4 = parser.ReadColumn< short >( 4 );
+            X = parser.ReadColumn< short >( 3 );
+            Y = parser.ReadColumn< short >( 4 );
             RequiredLevel = parser.ReadColumn< byte >( 5 );
             RequiredFuel = parser.ReadColumn< ushort >( 6 );
             Durationmin = parser.ReadColumn< ushort >( 7 );

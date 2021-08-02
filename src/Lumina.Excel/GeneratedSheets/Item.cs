@@ -87,7 +87,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MateriaSlotCount { get; set; }
         public bool IsAdvancedMeldingPermitted { get; set; }
         public bool IsPvP { get; set; }
-        public byte Unknown89 { get; set; }
+        public byte SubStatCategory { get; set; }
         public bool IsGlamourous { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -173,7 +173,7 @@ namespace Lumina.Excel.GeneratedSheets
             MateriaSlotCount = parser.ReadColumn< byte >( 86 );
             IsAdvancedMeldingPermitted = parser.ReadColumn< bool >( 87 );
             IsPvP = parser.ReadColumn< bool >( 88 );
-            Unknown89 = parser.ReadColumn< byte >( 89 );
+            SubStatCategory = parser.ReadColumn< byte >( 89 );
             IsGlamourous = parser.ReadColumn< bool >( 90 );
         }
     }
