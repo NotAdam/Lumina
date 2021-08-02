@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "CharaMakeType", columnHash: 0x80d7db6d )]
     public partial class CharaMakeType : ExcelRow
     {
-        public class UnkData3347Obj
+        public class CharaMakeTypeUnkData3347Obj
         {
             public ulong Helmet { get; set; }
             public ulong Top { get; set; }
@@ -3053,7 +3053,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown3344 { get; set; }
         public int Unknown3345 { get; set; }
         public int Unknown3346 { get; set; }
-        public UnkData3347Obj[] UnkData3347 { get; set; }
+        public CharaMakeTypeUnkData3347Obj[] UnkData3347 { get; set; }
         public ulong Unknown3354 { get; set; }
         public ulong Unknown3355 { get; set; }
         public ulong Unknown3356 { get; set; }
@@ -6128,10 +6128,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3344 = parser.ReadColumn< int >( 3344 );
             Unknown3345 = parser.ReadColumn< int >( 3345 );
             Unknown3346 = parser.ReadColumn< int >( 3346 );
-            UnkData3347 = new UnkData3347Obj[ 1 ];
+            UnkData3347 = new CharaMakeTypeUnkData3347Obj[ 1 ];
             for( var i = 0; i < 1; i++ )
             {
-                UnkData3347[ i ] = new UnkData3347Obj();
+                UnkData3347[ i ] = new CharaMakeTypeUnkData3347Obj();
                 UnkData3347[ i ].Helmet = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 0 ) );
                 UnkData3347[ i ].Top = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 1 ) );
                 UnkData3347[ i ].Gloves = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 2 ) );

@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "Recipe", columnHash: 0xf56e5856 )]
     public partial class Recipe : ExcelRow
     {
-        public class UnkData5Obj
+        public class RecipeUnkData5Obj
         {
             public int ItemIngredient { get; set; }
             public byte AmountIngredient { get; set; }
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< RecipeLevelTable > RecipeLevelTable { get; set; }
         public LazyRow< Item > ItemResult { get; set; }
         public byte AmountResult { get; set; }
-        public UnkData5Obj[] UnkData5 { get; set; }
+        public RecipeUnkData5Obj[] UnkData5 { get; set; }
         public ushort Unknown25 { get; set; }
         public bool IsSecondary { get; set; }
         public byte MaterialQualityFactor { get; set; }
@@ -52,10 +52,10 @@ namespace Lumina.Excel.GeneratedSheets
             RecipeLevelTable = new LazyRow< RecipeLevelTable >( gameData, parser.ReadColumn< ushort >( 2 ), language );
             ItemResult = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 3 ), language );
             AmountResult = parser.ReadColumn< byte >( 4 );
-            UnkData5 = new UnkData5Obj[ 10 ];
+            UnkData5 = new RecipeUnkData5Obj[ 10 ];
             for( var i = 0; i < 10; i++ )
             {
-                UnkData5[ i ] = new UnkData5Obj();
+                UnkData5[ i ] = new RecipeUnkData5Obj();
                 UnkData5[ i ].ItemIngredient = parser.ReadColumn< int >( 5 + ( i * 2 + 0 ) );
                 UnkData5[ i ].AmountIngredient = parser.ReadColumn< byte >( 5 + ( i * 2 + 1 ) );
             }

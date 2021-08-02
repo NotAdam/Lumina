@@ -177,23 +177,23 @@ namespace Lumina.SpaghettiGenerator
                     {
                         var memberCount = schemaDef.Definition.Members.Count;
 
-                        string structName;
+                        string className;
                         string fieldName;
                         if( schemaDef.Definition.GroupName != null )
                         {
-                            structName = $"{schemaDef.Definition.GroupName}Obj";
+                            className = $"{schemaDef.Definition.GroupName}Obj";
                             fieldName = schemaDef.Definition.GroupName;
                         }
                         else
                         {
-                            structName = $"UnkData{i}Obj";
+                            className = $"{name}UnkData{i}Obj";
                             fieldName = $"UnkData{i}";
                         }
 
                         // todo: add pluralisation to field name? lol
                         generators.Add( 
                             new GroupStructGenerator( 
-                                structName,
+                                className,
                                 fieldName, 
                                 i,
                                 schemaDef.Definition.Members,

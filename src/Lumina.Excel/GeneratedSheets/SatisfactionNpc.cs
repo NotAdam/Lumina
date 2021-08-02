@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "SatisfactionNpc", columnHash: 0x652420ba )]
     public partial class SatisfactionNpc : ExcelRow
     {
-        public class UnkData16Obj
+        public class SatisfactionNpcUnkData16Obj
         {
             public int Item { get; set; }
             public int ItemCount { get; set; }
@@ -22,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte DeliveriesPerWeek { get; set; }
         public int[] SupplyIndex { get; set; }
         public ushort[] SatisfactionRequired { get; set; }
-        public UnkData16Obj[] UnkData16 { get; set; }
+        public SatisfactionNpcUnkData16Obj[] UnkData16 { get; set; }
         public byte Unknown25 { get; set; }
         public byte Unknown26 { get; set; }
         public byte Unknown27 { get; set; }
@@ -87,10 +87,10 @@ namespace Lumina.Excel.GeneratedSheets
             SatisfactionRequired = new ushort[ 6 ];
             for( var i = 0; i < 6; i++ )
                 SatisfactionRequired[ i ] = parser.ReadColumn< ushort >( 10 + i );
-            UnkData16 = new UnkData16Obj[ 3 ];
+            UnkData16 = new SatisfactionNpcUnkData16Obj[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
-                UnkData16[ i ] = new UnkData16Obj();
+                UnkData16[ i ] = new SatisfactionNpcUnkData16Obj();
                 UnkData16[ i ].Item = parser.ReadColumn< int >( 16 + ( i * 3 + 0 ) );
                 UnkData16[ i ].ItemCount = parser.ReadColumn< int >( 16 + ( i * 3 + 1 ) );
                 UnkData16[ i ].IsHQ = parser.ReadColumn< int >( 16 + ( i * 3 + 2 ) );

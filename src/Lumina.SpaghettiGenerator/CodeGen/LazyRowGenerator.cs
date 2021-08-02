@@ -21,7 +21,7 @@ namespace Lumina.SpaghettiGenerator.CodeGen
         {
             if( _cols[ ColumnId ].IsBoolType )
             {
-                sb.AppendLine( $"#warning generator error: the definition for this field ({FieldName}) has an invalid type for a LazyRow" );
+                sb.AppendLine( $"#warning generator warning: the definition for this field ({FieldName}) has an invalid type for a LazyRow - is a bool when should be numeric!" );
                 return;
             }
             

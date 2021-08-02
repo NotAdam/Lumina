@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "SatisfactionSupplyReward", columnHash: 0xc81395f9 )]
     public partial class SatisfactionSupplyReward : ExcelRow
     {
-        public class UnkData1Obj
+        public class SatisfactionSupplyRewardUnkData1Obj
         {
             public ushort RewardCurrency { get; set; }
             public ushort QuantityLow { get; set; }
@@ -18,7 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
         }
         
         public byte Unknown0 { get; set; }
-        public UnkData1Obj[] UnkData1 { get; set; }
+        public SatisfactionSupplyRewardUnkData1Obj[] UnkData1 { get; set; }
         public byte Unknown9 { get; set; }
         public ushort SatisfactionLow { get; set; }
         public ushort SatisfactionMid { get; set; }
@@ -32,10 +32,10 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            UnkData1 = new UnkData1Obj[ 2 ];
+            UnkData1 = new SatisfactionSupplyRewardUnkData1Obj[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
-                UnkData1[ i ] = new UnkData1Obj();
+                UnkData1[ i ] = new SatisfactionSupplyRewardUnkData1Obj();
                 UnkData1[ i ].RewardCurrency = parser.ReadColumn< ushort >( 1 + ( i * 4 + 0 ) );
                 UnkData1[ i ].QuantityLow = parser.ReadColumn< ushort >( 1 + ( i * 4 + 1 ) );
                 UnkData1[ i ].QuantityMid = parser.ReadColumn< ushort >( 1 + ( i * 4 + 2 ) );
