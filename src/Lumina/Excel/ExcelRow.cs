@@ -11,8 +11,12 @@ namespace Lumina.Excel
         
         public Language SheetLanguage { get; set; }
 
+        protected GameData? _gameData;
+
         public virtual void PopulateData( RowParser parser, GameData gameData, Language language )
         {
+            _gameData = gameData;
+            
             RowId = parser.Row;
             SubRowId = parser.SubRow;
             SheetLanguage = language;
