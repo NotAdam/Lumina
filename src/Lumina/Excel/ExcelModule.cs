@@ -117,6 +117,20 @@ namespace Lumina.Excel
         {
             return GetSheet< T >( name, _gameData.Options.DefaultExcelLanguage, null );
         }
+        
+        /// <summary>
+        /// Get a sheet by it's name with a given type.
+        ///
+        /// Useful for when a schema is shared (e.g. in the case of quest text sheets) as redefining loads of classes is wasteful.
+        /// </summary>
+        /// <param name="language">The requested sheet language</param>
+        /// <param name="name">The name of a sheet</param>
+        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
+        public ExcelSheet< T >? GetSheet< T >( Language language, string name ) where T : ExcelRow
+        {
+            return GetSheet< T >( name, language, null );
+        }
 
         private ulong BuildTypeIdentifier( Type type )
         {
