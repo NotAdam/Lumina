@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishParameter", columnHash: 0x019385c9 )]
-    public class FishParameter : ExcelRow
+    public partial class FishParameter : ExcelRow
     {
         
         public SeString Text { get; set; }

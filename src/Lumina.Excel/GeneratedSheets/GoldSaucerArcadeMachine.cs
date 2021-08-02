@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GoldSaucerArcadeMachine", columnHash: 0xacb73d9e )]
-    public class GoldSaucerArcadeMachine : ExcelRow
+    public partial class GoldSaucerArcadeMachine : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

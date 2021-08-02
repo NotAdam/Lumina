@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WarpLogic", columnHash: 0x78e83215 )]
-    public class WarpLogic : ExcelRow
+    public partial class WarpLogic : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

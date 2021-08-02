@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionTransient", columnHash: 0xdebb20e3 )]
-    public class ActionTransient : ExcelRow
+    public partial class ActionTransient : ExcelRow
     {
         
         public SeString Description { get; set; }

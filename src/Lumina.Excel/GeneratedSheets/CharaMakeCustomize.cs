@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeCustomize", columnHash: 0x2ba6bf0f )]
-    public class CharaMakeCustomize : ExcelRow
+    public partial class CharaMakeCustomize : ExcelRow
     {
         
         public byte FeatureID { get; set; }

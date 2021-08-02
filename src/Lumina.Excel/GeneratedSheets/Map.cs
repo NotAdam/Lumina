@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Map", columnHash: 0x56a0aa07 )]
-    public class Map : ExcelRow
+    public partial class Map : ExcelRow
     {
         
         public LazyRow< MapCondition > MapCondition { get; set; }

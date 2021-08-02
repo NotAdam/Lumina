@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestAcceptAdditionCondition", columnHash: 0x5d58cc84 )]
-    public class QuestAcceptAdditionCondition : ExcelRow
+    public partial class QuestAcceptAdditionCondition : ExcelRow
     {
         
         public LazyRow< Quest > Requirement0 { get; set; }

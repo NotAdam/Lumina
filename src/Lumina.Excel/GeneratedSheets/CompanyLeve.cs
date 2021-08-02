@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyLeve", columnHash: 0x688cf3da )]
-    public class CompanyLeve : ExcelRow
+    public partial class CompanyLeve : ExcelRow
     {
         
         public ushort[] RoutePointTime { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeType", columnHash: 0x80d7db6d )]
-    public class CharaMakeType : ExcelRow
+    public partial class CharaMakeType : ExcelRow
     {
         public class UnkData3347Obj
         {

@@ -7,28 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LeveRewardItemGroup", columnHash: 0xf065e622 )]
-    public class LeveRewardItemGroup : ExcelRow
+    public partial class LeveRewardItemGroup : ExcelRow
     {
-        public class LeveRewardGroup
+        public class UnkData0Obj
         {
             public int Item { get; set; }
             public byte Count { get; set; }
             public bool HQ { get; set; }
         }
         
-        public LeveRewardGroup[] RewardGroups { get; set; }
+        public UnkData0Obj[] UnkData0 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            RewardGroups = new LeveRewardGroup[ 9 ];
+            UnkData0 = new UnkData0Obj[ 9 ];
             for( var i = 0; i < 9; i++ )
             {
-                RewardGroups[ i ] = new LeveRewardGroup();
-                RewardGroups[ i ].Item = parser.ReadColumn< int >( 0 + ( i * 3 + 0 ) );
-                RewardGroups[ i ].Count = parser.ReadColumn< byte >( 0 + ( i * 3 + 1 ) );
-                RewardGroups[ i ].HQ = parser.ReadColumn< bool >( 0 + ( i * 3 + 2 ) );
+                UnkData0[ i ] = new UnkData0Obj();
+                UnkData0[ i ].Item = parser.ReadColumn< int >( 0 + ( i * 3 + 0 ) );
+                UnkData0[ i ].Count = parser.ReadColumn< byte >( 0 + ( i * 3 + 1 ) );
+                UnkData0[ i ].HQ = parser.ReadColumn< bool >( 0 + ( i * 3 + 2 ) );
             }
         }
     }

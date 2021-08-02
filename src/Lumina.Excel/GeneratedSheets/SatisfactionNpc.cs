@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SatisfactionNpc", columnHash: 0x652420ba )]
-    public class SatisfactionNpc : ExcelRow
+    public partial class SatisfactionNpc : ExcelRow
     {
         public class UnkData16Obj
         {

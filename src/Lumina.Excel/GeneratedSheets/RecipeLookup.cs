@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecipeLookup", columnHash: 0xa708a4a0 )]
-    public class RecipeLookup : ExcelRow
+    public partial class RecipeLookup : ExcelRow
     {
         
         public LazyRow< Recipe > CRP { get; set; }

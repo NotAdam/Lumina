@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTaskNormal", columnHash: 0x81338da6 )]
-    public class RetainerTaskNormal : ExcelRow
+    public partial class RetainerTaskNormal : ExcelRow
     {
         
         public LazyRow< Item > Item { get; set; }

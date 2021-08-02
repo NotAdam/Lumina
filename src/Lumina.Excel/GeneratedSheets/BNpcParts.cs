@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcParts", columnHash: 0xcce3205c )]
-    public class BNpcParts : ExcelRow
+    public partial class BNpcParts : ExcelRow
     {
         
         public LazyRow< BNpcBase > BNpcBase1 { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FateTokenType", columnHash: 0xdbf43666 )]
-    public class FateTokenType : ExcelRow
+    public partial class FateTokenType : ExcelRow
     {
         
         public LazyRow< Item > Currency { get; set; }

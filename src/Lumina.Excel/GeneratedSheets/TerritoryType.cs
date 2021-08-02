@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TerritoryType", columnHash: 0xb7598447 )]
-    public class TerritoryType : ExcelRow
+    public partial class TerritoryType : ExcelRow
     {
         
         public SeString Name { get; set; }

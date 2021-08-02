@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BattleLeve", columnHash: 0x1ce99cea )]
-    public class BattleLeve : ExcelRow
+    public partial class BattleLeve : ExcelRow
     {
         
         public ushort[] Time { get; set; }

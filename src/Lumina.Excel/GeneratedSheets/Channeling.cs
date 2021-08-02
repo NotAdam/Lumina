@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Channeling", columnHash: 0x8c3707e3 )]
-    public class Channeling : ExcelRow
+    public partial class Channeling : ExcelRow
     {
         
         public SeString File { get; set; }

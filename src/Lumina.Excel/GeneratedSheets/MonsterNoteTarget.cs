@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MonsterNoteTarget", columnHash: 0x4157404f )]
-    public class MonsterNoteTarget : ExcelRow
+    public partial class MonsterNoteTarget : ExcelRow
     {
         public class UnkData3Obj
         {

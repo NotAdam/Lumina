@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTask", columnHash: 0x99415e4e )]
-    public class RetainerTask : ExcelRow
+    public partial class RetainerTask : ExcelRow
     {
         
         public bool IsRandom { get; set; }

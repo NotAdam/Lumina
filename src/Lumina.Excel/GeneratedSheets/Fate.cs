@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Fate", columnHash: 0x76953587 )]
-    public class Fate : ExcelRow
+    public partial class Fate : ExcelRow
     {
         
         public SeString Name { get; set; }

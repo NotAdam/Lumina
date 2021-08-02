@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Calendar", columnHash: 0x005cfabb )]
-    public class Calendar : ExcelRow
+    public partial class Calendar : ExcelRow
     {
         
         public byte[] Month { get; set; }

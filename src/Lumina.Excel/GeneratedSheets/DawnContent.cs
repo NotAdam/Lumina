@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DawnContent", columnHash: 0x5d58cc84 )]
-    public class DawnContent : ExcelRow
+    public partial class DawnContent : ExcelRow
     {
         
         public LazyRow< ContentFinderCondition > Content { get; set; }

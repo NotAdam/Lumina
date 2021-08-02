@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftLevelDifference", columnHash: 0xba1851a4 )]
-    public class CraftLevelDifference : ExcelRow
+    public partial class CraftLevelDifference : ExcelRow
     {
         
         public short Difference { get; set; }

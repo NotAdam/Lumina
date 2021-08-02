@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Frontline04", columnHash: 0x26885afa )]
-    public class Frontline04 : ExcelRow
+    public partial class Frontline04 : ExcelRow
     {
         
         public LazyRow< Level > Level1 { get; set; }

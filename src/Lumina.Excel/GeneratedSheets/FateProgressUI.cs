@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FateProgressUI", columnHash: 0x73e43ab7 )]
-    public class FateProgressUI : ExcelRow
+    public partial class FateProgressUI : ExcelRow
     {
         
         public LazyRow< TerritoryType > Location { get; set; }

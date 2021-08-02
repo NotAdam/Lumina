@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PresetCamera", columnHash: 0x7d6930eb )]
-    public class PresetCamera : ExcelRow
+    public partial class PresetCamera : ExcelRow
     {
         
         public ushort EID { get; set; }

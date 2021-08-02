@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentMemberType", columnHash: 0x65d5ee00 )]
-    public class ContentMemberType : ExcelRow
+    public partial class ContentMemberType : ExcelRow
     {
         
         public bool Unknown0 { get; set; }

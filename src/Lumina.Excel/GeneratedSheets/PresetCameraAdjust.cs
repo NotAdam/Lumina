@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PresetCameraAdjust", columnHash: 0x4cdff077 )]
-    public class PresetCameraAdjust : ExcelRow
+    public partial class PresetCameraAdjust : ExcelRow
     {
         
         public float Hyur_M { get; set; }

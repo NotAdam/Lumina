@@ -165,6 +165,13 @@ namespace Lumina.SpaghettiGenerator
                 // repeats
                 else if( schemaType == "repeat" )
                 {
+                    // unfuck shit stupid groups with one member which are actually just arrays
+                    if( schemaDef.Definition?.Type == "group" && schemaDef.Definition.Members.Count == 1 )
+                    {
+                        schemaDef.Definition.Type = "shitgroup";
+                        schemaDef.Name = Clean( schemaDef.Definition.Members.First().Name );
+                    }
+                    
                     // todo: groups need their own handling here but it's kind of shit, probably should do this differently
                     if( schemaDef.Definition?.Type == "group" )
                     {

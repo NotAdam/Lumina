@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerTaskLvRange", columnHash: 0xde74b4c4 )]
-    public class RetainerTaskLvRange : ExcelRow
+    public partial class RetainerTaskLvRange : ExcelRow
     {
         
         public byte Min { get; set; }

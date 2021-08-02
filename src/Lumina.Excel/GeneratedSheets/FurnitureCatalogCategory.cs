@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FurnitureCatalogCategory", columnHash: 0xc8b7ab9b )]
-    public class FurnitureCatalogCategory : ExcelRow
+    public partial class FurnitureCatalogCategory : ExcelRow
     {
         
         public SeString Category { get; set; }

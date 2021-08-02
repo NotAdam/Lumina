@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MateriaJoinRateGatherCraft", columnHash: 0xab31b42e )]
-    public class MateriaJoinRateGatherCraft : ExcelRow
+    public partial class MateriaJoinRateGatherCraft : ExcelRow
     {
         
         public float[] NQOvermeldPctSlot { get; set; }

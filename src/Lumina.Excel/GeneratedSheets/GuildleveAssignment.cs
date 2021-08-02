@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuildleveAssignment", columnHash: 0x129d93fa )]
-    public class GuildleveAssignment : ExcelRow
+    public partial class GuildleveAssignment : ExcelRow
     {
         
         public SeString Type { get; set; }

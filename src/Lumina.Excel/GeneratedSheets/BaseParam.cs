@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BaseParam", columnHash: 0xedef6dbb )]
-    public class BaseParam : ExcelRow
+    public partial class BaseParam : ExcelRow
     {
         
         public sbyte PacketIndex { get; set; }

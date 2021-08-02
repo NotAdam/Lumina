@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCAuthority", columnHash: 0x1ee79c01 )]
-    public class FCAuthority : ExcelRow
+    public partial class FCAuthority : ExcelRow
     {
         
         public SeString Name { get; set; }

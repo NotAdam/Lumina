@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Emote", columnHash: 0x2eda0cee )]
-    public class Emote : ExcelRow
+    public partial class Emote : ExcelRow
     {
         
         public SeString Name { get; set; }

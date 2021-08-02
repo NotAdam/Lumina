@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDLevelChangeDeception", columnHash: 0xda365c51 )]
-    public class HWDLevelChangeDeception : ExcelRow
+    public partial class HWDLevelChangeDeception : ExcelRow
     {
         
         public LazyRow< ScreenImage > Image { get; set; }

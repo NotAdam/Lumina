@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCProfile", columnHash: 0x5eb59ccb )]
-    public class FCProfile : ExcelRow
+    public partial class FCProfile : ExcelRow
     {
         
         public byte Priority { get; set; }

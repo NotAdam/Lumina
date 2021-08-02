@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LeveAssignmentType", columnHash: 0x7c19f23c )]
-    public class LeveAssignmentType : ExcelRow
+    public partial class LeveAssignmentType : ExcelRow
     {
         
         public bool IsFaction { get; set; }

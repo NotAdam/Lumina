@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDGathereInspectTerm", columnHash: 0xdebb20e3 )]
-    public class HWDGathereInspectTerm : ExcelRow
+    public partial class HWDGathereInspectTerm : ExcelRow
     {
         
         public SeString Name { get; set; }

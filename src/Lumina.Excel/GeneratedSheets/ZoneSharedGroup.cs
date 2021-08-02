@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ZoneSharedGroup", columnHash: 0xfa71ca60 )]
-    public class ZoneSharedGroup : ExcelRow
+    public partial class ZoneSharedGroup : ExcelRow
     {
         
         public uint LGBSharedGroup { get; set; }

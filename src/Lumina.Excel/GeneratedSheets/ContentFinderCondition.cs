@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentFinderCondition", columnHash: 0xf911a41e )]
-    public class ContentFinderCondition : ExcelRow
+    public partial class ContentFinderCondition : ExcelRow
     {
         
         public SeString ShortCode { get; set; }

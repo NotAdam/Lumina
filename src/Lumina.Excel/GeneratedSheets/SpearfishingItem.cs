@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpearfishingItem", columnHash: 0xd17632b4 )]
-    public class SpearfishingItem : ExcelRow
+    public partial class SpearfishingItem : ExcelRow
     {
         
         public SeString Description { get; set; }
