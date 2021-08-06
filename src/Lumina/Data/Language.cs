@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Lumina.Data
 {
-    [Flags]
     public enum Language : ushort
     {
         /// <summary>
