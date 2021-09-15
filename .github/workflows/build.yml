@@ -35,11 +35,3 @@ jobs:
           ./src/Lumina/bin/Release/**/Lumina.dll
           ./src/Lumina/bin/Release/**/Lumina.pdb
           ./src/Lumina/bin/Release/**/Lumina.deps.json
-    # - name: publish github package
-    #   # for some cursed reason this fails on windows ???????????
-    #   if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest' }}
-    #   run: dotnet nuget push ./src/Lumina/bin/Release/*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://nuget.pkg.github.com/NotAdam/index.json --skip-duplicate
-    - name: publish nuget package
-      # for some cursed reason this fails on windows ???????????
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/preview' && matrix.os == 'ubuntu-latest' }}
-      run: dotnet nuget push ./src/Lumina/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
