@@ -25,6 +25,7 @@ namespace Lumina.Text.Payloads
 
             if( data.Any() )
             {
+                _data = data;
                 _rawString = Encoding.UTF8.GetString( data );
             }
         }
