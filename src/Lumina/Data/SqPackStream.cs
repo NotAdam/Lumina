@@ -317,11 +317,18 @@ namespace Lumina.Data
             {
                 using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
 
-                var bytesRead = zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.BlockDataSize );
-                if( bytesRead != (int)blockHeader.BlockDataSize )
+                var totalRead = 0;
+                while( totalRead < blockHeader.BlockDataSize )
+                {
+                    var bytesRead = zlibStream.Read( buffer, (int)dest.Position + totalRead, (int)blockHeader.BlockDataSize - totalRead );
+                    if( bytesRead == 0 ) { break; }
+                    totalRead += bytesRead;
+                }
+
+                if( totalRead != (int)blockHeader.BlockDataSize )
                 {
                     throw new SqPackInflateException(
-                        $"failed to inflate block, bytesRead ({bytesRead}) != BlockDataSize ({blockHeader.BlockDataSize})"
+                        $"failed to inflate block, bytesRead ({totalRead}) != BlockDataSize ({blockHeader.BlockDataSize})"
                     );
                 }
 
