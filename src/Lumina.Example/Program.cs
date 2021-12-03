@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using Lumina.Data;
 using Lumina.Excel.GeneratedSheets;
 using Lumina.Extensions;
@@ -11,7 +10,7 @@ namespace Lumina.Example
 {
     class Program
     {
-        private class CustomFileType : Data.FileResource
+        private class CustomFileType : FileResource
         {
             public Dictionary< string, int > ExdMap;
 
