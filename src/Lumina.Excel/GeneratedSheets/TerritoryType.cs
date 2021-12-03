@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TerritoryType", columnHash: 0xb7598447 )]
+    [Sheet( "TerritoryType", columnHash: 0x5baa595e )]
     public partial class TerritoryType : ExcelRow
     {
         
@@ -51,6 +51,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown38 { get; set; }
         public bool Unknown39 { get; set; }
         public bool Unknown40 { get; set; }
+        public bool Unknown41 { get; set; }
+        public ushort Unknown42 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -97,6 +99,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown38 = parser.ReadColumn< bool >( 38 );
             Unknown39 = parser.ReadColumn< bool >( 39 );
             Unknown40 = parser.ReadColumn< bool >( 40 );
+            Unknown41 = parser.ReadColumn< bool >( 41 );
+            Unknown42 = parser.ReadColumn< ushort >( 42 );
         }
     }
 }

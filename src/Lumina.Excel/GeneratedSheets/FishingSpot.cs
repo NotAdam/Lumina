@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FishingSpot", columnHash: 0xbbebac3f )]
+    [Sheet( "FishingSpot", columnHash: 0xb014a98d )]
     public partial class FishingSpot : ExcelRow
     {
         
@@ -24,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown11 { get; set; }
         public LazyRow< Item >[] Item { get; set; }
         public LazyRow< PlaceName > PlaceName { get; set; }
-        public byte Order { get; set; }
+        public ushort Order { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -46,7 +46,7 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 10; i++ )
                 Item[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 12 + i ), language );
             PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 22 ), language );
-            Order = parser.ReadColumn< byte >( 23 );
+            Order = parser.ReadColumn< ushort >( 23 );
         }
     }
 }

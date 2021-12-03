@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DawnGrowMember", columnHash: 0xa0995e80 )]
+    [Sheet( "DawnGrowMember", columnHash: 0x1f26e13f )]
     public partial class DawnGrowMember : ExcelRow
     {
         
@@ -17,6 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint SmallImageOld { get; set; }
         public uint SmallImageNew { get; set; }
         public LazyRow< DawnMemberUIParam > Class { get; set; }
+        public byte Unknown7 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -28,7 +29,8 @@ namespace Lumina.Excel.GeneratedSheets
             BigImageNew = parser.ReadColumn< uint >( 3 );
             SmallImageOld = parser.ReadColumn< uint >( 4 );
             SmallImageNew = parser.ReadColumn< uint >( 5 );
-            Class = new LazyRow< DawnMemberUIParam >( gameData, parser.ReadColumn< byte >( 6 ), language );
+            Class = new LazyRow< DawnMemberUIParam >( gameData, parser.ReadColumn< uint >( 6 ), language );
+            Unknown7 = parser.ReadColumn< byte >( 7 );
         }
     }
 }

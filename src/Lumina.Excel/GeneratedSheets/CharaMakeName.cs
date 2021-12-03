@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CharaMakeName", columnHash: 0x8230a5a1 )]
+    [Sheet( "CharaMakeName", columnHash: 0x2bb0117b )]
     public partial class CharaMakeName : ExcelRow
     {
         
@@ -51,6 +51,9 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString HrothgarHellionsLastName { get; set; }
         public SeString HrothgarLostFirstName { get; set; }
         public SeString HrothgarLostLastName { get; set; }
+        public SeString Unknown41 { get; set; }
+        public SeString Unknown42 { get; set; }
+        public SeString Unknown43 { get; set; }
         public SeString VieraFirstName { get; set; }
         public SeString VieraRavaLastName { get; set; }
         public SeString VieraVeenaLastName { get; set; }
@@ -100,9 +103,12 @@ namespace Lumina.Excel.GeneratedSheets
             HrothgarHellionsLastName = parser.ReadColumn< SeString >( 38 );
             HrothgarLostFirstName = parser.ReadColumn< SeString >( 39 );
             HrothgarLostLastName = parser.ReadColumn< SeString >( 40 );
-            VieraFirstName = parser.ReadColumn< SeString >( 41 );
-            VieraRavaLastName = parser.ReadColumn< SeString >( 42 );
-            VieraVeenaLastName = parser.ReadColumn< SeString >( 43 );
+            Unknown41 = parser.ReadColumn< SeString >( 41 );
+            Unknown42 = parser.ReadColumn< SeString >( 42 );
+            Unknown43 = parser.ReadColumn< SeString >( 43 );
+            VieraFirstName = parser.ReadColumn< SeString >( 44 );
+            VieraRavaLastName = parser.ReadColumn< SeString >( 45 );
+            VieraVeenaLastName = parser.ReadColumn< SeString >( 46 );
         }
     }
 }

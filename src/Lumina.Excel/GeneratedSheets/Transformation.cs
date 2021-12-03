@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Transformation", columnHash: 0xce5db832 )]
+    [Sheet( "Transformation", columnHash: 0xa1ab3fab )]
     public partial class Transformation : ExcelRow
     {
         
@@ -33,22 +33,23 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown20 { get; set; }
         public bool Unknown21 { get; set; }
         public byte Unknown22 { get; set; }
+        public bool Unknown23 { get; set; }
         public float Speed { get; set; }
         public float Scale { get; set; }
         public bool IsPvP { get; set; }
         public bool IsEvent { get; set; }
         public bool PlayerCamera { get; set; }
-        public bool Unknown28 { get; set; }
         public bool Unknown29 { get; set; }
+        public bool Unknown30 { get; set; }
         public LazyRow< VFX > StartVFX { get; set; }
         public LazyRow< VFX > EndVFX { get; set; }
         public LazyRow< Action > Action6 { get; set; }
-        public sbyte Unknown33 { get; set; }
         public sbyte Unknown34 { get; set; }
+        public sbyte Unknown35 { get; set; }
         public LazyRow< Action > Action7 { get; set; }
-        public byte Unknown36 { get; set; }
-        public bool Unknown37 { get; set; }
+        public byte Unknown37 { get; set; }
         public bool Unknown38 { get; set; }
+        public bool Unknown39 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -77,22 +78,23 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown20 = parser.ReadColumn< bool >( 20 );
             Unknown21 = parser.ReadColumn< bool >( 21 );
             Unknown22 = parser.ReadColumn< byte >( 22 );
-            Speed = parser.ReadColumn< float >( 23 );
-            Scale = parser.ReadColumn< float >( 24 );
-            IsPvP = parser.ReadColumn< bool >( 25 );
-            IsEvent = parser.ReadColumn< bool >( 26 );
-            PlayerCamera = parser.ReadColumn< bool >( 27 );
-            Unknown28 = parser.ReadColumn< bool >( 28 );
+            Unknown23 = parser.ReadColumn< bool >( 23 );
+            Speed = parser.ReadColumn< float >( 24 );
+            Scale = parser.ReadColumn< float >( 25 );
+            IsPvP = parser.ReadColumn< bool >( 26 );
+            IsEvent = parser.ReadColumn< bool >( 27 );
+            PlayerCamera = parser.ReadColumn< bool >( 28 );
             Unknown29 = parser.ReadColumn< bool >( 29 );
-            StartVFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 30 ), language );
-            EndVFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 31 ), language );
-            Action6 = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 32 ), language );
-            Unknown33 = parser.ReadColumn< sbyte >( 33 );
+            Unknown30 = parser.ReadColumn< bool >( 30 );
+            StartVFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 31 ), language );
+            EndVFX = new LazyRow< VFX >( gameData, parser.ReadColumn< ushort >( 32 ), language );
+            Action6 = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 33 ), language );
             Unknown34 = parser.ReadColumn< sbyte >( 34 );
-            Action7 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 35 ), language );
-            Unknown36 = parser.ReadColumn< byte >( 36 );
-            Unknown37 = parser.ReadColumn< bool >( 37 );
+            Unknown35 = parser.ReadColumn< sbyte >( 35 );
+            Action7 = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 36 ), language );
+            Unknown37 = parser.ReadColumn< byte >( 37 );
             Unknown38 = parser.ReadColumn< bool >( 38 );
+            Unknown39 = parser.ReadColumn< bool >( 39 );
         }
     }
 }
