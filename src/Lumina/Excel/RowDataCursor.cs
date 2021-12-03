@@ -4,13 +4,11 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel
 {
     /// <summary>
-    /// 
+    /// A 'cursor' that points to the current row offset and which file the row is in
     /// </summary>
-    public struct RowDataCursor
+    public record struct RowDataCursor
     {
-        // todo: .net6/c#10 record structs
-        
-        public ExcelDataFile SheetPage { get; internal set; }
-        public ExcelDataOffset RowOffset { get; internal set; }
+        public ExcelDataFile SheetPage;
+        public ExcelDataOffset RowOffset;
     }
 }
