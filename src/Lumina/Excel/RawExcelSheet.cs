@@ -13,6 +13,28 @@ namespace Lumina.Excel
         {
         }
 
+        public RowParser? GetRow( uint rowId )
+        {
+            var page = GetPageForRow( rowId );
+            if( page == null )
+            {
+                return null;
+            }
+
+            return new RowParser( this, page.File, rowId );
+        }
+        
+        public RowParser? GetRow( uint rowId, uint subRowId )
+        {
+            var page = GetPageForRow( rowId );
+            if( page == null )
+            {
+                return null;
+            }
+
+            return new RowParser( this, page.File, rowId, subRowId );
+        }
+
         public IEnumerator< RowParser > GetEnumerator()
         {
             ExcelDataFile file = null!;
