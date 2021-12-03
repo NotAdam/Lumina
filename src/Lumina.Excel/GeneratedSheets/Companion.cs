@@ -28,11 +28,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Special { get; set; }
         public byte WanderingWait { get; set; }
         public ushort Priority { get; set; }
-        public bool Handover { get; set; }
-        public bool Pet { get; set; }
-        public bool Beckon { get; set; }
-        public bool Poke { get; set; }
-        public bool Slap { get; set; }
+        public bool Unknown18 { get; set; }
+        public bool Unknown19 { get; set; }
+        public bool Unknown20 { get; set; }
+        public bool Unknown21 { get; set; }
+        public bool Unknown22 { get; set; }
         public ushort Enemy { get; set; }
         public bool Battle { get; set; }
         public bool Roulette { get; set; }
@@ -71,11 +71,11 @@ namespace Lumina.Excel.GeneratedSheets
             Special = parser.ReadColumn< byte >( 15 );
             WanderingWait = parser.ReadColumn< byte >( 16 );
             Priority = parser.ReadColumn< ushort >( 17 );
-            Handover = parser.ReadColumn< bool >( 18 );
-            Pet = parser.ReadColumn< bool >( 19 );
-            Beckon = parser.ReadColumn< bool >( 20 );
-            Poke = parser.ReadColumn< bool >( 21 );
-            Slap = parser.ReadColumn< bool >( 22 );
+            Unknown18 = parser.ReadColumn< bool >( 18 );
+            Unknown19 = parser.ReadColumn< bool >( 19 );
+            Unknown20 = parser.ReadColumn< bool >( 20 );
+            Unknown21 = parser.ReadColumn< bool >( 21 );
+            Unknown22 = parser.ReadColumn< bool >( 22 );
             Enemy = parser.ReadColumn< ushort >( 23 );
             Battle = parser.ReadColumn< bool >( 24 );
             Roulette = parser.ReadColumn< bool >( 25 );

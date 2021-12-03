@@ -6,21 +6,17 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CraftLevelDifference", columnHash: 0xba1851a4 )]
+    [Sheet( "CraftLevelDifference", columnHash: 0xd9b2883f )]
     public partial class CraftLevelDifference : ExcelRow
     {
         
         public short Difference { get; set; }
-        public short ProgressFactor { get; set; }
-        public short QualityFactor { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             Difference = parser.ReadColumn< short >( 0 );
-            ProgressFactor = parser.ReadColumn< short >( 1 );
-            QualityFactor = parser.ReadColumn< short >( 2 );
         }
     }
 }

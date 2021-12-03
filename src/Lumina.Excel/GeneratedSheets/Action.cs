@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Action", columnHash: 0xb3773db1 )]
+    [Sheet( "Action", columnHash: 0xfedb4d9a )]
     public partial class Action : ExcelRow
     {
         
@@ -48,6 +48,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Action > ActionCombo { get; set; }
         public bool PreservesCombo { get; set; }
         public ushort Cast100ms { get; set; }
+        public byte Unknown38 { get; set; }
         public ushort Recast100ms { get; set; }
         public byte CooldownGroup { get; set; }
         public byte AdditionalCooldownGroup { get; set; }
@@ -55,26 +56,27 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< AttackType > AttackType { get; set; }
         public byte Aspect { get; set; }
         public LazyRow< ActionProcStatus > ActionProcStatus { get; set; }
-        public byte Unknown45 { get; set; }
+        public byte Unknown46 { get; set; }
         public LazyRow< Status > StatusGainSelf { get; set; }
         public uint UnlockLink { get; set; }
         public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
-        public byte Unknown49 { get; set; }
-        public bool Unknown50 { get; set; }
+        public byte Unknown50 { get; set; }
+        public bool Unknown51 { get; set; }
         public bool AffectsPosition { get; set; }
         public LazyRow< Omen > Omen { get; set; }
+        public ushort Unknown54 { get; set; }
         public bool IsPvP { get; set; }
-        public bool Unknown54 { get; set; }
-        public bool Unknown55 { get; set; }
         public bool Unknown56 { get; set; }
         public bool Unknown57 { get; set; }
         public bool Unknown58 { get; set; }
         public bool Unknown59 { get; set; }
         public bool Unknown60 { get; set; }
         public bool Unknown61 { get; set; }
-        public byte Unknown62 { get; set; }
+        public bool Unknown62 { get; set; }
         public bool Unknown63 { get; set; }
-        public bool Unknown64 { get; set; }
+        public byte Unknown64 { get; set; }
+        public bool Unknown65 { get; set; }
+        public bool Unknown66 { get; set; }
         public bool IsPlayerAction { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -87,7 +89,7 @@ namespace Lumina.Excel.GeneratedSheets
             ActionCategory = new LazyRow< ActionCategory >( gameData, parser.ReadColumn< byte >( 3 ), language );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             AnimationStart = new LazyRow< ActionCastTimeline >( gameData, parser.ReadColumn< byte >( 5 ), language );
-            VFX = new LazyRow< ActionCastVFX >( gameData, parser.ReadColumn< byte >( 6 ), language );
+            VFX = new LazyRow< ActionCastVFX >( gameData, parser.ReadColumn< ushort >( 6 ), language );
             AnimationEnd = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< short >( 7 ), language );
             ActionTimelineHit = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             Unknown9 = parser.ReadColumn< byte >( 9 );
@@ -119,34 +121,36 @@ namespace Lumina.Excel.GeneratedSheets
             ActionCombo = new LazyRow< Action >( gameData, parser.ReadColumn< ushort >( 35 ), language );
             PreservesCombo = parser.ReadColumn< bool >( 36 );
             Cast100ms = parser.ReadColumn< ushort >( 37 );
-            Recast100ms = parser.ReadColumn< ushort >( 38 );
-            CooldownGroup = parser.ReadColumn< byte >( 39 );
-            AdditionalCooldownGroup = parser.ReadColumn< byte >( 40 );
-            MaxCharges = parser.ReadColumn< byte >( 41 );
-            AttackType = new LazyRow< AttackType >( gameData, parser.ReadColumn< sbyte >( 42 ), language );
-            Aspect = parser.ReadColumn< byte >( 43 );
-            ActionProcStatus = new LazyRow< ActionProcStatus >( gameData, parser.ReadColumn< byte >( 44 ), language );
-            Unknown45 = parser.ReadColumn< byte >( 45 );
-            StatusGainSelf = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 46 ), language );
-            UnlockLink = parser.ReadColumn< uint >( 47 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 48 ), language );
-            Unknown49 = parser.ReadColumn< byte >( 49 );
-            Unknown50 = parser.ReadColumn< bool >( 50 );
-            AffectsPosition = parser.ReadColumn< bool >( 51 );
-            Omen = new LazyRow< Omen >( gameData, parser.ReadColumn< ushort >( 52 ), language );
-            IsPvP = parser.ReadColumn< bool >( 53 );
-            Unknown54 = parser.ReadColumn< bool >( 54 );
-            Unknown55 = parser.ReadColumn< bool >( 55 );
+            Unknown38 = parser.ReadColumn< byte >( 38 );
+            Recast100ms = parser.ReadColumn< ushort >( 39 );
+            CooldownGroup = parser.ReadColumn< byte >( 40 );
+            AdditionalCooldownGroup = parser.ReadColumn< byte >( 41 );
+            MaxCharges = parser.ReadColumn< byte >( 42 );
+            AttackType = new LazyRow< AttackType >( gameData, parser.ReadColumn< sbyte >( 43 ), language );
+            Aspect = parser.ReadColumn< byte >( 44 );
+            ActionProcStatus = new LazyRow< ActionProcStatus >( gameData, parser.ReadColumn< byte >( 45 ), language );
+            Unknown46 = parser.ReadColumn< byte >( 46 );
+            StatusGainSelf = new LazyRow< Status >( gameData, parser.ReadColumn< ushort >( 47 ), language );
+            UnlockLink = parser.ReadColumn< uint >( 48 );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 49 ), language );
+            Unknown50 = parser.ReadColumn< byte >( 50 );
+            Unknown51 = parser.ReadColumn< bool >( 51 );
+            AffectsPosition = parser.ReadColumn< bool >( 52 );
+            Omen = new LazyRow< Omen >( gameData, parser.ReadColumn< ushort >( 53 ), language );
+            Unknown54 = parser.ReadColumn< ushort >( 54 );
+            IsPvP = parser.ReadColumn< bool >( 55 );
             Unknown56 = parser.ReadColumn< bool >( 56 );
             Unknown57 = parser.ReadColumn< bool >( 57 );
             Unknown58 = parser.ReadColumn< bool >( 58 );
             Unknown59 = parser.ReadColumn< bool >( 59 );
             Unknown60 = parser.ReadColumn< bool >( 60 );
             Unknown61 = parser.ReadColumn< bool >( 61 );
-            Unknown62 = parser.ReadColumn< byte >( 62 );
+            Unknown62 = parser.ReadColumn< bool >( 62 );
             Unknown63 = parser.ReadColumn< bool >( 63 );
-            Unknown64 = parser.ReadColumn< bool >( 64 );
-            IsPlayerAction = parser.ReadColumn< bool >( 65 );
+            Unknown64 = parser.ReadColumn< byte >( 64 );
+            Unknown65 = parser.ReadColumn< bool >( 65 );
+            Unknown66 = parser.ReadColumn< bool >( 66 );
+            IsPlayerAction = parser.ReadColumn< bool >( 67 );
         }
     }
 }

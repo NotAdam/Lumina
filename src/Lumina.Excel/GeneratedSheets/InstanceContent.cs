@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InstanceContent", columnHash: 0xa4243e29 )]
+    [Sheet( "InstanceContent", columnHash: 0xda8bea47 )]
     public partial class InstanceContent : ExcelRow
     {
         
@@ -44,19 +44,22 @@ namespace Lumina.Excel.GeneratedSheets
         public uint InstanceContentRewardItem { get; set; }
         public uint Unknown48 { get; set; }
         public byte FinalBossExp { get; set; }
+        public uint Unknown50 { get; set; }
         public LazyRow< InstanceContentBuff > InstanceContentBuff { get; set; }
+        public bool Unknown52 { get; set; }
         public LazyRow< InstanceContent > ReqInstance { get; set; }
-        public uint Unknown52 { get; set; }
         public short PartyCondition { get; set; }
-        public byte Unknown54 { get; set; }
         public byte Unknown55 { get; set; }
         public byte Unknown56 { get; set; }
         public byte Unknown57 { get; set; }
-        public bool Unknown58 { get; set; }
-        public ushort Unknown59 { get; set; }
+        public byte Unknown58 { get; set; }
+        public bool Unknown59 { get; set; }
         public ushort Unknown60 { get; set; }
         public ushort Unknown61 { get; set; }
-        public ushort Unknown62 { get; set; }
+        public byte Unknown62 { get; set; }
+        public ushort Unknown63 { get; set; }
+        public ushort Unknown64 { get; set; }
+        public bool Unknown65 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -104,19 +107,22 @@ namespace Lumina.Excel.GeneratedSheets
             InstanceContentRewardItem = parser.ReadColumn< uint >( 47 );
             Unknown48 = parser.ReadColumn< uint >( 48 );
             FinalBossExp = parser.ReadColumn< byte >( 49 );
-            InstanceContentBuff = new LazyRow< InstanceContentBuff >( gameData, parser.ReadColumn< uint >( 50 ), language );
-            ReqInstance = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< int >( 51 ), language );
-            Unknown52 = parser.ReadColumn< uint >( 52 );
-            PartyCondition = parser.ReadColumn< short >( 53 );
-            Unknown54 = parser.ReadColumn< byte >( 54 );
+            Unknown50 = parser.ReadColumn< uint >( 50 );
+            InstanceContentBuff = new LazyRow< InstanceContentBuff >( gameData, parser.ReadColumn< int >( 51 ), language );
+            Unknown52 = parser.ReadColumn< bool >( 52 );
+            ReqInstance = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< uint >( 53 ), language );
+            PartyCondition = parser.ReadColumn< short >( 54 );
             Unknown55 = parser.ReadColumn< byte >( 55 );
             Unknown56 = parser.ReadColumn< byte >( 56 );
             Unknown57 = parser.ReadColumn< byte >( 57 );
-            Unknown58 = parser.ReadColumn< bool >( 58 );
-            Unknown59 = parser.ReadColumn< ushort >( 59 );
+            Unknown58 = parser.ReadColumn< byte >( 58 );
+            Unknown59 = parser.ReadColumn< bool >( 59 );
             Unknown60 = parser.ReadColumn< ushort >( 60 );
             Unknown61 = parser.ReadColumn< ushort >( 61 );
-            Unknown62 = parser.ReadColumn< ushort >( 62 );
+            Unknown62 = parser.ReadColumn< byte >( 62 );
+            Unknown63 = parser.ReadColumn< ushort >( 63 );
+            Unknown64 = parser.ReadColumn< ushort >( 64 );
+            Unknown65 = parser.ReadColumn< bool >( 65 );
         }
     }
 }

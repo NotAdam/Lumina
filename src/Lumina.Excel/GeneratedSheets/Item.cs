@@ -54,7 +54,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown31 { get; set; }
         public ushort Cooldowns { get; set; }
         public LazyRow< ClassJob > ClassJobRepair { get; set; }
-        public LazyRow< Item > ItemRepair { get; set; }
+        public LazyRow< ItemRepairResource > ItemRepair { get; set; }
         public LazyRow< Item > ItemGlamour { get; set; }
         public ushort Desynth { get; set; }
         public bool IsCollectable { get; set; }
@@ -128,7 +128,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown31 = parser.ReadColumn< byte >( 31 );
             Cooldowns = parser.ReadColumn< ushort >( 32 );
             ClassJobRepair = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 33 ), language );
-            ItemRepair = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 34 ), language );
+            ItemRepair = new LazyRow< ItemRepairResource >( gameData, parser.ReadColumn< int >( 34 ), language );
             ItemGlamour = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 35 ), language );
             Desynth = parser.ReadColumn< ushort >( 36 );
             IsCollectable = parser.ReadColumn< bool >( 37 );

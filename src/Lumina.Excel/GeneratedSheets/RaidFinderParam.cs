@@ -6,19 +6,17 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CustomTalkDynamicIcon", columnHash: 0x5d58cc84 )]
-    public class CustomTalkDynamicIcon : ExcelRow
+    [Sheet( "RaidFinderParam", columnHash: 0xcd4cb81c )]
+    public partial class RaidFinderParam : ExcelRow
     {
         
-        public uint SmallIcon { get; set; }
-        public uint LargeIcon { get; set; }
+        public bool Unknown0 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            SmallIcon = parser.ReadColumn< uint >( 0 );
-            LargeIcon = parser.ReadColumn< uint >( 1 );
+            Unknown0 = parser.ReadColumn< bool >( 0 );
         }
     }
 }

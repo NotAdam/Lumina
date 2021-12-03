@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GimmickAccessor", columnHash: 0xc4f527f3 )]
+    [Sheet( "GimmickAccessor", columnHash: 0x5861eaa3 )]
     public partial class GimmickAccessor : ExcelRow
     {
         
@@ -19,6 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown6 { get; set; }
         public bool Unknown7 { get; set; }
         public bool Unknown8 { get; set; }
+        public bool Unknown9 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -33,6 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown6 = parser.ReadColumn< uint >( 6 );
             Unknown7 = parser.ReadColumn< bool >( 7 );
             Unknown8 = parser.ReadColumn< bool >( 8 );
+            Unknown9 = parser.ReadColumn< bool >( 9 );
         }
     }
 }
