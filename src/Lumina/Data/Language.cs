@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Lumina.Data
 {
@@ -9,27 +7,19 @@ namespace Lumina.Data
         /// <summary>
         /// No language
         /// </summary>
-        [Display( Name = "" )]
         None,
-        [Display( Name = "ja" )]
         Japanese,
-        [Display( Name = "en" )]
         English,
-        [Display( Name = "de" )]
         German,
-        [Display( Name = "fr" )]
         French,
-        [Display( Name = "chs" )]
         ChineseSimplified,
-        [Display( Name = "cht" )]
         ChineseTraditional,
-        [Display( Name = "ko" )]
         Korean
     }
 
     public class LanguageUtil
     {
-        public static readonly Dictionary< Language, string > LanguageMap = new Dictionary< Language, string >()
+        public static readonly Dictionary< Language, string > LanguageMap = new()
         {
             { Language.None, "" },
             { Language.Japanese, "ja" },
