@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using Lumina.Data;
 using Lumina.Excel.GeneratedSheets;
 using Lumina.Extensions;
 
@@ -64,12 +65,10 @@ namespace Lumina.Example
             typeof( ActionTimeline ).Assembly.RegisterRsvFiles( gameData );
             
             // excel reading
-            var actionTimeline = gameData.GetExcelSheet< ActionTimeline >();
-            var atRows = actionTimeline.Take( 5 );
-            
-            foreach( var row in atRows )
+            var rawAction = gameData.Excel.GetSheetRaw( "Action", Language.English );
+            foreach( var actionRow in rawAction.Take(20) )
             {
-                Console.WriteLine( $"name: {row.Key}" );
+                Console.WriteLine( $"action({actionRow.RowId}) name: {actionRow.ReadColumn< string >( 0 )}" );
             }
             
             var zoneSharedGroup = gameData.GetExcelSheet< ZoneSharedGroup >();

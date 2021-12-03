@@ -21,8 +21,8 @@ namespace Lumina.Excel
 
         private long _rowOffset;
 
-        public uint Row;
-        public uint SubRow;
+        public uint RowId;
+        public uint SubRowId;
         public uint RowCount => _rowHeader.RowCount;
 
         private MemoryStream Stream => _dataFile.FileStream;
@@ -70,9 +70,9 @@ namespace Lumina.Excel
         /// <returns>true if the row was seeked to successfully, false if the row wasn't found or otherwise</returns>
         public bool TrySeekToRow( uint row )
         {
-            Row = row;
+            RowId = row;
 
-            if( !_dataFile.RowData.TryGetValue( Row, out var offset ) )
+            if( !_dataFile.RowData.TryGetValue( RowId, out var offset ) )
             {
                 return false;
             }
@@ -124,7 +124,7 @@ namespace Lumina.Excel
                 return false;
             }
             
-            SubRow = subRow;
+            SubRowId = subRow;
             
             if( subRow > _rowHeader.RowCount )
             {

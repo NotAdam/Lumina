@@ -17,8 +17,8 @@ namespace Lumina.Excel
         {
             _gameData = gameData;
             
-            RowId = parser.Row;
-            SubRowId = parser.SubRow;
+            RowId = parser.RowId;
+            SubRowId = parser.SubRowId;
             SheetLanguage = language;
 
             SheetName = parser.Sheet.Name;

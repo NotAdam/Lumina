@@ -310,33 +310,56 @@ namespace Lumina.Excel
 
             return parser;
         }
-
-        public IEnumerable< RowParser > EnumerateRowParsers()
+        
+        /// <summary>
+        /// Iterate across each row data offsets in a sheet
+        /// </summary>
+        /// <returns>A <see cref="IEnumerable{T}"/> containing each offset to each row or subrow group</returns>
+        public IEnumerable< RowDataCursor > GetRowDataOffsets()
         {
             foreach( var page in DataPages )
             {
                 var file = page.File;
                 var rowPtrs = file.RowData;
 
-                var parser = new RowParser( this, file );
-
                 foreach( var rowPtr in rowPtrs.Values )
                 {
-                    if( Header.Variant == ExcelVariant.Subrows )
+                    yield return new()
                     {
-                        // required to read the row header out and know how many subrows there is
-                        parser.SeekToRow( rowPtr.RowId );
+                        RowOffset = rowPtr,
+                        SheetPage = file
+                    };
+                }
+            }
+        }
 
-                        // read subrows
-                        for( uint i = 0; i < parser.RowCount; i++ )
-                        {
-                            yield return GetRowParser( rowPtr.RowId, i )!;
-                        }
-                    }
-                    else
+        public IEnumerable< RowParser > GetRowParsers()
+        {
+            ExcelDataFile file = null!;
+            RowParser parser = null!;
+            
+            foreach( var offset in GetRowDataOffsets() )
+            {
+                var rowPtr = offset.RowOffset;
+                if( file != offset.SheetPage )
+                {
+                    parser = new RowParser( this, offset.SheetPage );
+                }
+
+                parser.SeekToRow( rowPtr.RowId );
+                
+                if( Header.Variant == ExcelVariant.Subrows )
+                {
+                    // read subrows
+                    for( uint i = 0; i < parser.RowCount; i++ )
                     {
-                        yield return GetRowParser( rowPtr.RowId )!;
+                        parser.SeekToRow( rowPtr.RowId, i );
+                        yield return parser;
                     }
+                }
+                else
+                {
+                    yield return parser;
                 }
             }
         }

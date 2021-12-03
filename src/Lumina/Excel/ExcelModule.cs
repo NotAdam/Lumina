@@ -267,7 +267,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="name">Name of the sheet to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl? GetSheetRaw( string name )
+        public RawExcelSheet? GetSheetRaw( string name )
         {
             return GetSheetRaw( name, _gameData.Options.DefaultExcelLanguage );
         }
@@ -278,10 +278,9 @@ namespace Lumina.Excel
         /// <param name="name">Name of the sheet to load</param>
         /// <param name="language">The requested language to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl? GetSheetRaw( string name, Language language )
+        public RawExcelSheet? GetSheetRaw( string name, Language language )
         {
             // todo: duped code is a bit ass but zzz
-            // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on
 
             // create new sheet
             var path = BuildExcelHeaderPath( name );
@@ -292,7 +291,7 @@ namespace Lumina.Excel
                 return null;
             }
 
-            var newSheet = new ExcelSheetImpl( headerFile, name, language, _gameData );
+            var newSheet = new RawExcelSheet( headerFile, name, language, _gameData );
             newSheet.GenerateFilePages();
 
             return newSheet;
