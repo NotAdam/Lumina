@@ -10,13 +10,13 @@ namespace Lumina.Excel.GeneratedSheets
     public partial class ItemRepairResource : ExcelRow
     {
         
-        public LazyRow< Item > Name { get; set; }
+        public LazyRow< Item > Item { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Name = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 0 ), language );
         }
     }
 }

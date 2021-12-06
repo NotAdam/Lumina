@@ -10,23 +10,23 @@ namespace Lumina.Excel.GeneratedSheets
     public partial class World : ExcelRow
     {
         
+        public SeString InternalName { get; set; }
         public SeString Name { get; set; }
-        public SeString UserType { get; set; }
+        public byte Region { get; set; }
+        public byte UserType { get; set; }
         public LazyRow< WorldDCGroupType > DataCenter { get; set; }
-        public byte IsPublic { get; set; }
-        public byte Unknown4 { get; set; }
-        public bool Unknown5 { get; set; }
+        public bool IsPublic { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Name = parser.ReadColumn< SeString >( 0 );
-            UserType = parser.ReadColumn< SeString >( 1 );
-            DataCenter = new LazyRow< WorldDCGroupType >( gameData, parser.ReadColumn< byte >( 2 ), language );
-            IsPublic = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
-            Unknown5 = parser.ReadColumn< bool >( 5 );
+            InternalName = parser.ReadColumn< SeString >( 0 );
+            Name = parser.ReadColumn< SeString >( 1 );
+            Region = parser.ReadColumn< byte >( 2 );
+            UserType = parser.ReadColumn< byte >( 3 );
+            DataCenter = new LazyRow< WorldDCGroupType >( gameData, parser.ReadColumn< byte >( 4 ), language );
+            IsPublic = parser.ReadColumn< bool >( 5 );
         }
     }
 }
