@@ -18,8 +18,8 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Quality { get; set; }
         public byte ProgressDivider { get; set; }
         public byte QualityDivider { get; set; }
-        public byte Unknown8 { get; set; }
-        public byte Unknown9 { get; set; }
+        public byte ProgressModifier { get; set; }
+        public byte QualityModifier { get; set; }
         public ushort Durability { get; set; }
         public ushort ConditionsFlag { get; set; }
         
@@ -35,8 +35,8 @@ namespace Lumina.Excel.GeneratedSheets
             Quality = parser.ReadColumn< uint >( 5 );
             ProgressDivider = parser.ReadColumn< byte >( 6 );
             QualityDivider = parser.ReadColumn< byte >( 7 );
-            Unknown8 = parser.ReadColumn< byte >( 8 );
-            Unknown9 = parser.ReadColumn< byte >( 9 );
+            ProgressModifier = parser.ReadColumn< byte >( 8 );
+            QualityModifier = parser.ReadColumn< byte >( 9 );
             Durability = parser.ReadColumn< ushort >( 10 );
             ConditionsFlag = parser.ReadColumn< ushort >( 11 );
         }
