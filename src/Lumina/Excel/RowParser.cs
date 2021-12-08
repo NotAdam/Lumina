@@ -435,9 +435,14 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="column">The column index to lookup</param>
         /// <typeparam name="T">The type to store the read data in</typeparam>
-        /// <returns>The read data contained in the provided type</returns>
+        /// <returns>The read data contained in the provided type, or the default value of the type if the column given is out of bounds</returns>
         public T? ReadColumn< T >( int column )
         {
+            if( column >= _sheet.ColumnCount )
+            {
+                return default;
+            }
+            
             var col = _sheet.Columns[ column ];
 
             Stream.Position = _rowOffset + col.Offset;
@@ -453,9 +458,14 @@ namespace Lumina.Excel
         /// but this can be useful when you don't need to care about it's type and can use it as is - e.g. ToString and so on
         /// </remarks>
         /// <param name="column">The column index to read from</param>
-        /// <returns>An object containing the data from the row.</returns>
-        public object ReadColumnRaw( int column )
+        /// <returns>An object containing the data from the row, or null if the column given is out of bounds</returns>
+        public object? ReadColumnRaw( int column )
         {
+            if( column >= _sheet.ColumnCount )
+            {
+                return null;
+            }
+            
             var col = _sheet.Columns[ column ];
 
             Stream.Position = _rowOffset + col.Offset;
