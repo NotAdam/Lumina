@@ -19,10 +19,9 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Territory = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< int >( 0 ), language );
-            Unknown1 = parser.ReadColumn< int >( 1 );
             AetherCurrent = new LazyRow< AetherCurrent >[ 15 ];
             for( var i = 0; i < 15; i++ )
-                AetherCurrent[ i ] = new LazyRow< AetherCurrent >( gameData, parser.ReadColumn< int >( 2 + i ), language );
+                AetherCurrent[ i ] = new LazyRow< AetherCurrent >( gameData, parser.ReadColumn< int >( 1 + i ), language );
         }
     }
 }
