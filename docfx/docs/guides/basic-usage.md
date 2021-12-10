@@ -8,7 +8,7 @@ dotnet add package Lumina
 
 To use Excel structures, you also need to add their respective nuget package:
 ```
-dotnet add package Lumina.Generated
+dotnet add package Lumina.Excel
 ```
 
 ## Setting up Lumina
