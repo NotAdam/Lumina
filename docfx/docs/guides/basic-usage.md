@@ -8,7 +8,7 @@ dotnet add package Lumina
 
 To use Excel structures, you also need to add their respective nuget package:
 ```
-dotnet add package Lumina.Generated
+dotnet add package Lumina.Excel
 ```
 
 ## Setting up Lumina
@@ -70,9 +70,9 @@ Similarly to raw files, these can also be written to disk as demonstrated above.
 
 Excel is the data format used for storing relational data in FINAL FANTASY XIV. While Lumina abstracts away most of the detail and provides you with a clean interface for accessing the data, those interested can find more details about the file format [here](https://xiv.dev/game-data/file-formats/excel).
 
-Firstly, the structures required to use this function live in a separate nuget package, `Lumina.Generated`. You will need to install this package separately to Lumina to access the generated structures. The generated structures provide lazily loaded references to other sheets which makes understanding and using the game data extremely easy, along with statically defined field names, so you can use all the reflection you want.
+Firstly, the structures required to use this function live in a separate nuget package, `Lumina.Excel`. You will need to install this package separately to Lumina to access the generated structures. The generated structures provide lazily loaded references to other sheets which makes understanding and using the game data extremely easy, along with statically defined field names, so you can use all the reflection you want.
 
-Once you've installed the `Lumina.Generated` package, reading sheets is akin to reading files.
+Once you've installed the `Lumina.Excel` package, reading sheets is akin to reading files.
 
 ```cs
 var lumina = new Lumina.GameData( "G:/ffxiv/FINAL FANTASY XIV Online/game/sqpack" );
