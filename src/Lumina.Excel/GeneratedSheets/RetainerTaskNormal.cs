@@ -14,8 +14,8 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Quantity0 { get; set; }
         public byte Quantity1 { get; set; }
         public byte Quantity2 { get; set; }
-        public byte Unknown4 { get; set; }
-        public byte Unknown5 { get; set; }
+        public byte Quantity3 { get; set; }
+        public byte Quantity4 { get; set; }
         public LazyRow< GatheringItem > GatheringLog { get; set; }
         public short FishingLog { get; set; }
         
@@ -27,8 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
             Quantity0 = parser.ReadColumn< byte >( 1 );
             Quantity1 = parser.ReadColumn< byte >( 2 );
             Quantity2 = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
+            Quantity3 = parser.ReadColumn< byte >( 4 );
+            Quantity4 = parser.ReadColumn< byte >( 5 );
             GatheringLog = new LazyRow< GatheringItem >( gameData, parser.ReadColumn< short >( 6 ), language );
             FishingLog = parser.ReadColumn< short >( 7 );
         }

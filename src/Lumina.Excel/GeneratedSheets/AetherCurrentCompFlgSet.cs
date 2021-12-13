@@ -11,7 +11,6 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< TerritoryType > Territory { get; set; }
-        public int Unknown1 { get; set; }
         public LazyRow< AetherCurrent >[] AetherCurrent { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
