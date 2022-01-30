@@ -4,6 +4,22 @@ _rsv_1379_-1_0_C1_0Status,天体魔法を受けた状態。ＨＰが徐々に失
 // en
 _rsv_1379_-1_1_C0_0Status,Almagest
 _rsv_1379_-1_1_C1_0Status,Celestial magicks are causing damage over time.
+_rsv_2800_-1_1_C0_0Status,Casting Chlamys
+_rsv_2800_-1_1_C1_0Status,Chlamys is replete with the cursed aether of one of three roles.
+_rsv_2801_-1_1_C0_0Status,Elemental Resistance Down
+_rsv_2801_-1_1_C1_0Status,Resistance to all elements is reduced.
+_rsv_2802_-1_1_C0_0Status,Role Call
+_rsv_2802_-1_1_C1_0Status,Cast as the receptable for cursed aether. Effect may be transferred by coming into contact with another player. When this effect expires, players of a certain role will take massive damage.
+_rsv_2803_-1_1_C0_0Status,Miscast
+_rsv_2803_-1_1_C1_0Status,No longer subject to the effects of Role Call.
+_rsv_2804_-1_1_C0_0Status,Thornpricked
+_rsv_2804_-1_1_C1_0Status,Flesh has been pierced by aetherial barbs. When this effect expires, the thorns' aether will disperse, resulting in attack damage.
+_rsv_2925_-1_1_C0_0Status,Acting DPS
+_rsv_2925_-1_1_C1_0Status,When this effect expires, non-DPS will sustain heavy damage. However, being hit by certain attacks will remove this effect without the resulting damage.
+_rsv_2926_-1_1_C0_0Status,Acting Healer
+_rsv_2926_-1_1_C1_0Status,When this effect expires, non-healers will sustain heavy damage. However, being hit by certain attacks will remove this effect without the resulting damage.
+_rsv_2927_-1_1_C0_0Status,Acting Tank
+_rsv_2927_-1_1_C1_0Status,When this effect expires, non-tanks will sustain heavy damage. However, being hit by certain attacks will remove this effect without the resulting damage.
 // de
 _rsv_1379_-1_2_C0_0Status,Almagest
 _rsv_1379_-1_2_C1_0Status,Erleidet schrittweise Schaden durch außerweltliche Magie.
