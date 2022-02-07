@@ -1,12 +1,76 @@
 // ja
 _rsv_1379_-1_0_C0_0Status,アルマゲスト
 _rsv_1379_-1_0_C1_0Status,天体魔法を受けた状態。ＨＰが徐々に失われる。
+_rsv_2800_-1_0_C0_0Status,腐呪のクラミュス
+_rsv_2800_-1_0_C1_0Status,エーテルクラミュスに三役の呪毒を蓄えた状態。
+_rsv_2801_-1_0_C0_0Status,属性耐性低下
+_rsv_2801_-1_0_C1_0Status,何らかの属性に対する耐性が低下した状態。
+_rsv_2802_-1_0_C0_0Status,三役の腐呪
+_rsv_2802_-1_0_C1_0Status,三役の腐呪がかけられた状態。他のプレイヤーと接触した場合に呪いを移す。効果終了時に、特定のロールに対して大ダメージを与える。
+_rsv_2803_-1_0_C0_0Status,三役の抗呪
+_rsv_2803_-1_0_C1_0Status,三役の腐呪にかからなくなった状態。
+_rsv_2804_-1_0_C0_0Status,エーテルソーン
+_rsv_2804_-1_0_C1_0Status,エーテルソーンが打ち込まれた状態。効果終了時に内部のエーテルが解放され、攻撃が実行される。
+_rsv_2925_-1_0_C0_0Status,攻手の魔呪
+_rsv_2925_-1_0_C1_0Status,攻手の魔呪がかけられた状態。効果終了時に、DPS以外のロールに対して大ダメージを与える。なお、特定の攻撃を受けると、大ダメージを受けることなく効果が解除される。
+_rsv_2926_-1_0_C0_0Status,癒手の魔呪
+_rsv_2926_-1_0_C1_0Status,癒手の魔呪がかけられた状態。効果終了時に、ヒーラー以外のロールに対して大ダメージを与える。 なお、特定の攻撃を受けると、大ダメージを受けることなく効果が解除される。
+_rsv_2927_-1_0_C0_0Status,守手の魔呪
+_rsv_2927_-1_0_C1_0Status,守手の魔呪がかけられた状態。効果終了時に、タンク以外のロールに対して大ダメージを与える。なお、特定の攻撃を受けると、大ダメージを受けることなく効果が解除される。
 // en
 _rsv_1379_-1_1_C0_0Status,Almagest
 _rsv_1379_-1_1_C1_0Status,Celestial magicks are causing damage over time.
+_rsv_2800_-1_1_C0_0Status,Casting Chlamys
+_rsv_2800_-1_1_C1_0Status,Chlamys is replete with the cursed aether of one of three roles.
+_rsv_2801_-1_1_C0_0Status,Elemental Resistance Down
+_rsv_2801_-1_1_C1_0Status,Resistance to all elements is reduced.
+_rsv_2802_-1_1_C0_0Status,Role Call
+_rsv_2802_-1_1_C1_0Status,Cast as the receptacle for cursed aether. Effect may be transferred by comming into contact with another player. When this effect expires, players of a certain role will take massive damage.
+_rsv_2803_-1_1_C0_0Status,Miscast
+_rsv_2803_-1_1_C1_0Status,No longer subject to the effects of Role Call.
+_rsv_2804_-1_1_C0_0Status,Thornpricked
+_rsv_2804_-1_1_C1_0Status,Flesh has been pierced by aetherial barbs. When this effect expires, the thorns' aether will disperse, resulting in attack damage.
+_rsv_2925_-1_1_C0_0Status,Acting DPS
+_rsv_2925_-1_1_C1_0Status,When this effect expires, non-DPS will sustain heavy damage. However, being hit by certain attacks will remove this effect without the resulting damage.
+_rsv_2926_-1_1_C0_0Status,Acting Healer
+_rsv_2926_-1_1_C1_0Status,When this effect expires, non-Healer will sustain heavy damage. However, being hit by certain attacks will remove this effect without the resulting damage.
+_rsv_2927_-1_1_C0_0Status,Acting Tank
+_rsv_2927_-1_1_C1_0Status,When this effect expires, non-Tanks will sustain heavy damage. However, being hit by certain attacks will remove this effect without the resulting damage.
 // de
 _rsv_1379_-1_2_C0_0Status,Almagest
 _rsv_1379_-1_2_C1_0Status,Erleidet schrittweise Schaden durch außerweltliche Magie.
-// baguette
+_rsv_2800_-1_2_C0_0Status,Faulende Chlamys
+_rsv_2800_-1_2_C1_0Status,Der Fluch der Dreifäulenoper erfüllt die Fasern der Chlamys.
+_rsv_2801_-1_2_C0_0Status,Resistenz -
+_rsv_2801_-1_2_C1_0Status,Diverse Resistenzen sind verringert.
+_rsv_2802_-1_2_C0_0Status,Dreifäulenoper
+_rsv_2802_-1_2_C1_0Status,Ein Protagonist in der Dreifäulenoper. Der Fluch wird bei Kontakt auf anderen Personen übertragen. Bei Ende des Effekts erleiden bestimmte Rollen verheerenden Schaden.
+_rsv_2803_-1_2_C0_0Status,Zwischenakt
+_rsv_2803_-1_2_C1_0Status,Gegen den Fluch der Dreifäulenoper immunisiert.
+_rsv_2804_-1_2_C0_0Status,Ätherdorn
+_rsv_2804_-1_2_C1_0Status,Ein Ätherdorn bohrt sich in das Fleisch. Bei Ende des Effekts wird der Äther im Inneren freigesetzt.
+_rsv_2925_-1_2_C0_0Status,Fluch des Schmerzes
+_rsv_2925_-1_2_C1_0Status,Mit dem Fluch des Schmerzes belegt. Bei Ende des Effekts erleiden Darsteller, die nicht der Rolle eines Angreifers spielen, enormen Schaden. Werden bestimmte Attacken erlitten, endet der Effekt jedoch ohne jeglichen Schaden.
+_rsv_2926_-1_2_C0_0Status,Fluch des Lebens
+_rsv_2926_-1_2_C1_0Status,Mit dem Fluch des Lebens belegt. Bei Ende des Effekts erleiden Darsteller, die nicht der Rolle eines Heilers spielen, enormen Schaden. Werden bestimmte Attacken erlitten, endet der Effekt jedoch ohne jeglichen Schaden.
+_rsv_2927_-1_2_C0_0Status,Fluch des Schutzes
+_rsv_2927_-1_2_C1_0Status,Mit dem Fluch des Schutzes belegt. Bei Ende des Effekts erleiden Darsteller, die nicht der Rolle eines Verteidigers spielen, enormen Schaden. Werden bestimmte Attacken erlitten, endet der Effekt jedoch ohne jeglichen Schaden.
+// fr
 _rsv_1379_-1_3_C0_0Status,Almageste
 _rsv_1379_-1_3_C1_0Status,Sous l'effet d'une magie astrale. Des dégâts périodiques sont subis.
+_rsv_2800_-1_3_C0_0Status,Chlamyde maudite
+_rsv_2800_-1_3_C1_0Status,L'éther de la chlamyde est maudit.
+_rsv_2801_-1_3_C0_0Status,Résistance élémentaire réduite
+_rsv_2801_-1_3_C1_0Status,Résistance élémentaire rêduite La résistance aux élémentsest rêduite.
+_rsv_2802_-1_3_C0_0Status,Rôle tragique
+_rsv_2802_-1_3_C1_0Status,Une malédiction a été infligée et peut se transmettre via contact direct avec un autre joueur. Inflige des dégâts considérables à certains rôles lorsque l'effet prend fin.
+_rsv_2803_-1_3_C0_0Status,Résistance tragique
+_rsv_2803_-1_3_C1_0Status,La malédiction e été levée.
+_rsv_2804_-1_3_C0_0Status,Épines d'éther
+
+_rsv_2925_-1_3_C0_0Status,Malédiction des attaquants
+_rsv_2925_-1_3_C1_0Status,Les DPS sont maudits. Lorsque l'effet prend fin, les deux autres rôles subissent des dégâts considérables. Recevoir certains attaques permet d'annuler l'effet sans subir lesdits dégâts.
+_rsv_2926_-1_3_C0_0Status,Malédiction des guérisseurs
+_rsv_2926_-1_3_C1_0Status,Les soigneurs sont maudits. Lorsque l'effet prend fin, les deux autres rôles subissent des dégâts considérables. Recevoir certains attaques permet d'annuler l'effet sans subir lesdits dégâts.
+_rsv_2927_-1_3_C0_0Status,Malédiction des protecteurs
+_rsv_2927_-1_3_C1_0Status,Les tanks sont maudits. Lorsque l'effet prend fin, les deux autres rôles subissent des dégâts considérables. Recevoir certains attaques permet d'annuler l'effet sans subir lesdits dégâts.
