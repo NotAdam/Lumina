@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ClassJobCategory", columnHash: 0xd6e993c1 )]
+    [Sheet( "ClassJobCategory", columnHash: 0x7caef8ce )]
     public class ClassJobCategory : ExcelRow
     {
         
@@ -50,6 +50,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool BLU { get; set; }
         public bool GNB { get; set; }
         public bool DNC { get; set; }
+        public bool Unknown40 { get; set; }
+        public bool Unknown41 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -95,6 +97,8 @@ namespace Lumina.Excel.GeneratedSheets
             BLU = parser.ReadColumn< bool >( 37 );
             GNB = parser.ReadColumn< bool >( 38 );
             DNC = parser.ReadColumn< bool >( 39 );
+            Unknown40 = parser.ReadColumn< bool >( 40 );
+            Unknown41 = parser.ReadColumn< bool >( 41 );
         }
     }
 }

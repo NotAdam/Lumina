@@ -16,7 +16,33 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown3 { get; set; }
         public int Unknown4 { get; set; }
         public int Unknown5 { get; set; }
-        public LazyRow< Level >[] UnknownLevel { get; set; }
+        public int Unknown6 { get; set; }
+        public int Unknown7 { get; set; }
+        public int Unknown8 { get; set; }
+        public int Unknown9 { get; set; }
+        public int Unknown10 { get; set; }
+        public int Unknown11 { get; set; }
+        public int Unknown12 { get; set; }
+        public int Unknown13 { get; set; }
+        public int Unknown14 { get; set; }
+        public int Unknown15 { get; set; }
+        public int Unknown16 { get; set; }
+        public int Unknown17 { get; set; }
+        public int Unknown18 { get; set; }
+        public int Unknown19 { get; set; }
+        public int Unknown20 { get; set; }
+        public int Unknown21 { get; set; }
+        public int Unknown22 { get; set; }
+        public int Unknown23 { get; set; }
+        public int Unknown24 { get; set; }
+        public int Unknown25 { get; set; }
+        public int Unknown26 { get; set; }
+        public int Unknown27 { get; set; }
+        public int Unknown28 { get; set; }
+        public int Unknown29 { get; set; }
+        public int Unknown30 { get; set; }
+        public int Unknown31 { get; set; }
+        public int Unknown32 { get; set; }
         public int Unknown33 { get; set; }
         public int Unknown34 { get; set; }
         public int Unknown35 { get; set; }
@@ -364,9 +390,33 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3 = parser.ReadColumn< int >( 3 );
             Unknown4 = parser.ReadColumn< int >( 4 );
             Unknown5 = parser.ReadColumn< int >( 5 );
-            UnknownLevel = new LazyRow< Level >[ 27 ];
-            for( var i = 0; i < 27; i++ )
-                UnknownLevel[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< int >( 6 + i ), language );
+            Unknown6 = parser.ReadColumn< int >( 6 );
+            Unknown7 = parser.ReadColumn< int >( 7 );
+            Unknown8 = parser.ReadColumn< int >( 8 );
+            Unknown9 = parser.ReadColumn< int >( 9 );
+            Unknown10 = parser.ReadColumn< int >( 10 );
+            Unknown11 = parser.ReadColumn< int >( 11 );
+            Unknown12 = parser.ReadColumn< int >( 12 );
+            Unknown13 = parser.ReadColumn< int >( 13 );
+            Unknown14 = parser.ReadColumn< int >( 14 );
+            Unknown15 = parser.ReadColumn< int >( 15 );
+            Unknown16 = parser.ReadColumn< int >( 16 );
+            Unknown17 = parser.ReadColumn< int >( 17 );
+            Unknown18 = parser.ReadColumn< int >( 18 );
+            Unknown19 = parser.ReadColumn< int >( 19 );
+            Unknown20 = parser.ReadColumn< int >( 20 );
+            Unknown21 = parser.ReadColumn< int >( 21 );
+            Unknown22 = parser.ReadColumn< int >( 22 );
+            Unknown23 = parser.ReadColumn< int >( 23 );
+            Unknown24 = parser.ReadColumn< int >( 24 );
+            Unknown25 = parser.ReadColumn< int >( 25 );
+            Unknown26 = parser.ReadColumn< int >( 26 );
+            Unknown27 = parser.ReadColumn< int >( 27 );
+            Unknown28 = parser.ReadColumn< int >( 28 );
+            Unknown29 = parser.ReadColumn< int >( 29 );
+            Unknown30 = parser.ReadColumn< int >( 30 );
+            Unknown31 = parser.ReadColumn< int >( 31 );
+            Unknown32 = parser.ReadColumn< int >( 32 );
             Unknown33 = parser.ReadColumn< int >( 33 );
             Unknown34 = parser.ReadColumn< int >( 34 );
             Unknown35 = parser.ReadColumn< int >( 35 );

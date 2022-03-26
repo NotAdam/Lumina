@@ -19,7 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
         public float BalloonTime { get; set; }
         public bool IsBalloonSlow { get; set; }
         public bool BattleTalkTime { get; set; }
-        public byte Unknown54 { get; set; }
+        public byte Unknown9 { get; set; }
         public SeString Text { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -35,7 +35,7 @@ namespace Lumina.Excel.GeneratedSheets
             BalloonTime = parser.ReadColumn< float >( 6 );
             IsBalloonSlow = parser.ReadColumn< bool >( 7 );
             BattleTalkTime = parser.ReadColumn< bool >( 8 );
-            Unknown54 = parser.ReadColumn< byte >( 9 );
+            Unknown9 = parser.ReadColumn< byte >( 9 );
             Text = parser.ReadColumn< SeString >( 10 );
         }
     }

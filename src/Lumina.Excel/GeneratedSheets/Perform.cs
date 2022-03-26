@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Perform", columnHash: 0x48a99e9c )]
+    [Sheet( "Perform", columnHash: 0x7bf81fa9 )]
     public class Perform : ExcelRow
     {
         
@@ -20,8 +20,9 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ActionTimeline > AnimationPlay02 { get; set; }
         public LazyRow< ActionTimeline > StopAnimation { get; set; }
         public SeString Instrument { get; set; }
-        public int Unknown10 { get; set; }
+        public int Order { get; set; }
         public LazyRow< PerformTransient > Transient { get; set; }
+        public byte Unknown12 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -37,8 +38,9 @@ namespace Lumina.Excel.GeneratedSheets
             AnimationPlay02 = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< ushort >( 7 ), language );
             StopAnimation = new LazyRow< ActionTimeline >( gameData, parser.ReadColumn< int >( 8 ), language );
             Instrument = parser.ReadColumn< SeString >( 9 );
-            Unknown10 = parser.ReadColumn< int >( 10 );
+            Order = parser.ReadColumn< int >( 10 );
             Transient = new LazyRow< PerformTransient >( gameData, parser.ReadColumn< byte >( 11 ), language );
+            Unknown12 = parser.ReadColumn< byte >( 12 );
         }
     }
 }

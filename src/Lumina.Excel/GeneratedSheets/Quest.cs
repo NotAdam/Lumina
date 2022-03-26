@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Quest", columnHash: 0x3ca4d6c2 )]
+    [Sheet( "Quest", columnHash: 0x7bcee97f )]
     public class Quest : ExcelRow
     {
         
@@ -247,7 +247,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort ExpFactor { get; set; }
         public uint GilReward { get; set; }
         public uint Unknown1442 { get; set; }
-        public ushort GCSeals { get; set; }
+        public uint GCSeals { get; set; }
         public LazyRow< Item >[] ItemCatalyst { get; set; }
         public byte[] ItemCountCatalyst { get; set; }
         public byte ItemRewardType { get; set; }
@@ -282,7 +282,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< EventIconType > EventIconType { get; set; }
         public byte Unknown1513 { get; set; }
         public ushort SortKey { get; set; }
-        public bool Unknown54 { get; set; }
+        public bool Unknown1515 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -577,7 +577,7 @@ namespace Lumina.Excel.GeneratedSheets
             ExpFactor = parser.ReadColumn< ushort >( 1440 );
             GilReward = parser.ReadColumn< uint >( 1441 );
             Unknown1442 = parser.ReadColumn< uint >( 1442 );
-            GCSeals = parser.ReadColumn< ushort >( 1443 );
+            GCSeals = parser.ReadColumn< uint >( 1443 );
             ItemCatalyst = new LazyRow< Item >[ 3 ];
             for( var i = 0; i < 3; i++ )
                 ItemCatalyst[ i ] = new LazyRow< Item >( gameData, parser.ReadColumn< byte >( 1444 + i ), language );
@@ -632,7 +632,7 @@ namespace Lumina.Excel.GeneratedSheets
             EventIconType = new LazyRow< EventIconType >( gameData, parser.ReadColumn< byte >( 1512 ), language );
             Unknown1513 = parser.ReadColumn< byte >( 1513 );
             SortKey = parser.ReadColumn< ushort >( 1514 );
-            Unknown54 = parser.ReadColumn< bool >( 1515 );
+            Unknown1515 = parser.ReadColumn< bool >( 1515 );
         }
     }
 }

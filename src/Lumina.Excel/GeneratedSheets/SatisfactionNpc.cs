@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "SatisfactionNpc", columnHash: 0x652420ba )]
     public class SatisfactionNpc : ExcelRow
     {
-        public struct UnkStruct16Struct
+        public class UnkData16Obj
         {
             public int Item;
             public int ItemCount;
@@ -22,7 +22,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte DeliveriesPerWeek { get; set; }
         public int[] SupplyIndex { get; set; }
         public ushort[] SatisfactionRequired { get; set; }
-        public UnkStruct16Struct[] UnkStruct16 { get; set; }
+        public UnkData16Obj[] UnkData16 { get; set; }
         public byte Unknown25 { get; set; }
         public byte Unknown26 { get; set; }
         public byte Unknown27 { get; set; }
@@ -70,8 +70,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown69 { get; set; }
         public int Icon { get; set; }
         public byte Unknown71 { get; set; }
-        public byte AddedIn530 { get; set; }
-        public byte AddedIn531 { get; set; }
+        public byte Unknown72 { get; set; }
+        public byte Unknown73 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -87,13 +87,13 @@ namespace Lumina.Excel.GeneratedSheets
             SatisfactionRequired = new ushort[ 6 ];
             for( var i = 0; i < 6; i++ )
                 SatisfactionRequired[ i ] = parser.ReadColumn< ushort >( 10 + i );
-            UnkStruct16 = new UnkStruct16Struct[ 3 ];
+            UnkData16 = new UnkData16Obj[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
-                UnkStruct16[ i ] = new UnkStruct16Struct();
-                UnkStruct16[ i ].Item = parser.ReadColumn< int >( 16 + ( i * 3 + 0 ) );
-                UnkStruct16[ i ].ItemCount = parser.ReadColumn< int >( 16 + ( i * 3 + 1 ) );
-                UnkStruct16[ i ].IsHQ = parser.ReadColumn< int >( 16 + ( i * 3 + 2 ) );
+                UnkData16[ i ] = new UnkData16Obj();
+                UnkData16[ i ].Item = parser.ReadColumn< int >( 16 + ( i * 3 + 0 ) );
+                UnkData16[ i ].ItemCount = parser.ReadColumn< int >( 16 + ( i * 3 + 1 ) );
+                UnkData16[ i ].IsHQ = parser.ReadColumn< int >( 16 + ( i * 3 + 2 ) );
             }
             Unknown25 = parser.ReadColumn< byte >( 25 );
             Unknown26 = parser.ReadColumn< byte >( 26 );
@@ -142,8 +142,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown69 = parser.ReadColumn< bool >( 69 );
             Icon = parser.ReadColumn< int >( 70 );
             Unknown71 = parser.ReadColumn< byte >( 71 );
-            AddedIn530 = parser.ReadColumn< byte >( 72 );
-            AddedIn531 = parser.ReadColumn< byte >( 73 );
+            Unknown72 = parser.ReadColumn< byte >( 72 );
+            Unknown73 = parser.ReadColumn< byte >( 73 );
         }
     }
 }

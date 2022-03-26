@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "AnimaWeapon5TradeItem", columnHash: 0x40f1e693 )]
     public class AnimaWeapon5TradeItem : ExcelRow
     {
-        public struct UnkStruct3Struct
+        public class UnkData3Obj
         {
             public uint ItemName;
             public bool IsHQ;
@@ -19,7 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown0 { get; set; }
         public LazyRow< Item > CrystalSand { get; set; }
         public byte Qty { get; set; }
-        public UnkStruct3Struct[] UnkStruct3 { get; set; }
+        public UnkData3Obj[] UnkData3 { get; set; }
         public LazyRow< AnimaWeapon5PatternGroup > Category { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -29,13 +29,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown0 = parser.ReadColumn< byte >( 0 );
             CrystalSand = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 1 ), language );
             Qty = parser.ReadColumn< byte >( 2 );
-            UnkStruct3 = new UnkStruct3Struct[ 8 ];
+            UnkData3 = new UnkData3Obj[ 8 ];
             for( var i = 0; i < 8; i++ )
             {
-                UnkStruct3[ i ] = new UnkStruct3Struct();
-                UnkStruct3[ i ].ItemName = parser.ReadColumn< uint >( 3 + ( i * 3 + 0 ) );
-                UnkStruct3[ i ].IsHQ = parser.ReadColumn< bool >( 3 + ( i * 3 + 1 ) );
-                UnkStruct3[ i ].Quantity = parser.ReadColumn< byte >( 3 + ( i * 3 + 2 ) );
+                UnkData3[ i ] = new UnkData3Obj();
+                UnkData3[ i ].ItemName = parser.ReadColumn< uint >( 3 + ( i * 3 + 0 ) );
+                UnkData3[ i ].IsHQ = parser.ReadColumn< bool >( 3 + ( i * 3 + 1 ) );
+                UnkData3[ i ].Quantity = parser.ReadColumn< byte >( 3 + ( i * 3 + 2 ) );
             }
             Category = new LazyRow< AnimaWeapon5PatternGroup >( gameData, parser.ReadColumn< byte >( 27 ), language );
         }

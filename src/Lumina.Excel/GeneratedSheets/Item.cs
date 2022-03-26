@@ -6,15 +6,15 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Item", columnHash: 0xa4a9422a )]
+    [Sheet( "Item", columnHash: 0x800968c9 )]
     public class Item : ExcelRow
     {
-        public struct UnkStruct60Struct
+        public class UnkData59Obj
         {
             public byte BaseParam;
             public short BaseParamValue;
         }
-        public struct UnkStruct74Struct
+        public class UnkData73Obj
         {
             public byte BaseParamSpecial;
             public short BaseParamValueSpecial;
@@ -60,9 +60,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsCollectable { get; set; }
         public bool AlwaysCollectable { get; set; }
         public ushort AetherialReduce { get; set; }
-        public ushort Unknown54 { get; set; }
         public byte LevelEquip { get; set; }
-        public byte Unknown42 { get; set; }
+        public byte Unknown41 { get; set; }
         public byte EquipRestriction { get; set; }
         public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
         public LazyRow< GrandCompany > GrandCompany { get; set; }
@@ -71,24 +70,24 @@ namespace Lumina.Excel.GeneratedSheets
         public ulong ModelMain { get; set; }
         public ulong ModelSub { get; set; }
         public LazyRow< ClassJob > ClassJobUse { get; set; }
-        public byte Unknown51 { get; set; }
+        public byte Unknown50 { get; set; }
         public ushort DamagePhys { get; set; }
         public ushort DamageMag { get; set; }
         public ushort Delayms { get; set; }
-        public byte Unknown55 { get; set; }
+        public byte Unknown54 { get; set; }
         public ushort BlockRate { get; set; }
         public ushort Block { get; set; }
         public ushort DefensePhys { get; set; }
         public ushort DefenseMag { get; set; }
-        public UnkStruct60Struct[] UnkStruct60 { get; set; }
+        public UnkData59Obj[] UnkData59 { get; set; }
         public LazyRow< ItemSpecialBonus > ItemSpecialBonus { get; set; }
         public byte ItemSpecialBonusParam { get; set; }
-        public UnkStruct74Struct[] UnkStruct74 { get; set; }
+        public UnkData73Obj[] UnkData73 { get; set; }
         public byte MaterializeType { get; set; }
         public byte MateriaSlotCount { get; set; }
         public bool IsAdvancedMeldingPermitted { get; set; }
         public bool IsPvP { get; set; }
-        public byte Unknown90 { get; set; }
+        public byte Unknown89 { get; set; }
         public bool IsGlamourous { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -135,48 +134,47 @@ namespace Lumina.Excel.GeneratedSheets
             IsCollectable = parser.ReadColumn< bool >( 37 );
             AlwaysCollectable = parser.ReadColumn< bool >( 38 );
             AetherialReduce = parser.ReadColumn< ushort >( 39 );
-            Unknown54 = parser.ReadColumn< ushort >( 40 );
-            LevelEquip = parser.ReadColumn< byte >( 41 );
-            Unknown42 = parser.ReadColumn< byte >( 42 );
-            EquipRestriction = parser.ReadColumn< byte >( 43 );
-            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 44 ), language );
-            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< byte >( 45 ), language );
-            ItemSeries = new LazyRow< ItemSeries >( gameData, parser.ReadColumn< byte >( 46 ), language );
-            BaseParamModifier = parser.ReadColumn< byte >( 47 );
-            ModelMain = parser.ReadColumn< ulong >( 48 );
-            ModelSub = parser.ReadColumn< ulong >( 49 );
-            ClassJobUse = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 50 ), language );
-            Unknown51 = parser.ReadColumn< byte >( 51 );
-            DamagePhys = parser.ReadColumn< ushort >( 52 );
-            DamageMag = parser.ReadColumn< ushort >( 53 );
-            Delayms = parser.ReadColumn< ushort >( 54 );
-            Unknown55 = parser.ReadColumn< byte >( 55 );
-            BlockRate = parser.ReadColumn< ushort >( 56 );
-            Block = parser.ReadColumn< ushort >( 57 );
-            DefensePhys = parser.ReadColumn< ushort >( 58 );
-            DefenseMag = parser.ReadColumn< ushort >( 59 );
-            UnkStruct60 = new UnkStruct60Struct[ 6 ];
+            LevelEquip = parser.ReadColumn< byte >( 40 );
+            Unknown41 = parser.ReadColumn< byte >( 41 );
+            EquipRestriction = parser.ReadColumn< byte >( 42 );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 43 ), language );
+            GrandCompany = new LazyRow< GrandCompany >( gameData, parser.ReadColumn< byte >( 44 ), language );
+            ItemSeries = new LazyRow< ItemSeries >( gameData, parser.ReadColumn< byte >( 45 ), language );
+            BaseParamModifier = parser.ReadColumn< byte >( 46 );
+            ModelMain = parser.ReadColumn< ulong >( 47 );
+            ModelSub = parser.ReadColumn< ulong >( 48 );
+            ClassJobUse = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 49 ), language );
+            Unknown50 = parser.ReadColumn< byte >( 50 );
+            DamagePhys = parser.ReadColumn< ushort >( 51 );
+            DamageMag = parser.ReadColumn< ushort >( 52 );
+            Delayms = parser.ReadColumn< ushort >( 53 );
+            Unknown54 = parser.ReadColumn< byte >( 54 );
+            BlockRate = parser.ReadColumn< ushort >( 55 );
+            Block = parser.ReadColumn< ushort >( 56 );
+            DefensePhys = parser.ReadColumn< ushort >( 57 );
+            DefenseMag = parser.ReadColumn< ushort >( 58 );
+            UnkData59 = new UnkData59Obj[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
-                UnkStruct60[ i ] = new UnkStruct60Struct();
-                UnkStruct60[ i ].BaseParam = parser.ReadColumn< byte >( 60 + ( i * 2 + 0 ) );
-                UnkStruct60[ i ].BaseParamValue = parser.ReadColumn< short >( 60 + ( i * 2 + 1 ) );
+                UnkData59[ i ] = new UnkData59Obj();
+                UnkData59[ i ].BaseParam = parser.ReadColumn< byte >( 59 + ( i * 2 + 0 ) );
+                UnkData59[ i ].BaseParamValue = parser.ReadColumn< short >( 59 + ( i * 2 + 1 ) );
             }
-            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( gameData, parser.ReadColumn< byte >( 72 ), language );
-            ItemSpecialBonusParam = parser.ReadColumn< byte >( 73 );
-            UnkStruct74 = new UnkStruct74Struct[ 6 ];
+            ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( gameData, parser.ReadColumn< byte >( 71 ), language );
+            ItemSpecialBonusParam = parser.ReadColumn< byte >( 72 );
+            UnkData73 = new UnkData73Obj[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
-                UnkStruct74[ i ] = new UnkStruct74Struct();
-                UnkStruct74[ i ].BaseParamSpecial = parser.ReadColumn< byte >( 74 + ( i * 2 + 0 ) );
-                UnkStruct74[ i ].BaseParamValueSpecial = parser.ReadColumn< short >( 74 + ( i * 2 + 1 ) );
+                UnkData73[ i ] = new UnkData73Obj();
+                UnkData73[ i ].BaseParamSpecial = parser.ReadColumn< byte >( 73 + ( i * 2 + 0 ) );
+                UnkData73[ i ].BaseParamValueSpecial = parser.ReadColumn< short >( 73 + ( i * 2 + 1 ) );
             }
-            MaterializeType = parser.ReadColumn< byte >( 86 );
-            MateriaSlotCount = parser.ReadColumn< byte >( 87 );
-            IsAdvancedMeldingPermitted = parser.ReadColumn< bool >( 88 );
-            IsPvP = parser.ReadColumn< bool >( 89 );
-            Unknown90 = parser.ReadColumn< byte >( 90 );
-            IsGlamourous = parser.ReadColumn< bool >( 91 );
+            MaterializeType = parser.ReadColumn< byte >( 85 );
+            MateriaSlotCount = parser.ReadColumn< byte >( 86 );
+            IsAdvancedMeldingPermitted = parser.ReadColumn< bool >( 87 );
+            IsPvP = parser.ReadColumn< bool >( 88 );
+            Unknown89 = parser.ReadColumn< byte >( 89 );
+            IsGlamourous = parser.ReadColumn< bool >( 90 );
         }
     }
 }

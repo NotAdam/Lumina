@@ -9,19 +9,19 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "InstanceContent", columnHash: 0xa4243e29 )]
     public class InstanceContent : ExcelRow
     {
-        public struct UnkStruct25Struct
+        public class UnkData25Obj
         {
             public ushort BossExp;
         }
-        public struct UnkStruct30Struct
+        public class UnkData30Obj
         {
             public uint BossCurrencyA;
         }
-        public struct UnkStruct35Struct
+        public class UnkData35Obj
         {
             public ushort BossCurrencyB;
         }
-        public struct UnkStruct40Struct
+        public class UnkData40Obj
         {
             public ushort BossCurrencyC;
         }
@@ -33,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< BGM > BGM { get; set; }
         public LazyRow< BGM > WinBGM { get; set; }
         public LazyRow< Cutscene > Cutscene { get; set; }
-        public uint Unknown7 { get; set; }
+        public uint LGBEventRange { get; set; }
         public ushort Order { get; set; }
         public byte Colosseum { get; set; }
         public bool Unknown10 { get; set; }
@@ -51,10 +51,10 @@ namespace Lumina.Excel.GeneratedSheets
         public uint FinalBossCurrencyA { get; set; }
         public ushort FinalBossCurrencyB { get; set; }
         public ushort NewPlayerBonusB { get; set; }
-        public UnkStruct25Struct[] UnkStruct25 { get; set; }
-        public UnkStruct30Struct[] UnkStruct30 { get; set; }
-        public UnkStruct35Struct[] UnkStruct35 { get; set; }
-        public UnkStruct40Struct[] UnkStruct40 { get; set; }
+        public UnkData25Obj[] UnkData25 { get; set; }
+        public UnkData30Obj[] UnkData30 { get; set; }
+        public UnkData35Obj[] UnkData35 { get; set; }
+        public UnkData40Obj[] UnkData40 { get; set; }
         public ushort Unknown45 { get; set; }
         public uint InstanceClearGil { get; set; }
         public uint InstanceContentRewardItem { get; set; }
@@ -71,8 +71,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown58 { get; set; }
         public ushort Unknown59 { get; set; }
         public ushort Unknown60 { get; set; }
-        public ushort Unknown540 { get; set; }
-        public ushort Unknown541 { get; set; }
+        public ushort Unknown61 { get; set; }
+        public ushort Unknown62 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -85,7 +85,7 @@ namespace Lumina.Excel.GeneratedSheets
             BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 4 ), language );
             WinBGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 5 ), language );
             Cutscene = new LazyRow< Cutscene >( gameData, parser.ReadColumn< uint >( 6 ), language );
-            Unknown7 = parser.ReadColumn< uint >( 7 );
+            LGBEventRange = parser.ReadColumn< uint >( 7 );
             Order = parser.ReadColumn< ushort >( 8 );
             Colosseum = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
@@ -103,29 +103,29 @@ namespace Lumina.Excel.GeneratedSheets
             FinalBossCurrencyA = parser.ReadColumn< uint >( 22 );
             FinalBossCurrencyB = parser.ReadColumn< ushort >( 23 );
             NewPlayerBonusB = parser.ReadColumn< ushort >( 24 );
-            UnkStruct25 = new UnkStruct25Struct[ 5 ];
+            UnkData25 = new UnkData25Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct25[ i ] = new UnkStruct25Struct();
-                UnkStruct25[ i ].BossExp = parser.ReadColumn< ushort >( 25 + ( i * 1 + 0 ) );
+                UnkData25[ i ] = new UnkData25Obj();
+                UnkData25[ i ].BossExp = parser.ReadColumn< ushort >( 25 + ( i * 1 + 0 ) );
             }
-            UnkStruct30 = new UnkStruct30Struct[ 5 ];
+            UnkData30 = new UnkData30Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct30[ i ] = new UnkStruct30Struct();
-                UnkStruct30[ i ].BossCurrencyA = parser.ReadColumn< uint >( 30 + ( i * 1 + 0 ) );
+                UnkData30[ i ] = new UnkData30Obj();
+                UnkData30[ i ].BossCurrencyA = parser.ReadColumn< uint >( 30 + ( i * 1 + 0 ) );
             }
-            UnkStruct35 = new UnkStruct35Struct[ 5 ];
+            UnkData35 = new UnkData35Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct35[ i ] = new UnkStruct35Struct();
-                UnkStruct35[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 35 + ( i * 1 + 0 ) );
+                UnkData35[ i ] = new UnkData35Obj();
+                UnkData35[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 35 + ( i * 1 + 0 ) );
             }
-            UnkStruct40 = new UnkStruct40Struct[ 5 ];
+            UnkData40 = new UnkData40Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
             {
-                UnkStruct40[ i ] = new UnkStruct40Struct();
-                UnkStruct40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 1 + 0 ) );
+                UnkData40[ i ] = new UnkData40Obj();
+                UnkData40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 1 + 0 ) );
             }
             Unknown45 = parser.ReadColumn< ushort >( 45 );
             InstanceClearGil = parser.ReadColumn< uint >( 46 );
@@ -143,8 +143,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown58 = parser.ReadColumn< bool >( 58 );
             Unknown59 = parser.ReadColumn< ushort >( 59 );
             Unknown60 = parser.ReadColumn< ushort >( 60 );
-            Unknown540 = parser.ReadColumn< ushort >( 61 );
-            Unknown541 = parser.ReadColumn< ushort >( 62 );
+            Unknown61 = parser.ReadColumn< ushort >( 61 );
+            Unknown62 = parser.ReadColumn< ushort >( 62 );
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > RSEFHands { get; set; }
         public LazyRow< Item > RSEFLegs { get; set; }
         public LazyRow< Item > RSEFFeet { get; set; }
-        public byte Unknown54 { get; set; }
+        public byte Unknown10 { get; set; }
         public LazyRow< ExVersion > ExPac { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -37,7 +37,7 @@ namespace Lumina.Excel.GeneratedSheets
             RSEFHands = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 7 ), language );
             RSEFLegs = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 8 ), language );
             RSEFFeet = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 9 ), language );
-            Unknown54 = parser.ReadColumn< byte >( 10 );
+            Unknown10 = parser.ReadColumn< byte >( 10 );
             ExPac = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 11 ), language );
         }
     }

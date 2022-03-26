@@ -9,7 +9,7 @@ namespace Lumina.Excel.GeneratedSheets
     [Sheet( "ItemFood", columnHash: 0xe09a474d )]
     public class ItemFood : ExcelRow
     {
-        public struct UnkStruct1Struct
+        public class UnkData1Obj
         {
             public byte BaseParam;
             public bool IsRelative;
@@ -20,23 +20,23 @@ namespace Lumina.Excel.GeneratedSheets
         }
         
         public byte EXPBonusPct { get; set; }
-        public UnkStruct1Struct[] UnkStruct1 { get; set; }
+        public UnkData1Obj[] UnkData1 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             EXPBonusPct = parser.ReadColumn< byte >( 0 );
-            UnkStruct1 = new UnkStruct1Struct[ 3 ];
+            UnkData1 = new UnkData1Obj[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
-                UnkStruct1[ i ] = new UnkStruct1Struct();
-                UnkStruct1[ i ].BaseParam = parser.ReadColumn< byte >( 1 + ( i * 6 + 0 ) );
-                UnkStruct1[ i ].IsRelative = parser.ReadColumn< bool >( 1 + ( i * 6 + 1 ) );
-                UnkStruct1[ i ].Value = parser.ReadColumn< sbyte >( 1 + ( i * 6 + 2 ) );
-                UnkStruct1[ i ].Max = parser.ReadColumn< short >( 1 + ( i * 6 + 3 ) );
-                UnkStruct1[ i ].ValueHQ = parser.ReadColumn< sbyte >( 1 + ( i * 6 + 4 ) );
-                UnkStruct1[ i ].MaxHQ = parser.ReadColumn< short >( 1 + ( i * 6 + 5 ) );
+                UnkData1[ i ] = new UnkData1Obj();
+                UnkData1[ i ].BaseParam = parser.ReadColumn< byte >( 1 + ( i * 6 + 0 ) );
+                UnkData1[ i ].IsRelative = parser.ReadColumn< bool >( 1 + ( i * 6 + 1 ) );
+                UnkData1[ i ].Value = parser.ReadColumn< sbyte >( 1 + ( i * 6 + 2 ) );
+                UnkData1[ i ].Max = parser.ReadColumn< short >( 1 + ( i * 6 + 3 ) );
+                UnkData1[ i ].ValueHQ = parser.ReadColumn< sbyte >( 1 + ( i * 6 + 4 ) );
+                UnkData1[ i ].MaxHQ = parser.ReadColumn< short >( 1 + ( i * 6 + 5 ) );
             }
         }
     }

@@ -11,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public uint Image { get; set; }
-        public short Jingle { get; set; }
+        public LazyRow< Jingle > Jingle { get; set; }
         public sbyte Type { get; set; }
         public bool Lang { get; set; }
         
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Image = parser.ReadColumn< uint >( 0 );
-            Jingle = parser.ReadColumn< short >( 1 );
+            Jingle = new LazyRow< Jingle >( gameData, parser.ReadColumn< short >( 1 ), language );
             Type = parser.ReadColumn< sbyte >( 2 );
             Lang = parser.ReadColumn< bool >( 3 );
         }

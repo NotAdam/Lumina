@@ -10,23 +10,27 @@ namespace Lumina.Excel.GeneratedSheets
     public class HowTo : ExcelRow
     {
         
-        public SeString Unknown0 { get; set; }
-        public bool Unknown1 { get; set; }
-        public LazyRow< HowToPage >[] Images { get; set; }
+        public SeString Name { get; set; }
+        public bool Announce { get; set; }
+        public LazyRow< HowToPage >[] HowToPagePC { get; set; }
+        public LazyRow< HowToPage >[] HowToPageController { get; set; }
         public LazyRow< HowToCategory > Category { get; set; }
-        public byte Unknown13 { get; set; }
+        public byte Sort { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< SeString >( 0 );
-            Unknown1 = parser.ReadColumn< bool >( 1 );
-            Images = new LazyRow< HowToPage >[ 10 ];
-            for( var i = 0; i < 10; i++ )
-                Images[ i ] = new LazyRow< HowToPage >( gameData, parser.ReadColumn< short >( 2 + i ), language );
+            Name = parser.ReadColumn< SeString >( 0 );
+            Announce = parser.ReadColumn< bool >( 1 );
+            HowToPagePC = new LazyRow< HowToPage >[ 5 ];
+            for( var i = 0; i < 5; i++ )
+                HowToPagePC[ i ] = new LazyRow< HowToPage >( gameData, parser.ReadColumn< short >( 2 + i ), language );
+            HowToPageController = new LazyRow< HowToPage >[ 5 ];
+            for( var i = 0; i < 5; i++ )
+                HowToPageController[ i ] = new LazyRow< HowToPage >( gameData, parser.ReadColumn< short >( 7 + i ), language );
             Category = new LazyRow< HowToCategory >( gameData, parser.ReadColumn< sbyte >( 12 ), language );
-            Unknown13 = parser.ReadColumn< byte >( 13 );
+            Sort = parser.ReadColumn< byte >( 13 );
         }
     }
 }

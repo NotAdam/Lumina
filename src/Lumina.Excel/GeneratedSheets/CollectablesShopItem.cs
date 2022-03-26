@@ -14,8 +14,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< CollectablesShopItemGroup > CollectablesShopItemGroup { get; set; }
         public ushort LevelMin { get; set; }
         public ushort LevelMax { get; set; }
-        public byte Unknown4 { get; set; }
-        public byte Unknown5 { get; set; }
+        public byte Stars { get; set; }
+        public byte Key { get; set; }
         public LazyRow< CollectablesShopRefine > CollectablesShopRefine { get; set; }
         public LazyRow< CollectablesShopRewardScrip > CollectablesShopRewardScrip { get; set; }
         
@@ -27,8 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
             CollectablesShopItemGroup = new LazyRow< CollectablesShopItemGroup >( gameData, parser.ReadColumn< byte >( 1 ), language );
             LevelMin = parser.ReadColumn< ushort >( 2 );
             LevelMax = parser.ReadColumn< ushort >( 3 );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
+            Stars = parser.ReadColumn< byte >( 4 );
+            Key = parser.ReadColumn< byte >( 5 );
             CollectablesShopRefine = new LazyRow< CollectablesShopRefine >( gameData, parser.ReadColumn< ushort >( 6 ), language );
             CollectablesShopRewardScrip = new LazyRow< CollectablesShopRewardScrip >( gameData, parser.ReadColumn< ushort >( 7 ), language );
         }

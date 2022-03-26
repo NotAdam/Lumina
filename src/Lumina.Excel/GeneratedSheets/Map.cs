@@ -10,7 +10,7 @@ namespace Lumina.Excel.GeneratedSheets
     public class Map : ExcelRow
     {
         
-        public byte MapCondition { get; set; }
+        public LazyRow< MapCondition > MapCondition { get; set; }
         public byte PriorityCategoryUI { get; set; }
         public byte PriorityUI { get; set; }
         public sbyte MapIndex { get; set; }
@@ -33,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            MapCondition = parser.ReadColumn< byte >( 0 );
+            MapCondition = new LazyRow< MapCondition >( gameData, parser.ReadColumn< byte >( 0 ), language );
             PriorityCategoryUI = parser.ReadColumn< byte >( 1 );
             PriorityUI = parser.ReadColumn< byte >( 2 );
             MapIndex = parser.ReadColumn< sbyte >( 3 );
