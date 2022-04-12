@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InstanceContentGuide", columnHash: 0x5d58cc84 )]
-    public partial class InstanceContentGuide : ExcelRow
+    public class InstanceContentGuide : ExcelRow
     {
         
         public LazyRow< InstanceContent > Instance { get; set; }

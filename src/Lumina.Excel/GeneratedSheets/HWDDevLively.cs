@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDDevLively", columnHash: 0xe18cbe18 )]
-    public partial class HWDDevLively : ExcelRow
+    public class HWDDevLively : ExcelRow
     {
         
         public LazyRow< ENpcBase > ENPC { get; set; }

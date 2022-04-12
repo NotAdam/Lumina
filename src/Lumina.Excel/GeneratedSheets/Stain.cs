@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Stain", columnHash: 0xa2420e68 )]
-    public partial class Stain : ExcelRow
+    public class Stain : ExcelRow
     {
         
         public uint Color { get; set; }

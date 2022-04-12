@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishingSpot", columnHash: 0xb014a98d )]
-    public partial class FishingSpot : ExcelRow
+    public class FishingSpot : ExcelRow
     {
         
         public byte GatheringLevel { get; set; }

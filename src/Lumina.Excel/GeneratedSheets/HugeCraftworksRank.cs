@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HugeCraftworksRank", columnHash: 0xf7af7ac5 )]
-    public partial class HugeCraftworksRank : ExcelRow
+    public class HugeCraftworksRank : ExcelRow
     {
         
         public byte CrafterLevel { get; set; }

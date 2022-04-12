@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TextCommandParam", columnHash: 0xdebb20e3 )]
-    public partial class TextCommandParam : ExcelRow
+    public class TextCommandParam : ExcelRow
     {
         
         public SeString Param { get; set; }

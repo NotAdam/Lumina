@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringType", columnHash: 0x182c5eea )]
-    public partial class GatheringType : ExcelRow
+    public class GatheringType : ExcelRow
     {
         
         public SeString Name { get; set; }

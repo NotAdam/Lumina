@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringSubCategory", columnHash: 0x6dac8145 )]
-    public partial class GatheringSubCategory : ExcelRow
+    public class GatheringSubCategory : ExcelRow
     {
         
         public LazyRow< GatheringType > GatheringType { get; set; }

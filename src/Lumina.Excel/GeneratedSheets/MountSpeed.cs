@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MountSpeed", columnHash: 0x91ab8236 )]
-    public partial class MountSpeed : ExcelRow
+    public class MountSpeed : ExcelRow
     {
         
         public LazyRow< Quest > Quest { get; set; }

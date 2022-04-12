@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BNpcBase", columnHash: 0xdd911c47 )]
-    public partial class BNpcBase : ExcelRow
+    [Sheet( "BNpcBase", columnHash: 0xfd8e0ebb )]
+    public class BNpcBase : ExcelRow
     {
         
         public LazyRow< Behavior > Behavior { get; set; }
@@ -23,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown10 { get; set; }
         public LazyRow< ArrayEventHandler > ArrayEventHandler { get; set; }
         public LazyRow< BNpcParts > BNpcParts { get; set; }
-        public bool Unknown13 { get; set; }
+        public byte Unknown13 { get; set; }
         public bool IsTargetLine { get; set; }
         public bool IsDisplayLevel { get; set; }
         public bool Unknown16 { get; set; }
@@ -49,7 +49,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown10 = parser.ReadColumn< bool >( 10 );
             ArrayEventHandler = new LazyRow< ArrayEventHandler >( gameData, parser.ReadColumn< int >( 11 ), language );
             BNpcParts = new LazyRow< BNpcParts >( gameData, parser.ReadColumn< byte >( 12 ), language );
-            Unknown13 = parser.ReadColumn< bool >( 13 );
+            Unknown13 = parser.ReadColumn< byte >( 13 );
             IsTargetLine = parser.ReadColumn< bool >( 14 );
             IsDisplayLevel = parser.ReadColumn< bool >( 15 );
             Unknown16 = parser.ReadColumn< bool >( 16 );

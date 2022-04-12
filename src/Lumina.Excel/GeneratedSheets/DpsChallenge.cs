@@ -6,11 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DpsChallenge", columnHash: 0x944cf024 )]
-    public partial class DpsChallenge : ExcelRow
+    [Sheet( "DpsChallenge", columnHash: 0x2fdac054 )]
+    public class DpsChallenge : ExcelRow
     {
         
         public ushort PlayerLevel { get; set; }
+        public bool Unknown1 { get; set; }
+        public ushort Unknown2 { get; set; }
         public LazyRow< PlaceName > PlaceName { get; set; }
         public uint Icon { get; set; }
         public ushort Order { get; set; }
@@ -22,11 +24,13 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             PlayerLevel = parser.ReadColumn< ushort >( 0 );
-            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 1 ), language );
-            Icon = parser.ReadColumn< uint >( 2 );
-            Order = parser.ReadColumn< ushort >( 3 );
-            Name = parser.ReadColumn< SeString >( 4 );
-            Description = parser.ReadColumn< SeString >( 5 );
+            Unknown1 = parser.ReadColumn< bool >( 1 );
+            Unknown2 = parser.ReadColumn< ushort >( 2 );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 3 ), language );
+            Icon = parser.ReadColumn< uint >( 4 );
+            Order = parser.ReadColumn< ushort >( 5 );
+            Name = parser.ReadColumn< SeString >( 6 );
+            Description = parser.ReadColumn< SeString >( 7 );
         }
     }
 }

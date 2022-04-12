@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FieldMarker", columnHash: 0x23003392 )]
-    public partial class FieldMarker : ExcelRow
+    public class FieldMarker : ExcelRow
     {
         
         public LazyRow< VFX > VFX { get; set; }

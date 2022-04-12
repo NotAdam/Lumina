@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Warp", columnHash: 0x1a234b7b )]
-    public partial class Warp : ExcelRow
+    public class Warp : ExcelRow
     {
         
         public LazyRow< Level > PopRange { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDCrafterSupplyReward", columnHash: 0x829e9d8e )]
-    public partial class HWDCrafterSupplyReward : ExcelRow
+    public class HWDCrafterSupplyReward : ExcelRow
     {
         
         public ushort ScriptRewardAmount { get; set; }

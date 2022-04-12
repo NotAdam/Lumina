@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EurekaGrowData", columnHash: 0xd870e208 )]
-    public partial class EurekaGrowData : ExcelRow
+    public class EurekaGrowData : ExcelRow
     {
         
         public ushort BaseResistance { get; set; }

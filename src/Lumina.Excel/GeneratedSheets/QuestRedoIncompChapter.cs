@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestRedoIncompChapter", columnHash: 0xd870e208 )]
-    public partial class QuestRedoIncompChapter : ExcelRow
+    public class QuestRedoIncompChapter : ExcelRow
     {
         
         public ushort Chapter { get; set; }

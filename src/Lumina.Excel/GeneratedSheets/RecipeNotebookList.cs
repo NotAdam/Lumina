@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecipeNotebookList", columnHash: 0xa067051f )]
-    public partial class RecipeNotebookList : ExcelRow
+    public class RecipeNotebookList : ExcelRow
     {
         
         public byte Count { get; set; }

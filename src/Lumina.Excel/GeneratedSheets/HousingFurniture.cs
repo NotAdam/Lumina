@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingFurniture", columnHash: 0xccfbe5ff )]
-    public partial class HousingFurniture : ExcelRow
+    public class HousingFurniture : ExcelRow
     {
         
         public ushort ModelKey { get; set; }
@@ -39,7 +39,7 @@ namespace Lumina.Excel.GeneratedSheets
             CustomTalk = new LazyRow< CustomTalk >( gameData, parser.ReadColumn< uint >( 6 ), language );
             Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 7 ), language );
             DestroyOnRemoval = parser.ReadColumn< bool >( 8 );
-            #warning generator warning: the definition for this field (Tooltip) has an invalid type for a LazyRow - is a bool when should be numeric!
+            #warning generator error: the definition for this field (Tooltip) has an invalid type for a LazyRow
             Unknown10 = parser.ReadColumn< byte >( 10 );
             Unknown11 = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );

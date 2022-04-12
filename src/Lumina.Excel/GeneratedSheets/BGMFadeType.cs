@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMFadeType", columnHash: 0xe018b5fa )]
-    public partial class BGMFadeType : ExcelRow
+    public class BGMFadeType : ExcelRow
     {
         
         public float FadeOutTime { get; set; }

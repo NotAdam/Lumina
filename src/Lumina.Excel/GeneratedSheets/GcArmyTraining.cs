@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GcArmyTraining", columnHash: 0x274780bb )]
-    public partial class GcArmyTraining : ExcelRow
+    public class GcArmyTraining : ExcelRow
     {
         
         public sbyte PhysicalBonus { get; set; }

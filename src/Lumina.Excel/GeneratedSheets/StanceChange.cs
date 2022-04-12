@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "StanceChange", columnHash: 0x3772605c )]
-    public partial class StanceChange : ExcelRow
+    public class StanceChange : ExcelRow
     {
         
         public ushort Unknown0 { get; set; }

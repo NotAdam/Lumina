@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OnlineStatus", columnHash: 0xd87db84c )]
-    public partial class OnlineStatus : ExcelRow
+    public class OnlineStatus : ExcelRow
     {
         
         public bool List { get; set; }

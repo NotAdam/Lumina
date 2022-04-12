@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EurekaMagiaAction", columnHash: 0x5a516458 )]
-    public partial class EurekaMagiaAction : ExcelRow
+    public class EurekaMagiaAction : ExcelRow
     {
         
         public LazyRow< Action > Action { get; set; }

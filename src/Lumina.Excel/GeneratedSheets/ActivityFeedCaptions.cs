@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActivityFeedCaptions", columnHash: 0x776ee24c )]
-    public partial class ActivityFeedCaptions : ExcelRow
+    public class ActivityFeedCaptions : ExcelRow
     {
         
         public SeString JA { get; set; }

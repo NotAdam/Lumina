@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "VFX", columnHash: 0xdebb20e3 )]
-    public partial class VFX : ExcelRow
+    public class VFX : ExcelRow
     {
         
         public SeString Location { get; set; }

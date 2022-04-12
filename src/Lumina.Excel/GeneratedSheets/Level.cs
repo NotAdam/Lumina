@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Level", columnHash: 0xd3d8d868 )]
-    public partial class Level : ExcelRow
+    public class Level : ExcelRow
     {
         
         public float X { get; set; }

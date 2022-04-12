@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ItemSearchCategory", columnHash: 0xeffa5b93 )]
-    public partial class ItemSearchCategory : ExcelRow
+    [Sheet( "ItemSearchCategory", columnHash: 0x95df38b2 )]
+    public class ItemSearchCategory : ExcelRow
     {
         
         public SeString Name { get; set; }
@@ -15,6 +15,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Category { get; set; }
         public byte Order { get; set; }
         public LazyRow< ClassJob > ClassJob { get; set; }
+        public bool Unknown5 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -25,6 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             Category = parser.ReadColumn< byte >( 2 );
             Order = parser.ReadColumn< byte >( 3 );
             ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< sbyte >( 4 ), language );
+            Unknown5 = parser.ReadColumn< bool >( 5 );
         }
     }
 }

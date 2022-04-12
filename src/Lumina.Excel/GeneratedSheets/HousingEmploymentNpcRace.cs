@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingEmploymentNpcRace", columnHash: 0xdebb20e3 )]
-    public partial class HousingEmploymentNpcRace : ExcelRow
+    public class HousingEmploymentNpcRace : ExcelRow
     {
         
         public SeString Race { get; set; }

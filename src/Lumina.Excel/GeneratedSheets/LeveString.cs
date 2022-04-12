@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LeveString", columnHash: 0xdebb20e3 )]
-    public partial class LeveString : ExcelRow
+    public class LeveString : ExcelRow
     {
         
         public SeString Objective { get; set; }

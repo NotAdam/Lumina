@@ -7,8 +7,16 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyLeve", columnHash: 0x688cf3da )]
-    public partial class CompanyLeve : ExcelRow
+    public class CompanyLeve : ExcelRow
     {
+        public class UnkData56Obj
+        {
+            public uint ToDoParam;
+        }
+        public class UnkData104Obj
+        {
+            public byte NumOfAppearance;
+        }
         
         public ushort[] RoutePointTime { get; set; }
         public int[] BaseID { get; set; }
@@ -17,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< EventItem >[] ItemsInvolved { get; set; }
         public byte[] ItemsInvolvedQty { get; set; }
         public byte[] ItemDropRate { get; set; }
-        public uint[] ToDoParam { get; set; }
+        public UnkData56Obj[] UnkData56 { get; set; }
         public uint Unknown62 { get; set; }
         public uint Unknown63 { get; set; }
         public uint Unknown64 { get; set; }
@@ -60,7 +68,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown101 { get; set; }
         public uint Unknown102 { get; set; }
         public uint Unknown103 { get; set; }
-        public byte[] NumOfAppearance { get; set; }
+        public UnkData104Obj[] UnkData104 { get; set; }
         public byte Unknown112 { get; set; }
         public byte Unknown113 { get; set; }
         public byte Unknown114 { get; set; }
@@ -146,9 +154,12 @@ namespace Lumina.Excel.GeneratedSheets
             ItemDropRate = new byte[ 8 ];
             for( var i = 0; i < 8; i++ )
                 ItemDropRate[ i ] = parser.ReadColumn< byte >( 48 + i );
-            ToDoParam = new uint[ 6 ];
+            UnkData56 = new UnkData56Obj[ 6 ];
             for( var i = 0; i < 6; i++ )
-                ToDoParam[ i ] = parser.ReadColumn< uint >( 56 + i );
+            {
+                UnkData56[ i ] = new UnkData56Obj();
+                UnkData56[ i ].ToDoParam = parser.ReadColumn< uint >( 56 + ( i * 1 + 0 ) );
+            }
             Unknown62 = parser.ReadColumn< uint >( 62 );
             Unknown63 = parser.ReadColumn< uint >( 63 );
             Unknown64 = parser.ReadColumn< uint >( 64 );
@@ -191,9 +202,12 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown101 = parser.ReadColumn< uint >( 101 );
             Unknown102 = parser.ReadColumn< uint >( 102 );
             Unknown103 = parser.ReadColumn< uint >( 103 );
-            NumOfAppearance = new byte[ 8 ];
+            UnkData104 = new UnkData104Obj[ 8 ];
             for( var i = 0; i < 8; i++ )
-                NumOfAppearance[ i ] = parser.ReadColumn< byte >( 104 + i );
+            {
+                UnkData104[ i ] = new UnkData104Obj();
+                UnkData104[ i ].NumOfAppearance = parser.ReadColumn< byte >( 104 + ( i * 1 + 0 ) );
+            }
             Unknown112 = parser.ReadColumn< byte >( 112 );
             Unknown113 = parser.ReadColumn< byte >( 113 );
             Unknown114 = parser.ReadColumn< byte >( 114 );

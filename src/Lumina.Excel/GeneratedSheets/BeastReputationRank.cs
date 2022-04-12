@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BeastReputationRank", columnHash: 0x446d8bad )]
-    public partial class BeastReputationRank : ExcelRow
+    public class BeastReputationRank : ExcelRow
     {
         
         public ushort RequiredReputation { get; set; }

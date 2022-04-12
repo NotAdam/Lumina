@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentRouletteOpenRule", columnHash: 0x985449ce )]
-    public partial class ContentRouletteOpenRule : ExcelRow
+    public class ContentRouletteOpenRule : ExcelRow
     {
         
         public bool Unknown0 { get; set; }

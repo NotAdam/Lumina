@@ -7,17 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CharaMakeType", columnHash: 0x80d7db6d )]
-    public partial class CharaMakeType : ExcelRow
+    public class CharaMakeType : ExcelRow
     {
-        public class CharaMakeTypeUnkData3347Obj
+        public class UnkData199Obj
         {
-            public ulong Helmet { get; set; }
-            public ulong Top { get; set; }
-            public ulong Gloves { get; set; }
-            public ulong Legs { get; set; }
-            public ulong Shoes { get; set; }
-            public ulong Weapon { get; set; }
-            public ulong SubWeapon { get; set; }
+            public uint SubMenuParam;
+        }
+        public class UnkData2999Obj
+        {
+            public byte SubMenuGraphic;
+        }
+        public class UnkData3347Obj
+        {
+            public ulong Helmet;
+            public ulong Top;
+            public ulong Gloves;
+            public ulong Legs;
+            public ulong Shoes;
+            public ulong Weapon;
+            public ulong SubWeapon;
         }
         
         public LazyRow< Race > Race { get; set; }
@@ -30,7 +38,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte[] LookAt { get; set; }
         public uint[] SubMenuMask { get; set; }
         public uint[] Customize { get; set; }
-        public uint[] SubMenuParam { get; set; }
+        public UnkData199Obj[] UnkData199 { get; set; }
         public uint Unknown299 { get; set; }
         public uint Unknown300 { get; set; }
         public uint Unknown301 { get; set; }
@@ -2731,7 +2739,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown2996 { get; set; }
         public uint Unknown2997 { get; set; }
         public uint Unknown2998 { get; set; }
-        public byte[] SubMenuGraphic { get; set; }
+        public UnkData2999Obj[] UnkData2999 { get; set; }
         public byte Unknown3009 { get; set; }
         public byte Unknown3010 { get; set; }
         public byte Unknown3011 { get; set; }
@@ -3053,7 +3061,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown3344 { get; set; }
         public int Unknown3345 { get; set; }
         public int Unknown3346 { get; set; }
-        public CharaMakeTypeUnkData3347Obj[] UnkData3347 { get; set; }
+        public UnkData3347Obj[] UnkData3347 { get; set; }
         public ulong Unknown3354 { get; set; }
         public ulong Unknown3355 { get; set; }
         public ulong Unknown3356 { get; set; }
@@ -3097,9 +3105,12 @@ namespace Lumina.Excel.GeneratedSheets
             Customize = new uint[ 28 ];
             for( var i = 0; i < 28; i++ )
                 Customize[ i ] = parser.ReadColumn< uint >( 171 + i );
-            SubMenuParam = new uint[ 100 ];
+            UnkData199 = new UnkData199Obj[ 100 ];
             for( var i = 0; i < 100; i++ )
-                SubMenuParam[ i ] = parser.ReadColumn< uint >( 199 + i );
+            {
+                UnkData199[ i ] = new UnkData199Obj();
+                UnkData199[ i ].SubMenuParam = parser.ReadColumn< uint >( 199 + ( i * 1 + 0 ) );
+            }
             Unknown299 = parser.ReadColumn< uint >( 299 );
             Unknown300 = parser.ReadColumn< uint >( 300 );
             Unknown301 = parser.ReadColumn< uint >( 301 );
@@ -5800,9 +5811,12 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2996 = parser.ReadColumn< uint >( 2996 );
             Unknown2997 = parser.ReadColumn< uint >( 2997 );
             Unknown2998 = parser.ReadColumn< uint >( 2998 );
-            SubMenuGraphic = new byte[ 10 ];
+            UnkData2999 = new UnkData2999Obj[ 10 ];
             for( var i = 0; i < 10; i++ )
-                SubMenuGraphic[ i ] = parser.ReadColumn< byte >( 2999 + i );
+            {
+                UnkData2999[ i ] = new UnkData2999Obj();
+                UnkData2999[ i ].SubMenuGraphic = parser.ReadColumn< byte >( 2999 + ( i * 1 + 0 ) );
+            }
             Unknown3009 = parser.ReadColumn< byte >( 3009 );
             Unknown3010 = parser.ReadColumn< byte >( 3010 );
             Unknown3011 = parser.ReadColumn< byte >( 3011 );
@@ -6128,10 +6142,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown3344 = parser.ReadColumn< int >( 3344 );
             Unknown3345 = parser.ReadColumn< int >( 3345 );
             Unknown3346 = parser.ReadColumn< int >( 3346 );
-            UnkData3347 = new CharaMakeTypeUnkData3347Obj[ 1 ];
+            UnkData3347 = new UnkData3347Obj[ 1 ];
             for( var i = 0; i < 1; i++ )
             {
-                UnkData3347[ i ] = new CharaMakeTypeUnkData3347Obj();
+                UnkData3347[ i ] = new UnkData3347Obj();
                 UnkData3347[ i ].Helmet = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 0 ) );
                 UnkData3347[ i ].Top = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 1 ) );
                 UnkData3347[ i ].Gloves = parser.ReadColumn< ulong >( 3347 + ( i * 7 + 2 ) );

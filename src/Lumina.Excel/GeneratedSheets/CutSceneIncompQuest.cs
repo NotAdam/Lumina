@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutSceneIncompQuest", columnHash: 0xdbf43666 )]
-    public partial class CutSceneIncompQuest : ExcelRow
+    public class CutSceneIncompQuest : ExcelRow
     {
         
         public LazyRow< Quest > Quest { get; set; }

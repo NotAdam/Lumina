@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RelicNoteCategory", columnHash: 0xf8c2977f )]
-    public partial class RelicNoteCategory : ExcelRow
+    public class RelicNoteCategory : ExcelRow
     {
         
         public sbyte Unknown0 { get; set; }
