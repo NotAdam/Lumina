@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeaponFUITalk", columnHash: 0xda365c51 )]
-    public partial class AnimaWeaponFUITalk : ExcelRow
+    public class AnimaWeaponFUITalk : ExcelRow
     {
         
         public LazyRow< AnimaWeaponFUITalkParam > Dialogue { get; set; }

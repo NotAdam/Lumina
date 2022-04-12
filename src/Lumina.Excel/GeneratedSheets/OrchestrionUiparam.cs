@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OrchestrionUiparam", columnHash: 0xd73eab80 )]
-    public partial class OrchestrionUiparam : ExcelRow
+    public class OrchestrionUiparam : ExcelRow
     {
         
         public LazyRow< OrchestrionCategory > OrchestrionCategory { get; set; }

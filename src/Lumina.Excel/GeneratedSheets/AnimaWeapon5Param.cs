@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeapon5Param", columnHash: 0x5eb59ccb )]
-    public partial class AnimaWeapon5Param : ExcelRow
+    public class AnimaWeapon5Param : ExcelRow
     {
         
         public LazyRow< BaseParam > BaseParam { get; set; }

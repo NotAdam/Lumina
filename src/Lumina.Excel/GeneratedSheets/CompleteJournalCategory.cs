@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompleteJournalCategory", columnHash: 0x976040dd )]
-    public partial class CompleteJournalCategory : ExcelRow
+    public class CompleteJournalCategory : ExcelRow
     {
         
         public LazyRow< CompleteJournal > FirstQuest { get; set; }

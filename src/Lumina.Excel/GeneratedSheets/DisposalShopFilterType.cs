@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DisposalShopFilterType", columnHash: 0xdebb20e3 )]
-    public partial class DisposalShopFilterType : ExcelRow
+    public class DisposalShopFilterType : ExcelRow
     {
         
         public SeString Category { get; set; }

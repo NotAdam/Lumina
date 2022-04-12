@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BNpcState", columnHash: 0x439de63e )]
-    public partial class BNpcState : ExcelRow
+    public class BNpcState : ExcelRow
     {
         
         public byte Slot { get; set; }

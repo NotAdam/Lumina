@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EventItemHelp", columnHash: 0x8e477c70 )]
-    public partial class EventItemHelp : ExcelRow
+    public class EventItemHelp : ExcelRow
     {
         
         public SeString Description { get; set; }

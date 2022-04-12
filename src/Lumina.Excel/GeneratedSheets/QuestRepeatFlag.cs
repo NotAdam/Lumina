@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "QuestRepeatFlag", columnHash: 0xdbf43666 )]
-    public partial class QuestRepeatFlag : ExcelRow
+    public class QuestRepeatFlag : ExcelRow
     {
         
         public uint Quest { get; set; }

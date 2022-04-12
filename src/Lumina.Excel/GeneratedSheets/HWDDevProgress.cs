@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDDevProgress", columnHash: 0xcd4cb81c )]
-    public partial class HWDDevProgress : ExcelRow
+    public class HWDDevProgress : ExcelRow
     {
         
         public bool CanGoNext { get; set; }

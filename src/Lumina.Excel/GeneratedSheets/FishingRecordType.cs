@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FishingRecordType", columnHash: 0x2c75ba5d )]
-    public partial class FishingRecordType : ExcelRow
+    public class FishingRecordType : ExcelRow
     {
         
         public LazyRow< Addon > Addon { get; set; }

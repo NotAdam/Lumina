@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CutScreenImage", columnHash: 0xe4a523cd )]
-    public partial class CutScreenImage : ExcelRow
+    public class CutScreenImage : ExcelRow
     {
         
         public short Type { get; set; }

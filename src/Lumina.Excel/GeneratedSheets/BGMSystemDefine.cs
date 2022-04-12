@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "BGMSystemDefine", columnHash: 0xd16a1b6c )]
-    public partial class BGMSystemDefine : ExcelRow
+    public class BGMSystemDefine : ExcelRow
     {
         
         public float Define { get; set; }

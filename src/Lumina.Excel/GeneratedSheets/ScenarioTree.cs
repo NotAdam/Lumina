@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ScenarioTree", columnHash: 0xca183be8 )]
-    public partial class ScenarioTree : ExcelRow
+    public class ScenarioTree : ExcelRow
     {
         
         public LazyRow< ScenarioType > Type { get; set; }

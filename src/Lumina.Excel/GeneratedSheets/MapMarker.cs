@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapMarker", columnHash: 0x58f22163 )]
-    public partial class MapMarker : ExcelRow
+    public class MapMarker : ExcelRow
     {
         
         public short X { get; set; }

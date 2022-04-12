@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ParamGrow", columnHash: 0x64a92445 )]
-    public partial class ParamGrow : ExcelRow
+    public class ParamGrow : ExcelRow
     {
         
         public int ExpToNext { get; set; }

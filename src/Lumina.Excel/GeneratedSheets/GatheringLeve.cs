@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringLeve", columnHash: 0xfa74e4d0 )]
-    public partial class GatheringLeve : ExcelRow
+    public class GatheringLeve : ExcelRow
     {
         
         public LazyRow< GatheringLeveRoute >[] Route { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AetherCurrent", columnHash: 0xdbf43666 )]
-    public partial class AetherCurrent : ExcelRow
+    public class AetherCurrent : ExcelRow
     {
         
         public LazyRow< Quest > Quest { get; set; }

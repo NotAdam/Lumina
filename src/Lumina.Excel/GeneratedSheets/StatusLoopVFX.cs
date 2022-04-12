@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "StatusLoopVFX", columnHash: 0xaa82c4a9 )]
-    public partial class StatusLoopVFX : ExcelRow
+    public class StatusLoopVFX : ExcelRow
     {
         
         public LazyRow< VFX > VFX { get; set; }

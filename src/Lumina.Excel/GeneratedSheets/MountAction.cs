@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MountAction", columnHash: 0x58822da3 )]
-    public partial class MountAction : ExcelRow
+    public class MountAction : ExcelRow
     {
         
         public LazyRow< Action >[] Action { get; set; }

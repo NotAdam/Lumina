@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntOrder", columnHash: 0xa9aa9ab5 )]
-    public partial class MobHuntOrder : ExcelRow
+    public class MobHuntOrder : ExcelRow
     {
         
         public LazyRow< MobHuntTarget > Target { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TripleTriadCard", columnHash: 0x45c06ae0 )]
-    public partial class TripleTriadCard : ExcelRow
+    public class TripleTriadCard : ExcelRow
     {
         
         public SeString Name { get; set; }

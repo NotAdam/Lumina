@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemUICategory", columnHash: 0xdc1f7844 )]
-    public partial class ItemUICategory : ExcelRow
+    public class ItemUICategory : ExcelRow
     {
         
         public SeString Name { get; set; }

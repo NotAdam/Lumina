@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TutorialHealer", columnHash: 0xdcfd9eba )]
-    public partial class TutorialHealer : ExcelRow
+    public class TutorialHealer : ExcelRow
     {
         
         public LazyRow< Tutorial > Objective { get; set; }

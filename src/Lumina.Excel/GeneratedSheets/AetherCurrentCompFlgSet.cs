@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AetherCurrentCompFlgSet", columnHash: 0x39815af8 )]
-    public partial class AetherCurrentCompFlgSet : ExcelRow
+    public class AetherCurrentCompFlgSet : ExcelRow
     {
         
         public LazyRow< TerritoryType > Territory { get; set; }

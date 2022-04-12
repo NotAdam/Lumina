@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RetainerFortuneRewardRange", columnHash: 0xd870e208 )]
-    public partial class RetainerFortuneRewardRange : ExcelRow
+    public class RetainerFortuneRewardRange : ExcelRow
     {
         
         public ushort PercentOfLevel { get; set; }

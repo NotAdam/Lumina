@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MapExclusive", columnHash: 0xd73eab80 )]
-    public partial class MapExclusive : ExcelRow
+    public class MapExclusive : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

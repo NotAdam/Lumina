@@ -7,8 +7,24 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InstanceContent", columnHash: 0xda8bea47 )]
-    public partial class InstanceContent : ExcelRow
+    public class InstanceContent : ExcelRow
     {
+        public class UnkData26Obj
+        {
+            public uint BossExp;
+        }
+        public class UnkData31Obj
+        {
+            public ushort BossCurrencyA;
+        }
+        public class UnkData36Obj
+        {
+            public ushort BossCurrencyB;
+        }
+        public class UnkData41Obj
+        {
+            public ushort BossCurrencyC;
+        }
         
         public byte InstanceContentType { get; set; }
         public byte WeekRestriction { get; set; }
@@ -27,23 +43,23 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveStart { get; set; }
         public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveEnd { get; set; }
         public ushort SortKey { get; set; }
-        public uint InstanceClearExp { get; set; }
-        public uint Unknown18 { get; set; }
+        public uint NewPlayerBonusGil { get; set; }
+        public uint NewPlayerBonusExp { get; set; }
         public ushort NewPlayerBonusA { get; set; }
-        public ushort FinalBossCurrencyC { get; set; }
-        public uint Unknown21 { get; set; }
-        public uint FinalBossCurrencyA { get; set; }
-        public ushort FinalBossCurrencyB { get; set; }
         public ushort NewPlayerBonusB { get; set; }
-        public ushort[] BossExp { get; set; }
-        public uint[] BossCurrencyA { get; set; }
-        public ushort[] BossCurrencyB { get; set; }
-        public ushort[] BossCurrencyC { get; set; }
-        public ushort Unknown45 { get; set; }
+        public uint FinalBossExp { get; set; }
+        public uint Unknown22 { get; set; }
+        public ushort FinalBossCurrencyA { get; set; }
+        public ushort FinalBossCurrencyB { get; set; }
+        public ushort FinalBossCurrencyC { get; set; }
+        public UnkData26Obj[] UnkData26 { get; set; }
+        public UnkData31Obj[] UnkData31 { get; set; }
+        public UnkData36Obj[] UnkData36 { get; set; }
+        public UnkData41Obj[] UnkData41 { get; set; }
+        public uint InstanceClearExp { get; set; }
         public uint InstanceClearGil { get; set; }
         public uint InstanceContentRewardItem { get; set; }
-        public uint Unknown48 { get; set; }
-        public byte FinalBossExp { get; set; }
+        public byte Unknown49 { get; set; }
         public uint Unknown50 { get; set; }
         public LazyRow< InstanceContentBuff > InstanceContentBuff { get; set; }
         public bool Unknown52 { get; set; }
@@ -82,31 +98,43 @@ namespace Lumina.Excel.GeneratedSheets
             InstanceContentTextDataObjectiveStart = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 14 ), language );
             InstanceContentTextDataObjectiveEnd = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 15 ), language );
             SortKey = parser.ReadColumn< ushort >( 16 );
-            InstanceClearExp = parser.ReadColumn< uint >( 17 );
-            Unknown18 = parser.ReadColumn< uint >( 18 );
+            NewPlayerBonusGil = parser.ReadColumn< uint >( 17 );
+            NewPlayerBonusExp = parser.ReadColumn< uint >( 18 );
             NewPlayerBonusA = parser.ReadColumn< ushort >( 19 );
-            FinalBossCurrencyC = parser.ReadColumn< ushort >( 20 );
-            Unknown21 = parser.ReadColumn< uint >( 21 );
-            FinalBossCurrencyA = parser.ReadColumn< uint >( 22 );
-            FinalBossCurrencyB = parser.ReadColumn< ushort >( 23 );
-            NewPlayerBonusB = parser.ReadColumn< ushort >( 24 );
-            BossExp = new ushort[ 5 ];
+            NewPlayerBonusB = parser.ReadColumn< ushort >( 20 );
+            FinalBossExp = parser.ReadColumn< uint >( 21 );
+            Unknown22 = parser.ReadColumn< uint >( 22 );
+            FinalBossCurrencyA = parser.ReadColumn< ushort >( 23 );
+            FinalBossCurrencyB = parser.ReadColumn< ushort >( 24 );
+            FinalBossCurrencyC = parser.ReadColumn< ushort >( 25 );
+            UnkData26 = new UnkData26Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
-                BossExp[ i ] = parser.ReadColumn< ushort >( 25 + i );
-            BossCurrencyA = new uint[ 5 ];
+            {
+                UnkData26[ i ] = new UnkData26Obj();
+                UnkData26[ i ].BossExp = parser.ReadColumn< uint >( 26 + ( i * 1 + 0 ) );
+            }
+            UnkData31 = new UnkData31Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
-                BossCurrencyA[ i ] = parser.ReadColumn< uint >( 30 + i );
-            BossCurrencyB = new ushort[ 5 ];
+            {
+                UnkData31[ i ] = new UnkData31Obj();
+                UnkData31[ i ].BossCurrencyA = parser.ReadColumn< ushort >( 31 + ( i * 1 + 0 ) );
+            }
+            UnkData36 = new UnkData36Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
-                BossCurrencyB[ i ] = parser.ReadColumn< ushort >( 35 + i );
-            BossCurrencyC = new ushort[ 5 ];
+            {
+                UnkData36[ i ] = new UnkData36Obj();
+                UnkData36[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 36 + ( i * 1 + 0 ) );
+            }
+            UnkData41 = new UnkData41Obj[ 5 ];
             for( var i = 0; i < 5; i++ )
-                BossCurrencyC[ i ] = parser.ReadColumn< ushort >( 40 + i );
-            Unknown45 = parser.ReadColumn< ushort >( 45 );
-            InstanceClearGil = parser.ReadColumn< uint >( 46 );
-            InstanceContentRewardItem = parser.ReadColumn< uint >( 47 );
-            Unknown48 = parser.ReadColumn< uint >( 48 );
-            FinalBossExp = parser.ReadColumn< byte >( 49 );
+            {
+                UnkData41[ i ] = new UnkData41Obj();
+                UnkData41[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 41 + ( i * 1 + 0 ) );
+            }
+            InstanceClearExp = parser.ReadColumn< uint >( 46 );
+            InstanceClearGil = parser.ReadColumn< uint >( 47 );
+            InstanceContentRewardItem = parser.ReadColumn< uint >( 48 );
+            Unknown49 = parser.ReadColumn< byte >( 49 );
             Unknown50 = parser.ReadColumn< uint >( 50 );
             InstanceContentBuff = new LazyRow< InstanceContentBuff >( gameData, parser.ReadColumn< int >( 51 ), language );
             Unknown52 = parser.ReadColumn< bool >( 52 );

@@ -7,25 +7,25 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SpecialShop", columnHash: 0x534f4679 )]
-    public partial class SpecialShop : ExcelRow
+    public class SpecialShop : ExcelRow
     {
-        public class SpecialShopUnkData1Obj
+        public class UnkData1Obj
         {
-            public int ItemReceive { get; set; }
-            public int CountReceive { get; set; }
-            public int SpecialShopItemCategory { get; set; }
-            public int HQReceive { get; set; }
+            public int ItemReceive;
+            public int CountReceive;
+            public int SpecialShopItemCategory;
+            public int HQReceive;
         }
-        public class SpecialShopUnkData481Obj
+        public class UnkData481Obj
         {
-            public int ItemCost { get; set; }
-            public int CountCost { get; set; }
-            public int HQCost { get; set; }
-            public int CollectabilityRatingCost { get; set; }
+            public int ItemCost;
+            public int CountCost;
+            public int HQCost;
+            public int CollectabilityRatingCost;
         }
         
         public SeString Name { get; set; }
-        public SpecialShopUnkData1Obj[] UnkData1 { get; set; }
+        public UnkData1Obj[] UnkData1 { get; set; }
         public int Unknown9 { get; set; }
         public int Unknown10 { get; set; }
         public int Unknown11 { get; set; }
@@ -498,7 +498,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown478 { get; set; }
         public bool Unknown479 { get; set; }
         public bool Unknown480 { get; set; }
-        public SpecialShopUnkData481Obj[] UnkData481 { get; set; }
+        public UnkData481Obj[] UnkData481 { get; set; }
         public int Unknown493 { get; set; }
         public int Unknown494 { get; set; }
         public int Unknown495 { get; set; }
@@ -1342,10 +1342,10 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            UnkData1 = new SpecialShopUnkData1Obj[ 2 ];
+            UnkData1 = new UnkData1Obj[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
-                UnkData1[ i ] = new SpecialShopUnkData1Obj();
+                UnkData1[ i ] = new UnkData1Obj();
                 UnkData1[ i ].ItemReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 0 ) );
                 UnkData1[ i ].CountReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 1 ) );
                 UnkData1[ i ].SpecialShopItemCategory = parser.ReadColumn< int >( 1 + ( i * 4 + 2 ) );
@@ -1823,10 +1823,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown478 = parser.ReadColumn< bool >( 478 );
             Unknown479 = parser.ReadColumn< bool >( 479 );
             Unknown480 = parser.ReadColumn< bool >( 480 );
-            UnkData481 = new SpecialShopUnkData481Obj[ 3 ];
+            UnkData481 = new UnkData481Obj[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
-                UnkData481[ i ] = new SpecialShopUnkData481Obj();
+                UnkData481[ i ] = new UnkData481Obj();
                 UnkData481[ i ].ItemCost = parser.ReadColumn< int >( 481 + ( i * 4 + 0 ) );
                 UnkData481[ i ].CountCost = parser.ReadColumn< int >( 481 + ( i * 4 + 1 ) );
                 UnkData481[ i ].HQCost = parser.ReadColumn< int >( 481 + ( i * 4 + 2 ) );

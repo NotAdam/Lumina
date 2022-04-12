@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "NpcYell", columnHash: 0xc81dd2dc )]
-    public partial class NpcYell : ExcelRow
+    [Sheet( "NpcYell", columnHash: 0x89b12913 )]
+    public class NpcYell : ExcelRow
     {
         
         public uint Unknown0 { get; set; }
@@ -19,6 +19,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsBalloonSlow { get; set; }
         public bool BattleTalkTime { get; set; }
         public byte Unknown8 { get; set; }
+        public byte Unknown9 { get; set; }
         public SeString Text { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -34,7 +35,8 @@ namespace Lumina.Excel.GeneratedSheets
             IsBalloonSlow = parser.ReadColumn< bool >( 6 );
             BattleTalkTime = parser.ReadColumn< bool >( 7 );
             Unknown8 = parser.ReadColumn< byte >( 8 );
-            Text = parser.ReadColumn< SeString >( 9 );
+            Unknown9 = parser.ReadColumn< byte >( 9 );
+            Text = parser.ReadColumn< SeString >( 10 );
         }
     }
 }

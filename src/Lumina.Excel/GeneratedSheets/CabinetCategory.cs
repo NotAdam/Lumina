@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CabinetCategory", columnHash: 0xc6207018 )]
-    public partial class CabinetCategory : ExcelRow
+    public class CabinetCategory : ExcelRow
     {
         
         public byte MenuOrder { get; set; }

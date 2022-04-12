@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RecipeLevelTable", columnHash: 0x6d3c3f32 )]
-    public partial class RecipeLevelTable : ExcelRow
+    public class RecipeLevelTable : ExcelRow
     {
         
         public byte ClassJobLevel { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GcArmyEquipPreset", columnHash: 0x5a4de23a )]
-    public partial class GcArmyEquipPreset : ExcelRow
+    public class GcArmyEquipPreset : ExcelRow
     {
         
         public LazyRow< Item > MainHand { get; set; }

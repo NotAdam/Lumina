@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionComboRoute", columnHash: 0xe732fd5b )]
-    public partial class ActionComboRoute : ExcelRow
+    public class ActionComboRoute : ExcelRow
     {
         
         public SeString Name { get; set; }

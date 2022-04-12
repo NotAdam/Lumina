@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "WeaponTimeline", columnHash: 0x7f718689 )]
-    public partial class WeaponTimeline : ExcelRow
+    public class WeaponTimeline : ExcelRow
     {
         
         public SeString File { get; set; }

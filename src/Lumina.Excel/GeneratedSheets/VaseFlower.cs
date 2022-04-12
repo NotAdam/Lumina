@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "VaseFlower", columnHash: 0x8c05af34 )]
-    public partial class VaseFlower : ExcelRow
+    public class VaseFlower : ExcelRow
     {
         
         public ushort Unknown0 { get; set; }

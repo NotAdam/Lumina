@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GroupPoseFrame", columnHash: 0x1771561e )]
-    public partial class GroupPoseFrame : ExcelRow
+    public class GroupPoseFrame : ExcelRow
     {
         
         public int Unknown0 { get; set; }

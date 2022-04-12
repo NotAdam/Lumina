@@ -6,11 +6,12 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DawnMemberUIParam", columnHash: 0x0fd503c6 )]
-    public partial class DawnMemberUIParam : ExcelRow
+    [Sheet( "DawnMemberUIParam", columnHash: 0x7b44bc07 )]
+    public class DawnMemberUIParam : ExcelRow
     {
         
         public SeString ClassSingular { get; set; }
+        public SeString Unknown1 { get; set; }
         public uint VoiceLine { get; set; }
         public SeString ClassPlural { get; set; }
         
@@ -19,8 +20,9 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             ClassSingular = parser.ReadColumn< SeString >( 0 );
-            VoiceLine = parser.ReadColumn< uint >( 1 );
-            ClassPlural = parser.ReadColumn< SeString >( 2 );
+            Unknown1 = parser.ReadColumn< SeString >( 1 );
+            VoiceLine = parser.ReadColumn< uint >( 2 );
+            ClassPlural = parser.ReadColumn< SeString >( 3 );
         }
     }
 }

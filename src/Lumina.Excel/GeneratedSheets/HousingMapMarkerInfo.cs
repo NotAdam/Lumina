@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingMapMarkerInfo", columnHash: 0x13236296 )]
-    public partial class HousingMapMarkerInfo : ExcelRow
+    public class HousingMapMarkerInfo : ExcelRow
     {
         
         public float X { get; set; }

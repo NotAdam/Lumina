@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GuildOrderGuide", columnHash: 0xa76e50e1 )]
-    public partial class GuildOrderGuide : ExcelRow
+    public class GuildOrderGuide : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AirshipExplorationLevel", columnHash: 0x382abf74 )]
-    public partial class AirshipExplorationLevel : ExcelRow
+    public class AirshipExplorationLevel : ExcelRow
     {
         
         public ushort Capacity { get; set; }

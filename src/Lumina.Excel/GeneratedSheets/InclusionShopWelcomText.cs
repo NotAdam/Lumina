@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InclusionShopWelcomText", columnHash: 0xdebb20e3 )]
-    public partial class InclusionShopWelcomText : ExcelRow
+    public class InclusionShopWelcomText : ExcelRow
     {
         
         public SeString Unknown0 { get; set; }

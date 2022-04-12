@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HousingPreset", columnHash: 0x9184af18 )]
-    public partial class HousingPreset : ExcelRow
+    public class HousingPreset : ExcelRow
     {
         
         public SeString Singular { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MoveTimeline", columnHash: 0xf057da9c )]
-    public partial class MoveTimeline : ExcelRow
+    public class MoveTimeline : ExcelRow
     {
         
         public LazyRow< ActionTimeline > Idle { get; set; }

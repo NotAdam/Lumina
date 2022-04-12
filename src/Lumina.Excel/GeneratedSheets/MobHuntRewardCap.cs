@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MobHuntRewardCap", columnHash: 0xdbf43666 )]
-    public partial class MobHuntRewardCap : ExcelRow
+    public class MobHuntRewardCap : ExcelRow
     {
         
         public uint ExpCap { get; set; }

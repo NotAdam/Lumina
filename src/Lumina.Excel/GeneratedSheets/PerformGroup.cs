@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PerformGroup", columnHash: 0x5be005ad )]
-    public partial class PerformGroup : ExcelRow
+    public class PerformGroup : ExcelRow
     {
         
         public LazyRow< Perform >[] Perform { get; set; }

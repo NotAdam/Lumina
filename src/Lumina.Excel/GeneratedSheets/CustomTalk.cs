@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CustomTalk", columnHash: 0xd20fee6c )]
-    public partial class CustomTalk : ExcelRow
+    public class CustomTalk : ExcelRow
     {
         
         public uint IconActor { get; set; }

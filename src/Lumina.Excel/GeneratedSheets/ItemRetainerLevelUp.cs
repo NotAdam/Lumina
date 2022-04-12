@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemRetainerLevelUp", columnHash: 0x5edc18ea )]
-    public partial class ItemRetainerLevelUp : ExcelRow
+    public class ItemRetainerLevelUp : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

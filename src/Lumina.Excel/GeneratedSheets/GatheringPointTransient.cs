@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringPointTransient", columnHash: 0x7164626b )]
-    public partial class GatheringPointTransient : ExcelRow
+    public class GatheringPointTransient : ExcelRow
     {
         
         public ushort EphemeralStartTime { get; set; }

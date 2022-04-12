@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "InstanceContentBuff", columnHash: 0x2020acf6 )]
-    public partial class InstanceContentBuff : ExcelRow
+    public class InstanceContentBuff : ExcelRow
     {
         
         public ushort EchoStart { get; set; }

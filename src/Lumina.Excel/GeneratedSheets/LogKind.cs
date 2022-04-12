@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LogKind", columnHash: 0x23b962ed )]
-    public partial class LogKind : ExcelRow
+    public class LogKind : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

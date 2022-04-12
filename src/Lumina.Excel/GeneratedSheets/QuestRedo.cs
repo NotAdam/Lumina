@@ -6,15 +6,15 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestRedo", columnHash: 0xb199478e )]
-    public partial class QuestRedo : ExcelRow
+    [Sheet( "QuestRedo", columnHash: 0x9e53f329 )]
+    public class QuestRedo : ExcelRow
     {
         
         public LazyRow< Quest > FinalQuest { get; set; }
-        public byte Unknown1 { get; set; }
+        public uint Unknown1 { get; set; }
+        public byte Unknown2 { get; set; }
         public ushort Chapter { get; set; }
         public LazyRow< Quest >[] Quest { get; set; }
-        public byte Unknown35 { get; set; }
         public byte Unknown36 { get; set; }
         public byte Unknown37 { get; set; }
         public byte Unknown38 { get; set; }
@@ -46,18 +46,19 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown64 { get; set; }
         public byte Unknown65 { get; set; }
         public byte Unknown66 { get; set; }
+        public byte Unknown67 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             FinalQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 0 ), language );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
-            Chapter = parser.ReadColumn< ushort >( 2 );
+            Unknown1 = parser.ReadColumn< uint >( 1 );
+            Unknown2 = parser.ReadColumn< byte >( 2 );
+            Chapter = parser.ReadColumn< ushort >( 3 );
             Quest = new LazyRow< Quest >[ 32 ];
             for( var i = 0; i < 32; i++ )
-                Quest[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 3 + i ), language );
-            Unknown35 = parser.ReadColumn< byte >( 35 );
+                Quest[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 4 + i ), language );
             Unknown36 = parser.ReadColumn< byte >( 36 );
             Unknown37 = parser.ReadColumn< byte >( 37 );
             Unknown38 = parser.ReadColumn< byte >( 38 );
@@ -89,6 +90,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown64 = parser.ReadColumn< byte >( 64 );
             Unknown65 = parser.ReadColumn< byte >( 65 );
             Unknown66 = parser.ReadColumn< byte >( 66 );
+            Unknown67 = parser.ReadColumn< byte >( 67 );
         }
     }
 }

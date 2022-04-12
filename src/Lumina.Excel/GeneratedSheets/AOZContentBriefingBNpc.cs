@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZContentBriefingBNpc", columnHash: 0xfc0810d7 )]
-    public partial class AOZContentBriefingBNpc : ExcelRow
+    public class AOZContentBriefingBNpc : ExcelRow
     {
         
         public LazyRow< BNpcName > BNpcName { get; set; }

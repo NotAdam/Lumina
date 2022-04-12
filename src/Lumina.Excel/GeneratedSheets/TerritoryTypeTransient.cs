@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TerritoryTypeTransient", columnHash: 0xd9b2883f )]
-    public partial class TerritoryTypeTransient : ExcelRow
+    public class TerritoryTypeTransient : ExcelRow
     {
         
         public short OffsetZ { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionIndirection", columnHash: 0xc8901190 )]
-    public partial class ActionIndirection : ExcelRow
+    public class ActionIndirection : ExcelRow
     {
         
         public LazyRow< Action > Name { get; set; }
