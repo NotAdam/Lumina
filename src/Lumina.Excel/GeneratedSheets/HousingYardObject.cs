@@ -6,11 +6,11 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HousingYardObject", columnHash: 0xe15fd4d0 )]
+    [Sheet( "HousingYardObject", columnHash: 0x8ecbe67c )]
     public class HousingYardObject : ExcelRow
     {
         
-        public byte ModelKey { get; set; }
+        public ushort ModelKey { get; set; }
         public byte HousingItemCategory { get; set; }
         public byte UsageType { get; set; }
         public uint UsageParameter { get; set; }
@@ -29,7 +29,7 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            ModelKey = parser.ReadColumn< byte >( 0 );
+            ModelKey = parser.ReadColumn< ushort >( 0 );
             HousingItemCategory = parser.ReadColumn< byte >( 1 );
             UsageType = parser.ReadColumn< byte >( 2 );
             UsageParameter = parser.ReadColumn< uint >( 3 );

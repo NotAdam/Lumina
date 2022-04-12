@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PresetCamera", columnHash: 0x7d6930eb )]
+    [Sheet( "PresetCamera", columnHash: 0x246479ab )]
     public class PresetCamera : ExcelRow
     {
         
@@ -20,6 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public float Roe { get; set; }
         public float Hrothgar { get; set; }
         public float Viera { get; set; }
+        public float Unknown10 { get; set; }
         public float Hyur_F { get; set; }
         public float Elezen_F { get; set; }
         public float Lalafell_F { get; set; }
@@ -42,13 +43,14 @@ namespace Lumina.Excel.GeneratedSheets
             Roe = parser.ReadColumn< float >( 7 );
             Hrothgar = parser.ReadColumn< float >( 8 );
             Viera = parser.ReadColumn< float >( 9 );
-            Hyur_F = parser.ReadColumn< float >( 10 );
-            Elezen_F = parser.ReadColumn< float >( 11 );
-            Lalafell_F = parser.ReadColumn< float >( 12 );
-            Miqote_F = parser.ReadColumn< float >( 13 );
-            Roe_F = parser.ReadColumn< float >( 14 );
-            Hrothgar_F = parser.ReadColumn< float >( 15 );
-            Viera_F = parser.ReadColumn< float >( 16 );
+            Unknown10 = parser.ReadColumn< float >( 10 );
+            Hyur_F = parser.ReadColumn< float >( 11 );
+            Elezen_F = parser.ReadColumn< float >( 12 );
+            Lalafell_F = parser.ReadColumn< float >( 13 );
+            Miqote_F = parser.ReadColumn< float >( 14 );
+            Roe_F = parser.ReadColumn< float >( 15 );
+            Hrothgar_F = parser.ReadColumn< float >( 16 );
+            Viera_F = parser.ReadColumn< float >( 17 );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Fate", columnHash: 0x76953587 )]
+    [Sheet( "Fate", columnHash: 0xc9fc38f1 )]
     public class Fate : ExcelRow
     {
         
@@ -49,7 +49,9 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown40 { get; set; }
         public uint Unknown41 { get; set; }
         public uint Unknown42 { get; set; }
-        public ushort[] ObjectiveIcon { get; set; }
+        public uint[] ObjectiveIcon { get; set; }
+        public ushort Unknown51 { get; set; }
+        public ushort Unknown52 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -98,9 +100,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown40 = parser.ReadColumn< uint >( 40 );
             Unknown41 = parser.ReadColumn< uint >( 41 );
             Unknown42 = parser.ReadColumn< uint >( 42 );
-            ObjectiveIcon = new ushort[ 8 ];
+            ObjectiveIcon = new uint[ 8 ];
             for( var i = 0; i < 8; i++ )
-                ObjectiveIcon[ i ] = parser.ReadColumn< ushort >( 43 + i );
+                ObjectiveIcon[ i ] = parser.ReadColumn< uint >( 43 + i );
+            Unknown51 = parser.ReadColumn< ushort >( 51 );
+            Unknown52 = parser.ReadColumn< ushort >( 52 );
         }
     }
 }

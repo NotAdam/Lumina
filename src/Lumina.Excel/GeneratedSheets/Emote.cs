@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Emote", columnHash: 0x2eda0cee )]
+    [Sheet( "Emote", columnHash: 0xf3afded2 )]
     public class Emote : ExcelRow
     {
         
@@ -21,13 +21,14 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown14 { get; set; }
         public bool HasCancelEmote { get; set; }
         public bool DrawsWeapon { get; set; }
+        public bool Unknown17 { get; set; }
         public ushort Order { get; set; }
         public LazyRow< TextCommand > TextCommand { get; set; }
         public ushort Icon { get; set; }
         public LazyRow< LogMessage > LogMessageTargeted { get; set; }
         public LazyRow< LogMessage > LogMessageUntargeted { get; set; }
         public uint UnlockLink { get; set; }
-        public ushort Unknown23 { get; set; }
+        public ushort Unknown24 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -46,13 +47,14 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown14 = parser.ReadColumn< bool >( 14 );
             HasCancelEmote = parser.ReadColumn< bool >( 15 );
             DrawsWeapon = parser.ReadColumn< bool >( 16 );
-            Order = parser.ReadColumn< ushort >( 17 );
-            TextCommand = new LazyRow< TextCommand >( gameData, parser.ReadColumn< int >( 18 ), language );
-            Icon = parser.ReadColumn< ushort >( 19 );
-            LogMessageTargeted = new LazyRow< LogMessage >( gameData, parser.ReadColumn< ushort >( 20 ), language );
-            LogMessageUntargeted = new LazyRow< LogMessage >( gameData, parser.ReadColumn< ushort >( 21 ), language );
-            UnlockLink = parser.ReadColumn< uint >( 22 );
-            Unknown23 = parser.ReadColumn< ushort >( 23 );
+            Unknown17 = parser.ReadColumn< bool >( 17 );
+            Order = parser.ReadColumn< ushort >( 18 );
+            TextCommand = new LazyRow< TextCommand >( gameData, parser.ReadColumn< int >( 19 ), language );
+            Icon = parser.ReadColumn< ushort >( 20 );
+            LogMessageTargeted = new LazyRow< LogMessage >( gameData, parser.ReadColumn< ushort >( 21 ), language );
+            LogMessageUntargeted = new LazyRow< LogMessage >( gameData, parser.ReadColumn< ushort >( 22 ), language );
+            UnlockLink = parser.ReadColumn< uint >( 23 );
+            Unknown24 = parser.ReadColumn< ushort >( 24 );
         }
     }
 }

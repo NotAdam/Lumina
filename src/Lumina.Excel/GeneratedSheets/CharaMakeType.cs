@@ -31,7 +31,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Race > Race { get; set; }
         public LazyRow< Tribe > Tribe { get; set; }
         public sbyte Gender { get; set; }
-        public uint[] Menu { get; set; }
+        public LazyRow< Lobby >[] Menu { get; set; }
         public byte[] InitVal { get; set; }
         public byte[] SubMenuType { get; set; }
         public byte[] SubMenuNum { get; set; }
@@ -3084,9 +3084,9 @@ namespace Lumina.Excel.GeneratedSheets
             Race = new LazyRow< Race >( gameData, parser.ReadColumn< int >( 0 ), language );
             Tribe = new LazyRow< Tribe >( gameData, parser.ReadColumn< int >( 1 ), language );
             Gender = parser.ReadColumn< sbyte >( 2 );
-            Menu = new uint[ 28 ];
+            Menu = new LazyRow< Lobby >[ 28 ];
             for( var i = 0; i < 28; i++ )
-                Menu[ i ] = parser.ReadColumn< uint >( 3 + i );
+                Menu[ i ] = new LazyRow< Lobby >( gameData, parser.ReadColumn< uint >( 3 + i ), language );
             InitVal = new byte[ 28 ];
             for( var i = 0; i < 28; i++ )
                 InitVal[ i ] = parser.ReadColumn< byte >( 31 + i );

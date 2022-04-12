@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Map", columnHash: 0x56a0aa07 )]
+    [Sheet( "Map", columnHash: 0xf84ce943 )]
     public class Map : ExcelRow
     {
         
@@ -28,6 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< TerritoryType > TerritoryType { get; set; }
         public bool DiscoveryArrayByte { get; set; }
         public bool IsEvent { get; set; }
+        public bool Unknown18 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -51,6 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 15 ), language );
             DiscoveryArrayByte = parser.ReadColumn< bool >( 16 );
             IsEvent = parser.ReadColumn< bool >( 17 );
+            Unknown18 = parser.ReadColumn< bool >( 18 );
         }
     }
 }

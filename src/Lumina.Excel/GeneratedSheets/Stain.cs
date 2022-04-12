@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public uint Color { get; set; }
         public byte Shade { get; set; }
-        public byte Unknown2 { get; set; }
+        public byte SubOrder { get; set; }
         public SeString Name { get; set; }
         public bool Unknown4 { get; set; }
         public bool Unknown5 { get; set; }
@@ -23,7 +23,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             Color = parser.ReadColumn< uint >( 0 );
             Shade = parser.ReadColumn< byte >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
+            SubOrder = parser.ReadColumn< byte >( 2 );
             Name = parser.ReadColumn< SeString >( 3 );
             Unknown4 = parser.ReadColumn< bool >( 4 );
             Unknown5 = parser.ReadColumn< bool >( 5 );

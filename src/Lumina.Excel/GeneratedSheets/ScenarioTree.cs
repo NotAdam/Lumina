@@ -11,10 +11,10 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public LazyRow< ScenarioType > Type { get; set; }
-        public LazyRow< ScreenImage > Image { get; set; }
-        public uint Unknown2 { get; set; }
-        public uint Unknown3 { get; set; }
-        public SeString Unknown4 { get; set; }
+        public ushort Unknown1 { get; set; }
+        public LazyRow< Addon > Addon { get; set; }
+        public LazyRow< QuestChapter > QuestChapter { get; set; }
+        public SeString Name { get; set; }
         public int Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
         
@@ -23,10 +23,10 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Type = new LazyRow< ScenarioType >( gameData, parser.ReadColumn< byte >( 0 ), language );
-            Image = new LazyRow< ScreenImage >( gameData, parser.ReadColumn< ushort >( 1 ), language );
-            Unknown2 = parser.ReadColumn< uint >( 2 );
-            Unknown3 = parser.ReadColumn< uint >( 3 );
-            Unknown4 = parser.ReadColumn< SeString >( 4 );
+            Unknown1 = parser.ReadColumn< ushort >( 1 );
+            Addon = new LazyRow< Addon >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            QuestChapter = new LazyRow< QuestChapter >( gameData, parser.ReadColumn< uint >( 3 ), language );
+            Name = parser.ReadColumn< SeString >( 4 );
             Unknown5 = parser.ReadColumn< int >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
         }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CharaMakeCustomize", columnHash: 0x2ba6bf0f )]
+    [Sheet( "CharaMakeCustomize", columnHash: 0xc30e9b73 )]
     public class CharaMakeCustomize : ExcelRow
     {
         
@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsPurchasable { get; set; }
         public LazyRow< Lobby > Hint { get; set; }
         public LazyRow< Item > HintItem { get; set; }
+        public byte Unknown6 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -27,6 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
             IsPurchasable = parser.ReadColumn< bool >( 3 );
             Hint = new LazyRow< Lobby >( gameData, parser.ReadColumn< uint >( 4 ), language );
             HintItem = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 5 ), language );
+            Unknown6 = parser.ReadColumn< byte >( 6 );
         }
     }
 }

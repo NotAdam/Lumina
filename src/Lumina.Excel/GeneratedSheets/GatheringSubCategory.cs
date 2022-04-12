@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public LazyRow< GatheringType > GatheringType { get; set; }
         public LazyRow< ClassJob > ClassJob { get; set; }
-        public uint Unknown2 { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
         public ushort Division { get; set; }
         public LazyRow< Item > Item { get; set; }
         public SeString FolkloreBook { get; set; }
@@ -24,7 +24,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             GatheringType = new LazyRow< GatheringType >( gameData, parser.ReadColumn< byte >( 0 ), language );
             ClassJob = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 1 ), language );
-            Unknown2 = parser.ReadColumn< uint >( 2 );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Division = parser.ReadColumn< ushort >( 3 );
             Item = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 4 ), language );
             FolkloreBook = parser.ReadColumn< SeString >( 5 );

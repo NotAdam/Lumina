@@ -27,8 +27,8 @@ namespace Lumina.Excel.GeneratedSheets
         public int Key { get; set; }
         public int[] Data { get; set; }
         public ushort Order { get; set; }
+        public byte Unknown24 { get; set; }
         public LazyRow< AchievementHideCondition > AchievementHideCondition { get; set; }
-        public byte Unknown25 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -53,8 +53,8 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 8; i++ )
                 Data[ i ] = parser.ReadColumn< int >( 15 + i );
             Order = parser.ReadColumn< ushort >( 23 );
-            AchievementHideCondition = new LazyRow< AchievementHideCondition >( gameData, parser.ReadColumn< byte >( 24 ), language );
-            Unknown25 = parser.ReadColumn< byte >( 25 );
+            Unknown24 = parser.ReadColumn< byte >( 24 );
+            AchievementHideCondition = new LazyRow< AchievementHideCondition >( gameData, parser.ReadColumn< byte >( 25 ), language );
         }
     }
 }

@@ -51,10 +51,10 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsDyeable { get; set; }
         public bool IsCrestWorthy { get; set; }
         public LazyRow< ItemAction > ItemAction { get; set; }
-        public byte Unknown31 { get; set; }
+        public byte CastTimes { get; set; }
         public ushort Cooldowns { get; set; }
         public LazyRow< ClassJob > ClassJobRepair { get; set; }
-        public LazyRow< Item > ItemRepair { get; set; }
+        public LazyRow< ItemRepairResource > ItemRepair { get; set; }
         public LazyRow< Item > ItemGlamour { get; set; }
         public ushort Desynth { get; set; }
         public bool IsCollectable { get; set; }
@@ -87,7 +87,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte MateriaSlotCount { get; set; }
         public bool IsAdvancedMeldingPermitted { get; set; }
         public bool IsPvP { get; set; }
-        public byte Unknown89 { get; set; }
+        public byte SubStatCategory { get; set; }
         public bool IsGlamourous { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -125,10 +125,10 @@ namespace Lumina.Excel.GeneratedSheets
             IsDyeable = parser.ReadColumn< bool >( 28 );
             IsCrestWorthy = parser.ReadColumn< bool >( 29 );
             ItemAction = new LazyRow< ItemAction >( gameData, parser.ReadColumn< ushort >( 30 ), language );
-            Unknown31 = parser.ReadColumn< byte >( 31 );
+            CastTimes = parser.ReadColumn< byte >( 31 );
             Cooldowns = parser.ReadColumn< ushort >( 32 );
             ClassJobRepair = new LazyRow< ClassJob >( gameData, parser.ReadColumn< byte >( 33 ), language );
-            ItemRepair = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 34 ), language );
+            ItemRepair = new LazyRow< ItemRepairResource >( gameData, parser.ReadColumn< int >( 34 ), language );
             ItemGlamour = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 35 ), language );
             Desynth = parser.ReadColumn< ushort >( 36 );
             IsCollectable = parser.ReadColumn< bool >( 37 );
@@ -173,7 +173,7 @@ namespace Lumina.Excel.GeneratedSheets
             MateriaSlotCount = parser.ReadColumn< byte >( 86 );
             IsAdvancedMeldingPermitted = parser.ReadColumn< bool >( 87 );
             IsPvP = parser.ReadColumn< bool >( 88 );
-            Unknown89 = parser.ReadColumn< byte >( 89 );
+            SubStatCategory = parser.ReadColumn< byte >( 89 );
             IsGlamourous = parser.ReadColumn< bool >( 90 );
         }
     }

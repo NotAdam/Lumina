@@ -6,12 +6,11 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AetherCurrentCompFlgSet", columnHash: 0xa562e4cf )]
+    [Sheet( "AetherCurrentCompFlgSet", columnHash: 0x39815af8 )]
     public class AetherCurrentCompFlgSet : ExcelRow
     {
         
         public LazyRow< TerritoryType > Territory { get; set; }
-        public byte Unknown1 { get; set; }
         public LazyRow< AetherCurrent >[] AetherCurrent { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -19,10 +18,9 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Territory = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< int >( 0 ), language );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
             AetherCurrent = new LazyRow< AetherCurrent >[ 15 ];
             for( var i = 0; i < 15; i++ )
-                AetherCurrent[ i ] = new LazyRow< AetherCurrent >( gameData, parser.ReadColumn< int >( 2 + i ), language );
+                AetherCurrent[ i ] = new LazyRow< AetherCurrent >( gameData, parser.ReadColumn< int >( 1 + i ), language );
         }
     }
 }

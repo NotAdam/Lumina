@@ -17,21 +17,8 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown4 { get; set; }
         public ushort Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
-        public uint Unknown7 { get; set; }
-        public uint Unknown8 { get; set; }
-        public uint Unknown9 { get; set; }
-        public uint Unknown10 { get; set; }
-        public uint Unknown11 { get; set; }
-        public uint Unknown12 { get; set; }
-        public uint Unknown13 { get; set; }
-        public uint Unknown14 { get; set; }
-        public uint Unknown15 { get; set; }
-        public uint Unknown16 { get; set; }
-        public uint Unknown17 { get; set; }
-        public uint Unknown18 { get; set; }
-        public uint Unknown19 { get; set; }
-        public uint Unknown20 { get; set; }
-        public uint Unknown21 { get; set; }
+        public LazyRow< Level >[] LGBPopRange { get; set; }
+        public uint Unknown22 { get; set; }
         public uint[] Icon { get; set; }
         public uint Unknown38 { get; set; }
         public bool Unknown39 { get; set; }
@@ -94,24 +81,13 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown4 = parser.ReadColumn< ushort >( 4 );
             Unknown5 = parser.ReadColumn< ushort >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
-            Unknown7 = parser.ReadColumn< uint >( 7 );
-            Unknown8 = parser.ReadColumn< uint >( 8 );
-            Unknown9 = parser.ReadColumn< uint >( 9 );
-            Unknown10 = parser.ReadColumn< uint >( 10 );
-            Unknown11 = parser.ReadColumn< uint >( 11 );
-            Unknown12 = parser.ReadColumn< uint >( 12 );
-            Unknown13 = parser.ReadColumn< uint >( 13 );
-            Unknown14 = parser.ReadColumn< uint >( 14 );
-            Unknown15 = parser.ReadColumn< uint >( 15 );
-            Unknown16 = parser.ReadColumn< uint >( 16 );
-            Unknown17 = parser.ReadColumn< uint >( 17 );
-            Unknown18 = parser.ReadColumn< uint >( 18 );
-            Unknown19 = parser.ReadColumn< uint >( 19 );
-            Unknown20 = parser.ReadColumn< uint >( 20 );
-            Unknown21 = parser.ReadColumn< uint >( 21 );
-            Icon = new uint[ 16 ];
-            for( var i = 0; i < 16; i++ )
-                Icon[ i ] = parser.ReadColumn< uint >( 22 + i );
+            LGBPopRange = new LazyRow< Level >[ 15 ];
+            for( var i = 0; i < 15; i++ )
+                LGBPopRange[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 7 + i ), language );
+            Unknown22 = parser.ReadColumn< uint >( 22 );
+            Icon = new uint[ 15 ];
+            for( var i = 0; i < 15; i++ )
+                Icon[ i ] = parser.ReadColumn< uint >( 23 + i );
             Unknown38 = parser.ReadColumn< uint >( 38 );
             Unknown39 = parser.ReadColumn< bool >( 39 );
             Unknown40 = parser.ReadColumn< bool >( 40 );

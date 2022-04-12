@@ -11,7 +11,7 @@ namespace Lumina.Excel.GeneratedSheets
     {
         
         public byte GatheringLevel { get; set; }
-        public bool Unknown1 { get; set; }
+        public bool IsShadowNode { get; set; }
         public LazyRow< TerritoryType > TerritoryType { get; set; }
         public short X { get; set; }
         public short Y { get; set; }
@@ -28,7 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             GatheringLevel = parser.ReadColumn< byte >( 0 );
-            Unknown1 = parser.ReadColumn< bool >( 1 );
+            IsShadowNode = parser.ReadColumn< bool >( 1 );
             TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< int >( 2 ), language );
             X = parser.ReadColumn< short >( 3 );
             Y = parser.ReadColumn< short >( 4 );

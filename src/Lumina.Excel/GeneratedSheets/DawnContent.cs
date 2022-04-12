@@ -6,19 +6,49 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DawnContent", columnHash: 0x5d58cc84 )]
+    [Sheet( "DawnContent", columnHash: 0x86e86b80 )]
     public class DawnContent : ExcelRow
     {
         
         public LazyRow< ContentFinderCondition > Content { get; set; }
-        public uint Exp { get; set; }
+        public bool Unknown1 { get; set; }
+        public bool Unknown2 { get; set; }
+        public uint ExpBelowExMaxLvl { get; set; }
+        public uint ExpAboveExMaxLvl { get; set; }
+        public uint Unknown5 { get; set; }
+        public byte Unknown6 { get; set; }
+        public uint Unknown7 { get; set; }
+        public uint Unknown8 { get; set; }
+        public uint Unknown9 { get; set; }
+        public uint Unknown10 { get; set; }
+        public uint Unknown11 { get; set; }
+        public uint Unknown12 { get; set; }
+        public uint Unknown13 { get; set; }
+        public uint Unknown14 { get; set; }
+        public uint Unknown15 { get; set; }
+        public uint Unknown16 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             Content = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< uint >( 0 ), language );
-            Exp = parser.ReadColumn< uint >( 1 );
+            Unknown1 = parser.ReadColumn< bool >( 1 );
+            Unknown2 = parser.ReadColumn< bool >( 2 );
+            ExpBelowExMaxLvl = parser.ReadColumn< uint >( 3 );
+            ExpAboveExMaxLvl = parser.ReadColumn< uint >( 4 );
+            Unknown5 = parser.ReadColumn< uint >( 5 );
+            Unknown6 = parser.ReadColumn< byte >( 6 );
+            Unknown7 = parser.ReadColumn< uint >( 7 );
+            Unknown8 = parser.ReadColumn< uint >( 8 );
+            Unknown9 = parser.ReadColumn< uint >( 9 );
+            Unknown10 = parser.ReadColumn< uint >( 10 );
+            Unknown11 = parser.ReadColumn< uint >( 11 );
+            Unknown12 = parser.ReadColumn< uint >( 12 );
+            Unknown13 = parser.ReadColumn< uint >( 13 );
+            Unknown14 = parser.ReadColumn< uint >( 14 );
+            Unknown15 = parser.ReadColumn< uint >( 15 );
+            Unknown16 = parser.ReadColumn< uint >( 16 );
         }
     }
 }

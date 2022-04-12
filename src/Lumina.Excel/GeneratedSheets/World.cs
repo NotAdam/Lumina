@@ -6,11 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "World", columnHash: 0xd4d62b80 )]
+    [Sheet( "World", columnHash: 0xae743815 )]
     public class World : ExcelRow
     {
         
+        public SeString InternalName { get; set; }
         public SeString Name { get; set; }
+        public byte Region { get; set; }
         public byte UserType { get; set; }
         public LazyRow< WorldDCGroupType > DataCenter { get; set; }
         public bool IsPublic { get; set; }
@@ -19,10 +21,12 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Name = parser.ReadColumn< SeString >( 0 );
-            UserType = parser.ReadColumn< byte >( 1 );
-            DataCenter = new LazyRow< WorldDCGroupType >( gameData, parser.ReadColumn< byte >( 2 ), language );
-            IsPublic = parser.ReadColumn< bool >( 3 );
+            InternalName = parser.ReadColumn< SeString >( 0 );
+            Name = parser.ReadColumn< SeString >( 1 );
+            Region = parser.ReadColumn< byte >( 2 );
+            UserType = parser.ReadColumn< byte >( 3 );
+            DataCenter = new LazyRow< WorldDCGroupType >( gameData, parser.ReadColumn< byte >( 4 ), language );
+            IsPublic = parser.ReadColumn< bool >( 5 );
         }
     }
 }

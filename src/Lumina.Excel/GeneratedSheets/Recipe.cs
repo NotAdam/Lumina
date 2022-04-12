@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Recipe", columnHash: 0xf56e5856 )]
+    [Sheet( "Recipe", columnHash: 0xef104b8e )]
     public class Recipe : ExcelRow
     {
         public class UnkData5Obj
@@ -21,7 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > ItemResult { get; set; }
         public byte AmountResult { get; set; }
         public UnkData5Obj[] UnkData5 { get; set; }
-        public ushort Unknown25 { get; set; }
+        public LazyRow< RecipeNotebookList > RecipeNotebookList { get; set; }
         public bool IsSecondary { get; set; }
         public byte MaterialQualityFactor { get; set; }
         public ushort DifficultyFactor { get; set; }
@@ -33,7 +33,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort QuickSynthCraftsmanship { get; set; }
         public ushort QuickSynthControl { get; set; }
         public LazyRow< SecretRecipeBook > SecretRecipeBook { get; set; }
-        public uint Unknown37 { get; set; }
+        public LazyRow< Quest > Quest { get; set; }
         public bool CanQuickSynth { get; set; }
         public bool CanHq { get; set; }
         public bool ExpRewarded { get; set; }
@@ -41,6 +41,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Item > ItemRequired { get; set; }
         public bool IsSpecializationRequired { get; set; }
         public bool IsExpert { get; set; }
+        public byte Unknown45 { get; set; }
+        public ushort Unknown46 { get; set; }
         public ushort PatchNumber { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -59,7 +61,7 @@ namespace Lumina.Excel.GeneratedSheets
                 UnkData5[ i ].ItemIngredient = parser.ReadColumn< int >( 5 + ( i * 2 + 0 ) );
                 UnkData5[ i ].AmountIngredient = parser.ReadColumn< byte >( 5 + ( i * 2 + 1 ) );
             }
-            Unknown25 = parser.ReadColumn< ushort >( 25 );
+            RecipeNotebookList = new LazyRow< RecipeNotebookList >( gameData, parser.ReadColumn< ushort >( 25 ), language );
             IsSecondary = parser.ReadColumn< bool >( 26 );
             MaterialQualityFactor = parser.ReadColumn< byte >( 27 );
             DifficultyFactor = parser.ReadColumn< ushort >( 28 );
@@ -71,7 +73,7 @@ namespace Lumina.Excel.GeneratedSheets
             QuickSynthCraftsmanship = parser.ReadColumn< ushort >( 34 );
             QuickSynthControl = parser.ReadColumn< ushort >( 35 );
             SecretRecipeBook = new LazyRow< SecretRecipeBook >( gameData, parser.ReadColumn< ushort >( 36 ), language );
-            Unknown37 = parser.ReadColumn< uint >( 37 );
+            Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 37 ), language );
             CanQuickSynth = parser.ReadColumn< bool >( 38 );
             CanHq = parser.ReadColumn< bool >( 39 );
             ExpRewarded = parser.ReadColumn< bool >( 40 );
@@ -79,7 +81,9 @@ namespace Lumina.Excel.GeneratedSheets
             ItemRequired = new LazyRow< Item >( gameData, parser.ReadColumn< int >( 42 ), language );
             IsSpecializationRequired = parser.ReadColumn< bool >( 43 );
             IsExpert = parser.ReadColumn< bool >( 44 );
-            PatchNumber = parser.ReadColumn< ushort >( 45 );
+            Unknown45 = parser.ReadColumn< byte >( 45 );
+            Unknown46 = parser.ReadColumn< ushort >( 46 );
+            PatchNumber = parser.ReadColumn< ushort >( 47 );
         }
     }
 }

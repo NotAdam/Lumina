@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BNpcParts", columnHash: 0xcce3205c )]
+    [Sheet( "BNpcParts", columnHash: 0x4cf06d08 )]
     public class BNpcParts : ExcelRow
     {
         
@@ -65,6 +65,17 @@ namespace Lumina.Excel.GeneratedSheets
         public float Z5 { get; set; }
         public short Unknown53 { get; set; }
         public float Scale5 { get; set; }
+        public ushort Unknown55 { get; set; }
+        public byte Unknown56 { get; set; }
+        public bool Unknown57 { get; set; }
+        public bool Unknown58 { get; set; }
+        public bool Unknown59 { get; set; }
+        public bool Unknown60 { get; set; }
+        public float Unknown61 { get; set; }
+        public float Unknown62 { get; set; }
+        public float Unknown63 { get; set; }
+        public short Unknown64 { get; set; }
+        public float Unknown65 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -125,6 +136,17 @@ namespace Lumina.Excel.GeneratedSheets
             Z5 = parser.ReadColumn< float >( 52 );
             Unknown53 = parser.ReadColumn< short >( 53 );
             Scale5 = parser.ReadColumn< float >( 54 );
+            Unknown55 = parser.ReadColumn< ushort >( 55 );
+            Unknown56 = parser.ReadColumn< byte >( 56 );
+            Unknown57 = parser.ReadColumn< bool >( 57 );
+            Unknown58 = parser.ReadColumn< bool >( 58 );
+            Unknown59 = parser.ReadColumn< bool >( 59 );
+            Unknown60 = parser.ReadColumn< bool >( 60 );
+            Unknown61 = parser.ReadColumn< float >( 61 );
+            Unknown62 = parser.ReadColumn< float >( 62 );
+            Unknown63 = parser.ReadColumn< float >( 63 );
+            Unknown64 = parser.ReadColumn< short >( 64 );
+            Unknown65 = parser.ReadColumn< float >( 65 );
         }
     }
 }

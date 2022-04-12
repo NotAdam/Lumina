@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RecipeLevelTable", columnHash: 0xdc8d702b )]
+    [Sheet( "RecipeLevelTable", columnHash: 0x6d3c3f32 )]
     public class RecipeLevelTable : ExcelRow
     {
         
@@ -16,6 +16,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort SuggestedControl { get; set; }
         public ushort Difficulty { get; set; }
         public uint Quality { get; set; }
+        public byte ProgressDivider { get; set; }
+        public byte QualityDivider { get; set; }
+        public byte ProgressModifier { get; set; }
+        public byte QualityModifier { get; set; }
         public ushort Durability { get; set; }
         public ushort ConditionsFlag { get; set; }
         
@@ -29,8 +33,12 @@ namespace Lumina.Excel.GeneratedSheets
             SuggestedControl = parser.ReadColumn< ushort >( 3 );
             Difficulty = parser.ReadColumn< ushort >( 4 );
             Quality = parser.ReadColumn< uint >( 5 );
-            Durability = parser.ReadColumn< ushort >( 6 );
-            ConditionsFlag = parser.ReadColumn< ushort >( 7 );
+            ProgressDivider = parser.ReadColumn< byte >( 6 );
+            QualityDivider = parser.ReadColumn< byte >( 7 );
+            ProgressModifier = parser.ReadColumn< byte >( 8 );
+            QualityModifier = parser.ReadColumn< byte >( 9 );
+            Durability = parser.ReadColumn< ushort >( 10 );
+            ConditionsFlag = parser.ReadColumn< ushort >( 11 );
         }
     }
 }

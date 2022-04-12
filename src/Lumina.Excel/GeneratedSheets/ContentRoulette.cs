@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentRoulette", columnHash: 0xd8e2fea2 )]
+    [Sheet( "ContentRoulette", columnHash: 0xf3f8c906 )]
     public class ContentRoulette : ExcelRow
     {
         
@@ -17,10 +17,10 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString DutyType { get; set; }
         public byte Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
-        public bool Unknown7 { get; set; }
+        public bool IsGoldSaucer { get; set; }
         public bool IsInDutyFinder { get; set; }
         public LazyRow< ContentRouletteOpenRule > OpenRule { get; set; }
-        public bool Unknown10 { get; set; }
+        public bool IsPvP { get; set; }
         public byte RequiredLevel { get; set; }
         public byte Unknown12 { get; set; }
         public ushort ItemLevelRequired { get; set; }
@@ -50,6 +50,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< InstanceContent > InstanceContent { get; set; }
         public bool Unknown38 { get; set; }
         public byte Unknown39 { get; set; }
+        public bool Unknown40 { get; set; }
+        public bool Unknown41 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -62,10 +64,10 @@ namespace Lumina.Excel.GeneratedSheets
             DutyType = parser.ReadColumn< SeString >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
-            Unknown7 = parser.ReadColumn< bool >( 7 );
+            IsGoldSaucer = parser.ReadColumn< bool >( 7 );
             IsInDutyFinder = parser.ReadColumn< bool >( 8 );
             OpenRule = new LazyRow< ContentRouletteOpenRule >( gameData, parser.ReadColumn< byte >( 9 ), language );
-            Unknown10 = parser.ReadColumn< bool >( 10 );
+            IsPvP = parser.ReadColumn< bool >( 10 );
             RequiredLevel = parser.ReadColumn< byte >( 11 );
             Unknown12 = parser.ReadColumn< byte >( 12 );
             ItemLevelRequired = parser.ReadColumn< ushort >( 13 );
@@ -95,6 +97,8 @@ namespace Lumina.Excel.GeneratedSheets
             InstanceContent = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< ushort >( 37 ), language );
             Unknown38 = parser.ReadColumn< bool >( 38 );
             Unknown39 = parser.ReadColumn< byte >( 39 );
+            Unknown40 = parser.ReadColumn< bool >( 40 );
+            Unknown41 = parser.ReadColumn< bool >( 41 );
         }
     }
 }

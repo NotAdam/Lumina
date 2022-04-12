@@ -10,19 +10,19 @@ namespace Lumina.Excel.GeneratedSheets
     public class AOZScore : ExcelRow
     {
         
-        public bool Name { get; set; }
-        public int Description { get; set; }
-        public SeString Score { get; set; }
-        public SeString IsHidden { get; set; }
+        public bool IsHidden { get; set; }
+        public int Score { get; set; }
+        public SeString Name { get; set; }
+        public SeString Description { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Name = parser.ReadColumn< bool >( 0 );
-            Description = parser.ReadColumn< int >( 1 );
-            Score = parser.ReadColumn< SeString >( 2 );
-            IsHidden = parser.ReadColumn< SeString >( 3 );
+            IsHidden = parser.ReadColumn< bool >( 0 );
+            Score = parser.ReadColumn< int >( 1 );
+            Name = parser.ReadColumn< SeString >( 2 );
+            Description = parser.ReadColumn< SeString >( 3 );
         }
     }
 }
