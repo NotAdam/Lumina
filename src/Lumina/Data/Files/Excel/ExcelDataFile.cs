@@ -24,6 +24,8 @@ namespace Lumina.Data.Files.Excel
         /// Whether the endianness of the underlying data has been swapped so it doesn't happen twice
         /// </summary>
         public bool SwappedEndianness { get; internal set; }
+        
+        internal readonly object ReaderLock = new();
 
         public override unsafe void LoadFile()
         {
