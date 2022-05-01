@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,12 +30,32 @@ namespace Lumina.Excel.RSV
         public bool HasValues => _rsvEntries.Any();
 
         /// <summary>
-        /// Add a RSV mapping for a language to the collection
+        /// Add a RSV mapping to the collection
         /// </summary>
         /// <param name="rsvEntry">The RSV key and value</param>
+        [Obsolete( "use RsvProvider.Add instead" )]
         public void Seed( RSVPair rsvEntry )
         {
             _rsvEntries[ rsvEntry.Key ] = rsvEntry.Value;
+        }
+
+        /// <summary>
+        /// Add a RSV mapping to the collection
+        /// </summary>
+        /// <param name="rsvEntry">The RSV key and value</param>
+        public void Add( RSVPair rsvEntry )
+        {
+            _rsvEntries[ rsvEntry.Key ] = rsvEntry.Value;
+        }
+
+        /// <summary>
+        /// Add a RSV mapping to the collection
+        /// </summary>
+        /// <param name="key">The RSV key</param>
+        /// <param name="value">The RSV value (the original string)</param>
+        public void Add( string key, string value )
+        {
+            _rsvEntries[ key ] = value;
         }
 
         /// <summary>
@@ -52,7 +73,7 @@ namespace Lumina.Excel.RSV
                 {
                     continue;
                 }
-                
+
                 var data = entry.Split( delim, 2 );
                 var rsvKey = RsvUtil.ParseRsvKey( data[ 0 ] );
                 if( rsvKey == null )
