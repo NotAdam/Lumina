@@ -21,12 +21,12 @@ namespace Lumina.Excel
         /// <remarks>
         /// Not actually used for anything in lumina, but kept for reference
         /// </remarks>
-        public readonly Dictionary< int, string > ImmutableIdToSheetMap = new();
+        private readonly Dictionary< int, string > _immutableIdToSheetMap = new();
 
         /// <summary>
         /// A list of all available sheets, pulled from root.exl
         /// </summary>
-        public readonly List< string > SheetNames = new();
+        private readonly List< string > _sheetNames = new();
 
         private readonly Dictionary< CacheKeyTuple, ExcelSheetImpl > _sheetCache = new();
 
@@ -58,14 +58,14 @@ namespace Lumina.Excel
 
             foreach( var map in files.ExdMap )
             {
-                SheetNames.Add( map.Key );
+                _sheetNames.Add( map.Key );
 
                 if( map.Value == -1 )
                 {
                     continue;
                 }
 
-                ImmutableIdToSheetMap[ map.Value ] = map.Key;
+                _immutableIdToSheetMap[ map.Value ] = map.Key;
             }
         }
 
@@ -73,7 +73,7 @@ namespace Lumina.Excel
         /// Generates a path to the header file, given a sheet name.
         /// </summary>
         /// <remarks>
-        /// Sheet names must be in the same format as they're in root.exl. You can see all available sheets by iterating <see cref="SheetNames"/>.
+        /// Sheet names must be in the same format as they're in root.exl. You can see all available sheets by iterating <see cref="_sheetNames"/>.
         /// </remarks>
         /// <param name="name">A sheet name</param>
         /// <returns>An absolute path to an excel header file</returns>
@@ -337,6 +337,6 @@ namespace Lumina.Excel
         /// Get all available sheets, parsed from root.exl.
         /// </summary>
         /// <returns>A readonly collection of all available excel sheets</returns>
-        public IReadOnlyCollection< string > GetSheetNames() => SheetNames;
+        public IReadOnlyCollection< string > GetSheetNames() => _sheetNames;
     }
 }
