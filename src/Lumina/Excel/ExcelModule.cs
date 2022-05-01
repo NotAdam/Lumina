@@ -30,10 +30,18 @@ namespace Lumina.Excel
 
         private readonly Dictionary< CacheKeyTuple, ExcelSheetImpl > _sheetCache = new();
 
-        private readonly object _sheetCreateLock = new object();
+        private readonly object _sheetCreateLock = new();
 
+        /// <summary>
+        /// Allows for lumina to transparently substitute values where they are hidden in sheets by SE. Can be seeded from packets or static data at init time.
+        /// </summary>
         public RsvProvider RsvProvider { get; } = new();
 
+        /// <summary>
+        /// Create a new ExcelModule. This will do all the initial discovery of sheets from the EXL but not load any sheets.
+        /// </summary>
+        /// <param name="gameData">The gamedata instance to use to load sheets from</param>
+        /// <exception cref="FileNotFoundException">Thrown when the root.exl file cannot be found - make sure that an 0a dat is available.</exception>
         public ExcelModule( GameData gameData )
         {
             _gameData = gameData;
@@ -324,5 +332,11 @@ namespace Lumina.Excel
 
             return attr.ColumnHash == headerFile.GetColumnsHash();
         }
+
+        /// <summary>
+        /// Get all available sheets, parsed from root.exl.
+        /// </summary>
+        /// <returns>A readonly collection of all available excel sheets</returns>
+        public IReadOnlyCollection< string > GetSheetNames() => SheetNames;
     }
 }
