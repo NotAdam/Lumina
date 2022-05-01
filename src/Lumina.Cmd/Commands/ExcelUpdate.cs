@@ -24,9 +24,9 @@ namespace Lumina.Cmd.Commands
             var ol = new GameData( OldPath );
             var nl = new GameData( NewPath );
 
-            co.WriteLine( $"old sheets: {ol.Excel.SheetNames.Count} new sheets: {nl.Excel.SheetNames.Count}" );
+            co.WriteLine( $"old sheets: {ol.Excel.GetSheetNames().Count} new sheets: {nl.Excel.GetSheetNames().Count}" );
 
-            var removedSheets = ol.Excel.SheetNames.Except( nl.Excel.SheetNames ).ToList();
+            var removedSheets = ol.Excel.GetSheetNames().Except( nl.Excel.GetSheetNames() ).ToList();
             if( removedSheets.Any() )
             {
                 co.WriteLine( $"{removedSheets.Count} sheets removed" );
@@ -37,7 +37,7 @@ namespace Lumina.Cmd.Commands
                 }
             }
 
-            var newSheets = nl.Excel.SheetNames.Except( ol.Excel.SheetNames ).ToList();
+            var newSheets = nl.Excel.GetSheetNames().Except( ol.Excel.GetSheetNames() ).ToList();
             if( newSheets.Any() )
             {
                 co.WriteLine( $"{newSheets.Count} new sheets" );
@@ -49,7 +49,7 @@ namespace Lumina.Cmd.Commands
             }
 
             co.WriteLine( "diffing existing sheets..." );
-            var existingSheets = nl.Excel.SheetNames.Intersect( ol.Excel.SheetNames ).ToList();
+            var existingSheets = nl.Excel.GetSheetNames().Intersect( ol.Excel.GetSheetNames() ).ToList();
             foreach( var eSheet in existingSheets )
             {
                 var exhPath = $"exd/{eSheet}.exh";
