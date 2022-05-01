@@ -9,9 +9,6 @@ namespace Lumina.Excel.RSV
     /// <summary>
     /// Stores a mapping so that Lumina can remap _rsv_* values to their actual values when consuming sheet data.
     /// </summary>
-    /// <remarks>
-    /// 'rsv' means 'retard shit value'. 
-    /// </remarks>
     public class RsvProvider
     {
         /// <summary>
