@@ -4,25 +4,129 @@ _rsv_9260_-1_0_C0_0Action,グランドクロス・デルタ
 _rsv_9261_-1_0_C0_0Action,グランドクロス・オメガ
 _rsv_27174_-1_0_C0_0Action,近思の魔撃
 _rsv_27175_-1_0_C0_0Action,遠見の魔撃
+_rsv_28049_-1_0_C0_0Action|フレイム・オブ・アスカロン
+_rsv_28050_-1_0_C0_0Action|アイス・オブ・アスカロン
+_rsv_28051_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_28052_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_28053_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_28054_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_28055_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_28056_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_28057_-1_0_C0_0Action|騎竜剣ギガフレア
+_rsv_28058_-1_0_C0_0Action|騎竜剣ギガフレア
+_rsv_28059_-1_0_C0_0Action|騎竜剣エクサフレア
+_rsv_28060_-1_0_C0_0Action|騎竜剣エクサフレア
+_rsv_28061_-1_0_C0_0Action|騎竜剣エクサフレア
+_rsv_28114_-1_0_C0_0Action|騎竜剣ギガフレア
+_rsv_28115_-1_0_C0_0Action|騎竜剣ギガフレア
+_rsv_28206_-1_0_C0_0Action|騎竜剣モーン・アファー
+_rsv_28207_-1_0_C0_0Action|騎竜剣モーン・アファー
+_rsv_28208_-1_0_C0_0Action|騎竜剣モーン・アファー
+_rsv_28209_-1_0_C0_0Action|騎竜剣モーン・アファー
 _rsv_28280_-1_0_C0_0Action,半神の双撃
+_rsv_29452_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_29453_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_29454_-1_0_C0_0Action|騎竜剣アク・モーン
+_rsv_29455_-1_0_C0_0Action|騎竜剣モーン・アファー
+_rsv_29456_-1_0_C0_0Action|騎竜剣モーン・アファー
+_rsv_29457_-1_0_C0_0Action|騎竜剣モーン・アファー
+_rsv_29752_-1_0_C0_0Action|アルティメットエンド・オルタナ
 // en
 _rsv_9259_-1_1_C0_0Action,Grand Cross Alpha
 _rsv_9260_-1_1_C0_0Action,Grand Cross Delta
 _rsv_9261_-1_1_C0_0Action,Grand Cross Omega
 _rsv_27174_-1_1_C0_0Action,Nearsight
 _rsv_27175_-1_1_C0_0Action,Farsight
+_rsv_28049_-1_1_C0_0Action|Flames of Ascalon
+_rsv_28050_-1_1_C0_0Action|Ice of Ascalon
+_rsv_28051_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_28052_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_28053_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_28054_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_28055_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_28056_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_28057_-1_1_C0_0Action|Gigaflare's Edge
+_rsv_28058_-1_1_C0_0Action|Gigaflare's Edge
+_rsv_28059_-1_1_C0_0Action|Exaflare's Edge
+_rsv_28060_-1_1_C0_0Action|Exaflare's Edge
+_rsv_28061_-1_1_C0_0Action|Exaflare's Edge
+_rsv_28114_-1_1_C0_0Action|Gigaflare's Edge
+_rsv_28115_-1_1_C0_0Action|Gigaflare's Edge
+_rsv_28206_-1_1_C0_0Action|Morn Afah's Edge
+_rsv_28207_-1_1_C0_0Action|Morn Afah's Edge
+_rsv_28208_-1_1_C0_0Action|Morn Afah's Edge
+_rsv_28209_-1_1_C0_0Action|Morn Afah's Edge
 _rsv_28280_-1_1_C0_0Action,Demigod Double
+_rsv_29452_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_29453_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_29454_-1_1_C0_0Action|Akh Morn's Edge
+_rsv_29455_-1_1_C0_0Action|Morn Afah's Edge
+_rsv_29456_-1_1_C0_0Action|Morn Afah's Edge
+_rsv_29457_-1_1_C0_0Action|Morn Afah's Edge
+_rsv_29752_-1_1_C0_0Action|Alternative End
 // de
 _rsv_9259_-1_2_C0_0Action,Supernova Alpha
 _rsv_9260_-1_2_C0_0Action,Supernova Delta
 _rsv_9261_-1_2_C0_0Action,Supernova Omega
 _rsv_27174_-1_2_C0_0Action,Blick nach Innen
 _rsv_27175_-1_2_C0_0Action,Blick in die Ferne
+_rsv_28049_-1_2_C0_0Action|Flamme von Askalon
+_rsv_28050_-1_2_C0_0Action|Eis von Askalon
+_rsv_28051_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_28052_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_28053_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_28054_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_28055_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_28056_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_28057_-1_2_C0_0Action|Gigaflare-Klinge
+_rsv_28058_-1_2_C0_0Action|Gigaflare-Klinge
+_rsv_28059_-1_2_C0_0Action|Exaflare-Klinge
+_rsv_28060_-1_2_C0_0Action|Exaflare-Klinge
+_rsv_28061_-1_2_C0_0Action|Exaflare-Klinge
+_rsv_28114_-1_2_C0_0Action|Gigaflare-Klinge
+_rsv_28115_-1_2_C0_0Action|Gigaflare-Klinge
+_rsv_28206_-1_2_C0_0Action|Morn Afahs Klinge
+_rsv_28207_-1_2_C0_0Action|Morn Afahs Klinge
+_rsv_28208_-1_2_C0_0Action|Morn Afahs Klinge
+_rsv_28209_-1_2_C0_0Action|Morn Afahs Klinge
 _rsv_28280_-1_2_C0_0Action,Hemitheischer Hieb
+_rsv_29452_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_29453_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_29454_-1_2_C0_0Action|Akh Morns Klinge
+_rsv_29455_-1_2_C0_0Action|Morn Afahs Klinge
+_rsv_29456_-1_2_C0_0Action|Morn Afahs Klinge
+_rsv_29457_-1_2_C0_0Action|Morn Afahs Klinge
+_rsv_29752_-1_2_C0_0Action|Ein neues Ende
 // fr
 _rsv_9259_-1_3_C0_0Action,Croix suprême alpha
 _rsv_9260_-1_3_C0_0Action,Croix suprême delta
 _rsv_9261_-1_3_C0_0Action,Croix suprême oméga
 _rsv_27174_-1_3_C0_0Action,Frappe introspective
 _rsv_27175_-1_3_C0_0Action,Frappe visionnaire
+_rsv_28049_-1_3_C0_0Action|Feu d'Ascalon
+_rsv_28050_-1_3_C0_0Action|Glace d'Ascalon
+_rsv_28051_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_28052_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_28053_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_28054_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_28055_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_28056_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_28057_-1_3_C0_0Action|Lame de GigaBrasier
+_rsv_28058_-1_3_C0_0Action|Lame de GigaBrasier
+_rsv_28059_-1_3_C0_0Action|Lame d'ExaBrasier
+_rsv_28060_-1_3_C0_0Action|Lame d'ExaBrasier
+_rsv_28061_-1_3_C0_0Action|Lame d'ExaBrasier
+_rsv_28114_-1_3_C0_0Action|Lame de GigaBrasier
+_rsv_28115_-1_3_C0_0Action|Lame de GigaBrasier
+_rsv_28206_-1_3_C0_0Action|Lame de Morn Afah
+_rsv_28207_-1_3_C0_0Action|Lame de Morn Afah
+_rsv_28208_-1_3_C0_0Action|Lame de Morn Afah
+_rsv_28209_-1_3_C0_0Action|Lame de Morn Afah
 _rsv_28280_-1_3_C0_0Action,Gémellité du demi-dieu
+_rsv_29452_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_29453_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_29454_-1_3_C0_0Action|Lame d'Akh Morn
+_rsv_29455_-1_3_C0_0Action|Lame de Morn Afah
+_rsv_29456_-1_3_C0_0Action|Lame de Morn Afah
+_rsv_29457_-1_3_C0_0Action|Lame de Morn Afah
+_rsv_29752_-1_3_C0_0Action|Fin alternativ
