@@ -21,19 +21,27 @@ namespace Lumina.Excel
         /// <remarks>
         /// Not actually used for anything in lumina, but kept for reference
         /// </remarks>
-        public readonly Dictionary< int, string > ImmutableIdToSheetMap = new();
+        private readonly Dictionary< int, string > _immutableIdToSheetMap = new();
 
         /// <summary>
         /// A list of all available sheets, pulled from root.exl
         /// </summary>
-        public readonly List< string > SheetNames = new();
+        private readonly List< string > _sheetNames = new();
 
         private readonly Dictionary< CacheKeyTuple, ExcelSheetImpl > _sheetCache = new();
 
-        private readonly object _sheetCreateLock = new object();
+        private readonly object _sheetCreateLock = new();
 
+        /// <summary>
+        /// Allows for lumina to transparently substitute values where they are hidden in sheets by SE. Can be seeded from packets or static data at init time.
+        /// </summary>
         public RsvProvider RsvProvider { get; } = new();
 
+        /// <summary>
+        /// Create a new ExcelModule. This will do all the initial discovery of sheets from the EXL but not load any sheets.
+        /// </summary>
+        /// <param name="gameData">The gamedata instance to use to load sheets from</param>
+        /// <exception cref="FileNotFoundException">Thrown when the root.exl file cannot be found - make sure that an 0a dat is available.</exception>
         public ExcelModule( GameData gameData )
         {
             _gameData = gameData;
@@ -50,14 +58,14 @@ namespace Lumina.Excel
 
             foreach( var map in files.ExdMap )
             {
-                SheetNames.Add( map.Key );
+                _sheetNames.Add( map.Key );
 
                 if( map.Value == -1 )
                 {
                     continue;
                 }
 
-                ImmutableIdToSheetMap[ map.Value ] = map.Key;
+                _immutableIdToSheetMap[ map.Value ] = map.Key;
             }
         }
 
@@ -65,7 +73,7 @@ namespace Lumina.Excel
         /// Generates a path to the header file, given a sheet name.
         /// </summary>
         /// <remarks>
-        /// Sheet names must be in the same format as they're in root.exl. You can see all available sheets by iterating <see cref="SheetNames"/>.
+        /// Sheet names must be in the same format as they're in root.exl. You can see all available sheets by iterating <see cref="_sheetNames"/>.
         /// </remarks>
         /// <param name="name">A sheet name</param>
         /// <returns>An absolute path to an excel header file</returns>
@@ -324,5 +332,11 @@ namespace Lumina.Excel
 
             return attr.ColumnHash == headerFile.GetColumnsHash();
         }
+
+        /// <summary>
+        /// Get all available sheets, parsed from root.exl.
+        /// </summary>
+        /// <returns>A readonly collection of all available excel sheets</returns>
+        public IReadOnlyCollection< string > GetSheetNames() => _sheetNames;
     }
 }
