@@ -37,13 +37,17 @@ namespace Lumina.Excel
                 return cachedRow;
             }
 
-            var parser = GetRowParser( row, subRow );
+            var page = GetPageForRow( row );
+            if( page == null )
+            {
+                return null;
+            }
+            
+            var parser = GetRowParser( page, row, subRow );
             if( parser == null )
             {
                 return null;
             }
-
-            var page = GetPageForRow( row );
             
             var rowObj = Activator.CreateInstance< T >();
             
