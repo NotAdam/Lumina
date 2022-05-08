@@ -50,9 +50,11 @@ namespace Lumina.Excel
             }
             
             var rowObj = Activator.CreateInstance< T >();
-            
-            lock(page.File.ReaderLock)
+
+            lock( page.File.ReaderLock )
+            {
                 rowObj.PopulateData( parser, GameData, RequestedLanguage );
+            }
 
             _rowCache[ cacheKey ] = rowObj;
 
