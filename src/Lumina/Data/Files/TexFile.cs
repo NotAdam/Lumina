@@ -143,7 +143,7 @@ namespace Lumina.Data.Files
                     ProcessR3G3B2( src, dst, width, height );
                     break;
                 case TextureFormat.A8R8G8B8:
-                    src.CopyTo( dst );
+                    ProcessA8R8G8B8( src, dst, width, height );
                     break;
                 default:
                     throw new NotImplementedException( $"TextureFormat {Header.Format.ToString()} is not supported for image conversion." );
