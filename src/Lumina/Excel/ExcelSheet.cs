@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using Lumina.Data;
@@ -10,7 +11,7 @@ namespace Lumina.Excel
 {
     public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : ExcelRow
     {
-        private readonly Dictionary< UInt64, T > _rowCache = new Dictionary< UInt64, T >();
+        private readonly ConcurrentDictionary< UInt64, T > _rowCache = new();
 
         public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage, GameData gameData ) :
             base( headerFile, name, requestedLanguage, gameData )
@@ -36,14 +37,24 @@ namespace Lumina.Excel
                 return cachedRow;
             }
 
-            var parser = GetRowParser( row, subRow );
+            var page = GetPageForRow( row );
+            if( page == null )
+            {
+                return null;
+            }
+            
+            var parser = GetRowParser( page, row, subRow );
             if( parser == null )
             {
                 return null;
             }
             
             var rowObj = Activator.CreateInstance< T >();
-            rowObj.PopulateData( parser, GameData, RequestedLanguage );
+
+            lock( page.File.ReaderLock )
+            {
+                rowObj.PopulateData( parser, GameData, RequestedLanguage );
+            }
 
             _rowCache[ cacheKey ] = rowObj;
 
@@ -100,7 +111,7 @@ namespace Lumina.Excel
                         }
 
                         var obj = ReadSubRowObj( parser, rowPtr.RowId, i );
-                        _rowCache.Add( cacheKey, obj );
+                        _rowCache.TryAdd( cacheKey, obj );
                         yield return obj;
                     }
                 }
@@ -114,7 +125,7 @@ namespace Lumina.Excel
                     }
                         
                     var obj = ReadRowObj( parser, rowPtr.RowId );
-                    _rowCache.Add( cacheKey, obj );
+                    _rowCache.TryAdd( cacheKey, obj );
                     yield return obj;
                 }
             }

@@ -310,6 +310,29 @@ namespace Lumina.Excel
 
             return parser;
         }
+
+        /// <summary>
+        /// Provides direct access to the underlying row parser for any row or subrow
+        /// </summary>
+        /// <param name="page">The excel page to operate on</param>
+        /// <param name="row">The row id to seek to</param>
+        /// <param name="subRow">The subrow id to seek to</param>
+        /// <returns>A <see cref="RowParser"/> instance</returns>
+        public RowParser? GetRowParser( ExcelPage page, uint row, uint subRow = uint.MaxValue )
+        {
+            RowParser parser = null!;
+
+            if( subRow != uint.MaxValue )
+            {
+                parser = new RowParser( this, page.File, row, subRow );
+            }
+            else
+            {
+                parser = new RowParser( this, page.File, row );
+            }
+
+            return parser;
+        }
         
         /// <summary>
         /// Iterate across each row data offsets in a sheet
