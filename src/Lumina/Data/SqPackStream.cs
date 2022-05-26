@@ -310,10 +310,8 @@ namespace Lumina.Data
             {
                 // fucking .net holy hell
                 Reader.Read( buffer, (int)dest.Position, (int)blockHeader.BlockDataSize );
-
-                return blockHeader.BlockDataSize;
             }
-
+            else
             {
                 using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
 
@@ -331,9 +329,9 @@ namespace Lumina.Data
                         $"failed to inflate block, bytesRead ({totalRead}) != BlockDataSize ({blockHeader.BlockDataSize})"
                     );
                 }
-
-                dest.Position += (int)blockHeader.BlockDataSize;
             }
+
+            dest.Position += (int)blockHeader.BlockDataSize;
 
             if( resetPosition )
             {
