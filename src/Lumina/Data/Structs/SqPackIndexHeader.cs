@@ -37,7 +37,7 @@ namespace Lumina.Data.Structs
 
         public byte DataFileId => (byte) ( ( data & 0b1110 ) >> 1 );
 
-        public long Offset => (uint) ( data & ~0xF ) * 0x08;
+        public long Offset => ( (uint)data & ~0xF ) * 0x08;
     }
     
     [StructLayout( LayoutKind.Sequential )]
@@ -50,6 +50,6 @@ namespace Lumina.Data.Structs
 
         public byte DataFileId => (byte) ( ( data & 0b1110 ) >> 1 );
 
-        public long Offset => (uint) ( data & ~0xF ) * 0x08;
+        public long Offset => ( (uint)data & ~0xF ) * 0x08;
     }
 }
