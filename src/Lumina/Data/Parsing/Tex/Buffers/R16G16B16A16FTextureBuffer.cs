@@ -24,8 +24,13 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             {
                 var src = new Span< ushort >( srcb + sourceOffset, width * height * depth * 4 );
                 var dst = new Span< byte >( dstb + destOffset, width * height * depth * 4 );
-                for( var i = 0; i < dst.Length; i++ )
-                    dst[ i ] = (byte)Math.Round( src[ i ].Unpack() * byte.MaxValue );
+                for( var i = 0; i < dst.Length; i += 4 )
+                {
+                    dst[ i + 0 ] = (byte)Math.Round( src[ i + 2 ].Unpack() * byte.MaxValue );
+                    dst[ i + 1 ] = (byte)Math.Round( src[ i + 1 ].Unpack() * byte.MaxValue );
+                    dst[ i + 2 ] = (byte)Math.Round( src[ i + 0 ].Unpack() * byte.MaxValue );
+                    dst[ i + 3 ] = (byte)Math.Round( src[ i + 3 ].Unpack() * byte.MaxValue );
+                }
             }
         }
 
