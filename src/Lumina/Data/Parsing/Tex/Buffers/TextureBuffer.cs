@@ -46,7 +46,16 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         /// </summary>
         public readonly int NumBytes;
 
-        internal TextureBuffer( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+        /// <summary>
+        /// Create a new instance of TextureBuffer.
+        /// </summary>
+        /// <param name="isDepthConstant">Specify whether the secondary mipmap and later get lesser number of depth.</param>
+        /// <param name="width">Width of the primary mipmap.</param>
+        /// <param name="height">Height of the primary mipmap.</param>
+        /// <param name="depth">Depth of the primary mipmap.</param>
+        /// <param name="mipmapAllocations">Number of bytes allocated for each mipmap.</param>
+        /// <param name="buffer">Byte array containing multiple mipmaps, one right after another allocation.</param>
+        protected TextureBuffer( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
         {
             IsDepthConstant = isDepthConstant;
             Width = width;
