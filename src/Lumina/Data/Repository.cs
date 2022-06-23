@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Lumina.Data.Structs;
 
 namespace Lumina.Data
@@ -55,7 +56,7 @@ namespace Lumina.Data
 
             GetExpansionId();
             ParseVersion();
-            SetupIndexes();
+            Categories = SetupIndexes( gameData.Options.LoadMultithreaded ).GetAwaiter().GetResult();
         }
 
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
@@ -165,12 +166,13 @@ namespace Lumina.Data
         /// <summary>
         /// Autodiscovers dats and a relevant index for them
         /// </summary>
-        private void SetupIndexes()
+        private async Task< Dictionary< byte, List< Category > > > SetupIndexes( bool multithread )
         {
-            Categories = new Dictionary< byte, List< Category > >();
+            Dictionary< byte, List< Task< Category > > > tasks = new();
             foreach( var cat in CategoryNameToIdMap )
             {
-                var catList = Categories[ cat.Value ] = new List< Category >();
+                var taskList = tasks[ cat.Value ] = new();
+                
                 // discover indexes first
                 // once we find an index, that index will have an associated dat (or dats) too
                 // so we don't need to discover those here
@@ -191,20 +193,28 @@ namespace Lumina.Data
                         continue;
                     }
 
-                    var index = new SqPackIndex( file, _gameData );
-
-                    var dat = new Category(
+                    var chunk1 = chunk;
+                    taskList.Add( Task.Run( () => new Category(
                         cat.Value,
                         ExpansionId,
-                        chunk,
+                        chunk1,
                         _gameData.Options.CurrentPlatform,
-                        index,
+                        new SqPackIndex( file, _gameData ),
                         RootDir,
-                        _gameData );
+                        _gameData ) ) );
 
-                    catList.Add( dat );
+                    if( !multithread )
+                        await taskList.Last();
                 }
             }
+
+            Dictionary< byte, List< Category > > result = new();
+            foreach( var (cat, catTasks) in tasks )
+            {
+                result[ cat ] = catTasks.Select( async x => await x ).Select( x => x.Result ).ToList();
+            }
+
+            return result;
         }
 
         /// <summary>
