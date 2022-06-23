@@ -7,6 +7,11 @@ namespace Lumina.Data.Parsing.Tex
     public enum SquishOptions
     {
         /// <summary>
+        /// No option.
+        /// </summary>
+        None = 0,
+        
+        /// <summary>
         /// Use DXT1 compression.
         /// </summary>
         DXT1 = ( 1 << 0 ),
