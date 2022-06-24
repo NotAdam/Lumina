@@ -81,9 +81,8 @@ namespace Lumina
 
             if( options?.LoadMultithreaded == true )
             {
-                Repositories = Task.WhenAll(
-                    DataPath.GetDirectories()
-                        .Select( repo => Task.Run( () => new Repository( repo, this ) ) ) )
+                var repoTasks = DataPath.GetDirectories().Select( repo => Task.Run( () => new Repository( repo, this ) ) );
+                Repositories = Task.WhenAll( repoTasks )
                     .GetAwaiter()
                     .GetResult()
                     .ToDictionary( x => x.Name.ToLowerInvariant(), x => x );
