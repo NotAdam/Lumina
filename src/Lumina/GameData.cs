@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Lumina.Data;
 using Lumina.Data.Structs;
 using Lumina.Excel;
@@ -78,10 +79,21 @@ namespace Lumina
                 throw new ArgumentException( "the data path arg must point to the sqpack directory", nameof( dataPath ) );
             }
 
-            Repositories = new Dictionary< string, Repository >();
-            foreach( var repo in DataPath.GetDirectories() )
+            if( options?.LoadMultithreaded == true )
             {
-                Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo, this );
+                var repoTasks = DataPath.GetDirectories().Select( repo => Task.Run( () => new Repository( repo, this ) ) );
+                Repositories = Task.WhenAll( repoTasks )
+                    .GetAwaiter()
+                    .GetResult()
+                    .ToDictionary( x => x.Name.ToLowerInvariant(), x => x );
+            }
+            else
+            {
+                Repositories = new Dictionary< string, Repository >();
+                foreach( var repo in DataPath.GetDirectories() )
+                {
+                    Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo, this );
+                }
             }
 
             Excel = new ExcelModule( this );
