@@ -56,7 +56,7 @@ namespace Lumina.Data
 
             GetExpansionId();
             ParseVersion();
-            Categories = SetupIndexes( gameData.Options.LoadMultithreaded ).GetAwaiter().GetResult();
+            Categories = SetupIndexes( gameData.Options.LoadMultithreaded );
         }
 
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
@@ -166,12 +166,12 @@ namespace Lumina.Data
         /// <summary>
         /// Autodiscovers dats and a relevant index for them
         /// </summary>
-        private async Task< Dictionary< byte, List< Category > > > SetupIndexes( bool multithread )
+        private Dictionary< byte, List< Category > > SetupIndexes( bool multithread )
         {
-            Dictionary< byte, List< Task< Category > > > tasks = new();
+            Dictionary< byte, Task < Category[] > > tasks = new();
             foreach( var cat in CategoryNameToIdMap )
             {
-                var taskList = tasks[ cat.Value ] = new();
+                var taskList = new List< Task< Category > >();
                 
                 // discover indexes first
                 // once we find an index, that index will have an associated dat (or dats) too
@@ -193,28 +193,37 @@ namespace Lumina.Data
                         continue;
                     }
 
-                    var chunk1 = chunk;
-                    taskList.Add( Task.Run( () => new Category(
-                        cat.Value,
-                        ExpansionId,
-                        chunk1,
-                        _gameData.Options.CurrentPlatform,
-                        new SqPackIndex( file, _gameData ),
-                        RootDir,
-                        _gameData ) ) );
-
-                    if( !multithread )
-                        await taskList.Last();
+                    if( multithread )
+                    {
+                        var chunk1 = chunk;
+                        taskList.Add( Task.Run( () => new Category(
+                            cat.Value,
+                            ExpansionId,
+                            chunk1,
+                            _gameData.Options.CurrentPlatform,
+                            new SqPackIndex( file, _gameData ),
+                            RootDir,
+                            _gameData ) ) );
+                    }
+                    else
+                    {
+                        taskList.Add( Task.FromResult( new Category(
+                            cat.Value,
+                            ExpansionId,
+                            chunk,
+                            _gameData.Options.CurrentPlatform,
+                            new SqPackIndex( file, _gameData ),
+                            RootDir,
+                            _gameData ) ) );
+                    }
                 }
+
+                tasks[ cat.Value ] = Task.WhenAll( taskList );
             }
 
-            Dictionary< byte, List< Category > > result = new();
-            foreach( var (cat, catTasks) in tasks )
-            {
-                result[ cat ] = catTasks.Select( async x => await x ).Select( x => x.Result ).ToList();
-            }
-
-            return result;
+            Task.WhenAll( tasks.Values ).Wait();
+            
+            return tasks.AsEnumerable().ToDictionary( x => x.Key, x => x.Value.Result.ToList() );
         }
 
         /// <summary>

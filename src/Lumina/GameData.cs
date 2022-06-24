@@ -81,17 +81,12 @@ namespace Lumina
 
             if( options?.LoadMultithreaded == true )
             {
-                var repoTask = new Dictionary< string, Task< Repository > >();
-                foreach( var repo in DataPath.GetDirectories() )
-                {
-                    repoTask[ repo.Name.ToLowerInvariant() ] = Task.Run( () => new Repository( repo, this ) );
-                }
-
-                Repositories = new Dictionary< string, Repository >();
-                foreach( var (repoStr, repo) in repoTask )
-                {
-                    Repositories[ repoStr ] = repo.GetAwaiter().GetResult();
-                }
+                Repositories = Task.WhenAll(
+                    DataPath.GetDirectories()
+                        .Select( repo => Task.Run( () => new Repository( repo, this ) ) ) )
+                    .GetAwaiter()
+                    .GetResult()
+                    .ToDictionary( x => x.Name.ToLowerInvariant(), x => x );
             }
             else
             {
