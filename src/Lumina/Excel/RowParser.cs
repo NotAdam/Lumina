@@ -14,7 +14,8 @@ namespace Lumina.Excel
     public class RowParser
     {
         private readonly ExcelSheetImpl _sheet;
-        private readonly ExcelDataFile _dataFile;
+        private readonly Dictionary< uint, ExcelDataOffset > _rowData;
+        private readonly BinaryReader _reader;
 
         private ExcelDataOffset _offset;
         private ExcelDataRowHeader _rowHeader;
@@ -25,7 +26,6 @@ namespace Lumina.Excel
         public uint SubRowId;
         public uint RowCount => _rowHeader.RowCount;
 
-        private MemoryStream Stream => _dataFile.FileStream;
 
         /// <summary>
         /// Provides access to the base data generated for a sheet
@@ -35,7 +35,8 @@ namespace Lumina.Excel
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile )
         {
             _sheet = sheet;
-            _dataFile = dataFile;
+            _rowData = dataFile.RowData;
+            _reader = new BinaryReader( new MemoryStream( dataFile.Data, false ) );
         }
 
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row )
@@ -72,18 +73,16 @@ namespace Lumina.Excel
         {
             RowId = row;
 
-            if( !_dataFile.RowData.TryGetValue( RowId, out var offset ) )
+            if( !_rowData.TryGetValue( RowId, out var offset ) )
             {
                 return false;
             }
 
             _offset = offset;
             
-            var br = _dataFile.Reader;
+            _reader.BaseStream.Position = _offset.Offset;
 
-            Stream.Position = _offset.Offset;
-
-            _rowHeader = br.ReadStructure< ExcelDataRowHeader >();
+            _rowHeader = _reader.ReadStructure< ExcelDataRowHeader >();
 
             if( BitConverter.IsLittleEndian )
             {
@@ -151,11 +150,9 @@ namespace Lumina.Excel
         /// <returns>A copy of the read bytes</returns>
         public byte[] ReadBytes( int offset, int count )
         {
-            var br = _dataFile.Reader;
+            _reader.BaseStream.Position = _rowOffset + offset;
 
-            Stream.Position = _rowOffset + offset;
-
-            return br.ReadBytes( count );
+            return _reader.ReadBytes( count );
         }
 
         /// <summary>
@@ -166,11 +163,9 @@ namespace Lumina.Excel
         /// <returns>The read structure filled from the row data</returns>
         public T ReadStructure< T >( int offset ) where T : struct
         {
-            var br = _dataFile.Reader;
+            _reader.BaseStream.Position = _rowOffset + offset;
 
-            Stream.Position = _rowOffset + offset;
-
-            return br.ReadStructure< T >();
+            return _reader.ReadStructure< T >();
         }
 
         /// <summary>
@@ -182,11 +177,9 @@ namespace Lumina.Excel
         /// <returns>The read structures filled from the row data</returns>
         public List< T > ReadStructures< T >( int offset, int count ) where T : struct
         {
-            var br = _dataFile.Reader;
+            _reader.BaseStream.Position = _rowOffset + offset;
 
-            Stream.Position = _rowOffset + offset;
-
-            return br.ReadStructures< T >( count );
+            return _reader.ReadStructures< T >( count );
         }
 
         /// <summary>
@@ -198,11 +191,9 @@ namespace Lumina.Excel
         /// <returns>The read structures filled from the row data</returns>
         public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct
         {
-            var br = _dataFile.Reader;
+            _reader.BaseStream.Position = _rowOffset + offset;
 
-            Stream.Position = _rowOffset + offset;
-
-            return br.ReadStructuresAsArray< T >( count );
+            return _reader.ReadStructuresAsArray< T >( count );
         }
 
         // bit faster way of finding _rsv_ keys without having to convert the whole thing to a string first and shit
@@ -242,16 +233,14 @@ namespace Lumina.Excel
 
         private object ReadFieldInternal( ExcelColumnDataType type )
         {
-            var br = _dataFile.Reader;
-
             object? data = null;
 
             switch( type )
             {
                 case ExcelColumnDataType.String:
                 {
-                    var stringOffset = br.ReadUInt32();
-                    var raw = br.ReadRawOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
+                    var stringOffset = _reader.ReadUInt32();
+                    var raw = _reader.ReadRawOffsetData( _rowOffset + _sheet.Header.DataOffset + stringOffset );
 
                     if( Sheet.GameData.Options.ResolveKnownRsvSheetValues )
                     {
@@ -268,54 +257,54 @@ namespace Lumina.Excel
                 }
                 case ExcelColumnDataType.Bool:
                 {
-                    data = br.ReadByte() != 0;
+                    data = _reader.ReadByte() != 0;
                     break;
                 }
                 case ExcelColumnDataType.Int8:
                 {
-                    data = br.ReadSByte();
+                    data = _reader.ReadSByte();
                     break;
                 }
                 case ExcelColumnDataType.UInt8:
                 {
-                    data = br.ReadByte();
+                    data = _reader.ReadByte();
                     break;
                 }
                 case ExcelColumnDataType.Int16:
                 {
-                    data = br.ReadInt16();
+                    data = _reader.ReadInt16();
                     break;
                 }
                 case ExcelColumnDataType.UInt16:
                 {
-                    data = br.ReadUInt16();
+                    data = _reader.ReadUInt16();
                     break;
                 }
                 case ExcelColumnDataType.Int32:
                 {
-                    data = br.ReadInt32();
+                    data = _reader.ReadInt32();
                     break;
                 }
                 case ExcelColumnDataType.UInt32:
                 {
-                    data = br.ReadUInt32();
+                    data = _reader.ReadUInt32();
                     break;
                 }
                 // case ExcelColumnDataType.Unk:
                 // break;
                 case ExcelColumnDataType.Float32:
                 {
-                    data = br.ReadSingle();
+                    data = _reader.ReadSingle();
                     break;
                 }
                 case ExcelColumnDataType.Int64:
                 {
-                    data = br.ReadUInt64();
+                    data = _reader.ReadUInt64();
                     break;
                 }
                 case ExcelColumnDataType.UInt64:
                 {
-                    data = br.ReadUInt64();
+                    data = _reader.ReadUInt64();
                     break;
                 }
                 // case ExcelColumnDataType.Unk2:
@@ -332,7 +321,7 @@ namespace Lumina.Excel
                     var shift = (int)type - (int)ExcelColumnDataType.PackedBool0;
                     var bit = 1 << shift;
 
-                    var rawData = br.ReadByte();
+                    var rawData = _reader.ReadByte();
 
                     data = ( rawData & bit ) == bit;
 
@@ -404,7 +393,7 @@ namespace Lumina.Excel
         /// <returns>The read data contained in the provided type</returns>
         public T? ReadOffset< T >( ushort offset, byte bit = 0 )
         {
-            Stream.Position = _rowOffset + offset;
+            _reader.BaseStream.Position = _rowOffset + offset;
 
             if( bit == 0 )
             {
@@ -425,7 +414,7 @@ namespace Lumina.Excel
         /// <returns>The read data contained in the provided type</returns>
         public T? ReadOffset< T >( int offset, ExcelColumnDataType type )
         {
-            Stream.Position = _rowOffset + offset;
+            _reader.BaseStream.Position = _rowOffset + offset;
 
             return ReadField< T >( type );
         }
@@ -445,7 +434,7 @@ namespace Lumina.Excel
             
             var col = _sheet.Columns[ column ];
 
-            Stream.Position = _rowOffset + col.Offset;
+            _reader.BaseStream.Position = _rowOffset + col.Offset;
 
             return ReadField< T >( col.Type );
         }
@@ -468,7 +457,7 @@ namespace Lumina.Excel
             
             var col = _sheet.Columns[ column ];
 
-            Stream.Position = _rowOffset + col.Offset;
+            _reader.BaseStream.Position = _rowOffset + col.Offset;
 
             return ReadFieldInternal( col.Type );
         }
