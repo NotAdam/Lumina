@@ -127,13 +127,13 @@ namespace Lumina.Data.Parsing.Uld
             public uint Unk1;
             public uint Unk2;
 
-            public static TextureEntry Read( BinaryReader br )
+            public static TextureEntry Read( BinaryReader br, char minorVersion )
             {
                 TextureEntry ret = new TextureEntry();
                 ret.Id = br.ReadUInt32();
                 ret.Path = br.ReadChars( 44 );
                 ret.Unk1 = br.ReadUInt32();
-                ret.Unk2 = br.ReadUInt32();
+                ret.Unk2 = minorVersion == '1' ? br.ReadUInt32() : 0;
                 return ret;
             }
         }
@@ -256,6 +256,8 @@ namespace Lumina.Data.Parsing.Uld
 
             public static NodeData Read( BinaryReader br, ComponentData[] definedComponentList )
             {
+                long originalPos = br.BaseStream.Position;
+
                 NodeData ret = new NodeData();
                 ret.NodeId = br.ReadUInt32();
                 ret.ParentId = br.ReadInt32();
@@ -336,6 +338,9 @@ namespace Lumina.Data.Parsing.Uld
                         break;
                 }
 
+                // adjust stream position to match actual data size
+                br.BaseStream.Position = originalPos + ret.NodeOffset;
+
                 return ret;
             }
         }
@@ -355,6 +360,8 @@ namespace Lumina.Data.Parsing.Uld
 
             public static ComponentData Read( BinaryReader br, ComponentData[] definedComponentList )
             {
+                long originalPos = br.BaseStream.Position;
+
                 ComponentData ret = new ComponentData();
                 ret.Id = br.ReadUInt32();
                 ret.ShouldIgnoreInput = br.ReadBoolean();
@@ -394,8 +401,8 @@ namespace Lumina.Data.Parsing.Uld
                     case Uld.ComponentData.ComponentType.List:
                         ret.Component = Uld.ComponentData.ListComponent.Read( br );
                         break;
-                    case Uld.ComponentData.ComponentType.ListItem:
-                        ret.Component = Uld.ComponentData.ListItemComponent.Read( br );
+                    case Uld.ComponentData.ComponentType.DropDown:
+                        ret.Component = Uld.ComponentData.DropDownComponent.Read( br );
                         break;
                     case Uld.ComponentData.ComponentType.Tabbed:
                         ret.Component = Uld.ComponentData.TabComponent.Read( br );
@@ -405,6 +412,9 @@ namespace Lumina.Data.Parsing.Uld
                         break;
                     case Uld.ComponentData.ComponentType.ScrollBar:
                         ret.Component = Uld.ComponentData.ScrollBarComponent.Read( br );
+                        break;
+                    case Uld.ComponentData.ComponentType.ListItem:
+                        ret.Component = Uld.ComponentData.ListItemComponent.Read( br );
                         break;
                     case Uld.ComponentData.ComponentType.Icon:
                         ret.Component = Uld.ComponentData.IconComponent.Read( br );
@@ -434,6 +444,9 @@ namespace Lumina.Data.Parsing.Uld
                         ret.Component = Uld.ComponentData.PreviewComponent.Read( br );
                         break;
                 }
+
+                // adjust position because of inconsisty within the same ComponentList version...
+                br.BaseStream.Position = originalPos + ret.Offset;
 
                 ret.Nodes = new NodeData[ret.NodeCount];
                 for( int i = 0; i < ret.NodeCount; i++ )

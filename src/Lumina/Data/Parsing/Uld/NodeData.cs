@@ -639,7 +639,7 @@ namespace Lumina.Data.Parsing.Uld
                 ret.Add = br.ReadInt32();
                 ret.Unk1 = br.ReadUInt32();
                 ret.Comma = br.ReadBoolean();
-                ret.Unk2 = br.ReadBytes( 16 );
+                ret.Unk2 = br.ReadBytes( 3 );
                 return ret;
             }
         }
