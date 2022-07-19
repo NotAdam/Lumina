@@ -43,10 +43,18 @@ namespace Lumina.Data
             // read hashtable entries
             fs.Position = IndexHeader.index_data_offset;
             var entryCount = IndexHeader.index_data_size / Unsafe.SizeOf< IndexHashTableEntry >();
+            var tableEntries = br.ReadStructuresAsSpan< IndexHashTableEntry >( (int)entryCount );
 
-            HashTableEntries = br
-                .ReadStructures< IndexHashTableEntry >( (int)entryCount )
-                .ToDictionary( k => k.hash, v => v );
+            if( SqPackHeader.platformId == PlatformId.PS3 )
+            {
+                for( var i = 0; i < entryCount; i++ )
+                {
+                    var data = tableEntries[ i ].data;
+                    tableEntries[ i ].data = ( data << 4 ) | ( ( data & 0x70000000 ) >> 27 ) | ( ( data & 0x80000000 ) >> 31 );
+                }
+            }
+
+            HashTableEntries = tableEntries.ToArray().ToDictionary( k => k.hash, v => v );
         }
 
         private void LoadIndex2()
@@ -63,10 +71,18 @@ namespace Lumina.Data
             // read hashtable entries
             fs.Position = IndexHeader.index_data_offset;
             var entryCount = IndexHeader.index_data_size / Unsafe.SizeOf< Index2HashTableEntry >();
+            var tableEntries = br.ReadStructuresAsSpan< Index2HashTableEntry >( (int)entryCount );
 
-            HashTableEntries2 = br
-                .ReadStructures< Index2HashTableEntry >( (int)entryCount )
-                .ToDictionary( k => k.hash, v => v );
+            if( SqPackHeader.platformId == PlatformId.PS3 )
+            {
+                for( var i = 0; i < entryCount; i++ )
+                {
+                    var data = tableEntries[ i ].data;
+                    tableEntries[ i ].data = ( data << 4 ) | ( ( data & 0x70000000 ) >> 27 ) | ( ( data & 0x80000000 ) >> 31 );
+                }
+            }
+
+            HashTableEntries2 = tableEntries.ToArray().ToDictionary( k => k.hash, v => v );
         }
     }
 }

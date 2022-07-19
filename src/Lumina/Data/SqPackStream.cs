@@ -261,7 +261,22 @@ namespace Lumina.Data
 
         private void ReadTextureFile( FileResource resource, byte[] buffer, MemoryStream ms )
         {
-            var blocks = Reader.ReadStructures< LodBlock >( (int)resource.FileInfo.BlockCount );
+            int lodBlocks = (int)resource.FileInfo.BlockCount;
+
+            if( Reader.PlatformId == PlatformId.PS3 )
+            {
+                // unknown use
+                _ = Reader.ReadStructures< ReferenceBlockRange >( 3 );
+
+                long originalPos = BaseStream.Position;
+
+                BaseStream.Position = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
+                lodBlocks = ( Reader.ReadUInt32() & (uint)Files.TexFile.Attribute.TextureTypeCube ) != 0 ? 18 : 3;
+
+                BaseStream.Position = originalPos;
+            }
+
+            var blocks = Reader.ReadStructures< LodBlock >( lodBlocks );
 
             // if there is a mipmap header, the comp_offset
             // will not be 0

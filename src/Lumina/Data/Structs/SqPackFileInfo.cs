@@ -109,6 +109,19 @@ namespace Lumina.Data.Structs
     }
 
     [StructLayout( LayoutKind.Sequential )]
+    public struct ReferenceBlockRange : IConvertEndianness
+    {
+        public UInt32 Begin;
+        public UInt32 End;
+
+        public void ConvertEndianness()
+        {
+            Begin = BinaryPrimitives.ReverseEndianness( Begin );
+            End = BinaryPrimitives.ReverseEndianness( End );
+        }
+    }
+
+    [StructLayout( LayoutKind.Sequential )]
     public unsafe struct ModelBlock : IConvertEndianness
     {
         public UInt32 Size;
