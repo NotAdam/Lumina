@@ -4,12 +4,24 @@ using System.Runtime.InteropServices;
 namespace Lumina.Data.Structs.Excel
 {
     [StructLayout( LayoutKind.Sequential )]
-    public unsafe struct ExcelDataHeader
+    public struct ExcelDataHeader
     {
-        public fixed byte Magic[4];
+        public byte[] Magic;
         public UInt16 Version;
         private UInt16 U1;
         public UInt32 IndexSize;
-        private fixed UInt16 U2[10];
+        private UInt16[] U2;
+
+        public static ExcelDataHeader Read( LuminaBinaryReader br )
+        {
+            return new ExcelDataHeader
+            {
+                Magic = br.ReadBytes( 4 ),
+                Version = br.ReadUInt16(),
+                U1 = br.ReadUInt16(),
+                IndexSize = br.ReadUInt32(),
+                U2 = br.ReadUInt16s( 10 )
+            };
+        }
     }
 }

@@ -1,6 +1,6 @@
+using Lumina.Data;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -19,7 +19,7 @@ namespace Lumina.Text.Payloads
             _rawString = Encoding.UTF8.GetString( data );
         }
 
-        public BasePayload( BinaryReader br )
+        public BasePayload( LuminaBinaryReader br )
         {
             var data = GetPayloadData( br );
 
@@ -30,7 +30,7 @@ namespace Lumina.Text.Payloads
             }
         }
 
-        public byte[] GetPayloadData( BinaryReader br )
+        public byte[] GetPayloadData( LuminaBinaryReader br )
         {
             var data = new List< byte >();
             

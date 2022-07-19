@@ -1,6 +1,4 @@
-using System;
 using System.Diagnostics;
-using System.IO;
 using Lumina.Extensions;
 using Vector3 = Lumina.Data.Parsing.Common.Vector3;
 using Transformation = Lumina.Data.Parsing.Common.Transformation;
@@ -33,7 +31,7 @@ namespace Lumina.Data.Parsing.Layer
             public int LayersCount;
 
 
-            public static LayerChunk Read( BinaryReader br )
+            public static LayerChunk Read( LuminaBinaryReader br )
             {
                 var ret = new LayerChunk();
 
@@ -59,7 +57,7 @@ namespace Lumina.Data.Parsing.Layer
             private byte _padding0;
             private uint _padding1;
 
-            public static TriggerBoxInstanceObject Read( BinaryReader br )
+            public static TriggerBoxInstanceObject Read( LuminaBinaryReader br )
             {
                 return new TriggerBoxInstanceObject
                 {
@@ -76,7 +74,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             public uint BaseId;
 
-            public static GameInstanceObject Read( BinaryReader br )
+            public static GameInstanceObject Read( LuminaBinaryReader br )
             {
                 return new GameInstanceObject() { BaseId = br.ReadUInt32() };
             }
@@ -97,7 +95,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding1;
             private uint _padding2;
 
-            public static NPCInstanceObject Read( BinaryReader br )
+            public static NPCInstanceObject Read( LuminaBinaryReader br )
             {
                 return new NPCInstanceObject
                 {
@@ -136,7 +134,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Table;
             public byte Wall;
 
-            public static CollisionAttribute Read( BinaryReader br )
+            public static CollisionAttribute Read( LuminaBinaryReader br )
             {
                 return new CollisionAttribute()
                 {
@@ -168,7 +166,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding1;
             private uint _padding2;
 
-            public static CreationParamsBase Read( BinaryReader br )
+            public static CreationParamsBase Read( LuminaBinaryReader br )
             {
                 var ret = new CreationParamsBase();
 
@@ -185,7 +183,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             public CollisionAttribute CollisionAttribute;
 
-            public static CreationParams Read( BinaryReader br )
+            public static CreationParams Read( LuminaBinaryReader br )
             {
                 return new CreationParams { CollisionAttribute = CollisionAttribute.Read( br ) };
             }
@@ -198,7 +196,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Select;
             public byte Padding00;
 
-            public static PathControlPoint Read( BinaryReader br )
+            public static PathControlPoint Read( LuminaBinaryReader br )
             {
                 var ret = new PathControlPoint();
 
@@ -220,7 +218,7 @@ namespace Lumina.Data.Parsing.Layer
 
             public PathControlPoint[] ControlPointsArray;
 
-            public static PathInstanceObject Read( BinaryReader br )
+            public static PathInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new PathInstanceObject();
 
@@ -250,7 +248,7 @@ namespace Lumina.Data.Parsing.Layer
             public int Pos;
             public int PosCount;
 
-            public static RelativePositions Read( BinaryReader br )
+            public static RelativePositions Read( LuminaBinaryReader br )
             {
                 var ret = new RelativePositions();
 
@@ -268,7 +266,7 @@ namespace Lumina.Data.Parsing.Layer
             public ushort ImageChangeId;
             public ushort StainingId;
 
-            public static WeaponModel Read( BinaryReader br )
+            public static WeaponModel Read( LuminaBinaryReader br )
             {
                 var ret = new WeaponModel();
 
@@ -289,7 +287,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Alpha;
             public float Intensity;
 
-            public static ColorHDRI Read( BinaryReader br )
+            public static ColorHDRI Read( LuminaBinaryReader br )
             {
                 var ret = new ColorHDRI();
 
@@ -310,7 +308,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Blue;
             public byte Alpha;
 
-            public static Color Read( BinaryReader br )
+            public static Color Read( LuminaBinaryReader br )
             {
                 var ret = new Color();
 
@@ -341,7 +339,7 @@ namespace Lumina.Data.Parsing.Layer
             public float[] SwingRotation; //[2]
             public float[] SwingRotationSpeedRange; //[2]
 
-            public static MovePathSettings Read( BinaryReader br )
+            public static MovePathSettings Read( LuminaBinaryReader br )
             {
                 var ret = new MovePathSettings();
 
@@ -357,11 +355,11 @@ namespace Lumina.Data.Parsing.Layer
                 ret.DecelerateTime = br.ReadUInt16();
 
                 // TODO: verify this works lol
-                ret.VerticalSwingRange = br.ReadStructures< float >( 2 ).ToArray();
-                ret.HorizontalSwingRange = br.ReadStructures< float >( 2 ).ToArray();
-                ret.SwingMoveSpeedRange = br.ReadStructures< float >( 2 ).ToArray();
-                ret.SwingRotation = br.ReadStructures< float >( 2 ).ToArray();
-                ret.SwingRotationSpeedRange = br.ReadStructures< float >( 2 ).ToArray();
+                ret.VerticalSwingRange = br.ReadSingles( 2 );
+                ret.HorizontalSwingRange = br.ReadSingles( 2 );
+                ret.SwingMoveSpeedRange = br.ReadSingles( 2 );
+                ret.SwingRotation = br.ReadSingles( 2 );
+                ret.SwingRotationSpeedRange = br.ReadSingles( 2 );
 
                 return ret;
             }
@@ -379,7 +377,7 @@ namespace Lumina.Data.Parsing.Layer
 
             public byte[] Binaries;
 
-            public static SEParam Read( BinaryReader br )
+            public static SEParam Read( LuminaBinaryReader br )
             {
                 var ret = new SEParam();
 
@@ -405,7 +403,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             public byte[] MemberIDs;// [4]
 
-            public static SGMemberID Read( BinaryReader br )
+            public static SGMemberID Read( LuminaBinaryReader br )
             {
                 var ret = new SGMemberID();
 
@@ -420,7 +418,7 @@ namespace Lumina.Data.Parsing.Layer
 	        public int AssetType;
 	        public SGMemberID MemberId;
 
-            public static SGOverriddenMember Read( BinaryReader br )
+            public static SGOverriddenMember Read( LuminaBinaryReader br )
             {
                 var ret = new SGOverriddenMember();
 
@@ -491,7 +489,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Padding00;
             public float RenderModelClipRange;
 
-            public static BGInstanceObject Read( BinaryReader br )
+            public static BGInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new BGInstanceObject();
 
@@ -536,7 +534,7 @@ namespace Lumina.Data.Parsing.Layer
             private byte _padding4;
 
 
-            public static LightInstanceObject Read( BinaryReader br )
+            public static LightInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new LightInstanceObject();
 
@@ -582,7 +580,7 @@ namespace Lumina.Data.Parsing.Layer
             public float ZCorrect;
 
 
-            public static VFXInstanceObject Read( BinaryReader br )
+            public static VFXInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new VFXInstanceObject();
 
@@ -610,7 +608,7 @@ namespace Lumina.Data.Parsing.Layer
             public int CommentJP; //TODO: are these strings?
             public int CommentEN;
 
-            public static PositionMarkerInstanceObject Read( BinaryReader br )
+            public static PositionMarkerInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new PositionMarkerInstanceObject();
 
@@ -643,7 +641,7 @@ namespace Lumina.Data.Parsing.Layer
             public SGOverriddenMember[] SGOverriddenMembers;
             public MovePathSettings MovePathSettings;
 
-            public static SharedGroupInstanceObject Read( BinaryReader br )
+            public static SharedGroupInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new SharedGroupInstanceObject();
 
@@ -687,7 +685,7 @@ namespace Lumina.Data.Parsing.Layer
             public string AssetPath;
             public SEParam SEParam;
 
-            public static SoundInstanceObject Read( BinaryReader br )
+            public static SoundInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new SoundInstanceObject();
 
@@ -712,7 +710,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding3;
             private uint _padding4;
 
-            public static ENPCInstanceObject Read( BinaryReader br )
+            public static ENPCInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new ENPCInstanceObject();
                 var start = br.BaseStream.Position;
@@ -764,7 +762,7 @@ namespace Lumina.Data.Parsing.Layer
 
             public Vector3[] RelativePositions;
 
-            public static BNPCInstanceObject Read( BinaryReader br )
+            public static BNPCInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new BNPCInstanceObject();
                 var start = br.BaseStream.Position;
@@ -828,7 +826,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Visible;
             public byte[] Padding00; //[3]
 
-            public static CTCharacter Read( BinaryReader br )
+            public static CTCharacter Read( LuminaBinaryReader br )
             {
                 var ret = new CTCharacter();
                 var start = br.BaseStream.Position;
@@ -855,7 +853,7 @@ namespace Lumina.Data.Parsing.Layer
             public uint BoundInstanceID;
             private uint _padding1;
 
-            public static AetheryteInstanceObject Read( BinaryReader br )
+            public static AetheryteInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new AetheryteInstanceObject();
                 var start = br.BaseStream.Position;
@@ -883,7 +881,7 @@ namespace Lumina.Data.Parsing.Layer
             public string SoundAssetPath;
 
 
-            public static EnvSetInstanceObject Read( BinaryReader br )
+            public static EnvSetInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new EnvSetInstanceObject();
                 var start = br.BaseStream.Position;
@@ -910,7 +908,7 @@ namespace Lumina.Data.Parsing.Layer
             public uint GatheringPointId; // maps to GatheringPoint EXD
             private uint _padding2;
 
-            public static GatheringInstanceObject Read( BinaryReader br )
+            public static GatheringInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new GatheringInstanceObject();
                 var start = br.BaseStream.Position;
@@ -945,7 +943,7 @@ namespace Lumina.Data.Parsing.Layer
             public DrawHeadParts DrawHeadParts;
             public Transformation DefaultTransform;
 
-            public static HelperObjInstanceObject Read( BinaryReader br )
+            public static HelperObjInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new HelperObjInstanceObject();
                 var start = br.BaseStream.Position;
@@ -984,7 +982,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding1;
             private uint _padding2;
 
-            public static TreasureInstanceObject Read( BinaryReader br )
+            public static TreasureInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new TreasureInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1004,7 +1002,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte IsVisible;
             private byte[] _padding00; //[3]
 
-            public static WeaponInstanceObject Read( BinaryReader br )
+            public static WeaponInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new WeaponInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1028,7 +1026,7 @@ namespace Lumina.Data.Parsing.Layer
 
             public Vector3[] RelativePositions;
 
-            public static PopRangeInstanceObject Read( BinaryReader br )
+            public static PopRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new PopRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1065,7 +1063,7 @@ namespace Lumina.Data.Parsing.Layer
             public float PlayerRunningDirection;
             private uint _padding3;
 
-            public static ExitRangeInstanceObject Read( BinaryReader br )
+            public static ExitRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new ExitRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1110,7 +1108,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte HousingEnabled;
             private byte[] _padding01; //[2]
 
-            public static MapRangeInstanceObject Read( BinaryReader br )
+            public static MapRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new MapRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1151,7 +1149,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding1;
             private uint _padding2;
 
-            public static EventInstanceObject Read( BinaryReader br )
+            public static EventInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new EventInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1171,7 +1169,7 @@ namespace Lumina.Data.Parsing.Layer
             public string SHAmbientLightAssetPath;
             public string EnvMapAssetPath;
 
-            public static EnvLocationInstanceObject Read( BinaryReader br )
+            public static EnvLocationInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new EnvLocationInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1188,7 +1186,7 @@ namespace Lumina.Data.Parsing.Layer
             public TriggerBoxInstanceObject ParentData;
             //TODO: 12 more bytes here. Might be flags idk
 
-            public static EventRangeInstanceObject Read( BinaryReader br )
+            public static EventRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new EventRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1205,7 +1203,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding1;
             private uint _padding2;
 
-            public static QuestMarkerInstanceObject Read( BinaryReader br )
+            public static QuestMarkerInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new QuestMarkerInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1230,7 +1228,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding2;
 
 
-            public static CollisionBoxInstanceObject Read( BinaryReader br )
+            public static CollisionBoxInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new CollisionBoxInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1260,7 +1258,7 @@ namespace Lumina.Data.Parsing.Layer
             private uint _padding1;
             private uint _padding2;
 
-            public static LineVFXInstanceObject Read( BinaryReader br )
+            public static LineVFXInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new LineVFXInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1280,7 +1278,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Ring;
             public byte[] Padding00; //[3]
 
-            public static ClientPathInstanceObject Read( BinaryReader br )
+            public static ClientPathInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new ClientPathInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1297,7 +1295,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             public PathInstanceObject ParentData;
 
-            public static ServerPathInstanceObject Read( BinaryReader br )
+            public static ServerPathInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new ServerPathInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1320,7 +1318,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte Padding01;
             private uint _padding;
 
-            public static GimmickRangeInstanceObject Read( BinaryReader br )
+            public static GimmickRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new GimmickRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1343,7 +1341,7 @@ namespace Lumina.Data.Parsing.Layer
             public float NamePlateOffsetY;
             public TargetMarkerType TargetMakerType;
 
-            public static TargetMarkerInstanceObject Read( BinaryReader br )
+            public static TargetMarkerInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new TargetMarkerInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1363,7 +1361,7 @@ namespace Lumina.Data.Parsing.Layer
             private byte _padding00;
             public ObjectType ObjectType;
 
-            public static ChairMarkerInstanceObject Read( BinaryReader br )
+            public static ChairMarkerInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new ChairMarkerInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1382,7 +1380,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             private uint _padding2;
 
-            public static ClickableRangeInstanceObject Read( BinaryReader br )
+            public static ClickableRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new ClickableRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1400,7 +1398,7 @@ namespace Lumina.Data.Parsing.Layer
             public uint BoundInstanceId; // reference to the ExitRange the Prefetch is for
             private uint _padding2;
 
-            public static PrefetchRangeInstanceObject Read( BinaryReader br )
+            public static PrefetchRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new PrefetchRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1419,7 +1417,7 @@ namespace Lumina.Data.Parsing.Layer
 
             public uint FateLayoutLabelId;
 
-            public static FateRangeInstanceObject Read( BinaryReader br )
+            public static FateRangeInstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new FateRangeInstanceObject();
                 var start = br.BaseStream.Position;
@@ -1439,7 +1437,7 @@ namespace Lumina.Data.Parsing.Layer
             public Transformation Transform;
             public IInstanceObject Object;
 
-            public static InstanceObject Read( BinaryReader br )
+            public static InstanceObject Read( LuminaBinaryReader br )
             {
                 var ret = new InstanceObject();
                 var start = br.BaseStream.Position;
@@ -1495,7 +1493,7 @@ namespace Lumina.Data.Parsing.Layer
         {
             public uint LayerSetId;
 
-            public static LayerSetReferenced Read( BinaryReader br )
+            public static LayerSetReferenced Read( LuminaBinaryReader br )
             {
                 var ret = new LayerSetReferenced();
                 var start = br.BaseStream.Position;
@@ -1512,7 +1510,7 @@ namespace Lumina.Data.Parsing.Layer
             public int LayerSets;
             public int LayerSetCount;
 
-            public static LayerSetReferencedList Read( BinaryReader br )
+            public static LayerSetReferencedList Read( LuminaBinaryReader br )
             {
                 var ret = new LayerSetReferencedList();
                 var start = br.BaseStream.Position;
@@ -1531,7 +1529,7 @@ namespace Lumina.Data.Parsing.Layer
             public uint InstanceId;
             public string OBSetAssetPath;
 
-            public static OBSetReferenced Read( BinaryReader br )
+            public static OBSetReferenced Read( LuminaBinaryReader br )
             {
                 var ret = new OBSetReferenced();
                 var start = br.BaseStream.Position;
@@ -1552,7 +1550,7 @@ namespace Lumina.Data.Parsing.Layer
             public byte OBSetEmissiveEnable;
             private byte[] _padding00; //[2]
 
-            public static OBSetEnableReferenced Read( BinaryReader br )
+            public static OBSetEnableReferenced Read( LuminaBinaryReader br )
             {
                 var ret = new OBSetEnableReferenced();
                 var start = br.BaseStream.Position;
@@ -1595,7 +1593,7 @@ namespace Lumina.Data.Parsing.Layer
             public OBSetReferenced[] OBSetReferencedList;
             public OBSetEnableReferenced[] OBSetEnableReferencedList;
 
-            public static Layer Read( BinaryReader br )
+            public static Layer Read( LuminaBinaryReader br )
             {
                 var ret = new Layer();
                 var start = br.BaseStream.Position;
@@ -1621,7 +1619,7 @@ namespace Lumina.Data.Parsing.Layer
                 ret.ObSetEnableReferencedListCount = br.ReadInt32();
 
                 br.BaseStream.Position = start + ret._InstanceObjects;
-                var instanceOffsets = br.ReadStructures< Int32 >( ret.InstanceObjectCount );
+                var instanceOffsets = br.ReadInt32s( ret.InstanceObjectCount );
 
                 br.BaseStream.Position = start + ret._LayerSetReferencedList;
                 ret.LayerSetReferencedList = LayerSetReferencedList.Read( br );

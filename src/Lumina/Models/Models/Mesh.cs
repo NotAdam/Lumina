@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
+using Lumina.Data;
 using Lumina.Data.Parsing;
 using Lumina.Extensions;
 using Lumina.Models.Materials;
@@ -114,11 +115,11 @@ namespace Lumina.Models.Models {
         {
             var currentMesh = Parent.File.Meshes[ MeshIndex ];
             
-            BinaryReader reader = new BinaryReader( new MemoryStream( Parent.File.Data, 
+            var reader = new LuminaBinaryReader( new MemoryStream( Parent.File.Data, 
                     (int) Parent.File.FileHeader.IndexOffset[ (int) Parent.Lod ],
                     (int) Parent.File.FileHeader.IndexBufferSize[ (int) Parent.Lod ] ) );
             reader.Seek( currentMesh.StartIndex * 2 );
-            Indices = reader.ReadStructures< UInt16 >( (int) currentMesh.IndexCount ).ToArray();
+            Indices = reader.ReadUInt16s( (int) currentMesh.IndexCount );
         }
 
         private void ReadVertices()
@@ -132,9 +133,9 @@ namespace Lumina.Models.Models {
             Vertices = new Vertex[currentMesh.VertexCount];
 
             // Vertices may be defined across at most 3 streams defined by a Mesh's VertexDeclarations
-            var vertexStreamReader = new BinaryReader[3];
+            var vertexStreamReader = new LuminaBinaryReader[3];
             for( int i = 0; i < 3; i++ ) {
-                vertexStreamReader[ i ] = new BinaryReader( new MemoryStream( Parent.File.Data, 
+                vertexStreamReader[ i ] = new LuminaBinaryReader( new MemoryStream( Parent.File.Data, 
                         (int) Parent.File.FileHeader.VertexOffset[ (int) Parent.Lod ],
                         (int) Parent.File.FileHeader.VertexBufferSize[ (int) Parent.Lod ] ) );
                 vertexStreamReader[ i ].Seek( currentMesh.VertexBufferOffset[ i ] );
@@ -148,7 +149,7 @@ namespace Lumina.Models.Models {
             }
         }
         
-        private void SetElementField( ref Vertex v, MdlStructs.VertexElement element, BinaryReader br ) {
+        private void SetElementField( ref Vertex v, MdlStructs.VertexElement element, LuminaBinaryReader br ) {
             var type = (Vertex.VertexType) element.Type;
             var usage = (Vertex.VertexUsage) element.Usage;
 
@@ -157,9 +158,9 @@ namespace Lumina.Models.Models {
                 Vertex.VertexType.Single4    => new Vector4( br.ReadSingle(), br.ReadSingle(), br.ReadSingle(), br.ReadSingle() ),
                 Vertex.VertexType.UInt       => br.ReadBytes( 4 ),
                 Vertex.VertexType.ByteFloat4 => new Vector4( br.ReadByte() / 255f, br.ReadByte() / 255f, br.ReadByte() / 255f, br.ReadByte() / 255f ),
-                Vertex.VertexType.Half2      => new Vector2( br.ReadUInt16().Unpack(), br.ReadUInt16().Unpack() ),
-                Vertex.VertexType.Half4      => new Vector4( br.ReadUInt16().Unpack(), br.ReadUInt16().Unpack(),
-                                                             br.ReadUInt16().Unpack(), br.ReadUInt16().Unpack() ),
+                Vertex.VertexType.Half2      => new Vector2( (float)br.ReadHalf(), (float)br.ReadHalf() ),
+                Vertex.VertexType.Half4      => new Vector4( (float)br.ReadHalf(), (float)br.ReadHalf(),
+                                                             (float)br.ReadHalf(), (float)br.ReadHalf() ),
                 _ => throw new ArgumentOutOfRangeException()
             };
             

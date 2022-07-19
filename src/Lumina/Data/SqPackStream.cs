@@ -12,23 +12,27 @@ namespace Lumina.Data
     {
         public Stream BaseStream { get; }
 
-        protected BinaryReader Reader { get; }
+        protected LuminaBinaryReader Reader { get; }
 
-        public SqPackStream( FileInfo file ) : this( file.OpenRead() )
+        public SqPackStream( FileInfo file ) : this( file.OpenRead(), PlatformId.Win32 )
         {
         }
 
-        public SqPackStream( Stream stream )
+        public SqPackStream( FileInfo file, PlatformId platformId ) : this( file.OpenRead(), platformId )
+        {
+        }
+
+        public SqPackStream( Stream stream, PlatformId platformId )
         {
             BaseStream = stream;
-            Reader = new BinaryReader( BaseStream );
+            Reader = new LuminaBinaryReader( BaseStream, platformId );
         }
 
         public SqPackHeader GetSqPackHeader()
         {
             BaseStream.Position = 0;
 
-            return Reader.ReadStructure< SqPackHeader >();
+            return SqPackHeader.Read( Reader );
         }
 
         public SqPackFileInfo GetFileMetadata( long offset )
@@ -106,9 +110,7 @@ namespace Lumina.Data
                 Debug.WriteLine( "Read data size does not match file size." );
             }
 
-            file.FileStream = new MemoryStream( file.Data, false );
-            file.Reader = new BinaryReader( file.FileStream );
-            file.FileStream.Position = 0;
+            file.Reader = new LuminaBinaryReader( file.Data, Reader.PlatformId );
 
             file.LoadFile();
 
@@ -147,7 +149,7 @@ namespace Lumina.Data
             for( int i = 0; i < 3; i++ )
                 totalBlocks += mdlBlock.IndexBufferBlockNum[ i ];
 
-            var compressedBlockSizes = Reader.ReadStructures< UInt16 >( totalBlocks );
+            var compressedBlockSizes = Reader.ReadUInt16s( totalBlocks );
             int currentBlock = 0;
             int stackSize;
             int runtimeSize;
@@ -279,16 +281,12 @@ namespace Lumina.Data
             {
                 // start from comp_offset
                 long runningBlockTotal = blocks[ i ].CompressedOffset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-                ReadFileBlock( runningBlockTotal, ms, buffer, true );
 
-                for( int j = 1; j < blocks[ i ].BlockCount; j++ )
+                for( int j = 0; j < blocks[ i ].BlockCount; j++ )
                 {
-                    runningBlockTotal += (UInt32)Reader.ReadInt16();
                     ReadFileBlock( runningBlockTotal, ms, buffer, true );
+                    runningBlockTotal += (UInt32)Reader.ReadInt16();
                 }
-
-                // unknown
-                Reader.ReadInt16();
             }
         }
 

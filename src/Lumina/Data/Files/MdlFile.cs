@@ -44,7 +44,11 @@ namespace Lumina.Data.Files {
                 return;
             }
 
+            bool isLittleEndian = Reader.IsLittleEndian;
+            Reader.IsLittleEndian = BitConverter.IsLittleEndian;
+
             FileHeader = MdlStructs.ModelFileHeader.Read( Reader );
+            Reader.IsLittleEndian = isLittleEndian;
 
             VertexDeclarations = new MdlStructs.VertexDeclarationStruct[FileHeader.VertexDeclarationCount];
             for( int i = 0; i < FileHeader.VertexDeclarationCount; i++ ) VertexDeclarations[ i ] = MdlStructs.VertexDeclarationStruct.Read( Reader );
@@ -68,13 +72,13 @@ namespace Lumina.Data.Files {
                 ExtraLods = Reader.ReadStructuresAsArray< MdlStructs.ExtraLodStruct >( 3 );
 
             for( int i = 0; i < ModelHeader.MeshCount; i++ ) Meshes[ i ] = MdlStructs.MeshStruct.Read( Reader );
-            AttributeNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.AttributeCount ).ToArray();
+            AttributeNameOffsets = Reader.ReadUInt32s( ModelHeader.AttributeCount );
             TerrainShadowMeshes = Reader.ReadStructuresAsArray< MdlStructs.TerrainShadowMeshStruct >( ModelHeader.TerrainShadowMeshCount );
             Submeshes = Reader.ReadStructuresAsArray< MdlStructs.SubmeshStruct >( ModelHeader.SubmeshCount );
             TerrainShadowSubmeshes = Reader.ReadStructuresAsArray< MdlStructs.TerrainShadowSubmeshStruct >( ModelHeader.TerrainShadowSubmeshCount );
 
-            MaterialNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.MaterialCount ).ToArray();
-            BoneNameOffsets = Reader.ReadStructures< UInt32 >( ModelHeader.BoneCount ).ToArray();
+            MaterialNameOffsets = Reader.ReadUInt32s( ModelHeader.MaterialCount );
+            BoneNameOffsets = Reader.ReadUInt32s( ModelHeader.BoneCount );
             for( int i = 0; i < ModelHeader.BoneTableCount; i++ ) BoneTables[ i ] = MdlStructs.BoneTableStruct.Read( Reader );
 
             for( int i = 0; i < ModelHeader.ShapeCount; i++ ) Shapes[ i ] = MdlStructs.ShapeStruct.Read( Reader );
@@ -82,7 +86,7 @@ namespace Lumina.Data.Files {
             ShapeValues = Reader.ReadStructuresAsArray< MdlStructs.ShapeValueStruct >( ModelHeader.ShapeValueCount );
 
             uint submeshBoneMapSize = Reader.ReadUInt32();
-            SubmeshBoneMap = Reader.ReadStructures< UInt16 >( (int) submeshBoneMapSize / 2 ).ToArray();
+            SubmeshBoneMap = Reader.ReadUInt16s( (int) submeshBoneMapSize / 2 );
 
             byte paddingAmount = Reader.ReadByte();
             Reader.Seek( Reader.BaseStream.Position + paddingAmount );

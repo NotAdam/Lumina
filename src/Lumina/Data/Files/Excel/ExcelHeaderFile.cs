@@ -1,7 +1,4 @@
-using System;
-using System.Buffers.Binary;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Attributes;
 using Lumina.Data.Structs.Excel;
@@ -29,58 +26,31 @@ namespace Lumina.Data.Files.Excel
 
         public override unsafe void LoadFile()
         {
-            // fuck c# and its FIXED MUST BE ACCESSED BY LOCAL VARIABLE
-            var header = Reader.ReadStructure< ExcelHeaderHeader >();
+            // exd data is always in big endian
+            Reader.IsLittleEndian = false;
+
+            Header = ExcelHeaderHeader.Read( Reader );
 
             if(
-                header.Magic[ 0 ] != 'E' ||
-                header.Magic[ 1 ] != 'X' ||
-                header.Magic[ 2 ] != 'H' ||
-                header.Magic[ 3 ] != 'F' )
+                Header.Magic[ 0 ] != 'E' ||
+                Header.Magic[ 1 ] != 'X' ||
+                Header.Magic[ 2 ] != 'H' ||
+                Header.Magic[ 3 ] != 'F' )
             {
                 throw new InvalidDataException( "fucked exh file :(((((" );
             }
 
-            FileStream.Position = 0x20;
+            ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( Header.ColumnCount );
+            DataPages = Reader.ReadStructuresAsArray< ExcelDataPagination >( Header.PageCount );
 
-            // swap bytes on LE systems
-            if( BitConverter.IsLittleEndian )
+            Languages = new Language[ Header.LanguageCount ];
+
+            for( var i = 0; i < Header.LanguageCount; i++ )
             {
-                header.Version = BinaryPrimitives.ReverseEndianness( header.Version );
-                header.DataOffset = BinaryPrimitives.ReverseEndianness( header.DataOffset );
-                header.ColumnCount = BinaryPrimitives.ReverseEndianness( header.ColumnCount );
-                header.PageCount = BinaryPrimitives.ReverseEndianness( header.PageCount );
-                header.LanguageCount = BinaryPrimitives.ReverseEndianness( header.LanguageCount );
-                header.RowCount = BinaryPrimitives.ReverseEndianness( header.RowCount );
-            }
+                Languages[ i ] = (Language)Reader.ReadByte();
 
-            // fucking c# and its STRUCTS ARE ALWAYS A COPY
-            Header = header;
-
-            ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( header.ColumnCount );
-            DataPages = Reader.ReadStructuresAsArray< ExcelDataPagination >( header.PageCount );
-
-            // todo: these are LE? what the fuck? am i going insane?
-            Languages = Reader.ReadStructures< ushort >( header.LanguageCount ).Select( lang => (Language)lang ).ToArray();
-
-            if( !BitConverter.IsLittleEndian )
-            {
-                return;
-            }
-
-            for( var i = 0; i < ColumnDefinitions.Length; i++ )
-            {
-                // fuck c# lmao
-                ref var cd = ref ColumnDefinitions[ i ];
-                cd.Offset = BinaryPrimitives.ReverseEndianness( cd.Offset );
-                cd.Type = (ExcelColumnDataType)BinaryPrimitives.ReverseEndianness( (ushort)cd.Type );
-            }
-
-            for( var i = 0; i < DataPages.Length; i++ )
-            {
-                ref var db = ref DataPages[ i ];
-                db.RowCount = BinaryPrimitives.ReverseEndianness( db.RowCount );
-                db.StartId = BinaryPrimitives.ReverseEndianness( db.StartId );
+                // optional parameter string (unused?)
+                Reader.ReadStringData();
             }
         }
 

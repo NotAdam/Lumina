@@ -31,15 +31,16 @@ namespace Lumina.Data
         /// <summary>
         /// A stream to access the file data. Should only be used for reading data, writing shouldn't be done directly to a <see cref="FileResource"/>
         /// </summary>
-        public MemoryStream FileStream { get; internal set; }
+        [Obsolete( "Use \"Reader.BaseStream\" instead." )]
+        public MemoryStream? FileStream => Reader.BaseStream as MemoryStream;
 
         /// <summary>
-        /// A pre-constructed <see cref="BinaryReader"/> to read the game file.
+        /// A pre-constructed <see cref="LuminaBinaryReader"/> to read the game file.
         /// </summary>
         /// <remarks>
-        /// There are some extension methods to allow for nicer consumption of the <see cref="BinaryReader"/> in the <see cref="Lumina.Extensions"/> namespace.
+        /// There are some extension methods to allow for nicer consumption of the <see cref="LuminaBinaryReader"/> in the <see cref="Lumina.Extensions"/> namespace.
         /// </remarks>
-        public BinaryReader Reader { get; internal set; }
+        public LuminaBinaryReader Reader { get; internal set; }
 
         /// <summary>
         /// The parsed file path that was created to load this file.

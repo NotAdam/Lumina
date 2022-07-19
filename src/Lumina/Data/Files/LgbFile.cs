@@ -1,7 +1,5 @@
-using System.IO;
 using Lumina.Data.Attributes;
 using Lumina.Data.Parsing.Layer;
-using Lumina.Extensions;
 // ReSharper disable InconsistentNaming
 
 // field assigned but not read warning
@@ -18,7 +16,7 @@ namespace Lumina.Data.Files
             int FileSize;
             int TotalChunkCount;
 
-            public static FileHeader Read( BinaryReader br )
+            public static FileHeader Read( LuminaBinaryReader br )
             {
                 return new()
                 {
@@ -39,12 +37,12 @@ namespace Lumina.Data.Files
             ChunkHeader = LayerCommon.LayerChunk.Read( Reader );
             Layers = new LayerCommon.Layer[ChunkHeader.LayersCount];
 
-            var start = FileStream.Position;
-            var layerOffsets = Reader.ReadStructures< int >( ChunkHeader.LayersCount );
+            var start = Reader.Position;
+            var layerOffsets = Reader.ReadInt32s( ChunkHeader.LayersCount );
 
             for( var i = 0; i < ChunkHeader.LayersCount; i++ )
             {
-                FileStream.Position = start + layerOffsets[ i ];
+                Reader.Position = start + layerOffsets[ i ];
                 Layers[ i ] = LayerCommon.Layer.Read( Reader );
             }
         }
