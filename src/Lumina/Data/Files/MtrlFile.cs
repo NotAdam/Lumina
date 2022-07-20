@@ -27,7 +27,7 @@ namespace Lumina.Data.Files
             FileHeader = MaterialFileHeader.Read( Reader );
             TextureOffsets = new TextureOffset[ FileHeader.TextureCount ];
 
-            uint[] offsets = Reader.ReadUInt32s( FileHeader.TextureCount );
+            uint[] offsets = Reader.ReadUInt32Array( FileHeader.TextureCount );
 
             for( int i = 0; i < offsets.Length; i++ )
             {
@@ -57,7 +57,7 @@ namespace Lumina.Data.Files
             Constants = Reader.ReadStructuresAsArray< Constant >( MaterialHeader.ConstantCount );
             Samplers = Reader.ReadStructuresAsArray< Sampler >( MaterialHeader.SamplerCount );
 
-            ShaderValues = Reader.ReadSingles( MaterialHeader.ShaderValueListSize / 4 );
+            ShaderValues = Reader.ReadSingleArray( MaterialHeader.ShaderValueListSize / 4 );
         }
     }
 }

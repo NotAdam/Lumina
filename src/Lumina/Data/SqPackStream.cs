@@ -149,7 +149,7 @@ namespace Lumina.Data
             for( int i = 0; i < 3; i++ )
                 totalBlocks += mdlBlock.IndexBufferBlockNum[ i ];
 
-            var compressedBlockSizes = Reader.ReadUInt16s( totalBlocks );
+            var compressedBlockSizes = Reader.ReadUInt16Array( totalBlocks );
             int currentBlock = 0;
             int stackSize;
             int runtimeSize;

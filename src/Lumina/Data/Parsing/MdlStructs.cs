@@ -62,10 +62,10 @@ namespace Lumina.Data.Parsing
                 ret.RuntimeSize = br.ReadUInt32();
                 ret.VertexDeclarationCount = br.ReadUInt16();
                 ret.MaterialCount = br.ReadUInt16();
-                ret.VertexOffset = br.ReadUInt32s( 3 );
-                ret.IndexOffset = br.ReadUInt32s( 3 );
-                ret.VertexBufferSize = br.ReadUInt32s( 3 );
-                ret.IndexBufferSize = br.ReadUInt32s( 3 );
+                ret.VertexOffset = br.ReadUInt32Array( 3 );
+                ret.IndexOffset = br.ReadUInt32Array( 3 );
+                ret.VertexBufferSize = br.ReadUInt32Array( 3 );
+                ret.IndexBufferSize = br.ReadUInt32Array( 3 );
                 ret.LodCount = br.ReadByte();
                 ret.EnableIndexBufferStreaming = br.ReadBoolean();
                 ret.EnableEdgeGeometry = br.ReadBoolean();
@@ -337,7 +337,7 @@ namespace Lumina.Data.Parsing
                 ret.SubMeshCount = br.ReadUInt16();
                 ret.BoneTableIndex = br.ReadUInt16();
                 ret.StartIndex = br.ReadUInt32();
-                ret.VertexBufferOffset = br.ReadUInt32s( 3 );
+                ret.VertexBufferOffset = br.ReadUInt32Array( 3 );
                 ret.VertexBufferStride = br.ReadBytes( 3 );
                 ret.VertexStreamCount = br.ReadByte();
                 return ret;
@@ -409,7 +409,7 @@ namespace Lumina.Data.Parsing
             public static BoneTableStruct Read( LuminaBinaryReader br )
             {
                 BoneTableStruct ret = new BoneTableStruct();
-                ret.BoneIndex = br.ReadUInt16s( 64 );
+                ret.BoneIndex = br.ReadUInt16Array( 64 );
                 ret.BoneCount = br.ReadByte();
                 ret.Padding = br.ReadBytes( 3 );
                 return ret;
@@ -426,8 +426,8 @@ namespace Lumina.Data.Parsing
             {
                 ShapeStruct ret = new ShapeStruct();
                 ret.StringOffset = br.ReadUInt32();
-                ret.ShapeMeshStartIndex = br.ReadUInt16s( 3 );
-                ret.ShapeMeshCount = br.ReadUInt16s( 3 );
+                ret.ShapeMeshStartIndex = br.ReadUInt16Array( 3 );
+                ret.ShapeMeshCount = br.ReadUInt16Array( 3 );
                 return ret;
             }
         }
@@ -466,8 +466,8 @@ namespace Lumina.Data.Parsing
             public static BoundingBoxStruct Read( LuminaBinaryReader br )
             {
                 BoundingBoxStruct ret = new BoundingBoxStruct();
-                ret.Min = br.ReadSingles( 4 );
-                ret.Max = br.ReadSingles( 4 );
+                ret.Min = br.ReadSingleArray( 4 );
+                ret.Max = br.ReadSingleArray( 4 );
                 return ret;
             }
         }

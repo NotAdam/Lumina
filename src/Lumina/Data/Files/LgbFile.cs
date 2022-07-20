@@ -38,7 +38,7 @@ namespace Lumina.Data.Files
             Layers = new LayerCommon.Layer[ChunkHeader.LayersCount];
 
             var start = Reader.Position;
-            var layerOffsets = Reader.ReadInt32s( ChunkHeader.LayersCount );
+            var layerOffsets = Reader.ReadInt32Array( ChunkHeader.LayersCount );
 
             for( var i = 0; i < ChunkHeader.LayersCount; i++ )
             {

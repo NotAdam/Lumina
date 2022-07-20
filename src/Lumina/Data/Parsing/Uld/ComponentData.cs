@@ -44,7 +44,7 @@ namespace Lumina.Data.Parsing.Uld
             public static ButtonComponent Read( LuminaBinaryReader br )
             {
                 ButtonComponent ret = new ButtonComponent();
-                ret.Data = br.ReadUInt32s( 2 );
+                ret.Data = br.ReadUInt32Array( 2 );
                 return ret;
             }
         }
@@ -56,7 +56,7 @@ namespace Lumina.Data.Parsing.Uld
             public static WindowComponent Read( LuminaBinaryReader br )
             {
                 WindowComponent ret = new WindowComponent();
-                ret.Data = br.ReadUInt32s( 8 );
+                ret.Data = br.ReadUInt32Array( 8 );
                 return ret;
             }
         }
@@ -68,7 +68,7 @@ namespace Lumina.Data.Parsing.Uld
             public static CheckBoxComponent Read( LuminaBinaryReader br )
             {
                 CheckBoxComponent ret = new CheckBoxComponent();
-                ret.Data = br.ReadUInt32s( 3 );
+                ret.Data = br.ReadUInt32Array( 3 );
                 return ret;
             }
         }
@@ -80,7 +80,7 @@ namespace Lumina.Data.Parsing.Uld
             public static RadioButtonComponent Read( LuminaBinaryReader br )
             {
                 RadioButtonComponent ret = new RadioButtonComponent();
-                ret.Data = br.ReadUInt32s( 4 );
+                ret.Data = br.ReadUInt32Array( 4 );
                 return ret;
             }
         }
@@ -96,7 +96,7 @@ namespace Lumina.Data.Parsing.Uld
             public static GaugeComponent Read( LuminaBinaryReader br )
             {
                 GaugeComponent ret = new GaugeComponent();
-                ret.Data = br.ReadUInt32s( 6 );
+                ret.Data = br.ReadUInt32Array( 6 );
                 ret.VerticalMargin = br.ReadUInt16();
                 ret.HorizontalMargin = br.ReadUInt16();
                 ret.IsVertical = br.ReadBoolean();
@@ -116,7 +116,7 @@ namespace Lumina.Data.Parsing.Uld
             public static SliderComponent Read( LuminaBinaryReader br )
             {
                 SliderComponent ret = new SliderComponent();
-                ret.Data = br.ReadUInt32s( 4 );
+                ret.Data = br.ReadUInt32Array( 4 );
                 ret.IsVertical = br.ReadBoolean();
                 ret.LeftOffset = br.ReadByte();
                 ret.RightOffset = br.ReadByte();
@@ -134,7 +134,7 @@ namespace Lumina.Data.Parsing.Uld
             public static TextInputComponent Read( LuminaBinaryReader br )
             {
                 TextInputComponent ret = new TextInputComponent();
-                ret.Data = br.ReadUInt32s( 16 );
+                ret.Data = br.ReadUInt32Array( 16 );
                 ret.Color = br.ReadUInt32();
                 ret.IMEColor = br.ReadUInt32();
                 return ret;
@@ -149,7 +149,7 @@ namespace Lumina.Data.Parsing.Uld
             public static NumericInputComponent Read( LuminaBinaryReader br )
             {
                 NumericInputComponent ret = new NumericInputComponent();
-                ret.Data = br.ReadUInt32s( 5 );
+                ret.Data = br.ReadUInt32Array( 5 );
                 ret.Color = br.ReadUInt32();
                 return ret;
             }
@@ -165,7 +165,7 @@ namespace Lumina.Data.Parsing.Uld
             public static ListComponent Read( LuminaBinaryReader br )
             {
                 ListComponent ret = new ListComponent();
-                ret.Data = br.ReadUInt32s( 5 );
+                ret.Data = br.ReadUInt32Array( 5 );
                 ret.Wrap = br.ReadByte();
                 ret.Orientation = br.ReadByte();
                 ret.Padding = br.ReadBytes( 2 );
@@ -180,7 +180,7 @@ namespace Lumina.Data.Parsing.Uld
             public static DropDownComponent Read( LuminaBinaryReader br )
             {
                 DropDownComponent ret = new DropDownComponent();
-                ret.Data = br.ReadUInt32s( 2 );
+                ret.Data = br.ReadUInt32Array( 2 );
                 return ret;
             }
         }
@@ -192,7 +192,7 @@ namespace Lumina.Data.Parsing.Uld
             public static TabComponent Read( LuminaBinaryReader br )
             {
                 TabComponent ret = new TabComponent();
-                ret.Data = br.ReadUInt32s( 4 );
+                ret.Data = br.ReadUInt32Array( 4 );
                 return ret;
             }
         }
@@ -207,7 +207,7 @@ namespace Lumina.Data.Parsing.Uld
             public static TreeListComponent Read( LuminaBinaryReader br )
             {
                 TreeListComponent ret = new TreeListComponent();
-                ret.Data = br.ReadUInt32s( 5 );
+                ret.Data = br.ReadUInt32Array( 5 );
                 ret.Wrap = br.ReadByte();
                 ret.Orientation = br.ReadByte();
                 ret.Padding = br.ReadBytes( 2 );
@@ -225,7 +225,7 @@ namespace Lumina.Data.Parsing.Uld
             public static ScrollBarComponent Read( LuminaBinaryReader br )
             {
                 ScrollBarComponent ret = new ScrollBarComponent();
-                ret.Data = br.ReadUInt32s( 4 );
+                ret.Data = br.ReadUInt32Array( 4 );
                 ret.Margin = br.ReadUInt16();
                 ret.IsVertical = br.ReadBoolean();
                 ret.Padding = br.ReadSByte();
@@ -240,7 +240,7 @@ namespace Lumina.Data.Parsing.Uld
             public static ListItemComponent Read( LuminaBinaryReader br )
             {
                 ListItemComponent ret = new ListItemComponent();
-                ret.Data = br.ReadUInt32s( 4 );
+                ret.Data = br.ReadUInt32Array( 4 );
                 return ret;
             }
         }
@@ -252,7 +252,7 @@ namespace Lumina.Data.Parsing.Uld
             public static IconComponent Read( LuminaBinaryReader br )
             {
                 IconComponent ret = new IconComponent();
-                ret.Data = br.ReadUInt32s( 8 );
+                ret.Data = br.ReadUInt32Array( 8 );
                 return ret;
             }
         }
@@ -264,7 +264,7 @@ namespace Lumina.Data.Parsing.Uld
             public static IconWithTextComponent Read( LuminaBinaryReader br )
             {
                 IconWithTextComponent ret = new IconWithTextComponent();
-                ret.Data = br.ReadUInt32s( 2 );
+                ret.Data = br.ReadUInt32Array( 2 );
                 return ret;
             }
         }
@@ -276,7 +276,7 @@ namespace Lumina.Data.Parsing.Uld
             public static DragDropComponent Read( LuminaBinaryReader br )
             {
                 DragDropComponent ret = new DragDropComponent();
-                ret.Data = br.ReadUInt32s( 1 );
+                ret.Data = br.ReadUInt32Array( 1 );
                 return ret;
             }
         }
@@ -288,7 +288,7 @@ namespace Lumina.Data.Parsing.Uld
             public static LeveCardComponent Read( LuminaBinaryReader br )
             {
                 LeveCardComponent ret = new LeveCardComponent();
-                ret.Data = br.ReadUInt32s( 3 );
+                ret.Data = br.ReadUInt32Array( 3 );
                 return ret;
             }
         }
@@ -300,7 +300,7 @@ namespace Lumina.Data.Parsing.Uld
             public static NineGridComponent Read( LuminaBinaryReader br )
             {
                 NineGridComponent ret = new NineGridComponent();
-                ret.Data = br.ReadUInt32s( 2 );
+                ret.Data = br.ReadUInt32Array( 2 );
                 return ret;
             }
         }
@@ -316,7 +316,7 @@ namespace Lumina.Data.Parsing.Uld
             public static JournalComponent Read( LuminaBinaryReader br )
             {
                 JournalComponent ret = new JournalComponent();
-                ret.Data = br.ReadUInt32s( 32 );
+                ret.Data = br.ReadUInt32Array( 32 );
                 ret.Margin = br.ReadUInt16();
                 ret.Unk1 = br.ReadUInt16();
                 ret.Unk2 = br.ReadUInt16();
@@ -332,7 +332,7 @@ namespace Lumina.Data.Parsing.Uld
             public static MultipurposeComponent Read( LuminaBinaryReader br )
             {
                 MultipurposeComponent ret = new MultipurposeComponent();
-                ret.Data = br.ReadUInt32s( 3 );
+                ret.Data = br.ReadUInt32Array( 3 );
                 return ret;
             }
         }
@@ -344,7 +344,7 @@ namespace Lumina.Data.Parsing.Uld
             public static MapComponent Read( LuminaBinaryReader br )
             {
                 MapComponent ret = new MapComponent();
-                ret.Data = br.ReadUInt32s( 10 );
+                ret.Data = br.ReadUInt32Array( 10 );
                 return ret;
             }
         }
@@ -356,7 +356,7 @@ namespace Lumina.Data.Parsing.Uld
             public static PreviewComponent Read( LuminaBinaryReader br )
             {
                 PreviewComponent ret = new PreviewComponent();
-                ret.Data = br.ReadUInt32s( 2 );
+                ret.Data = br.ReadUInt32Array( 2 );
                 return ret;
             }
         }

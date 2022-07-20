@@ -20,7 +20,7 @@ namespace Lumina.Data.Structs.Excel
                 Version = br.ReadUInt16(),
                 U1 = br.ReadUInt16(),
                 IndexSize = br.ReadUInt32(),
-                U2 = br.ReadUInt16s( 10 )
+                U2 = br.ReadUInt16Array( 10 )
             };
         }
     }

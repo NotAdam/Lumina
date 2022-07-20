@@ -53,7 +53,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Float2Keyframe ret = new Float2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadSingles( 2 );
+                ret.Value = br.ReadSingleArray( 2 );
                 return ret;
             }
         }
@@ -67,7 +67,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Float3Keyframe ret = new Float3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadSingles( 3 );
+                ret.Value = br.ReadSingleArray( 3 );
                 return ret;
             }
         }
@@ -97,7 +97,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 SByte2Keyframe ret = new SByte2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadSBytes( 2 );
+                ret.Value = br.ReadSByteArray( 2 );
                 return ret;
             }
         }
@@ -112,7 +112,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 SByte3Keyframe ret = new SByte3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadSBytes( 3 );
+                ret.Value = br.ReadSByteArray( 3 );
                 ret.Padding = br.ReadByte();
                 return ret;
             }
@@ -191,7 +191,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Short2Keyframe ret = new Short2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadInt16s( 2 );
+                ret.Value = br.ReadInt16Array( 2 );
                 return ret;
             }
         }
@@ -206,7 +206,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Short3Keyframe ret = new Short3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadInt16s( 3 );
+                ret.Value = br.ReadInt16Array( 3 );
                 ret.Padding = br.ReadBytes( 2 );
                 return ret;
             }
@@ -237,7 +237,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 UShort2Keyframe ret = new UShort2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadUInt16s( 2 );
+                ret.Value = br.ReadUInt16Array( 2 );
                 return ret;
             }
         }
@@ -252,7 +252,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 UShort3Keyframe ret = new UShort3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadUInt16s( 3 );
+                ret.Value = br.ReadUInt16Array( 3 );
                 ret.Padding = br.ReadBytes( 2 );
                 return ret;
             }
@@ -281,7 +281,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Int2Keyframe ret = new Int2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadInt32s( 2 );
+                ret.Value = br.ReadInt32Array( 2 );
                 return ret;
             }
         }
@@ -295,7 +295,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Int3Keyframe ret = new Int3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadInt32s( 3 );
+                ret.Value = br.ReadInt32Array( 3 );
                 return ret;
             }
         }
@@ -323,7 +323,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 UInt2Keyframe ret = new UInt2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadUInt32s( 2 );
+                ret.Value = br.ReadUInt32Array( 2 );
                 return ret;
             }
         }
@@ -337,7 +337,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 UInt3Keyframe ret = new UInt3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadUInt32s( 3 );
+                ret.Value = br.ReadUInt32Array( 3 );
                 return ret;
             }
         }
@@ -368,7 +368,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Bool2Keyframe ret = new Bool2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadBooleans( 2 );
+                ret.Value = br.ReadBooleanArray( 2 );
                 ret.Padding = br.ReadBytes( 2 );
                 return ret;
             }
@@ -384,7 +384,7 @@ namespace Lumina.Data.Parsing.Uld
             {
                 Bool3Keyframe ret = new Bool3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadBooleans( 3 );
+                ret.Value = br.ReadBooleanArray( 3 );
                 ret.Padding = br.ReadByte();
                 return ret;
             }

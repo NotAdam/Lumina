@@ -35,7 +35,7 @@ namespace Lumina.Excel
         {
             _sheet = sheet;
             _rowData = dataFile.RowData;
-            _reader = new LuminaBinaryReader( dataFile.Data, dataFile.Reader.PlatformId );
+            _reader = new LuminaBinaryReader( dataFile.Data, dataFile.Reader.PlatformId ) { IsLittleEndian = false };
         }
 
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row )

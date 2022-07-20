@@ -355,11 +355,11 @@ namespace Lumina.Data.Parsing.Layer
                 ret.DecelerateTime = br.ReadUInt16();
 
                 // TODO: verify this works lol
-                ret.VerticalSwingRange = br.ReadSingles( 2 );
-                ret.HorizontalSwingRange = br.ReadSingles( 2 );
-                ret.SwingMoveSpeedRange = br.ReadSingles( 2 );
-                ret.SwingRotation = br.ReadSingles( 2 );
-                ret.SwingRotationSpeedRange = br.ReadSingles( 2 );
+                ret.VerticalSwingRange = br.ReadSingleArray( 2 );
+                ret.HorizontalSwingRange = br.ReadSingleArray( 2 );
+                ret.SwingMoveSpeedRange = br.ReadSingleArray( 2 );
+                ret.SwingRotation = br.ReadSingleArray( 2 );
+                ret.SwingRotationSpeedRange = br.ReadSingleArray( 2 );
 
                 return ret;
             }
@@ -1619,7 +1619,7 @@ namespace Lumina.Data.Parsing.Layer
                 ret.ObSetEnableReferencedListCount = br.ReadInt32();
 
                 br.BaseStream.Position = start + ret._InstanceObjects;
-                var instanceOffsets = br.ReadInt32s( ret.InstanceObjectCount );
+                var instanceOffsets = br.ReadInt32Array( ret.InstanceObjectCount );
 
                 br.BaseStream.Position = start + ret._LayerSetReferencedList;
                 ret.LayerSetReferencedList = LayerSetReferencedList.Read( br );

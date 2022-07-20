@@ -34,7 +34,7 @@ namespace Lumina.Data.Structs.Excel
                 Variant = (ExcelVariant)br.ReadByte(),
                 _unknown3 = br.ReadUInt16(),
                 RowCount = br.ReadUInt32(),
-                U4 = br.ReadUInt32s( 2 )
+                U4 = br.ReadUInt32Array( 2 )
             };
         }
     }

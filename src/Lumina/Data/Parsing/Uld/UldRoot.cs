@@ -264,7 +264,7 @@ namespace Lumina.Data.Parsing.Uld
                 ret.NodeType = br.ReadInt32();
                 ret.NodeOffset = br.ReadUInt16();
                 ret.TabIndex = br.ReadInt16();
-                ret.Unk1 = br.ReadInt32s( 4 );
+                ret.Unk1 = br.ReadInt32Array( 4 );
                 ret.X = br.ReadInt16();
                 ret.Y = br.ReadInt16();
                 ret.W = br.ReadUInt16();

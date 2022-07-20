@@ -63,151 +63,28 @@ namespace Lumina.Data
         public override float ReadSingle() => isLittleEndian ? base.ReadSingle() : ReverseEndianness( base.ReadSingle() );
         public override double ReadDouble() => isLittleEndian ? base.ReadDouble() : ReverseEndianness( base.ReadDouble() );
 
+#if NET6_0_OR_GREATER
+        public override Half ReadHalf() => isLittleEndian ? base.ReadHalf() : ReverseEndianness( base.ReadHalf() );
+#else
         public unsafe Half ReadHalf()
         {
             var half = ReadUInt16();
 
             return *(Half*)&half;
         }
+#endif
 
-        public sbyte[] ReadSBytes( int count ) => MemoryMarshal.Cast< byte, sbyte >( ReadBytes( count ) ).ToArray();
-
-        public bool[] ReadBooleans( int count ) => MemoryMarshal.Cast< byte, bool >( ReadBytes( count ) ).ToArray();
-
-        public short[] ReadInt16s( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, short >( ReadBytes( count * sizeof( short ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = BinaryPrimitives.ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public ushort[] ReadUInt16s( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, ushort >( ReadBytes( count * sizeof( ushort ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = BinaryPrimitives.ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public int[] ReadInt32s( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, int >( ReadBytes( count * sizeof( int ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = BinaryPrimitives.ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public uint[] ReadUInt32s( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, uint >( ReadBytes( count * sizeof( uint ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = BinaryPrimitives.ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public long[] ReadInt64s( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, long >( ReadBytes( count * sizeof( long ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = BinaryPrimitives.ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public ulong[] ReadUInt64s( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, ulong >( ReadBytes( count * sizeof( ulong ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = BinaryPrimitives.ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public Half[] ReadHalfs( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, Half >( ReadBytes( count * sizeof( ushort ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public float[] ReadSingles( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, float >( ReadBytes( count * sizeof( float ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
-
-        public double[] ReadDoubles( int count )
-        {
-            var span = MemoryMarshal.Cast< byte, double >( ReadBytes( count * sizeof( double ) ) );
-
-            if( ConvertEndianness )
-            {
-                for( int i = 0; i < count; i++ )
-                {
-                    span[ i ] = ReverseEndianness( span[ i ] );
-                }
-            }
-
-            return span.ToArray();
-        }
+        public sbyte[] ReadSByteArray( int count ) => ReadPrimitiveArray< sbyte >( count );
+        public bool[] ReadBooleanArray( int count ) => ReadPrimitiveArray< bool >( count );
+        public short[] ReadInt16Array( int count ) => ReadPrimitiveArray< short >( count );
+        public ushort[] ReadUInt16Array( int count ) => ReadPrimitiveArray< ushort >( count );
+        public int[] ReadInt32Array( int count ) => ReadPrimitiveArray< int >( count );
+        public uint[] ReadUInt32Array( int count ) => ReadPrimitiveArray< uint >( count );
+        public long[] ReadInt64Array( int count ) => ReadPrimitiveArray< long >( count );
+        public ulong[] ReadUInt64Array( int count ) => ReadPrimitiveArray< ulong >( count );
+        public Half[] ReadHalfArray( int count ) => ReadPrimitiveArray< Half >( count );
+        public float[] ReadSingleArray( int count ) => ReadPrimitiveArray< float >( count );
+        public double[] ReadDoubleArray( int count ) => ReadPrimitiveArray< double >( count );
 
         /// <summary>
         /// Reads a structure from the current stream position.
@@ -281,6 +158,53 @@ namespace Lumina.Data
             }
 
             return span;
+        }
+
+        private T[] ReadPrimitiveArray< T >( int count ) where T : struct
+        {
+            var size = Unsafe.SizeOf< T >();
+            var span = MemoryMarshal.Cast< byte, T >( ReadBytes( count * size ) );
+
+            if( ConvertEndianness )
+            {
+                switch( size )
+                {
+                    case 1:
+                        break;
+
+                    case 2:
+                        var sSpan = MemoryMarshal.Cast< T, ushort >( span );
+
+                        for( var i = 0; i < count; i++ )
+                        {
+                            sSpan[ i ] = BinaryPrimitives.ReverseEndianness( sSpan[ i ] );
+                        }
+
+                        break;
+
+                    case 4:
+                        var iSpan = MemoryMarshal.Cast< T, uint >( span );
+
+                        for( var i = 0; i < count; i++ )
+                        {
+                            iSpan[ i ] = BinaryPrimitives.ReverseEndianness( iSpan[ i ] );
+                        }
+
+                        break;
+
+                    case 8:
+                        var lSpan = MemoryMarshal.Cast< T, ulong >( span );
+
+                        for( var i = 0; i < count; i++ )
+                        {
+                            lSpan[ i ] = BinaryPrimitives.ReverseEndianness( lSpan[ i ] );
+                        }
+
+                        break;
+                }
+            }
+
+            return span.ToArray();
         }
 
         public static unsafe Half ReverseEndianness( Half value )

@@ -119,7 +119,7 @@ namespace Lumina.Models.Models {
                     (int) Parent.File.FileHeader.IndexOffset[ (int) Parent.Lod ],
                     (int) Parent.File.FileHeader.IndexBufferSize[ (int) Parent.Lod ] ) );
             reader.Seek( currentMesh.StartIndex * 2 );
-            Indices = reader.ReadUInt16s( (int) currentMesh.IndexCount );
+            Indices = reader.ReadUInt16Array( (int) currentMesh.IndexCount );
         }
 
         private void ReadVertices()
