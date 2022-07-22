@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using Lumina.Data.Attributes;
 using Lumina.Data.Parsing;
 
@@ -13,7 +12,7 @@ namespace Lumina.Data.Files.Pcb
             public Common.BoundingBox BoundingBox;
             public ListNode[] Children;
 
-            public static PcbNodeList Read( BinaryReader reader )
+            public static PcbNodeList Read( LuminaBinaryReader reader )
             {
                 var nodeList = new PcbNodeList
                 {
@@ -38,7 +37,7 @@ namespace Lumina.Data.Files.Pcb
             public uint Id;
             public Common.BoundingBox BoundingBox;
 
-            public static ListNode Read( BinaryReader reader )
+            public static ListNode Read( LuminaBinaryReader reader )
             {
                 var node = new ListNode
                 {

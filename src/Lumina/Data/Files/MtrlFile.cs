@@ -1,4 +1,3 @@
-﻿using System;
 using Lumina.Data.Parsing;
 using Lumina.Extensions;
 
@@ -8,9 +7,9 @@ namespace Lumina.Data.Files
     {
         public MaterialFileHeader FileHeader;
         public MaterialHeader MaterialHeader;
-        public UvColorSet[] UvColorSets = null!;
         public TextureOffset[] TextureOffsets = null!;
-        public int[] ColorSetOffsets = null!;
+        public UvColorSet[] UvColorSets = null!;
+        public ColorSet[] ColorSets = null!;
 
         // Will have to double check this, this is from TexTools
         public ColorSetInfo ColorSetInfo;
@@ -25,12 +24,20 @@ namespace Lumina.Data.Files
 
         public override void LoadFile()
         {
-            FileHeader = Reader.ReadStructure< MaterialFileHeader >();
-            TextureOffsets = Reader.ReadStructuresAsArray< TextureOffset >( FileHeader.TextureCount );
+            FileHeader = MaterialFileHeader.Read( Reader );
+            TextureOffsets = new TextureOffset[ FileHeader.TextureCount ];
+
+            uint[] offsets = Reader.ReadUInt32Array( FileHeader.TextureCount );
+
+            for( int i = 0; i < offsets.Length; i++ )
+            {
+                TextureOffsets[ i ].Offset = (ushort)offsets[ i ];
+                TextureOffsets[ i ].Flags = (ushort)( offsets[ i ] >> 16 );
+            }
 
             UvColorSets = Reader.ReadStructuresAsArray< UvColorSet >( FileHeader.UvSetCount );
-
-            ColorSetOffsets = Reader.ReadStructuresAsArray< Int32 >( FileHeader.ColorSetCount );
+            
+            ColorSets = Reader.ReadStructuresAsArray< ColorSet >( FileHeader.ColorSetCount );
 
             Strings = Reader.ReadBytes( FileHeader.StringTableSize );
 
@@ -50,7 +57,7 @@ namespace Lumina.Data.Files
             Constants = Reader.ReadStructuresAsArray< Constant >( MaterialHeader.ConstantCount );
             Samplers = Reader.ReadStructuresAsArray< Sampler >( MaterialHeader.SamplerCount );
 
-            ShaderValues = Reader.ReadStructuresAsArray< float >( MaterialHeader.ShaderValueListSize / 4 );
+            ShaderValues = Reader.ReadSingleArray( MaterialHeader.ShaderValueListSize / 4 );
         }
     }
 }

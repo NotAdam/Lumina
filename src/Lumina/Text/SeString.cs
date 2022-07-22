@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using Lumina.Data;
 using Lumina.Extensions;
 using Lumina.Text.Payloads;
 
@@ -60,12 +60,11 @@ namespace Lumina.Text
         {
             var payloads = new List< BasePayload >();
 
-            using var ms = new MemoryStream( _rawData );
-            using var br = new BinaryReader( ms );
+            using var br = new LuminaBinaryReader( _rawData );
 
-            var start = ms.Position;
+            var start = br.Position;
 
-            while( ms.Position < _rawData.Length )
+            while( br.Position < _rawData.Length )
             {
                 var marker = br.PeekByte();
                 if( marker != StartByte )

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using Lumina.Data;
 using Lumina.Data.Files;
 using Lumina.Data.Parsing;
 using Lumina.Extensions;
@@ -212,13 +212,12 @@ namespace Lumina.Models.Materials
         private void ReadStrings()
         {
             StringOffsetToStringMap = new Dictionary< int, string >();
-            var mr = new MemoryStream( File.Strings );
-            var br = new BinaryReader( mr );
+            var br = new LuminaBinaryReader( File.Strings );
 
             // They re-use offsets, so the number of offsets is not equal to the number of unique members
             var uniqueTextureCount = File.TextureOffsets.Select( t => t.Offset ).Distinct().Count();
             var uniqueUvColorSetCount = File.UvColorSets.Select( t => t.NameOffset ).Distinct().Count();
-            var uniqueColorOffsetCount = File.ColorSetOffsets.Select( t => t ).Distinct().Count();
+            var uniqueColorOffsetCount = File.ColorSets.Select( t => t.NameOffset ).Distinct().Count();
 
             // Add one for the shader package name at the end
             var stringCount = uniqueTextureCount + uniqueUvColorSetCount + uniqueColorOffsetCount + 1;
@@ -230,7 +229,6 @@ namespace Lumina.Models.Materials
             }
 
             br.Dispose();
-            mr.Dispose();
         }
     }
 }

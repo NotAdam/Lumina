@@ -1,12 +1,9 @@
 using System;
-using System.Buffers.Binary;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
-using Lumina.Extensions;
 
 namespace Lumina.Excel
 {
@@ -144,121 +141,8 @@ namespace Lumina.Excel
 
                 segment.File = GameData.GetFile< ExcelDataFile >( segment.FilePath );
 
-                // convert big endian to little endian on le systems
-                ProcessDataEndianness( segment.File );
-
                 DataPages.Add( segment );
             }
-        }
-
-        /// <summary>
-        /// Reverses an inner segment of data based on the column size
-        /// </summary>
-        /// <param name="offset">The row offset to start from</param>
-        /// <param name="fileData">The underlying file data</param>
-        protected unsafe void ProcessDataRow( long offset, byte[] fileData )
-        {
-            foreach( var row in Columns )
-            {
-                fixed( byte* ptr = &fileData[ offset + row.Offset ] )
-                {
-                    switch( row.Type )
-                    {
-                        case ExcelColumnDataType.Int16:
-                        case ExcelColumnDataType.UInt16:
-                        {
-                            var pData = (ushort*)ptr;
-                            *pData = BinaryPrimitives.ReverseEndianness( *pData );
-
-                            break;
-                        }
-                        case ExcelColumnDataType.String:
-                        case ExcelColumnDataType.Int32:
-                        case ExcelColumnDataType.UInt32:
-                        case ExcelColumnDataType.Float32:
-                        {
-                            var pData = (uint*)ptr;
-                            *pData = BinaryPrimitives.ReverseEndianness( *pData );
-
-                            break;
-                        }
-                        case ExcelColumnDataType.Int64:
-                        case ExcelColumnDataType.UInt64:
-                        {
-                            var pData = (ulong*)ptr;
-                            *pData = BinaryPrimitives.ReverseEndianness( *pData );
-                            break;
-                        }
-
-                        default:
-                            continue;
-                    }
-                }
-
-                // not really sure why but this sometimes happens, but it'll read 0 bytes and then try and write it to the end
-                // and crash because it's attempting to alloc memory for some retarded reason, makes 0 sense to me
-                // todo: figure out why (item sheet, maybe quest?)
-                // todo: potentially fixed by accident but don't want to remove
-                // if( data.Length == 0 )
-                // continue;
-
-                // Array.Reverse( data );
-
-                // ms.Position -= data.Length;
-                // bw.Write( data );
-            }
-        }
-
-        /// <summary>
-        /// Reverses the endianness of a data file on LE machines so the underlying stream can be copied from as is
-        /// </summary>
-        /// <param name="file">The file to swap endianness for</param>
-        // todo: refactor and move into ExceLDataFile
-        protected void ProcessDataEndianness( ExcelDataFile file )
-        {
-            if( !BitConverter.IsLittleEndian )
-            {
-                return;
-            }
-
-            if( file.SwappedEndianness )
-            {
-                return;
-            }
-
-            // todo: clean this shit up too
-            var stream = new MemoryStream( file.Data );
-            var reader = new BinaryReader( stream );
-
-            foreach( var row in file.RowData.Values )
-            {
-                var offset = row.Offset;
-
-                stream.Position = offset;
-
-                if( Variant == ExcelVariant.Subrows )
-                {
-                    var rowHdr = reader.ReadStructure< ExcelDataRowHeader >();
-                    rowHdr.RowCount = BinaryPrimitives.ReverseEndianness( rowHdr.RowCount );
-                    rowHdr.DataSize = BinaryPrimitives.ReverseEndianness( rowHdr.DataSize );
-
-                    for( var i = 0; i < rowHdr.RowCount; i++ )
-                    {
-                        var subRowOffset = row.Offset + 6 + ( i * Header.DataOffset + 2 * ( i + 1 ) );
-
-                        stream.Position = subRowOffset;
-
-                        ProcessDataRow( subRowOffset, file.Data );
-                    }
-                }
-                else
-                {
-                    // skip (unused) header
-                    ProcessDataRow( offset + 6, file.Data );
-                }
-            }
-
-            file.SwappedEndianness = true;
         }
 
         /// <summary>

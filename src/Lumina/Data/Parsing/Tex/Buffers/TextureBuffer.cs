@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Lumina.Data.Files;
+using Lumina.Data.Structs;
 
 namespace Lumina.Data.Parsing.Tex.Buffers
 {
@@ -257,6 +257,131 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             }
         }
 
+        private static int GetEncodedPS3TextureOffset( int x, int y, int z, int log2width, int log2height, int log2depth )
+        {
+            var loopCount = log2width + log2height + log2depth;
+            int offset = 0;
+
+            for( int i = 0; i < loopCount; )
+            {
+                if( log2width > 0 )
+                {
+                    offset |= ( x & 1 ) << i++;
+
+                    x >>= 1;
+                    log2width--;
+                }
+                if( log2height > 0 )
+                {
+                    offset |= ( y & 1 ) << i++;
+
+                    y >>= 1;
+                    log2height--;
+                }
+                if( log2depth > 0 )
+                {
+                    offset |= ( z & 1 ) << i++;
+
+                    z >>= 1;
+                    log2depth--;
+                }
+            }
+
+            return offset;
+        }
+
+        private static byte[] DecodePS3Texture( byte[] src, int width, int height, int depth, int pixelSize, int[] mipmapAllocations, bool isCube )
+        {
+            var buffer = new byte[ src.Length ];
+            var srcBaseOffset = 0;
+            var dstBaseOffset = 0;
+            var faces = isCube ? 6 : 1;
+
+            for( int i = 0; i < mipmapAllocations.Length; i++ )
+            {
+                var log2width = Math.ILogB( width );
+                var log2height = Math.ILogB( height );
+                var log2depth = Math.ILogB( depth );
+
+                var srcOffset = 0;
+                var dstOffset = dstBaseOffset;
+
+                for( var j = 0; j < faces; j++ )
+                {
+                    for( var k = 0; k < depth; k++ )
+                    {
+                        for( var l = 0; l < height; l++ )
+                        {
+                            for( var m = 0; m < width; m++ )
+                            {
+                                srcOffset = srcBaseOffset + GetEncodedPS3TextureOffset( m, l, k, log2width, log2height, log2depth ) * pixelSize;
+
+                                Array.Copy( src, srcOffset, buffer, dstOffset, pixelSize );
+
+                                dstOffset += pixelSize;
+                            }
+                        }
+                    }
+
+                    srcBaseOffset = srcOffset;
+                }
+
+                depth = Math.Max( depth >> 2, 1 );
+                height = Math.Max( height >> 1, 1 );
+                width = Math.Max( width >> 1, 1 );
+
+                dstBaseOffset += mipmapAllocations[ i ];
+            }
+
+            return buffer;
+        }
+
+        private static byte[] DecodePS3Texture3D_DXT( byte[] src, int width, int height, int depth, int pixelSize, int[] mipmapAllocations )
+        {
+            var buffer = new byte[ src.Length ];
+            var srcPosition = 0;
+            var dstBaseOffset = 0;
+
+            for( var i = 0; i < mipmapAllocations.Length; i++ )
+            {
+                var dxtWidth = Math.Max( width / 4, 1 );
+                var dxtHeight = Math.Max( height / 4, 1 );
+                var dxtDepth = Math.Max( depth / 4, 1 );
+
+                var size = pixelSize * dxtWidth * dxtHeight;
+                var depth4Size = Math.Min( depth, 4 ) * size;
+
+                for( var j = 0; j < dxtDepth; j++ )
+                {
+                    var dstOffset = dstBaseOffset + size * j * 4;
+
+                    for( var k = 0; k < dxtHeight; k++ )
+                    {
+                        for( var l = 0; l < dxtWidth; l++ )
+                        {
+                            for( var m = 0; m < depth4Size; m += size )
+                            {
+                                Array.Copy( src, srcPosition, buffer, dstOffset + m, pixelSize );
+
+                                srcPosition += pixelSize;
+                            }
+
+                            dstOffset += pixelSize;
+                        }
+                    }
+                }
+
+                depth = Math.Max( depth >> 2, 1 );
+                height = Math.Max( height >> 1, 1 );
+                width = Math.Max( width >> 1, 1 );
+
+                dstBaseOffset += mipmapAllocations[ i ];
+            }
+
+            return buffer;
+        }
+
+
         /// <summary>
         /// Create a new instance of <see cref="TextureBuffer"/>, depending on the specified texture format.
         /// </summary>
@@ -267,8 +392,70 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             int height,
             int depth,
             int[] mipmapAllocations,
-            byte[] buffer )
+            byte[] buffer,
+            PlatformId platformId )
         {
+            if( platformId == PlatformId.PS3 )
+            {
+                switch( format )
+                {
+                    case TexFile.TextureFormat.B4G4R4A4:
+                    case TexFile.TextureFormat.B5G5R5A1:
+                    case TexFile.TextureFormat.R16G16B16A16F:
+                        for( var i = 0; i < buffer.Length; i += 2 )
+                        {
+                            Array.Reverse( buffer, i, 2 );
+                        }
+                        break;
+
+                    case TexFile.TextureFormat.B8G8R8A8:
+                    case TexFile.TextureFormat.B8G8R8X8:
+                    case TexFile.TextureFormat.R32G32B32A32F:
+                        for( var i = 0; i < buffer.Length; i += 4 )
+                        {
+                            Array.Reverse( buffer, i, 4 );
+                        }
+                        break;
+                }
+
+                if( ( width & ( width - 1 ) ) == 0 && ( height & ( height - 1 ) ) == 0 )
+                {
+                    if( attribute.HasFlag( TexFile.Attribute.TextureType3D ) &&
+                        (int)( format & TexFile.TextureFormat.TypeMask ) >> (int)TexFile.TextureFormat.TypeShift == (int)TexFile.TextureFormat.TypeDxt )
+                    {
+                        buffer = DecodePS3Texture3D_DXT( buffer, width, height, depth, format == TexFile.TextureFormat.DXT1 ? 8 : 16, mipmapAllocations );
+                    }
+                    else
+                    {
+                        switch( format )
+                        {
+                            case TexFile.TextureFormat.L8:
+                            case TexFile.TextureFormat.A8:
+                                buffer = DecodePS3Texture( buffer, width, height, depth, 1, mipmapAllocations, attribute.HasFlag( TexFile.Attribute.TextureTypeCube ) );
+                                break;
+
+                            case TexFile.TextureFormat.B4G4R4A4:
+                            case TexFile.TextureFormat.B5G5R5A1:
+                                buffer = DecodePS3Texture( buffer, width, height, depth, 2, mipmapAllocations, attribute.HasFlag( TexFile.Attribute.TextureTypeCube ) );
+                                break;
+
+                            case TexFile.TextureFormat.B8G8R8A8:
+                            case TexFile.TextureFormat.B8G8R8X8:
+                                buffer = DecodePS3Texture( buffer, width, height, depth, 4, mipmapAllocations, attribute.HasFlag( TexFile.Attribute.TextureTypeCube ) );
+                                break;
+
+                            case TexFile.TextureFormat.R16G16B16A16F:
+                                buffer = DecodePS3Texture( buffer, width * 2, height, depth, 4, mipmapAllocations, attribute.HasFlag( TexFile.Attribute.TextureTypeCube ) );
+                                break;
+
+                            case TexFile.TextureFormat.R32G32B32A32F:
+                                buffer = DecodePS3Texture( buffer, width * 4, height, depth, 4, mipmapAllocations, attribute.HasFlag( TexFile.Attribute.TextureTypeCube ) );
+                                break;
+                        }
+                    }
+                }
+            }
+
             var isDepthConstant = false;
 
             if( ( attribute & TexFile.Attribute.TextureTypeCube ) != 0 )
@@ -319,7 +506,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         /// <summary>
         /// Create a new instance of <see cref="TextureBuffer"/> from a BinaryReader that supports seeking.
         /// </summary>
-        public static unsafe TextureBuffer FromStream( TexFile.TexHeader header, BinaryReader Reader )
+        public static unsafe TextureBuffer FromStream( TexFile.TexHeader header, LuminaBinaryReader Reader )
         {
             var mipmapAllocations = new int[Math.Min( 13, (int)header.MipLevels )];
             for( var i = 0; i < mipmapAllocations.Length - 1; i++ )
@@ -331,7 +518,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             // ReSharper disable once MustUseReturnValue
             Reader.BaseStream.Read( buffer );
 
-            return FromTextureFormat( header.Type, header.Format, header.Width, header.Height, header.Depth, mipmapAllocations, buffer );
+            return FromTextureFormat( header.Type, header.Format, header.Width, header.Height, header.Depth, mipmapAllocations, buffer, Reader.PlatformId );
         }
     }
 }

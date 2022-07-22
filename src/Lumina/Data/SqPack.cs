@@ -38,6 +38,7 @@ namespace Lumina.Data
         /// <summary>
         /// PC and PS4 are LE, PS3 is BE
         /// </summary>
+        [Obsolete( "Use property \"ConvertEndianness\" from \"LuminaBinaryReader\" instead" )]
         public bool ShouldConvertEndianness
         {
             // todo: what about reading LE files on BE device? do we even care?
@@ -92,7 +93,7 @@ namespace Lumina.Data
 
         public SqPackFileInfo GetFileMetadata( long offset )
         {
-            using var ss = new SqPackStream( File );
+            using var ss = new SqPackStream( File, SqPackHeader.platformId );
 
             return ss.GetFileMetadata( offset );
         }
@@ -109,7 +110,7 @@ namespace Lumina.Data
             
             if( !_gameData.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
-                using var ss = new SqPackStream( File );
+                using var ss = new SqPackStream( File, SqPackHeader.platformId );
                 return ss.ReadFile< T >( offset );
             }
             
@@ -123,7 +124,7 @@ namespace Lumina.Data
                     return obj;
                 }
 
-                using var ss = new SqPackStream( File );
+                using var ss = new SqPackStream( File, SqPackHeader.platformId );
                 var file = ss.ReadFile< T >( offset );
                 
                 FileCache[ offset ] = new WeakReference< FileResource >( file );

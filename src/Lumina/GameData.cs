@@ -34,6 +34,7 @@ namespace Lumina
         /// <summary>
         /// Reading PS3 dats on a LE machine means we need to convert endianness from BE where applicable
         /// </summary>
+        [Obsolete( "Use property \"ConvertEndianness\" from \"LuminaBinaryReader\" instead" )]
         public bool ShouldConvertEndianness => Options.CurrentPlatform == PlatformId.PS3 && BitConverter.IsLittleEndian;
         
         /// <summary>
@@ -205,9 +206,7 @@ namespace Lumina
 
             var file = Activator.CreateInstance< T >();
             file.Data = fileContent;
-            // todo: this is kind of fucked, we should probably choose one or the other and not both
-            file.FileStream = new MemoryStream( file.Data, false );
-            file.Reader = new BinaryReader( file.FileStream );
+            file.Reader = new LuminaBinaryReader( file.Data, Options.CurrentPlatform );
             file.LoadFile();
 
             return file;

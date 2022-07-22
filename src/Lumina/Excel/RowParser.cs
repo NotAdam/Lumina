@@ -1,9 +1,8 @@
 using System;
-using System.Buffers.Binary;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Lumina.Data;
 using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
@@ -15,7 +14,7 @@ namespace Lumina.Excel
     {
         private readonly ExcelSheetImpl _sheet;
         private readonly Dictionary< uint, ExcelDataOffset > _rowData;
-        private readonly BinaryReader _reader;
+        private readonly LuminaBinaryReader _reader;
 
         private ExcelDataOffset _offset;
         private ExcelDataRowHeader _rowHeader;
@@ -36,7 +35,7 @@ namespace Lumina.Excel
         {
             _sheet = sheet;
             _rowData = dataFile.RowData;
-            _reader = new BinaryReader( new MemoryStream( dataFile.Data, false ) );
+            _reader = new LuminaBinaryReader( dataFile.Data, dataFile.Reader.PlatformId ) { IsLittleEndian = false };
         }
 
         public RowParser( ExcelSheetImpl sheet, ExcelDataFile dataFile, uint row )
@@ -83,12 +82,6 @@ namespace Lumina.Excel
             _reader.BaseStream.Position = _offset.Offset;
 
             _rowHeader = _reader.ReadStructure< ExcelDataRowHeader >();
-
-            if( BitConverter.IsLittleEndian )
-            {
-                _rowHeader.DataSize = BinaryPrimitives.ReverseEndianness( _rowHeader.DataSize );
-                _rowHeader.RowCount = BinaryPrimitives.ReverseEndianness( _rowHeader.RowCount );
-            }
 
             // header is 6 bytes large, data normally starts here except in the case of variant 2 sheets but we'll keep it anyway
             _rowOffset = _offset.Offset + 6;
@@ -161,7 +154,7 @@ namespace Lumina.Excel
         /// <param name="offset">The offset to start reading from</param>
         /// <typeparam name="T">The type of struct to read out from the row</typeparam>
         /// <returns>The read structure filled from the row data</returns>
-        public T ReadStructure< T >( int offset ) where T : struct
+        public T ReadStructure< T >( int offset ) where T : struct, IConvertEndianness
         {
             _reader.BaseStream.Position = _rowOffset + offset;
 
@@ -175,7 +168,7 @@ namespace Lumina.Excel
         /// <param name="count">The number of structures to read sequentially</param>
         /// <typeparam name="T">The type of struct to read out from the row</typeparam>
         /// <returns>The read structures filled from the row data</returns>
-        public List< T > ReadStructures< T >( int offset, int count ) where T : struct
+        public List< T > ReadStructures< T >( int offset, int count ) where T : struct, IConvertEndianness
         {
             _reader.BaseStream.Position = _rowOffset + offset;
 
@@ -189,7 +182,7 @@ namespace Lumina.Excel
         /// <param name="count">The number of structures to read sequentially</param>
         /// <typeparam name="T">The type of struct to read out from the row</typeparam>
         /// <returns>The read structures filled from the row data</returns>
-        public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct
+        public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct, IConvertEndianness
         {
             _reader.BaseStream.Position = _rowOffset + offset;
 
@@ -257,7 +250,7 @@ namespace Lumina.Excel
                 }
                 case ExcelColumnDataType.Bool:
                 {
-                    data = _reader.ReadByte() != 0;
+                    data = _reader.ReadBoolean();
                     break;
                 }
                 case ExcelColumnDataType.Int8:

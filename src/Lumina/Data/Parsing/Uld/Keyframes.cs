@@ -1,7 +1,3 @@
-using System;
-using System.IO;
-using Lumina.Extensions;
-
 // ReSharper disable NotAccessedField.Global
 // ReSharper disable MemberCanBePrivate.Global
 namespace Lumina.Data.Parsing.Uld
@@ -21,7 +17,7 @@ namespace Lumina.Data.Parsing.Uld
             public float Acceleration;
             public float Deceleration;
 
-            public static BaseKeyframeData Read( BinaryReader br )
+            public static BaseKeyframeData Read( LuminaBinaryReader br )
             {
                 BaseKeyframeData ret = new BaseKeyframeData();
                 ret.Time = br.ReadUInt32();
@@ -39,7 +35,7 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public float Value;
 
-            public static Float1Keyframe Read( BinaryReader br )
+            public static Float1Keyframe Read( LuminaBinaryReader br )
             {
                 Float1Keyframe ret = new Float1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -53,11 +49,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public float[] Value;
 
-            public static Float2Keyframe Read( BinaryReader br )
+            public static Float2Keyframe Read( LuminaBinaryReader br )
             {
                 Float2Keyframe ret = new Float2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Single >( 2 ).ToArray();
+                ret.Value = br.ReadSingleArray( 2 );
                 return ret;
             }
         }
@@ -67,11 +63,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public float[] Value;
 
-            public static Float3Keyframe Read( BinaryReader br )
+            public static Float3Keyframe Read( LuminaBinaryReader br )
             {
                 Float3Keyframe ret = new Float3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Single >( 3 ).ToArray();
+                ret.Value = br.ReadSingleArray( 3 );
                 return ret;
             }
         }
@@ -82,7 +78,7 @@ namespace Lumina.Data.Parsing.Uld
             public sbyte Value;
             public byte[] Padding;
 
-            public static SByte1Keyframe Read( BinaryReader br )
+            public static SByte1Keyframe Read( LuminaBinaryReader br )
             {
                 SByte1Keyframe ret = new SByte1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -97,11 +93,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public sbyte[] Value;
 
-            public static SByte2Keyframe Read( BinaryReader br )
+            public static SByte2Keyframe Read( LuminaBinaryReader br )
             {
                 SByte2Keyframe ret = new SByte2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< SByte >( 2 ).ToArray();
+                ret.Value = br.ReadSByteArray( 2 );
                 return ret;
             }
         }
@@ -112,11 +108,11 @@ namespace Lumina.Data.Parsing.Uld
             public sbyte[] Value;
             public byte Padding;
 
-            public static SByte3Keyframe Read( BinaryReader br )
+            public static SByte3Keyframe Read( LuminaBinaryReader br )
             {
                 SByte3Keyframe ret = new SByte3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< SByte >( 3 ).ToArray();
+                ret.Value = br.ReadSByteArray( 3 );
                 ret.Padding = br.ReadByte();
                 return ret;
             }
@@ -128,7 +124,7 @@ namespace Lumina.Data.Parsing.Uld
             public byte Value;
             public byte[] Padding;
 
-            public static Byte1Keyframe Read( BinaryReader br )
+            public static Byte1Keyframe Read( LuminaBinaryReader br )
             {
                 Byte1Keyframe ret = new Byte1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -144,7 +140,7 @@ namespace Lumina.Data.Parsing.Uld
             public byte[] Value;
             public byte[] Padding;
 
-            public static Byte2Keyframe Read( BinaryReader br )
+            public static Byte2Keyframe Read( LuminaBinaryReader br )
             {
                 Byte2Keyframe ret = new Byte2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -160,7 +156,7 @@ namespace Lumina.Data.Parsing.Uld
             public byte[] Value;
             public byte Padding;
 
-            public static Byte3Keyframe Read( BinaryReader br )
+            public static Byte3Keyframe Read( LuminaBinaryReader br )
             {
                 Byte3Keyframe ret = new Byte3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -176,7 +172,7 @@ namespace Lumina.Data.Parsing.Uld
             public short Value;
             public byte[] Padding;
 
-            public static Short1Keyframe Read( BinaryReader br )
+            public static Short1Keyframe Read( LuminaBinaryReader br )
             {
                 Short1Keyframe ret = new Short1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -191,11 +187,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public short[] Value;
 
-            public static Short2Keyframe Read( BinaryReader br )
+            public static Short2Keyframe Read( LuminaBinaryReader br )
             {
                 Short2Keyframe ret = new Short2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Int16 >( 2 ).ToArray();
+                ret.Value = br.ReadInt16Array( 2 );
                 return ret;
             }
         }
@@ -206,11 +202,11 @@ namespace Lumina.Data.Parsing.Uld
             public short[] Value;
             public byte[] Padding;
 
-            public static Short3Keyframe Read( BinaryReader br )
+            public static Short3Keyframe Read( LuminaBinaryReader br )
             {
                 Short3Keyframe ret = new Short3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Int16 >( 3 ).ToArray();
+                ret.Value = br.ReadInt16Array( 3 );
                 ret.Padding = br.ReadBytes( 2 );
                 return ret;
             }
@@ -222,7 +218,7 @@ namespace Lumina.Data.Parsing.Uld
             public ushort Value;
             public byte[] Padding;
 
-            public static UShort1Keyframe Read( BinaryReader br )
+            public static UShort1Keyframe Read( LuminaBinaryReader br )
             {
                 UShort1Keyframe ret = new UShort1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -237,11 +233,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public ushort[] Value;
 
-            public static UShort2Keyframe Read( BinaryReader br )
+            public static UShort2Keyframe Read( LuminaBinaryReader br )
             {
                 UShort2Keyframe ret = new UShort2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< UInt16 >( 2 ).ToArray();
+                ret.Value = br.ReadUInt16Array( 2 );
                 return ret;
             }
         }
@@ -252,11 +248,11 @@ namespace Lumina.Data.Parsing.Uld
             public ushort[] Value;
             public byte[] Padding;
 
-            public static UShort3Keyframe Read( BinaryReader br )
+            public static UShort3Keyframe Read( LuminaBinaryReader br )
             {
                 UShort3Keyframe ret = new UShort3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< UInt16 >( 3 ).ToArray();
+                ret.Value = br.ReadUInt16Array( 3 );
                 ret.Padding = br.ReadBytes( 2 );
                 return ret;
             }
@@ -267,7 +263,7 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public int Value;
 
-            public static Int1Keyframe Read( BinaryReader br )
+            public static Int1Keyframe Read( LuminaBinaryReader br )
             {
                 Int1Keyframe ret = new Int1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -281,11 +277,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public int[] Value;
 
-            public static Int2Keyframe Read( BinaryReader br )
+            public static Int2Keyframe Read( LuminaBinaryReader br )
             {
                 Int2Keyframe ret = new Int2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Int32 >( 2 ).ToArray();
+                ret.Value = br.ReadInt32Array( 2 );
                 return ret;
             }
         }
@@ -295,11 +291,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public int[] Value;
 
-            public static Int3Keyframe Read( BinaryReader br )
+            public static Int3Keyframe Read( LuminaBinaryReader br )
             {
                 Int3Keyframe ret = new Int3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Int32 >( 3 ).ToArray();
+                ret.Value = br.ReadInt32Array( 3 );
                 return ret;
             }
         }
@@ -309,7 +305,7 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public uint Value;
 
-            public static UInt1Keyframe Read( BinaryReader br )
+            public static UInt1Keyframe Read( LuminaBinaryReader br )
             {
                 UInt1Keyframe ret = new UInt1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -323,11 +319,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public uint[] Value;
 
-            public static UInt2Keyframe Read( BinaryReader br )
+            public static UInt2Keyframe Read( LuminaBinaryReader br )
             {
                 UInt2Keyframe ret = new UInt2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< UInt32 >( 2 ).ToArray();
+                ret.Value = br.ReadUInt32Array( 2 );
                 return ret;
             }
         }
@@ -337,11 +333,11 @@ namespace Lumina.Data.Parsing.Uld
             public BaseKeyframeData Keyframe;
             public uint[] Value;
 
-            public static UInt3Keyframe Read( BinaryReader br )
+            public static UInt3Keyframe Read( LuminaBinaryReader br )
             {
                 UInt3Keyframe ret = new UInt3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< UInt32 >( 3 ).ToArray();
+                ret.Value = br.ReadUInt32Array( 3 );
                 return ret;
             }
         }
@@ -352,7 +348,7 @@ namespace Lumina.Data.Parsing.Uld
             public bool Value;
             public byte[] Padding;
 
-            public static Bool1Keyframe Read( BinaryReader br )
+            public static Bool1Keyframe Read( LuminaBinaryReader br )
             {
                 Bool1Keyframe ret = new Bool1Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -368,11 +364,11 @@ namespace Lumina.Data.Parsing.Uld
             public bool[] Value;
             public byte[] Padding;
 
-            public static Bool2Keyframe Read( BinaryReader br )
+            public static Bool2Keyframe Read( LuminaBinaryReader br )
             {
                 Bool2Keyframe ret = new Bool2Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Boolean >( 2 ).ToArray();
+                ret.Value = br.ReadBooleanArray( 2 );
                 ret.Padding = br.ReadBytes( 2 );
                 return ret;
             }
@@ -384,11 +380,11 @@ namespace Lumina.Data.Parsing.Uld
             public bool[] Value;
             public byte Padding;
 
-            public static Bool3Keyframe Read( BinaryReader br )
+            public static Bool3Keyframe Read( LuminaBinaryReader br )
             {
                 Bool3Keyframe ret = new Bool3Keyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
-                ret.Value = br.ReadStructures< Boolean >( 3 ).ToArray();
+                ret.Value = br.ReadBooleanArray( 3 );
                 ret.Padding = br.ReadByte();
                 return ret;
             }
@@ -404,7 +400,7 @@ namespace Lumina.Data.Parsing.Uld
             public short AddGreen;
             public short AddBlue;
 
-            public static ColorKeyframe Read( BinaryReader br )
+            public static ColorKeyframe Read( LuminaBinaryReader br )
             {
                 ColorKeyframe ret = new ColorKeyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
@@ -425,7 +421,7 @@ namespace Lumina.Data.Parsing.Uld
             public byte LabelCommand;
             public byte JumpId;
 
-            public static LabelKeyframe Read( BinaryReader br )
+            public static LabelKeyframe Read( LuminaBinaryReader br )
             {
                 LabelKeyframe ret = new LabelKeyframe();
                 ret.Keyframe = BaseKeyframeData.Read( br );
