@@ -29,8 +29,6 @@ namespace Lumina.Data.Files.Excel
 
             Header = ExcelDataHeader.Read( Reader );
 
-            var header = Reader.ReadStructure< ExcelDataHeader >();
-
             if(
                 Header.Magic[ 0 ] != 'E' ||
                 Header.Magic[ 1 ] != 'X' ||
