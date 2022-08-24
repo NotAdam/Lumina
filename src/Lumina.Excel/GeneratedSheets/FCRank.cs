@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FCRank", columnHash: 0x0105b558 )]
-    public class FCRank : ExcelRow
+    public partial class FCRank : ExcelRow
     {
         
         public uint NextPoint { get; set; }

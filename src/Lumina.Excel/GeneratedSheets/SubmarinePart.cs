@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "SubmarinePart", columnHash: 0xc971f464 )]
-    public class SubmarinePart : ExcelRow
+    public partial class SubmarinePart : ExcelRow
     {
         
         public byte Slot { get; set; }

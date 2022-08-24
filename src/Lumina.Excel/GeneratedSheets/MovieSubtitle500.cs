@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MovieSubtitle500", columnHash: 0x07f99ad3 )]
-    public class MovieSubtitle500 : ExcelRow
+    public partial class MovieSubtitle500 : ExcelRow
     {
         
         public float StartTime { get; set; }

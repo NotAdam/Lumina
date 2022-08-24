@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BaseParam", columnHash: 0xfaea5551 )]
-    public class BaseParam : ExcelRow
+    [Sheet( "BaseParam", columnHash: 0x8568afe3 )]
+    public partial class BaseParam : ExcelRow
     {
         
         public sbyte PacketIndex { get; set; }
@@ -35,8 +35,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort HeadChestHandsLegsFeetPct { get; set; }
         public ushort ChestLegsGlovesPct { get; set; }
         public ushort ChestLegsFeetPct { get; set; }
+        public ushort Unknown25 { get; set; }
         public byte[] MeldParam { get; set; }
-        public bool Unknown38 { get; set; }
+        public bool Unknown39 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -67,10 +68,11 @@ namespace Lumina.Excel.GeneratedSheets
             HeadChestHandsLegsFeetPct = parser.ReadColumn< ushort >( 22 );
             ChestLegsGlovesPct = parser.ReadColumn< ushort >( 23 );
             ChestLegsFeetPct = parser.ReadColumn< ushort >( 24 );
+            Unknown25 = parser.ReadColumn< ushort >( 25 );
             MeldParam = new byte[ 13 ];
             for( var i = 0; i < 13; i++ )
-                MeldParam[ i ] = parser.ReadColumn< byte >( 25 + i );
-            Unknown38 = parser.ReadColumn< bool >( 38 );
+                MeldParam[ i ] = parser.ReadColumn< byte >( 26 + i );
+            Unknown39 = parser.ReadColumn< bool >( 39 );
         }
     }
 }

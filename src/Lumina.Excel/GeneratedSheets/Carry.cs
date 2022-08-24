@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Carry", columnHash: 0x31e1f9e6 )]
-    public class Carry : ExcelRow
+    public partial class Carry : ExcelRow
     {
         
         public ulong Model { get; set; }

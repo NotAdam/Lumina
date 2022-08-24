@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ContentsTutorialPage", columnHash: 0x0c8db36c )]
-    public class ContentsTutorialPage : ExcelRow
+    public partial class ContentsTutorialPage : ExcelRow
     {
         
         public int Image { get; set; }

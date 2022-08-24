@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ExportedSG", columnHash: 0xdebb20e3 )]
-    public class ExportedSG : ExcelRow
+    public partial class ExportedSG : ExcelRow
     {
         
         public SeString SgbPath { get; set; }

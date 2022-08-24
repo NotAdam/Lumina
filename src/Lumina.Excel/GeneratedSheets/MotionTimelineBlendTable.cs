@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MotionTimelineBlendTable", columnHash: 0x69213275 )]
-    public class MotionTimelineBlendTable : ExcelRow
+    public partial class MotionTimelineBlendTable : ExcelRow
     {
         
         public byte DestBlendGroup { get; set; }

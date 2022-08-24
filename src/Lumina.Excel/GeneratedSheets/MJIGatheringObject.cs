@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIGatheringObject", columnHash: 0xa57b7cb3 )]
-    public class MJIGatheringObject : ExcelRow
+    [Sheet( "MJIGatheringObject", columnHash: 0x58500f54 )]
+    public partial class MJIGatheringObject : ExcelRow
     {
         
         public SeString Unknown0 { get; set; }
@@ -20,7 +20,8 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Unknown7 { get; set; }
         public ushort Unknown8 { get; set; }
         public bool Unknown9 { get; set; }
-        public ushort Unknown10 { get; set; }
+        public uint Unknown10 { get; set; }
+        public uint Unknown11 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -36,7 +37,8 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown7 = parser.ReadColumn< sbyte >( 7 );
             Unknown8 = parser.ReadColumn< ushort >( 8 );
             Unknown9 = parser.ReadColumn< bool >( 9 );
-            Unknown10 = parser.ReadColumn< ushort >( 10 );
+            Unknown10 = parser.ReadColumn< uint >( 10 );
+            Unknown11 = parser.ReadColumn< uint >( 11 );
         }
     }
 }

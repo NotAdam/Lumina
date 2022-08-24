@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EventCustomIconType", columnHash: 0x9a111885 )]
-    public class EventCustomIconType : ExcelRow
+    public partial class EventCustomIconType : ExcelRow
     {
         
         public uint[] AnnounceQuest { get; set; }

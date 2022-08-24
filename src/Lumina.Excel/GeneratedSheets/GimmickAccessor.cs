@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GimmickAccessor", columnHash: 0x5861eaa3 )]
-    public class GimmickAccessor : ExcelRow
+    public partial class GimmickAccessor : ExcelRow
     {
         
         public int Param0 { get; set; }

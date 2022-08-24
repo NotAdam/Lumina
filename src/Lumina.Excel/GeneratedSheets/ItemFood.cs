@@ -7,30 +7,30 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemFood", columnHash: 0xe09a474d )]
-    public class ItemFood : ExcelRow
+    public partial class ItemFood : ExcelRow
     {
-        public class UnkData1Obj
+        public class ItemFoodUnkData1Obj
         {
-            public byte BaseParam;
-            public bool IsRelative;
-            public sbyte Value;
-            public short Max;
-            public sbyte ValueHQ;
-            public short MaxHQ;
+            public byte BaseParam { get; set; }
+            public bool IsRelative { get; set; }
+            public sbyte Value { get; set; }
+            public short Max { get; set; }
+            public sbyte ValueHQ { get; set; }
+            public short MaxHQ { get; set; }
         }
         
         public byte EXPBonusPct { get; set; }
-        public UnkData1Obj[] UnkData1 { get; set; }
+        public ItemFoodUnkData1Obj[] UnkData1 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             EXPBonusPct = parser.ReadColumn< byte >( 0 );
-            UnkData1 = new UnkData1Obj[ 3 ];
+            UnkData1 = new ItemFoodUnkData1Obj[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
-                UnkData1[ i ] = new UnkData1Obj();
+                UnkData1[ i ] = new ItemFoodUnkData1Obj();
                 UnkData1[ i ].BaseParam = parser.ReadColumn< byte >( 1 + ( i * 6 + 0 ) );
                 UnkData1[ i ].IsRelative = parser.ReadColumn< bool >( 1 + ( i * 6 + 1 ) );
                 UnkData1[ i ].Value = parser.ReadColumn< sbyte >( 1 + ( i * 6 + 2 ) );

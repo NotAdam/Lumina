@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PublicContent", columnHash: 0x073aaecf )]
-    public class PublicContent : ExcelRow
+    public partial class PublicContent : ExcelRow
     {
         
         public byte Type { get; set; }

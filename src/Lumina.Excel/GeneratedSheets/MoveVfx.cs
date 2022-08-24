@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MoveVfx", columnHash: 0x2020acf6 )]
-    public class MoveVfx : ExcelRow
+    public partial class MoveVfx : ExcelRow
     {
         
         public LazyRow< VFX > VFXNormal { get; set; }

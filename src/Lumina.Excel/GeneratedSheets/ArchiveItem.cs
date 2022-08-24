@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ArchiveItem", columnHash: 0x31b3477e )]
-    public class ArchiveItem : ExcelRow
+    public partial class ArchiveItem : ExcelRow
     {
         
         public int Unknown0 { get; set; }

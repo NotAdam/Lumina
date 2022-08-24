@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BNpcBase", columnHash: 0xfd8e0ebb )]
-    public class BNpcBase : ExcelRow
+    [Sheet( "BNpcBase", columnHash: 0xe136dda3 )]
+    public partial class BNpcBase : ExcelRow
     {
         
         public LazyRow< Behavior > Behavior { get; set; }
@@ -24,13 +24,14 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ArrayEventHandler > ArrayEventHandler { get; set; }
         public LazyRow< BNpcParts > BNpcParts { get; set; }
         public byte Unknown13 { get; set; }
+        public byte Unknown14 { get; set; }
         public bool IsTargetLine { get; set; }
         public bool IsDisplayLevel { get; set; }
-        public bool Unknown16 { get; set; }
         public bool Unknown17 { get; set; }
-        public byte Unknown18 { get; set; }
+        public bool Unknown18 { get; set; }
         public byte Unknown19 { get; set; }
         public byte Unknown20 { get; set; }
+        public byte Unknown21 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -50,13 +51,14 @@ namespace Lumina.Excel.GeneratedSheets
             ArrayEventHandler = new LazyRow< ArrayEventHandler >( gameData, parser.ReadColumn< int >( 11 ), language );
             BNpcParts = new LazyRow< BNpcParts >( gameData, parser.ReadColumn< byte >( 12 ), language );
             Unknown13 = parser.ReadColumn< byte >( 13 );
-            IsTargetLine = parser.ReadColumn< bool >( 14 );
-            IsDisplayLevel = parser.ReadColumn< bool >( 15 );
-            Unknown16 = parser.ReadColumn< bool >( 16 );
+            Unknown14 = parser.ReadColumn< byte >( 14 );
+            IsTargetLine = parser.ReadColumn< bool >( 15 );
+            IsDisplayLevel = parser.ReadColumn< bool >( 16 );
             Unknown17 = parser.ReadColumn< bool >( 17 );
-            Unknown18 = parser.ReadColumn< byte >( 18 );
+            Unknown18 = parser.ReadColumn< bool >( 18 );
             Unknown19 = parser.ReadColumn< byte >( 19 );
             Unknown20 = parser.ReadColumn< byte >( 20 );
+            Unknown21 = parser.ReadColumn< byte >( 21 );
         }
     }
 }

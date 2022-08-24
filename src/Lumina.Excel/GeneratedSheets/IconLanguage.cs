@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IconLanguage", columnHash: 0xca511f36 )]
-    public class IconLanguage : ExcelRow
+    public partial class IconLanguage : ExcelRow
     {
         
         public bool Unknown0 { get; set; }

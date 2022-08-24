@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MJICraftworksSupplyDefine", columnHash: 0x1299950e )]
-    public class MJICraftworksSupplyDefine : ExcelRow
+    public partial class MJICraftworksSupplyDefine : ExcelRow
     {
         
         public short Unknown0 { get; set; }

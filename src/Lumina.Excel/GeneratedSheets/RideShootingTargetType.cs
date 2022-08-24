@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "RideShootingTargetType", columnHash: 0x213f343d )]
-    public class RideShootingTargetType : ExcelRow
+    public partial class RideShootingTargetType : ExcelRow
     {
         
         public LazyRow< EObj > EObj { get; set; }

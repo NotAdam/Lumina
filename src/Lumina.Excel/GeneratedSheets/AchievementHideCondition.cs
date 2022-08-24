@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AchievementHideCondition", columnHash: 0x824c4ccf )]
-    public class AchievementHideCondition : ExcelRow
+    public partial class AchievementHideCondition : ExcelRow
     {
         
         public bool HideAchievement { get; set; }

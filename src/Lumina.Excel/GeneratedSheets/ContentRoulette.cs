@@ -6,14 +6,14 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentRoulette", columnHash: 0xf3f8c906 )]
-    public class ContentRoulette : ExcelRow
+    [Sheet( "ContentRoulette", columnHash: 0x59caed82 )]
+    public partial class ContentRoulette : ExcelRow
     {
         
         public SeString Name { get; set; }
         public SeString Category { get; set; }
         public SeString Unknown2 { get; set; }
-        public SeString Description { get; set; }
+        public SeString Unknown3 { get; set; }
         public SeString DutyType { get; set; }
         public byte Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
@@ -52,6 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown39 { get; set; }
         public bool Unknown40 { get; set; }
         public bool Unknown41 { get; set; }
+        public byte Unknown42 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -60,7 +61,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< SeString >( 0 );
             Category = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< SeString >( 2 );
-            Description = parser.ReadColumn< SeString >( 3 );
+            Unknown3 = parser.ReadColumn< SeString >( 3 );
             DutyType = parser.ReadColumn< SeString >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
@@ -99,6 +100,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown39 = parser.ReadColumn< byte >( 39 );
             Unknown40 = parser.ReadColumn< bool >( 40 );
             Unknown41 = parser.ReadColumn< bool >( 41 );
+            Unknown42 = parser.ReadColumn< byte >( 42 );
         }
     }
 }

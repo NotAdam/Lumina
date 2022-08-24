@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "LogMessage", columnHash: 0xf3a6d024 )]
-    public class LogMessage : ExcelRow
+    public partial class LogMessage : ExcelRow
     {
         
         public ushort LogKind { get; set; }

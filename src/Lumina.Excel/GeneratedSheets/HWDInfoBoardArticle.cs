@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDInfoBoardArticle", columnHash: 0x76cb5660 )]
-    public class HWDInfoBoardArticle : ExcelRow
+    public partial class HWDInfoBoardArticle : ExcelRow
     {
         
         public LazyRow< HWDInfoBoardArticleType > Type { get; set; }

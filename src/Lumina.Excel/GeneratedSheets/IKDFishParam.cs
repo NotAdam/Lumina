@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDFishParam", columnHash: 0x1b55da98 )]
-    public class IKDFishParam : ExcelRow
+    public partial class IKDFishParam : ExcelRow
     {
         
         public LazyRow< FishParameter > Fish { get; set; }

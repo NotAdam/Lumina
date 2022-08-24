@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ItemStainCondition", columnHash: 0xdbf43666 )]
-    public class ItemStainCondition : ExcelRow
+    public partial class ItemStainCondition : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

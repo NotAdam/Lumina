@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Knockback", columnHash: 0x6876beaf )]
-    public class Knockback : ExcelRow
+    public partial class Knockback : ExcelRow
     {
         
         public byte Distance { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DeepDungeonMagicStone", columnHash: 0xc638f2bf )]
-    public class DeepDungeonMagicStone : ExcelRow
+    public partial class DeepDungeonMagicStone : ExcelRow
     {
         
         public uint Icon { get; set; }

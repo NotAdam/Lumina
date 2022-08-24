@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DpsChallenge", columnHash: 0x2fdac054 )]
-    public class DpsChallenge : ExcelRow
+    public partial class DpsChallenge : ExcelRow
     {
         
         public ushort PlayerLevel { get; set; }
