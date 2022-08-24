@@ -1,6 +1,6 @@
 # Lumina.SpaghettiGenerator
 
-Generates excel structs from [SaintCoinach](https://github.com/ufx/SaintCoinach/) definitions.
+Generates excel structs from [SaintCoinach](https://github.com/xivapi/SaintCoinach/) definitions.
 
 1. Place SaintCoinach definitions in working directory inside `Definitions` folder.
 2. Run `Lumina.SpaghettiGenerator`.

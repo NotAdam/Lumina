@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DynamicEvent", columnHash: 0x4f7339e4 )]
-    public class DynamicEvent : ExcelRow
+    public partial class DynamicEvent : ExcelRow
     {
         
         public LazyRow< DynamicEventType > EventType { get; set; }

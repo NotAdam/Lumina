@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GatheringPointBonus", columnHash: 0xcd832c29 )]
-    public class GatheringPointBonus : ExcelRow
+    public partial class GatheringPointBonus : ExcelRow
     {
         
         public LazyRow< GatheringCondition > Condition { get; set; }

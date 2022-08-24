@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "TripleTriad", columnHash: 0x646dde20 )]
-    public class TripleTriad : ExcelRow
+    public partial class TripleTriad : ExcelRow
     {
         
         public LazyRow< TripleTriadCard >[] TripleTriadCardFixed { get; set; }

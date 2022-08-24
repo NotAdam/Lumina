@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DescriptionSection", columnHash: 0x2020acf6 )]
-    public class DescriptionSection : ExcelRow
+    public partial class DescriptionSection : ExcelRow
     {
         
         public LazyRow< DescriptionString > String { get; set; }

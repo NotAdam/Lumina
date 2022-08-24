@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ResistanceWeaponAdjust", columnHash: 0x8fc095f4 )]
-    public class ResistanceWeaponAdjust : ExcelRow
+    public partial class ResistanceWeaponAdjust : ExcelRow
     {
         
         public ushort MaxTotalStats { get; set; }

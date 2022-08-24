@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MountFlyingCondition", columnHash: 0xdbf43666 )]
-    public class MountFlyingCondition : ExcelRow
+    public partial class MountFlyingCondition : ExcelRow
     {
         
         public LazyRow< Quest > Quest { get; set; }

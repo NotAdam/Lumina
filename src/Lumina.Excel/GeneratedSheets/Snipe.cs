@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Snipe", columnHash: 0x88d50061 )]
-    public class Snipe : ExcelRow
+    public partial class Snipe : ExcelRow
     {
         
         public uint LGBTargetMarker { get; set; }

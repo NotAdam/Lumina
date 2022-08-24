@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDCrafterSupply", columnHash: 0xa04b4cc9 )]
-    public class HWDCrafterSupply : ExcelRow
+    public partial class HWDCrafterSupply : ExcelRow
     {
         
         public LazyRow< Item >[] ItemTradeIn { get; set; }

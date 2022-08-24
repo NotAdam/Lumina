@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "StatusHitEffect", columnHash: 0xd870e208 )]
-    public class StatusHitEffect : ExcelRow
+    public partial class StatusHitEffect : ExcelRow
     {
         
         public LazyRow< VFX > Location { get; set; }

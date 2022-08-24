@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringItem", columnHash: 0xeae4c23e )]
-    public class GatheringItem : ExcelRow
+    [Sheet( "GatheringItem", columnHash: 0xd89f1e60 )]
+    public partial class GatheringItem : ExcelRow
     {
         
         public int Item { get; set; }
@@ -16,6 +16,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Quest > Quest { get; set; }
         public uint Unknown4 { get; set; }
         public bool IsHidden { get; set; }
+        public uint Unknown6 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -27,6 +28,7 @@ namespace Lumina.Excel.GeneratedSheets
             Quest = new LazyRow< Quest >( gameData, parser.ReadColumn< ushort >( 3 ), language );
             Unknown4 = parser.ReadColumn< uint >( 4 );
             IsHidden = parser.ReadColumn< bool >( 5 );
+            Unknown6 = parser.ReadColumn< uint >( 6 );
         }
     }
 }

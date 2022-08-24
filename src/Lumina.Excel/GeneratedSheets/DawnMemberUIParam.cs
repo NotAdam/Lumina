@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "DawnMemberUIParam", columnHash: 0x7b44bc07 )]
-    public class DawnMemberUIParam : ExcelRow
+    public partial class DawnMemberUIParam : ExcelRow
     {
         
         public SeString ClassSingular { get; set; }

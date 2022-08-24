@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ReactionEventObject", columnHash: 0x5d58cc84 )]
-    public class ReactionEventObject : ExcelRow
+    public partial class ReactionEventObject : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

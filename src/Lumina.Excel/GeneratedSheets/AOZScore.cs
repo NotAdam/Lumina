@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AOZScore", columnHash: 0xefee2933 )]
-    public class AOZScore : ExcelRow
+    public partial class AOZScore : ExcelRow
     {
         
         public bool IsHidden { get; set; }

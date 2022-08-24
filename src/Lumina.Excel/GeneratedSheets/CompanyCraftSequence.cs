@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CompanyCraftSequence", columnHash: 0x6d444cc1 )]
-    public class CompanyCraftSequence : ExcelRow
+    public partial class CompanyCraftSequence : ExcelRow
     {
         
         public LazyRow< Item > ResultItem { get; set; }

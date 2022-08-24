@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GCScripShopItem", columnHash: 0x6c3dae69 )]
-    public class GCScripShopItem : ExcelRow
+    public partial class GCScripShopItem : ExcelRow
     {
         
         public LazyRow< Item > Item { get; set; }

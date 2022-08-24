@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PvPSelectTrait", columnHash: 0xbddf8130 )]
-    public class PvPSelectTrait : ExcelRow
+    public partial class PvPSelectTrait : ExcelRow
     {
         
         public SeString Effect { get; set; }

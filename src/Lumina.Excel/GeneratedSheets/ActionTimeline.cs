@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ActionTimeline", columnHash: 0x3ae4a5a0 )]
-    public class ActionTimeline : ExcelRow
+    public partial class ActionTimeline : ExcelRow
     {
         
         public byte Type { get; set; }

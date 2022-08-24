@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HWDGathererInspection", columnHash: 0xad239733 )]
-    public class HWDGathererInspection : ExcelRow
+    public partial class HWDGathererInspection : ExcelRow
     {
         
         public LazyRow< GatheringItem >[] ItemRequired { get; set; }

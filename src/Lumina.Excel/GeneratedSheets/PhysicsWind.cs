@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PhysicsWind", columnHash: 0x3bc4120f )]
-    public class PhysicsWind : ExcelRow
+    public partial class PhysicsWind : ExcelRow
     {
         
         public float Threshold { get; set; }

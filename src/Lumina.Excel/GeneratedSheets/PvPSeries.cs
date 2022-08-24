@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PvPSeries", columnHash: 0x45504238 )]
-    public class PvPSeries : ExcelRow
+    public partial class PvPSeries : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

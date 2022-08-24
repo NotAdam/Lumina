@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "ConfigKey", columnHash: 0x927ebfb7 )]
-    public class ConfigKey : ExcelRow
+    public partial class ConfigKey : ExcelRow
     {
         
         public SeString Label { get; set; }

@@ -6,26 +6,26 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SpecialShop", columnHash: 0x534f4679 )]
-    public class SpecialShop : ExcelRow
+    [Sheet( "SpecialShop", columnHash: 0xa2673498 )]
+    public partial class SpecialShop : ExcelRow
     {
-        public class UnkData1Obj
+        public class SpecialShopUnkData1Obj
         {
-            public int ItemReceive;
-            public int CountReceive;
-            public int SpecialShopItemCategory;
-            public int HQReceive;
+            public int ItemReceive { get; set; }
+            public int CountReceive { get; set; }
+            public int SpecialShopItemCategory { get; set; }
+            public int HQReceive { get; set; }
         }
-        public class UnkData481Obj
+        public class SpecialShopUnkData481Obj
         {
-            public int ItemCost;
-            public int CountCost;
-            public int HQCost;
-            public int CollectabilityRatingCost;
+            public int ItemCost { get; set; }
+            public int CountCost { get; set; }
+            public int HQCost { get; set; }
+            public int CollectabilityRatingCost { get; set; }
         }
         
         public SeString Name { get; set; }
-        public UnkData1Obj[] UnkData1 { get; set; }
+        public SpecialShopUnkData1Obj[] UnkData1 { get; set; }
         public int Unknown9 { get; set; }
         public int Unknown10 { get; set; }
         public int Unknown11 { get; set; }
@@ -498,7 +498,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown478 { get; set; }
         public bool Unknown479 { get; set; }
         public bool Unknown480 { get; set; }
-        public UnkData481Obj[] UnkData481 { get; set; }
+        public SpecialShopUnkData481Obj[] UnkData481 { get; set; }
         public int Unknown493 { get; set; }
         public int Unknown494 { get; set; }
         public int Unknown495 { get; set; }
@@ -1336,16 +1336,19 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DefaultTalk > NotCompleteText { get; set; }
         public uint Unknown1505 { get; set; }
         public bool Unknown1506 { get; set; }
+        public ushort Unknown1507 { get; set; }
+        public uint Unknown1508 { get; set; }
+        public bool Unknown1509 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            UnkData1 = new UnkData1Obj[ 2 ];
+            UnkData1 = new SpecialShopUnkData1Obj[ 2 ];
             for( var i = 0; i < 2; i++ )
             {
-                UnkData1[ i ] = new UnkData1Obj();
+                UnkData1[ i ] = new SpecialShopUnkData1Obj();
                 UnkData1[ i ].ItemReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 0 ) );
                 UnkData1[ i ].CountReceive = parser.ReadColumn< int >( 1 + ( i * 4 + 1 ) );
                 UnkData1[ i ].SpecialShopItemCategory = parser.ReadColumn< int >( 1 + ( i * 4 + 2 ) );
@@ -1823,10 +1826,10 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown478 = parser.ReadColumn< bool >( 478 );
             Unknown479 = parser.ReadColumn< bool >( 479 );
             Unknown480 = parser.ReadColumn< bool >( 480 );
-            UnkData481 = new UnkData481Obj[ 3 ];
+            UnkData481 = new SpecialShopUnkData481Obj[ 3 ];
             for( var i = 0; i < 3; i++ )
             {
-                UnkData481[ i ] = new UnkData481Obj();
+                UnkData481[ i ] = new SpecialShopUnkData481Obj();
                 UnkData481[ i ].ItemCost = parser.ReadColumn< int >( 481 + ( i * 4 + 0 ) );
                 UnkData481[ i ].CountCost = parser.ReadColumn< int >( 481 + ( i * 4 + 1 ) );
                 UnkData481[ i ].HQCost = parser.ReadColumn< int >( 481 + ( i * 4 + 2 ) );
@@ -2675,6 +2678,9 @@ namespace Lumina.Excel.GeneratedSheets
             NotCompleteText = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 1504 ), language );
             Unknown1505 = parser.ReadColumn< uint >( 1505 );
             Unknown1506 = parser.ReadColumn< bool >( 1506 );
+            Unknown1507 = parser.ReadColumn< ushort >( 1507 );
+            Unknown1508 = parser.ReadColumn< uint >( 1508 );
+            Unknown1509 = parser.ReadColumn< bool >( 1509 );
         }
     }
 }

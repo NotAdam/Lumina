@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "EventIconPriority", columnHash: 0xf16871d0 )]
-    public class EventIconPriority : ExcelRow
+    public partial class EventIconPriority : ExcelRow
     {
         
         public uint[] Icon { get; set; }

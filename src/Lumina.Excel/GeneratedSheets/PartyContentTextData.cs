@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PartyContentTextData", columnHash: 0xdebb20e3 )]
-    public class PartyContentTextData : ExcelRow
+    public partial class PartyContentTextData : ExcelRow
     {
         
         public SeString Data { get; set; }

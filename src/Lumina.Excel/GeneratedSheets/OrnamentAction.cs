@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "OrnamentAction", columnHash: 0x58822da3 )]
-    public class OrnamentAction : ExcelRow
+    public partial class OrnamentAction : ExcelRow
     {
         
         public ushort Unknown0 { get; set; }

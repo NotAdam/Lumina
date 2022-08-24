@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "StainTransient", columnHash: 0x5d58cc84 )]
-    public class StainTransient : ExcelRow
+    public partial class StainTransient : ExcelRow
     {
         
         public LazyRow< Item > Item1 { get; set; }

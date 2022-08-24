@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "IKDRouteTable", columnHash: 0xdbf43666 )]
-    public class IKDRouteTable : ExcelRow
+    public partial class IKDRouteTable : ExcelRow
     {
         
         public LazyRow< IKDRoute > Route { get; set; }

@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "AnimaWeaponIcon", columnHash: 0x63c20db3 )]
-    public class AnimaWeaponIcon : ExcelRow
+    public partial class AnimaWeaponIcon : ExcelRow
     {
         
         public int Hyperconductive { get; set; }

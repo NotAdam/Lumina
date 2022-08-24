@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "PhysicsGroup", columnHash: 0xfa594271 )]
-    public class PhysicsGroup : ExcelRow
+    public partial class PhysicsGroup : ExcelRow
     {
         
         public float[] SimulationTime { get; set; }

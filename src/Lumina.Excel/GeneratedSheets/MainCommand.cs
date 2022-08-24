@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MainCommand", columnHash: 0xc6604a03 )]
-    public class MainCommand : ExcelRow
+    public partial class MainCommand : ExcelRow
     {
         
         public int Icon { get; set; }

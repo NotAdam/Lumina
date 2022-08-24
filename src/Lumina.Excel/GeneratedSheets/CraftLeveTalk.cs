@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "CraftLeveTalk", columnHash: 0x000c7d93 )]
-    public class CraftLeveTalk : ExcelRow
+    public partial class CraftLeveTalk : ExcelRow
     {
         
         public bool Unknown0 { get; set; }

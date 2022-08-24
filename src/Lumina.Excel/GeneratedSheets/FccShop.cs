@@ -7,49 +7,28 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "FccShop", columnHash: 0xccd13846 )]
-    public class FccShop : ExcelRow
+    public partial class FccShop : ExcelRow
     {
-        public class UnkData1Obj
-        {
-            public uint Item;
-        }
-        public class UnkData11Obj
-        {
-            public uint Cost;
-        }
-        public class UnkData21Obj
-        {
-            public byte FCRankRequired;
-        }
         
         public SeString Name { get; set; }
-        public UnkData1Obj[] UnkData1 { get; set; }
-        public UnkData11Obj[] UnkData11 { get; set; }
-        public UnkData21Obj[] UnkData21 { get; set; }
+        public uint[] Item { get; set; }
+        public uint[] Cost { get; set; }
+        public byte[] FCRankRequired { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             Name = parser.ReadColumn< SeString >( 0 );
-            UnkData1 = new UnkData1Obj[ 10 ];
+            Item = new uint[ 10 ];
             for( var i = 0; i < 10; i++ )
-            {
-                UnkData1[ i ] = new UnkData1Obj();
-                UnkData1[ i ].Item = parser.ReadColumn< uint >( 1 + ( i * 1 + 0 ) );
-            }
-            UnkData11 = new UnkData11Obj[ 10 ];
+                Item[ i ] = parser.ReadColumn< uint >( 1 + i );
+            Cost = new uint[ 10 ];
             for( var i = 0; i < 10; i++ )
-            {
-                UnkData11[ i ] = new UnkData11Obj();
-                UnkData11[ i ].Cost = parser.ReadColumn< uint >( 11 + ( i * 1 + 0 ) );
-            }
-            UnkData21 = new UnkData21Obj[ 10 ];
+                Cost[ i ] = parser.ReadColumn< uint >( 11 + i );
+            FCRankRequired = new byte[ 10 ];
             for( var i = 0; i < 10; i++ )
-            {
-                UnkData21[ i ] = new UnkData21Obj();
-                UnkData21[ i ].FCRankRequired = parser.ReadColumn< byte >( 21 + ( i * 1 + 0 ) );
-            }
+                FCRankRequired[ i ] = parser.ReadColumn< byte >( 21 + i );
         }
     }
 }

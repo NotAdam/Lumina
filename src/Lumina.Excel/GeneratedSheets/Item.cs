@@ -7,17 +7,17 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "Item", columnHash: 0x800968c9 )]
-    public class Item : ExcelRow
+    public partial class Item : ExcelRow
     {
-        public class UnkData59Obj
+        public class ItemUnkData59Obj
         {
-            public byte BaseParam;
-            public short BaseParamValue;
+            public byte BaseParam { get; set; }
+            public short BaseParamValue { get; set; }
         }
-        public class UnkData73Obj
+        public class ItemUnkData73Obj
         {
-            public byte BaseParamSpecial;
-            public short BaseParamValueSpecial;
+            public byte BaseParamSpecial { get; set; }
+            public short BaseParamValueSpecial { get; set; }
         }
         
         public SeString Singular { get; set; }
@@ -79,10 +79,10 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Block { get; set; }
         public ushort DefensePhys { get; set; }
         public ushort DefenseMag { get; set; }
-        public UnkData59Obj[] UnkData59 { get; set; }
+        public ItemUnkData59Obj[] UnkData59 { get; set; }
         public LazyRow< ItemSpecialBonus > ItemSpecialBonus { get; set; }
         public byte ItemSpecialBonusParam { get; set; }
-        public UnkData73Obj[] UnkData73 { get; set; }
+        public ItemUnkData73Obj[] UnkData73 { get; set; }
         public byte MaterializeType { get; set; }
         public byte MateriaSlotCount { get; set; }
         public bool IsAdvancedMeldingPermitted { get; set; }
@@ -153,19 +153,19 @@ namespace Lumina.Excel.GeneratedSheets
             Block = parser.ReadColumn< ushort >( 56 );
             DefensePhys = parser.ReadColumn< ushort >( 57 );
             DefenseMag = parser.ReadColumn< ushort >( 58 );
-            UnkData59 = new UnkData59Obj[ 6 ];
+            UnkData59 = new ItemUnkData59Obj[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
-                UnkData59[ i ] = new UnkData59Obj();
+                UnkData59[ i ] = new ItemUnkData59Obj();
                 UnkData59[ i ].BaseParam = parser.ReadColumn< byte >( 59 + ( i * 2 + 0 ) );
                 UnkData59[ i ].BaseParamValue = parser.ReadColumn< short >( 59 + ( i * 2 + 1 ) );
             }
             ItemSpecialBonus = new LazyRow< ItemSpecialBonus >( gameData, parser.ReadColumn< byte >( 71 ), language );
             ItemSpecialBonusParam = parser.ReadColumn< byte >( 72 );
-            UnkData73 = new UnkData73Obj[ 6 ];
+            UnkData73 = new ItemUnkData73Obj[ 6 ];
             for( var i = 0; i < 6; i++ )
             {
-                UnkData73[ i ] = new UnkData73Obj();
+                UnkData73[ i ] = new ItemUnkData73Obj();
                 UnkData73[ i ].BaseParamSpecial = parser.ReadColumn< byte >( 73 + ( i * 2 + 0 ) );
                 UnkData73[ i ].BaseParamValueSpecial = parser.ReadColumn< short >( 73 + ( i * 2 + 1 ) );
             }

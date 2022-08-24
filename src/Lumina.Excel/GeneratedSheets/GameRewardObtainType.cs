@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "GameRewardObtainType", columnHash: 0x5d58cc84 )]
-    public class GameRewardObtainType : ExcelRow
+    public partial class GameRewardObtainType : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

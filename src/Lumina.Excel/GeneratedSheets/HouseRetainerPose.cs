@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "HouseRetainerPose", columnHash: 0xd870e208 )]
-    public class HouseRetainerPose : ExcelRow
+    public partial class HouseRetainerPose : ExcelRow
     {
         
         public LazyRow< ActionTimeline > ActionTimeline { get; set; }

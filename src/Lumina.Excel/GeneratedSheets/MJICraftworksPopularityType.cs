@@ -7,7 +7,7 @@ using Lumina.Data.Structs.Excel;
 namespace Lumina.Excel.GeneratedSheets
 {
     [Sheet( "MJICraftworksPopularityType", columnHash: 0xd870e208 )]
-    public class MJICraftworksPopularityType : ExcelRow
+    public partial class MJICraftworksPopularityType : ExcelRow
     {
         
         public ushort Unknown0 { get; set; }
