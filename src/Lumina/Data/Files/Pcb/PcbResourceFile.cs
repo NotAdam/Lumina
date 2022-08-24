@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
 using Lumina.Data.Attributes;
 using Lumina.Data.Parsing;
@@ -20,7 +18,7 @@ namespace Lumina.Data.Files.Pcb
 
             public List< ResourceNode > Children;
 
-            public static PcbResourceHeader Read( BinaryReader reader )
+            public static PcbResourceHeader Read( LuminaBinaryReader reader )
             {
                 var header = new PcbResourceHeader
                 {
@@ -59,7 +57,7 @@ namespace Lumina.Data.Files.Pcb
 
             public List< ResourceNode > Children;
 
-            public static ResourceNode ReadWithCount( BinaryReader reader, out int totalNodesRead )
+            public static ResourceNode ReadWithCount( LuminaBinaryReader reader, out int totalNodesRead )
             {
                 totalNodesRead = 1;
 
@@ -122,7 +120,7 @@ namespace Lumina.Data.Files.Pcb
             public byte[] VertexIndex;
             public ushort Unknown;
 
-            public static Polygon Read( BinaryReader reader )
+            public static Polygon Read( LuminaBinaryReader reader )
             {
                 var polygon = new Polygon
                 {

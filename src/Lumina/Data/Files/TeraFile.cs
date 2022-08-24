@@ -1,14 +1,20 @@
-﻿using System.Numerics;
-using Lumina.Extensions;
+using System.Buffers.Binary;
+using System.Numerics;
 
 #pragma warning disable 649
 
 namespace Lumina.Data.Files
 {
-    struct PlatePos
+    struct PlatePos : IConvertEndianness
     {
         public short X;
         public short Y;
+
+        public void ConvertEndianness()
+        {
+            X = BinaryPrimitives.ReverseEndianness( X );
+            Y = BinaryPrimitives.ReverseEndianness( Y );
+        }
     }
     
     public class TeraFile : FileResource

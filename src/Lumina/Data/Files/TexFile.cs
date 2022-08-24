@@ -1,9 +1,9 @@
 using System;
+using System.Buffers.Binary;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Lumina.Data.Attributes;
 using Lumina.Data.Parsing.Tex.Buffers;
-using Lumina.Extensions;
 
 // ReSharper disable InconsistentNaming
 
@@ -118,7 +118,7 @@ namespace Lumina.Data.Files
         }
 
         [StructLayout( LayoutKind.Sequential )]
-        public unsafe struct TexHeader
+        public unsafe struct TexHeader : IConvertEndianness
         {
             public Attribute Type;
             public TextureFormat Format;
@@ -128,6 +128,22 @@ namespace Lumina.Data.Files
             public ushort MipLevels;
             public fixed uint LodOffset[3];
             public fixed uint OffsetToSurface[13];
+
+            public void ConvertEndianness()
+            {
+                Type = (Attribute)BinaryPrimitives.ReverseEndianness( (uint)Type );
+                Format = (TextureFormat)BinaryPrimitives.ReverseEndianness( (uint)Format );
+                Width = BinaryPrimitives.ReverseEndianness( Width );
+                Height = BinaryPrimitives.ReverseEndianness( Height );
+                Depth = BinaryPrimitives.ReverseEndianness( Depth );
+                MipLevels = BinaryPrimitives.ReverseEndianness( MipLevels );
+
+                for( int i = 0; i < 3; i++ )
+                    LodOffset[ i ] = BinaryPrimitives.ReverseEndianness( LodOffset[ i ] );
+
+                for( int i = 0; i < 13; i++ )
+                    OffsetToSurface[ i ] = BinaryPrimitives.ReverseEndianness( OffsetToSurface[ i ] );
+            }
         };
 
         /// <summary>

@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+using Lumina.Data;
 using Lumina.Extensions;
 
 namespace Lumina.Text.Payloads
 {
     public class TextPayload : BasePayload
     {
-        public TextPayload( BinaryReader br )
+        public TextPayload( LuminaBinaryReader br )
         {
             var data = new List< byte >();
             

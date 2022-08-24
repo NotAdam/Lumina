@@ -33,39 +33,42 @@ namespace Lumina.Extensions
         /// <returns>A list containing the structures read from the stream</returns>
         public static List< T > ReadStructures< T >( this BinaryReader br, int count ) where T : struct
         {
-            var size = Marshal.SizeOf< T >();
-            var data = br.ReadBytes( size * count );
+            var structs = br.ReadStructuresAsSpan< T >( count );
+            var list = new List< T >( structs.Length );
 
-            var list = new List< T >( count );
-
-            for( int i = 0; i < count; i++ )
+            for( var i = 0; i < structs.Length; i++ )
             {
-                var offset = size * i;
-                var span = new ReadOnlySpan< byte >( data, offset, size );
-
-                list.Add( MemoryMarshal.Read< T >( span ) );
+                list.Add( structs[ i ] );
             }
 
             return list;
         }
 
+
+        /// <summary>
+        /// Reads many structures from the current stream position.
+        /// </summary>
+        /// <param name="br"></param>
+        /// <param name="count">The number of T to read from the stream</param>
+        /// <typeparam name="T">The structure to read in to</typeparam>
+        /// <returns>An array containing the structures read from the stream</returns>
         public static T[] ReadStructuresAsArray< T >( this BinaryReader br, int count ) where T : struct
         {
-            var size = Marshal.SizeOf< T >();
-            var data = br.ReadBytes( size * count );
+            return br.ReadStructuresAsSpan< T >( count ).ToArray();
+        }
 
-            // im a pirate arr
-            var arr = new T[ count ];
+        /// <summary>
+        /// Reads many structures from the current stream position.
+        /// </summary>
+        /// <param name="br"></param>
+        /// <param name="count">The number of T to read from the stream</param>
+        /// <typeparam name="T">The structure to read in to</typeparam>
+        /// <returns>A span containing the structures read from the stream</returns>
+        public static Span< T > ReadStructuresAsSpan< T >( this BinaryReader br, int count ) where T : struct
+        {
+            var data = br.ReadBytes( Unsafe.SizeOf< T >() * count );
 
-            for( int i = 0; i < count; i++ )
-            {
-                var offset = size * i;
-                var span = new ReadOnlySpan< byte >( data, offset, size );
-
-                arr[ i ] = MemoryMarshal.Read< T >( span );
-            }
-
-            return arr;
+            return MemoryMarshal.Cast< byte, T >( data );
         }
 
         /// <summary>

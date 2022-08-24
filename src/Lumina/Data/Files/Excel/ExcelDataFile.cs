@@ -1,7 +1,7 @@
 using System;
-using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Attributes;
 using Lumina.Data.Structs.Excel;
@@ -19,55 +19,30 @@ namespace Lumina.Data.Files.Excel
         public ExcelDataHeader Header { get; protected set; }
 
         public Dictionary< uint, ExcelDataOffset > RowData { get; protected set; } = null!;
-
-        /// <summary>
-        /// Whether the endianness of the underlying data has been swapped so it doesn't happen twice
-        /// </summary>
-        public bool SwappedEndianness { get; internal set; }
         
         internal readonly object ReaderLock = new();
 
         public override unsafe void LoadFile()
         {
-            var header = Reader.ReadStructure< ExcelDataHeader >();
+            // exd data is always in big endian
+            Reader.IsLittleEndian = false;
+
+            Header = ExcelDataHeader.Read( Reader );
 
             if(
-                header.Magic[ 0 ] != 'E' ||
-                header.Magic[ 1 ] != 'X' ||
-                header.Magic[ 2 ] != 'D' ||
-                header.Magic[ 3 ] != 'F' )
+                Header.Magic[ 0 ] != 'E' ||
+                Header.Magic[ 1 ] != 'X' ||
+                Header.Magic[ 2 ] != 'D' ||
+                Header.Magic[ 3 ] != 'F' )
             {
                 throw new InvalidDataException( "fucked exd file :(((((" );
             }
 
-            // swap bytes on LE systems
-            if( BitConverter.IsLittleEndian )
-            {
-                header.Version = BinaryPrimitives.ReverseEndianness( header.Version );
-                header.IndexSize = BinaryPrimitives.ReverseEndianness( header.IndexSize );
-            }
-
-            Header = header;
-
             // read offsets
             var offsetSize = Unsafe.SizeOf< ExcelDataOffset >();
-            var count = header.IndexSize / offsetSize;
+            var count = Header.IndexSize / offsetSize;
 
-            RowData = new Dictionary< uint, ExcelDataOffset >();
-            var rawRowData = Reader.ReadStructuresAsArray< ExcelDataOffset >( (int)count );
-
-            if( BitConverter.IsLittleEndian )
-            {
-                for( var i = 0; i < rawRowData.Length; i++ )
-                {
-                    ref var row = ref rawRowData[ i ];
-
-                    row.RowId = BinaryPrimitives.ReverseEndianness( row.RowId );
-                    row.Offset = BinaryPrimitives.ReverseEndianness( row.Offset );
-
-                    RowData[ row.RowId ] = row;
-                }
-            }
+            RowData = Reader.ReadStructures< ExcelDataOffset >( (int)count ).ToDictionary( id => id.RowId, row => row );
         }
 
         public Span< byte > GetSpanForRow( uint rowId )

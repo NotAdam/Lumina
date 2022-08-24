@@ -23,7 +23,7 @@ namespace Lumina.Data.Files.Excel
 
         public override void LoadFile()
         {
-            using var sr = new StreamReader( FileStream );
+            using var sr = new StreamReader( Reader.BaseStream );
 
             // read version
             var headerStr = sr.ReadLine();
@@ -64,7 +64,7 @@ namespace Lumina.Data.Files.Excel
                 ExdMap[ data[ 0 ] ] = id;
             }
 
-            FileStream.Position = 0;
+            Reader.Position = 0;
         }
     }
 }
