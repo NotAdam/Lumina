@@ -42,7 +42,10 @@ namespace Lumina.Data.Files.Excel
             var offsetSize = Unsafe.SizeOf< ExcelDataOffset >();
             var count = Header.IndexSize / offsetSize;
 
-            RowData = Reader.ReadStructures< ExcelDataOffset >( (int)count ).ToDictionary( id => id.RowId, row => row );
+            var rowDataTmp = new ExcelDataOffset[count];
+            for( int i = 0; i < count; i++ ) rowDataTmp[ i ] = ExcelDataOffset.Read( Reader );
+            
+            RowData = rowDataTmp.ToDictionary( id => id.RowId, row => row );
         }
 
         public Span< byte > GetSpanForRow( uint rowId )

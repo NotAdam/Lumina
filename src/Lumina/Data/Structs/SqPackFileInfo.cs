@@ -24,42 +24,21 @@ namespace Lumina.Data.Structs
     }
 
     [StructLayout( LayoutKind.Sequential )]
-    public unsafe struct SqPackFileInfo : IConvertEndianness
+    public unsafe struct SqPackFileInfo
     {
         public UInt32 Size;
         public FileType Type;
         public UInt32 RawFileSize;
         public fixed UInt32 __unknown[2];
         public UInt32 NumberOfBlocks;
-
-        public void ConvertEndianness()
-        {
-            Size = BinaryPrimitives.ReverseEndianness( Size );
-            Type = (FileType)BinaryPrimitives.ReverseEndianness( (uint)Type );
-            RawFileSize = BinaryPrimitives.ReverseEndianness( RawFileSize );
-
-            for( int i = 0; i < 2; i++ )
-            {
-                __unknown[ i ] = BinaryPrimitives.ReverseEndianness( __unknown[i] );
-            }
-
-            NumberOfBlocks = BinaryPrimitives.ReverseEndianness( NumberOfBlocks );
-        }
     }
 
     [StructLayout( LayoutKind.Sequential )]
-    public struct DatStdFileBlockInfos : IConvertEndianness
+    public struct DatStdFileBlockInfos
     {
         public UInt32 Offset;
         public UInt16 CompressedSize;
         public UInt16 UncompressedSize;
-
-        public void ConvertEndianness()
-        {
-            Offset = BinaryPrimitives.ReverseEndianness( Offset );
-            CompressedSize = BinaryPrimitives.ReverseEndianness( CompressedSize );
-            UncompressedSize = BinaryPrimitives.ReverseEndianness( UncompressedSize );
-        }
     };
 
     /// <summary>
@@ -72,57 +51,34 @@ namespace Lumina.Data.Structs
     }
 
     [StructLayout( LayoutKind.Sequential )]
-    struct DatBlockHeader : IConvertEndianness
+    struct DatBlockHeader
     {
         public UInt32 Size;
         // always 0?
         public UInt32 unknown1;
         public DatBlockType DatBlockType;
         public UInt32 BlockDataSize;
-
-        public void ConvertEndianness()
-        {
-            Size = BinaryPrimitives.ReverseEndianness( Size );
-            unknown1 = BinaryPrimitives.ReverseEndianness( unknown1 );
-            DatBlockType = (DatBlockType)BinaryPrimitives.ReverseEndianness( (uint)DatBlockType );
-            BlockDataSize = BinaryPrimitives.ReverseEndianness( BlockDataSize );
-        }
     };
 
     [StructLayout( LayoutKind.Sequential )]
-    struct LodBlock : IConvertEndianness
+    struct LodBlock
     {
         public UInt32 CompressedOffset;
         public UInt32 CompressedSize;
         public UInt32 DecompressedSize;
         public UInt32 BlockOffset;
         public UInt32 BlockCount;
-
-        public void ConvertEndianness()
-        {
-            CompressedOffset = BinaryPrimitives.ReverseEndianness( CompressedOffset );
-            CompressedSize = BinaryPrimitives.ReverseEndianness( CompressedSize );
-            DecompressedSize = BinaryPrimitives.ReverseEndianness( DecompressedSize );
-            BlockOffset = BinaryPrimitives.ReverseEndianness( BlockOffset );
-            BlockCount = BinaryPrimitives.ReverseEndianness( BlockCount );
-        }
     }
 
     [StructLayout( LayoutKind.Sequential )]
-    public struct ReferenceBlockRange : IConvertEndianness
+    public struct ReferenceBlockRange
     {
         public UInt32 Begin;
         public UInt32 End;
-
-        public void ConvertEndianness()
-        {
-            Begin = BinaryPrimitives.ReverseEndianness( Begin );
-            End = BinaryPrimitives.ReverseEndianness( End );
-        }
     }
 
     [StructLayout( LayoutKind.Sequential )]
-    public unsafe struct ModelBlock : IConvertEndianness
+    public unsafe struct ModelBlock
     {
         public UInt32 Size;
         public FileType Type;
@@ -161,46 +117,5 @@ namespace Lumina.Data.Structs
         public bool IndexBufferStreamingEnabled;
         public bool EdgeGeometryEnabled;
         public byte Padding;
-
-        public void ConvertEndianness()
-        {
-            Size = BinaryPrimitives.ReverseEndianness( Size );
-            Type = (FileType)BinaryPrimitives.ReverseEndianness( (uint)Type );
-            RawFileSize = BinaryPrimitives.ReverseEndianness( RawFileSize );
-            NumberOfBlocks = BinaryPrimitives.ReverseEndianness( NumberOfBlocks );
-            UsedNumberOfBlocks = BinaryPrimitives.ReverseEndianness( UsedNumberOfBlocks );
-            Version = BinaryPrimitives.ReverseEndianness( Version );
-            StackSize = BinaryPrimitives.ReverseEndianness( StackSize );
-            RuntimeSize = BinaryPrimitives.ReverseEndianness( RuntimeSize );
-            CompressedStackMemorySize = BinaryPrimitives.ReverseEndianness( CompressedStackMemorySize );
-            CompressedRuntimeMemorySize = BinaryPrimitives.ReverseEndianness( CompressedRuntimeMemorySize );
-            StackOffset = BinaryPrimitives.ReverseEndianness( StackOffset );
-            RuntimeOffset = BinaryPrimitives.ReverseEndianness( RuntimeOffset );
-            StackBlockIndex = BinaryPrimitives.ReverseEndianness( StackBlockIndex );
-            RuntimeBlockIndex = BinaryPrimitives.ReverseEndianness( RuntimeBlockIndex );
-            StackBlockNum = BinaryPrimitives.ReverseEndianness( StackBlockNum );
-            RuntimeBlockNum = BinaryPrimitives.ReverseEndianness( RuntimeBlockNum );
-            VertexDeclarationNum = BinaryPrimitives.ReverseEndianness( VertexDeclarationNum );
-            MaterialNum = BinaryPrimitives.ReverseEndianness( MaterialNum );
-
-            for( int i = 0; i < (int)LodLevel.Max; i++ )
-            {
-                VertexBufferSize[ i ] = BinaryPrimitives.ReverseEndianness( VertexBufferSize[ i ] );
-                EdgeGeometryVertexBufferSize[ i ] = BinaryPrimitives.ReverseEndianness( EdgeGeometryVertexBufferSize[ i ] );
-                IndexBufferSize[ i ] = BinaryPrimitives.ReverseEndianness( IndexBufferSize[ i ] );
-                CompressedVertexBufferSize[ i ] = BinaryPrimitives.ReverseEndianness( CompressedVertexBufferSize[ i ] );
-                CompressedEdgeGeometryVertexBufferSize[ i ] = BinaryPrimitives.ReverseEndianness( CompressedEdgeGeometryVertexBufferSize[ i ] );
-                CompressedIndexBufferSize[ i ] = BinaryPrimitives.ReverseEndianness( CompressedIndexBufferSize[ i ] );
-                VertexBufferOffset[ i ] = BinaryPrimitives.ReverseEndianness( VertexBufferOffset[ i ] );
-                EdgeGeometryVertexBufferOffset[ i ] = BinaryPrimitives.ReverseEndianness( EdgeGeometryVertexBufferOffset[ i ] );
-                IndexBufferOffset[ i ] = BinaryPrimitives.ReverseEndianness( IndexBufferOffset[ i ] );
-                VertexBufferBlockIndex[ i ] = BinaryPrimitives.ReverseEndianness( VertexBufferBlockIndex[ i ] );
-                EdgeGeometryVertexBufferBlockIndex[ i ] = BinaryPrimitives.ReverseEndianness( EdgeGeometryVertexBufferBlockIndex[ i ] );
-                IndexBufferBlockIndex[ i ] = BinaryPrimitives.ReverseEndianness( IndexBufferBlockIndex[ i ] );
-                VertexBufferBlockNum[ i ] = BinaryPrimitives.ReverseEndianness( VertexBufferBlockNum[ i ] );
-                EdgeGeometryVertexBufferBlockNum[ i ] = BinaryPrimitives.ReverseEndianness( EdgeGeometryVertexBufferBlockNum[ i ] );
-                IndexBufferBlockNum[ i ] = BinaryPrimitives.ReverseEndianness( IndexBufferBlockNum[ i ] );
-            }
-        }
     };
 }

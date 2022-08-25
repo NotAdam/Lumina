@@ -4,17 +4,20 @@ using System.Runtime.InteropServices;
 namespace Lumina.Data.Structs.Excel
 {
     [StructLayout( LayoutKind.Sequential )]
-    public struct ExcelColumnDefinition : IConvertEndianness
+    public struct ExcelColumnDefinition
     {
         public ExcelColumnDataType Type;
         public ushort Offset;
 
         public bool IsBoolType => (int)Type > (int)ExcelColumnDataType.PackedBool0;
 
-        public void ConvertEndianness()
+        public static ExcelColumnDefinition Read(LuminaBinaryReader reader)
         {
-            Type = (ExcelColumnDataType)BinaryPrimitives.ReverseEndianness( (ushort)Type );
-            Offset = BinaryPrimitives.ReverseEndianness( Offset );
+            return new ExcelColumnDefinition()
+            {
+                Type = (ExcelColumnDataType)reader.ReadUInt16(),
+                Offset = reader.ReadUInt16(),
+            };
         }
     }
 }

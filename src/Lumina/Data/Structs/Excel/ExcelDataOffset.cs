@@ -5,15 +5,18 @@ using System.Runtime.InteropServices;
 namespace Lumina.Data.Structs.Excel
 {
     [StructLayout( LayoutKind.Sequential )]
-    public struct ExcelDataOffset : IConvertEndianness
+    public struct ExcelDataOffset
     {
         public UInt32 RowId;
         public UInt32 Offset;
 
-        public void ConvertEndianness()
+        public static ExcelDataOffset Read(LuminaBinaryReader reader)
         {
-            RowId = BinaryPrimitives.ReverseEndianness( RowId );
-            Offset = BinaryPrimitives.ReverseEndianness( Offset );
+            return new ExcelDataOffset()
+            {
+                RowId = reader.ReadUInt32(),
+                Offset = reader.ReadUInt32(),
+            };
         }
     }
 }

@@ -81,7 +81,7 @@ namespace Lumina.Excel
             
             _reader.BaseStream.Position = _offset.Offset;
 
-            _rowHeader = _reader.ReadStructure< ExcelDataRowHeader >();
+            _rowHeader = ExcelDataRowHeader.Read( _reader );
 
             // header is 6 bytes large, data normally starts here except in the case of variant 2 sheets but we'll keep it anyway
             _rowOffset = _offset.Offset + 6;
@@ -154,7 +154,7 @@ namespace Lumina.Excel
         /// <param name="offset">The offset to start reading from</param>
         /// <typeparam name="T">The type of struct to read out from the row</typeparam>
         /// <returns>The read structure filled from the row data</returns>
-        public T ReadStructure< T >( int offset ) where T : struct, IConvertEndianness
+        public T ReadStructure< T >( int offset ) where T : struct
         {
             _reader.BaseStream.Position = _rowOffset + offset;
 
@@ -168,7 +168,7 @@ namespace Lumina.Excel
         /// <param name="count">The number of structures to read sequentially</param>
         /// <typeparam name="T">The type of struct to read out from the row</typeparam>
         /// <returns>The read structures filled from the row data</returns>
-        public List< T > ReadStructures< T >( int offset, int count ) where T : struct, IConvertEndianness
+        public List< T > ReadStructures< T >( int offset, int count ) where T : struct
         {
             _reader.BaseStream.Position = _rowOffset + offset;
 
@@ -182,7 +182,7 @@ namespace Lumina.Excel
         /// <param name="count">The number of structures to read sequentially</param>
         /// <typeparam name="T">The type of struct to read out from the row</typeparam>
         /// <returns>The read structures filled from the row data</returns>
-        public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct, IConvertEndianness
+        public T[] ReadStructuresAsArray< T >( int offset, int count ) where T : struct
         {
             _reader.BaseStream.Position = _rowOffset + offset;
 

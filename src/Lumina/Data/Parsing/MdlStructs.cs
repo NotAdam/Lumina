@@ -116,7 +116,7 @@ namespace Lumina.Data.Parsing
             private fixed byte Padding[3];
         }
 
-        public unsafe struct ModelHeader : IConvertEndianness
+        public unsafe struct ModelHeader
         {
             // MeshHeader
             public float Radius;
@@ -170,28 +170,6 @@ namespace Lumina.Data.Parsing
             public ushort Unknown8;
             public ushort Unknown9;
             private fixed byte Padding[6];
-
-            public void ConvertEndianness()
-            {
-                Radius = LuminaBinaryReader.ReverseEndianness( Radius );
-                MeshCount = BinaryPrimitives.ReverseEndianness( MeshCount );
-                AttributeCount = BinaryPrimitives.ReverseEndianness( AttributeCount );
-                SubmeshCount = BinaryPrimitives.ReverseEndianness( SubmeshCount );
-                MaterialCount = BinaryPrimitives.ReverseEndianness( MaterialCount );
-                BoneCount = BinaryPrimitives.ReverseEndianness( BoneCount );
-                BoneTableCount = BinaryPrimitives.ReverseEndianness( BoneTableCount );
-                ShapeCount = BinaryPrimitives.ReverseEndianness( ShapeCount );
-                ShapeMeshCount = BinaryPrimitives.ReverseEndianness( ShapeMeshCount );
-                ShapeValueCount = BinaryPrimitives.ReverseEndianness( ShapeValueCount );
-                ElementIdCount = BinaryPrimitives.ReverseEndianness( ElementIdCount );
-                ModelClipOutDistance = LuminaBinaryReader.ReverseEndianness( ModelClipOutDistance );
-                ShadowClipOutDistance = LuminaBinaryReader.ReverseEndianness( ShadowClipOutDistance );
-                Unknown4 = BinaryPrimitives.ReverseEndianness( Unknown4 );
-                TerrainShadowMeshCount = BinaryPrimitives.ReverseEndianness( TerrainShadowMeshCount );
-                Unknown7 = BinaryPrimitives.ReverseEndianness( Unknown7 );
-                Unknown8 = BinaryPrimitives.ReverseEndianness( Unknown8 );
-                Unknown9 = BinaryPrimitives.ReverseEndianness( Unknown9 );
-            }
         }
 
         public struct ElementIdStruct
@@ -212,7 +190,7 @@ namespace Lumina.Data.Parsing
             }
         }
 
-        public struct LodStruct : IConvertEndianness
+        public struct LodStruct
         {
             public ushort MeshIndex;
             public ushort MeshCount;
@@ -237,33 +215,9 @@ namespace Lumina.Data.Parsing
             public uint IndexBufferSize;
             public uint VertexDataOffset;
             public uint IndexDataOffset;
-
-            public void ConvertEndianness()
-            {
-                MeshIndex = BinaryPrimitives.ReverseEndianness( MeshIndex );
-                MeshCount = BinaryPrimitives.ReverseEndianness( MeshCount );
-                ModelLodRange = LuminaBinaryReader.ReverseEndianness( ModelLodRange );
-                TextureLodRange = LuminaBinaryReader.ReverseEndianness( TextureLodRange );
-                WaterMeshIndex = BinaryPrimitives.ReverseEndianness( WaterMeshIndex );
-                WaterMeshCount = BinaryPrimitives.ReverseEndianness( WaterMeshCount );
-                ShadowMeshIndex = BinaryPrimitives.ReverseEndianness( ShadowMeshIndex );
-                ShadowMeshCount = BinaryPrimitives.ReverseEndianness( ShadowMeshCount );
-                TerrainShadowMeshIndex = BinaryPrimitives.ReverseEndianness( TerrainShadowMeshIndex );
-                TerrainShadowMeshCount = BinaryPrimitives.ReverseEndianness( TerrainShadowMeshCount );
-                VerticalFogMeshIndex = BinaryPrimitives.ReverseEndianness( VerticalFogMeshIndex );
-                VerticalFogMeshCount = BinaryPrimitives.ReverseEndianness( VerticalFogMeshCount );
-                EdgeGeometrySize = BinaryPrimitives.ReverseEndianness( EdgeGeometrySize );
-                EdgeGeometryDataOffset = BinaryPrimitives.ReverseEndianness( EdgeGeometryDataOffset );
-                PolygonCount = BinaryPrimitives.ReverseEndianness( PolygonCount );
-                Unknown1 = BinaryPrimitives.ReverseEndianness( Unknown1 );
-                VertexBufferSize = BinaryPrimitives.ReverseEndianness( VertexBufferSize );
-                IndexBufferSize = BinaryPrimitives.ReverseEndianness( IndexBufferSize );
-                VertexDataOffset = BinaryPrimitives.ReverseEndianness( VertexDataOffset );
-                IndexDataOffset = BinaryPrimitives.ReverseEndianness( IndexDataOffset );
-            }
         }
 
-        public struct ExtraLodStruct : IConvertEndianness
+        public struct ExtraLodStruct
         {
             public ushort LightShaftMeshIndex;
             public ushort LightShaftMeshCount;
@@ -285,30 +239,6 @@ namespace Lumina.Data.Parsing
             public ushort Unknown10;
             public ushort Unknown11;
             public ushort Unknown12;
-
-            public void ConvertEndianness()
-            {
-                LightShaftMeshIndex = BinaryPrimitives.ReverseEndianness( LightShaftMeshIndex );
-                LightShaftMeshCount = BinaryPrimitives.ReverseEndianness( LightShaftMeshCount );
-                GlassMeshIndex = BinaryPrimitives.ReverseEndianness( GlassMeshIndex );
-                GlassMeshCount = BinaryPrimitives.ReverseEndianness( GlassMeshCount );
-                MaterialChangeMeshIndex = BinaryPrimitives.ReverseEndianness( MaterialChangeMeshIndex );
-                MaterialChangeMeshCount = BinaryPrimitives.ReverseEndianness( MaterialChangeMeshCount );
-                CrestChangeMeshIndex = BinaryPrimitives.ReverseEndianness( CrestChangeMeshIndex );
-                CrestChangeMeshCount = BinaryPrimitives.ReverseEndianness( CrestChangeMeshCount );
-                Unknown1 = BinaryPrimitives.ReverseEndianness( Unknown1 );
-                Unknown2 = BinaryPrimitives.ReverseEndianness( Unknown2 );
-                Unknown3 = BinaryPrimitives.ReverseEndianness( Unknown3 );
-                Unknown4 = BinaryPrimitives.ReverseEndianness( Unknown4 );
-                Unknown5 = BinaryPrimitives.ReverseEndianness( Unknown5 );
-                Unknown6 = BinaryPrimitives.ReverseEndianness( Unknown6 );
-                Unknown7 = BinaryPrimitives.ReverseEndianness( Unknown7 );
-                Unknown8 = BinaryPrimitives.ReverseEndianness( Unknown8 );
-                Unknown9 = BinaryPrimitives.ReverseEndianness( Unknown9 );
-                Unknown10 = BinaryPrimitives.ReverseEndianness( Unknown10 );
-                Unknown11 = BinaryPrimitives.ReverseEndianness( Unknown11 );
-                Unknown12 = BinaryPrimitives.ReverseEndianness( Unknown12 );
-            }
         }
 
         public struct MeshStruct
@@ -344,25 +274,16 @@ namespace Lumina.Data.Parsing
             }
         }
 
-        public struct SubmeshStruct : IConvertEndianness
+        public struct SubmeshStruct
         {
             public uint IndexOffset;
             public uint IndexCount;
             public uint AttributeIndexMask;
             public ushort BoneStartIndex;
             public ushort BoneCount;
-
-            public void ConvertEndianness()
-            {
-                IndexOffset = BinaryPrimitives.ReverseEndianness( IndexOffset );
-                IndexCount = BinaryPrimitives.ReverseEndianness( IndexCount );
-                AttributeIndexMask = BinaryPrimitives.ReverseEndianness( AttributeIndexMask );
-                BoneStartIndex = BinaryPrimitives.ReverseEndianness( BoneStartIndex );
-                BoneCount = BinaryPrimitives.ReverseEndianness( BoneCount );
-            }
         }
 
-        public struct TerrainShadowMeshStruct : IConvertEndianness
+        public struct TerrainShadowMeshStruct
         {
             public uint IndexCount;
             public uint StartIndex;
@@ -372,32 +293,14 @@ namespace Lumina.Data.Parsing
             public ushort SubMeshCount;
             public byte VertexBufferStride;
             private byte Padding;
-
-            public void ConvertEndianness()
-            {
-                IndexCount = BinaryPrimitives.ReverseEndianness( IndexCount );
-                StartIndex = BinaryPrimitives.ReverseEndianness( StartIndex );
-                VertexBufferOffset = BinaryPrimitives.ReverseEndianness( VertexBufferOffset );
-                VertexCount = BinaryPrimitives.ReverseEndianness( VertexCount );
-                SubMeshIndex = BinaryPrimitives.ReverseEndianness( SubMeshIndex );
-                SubMeshCount = BinaryPrimitives.ReverseEndianness( SubMeshCount );
-            }
         }
 
-        public struct TerrainShadowSubmeshStruct : IConvertEndianness
+        public struct TerrainShadowSubmeshStruct
         {
             public uint IndexOffset;
             public uint IndexCount;
             public ushort Unknown1;
             public ushort Unknown2;
-
-            public void ConvertEndianness()
-            {
-                IndexOffset = BinaryPrimitives.ReverseEndianness( IndexOffset );
-                IndexCount = BinaryPrimitives.ReverseEndianness( IndexCount );
-                Unknown1 = BinaryPrimitives.ReverseEndianness( Unknown1 );
-                Unknown2 = BinaryPrimitives.ReverseEndianness( Unknown2 );
-            }
         }
 
         public struct BoneTableStruct
@@ -432,30 +335,17 @@ namespace Lumina.Data.Parsing
             }
         }
 
-        public struct ShapeMeshStruct : IConvertEndianness
+        public struct ShapeMeshStruct
         {
             public uint StartIndex;
             public uint ShapeValueCount;
             public uint ShapeValueOffset;
-
-            public void ConvertEndianness()
-            {
-                StartIndex = BinaryPrimitives.ReverseEndianness( StartIndex );
-                ShapeValueCount = BinaryPrimitives.ReverseEndianness( ShapeValueCount );
-                ShapeValueOffset = BinaryPrimitives.ReverseEndianness( ShapeValueOffset );
-            }
         }
 
-        public struct ShapeValueStruct : IConvertEndianness
+        public struct ShapeValueStruct
         {
             public ushort Offset;
             public ushort Value;
-
-            public void ConvertEndianness()
-            {
-                Offset = BinaryPrimitives.ReverseEndianness( Offset );
-                Value = BinaryPrimitives.ReverseEndianness( Value );
-            }
         }
 
         public struct BoundingBoxStruct

@@ -40,8 +40,10 @@ namespace Lumina.Data.Files.Excel
                 throw new InvalidDataException( "fucked exh file :(((((" );
             }
 
-            ColumnDefinitions = Reader.ReadStructuresAsArray< ExcelColumnDefinition >( Header.ColumnCount );
-            DataPages = Reader.ReadStructuresAsArray< ExcelDataPagination >( Header.PageCount );
+            ColumnDefinitions = new ExcelColumnDefinition[Header.ColumnCount];
+            DataPages = new ExcelDataPagination[Header.PageCount];
+            for( int i = 0; i < Header.ColumnCount; i++ ) ColumnDefinitions[ i ] = ExcelColumnDefinition.Read( Reader );
+            for( int i = 0; i < Header.PageCount; i++ ) DataPages[ i ] = ExcelDataPagination.Read( Reader );
 
             Languages = new Language[ Header.LanguageCount ];
 
