@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RetainerTaskParameter", columnHash: 0x4723e1b0 )]
+    [Sheet( "RetainerTaskParameter", columnHash: 0x3e09f673 )]
     public partial class RetainerTaskParameter : ExcelRow
     {
         

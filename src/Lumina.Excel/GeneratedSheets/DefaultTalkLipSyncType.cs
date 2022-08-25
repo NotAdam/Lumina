@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DefaultTalkLipSyncType", columnHash: 0xda365c51 )]
+    [Sheet( "DefaultTalkLipSyncType", columnHash: 0xaed1d46c )]
     public partial class DefaultTalkLipSyncType : ExcelRow
     {
         

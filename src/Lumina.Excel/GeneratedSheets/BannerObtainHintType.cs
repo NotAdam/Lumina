@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BannerObtainHintType", columnHash: 0xdebb20e3 )]
+    [Sheet( "BannerObtainHintType", columnHash: 0x3603f4d0 )]
     public partial class BannerObtainHintType : ExcelRow
     {
         

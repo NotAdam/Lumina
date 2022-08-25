@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "LeveAssignmentType", columnHash: 0x7c19f23c )]
+    [Sheet( "LeveAssignmentType", columnHash: 0x0094784e )]
     public partial class LeveAssignmentType : ExcelRow
     {
         

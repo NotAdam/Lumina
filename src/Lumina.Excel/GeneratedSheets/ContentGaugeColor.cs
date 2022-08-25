@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentGaugeColor", columnHash: 0x96a22aea )]
+    [Sheet( "ContentGaugeColor", columnHash: 0xffaa2b3e )]
     public partial class ContentGaugeColor : ExcelRow
     {
         

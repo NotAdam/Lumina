@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ArchiveItem", columnHash: 0x31b3477e )]
+    [Sheet( "ArchiveItem", columnHash: 0x4ce0bcb3 )]
     public partial class ArchiveItem : ExcelRow
     {
         

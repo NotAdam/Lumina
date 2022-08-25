@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentGauge", columnHash: 0x55e3560d )]
+    [Sheet( "ContentGauge", columnHash: 0x895ade59 )]
     public partial class ContentGauge : ExcelRow
     {
         

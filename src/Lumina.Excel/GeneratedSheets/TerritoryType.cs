@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TerritoryType", columnHash: 0x5baa595e )]
+    [Sheet( "TerritoryType", columnHash: 0xe68a11a6 )]
     public partial class TerritoryType : ExcelRow
     {
         

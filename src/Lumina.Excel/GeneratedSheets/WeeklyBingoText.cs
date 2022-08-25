@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "WeeklyBingoText", columnHash: 0xdebb20e3 )]
+    [Sheet( "WeeklyBingoText", columnHash: 0x54dee90f )]
     public partial class WeeklyBingoText : ExcelRow
     {
         

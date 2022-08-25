@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TopicSelect", columnHash: 0xc312c89f )]
+    [Sheet( "TopicSelect", columnHash: 0xa09e1bdf )]
     public partial class TopicSelect : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DescriptionPage", columnHash: 0xe721cad2 )]
+    [Sheet( "DescriptionPage", columnHash: 0x18d3e151 )]
     public partial class DescriptionPage : ExcelRow
     {
         public class DescriptionPageUnkData3Obj

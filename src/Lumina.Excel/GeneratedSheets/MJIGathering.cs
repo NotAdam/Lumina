@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIGathering", columnHash: 0xdcfd9eba )]
+    [Sheet( "MJIGathering", columnHash: 0x887fe3f0 )]
     public partial class MJIGathering : ExcelRow
     {
         

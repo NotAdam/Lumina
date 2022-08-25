@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentFinderCondition", columnHash: 0x66e912f3 )]
+    [Sheet( "ContentFinderCondition", columnHash: 0xaec73040 )]
     public partial class ContentFinderCondition : ExcelRow
     {
         

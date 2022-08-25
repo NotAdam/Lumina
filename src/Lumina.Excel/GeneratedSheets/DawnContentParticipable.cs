@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DawnContentParticipable", columnHash: 0xdcfd9eba )]
+    [Sheet( "DawnContentParticipable", columnHash: 0x706a4aa9 )]
     public partial class DawnContentParticipable : ExcelRow
     {
         

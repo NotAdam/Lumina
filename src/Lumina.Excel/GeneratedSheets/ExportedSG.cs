@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ExportedSG", columnHash: 0xdebb20e3 )]
+    [Sheet( "ExportedSG", columnHash: 0x3ba0ff0a )]
     public partial class ExportedSG : ExcelRow
     {
         

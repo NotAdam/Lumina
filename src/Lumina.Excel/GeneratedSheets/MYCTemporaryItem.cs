@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MYCTemporaryItem", columnHash: 0x9176820b )]
+    [Sheet( "MYCTemporaryItem", columnHash: 0x2a0e91a9 )]
     public partial class MYCTemporaryItem : ExcelRow
     {
         

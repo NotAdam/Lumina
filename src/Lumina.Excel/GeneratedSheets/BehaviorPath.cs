@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BehaviorPath", columnHash: 0x96572d0d )]
+    [Sheet( "BehaviorPath", columnHash: 0x932bb159 )]
     public partial class BehaviorPath : ExcelRow
     {
         

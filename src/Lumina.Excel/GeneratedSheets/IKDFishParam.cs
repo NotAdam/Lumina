@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "IKDFishParam", columnHash: 0x1b55da98 )]
+    [Sheet( "IKDFishParam", columnHash: 0xc456e543 )]
     public partial class IKDFishParam : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIHudMode", columnHash: 0xb786ca47 )]
+    [Sheet( "MJIHudMode", columnHash: 0x649536ee )]
     public partial class MJIHudMode : ExcelRow
     {
         

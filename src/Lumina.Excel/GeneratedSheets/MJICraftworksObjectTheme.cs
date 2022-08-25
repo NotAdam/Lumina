@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJICraftworksObjectTheme", columnHash: 0xdebb20e3 )]
+    [Sheet( "MJICraftworksObjectTheme", columnHash: 0xb40b0011 )]
     public partial class MJICraftworksObjectTheme : ExcelRow
     {
         

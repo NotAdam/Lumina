@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ScreenImage", columnHash: 0xf03c70eb )]
+    [Sheet( "ScreenImage", columnHash: 0xa7974a9b )]
     public partial class ScreenImage : ExcelRow
     {
         

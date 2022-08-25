@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJICropSeed", columnHash: 0xcd7b9ae9 )]
+    [Sheet( "MJICropSeed", columnHash: 0x672fa497 )]
     public partial class MJICropSeed : ExcelRow
     {
         

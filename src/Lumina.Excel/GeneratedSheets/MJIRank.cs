@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIRank", columnHash: 0x929748f4 )]
+    [Sheet( "MJIRank", columnHash: 0x50c32b9e )]
     public partial class MJIRank : ExcelRow
     {
         

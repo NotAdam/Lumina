@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "OnlineStatus", columnHash: 0xd87db84c )]
+    [Sheet( "OnlineStatus", columnHash: 0xe762d966 )]
     public partial class OnlineStatus : ExcelRow
     {
         

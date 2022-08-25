@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FCRank", columnHash: 0x0105b558 )]
+    [Sheet( "FCRank", columnHash: 0x0e804ff7 )]
     public partial class FCRank : ExcelRow
     {
         

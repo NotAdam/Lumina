@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestEffect", columnHash: 0x9f0492cf )]
+    [Sheet( "QuestEffect", columnHash: 0x93acbfc9 )]
     public partial class QuestEffect : ExcelRow
     {
         

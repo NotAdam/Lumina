@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RetainerFortuneRewardRange", columnHash: 0xd870e208 )]
+    [Sheet( "RetainerFortuneRewardRange", columnHash: 0x2202a89f )]
     public partial class RetainerFortuneRewardRange : ExcelRow
     {
         

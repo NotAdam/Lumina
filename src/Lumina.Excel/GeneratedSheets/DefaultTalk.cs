@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DefaultTalk", columnHash: 0xe6dec88d )]
+    [Sheet( "DefaultTalk", columnHash: 0x62191d8c )]
     public partial class DefaultTalk : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIProgress", columnHash: 0xe08efa43 )]
+    [Sheet( "MJIProgress", columnHash: 0x0242f3b5 )]
     public partial class MJIProgress : ExcelRow
     {
         

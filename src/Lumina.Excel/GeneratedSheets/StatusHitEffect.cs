@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "StatusHitEffect", columnHash: 0xd870e208 )]
+    [Sheet( "StatusHitEffect", columnHash: 0xe5d5002b )]
     public partial class StatusHitEffect : ExcelRow
     {
         

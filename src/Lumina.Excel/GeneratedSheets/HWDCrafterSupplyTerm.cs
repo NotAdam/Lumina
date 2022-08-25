@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDCrafterSupplyTerm", columnHash: 0xdebb20e3 )]
+    [Sheet( "HWDCrafterSupplyTerm", columnHash: 0xaed1d46c )]
     public partial class HWDCrafterSupplyTerm : ExcelRow
     {
         

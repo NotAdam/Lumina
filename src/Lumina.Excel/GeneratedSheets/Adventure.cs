@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Adventure", columnHash: 0xf6b785f8 )]
+    [Sheet( "Adventure", columnHash: 0xf49629cf )]
     public partial class Adventure : ExcelRow
     {
         

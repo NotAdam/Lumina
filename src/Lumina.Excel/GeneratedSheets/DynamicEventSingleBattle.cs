@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DynamicEventSingleBattle", columnHash: 0xe760c985 )]
+    [Sheet( "DynamicEventSingleBattle", columnHash: 0x1a4eac33 )]
     public partial class DynamicEventSingleBattle : ExcelRow
     {
         

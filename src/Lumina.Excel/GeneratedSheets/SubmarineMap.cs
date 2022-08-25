@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SubmarineMap", columnHash: 0x98fff20a )]
+    [Sheet( "SubmarineMap", columnHash: 0xeab7d419 )]
     public partial class SubmarineMap : ExcelRow
     {
         

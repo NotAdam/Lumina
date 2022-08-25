@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "IKDRoute", columnHash: 0x9a3e7720 )]
+    [Sheet( "IKDRoute", columnHash: 0x97eb1875 )]
     public partial class IKDRoute : ExcelRow
     {
         public class IKDRouteUnkData0Obj

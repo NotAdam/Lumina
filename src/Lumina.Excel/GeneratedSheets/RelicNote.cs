@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RelicNote", columnHash: 0xb557320e )]
+    [Sheet( "RelicNote", columnHash: 0x69bca37d )]
     public partial class RelicNote : ExcelRow
     {
         public class RelicNoteUnkData1Obj

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIItemPouch", columnHash: 0x37dc8982 )]
+    [Sheet( "MJIItemPouch", columnHash: 0x49c5eda3 )]
     public partial class MJIItemPouch : ExcelRow
     {
         

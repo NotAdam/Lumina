@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActionTimelineReplace", columnHash: 0x2020acf6 )]
+    [Sheet( "ActionTimelineReplace", columnHash: 0xa705b541 )]
     public partial class ActionTimelineReplace : ExcelRow
     {
         

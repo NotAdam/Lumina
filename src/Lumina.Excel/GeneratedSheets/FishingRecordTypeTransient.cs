@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FishingRecordTypeTransient", columnHash: 0xda365c51 )]
+    [Sheet( "FishingRecordTypeTransient", columnHash: 0x53b32d16 )]
     public partial class FishingRecordTypeTransient : ExcelRow
     {
         

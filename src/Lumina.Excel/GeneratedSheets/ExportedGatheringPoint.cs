@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ExportedGatheringPoint", columnHash: 0xda46099c )]
+    [Sheet( "ExportedGatheringPoint", columnHash: 0x1f40773f )]
     public partial class ExportedGatheringPoint : ExcelRow
     {
         

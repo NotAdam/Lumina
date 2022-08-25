@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Booster", columnHash: 0x0989d4f2 )]
+    [Sheet( "Booster", columnHash: 0xe2facce1 )]
     public partial class Booster : ExcelRow
     {
         
