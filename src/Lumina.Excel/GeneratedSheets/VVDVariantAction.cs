@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "VVDVariantAction", columnHash: 0xdbf43666 )]
+    [Sheet( "VVDVariantAction", columnHash: 0x37d885d6 )]
     public partial class VVDVariantAction : ExcelRow
     {
         

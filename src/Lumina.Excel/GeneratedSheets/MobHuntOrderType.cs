@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MobHuntOrderType", columnHash: 0x795a75a0 )]
+    [Sheet( "MobHuntOrderType", columnHash: 0x48962c84 )]
     public partial class MobHuntOrderType : ExcelRow
     {
         

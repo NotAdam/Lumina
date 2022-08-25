@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "JobHudManualPriority", columnHash: 0x5be005ad )]
+    [Sheet( "JobHudManualPriority", columnHash: 0x8b92eb66 )]
     public partial class JobHudManualPriority : ExcelRow
     {
         

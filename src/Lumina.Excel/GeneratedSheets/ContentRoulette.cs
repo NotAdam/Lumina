@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentRoulette", columnHash: 0x59caed82 )]
+    [Sheet( "ContentRoulette", columnHash: 0x865b4d57 )]
     public partial class ContentRoulette : ExcelRow
     {
         

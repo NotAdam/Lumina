@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MobHuntTarget", columnHash: 0x83a7f541 )]
+    [Sheet( "MobHuntTarget", columnHash: 0x00df9192 )]
     public partial class MobHuntTarget : ExcelRow
     {
         

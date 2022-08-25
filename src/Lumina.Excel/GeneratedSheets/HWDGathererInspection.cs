@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDGathererInspection", columnHash: 0xad239733 )]
+    [Sheet( "HWDGathererInspection", columnHash: 0xbad2a5ab )]
     public partial class HWDGathererInspection : ExcelRow
     {
         

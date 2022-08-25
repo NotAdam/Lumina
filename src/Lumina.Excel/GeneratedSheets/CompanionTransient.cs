@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CompanionTransient", columnHash: 0xea0b06cf )]
+    [Sheet( "CompanionTransient", columnHash: 0x46c465b2 )]
     public partial class CompanionTransient : ExcelRow
     {
         

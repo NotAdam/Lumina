@@ -5,16 +5,10 @@ using System.Numerics;
 
 namespace Lumina.Data.Files
 {
-    struct PlatePos : IConvertEndianness
+    struct PlatePos
     {
         public short X;
         public short Y;
-
-        public void ConvertEndianness()
-        {
-            X = BinaryPrimitives.ReverseEndianness( X );
-            Y = BinaryPrimitives.ReverseEndianness( Y );
-        }
     }
     
     public class TeraFile : FileResource

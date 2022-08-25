@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PreHandler", columnHash: 0xb3b4ab94 )]
+    [Sheet( "PreHandler", columnHash: 0xf538c5ba )]
     public partial class PreHandler : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActionIndirection", columnHash: 0xc8901190 )]
+    [Sheet( "ActionIndirection", columnHash: 0x5f18a438 )]
     public partial class ActionIndirection : ExcelRow
     {
         

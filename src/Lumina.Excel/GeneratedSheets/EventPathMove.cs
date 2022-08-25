@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EventPathMove", columnHash: 0xb5e8d87a )]
+    [Sheet( "EventPathMove", columnHash: 0x961fb196 )]
     public partial class EventPathMove : ExcelRow
     {
         

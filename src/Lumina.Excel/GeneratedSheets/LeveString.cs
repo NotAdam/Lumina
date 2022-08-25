@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "LeveString", columnHash: 0xdebb20e3 )]
+    [Sheet( "LeveString", columnHash: 0xe2b8c432 )]
     public partial class LeveString : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Emote", columnHash: 0xf3afded2 )]
+    [Sheet( "Emote", columnHash: 0x34f64cc4 )]
     public partial class Emote : ExcelRow
     {
         

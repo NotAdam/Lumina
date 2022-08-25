@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TextCommandParam", columnHash: 0xdebb20e3 )]
+    [Sheet( "TextCommandParam", columnHash: 0x196be593 )]
     public partial class TextCommandParam : ExcelRow
     {
         

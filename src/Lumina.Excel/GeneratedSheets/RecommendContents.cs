@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RecommendContents", columnHash: 0xe79dd9d4 )]
+    [Sheet( "RecommendContents", columnHash: 0x4ee53548 )]
     public partial class RecommendContents : ExcelRow
     {
         

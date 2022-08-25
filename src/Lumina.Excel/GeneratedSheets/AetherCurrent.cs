@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AetherCurrent", columnHash: 0xdbf43666 )]
+    [Sheet( "AetherCurrent", columnHash: 0x8a1270fa )]
     public partial class AetherCurrent : ExcelRow
     {
         

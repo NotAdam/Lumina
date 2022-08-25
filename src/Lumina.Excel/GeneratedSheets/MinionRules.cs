@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MinionRules", columnHash: 0x9db0e48f )]
+    [Sheet( "MinionRules", columnHash: 0x7d650d91 )]
     public partial class MinionRules : ExcelRow
     {
         

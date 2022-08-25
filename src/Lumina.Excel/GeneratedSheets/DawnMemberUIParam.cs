@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DawnMemberUIParam", columnHash: 0x7b44bc07 )]
+    [Sheet( "DawnMemberUIParam", columnHash: 0x2dcd48a3 )]
     public partial class DawnMemberUIParam : ExcelRow
     {
         

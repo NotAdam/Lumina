@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "WeeklyLotBonus", columnHash: 0x69ba3687 )]
+    [Sheet( "WeeklyLotBonus", columnHash: 0x18b6240f )]
     public partial class WeeklyLotBonus : ExcelRow
     {
         

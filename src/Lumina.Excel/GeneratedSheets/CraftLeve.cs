@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CraftLeve", columnHash: 0x51a3acc3 )]
+    [Sheet( "CraftLeve", columnHash: 0xe6849d65 )]
     public partial class CraftLeve : ExcelRow
     {
         public class CraftLeveUnkData3Obj

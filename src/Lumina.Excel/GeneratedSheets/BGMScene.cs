@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BGMScene", columnHash: 0x2711a5ea )]
+    [Sheet( "BGMScene", columnHash: 0x24dc3718 )]
     public partial class BGMScene : ExcelRow
     {
         

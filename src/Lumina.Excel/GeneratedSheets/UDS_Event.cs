@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "UDS_Event", columnHash: 0xdfabf9e4 )]
+    [Sheet( "UDS_Event", columnHash: 0x21a1b0ba )]
     public partial class UDS_Event : ExcelRow
     {
         

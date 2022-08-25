@@ -67,7 +67,7 @@ namespace Lumina.Data.Parsing
         }
     }
 
-    public struct MaterialHeader : IConvertEndianness
+    public struct MaterialHeader
     {
         public ushort ShaderValueListSize;
         public ushort ShaderKeyCount;
@@ -75,16 +75,6 @@ namespace Lumina.Data.Parsing
         public ushort SamplerCount;
         public ushort Unknown1;
         public ushort Unknown2;
-
-        public void ConvertEndianness()
-        {
-            ShaderValueListSize = BinaryPrimitives.ReverseEndianness( ShaderValueListSize );
-            ShaderKeyCount = BinaryPrimitives.ReverseEndianness( ShaderKeyCount );
-            ConstantCount = BinaryPrimitives.ReverseEndianness( ConstantCount );
-            SamplerCount = BinaryPrimitives.ReverseEndianness( SamplerCount );
-            Unknown1 = BinaryPrimitives.ReverseEndianness( Unknown1 );
-            Unknown2 = BinaryPrimitives.ReverseEndianness( Unknown2 );
-        }
     }
 
     public struct TextureOffset
@@ -93,93 +83,48 @@ namespace Lumina.Data.Parsing
         public ushort Flags; // This is an assumption; has always been 32768 (0x8000)
     }
 
-    public struct Constant : IConvertEndianness
+    public struct Constant
     {
         public uint ConstantId;
         public ushort ValueOffset;
         public ushort ValueSize;
-
-        public void ConvertEndianness()
-        {
-            ConstantId = BinaryPrimitives.ReverseEndianness( ConstantId );
-            ValueOffset = BinaryPrimitives.ReverseEndianness( ValueOffset );
-            ValueSize = BinaryPrimitives.ReverseEndianness( ValueSize );
-        }
     }
 
-    public unsafe struct Sampler : IConvertEndianness
+    public unsafe struct Sampler
     {
         public uint SamplerId;
         public uint Flags; // Bitfield; values unknown
         public byte TextureIndex;
         private fixed byte Padding[3];
-
-        public void ConvertEndianness()
-        {
-            SamplerId = BinaryPrimitives.ReverseEndianness( SamplerId );
-            Flags = BinaryPrimitives.ReverseEndianness( Flags );
-        }
     }
 
-    public struct ShaderKey : IConvertEndianness
+    public struct ShaderKey
     {
         public uint Category;
         public uint Value;
-
-        public void ConvertEndianness()
-        {
-            Category = BinaryPrimitives.ReverseEndianness( Category );
-            Value = BinaryPrimitives.ReverseEndianness( Value );
-        }
     }
 
-    public struct UvColorSet : IConvertEndianness
+    public struct UvColorSet
     {
         public ushort NameOffset;
         public byte Index;
         public byte Unknown1;
-
-        public void ConvertEndianness()
-        {
-            NameOffset = BinaryPrimitives.ReverseEndianness( NameOffset );
-        }
     }
 
-    public struct ColorSet : IConvertEndianness
+    public struct ColorSet
     {
         public ushort NameOffset;
         public byte Index;
         public byte Unknown1;
-
-        public void ConvertEndianness()
-        {
-            NameOffset = BinaryPrimitives.ReverseEndianness( NameOffset );
-        }
     }
 
-    public unsafe struct ColorSetInfo : IConvertEndianness
+    public unsafe struct ColorSetInfo
     {
         public fixed ushort Data[256];
-
-        public void ConvertEndianness()
-        {
-            for( int i = 0; i < 256; i++ )
-            {
-                Data[ i ] = BinaryPrimitives.ReverseEndianness( Data[ i ] );
-            }
-        }
     }
 
-    public unsafe struct ColorSetDyeInfo : IConvertEndianness
+    public unsafe struct ColorSetDyeInfo
     {
         public fixed ushort Data[16];
-
-        public void ConvertEndianness()
-        {
-            for( int i = 0; i < 16; i++ )
-            {
-                Data[ i ] = BinaryPrimitives.ReverseEndianness( Data[ i ] );
-            }
-        }
     }
 }

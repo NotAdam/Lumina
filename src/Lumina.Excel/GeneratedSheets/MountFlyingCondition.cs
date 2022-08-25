@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MountFlyingCondition", columnHash: 0xdbf43666 )]
+    [Sheet( "MountFlyingCondition", columnHash: 0xd9d6e4fa )]
     public partial class MountFlyingCondition : ExcelRow
     {
         

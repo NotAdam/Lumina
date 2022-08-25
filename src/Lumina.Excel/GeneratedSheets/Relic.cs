@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Relic", columnHash: 0x8080ef57 )]
+    [Sheet( "Relic", columnHash: 0x6787fe2e )]
     public partial class Relic : ExcelRow
     {
         

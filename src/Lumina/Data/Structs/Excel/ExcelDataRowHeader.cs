@@ -4,15 +4,18 @@ using System.Runtime.InteropServices;
 namespace Lumina.Data.Structs.Excel
 {
     [StructLayout(LayoutKind.Sequential)]
-    public struct ExcelDataRowHeader : IConvertEndianness
+    public struct ExcelDataRowHeader
     {
         public uint DataSize;
         public ushort RowCount;
 
-        public void ConvertEndianness()
+        public static ExcelDataRowHeader Read(LuminaBinaryReader reader)
         {
-            DataSize = BinaryPrimitives.ReverseEndianness( DataSize );
-            RowCount = BinaryPrimitives.ReverseEndianness( RowCount );
+            return new ExcelDataRowHeader
+            {
+                DataSize = reader.ReadUInt32(),
+                RowCount = reader.ReadUInt16(),
+            };
         }
     }
 }

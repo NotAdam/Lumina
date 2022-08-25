@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ClassJobActionSort", columnHash: 0x6df8eab8 )]
+    [Sheet( "ClassJobActionSort", columnHash: 0x5d11ea01 )]
     public partial class ClassJobActionSort : ExcelRow
     {
         

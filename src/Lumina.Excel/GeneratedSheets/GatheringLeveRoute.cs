@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringLeveRoute", columnHash: 0xf20ec1e1 )]
+    [Sheet( "GatheringLeveRoute", columnHash: 0xc9e19b8c )]
     public partial class GatheringLeveRoute : ExcelRow
     {
         public class GatheringLeveRouteUnkData0Obj

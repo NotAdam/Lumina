@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuestRedoChapterUICategory", columnHash: 0x5eb59ccb )]
+    [Sheet( "QuestRedoChapterUICategory", columnHash: 0x520a7116 )]
     public partial class QuestRedoChapterUICategory : ExcelRow
     {
         

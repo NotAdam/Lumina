@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDSharedGroup", columnHash: 0x5a516458 )]
+    [Sheet( "HWDSharedGroup", columnHash: 0xeab7d419 )]
     public partial class HWDSharedGroup : ExcelRow
     {
         

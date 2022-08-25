@@ -12,11 +12,6 @@ using System.Threading.Tasks;
 
 namespace Lumina.Data
 {
-    public interface IConvertEndianness
-    {
-        public void ConvertEndianness();
-    }
-
     public class LuminaBinaryReader : BinaryReader
     {
         public PlatformId PlatformId { get; internal set; }
@@ -90,29 +85,50 @@ namespace Lumina.Data
         /// Reads a structure from the current stream position.
         /// </summary>
         /// <typeparam name="T">The structure to read in to</typeparam>
-        /// <remarks>Requires interface <see cref="Lumina.Data.IConvertEndianness"/> in structure for converting endianness</remarks>
         /// <returns>The file data as a structure</returns>
-        public T ReadStructure< T >() where T : struct, IConvertEndianness
+        public T ReadStructure< T >() where T : struct
         {
             var data = ReadBytes( Unsafe.SizeOf< T >() );
-            T structure = MemoryMarshal.Read< T >( data );
-
+            
             if( ConvertEndianness )
-            {
-                structure.ConvertEndianness();
-            }
+                ConvertEndian(typeof(T), data );
 
+            T structure = MemoryMarshal.Read< T >( data );
+            
             return structure;
         }
 
+        // this is fucked but it's better than forcing a convert method on every structure ever
+        private static void ConvertEndian(Type type, Span<byte> data, int startOffset = 0)
+        {
+            var offset = 0;
+            foreach (var field in type.GetFields())
+            {
+                var fieldType = field.FieldType;
+                if (field.IsStatic || fieldType == typeof(string))
+                    continue;
+
+                if (fieldType.IsEnum)
+                    fieldType = Enum.GetUnderlyingType(fieldType);
+
+                var subFields = fieldType.GetFields().Where(subField => subField.IsStatic == false).ToArray();
+                var effectiveOffset = startOffset + offset;
+
+                if (subFields.Length == 0)
+                    data.Slice( effectiveOffset, Marshal.SizeOf( fieldType ) ).Reverse();
+                else
+                    ConvertEndian(fieldType, data, effectiveOffset);
+                offset += Marshal.SizeOf( fieldType );
+            }
+        }
+        
         /// <summary>
         /// Reads many structures from the current stream position.
         /// </summary>
         /// <param name="count">The number of T to read from the stream</param>
         /// <typeparam name="T">The structure to read in to</typeparam>
-        /// <remarks>Requires interface <see cref="Lumina.Data.IConvertEndianness"/> in structure for converting endianness</remarks>
         /// <returns>A list containing the structures read from the stream</returns>
-        public List<T> ReadStructures< T >( int count ) where T : struct, IConvertEndianness
+        public List<T> ReadStructures< T >( int count ) where T : struct
         {
             var structs = ReadStructuresAsSpan< T >( count );
             var list = new List< T >( structs.Length );
@@ -130,9 +146,8 @@ namespace Lumina.Data
         /// </summary>
         /// <param name="count">The number of T to read from the stream</param>
         /// <typeparam name="T">The structure to read in to</typeparam>
-        /// <remarks>Requires interface <see cref="Lumina.Data.IConvertEndianness"/> in structure for converting endianness</remarks>
         /// <returns>An array containing the structures read from the stream</returns>
-        public T[] ReadStructuresAsArray< T >( int count ) where T : struct, IConvertEndianness
+        public T[] ReadStructuresAsArray< T >( int count ) where T : struct
         {
             return ReadStructuresAsSpan< T >( count ).ToArray();
         }
@@ -142,22 +157,17 @@ namespace Lumina.Data
         /// </summary>
         /// <param name="count">The number of T to read from the stream</param>
         /// <typeparam name="T">The structure to read in to</typeparam>
-        /// <remarks>Requires interface <see cref="Lumina.Data.IConvertEndianness"/> in structure for converting endianness</remarks>
         /// <returns>A span containing the structures read from the stream</returns>
-        public Span< T > ReadStructuresAsSpan< T >( int count ) where T : struct, IConvertEndianness
+        public Span< T > ReadStructuresAsSpan< T >( int count ) where T : struct
         {
-            var data = ReadBytes( Unsafe.SizeOf< T >() * count );
-            var span = MemoryMarshal.Cast< byte, T >( data );
-
+            var tSize = Unsafe.SizeOf< T >();
+            Span<byte> data = ReadBytes( tSize * count );
+            
             if( ConvertEndianness )
-            {
-                for( var i = 0; i < span.Length; i++ )
-                {
-                    span[ i ].ConvertEndianness();
-                }
-            }
+                for( var i = 0; i < count; i++ )
+                    ConvertEndian( typeof( T ), data, tSize * i );
 
-            return span;
+            return MemoryMarshal.Cast< byte, T >( data );
         }
 
         private T[] ReadPrimitiveArray< T >( int count ) where T : struct

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PlayerSearchSubLocation", columnHash: 0x16a4252d )]
+    [Sheet( "PlayerSearchSubLocation", columnHash: 0x0c799032 )]
     public partial class PlayerSearchSubLocation : ExcelRow
     {
         

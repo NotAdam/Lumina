@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InstanceContentGuide", columnHash: 0x5d58cc84 )]
+    [Sheet( "InstanceContentGuide", columnHash: 0x9f1538a4 )]
     public partial class InstanceContentGuide : ExcelRow
     {
         

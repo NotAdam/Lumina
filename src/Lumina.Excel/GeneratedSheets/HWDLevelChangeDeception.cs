@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDLevelChangeDeception", columnHash: 0xda365c51 )]
+    [Sheet( "HWDLevelChangeDeception", columnHash: 0x69067cd8 )]
     public partial class HWDLevelChangeDeception : ExcelRow
     {
         
