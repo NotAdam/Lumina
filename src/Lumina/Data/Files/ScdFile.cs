@@ -11,24 +11,24 @@ namespace Lumina.Data.Files
     {
         public class Sound
         {
-            public ScdSound.SoundBasicDesc SoundBasicDesc;
-            public ScdSound.RoutingInfo? RoutingInfo;
-            public ScdSound.SendInfo[]? SendInfos;
-            public ScdSound.SoundEffectParam? SoundEffectParam;
-            public ScdSound.BusDuckingInfo? BusDuckingInfo;
-            public ScdSound.AccelerationInfo? AccelerationInfo;
-            public ScdSound.AtomosgearInfo? AtomosgearInfo;
-            public ScdSound.SoundExtraDesc? SoundExtraDesc;
+            public SoundBasicDesc SoundBasicDesc;
+            public RoutingInfo? RoutingInfo;
+            public SendInfo[]? SendInfos;
+            public SoundEffectParam? SoundEffectParam;
+            public BusDuckingInfo? BusDuckingInfo;
+            public AccelerationInfo? AccelerationInfo;
+            public AtomosgearInfo? AtomosgearInfo;
+            public SoundExtraDesc? SoundExtraDesc;
 
             public object TrackInfos;
-            public ScdSound.CycleInfo? CycleInfo;
+            public CycleInfo? CycleInfo;
         }
 
         public class Audio
         {
-            public ScdAudio.AudioBasicDesc AudioBasicDesc;
+            public AudioBasicDesc AudioBasicDesc;
 
-            public ScdAudio.SubInfoMarkerChunk? MarkerChunkHeader;
+            public SubInfoMarkerChunk? MarkerChunkHeader;
             public uint[]? Markers;
 
             public object? AudioDataHeader;
@@ -70,8 +70,8 @@ namespace Lumina.Data.Files
 
         public override void LoadFile()
         {
-            var header = new ScdCommon.BinaryHeader( Reader );
-            var scdHeader = Reader.ReadStructure< ScdCommon.ScdHeader >();
+            var header = new BinaryHeader( Reader );
+            var scdHeader = Reader.ReadStructure< ScdHeader >();
 
             _soundOffsets = new uint[ scdHeader.SoundCount ];
             for( var i = 0; i < scdHeader.SoundCount; i++ )
@@ -112,290 +112,290 @@ namespace Lumina.Data.Files
         public Sound GetSound( int index )
         {
             Reader.Position = _soundOffsets[ index ];
-            var soundBasicDesc = Reader.ReadStructure< ScdSound.SoundBasicDesc >();
+            var soundBasicDesc = Reader.ReadStructure< SoundBasicDesc >();
 
             var sound = new Sound();
             sound.SoundBasicDesc = soundBasicDesc;
 
-            if( soundBasicDesc.Attribute.HasFlag( ScdSound.SoundAttribute.ExistRoutingSetting ) )
+            if( soundBasicDesc.Attribute.HasFlag( SoundAttribute.ExistRoutingSetting ) )
             {
-                var routingInfo = Reader.ReadStructure< ScdSound.RoutingInfo >();
+                var routingInfo = Reader.ReadStructure< RoutingInfo >();
                 sound.RoutingInfo = routingInfo;
-                sound.SendInfos = Reader.ReadStructuresAsArray< ScdSound.SendInfo >( routingInfo.SendCount );
-                sound.SoundEffectParam = Reader.ReadStructure< ScdSound.SoundEffectParam >();
+                sound.SendInfos = Reader.ReadStructuresAsArray< SendInfo >( routingInfo.SendCount );
+                sound.SoundEffectParam = Reader.ReadStructure< SoundEffectParam >();
             }
 
-            if( soundBasicDesc.Attribute.HasFlag( ScdSound.SoundAttribute.BusDucking ) )
+            if( soundBasicDesc.Attribute.HasFlag( SoundAttribute.BusDucking ) )
             {
-                sound.BusDuckingInfo = Reader.ReadStructure< ScdSound.BusDuckingInfo >();
+                sound.BusDuckingInfo = Reader.ReadStructure< BusDuckingInfo >();
             }
 
-            if( soundBasicDesc.Attribute.HasFlag( ScdSound.SoundAttribute.Acceleration ) )
+            if( soundBasicDesc.Attribute.HasFlag( SoundAttribute.Acceleration ) )
             {
-                sound.AccelerationInfo = new ScdSound.AccelerationInfo( Reader );
+                sound.AccelerationInfo = new AccelerationInfo( Reader );
             }
 
-            if( soundBasicDesc.Attribute.HasFlag( ScdSound.SoundAttribute.Atomosgear ) )
+            if( soundBasicDesc.Attribute.HasFlag( SoundAttribute.Atomosgear ) )
             {
-                sound.AtomosgearInfo = Reader.ReadStructure< ScdSound.AtomosgearInfo >();
+                sound.AtomosgearInfo = Reader.ReadStructure< AtomosgearInfo >();
             }
 
-            if( soundBasicDesc.Attribute.HasFlag( ScdSound.SoundAttribute.ExtraDesc ) )
+            if( soundBasicDesc.Attribute.HasFlag( SoundAttribute.ExtraDesc ) )
             {
-                sound.SoundExtraDesc = Reader.ReadStructure< ScdSound.SoundExtraDesc >();
+                sound.SoundExtraDesc = Reader.ReadStructure< SoundExtraDesc >();
             }
 
-            if( soundBasicDesc.Type is ScdSound.SoundType.Random or ScdSound.SoundType.Cycle or ScdSound.SoundType.GroupRandom )
+            if( soundBasicDesc.Type is SoundType.Random or SoundType.Cycle or SoundType.GroupRandom )
             {
-                sound.TrackInfos = Reader.ReadStructures< ScdSound.RandomTrackInfo >( soundBasicDesc.TrackCount );
+                sound.TrackInfos = Reader.ReadStructures< RandomTrackInfo >( soundBasicDesc.TrackCount );
 
-                if( soundBasicDesc.Type == ScdSound.SoundType.Cycle )
+                if( soundBasicDesc.Type == SoundType.Cycle )
                 {
-                    sound.CycleInfo = Reader.ReadStructure< ScdSound.CycleInfo >();
+                    sound.CycleInfo = Reader.ReadStructure< CycleInfo >();
                 }
             }
             else
             {
-                sound.TrackInfos = Reader.ReadStructures< ScdSound.TrackInfo >( soundBasicDesc.TrackCount );
+                sound.TrackInfos = Reader.ReadStructures< TrackInfo >( soundBasicDesc.TrackCount );
             }
 
             return sound;
         }
 
         // Just a prototype, don't use it.
-        public List< ( ScdTrack.TrackCmd cmd, object? data ) > GetTrack( int index )
+        public List< ( TrackCmd cmd, object? data ) > GetTrack( int index )
         {
             Reader.Position = _trackOffsets[ index ];
-            var trackCmdData = new List< (ScdTrack.TrackCmd, object?) >();
+            var trackCmdData = new List< (TrackCmd, object?) >();
 
             while( true )
             {
-                var cmd = (ScdTrack.TrackCmd)Reader.ReadUInt16();
+                var cmd = (TrackCmd)Reader.ReadUInt16();
                 object? data = null;
 
                 switch( cmd )
                 {
-                    case ScdTrack.TrackCmd.End:
+                    case TrackCmd.End:
                         trackCmdData.Add( ( cmd, null ) );
                         return trackCmdData;
 
-                    case ScdTrack.TrackCmd.Volume:
-                        data = Reader.ReadStructure< ScdTrack.TrackCmdParam >();
+                    case TrackCmd.Volume:
+                        data = Reader.ReadStructure< TrackCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.Pitch:
-                        data = Reader.ReadStructure< ScdTrack.TrackCmdParam >();
+                    case TrackCmd.Pitch:
+                        data = Reader.ReadStructure< TrackCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.Interval:
+                    case TrackCmd.Interval:
                         data = Reader.ReadUInt32();
                         break;
 
-                    case ScdTrack.TrackCmd.Modulation:
-                        data = Reader.ReadStructure< ScdTrack.ModulationCmdParam >();
+                    case TrackCmd.Modulation:
+                        data = Reader.ReadStructure< ModulationCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.ReleaseRate:
+                    case TrackCmd.ReleaseRate:
                         data = Reader.ReadUInt32();
                         break;
 
-                    case ScdTrack.TrackCmd.Panning:
-                        data = Reader.ReadStructure< ScdTrack.TrackCmdParam >();
+                    case TrackCmd.Panning:
+                        data = Reader.ReadStructure< TrackCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.KeyOn:
+                    case TrackCmd.KeyOn:
                         break;
 
-                    case ScdTrack.TrackCmd.RandomVolume:
-                        data = Reader.ReadStructure< ScdTrack.RandomCmdParam >();
+                    case TrackCmd.RandomVolume:
+                        data = Reader.ReadStructure< RandomCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.RandomPitch:
-                        data = Reader.ReadStructure< ScdTrack.RandomCmdParam >();
+                    case TrackCmd.RandomPitch:
+                        data = Reader.ReadStructure< RandomCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.RandomPan:
-                        data = Reader.ReadStructure< ScdTrack.RandomCmdParam >();
+                    case TrackCmd.RandomPan:
+                        data = Reader.ReadStructure< RandomCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.KeyOff:
+                    case TrackCmd.KeyOff:
                         break;
 
-                    case ScdTrack.TrackCmd.LoopStart:
+                    case TrackCmd.LoopStart:
                         data = Reader.ReadUInt32Array( 2 ); // loopLowerCnt, loopUpperCnt
                         break;
 
-                    case ScdTrack.TrackCmd.LoopEnd:
+                    case TrackCmd.LoopEnd:
                         break;
 
-                    case ScdTrack.TrackCmd.ExternalAudio:
-                        data = new ScdTrack.ExternalAudioInfo( Reader );
+                    case TrackCmd.ExternalAudio:
+                        data = new ExternalAudioInfo( Reader );
                         break;
 
-                    case ScdTrack.TrackCmd.EndForLoop:
+                    case TrackCmd.EndForLoop:
                         trackCmdData.Add( ( cmd, null ) );
                         return trackCmdData;
 
-                    case ScdTrack.TrackCmd.AddInterval:
+                    case TrackCmd.AddInterval:
                         data = Reader.ReadSingle();
                         break;
 
-                    case ScdTrack.TrackCmd.Expression:
+                    case TrackCmd.Expression:
                         data = Reader.ReadSingleArray( 2 ); // lowerExpression, upperExpression
                         break;
 
-                    case ScdTrack.TrackCmd.Velocity:
+                    case TrackCmd.Velocity:
                         data = Reader.ReadSingle();
                         break;
 
-                    case ScdTrack.TrackCmd.MidiVolume:
+                    case TrackCmd.MidiVolume:
                         data = Reader.ReadSingleArray( 2 ); // lowerVolume, upperVolume
                         break;
 
-                    case ScdTrack.TrackCmd.MidiAddVolume:
+                    case TrackCmd.MidiAddVolume:
                         data = Reader.ReadSingle();
                         break;
 
-                    case ScdTrack.TrackCmd.MidiPan:
+                    case TrackCmd.MidiPan:
                         data = Reader.ReadSingleArray( 2 ); // lowerPan, upperPan
                         break;
 
-                    case ScdTrack.TrackCmd.MidiAddPan:
+                    case TrackCmd.MidiAddPan:
                         data = Reader.ReadSingle();
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationType:
-                        data = ( (ScdTrack.OscillatorCarrier)Reader.ReadUInt32(), (ScdTrack.OscillatorMode)Reader.ReadUInt32() );
+                    case TrackCmd.ModulationType:
+                        data = ( (OscillatorCarrier)Reader.ReadUInt32(), (OscillatorMode)Reader.ReadUInt32() );
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationDepth:
-                        data = new ScdTrack.ModulationDepth
+                    case TrackCmd.ModulationDepth:
+                        data = new ModulationDepth
                         {
                             Carrier = Reader.ReadUInt32(),
                             Depth = Reader.ReadSingle()
                         };
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationAddDepth:
-                        data = new ScdTrack.ModulationDepth
+                    case TrackCmd.ModulationAddDepth:
+                        data = new ModulationDepth
                         {
                             Carrier = Reader.ReadUInt32(),
                             Depth = Reader.ReadSingle()
                         };
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationSpeed:
-                        data = new ScdTrack.ModulationSpeed
+                    case TrackCmd.ModulationSpeed:
+                        data = new ModulationSpeed
                         {
                             Carrier = Reader.ReadUInt32(),
                             Speed = Reader.ReadUInt32()
                         };
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationAddSpeed:
-                        data = new ScdTrack.ModulationSpeed
+                    case TrackCmd.ModulationAddSpeed:
+                        data = new ModulationSpeed
                         {
                             Carrier = Reader.ReadUInt32(),
                             Speed = Reader.ReadUInt32()
                         };
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationOff:
-                        data = (ScdTrack.OscillatorCarrier)Reader.ReadUInt32();
+                    case TrackCmd.ModulationOff:
+                        data = (OscillatorCarrier)Reader.ReadUInt32();
                         break;
 
-                    case ScdTrack.TrackCmd.PitchBend:
+                    case TrackCmd.PitchBend:
                         data = Reader.ReadSingleArray( 2 ); // lowerPitch, upperPitch
                         break;
 
-                    case ScdTrack.TrackCmd.Transpose:
+                    case TrackCmd.Transpose:
                         data = Reader.ReadSingleArray( 2 ); // lowerPitch, upperPitch
                         break;
 
-                    case ScdTrack.TrackCmd.AddTranspose:
+                    case TrackCmd.AddTranspose:
                         data = Reader.ReadSingle();
                         break;
 
-                    case ScdTrack.TrackCmd.FrPanning:
-                        data = Reader.ReadStructure< ScdTrack.TrackCmdParam >();
+                    case TrackCmd.FrPanning:
+                        data = Reader.ReadStructure< TrackCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.RandomWait:
+                    case TrackCmd.RandomWait:
                         data = Reader.ReadUInt32Array( 2 ); // lowerWait, upperWait
                         break;
 
-                    case ScdTrack.TrackCmd.Adsr:
-                        data = Reader.ReadStructure< ScdTrack.TrackCmdParam >();
+                    case TrackCmd.Adsr:
+                        data = Reader.ReadStructure< TrackCmdParam >();
                         break;
 
-                    case ScdTrack.TrackCmd.CutOff:
+                    case TrackCmd.CutOff:
                         break;
 
-                    case ScdTrack.TrackCmd.Jump:
-                        data = ( (ScdTrack.TrackCmdJump)Reader.ReadUInt32(), Reader.ReadInt32() ); // condition, offset
+                    case TrackCmd.Jump:
+                        data = ( (TrackCmdJump)Reader.ReadUInt32(), Reader.ReadInt32() ); // condition, offset
                         break;
 
-                    case ScdTrack.TrackCmd.PlayContinueLoop:
+                    case TrackCmd.PlayContinueLoop:
                         break;
 
-                    case ScdTrack.TrackCmd.Sweep:
+                    case TrackCmd.Sweep:
                         data = ( Reader.ReadSingle(), Reader.ReadUInt32() ); // pitch, time
                         break;
 
-                    case ScdTrack.TrackCmd.MidiKeyOnOld:
+                    case TrackCmd.MidiKeyOnOld:
                         break;
 
-                    case ScdTrack.TrackCmd.SlurOn:
+                    case TrackCmd.SlurOn:
                         break;
 
-                    case ScdTrack.TrackCmd.SlurOff:
+                    case TrackCmd.SlurOff:
                         break;
 
-                    case ScdTrack.TrackCmd.AutoAdsrEnvelope:
-                        data = Reader.ReadStructure< ScdTrack.AutoAdsrEnvelope >();
+                    case TrackCmd.AutoAdsrEnvelope:
+                        data = Reader.ReadStructure< AutoAdsrEnvelope >();
                         break;
 
-                    case ScdTrack.TrackCmd.MidiExternalAudio:
-                        data = new ScdTrack.ExternalAudioInfo( Reader );
+                    case TrackCmd.MidiExternalAudio:
+                        data = new ExternalAudioInfo( Reader );
                         break;
 
-                    case ScdTrack.TrackCmd.Marker:
+                    case TrackCmd.Marker:
                         break;
 
-                    case ScdTrack.TrackCmd.InitParams:
+                    case TrackCmd.InitParams:
                         break;
 
-                    case ScdTrack.TrackCmd.Version:
+                    case TrackCmd.Version:
                         data = Reader.ReadUInt16();
                         break;
 
-                    case ScdTrack.TrackCmd.ReverbOn:
+                    case TrackCmd.ReverbOn:
                         data = Reader.ReadSingle(); // reverbDryVolume
                         break;
 
-                    case ScdTrack.TrackCmd.ReverbOff:
+                    case TrackCmd.ReverbOff:
                         break;
 
-                    case ScdTrack.TrackCmd.MidiKeyOn:
+                    case TrackCmd.MidiKeyOn:
                         data = Reader.ReadSingleArray( 2 ); // velocity, pitch
                         break;
 
-                    case ScdTrack.TrackCmd.PortamentoOn:
+                    case TrackCmd.PortamentoOn:
                         data = ( Reader.ReadInt32(), Reader.ReadSingle() ); // portamentoTime, pitch
                         break;
 
-                    case ScdTrack.TrackCmd.PortamentoOff:
+                    case TrackCmd.PortamentoOff:
                         break;
 
-                    case ScdTrack.TrackCmd.MidiEnd:
+                    case TrackCmd.MidiEnd:
                         trackCmdData.Add( ( cmd, null ) );
                         return trackCmdData;
 
-                    case ScdTrack.TrackCmd.ClearKeyInfo:
+                    case TrackCmd.ClearKeyInfo:
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationDepthFade:
-                        data = new ScdTrack.ModulationDepth
+                    case TrackCmd.ModulationDepthFade:
+                        data = new ModulationDepth
                         {
                             Carrier = Reader.ReadUInt32(),
                             Depth = Reader.ReadSingle(),
@@ -403,8 +403,8 @@ namespace Lumina.Data.Files
                         };
                         break;
 
-                    case ScdTrack.TrackCmd.ModulationSpeedFade:
-                        data = new ScdTrack.ModulationSpeed
+                    case TrackCmd.ModulationSpeedFade:
+                        data = new ModulationSpeed
                         {
                             Carrier = Reader.ReadUInt32(),
                             Speed = Reader.ReadUInt32(),
@@ -412,22 +412,22 @@ namespace Lumina.Data.Files
                         };
                         break;
 
-                    case ScdTrack.TrackCmd.AnalysisFlag:
+                    case TrackCmd.AnalysisFlag:
                         data = Reader.ReadUInt16Array( Reader.ReadUInt16() );
                         break;
 
-                    case ScdTrack.TrackCmd.Config:
-                        var trackConfig = new ScdTrack.TrackConfig
+                    case TrackCmd.Config:
+                        var trackConfig = new TrackConfig
                         {
-                            Type = (ScdTrack.TrackCmdConfigType)Reader.ReadUInt16(),
+                            Type = (TrackCmdConfigType)Reader.ReadUInt16(),
                             Count = Reader.ReadUInt16()
                         };
 
-                        if( trackConfig.Type == ScdTrack.TrackCmdConfigType.IntervalTypeFloat )
+                        if( trackConfig.Type == TrackCmdConfigType.IntervalTypeFloat )
                         {
                             trackConfig.Data = Reader.ReadUInt16() != 0;
                         }
-                        else if( trackConfig.Type > ScdTrack.TrackCmdConfigType.IntervalTypeFloat )
+                        else if( trackConfig.Type > TrackCmdConfigType.IntervalTypeFloat )
                         {
                             trackConfig.Data = Reader.ReadUInt16Array( trackConfig.Count );
                         }
@@ -435,39 +435,39 @@ namespace Lumina.Data.Files
                         data = trackConfig;
                         break;
 
-                    case ScdTrack.TrackCmd.Filter:
-                        data = Reader.ReadStructure< ScdTrack.TrackFilter >();
+                    case TrackCmd.Filter:
+                        data = Reader.ReadStructure< TrackFilter >();
                         break;
 
-                    case ScdTrack.TrackCmd.PlayInnerSound:
+                    case TrackCmd.PlayInnerSound:
                         data = Reader.ReadUInt16Array( 2 ); // bankNumber, soundIndex
                         break;
 
-                    case ScdTrack.TrackCmd.VolumeZeroOne:
-                        var zeroOneHeader = Reader.ReadStructure< ScdTrack.TrackZeroOneParamHeader >();
-                        data = Reader.ReadStructuresAsArray< ScdTrack.TrackZeroOnePoint >( zeroOneHeader.NumPoints );
+                    case TrackCmd.VolumeZeroOne:
+                        var zeroOneHeader = Reader.ReadStructure< TrackZeroOneParamHeader >();
+                        data = Reader.ReadStructuresAsArray< TrackZeroOnePoint >( zeroOneHeader.NumPoints );
                         break;
 
-                    case ScdTrack.TrackCmd.ZeroOneJump:
+                    case TrackCmd.ZeroOneJump:
                         data = Reader.ReadInt32(); // jumpTarget
                         break;
 
-                    case ScdTrack.TrackCmd.ChannelVolumeZeroOne:
-                        var channelZeroOneHeader = Reader.ReadStructure< ScdTrack.TrackChannelZeroOneParamHeader >();
-                        var zeroOnePoints = new ScdTrack.TrackZeroOnePoint[ channelZeroOneHeader.NumChannels ][];
+                    case TrackCmd.ChannelVolumeZeroOne:
+                        var channelZeroOneHeader = Reader.ReadStructure< TrackChannelZeroOneParamHeader >();
+                        var zeroOnePoints = new TrackZeroOnePoint[ channelZeroOneHeader.NumChannels ][];
 
                         for( var i = 0; i < channelZeroOneHeader.NumChannels; i++ )
                         {
-                            var zeroOneParamHeader = Reader.ReadStructure< ScdTrack.TrackZeroOneParamHeader >();
-                            zeroOnePoints[ i ] = Reader.ReadStructuresAsArray< ScdTrack.TrackZeroOnePoint >( zeroOneParamHeader.NumPoints );
+                            var zeroOneParamHeader = Reader.ReadStructure< TrackZeroOneParamHeader >();
+                            zeroOnePoints[ i ] = Reader.ReadStructuresAsArray< TrackZeroOnePoint >( zeroOneParamHeader.NumPoints );
                         }
 
                         data = zeroOnePoints;
                         break;
 
-                    case ScdTrack.TrackCmd.Unknown64:
-                        var unknownHeader = Reader.ReadStructure< ScdTrack.TrackUnknown64Header >();
-                        data = Reader.ReadStructures< ScdTrack.TrackUnknown64 >( unknownHeader.Count );
+                    case TrackCmd.Unknown64:
+                        var unknownHeader = Reader.ReadStructure< TrackUnknown64Header >();
+                        data = Reader.ReadStructures< TrackUnknown64 >( unknownHeader.Count );
                         break;
 
                     default:
@@ -487,15 +487,15 @@ namespace Lumina.Data.Files
         public Audio GetAudio( int index )
         {
             Reader.Position = _audioOffsets[ index ];
-            var audioBasicDesc = Reader.ReadStructure< ScdAudio.AudioBasicDesc >();
+            var audioBasicDesc = Reader.ReadStructure< AudioBasicDesc >();
 
             var audio = new Audio();
             audio.AudioBasicDesc = audioBasicDesc;
 
             var subInfoStartPos = Reader.Position;
-            if( audioBasicDesc.Flg.HasFlag( ScdAudio.AudioFlag.MarkerChunk ) )
+            if( audioBasicDesc.Flg.HasFlag( AudioFlag.MarkerChunk ) )
             {
-                var subInfoMarkerChunk = Reader.ReadStructure< ScdAudio.SubInfoMarkerChunk >();
+                var subInfoMarkerChunk = Reader.ReadStructure< SubInfoMarkerChunk >();
                 audio.MarkerChunkHeader = subInfoMarkerChunk;
                 audio.Markers = Reader.ReadUInt32Array( subInfoMarkerChunk.NumMarkers );
 
@@ -504,13 +504,13 @@ namespace Lumina.Data.Files
 
             switch( audioBasicDesc.Format )
             {
-                case ScdAudio.AudioFormat.Empty:
+                case AudioFormat.Empty:
                     audio.AudioData = Array.Empty< byte >();
                     break;
 
-                case ScdAudio.AudioFormat.OggVorbis:
+                case AudioFormat.OggVorbis:
                 {
-                    var oggSeekTableHeader = Reader.ReadStructure< ScdAudio.OggVorbisSeekTableHeader >();
+                    var oggSeekTableHeader = Reader.ReadStructure< OggVorbisSeekTableHeader >();
                     audio.AudioDataHeader = oggSeekTableHeader;
                     audio.SeekTable = Reader.ReadUInt32Array( (int)( oggSeekTableHeader.SeekTableSize / 4 ) );
 
@@ -546,11 +546,11 @@ namespace Lumina.Data.Files
                     break;
                 }
 
-                case ScdAudio.AudioFormat.Mp3:
+                case AudioFormat.Mp3:
                     var id = Reader.PeekBytes( 4 );
                     if( id[ 0 ] == 'S' && id[ 1 ] == 'T' && id[ 2 ] == 'B' && id[ 3 ] == 'L' )
                     {
-                        var mp3SeekTableHeader = Reader.ReadStructure< ScdAudio.PS3MP3SeekTableHeader >();
+                        var mp3SeekTableHeader = Reader.ReadStructure< PS3MP3SeekTableHeader >();
                         audio.AudioDataHeader = mp3SeekTableHeader;
                         audio.SeekTable = Reader.ReadUInt32Array( mp3SeekTableHeader.NumElement );
                     }
@@ -564,19 +564,19 @@ namespace Lumina.Data.Files
                     audio.AudioData = Reader.ReadBytes( (int)audioBasicDesc.Size );
                     break;
 
-                case ScdAudio.AudioFormat.MsAdpcm:
-                    audio.AudioDataHeader = Reader.ReadStructure< ScdAudio.AdpcmWaveFormat >();
+                case AudioFormat.MsAdpcm:
+                    audio.AudioDataHeader = Reader.ReadStructure< AdpcmWaveFormat >();
                     Reader.Position = subInfoStartPos + audioBasicDesc.SubInfoSize;
                     audio.AudioData = Reader.ReadBytes( (int)audioBasicDesc.Size );
                     break;
 
-                case ScdAudio.AudioFormat.Atrac9:
-                    audio.AudioDataHeader = Reader.ReadStructure< ScdAudio.ATRAC9Header >();
+                case AudioFormat.Atrac9:
+                    audio.AudioDataHeader = Reader.ReadStructure< ATRAC9Header >();
                     Reader.Position = subInfoStartPos + audioBasicDesc.SubInfoSize;
                     audio.AudioData = Reader.ReadBytes( (int)audioBasicDesc.Size );
                     break;
 
-                case (ScdAudio.AudioFormat)5: // headerless Atrac3 stream?
+                case (AudioFormat)5: // headerless Atrac3 stream?
                 default:
                     System.Diagnostics.Debug.WriteLine( "Unknown audio format type id " + audioBasicDesc.Format );
 
@@ -589,23 +589,23 @@ namespace Lumina.Data.Files
         }
 
         /// <summary>Parses the layout data.</summary>
-        public ScdLayout.SoundObject? GetLayout()
+        public SoundObject? GetLayout()
         {
             if( _layoutOffset == 0 )
                 return null;
 
             Reader.BaseStream.Position = _layoutOffset;
-            return new ScdLayout.SoundObject( Reader );
+            return new SoundObject( Reader );
         }
 
         /// <summary>Parses the attribute data.</summary>
-        public ScdAttribute.AttributeData? GetAttributeData()
+        public AttributeData? GetAttributeData()
         {
             if( _attributeOffset == 0 )
                 return null;
 
             Reader.Position = _attributeOffset;
-            return new ScdAttribute.AttributeData( Reader );
+            return new AttributeData( Reader );
         }
     }
 }
