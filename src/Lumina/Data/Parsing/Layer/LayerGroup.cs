@@ -15,7 +15,7 @@ namespace Lumina.Data.Parsing.Layer
         public string Name;
         public LayerCommon.Layer[] Layers;
 
-        public static LayerGroup Read( BinaryReader br )
+        public static LayerGroup Read( LuminaBinaryReader br )
         {
             LayerGroup ret = new LayerGroup();
 

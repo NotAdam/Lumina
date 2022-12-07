@@ -29,7 +29,7 @@ namespace Lumina.Data.Parsing.Scene
         public int Padding40;
         public int Padding44;
 
-        public static SceneChunk Read( BinaryReader br )
+        public static SceneChunk Read( LuminaBinaryReader br )
         {
             SceneChunk ret = new SceneChunk();
             long start = br.BaseStream.Position;
