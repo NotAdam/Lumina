@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TraitTransient", columnHash: 0xdebb20e3 )]
-    public class TraitTransient : ExcelRow
+    [Sheet( "TraitTransient", columnHash: 0x683303bf )]
+    public partial class TraitTransient : ExcelRow
     {
         
         public SeString Description { get; set; }

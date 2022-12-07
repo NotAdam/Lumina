@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EquipRaceCategory", columnHash: 0xf914b198 )]
-    public class EquipRaceCategory : ExcelRow
+    [Sheet( "EquipRaceCategory", columnHash: 0xfea33b34 )]
+    public partial class EquipRaceCategory : ExcelRow
     {
         
         public bool Hyur { get; set; }

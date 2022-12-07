@@ -4,7 +4,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel
 {
-    public class ExcelPage
+    public record ExcelPage
     {
         /// <summary>
         /// The path to the data file (exd) that contains the rows for the current page

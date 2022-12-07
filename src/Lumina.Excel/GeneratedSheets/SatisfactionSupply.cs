@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SatisfactionSupply", columnHash: 0x2d608ea2 )]
-    public class SatisfactionSupply : ExcelRow
+    [Sheet( "SatisfactionSupply", columnHash: 0x1cf173c9 )]
+    public partial class SatisfactionSupply : ExcelRow
     {
         
         public byte Slot { get; set; }

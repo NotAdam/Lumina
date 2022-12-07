@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "JobHudManualPriority", columnHash: 0x5be005ad )]
-    public class JobHudManualPriority : ExcelRow
+    [Sheet( "JobHudManualPriority", columnHash: 0x8b92eb66 )]
+    public partial class JobHudManualPriority : ExcelRow
     {
         
         public LazyRow< JobHudManual >[] JobHudManual { get; set; }

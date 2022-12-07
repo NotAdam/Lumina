@@ -6,11 +6,12 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringPoint", columnHash: 0x4f531171 )]
-    public class GatheringPoint : ExcelRow
+    [Sheet( "GatheringPoint", columnHash: 0xebf4b550 )]
+    public partial class GatheringPoint : ExcelRow
     {
         
         public byte Type { get; set; }
+        public byte Unknown1 { get; set; }
         public LazyRow< GatheringPointBase > GatheringPointBase { get; set; }
         public byte Count { get; set; }
         public LazyRow< GatheringPointBonus >[] GatheringPointBonus { get; set; }
@@ -23,14 +24,15 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Type = parser.ReadColumn< byte >( 0 );
-            GatheringPointBase = new LazyRow< GatheringPointBase >( gameData, parser.ReadColumn< int >( 1 ), language );
-            Count = parser.ReadColumn< byte >( 2 );
+            Unknown1 = parser.ReadColumn< byte >( 1 );
+            GatheringPointBase = new LazyRow< GatheringPointBase >( gameData, parser.ReadColumn< int >( 2 ), language );
+            Count = parser.ReadColumn< byte >( 3 );
             GatheringPointBonus = new LazyRow< GatheringPointBonus >[ 2 ];
             for( var i = 0; i < 2; i++ )
-                GatheringPointBonus[ i ] = new LazyRow< GatheringPointBonus >( gameData, parser.ReadColumn< ushort >( 3 + i ), language );
-            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 5 ), language );
-            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 6 ), language );
-            GatheringSubCategory = new LazyRow< GatheringSubCategory >( gameData, parser.ReadColumn< ushort >( 7 ), language );
+                GatheringPointBonus[ i ] = new LazyRow< GatheringPointBonus >( gameData, parser.ReadColumn< ushort >( 4 + i ), language );
+            TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 7 ), language );
+            GatheringSubCategory = new LazyRow< GatheringSubCategory >( gameData, parser.ReadColumn< ushort >( 8 ), language );
         }
     }
 }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CutsceneMotion", columnHash: 0x3d86ce33 )]
-    public class CutsceneMotion : ExcelRow
+    [Sheet( "CutsceneMotion", columnHash: 0x976d94ba )]
+    public partial class CutsceneMotion : ExcelRow
     {
         
         public float WALK_LOOP_SPEED { get; set; }

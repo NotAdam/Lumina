@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CutScreenImage", columnHash: 0xe4a523cd )]
-    public class CutScreenImage : ExcelRow
+    [Sheet( "CutScreenImage", columnHash: 0x434512bd )]
+    public partial class CutScreenImage : ExcelRow
     {
         
         public short Type { get; set; }

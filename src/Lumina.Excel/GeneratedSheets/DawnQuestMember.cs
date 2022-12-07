@@ -6,12 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DawnQuestMember", columnHash: 0x6ce9409c )]
-    public class DawnQuestMember : ExcelRow
+    [Sheet( "DawnQuestMember", columnHash: 0x7c50a061 )]
+    public partial class DawnQuestMember : ExcelRow
     {
         
+        public ushort Unknown0 { get; set; }
+        public byte Unknown1 { get; set; }
         public LazyRow< ENpcResident > Member { get; set; }
-        public uint ImageName { get; set; }
         public uint BigImageOld { get; set; }
         public uint BigImageNew { get; set; }
         public LazyRow< DawnMemberUIParam > Class { get; set; }
@@ -20,11 +21,12 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Member = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 0 ), language );
-            ImageName = parser.ReadColumn< uint >( 1 );
-            BigImageOld = parser.ReadColumn< uint >( 2 );
-            BigImageNew = parser.ReadColumn< uint >( 3 );
-            Class = new LazyRow< DawnMemberUIParam >( gameData, parser.ReadColumn< byte >( 4 ), language );
+            Unknown0 = parser.ReadColumn< ushort >( 0 );
+            Unknown1 = parser.ReadColumn< byte >( 1 );
+            Member = new LazyRow< ENpcResident >( gameData, parser.ReadColumn< uint >( 2 ), language );
+            BigImageOld = parser.ReadColumn< uint >( 3 );
+            BigImageNew = parser.ReadColumn< uint >( 4 );
+            Class = new LazyRow< DawnMemberUIParam >( gameData, parser.ReadColumn< byte >( 5 ), language );
         }
     }
 }

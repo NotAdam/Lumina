@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "OpenContent", columnHash: 0x170b114d )]
-    public class OpenContent : ExcelRow
+    [Sheet( "OpenContent", columnHash: 0x5371be42 )]
+    public partial class OpenContent : ExcelRow
     {
         
         public LazyRow< ContentFinderCondition >[] Content { get; set; }

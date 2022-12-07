@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDDevLayerControl", columnHash: 0xde74b4c4 )]
-    public class HWDDevLayerControl : ExcelRow
+    [Sheet( "HWDDevLayerControl", columnHash: 0x2d607cad )]
+    public partial class HWDDevLayerControl : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

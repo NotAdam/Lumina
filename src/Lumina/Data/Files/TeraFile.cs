@@ -1,12 +1,14 @@
-﻿using System.Numerics;
-using Lumina.Extensions;
+using System.Buffers.Binary;
+using System.Numerics;
+
+#pragma warning disable 649
 
 namespace Lumina.Data.Files
 {
     struct PlatePos
     {
-        public short x;
-        public short y;
+        public short X;
+        public short Y;
     }
     
     public class TeraFile : FileResource
@@ -16,10 +18,11 @@ namespace Lumina.Data.Files
         public uint PlateSize;
         public float ClipDistance;
         public float Unknown;
-        public byte[] Padding;
+        private byte[] Padding;
 
         private PlatePos[] _positions; 
         
+        /// <inheritdoc cref="FileResource.LoadFile"/>
         public override void LoadFile()
         {
             Version = Reader.ReadUInt32();
@@ -42,7 +45,7 @@ namespace Lumina.Data.Files
         public Vector2 GetPlatePosition( int plateIndex )
         {
             var pos = _positions[ plateIndex ];
-            return new Vector2( PlateSize * ( pos.x + 0.5f ), PlateSize * ( pos.y + 0.5f ) );
+            return new Vector2( PlateSize * ( pos.X + 0.5f ), PlateSize * ( pos.Y + 0.5f ) );
         }
     }
 }

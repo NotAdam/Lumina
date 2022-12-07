@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ItemBarterCheck", columnHash: 0x8920dbd8 )]
-    public class ItemBarterCheck : ExcelRow
+    [Sheet( "ItemBarterCheck", columnHash: 0xf94b3134 )]
+    public partial class ItemBarterCheck : ExcelRow
     {
         
         public ushort Category { get; set; }

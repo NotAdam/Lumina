@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AirshipExplorationLog", columnHash: 0xdebb20e3 )]
-    public class AirshipExplorationLog : ExcelRow
+    [Sheet( "AirshipExplorationLog", columnHash: 0x7cdc5191 )]
+    public partial class AirshipExplorationLog : ExcelRow
     {
         
         public SeString Text { get; set; }

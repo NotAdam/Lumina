@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GimmickRect", columnHash: 0x9be6d434 )]
-    public class GimmickRect : ExcelRow
+    [Sheet( "GimmickRect", columnHash: 0x68c21e83 )]
+    public partial class GimmickRect : ExcelRow
     {
         
         public uint LayoutID { get; set; }

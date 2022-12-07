@@ -1,4 +1,5 @@
 using System;
+using System.Buffers.Binary;
 using System.Runtime.InteropServices;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -13,7 +14,7 @@ namespace Lumina.Data.Structs
         Texture = 4,
     }
 
-    public enum LodLevel : int
+    public enum LodLevel
     {
         All = -1,
         Highest,
@@ -40,13 +41,23 @@ namespace Lumina.Data.Structs
         public UInt16 UncompressedSize;
     };
 
+    /// <summary>
+    /// The type of block in the sqpack, indicates compression or not
+    /// </summary>
+    public enum DatBlockType : uint
+    {
+        Compressed = 16000,
+        Uncompressed = 32000,
+    }
+
     [StructLayout( LayoutKind.Sequential )]
     struct DatBlockHeader
     {
         public UInt32 Size;
+        // always 0?
         public UInt32 unknown1;
-        public UInt32 CompressedSize;
-        public UInt32 UncompressedSize;
+        public DatBlockType DatBlockType;
+        public UInt32 BlockDataSize;
     };
 
     [StructLayout( LayoutKind.Sequential )]
@@ -57,6 +68,13 @@ namespace Lumina.Data.Structs
         public UInt32 DecompressedSize;
         public UInt32 BlockOffset;
         public UInt32 BlockCount;
+    }
+
+    [StructLayout( LayoutKind.Sequential )]
+    public struct ReferenceBlockRange
+    {
+        public UInt32 Begin;
+        public UInt32 End;
     }
 
     [StructLayout( LayoutKind.Sequential )]

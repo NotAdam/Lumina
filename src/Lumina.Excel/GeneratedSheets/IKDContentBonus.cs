@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "IKDContentBonus", columnHash: 0xb7d9b7a3 )]
-    public class IKDContentBonus : ExcelRow
+    [Sheet( "IKDContentBonus", columnHash: 0xfe2f4887 )]
+    public partial class IKDContentBonus : ExcelRow
     {
         
         public SeString Objective { get; set; }

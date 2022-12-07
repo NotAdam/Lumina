@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AnimationLOD", columnHash: 0x261cfad0 )]
-    public class AnimationLOD : ExcelRow
+    [Sheet( "AnimationLOD", columnHash: 0x000e4024 )]
+    public partial class AnimationLOD : ExcelRow
     {
         
         public float CameraDistance { get; set; }

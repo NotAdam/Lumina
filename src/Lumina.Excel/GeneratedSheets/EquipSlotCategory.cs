@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EquipSlotCategory", columnHash: 0xf4ab6454 )]
-    public class EquipSlotCategory : ExcelRow
+    [Sheet( "EquipSlotCategory", columnHash: 0xbe87d06d )]
+    public partial class EquipSlotCategory : ExcelRow
     {
         
         public sbyte MainHand { get; set; }

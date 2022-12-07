@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "LegacyQuest", columnHash: 0x6624322e )]
-    public class LegacyQuest : ExcelRow
+    [Sheet( "LegacyQuest", columnHash: 0xd98297be )]
+    public partial class LegacyQuest : ExcelRow
     {
         
         public ushort LegacyQuestID { get; set; }

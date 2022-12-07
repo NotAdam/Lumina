@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "JournalSection", columnHash: 0x9530a4f2 )]
-    public class JournalSection : ExcelRow
+    [Sheet( "JournalSection", columnHash: 0x754a1dcd )]
+    public partial class JournalSection : ExcelRow
     {
         
         public SeString Name { get; set; }

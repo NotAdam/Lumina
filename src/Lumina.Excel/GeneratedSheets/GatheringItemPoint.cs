@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringItemPoint", columnHash: 0xdbf43666 )]
-    public class GatheringItemPoint : ExcelRow
+    [Sheet( "GatheringItemPoint", columnHash: 0x3bb52527 )]
+    public partial class GatheringItemPoint : ExcelRow
     {
         
         public LazyRow< GatheringPoint > GatheringPoint { get; set; }

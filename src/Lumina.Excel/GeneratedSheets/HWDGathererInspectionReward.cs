@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDGathererInspectionReward", columnHash: 0x2020acf6 )]
-    public class HWDGathererInspectionReward : ExcelRow
+    [Sheet( "HWDGathererInspectionReward", columnHash: 0x28602bbe )]
+    public partial class HWDGathererInspectionReward : ExcelRow
     {
         
         public ushort Scrips { get; set; }

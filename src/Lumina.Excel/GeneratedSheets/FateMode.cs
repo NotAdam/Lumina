@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FateMode", columnHash: 0x6be0e840 )]
-    public class FateMode : ExcelRow
+    [Sheet( "FateMode", columnHash: 0x414d100e )]
+    public partial class FateMode : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

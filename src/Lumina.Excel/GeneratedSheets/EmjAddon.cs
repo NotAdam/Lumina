@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EmjAddon", columnHash: 0xdebb20e3 )]
-    public class EmjAddon : ExcelRow
+    [Sheet( "EmjAddon", columnHash: 0x40a8b270 )]
+    public partial class EmjAddon : ExcelRow
     {
         
         public SeString Text { get; set; }

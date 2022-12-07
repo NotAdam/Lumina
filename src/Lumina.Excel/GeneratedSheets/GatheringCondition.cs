@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringCondition", columnHash: 0xdebb20e3 )]
-    public class GatheringCondition : ExcelRow
+    [Sheet( "GatheringCondition", columnHash: 0xb366c408 )]
+    public partial class GatheringCondition : ExcelRow
     {
         
         public SeString Text { get; set; }

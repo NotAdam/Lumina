@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CreditCast", columnHash: 0xdebb20e3 )]
-    public class CreditCast : ExcelRow
+    [Sheet( "CreditCast", columnHash: 0x595d8d50 )]
+    public partial class CreditCast : ExcelRow
     {
         
         public SeString Name { get; set; }

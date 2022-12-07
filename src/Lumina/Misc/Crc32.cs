@@ -5,6 +5,9 @@ using System.Text;
 namespace Lumina.Misc
 {
     // stolen from: https://github.com/force-net/Crc32.NET/
+    /// <summary>
+    /// Calculate the CRC32
+    /// </summary>
     public static class Crc32
     {
         private const uint CrcInitialSeed = 0;
@@ -30,6 +33,12 @@ namespace Lumina.Misc
             }
         }
 
+        /// <summary>
+        /// Calculate the CRC32 of the given string.
+        /// </summary>
+        /// <param name="value">The value to hash</param>
+        /// <param name="crc">The initial seed/value</param>
+        /// <returns>The CRC32 of the input data</returns>
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public static uint Get( string value, uint crc = CrcInitialSeed )
         {
@@ -37,18 +46,38 @@ namespace Lumina.Misc
             return Get( data, 0, data.Length, crc );
         }
         
+        /// <summary>
+        /// Calculate the CRC32 of the given byte array.
+        /// </summary>
+        /// <param name="buffer">The value to hash</param>
+        /// <param name="crc">The initial seed/value</param>
+        /// <returns>The CRC32 of the input data</returns>
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public static uint Get( byte[] buffer, uint crc = CrcInitialSeed )
         {
             return Get( buffer, 0, buffer.Length, crc );
         }
 
+        /// <summary>
+        /// Calculate the CRC32 of the given span.
+        /// </summary>
+        /// <param name="buffer">The value to hash</param>
+        /// <param name="crc">The initial seed/value</param>
+        /// <returns>The CRC32 of the input data</returns>
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public static uint Get( ReadOnlySpan< byte > buffer, uint crc = CrcInitialSeed )
         {
             return Get( buffer, 0, buffer.Length, crc );
         }
 
+        /// <summary>
+        /// Calculate the CRC32 of the given span
+        /// </summary>
+        /// <param name="buffer">The span to hash</param>
+        /// <param name="start">The start index of the span to start hashing from</param>
+        /// <param name="size">How many bytes to hash</param>
+        /// <param name="crc">The initial seed/value</param>
+        /// <returns>The CRC32 of the input data offset by <see cref="start"/> + <see cref="size"/> bytes long</returns>
         public static uint Get( ReadOnlySpan< byte > buffer, int start, int size, uint crc = CrcInitialSeed )
         {
             var crcLocal = uint.MaxValue ^ crc;

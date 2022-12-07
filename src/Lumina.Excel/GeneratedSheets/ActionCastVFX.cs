@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActionCastVFX", columnHash: 0xd870e208 )]
-    public class ActionCastVFX : ExcelRow
+    [Sheet( "ActionCastVFX", columnHash: 0x42c5217a )]
+    public partial class ActionCastVFX : ExcelRow
     {
         
         public LazyRow< VFX > VFX { get; set; }

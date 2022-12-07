@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AnimaWeapon5PatternGroup", columnHash: 0xdebb20e3 )]
-    public class AnimaWeapon5PatternGroup : ExcelRow
+    [Sheet( "AnimaWeapon5PatternGroup", columnHash: 0x39030de4 )]
+    public partial class AnimaWeapon5PatternGroup : ExcelRow
     {
         
         public SeString Name { get; set; }

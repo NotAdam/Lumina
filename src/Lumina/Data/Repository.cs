@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Lumina.Data.Structs;
 
 namespace Lumina.Data
@@ -55,11 +56,11 @@ namespace Lumina.Data
 
             GetExpansionId();
             ParseVersion();
-            SetupIndexes();
+            Categories = SetupIndexes( gameData.Options.LoadMultithreaded );
         }
 
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
-        public T GetFile< T >( string cat, ParsedFilePath path ) where T : FileResource
+        public T? GetFile< T >( string cat, ParsedFilePath path ) where T : FileResource
         {
             if( CategoryNameToIdMap.TryGetValue( cat, out var catId ) )
             {
@@ -69,7 +70,7 @@ namespace Lumina.Data
             return null;
         }
 
-        public T GetFile< T >( byte cat, ParsedFilePath path ) where T : FileResource
+        public T? GetFile< T >( byte cat, ParsedFilePath path ) where T : FileResource
         {
             if( !Categories.TryGetValue( cat, out var categories ) )
             {
@@ -142,7 +143,7 @@ namespace Lumina.Data
         /// </summary>
         private void ParseVersion()
         {
-            string versionPath = null;
+            string versionPath;
 
             // haha what the fuck?
             if( Name == "ffxiv" )
@@ -165,12 +166,13 @@ namespace Lumina.Data
         /// <summary>
         /// Autodiscovers dats and a relevant index for them
         /// </summary>
-        private void SetupIndexes()
+        private Dictionary< byte, List< Category > > SetupIndexes( bool multithread )
         {
-            Categories = new Dictionary< byte, List< Category > >();
+            Dictionary< byte, Task < Category[] > > tasks = new();
             foreach( var cat in CategoryNameToIdMap )
             {
-                var catList = Categories[ cat.Value ] = new List< Category >();
+                var taskList = new List< Task< Category > >();
+                
                 // discover indexes first
                 // once we find an index, that index will have an associated dat (or dats) too
                 // so we don't need to discover those here
@@ -191,20 +193,37 @@ namespace Lumina.Data
                         continue;
                     }
 
-                    var index = new SqPackIndex( file, _gameData );
-
-                    var dat = new Category(
-                        cat.Value,
-                        ExpansionId,
-                        chunk,
-                        _gameData.Options.CurrentPlatform,
-                        index,
-                        RootDir,
-                        _gameData );
-
-                    catList.Add( dat );
+                    if( multithread )
+                    {
+                        var chunk1 = chunk;
+                        taskList.Add( Task.Run( () => new Category(
+                            cat.Value,
+                            ExpansionId,
+                            chunk1,
+                            _gameData.Options.CurrentPlatform,
+                            new SqPackIndex( file, _gameData ),
+                            RootDir,
+                            _gameData ) ) );
+                    }
+                    else
+                    {
+                        taskList.Add( Task.FromResult( new Category(
+                            cat.Value,
+                            ExpansionId,
+                            chunk,
+                            _gameData.Options.CurrentPlatform,
+                            new SqPackIndex( file, _gameData ),
+                            RootDir,
+                            _gameData ) ) );
+                    }
                 }
+
+                tasks[ cat.Value ] = Task.WhenAll( taskList );
             }
+
+            Task.WhenAll( tasks.Values ).Wait();
+            
+            return tasks.AsEnumerable().ToDictionary( x => x.Key, x => x.Value.Result.ToList() );
         }
 
         /// <summary>

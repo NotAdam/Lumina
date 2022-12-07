@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using Lumina.Data;
 using Lumina.Data.Files;
 using Lumina.Data.Parsing;
 using Lumina.Extensions;
@@ -20,7 +20,7 @@ namespace Lumina.Models.Materials
         /// The resolved path to this Material. Guaranteed to not be initialized
         /// in the case that <c>MaterialPath.StartsWith("/") == true</c>.
         /// </summary>
-        public string ResolvedPath { get; private set; }
+        public string? ResolvedPath { get; private set; }
         
         /// <summary>
         /// A convenience reference to the Model that instantiated this Material.
@@ -30,7 +30,7 @@ namespace Lumina.Models.Materials
         /// <summary>
         /// The MtrlFile backing this Material. May not be initialized.
         /// </summary>
-        public MtrlFile File { get; private set; }
+        public MtrlFile? File { get; private set; }
         
         /// <summary>
         /// The Textures for this Material. May not be initialized.
@@ -117,6 +117,12 @@ namespace Lumina.Models.Materials
             if( MaterialPath.StartsWith( "/" ) )
             {
                 ResolvedPath = ResolveRelativeMaterialPath( MaterialPath, VariantId );
+
+                if( ResolvedPath == null )
+                {
+                    return this;
+                }
+                
                 File = data.GetFile< MtrlFile >( ResolvedPath );
             }
             else
@@ -138,7 +144,7 @@ namespace Lumina.Models.Materials
         /// <param name="relativePath">The relative path of the provided material.</param>
         /// <param name="variantId">The variant to use in material resolution.</param>
         /// <returns>The resolved, absolute path to the requested material, or null if unsuccessful.</returns>
-        public static string ResolveRelativeMaterialPath( string relativePath, int variantId )
+        public static string? ResolveRelativeMaterialPath( string relativePath, int variantId )
         {
             var id1 = relativePath[4];
             var val1 = relativePath.Substring( 5, 4 );
@@ -206,13 +212,12 @@ namespace Lumina.Models.Materials
         private void ReadStrings()
         {
             StringOffsetToStringMap = new Dictionary< int, string >();
-            var mr = new MemoryStream( File.Strings );
-            var br = new BinaryReader( mr );
+            var br = new LuminaBinaryReader( File.Strings );
 
             // They re-use offsets, so the number of offsets is not equal to the number of unique members
             var uniqueTextureCount = File.TextureOffsets.Select( t => t.Offset ).Distinct().Count();
             var uniqueUvColorSetCount = File.UvColorSets.Select( t => t.NameOffset ).Distinct().Count();
-            var uniqueColorOffsetCount = File.ColorSetOffsets.Select( t => t ).Distinct().Count();
+            var uniqueColorOffsetCount = File.ColorSets.Select( t => t.NameOffset ).Distinct().Count();
 
             // Add one for the shader package name at the end
             var stringCount = uniqueTextureCount + uniqueUvColorSetCount + uniqueColorOffsetCount + 1;
@@ -224,7 +229,6 @@ namespace Lumina.Models.Materials
             }
 
             br.Dispose();
-            mr.Dispose();
         }
     }
 }

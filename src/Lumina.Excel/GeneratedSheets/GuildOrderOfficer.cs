@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GuildOrderOfficer", columnHash: 0xa76e50e1 )]
-    public class GuildOrderOfficer : ExcelRow
+    [Sheet( "GuildOrderOfficer", columnHash: 0x9a109fbf )]
+    public partial class GuildOrderOfficer : ExcelRow
     {
         
         public uint Unknown0 { get; set; }

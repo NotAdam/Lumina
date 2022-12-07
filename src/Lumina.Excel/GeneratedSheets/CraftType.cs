@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CraftType", columnHash: 0xb92c9b70 )]
-    public class CraftType : ExcelRow
+    [Sheet( "CraftType", columnHash: 0x8af1b1a2 )]
+    public partial class CraftType : ExcelRow
     {
         
         public byte MainPhysical { get; set; }

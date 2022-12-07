@@ -2,6 +2,9 @@ using Lumina.Data;
 
 namespace Lumina
 {
+    /// <summary>
+    /// Options that can be provided to change the behaviour of caching, integrity checks and other behaviour.
+    /// </summary>
     public class LuminaOptions
     {
         /// <summary>
@@ -31,5 +34,15 @@ namespace Lumina
         /// If enabled, when a cast fails in an excel sheet, an InvalidCastException will be thrown instead of the types default value being inserted instead.
         /// </summary>
         public bool ExcelSheetStrictCastingEnabled { get; set; } = false;
+
+        /// <summary>
+        /// Whether or not known RSV values in sheets should be resolved when loading sheets
+        /// </summary>
+        public bool ResolveKnownRsvSheetValues { get; set; } = true;
+
+        /// <summary>
+        /// If enabled, resources will be loaded using multiple threads.
+        /// </summary>
+        public bool LoadMultithreaded { get; set; } = false;
     }
 }

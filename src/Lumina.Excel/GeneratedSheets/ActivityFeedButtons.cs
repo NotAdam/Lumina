@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActivityFeedButtons", columnHash: 0x20072d40 )]
-    public class ActivityFeedButtons : ExcelRow
+    [Sheet( "ActivityFeedButtons", columnHash: 0xa8c7ba4c )]
+    public partial class ActivityFeedButtons : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

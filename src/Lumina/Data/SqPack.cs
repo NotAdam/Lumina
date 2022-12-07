@@ -38,6 +38,7 @@ namespace Lumina.Data
         /// <summary>
         /// PC and PS4 are LE, PS3 is BE
         /// </summary>
+        [Obsolete( "Use property \"ConvertEndianness\" from \"LuminaBinaryReader\" instead" )]
         public bool ShouldConvertEndianness
         {
             // todo: what about reading LE files on BE device? do we even care?
@@ -68,7 +69,7 @@ namespace Lumina.Data
             SqPackHeader = ss.GetSqPackHeader();
         }
 
-        protected T GetCachedFile< T >( long offset ) where T : FileResource
+        protected T? GetCachedFile< T >( long offset ) where T : FileResource
         {
             if( !FileCache.TryGetValue( offset, out var weakRef ) )
             {
@@ -83,14 +84,16 @@ namespace Lumina.Data
             // only return from cache if target type matches
             // otherwise we'll force a cache miss and parse it as per usual
             if( cachedFile is T obj )
+            {
                 return obj;
+            }
 
             return null;
         }
 
         public SqPackFileInfo GetFileMetadata( long offset )
         {
-            using var ss = new SqPackStream( File );
+            using var ss = new SqPackStream( File, SqPackHeader.platformId );
 
             return ss.GetFileMetadata( offset );
         }
@@ -107,8 +110,8 @@ namespace Lumina.Data
             
             if( !_gameData.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
-                using var ss = new SqPackStream( File );
-                return ss.ReadFile<T>( offset );
+                using var ss = new SqPackStream( File, SqPackHeader.platformId );
+                return ss.ReadFile< T >( offset );
             }
             
             
@@ -121,7 +124,7 @@ namespace Lumina.Data
                     return obj;
                 }
 
-                using var ss = new SqPackStream( File );
+                using var ss = new SqPackStream( File, SqPackHeader.platformId );
                 var file = ss.ReadFile< T >( offset );
                 
                 FileCache[ offset ] = new WeakReference< FileResource >( file );

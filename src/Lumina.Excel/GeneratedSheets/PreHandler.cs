@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PreHandler", columnHash: 0x724c1806 )]
-    public class PreHandler : ExcelRow
+    [Sheet( "PreHandler", columnHash: 0xf538c5ba )]
+    public partial class PreHandler : ExcelRow
     {
         
         public SeString Unknown0 { get; set; }
@@ -17,6 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DefaultTalk > AcceptMessage { get; set; }
         public LazyRow< DefaultTalk > DenyMessage { get; set; }
         public byte Unknown6 { get; set; }
+        public byte Unknown7 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -29,6 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
             AcceptMessage = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< uint >( 4 ), language );
             DenyMessage = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< uint >( 5 ), language );
             Unknown6 = parser.ReadColumn< byte >( 6 );
+            Unknown7 = parser.ReadColumn< byte >( 7 );
         }
     }
 }

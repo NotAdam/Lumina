@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "IKDSpot", columnHash: 0x96a22aea )]
-    public class IKDSpot : ExcelRow
+    [Sheet( "IKDSpot", columnHash: 0x18120639 )]
+    public partial class IKDSpot : ExcelRow
     {
         
         public LazyRow< FishingSpot > SpotMain { get; set; }

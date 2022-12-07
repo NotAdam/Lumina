@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DeepDungeonRoom", columnHash: 0x6be0e840 )]
-    public class DeepDungeonRoom : ExcelRow
+    [Sheet( "DeepDungeonRoom", columnHash: 0xdf5734d1 )]
+    public partial class DeepDungeonRoom : ExcelRow
     {
         
         public LazyRow< Level >[] Level { get; set; }

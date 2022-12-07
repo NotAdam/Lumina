@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Lobby", columnHash: 0x54075f2e )]
-    public class Lobby : ExcelRow
+    [Sheet( "Lobby", columnHash: 0x49f1d240 )]
+    public partial class Lobby : ExcelRow
     {
         
         public uint TYPE { get; set; }

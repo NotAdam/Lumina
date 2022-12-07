@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Tomestones", columnHash: 0xd870e208 )]
-    public class Tomestones : ExcelRow
+    [Sheet( "Tomestones", columnHash: 0x37d885d6 )]
+    public partial class Tomestones : ExcelRow
     {
         
         public ushort WeeklyLimit { get; set; }

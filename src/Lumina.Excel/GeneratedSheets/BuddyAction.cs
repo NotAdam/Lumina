@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BuddyAction", columnHash: 0x9a695bec )]
-    public class BuddyAction : ExcelRow
+    [Sheet( "BuddyAction", columnHash: 0x0e4db104 )]
+    public partial class BuddyAction : ExcelRow
     {
         
         public SeString Name { get; set; }

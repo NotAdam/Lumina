@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HowToCategory", columnHash: 0xdebb20e3 )]
-    public class HowToCategory : ExcelRow
+    [Sheet( "HowToCategory", columnHash: 0xc30c3087 )]
+    public partial class HowToCategory : ExcelRow
     {
         
         public SeString Category { get; set; }

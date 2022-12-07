@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Lumina.Data;
 using Lumina.Data.Structs;
 using Lumina.Excel;
@@ -33,6 +34,7 @@ namespace Lumina
         /// <summary>
         /// Reading PS3 dats on a LE machine means we need to convert endianness from BE where applicable
         /// </summary>
+        [Obsolete( "Use property \"ConvertEndianness\" from \"LuminaBinaryReader\" instead" )]
         public bool ShouldConvertEndianness => Options.CurrentPlatform == PlatformId.PS3 && BitConverter.IsLittleEndian;
         
         /// <summary>
@@ -49,12 +51,12 @@ namespace Lumina
         /// </summary>
         public FileHandleManager FileHandleManager { get; private set; }
         
-        internal ILogger Logger { get; private set; }
+        internal ILogger? Logger { get; private set; }
         
         /// <summary>
         /// Provides access to the current <see cref="GameData"/> object that was invoked on this thread (if any).
         /// </summary>
-        public static ThreadLocal< GameData > CurrentContext { get; private set; }
+        public static ThreadLocal< GameData >? CurrentContext { get; private set; }
 
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
@@ -62,7 +64,7 @@ namespace Lumina
         /// <param name="dataPath">Path to the sqpack directory</param>
         /// <param name="options">Options object to provide additional configuration</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
-        public GameData( string dataPath, LuminaOptions options = null )
+        public GameData( string dataPath, LuminaOptions? options = null! )
         {
             Options = options ?? new LuminaOptions();
 
@@ -78,10 +80,21 @@ namespace Lumina
                 throw new ArgumentException( "the data path arg must point to the sqpack directory", nameof( dataPath ) );
             }
 
-            Repositories = new Dictionary< string, Repository >();
-            foreach( var repo in DataPath.GetDirectories() )
+            if( options?.LoadMultithreaded == true )
             {
-                Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo, this );
+                var repoTasks = DataPath.GetDirectories().Select( repo => Task.Run( () => new Repository( repo, this ) ) );
+                Repositories = Task.WhenAll( repoTasks )
+                    .GetAwaiter()
+                    .GetResult()
+                    .ToDictionary( x => x.Name.ToLowerInvariant(), x => x );
+            }
+            else
+            {
+                Repositories = new Dictionary< string, Repository >();
+                foreach( var repo in DataPath.GetDirectories() )
+                {
+                    Repositories[ repo.Name.ToLowerInvariant() ] = new Repository( repo, this );
+                }
             }
 
             Excel = new ExcelModule( this );
@@ -95,7 +108,7 @@ namespace Lumina
         /// <param name="logger">An <see cref="ILogger"/> implementation that Lumina can send log events to</param>
         /// <param name="options">Options object to provide additional configuration</param>
         /// <exception cref="DirectoryNotFoundException">Thrown when the sqpack directory supplied is missing.</exception>
-        public GameData( string dataPath, ILogger logger, LuminaOptions options = null ) : this(dataPath, options)
+        public GameData( string dataPath, ILogger logger, LuminaOptions? options = null! ) : this(dataPath, options)
         {
             Logger = logger ?? throw new ArgumentNullException( nameof( logger ) );
         }
@@ -105,7 +118,7 @@ namespace Lumina
         /// </summary>
         /// <param name="path">A game filesystem path</param>
         /// <returns>A <see cref="ParsedFilePath"/> which contains extracted info from the path, along with the hashes used to access the file index</returns>
-        public static ParsedFilePath ParseFilePath( string path )
+        public static ParsedFilePath? ParseFilePath( string path )
         {
             if( string.IsNullOrWhiteSpace( path ) )
                 return null;
@@ -144,7 +157,7 @@ namespace Lumina
         /// </summary>
         /// <param name="path">A path to a file located inside the game's filesystem</param>
         /// <returns>The base <see cref="FileResource"/> if it was found, or null if it wasn't found</returns>
-        public FileResource GetFile( string path )
+        public FileResource? GetFile( string path )
         {
             return GetFile< FileResource >( path );
         }
@@ -155,7 +168,7 @@ namespace Lumina
         /// <param name="path">A path to a file located inside the game's filesystem</param>
         /// <typeparam name="T">The type of <see cref="FileResource"/> to load the raw file in to</typeparam>
         /// <returns>Returns the requested file if found, null if not</returns>
-        public T GetFile< T >( string path ) where T : FileResource
+        public T? GetFile< T >( string path ) where T : FileResource
         {
             SetCurrentContext();
             
@@ -193,9 +206,7 @@ namespace Lumina
 
             var file = Activator.CreateInstance< T >();
             file.Data = fileContent;
-            // todo: this is kind of fucked, we should probably choose one or the other and not both
-            file.FileStream = new MemoryStream( file.Data, false );
-            file.Reader = new BinaryReader( file.FileStream );
+            file.Reader = new LuminaBinaryReader( file.Data, Options.CurrentPlatform );
             file.LoadFile();
 
             return file;
@@ -260,7 +271,7 @@ namespace Lumina
         /// </summary>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >() where T : ExcelRow
+        public ExcelSheet< T >? GetExcelSheet< T >() where T : ExcelRow
         {
             return Excel.GetSheet< T >();
         }
@@ -274,7 +285,7 @@ namespace Lumina
         /// <param name="language">The requested sheet language</param>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetExcelSheet< T >( Language language ) where T : ExcelRow
+        public ExcelSheet< T >? GetExcelSheet< T >( Language language ) where T : ExcelRow
         {
             return Excel.GetSheet< T >( language );
         }

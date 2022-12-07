@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EventIconType", columnHash: 0x6ce9409c )]
-    public class EventIconType : ExcelRow
+    [Sheet( "EventIconType", columnHash: 0x162c4e8b )]
+    public partial class EventIconType : ExcelRow
     {
         
         public uint NpcIconAvailable { get; set; }

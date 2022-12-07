@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ModelState", columnHash: 0xd73eab80 )]
-    public class ModelState : ExcelRow
+    [Sheet( "ModelState", columnHash: 0xa705b541 )]
+    public partial class ModelState : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

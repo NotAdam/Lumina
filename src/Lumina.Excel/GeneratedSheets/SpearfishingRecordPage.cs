@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SpearfishingRecordPage", columnHash: 0x4f78acda )]
-    public class SpearfishingRecordPage : ExcelRow
+    [Sheet( "SpearfishingRecordPage", columnHash: 0x1f90d70a )]
+    public partial class SpearfishingRecordPage : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActionProcStatus", columnHash: 0xd870e208 )]
-    public class ActionProcStatus : ExcelRow
+    [Sheet( "ActionProcStatus", columnHash: 0x89d395c6 )]
+    public partial class ActionProcStatus : ExcelRow
     {
         
         public LazyRow< Status > Status { get; set; }

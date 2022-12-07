@@ -23,7 +23,7 @@ namespace Lumina.Data.Files.Excel
 
         public override void LoadFile()
         {
-            using var sr = new StreamReader( FileStream );
+            using var sr = new StreamReader( Reader.BaseStream );
 
             // read version
             var headerStr = sr.ReadLine();
@@ -44,16 +44,27 @@ namespace Lumina.Data.Files.Excel
             Version = int.Parse( headerData[ 1 ] );
 
             // read exd mappings
-            string row;
+            string? row;
             while( ( row = sr.ReadLine() ) != null )
             {
+                if( row.Length == 0 )
+                {
+                    continue;
+                }
+                
+                // ignore commented rows - thanks SE
+                if( row[ 0 ] == '#' )
+                {
+                    continue;
+                }
+                
                 var data = row.Split( ',' );
                 var id = int.Parse( data[ 1 ] );
 
                 ExdMap[ data[ 0 ] ] = id;
             }
 
-            FileStream.Position = 0;
+            Reader.Position = 0;
         }
     }
 }

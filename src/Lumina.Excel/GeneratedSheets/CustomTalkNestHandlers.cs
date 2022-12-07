@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CustomTalkNestHandlers", columnHash: 0xdbf43666 )]
-    public class CustomTalkNestHandlers : ExcelRow
+    [Sheet( "CustomTalkNestHandlers", columnHash: 0xdc354730 )]
+    public partial class CustomTalkNestHandlers : ExcelRow
     {
         
         public uint NestHandler { get; set; }

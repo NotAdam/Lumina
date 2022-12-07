@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TextCommand", columnHash: 0x5d4b4e4b )]
-    public class TextCommand : ExcelRow
+    [Sheet( "TextCommand", columnHash: 0x76eacde5 )]
+    public partial class TextCommand : ExcelRow
     {
         
         public byte Unknown0 { get; set; }
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString Description { get; set; }
         public SeString Alias { get; set; }
         public SeString ShortAlias { get; set; }
-        public ushort Unknown10 { get; set; }
+        public LazyRow< TextCommandParam > Param { get; set; }
         public uint Unknown11 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -37,7 +37,7 @@ namespace Lumina.Excel.GeneratedSheets
             Description = parser.ReadColumn< SeString >( 7 );
             Alias = parser.ReadColumn< SeString >( 8 );
             ShortAlias = parser.ReadColumn< SeString >( 9 );
-            Unknown10 = parser.ReadColumn< ushort >( 10 );
+            Param = new LazyRow< TextCommandParam >( gameData, parser.ReadColumn< ushort >( 10 ), language );
             Unknown11 = parser.ReadColumn< uint >( 11 );
         }
     }

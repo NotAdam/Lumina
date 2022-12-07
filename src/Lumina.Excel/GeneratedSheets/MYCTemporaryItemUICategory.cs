@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MYCTemporaryItemUICategory", columnHash: 0x9db0e48f )]
-    public class MYCTemporaryItemUICategory : ExcelRow
+    [Sheet( "MYCTemporaryItemUICategory", columnHash: 0x7a08c988 )]
+    public partial class MYCTemporaryItemUICategory : ExcelRow
     {
         
         public SeString Name { get; set; }

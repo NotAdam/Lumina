@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DefaultTalkLipSyncType", columnHash: 0xda365c51 )]
-    public class DefaultTalkLipSyncType : ExcelRow
+    [Sheet( "DefaultTalkLipSyncType", columnHash: 0xaed1d46c )]
+    public partial class DefaultTalkLipSyncType : ExcelRow
     {
         
         public LazyRow< ActionTimeline > ActionTimeline { get; set; }

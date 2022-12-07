@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Aetheryte", columnHash: 0xcd1e31a4 )]
-    public class Aetheryte : ExcelRow
+    [Sheet( "Aetheryte", columnHash: 0xdaea04dd )]
+    public partial class Aetheryte : ExcelRow
     {
         
         public SeString Singular { get; set; }
@@ -25,7 +25,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsAetheryte { get; set; }
         public SeString Unknown16 { get; set; }
         public byte AethernetGroup { get; set; }
-        public bool Unknown18 { get; set; }
+        public bool Invisible { get; set; }
         public LazyRow< Quest > RequiredQuest { get; set; }
         public LazyRow< Map > Map { get; set; }
         public short AetherstreamX { get; set; }
@@ -53,7 +53,7 @@ namespace Lumina.Excel.GeneratedSheets
             IsAetheryte = parser.ReadColumn< bool >( 15 );
             Unknown16 = parser.ReadColumn< SeString >( 16 );
             AethernetGroup = parser.ReadColumn< byte >( 17 );
-            Unknown18 = parser.ReadColumn< bool >( 18 );
+            Invisible = parser.ReadColumn< bool >( 18 );
             RequiredQuest = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 19 ), language );
             Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 20 ), language );
             AetherstreamX = parser.ReadColumn< short >( 21 );

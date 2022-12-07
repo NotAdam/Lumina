@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDInfoBoardArticleType", columnHash: 0xdebb20e3 )]
-    public class HWDInfoBoardArticleType : ExcelRow
+    [Sheet( "HWDInfoBoardArticleType", columnHash: 0xaed1d46c )]
+    public partial class HWDInfoBoardArticleType : ExcelRow
     {
         
         public SeString Type { get; set; }

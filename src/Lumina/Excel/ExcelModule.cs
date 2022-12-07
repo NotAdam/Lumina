@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
 using Lumina.Excel.Exceptions;
+using Lumina.Excel.RSV;
 
 namespace Lumina.Excel
 {
+    using CacheKeyTuple = Tuple< Language, string, ulong >;
+
     public class ExcelModule
     {
         private readonly GameData _gameData;
@@ -17,40 +21,51 @@ namespace Lumina.Excel
         /// <remarks>
         /// Not actually used for anything in lumina, but kept for reference
         /// </remarks>
-        public readonly Dictionary< int, string > ImmutableIdToSheetMap;
+        private readonly Dictionary< int, string > _immutableIdToSheetMap = new();
 
         /// <summary>
         /// A list of all available sheets, pulled from root.exl
         /// </summary>
-        public readonly List< string > SheetNames;
+        private readonly List< string > _sheetNames = new();
 
-        private readonly Dictionary< Tuple< Language, ulong >, ExcelSheetImpl > _sheetCache;
+        private readonly Dictionary< CacheKeyTuple, ExcelSheetImpl > _sheetCache = new();
 
-        private readonly object _sheetCreateLock = new object();
+        private readonly object _sheetCreateLock = new();
 
+        /// <summary>
+        /// Allows for lumina to transparently substitute values where they are hidden in sheets by SE. Can be seeded from packets or static data at init time.
+        /// </summary>
+        public RsvProvider RsvProvider { get; } = new();
+
+        /// <summary>
+        /// Create a new ExcelModule. This will do all the initial discovery of sheets from the EXL but not load any sheets.
+        /// </summary>
+        /// <param name="gameData">The gamedata instance to use to load sheets from</param>
+        /// <exception cref="FileNotFoundException">Thrown when the root.exl file cannot be found - make sure that an 0a dat is available.</exception>
         public ExcelModule( GameData gameData )
         {
             _gameData = gameData;
-            ImmutableIdToSheetMap = new Dictionary< int, string >();
-            SheetNames = new List< string >();
-
-            _sheetCache = new Dictionary< Tuple< Language, ulong >, ExcelSheetImpl >();
 
             // load all sheet names first
             var files = _gameData.GetFile< ExcelListFile >( "exd/root.exl" );
+
+            if( files == null )
+            {
+                throw new FileNotFoundException( "Unable to load exd/root.exl!" );
+            }
 
             _gameData.Logger?.Information("got {ExltEntryCount} exlt entries", files.ExdMap.Count);
 
             foreach( var map in files.ExdMap )
             {
-                SheetNames.Add( map.Key );
+                _sheetNames.Add( map.Key );
 
                 if( map.Value == -1 )
                 {
                     continue;
                 }
 
-                ImmutableIdToSheetMap[ map.Value ] = map.Key;
+                _immutableIdToSheetMap[ map.Value ] = map.Key;
             }
         }
 
@@ -58,7 +73,7 @@ namespace Lumina.Excel
         /// Generates a path to the header file, given a sheet name.
         /// </summary>
         /// <remarks>
-        /// Sheet names must be in the same format as they're in root.exl. You can see all available sheets by iterating <see cref="SheetNames"/>.
+        /// Sheet names must be in the same format as they're in root.exl. You can see all available sheets by iterating <see cref="_sheetNames"/>.
         /// </remarks>
         /// <param name="name">A sheet name</param>
         /// <returns>An absolute path to an excel header file</returns>
@@ -72,7 +87,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >() where T : ExcelRow
+        public ExcelSheet< T >? GetSheet< T >() where T : ExcelRow
         {
             return GetSheet< T >( _gameData.Options.DefaultExcelLanguage );
         }
@@ -86,7 +101,7 @@ namespace Lumina.Excel
         /// <param name="language">The requested sheet language</param>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( Language language ) where T : ExcelRow
+        public ExcelSheet< T >? GetSheet< T >( Language language ) where T : ExcelRow
         {
             var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
 
@@ -106,9 +121,23 @@ namespace Lumina.Excel
         /// <param name="name">The name of a sheet</param>
         /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
         /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T > GetSheet< T >( string name ) where T : ExcelRow
+        public ExcelSheet< T >? GetSheet< T >( string name ) where T : ExcelRow
         {
             return GetSheet< T >( name, _gameData.Options.DefaultExcelLanguage, null );
+        }
+        
+        /// <summary>
+        /// Get a sheet by it's name with a given type.
+        ///
+        /// Useful for when a schema is shared (e.g. in the case of quest text sheets) as redefining loads of classes is wasteful.
+        /// </summary>
+        /// <param name="language">The requested sheet language</param>
+        /// <param name="name">The name of a sheet</param>
+        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
+        public ExcelSheet< T >? GetSheet< T >( Language language, string name ) where T : ExcelRow
+        {
+            return GetSheet< T >( name, language, null );
         }
 
         private ulong BuildTypeIdentifier( Type type )
@@ -124,19 +153,39 @@ namespace Lumina.Excel
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
             
+            var attr = typeof( T ).GetCustomAttribute< SheetAttribute >();
+
+            if( attr == null )
+            {
+                return;
+            }
+            
+            RemoveSheetFromCache< T >( attr.Name );
+        }
+
+        /// <summary>
+        /// Remove a sheet from the cache by name and free any related resources
+        /// </summary>
+        /// <param name="name">The name of the sheet</param>
+        /// <typeparam name="T">The sheet type</typeparam>
+        public void RemoveSheetFromCache< T >( string name ) where T : ExcelRow
+        {
+            var tid = BuildTypeIdentifier( typeof( T ) );
+            
             foreach( Language language in Enum.GetValues( typeof( Language ) ) )
             {
-                var id = Tuple.Create( language, tid );
+                var id = Tuple.Create( language, name, tid );
 
                 _sheetCache.Remove( id );
             }
         }
 
-        private ExcelSheet< T > GetSheet< T >( string name, Language language, uint? expectedHash ) where T : ExcelRow
+        private ExcelSheet< T >? GetSheet< T >( string name, Language language, uint? expectedHash ) where T : ExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
-            var idNoLanguage = Tuple.Create( Language.None, tid );
-            var id = Tuple.Create( language, tid );
+            var lowerName = name.ToLowerInvariant();
+            var idNoLanguage = Tuple.Create( Language.None, lowerName, tid );
+            var id = Tuple.Create( language, lowerName, tid );
 
             // attempt to get non-localised sheet first, then attempt to fetch a localised sheet from the cache
             if( _sheetCache.TryGetValue( idNoLanguage, out var sheet ) )
@@ -159,12 +208,12 @@ namespace Lumina.Excel
             }
         }
 
-        private ExcelSheet< T > CreateNewSheet< T >(
+        private ExcelSheet< T >? CreateNewSheet< T >(
             string name,
             Language language,
             uint? expectedHash,
-            Tuple< Language, ulong > key,
-            Tuple< Language, ulong > noLangKey
+            CacheKeyTuple key,
+            CacheKeyTuple noLangKey
         ) where T : ExcelRow
         {
             _gameData.Logger?.Debug(
@@ -201,8 +250,8 @@ namespace Lumina.Excel
                 }
             }
 
-            var newSheet = (ExcelSheet< T >)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _gameData );
-            newSheet.GenerateFilePages();
+            var newSheet = (ExcelSheet< T >?)Activator.CreateInstance( typeof( ExcelSheet< T > ), headerFile, name, language, _gameData );
+            newSheet!.GenerateFilePages();
 
             var id = key;
 
@@ -226,7 +275,7 @@ namespace Lumina.Excel
         /// </summary>
         /// <param name="name">Name of the sheet to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl GetSheetRaw( string name )
+        public RawExcelSheet? GetSheetRaw( string name )
         {
             return GetSheetRaw( name, _gameData.Options.DefaultExcelLanguage );
         }
@@ -237,10 +286,9 @@ namespace Lumina.Excel
         /// <param name="name">Name of the sheet to load</param>
         /// <param name="language">The requested language to load</param>
         /// <returns>A ExcelSheetImpl object, or null if the sheet name was not found.</returns>
-        public ExcelSheetImpl GetSheetRaw( string name, Language language )
+        public RawExcelSheet? GetSheetRaw( string name, Language language )
         {
             // todo: duped code is a bit ass but zzz
-            // todo: expose useful functions to ExcelSheetImpl like getrow(s) and so on
 
             // create new sheet
             var path = BuildExcelHeaderPath( name );
@@ -251,7 +299,7 @@ namespace Lumina.Excel
                 return null;
             }
 
-            var newSheet = new ExcelSheetImpl( headerFile, name, language, _gameData );
+            var newSheet = new RawExcelSheet( headerFile, name, language, _gameData );
             newSheet.GenerateFilePages();
 
             return newSheet;
@@ -284,5 +332,11 @@ namespace Lumina.Excel
 
             return attr.ColumnHash == headerFile.GetColumnsHash();
         }
+
+        /// <summary>
+        /// Get all available sheets, parsed from root.exl.
+        /// </summary>
+        /// <returns>A readonly collection of all available excel sheets</returns>
+        public IReadOnlyCollection< string > GetSheetNames() => _sheetNames;
     }
 }

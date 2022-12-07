@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HousingLandSet", columnHash: 0xc557f79e )]
-    public class HousingLandSet : ExcelRow
+    [Sheet( "HousingLandSet", columnHash: 0xe121fd9d )]
+    public partial class HousingLandSet : ExcelRow
     {
         
         public byte[] PlotSize { get; set; }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FCHierarchy", columnHash: 0xdebb20e3 )]
-    public class FCHierarchy : ExcelRow
+    [Sheet( "FCHierarchy", columnHash: 0xb40b0011 )]
+    public partial class FCHierarchy : ExcelRow
     {
         
         public SeString Name { get; set; }

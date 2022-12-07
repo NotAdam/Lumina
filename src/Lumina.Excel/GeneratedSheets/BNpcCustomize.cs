@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BNpcCustomize", columnHash: 0x18f060d4 )]
-    public class BNpcCustomize : ExcelRow
+    [Sheet( "BNpcCustomize", columnHash: 0xa90361f5 )]
+    public partial class BNpcCustomize : ExcelRow
     {
         
         public LazyRow< Race > Race { get; set; }

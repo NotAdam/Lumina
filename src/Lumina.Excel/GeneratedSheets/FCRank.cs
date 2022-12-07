@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FCRank", columnHash: 0x0105b558 )]
-    public class FCRank : ExcelRow
+    [Sheet( "FCRank", columnHash: 0x0e804ff7 )]
+    public partial class FCRank : ExcelRow
     {
         
         public uint NextPoint { get; set; }
@@ -17,7 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Unknown4 { get; set; }
         public byte FCActionActiveNum { get; set; }
         public byte FCActionStockNum { get; set; }
-        public byte Unknown7 { get; set; }
+        public byte FCChestCompartments { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -30,7 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown4 = parser.ReadColumn< ushort >( 4 );
             FCActionActiveNum = parser.ReadColumn< byte >( 5 );
             FCActionStockNum = parser.ReadColumn< byte >( 6 );
-            Unknown7 = parser.ReadColumn< byte >( 7 );
+            FCChestCompartments = parser.ReadColumn< byte >( 7 );
         }
     }
 }

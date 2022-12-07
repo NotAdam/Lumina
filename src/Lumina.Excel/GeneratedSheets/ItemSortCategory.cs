@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ItemSortCategory", columnHash: 0xdcfd9eba )]
-    public class ItemSortCategory : ExcelRow
+    [Sheet( "ItemSortCategory", columnHash: 0xa1d12d58 )]
+    public partial class ItemSortCategory : ExcelRow
     {
         
         public byte Param { get; set; }

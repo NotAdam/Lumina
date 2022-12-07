@@ -6,14 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringPointBase", columnHash: 0x73fa0924 )]
-    public class GatheringPointBase : ExcelRow
+    [Sheet( "GatheringPointBase", columnHash: 0x5ff8b0d2 )]
+    public partial class GatheringPointBase : ExcelRow
     {
         
         public LazyRow< GatheringType > GatheringType { get; set; }
         public byte GatheringLevel { get; set; }
         public int[] Item { get; set; }
-        public bool IsLimited { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -24,7 +23,6 @@ namespace Lumina.Excel.GeneratedSheets
             Item = new int[ 8 ];
             for( var i = 0; i < 8; i++ )
                 Item[ i ] = parser.ReadColumn< int >( 2 + i );
-            IsLimited = parser.ReadColumn< bool >( 10 );
         }
     }
 }

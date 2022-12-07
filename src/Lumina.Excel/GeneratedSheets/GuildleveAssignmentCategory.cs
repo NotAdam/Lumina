@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GuildleveAssignmentCategory", columnHash: 0xeb15b554 )]
-    public class GuildleveAssignmentCategory : ExcelRow
+    [Sheet( "GuildleveAssignmentCategory", columnHash: 0xaae6036a )]
+    public partial class GuildleveAssignmentCategory : ExcelRow
     {
         
         public LazyRow< LeveAssignmentType >[] Category { get; set; }

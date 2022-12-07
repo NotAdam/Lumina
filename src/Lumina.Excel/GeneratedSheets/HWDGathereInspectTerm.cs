@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDGathereInspectTerm", columnHash: 0xdebb20e3 )]
-    public class HWDGathereInspectTerm : ExcelRow
+    [Sheet( "HWDGathereInspectTerm", columnHash: 0xaed1d46c )]
+    public partial class HWDGathereInspectTerm : ExcelRow
     {
         
         public SeString Name { get; set; }

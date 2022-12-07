@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ClassJob", columnHash: 0x590ba68f )]
-    public class ClassJob : ExcelRow
+    [Sheet( "ClassJob", columnHash: 0xbb4492b0 )]
+    public partial class ClassJob : ExcelRow
     {
         
         public SeString Name { get; set; }
@@ -54,6 +54,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Quest > Prerequisite { get; set; }
         public byte StartingLevel { get; set; }
         public byte PartyBonus { get; set; }
+        public byte Unknown44 { get; set; }
         public bool IsLimitedJob { get; set; }
         public bool CanQueueForDuty { get; set; }
         
@@ -105,8 +106,9 @@ namespace Lumina.Excel.GeneratedSheets
             Prerequisite = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 41 ), language );
             StartingLevel = parser.ReadColumn< byte >( 42 );
             PartyBonus = parser.ReadColumn< byte >( 43 );
-            IsLimitedJob = parser.ReadColumn< bool >( 44 );
-            CanQueueForDuty = parser.ReadColumn< bool >( 45 );
+            Unknown44 = parser.ReadColumn< byte >( 44 );
+            IsLimitedJob = parser.ReadColumn< bool >( 45 );
+            CanQueueForDuty = parser.ReadColumn< bool >( 46 );
         }
     }
 }

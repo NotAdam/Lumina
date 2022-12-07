@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActivityFeedImages", columnHash: 0x530c5199 )]
-    public class ActivityFeedImages : ExcelRow
+    [Sheet( "ActivityFeedImages", columnHash: 0xc8f80455 )]
+    public partial class ActivityFeedImages : ExcelRow
     {
         
         public SeString ExpansionImage { get; set; }

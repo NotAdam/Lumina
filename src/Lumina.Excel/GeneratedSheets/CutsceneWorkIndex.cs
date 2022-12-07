@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CutsceneWorkIndex", columnHash: 0xd870e208 )]
-    public class CutsceneWorkIndex : ExcelRow
+    [Sheet( "CutsceneWorkIndex", columnHash: 0x8ff2f200 )]
+    public partial class CutsceneWorkIndex : ExcelRow
     {
         
         public ushort WorkIndex { get; set; }

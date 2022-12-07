@@ -1,6 +1,6 @@
 namespace Lumina
 {
-    public class ParsedFilePath
+    public record ParsedFilePath
     {
         /// <summary>
         /// The repository (or expansion) that a file belongs to.
@@ -9,6 +9,11 @@ namespace Lumina
         /// </summary>
         public string Repository { get; internal set; }
         
+        /// <summary>
+        /// The category of the file, essentially it's 'container'
+        ///
+        /// bg, game_script, etc.
+        /// </summary>
         public string Category { get; internal set; }
         
         /// <summary>

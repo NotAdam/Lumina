@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InclusionShopCategory", columnHash: 0x3b24d05f )]
-    public class InclusionShopCategory : ExcelRow
+    [Sheet( "InclusionShopCategory", columnHash: 0xd9204157 )]
+    public partial class InclusionShopCategory : ExcelRow
     {
         
         public SeString Name { get; set; }

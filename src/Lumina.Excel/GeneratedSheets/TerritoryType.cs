@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TerritoryType", columnHash: 0xb7598447 )]
-    public class TerritoryType : ExcelRow
+    [Sheet( "TerritoryType", columnHash: 0xe68a11a6 )]
+    public partial class TerritoryType : ExcelRow
     {
         
         public SeString Name { get; set; }
@@ -20,7 +20,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte LoadingImage { get; set; }
         public byte ExclusiveType { get; set; }
         public byte TerritoryIntendedUse { get; set; }
-        public ushort Unknown10 { get; set; }
+        public LazyRow< ContentFinderCondition > ContentFinderCondition { get; set; }
         public bool Unknown11 { get; set; }
         public byte WeatherRate { get; set; }
         public bool Unknown13 { get; set; }
@@ -29,7 +29,7 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Stealth { get; set; }
         public bool Mount { get; set; }
         public bool Unknown18 { get; set; }
-        public LazyRow< BGM > BGM { get; set; }
+        public ushort BGM { get; set; }
         public int PlaceNameRegionIcon { get; set; }
         public int PlaceNameIcon { get; set; }
         public LazyRow< ArrayEventHandler > ArrayEventHandler { get; set; }
@@ -42,7 +42,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ExVersion > ExVersion { get; set; }
         public byte Unknown30 { get; set; }
         public byte Unknown31 { get; set; }
-        public byte AddedIn53 { get; set; }
+        public byte Unknown32 { get; set; }
         public LazyRow< MountSpeed > MountSpeed { get; set; }
         public bool Unknown34 { get; set; }
         public bool Unknown35 { get; set; }
@@ -50,7 +50,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown37 { get; set; }
         public bool Unknown38 { get; set; }
         public bool Unknown39 { get; set; }
-        public bool Unknown54 { get; set; }
+        public bool Unknown40 { get; set; }
+        public bool Unknown41 { get; set; }
+        public ushort Unknown42 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -66,7 +68,7 @@ namespace Lumina.Excel.GeneratedSheets
             LoadingImage = parser.ReadColumn< byte >( 7 );
             ExclusiveType = parser.ReadColumn< byte >( 8 );
             TerritoryIntendedUse = parser.ReadColumn< byte >( 9 );
-            Unknown10 = parser.ReadColumn< ushort >( 10 );
+            ContentFinderCondition = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< ushort >( 10 ), language );
             Unknown11 = parser.ReadColumn< bool >( 11 );
             WeatherRate = parser.ReadColumn< byte >( 12 );
             Unknown13 = parser.ReadColumn< bool >( 13 );
@@ -75,7 +77,7 @@ namespace Lumina.Excel.GeneratedSheets
             Stealth = parser.ReadColumn< bool >( 16 );
             Mount = parser.ReadColumn< bool >( 17 );
             Unknown18 = parser.ReadColumn< bool >( 18 );
-            BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 19 ), language );
+            BGM = parser.ReadColumn< ushort >( 19 );
             PlaceNameRegionIcon = parser.ReadColumn< int >( 20 );
             PlaceNameIcon = parser.ReadColumn< int >( 21 );
             ArrayEventHandler = new LazyRow< ArrayEventHandler >( gameData, parser.ReadColumn< uint >( 22 ), language );
@@ -88,7 +90,7 @@ namespace Lumina.Excel.GeneratedSheets
             ExVersion = new LazyRow< ExVersion >( gameData, parser.ReadColumn< byte >( 29 ), language );
             Unknown30 = parser.ReadColumn< byte >( 30 );
             Unknown31 = parser.ReadColumn< byte >( 31 );
-            AddedIn53 = parser.ReadColumn< byte >( 32 );
+            Unknown32 = parser.ReadColumn< byte >( 32 );
             MountSpeed = new LazyRow< MountSpeed >( gameData, parser.ReadColumn< byte >( 33 ), language );
             Unknown34 = parser.ReadColumn< bool >( 34 );
             Unknown35 = parser.ReadColumn< bool >( 35 );
@@ -96,7 +98,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown37 = parser.ReadColumn< bool >( 37 );
             Unknown38 = parser.ReadColumn< bool >( 38 );
             Unknown39 = parser.ReadColumn< bool >( 39 );
-            Unknown54 = parser.ReadColumn< bool >( 40 );
+            Unknown40 = parser.ReadColumn< bool >( 40 );
+            Unknown41 = parser.ReadColumn< bool >( 41 );
+            Unknown42 = parser.ReadColumn< ushort >( 42 );
         }
     }
 }

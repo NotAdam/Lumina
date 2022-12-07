@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+        <TargetFrameworks>net5.0;net6.0</TargetFrameworks>
         <LangVersion>latestmajor</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>NotAdam</Authors>
@@ -12,16 +12,12 @@
         <FileVersion>2.0.0</FileVersion>
         <Description>Lumina is a small, performant and simple library for interacting with FINAL FANTASY XIV game data.</Description>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="../../LICENSE" Pack="true" PackagePath="" />
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-        <PackageReference Include="System.Memory" Version="4.5.3" />
-        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-        <PackageReference Include="IndexRange" Version="1.0.0" />
     </ItemGroup>
 
     <PropertyGroup>

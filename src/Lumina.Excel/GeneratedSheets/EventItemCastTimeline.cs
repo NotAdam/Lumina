@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EventItemCastTimeline", columnHash: 0xdbf43666 )]
-    public class EventItemCastTimeline : ExcelRow
+    [Sheet( "EventItemCastTimeline", columnHash: 0x30b541cf )]
+    public partial class EventItemCastTimeline : ExcelRow
     {
         
         public LazyRow< ActionTimeline > ActionTimeline { get; set; }

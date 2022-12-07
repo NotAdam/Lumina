@@ -6,19 +6,15 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "WarpLogic", columnHash: 0x78e83215 )]
-    public class WarpLogic : ExcelRow
+    [Sheet( "WarpLogic", columnHash: 0xeb5c8d58 )]
+    public partial class WarpLogic : ExcelRow
     {
-        public struct UnkStruct13Struct
-        {
-            public uint Argument;
-        }
         
         public uint Unknown0 { get; set; }
         public SeString WarpName { get; set; }
         public bool CanSkipCutscene { get; set; }
         public SeString[] Function { get; set; }
-        public UnkStruct13Struct[] UnkStruct13 { get; set; }
+        public uint[] Argument { get; set; }
         public SeString Question { get; set; }
         public SeString ResponseYes { get; set; }
         public SeString ResponseNo { get; set; }
@@ -33,12 +29,9 @@ namespace Lumina.Excel.GeneratedSheets
             Function = new SeString[ 10 ];
             for( var i = 0; i < 10; i++ )
                 Function[ i ] = parser.ReadColumn< SeString >( 3 + i );
-            UnkStruct13 = new UnkStruct13Struct[ 10 ];
+            Argument = new uint[ 10 ];
             for( var i = 0; i < 10; i++ )
-            {
-                UnkStruct13[ i ] = new UnkStruct13Struct();
-                UnkStruct13[ i ].Argument = parser.ReadColumn< uint >( 13 + ( i * 1 + 0 ) );
-            }
+                Argument[ i ] = parser.ReadColumn< uint >( 13 + i );
             Question = parser.ReadColumn< SeString >( 23 );
             ResponseYes = parser.ReadColumn< SeString >( 24 );
             ResponseNo = parser.ReadColumn< SeString >( 25 );

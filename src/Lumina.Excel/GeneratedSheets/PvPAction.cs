@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PvPAction", columnHash: 0x3818ca1d )]
-    public class PvPAction : ExcelRow
+    [Sheet( "PvPAction", columnHash: 0x2855b882 )]
+    public partial class PvPAction : ExcelRow
     {
         
         public LazyRow< Action > Action { get; set; }

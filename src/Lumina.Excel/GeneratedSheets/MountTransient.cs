@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MountTransient", columnHash: 0x7f711762 )]
-    public class MountTransient : ExcelRow
+    [Sheet( "MountTransient", columnHash: 0x705a6eea )]
+    public partial class MountTransient : ExcelRow
     {
         
         public SeString Description { get; set; }

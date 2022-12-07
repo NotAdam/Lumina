@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DpsChallengeTransient", columnHash: 0xd870e208 )]
-    public class DpsChallengeTransient : ExcelRow
+    [Sheet( "DpsChallengeTransient", columnHash: 0xbb0bf925 )]
+    public partial class DpsChallengeTransient : ExcelRow
     {
         
         public LazyRow< InstanceContent > InstanceContent { get; set; }

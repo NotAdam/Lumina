@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "LeveClient", columnHash: 0xdebb20e3 )]
-    public class LeveClient : ExcelRow
+    [Sheet( "LeveClient", columnHash: 0x827f4dd7 )]
+    public partial class LeveClient : ExcelRow
     {
         
         public SeString Name { get; set; }

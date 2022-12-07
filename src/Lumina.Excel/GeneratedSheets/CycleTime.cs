@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CycleTime", columnHash: 0x5d58cc84 )]
-    public class CycleTime : ExcelRow
+    [Sheet( "CycleTime", columnHash: 0x04b9b535 )]
+    public partial class CycleTime : ExcelRow
     {
         
         public uint FirstCycle { get; set; }

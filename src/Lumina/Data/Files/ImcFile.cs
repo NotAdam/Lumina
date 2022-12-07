@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Lumina.Data.Attributes;
+// ReSharper disable InconsistentNaming
 
 namespace Lumina.Data.Files
 {
@@ -23,9 +23,9 @@ namespace Lumina.Data.Files
 
             public byte VfxId;
             private byte _MaterialAnimationIdMask;
-            public byte MaterialAnimationId => (byte)( _MaterialAnimationIdMask & 0xF000 );
+            public byte MaterialAnimationId => (byte)( _MaterialAnimationIdMask & 0x0F );
 
-            public static ImageChangeData Read( BinaryReader br )
+            public static ImageChangeData Read( LuminaBinaryReader br )
             {
                 var imc = new ImageChangeData();
 
@@ -35,6 +35,12 @@ namespace Lumina.Data.Files
                 imc.VfxId = br.ReadByte();
                 imc._MaterialAnimationIdMask = br.ReadByte();
 
+                if( br.PlatformId == Structs.PlatformId.PS3 )
+                {
+                    imc._AttributeAndSound = (ushort)( ( imc._AttributeAndSound << 10 ) | ( imc._AttributeAndSound >> 6 ) );
+                    imc._MaterialAnimationIdMask = (byte)( imc._MaterialAnimationIdMask >> 4 );
+                }
+
                 return imc;
             }
         }
@@ -43,9 +49,9 @@ namespace Lumina.Data.Files
         {
             public ImageChangeData DefaultVariant;
             public ImageChangeData[] Variants;
-            internal List< ImageChangeData > VariantList;
+            internal List< ImageChangeData >? VariantList;
 
-            public static ImageChangeParts Read( BinaryReader br, int variantCount )
+            public static ImageChangeParts Read( LuminaBinaryReader br, int variantCount )
             {
                 var parts = new ImageChangeParts();
 
@@ -59,7 +65,7 @@ namespace Lumina.Data.Files
 
             internal void Init()
             {
-                Variants = VariantList.ToArray();
+                Variants = VariantList!.ToArray();
                 VariantList = null;
             }
         }

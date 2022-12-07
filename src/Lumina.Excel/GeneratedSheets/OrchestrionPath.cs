@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "OrchestrionPath", columnHash: 0xdebb20e3 )]
-    public class OrchestrionPath : ExcelRow
+    [Sheet( "OrchestrionPath", columnHash: 0xba3e8642 )]
+    public partial class OrchestrionPath : ExcelRow
     {
         
         public SeString File { get; set; }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentTalk", columnHash: 0x5eb59ccb )]
-    public class ContentTalk : ExcelRow
+    [Sheet( "ContentTalk", columnHash: 0x991cc5aa )]
+    public partial class ContentTalk : ExcelRow
     {
         
         public LazyRow< ContentTalkParam > ContentTalkParam { get; set; }

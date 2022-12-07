@@ -1,5 +1,4 @@
 using System;
-using System.Buffers;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -13,23 +12,27 @@ namespace Lumina.Data
     {
         public Stream BaseStream { get; }
 
-        protected BinaryReader Reader { get; }
+        protected LuminaBinaryReader Reader { get; }
 
-        public SqPackStream( FileInfo file ) : this( file.OpenRead() )
+        public SqPackStream( FileInfo file ) : this( file.OpenRead(), PlatformId.Win32 )
         {
         }
 
-        public SqPackStream( Stream stream )
+        public SqPackStream( FileInfo file, PlatformId platformId ) : this( file.OpenRead(), platformId )
+        {
+        }
+
+        public SqPackStream( Stream stream, PlatformId platformId )
         {
             BaseStream = stream;
-            Reader = new BinaryReader( BaseStream );
+            Reader = new LuminaBinaryReader( BaseStream, platformId );
         }
 
         public SqPackHeader GetSqPackHeader()
         {
             BaseStream.Position = 0;
 
-            return Reader.ReadStructure< SqPackHeader >();
+            return SqPackHeader.Read( Reader );
         }
 
         public SqPackFileInfo GetFileMetadata( long offset )
@@ -107,9 +110,7 @@ namespace Lumina.Data
                 Debug.WriteLine( "Read data size does not match file size." );
             }
 
-            file.FileStream = new MemoryStream( file.Data, false );
-            file.Reader = new BinaryReader( file.FileStream );
-            file.FileStream.Position = 0;
+            file.Reader = new LuminaBinaryReader( file.Data, Reader.PlatformId );
 
             file.LoadFile();
 
@@ -148,7 +149,7 @@ namespace Lumina.Data
             for( int i = 0; i < 3; i++ )
                 totalBlocks += mdlBlock.IndexBufferBlockNum[ i ];
 
-            var compressedBlockSizes = Reader.ReadStructures< UInt16 >( totalBlocks );
+            var compressedBlockSizes = Reader.ReadUInt16Array( totalBlocks );
             int currentBlock = 0;
             int stackSize;
             int runtimeSize;
@@ -260,7 +261,22 @@ namespace Lumina.Data
 
         private void ReadTextureFile( FileResource resource, byte[] buffer, MemoryStream ms )
         {
-            var blocks = Reader.ReadStructures< LodBlock >( (int)resource.FileInfo.BlockCount );
+            int lodBlocks = (int)resource.FileInfo.BlockCount;
+
+            if( Reader.PlatformId == PlatformId.PS3 )
+            {
+                // unknown use
+                _ = Reader.ReadStructures< ReferenceBlockRange >( 3 );
+
+                long originalPos = BaseStream.Position;
+
+                BaseStream.Position = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
+                lodBlocks = ( Reader.ReadUInt32() & (uint)Files.TexFile.Attribute.TextureTypeCube ) != 0 ? 18 : 3;
+
+                BaseStream.Position = originalPos;
+            }
+
+            var blocks = Reader.ReadStructures< LodBlock >( lodBlocks );
 
             // if there is a mipmap header, the comp_offset
             // will not be 0
@@ -280,16 +296,12 @@ namespace Lumina.Data
             {
                 // start from comp_offset
                 long runningBlockTotal = blocks[ i ].CompressedOffset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-                ReadFileBlock( runningBlockTotal, ms, buffer, true );
 
-                for( int j = 1; j < blocks[ i ].BlockCount; j++ )
+                for( int j = 0; j < blocks[ i ].BlockCount; j++ )
                 {
-                    runningBlockTotal += (UInt32)Reader.ReadInt16();
                     ReadFileBlock( runningBlockTotal, ms, buffer, true );
+                    runningBlockTotal += (UInt32)Reader.ReadInt16();
                 }
-
-                // unknown
-                Reader.ReadInt16();
             }
         }
 
@@ -307,35 +319,39 @@ namespace Lumina.Data
             var blockHeader = Reader.ReadStructure< DatBlockHeader >();
 
             // uncompressed block
-            if( blockHeader.CompressedSize == 32000 )
+            if( blockHeader.DatBlockType == DatBlockType.Uncompressed )
             {
                 // fucking .net holy hell
-                var count = Reader.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
-
-#if DEBUG
-                if( count != (int)blockHeader.UncompressedSize )
-                {
-                    throw new Exception( "written bytes != uncompressed size :(" );
-                }
-#endif
-
-                return blockHeader.UncompressedSize;
+                Reader.Read( buffer, (int)dest.Position, (int)blockHeader.BlockDataSize );
             }
-
+            else
             {
                 using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
 
-                // todo: check that this actually copies everything we need i guess
-                var count = zlibStream.Read( buffer, (int)dest.Position, (int)blockHeader.UncompressedSize );
-                dest.Position += (int)blockHeader.UncompressedSize;
+                var totalRead = 0;
+                while( totalRead < blockHeader.BlockDataSize )
+                {
+                    var bytesRead = zlibStream.Read( buffer, (int)dest.Position + totalRead, (int)blockHeader.BlockDataSize - totalRead );
+                    if( bytesRead == 0 ) { break; }
+                    totalRead += bytesRead;
+                }
+
+                if( totalRead != (int)blockHeader.BlockDataSize )
+                {
+                    throw new SqPackInflateException(
+                        $"failed to inflate block, bytesRead ({totalRead}) != BlockDataSize ({blockHeader.BlockDataSize})"
+                    );
+                }
             }
+
+            dest.Position += (int)blockHeader.BlockDataSize;
 
             if( resetPosition )
             {
                 BaseStream.Position = originalPosition;
             }
 
-            return blockHeader.UncompressedSize;
+            return blockHeader.BlockDataSize;
         }
 
         public void Dispose()

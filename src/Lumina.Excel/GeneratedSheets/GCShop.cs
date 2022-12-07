@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GCShop", columnHash: 0xdd3ff48d )]
-    public class GCShop : ExcelRow
+    [Sheet( "GCShop", columnHash: 0xd9d6e4fa )]
+    public partial class GCShop : ExcelRow
     {
         
         public LazyRow< GrandCompany > GrandCompany { get; set; }

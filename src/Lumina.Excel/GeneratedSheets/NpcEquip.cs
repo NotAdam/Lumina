@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "NpcEquip", columnHash: 0xe91c87ba )]
-    public class NpcEquip : ExcelRow
+    [Sheet( "NpcEquip", columnHash: 0x6d34fcf4 )]
+    public partial class NpcEquip : ExcelRow
     {
         
         public ulong ModelMainHand { get; set; }

@@ -165,28 +165,35 @@ namespace Lumina.SpaghettiGenerator
                 // repeats
                 else if( schemaType == "repeat" )
                 {
+                    // unfuck shit stupid groups with one member which are actually just arrays
+                    if( schemaDef.Definition?.Type == "group" && schemaDef.Definition.Members.Count == 1 )
+                    {
+                        schemaDef.Definition.Type = "shitgroup";
+                        schemaDef.Name = Clean( schemaDef.Definition.Members.First().Name );
+                    }
+                    
                     // todo: groups need their own handling here but it's kind of shit, probably should do this differently
                     if( schemaDef.Definition?.Type == "group" )
                     {
                         var memberCount = schemaDef.Definition.Members.Count;
 
-                        string structName;
+                        string className;
                         string fieldName;
                         if( schemaDef.Definition.GroupName != null )
                         {
-                            structName = $"{schemaDef.Definition.GroupName}Struct";
+                            className = $"{schemaDef.Definition.GroupName}Obj";
                             fieldName = schemaDef.Definition.GroupName;
                         }
                         else
                         {
-                            structName = $"UnkStruct{i}Struct";
-                            fieldName = $"UnkStruct{i}";
+                            className = $"{name}UnkData{i}Obj";
+                            fieldName = $"UnkData{i}";
                         }
 
                         // todo: add pluralisation to field name? lol
                         generators.Add( 
                             new GroupStructGenerator( 
-                                structName,
+                                className,
                                 fieldName, 
                                 i,
                                 schemaDef.Definition.Members,

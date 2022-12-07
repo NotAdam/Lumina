@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AOZArrangement", columnHash: 0x2020acf6 )]
-    public class AOZArrangement : ExcelRow
+    [Sheet( "AOZArrangement", columnHash: 0x60d21df5 )]
+    public partial class AOZArrangement : ExcelRow
     {
         
         public LazyRow< AOZContentBriefingBNpc > AOZContentBriefingBNpc { get; set; }

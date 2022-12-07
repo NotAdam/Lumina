@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "FCCrestSymbol", columnHash: 0x43bdd5b1 )]
-    public class FCCrestSymbol : ExcelRow
+    [Sheet( "FCCrestSymbol", columnHash: 0x92a0df1e )]
+    public partial class FCCrestSymbol : ExcelRow
     {
         
         public byte ColorNum { get; set; }

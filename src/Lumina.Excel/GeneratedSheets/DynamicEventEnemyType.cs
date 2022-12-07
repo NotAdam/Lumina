@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DynamicEventEnemyType", columnHash: 0xdebb20e3 )]
-    public class DynamicEventEnemyType : ExcelRow
+    [Sheet( "DynamicEventEnemyType", columnHash: 0xa7679847 )]
+    public partial class DynamicEventEnemyType : ExcelRow
     {
         
         public SeString Name { get; set; }

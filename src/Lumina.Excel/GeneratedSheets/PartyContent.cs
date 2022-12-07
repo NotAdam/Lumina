@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PartyContent", columnHash: 0x0fe3ae35 )]
-    public class PartyContent : ExcelRow
+    [Sheet( "PartyContent", columnHash: 0xdfba8db0 )]
+    public partial class PartyContent : ExcelRow
     {
         
         public byte Key { get; set; }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TripleTriadCardResident", columnHash: 0x996e0a5e )]
-    public class TripleTriadCardResident : ExcelRow
+    [Sheet( "TripleTriadCardResident", columnHash: 0x34be2ffc )]
+    public partial class TripleTriadCardResident : ExcelRow
     {
         
         public ushort Unknown0 { get; set; }
@@ -21,7 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
         public byte SortKey { get; set; }
         public ushort Order { get; set; }
         public byte UIPriority { get; set; }
-        public bool Unknown54 { get; set; }
+        public bool Unknown11 { get; set; }
         public byte AcquisitionType { get; set; }
         public uint Acquisition { get; set; }
         public uint Location { get; set; }
@@ -42,7 +42,7 @@ namespace Lumina.Excel.GeneratedSheets
             SortKey = parser.ReadColumn< byte >( 8 );
             Order = parser.ReadColumn< ushort >( 9 );
             UIPriority = parser.ReadColumn< byte >( 10 );
-            Unknown54 = parser.ReadColumn< bool >( 11 );
+            Unknown11 = parser.ReadColumn< bool >( 11 );
             AcquisitionType = parser.ReadColumn< byte >( 12 );
             Acquisition = parser.ReadColumn< uint >( 13 );
             Location = parser.ReadColumn< uint >( 14 );

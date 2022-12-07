@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GCSupplyDuty", columnHash: 0xb3265a92 )]
-    public class GCSupplyDuty : ExcelRow
+    [Sheet( "GCSupplyDuty", columnHash: 0xc8d93c91 )]
+    public partial class GCSupplyDuty : ExcelRow
     {
         
         public int[] Unknown0 { get; set; }

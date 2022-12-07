@@ -6,19 +6,19 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AozAction", columnHash: 0x5a516458 )]
-    public class AozAction : ExcelRow
+    [Sheet( "AozAction", columnHash: 0xaeb3f96a )]
+    public partial class AozAction : ExcelRow
     {
         
         public LazyRow< Action > Action { get; set; }
-        public byte Unknown1 { get; set; }
+        public byte Rank { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             Action = new LazyRow< Action >( gameData, parser.ReadColumn< uint >( 0 ), language );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
+            Rank = parser.ReadColumn< byte >( 1 );
         }
     }
 }

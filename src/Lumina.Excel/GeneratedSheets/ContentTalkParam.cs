@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentTalkParam", columnHash: 0xd4cefacf )]
-    public class ContentTalkParam : ExcelRow
+    [Sheet( "ContentTalkParam", columnHash: 0xf15c003d )]
+    public partial class ContentTalkParam : ExcelRow
     {
         
         public bool Param { get; set; }

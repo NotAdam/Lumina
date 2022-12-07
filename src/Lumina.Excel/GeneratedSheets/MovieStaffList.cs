@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MovieStaffList", columnHash: 0xc3212d0e )]
-    public class MovieStaffList : ExcelRow
+    [Sheet( "MovieStaffList", columnHash: 0x08bb1bd0 )]
+    public partial class MovieStaffList : ExcelRow
     {
         
         public uint Image { get; set; }

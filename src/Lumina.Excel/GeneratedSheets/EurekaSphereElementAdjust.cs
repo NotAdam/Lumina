@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EurekaSphereElementAdjust", columnHash: 0xd870e208 )]
-    public class EurekaSphereElementAdjust : ExcelRow
+    [Sheet( "EurekaSphereElementAdjust", columnHash: 0x37d885d6 )]
+    public partial class EurekaSphereElementAdjust : ExcelRow
     {
         
         public ushort PowerModifier { get; set; }

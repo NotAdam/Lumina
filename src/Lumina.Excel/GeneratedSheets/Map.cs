@@ -6,11 +6,11 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Map", columnHash: 0x56a0aa07 )]
-    public class Map : ExcelRow
+    [Sheet( "Map", columnHash: 0x15bd82c4 )]
+    public partial class Map : ExcelRow
     {
         
-        public byte MapCondition { get; set; }
+        public LazyRow< MapCondition > MapCondition { get; set; }
         public byte PriorityCategoryUI { get; set; }
         public byte PriorityUI { get; set; }
         public sbyte MapIndex { get; set; }
@@ -28,12 +28,13 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< TerritoryType > TerritoryType { get; set; }
         public bool DiscoveryArrayByte { get; set; }
         public bool IsEvent { get; set; }
+        public bool Unknown18 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            MapCondition = parser.ReadColumn< byte >( 0 );
+            MapCondition = new LazyRow< MapCondition >( gameData, parser.ReadColumn< byte >( 0 ), language );
             PriorityCategoryUI = parser.ReadColumn< byte >( 1 );
             PriorityUI = parser.ReadColumn< byte >( 2 );
             MapIndex = parser.ReadColumn< sbyte >( 3 );
@@ -51,6 +52,7 @@ namespace Lumina.Excel.GeneratedSheets
             TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 15 ), language );
             DiscoveryArrayByte = parser.ReadColumn< bool >( 16 );
             IsEvent = parser.ReadColumn< bool >( 17 );
+            Unknown18 = parser.ReadColumn< bool >( 18 );
         }
     }
 }

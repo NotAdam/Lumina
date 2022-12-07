@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Mount", columnHash: 0xd4a8261b )]
-    public class Mount : ExcelRow
+    [Sheet( "Mount", columnHash: 0xde4bebd7 )]
+    public partial class Mount : ExcelRow
     {
         
         public SeString Singular { get; set; }
@@ -55,6 +55,8 @@ namespace Lumina.Excel.GeneratedSheets
         public bool IsImmobile { get; set; }
         public byte Unknown43 { get; set; }
         public byte Unknown44 { get; set; }
+        public bool Unknown45 { get; set; }
+        public bool Unknown46 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -105,6 +107,8 @@ namespace Lumina.Excel.GeneratedSheets
             IsImmobile = parser.ReadColumn< bool >( 42 );
             Unknown43 = parser.ReadColumn< byte >( 43 );
             Unknown44 = parser.ReadColumn< byte >( 44 );
+            Unknown45 = parser.ReadColumn< bool >( 45 );
+            Unknown46 = parser.ReadColumn< bool >( 46 );
         }
     }
 }

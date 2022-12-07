@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DeepDungeonBan", columnHash: 0xdc23efe7 )]
-    public class DeepDungeonBan : ExcelRow
+    [Sheet( "DeepDungeonBan", columnHash: 0x41f261eb )]
+    public partial class DeepDungeonBan : ExcelRow
     {
         
         public LazyRow< ScreenImage > ScreenImage { get; set; }

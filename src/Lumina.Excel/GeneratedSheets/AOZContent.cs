@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AOZContent", columnHash: 0x615a9876 )]
-    public class AOZContent : ExcelRow
+    [Sheet( "AOZContent", columnHash: 0xbb159a0a )]
+    public partial class AOZContent : ExcelRow
     {
         
         public ushort StandardFinishTime { get; set; }

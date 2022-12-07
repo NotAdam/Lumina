@@ -1,4 +1,5 @@
 using System;
+using System.Buffers.Binary;
 using System.Runtime.InteropServices;
 
 namespace Lumina.Data.Structs.Excel
@@ -8,5 +9,14 @@ namespace Lumina.Data.Structs.Excel
     {
         public UInt32 RowId;
         public UInt32 Offset;
+
+        public static ExcelDataOffset Read(LuminaBinaryReader reader)
+        {
+            return new ExcelDataOffset()
+            {
+                RowId = reader.ReadUInt32(),
+                Offset = reader.ReadUInt32(),
+            };
+        }
     }
 }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringItemLevelConvertTable", columnHash: 0xde74b4c4 )]
-    public class GatheringItemLevelConvertTable : ExcelRow
+    [Sheet( "GatheringItemLevelConvertTable", columnHash: 0xba5cab44 )]
+    public partial class GatheringItemLevelConvertTable : ExcelRow
     {
         
         public byte GatheringItemLevel { get; set; }

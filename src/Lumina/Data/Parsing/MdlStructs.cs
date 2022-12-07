@@ -1,8 +1,12 @@
 using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Lumina.Extensions;
+
+// ReSharper disable InconsistentNaming
+// ReSharper disable UnassignedField.Global
+#pragma warning disable 649
+#pragma warning disable 169
 
 namespace Lumina.Data.Parsing
 {
@@ -33,7 +37,7 @@ namespace Lumina.Data.Parsing
             EdgeGeometryEnabled = 0x02,
             Unknown3 = 0x01
         }
-        
+
         public struct ModelFileHeader
         {
             public uint Version;
@@ -50,7 +54,7 @@ namespace Lumina.Data.Parsing
             public bool EnableEdgeGeometry;
             private byte Padding;
 
-            public static ModelFileHeader Read( BinaryReader br )
+            public static ModelFileHeader Read( LuminaBinaryReader br )
             {
                 ModelFileHeader ret = new ModelFileHeader();
                 ret.Version = br.ReadUInt32();
@@ -58,10 +62,10 @@ namespace Lumina.Data.Parsing
                 ret.RuntimeSize = br.ReadUInt32();
                 ret.VertexDeclarationCount = br.ReadUInt16();
                 ret.MaterialCount = br.ReadUInt16();
-                ret.VertexOffset = br.ReadStructures< UInt32 >( 3 ).ToArray();
-                ret.IndexOffset = br.ReadStructures< UInt32 >( 3 ).ToArray();
-                ret.VertexBufferSize = br.ReadStructures< UInt32 >( 3 ).ToArray();
-                ret.IndexBufferSize = br.ReadStructures< UInt32 >( 3 ).ToArray();
+                ret.VertexOffset = br.ReadUInt32Array( 3 );
+                ret.IndexOffset = br.ReadUInt32Array( 3 );
+                ret.VertexBufferSize = br.ReadUInt32Array( 3 );
+                ret.IndexBufferSize = br.ReadUInt32Array( 3 );
                 ret.LodCount = br.ReadByte();
                 ret.EnableIndexBufferStreaming = br.ReadBoolean();
                 ret.EnableEdgeGeometry = br.ReadBoolean();
@@ -77,18 +81,18 @@ namespace Lumina.Data.Parsing
             // There are always 17, but stop when stream = -1
             public VertexElement[] VertexElements;
 
-            public static VertexDeclarationStruct Read( BinaryReader br )
+            public static VertexDeclarationStruct Read( LuminaBinaryReader br )
             {
                 VertexDeclarationStruct ret = new VertexDeclarationStruct();
 
                 var elems = new List< VertexElement >();
 
                 // Read the vertex elements that we need
-                var thisElem = br.ReadStructure<VertexElement>();
+                var thisElem = br.ReadStructure< VertexElement >();
                 do
                 {
                     elems.Add( thisElem );
-                    thisElem = br.ReadStructure<VertexElement>();
+                    thisElem = br.ReadStructure< VertexElement >();
                 } while( thisElem.Stream != 255 );
 
                 // Skip the number of bytes that we don't need to read
@@ -129,28 +133,28 @@ namespace Lumina.Data.Parsing
 
             private ModelFlags1 Flags1;
 
-            public bool DustOcclusionEnabled => Flags1.HasFlag(ModelFlags1.DustOcclusionEnabled);
-            public bool SnowOcclusionEnabled => Flags1.HasFlag(ModelFlags1.SnowOcclusionEnabled);
-            public bool RainOcclusionEnabled => Flags1.HasFlag(ModelFlags1.RainOcclusionEnabled);
-            public bool Unknown1 => Flags1.HasFlag(ModelFlags1.Unknown1);
-            public bool BgLightingReflectionEnabled => Flags1.HasFlag(ModelFlags1.LightingReflectionEnabled);
-            public bool WavingAnimationDisabled => Flags1.HasFlag(ModelFlags1.WavingAnimationDisabled);
-            public bool LightShadowDisabled => Flags1.HasFlag(ModelFlags1.LightShadowDisabled);
-            public bool ShadowDisabled => Flags1.HasFlag(ModelFlags1.ShadowDisabled);
+            public bool DustOcclusionEnabled => Flags1.HasFlag( ModelFlags1.DustOcclusionEnabled );
+            public bool SnowOcclusionEnabled => Flags1.HasFlag( ModelFlags1.SnowOcclusionEnabled );
+            public bool RainOcclusionEnabled => Flags1.HasFlag( ModelFlags1.RainOcclusionEnabled );
+            public bool Unknown1 => Flags1.HasFlag( ModelFlags1.Unknown1 );
+            public bool BgLightingReflectionEnabled => Flags1.HasFlag( ModelFlags1.LightingReflectionEnabled );
+            public bool WavingAnimationDisabled => Flags1.HasFlag( ModelFlags1.WavingAnimationDisabled );
+            public bool LightShadowDisabled => Flags1.HasFlag( ModelFlags1.LightShadowDisabled );
+            public bool ShadowDisabled => Flags1.HasFlag( ModelFlags1.ShadowDisabled );
 
             public ushort ElementIdCount;
             public byte TerrainShadowMeshCount;
-            
+
             private ModelFlags2 Flags2;
-            
-            public bool Unknown2 => Flags2.HasFlag(ModelFlags2.Unknown2);
-            public bool BgUvScrollEnabled => Flags2.HasFlag(ModelFlags2.BgUvScrollEnabled);
-            public bool EnableForceNonResident => Flags2.HasFlag(ModelFlags2.EnableForceNonResident);
-            public bool ExtraLodEnabled => Flags2.HasFlag(ModelFlags2.ExtraLodEnabled);
-            public bool ShadowMaskEnabled => Flags2.HasFlag(ModelFlags2.ShadowMaskEnabled);
-            public bool ForceLodRangeEnabled => Flags2.HasFlag(ModelFlags2.ForceLodRangeEnabled);
-            public bool EdgeGeometryEnabled => Flags2.HasFlag(ModelFlags2.EdgeGeometryEnabled);
-            public bool Unknown3 => Flags2.HasFlag(ModelFlags2.Unknown3);
+
+            public bool Unknown2 => Flags2.HasFlag( ModelFlags2.Unknown2 );
+            public bool BgUvScrollEnabled => Flags2.HasFlag( ModelFlags2.BgUvScrollEnabled );
+            public bool EnableForceNonResident => Flags2.HasFlag( ModelFlags2.EnableForceNonResident );
+            public bool ExtraLodEnabled => Flags2.HasFlag( ModelFlags2.ExtraLodEnabled );
+            public bool ShadowMaskEnabled => Flags2.HasFlag( ModelFlags2.ShadowMaskEnabled );
+            public bool ForceLodRangeEnabled => Flags2.HasFlag( ModelFlags2.ForceLodRangeEnabled );
+            public bool EdgeGeometryEnabled => Flags2.HasFlag( ModelFlags2.EdgeGeometryEnabled );
+            public bool Unknown3 => Flags2.HasFlag( ModelFlags2.Unknown3 );
 
             public float ModelClipOutDistance;
             public float ShadowClipOutDistance;
@@ -175,7 +179,7 @@ namespace Lumina.Data.Parsing
             public float[] Translate;
             public float[] Rotate;
 
-            public static ElementIdStruct Read( BinaryReader br )
+            public static ElementIdStruct Read( LuminaBinaryReader br )
             {
                 ElementIdStruct ret = new ElementIdStruct();
                 ret.ElementId = br.ReadUInt32();
@@ -199,7 +203,9 @@ namespace Lumina.Data.Parsing
             public ushort TerrainShadowMeshIndex;
             public ushort TerrainShadowMeshCount;
             public ushort VerticalFogMeshIndex;
+
             public ushort VerticalFogMeshCount;
+
             // Yell at me if this ever exists on Win32
             public uint EdgeGeometrySize;
             public uint EdgeGeometryDataOffset;
@@ -250,7 +256,7 @@ namespace Lumina.Data.Parsing
 
             public byte VertexStreamCount;
 
-            public static MeshStruct Read( BinaryReader br )
+            public static MeshStruct Read( LuminaBinaryReader br )
             {
                 MeshStruct ret = new MeshStruct();
                 ret.VertexCount = br.ReadUInt16();
@@ -261,7 +267,7 @@ namespace Lumina.Data.Parsing
                 ret.SubMeshCount = br.ReadUInt16();
                 ret.BoneTableIndex = br.ReadUInt16();
                 ret.StartIndex = br.ReadUInt32();
-                ret.VertexBufferOffset = br.ReadStructures< UInt32 >( 3 ).ToArray();
+                ret.VertexBufferOffset = br.ReadUInt32Array( 3 );
                 ret.VertexBufferStride = br.ReadBytes( 3 );
                 ret.VertexStreamCount = br.ReadByte();
                 return ret;
@@ -303,10 +309,10 @@ namespace Lumina.Data.Parsing
             public byte BoneCount;
             private byte[] Padding;
 
-            public static BoneTableStruct Read( BinaryReader br )
+            public static BoneTableStruct Read( LuminaBinaryReader br )
             {
                 BoneTableStruct ret = new BoneTableStruct();
-                ret.BoneIndex = br.ReadStructures< UInt16 >( 64 ).ToArray();
+                ret.BoneIndex = br.ReadUInt16Array( 64 );
                 ret.BoneCount = br.ReadByte();
                 ret.Padding = br.ReadBytes( 3 );
                 return ret;
@@ -319,12 +325,12 @@ namespace Lumina.Data.Parsing
             public ushort[] ShapeMeshStartIndex;
             public ushort[] ShapeMeshCount;
 
-            public static ShapeStruct Read( BinaryReader br )
+            public static ShapeStruct Read( LuminaBinaryReader br )
             {
                 ShapeStruct ret = new ShapeStruct();
                 ret.StringOffset = br.ReadUInt32();
-                ret.ShapeMeshStartIndex = br.ReadStructures< UInt16 >( 3 ).ToArray();
-                ret.ShapeMeshCount = br.ReadStructures< UInt16 >( 3 ).ToArray();
+                ret.ShapeMeshStartIndex = br.ReadUInt16Array( 3 );
+                ret.ShapeMeshCount = br.ReadUInt16Array( 3 );
                 return ret;
             }
         }
@@ -347,11 +353,11 @@ namespace Lumina.Data.Parsing
             public float[] Min;
             public float[] Max;
 
-            public static BoundingBoxStruct Read( BinaryReader br )
+            public static BoundingBoxStruct Read( LuminaBinaryReader br )
             {
                 BoundingBoxStruct ret = new BoundingBoxStruct();
-                ret.Min = br.ReadStructures< Single >( 4 ).ToArray();
-                ret.Max = br.ReadStructures< Single >( 4 ).ToArray();
+                ret.Min = br.ReadSingleArray( 4 );
+                ret.Max = br.ReadSingleArray( 4 );
                 return ret;
             }
         }

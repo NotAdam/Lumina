@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "YKW", columnHash: 0x12e24636 )]
-    public class YKW : ExcelRow
+    [Sheet( "YKW", columnHash: 0xce3614a8 )]
+    public partial class YKW : ExcelRow
     {
         
         public ushort Unknown0 { get; set; }

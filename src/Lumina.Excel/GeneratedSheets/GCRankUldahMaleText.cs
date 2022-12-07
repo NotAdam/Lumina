@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GCRankUldahMaleText", columnHash: 0xd573cba6 )]
-    public class GCRankUldahMaleText : ExcelRow
+    [Sheet( "GCRankUldahMaleText", columnHash: 0xbbf3258b )]
+    public partial class GCRankUldahMaleText : ExcelRow
     {
         
         public SeString Singular { get; set; }

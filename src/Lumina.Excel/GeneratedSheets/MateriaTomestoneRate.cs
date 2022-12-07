@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MateriaTomestoneRate", columnHash: 0xdbf43666 )]
-    public class MateriaTomestoneRate : ExcelRow
+    [Sheet( "MateriaTomestoneRate", columnHash: 0xb366c408 )]
+    public partial class MateriaTomestoneRate : ExcelRow
     {
         
         public uint Rate { get; set; }

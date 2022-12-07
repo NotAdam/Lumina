@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "LeveVfx", columnHash: 0x993d983d )]
-    public class LeveVfx : ExcelRow
+    [Sheet( "LeveVfx", columnHash: 0x5567b50f )]
+    public partial class LeveVfx : ExcelRow
     {
         
         public SeString Effect { get; set; }

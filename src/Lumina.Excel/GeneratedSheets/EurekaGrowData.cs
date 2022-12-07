@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EurekaGrowData", columnHash: 0xd870e208 )]
-    public class EurekaGrowData : ExcelRow
+    [Sheet( "EurekaGrowData", columnHash: 0x316e30c9 )]
+    public partial class EurekaGrowData : ExcelRow
     {
         
         public ushort BaseResistance { get; set; }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EurekaMagiciteItemType", columnHash: 0xdebb20e3 )]
-    public class EurekaMagiciteItemType : ExcelRow
+    [Sheet( "EurekaMagiciteItemType", columnHash: 0x40dfb540 )]
+    public partial class EurekaMagiciteItemType : ExcelRow
     {
         
         public SeString Type { get; set; }

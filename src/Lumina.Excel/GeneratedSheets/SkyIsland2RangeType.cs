@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SkyIsland2RangeType", columnHash: 0xdcfd9eba )]
-    public class SkyIsland2RangeType : ExcelRow
+    [Sheet( "SkyIsland2RangeType", columnHash: 0x37d885d6 )]
+    public partial class SkyIsland2RangeType : ExcelRow
     {
         
         public byte Type { get; set; }

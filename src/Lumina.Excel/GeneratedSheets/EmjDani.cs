@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EmjDani", columnHash: 0xf3fb0152 )]
-    public class EmjDani : ExcelRow
+    [Sheet( "EmjDani", columnHash: 0x10f1605b )]
+    public partial class EmjDani : ExcelRow
     {
         
         public uint Icon { get; set; }

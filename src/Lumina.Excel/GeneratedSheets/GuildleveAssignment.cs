@@ -6,13 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GuildleveAssignment", columnHash: 0x129d93fa )]
-    public class GuildleveAssignment : ExcelRow
+    [Sheet( "GuildleveAssignment", columnHash: 0x99c8a3fa )]
+    public partial class GuildleveAssignment : ExcelRow
     {
         
-        public SeString Unknown0 { get; set; }
-        public byte AddedIn53 { get; set; }
-        public uint AssignmentTalk { get; set; }
+        public SeString Type { get; set; }
+        public byte Unknown1 { get; set; }
+        public LazyRow< GuildleveAssignmentTalk > AssignmentTalk { get; set; }
         public LazyRow< Quest >[] Quest { get; set; }
         public bool Unknown5 { get; set; }
         public bool Unknown6 { get; set; }
@@ -25,9 +25,9 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< SeString >( 0 );
-            AddedIn53 = parser.ReadColumn< byte >( 1 );
-            AssignmentTalk = parser.ReadColumn< uint >( 2 );
+            Type = parser.ReadColumn< SeString >( 0 );
+            Unknown1 = parser.ReadColumn< byte >( 1 );
+            AssignmentTalk = new LazyRow< GuildleveAssignmentTalk >( gameData, parser.ReadColumn< uint >( 2 ), language );
             Quest = new LazyRow< Quest >[ 2 ];
             for( var i = 0; i < 2; i++ )
                 Quest[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 3 + i ), language );

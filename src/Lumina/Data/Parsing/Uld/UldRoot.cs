@@ -1,18 +1,18 @@
-using System;
-using System.IO;
 using System.Linq;
-using Lumina.Extensions;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable NotAccessedField.Global
 // ReSharper disable NotAccessedField.Local
 // ReSharper disable MemberCanBePrivate.Global
-namespace Lumina.Data.Parsing.Uld {
+namespace Lumina.Data.Parsing.Uld
+{
     /// <summary>
     /// Contains the root structures for a Uld file, to prevent clogging up UldFile.cs
     /// </summary>
-    public static class UldRoot {
-        public enum AlignmentType {
+    public static class UldRoot
+    {
+        public enum AlignmentType
+        {
             TopLeft = 0x0,
             Top = 0x1,
             TopRight = 0x2,
@@ -24,7 +24,8 @@ namespace Lumina.Data.Parsing.Uld {
             BottomRight = 0x8,
         }
 
-        public enum KeyGroupType : ushort {
+        public enum KeyGroupType : ushort
+        {
             Float1 = 0x0,
             Float2 = 0x1,
             Float3 = 0x2,
@@ -54,7 +55,8 @@ namespace Lumina.Data.Parsing.Uld {
             Number = 0x1A,
         }
 
-        public enum KeyUsage : ushort {
+        public enum KeyUsage : ushort
+        {
             Position = 0x0,
             Rotation = 0x1,
             Scale = 0x2,
@@ -65,13 +67,15 @@ namespace Lumina.Data.Parsing.Uld {
             Number = 0x7,
         }
 
-        public struct UldHeader {
+        public struct UldHeader
+        {
             public char[] Identifier;
             public char[] Version;
             public uint ComponentOffset;
             public uint WidgetOffset;
 
-            public static UldHeader Read( BinaryReader br ) {
+            public static UldHeader Read( LuminaBinaryReader br )
+            {
                 UldHeader ret = new UldHeader();
                 ret.Identifier = br.ReadChars( 4 );
                 ret.Version = br.ReadChars( 4 );
@@ -81,7 +85,8 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct AtkHeader {
+        public struct AtkHeader
+        {
             public char[] Identifier;
             public char[] Version;
 
@@ -94,7 +99,8 @@ namespace Lumina.Data.Parsing.Uld {
             public uint RewriteDataOffset; //dunno what this is exactly
             public uint TimelineListSize;
 
-            public static AtkHeader Read( BinaryReader br ) {
+            public static AtkHeader Read( LuminaBinaryReader br )
+            {
                 AtkHeader ret = new AtkHeader();
                 ret.Identifier = br.ReadChars( 4 );
                 ret.Version = br.ReadChars( 4 );
@@ -109,7 +115,8 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct TextureEntry {
+        public struct TextureEntry
+        {
             public uint Id;
             public char[] Path; // 44? wtf?
 
@@ -117,24 +124,27 @@ namespace Lumina.Data.Parsing.Uld {
             public uint Unk1;
             public uint Unk2;
 
-            public static TextureEntry Read( BinaryReader br ) {
+            public static TextureEntry Read( LuminaBinaryReader br, char minorVersion )
+            {
                 TextureEntry ret = new TextureEntry();
                 ret.Id = br.ReadUInt32();
                 ret.Path = br.ReadChars( 44 );
                 ret.Unk1 = br.ReadUInt32();
-                ret.Unk2 = br.ReadUInt32();
+                ret.Unk2 = minorVersion == '1' ? br.ReadUInt32() : 0;
                 return ret;
             }
         }
 
 
-        public struct PartHeader {
+        public struct PartHeader
+        {
             public char[] Identifier;
             public char[] Version;
             public uint ElementCount; // this lists kinda arbitrary things (cohd, ashd etc) so they are elements
             public int Unk1;
 
-            public static PartHeader Read( BinaryReader br ) {
+            public static PartHeader Read( LuminaBinaryReader br )
+            {
                 PartHeader ret = new PartHeader();
                 ret.Identifier = br.ReadChars( 4 );
                 ret.Version = br.ReadChars( 4 );
@@ -144,7 +154,8 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct PartsData {
+        public struct PartsData
+        {
             public uint Id;
             public uint PartCount;
 
@@ -153,7 +164,8 @@ namespace Lumina.Data.Parsing.Uld {
 
             public PartData[] Parts;
 
-            public static PartsData Read( BinaryReader br ) {
+            public static PartsData Read( LuminaBinaryReader br )
+            {
                 PartsData ret = new PartsData();
                 ret.Id = br.ReadUInt32();
                 ret.PartCount = br.ReadUInt32();
@@ -165,14 +177,16 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct PartData {
+        public struct PartData
+        {
             public uint TextureId;
             public ushort U;
             public ushort V;
             public ushort W;
             public ushort H;
 
-            public static PartData Read( BinaryReader br ) {
+            public static PartData Read( LuminaBinaryReader br )
+            {
                 PartData ret = new PartData();
                 ret.TextureId = br.ReadUInt32();
                 ret.U = br.ReadUInt16();
@@ -183,7 +197,8 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct NodeData {
+        public struct NodeData
+        {
             public uint NodeId;
             public int ParentId;
             public int NextSiblingId;
@@ -236,7 +251,10 @@ namespace Lumina.Data.Parsing.Uld {
             // have to trial and error the nodes - this is to prevent failure to read
             public byte[] UnknownNodeData;
 
-            public static NodeData Read( BinaryReader br, ComponentData[] definedComponentList ) {
+            public static NodeData Read( LuminaBinaryReader br, ComponentData[] definedComponentList )
+            {
+                long originalPos = br.BaseStream.Position;
+
                 NodeData ret = new NodeData();
                 ret.NodeId = br.ReadUInt32();
                 ret.ParentId = br.ReadInt32();
@@ -246,7 +264,7 @@ namespace Lumina.Data.Parsing.Uld {
                 ret.NodeType = br.ReadInt32();
                 ret.NodeOffset = br.ReadUInt16();
                 ret.TabIndex = br.ReadInt16();
-                ret.Unk1 = br.ReadStructures< Int32 >( 4 ).ToArray();
+                ret.Unk1 = br.ReadInt32Array( 4 );
                 ret.X = br.ReadInt16();
                 ret.Y = br.ReadInt16();
                 ret.W = br.ReadUInt16();
@@ -281,7 +299,8 @@ namespace Lumina.Data.Parsing.Uld {
                 ret.ClipCount = br.ReadByte();
                 ret.TimelineId = br.ReadUInt16();
 
-                switch( ret.NodeType ) {
+                switch( ret.NodeType )
+                {
                     case 1: break;
                     case 2:
                         ret.Node = Uld.NodeData.ImageNode.Read( br );
@@ -301,12 +320,14 @@ namespace Lumina.Data.Parsing.Uld {
                     default:
                         if( ret.NodeOffset <= 88 ) break;
                         //Console.WriteLine( $"{ret.NodeOffset - 88} extra bytes..." );
-                        if( ret.NodeType > 1000 ) {
+                        if( ret.NodeType > 1000 )
+                        {
                             Uld.ComponentData.ComponentType compType =
                                 definedComponentList.Where( c => c.Id == ret.NodeType ).Select( c => c.Type ).FirstOrDefault();
                             ret.Node = Uld.NodeData.ComponentNode.Read( br, compType );
                         }
-                        else {
+                        else
+                        {
                             ret.UnknownNodeData = br.ReadBytes( ret.NodeOffset - 88 );
                             //Console.WriteLine( $"Read {ret.NodeOffset - 88} bytes for an unknown of {ret.NodeType}" );    
                         }
@@ -314,11 +335,15 @@ namespace Lumina.Data.Parsing.Uld {
                         break;
                 }
 
+                // adjust stream position to match actual data size
+                br.BaseStream.Position = originalPos + ret.NodeOffset;
+
                 return ret;
             }
         }
 
-        public struct ComponentData {
+        public struct ComponentData
+        {
             public uint Id;
             public bool ShouldIgnoreInput;
             public bool DragArrow;
@@ -330,18 +355,22 @@ namespace Lumina.Data.Parsing.Uld {
             public IComponent Component;
             public NodeData[] Nodes;
 
-            public static ComponentData Read( BinaryReader br, ComponentData[] definedComponentList ) {
+            public static ComponentData Read( LuminaBinaryReader br, ComponentData[] definedComponentList )
+            {
+                long originalPos = br.BaseStream.Position;
+
                 ComponentData ret = new ComponentData();
                 ret.Id = br.ReadUInt32();
                 ret.ShouldIgnoreInput = br.ReadBoolean();
                 ret.DragArrow = br.ReadBoolean();
                 ret.DropArrow = br.ReadBoolean();
-                ret.Type = (Uld.ComponentData.ComponentType) br.ReadByte();
+                ret.Type = (Uld.ComponentData.ComponentType)br.ReadByte();
                 ret.NodeCount = br.ReadUInt32();
                 ret.Size = br.ReadUInt16();
                 ret.Offset = br.ReadUInt16();
 
-                switch( ret.Type ) {
+                switch( ret.Type )
+                {
                     case Uld.ComponentData.ComponentType.Button:
                         ret.Component = Uld.ComponentData.ButtonComponent.Read( br );
                         break;
@@ -369,8 +398,8 @@ namespace Lumina.Data.Parsing.Uld {
                     case Uld.ComponentData.ComponentType.List:
                         ret.Component = Uld.ComponentData.ListComponent.Read( br );
                         break;
-                    case Uld.ComponentData.ComponentType.ListItem:
-                        ret.Component = Uld.ComponentData.ListItemComponent.Read( br );
+                    case Uld.ComponentData.ComponentType.DropDown:
+                        ret.Component = Uld.ComponentData.DropDownComponent.Read( br );
                         break;
                     case Uld.ComponentData.ComponentType.Tabbed:
                         ret.Component = Uld.ComponentData.TabComponent.Read( br );
@@ -380,6 +409,9 @@ namespace Lumina.Data.Parsing.Uld {
                         break;
                     case Uld.ComponentData.ComponentType.ScrollBar:
                         ret.Component = Uld.ComponentData.ScrollBarComponent.Read( br );
+                        break;
+                    case Uld.ComponentData.ComponentType.ListItem:
+                        ret.Component = Uld.ComponentData.ListItemComponent.Read( br );
                         break;
                     case Uld.ComponentData.ComponentType.Icon:
                         ret.Component = Uld.ComponentData.IconComponent.Read( br );
@@ -410,6 +442,9 @@ namespace Lumina.Data.Parsing.Uld {
                         break;
                 }
 
+                // adjust position because of inconsisty within the same ComponentList version...
+                br.BaseStream.Position = originalPos + ret.Offset;
+
                 ret.Nodes = new NodeData[ret.NodeCount];
                 for( int i = 0; i < ret.NodeCount; i++ )
                     ret.Nodes[ i ] = NodeData.Read( br, definedComponentList );
@@ -417,23 +452,26 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct KeyGroup {
+        public struct KeyGroup
+        {
             public KeyUsage Usage;
             public KeyGroupType Type;
             public ushort Offset;
             public ushort KeyframeCount;
             public IKeyframe[] Frames;
 
-            public static KeyGroup Read( BinaryReader br ) {
+            public static KeyGroup Read( LuminaBinaryReader br )
+            {
                 KeyGroup ret = new KeyGroup();
-                ret.Usage = (KeyUsage) br.ReadUInt16();
-                ret.Type = (KeyGroupType) br.ReadUInt16();
+                ret.Usage = (KeyUsage)br.ReadUInt16();
+                ret.Type = (KeyGroupType)br.ReadUInt16();
                 ret.Offset = br.ReadUInt16();
                 ret.KeyframeCount = br.ReadUInt16();
 
                 ret.Frames = new IKeyframe[ret.KeyframeCount];
 
-                switch( ret.Type ) {
+                switch( ret.Type )
+                {
                     case KeyGroupType.Float1:
                         for( int i = 0; i < ret.KeyframeCount; i++ ) ret.Frames[ i ] = Keyframes.Float1Keyframe.Read( br );
                         break;
@@ -518,7 +556,8 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct FrameData {
+        public struct FrameData
+        {
             // idk if these are in reference to frame. but they will be.
             public uint StartFrame;
             public uint EndFrame;
@@ -527,7 +566,8 @@ namespace Lumina.Data.Parsing.Uld {
 
             public KeyGroup[] KeyGroups;
 
-            public static FrameData Read( BinaryReader br ) {
+            public static FrameData Read( LuminaBinaryReader br )
+            {
                 FrameData ret = new FrameData();
                 ret.StartFrame = br.ReadUInt32();
                 ret.EndFrame = br.ReadUInt32();
@@ -540,7 +580,8 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct Timeline {
+        public struct Timeline
+        {
             public uint Id;
             public uint Offset;
 
@@ -551,13 +592,14 @@ namespace Lumina.Data.Parsing.Uld {
             public uint NumFrames;
             public FrameData[] FrameData;
 
-            public static Timeline Read( BinaryReader br ) {
+            public static Timeline Read( LuminaBinaryReader br )
+            {
                 Timeline ret = new Timeline();
                 ret.Id = br.ReadUInt32();
                 ret.Offset = br.ReadUInt32();
                 ret.numframes1 = br.ReadUInt16();
                 ret.numframes2 = br.ReadUInt16();
-                ret.NumFrames = (uint) ( ret.numframes1 + ret.numframes2 );
+                ret.NumFrames = (uint)( ret.numframes1 + ret.numframes2 );
                 ret.FrameData = new FrameData[ret.NumFrames];
                 for( int i = 0; i < ret.NumFrames; i++ )
                     ret.FrameData[ i ] = UldRoot.FrameData.Read( br );
@@ -565,7 +607,8 @@ namespace Lumina.Data.Parsing.Uld {
             }
         }
 
-        public struct WidgetData {
+        public struct WidgetData
+        {
             public uint Id;
             public AlignmentType AlignmentType;
             public short X;
@@ -575,10 +618,11 @@ namespace Lumina.Data.Parsing.Uld {
 
             public NodeData[] Nodes;
 
-            public static WidgetData Read( BinaryReader br, ComponentData[] definedComponentList ) {
+            public static WidgetData Read( LuminaBinaryReader br, ComponentData[] definedComponentList )
+            {
                 WidgetData ret = new WidgetData();
                 ret.Id = br.ReadUInt32();
-                ret.AlignmentType = (AlignmentType) br.ReadInt32();
+                ret.AlignmentType = (AlignmentType)br.ReadInt32();
                 ret.X = br.ReadInt16();
                 ret.Y = br.ReadInt16();
                 ret.NodeCount = br.ReadUInt16();

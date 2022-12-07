@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GroupPoseStampCategory", columnHash: 0x5eb59ccb )]
-    public class GroupPoseStampCategory : ExcelRow
+    [Sheet( "GroupPoseStampCategory", columnHash: 0x17d52d63 )]
+    public partial class GroupPoseStampCategory : ExcelRow
     {
         
         public byte Unknown0 { get; set; }

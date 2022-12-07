@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Marker", columnHash: 0x0c8db36c )]
-    public class Marker : ExcelRow
+    [Sheet( "Marker", columnHash: 0x0a623d07 )]
+    public partial class Marker : ExcelRow
     {
         
         public int Icon { get; set; }

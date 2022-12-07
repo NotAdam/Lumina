@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringPointName", columnHash: 0x77a72da0 )]
-    public class GatheringPointName : ExcelRow
+    [Sheet( "GatheringPointName", columnHash: 0x19e7aba1 )]
+    public partial class GatheringPointName : ExcelRow
     {
         
         public SeString Singular { get; set; }

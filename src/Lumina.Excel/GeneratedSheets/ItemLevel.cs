@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ItemLevel", columnHash: 0xe216399f )]
-    public class ItemLevel : ExcelRow
+    [Sheet( "ItemLevel", columnHash: 0xdc578bef )]
+    public partial class ItemLevel : ExcelRow
     {
         
         public ushort Strength { get; set; }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using Lumina.Data;
@@ -10,24 +11,24 @@ namespace Lumina.Excel
 {
     public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : ExcelRow
     {
-        private readonly Dictionary< UInt64, T > _rowCache = new Dictionary< UInt64, T >();
+        private readonly ConcurrentDictionary< UInt64, T > _rowCache = new();
 
         public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage, GameData gameData ) :
             base( headerFile, name, requestedLanguage, gameData )
         {
         }
 
-        public T GetRow( uint row )
+        public T? GetRow( uint row )
         {
             return GetRow( row, UInt32.MaxValue );
         }
 
-        public T GetRow( uint row, uint subRow )
+        public T? GetRow( uint row, uint subRow )
         {
             return GetRowInternal( row, subRow );
         }
 
-        internal T GetRowInternal( uint row, uint subRow )
+        internal T? GetRowInternal( uint row, uint subRow )
         {
             var cacheKey = GetCacheKey( row, subRow );
 
@@ -36,14 +37,24 @@ namespace Lumina.Excel
                 return cachedRow;
             }
 
-            var parser = GetRowParser( row, subRow );
+            var page = GetPageForRow( row );
+            if( page == null )
+            {
+                return null;
+            }
+            
+            var parser = GetRowParser( page, row, subRow );
             if( parser == null )
             {
                 return null;
             }
             
             var rowObj = Activator.CreateInstance< T >();
-            rowObj.PopulateData( parser, GameData, RequestedLanguage );
+
+            lock( page.File.ReaderLock )
+            {
+                rowObj.PopulateData( parser, GameData, RequestedLanguage );
+            }
 
             _rowCache[ cacheKey ] = rowObj;
 
@@ -70,57 +81,52 @@ namespace Lumina.Excel
 
             return obj;
         }
-
-        [Obsolete("Use the ExcelSheet< T > enumerator or sheet.ToList()")]
-        public List< T > GetRows()
-        {
-            return this.ToList();
-        }
-
+        
         public IEnumerator< T > GetEnumerator()
         {
-            foreach( var page in DataPages )
+            ExcelDataFile file = null!;
+            RowParser parser = null!;
+            
+            foreach( var offset in GetRowDataOffsets() )
             {
-                var file = page.File;
-                var rowPtrs = file.RowData;
-
-                var parser = new RowParser( this, file );
-
-                foreach( var rowPtr in rowPtrs.Values )
+                var rowPtr = offset.RowOffset;
+                if( file != offset.SheetPage )
                 {
-                    if( Header.Variant == ExcelVariant.Subrows )
-                    {
-                        // required to read the row header out and know how many subrows there is
-                        parser.SeekToRow( rowPtr.RowId );
+                    parser = new RowParser( this, offset.SheetPage );
+                }
+                
+                if( Header.Variant == ExcelVariant.Subrows )
+                {
+                    // required to read the row header out and know how many subrows there is
+                    parser.SeekToRow( rowPtr.RowId );
                         
-                        // read subrows
-                        for( uint i = 0; i < parser.RowCount; i++ )
-                        {
-                            var cacheKey = GetCacheKey( rowPtr.RowId, i );
-                            if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
-                            {
-                                yield return cachedRow;
-                                continue;
-                            }
-
-                            var obj = ReadSubRowObj( parser, rowPtr.RowId, i );
-                            _rowCache.Add( cacheKey, obj );
-                            yield return obj;
-                        }
-                    }
-                    else
+                    // read subrows
+                    for( uint i = 0; i < parser.RowCount; i++ )
                     {
-                        var cacheKey = GetCacheKey( rowPtr.RowId );
+                        var cacheKey = GetCacheKey( rowPtr.RowId, i );
                         if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
                         {
                             yield return cachedRow;
                             continue;
                         }
-                        
-                        var obj = ReadRowObj( parser, rowPtr.RowId );
-                        _rowCache.Add( cacheKey, obj );
+
+                        var obj = ReadSubRowObj( parser, rowPtr.RowId, i );
+                        _rowCache.TryAdd( cacheKey, obj );
                         yield return obj;
                     }
+                }
+                else
+                {
+                    var cacheKey = GetCacheKey( rowPtr.RowId );
+                    if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
+                    {
+                        yield return cachedRow;
+                        continue;
+                    }
+                        
+                    var obj = ReadRowObj( parser, rowPtr.RowId );
+                    _rowCache.TryAdd( cacheKey, obj );
+                    yield return obj;
                 }
             }
         }

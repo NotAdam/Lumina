@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ManeuversArmor", columnHash: 0xc8b98ed4 )]
-    public class ManeuversArmor : ExcelRow
+    [Sheet( "ManeuversArmor", columnHash: 0xedaa76d0 )]
+    public partial class ManeuversArmor : ExcelRow
     {
         
         public ushort Unknown0 { get; set; }

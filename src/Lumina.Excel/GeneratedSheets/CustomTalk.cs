@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CustomTalk", columnHash: 0x2a751293 )]
-    public class CustomTalk : ExcelRow
+    [Sheet( "CustomTalk", columnHash: 0xd40bdc5c )]
+    public partial class CustomTalk : ExcelRow
     {
         
         public uint IconActor { get; set; }
@@ -16,9 +16,9 @@ namespace Lumina.Excel.GeneratedSheets
         public SeString[] ScriptInstruction { get; set; }
         public uint[] ScriptArg { get; set; }
         public bool Unknown63 { get; set; }
-        public SeString Unknown64 { get; set; }
-        public SeString Unknown65 { get; set; }
-        public bool Text { get; set; }
+        public SeString MainOption { get; set; }
+        public SeString SubOption { get; set; }
+        public bool Unknown66 { get; set; }
         public bool Unknown67 { get; set; }
         public bool Unknown68 { get; set; }
         public bool Unknown69 { get; set; }
@@ -27,9 +27,9 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown72 { get; set; }
         public bool Unknown73 { get; set; }
         public bool Unknown74 { get; set; }
-        public uint Unknown75 { get; set; }
+        public uint SpecialLinks { get; set; }
         public byte Unknown76 { get; set; }
-        public bool Unknown54 { get; set; }
+        public byte Unknown77 { get; set; }
         public bool Unknown78 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -46,9 +46,9 @@ namespace Lumina.Excel.GeneratedSheets
             for( var i = 0; i < 30; i++ )
                 ScriptArg[ i ] = parser.ReadColumn< uint >( 33 + i );
             Unknown63 = parser.ReadColumn< bool >( 63 );
-            Unknown64 = parser.ReadColumn< SeString >( 64 );
-            Unknown65 = parser.ReadColumn< SeString >( 65 );
-            Text = parser.ReadColumn< bool >( 66 );
+            MainOption = parser.ReadColumn< SeString >( 64 );
+            SubOption = parser.ReadColumn< SeString >( 65 );
+            Unknown66 = parser.ReadColumn< bool >( 66 );
             Unknown67 = parser.ReadColumn< bool >( 67 );
             Unknown68 = parser.ReadColumn< bool >( 68 );
             Unknown69 = parser.ReadColumn< bool >( 69 );
@@ -57,9 +57,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown72 = parser.ReadColumn< bool >( 72 );
             Unknown73 = parser.ReadColumn< bool >( 73 );
             Unknown74 = parser.ReadColumn< bool >( 74 );
-            Unknown75 = parser.ReadColumn< uint >( 75 );
+            SpecialLinks = parser.ReadColumn< uint >( 75 );
             Unknown76 = parser.ReadColumn< byte >( 76 );
-            Unknown54 = parser.ReadColumn< bool >( 77 );
+            Unknown77 = parser.ReadColumn< byte >( 77 );
             Unknown78 = parser.ReadColumn< bool >( 78 );
         }
     }

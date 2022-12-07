@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GuardianDeity", columnHash: 0x79bad589 )]
-    public class GuardianDeity : ExcelRow
+    [Sheet( "GuardianDeity", columnHash: 0x30144b77 )]
+    public partial class GuardianDeity : ExcelRow
     {
         
         public SeString Name { get; set; }

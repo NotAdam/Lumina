@@ -1,40 +1,40 @@
-using System.Collections.Generic;
+using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using Lumina.Extensions;
 
 namespace Lumina.Text.Payloads
 {
+    /// <summary>
+    /// Represent a simple text payload.
+    /// </summary>
     public class TextPayload : BasePayload
     {
-        public TextPayload( BinaryReader br )
+        /// <inheritdoc />
+        public TextPayload()
         {
-            var data = new List< byte >();
-            
-            while( br.BaseStream.Position < br.BaseStream.Length )
-            {
-                var d = br.PeekByte();
-                if( d != SeString.StartByte )
-                {
-                    data.Add( d );
-                    br.BaseStream.Position++;
-                }
-                else
-                {
-                    break;
-                }
-            }
+        }
 
-            if( !data.Any() )
-            {
-                return;
-            }
-            
-            var arr = data.ToArray();
-            
-            _rawString = Encoding.UTF8.GetString( arr );
-            _data = arr;
+        /// <inheritdoc />
+        public TextPayload( BasePayload from ) : base( from ) => EnsurePayloadTypeOrThrow();
+
+        /// <inheritdoc />
+        public TextPayload( byte[] data ) : base( data ) => EnsurePayloadTypeOrThrow();
+
+        /// <summary>
+        /// Construct a new TextPayload using the given string.
+        /// </summary>
+        public TextPayload( string s ) : base( Encoding.UTF8.GetBytes( s ) ) => EnsurePayloadTypeOrThrow();
+
+        /// <inheritdoc />
+        public TextPayload( BinaryReader br ) : base( br ) => EnsurePayloadTypeOrThrow();
+
+        /// <inheritdoc />
+        public TextPayload( Stream stream ) : base( stream ) => EnsurePayloadTypeOrThrow();
+
+        private void EnsurePayloadTypeOrThrow()
+        {
+            if( !IsTextPayload )
+                throw new ArgumentException( "Given payload is not a text payload." );
         }
     }
 }

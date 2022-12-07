@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AnimaWeapon5", columnHash: 0xe777b7a6 )]
-    public class AnimaWeapon5 : ExcelRow
+    [Sheet( "AnimaWeapon5", columnHash: 0x49248e7c )]
+    public partial class AnimaWeapon5 : ExcelRow
     {
         
         public LazyRow< Item > Item { get; set; }

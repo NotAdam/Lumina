@@ -6,25 +6,9 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InstanceContent", columnHash: 0xa4243e29 )]
-    public class InstanceContent : ExcelRow
+    [Sheet( "InstanceContent", columnHash: 0x8ebe6a87 )]
+    public partial class InstanceContent : ExcelRow
     {
-        public struct UnkStruct25Struct
-        {
-            public ushort BossExp;
-        }
-        public struct UnkStruct30Struct
-        {
-            public uint BossCurrencyA;
-        }
-        public struct UnkStruct35Struct
-        {
-            public ushort BossCurrencyB;
-        }
-        public struct UnkStruct40Struct
-        {
-            public ushort BossCurrencyC;
-        }
         
         public byte InstanceContentType { get; set; }
         public byte WeekRestriction { get; set; }
@@ -33,7 +17,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< BGM > BGM { get; set; }
         public LazyRow< BGM > WinBGM { get; set; }
         public LazyRow< Cutscene > Cutscene { get; set; }
-        public uint Unknown7 { get; set; }
+        public uint LGBEventRange { get; set; }
         public ushort Order { get; set; }
         public byte Colosseum { get; set; }
         public bool Unknown10 { get; set; }
@@ -43,36 +27,41 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveStart { get; set; }
         public LazyRow< InstanceContentTextData > InstanceContentTextDataObjectiveEnd { get; set; }
         public ushort SortKey { get; set; }
-        public uint InstanceClearExp { get; set; }
-        public uint Unknown18 { get; set; }
+        public uint NewPlayerBonusGil { get; set; }
+        public uint NewPlayerBonusExp { get; set; }
         public ushort NewPlayerBonusA { get; set; }
-        public ushort FinalBossCurrencyC { get; set; }
-        public uint Unknown21 { get; set; }
-        public uint FinalBossCurrencyA { get; set; }
-        public ushort FinalBossCurrencyB { get; set; }
         public ushort NewPlayerBonusB { get; set; }
-        public UnkStruct25Struct[] UnkStruct25 { get; set; }
-        public UnkStruct30Struct[] UnkStruct30 { get; set; }
-        public UnkStruct35Struct[] UnkStruct35 { get; set; }
-        public UnkStruct40Struct[] UnkStruct40 { get; set; }
-        public ushort Unknown45 { get; set; }
+        public uint FinalBossExp { get; set; }
+        public uint Unknown22 { get; set; }
+        public ushort FinalBossCurrencyA { get; set; }
+        public ushort FinalBossCurrencyB { get; set; }
+        public ushort FinalBossCurrencyC { get; set; }
+        public uint[] BossExp { get; set; }
+        public ushort[] BossCurrencyA { get; set; }
+        public ushort[] BossCurrencyB { get; set; }
+        public ushort[] BossCurrencyC { get; set; }
+        public uint InstanceClearExp { get; set; }
         public uint InstanceClearGil { get; set; }
         public uint InstanceContentRewardItem { get; set; }
-        public uint Unknown48 { get; set; }
-        public byte FinalBossExp { get; set; }
+        public byte Unknown49 { get; set; }
+        public uint Unknown50 { get; set; }
         public LazyRow< InstanceContentBuff > InstanceContentBuff { get; set; }
+        public bool Unknown52 { get; set; }
         public LazyRow< InstanceContent > ReqInstance { get; set; }
-        public uint Unknown52 { get; set; }
         public short PartyCondition { get; set; }
-        public byte Unknown54 { get; set; }
         public byte Unknown55 { get; set; }
         public byte Unknown56 { get; set; }
         public byte Unknown57 { get; set; }
-        public bool Unknown58 { get; set; }
-        public ushort Unknown59 { get; set; }
+        public byte Unknown58 { get; set; }
+        public bool Unknown59 { get; set; }
         public ushort Unknown60 { get; set; }
-        public ushort Unknown540 { get; set; }
-        public ushort Unknown541 { get; set; }
+        public ushort Unknown61 { get; set; }
+        public ushort Unknown62 { get; set; }
+        public byte Unknown63 { get; set; }
+        public ushort Unknown64 { get; set; }
+        public ushort Unknown65 { get; set; }
+        public bool Unknown66 { get; set; }
+        public ushort Unknown67 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -85,7 +74,7 @@ namespace Lumina.Excel.GeneratedSheets
             BGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 4 ), language );
             WinBGM = new LazyRow< BGM >( gameData, parser.ReadColumn< ushort >( 5 ), language );
             Cutscene = new LazyRow< Cutscene >( gameData, parser.ReadColumn< uint >( 6 ), language );
-            Unknown7 = parser.ReadColumn< uint >( 7 );
+            LGBEventRange = parser.ReadColumn< uint >( 7 );
             Order = parser.ReadColumn< ushort >( 8 );
             Colosseum = parser.ReadColumn< byte >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
@@ -95,56 +84,49 @@ namespace Lumina.Excel.GeneratedSheets
             InstanceContentTextDataObjectiveStart = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 14 ), language );
             InstanceContentTextDataObjectiveEnd = new LazyRow< InstanceContentTextData >( gameData, parser.ReadColumn< uint >( 15 ), language );
             SortKey = parser.ReadColumn< ushort >( 16 );
-            InstanceClearExp = parser.ReadColumn< uint >( 17 );
-            Unknown18 = parser.ReadColumn< uint >( 18 );
+            NewPlayerBonusGil = parser.ReadColumn< uint >( 17 );
+            NewPlayerBonusExp = parser.ReadColumn< uint >( 18 );
             NewPlayerBonusA = parser.ReadColumn< ushort >( 19 );
-            FinalBossCurrencyC = parser.ReadColumn< ushort >( 20 );
-            Unknown21 = parser.ReadColumn< uint >( 21 );
-            FinalBossCurrencyA = parser.ReadColumn< uint >( 22 );
-            FinalBossCurrencyB = parser.ReadColumn< ushort >( 23 );
-            NewPlayerBonusB = parser.ReadColumn< ushort >( 24 );
-            UnkStruct25 = new UnkStruct25Struct[ 5 ];
+            NewPlayerBonusB = parser.ReadColumn< ushort >( 20 );
+            FinalBossExp = parser.ReadColumn< uint >( 21 );
+            Unknown22 = parser.ReadColumn< uint >( 22 );
+            FinalBossCurrencyA = parser.ReadColumn< ushort >( 23 );
+            FinalBossCurrencyB = parser.ReadColumn< ushort >( 24 );
+            FinalBossCurrencyC = parser.ReadColumn< ushort >( 25 );
+            BossExp = new uint[ 5 ];
             for( var i = 0; i < 5; i++ )
-            {
-                UnkStruct25[ i ] = new UnkStruct25Struct();
-                UnkStruct25[ i ].BossExp = parser.ReadColumn< ushort >( 25 + ( i * 1 + 0 ) );
-            }
-            UnkStruct30 = new UnkStruct30Struct[ 5 ];
+                BossExp[ i ] = parser.ReadColumn< uint >( 26 + i );
+            BossCurrencyA = new ushort[ 5 ];
             for( var i = 0; i < 5; i++ )
-            {
-                UnkStruct30[ i ] = new UnkStruct30Struct();
-                UnkStruct30[ i ].BossCurrencyA = parser.ReadColumn< uint >( 30 + ( i * 1 + 0 ) );
-            }
-            UnkStruct35 = new UnkStruct35Struct[ 5 ];
+                BossCurrencyA[ i ] = parser.ReadColumn< ushort >( 31 + i );
+            BossCurrencyB = new ushort[ 5 ];
             for( var i = 0; i < 5; i++ )
-            {
-                UnkStruct35[ i ] = new UnkStruct35Struct();
-                UnkStruct35[ i ].BossCurrencyB = parser.ReadColumn< ushort >( 35 + ( i * 1 + 0 ) );
-            }
-            UnkStruct40 = new UnkStruct40Struct[ 5 ];
+                BossCurrencyB[ i ] = parser.ReadColumn< ushort >( 36 + i );
+            BossCurrencyC = new ushort[ 5 ];
             for( var i = 0; i < 5; i++ )
-            {
-                UnkStruct40[ i ] = new UnkStruct40Struct();
-                UnkStruct40[ i ].BossCurrencyC = parser.ReadColumn< ushort >( 40 + ( i * 1 + 0 ) );
-            }
-            Unknown45 = parser.ReadColumn< ushort >( 45 );
-            InstanceClearGil = parser.ReadColumn< uint >( 46 );
-            InstanceContentRewardItem = parser.ReadColumn< uint >( 47 );
-            Unknown48 = parser.ReadColumn< uint >( 48 );
-            FinalBossExp = parser.ReadColumn< byte >( 49 );
-            InstanceContentBuff = new LazyRow< InstanceContentBuff >( gameData, parser.ReadColumn< uint >( 50 ), language );
-            ReqInstance = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< int >( 51 ), language );
-            Unknown52 = parser.ReadColumn< uint >( 52 );
-            PartyCondition = parser.ReadColumn< short >( 53 );
-            Unknown54 = parser.ReadColumn< byte >( 54 );
+                BossCurrencyC[ i ] = parser.ReadColumn< ushort >( 41 + i );
+            InstanceClearExp = parser.ReadColumn< uint >( 46 );
+            InstanceClearGil = parser.ReadColumn< uint >( 47 );
+            InstanceContentRewardItem = parser.ReadColumn< uint >( 48 );
+            Unknown49 = parser.ReadColumn< byte >( 49 );
+            Unknown50 = parser.ReadColumn< uint >( 50 );
+            InstanceContentBuff = new LazyRow< InstanceContentBuff >( gameData, parser.ReadColumn< int >( 51 ), language );
+            Unknown52 = parser.ReadColumn< bool >( 52 );
+            ReqInstance = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< uint >( 53 ), language );
+            PartyCondition = parser.ReadColumn< short >( 54 );
             Unknown55 = parser.ReadColumn< byte >( 55 );
             Unknown56 = parser.ReadColumn< byte >( 56 );
             Unknown57 = parser.ReadColumn< byte >( 57 );
-            Unknown58 = parser.ReadColumn< bool >( 58 );
-            Unknown59 = parser.ReadColumn< ushort >( 59 );
+            Unknown58 = parser.ReadColumn< byte >( 58 );
+            Unknown59 = parser.ReadColumn< bool >( 59 );
             Unknown60 = parser.ReadColumn< ushort >( 60 );
-            Unknown540 = parser.ReadColumn< ushort >( 61 );
-            Unknown541 = parser.ReadColumn< ushort >( 62 );
+            Unknown61 = parser.ReadColumn< ushort >( 61 );
+            Unknown62 = parser.ReadColumn< ushort >( 62 );
+            Unknown63 = parser.ReadColumn< byte >( 63 );
+            Unknown64 = parser.ReadColumn< ushort >( 64 );
+            Unknown65 = parser.ReadColumn< ushort >( 65 );
+            Unknown66 = parser.ReadColumn< bool >( 66 );
+            Unknown67 = parser.ReadColumn< ushort >( 67 );
         }
     }
 }

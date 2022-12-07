@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GFateClimbing2TotemType", columnHash: 0xdbf43666 )]
-    public class GFateClimbing2TotemType : ExcelRow
+    [Sheet( "GFateClimbing2TotemType", columnHash: 0xd9d6e4fa )]
+    public partial class GFateClimbing2TotemType : ExcelRow
     {
         
         public LazyRow< PublicContentTextData > PublicContentTextData { get; set; }

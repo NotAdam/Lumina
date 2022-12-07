@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AetheryteSystemDefine", columnHash: 0x98fff20a )]
-    public class AetheryteSystemDefine : ExcelRow
+    [Sheet( "AetheryteSystemDefine", columnHash: 0xe5b72d2d )]
+    public partial class AetheryteSystemDefine : ExcelRow
     {
         
         public SeString Text { get; set; }

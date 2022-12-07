@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BattleLeveRule", columnHash: 0xdebb20e3 )]
-    public class BattleLeveRule : ExcelRow
+    [Sheet( "BattleLeveRule", columnHash: 0xd70d6cc8 )]
+    public partial class BattleLeveRule : ExcelRow
     {
         
         public SeString Rule { get; set; }

@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SwitchTalkVariation", columnHash: 0x031e9614 )]
-    public class SwitchTalkVariation : ExcelRow
+    [Sheet( "SwitchTalkVariation", columnHash: 0x528a76e6 )]
+    public partial class SwitchTalkVariation : ExcelRow
     {
         
         public uint Quest0 { get; set; }

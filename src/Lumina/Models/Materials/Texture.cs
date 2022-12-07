@@ -43,8 +43,7 @@ namespace Lumina.Models.Materials
         /// </summary>
         public string TexturePath { get; private set; }
 
-        private bool _isLoaded = false;
-        private TexFile _tex;
+        private TexFile? _tex;
 
         /// <summary>
         /// Creates a new Texture instance without resolving any game data.
@@ -73,15 +72,14 @@ namespace Lumina.Models.Materials
         /// </summary>
         /// <param name="data">A reference to game data access.</param>
         /// <returns>The TexFile referenced by this Texture if found, null otherwise.</returns>
-        public TexFile GetTexture(GameData data)
+        public TexFile? GetTexture(GameData data)
         {
-            if( _isLoaded ) return _tex;
-            if( data == null ) return null;
+            if( _tex == null )
+            {
+                return null;
+            }
 
-            _tex = data.GetFile< TexFile >( TexturePath );
-            _isLoaded = true;
-
-            return _tex;
+            return _tex = data.GetFile< TexFile >( TexturePath );;
         }
         
         /// <summary>
@@ -90,7 +88,7 @@ namespace Lumina.Models.Materials
         /// </summary>
         /// <param name="data">A reference to game data access.</param>
         /// <returns>The TexFile referenced by this Texture if found, null otherwise.</returns>
-        public TexFile GetTextureNc(GameData data)
+        public TexFile? GetTextureNc(GameData data)
         {
             return data.GetFile< TexFile >( TexturePath );
         }

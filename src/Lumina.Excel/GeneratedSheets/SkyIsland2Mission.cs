@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SkyIsland2Mission", columnHash: 0xec50a29c )]
-    public class SkyIsland2Mission : ExcelRow
+    [Sheet( "SkyIsland2Mission", columnHash: 0x61f7b35c )]
+    public partial class SkyIsland2Mission : ExcelRow
     {
         
         public LazyRow< EventItem > Item1 { get; set; }

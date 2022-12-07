@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BNpcAnnounceIcon", columnHash: 0xdbf43666 )]
-    public class BNpcAnnounceIcon : ExcelRow
+    [Sheet( "BNpcAnnounceIcon", columnHash: 0x40dfb540 )]
+    public partial class BNpcAnnounceIcon : ExcelRow
     {
         
         public uint Icon { get; set; }

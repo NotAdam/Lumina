@@ -6,8 +6,8 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PublicContentCutscene", columnHash: 0x5d58cc84 )]
-    public class PublicContentCutscene : ExcelRow
+    [Sheet( "PublicContentCutscene", columnHash: 0x4909b9fe )]
+    public partial class PublicContentCutscene : ExcelRow
     {
         
         public LazyRow< Cutscene > Cutscene { get; set; }
