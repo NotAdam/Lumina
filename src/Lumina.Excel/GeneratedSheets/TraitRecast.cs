@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "TraitRecast", columnHash: 0x672b5147 )]
+    [Sheet( "TraitRecast", columnHash: 0xdc23efe7 )]
     public partial class TraitRecast : ExcelRow
     {
         

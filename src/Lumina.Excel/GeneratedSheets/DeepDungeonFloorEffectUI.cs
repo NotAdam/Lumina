@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DeepDungeonFloorEffectUI", columnHash: 0x3e7e459b )]
+    [Sheet( "DeepDungeonFloorEffectUI", columnHash: 0x11a44a12 )]
     public partial class DeepDungeonFloorEffectUI : ExcelRow
     {
         

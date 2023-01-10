@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SatisfactionNpc", columnHash: 0x4d4cc4d3 )]
+    [Sheet( "SatisfactionNpc", columnHash: 0xd50a940f )]
     public partial class SatisfactionNpc : ExcelRow
     {
         public class SatisfactionNpcUnkData16Obj
@@ -68,10 +68,28 @@ namespace Lumina.Excel.GeneratedSheets
         public bool Unknown67 { get; set; }
         public bool Unknown68 { get; set; }
         public bool Unknown69 { get; set; }
+        public int Unknown70 { get; set; }
+        public int Unknown71 { get; set; }
+        public int Unknown72 { get; set; }
+        public int Unknown73 { get; set; }
+        public int Unknown74 { get; set; }
+        public int Unknown75 { get; set; }
+        public int Unknown76 { get; set; }
+        public int Unknown77 { get; set; }
+        public int Unknown78 { get; set; }
+        public int Unknown79 { get; set; }
+        public int Unknown80 { get; set; }
+        public int Unknown81 { get; set; }
+        public int Unknown82 { get; set; }
+        public int Unknown83 { get; set; }
+        public int Unknown84 { get; set; }
+        public int Unknown85 { get; set; }
+        public int Unknown86 { get; set; }
+        public int Unknown87 { get; set; }
         public int Icon { get; set; }
-        public byte Unknown71 { get; set; }
-        public byte Unknown72 { get; set; }
-        public byte Unknown73 { get; set; }
+        public byte Unknown89 { get; set; }
+        public byte Unknown90 { get; set; }
+        public byte Unknown91 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -140,10 +158,28 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown67 = parser.ReadColumn< bool >( 67 );
             Unknown68 = parser.ReadColumn< bool >( 68 );
             Unknown69 = parser.ReadColumn< bool >( 69 );
-            Icon = parser.ReadColumn< int >( 70 );
-            Unknown71 = parser.ReadColumn< byte >( 71 );
-            Unknown72 = parser.ReadColumn< byte >( 72 );
-            Unknown73 = parser.ReadColumn< byte >( 73 );
+            Unknown70 = parser.ReadColumn< int >( 70 );
+            Unknown71 = parser.ReadColumn< int >( 71 );
+            Unknown72 = parser.ReadColumn< int >( 72 );
+            Unknown73 = parser.ReadColumn< int >( 73 );
+            Unknown74 = parser.ReadColumn< int >( 74 );
+            Unknown75 = parser.ReadColumn< int >( 75 );
+            Unknown76 = parser.ReadColumn< int >( 76 );
+            Unknown77 = parser.ReadColumn< int >( 77 );
+            Unknown78 = parser.ReadColumn< int >( 78 );
+            Unknown79 = parser.ReadColumn< int >( 79 );
+            Unknown80 = parser.ReadColumn< int >( 80 );
+            Unknown81 = parser.ReadColumn< int >( 81 );
+            Unknown82 = parser.ReadColumn< int >( 82 );
+            Unknown83 = parser.ReadColumn< int >( 83 );
+            Unknown84 = parser.ReadColumn< int >( 84 );
+            Unknown85 = parser.ReadColumn< int >( 85 );
+            Unknown86 = parser.ReadColumn< int >( 86 );
+            Unknown87 = parser.ReadColumn< int >( 87 );
+            Icon = parser.ReadColumn< int >( 88 );
+            Unknown89 = parser.ReadColumn< byte >( 89 );
+            Unknown90 = parser.ReadColumn< byte >( 90 );
+            Unknown91 = parser.ReadColumn< byte >( 91 );
         }
     }
 }

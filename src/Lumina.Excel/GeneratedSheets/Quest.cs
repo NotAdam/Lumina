@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Quest", columnHash: 0x65316a61 )]
+    [Sheet( "Quest", columnHash: 0xc4157593 )]
     public partial class Quest : ExcelRow
     {
         
@@ -19,10 +19,8 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< ClassJobCategory > ClassJobCategory1 { get; set; }
         public ushort ClassJobLevel1 { get; set; }
         public byte PreviousQuestJoin { get; set; }
-        public LazyRow< Quest > PreviousQuest0 { get; set; }
-        public byte Unknown10 { get; set; }
-        public LazyRow< Quest > PreviousQuest1 { get; set; }
-        public LazyRow< Quest > PreviousQuest2 { get; set; }
+        public LazyRow< Quest >[] PreviousQuest { get; set; }
+        public uint Unknown12 { get; set; }
         public byte QuestLockJoin { get; set; }
         public LazyRow< Quest >[] QuestLock { get; set; }
         public ushort Header { get; set; }
@@ -77,8 +75,30 @@ namespace Lumina.Excel.GeneratedSheets
         public bool[] CanTargetBool { get; set; }
         public byte[] ToDoCompleteSeq { get; set; }
         public byte[] ToDoQty { get; set; }
-        public LazyRow< Level >[] ToDoMainLocation { get; set; }
-        public uint[] Unknown1245 { get; set; }
+        public uint[] Unknown1221 { get; set; }
+        public uint Unknown1229 { get; set; }
+        public uint Unknown1230 { get; set; }
+        public uint Unknown1231 { get; set; }
+        public uint Unknown1232 { get; set; }
+        public uint Unknown1233 { get; set; }
+        public uint Unknown1234 { get; set; }
+        public uint Unknown1235 { get; set; }
+        public uint Unknown1236 { get; set; }
+        public uint Unknown1237 { get; set; }
+        public uint Unknown1238 { get; set; }
+        public uint Unknown1239 { get; set; }
+        public uint Unknown1240 { get; set; }
+        public uint Unknown1241 { get; set; }
+        public uint Unknown1242 { get; set; }
+        public uint Unknown1243 { get; set; }
+        public uint Unknown1244 { get; set; }
+        public uint Unknown1245 { get; set; }
+        public uint Unknown1246 { get; set; }
+        public uint Unknown1247 { get; set; }
+        public uint Unknown1248 { get; set; }
+        public uint Unknown1249 { get; set; }
+        public uint Unknown1250 { get; set; }
+        public uint Unknown1251 { get; set; }
         public uint Unknown1252 { get; set; }
         public uint Unknown1253 { get; set; }
         public uint Unknown1254 { get; set; }
@@ -302,10 +322,10 @@ namespace Lumina.Excel.GeneratedSheets
             ClassJobCategory1 = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 6 ), language );
             ClassJobLevel1 = parser.ReadColumn< ushort >( 7 );
             PreviousQuestJoin = parser.ReadColumn< byte >( 8 );
-            PreviousQuest0 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 9 ), language );
-            Unknown10 = parser.ReadColumn< byte >( 10 );
-            PreviousQuest1 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 11 ), language );
-            PreviousQuest2 = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 12 ), language );
+            PreviousQuest = new LazyRow< Quest >[ 3 ];
+            for( var i = 0; i < 3; i++ )
+                PreviousQuest[ i ] = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 9 + i ), language );
+            Unknown12 = parser.ReadColumn< uint >( 12 );
             QuestLockJoin = parser.ReadColumn< byte >( 13 );
             QuestLock = new LazyRow< Quest >[ 2 ];
             for( var i = 0; i < 2; i++ )
@@ -406,12 +426,32 @@ namespace Lumina.Excel.GeneratedSheets
             ToDoQty = new byte[ 24 ];
             for( var i = 0; i < 24; i++ )
                 ToDoQty[ i ] = parser.ReadColumn< byte >( 1197 + i );
-            ToDoMainLocation = new LazyRow< Level >[ 24 ];
-            for( var i = 0; i < 24; i++ )
-                ToDoMainLocation[ i ] = new LazyRow< Level >( gameData, parser.ReadColumn< uint >( 1221 + i ), language );
-            Unknown1245 = new uint[ 7 ];
-            for( var i = 0; i < 7; i++ )
-                Unknown1245[ i ] = parser.ReadColumn< uint >( 1245 + i );
+            Unknown1221 = new uint[ 8 ];
+            for( var i = 0; i < 8; i++ )
+                Unknown1221[ i ] = parser.ReadColumn< uint >( 1221 + i );
+            Unknown1229 = parser.ReadColumn< uint >( 1229 );
+            Unknown1230 = parser.ReadColumn< uint >( 1230 );
+            Unknown1231 = parser.ReadColumn< uint >( 1231 );
+            Unknown1232 = parser.ReadColumn< uint >( 1232 );
+            Unknown1233 = parser.ReadColumn< uint >( 1233 );
+            Unknown1234 = parser.ReadColumn< uint >( 1234 );
+            Unknown1235 = parser.ReadColumn< uint >( 1235 );
+            Unknown1236 = parser.ReadColumn< uint >( 1236 );
+            Unknown1237 = parser.ReadColumn< uint >( 1237 );
+            Unknown1238 = parser.ReadColumn< uint >( 1238 );
+            Unknown1239 = parser.ReadColumn< uint >( 1239 );
+            Unknown1240 = parser.ReadColumn< uint >( 1240 );
+            Unknown1241 = parser.ReadColumn< uint >( 1241 );
+            Unknown1242 = parser.ReadColumn< uint >( 1242 );
+            Unknown1243 = parser.ReadColumn< uint >( 1243 );
+            Unknown1244 = parser.ReadColumn< uint >( 1244 );
+            Unknown1245 = parser.ReadColumn< uint >( 1245 );
+            Unknown1246 = parser.ReadColumn< uint >( 1246 );
+            Unknown1247 = parser.ReadColumn< uint >( 1247 );
+            Unknown1248 = parser.ReadColumn< uint >( 1248 );
+            Unknown1249 = parser.ReadColumn< uint >( 1249 );
+            Unknown1250 = parser.ReadColumn< uint >( 1250 );
+            Unknown1251 = parser.ReadColumn< uint >( 1251 );
             Unknown1252 = parser.ReadColumn< uint >( 1252 );
             Unknown1253 = parser.ReadColumn< uint >( 1253 );
             Unknown1254 = parser.ReadColumn< uint >( 1254 );
@@ -633,7 +673,7 @@ namespace Lumina.Excel.GeneratedSheets
             TomestoneCountReward = parser.ReadColumn< byte >( 1510 );
             ReputationReward = parser.ReadColumn< byte >( 1511 );
             PlaceName = new LazyRow< PlaceName >( gameData, parser.ReadColumn< ushort >( 1512 ), language );
-            JournalGenre = new LazyRow< JournalGenre >( gameData, parser.ReadColumn< byte >( 1513 ), language );
+            JournalGenre = new LazyRow< JournalGenre >( gameData, parser.ReadColumn< uint >( 1513 ), language );
             Unknown1514 = parser.ReadColumn< byte >( 1514 );
             Icon = parser.ReadColumn< uint >( 1515 );
             IconSpecial = parser.ReadColumn< uint >( 1516 );

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SatisfactionSupply", columnHash: 0x1cf173c9 )]
+    [Sheet( "SatisfactionSupply", columnHash: 0x8c188eb2 )]
     public partial class SatisfactionSupply : ExcelRow
     {
         
@@ -17,6 +17,9 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort CollectabilityMid { get; set; }
         public ushort CollectabilityHigh { get; set; }
         public LazyRow< SatisfactionSupplyReward > Reward { get; set; }
+        public bool Unknown7 { get; set; }
+        public ushort Unknown8 { get; set; }
+        public ushort Unknown9 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -29,6 +32,9 @@ namespace Lumina.Excel.GeneratedSheets
             CollectabilityMid = parser.ReadColumn< ushort >( 4 );
             CollectabilityHigh = parser.ReadColumn< ushort >( 5 );
             Reward = new LazyRow< SatisfactionSupplyReward >( gameData, parser.ReadColumn< ushort >( 6 ), language );
+            Unknown7 = parser.ReadColumn< bool >( 7 );
+            Unknown8 = parser.ReadColumn< ushort >( 8 );
+            Unknown9 = parser.ReadColumn< ushort >( 9 );
         }
     }
 }

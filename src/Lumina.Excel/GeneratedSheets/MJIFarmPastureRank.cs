@@ -6,14 +6,11 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIFarmPastureRank", columnHash: 0x8a4b33c5 )]
+    [Sheet( "MJIFarmPastureRank", columnHash: 0x7157b32e )]
     public partial class MJIFarmPastureRank : ExcelRow
     {
         
-        public uint Unknown0 { get; set; }
-        public uint Unknown1 { get; set; }
-        public uint Unknown2 { get; set; }
-        public uint Unknown3 { get; set; }
+        public uint[] SGB { get; set; }
         public uint Unknown4 { get; set; }
         public uint Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
@@ -63,10 +60,9 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< uint >( 0 );
-            Unknown1 = parser.ReadColumn< uint >( 1 );
-            Unknown2 = parser.ReadColumn< uint >( 2 );
-            Unknown3 = parser.ReadColumn< uint >( 3 );
+            SGB = new uint[ 4 ];
+            for( var i = 0; i < 4; i++ )
+                SGB[ i ] = parser.ReadColumn< uint >( 0 + i );
             Unknown4 = parser.ReadColumn< uint >( 4 );
             Unknown5 = parser.ReadColumn< uint >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );

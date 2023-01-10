@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DeepDungeonBan", columnHash: 0x41f261eb )]
+    [Sheet( "DeepDungeonBan", columnHash: 0xdc23efe7 )]
     public partial class DeepDungeonBan : ExcelRow
     {
         

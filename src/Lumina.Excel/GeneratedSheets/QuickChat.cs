@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "QuickChat", columnHash: 0x9ce84775 )]
+    [Sheet( "QuickChat", columnHash: 0x66d693c5 )]
     public partial class QuickChat : ExcelRow
     {
         

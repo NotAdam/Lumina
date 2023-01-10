@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SkyIsland2MissionType", columnHash: 0x3e6ec9fd )]
+    [Sheet( "SkyIsland2MissionType", columnHash: 0xcd4cb81c )]
     public partial class SkyIsland2MissionType : ExcelRow
     {
         

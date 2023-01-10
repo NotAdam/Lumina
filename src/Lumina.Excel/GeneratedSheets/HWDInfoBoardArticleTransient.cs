@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "HWDInfoBoardArticleTransient", columnHash: 0x257fe0e0 )]
+    [Sheet( "HWDInfoBoardArticleTransient", columnHash: 0x11a44a12 )]
     public partial class HWDInfoBoardArticleTransient : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GuidePage", columnHash: 0x020f002a )]
+    [Sheet( "GuidePage", columnHash: 0x5bfa8a4e )]
     public partial class GuidePage : ExcelRow
     {
         

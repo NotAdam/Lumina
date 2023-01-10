@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GimmickAccessor", columnHash: 0x082ba6ba )]
+    [Sheet( "GimmickAccessor", columnHash: 0x5861eaa3 )]
     public partial class GimmickAccessor : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CircleActivity", columnHash: 0x20b9361d )]
+    [Sheet( "CircleActivity", columnHash: 0x1a6ae0b3 )]
     public partial class CircleActivity : ExcelRow
     {
         

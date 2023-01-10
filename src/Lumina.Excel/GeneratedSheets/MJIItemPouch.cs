@@ -6,21 +6,23 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIItemPouch", columnHash: 0x49c5eda3 )]
+    [Sheet( "MJIItemPouch", columnHash: 0x471e775e )]
     public partial class MJIItemPouch : ExcelRow
     {
         
         public LazyRow< Item > Item { get; set; }
-        public int Unknown1 { get; set; }
-        public byte Unknown2 { get; set; }
+        public LazyRow< MJIItemCategory > Category { get; set; }
+        public LazyRow< MJICropSeed > Crop { get; set; }
+        public byte Unknown3 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
             Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 0 ), language );
-            Unknown1 = parser.ReadColumn< int >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
+            Category = new LazyRow< MJIItemCategory >( gameData, parser.ReadColumn< int >( 1 ), language );
+            Crop = new LazyRow< MJICropSeed >( gameData, parser.ReadColumn< byte >( 2 ), language );
+            Unknown3 = parser.ReadColumn< byte >( 3 );
         }
     }
 }

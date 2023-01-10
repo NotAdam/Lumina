@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RPParameter", columnHash: 0x499887bf )]
+    [Sheet( "RPParameter", columnHash: 0x251a33cc )]
     public partial class RPParameter : ExcelRow
     {
         

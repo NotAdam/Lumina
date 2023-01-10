@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DeepDungeon", columnHash: 0x59643229 )]
+    [Sheet( "DeepDungeon", columnHash: 0x2b582528 )]
     public partial class DeepDungeon : ExcelRow
     {
         
@@ -14,9 +14,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< DeepDungeonEquipment > AetherpoolArmor { get; set; }
         public LazyRow< DeepDungeonItem >[] PomanderSlot { get; set; }
         public LazyRow< DeepDungeonMagicStone >[] MagiciteSlot { get; set; }
+        public byte Unknown22 { get; set; }
         public SeString Name { get; set; }
         public LazyRow< ContentFinderCondition > ContentFinderConditionStart { get; set; }
-        public bool Unknown24 { get; set; }
+        public bool Unknown25 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -30,9 +31,10 @@ namespace Lumina.Excel.GeneratedSheets
             MagiciteSlot = new LazyRow< DeepDungeonMagicStone >[ 4 ];
             for( var i = 0; i < 4; i++ )
                 MagiciteSlot[ i ] = new LazyRow< DeepDungeonMagicStone >( gameData, parser.ReadColumn< byte >( 18 + i ), language );
-            Name = parser.ReadColumn< SeString >( 22 );
-            ContentFinderConditionStart = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< ushort >( 23 ), language );
-            Unknown24 = parser.ReadColumn< bool >( 24 );
+            Unknown22 = parser.ReadColumn< byte >( 22 );
+            Name = parser.ReadColumn< SeString >( 23 );
+            ContentFinderConditionStart = new LazyRow< ContentFinderCondition >( gameData, parser.ReadColumn< ushort >( 24 ), language );
+            Unknown25 = parser.ReadColumn< bool >( 25 );
         }
     }
 }

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RecastNavimesh", columnHash: 0xbd1b14c4 )]
+    [Sheet( "RecastNavimesh", columnHash: 0x98c040df )]
     public partial class RecastNavimesh : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Cutscene", columnHash: 0x38e9f930 )]
+    [Sheet( "Cutscene", columnHash: 0xc7384dde )]
     public partial class Cutscene : ExcelRow
     {
         

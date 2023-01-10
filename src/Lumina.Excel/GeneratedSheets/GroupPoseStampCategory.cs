@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GroupPoseStampCategory", columnHash: 0x17d52d63 )]
+    [Sheet( "GroupPoseStampCategory", columnHash: 0x5eb59ccb )]
     public partial class GroupPoseStampCategory : ExcelRow
     {
         

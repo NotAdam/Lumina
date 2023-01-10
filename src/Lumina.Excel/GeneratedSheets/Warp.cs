@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Warp", columnHash: 0xbcc4021b )]
+    [Sheet( "Warp", columnHash: 0x1a234b7b )]
     public partial class Warp : ExcelRow
     {
         

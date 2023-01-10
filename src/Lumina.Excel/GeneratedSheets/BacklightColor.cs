@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BacklightColor", columnHash: 0xd060a8d1 )]
+    [Sheet( "BacklightColor", columnHash: 0xdbf43666 )]
     public partial class BacklightColor : ExcelRow
     {
         

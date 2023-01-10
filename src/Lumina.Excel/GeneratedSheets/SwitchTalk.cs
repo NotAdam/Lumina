@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SwitchTalk", columnHash: 0xc23786c3 )]
+    [Sheet( "SwitchTalk", columnHash: 0x4be042fe )]
     public partial class SwitchTalk : ExcelRow
     {
         

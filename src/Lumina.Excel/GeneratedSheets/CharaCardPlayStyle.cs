@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CharaCardPlayStyle", columnHash: 0x09223465 )]
+    [Sheet( "CharaCardPlayStyle", columnHash: 0x30ebf383 )]
     public partial class CharaCardPlayStyle : ExcelRow
     {
         

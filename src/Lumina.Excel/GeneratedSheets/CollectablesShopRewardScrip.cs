@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CollectablesShopRewardScrip", columnHash: 0x272a1404 )]
+    [Sheet( "CollectablesShopRewardScrip", columnHash: 0x0c33ce97 )]
     public partial class CollectablesShopRewardScrip : ExcelRow
     {
         

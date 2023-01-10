@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Marker", columnHash: 0x0a623d07 )]
+    [Sheet( "Marker", columnHash: 0x0c8db36c )]
     public partial class Marker : ExcelRow
     {
         

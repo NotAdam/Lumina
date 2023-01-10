@@ -6,14 +6,14 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentRoulette", columnHash: 0x865b4d57 )]
+    [Sheet( "ContentRoulette", columnHash: 0xa675766e )]
     public partial class ContentRoulette : ExcelRow
     {
         
         public SeString Name { get; set; }
         public SeString Category { get; set; }
         public SeString Unknown2 { get; set; }
-        public SeString Unknown3 { get; set; }
+        public SeString Description { get; set; }
         public SeString DutyType { get; set; }
         public byte Unknown5 { get; set; }
         public uint Unknown6 { get; set; }
@@ -38,21 +38,22 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown25 { get; set; }
         public byte Unknown26 { get; set; }
         public sbyte Unknown27 { get; set; }
-        public byte Unknown28 { get; set; }
+        public bool Unknown28 { get; set; }
         public byte Unknown29 { get; set; }
         public byte Unknown30 { get; set; }
         public byte Unknown31 { get; set; }
-        public bool Unknown32 { get; set; }
+        public byte Unknown32 { get; set; }
         public bool Unknown33 { get; set; }
+        public bool Unknown34 { get; set; }
         public bool RequireAllDuties { get; set; }
-        public bool Unknown35 { get; set; }
+        public bool Unknown36 { get; set; }
         public byte ContentRouletteOpenRule { get; set; }
         public LazyRow< InstanceContent > InstanceContent { get; set; }
-        public bool Unknown38 { get; set; }
-        public byte Unknown39 { get; set; }
-        public bool Unknown40 { get; set; }
+        public bool Unknown39 { get; set; }
+        public byte Unknown40 { get; set; }
         public bool Unknown41 { get; set; }
-        public byte Unknown42 { get; set; }
+        public bool Unknown42 { get; set; }
+        public byte Unknown43 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -61,7 +62,7 @@ namespace Lumina.Excel.GeneratedSheets
             Name = parser.ReadColumn< SeString >( 0 );
             Category = parser.ReadColumn< SeString >( 1 );
             Unknown2 = parser.ReadColumn< SeString >( 2 );
-            Unknown3 = parser.ReadColumn< SeString >( 3 );
+            Description = parser.ReadColumn< SeString >( 3 );
             DutyType = parser.ReadColumn< SeString >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );
             Unknown6 = parser.ReadColumn< uint >( 6 );
@@ -86,21 +87,22 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown25 = parser.ReadColumn< byte >( 25 );
             Unknown26 = parser.ReadColumn< byte >( 26 );
             Unknown27 = parser.ReadColumn< sbyte >( 27 );
-            Unknown28 = parser.ReadColumn< byte >( 28 );
+            Unknown28 = parser.ReadColumn< bool >( 28 );
             Unknown29 = parser.ReadColumn< byte >( 29 );
             Unknown30 = parser.ReadColumn< byte >( 30 );
             Unknown31 = parser.ReadColumn< byte >( 31 );
-            Unknown32 = parser.ReadColumn< bool >( 32 );
+            Unknown32 = parser.ReadColumn< byte >( 32 );
             Unknown33 = parser.ReadColumn< bool >( 33 );
-            RequireAllDuties = parser.ReadColumn< bool >( 34 );
-            Unknown35 = parser.ReadColumn< bool >( 35 );
-            ContentRouletteOpenRule = parser.ReadColumn< byte >( 36 );
-            InstanceContent = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< ushort >( 37 ), language );
-            Unknown38 = parser.ReadColumn< bool >( 38 );
-            Unknown39 = parser.ReadColumn< byte >( 39 );
-            Unknown40 = parser.ReadColumn< bool >( 40 );
+            Unknown34 = parser.ReadColumn< bool >( 34 );
+            RequireAllDuties = parser.ReadColumn< bool >( 35 );
+            Unknown36 = parser.ReadColumn< bool >( 36 );
+            ContentRouletteOpenRule = parser.ReadColumn< byte >( 37 );
+            InstanceContent = new LazyRow< InstanceContent >( gameData, parser.ReadColumn< ushort >( 38 ), language );
+            Unknown39 = parser.ReadColumn< bool >( 39 );
+            Unknown40 = parser.ReadColumn< byte >( 40 );
             Unknown41 = parser.ReadColumn< bool >( 41 );
-            Unknown42 = parser.ReadColumn< byte >( 42 );
+            Unknown42 = parser.ReadColumn< bool >( 42 );
+            Unknown43 = parser.ReadColumn< byte >( 43 );
         }
     }
 }

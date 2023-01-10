@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "NotebookDivision", columnHash: 0x991c375b )]
+    [Sheet( "NotebookDivision", columnHash: 0xb4638be9 )]
     public partial class NotebookDivision : ExcelRow
     {
         

@@ -6,13 +6,11 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIVillageAppearanceSG", columnHash: 0xee7a14bc )]
+    [Sheet( "MJIVillageAppearanceSG", columnHash: 0xfd578b22 )]
     public partial class MJIVillageAppearanceSG : ExcelRow
     {
         
-        public ushort Unknown0 { get; set; }
-        public ushort Unknown1 { get; set; }
-        public ushort Unknown2 { get; set; }
+        public LazyRow< ExportedSG >[] SGB { get; set; }
         public uint Unknown3 { get; set; }
         public uint Unknown4 { get; set; }
         public uint Unknown5 { get; set; }
@@ -21,9 +19,9 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< ushort >( 0 );
-            Unknown1 = parser.ReadColumn< ushort >( 1 );
-            Unknown2 = parser.ReadColumn< ushort >( 2 );
+            SGB = new LazyRow< ExportedSG >[ 3 ];
+            for( var i = 0; i < 3; i++ )
+                SGB[ i ] = new LazyRow< ExportedSG >( gameData, parser.ReadColumn< ushort >( 0 + i ), language );
             Unknown3 = parser.ReadColumn< uint >( 3 );
             Unknown4 = parser.ReadColumn< uint >( 4 );
             Unknown5 = parser.ReadColumn< uint >( 5 );

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "InstanceContentCSBonus", columnHash: 0xf17829ac )]
+    [Sheet( "InstanceContentCSBonus", columnHash: 0x43042e70 )]
     public partial class InstanceContentCSBonus : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "OrchestrionCategory", columnHash: 0x16d7949c )]
+    [Sheet( "OrchestrionCategory", columnHash: 0x005990e4 )]
     public partial class OrchestrionCategory : ExcelRow
     {
         

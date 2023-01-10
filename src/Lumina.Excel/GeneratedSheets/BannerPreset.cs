@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BannerPreset", columnHash: 0x01a466c7 )]
+    [Sheet( "BannerPreset", columnHash: 0xeeca93f7 )]
     public partial class BannerPreset : ExcelRow
     {
         

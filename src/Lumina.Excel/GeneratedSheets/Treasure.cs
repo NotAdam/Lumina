@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Treasure", columnHash: 0x46a931c8 )]
+    [Sheet( "Treasure", columnHash: 0x030e840a )]
     public partial class Treasure : ExcelRow
     {
         
@@ -18,7 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
         public sbyte Unknown5 { get; set; }
         public sbyte Unknown6 { get; set; }
         public sbyte Unknown7 { get; set; }
-        public LazyRow< Item > Item { get; set; }
+        public LazyRow< ExportedSG > SGB { get; set; }
         public bool Unknown9 { get; set; }
         public bool Unknown10 { get; set; }
         
@@ -34,7 +34,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown5 = parser.ReadColumn< sbyte >( 5 );
             Unknown6 = parser.ReadColumn< sbyte >( 6 );
             Unknown7 = parser.ReadColumn< sbyte >( 7 );
-            Item = new LazyRow< Item >( gameData, parser.ReadColumn< uint >( 8 ), language );
+            SGB = new LazyRow< ExportedSG >( gameData, parser.ReadColumn< uint >( 8 ), language );
             Unknown9 = parser.ReadColumn< bool >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
         }

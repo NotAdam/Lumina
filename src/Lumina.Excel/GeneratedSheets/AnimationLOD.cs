@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AnimationLOD", columnHash: 0x000e4024 )]
+    [Sheet( "AnimationLOD", columnHash: 0x261cfad0 )]
     public partial class AnimationLOD : ExcelRow
     {
         

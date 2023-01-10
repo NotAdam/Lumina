@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MateriaJoinRateGatherCraft", columnHash: 0x69674979 )]
+    [Sheet( "MateriaJoinRateGatherCraft", columnHash: 0xab31b42e )]
     public partial class MateriaJoinRateGatherCraft : ExcelRow
     {
         

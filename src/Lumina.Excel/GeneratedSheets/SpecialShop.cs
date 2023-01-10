@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SpecialShop", columnHash: 0x24d7a0ef )]
+    [Sheet( "SpecialShop", columnHash: 0xd789c459 )]
     public partial class SpecialShop : ExcelRow
     {
         public class SpecialShopUnkData1Obj
@@ -1268,7 +1268,66 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown1318 { get; set; }
         public int Unknown1319 { get; set; }
         public int Unknown1320 { get; set; }
-        public LazyRow< Achievement >[] AchievementUnlock { get; set; }
+        public byte Unknown1321 { get; set; }
+        public byte Unknown1322 { get; set; }
+        public byte Unknown1323 { get; set; }
+        public byte Unknown1324 { get; set; }
+        public byte Unknown1325 { get; set; }
+        public byte Unknown1326 { get; set; }
+        public byte Unknown1327 { get; set; }
+        public byte Unknown1328 { get; set; }
+        public byte Unknown1329 { get; set; }
+        public byte Unknown1330 { get; set; }
+        public byte Unknown1331 { get; set; }
+        public byte Unknown1332 { get; set; }
+        public byte Unknown1333 { get; set; }
+        public byte Unknown1334 { get; set; }
+        public byte Unknown1335 { get; set; }
+        public byte Unknown1336 { get; set; }
+        public byte Unknown1337 { get; set; }
+        public byte Unknown1338 { get; set; }
+        public byte Unknown1339 { get; set; }
+        public byte Unknown1340 { get; set; }
+        public byte Unknown1341 { get; set; }
+        public byte Unknown1342 { get; set; }
+        public byte Unknown1343 { get; set; }
+        public byte Unknown1344 { get; set; }
+        public byte Unknown1345 { get; set; }
+        public byte Unknown1346 { get; set; }
+        public byte Unknown1347 { get; set; }
+        public byte Unknown1348 { get; set; }
+        public byte Unknown1349 { get; set; }
+        public byte Unknown1350 { get; set; }
+        public byte Unknown1351 { get; set; }
+        public byte Unknown1352 { get; set; }
+        public byte Unknown1353 { get; set; }
+        public byte Unknown1354 { get; set; }
+        public byte Unknown1355 { get; set; }
+        public byte Unknown1356 { get; set; }
+        public byte Unknown1357 { get; set; }
+        public byte Unknown1358 { get; set; }
+        public byte Unknown1359 { get; set; }
+        public byte Unknown1360 { get; set; }
+        public byte Unknown1361 { get; set; }
+        public byte Unknown1362 { get; set; }
+        public byte Unknown1363 { get; set; }
+        public byte Unknown1364 { get; set; }
+        public byte Unknown1365 { get; set; }
+        public byte Unknown1366 { get; set; }
+        public byte Unknown1367 { get; set; }
+        public byte Unknown1368 { get; set; }
+        public byte Unknown1369 { get; set; }
+        public byte Unknown1370 { get; set; }
+        public byte Unknown1371 { get; set; }
+        public byte Unknown1372 { get; set; }
+        public byte Unknown1373 { get; set; }
+        public byte Unknown1374 { get; set; }
+        public byte Unknown1375 { get; set; }
+        public byte Unknown1376 { get; set; }
+        public byte Unknown1377 { get; set; }
+        public byte Unknown1378 { get; set; }
+        public byte Unknown1379 { get; set; }
+        public byte Unknown1380 { get; set; }
         public byte Unknown1381 { get; set; }
         public byte Unknown1382 { get; set; }
         public byte Unknown1383 { get; set; }
@@ -1329,16 +1388,77 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown1438 { get; set; }
         public byte Unknown1439 { get; set; }
         public byte Unknown1440 { get; set; }
+        public LazyRow< Achievement >[] AchievementUnlock { get; set; }
+        public byte Unknown1501 { get; set; }
+        public byte Unknown1502 { get; set; }
+        public byte Unknown1503 { get; set; }
+        public byte Unknown1504 { get; set; }
+        public byte Unknown1505 { get; set; }
+        public byte Unknown1506 { get; set; }
+        public byte Unknown1507 { get; set; }
+        public byte Unknown1508 { get; set; }
+        public byte Unknown1509 { get; set; }
+        public byte Unknown1510 { get; set; }
+        public byte Unknown1511 { get; set; }
+        public byte Unknown1512 { get; set; }
+        public byte Unknown1513 { get; set; }
+        public byte Unknown1514 { get; set; }
+        public byte Unknown1515 { get; set; }
+        public byte Unknown1516 { get; set; }
+        public byte Unknown1517 { get; set; }
+        public byte Unknown1518 { get; set; }
+        public byte Unknown1519 { get; set; }
+        public byte Unknown1520 { get; set; }
+        public byte Unknown1521 { get; set; }
+        public byte Unknown1522 { get; set; }
+        public byte Unknown1523 { get; set; }
+        public byte Unknown1524 { get; set; }
+        public byte Unknown1525 { get; set; }
+        public byte Unknown1526 { get; set; }
+        public byte Unknown1527 { get; set; }
+        public byte Unknown1528 { get; set; }
+        public byte Unknown1529 { get; set; }
+        public byte Unknown1530 { get; set; }
+        public byte Unknown1531 { get; set; }
+        public byte Unknown1532 { get; set; }
+        public byte Unknown1533 { get; set; }
+        public byte Unknown1534 { get; set; }
+        public byte Unknown1535 { get; set; }
+        public byte Unknown1536 { get; set; }
+        public byte Unknown1537 { get; set; }
+        public byte Unknown1538 { get; set; }
+        public byte Unknown1539 { get; set; }
+        public byte Unknown1540 { get; set; }
+        public byte Unknown1541 { get; set; }
+        public byte Unknown1542 { get; set; }
+        public byte Unknown1543 { get; set; }
+        public byte Unknown1544 { get; set; }
+        public byte Unknown1545 { get; set; }
+        public byte Unknown1546 { get; set; }
+        public byte Unknown1547 { get; set; }
+        public byte Unknown1548 { get; set; }
+        public byte Unknown1549 { get; set; }
+        public byte Unknown1550 { get; set; }
+        public byte Unknown1551 { get; set; }
+        public byte Unknown1552 { get; set; }
+        public byte Unknown1553 { get; set; }
+        public byte Unknown1554 { get; set; }
+        public byte Unknown1555 { get; set; }
+        public byte Unknown1556 { get; set; }
+        public byte Unknown1557 { get; set; }
+        public byte Unknown1558 { get; set; }
+        public byte Unknown1559 { get; set; }
+        public byte Unknown1560 { get; set; }
         public ushort[] PatchNumber { get; set; }
         public byte UseCurrencyType { get; set; }
         public LazyRow< Quest > QuestUnlock { get; set; }
         public LazyRow< DefaultTalk > CompleteText { get; set; }
         public LazyRow< DefaultTalk > NotCompleteText { get; set; }
-        public uint Unknown1505 { get; set; }
-        public bool Unknown1506 { get; set; }
-        public ushort Unknown1507 { get; set; }
-        public uint Unknown1508 { get; set; }
-        public bool Unknown1509 { get; set; }
+        public uint Unknown1625 { get; set; }
+        public bool Unknown1626 { get; set; }
+        public ushort Unknown1627 { get; set; }
+        public uint Unknown1628 { get; set; }
+        public bool Unknown1629 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -2606,9 +2726,66 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1318 = parser.ReadColumn< int >( 1318 );
             Unknown1319 = parser.ReadColumn< int >( 1319 );
             Unknown1320 = parser.ReadColumn< int >( 1320 );
-            AchievementUnlock = new LazyRow< Achievement >[ 60 ];
-            for( var i = 0; i < 60; i++ )
-                AchievementUnlock[ i ] = new LazyRow< Achievement >( gameData, parser.ReadColumn< int >( 1321 + i ), language );
+            Unknown1321 = parser.ReadColumn< byte >( 1321 );
+            Unknown1322 = parser.ReadColumn< byte >( 1322 );
+            Unknown1323 = parser.ReadColumn< byte >( 1323 );
+            Unknown1324 = parser.ReadColumn< byte >( 1324 );
+            Unknown1325 = parser.ReadColumn< byte >( 1325 );
+            Unknown1326 = parser.ReadColumn< byte >( 1326 );
+            Unknown1327 = parser.ReadColumn< byte >( 1327 );
+            Unknown1328 = parser.ReadColumn< byte >( 1328 );
+            Unknown1329 = parser.ReadColumn< byte >( 1329 );
+            Unknown1330 = parser.ReadColumn< byte >( 1330 );
+            Unknown1331 = parser.ReadColumn< byte >( 1331 );
+            Unknown1332 = parser.ReadColumn< byte >( 1332 );
+            Unknown1333 = parser.ReadColumn< byte >( 1333 );
+            Unknown1334 = parser.ReadColumn< byte >( 1334 );
+            Unknown1335 = parser.ReadColumn< byte >( 1335 );
+            Unknown1336 = parser.ReadColumn< byte >( 1336 );
+            Unknown1337 = parser.ReadColumn< byte >( 1337 );
+            Unknown1338 = parser.ReadColumn< byte >( 1338 );
+            Unknown1339 = parser.ReadColumn< byte >( 1339 );
+            Unknown1340 = parser.ReadColumn< byte >( 1340 );
+            Unknown1341 = parser.ReadColumn< byte >( 1341 );
+            Unknown1342 = parser.ReadColumn< byte >( 1342 );
+            Unknown1343 = parser.ReadColumn< byte >( 1343 );
+            Unknown1344 = parser.ReadColumn< byte >( 1344 );
+            Unknown1345 = parser.ReadColumn< byte >( 1345 );
+            Unknown1346 = parser.ReadColumn< byte >( 1346 );
+            Unknown1347 = parser.ReadColumn< byte >( 1347 );
+            Unknown1348 = parser.ReadColumn< byte >( 1348 );
+            Unknown1349 = parser.ReadColumn< byte >( 1349 );
+            Unknown1350 = parser.ReadColumn< byte >( 1350 );
+            Unknown1351 = parser.ReadColumn< byte >( 1351 );
+            Unknown1352 = parser.ReadColumn< byte >( 1352 );
+            Unknown1353 = parser.ReadColumn< byte >( 1353 );
+            Unknown1354 = parser.ReadColumn< byte >( 1354 );
+            Unknown1355 = parser.ReadColumn< byte >( 1355 );
+            Unknown1356 = parser.ReadColumn< byte >( 1356 );
+            Unknown1357 = parser.ReadColumn< byte >( 1357 );
+            Unknown1358 = parser.ReadColumn< byte >( 1358 );
+            Unknown1359 = parser.ReadColumn< byte >( 1359 );
+            Unknown1360 = parser.ReadColumn< byte >( 1360 );
+            Unknown1361 = parser.ReadColumn< byte >( 1361 );
+            Unknown1362 = parser.ReadColumn< byte >( 1362 );
+            Unknown1363 = parser.ReadColumn< byte >( 1363 );
+            Unknown1364 = parser.ReadColumn< byte >( 1364 );
+            Unknown1365 = parser.ReadColumn< byte >( 1365 );
+            Unknown1366 = parser.ReadColumn< byte >( 1366 );
+            Unknown1367 = parser.ReadColumn< byte >( 1367 );
+            Unknown1368 = parser.ReadColumn< byte >( 1368 );
+            Unknown1369 = parser.ReadColumn< byte >( 1369 );
+            Unknown1370 = parser.ReadColumn< byte >( 1370 );
+            Unknown1371 = parser.ReadColumn< byte >( 1371 );
+            Unknown1372 = parser.ReadColumn< byte >( 1372 );
+            Unknown1373 = parser.ReadColumn< byte >( 1373 );
+            Unknown1374 = parser.ReadColumn< byte >( 1374 );
+            Unknown1375 = parser.ReadColumn< byte >( 1375 );
+            Unknown1376 = parser.ReadColumn< byte >( 1376 );
+            Unknown1377 = parser.ReadColumn< byte >( 1377 );
+            Unknown1378 = parser.ReadColumn< byte >( 1378 );
+            Unknown1379 = parser.ReadColumn< byte >( 1379 );
+            Unknown1380 = parser.ReadColumn< byte >( 1380 );
             Unknown1381 = parser.ReadColumn< byte >( 1381 );
             Unknown1382 = parser.ReadColumn< byte >( 1382 );
             Unknown1383 = parser.ReadColumn< byte >( 1383 );
@@ -2669,18 +2846,81 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1438 = parser.ReadColumn< byte >( 1438 );
             Unknown1439 = parser.ReadColumn< byte >( 1439 );
             Unknown1440 = parser.ReadColumn< byte >( 1440 );
+            AchievementUnlock = new LazyRow< Achievement >[ 60 ];
+            for( var i = 0; i < 60; i++ )
+                AchievementUnlock[ i ] = new LazyRow< Achievement >( gameData, parser.ReadColumn< int >( 1441 + i ), language );
+            Unknown1501 = parser.ReadColumn< byte >( 1501 );
+            Unknown1502 = parser.ReadColumn< byte >( 1502 );
+            Unknown1503 = parser.ReadColumn< byte >( 1503 );
+            Unknown1504 = parser.ReadColumn< byte >( 1504 );
+            Unknown1505 = parser.ReadColumn< byte >( 1505 );
+            Unknown1506 = parser.ReadColumn< byte >( 1506 );
+            Unknown1507 = parser.ReadColumn< byte >( 1507 );
+            Unknown1508 = parser.ReadColumn< byte >( 1508 );
+            Unknown1509 = parser.ReadColumn< byte >( 1509 );
+            Unknown1510 = parser.ReadColumn< byte >( 1510 );
+            Unknown1511 = parser.ReadColumn< byte >( 1511 );
+            Unknown1512 = parser.ReadColumn< byte >( 1512 );
+            Unknown1513 = parser.ReadColumn< byte >( 1513 );
+            Unknown1514 = parser.ReadColumn< byte >( 1514 );
+            Unknown1515 = parser.ReadColumn< byte >( 1515 );
+            Unknown1516 = parser.ReadColumn< byte >( 1516 );
+            Unknown1517 = parser.ReadColumn< byte >( 1517 );
+            Unknown1518 = parser.ReadColumn< byte >( 1518 );
+            Unknown1519 = parser.ReadColumn< byte >( 1519 );
+            Unknown1520 = parser.ReadColumn< byte >( 1520 );
+            Unknown1521 = parser.ReadColumn< byte >( 1521 );
+            Unknown1522 = parser.ReadColumn< byte >( 1522 );
+            Unknown1523 = parser.ReadColumn< byte >( 1523 );
+            Unknown1524 = parser.ReadColumn< byte >( 1524 );
+            Unknown1525 = parser.ReadColumn< byte >( 1525 );
+            Unknown1526 = parser.ReadColumn< byte >( 1526 );
+            Unknown1527 = parser.ReadColumn< byte >( 1527 );
+            Unknown1528 = parser.ReadColumn< byte >( 1528 );
+            Unknown1529 = parser.ReadColumn< byte >( 1529 );
+            Unknown1530 = parser.ReadColumn< byte >( 1530 );
+            Unknown1531 = parser.ReadColumn< byte >( 1531 );
+            Unknown1532 = parser.ReadColumn< byte >( 1532 );
+            Unknown1533 = parser.ReadColumn< byte >( 1533 );
+            Unknown1534 = parser.ReadColumn< byte >( 1534 );
+            Unknown1535 = parser.ReadColumn< byte >( 1535 );
+            Unknown1536 = parser.ReadColumn< byte >( 1536 );
+            Unknown1537 = parser.ReadColumn< byte >( 1537 );
+            Unknown1538 = parser.ReadColumn< byte >( 1538 );
+            Unknown1539 = parser.ReadColumn< byte >( 1539 );
+            Unknown1540 = parser.ReadColumn< byte >( 1540 );
+            Unknown1541 = parser.ReadColumn< byte >( 1541 );
+            Unknown1542 = parser.ReadColumn< byte >( 1542 );
+            Unknown1543 = parser.ReadColumn< byte >( 1543 );
+            Unknown1544 = parser.ReadColumn< byte >( 1544 );
+            Unknown1545 = parser.ReadColumn< byte >( 1545 );
+            Unknown1546 = parser.ReadColumn< byte >( 1546 );
+            Unknown1547 = parser.ReadColumn< byte >( 1547 );
+            Unknown1548 = parser.ReadColumn< byte >( 1548 );
+            Unknown1549 = parser.ReadColumn< byte >( 1549 );
+            Unknown1550 = parser.ReadColumn< byte >( 1550 );
+            Unknown1551 = parser.ReadColumn< byte >( 1551 );
+            Unknown1552 = parser.ReadColumn< byte >( 1552 );
+            Unknown1553 = parser.ReadColumn< byte >( 1553 );
+            Unknown1554 = parser.ReadColumn< byte >( 1554 );
+            Unknown1555 = parser.ReadColumn< byte >( 1555 );
+            Unknown1556 = parser.ReadColumn< byte >( 1556 );
+            Unknown1557 = parser.ReadColumn< byte >( 1557 );
+            Unknown1558 = parser.ReadColumn< byte >( 1558 );
+            Unknown1559 = parser.ReadColumn< byte >( 1559 );
+            Unknown1560 = parser.ReadColumn< byte >( 1560 );
             PatchNumber = new ushort[ 60 ];
             for( var i = 0; i < 60; i++ )
-                PatchNumber[ i ] = parser.ReadColumn< ushort >( 1441 + i );
-            UseCurrencyType = parser.ReadColumn< byte >( 1501 );
-            QuestUnlock = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1502 ), language );
-            CompleteText = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 1503 ), language );
-            NotCompleteText = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 1504 ), language );
-            Unknown1505 = parser.ReadColumn< uint >( 1505 );
-            Unknown1506 = parser.ReadColumn< bool >( 1506 );
-            Unknown1507 = parser.ReadColumn< ushort >( 1507 );
-            Unknown1508 = parser.ReadColumn< uint >( 1508 );
-            Unknown1509 = parser.ReadColumn< bool >( 1509 );
+                PatchNumber[ i ] = parser.ReadColumn< ushort >( 1561 + i );
+            UseCurrencyType = parser.ReadColumn< byte >( 1621 );
+            QuestUnlock = new LazyRow< Quest >( gameData, parser.ReadColumn< uint >( 1622 ), language );
+            CompleteText = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 1623 ), language );
+            NotCompleteText = new LazyRow< DefaultTalk >( gameData, parser.ReadColumn< int >( 1624 ), language );
+            Unknown1625 = parser.ReadColumn< uint >( 1625 );
+            Unknown1626 = parser.ReadColumn< bool >( 1626 );
+            Unknown1627 = parser.ReadColumn< ushort >( 1627 );
+            Unknown1628 = parser.ReadColumn< uint >( 1628 );
+            Unknown1629 = parser.ReadColumn< bool >( 1629 );
         }
     }
 }
