@@ -12,7 +12,7 @@ namespace Lumina.Excel.GeneratedSheets
         
         public LazyRow< ExportedSG > SGB { get; set; }
         public uint MapIcon { get; set; }
-        public uint Plural { get; set; }
+        public uint Unknown2 { get; set; }
         public LazyRow< EObjName > Name { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
@@ -21,7 +21,7 @@ namespace Lumina.Excel.GeneratedSheets
 
             SGB = new LazyRow< ExportedSG >( gameData, parser.ReadColumn< ushort >( 0 ), language );
             MapIcon = parser.ReadColumn< uint >( 1 );
-            Plural = parser.ReadColumn< uint >( 2 );
+            Unknown2 = parser.ReadColumn< uint >( 2 );
             Name = new LazyRow< EObjName >( gameData, parser.ReadColumn< uint >( 3 ), language );
         }
     }
