@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RideShootingTargetType", columnHash: 0x3383a4aa )]
+    [Sheet( "RideShootingTargetType", columnHash: 0x213f343d )]
     public partial class RideShootingTargetType : ExcelRow
     {
         

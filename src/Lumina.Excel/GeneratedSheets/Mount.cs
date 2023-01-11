@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Mount", columnHash: 0xde4bebd7 )]
+    [Sheet( "Mount", columnHash: 0x8885ae41 )]
     public partial class Mount : ExcelRow
     {
         

@@ -6,45 +6,38 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIRecipe", columnHash: 0xf5ace01d )]
+    [Sheet( "MJIRecipe", columnHash: 0xcfeffbad )]
     public partial class MJIRecipe : ExcelRow
     {
+        public class MJIRecipeUnkData4Obj
+        {
+            public byte Material { get; set; }
+            public byte Amount { get; set; }
+        }
         
-        public uint Unknown0 { get; set; }
-        public byte Unknown1 { get; set; }
-        public byte Unknown2 { get; set; }
+        public LazyRow< LogMessage > LogMessage { get; set; }
+        public LazyRow< MJIKeyItem > KeyItem { get; set; }
+        public LazyRow< MJIItemPouch > ItemPouch { get; set; }
         public byte Unknown3 { get; set; }
-        public byte Unknown4 { get; set; }
-        public byte Unknown5 { get; set; }
-        public byte Unknown6 { get; set; }
-        public byte Unknown7 { get; set; }
-        public byte Unknown8 { get; set; }
-        public byte Unknown9 { get; set; }
-        public byte Unknown10 { get; set; }
-        public byte Unknown11 { get; set; }
-        public byte Unknown12 { get; set; }
-        public byte Unknown13 { get; set; }
-        public byte Unknown14 { get; set; }
+        public MJIRecipeUnkData4Obj[] UnkData4 { get; set; }
+        public byte Order { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< uint >( 0 );
-            Unknown1 = parser.ReadColumn< byte >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
+            LogMessage = new LazyRow< LogMessage >( gameData, parser.ReadColumn< uint >( 0 ), language );
+            KeyItem = new LazyRow< MJIKeyItem >( gameData, parser.ReadColumn< byte >( 1 ), language );
+            ItemPouch = new LazyRow< MJIItemPouch >( gameData, parser.ReadColumn< byte >( 2 ), language );
             Unknown3 = parser.ReadColumn< byte >( 3 );
-            Unknown4 = parser.ReadColumn< byte >( 4 );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
-            Unknown6 = parser.ReadColumn< byte >( 6 );
-            Unknown7 = parser.ReadColumn< byte >( 7 );
-            Unknown8 = parser.ReadColumn< byte >( 8 );
-            Unknown9 = parser.ReadColumn< byte >( 9 );
-            Unknown10 = parser.ReadColumn< byte >( 10 );
-            Unknown11 = parser.ReadColumn< byte >( 11 );
-            Unknown12 = parser.ReadColumn< byte >( 12 );
-            Unknown13 = parser.ReadColumn< byte >( 13 );
-            Unknown14 = parser.ReadColumn< byte >( 14 );
+            UnkData4 = new MJIRecipeUnkData4Obj[ 5 ];
+            for( var i = 0; i < 5; i++ )
+            {
+                UnkData4[ i ] = new MJIRecipeUnkData4Obj();
+                UnkData4[ i ].Material = parser.ReadColumn< byte >( 4 + ( i * 2 + 0 ) );
+                UnkData4[ i ].Amount = parser.ReadColumn< byte >( 4 + ( i * 2 + 1 ) );
+            }
+            Order = parser.ReadColumn< byte >( 14 );
         }
     }
 }

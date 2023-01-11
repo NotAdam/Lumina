@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Aetheryte", columnHash: 0xdaea04dd )]
+    [Sheet( "Aetheryte", columnHash: 0xcd1e31a4 )]
     public partial class Aetheryte : ExcelRow
     {
         
@@ -30,7 +30,7 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< Map > Map { get; set; }
         public short AetherstreamX { get; set; }
         public short AetherstreamY { get; set; }
-        public byte Unknown23 { get; set; }
+        public byte Order { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -58,7 +58,7 @@ namespace Lumina.Excel.GeneratedSheets
             Map = new LazyRow< Map >( gameData, parser.ReadColumn< ushort >( 20 ), language );
             AetherstreamX = parser.ReadColumn< short >( 21 );
             AetherstreamY = parser.ReadColumn< short >( 22 );
-            Unknown23 = parser.ReadColumn< byte >( 23 );
+            Order = parser.ReadColumn< byte >( 23 );
         }
     }
 }

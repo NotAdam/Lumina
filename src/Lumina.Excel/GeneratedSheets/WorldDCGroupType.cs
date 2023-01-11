@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "WorldDCGroupType", columnHash: 0xe16c0b38 )]
+    [Sheet( "WorldDCGroupType", columnHash: 0x9ff65ad6 )]
     public partial class WorldDCGroupType : ExcelRow
     {
         

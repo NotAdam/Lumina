@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ScenarioType", columnHash: 0x9db0e48f )]
+    [Sheet( "ScenarioType", columnHash: 0x9e3430e1 )]
     public partial class ScenarioType : ExcelRow
     {
         

@@ -6,11 +6,11 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIVillageAppearanceUI", columnHash: 0x1f6ebde2 )]
+    [Sheet( "MJIVillageAppearanceUI", columnHash: 0x248f1d6a )]
     public partial class MJIVillageAppearanceUI : ExcelRow
     {
         
-        public int Unknown0 { get; set; }
+        public int Floor { get; set; }
         public ushort Unknown1 { get; set; }
         public ushort Unknown2 { get; set; }
         
@@ -18,7 +18,7 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< int >( 0 );
+            Floor = parser.ReadColumn< int >( 0 );
             Unknown1 = parser.ReadColumn< ushort >( 1 );
             Unknown2 = parser.ReadColumn< ushort >( 2 );
         }

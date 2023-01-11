@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringLeve", columnHash: 0xe025d9c3 )]
+    [Sheet( "GatheringLeve", columnHash: 0xfa74e4d0 )]
     public partial class GatheringLeve : ExcelRow
     {
         

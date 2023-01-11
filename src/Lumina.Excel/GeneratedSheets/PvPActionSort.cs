@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PvPActionSort", columnHash: 0xcf79386c )]
+    [Sheet( "PvPActionSort", columnHash: 0xc3af756b )]
     public partial class PvPActionSort : ExcelRow
     {
         

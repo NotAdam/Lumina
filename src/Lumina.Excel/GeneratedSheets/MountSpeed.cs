@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MountSpeed", columnHash: 0x19c09c9f )]
+    [Sheet( "MountSpeed", columnHash: 0x91ab8236 )]
     public partial class MountSpeed : ExcelRow
     {
         

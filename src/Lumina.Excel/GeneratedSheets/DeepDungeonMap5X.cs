@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "DeepDungeonMap5X", columnHash: 0xaf41754c )]
+    [Sheet( "DeepDungeonMap5X", columnHash: 0x64a88f98 )]
     public partial class DeepDungeonMap5X : ExcelRow
     {
         

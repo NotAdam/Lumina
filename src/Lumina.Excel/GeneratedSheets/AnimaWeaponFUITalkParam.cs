@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AnimaWeaponFUITalkParam", columnHash: 0x936b6cbd )]
+    [Sheet( "AnimaWeaponFUITalkParam", columnHash: 0x9db0e48f )]
     public partial class AnimaWeaponFUITalkParam : ExcelRow
     {
         

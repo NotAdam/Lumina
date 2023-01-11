@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "GatheringRarePopTimeTable", columnHash: 0xe8d36915 )]
+    [Sheet( "GatheringRarePopTimeTable", columnHash: 0x865de322 )]
     public partial class GatheringRarePopTimeTable : ExcelRow
     {
         public class GatheringRarePopTimeTableUnkData0Obj

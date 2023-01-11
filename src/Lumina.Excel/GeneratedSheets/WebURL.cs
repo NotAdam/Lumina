@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "WebURL", columnHash: 0xb366c408 )]
+    [Sheet( "WebURL", columnHash: 0xdebb20e3 )]
     public partial class WebURL : ExcelRow
     {
         

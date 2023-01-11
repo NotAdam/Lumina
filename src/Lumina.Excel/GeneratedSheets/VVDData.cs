@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "VVDData", columnHash: 0x7422f937 )]
+    [Sheet( "VVDData", columnHash: 0x4466aeed )]
     public partial class VVDData : ExcelRow
     {
         
@@ -15,6 +15,7 @@ namespace Lumina.Excel.GeneratedSheets
         public uint Unknown2 { get; set; }
         public uint Unknown3 { get; set; }
         public uint Unknown4 { get; set; }
+        public uint Unknown5 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -25,6 +26,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown2 = parser.ReadColumn< uint >( 2 );
             Unknown3 = parser.ReadColumn< uint >( 3 );
             Unknown4 = parser.ReadColumn< uint >( 4 );
+            Unknown5 = parser.ReadColumn< uint >( 5 );
         }
     }
 }

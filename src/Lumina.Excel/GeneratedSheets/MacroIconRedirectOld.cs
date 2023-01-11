@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MacroIconRedirectOld", columnHash: 0xc87a79f7 )]
+    [Sheet( "MacroIconRedirectOld", columnHash: 0x5c9aa6b3 )]
     public partial class MacroIconRedirectOld : ExcelRow
     {
         

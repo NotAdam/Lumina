@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentRandomSelect", columnHash: 0x30b541cf )]
+    [Sheet( "ContentRandomSelect", columnHash: 0xd870e208 )]
     public partial class ContentRandomSelect : ExcelRow
     {
         

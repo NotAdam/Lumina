@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Behavior", columnHash: 0xd1e06616 )]
+    [Sheet( "Behavior", columnHash: 0x858a7450 )]
     public partial class Behavior : ExcelRow
     {
         
@@ -14,11 +14,11 @@ namespace Lumina.Excel.GeneratedSheets
         public byte Unknown1 { get; set; }
         public byte Condition0Target { get; set; }
         public byte Condition0Type { get; set; }
-        public LazyRow< Balloon > Balloon { get; set; }
+        public int Unknown4 { get; set; }
         public short Unknown5 { get; set; }
         public int Unknown6 { get; set; }
         public ushort Unknown7 { get; set; }
-        public ushort Unknown8 { get; set; }
+        public LazyRow< Balloon > Balloon { get; set; }
         public byte Condition1Target { get; set; }
         public byte Condition1Type { get; set; }
         public uint ContentArgument0 { get; set; }
@@ -36,11 +36,11 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown1 = parser.ReadColumn< byte >( 1 );
             Condition0Target = parser.ReadColumn< byte >( 2 );
             Condition0Type = parser.ReadColumn< byte >( 3 );
-            Balloon = new LazyRow< Balloon >( gameData, parser.ReadColumn< int >( 4 ), language );
+            Unknown4 = parser.ReadColumn< int >( 4 );
             Unknown5 = parser.ReadColumn< short >( 5 );
             Unknown6 = parser.ReadColumn< int >( 6 );
             Unknown7 = parser.ReadColumn< ushort >( 7 );
-            Unknown8 = parser.ReadColumn< ushort >( 8 );
+            Balloon = new LazyRow< Balloon >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             Condition1Target = parser.ReadColumn< byte >( 9 );
             Condition1Type = parser.ReadColumn< byte >( 10 );
             ContentArgument0 = parser.ReadColumn< uint >( 11 );

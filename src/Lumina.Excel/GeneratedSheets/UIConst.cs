@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "UIConst", columnHash: 0xb366c408 )]
+    [Sheet( "UIConst", columnHash: 0xda365c51 )]
     public partial class UIConst : ExcelRow
     {
         

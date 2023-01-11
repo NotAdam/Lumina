@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PatchMark", columnHash: 0xc7fb1413 )]
+    [Sheet( "PatchMark", columnHash: 0x4b87e076 )]
     public partial class PatchMark : ExcelRow
     {
         

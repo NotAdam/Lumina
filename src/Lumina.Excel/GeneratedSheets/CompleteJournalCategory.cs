@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CompleteJournalCategory", columnHash: 0x0a4a2d02 )]
+    [Sheet( "CompleteJournalCategory", columnHash: 0x976040dd )]
     public partial class CompleteJournalCategory : ExcelRow
     {
         

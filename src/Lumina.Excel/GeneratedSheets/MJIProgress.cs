@@ -6,13 +6,13 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIProgress", columnHash: 0x0242f3b5 )]
+    [Sheet( "MJIProgress", columnHash: 0xe08efa43 )]
     public partial class MJIProgress : ExcelRow
     {
         
-        public SeString Unknown0 { get; set; }
-        public SeString Unknown1 { get; set; }
-        public SeString Unknown2 { get; set; }
+        public SeString Vision { get; set; }
+        public SeString Objective { get; set; }
+        public SeString PreviousObjective { get; set; }
         public byte Unknown3 { get; set; }
         public byte Unknown4 { get; set; }
         public byte Unknown5 { get; set; }
@@ -37,9 +37,9 @@ namespace Lumina.Excel.GeneratedSheets
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< SeString >( 0 );
-            Unknown1 = parser.ReadColumn< SeString >( 1 );
-            Unknown2 = parser.ReadColumn< SeString >( 2 );
+            Vision = parser.ReadColumn< SeString >( 0 );
+            Objective = parser.ReadColumn< SeString >( 1 );
+            PreviousObjective = parser.ReadColumn< SeString >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             Unknown4 = parser.ReadColumn< byte >( 4 );
             Unknown5 = parser.ReadColumn< byte >( 5 );

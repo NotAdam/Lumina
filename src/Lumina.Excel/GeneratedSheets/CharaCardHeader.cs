@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CharaCardHeader", columnHash: 0x13fe3a5b )]
+    [Sheet( "CharaCardHeader", columnHash: 0xb42c2ccb )]
     public partial class CharaCardHeader : ExcelRow
     {
         

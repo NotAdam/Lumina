@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "IKDContentBonus", columnHash: 0xfe2f4887 )]
+    [Sheet( "IKDContentBonus", columnHash: 0xb7d9b7a3 )]
     public partial class IKDContentBonus : ExcelRow
     {
         

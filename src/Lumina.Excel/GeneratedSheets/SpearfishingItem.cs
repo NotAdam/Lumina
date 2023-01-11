@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "SpearfishingItem", columnHash: 0xaa0efe4d )]
+    [Sheet( "SpearfishingItem", columnHash: 0x8344c00c )]
     public partial class SpearfishingItem : ExcelRow
     {
         
@@ -18,9 +18,10 @@ namespace Lumina.Excel.GeneratedSheets
         public LazyRow< FishingRecordType > FishingRecordType { get; set; }
         public LazyRow< TerritoryType > TerritoryType { get; set; }
         public ushort Unknown7 { get; set; }
+        public ushort Unknown8 { get; set; }
         public bool IsVisible { get; set; }
-        public bool Unknown9 { get; set; }
         public bool Unknown10 { get; set; }
+        public bool Unknown11 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -34,9 +35,10 @@ namespace Lumina.Excel.GeneratedSheets
             FishingRecordType = new LazyRow< FishingRecordType >( gameData, parser.ReadColumn< byte >( 5 ), language );
             TerritoryType = new LazyRow< TerritoryType >( gameData, parser.ReadColumn< ushort >( 6 ), language );
             Unknown7 = parser.ReadColumn< ushort >( 7 );
-            IsVisible = parser.ReadColumn< bool >( 8 );
-            Unknown9 = parser.ReadColumn< bool >( 9 );
+            Unknown8 = parser.ReadColumn< ushort >( 8 );
+            IsVisible = parser.ReadColumn< bool >( 9 );
             Unknown10 = parser.ReadColumn< bool >( 10 );
+            Unknown11 = parser.ReadColumn< bool >( 11 );
         }
     }
 }

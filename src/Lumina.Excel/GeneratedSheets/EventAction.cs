@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "EventAction", columnHash: 0x3dfda95b )]
+    [Sheet( "EventAction", columnHash: 0x1c60d673 )]
     public partial class EventAction : ExcelRow
     {
         

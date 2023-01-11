@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BGMSwitch", columnHash: 0x3dff9bbf )]
+    [Sheet( "BGMSwitch", columnHash: 0x0989d4f2 )]
     public partial class BGMSwitch : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "BGMFade", columnHash: 0x2a25a8b1 )]
+    [Sheet( "BGMFade", columnHash: 0xf09994a9 )]
     public partial class BGMFade : ExcelRow
     {
         

@@ -58,8 +58,8 @@ namespace Lumina.Data.Files.Excel
 
         public uint GetColumnsHash()
         {
-            var headerSize = Unsafe.SizeOf< ExcelHeaderHeader >();
-            var span = DataSpan.Slice( headerSize, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
+            // 32 is size of header, can't unsafe because of non-fixed arrays
+            var span = DataSpan.Slice( 32, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
 
             return Crc32.Get( span );
         }

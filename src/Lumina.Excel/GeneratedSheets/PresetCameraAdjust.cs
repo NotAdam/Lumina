@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PresetCameraAdjust", columnHash: 0x8de45ae7 )]
+    [Sheet( "PresetCameraAdjust", columnHash: 0x1d35bc8f )]
     public partial class PresetCameraAdjust : ExcelRow
     {
         

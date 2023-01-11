@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "AetherialWheel", columnHash: 0x4ccf2951 )]
+    [Sheet( "AetherialWheel", columnHash: 0xfee5acb6 )]
     public partial class AetherialWheel : ExcelRow
     {
         

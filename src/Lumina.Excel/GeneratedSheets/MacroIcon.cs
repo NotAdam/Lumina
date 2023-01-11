@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MacroIcon", columnHash: 0x83d33be1 )]
+    [Sheet( "MacroIcon", columnHash: 0xda365c51 )]
     public partial class MacroIcon : ExcelRow
     {
         

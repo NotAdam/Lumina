@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MinionSkillType", columnHash: 0x4969f96b )]
+    [Sheet( "MinionSkillType", columnHash: 0xdebb20e3 )]
     public partial class MinionSkillType : ExcelRow
     {
         

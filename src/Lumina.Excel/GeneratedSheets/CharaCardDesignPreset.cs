@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CharaCardDesignPreset", columnHash: 0xcf209a10 )]
+    [Sheet( "CharaCardDesignPreset", columnHash: 0x2c94b01f )]
     public partial class CharaCardDesignPreset : ExcelRow
     {
         

@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ScenarioTreeTips", columnHash: 0xeec274dd )]
+    [Sheet( "ScenarioTreeTips", columnHash: 0x71371b8c )]
     public partial class ScenarioTreeTips : ExcelRow
     {
         

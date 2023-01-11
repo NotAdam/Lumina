@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "WebGuidance", columnHash: 0x1242fd46 )]
+    [Sheet( "WebGuidance", columnHash: 0xa6cfe561 )]
     public partial class WebGuidance : ExcelRow
     {
         

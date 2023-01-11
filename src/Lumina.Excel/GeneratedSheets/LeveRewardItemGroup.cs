@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "LeveRewardItemGroup", columnHash: 0x8e8c9ca9 )]
+    [Sheet( "LeveRewardItemGroup", columnHash: 0xf065e622 )]
     public partial class LeveRewardItemGroup : ExcelRow
     {
         public class LeveRewardItemGroupUnkData0Obj

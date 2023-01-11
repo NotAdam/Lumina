@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Leve", columnHash: 0x51fd155a )]
+    [Sheet( "Leve", columnHash: 0xb1795a98 )]
     public partial class Leve : ExcelRow
     {
         
@@ -65,7 +65,7 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown13 = parser.ReadColumn< byte >( 13 );
             Unknown14 = parser.ReadColumn< bool >( 14 );
             ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 15 ), language );
-            JournalGenre = new LazyRow< JournalGenre >( gameData, parser.ReadColumn< int >( 16 ), language );
+            JournalGenre = new LazyRow< JournalGenre >( gameData, parser.ReadColumn< uint >( 16 ), language );
             Unknown17 = parser.ReadColumn< int >( 17 );
             PlaceNameStartZone = new LazyRow< PlaceName >( gameData, parser.ReadColumn< int >( 18 ), language );
             IconCityState = parser.ReadColumn< int >( 19 );

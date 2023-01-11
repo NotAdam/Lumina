@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "RaidFinderParam", columnHash: 0x37d885d6 )]
+    [Sheet( "RaidFinderParam", columnHash: 0xcd4cb81c )]
     public partial class RaidFinderParam : ExcelRow
     {
         

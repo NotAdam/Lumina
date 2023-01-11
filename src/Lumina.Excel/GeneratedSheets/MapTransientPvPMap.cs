@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MapTransientPvPMap", columnHash: 0x1d4c8a15 )]
+    [Sheet( "MapTransientPvPMap", columnHash: 0x5edc18ea )]
     public partial class MapTransientPvPMap : ExcelRow
     {
         

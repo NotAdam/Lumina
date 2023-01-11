@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ContentCloseCycle", columnHash: 0x3fa62499 )]
+    [Sheet( "ContentCloseCycle", columnHash: 0xd3032cdb )]
     public partial class ContentCloseCycle : ExcelRow
     {
         

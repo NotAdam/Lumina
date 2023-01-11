@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "Status", columnHash: 0xb70bac51 )]
+    [Sheet( "Status", columnHash: 0xab58433f )]
     public partial class Status : ExcelRow
     {
         
@@ -15,8 +15,8 @@ namespace Lumina.Excel.GeneratedSheets
         public ushort Icon { get; set; }
         public byte Unknown3 { get; set; }
         public byte MaxStacks { get; set; }
-        public byte Unknown5 { get; set; }
-        public byte Category { get; set; }
+        public LazyRow< ClassJobCategory > ClassJobCategory { get; set; }
+        public byte StatusCategory { get; set; }
         public LazyRow< StatusHitEffect > HitEffect { get; set; }
         public LazyRow< StatusLoopVFX > VFX { get; set; }
         public bool LockMovement { get; set; }
@@ -24,24 +24,25 @@ namespace Lumina.Excel.GeneratedSheets
         public bool LockActions { get; set; }
         public bool LockControl { get; set; }
         public bool Transfiguration { get; set; }
-        public bool Unknown14 { get; set; }
+        public bool IsGaze { get; set; }
         public bool CanDispel { get; set; }
         public bool InflictedByActor { get; set; }
         public bool IsPermanent { get; set; }
         public byte PartyListPriority { get; set; }
-        public byte Unknown19 { get; set; }
+        public byte CanIncreaseRewards { get; set; }
         public bool Unknown20 { get; set; }
         public bool Unknown21 { get; set; }
-        public short Unknown22 { get; set; }
-        public byte Unknown23 { get; set; }
-        public bool Unknown24 { get; set; }
+        public short ParamModifier { get; set; }
+        public byte ParamEffect { get; set; }
+        public bool CanStatusOff { get; set; }
         public ushort Log { get; set; }
         public bool IsFcBuff { get; set; }
+        public sbyte Unknown27 { get; set; }
         public bool Invisibility { get; set; }
-        public byte Unknown28 { get; set; }
-        public byte Unknown29 { get; set; }
-        public byte Unknown30 { get; set; }
-        public bool Unknown31 { get; set; }
+        public byte TargetType { get; set; }
+        public byte Flags { get; set; }
+        public byte Unknown31 { get; set; }
+        public bool Unknown32 { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
@@ -52,8 +53,8 @@ namespace Lumina.Excel.GeneratedSheets
             Icon = parser.ReadColumn< ushort >( 2 );
             Unknown3 = parser.ReadColumn< byte >( 3 );
             MaxStacks = parser.ReadColumn< byte >( 4 );
-            Unknown5 = parser.ReadColumn< byte >( 5 );
-            Category = parser.ReadColumn< byte >( 6 );
+            ClassJobCategory = new LazyRow< ClassJobCategory >( gameData, parser.ReadColumn< byte >( 5 ), language );
+            StatusCategory = parser.ReadColumn< byte >( 6 );
             HitEffect = new LazyRow< StatusHitEffect >( gameData, parser.ReadColumn< byte >( 7 ), language );
             VFX = new LazyRow< StatusLoopVFX >( gameData, parser.ReadColumn< ushort >( 8 ), language );
             LockMovement = parser.ReadColumn< bool >( 9 );
@@ -61,24 +62,25 @@ namespace Lumina.Excel.GeneratedSheets
             LockActions = parser.ReadColumn< bool >( 11 );
             LockControl = parser.ReadColumn< bool >( 12 );
             Transfiguration = parser.ReadColumn< bool >( 13 );
-            Unknown14 = parser.ReadColumn< bool >( 14 );
+            IsGaze = parser.ReadColumn< bool >( 14 );
             CanDispel = parser.ReadColumn< bool >( 15 );
             InflictedByActor = parser.ReadColumn< bool >( 16 );
             IsPermanent = parser.ReadColumn< bool >( 17 );
             PartyListPriority = parser.ReadColumn< byte >( 18 );
-            Unknown19 = parser.ReadColumn< byte >( 19 );
+            CanIncreaseRewards = parser.ReadColumn< byte >( 19 );
             Unknown20 = parser.ReadColumn< bool >( 20 );
             Unknown21 = parser.ReadColumn< bool >( 21 );
-            Unknown22 = parser.ReadColumn< short >( 22 );
-            Unknown23 = parser.ReadColumn< byte >( 23 );
-            Unknown24 = parser.ReadColumn< bool >( 24 );
+            ParamModifier = parser.ReadColumn< short >( 22 );
+            ParamEffect = parser.ReadColumn< byte >( 23 );
+            CanStatusOff = parser.ReadColumn< bool >( 24 );
             Log = parser.ReadColumn< ushort >( 25 );
             IsFcBuff = parser.ReadColumn< bool >( 26 );
-            Invisibility = parser.ReadColumn< bool >( 27 );
-            Unknown28 = parser.ReadColumn< byte >( 28 );
-            Unknown29 = parser.ReadColumn< byte >( 29 );
-            Unknown30 = parser.ReadColumn< byte >( 30 );
-            Unknown31 = parser.ReadColumn< bool >( 31 );
+            Unknown27 = parser.ReadColumn< sbyte >( 27 );
+            Invisibility = parser.ReadColumn< bool >( 28 );
+            TargetType = parser.ReadColumn< byte >( 29 );
+            Flags = parser.ReadColumn< byte >( 30 );
+            Unknown31 = parser.ReadColumn< byte >( 31 );
+            Unknown32 = parser.ReadColumn< bool >( 32 );
         }
     }
 }

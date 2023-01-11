@@ -6,7 +6,7 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "ActivityFeedGroupCaptions", columnHash: 0x417df5ff )]
+    [Sheet( "ActivityFeedGroupCaptions", columnHash: 0x776ee24c )]
     public partial class ActivityFeedGroupCaptions : ExcelRow
     {
         

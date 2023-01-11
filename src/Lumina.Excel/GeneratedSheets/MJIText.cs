@@ -6,17 +6,17 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "MJIText", columnHash: 0x316e30c9 )]
+    [Sheet( "MJIText", columnHash: 0xdebb20e3 )]
     public partial class MJIText : ExcelRow
     {
         
-        public SeString Unknown0 { get; set; }
+        public SeString Text { get; set; }
         
         public override void PopulateData( RowParser parser, GameData gameData, Language language )
         {
             base.PopulateData( parser, gameData, language );
 
-            Unknown0 = parser.ReadColumn< SeString >( 0 );
+            Text = parser.ReadColumn< SeString >( 0 );
         }
     }
 }

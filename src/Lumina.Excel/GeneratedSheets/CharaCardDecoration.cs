@@ -6,13 +6,14 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "CharaCardDecoration", columnHash: 0xcd5b0aab )]
+    [Sheet( "CharaCardDecoration", columnHash: 0x12d1b8be )]
     public partial class CharaCardDecoration : ExcelRow
     {
         
         public byte Category { get; set; }
+        public byte Unknown1 { get; set; }
         public int Image { get; set; }
-        public byte Unknown2 { get; set; }
+        public byte Unknown3 { get; set; }
         public LazyRow< BannerCondition > UnlockCondition { get; set; }
         public ushort SortKey { get; set; }
         public SeString Name { get; set; }
@@ -22,11 +23,12 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Category = parser.ReadColumn< byte >( 0 );
-            Image = parser.ReadColumn< int >( 1 );
-            Unknown2 = parser.ReadColumn< byte >( 2 );
-            UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadColumn< ushort >( 3 ), language );
-            SortKey = parser.ReadColumn< ushort >( 4 );
-            Name = parser.ReadColumn< SeString >( 5 );
+            Unknown1 = parser.ReadColumn< byte >( 1 );
+            Image = parser.ReadColumn< int >( 2 );
+            Unknown3 = parser.ReadColumn< byte >( 3 );
+            UnlockCondition = new LazyRow< BannerCondition >( gameData, parser.ReadColumn< ushort >( 4 ), language );
+            SortKey = parser.ReadColumn< ushort >( 5 );
+            Name = parser.ReadColumn< SeString >( 6 );
         }
     }
 }

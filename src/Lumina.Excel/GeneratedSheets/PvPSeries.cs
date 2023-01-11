@@ -6,13 +6,12 @@ using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel.GeneratedSheets
 {
-    [Sheet( "PvPSeries", columnHash: 0x69549ffd )]
+    [Sheet( "PvPSeries", columnHash: 0x45504238 )]
     public partial class PvPSeries : ExcelRow
     {
         
         public byte Unknown0 { get; set; }
-        public int Unknown1 { get; set; }
-        public int Unknown2 { get; set; }
+        public int[] LevelRewardItem { get; set; }
         public int Unknown3 { get; set; }
         public int Unknown4 { get; set; }
         public int Unknown5 { get; set; }
@@ -75,8 +74,7 @@ namespace Lumina.Excel.GeneratedSheets
         public int Unknown62 { get; set; }
         public int Unknown63 { get; set; }
         public int Unknown64 { get; set; }
-        public ushort Unknown65 { get; set; }
-        public ushort Unknown66 { get; set; }
+        public ushort[] LevelRewardCount { get; set; }
         public ushort Unknown67 { get; set; }
         public ushort Unknown68 { get; set; }
         public ushort Unknown69 { get; set; }
@@ -177,8 +175,9 @@ namespace Lumina.Excel.GeneratedSheets
             base.PopulateData( parser, gameData, language );
 
             Unknown0 = parser.ReadColumn< byte >( 0 );
-            Unknown1 = parser.ReadColumn< int >( 1 );
-            Unknown2 = parser.ReadColumn< int >( 2 );
+            LevelRewardItem = new int[ 2 ];
+            for( var i = 0; i < 2; i++ )
+                LevelRewardItem[ i ] = parser.ReadColumn< int >( 1 + i );
             Unknown3 = parser.ReadColumn< int >( 3 );
             Unknown4 = parser.ReadColumn< int >( 4 );
             Unknown5 = parser.ReadColumn< int >( 5 );
@@ -241,8 +240,9 @@ namespace Lumina.Excel.GeneratedSheets
             Unknown62 = parser.ReadColumn< int >( 62 );
             Unknown63 = parser.ReadColumn< int >( 63 );
             Unknown64 = parser.ReadColumn< int >( 64 );
-            Unknown65 = parser.ReadColumn< ushort >( 65 );
-            Unknown66 = parser.ReadColumn< ushort >( 66 );
+            LevelRewardCount = new ushort[ 2 ];
+            for( var i = 0; i < 2; i++ )
+                LevelRewardCount[ i ] = parser.ReadColumn< ushort >( 65 + i );
             Unknown67 = parser.ReadColumn< ushort >( 67 );
             Unknown68 = parser.ReadColumn< ushort >( 68 );
             Unknown69 = parser.ReadColumn< ushort >( 69 );
