@@ -15,23 +15,25 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3.3.0
       with:
         fetch-depth: 0
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.100
+        dotnet-version: '7.0.x'
     - name: Build with dotnet
       run: dotnet build --configuration Release --nologo ./src/Lumina.sln
     - name: dotnet test
       run: dotnet test --configuration Release --nologo ./src/Lumina.sln
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.1
+      uses: actions/upload-artifact@v3
       with:
+        name: Lumina-${{ matrix.os }}
         path: |
           ./src/Lumina/bin/Release/*.nupkg
           ./src/Lumina/bin/Release/*.snupkg
-          ./src/Lumina/bin/Release/**/Lumina.dll
-          ./src/Lumina/bin/Release/**/Lumina.pdb
-          ./src/Lumina/bin/Release/**/Lumina.deps.json
+          ./src/Lumina/bin/Release/**/Lumina*.dll
+          ./src/Lumina/bin/Release/**/Lumina*.xml
+          ./src/Lumina/bin/Release/**/Lumina*.pdb
+          ./src/Lumina/bin/Release/**/Lumina*.deps.json
