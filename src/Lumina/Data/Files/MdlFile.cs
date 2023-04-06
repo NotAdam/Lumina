@@ -37,13 +37,6 @@ namespace Lumina.Data.Files {
 
         public override void LoadFile()
         {
-            // We can ensure based on content-type that files are models
-            if( FileInfo.Type != FileType.Model )
-            {
-                Console.WriteLine( $"Attempted to load {FilePath} of content type {FileInfo.Type} as a model, returning..." );
-                return;
-            }
-
             bool isLittleEndian = Reader.IsLittleEndian;
             Reader.IsLittleEndian = BitConverter.IsLittleEndian;
 
