@@ -171,10 +171,11 @@ namespace Lumina.Excel
         public void RemoveSheetFromCache< T >( string name ) where T : ExcelRow
         {
             var tid = BuildTypeIdentifier( typeof( T ) );
+            var lowerName = name.ToLowerInvariant();
             
             foreach( Language language in Enum.GetValues( typeof( Language ) ) )
             {
-                var id = Tuple.Create( language, name, tid );
+                var id = Tuple.Create( language, lowerName, tid );
 
                 _sheetCache.Remove( id );
             }
