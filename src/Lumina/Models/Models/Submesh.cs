@@ -31,7 +31,7 @@ namespace Lumina.Models.Models
             int subMeshListIndex = currentMesh.SubMeshIndex + subMeshIndex;
             var currentSubMesh = model.File.Submeshes[ subMeshListIndex ];
 
-            IndexOffset = currentSubMesh.IndexOffset;
+            IndexOffset = currentSubMesh.IndexOffset - currentMesh.StartIndex;
             IndexNum = currentSubMesh.IndexCount;
 
             // AttributeIndexMask is a bit-based index mask

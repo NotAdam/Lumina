@@ -128,8 +128,7 @@ namespace Lumina.Models.Models {
             MdlStructs.VertexDeclarationStruct currentDecl = Parent.File.VertexDeclarations[ MeshIndex ];
             
             // We have to go through these in order by offset with this implementation
-            var orderedElements = currentDecl.VertexElements.ToList();
-            orderedElements.Sort( ( e1, e2 ) => e1.Offset.CompareTo( e2.Offset ) );
+            var orderedElements = currentDecl.VertexElements.OrderBy( e => e.Offset ).ToList();
             Vertices = new Vertex[currentMesh.VertexCount];
 
             // Vertices may be defined across at most 3 streams defined by a Mesh's VertexDeclarations
