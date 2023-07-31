@@ -60,9 +60,13 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         /// <param name="depth">Depth of the primary mipmap.</param>
         /// <param name="mipmapAllocations">Number of bytes allocated for each mipmap.</param>
         /// <param name="buffer">Byte array containing multiple mipmaps, one right after another allocation.</param>
-        protected TextureBuffer( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer)
+        /// <param name="invokeFirst">Function to run before constructing. Hack to work around design failure on expecting subclass ctor to have run.</param>
+        protected TextureBuffer( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer,
+            Action<TextureBuffer>? invokeFirst = null)
         {
-            IsDepthConstant = ( attribute & TexFile.Attribute.TextureTypeMask ) is TexFile.Attribute.TextureTypeCube or TexFile.Attribute.TextureType2D;
+            invokeFirst?.Invoke(this);
+            
+            IsDepthConstant = ( attribute & TexFile.Attribute.TextureTypeMask ) is TexFile.Attribute.TextureTypeCube or TexFile.Attribute.TextureType2DArray;
             Width = width;
             Height = height;
             Depth = depth;
