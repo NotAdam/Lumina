@@ -1,4 +1,5 @@
 using System;
+using Lumina.Data.Files;
 
 namespace Lumina.Data.Parsing.Tex.Buffers
 {
@@ -10,8 +11,8 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         private readonly int _numBytesPerPixel;
 
         /// <inheritdoc />
-        public UnsupportedTextureBuffer( int numBytesPerPixel, bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
-            : base( isDepthConstant, width, height, depth, mipmapAllocations, buffer )
+        public UnsupportedTextureBuffer( int numBytesPerPixel, TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+            : base( attribute, width, height, depth, mipmapAllocations, buffer )
         {
             _numBytesPerPixel = numBytesPerPixel;
         }
@@ -24,7 +25,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             => throw new NotSupportedException( "Decoding this texture format is currently not supported." );
 
         /// <inheritdoc />
-        protected override TextureBuffer CreateNew( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
-            => new UnsupportedTextureBuffer( _numBytesPerPixel, isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+        protected override TextureBuffer CreateNew( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+            => new UnsupportedTextureBuffer( _numBytesPerPixel, attribute, width, height, depth, mipmapAllocations, buffer );
     }
 }
