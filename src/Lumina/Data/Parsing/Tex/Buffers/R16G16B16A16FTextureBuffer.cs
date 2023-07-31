@@ -1,4 +1,5 @@
 using System;
+using Lumina.Data.Files;
 
 namespace Lumina.Data.Parsing.Tex.Buffers
 {
@@ -8,8 +9,8 @@ namespace Lumina.Data.Parsing.Tex.Buffers
     public class R16G16B16A16FTextureBuffer : TextureBuffer
     {
         /// <inheritdoc />
-        public R16G16B16A16FTextureBuffer( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
-            : base( isDepthConstant, width, height, depth, mipmapAllocations, buffer )
+        public R16G16B16A16FTextureBuffer( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+            : base( attribute, width, height, depth, mipmapAllocations, buffer )
         {
         }
 
@@ -34,7 +35,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         }
 
         /// <inheritdoc />
-        protected override TextureBuffer CreateNew( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
-            => new R16G16B16A16FTextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+        protected override TextureBuffer CreateNew( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+            => new R16G16B16A16FTextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
     }
 }

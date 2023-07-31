@@ -1,4 +1,5 @@
 using System;
+using Lumina.Data.Files;
 
 namespace Lumina.Data.Parsing.Tex.Buffers
 {
@@ -8,8 +9,8 @@ namespace Lumina.Data.Parsing.Tex.Buffers
     public class B5G5R5A1TextureBuffer : TextureBuffer
     {
         /// <inheritdoc />
-        public B5G5R5A1TextureBuffer( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
-            : base( isDepthConstant, width, height, depth, mipmapAllocations, buffer )
+        public B5G5R5A1TextureBuffer( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+            : base( attribute, width, height, depth, mipmapAllocations, buffer )
         {
         }
 
@@ -37,7 +38,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         }
 
         /// <inheritdoc />
-        protected override TextureBuffer CreateNew( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
-            => new B5G5R5A1TextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+        protected override TextureBuffer CreateNew( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+            => new B5G5R5A1TextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
     }
 }
