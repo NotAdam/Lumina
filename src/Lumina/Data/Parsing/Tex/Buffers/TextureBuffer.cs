@@ -515,7 +515,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         /// </summary>
         public static unsafe TextureBuffer FromStream( TexFile.TexHeader header, LuminaBinaryReader reader )
         {
-            var mipmapAllocations = new int[Math.Min( 13, (int)header.MipLevels2 )];
+            var mipmapAllocations = new int[Math.Min( 13, (int)header.MipLevelsCount )];
             for( var i = 0; i < mipmapAllocations.Length - 1; i++ )
                 mipmapAllocations[ i ] = (int)( header.OffsetToSurface[ i + 1 ] - header.OffsetToSurface[ i ] );
             mipmapAllocations[ ^1 ] = (int)( reader.BaseStream.Length - header.OffsetToSurface[ mipmapAllocations.Length - 1 ] );

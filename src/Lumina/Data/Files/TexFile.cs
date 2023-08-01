@@ -167,10 +167,10 @@ namespace Lumina.Data.Files
             public ushort Depth;
 
             /// <summary>
-            /// The field has been repurposed; use <see cref="MipLevels2"/>.
+            /// The field has been repurposed; use <see cref="MipLevelsCount"/>.
             /// </summary>
             [FieldOffset( 14 )]
-            [Obsolete( $"Use {nameof( MipLevels2 )} instead; the field has been repurposed as two fields." )]
+            [Obsolete( $"Use {nameof( MipLevelsCount )} instead; the field has been repurposed as two fields." )]
             public ushort MipLevels;
 
             /// <summary>
@@ -178,7 +178,7 @@ namespace Lumina.Data.Files
             /// </summary>
             /// <remarks>There should be at least 1 and at most 13 mipmap entries; refer to the length of <see cref="OffsetToSurface"/>.</remarks>
             [FieldOffset( 14 )]
-            public byte MipLevels2;
+            public byte MipLevelsCount;
 
             /// <summary>
             /// Number of entries in texture array in the file.
@@ -277,7 +277,7 @@ namespace Lumina.Data.Files
         /// <returns>Number of bytes.</returns>
         public int SliceSize( int mipmapIndex, out int width, out int height )
         {
-            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( (int) Header.MipLevels2, 1 ) )
+            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( (int) Header.MipLevelsCount, 1 ) )
                 throw new ArgumentOutOfRangeException( nameof( mipmapIndex ), mipmapIndex, null );
 
             var bpp = 1 << ( (int) ( Header.Format & TextureFormat.BppMask ) >> (int) TextureFormat.BppShift );
@@ -313,7 +313,7 @@ namespace Lumina.Data.Files
         public unsafe Span< byte > SliceSpan( int mipmapIndex, int sliceIndex, out int sliceSize, out int width, out int height )
         {
             sliceSize = SliceSize( mipmapIndex, out width, out height );
-            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( (int) Header.MipLevels2, 1 ) )
+            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( (int) Header.MipLevelsCount, 1 ) )
                 throw new ArgumentOutOfRangeException( nameof( mipmapIndex ), mipmapIndex, null );
 
             switch( Header.Type & Attribute.TextureTypeMask )
