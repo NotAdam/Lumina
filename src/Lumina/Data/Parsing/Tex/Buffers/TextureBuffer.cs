@@ -12,7 +12,12 @@ namespace Lumina.Data.Parsing.Tex.Buffers
     public abstract class TextureBuffer
     {
         /// <summary>
-        /// Indicates whether this texture is a cube map.
+        /// Attribute of the texture contained within.
+        /// </summary>
+        public readonly TexFile.Attribute Attribute;
+        
+        /// <summary>
+        /// Indicates whether this texture is a cube map or 2D texture array. See <see cref="Attribute"/>.
         /// </summary>
         public readonly bool IsDepthConstant;
 
@@ -27,7 +32,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         public readonly int Height;
 
         /// <summary>
-        /// Depth of this texture.
+        /// Depth(for 3D textures)/number of faces(for cube maps)/number of images(for 2D texture arrays) of this texture. 
         /// </summary>
         public readonly int Depth;
 
@@ -49,18 +54,23 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         /// <summary>
         /// Create a new instance of TextureBuffer.
         /// </summary>
-        /// <param name="isDepthConstant">Specify whether the secondary mipmap and later get lesser number of depth.</param>
+        /// <param name="attribute">Attribute of the texture buffer.</param>
         /// <param name="width">Width of the primary mipmap.</param>
         /// <param name="height">Height of the primary mipmap.</param>
         /// <param name="depth">Depth of the primary mipmap.</param>
         /// <param name="mipmapAllocations">Number of bytes allocated for each mipmap.</param>
         /// <param name="buffer">Byte array containing multiple mipmaps, one right after another allocation.</param>
-        protected TextureBuffer( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer )
+        /// <param name="invokeFirst">Function to run before constructing. Hack to work around design failure on expecting subclass ctor to have run.</param>
+        protected TextureBuffer( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer,
+            Action<TextureBuffer>? invokeFirst = null)
         {
-            IsDepthConstant = isDepthConstant;
+            invokeFirst?.Invoke(this);
+            
+            IsDepthConstant = ( attribute & TexFile.Attribute.TextureTypeMask ) is TexFile.Attribute.TextureTypeCube or TexFile.Attribute.TextureType2DArray;
             Width = width;
             Height = height;
             Depth = depth;
+            Attribute = attribute;
 
             // Test if there are sufficient room for every mipmap in the texture
             for( var i = 0; i < mipmapAllocations.Length; i++ )
@@ -141,7 +151,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
         /// <summary>
         /// Create a new instance of same class.
         /// </summary>
-        protected abstract TextureBuffer CreateNew( bool isDepthConstant, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer );
+        protected abstract TextureBuffer CreateNew( TexFile.Attribute attribute, int width, int height, int depth, int[] mipmapAllocations, byte[] buffer );
 
         /// <summary>
         /// Convert specified portion of raw data into A8R8G8B8 format.
@@ -246,14 +256,14 @@ namespace Lumina.Data.Parsing.Tex.Buffers
                 foreach( var (srcOffset, dstOffset, _, w, h, d) in copyList )
                     ConvertToB8G8R8A8( buffer, dstOffset, srcOffset, w, h, d );
 
-                return new B8G8R8A8TextureBuffer( z == null && IsDepthConstant, newWidth, newHeight, newDepth, newMipmapAllocations, buffer );
+                return new B8G8R8A8TextureBuffer( z == null ? Attribute : TexFile.Attribute.TextureType2D, newWidth, newHeight, newDepth, newMipmapAllocations, buffer );
             }
             else
             {
                 foreach( var (srcOffset, dstOffset, dstSize, _, _, _) in copyList )
                     Buffer.BlockCopy( RawData, srcOffset, buffer, dstOffset, dstSize );
 
-                return CreateNew( z == null && IsDepthConstant, newWidth, newHeight, newDepth, newMipmapAllocations, buffer );
+                return CreateNew( z == null ? Attribute : TexFile.Attribute.TextureType2D, newWidth, newHeight, newDepth, newMipmapAllocations, buffer );
             }
         }
 
@@ -456,11 +466,8 @@ namespace Lumina.Data.Parsing.Tex.Buffers
                 }
             }
 
-            var isDepthConstant = false;
-
             if( ( attribute & TexFile.Attribute.TextureTypeCube ) != 0 )
             {
-                isDepthConstant = true;
                 depth = 6;
             }
 
@@ -468,23 +475,23 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             {
                 // Integer types
                 case TexFile.TextureFormat.L8:
-                    return new L8TextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new L8TextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
                 case TexFile.TextureFormat.A8:
-                    return new A8TextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new A8TextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
                 case TexFile.TextureFormat.B4G4R4A4:
-                    return new B4G4R4A4TextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new B4G4R4A4TextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
                 case TexFile.TextureFormat.B5G5R5A1:
-                    return new B5G5R5A1TextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new B5G5R5A1TextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
                 case TexFile.TextureFormat.B8G8R8A8:
-                    return new B8G8R8A8TextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new B8G8R8A8TextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
                 case TexFile.TextureFormat.B8G8R8X8:
-                    return new B8G8R8X8TextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new B8G8R8X8TextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
 
                 // Floating point types
                 case TexFile.TextureFormat.R16G16B16A16F:
-                    return new R16G16B16A16FTextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new R16G16B16A16FTextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
                 case TexFile.TextureFormat.R32G32B32A32F:
-                    return new R32G32B32A32FTextureBuffer( isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new R32G32B32A32FTextureBuffer( attribute, width, height, depth, mipmapAllocations, buffer );
 
                 // Block compression types
                 case TexFile.TextureFormat.BC1:
@@ -492,33 +499,40 @@ namespace Lumina.Data.Parsing.Tex.Buffers
                 case TexFile.TextureFormat.BC3:
                 case TexFile.TextureFormat.BC5:
                 case TexFile.TextureFormat.BC7:
-                    return new BlockCompressionTextureBuffer( format, isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new BlockCompressionTextureBuffer( format, attribute, width, height, depth, mipmapAllocations, buffer );
 
                 default:
                     var numBitsPerPixel = 1 << ( (int)( format & TexFile.TextureFormat.BppMask ) >> (int)TexFile.TextureFormat.BppShift );
                     var numBytesPerPixel = numBitsPerPixel >> 3;
                     if( numBytesPerPixel == 0 )
                         throw new NotImplementedException( $"TextureFormat 0x{(int)format:X04} is not supported for image conversion." );
-                    return new UnsupportedTextureBuffer( numBytesPerPixel, isDepthConstant, width, height, depth, mipmapAllocations, buffer );
+                    return new UnsupportedTextureBuffer( numBytesPerPixel, attribute, width, height, depth, mipmapAllocations, buffer );
             }
         }
 
         /// <summary>
         /// Create a new instance of <see cref="TextureBuffer"/> from a BinaryReader that supports seeking.
         /// </summary>
-        public static unsafe TextureBuffer FromStream( TexFile.TexHeader header, LuminaBinaryReader Reader )
+        public static unsafe TextureBuffer FromStream( TexFile.TexHeader header, LuminaBinaryReader reader )
         {
-            var mipmapAllocations = new int[Math.Min( 13, (int)header.MipLevels )];
+            var mipmapAllocations = new int[Math.Min( 13, (int)header.MipLevelsCount )];
             for( var i = 0; i < mipmapAllocations.Length - 1; i++ )
                 mipmapAllocations[ i ] = (int)( header.OffsetToSurface[ i + 1 ] - header.OffsetToSurface[ i ] );
-            mipmapAllocations[ ^1 ] = (int)( Reader.BaseStream.Length - header.OffsetToSurface[ mipmapAllocations.Length - 1 ] );
+            mipmapAllocations[ ^1 ] = (int)( reader.BaseStream.Length - header.OffsetToSurface[ mipmapAllocations.Length - 1 ] );
 
             var buffer = new byte[mipmapAllocations.Sum()];
-            Reader.BaseStream.Position = header.OffsetToSurface[ 0 ];
+            reader.BaseStream.Position = header.OffsetToSurface[ 0 ];
             // ReSharper disable once MustUseReturnValue
-            Reader.BaseStream.Read( buffer );
+            reader.BaseStream.Read( buffer );
 
-            return FromTextureFormat( header.Type, header.Format, header.Width, header.Height, header.Depth, mipmapAllocations, buffer, Reader.PlatformId );
+            var nd = ( header.Type & TexFile.Attribute.TextureTypeMask ) switch
+            {
+                TexFile.Attribute.TextureType3D => header.Depth,
+                TexFile.Attribute.TextureTypeCube => 6,
+                TexFile.Attribute.TextureType2DArray => header.ArraySize,
+                _ => 1,
+            };
+            return FromTextureFormat( header.Type, header.Format, header.Width, header.Height, nd, mipmapAllocations, buffer, reader.PlatformId );
         }
     }
 }
