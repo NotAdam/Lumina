@@ -93,7 +93,7 @@ namespace Lumina.Models.Models
             ReadStrings();
             ReadMaterials();
             ReadMeshes();
-            ReadShapes(Meshes);
+            ReadShapes( Meshes );
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Lumina.Models.Models
             }
         }
 
-        private void ReadShapes(IReadOnlyList<Mesh> meshes )
+        private void ReadShapes( IReadOnlyList< Mesh > meshes )
         {
             if( File == null )
             {
