@@ -190,10 +190,11 @@ namespace Lumina
         /// Load a defined file given a filesystem path
         /// </summary>
         /// <param name="path">A relative or absolute path to the file to load</param>
+        /// <param name="origPath">The original file path in SqPack, required for reading some files (e.g. materials)</param>
         /// <typeparam name="T">The type of <see cref="FileResource"/> to load the raw file in to</typeparam>
         /// <returns>The requested file if found, null if not</returns>
         /// <exception cref="FileNotFoundException">The path given doesn't point to an existing file</exception>
-        public T GetFileFromDisk< T >( string path ) where T : FileResource
+        public T GetFileFromDisk< T >( string path, string? origPath = null ) where T : FileResource
         {
             SetCurrentContext();
             
@@ -206,6 +207,10 @@ namespace Lumina
 
             var file = Activator.CreateInstance< T >();
             file.Data = fileContent;
+            if( origPath != null )
+            {
+                file.FilePath = ParseFilePath( origPath )!;
+            }
             file.Reader = new LuminaBinaryReader( file.Data, Options.CurrentPlatform );
             file.LoadFile();
 

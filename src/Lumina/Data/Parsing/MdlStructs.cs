@@ -337,15 +337,25 @@ namespace Lumina.Data.Parsing
 
         public struct ShapeMeshStruct
         {
-            public uint StartIndex;
+            /// <summary>
+            /// From TT: The offset to the index block this Shape Data should be replacing in.
+            /// This is how Shape Data is tied to each mesh.
+            /// </summary>
+            public uint MeshIndexOffset;
             public uint ShapeValueCount;
             public uint ShapeValueOffset;
         }
 
         public struct ShapeValueStruct
         {
-            public ushort Offset;
-            public ushort Value;
+            /// <summary>
+            /// PROBABLY: Index into the Indices array of a mesh.
+            /// </summary>
+            public ushort BaseIndicesIndex;
+            /// <summary>
+            /// PROBABLY: Index into the (without transformation probably unused) vertex of a mesh.
+            /// </summary>
+            public ushort ReplacingVertexIndex;
         }
 
         public struct BoundingBoxStruct

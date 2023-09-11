@@ -93,7 +93,7 @@ namespace Lumina.Models.Models
             ReadStrings();
             ReadMaterials();
             ReadMeshes();
-            ReadShapes();
+            ReadShapes( Meshes );
         }
 
         /// <summary>
@@ -127,14 +127,19 @@ namespace Lumina.Models.Models
             }
         }
 
-        private void ReadShapes()
+        private void ReadShapes( IReadOnlyList< Mesh > meshes )
         {
+            if( File == null )
+            {
+                return;
+            }
+
+            var shapeMeshes = ShapeMesh.ConstructList( File, meshes );
             Shapes = new Dictionary< string, Shape >();
             for( int i = 0; i < File?.Shapes.Length; i++ )
             {
-                // We will need more info in the constructor here... eventually
-                var shape = new Shape( this, i );
-                Shapes[ shape.ShapeName ] = shape;
+                var shape = new Shape( this, Lod, shapeMeshes, i );
+                Shapes[ shape.Name ] = shape;
             }
         }
 
