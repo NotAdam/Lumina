@@ -154,7 +154,7 @@ namespace Lumina.Excel
         {
             // var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
 
-            var page = DataPages.FirstOrDefault( s => row >= s.StartId && row <= s.StartId + s.RowCount );
+            var page = DataPages.FirstOrDefault( s => row >= s.StartId && row < s.StartId + s.RowCount );
 
             // if( data == null )
             // {
