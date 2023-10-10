@@ -152,14 +152,16 @@ namespace Lumina.Excel
         /// <returns>The <see cref="ExcelPage"/> if found, null otherwise</returns>
         public ExcelPage? GetPageForRow( uint row )
         {
-            var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
+            // var data = DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
+
+            var page = DataPages.FirstOrDefault( s => row >= s.StartId && row <= s.StartId + s.RowCount );
 
             // if( data == null )
             // {
             //     throw new KeyNotFoundException( $"row {row} not found in sheet {Name}!" );
             // }
 
-            return data;
+            return page;
         }
 
         protected static ulong GetCacheKey( uint rowId, uint subrowId = UInt32.MaxValue )
