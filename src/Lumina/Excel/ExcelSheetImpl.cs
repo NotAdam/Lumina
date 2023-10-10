@@ -181,18 +181,7 @@ namespace Lumina.Excel
                 return null;
             }
 
-            RowParser parser = null!;
-
-            if( subRow != uint.MaxValue )
-            {
-                parser = new RowParser( this, page.File, row, subRow );
-            }
-            else
-            {
-                parser = new RowParser( this, page.File, row );
-            }
-
-            return parser;
+            return GetRowParser( page, row, subRow );
         }
 
         /// <summary>
