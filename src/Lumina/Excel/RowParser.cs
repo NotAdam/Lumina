@@ -399,6 +399,15 @@ namespace Lumina.Excel
             return ReadField< T >( flag );
         }
 
+        /// <inheritdoc cref="ReadOffset{T}(ushort,byte)"/>
+        public T? ReadOffset< T >( int offset, byte bit = 0 ) => ReadOffset< T >( (ushort)offset, bit );
+
+        /// <inheritdoc cref="ReadOffset{T}(ushort,byte)"/>
+        public T? ReadOffset< T >( uint offset, byte bit = 0 ) => ReadOffset< T >( (ushort)offset, bit );
+
+        /// <inheritdoc cref="ReadOffset{T}(ushort,byte)"/>
+        public T? ReadOffset< T >( short offset, byte bit = 0 ) => ReadOffset< T >( (ushort)offset, bit );
+
         /// <summary>
         /// Read a type from an offset in the row
         /// </summary>
