@@ -55,7 +55,7 @@ namespace Lumina.Excel
 
         public ExcelColumnDefinition[] Columns => HeaderFile.ColumnDefinitions;
 
-        private Dictionary< ushort, ExcelColumnDefinition > _columnsByOffset = null!;
+        private Dictionary< ushort, ExcelColumnDefinition >? _columnsByOffset;
 
         public Dictionary< ushort, ExcelColumnDefinition > ColumnsByOffset
         {
