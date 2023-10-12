@@ -22,6 +22,19 @@ namespace Lumina.Excel
         public ExcelRow? RawRow { get; }
     }
 
+    public class DefaultLazyRow : ILazyRow
+    {
+        public uint Row { get; set; }
+        public bool IsValueCreated => false;
+        public Language Language => Language.None;
+        public ExcelRow? RawRow => null;
+
+        public DefaultLazyRow( uint rowId )
+        {
+            Row = rowId;
+        }
+    }
+
     /// <summary>
     /// Allows for sheet definitions to contain entries which will lazily load the referenced sheet row
     /// </summary>

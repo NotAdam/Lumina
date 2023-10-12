@@ -52,12 +52,21 @@ namespace Lumina.Excel
             {
                 return false;
             }
-            
-            var parser = GetRowParser( page, row, subRow );
-            if( parser == null )
+
+            // TODO fix this so no exception lol
+            try
+            {
+                var parser = GetRowParser( page, row, subRow );
+                if( parser == null )
+                {
+                    return false;
+                }
+            }
+            catch( IndexOutOfRangeException e )
             {
                 return false;
             }
+            
 
             return true;
         }
