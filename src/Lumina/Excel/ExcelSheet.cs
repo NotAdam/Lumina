@@ -18,16 +18,6 @@ namespace Lumina.Excel
         {
         }
 
-        public bool HasRow( uint row )
-        {
-            return HasRow( row, UInt32.MaxValue );
-        }
-
-        public bool HasRow( uint row, uint subRow )
-        {
-            return HasRowInternal( row, subRow );
-        }
-
         public T? GetRow( uint row )
         {
             return GetRow( row, UInt32.MaxValue );
@@ -38,39 +28,6 @@ namespace Lumina.Excel
             return GetRowInternal( row, subRow );
         }
         
-        internal bool HasRowInternal( uint row, uint subRow )
-        {
-            var cacheKey = GetCacheKey( row, subRow );
-
-            if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
-            {
-                return true;
-            }
-
-            var page = GetPageForRow( row );
-            if( page == null )
-            {
-                return false;
-            }
-
-            // TODO fix this so no exception lol
-            try
-            {
-                var parser = GetRowParser( page, row, subRow );
-                if( parser == null )
-                {
-                    return false;
-                }
-            }
-            catch( IndexOutOfRangeException e )
-            {
-                return false;
-            }
-            
-
-            return true;
-        }
-
         internal T? GetRowInternal( uint row, uint subRow )
         {
             var cacheKey = GetCacheKey( row, subRow );

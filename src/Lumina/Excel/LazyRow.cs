@@ -1,4 +1,8 @@
+using System;
+using System.Linq;
 using Lumina.Data;
+using Lumina.Data.Files.Excel;
+using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel
 {
@@ -22,16 +26,37 @@ namespace Lumina.Excel
         public ExcelRow? RawRow { get; }
     }
 
-    public class DefaultLazyRow : ILazyRow
+    public class EmptyLazyRow : ILazyRow
     {
+        private static readonly ExcelDataPagination _blankPagination = new();
+        
         public uint Row { get; set; }
         public bool IsValueCreated => false;
         public Language Language => Language.None;
         public ExcelRow? RawRow => null;
 
-        public DefaultLazyRow( uint rowId )
+        public EmptyLazyRow( uint rowId )
         {
             Row = rowId;
+        }
+        
+        public static ILazyRow GetFirstLazyRowOrEmpty( GameData gameData, uint row, params string[] sheetNames )
+        {
+            return GetFirstLazyRowOrEmpty( gameData, row, Language.None, sheetNames );
+        }
+        
+        public static ILazyRow GetFirstLazyRowOrEmpty( GameData gameData, uint row, Language language, params string[] sheetNames )
+        {
+            foreach( var sheetName in sheetNames )
+            {
+                var exh = gameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" );
+                if( exh == null ) continue;
+                var page = exh.DataPages.FirstOrDefault( s => row >= s.StartId && row <= s.StartId + s.RowCount, _blankPagination );
+                if( page.Equals( _blankPagination ) ) continue; 
+                
+                return new LazyRow<ExcelRow>(gameData, row, language);
+            }
+            return new EmptyLazyRow( row );
         }
     }
 
