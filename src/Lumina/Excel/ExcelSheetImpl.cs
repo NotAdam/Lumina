@@ -156,13 +156,29 @@ namespace Lumina.Excel
 
             var page = DataPages.FirstOrDefault( s => row >= s.StartId && row < s.StartId + s.RowCount );
 
-            // if( data == null )
-            // {
-            //     throw new KeyNotFoundException( $"row {row} not found in sheet {Name}!" );
-            // }
-
             return page;
         }
+
+        /// <summary>
+        /// Check whether a row exists in a sheet
+        /// </summary>
+        /// <param name="row">The rowid to check.</param>
+        /// <remarks>Subrows in type 2 sheets can't be checked for in this form as the header does not contain an explicit entry for a (row, subrow) pair</remarks>
+        /// <returns>True if exists, false otherwise</returns>
+        public bool HasRow( uint row )
+        {
+            var page = GetPageForRow( row );
+
+            if( page == null )
+            {
+                return false;
+            }
+
+            return page.RowData.Any( x => x.Key == row );
+        }
+
+        /// <inheritdoc cref="HasRow(uint)"/>
+        public bool HasRow( int row ) => HasRow( (uint)row );
 
         protected static ulong GetCacheKey( uint rowId, uint subrowId = UInt32.MaxValue )
         {
