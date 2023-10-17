@@ -50,9 +50,16 @@ namespace Lumina.Excel
             foreach( var sheetName in sheetNames )
             {
                 var exh = gameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" );
-                if( exh == null ) continue;
+                if( exh == null )
+                {
+                    continue;
+                }
+                
                 var page = exh.DataPages.FirstOrDefault( s => row >= s.StartId && row <= s.StartId + s.RowCount, _blankPagination );
-                if( page.Equals( _blankPagination ) ) continue; 
+                if( page.Equals( _blankPagination ) )
+                {
+                    continue;
+                } 
                 
                 return new LazyRow<ExcelRow>(gameData, row, language);
             }
