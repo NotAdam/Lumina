@@ -27,7 +27,7 @@ namespace Lumina.Excel
         {
             return GetRowInternal( row, subRow );
         }
-        
+
         internal T? GetRowInternal( uint row, uint subRow )
         {
             var cacheKey = GetCacheKey( row, subRow );
