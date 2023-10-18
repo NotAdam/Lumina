@@ -29,7 +29,6 @@ namespace Lumina.Excel
 
     public class EmptyLazyRow : ILazyRow
     {
-        private static readonly ExcelDataPagination _blankPagination = new();
         private static readonly Dictionary< string, List<Range> > _ranges = new();
         
         public uint Row { get; set; }
