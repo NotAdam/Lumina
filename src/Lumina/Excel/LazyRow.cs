@@ -54,14 +54,19 @@ namespace Lumina.Excel
                 if( !_ranges.ContainsKey( sheetName ) )
                 {
                     var exh = gameData.GetFile< ExcelHeaderFile >( $"exd/{sheetName}.exh" );
-                    if( exh == null ) continue;
+                    if( exh == null )
+                    {
+                        continue;
+                    }
                     _ranges.Add( sheetName, exh.DataPages.Select( p => new Range( (int)p.StartId, (int) (p.StartId + p.RowCount) ) ).ToList() );
                 }
 
                 foreach( var range in _ranges[sheetName] )
                 {
                     if (row < range.Start.Value && row > range.End.Value)
-                        return new LazyRow<ExcelRow>(gameData, row, language);    
+                    {
+                        return new LazyRow< ExcelRow >( gameData, row, language );
+                    }    
                 }
             }
             return new EmptyLazyRow( row );
