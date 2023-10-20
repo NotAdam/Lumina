@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
@@ -28,7 +29,7 @@ namespace Lumina.Excel
 
     public class EmptyLazyRow : ILazyRow
     {
-        private static readonly ExcelDataPagination _blankPagination = new();
+        private static readonly Dictionary< string, List<Range> > _ranges = new();
         
         public uint Row { get; set; }
         public bool IsValueCreated => false;
@@ -49,19 +50,23 @@ namespace Lumina.Excel
         {
             foreach( var sheetName in sheetNames )
             {
-                var exh = gameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" );
-                if( exh == null )
+                if( !_ranges.ContainsKey( sheetName ) )
                 {
-                    continue;
+                    var exh = gameData.GetFile< ExcelHeaderFile >( $"exd/{sheetName}.exh" );
+                    if( exh == null )
+                    {
+                        continue;
+                    }
+                    _ranges.Add( sheetName, exh.DataPages.Select( p => new Range( (int)p.StartId, (int) (p.StartId + p.RowCount) ) ).ToList() );
                 }
-                
-                var page = exh.DataPages.FirstOrDefault( s => row >= s.StartId && row <= s.StartId + s.RowCount, _blankPagination );
-                if( page.Equals( _blankPagination ) )
+
+                foreach( var range in _ranges[sheetName] )
                 {
-                    continue;
-                } 
-                
-                return new LazyRow<ExcelRow>(gameData, row, language);
+                    if (row < range.Start.Value && row > range.End.Value)
+                    {
+                        return new LazyRow< ExcelRow >( gameData, row, language );
+                    }    
+                }
             }
             return new EmptyLazyRow( row );
         }
