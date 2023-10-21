@@ -62,7 +62,7 @@ namespace Lumina.Excel
 
                 foreach( var range in _ranges[sheetName] )
                 {
-                    if (row < range.Start.Value && row > range.End.Value)
+                    if (row >= range.Start.Value && row < range.End.Value)
                     {
                         return new LazyRow< ExcelRow >( gameData, row, language );
                     }    
