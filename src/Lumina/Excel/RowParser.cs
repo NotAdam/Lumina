@@ -59,7 +59,7 @@ namespace Lumina.Excel
         {
             if( !TrySeekToRow( row ) )
             {
-                throw new IndexOutOfRangeException( $"the row {row} could not be found in the sheet!" );
+                throw new IndexOutOfRangeException( $"row#{row} could not be found in {_sheet.Name} sheet!" );
             }
         }
         
