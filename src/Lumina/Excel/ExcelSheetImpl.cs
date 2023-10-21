@@ -152,7 +152,14 @@ namespace Lumina.Excel
         /// <returns>The <see cref="ExcelPage"/> if found, null otherwise</returns>
         public ExcelPage? GetPageForRow( uint row )
         {
-            return DataPages.FirstOrDefault( s => s.RowData.ContainsKey( row ) );
+            var page = DataPages.FirstOrDefault( s => row >= s.StartId && row < s.StartId + s.RowCount );
+
+            if( page?.RowData.ContainsKey( row ) == false )
+            {
+                return null;
+            }
+
+            return page;
         }
 
         /// <summary>
