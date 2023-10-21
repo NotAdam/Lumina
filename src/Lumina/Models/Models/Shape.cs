@@ -13,8 +13,13 @@ namespace Lumina.Models.Models
         {
             var ret = new ShapeMesh[ file.ModelHeader.ShapeMeshCount ];
             var idx = 0;
-
-            var meshDict = meshes.ToDictionary( m => file.Meshes[ m.MeshIndex ].StartIndex, m => m );
+            
+            var meshDict = new Dictionary< uint, Mesh >();
+            foreach( var mesh in meshes ) {
+                // skip meshes that are already in the dictionary
+                if( meshDict.ContainsKey( file.Meshes[ mesh.MeshIndex ].StartIndex ) ) continue;
+                meshDict.Add( file.Meshes[ mesh.MeshIndex ].StartIndex, mesh );
+            }
 
             foreach( var shapeMeshStruct in file.ShapeMeshes ) {
 
@@ -42,7 +47,12 @@ namespace Lumina.Models.Models
         public Shape( Model model, Model.ModelLod lod, IReadOnlyList< ShapeMesh > shapeMeshes, int shapeIndex )
         {
             var currentShape = model.File.Shapes[ shapeIndex ];
-            Name   = model.StringOffsetToStringMap[ (int)currentShape.StringOffset ];
+
+            // handle cases where the name is not found in the StringOffsetToStringMap
+            Name = model.StringOffsetToStringMap.TryGetValue( (int)currentShape.StringOffset, out var name )
+                ? name
+                : $"UnknownShape_{shapeIndex}";
+
             Meshes = new ShapeMesh[ currentShape.ShapeMeshCount[ (int)lod ] ];
             var end    = currentShape.ShapeMeshCount[ (int)lod ];
             var offset = currentShape.ShapeMeshStartIndex[ (int)lod ];
