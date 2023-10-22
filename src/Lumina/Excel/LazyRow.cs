@@ -29,7 +29,7 @@ namespace Lumina.Excel
 
     public class EmptyLazyRow : ILazyRow
     {
-        private static readonly Dictionary< string, List<Range> > _ranges = new();
+        private static readonly Dictionary< string, HashSet<uint> > _ranges = new();
         
         public uint Row { get; set; }
         public bool IsValueCreated => false;
@@ -52,20 +52,17 @@ namespace Lumina.Excel
             {
                 if( !_ranges.ContainsKey( sheetName ) )
                 {
-                    var exh = gameData.GetFile< ExcelHeaderFile >( $"exd/{sheetName}.exh" );
+                    var exh = gameData.Excel.GetSheetRaw( sheetName );
                     if( exh == null )
                     {
                         continue;
                     }
-                    _ranges.Add( sheetName, exh.DataPages.Select( p => new Range( (int)p.StartId, (int) (p.StartId + p.RowCount) ) ).ToList() );
+                    _ranges.Add( sheetName, exh.DataPages.SelectMany(p => p.RowData.Keys).ToHashSet() );
                 }
 
-                foreach( var range in _ranges[sheetName] )
+                if( _ranges[ sheetName ].Contains( row ) )
                 {
-                    if (row >= range.Start.Value && row < range.End.Value)
-                    {
-                        return new LazyRow< ExcelRow >( gameData, row, language );
-                    }    
+                    return new LazyRow< ExcelRow >( gameData, row, language );
                 }
             }
             return new EmptyLazyRow( row );
