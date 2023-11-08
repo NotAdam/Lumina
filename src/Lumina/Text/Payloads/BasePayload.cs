@@ -240,5 +240,32 @@ namespace Lumina.Text.Payloads
         /// Extracts and concatenates the text payloads and integer constants.
         /// </summary>
         public string RawString => _rawString.Value;
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            if( PayloadType == PayloadType.Text )
+                return RawString;
+
+            var code = (MacroCodes)PayloadType;
+            switch( code )
+            {
+                case MacroCodes.NewLine:
+                    return "<br>";
+                case MacroCodes.NonBreakingSpace:
+                    return "<nbsp>";
+                case MacroCodes.SoftHyphen:
+                    return "-";
+                case MacroCodes.Hyphen:
+                    return "--";
+                default:
+                {
+                    if( Expressions.Count == 0 )
+                        return $"<{code.ToString().ToLower()}>";
+
+                    return $"<{code.ToString().ToLower()}({string.Join( ',', Expressions )})>";
+                }
+            }
+        }
     }
 }

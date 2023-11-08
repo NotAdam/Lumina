@@ -92,7 +92,7 @@ public class IntegerExpression : BaseExpression
     }
 
     /// <inheritdoc />
-    public override string ToString() => Value.ToString();
+    public override string ToString() => ( (int)Value ).ToString();
 
     /// <summary>
     /// Parse given Stream into an IntegerExpression.

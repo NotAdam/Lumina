@@ -41,12 +41,12 @@ public class BinaryExpression : BaseExpression
     {
         return ExpressionType switch
         {
-            ExpressionType.GreaterThanOrEqualTo => $"BinExpr{{{Operand1} >= {Operand2}}}",
-            ExpressionType.GreaterThan => $"BinExpr{{{Operand1} > {Operand2}}}",
-            ExpressionType.LessThanOrEqualTo => $"BinExpr{{{Operand1} <= {Operand2}}}",
-            ExpressionType.LessThan => $"BinExpr{{{Operand1} < {Operand2}}}",
-            ExpressionType.Equal => $"BinExpr{{{Operand1} == {Operand2}}}",
-            ExpressionType.NotEqual => $"BinExpr{{{Operand1} != {Operand2}}}",
+            ExpressionType.GreaterThanOrEqualTo => $"[{Operand1}>={Operand2}]",
+            ExpressionType.GreaterThan => $"[{Operand1}>{Operand2}]",
+            ExpressionType.LessThanOrEqualTo => $"[{Operand1}<={Operand2}]",
+            ExpressionType.LessThan => $"[{Operand1}<{Operand2}]",
+            ExpressionType.Equal => $"[{Operand1}=={Operand2}]",
+            ExpressionType.NotEqual => $"[{Operand1}!={Operand2}]",
             _ => throw new NotImplementedException() // cannot reach, as this instance is immutable and this field is filtered from constructor
         };
     }
