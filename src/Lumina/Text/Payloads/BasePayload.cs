@@ -245,7 +245,7 @@ namespace Lumina.Text.Payloads
         public override string ToString()
         {
             if( PayloadType == PayloadType.Text )
-                return RawString;
+                return RawString.Replace( "<", "\\<" );
 
             var code = (MacroCodes)PayloadType;
             switch( code )
