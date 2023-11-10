@@ -45,7 +45,7 @@ public class StringExpression : BaseExpression
     }
 
     /// <inheritdoc />
-    public override string ToString() => $"Str{{{Value?.ToString() ?? string.Empty}}}";
+    public override string ToString() => Value?.ToString() ?? string.Empty;
 
     /// <summary>
     /// Parse given Stream into a StringExpression.

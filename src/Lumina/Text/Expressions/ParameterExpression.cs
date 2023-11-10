@@ -35,10 +35,10 @@ public class ParameterExpression : BaseExpression
     {
         return ExpressionType switch
         {
-            ExpressionType.IntegerParameter => $"IntegerParam{{{Operand}}}",
-            ExpressionType.PlayerParameter => $"PlayerParam{{{Operand}}}",
-            ExpressionType.StringParameter => $"StringParam{{{Operand}}}",
-            ExpressionType.ObjectParameter => $"ObjectParam{{{Operand}}}",
+            ExpressionType.IntegerParameter => $"lnum{Operand}",
+            ExpressionType.PlayerParameter => $"gnum{Operand}",
+            ExpressionType.StringParameter => $"lstr{Operand}",
+            ExpressionType.ObjectParameter => $"gstr{Operand}",
             _ => throw new NotImplementedException() // cannot reach, as this instance is immutable and this field is filtered from constructor
         };
     }

@@ -28,7 +28,22 @@ public class PlaceholderExpression : BaseExpression
     public override void Encode( Stream stream ) => stream.WriteByte( (byte)ExpressionType );
 
     /// <inheritdoc />
-    public override string ToString() => $"Placeholder#{ExpressionType:X02}";
+    public override string ToString()
+    {
+        return ExpressionType switch
+        {
+            ExpressionType.Millisecond => "t_msec",
+            ExpressionType.Second => "t_sec",
+            ExpressionType.Minute => "t_min",
+            ExpressionType.Hour => "t_hour",
+            ExpressionType.Day => "t_day",
+            ExpressionType.Weekday => "t_wday",
+            ExpressionType.Month => "t_mon",
+            ExpressionType.Year => "t_year",
+            ExpressionType.StackColor => "stackcolor",
+            _ => $"Placeholder#{ExpressionType:X02}"
+        };
+    }
 
     /// <summary>
     /// Identify whether the given type byte indicates a PlaceholderExpression.

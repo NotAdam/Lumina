@@ -170,7 +170,7 @@ namespace Lumina.Text
 
         public override string ToString()
         {
-            return RawString;
+            return string.Concat( Payloads );
         }
     }
 }
