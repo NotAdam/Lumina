@@ -41,7 +41,7 @@ public class PlaceholderExpression : BaseExpression
             ExpressionType.Month => "t_mon",
             ExpressionType.Year => "t_year",
             ExpressionType.StackColor => "stackcolor",
-            _ => $"Placeholder#{ExpressionType:X02}"
+            _ => $"Placeholder#{(byte)ExpressionType:X02}"
         };
     }
 
