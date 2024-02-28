@@ -170,6 +170,14 @@ namespace Lumina.Text
 
         public override string ToString()
         {
+            return RawString;
+        }
+
+        /// <summary>
+        /// Gets a Macro Code representation of the Text and Payloads contained.
+        /// </summary>
+        public string ToMacroString()
+        {
             return string.Concat( Payloads );
         }
     }
