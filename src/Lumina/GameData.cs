@@ -13,8 +13,10 @@ using Lumina.Misc;
 
 namespace Lumina
 {
-    public class GameData
+    public class GameData : IDisposable
     {
+        ~GameData() => Dispose( false );
+
         /// <summary>
         /// The current data path that Lumina is using to load files.
         /// </summary>
@@ -50,6 +52,12 @@ namespace Lumina
         /// easily defer file loading onto another thread.
         /// </summary>
         public FileHandleManager FileHandleManager { get; private set; }
+
+        /// <summary>
+        /// Provides a pool for file streams for .dat files.
+        /// </summary>
+        /// <remarks>The pool will be disposed when <see cref="Dispose"/> is called.</remarks>
+        public SqPackStreamPool? StreamPool { get; set; }
         
         internal ILogger? Logger { get; private set; }
         
@@ -150,6 +158,13 @@ namespace Lumina
                 Repository = repo,
                 Path = path
             };
+        }
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            Dispose( true );
+            GC.SuppressFinalize( this );
         }
 
         /// <summary>
@@ -313,6 +328,17 @@ namespace Lumina
         public void ProcessFileHandleQueue()
         {
             FileHandleManager.ProcessQueue();
+        }
+
+        /// <summary>Disposes this object.</summary>
+        /// <param name="disposing">Whether this function is being called from <see cref="Dispose"/>.</param>
+        protected virtual void Dispose( bool disposing )
+        {
+            if( disposing )
+            {
+                StreamPool?.Dispose();
+                StreamPool = null;
+            }
         }
 
         internal void SetCurrentContext()
