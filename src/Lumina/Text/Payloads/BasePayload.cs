@@ -255,15 +255,17 @@ namespace Lumina.Text.Payloads
                 case MacroCodes.NonBreakingSpace:
                     return "<nbsp>";
                 case MacroCodes.SoftHyphen:
-                    return "-";
+                    return "<->";
                 case MacroCodes.Hyphen:
-                    return "--";
+                    return "<-->";
                 default:
                 {
                     if( Expressions.Count == 0 )
                         return $"<{code.ToString().ToLower()}>";
 
-                    return $"<{code.ToString().ToLower()}({string.Join( ',', Expressions )})>";
+                    return $"<{code.ToString().ToLower()}({string.Join( ',', Expressions.Select(
+                        ex => ex is StringExpression se ? se.Value.ToMacroString() : ex.ToString()
+                    ) )})>";
                 }
             }
         }
