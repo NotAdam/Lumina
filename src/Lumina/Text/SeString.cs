@@ -7,6 +7,7 @@ using System.Text;
 using Lumina.Data;
 using Lumina.Extensions;
 using Lumina.Text.Payloads;
+using Lumina.Text.ReadOnly;
 
 namespace Lumina.Text
 {
@@ -135,6 +136,8 @@ namespace Lumina.Text
 
         public static implicit operator string( SeString str ) => str.RawString;
 
+        public static implicit operator ReadOnlySeString( SeString str ) => str.AsReadOnly();
+
         // public static SeString operator +( SeString lhs, SeString rhs )
         // {
         //     return null;
@@ -167,6 +170,10 @@ namespace Lumina.Text
         // {
         //     throw new NotImplementedException();
         // }
+
+        /// <summary>Gets a <see cref="ReadOnlySeString"/> view of this <see cref="SeString"/>.</summary>
+        /// <returns>A new instance of <see cref="ReadOnlySeString"/>.</returns>
+        public ReadOnlySeString AsReadOnly() => new( _rawData.Value );
 
         public override string ToString()
         {
