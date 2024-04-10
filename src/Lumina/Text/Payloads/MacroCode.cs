@@ -20,8 +20,16 @@ public enum MacroCode : byte
     /// <remarks>Parameters: condition, expression to use if condition is 1, expression to use if condition is 2, and so on.</remarks>
     [MacroCodeData( null, ". . ." )] Switch = 0x09,
 
+    /// <summary>Adds a characters name.</summary>
+    /// <remarks>Parameters: ObjectId, terminator.</remarks>
     [MacroCodeData( null, "n x" )] PcName = 0x0A,
+    
+    /// <summary>Tests a characters gender.</summary>
+    /// <remarks>Parameters: ObjectId, expression to use if the character is male, expression to use if the character is female, terminator.</remarks>
     [MacroCodeData( null, "n . . x" )] IfPcGender = 0x0B,
+    
+    /// <summary>Tests a characters name.</summary>
+    /// <remarks>Parameters: ObjectId, the name to test against, expression to use if the name matches, expression to use if the name doesn't match, terminator.</remarks>
     [MacroCodeData( null, "n . . . x" )] IfPcName = 0x0C,
 
     /// <summary>Determines the type of josa required from the last character of the first expression.</summary>
@@ -32,6 +40,8 @@ public enum MacroCode : byte
     /// <remarks>Parameters: test string, ro suffix, euro suffix, terminator.</remarks>
     [MacroCodeData( null, "s s s x" )] Josaro = 0x0E,
 
+    /// <summary>Tests if the character is the local player.</summary>
+    /// <remarks>Parameters: ObjectId, expression to use if the character is the local player, expression to use if the character is not the local player, terminator.</remarks>
     [MacroCodeData( null, "n . . x" )] IfSelf = 0x0F,
 
     /// <summary>Adds a line break.</summary>
@@ -95,6 +105,8 @@ public enum MacroCode : byte
     /// <remarks>Parameters: integer expression, separator (usually a comma or a dot), terminator.</remarks>
     [MacroCodeData( null, ". s x" )] Kilo = 0x22,
 
+    /// <summary>Adds a readable byte string (possible suffixes: omitted, K, M, G, T).</summary>
+    /// <remarks>Parameters: integer expression, terminator.</remarks>
     [MacroCodeData( null, "n x" )] Byte = 0x23,
 
     /// <summary>Adds a zero-padded-to-two-digits decimal representation of an integer expression.</summary>
@@ -102,6 +114,9 @@ public enum MacroCode : byte
     [MacroCodeData( null, "n x" )] Sec = 0x24,
 
     [MacroCodeData( null, "n x" )] Time = 0x25,
+
+    /// <summary>Adds a floating point number as text.</summary>
+    /// <remarks>Parameters: integer expression, radix, separator, terminator.</remarks>
     [MacroCodeData( null, "n n s x" )] Float = 0x26,
     
     /// <summary>Begins or ends a region of link.</summary>
@@ -110,7 +125,7 @@ public enum MacroCode : byte
     [MacroCodeData( null, "n n n n s" )] Link = 0x27,
 
     /// <summary>Adds a column from a sheet.</summary>
-    /// <remarks>Parameters: sheet name, row ID, column ID(, ?).</remarks>
+    /// <remarks>Parameters: sheet name, row ID, column index, expression passed as first local parameter to the columns text.</remarks>
     [MacroCodeData( null, "s . . ." )] Sheet = 0x28,
 
     /// <summary>Adds a string expression as-is.</summary>
@@ -121,20 +136,44 @@ public enum MacroCode : byte
     /// <remarks>Parameters: string expression, terminator.</remarks>
     [MacroCodeData( null, "s x" )] Caps = 0x2A,
 
+    /// <summary>Adds a string, first character upper cased.</summary>
+    /// <remarks>Parameters: string expression, terminator.</remarks>
     [MacroCodeData( null, "s x" )] Head = 0x2B,
+    
     [MacroCodeData( null, "s s n x" )] Split = 0x2C,
+    
+    /// <summary>Adds a string, every words first character upper cased.</summary>
+    /// <remarks>Parameters: string expression, terminator.</remarks>
     [MacroCodeData( null, "s x" )] HeadAll = 0x2D,
+
     [MacroCodeData( null, "n n . . ." )] Fixed = 0x2E,
 
     /// <summary>Adds a string, fully lower cased.</summary>
     /// <remarks>Parameters: string expression, terminator.</remarks>
     [MacroCodeData( null, "s x" )] Lower = 0x2F,
 
+    /// <summary>Adds sheet text with proper declension in Japanese.</summary>
+    /// <remarks>Parameters: sheet name, person, row id, amount, unused, unknown offset.</remarks>
     [MacroCodeData( null, "s . ." )] JaNoun = 0x30,
+
+    /// <summary>Adds sheet text with proper declension in English.</summary>
+    /// <remarks>Parameters: sheet name, person, row id, amount, unused, unused.</remarks>
     [MacroCodeData( null, "s . ." )] EnNoun = 0x31,
+
+    /// <summary>Adds sheet text with proper declension in German.</summary>
+    /// <remarks>Parameters: sheet name, person, row id, amount, case, unused.</remarks>
     [MacroCodeData( null, "s . ." )] DeNoun = 0x32,
+
+    /// <summary>Adds sheet text with proper declension in French.</summary>
+    /// <remarks>Parameters: sheet name, person, row id, amount, unused, unknown offset.</remarks>
     [MacroCodeData( null, "s . ." )] FrNoun = 0x33,
+
+    /// <summary>Adds sheet text with proper declension in Chinese.</summary>
+    /// <remarks>Parameters: sheet name, unused, row id, amount, unused, unknown offset.</remarks>
     [MacroCodeData( null, "s . ." )] ChNoun = 0x34,
+    
+    /// <summary>Adds a string, first character lower cased.</summary>
+    /// <remarks>Parameters: string expression, terminator.</remarks>
     [MacroCodeData( null, "s x" )] LowerHead = 0x40,
 
     /// <summary>Pushes the text foreground color, referring to a color defined in UIColor sheet.</summary>
@@ -145,8 +184,15 @@ public enum MacroCode : byte
     /// <remarks>Parameters: row ID in UIColor sheet or 0 to pop(or reset?) the pushed color, terminator.</remarks>
     [MacroCodeData( null, "n x" )] EdgeColorType = 0x49,
 
+    /// <summary>Adds a zero-prefixed number as text.</summary>
+    /// <remarks>Parameters: integer expression, target length, terminator.</remarks>
     [MacroCodeData( null, "n n x" )] Digit = 0x50,
+
+    /// <summary>Adds an ordinal number as text (English only).</summary>
     [MacroCodeData( null, "n x" )] Ordinal = 0x51,
+
+    /// <summary>Adds a non-visible sound payload.</summary>
+    /// <remarks>Parameters: bool whether this sound is a Jingle (see sheet), the id.</remarks>
     [MacroCodeData( null, "n n" )] Sound = 0x60,
     
     /// <summary>Adds a formatted map name and corresponding coordinates, in the format of <c>Map Name\n( X  , Y )</c>.</summary>
