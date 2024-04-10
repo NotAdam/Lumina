@@ -106,16 +106,16 @@ public sealed partial class SeStringBuilder
     /// <param name="arg1">The 1st argument.</param>
     /// <param name="arg2">The 2nd argument.</param>
     /// <param name="arg3">The 3rd argument.</param>
-    /// <param name="displayName">The optional display name.</param>
+    /// <param name="plainText">The optional plain text.</param>
     /// <returns>A reference of this instance after the push operation is completed.</returns>
     /// <remarks>Nested link can be done, but only the outermost link will be handled by the game, as of patch 6.58.</remarks>
-    public SeStringBuilder PushLink( LinkMacroPayloadType type, uint arg1, uint arg2, uint arg3, ReadOnlySeStringSpan displayName ) =>
+    public SeStringBuilder PushLink( LinkMacroPayloadType type, uint arg1, uint arg2, uint arg3, ReadOnlySeStringSpan plainText ) =>
         BeginMacro( MacroCode.Link )
             .AppendUIntExpression( (uint) type )
             .AppendUIntExpression( arg1 )
             .AppendUIntExpression( arg2 )
             .AppendUIntExpression( arg3 )
-            .AppendStringExpression( displayName )
+            .AppendStringExpression( plainText )
             .EndMacro();
 
     /// <summary>Pushes a link.</summary>
@@ -123,16 +123,16 @@ public sealed partial class SeStringBuilder
     /// <param name="arg1">The 1st argument.</param>
     /// <param name="arg2">The 2nd argument.</param>
     /// <param name="arg3">The 3rd argument.</param>
-    /// <param name="displayName">The optional display name.</param>
+    /// <param name="plainText">The optional plain text.</param>
     /// <returns>A reference of this instance after the push operation is completed.</returns>
     /// <remarks>Nested link can be done, but only the outermost link will be handled by the game, as of patch 6.58.</remarks>
-    public SeStringBuilder PushLink( LinkMacroPayloadType type, uint arg1, uint arg2, uint arg3, ReadOnlySpan< char > displayName ) =>
+    public SeStringBuilder PushLink( LinkMacroPayloadType type, uint arg1, uint arg2, uint arg3, ReadOnlySpan< char > plainText ) =>
         BeginMacro( MacroCode.Link )
             .AppendUIntExpression( (uint) type )
             .AppendUIntExpression( arg1 )
             .AppendUIntExpression( arg2 )
             .AppendUIntExpression( arg3 )
-            .AppendStringExpression( displayName )
+            .AppendStringExpression( plainText )
             .EndMacro();
 
     /// <summary>Pushes a link to a character.</summary>
@@ -150,10 +150,10 @@ public sealed partial class SeStringBuilder
 
     /// <summary>Pushes a link to an item.</summary>
     /// <param name="itemId">The item ID.</param>
-    /// <param name="displayName">The display name.</param>
+    /// <param name="plainText">The item name that is copied to the clipboard.</param>
     /// <returns>A reference of this instance after the push operation is completed.</returns>
-    public SeStringBuilder PushLinkItem( uint itemId, ReadOnlySpan< char > displayName ) =>
-        PushLink( LinkMacroPayloadType.Item, itemId, 1u, 0u, displayName );
+    public SeStringBuilder PushLinkItem( uint itemId, ReadOnlySpan< char > plainText ) =>
+        PushLink( LinkMacroPayloadType.Item, itemId, 1u, 0u, plainText );
 
     /// <summary>Pushes a link to a map position.</summary>
     /// <param name="territoryId">The territory ID.</param>
