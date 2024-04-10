@@ -6,16 +6,6 @@ namespace Lumina.Text;
 /// <summary>A builder for <see cref="SeString"/>.</summary>
 public sealed partial class SeStringBuilder
 {
-    /// <summary>Appends an integer calculated from RGBA values as an expression.</summary>
-    /// <param name="rgba">A normalized RGBA <see cref="System.Numerics.Vector4"/> value to append.</param>
-    /// <returns>A reference of this instance after the append operation is completed.</returns>
-    public SeStringBuilder AppendRgbaIntExpression( System.Numerics.Vector4 rgba ) =>
-        AppendRgbaIntExpression(
-            (byte) Math.Clamp( 256 * rgba.X, 0, 255 ),
-            (byte) Math.Clamp( 256 * rgba.Y, 0, 255 ),
-            (byte) Math.Clamp( 256 * rgba.Z, 0, 255 ),
-            (byte) Math.Clamp( 256 * rgba.W, 0, 255 ) );
-
     /// <summary>Appends an integer as an expression.</summary>
     /// <param name="value">An integer value to append.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
@@ -30,15 +20,6 @@ public sealed partial class SeStringBuilder
         OneExpressionWritten();
         return this;
     }
-
-    /// <summary>Appends an integer calculated from RGBA values as an expression.</summary>
-    /// <param name="r">A red byte value to append.</param>
-    /// <param name="g">A red byte value to append.</param>
-    /// <param name="b">A red byte value to append.</param>
-    /// <param name="a">A red byte value to append.</param>
-    /// <returns>A reference of this instance after the append operation is completed.</returns>
-    public SeStringBuilder AppendRgbaIntExpression( byte r, byte g, byte b, byte a ) =>
-        AppendUIntExpression( ( (uint) a << 24 ) | ( (uint) b << 16 ) | ( (uint) g << 8 ) | r );
 
     /// <summary>Appends a nullary expression.</summary>
     /// <param name="expressionType">A nullary expression type.</param>

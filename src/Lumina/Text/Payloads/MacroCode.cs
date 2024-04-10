@@ -1,6 +1,7 @@
 namespace Lumina.Text.Payloads;
 
 /// <summary>Valid macro payload types.</summary>
+/// <remarks>A <c>terminator</c> argument does not mean that an argument is required.</remarks>
 public enum MacroCode : byte
 {
     /// <summary>Sets the reset time to the contextual time storage.</summary>
@@ -76,6 +77,7 @@ public enum MacroCode : byte
     /// <summary>Adds a non-breaking space.</summary>
     [MacroCodeData( "nbsp", "" )] NonBreakingSpace = 0x1D,
 
+    // TODO: how is this different from Icon?
     [MacroCodeData( null, "n N x" )] Icon2 = 0x1E,
 
     /// <summary>Adds a hyphen.</summary>
@@ -101,6 +103,10 @@ public enum MacroCode : byte
 
     [MacroCodeData( null, "n x" )] Time = 0x25,
     [MacroCodeData( null, "n n s x" )] Float = 0x26,
+    
+    /// <summary>Begins or ends a region of link.</summary>
+    /// <remarks>Parameters: <see cref="LinkMacroPayloadType"/>, numeric argument 1, numeric argument 2, numeric argument 3, display string.<br />
+    /// See comments in <see cref="LinkMacroPayloadType"/> for the argument usages.</remarks>
     [MacroCodeData( null, "n n n n s" )] Link = 0x27,
 
     /// <summary>Adds a column from a sheet.</summary>
@@ -142,5 +148,8 @@ public enum MacroCode : byte
     [MacroCodeData( null, "n n x" )] Digit = 0x50,
     [MacroCodeData( null, "n x" )] Ordinal = 0x51,
     [MacroCodeData( null, "n n" )] Sound = 0x60,
-    [MacroCodeData( null, "x" )] LevelPos = 0x61,
+    
+    /// <summary>Adds a formatted map name and corresponding coordinates, in the format of <c>Map Name\n( X  , Y )</c>.</summary>
+    /// <remarks>Parameters: row ID in Level sheet, terminator.</remarks>
+    [MacroCodeData( null, "n x" )] LevelPos = 0x61,
 }
