@@ -98,7 +98,8 @@ public sealed partial class SeStringBuilder
             .AppendUIntExpression( (uint) type )
             .AppendUIntExpression( arg1 )
             .AppendUIntExpression( arg2 )
-            .AppendUIntExpression( arg3 );
+            .AppendUIntExpression( arg3 )
+            .EndMacro();
 
     /// <summary>Pushes a link.</summary>
     /// <param name="type">Type of the link.</param>
@@ -114,7 +115,8 @@ public sealed partial class SeStringBuilder
             .AppendUIntExpression( arg1 )
             .AppendUIntExpression( arg2 )
             .AppendUIntExpression( arg3 )
-            .AppendStringExpression( displayName );
+            .AppendStringExpression( displayName )
+            .EndMacro();
 
     /// <summary>Pushes a link.</summary>
     /// <param name="type">Type of the link.</param>
@@ -130,7 +132,8 @@ public sealed partial class SeStringBuilder
             .AppendUIntExpression( arg1 )
             .AppendUIntExpression( arg2 )
             .AppendUIntExpression( arg3 )
-            .AppendStringExpression( displayName );
+            .AppendStringExpression( displayName )
+            .EndMacro();
 
     /// <summary>Pushes a link to a character.</summary>
     /// <param name="characterName">The name of the target player.</param>
