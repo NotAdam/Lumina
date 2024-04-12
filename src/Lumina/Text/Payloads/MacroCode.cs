@@ -51,7 +51,7 @@ public enum MacroCode : byte
     /// <remarks>Parameters: delay in seconds, terminator.</remarks>
     [MacroCodeData( null, "n x" )] Wait = 0x11,
 
-    /// <summary>Adds an icon from gfdata.gfd.</summary>
+    /// <summary>Adds an icon from common/font/gfdata.gfd.</summary>
     /// <remarks>Parameters: icon ID, terminator.</remarks>
     [MacroCodeData( null, "n x" )] Icon = 0x12,
 
@@ -105,7 +105,7 @@ public enum MacroCode : byte
     /// <remarks>Parameters: integer expression, separator (usually a comma or a dot), terminator.</remarks>
     [MacroCodeData( null, ". s x" )] Kilo = 0x22,
 
-    /// <summary>Adds a readable byte string (possible suffixes: omitted, K, M, G, T).</summary>
+    /// <summary>Adds a human-readable byte string (possible suffixes: omitted, K, M, G, T).</summary>
     /// <remarks>Parameters: integer expression, terminator.</remarks>
     [MacroCodeData( null, "n x" )] Byte = 0x23,
 
@@ -184,14 +184,14 @@ public enum MacroCode : byte
     /// <remarks>Parameters: row ID in UIColor sheet or 0 to pop(or reset?) the pushed color, terminator.</remarks>
     [MacroCodeData( null, "n x" )] EdgeColorType = 0x49,
 
-    /// <summary>Adds a zero-prefixed number as text.</summary>
+    /// <summary>Adds a zero-padded number as text.</summary>
     /// <remarks>Parameters: integer expression, target length, terminator.</remarks>
     [MacroCodeData( null, "n n x" )] Digit = 0x50,
 
     /// <summary>Adds an ordinal number as text (English only).</summary>
     [MacroCodeData( null, "n x" )] Ordinal = 0x51,
 
-    /// <summary>Adds a non-visible sound payload.</summary>
+    /// <summary>Adds an invisible sound payload.</summary>
     /// <remarks>Parameters: bool whether this sound is a Jingle (see sheet), the id.</remarks>
     [MacroCodeData( null, "n n" )] Sound = 0x60,
     
