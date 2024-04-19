@@ -247,27 +247,14 @@ namespace Lumina.Text.Payloads
             if( PayloadType == PayloadType.Text )
                 return RawString.Replace( "<", "\\<" );
 
-            var code = (MacroCodes)PayloadType;
-            switch( code )
-            {
-                case MacroCodes.NewLine:
-                    return "<br>";
-                case MacroCodes.NonBreakingSpace:
-                    return "<nbsp>";
-                case MacroCodes.SoftHyphen:
-                    return "<->";
-                case MacroCodes.Hyphen:
-                    return "<-->";
-                default:
-                {
-                    if( Expressions.Count == 0 )
-                        return $"<{code.ToString().ToLower()}>";
+            var code = (MacroCode)PayloadType;
+            var encodeName = code.GetEncodeName();
+            if( Expressions.Count == 0 )
+                return $"<{encodeName}>";
 
-                    return $"<{code.ToString().ToLower()}({string.Join( ',', Expressions.Select(
-                        ex => ex is StringExpression se ? se.Value.ToMacroString() : ex.ToString()
-                    ) )})>";
-                }
-            }
+            return $"<{encodeName}({string.Join( ',', Expressions.Select(
+                ex => ex is StringExpression se ? se.Value.ToMacroString() : ex.ToString()
+            ) )})>";
         }
     }
 }
