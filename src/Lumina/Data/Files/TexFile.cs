@@ -168,11 +168,6 @@ namespace Lumina.Data.Files
 
             /// <summary>The field has been repurposed; use <see cref="MipCount"/>.</summary>
             [FieldOffset( 14 )]
-            [Obsolete( $"Use {nameof( MipCount )} instead; the field has been repurposed as three fields." )]
-            public ushort MipLevels;
-            
-            /// <summary>The field has been repurposed; use <see cref="MipCount"/>.</summary>
-            [FieldOffset( 14 )]
             [Obsolete( $"Use {nameof( MipCount )} instead; the field has been repurposed as two fields." )]
             public byte MipLevelsCount;
 
