@@ -166,18 +166,14 @@ namespace Lumina.Data.Files
             [FieldOffset( 12 )]
             public ushort Depth;
 
-            /// <summary>
-            /// The field has been repurposed; use <see cref="MipLevelsCount"/>.
-            /// </summary>
+            /// <summary>The field has been repurposed; use <see cref="MipCount"/>.</summary>
             [FieldOffset( 14 )]
-            [Obsolete( $"Use {nameof( MipLevelsCount )} instead; the field has been repurposed as two fields." )]
+            [Obsolete( $"Use {nameof( MipCount )} instead; the field has been repurposed as three fields." )]
             public ushort MipLevels;
-
-            /// <summary>
-            /// Number of mipmaps in the texture.
-            /// </summary>
-            /// <remarks>There should be at least 1 and at most 13 mipmap entries; refer to the length of <see cref="OffsetToSurface"/>.</remarks>
+            
+            /// <summary>The field has been repurposed; use <see cref="MipCount"/>.</summary>
             [FieldOffset( 14 )]
+            [Obsolete( $"Use {nameof( MipCount )} instead; the field has been repurposed as two fields." )]
             public byte MipLevelsCount;
 
             /// <summary>
@@ -200,7 +196,28 @@ namespace Lumina.Data.Files
             /// </summary>
             [FieldOffset( 28 )]
             public fixed uint OffsetToSurface[13];
-        };
+            
+#pragma warning disable CS0618 // Type or member is obsolete
+
+            /// <summary>Number of mipmaps in the texture.</summary>
+            /// <remarks>There should be at least 1 and at most 13 mipmap entries; refer to the length of <see cref="OffsetToSurface"/>.</remarks>
+            public int MipCount {
+                [MethodImpl( MethodImplOptions.AggressiveInlining )]
+                get => MipLevelsCount & 0x7F;
+                set => MipLevelsCount = (byte) ( ( MipLevelsCount & 0x80 ) | ( value is >= 0 and <= 0x7F
+                    ? value
+                    : throw new ArgumentOutOfRangeException( nameof( value ), value, "Value is out of supported range from the value type." ) ) );
+            }
+
+            /// <summary>An unknown boolean value that seems to have something to do with mipmap level to load.</summary>
+            public bool MipUnknownFlag {
+                [MethodImpl( MethodImplOptions.AggressiveInlining )]
+                get => ( MipLevelsCount & 0x80 ) != 0;
+                set => MipLevelsCount = (byte) (( MipLevelsCount & 0x7F ) | ( value ? 0x80 : 0 ));
+            }
+
+#pragma warning restore CS0618 // Type or member is obsolete
+        }
 
         /// <summary>
         /// Specify preprocessing texture data for consumption in DXGI.
@@ -277,7 +294,7 @@ namespace Lumina.Data.Files
         /// <returns>Number of bytes.</returns>
         public int SliceSize( int mipmapIndex, out int width, out int height )
         {
-            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( (int) Header.MipLevelsCount, 1 ) )
+            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( Header.MipCount, 1 ) )
                 throw new ArgumentOutOfRangeException( nameof( mipmapIndex ), mipmapIndex, null );
 
             var bpp = 1 << ( (int) ( Header.Format & TextureFormat.BppMask ) >> (int) TextureFormat.BppShift );
@@ -313,7 +330,7 @@ namespace Lumina.Data.Files
         public unsafe Span< byte > SliceSpan( int mipmapIndex, int sliceIndex, out int sliceSize, out int width, out int height )
         {
             sliceSize = SliceSize( mipmapIndex, out width, out height );
-            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( (int) Header.MipLevelsCount, 1 ) )
+            if( mipmapIndex < 0 || mipmapIndex >= Math.Max( Header.MipCount, 1 ) )
                 throw new ArgumentOutOfRangeException( nameof( mipmapIndex ), mipmapIndex, null );
 
             switch( Header.Type & Attribute.TextureTypeMask )
