@@ -82,7 +82,7 @@ namespace Lumina.Excel
             return obj;
         }
         
-        public IEnumerator< T > GetEnumerator()
+        public IEnumerator< T > GetEnumerator( bool skipCaching )
         {
             ExcelDataFile file = null!;
             RowParser parser = null!;
@@ -111,7 +111,11 @@ namespace Lumina.Excel
                         }
 
                         var obj = ReadSubRowObj( parser, rowPtr.RowId, i );
-                        _rowCache.TryAdd( cacheKey, obj );
+                        if( !skipCaching )
+                        {
+                            _rowCache.TryAdd( cacheKey, obj );
+                        }
+                        
                         yield return obj;
                     }
                 }
@@ -125,15 +129,24 @@ namespace Lumina.Excel
                     }
                         
                     var obj = ReadRowObj( parser, rowPtr.RowId );
-                    _rowCache.TryAdd( cacheKey, obj );
+                    if( !skipCaching )
+                    {
+                        _rowCache.TryAdd( cacheKey, obj );
+                    }
+                    
                     yield return obj;
                 }
             }
         }
-
+        
+        public IEnumerator< T > GetEnumerator()
+        {
+            return GetEnumerator( false );
+        }
+        
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return GetEnumerator( false );
         }
     }
 }
