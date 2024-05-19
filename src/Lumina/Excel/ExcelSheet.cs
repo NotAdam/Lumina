@@ -55,9 +55,12 @@ namespace Lumina.Excel
             {
                 rowObj.PopulateData( parser, GameData, RequestedLanguage );
             }
-
-            _rowCache[ cacheKey ] = rowObj;
-
+            
+            if( !NoCache.IsEnabled )
+            {
+                _rowCache[ cacheKey ] = rowObj;
+            }
+            
             return rowObj;
         }
 
@@ -111,7 +114,11 @@ namespace Lumina.Excel
                         }
 
                         var obj = ReadSubRowObj( parser, rowPtr.RowId, i );
-                        _rowCache.TryAdd( cacheKey, obj );
+                        if( !NoCache.IsEnabled )
+                        {
+                            _rowCache.TryAdd( cacheKey, obj );
+                        }
+                        
                         yield return obj;
                     }
                 }
@@ -125,12 +132,16 @@ namespace Lumina.Excel
                     }
                         
                     var obj = ReadRowObj( parser, rowPtr.RowId );
-                    _rowCache.TryAdd( cacheKey, obj );
+                    if( !NoCache.IsEnabled )
+                    {
+                        _rowCache.TryAdd( cacheKey, obj );
+                    }
+                    
                     yield return obj;
                 }
             }
         }
-
+        
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
