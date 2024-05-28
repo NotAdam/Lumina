@@ -44,6 +44,11 @@ public sealed partial class SeStringBuilder
     public SeStringBuilder AppendStringExpression( ReadOnlySpan< char > str ) =>
         BeginStringExpression().Append( str ).EndExpression();
 
+    /// <summary>Appends a line break.</summary>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder AppendNewLine() =>
+        BeginMacro( MacroCode.NewLine ).EndMacro();
+
     /// <summary>Appends an icon.</summary>
     /// <param name="icon">The icon ID.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
