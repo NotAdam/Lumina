@@ -31,7 +31,7 @@ public sealed partial class SeStringBuilder
     /// <remarks>See <a href="https://learn.microsoft.com/en-us/windows/win32/wic/-wic-codec-native-pixel-formats#rgbbgr-color-model">RGB/BGR color model</a>
     /// if the naming gets confusing.</remarks>
     public SeStringBuilder AppendBgraIntExpressionFromRgba( uint rgba ) =>
-        AppendUIntExpression( ( rgba & 0xFF00FF00 ) | ( rgba >> 16 ) | ( ( rgba & 0xFF ) << 16 ) );
+        AppendUIntExpression( ( rgba & 0xFF00FF00 ) | ( ( rgba >> 16 ) & 0xFF ) | ( ( rgba & 0xFF ) << 16 ) );
 
     /// <summary>Appends a BGRA integer calculated from BGRA values as an expression.</summary>
     /// <param name="rgba">A normalized RGBA <see cref="System.Numerics.Vector4"/> value to append.</param>
