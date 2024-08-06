@@ -180,42 +180,89 @@ public readonly ref struct ReadOnlySeExpressionSpan
     /// <inheritdoc/>
     public override string ToString()
     {
+        var sb = new StringBuilder();
+        AppendMacroStringToStringBuilder( sb );
+        return sb.ToString();
+    }
+
+    /// <summary>Writes the encodeable macro representation of this instance of <see cref="ReadOnlySePayloadSpan"/> to the given string builder.</summary>
+    /// <param name="sb">Target string builder.</param>
+    /// <returns>The encodeable macro representation.</returns>
+    public void AppendMacroStringToStringBuilder( StringBuilder sb )
+    {
         if( Body.IsEmpty )
-            return "(?)";
+        {
+            sb.Append( "<expr: invalid empty>" );
+            return;
+        }
 
         if( TryGetUInt( out var u32 ) )
-            return u32.ToString();
+        {
+            sb.Append( u32 );
+            return;
+        }
 
         if( TryGetString( out var s ) )
-            return $"\"{s.ToString().Replace( "\\", "\\\\" ).Replace( "\"", "\\\"" )}\"";
+        {
+            s.AppendMacroStringToStringBuilder( sb, true );
+            return;
+        }
 
         if( TryGetPlaceholderExpression( out var exprType ) )
         {
             if( ( (ExpressionType) exprType ).GetNativeName() is { } nativeName )
-                return nativeName;
-            return $"?x{exprType:X02}";
+                sb.Append( nativeName );
+            else
+                sb.Append( $"<expr: 0x{exprType:X02} is unsupported>" );
+            return;
         }
 
         if( TryGetParameterExpression( out exprType, out var e1 ) )
         {
-            if( ( (ExpressionType) exprType ).GetNativeName() is { } nativeName )
-                return $"{nativeName}({e1.ToString()})";
-            throw new InvalidOperationException( "All native names must be defined for unary expressions." );
+            if( ( (ExpressionType) exprType ).GetNativeName() is not { } nativeName )
+                throw new InvalidOperationException( "All native names must be defined for unary expressions." );
+            sb.Append( nativeName );
+            e1.AppendMacroStringToStringBuilder( sb );
+            return;
         }
 
         if( TryGetBinaryExpression( out exprType, out e1, out var e2 ) )
         {
-            if( ( (ExpressionType) exprType ).GetNativeName() is { } nativeName )
-                return $"{e1.ToString()} {nativeName} {e2.ToString()}";
-            throw new InvalidOperationException( "All native names must be defined for binary expressions." );
+            sb.Append( '[' );
+            e1.AppendMacroStringToStringBuilder( sb );
+            switch( (ExpressionType)exprType )
+            {
+                case ExpressionType.GreaterThanOrEqualTo:
+                    sb.Append( ">=" );
+                    break;
+                case ExpressionType.GreaterThan:
+                    sb.Append( '>' );
+                    break;
+                case ExpressionType.LessThanOrEqualTo:
+                    sb.Append( "<=" );
+                    break;
+                case ExpressionType.LessThan:
+                    sb.Append( '<' );
+                    break;
+                case ExpressionType.Equal:
+                    sb.Append( "==" );
+                    break;
+                case ExpressionType.NotEqual:
+                    sb.Append( "!=" );
+                    break;
+                default:
+                    throw new NotSupportedException("should not happen");
+            }
+
+            e2.AppendMacroStringToStringBuilder( sb );
+            sb.Append( ']' );
+            return;
         }
 
-        var sb = new StringBuilder();
-        sb.EnsureCapacity( 1 + 3 * Body.Length );
-        sb.Append( $"({Body[ 0 ]:X02}" );
-        for( var i = 1; i < Body.Length; i++ )
-            sb.Append( $" {Body[ i ]:X02}" );
-        sb.Append( ')' );
-        return sb.ToString();
+        sb.EnsureCapacity( sb.Length + 7 + 3 * Body.Length );
+        sb.Append( "<expr:" );
+        foreach (var t in Body)
+            sb.Append( $" {t:X02}" );
+        sb.Append( '>' );
     }
 }

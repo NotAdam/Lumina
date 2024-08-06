@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace Lumina.Text.Expressions;
 
@@ -23,6 +24,18 @@ public abstract class BaseExpression
     /// </summary>
     /// <param name="stream">Target to write this expression to.</param>
     public abstract void Encode( Stream stream );
+
+    /// <summary>Represent this expression as a part of macro string.</summary>
+    /// <param name="sb">Target string builder.</param>
+    public abstract void AppendMacroStringToStringBuilder( StringBuilder sb );
+
+    /// <inheritdoc/>
+    public override string ToString()
+    {
+        var sb = new StringBuilder();
+        AppendMacroStringToStringBuilder( sb );
+        return sb.ToString();
+    }
 
     /// <summary>
     /// Parse given Stream into an Expression.
