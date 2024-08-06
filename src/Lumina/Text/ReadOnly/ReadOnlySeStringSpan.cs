@@ -304,9 +304,18 @@ public readonly ref struct ReadOnlySeStringSpan
     public override string ToString()
     {
         var sb = new StringBuilder();
-        foreach( var v in this )
-            sb.Append( v.ToString() );
+        AppendMacroStringToStringBuilder( sb, false );
         return sb.ToString();
+    }
+
+    /// <summary>Writes the encodeable macro representation of this instance of <see cref="ReadOnlySeStringSpan"/> to the given string builder.</summary>
+    /// <param name="sb">Target string builder.</param>
+    /// <param name="forStringExpression">Whether this is being encoded to be used as a string expression.</param>
+    /// <returns>The encodeable macro representation.</returns>
+    public void AppendMacroStringToStringBuilder( StringBuilder sb, bool forStringExpression )
+    {
+        foreach( var v in this )
+            v.AppendMacroStringToStringBuilder( sb, forStringExpression );
     }
 
     /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>

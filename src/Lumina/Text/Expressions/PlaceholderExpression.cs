@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace Lumina.Text.Expressions;
 
@@ -28,9 +29,9 @@ public class PlaceholderExpression : BaseExpression
     public override void Encode( Stream stream ) => stream.WriteByte( (byte)ExpressionType );
 
     /// <inheritdoc />
-    public override string ToString()
+    public override void AppendMacroStringToStringBuilder( StringBuilder sb )
     {
-        return ExpressionType switch
+        sb.Append( ExpressionType switch
         {
             ExpressionType.Millisecond => "t_msec",
             ExpressionType.Second => "t_sec",
@@ -41,8 +42,8 @@ public class PlaceholderExpression : BaseExpression
             ExpressionType.Month => "t_mon",
             ExpressionType.Year => "t_year",
             ExpressionType.StackColor => "stackcolor",
-            _ => $"Placeholder#{(byte)ExpressionType:X02}"
-        };
+            _ => $"Placeholder#{(byte) ExpressionType:X02}"
+        } );
     }
 
     /// <summary>

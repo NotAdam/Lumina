@@ -187,5 +187,11 @@ namespace Lumina.Text
         {
             return string.Concat( Payloads );
         }
+
+        internal void AppendMacroStringToStringBuilder( StringBuilder sb, bool forStringExpression )
+        {
+            foreach( var p in Payloads )
+                p.AppendMacroStringToStringBuilder( sb, forStringExpression );
+        }
     }
 }

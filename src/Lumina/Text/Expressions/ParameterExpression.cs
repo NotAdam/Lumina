@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace Lumina.Text.Expressions;
 
@@ -31,16 +32,17 @@ public class ParameterExpression : BaseExpression
     public override ExpressionType ExpressionType { get; }
 
     /// <inheritdoc />
-    public override string ToString()
+    public override void AppendMacroStringToStringBuilder( StringBuilder sb )
     {
-        return ExpressionType switch
+        sb.Append( ExpressionType switch
         {
-            ExpressionType.IntegerParameter => $"lnum{Operand}",
-            ExpressionType.PlayerParameter => $"gnum{Operand}",
-            ExpressionType.StringParameter => $"lstr{Operand}",
-            ExpressionType.ObjectParameter => $"gstr{Operand}",
-            _ => throw new NotImplementedException() // cannot reach, as this instance is immutable and this field is filtered from constructor
-        };
+            ExpressionType.LocalNumber => "lnum",
+            ExpressionType.GlobalNumber => "gnum",
+            ExpressionType.LocalString => "lstr",
+            ExpressionType.GlobalString => "gstr",
+            _ => throw new NotSupportedException() // cannot reach, as this instance is immutable and this field is filtered from constructor
+        } );
+        Operand.AppendMacroStringToStringBuilder( sb );
     }
 
     /// <summary>
