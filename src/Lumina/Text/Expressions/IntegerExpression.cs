@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace Lumina.Text.Expressions;
 
@@ -93,6 +94,9 @@ public class IntegerExpression : BaseExpression
 
     /// <inheritdoc />
     public override string ToString() => ( (int)Value ).ToString();
+
+    /// <inheritdoc />
+    public override void AppendMacroStringToStringBuilder( StringBuilder sb ) => sb.Append( (int) Value );
 
     /// <summary>
     /// Parse given Stream into an IntegerExpression.

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace Lumina.Text.Expressions;
 
@@ -37,18 +38,37 @@ public class BinaryExpression : BaseExpression
     public override ExpressionType ExpressionType { get; }
 
     /// <inheritdoc />
-    public override string ToString()
+    public override void AppendMacroStringToStringBuilder( StringBuilder sb )
     {
-        return ExpressionType switch
+        sb.Append( '[' );
+        Operand1.AppendMacroStringToStringBuilder( sb );
+
+        switch( ExpressionType )
         {
-            ExpressionType.GreaterThanOrEqualTo => $"[{Operand1}>={Operand2}]",
-            ExpressionType.GreaterThan => $"[{Operand1}>{Operand2}]",
-            ExpressionType.LessThanOrEqualTo => $"[{Operand1}<={Operand2}]",
-            ExpressionType.LessThan => $"[{Operand1}<{Operand2}]",
-            ExpressionType.Equal => $"[{Operand1}=={Operand2}]",
-            ExpressionType.NotEqual => $"[{Operand1}!={Operand2}]",
-            _ => throw new NotImplementedException() // cannot reach, as this instance is immutable and this field is filtered from constructor
-        };
+            case ExpressionType.GreaterThanOrEqualTo:
+                sb.Append( ">=" );
+                break;
+            case ExpressionType.GreaterThan:
+                sb.Append( '>' );
+                break;
+            case ExpressionType.LessThanOrEqualTo:
+                sb.Append( "<=" );
+                break;
+            case ExpressionType.LessThan:
+                sb.Append( '<' );
+                break;
+            case ExpressionType.Equal:
+                sb.Append( "==" );
+                break;
+            case ExpressionType.NotEqual:
+                sb.Append( "!=" );
+                break;
+            default:
+                throw new NotSupportedException(); // cannot reach, as this instance is immutable and this field is filtered from constructor
+        }
+
+        Operand2.AppendMacroStringToStringBuilder( sb );
+        sb.Append( ']' );
     }
 
     /// <summary>

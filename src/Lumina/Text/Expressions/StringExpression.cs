@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Lumina.Text.Expressions;
 
@@ -45,7 +46,8 @@ public class StringExpression : BaseExpression
     }
 
     /// <inheritdoc />
-    public override string ToString() => Value?.ToString() ?? string.Empty;
+    public override void AppendMacroStringToStringBuilder( StringBuilder sb ) =>
+        Value.AppendMacroStringToStringBuilder( sb, true );
 
     /// <summary>
     /// Parse given Stream into a StringExpression.
