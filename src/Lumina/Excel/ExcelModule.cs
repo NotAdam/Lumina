@@ -40,7 +40,7 @@ public class ExcelModule
     }
 
     /// <summary>
-    /// Attempts to load an <see cref="ExcelSheet{}"/>, optionally with a specific language
+    /// Loads an <see cref="ExcelSheet{}"/>, optionally with a specific language
     /// </summary>
     /// <remarks>
     /// If the requested language doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
@@ -58,7 +58,7 @@ public class ExcelModule
     }
 
     /// <summary>
-    /// Attempts to load an <see cref="ExcelSheet{}"/> from a reflected <see cref="Type"/>, optionally with a specific language
+    /// Loads an <see cref="ExcelSheet{}"/> from a reflected <see cref="Type"/>, optionally with a specific language
     /// </summary>
     /// <remarks>
     /// Only use this method if you need to create a sheet while using reflection.
@@ -71,7 +71,7 @@ public class ExcelModule
     /// <exception cref="InvalidOperationException">Thrown when <paramref name="rowType"/> is not decorated with a <see cref="SheetAttribute"/></exception>
     /// <exception cref="ArgumentException">Sheet does not exist or if the column hash has a mismatch</exception>
     [RequiresDynamicCode("Creating a generic sheet from a type requires reflection and dynamic code.")]
-    [EditorBrowsable(EditorBrowsableState.Never)]
+    [EditorBrowsable(EditorBrowsableState.Advanced)]
     public IExcelSheet GetSheetGeneric(Type rowType, Language? language = null )
     {
         if( !rowType.IsValueType )

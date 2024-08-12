@@ -287,27 +287,22 @@ namespace Lumina
         }
 
         /// <summary>
-        /// Attempts to load the base excel sheet given it's implementing row parser
+        /// Attempts to load an <see cref="ExcelSheet{}"/>, optionally with a specific language
         /// </summary>
-        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
-        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T >? GetExcelSheet< T >() where T : ExcelRow
+        /// <param name="language">The requested sheet language. Leave <see cref="null"/> or empty to use the default language.</param>
+        /// <typeparam name="T">A struct that implements <see cref="IExcelRow{}"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{}"/> if the sheet exists, null if it does not</returns>
+        /// <exception cref="InvalidOperationException">Thrown when <typeparamref name="T"/> is not decorated with a <see cref="SheetAttribute"/></exception>
+        public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow<T>
         {
-            return Excel.GetSheet< T >();
-        }
-
-        /// <summary>
-        /// Attempts to load the base excel sheet with a specific language
-        /// </summary>
-        /// <remarks>
-        /// If the language requested doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
-        /// </remarks>
-        /// <param name="language">The requested sheet language</param>
-        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
-        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T >? GetExcelSheet< T >( Language language ) where T : ExcelRow
-        {
-            return Excel.GetSheet< T >( language );
+            try
+            {
+                return Excel.GetSheet<T>(language);
+            }
+            catch (ArgumentException)
+            {
+                return null;
+            }
         }
 
         /// <summary>

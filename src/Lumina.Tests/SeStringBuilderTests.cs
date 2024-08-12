@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Lumina.Excel;
 using Lumina.Text;
 using Lumina.Text.Expressions;
 using Lumina.Text.Payloads;
@@ -290,11 +291,25 @@ public class SeStringBuilderTests
         _outputHelper.WriteLine( test.ToString() );
     }
 
+    [Sheet( "Addon" )]
+    public readonly struct Addon( ExcelPage page, uint offset, uint row ) : IExcelRow<Addon>
+    {
+        public uint RowId => row;
+
+        public readonly ReadOnlySeString Text => page.ReadString( offset, offset );
+
+        static Addon IExcelRow<Addon>.Create( ExcelPage page, uint offset, uint row ) =>
+            new( page, offset, row );
+
+        static Addon IExcelRow<Addon>.Create( ExcelPage page, uint offset, uint row, ushort subrow ) =>
+            throw new NotSupportedException();
+    }
+
     [RequiresGameInstallationFact]
     public void AddonIsParsedCorrectly()
     {
         var gameData = new GameData( @"C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\sqpack" );
-        var addon = gameData.Excel.GetSheetRaw( "Addon" )!;
+        var addon = gameData.Excel.GetSheet<Addon>( )!;
         var ssb = new SeStringBuilder();
         var expected = new Dictionary< uint, ReadOnlySeString >
         {
@@ -418,10 +433,9 @@ public class SeStringBuilderTests
         };
         foreach( var row in addon )
         {
-            var r = row.ReadColumn< SeString >( 0 ).AsReadOnly();
-            _outputHelper.WriteLine( $"{row.RowId}\t{r.ExtractText()}\t{r}" );
+            _outputHelper.WriteLine( $"{row.RowId}\t{row.Text.ExtractText()}\t{row.Text}" );
             if( expected.TryGetValue( row.RowId, out var expectedSeString ) )
-                Assert.True( expectedSeString == r, $"{row.RowId} does not match; expected {expectedSeString}" );
+                Assert.True( expectedSeString == row.Text, $"{row.RowId} does not match; expected {expectedSeString}" );
         }
     }
 }
