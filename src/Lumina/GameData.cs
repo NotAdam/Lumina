@@ -287,11 +287,11 @@ namespace Lumina
         }
 
         /// <summary>
-        /// Attempts to load an <see cref="ExcelSheet{}"/>, optionally with a specific language
+        /// Attempts to load an <see cref="ExcelSheet{T}"/>, optionally with a specific language
         /// </summary>
-        /// <param name="language">The requested sheet language. Leave <see cref="null"/> or empty to use the default language.</param>
-        /// <typeparam name="T">A struct that implements <see cref="IExcelRow{}"/> to parse rows</typeparam>
-        /// <returns>An <see cref="ExcelSheet{}"/> if the sheet exists, null if it does not</returns>
+        /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+        /// <typeparam name="T">A struct that implements <see cref="IExcelRow{T}"/> to parse rows</typeparam>
+        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
         /// <exception cref="InvalidOperationException">Thrown when <typeparamref name="T"/> is not decorated with a <see cref="SheetAttribute"/></exception>
         public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow<T>
         {

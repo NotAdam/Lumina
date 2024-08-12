@@ -4,7 +4,7 @@ using Lumina.Data;
 namespace Lumina.Excel;
 
 /// <summary>
-/// A generalized interface that all <see cref="ExcelSheet{}"/>s implement.
+/// A generalized interface that all <see cref="ExcelSheet{T}"/>s implement.
 /// </summary>
 /// <remarks>This interface exists to assist with more generic and reflection-based operations.</remarks>
 public interface IExcelSheet : IEnumerable
@@ -36,7 +36,7 @@ public interface IExcelSheet : IEnumerable
     /// <param name="rowId">The row id to check</param>
     /// <param name="subrowId">The subrow id to check</param>
     /// <returns>Whether or not the subrow exists</returns>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    /// <exception cref="System.NotSupportedException">Thrown if the sheet does not support subrows</exception>
     bool HasSubrow( uint rowId, ushort subrowId );
 
     /// <summary>
@@ -44,7 +44,7 @@ public interface IExcelSheet : IEnumerable
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <returns>The number of subrows in this row. Returns null if the row does not exist.</returns>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    /// <exception cref="System.NotSupportedException">Thrown if the sheet does not support subrows</exception>
     ushort? TryGetSubrowCount( uint rowId );
 
     /// <summary>
@@ -52,7 +52,7 @@ public interface IExcelSheet : IEnumerable
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <returns>The number of subrows in this row. Returns null if the row does not exist.</returns>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if the sheet does not have a row at that <paramref name="rowId"/></exception>
+    /// <exception cref="System.NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    /// <exception cref="System.ArgumentOutOfRangeException">Thrown if the sheet does not have a row at that <paramref name="rowId"/></exception>
     ushort GetSubrowCount( uint rowId );
 }

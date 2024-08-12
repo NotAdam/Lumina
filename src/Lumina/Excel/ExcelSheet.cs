@@ -55,7 +55,7 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
     public T this[int rowId] => GetRow( (uint)rowId );
 
     /// <summary>
-    /// Create an <see cref="ExcelSheet{}"/> instance with the <paramref name="module"/>'s default language.
+    /// Create an <see cref="ExcelSheet{T}"/> instance with the <paramref name="module"/>'s default language.
     /// </summary>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <exception cref="InvalidOperationException"><see cref="T"/> does not have a valid <see cref="SheetAttribute"/></exception>
@@ -66,7 +66,7 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
     }
 
     /// <summary>
-    /// Create an <see cref="ExcelSheet{}"/> instance with a specific <see cref="Data.Language"/>.
+    /// Create an <see cref="ExcelSheet{T}"/> instance with a specific <see cref="Data.Language"/>.
     /// </summary>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="requestedLanguage">The language to use for this sheet.</param>
@@ -78,12 +78,12 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
     }
 
     /// <summary>
-    /// Create an <see cref="ExcelSheet{}"/> instance with a specific <see cref="Data.Language"/>, name, and hash.
+    /// Create an <see cref="ExcelSheet{T}"/> instance with a specific <see cref="Data.Language"/>, name, and hash.
     /// </summary>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="requestedLanguage">The language to use for this sheet.</param>
     /// <param name="sheetName">The name of the sheet to read from.</param>
-    /// <param name="columnHash">The hash of the columns in the sheet. If <see cref="null"/>, it will not check the hash.</param>
+    /// <param name="columnHash">The hash of the columns in the sheet. If <see langword="null"/>, it will not check the hash.</param>
     /// <exception cref="ArgumentException"><paramref name="sheetName"/> or <paramref name="columnHash"/> parameters were invalid (hash mismatch or invalid sheet name)</exception>
     public ExcelSheet( ExcelModule module, Language requestedLanguage, string sheetName, uint? columnHash = null )
     {
@@ -276,7 +276,7 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
     /// <summary>
     /// Returns an enumerator that can be used to iterate over all subrows in all rows in this sheet.
     /// </summary>
-    /// <returns>An <see cref="IEnumerator{}"/> of all subrows in this sheet</returns>
+    /// <returns>An <see cref="IEnumerator{T}"/> of all subrows in this sheet</returns>
     /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
     public IEnumerator<T> GetSubrowEnumerator()
     {
@@ -293,7 +293,7 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
     /// <summary>
     /// Returns an enumerator that can be used to iterate over all rows in this sheet. If this sheet has subrows, it will iterate over the first subrow of every row.
     /// </summary>
-    /// <returns>An <see cref="IEnumerator{}"/> of all rows (or first subrows) in this sheet</returns>
+    /// <returns>An <see cref="IEnumerator{T}"/> of all rows (or first subrows) in this sheet</returns>
     public IEnumerator<T> GetEnumerator()
     {
         if( !HasSubrows )

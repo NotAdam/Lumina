@@ -40,14 +40,14 @@ public class ExcelModule
     }
 
     /// <summary>
-    /// Loads an <see cref="ExcelSheet{}"/>, optionally with a specific language
+    /// Loads an <see cref="ExcelSheet{T}"/>, optionally with a specific language
     /// </summary>
     /// <remarks>
     /// If the requested language doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
     /// </remarks>
-    /// <param name="language">The requested sheet language. Leave <see cref="null"/> or empty to use the default language.</param>
-    /// <typeparam name="T">A struct that implements <see cref="IExcelRow{}"/> to parse rows</typeparam>
-    /// <returns>An <see cref="ExcelSheet{}"/> if the sheet exists</returns>
+    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+    /// <typeparam name="T">A struct that implements <see cref="IExcelRow{T}"/> to parse rows</typeparam>
+    /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists</returns>
     /// <exception cref="InvalidOperationException">Thrown when the sheet type is not decorated with a <see cref="SheetAttribute"/></exception>
     /// <exception cref="ArgumentException">Sheet does not exist or if the column hash has a mismatch</exception>
     public ExcelSheet<T> GetSheet<T>( Language? language = null ) where T : struct, IExcelRow<T>
@@ -58,16 +58,16 @@ public class ExcelModule
     }
 
     /// <summary>
-    /// Loads an <see cref="ExcelSheet{}"/> from a reflected <see cref="Type"/>, optionally with a specific language
+    /// Loads an <see cref="ExcelSheet{T}"/> from a reflected <see cref="Type"/>, optionally with a specific language
     /// </summary>
     /// <remarks>
     /// Only use this method if you need to create a sheet while using reflection.
     /// 
     /// If the requested language doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
     /// </remarks>
-    /// <param name="rowType">A <see cref="Type"/> that implements <see cref="IExcelRow{}"/> to parse rows</param>
-    /// <param name="language">The requested sheet language. Leave <see cref="null"/> or empty to use the default language.</param>
-    /// <returns>An <see cref="ExcelSheet{}"/> if the sheet exists</returns>
+    /// <param name="rowType">A <see cref="Type"/> that implements <see cref="IExcelRow{T}"/> to parse rows</param>
+    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+    /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists</returns>
     /// <exception cref="InvalidOperationException">Thrown when <paramref name="rowType"/> is not decorated with a <see cref="SheetAttribute"/></exception>
     /// <exception cref="ArgumentException">Sheet does not exist or if the column hash has a mismatch</exception>
     [RequiresDynamicCode("Creating a generic sheet from a type requires reflection and dynamic code.")]
