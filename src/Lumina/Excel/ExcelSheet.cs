@@ -1,29 +1,23 @@
+using Lumina.Data;
+using Lumina.Data.Files.Excel;
+using Lumina.Data.Structs.Excel;
 using System;
-using System.Collections;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Lumina.Data;
-using Lumina.Data.Files.Excel;
-using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel;
 
-public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : struct, IExcelRow<T>
+public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcelRow<T>
 {
     /// <inheritdoc/>
     public ExcelModule Module { get; }
 
     /// <inheritdoc/>
     public Language Language { get; }
-
-    private List<ExcelPage> Pages { get; }
-    private FrozenDictionary<uint, (int PageIdx, uint Offset)>? Rows { get; }
-    private FrozenDictionary<uint, (int PageIdx, uint Offset, ushort RowCount)>? Subrows { get; }
-    private ushort SubrowDataOffset { get; }
 
     /// <summary>
     /// Whether or not this sheet has subrows, where each row id can have multiple subrows.
@@ -32,27 +26,23 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
     [MemberNotNullWhen( false, nameof( Rows ) )]
     public bool HasSubrows { get; }
 
+    private List<ExcelPage> Pages { get; }
+    private (uint RowId, (int PageIdx, uint Offset) Data)[]? Rows { get; }
+    private (uint RowId, (int PageIdx, uint Offset, ushort RowCount) Data)[]? Subrows { get; }
+    private FrozenDictionary<uint, int> RowLookup { get; }
+    private ushort SubrowDataOffset { get; }
+
     private static SheetAttribute Attribute =>
         typeof( T ).GetCustomAttribute<SheetAttribute>() ??
             throw new InvalidOperationException( "T has no SheetAttribute. Use the explicit sheet constructor." );
 
     /// <summary>
-    /// The number of rows in this sheet.
-    /// </summary>
-    /// <remarks>
-    /// If this sheet has gaps in row ids, it returns the number of rows that exist, not the highest row id.
-    /// If this sheet has subrows, this will still return the number of rows and not the total number of subrows.
-    /// </remarks>
-    public int Count => Rows?.Count ?? Subrows!.Count;
-
-    /// <summary>
     /// Get the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
     /// </summary>
-    /// <remarks>This is an indexer helper, but you may want to treat this as a sparse list/matrix since <see cref="Count"/> only represents the total number of rows in the sheet, and not the highest row id.</remarks>
     /// <param name="rowId">The row id of the row you want</param>
     /// <returns>The row at <paramref name="rowId"/></returns>
     /// <exception cref="ArgumentOutOfRangeException">Throws when the row id does not have a row attached to it.</exception>
-    public T this[int rowId] => GetRow( (uint)rowId );
+    public T this[uint rowId] => GetRow( rowId );
 
     /// <summary>
     /// Create an <see cref="ExcelSheet{T}"/> instance with the <paramref name="module"/>'s default language.
@@ -99,8 +89,9 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
 
         Language = headerFile.Languages.Contains( requestedLanguage ) ? requestedLanguage : Language.None;
 
-        Dictionary<uint, (int PageIdx, uint Offset)>? rows = null;
-        Dictionary<uint, (int PageIdx, uint Offset, ushort RowCount)>? subrows = null;
+        List<(uint RowId, (int PageIdx, uint Offset) Data)>? rows = null;
+        List<(uint RowId, (int PageIdx, uint Offset, ushort RowCount) Data)>? subrows = null;
+        var totalSubrowCount = 0;
 
         if( HasSubrows )
         {
@@ -126,35 +117,42 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
 
             foreach( var rowPtr in fileData.RowData.Values )
             {
-                var (rowDataSize, subrowCount) = (newPage.ReadUInt32( rowPtr.Offset ), newPage.ReadUInt16( rowPtr.Offset + 4 ));
+                var subrowCount = newPage.ReadUInt16( rowPtr.Offset + 4 );
                 var rowOffset = rowPtr.Offset + 6;
 
                 if( HasSubrows )
                 {
                     if( subrowCount > 0 )
-                        subrows!.Add( rowPtr.RowId, (pageIdx, rowOffset, subrowCount) );
+                    {
+                        subrows!.Add( (rowPtr.RowId, (pageIdx, rowOffset, subrowCount)) );
+                        totalSubrowCount += subrowCount;
+                    }
                 }
                 else
-                    rows!.Add( rowPtr.RowId, (pageIdx, rowOffset) );
+                    rows!.Add( (rowPtr.RowId, (pageIdx, rowOffset)) );
             }
 
             pageIdx++;
         }
 
         if( HasSubrows )
-            Subrows = subrows!.ToFrozenDictionary();
+        {
+            Subrows = [.. subrows!];
+            int i = 0;
+            RowLookup = subrows!.ToFrozenDictionary( row => row.RowId, _ => i++ );
+            subrowCount = totalSubrowCount;
+        }
         else
-            Rows = rows!.ToFrozenDictionary();
+        {
+            Rows = [.. rows!];
+            int i = 0;
+            RowLookup = rows!.ToFrozenDictionary( row => row.RowId, _ => i++ );
+        }
     }
 
     /// <inheritdoc/>
-    public bool HasRow( uint rowId )
-    {
-        if( HasSubrows )
-            return Subrows.ContainsKey( rowId );
-
-        return Rows.ContainsKey( rowId );
-    }
+    public bool HasRow( uint rowId ) =>
+        RowLookup.ContainsKey( rowId );
 
     /// <inheritdoc/>
     public bool HasSubrow( uint rowId, ushort subrowId )
@@ -162,11 +160,11 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref Subrows.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
         if( Unsafe.IsNullRef( in val ) )
             return false;
 
-        return subrowId < val.RowCount;
+        return subrowId < Subrows[val].Data.RowCount;
     }
 
     /// <inheritdoc/>
@@ -175,11 +173,11 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref Subrows.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
         if( Unsafe.IsNullRef( in val ) )
             return null;
 
-        return val.RowCount;
+        return Subrows[val].Data.RowCount;
     }
 
     /// <inheritdoc/>
@@ -188,14 +186,14 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref Subrows.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
         if( Unsafe.IsNullRef( in val ) )
             throw new ArgumentOutOfRangeException( nameof( rowId ), "Row does not exist" );
 
-        return val.RowCount;
+        return Subrows[val].Data.RowCount;
     }
 
-    private T CreateRow(uint rowId, in (int PageIdx, uint Offset) val) =>
+    private T CreateRow( uint rowId, in (int PageIdx, uint Offset) val ) =>
         T.Create( Pages[val.PageIdx], val.Offset, rowId );
 
     private T CreateSubrow( uint rowId, ushort subrowId, in (int PageIdx, uint Offset, ushort RowCount) val ) =>
@@ -211,11 +209,11 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
         if( HasSubrows )
             return TryGetSubrow( rowId, 0 );
 
-        ref readonly var val = ref Rows.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
         if( Unsafe.IsNullRef( in val ) )
             return null;
 
-        return CreateRow( rowId, in val );
+        return CreateRow( rowId, in Rows[val].Data );
     }
 
 
@@ -231,18 +229,18 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref Subrows.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
         if( Unsafe.IsNullRef( in val ) )
             return null;
 
-        if( subrowId >= val.RowCount )
+        if( subrowId >= Subrows[val].Data.RowCount )
             return null;
 
-        return CreateSubrow( rowId, subrowId, in val );
+        return CreateSubrow( rowId, subrowId, in Subrows[val].Data );
     }
 
     /// <summary>
-    /// Gets the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow. Throws if the row does not exist.
+    /// Gets the row with id <paramref name="rowId"/> in this sheet. If this sheet has subrows, it will return the first subrow with id <paramref name="rowId"/>. Throws if the row does not exist.
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <returns>A row object.</returns>
@@ -252,7 +250,7 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
             throw new ArgumentOutOfRangeException( nameof( rowId ), "Row does not exist" );
 
     /// <summary>
-    /// Gets the <paramref name="subrowId"/>th subrow from the <paramref name="rowId"/>th row in this sheet. Throws if the subrow does not exist.
+    /// Gets the <paramref name="subrowId"/>th subrow with row id <paramref name="rowId"/> in this sheet. Throws if the subrow does not exist.
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <param name="subrowId">The subrow id to get</param>
@@ -264,53 +262,44 @@ public sealed class ExcelSheet<T> : IExcelSheet, IReadOnlyList<T> where T : stru
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref Subrows.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
         if( Unsafe.IsNullRef( in val ) )
             throw new ArgumentOutOfRangeException( nameof( rowId ), "Row does not exist" );
 
-        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( subrowId, val.RowCount );
+        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( subrowId, Subrows[val].Data.RowCount );
 
-        return CreateSubrow( rowId, subrowId, in val );
+        return CreateSubrow( rowId, subrowId, in Subrows[val].Data );
     }
 
     /// <summary>
-    /// Returns an enumerator that can be used to iterate over all subrows in all rows in this sheet.
+    /// Gets the <paramref name="rowIndex"/>th row in this sheet, ordered by row id in ascending order. If this sheet has subrows, it will return the first subrow.
     /// </summary>
-    /// <returns>An <see cref="IEnumerator{T}"/> of all subrows in this sheet</returns>
+    /// <remarks>If you are looking to find a row by its id, use <see cref="GetRow(uint)"/> instead.</remarks>
+    /// <param name="rowIndex">The zero-based index of this row</param>
+    /// <returns>A row object.</returns>
+    public T GetRowAt( int rowIndex )
+    {
+        if( HasSubrows )
+            return GetSubrowAt( rowIndex, 0 );
+
+        var data = Rows[rowIndex];
+        return CreateRow( data.RowId, in data.Data );
+    }
+
+    /// <summary>
+    /// Gets the <paramref name="subrowId"/>th subrow of the <paramref name="rowIndex"/>th row in this sheet, ordered by row id in ascending order.
+    /// </summary>
+    /// <remarks>If you are looking to find a subrow by its id, use <see cref="GetSubrow(uint, ushort)"/> instead.</remarks>
+    /// <param name="rowIndex">The zero-based index of this row</param>
+    /// <param name="subrowId">The subrow id to get</param>
+    /// <returns>A row object.</returns>
     /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
-    public IEnumerator<T> GetSubrowEnumerator()
+    public T GetSubrowAt( int rowIndex, ushort subrowId )
     {
         if( !HasSubrows )
-            throw new NotSupportedException( "Cannot enumerate subrows in a sheet that doesn't support any." );
+            throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        foreach( var rowData in Subrows )
-        {
-            for( ushort i = 0; i < rowData.Value.RowCount; ++i )
-                yield return CreateSubrow( rowData.Key, i, rowData.Value );
-        }
-    }
-
-    /// <summary>
-    /// Returns an enumerator that can be used to iterate over all rows in this sheet. If this sheet has subrows, it will iterate over the first subrow of every row.
-    /// </summary>
-    /// <returns>An <see cref="IEnumerator{T}"/> of all rows (or first subrows) in this sheet</returns>
-    public IEnumerator<T> GetEnumerator()
-    {
-        if( !HasSubrows )
-        {
-            foreach( var rowData in Rows )
-                yield return CreateRow( rowData.Key, rowData.Value );
-        }
-        else
-        {
-            foreach( var rowData in Subrows )
-                yield return CreateSubrow( rowData.Key, 0, rowData.Value );
-        }
-    }
-
-    /// <inheritdoc/>
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
+        var data = Subrows[rowIndex];
+        return CreateSubrow( data.RowId, subrowId, in data.Data );
     }
 }
