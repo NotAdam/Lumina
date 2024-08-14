@@ -79,7 +79,7 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
                 else if( LookupIndex + 1 < RowCount )
                 {
                     LookupIndex++;
-                    SubrowIndex++;
+                    SubrowIndex = 0;
                     SubrowCount = sheet.Subrows![LookupIndex].Data.RowCount;
                     return true;
                 }
