@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using Lumina.Data;
+using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel;
 
@@ -26,6 +28,11 @@ public interface IExcelSheet : IEnumerable
     bool HasSubrows { get; }
 
     /// <summary>
+    /// Contains information on the columns in this sheet.
+    /// </summary>
+    IReadOnlyList<ExcelColumnDefinition> Columns { get; }
+
+    /// <summary>
     /// The number of rows in this sheet.
     /// </summary>
     /// <remarks>
@@ -39,6 +46,14 @@ public interface IExcelSheet : IEnumerable
     /// </summary>
     /// <exception cref="System.NotSupportedException">Thrown if the sheet does not support subrows</exception>
     int SubrowCount { get; }
+
+    /// <summary>
+    /// Gets the offset of the column at <paramref name="columnIdx"/> in the row data.
+    /// </summary>
+    /// <param name="columnIdx">The index of the column.</param>
+    /// <returns>The offset of the column.</returns>
+    /// <exception cref="System.IndexOutOfRangeException">Thrown when the column index is invalid. It must be less than <see cref="Columns"/>.Count.</exception>
+    ushort GetColumnOffset( int columnIdx );
 
     /// <summary>
     /// Whether or not this sheet has a row with the given <paramref name="rowId"/>.

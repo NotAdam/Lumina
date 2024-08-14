@@ -24,6 +24,9 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     [MemberNotNullWhen( false, nameof( Rows ) )]
     public bool HasSubrows { get; }
 
+    /// <inheritdoc/>
+    public IReadOnlyList<ExcelColumnDefinition> Columns { get; }
+
     private List<ExcelPage> Pages { get; }
     private (uint RowId, (int PageIdx, uint Offset) Data)[]? Rows { get; }
     private (uint RowId, (int PageIdx, uint Offset, ushort RowCount) Data)[]? Subrows { get; }
@@ -87,6 +90,8 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
 
         Language = headerFile.Languages.Contains( requestedLanguage ) ? requestedLanguage : Language.None;
 
+        Columns = headerFile.ColumnDefinitions;
+
         List<(uint RowId, (int PageIdx, uint Offset) Data)>? rows = null;
         List<(uint RowId, (int PageIdx, uint Offset, ushort RowCount) Data)>? subrows = null;
         var totalSubrowCount = 0;
@@ -147,6 +152,10 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
             RowLookup = rows!.ToFrozenDictionary( row => (int)row.RowId, _ => i++ );
         }
     }
+
+    /// <inheritdoc/>
+    public ushort GetColumnOffset( int columnIdx ) =>
+        Columns[columnIdx].Offset;
 
     /// <inheritdoc/>
     public bool HasRow( uint rowId ) =>
