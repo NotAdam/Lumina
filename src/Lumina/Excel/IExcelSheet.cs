@@ -63,9 +63,10 @@ public interface IExcelSheet : IEnumerable
     /// Tries to get the number of subrows in the <paramref name="rowId"/>th row in this sheet.
     /// </summary>
     /// <param name="rowId">The row id to get</param>
-    /// <returns>The number of subrows in this row. Returns null if the row does not exist.</returns>
+    /// <param name="subrowCount">The number of subrows in this row.</param>
+    /// <returns><see langword="true"/> if the row exists and <paramref name="subrowCount"/> is written to and <see langword="false"/> otherwise.</returns>
     /// <exception cref="System.NotSupportedException">Thrown if the sheet does not support subrows</exception>
-    ushort? TryGetSubrowCount( uint rowId );
+    bool TryGetSubrowCount( uint rowId, out ushort subrowCount );
 
     /// <summary>
     /// Gets the number of subrows in the <paramref name="rowId"/>th row in this sheet. Throws if the row does not exist.

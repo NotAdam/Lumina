@@ -6,7 +6,7 @@ namespace Lumina.Excel;
 
 public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : struct, IExcelRow<T>
 {
-    /// <inheritdoc/>
+    /// <inheritdoc cref="IExcelSheet.Count"/>
     public int Count => RowLookup.Count;
 
     private readonly int subrowCount;

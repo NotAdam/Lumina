@@ -166,16 +166,20 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     }
 
     /// <inheritdoc/>
-    public ushort? TryGetSubrowCount( uint rowId )
+    public bool TryGetSubrowCount( uint rowId, out ushort subrowCount )
     {
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
         ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
-            return null;
+        {
+            subrowCount = 0;
+            return false;
+        }
 
-        return Subrows[val].Data.RowCount;
+        subrowCount = Subrows[val].Data.RowCount;
+        return true;
     }
 
     /// <inheritdoc/>
@@ -202,10 +206,10 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <returns>A nullable row object. Returns null if the row does not exist.</returns>
-    public T? TryGetRow( uint rowId )
+    public T? GetRowOrDefault( uint rowId )
     {
         if( HasSubrows )
-            return TryGetSubrow( rowId, 0 );
+            return GetSubrowOrDefault( rowId, 0 );
 
         ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
@@ -222,7 +226,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <param name="subrowId">The subrow id to get</param>
     /// <returns>A nullable row object. Returns null if the subrow does not exist.</returns>
     /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
-    public T? TryGetSubrow( uint rowId, ushort subrowId )
+    public T? GetSubrowOrDefault( uint rowId, ushort subrowId )
     {
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
@@ -238,13 +242,50 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     }
 
     /// <summary>
+    /// Tries to get the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
+    /// </summary>
+    /// <param name="rowId">The row id to get</param>
+    /// <param name="row">The output row object.</param>
+    /// <returns><see langword="true"/> if the row exists and <paramref name="row"/> is written to and <see langword="false"/> otherwise.</returns>
+    public bool TryGetRow( uint rowId, out T row )
+    {
+        if( GetRowOrDefault( rowId ) is { } outRow )
+        {
+            row = outRow;
+            return true;
+        }
+        row = default;
+        return false;
+    }
+
+
+    /// <summary>
+    /// Tries to get the <paramref name="subrowId"/>th subrow with row id <paramref name="rowId"/> in this sheet.
+    /// </summary>
+    /// <param name="rowId">The row id to get</param>
+    /// <param name="subrowId">The subrow id to get</param>
+    /// <param name="subrow">The output row object.</param>
+    /// <returns><see langword="true"/> if the row exists and <paramref name="row"/> is written to and <see langword="false"/> otherwise.</returns>
+    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    public bool TryGetSubrow( uint rowId, ushort subrowId, out T subrow )
+    {
+        if (GetSubrowOrDefault(rowId, subrowId) is { } outSubrow)
+        {
+            subrow = outSubrow;
+            return true;
+        }
+        subrow = default;
+        return false;
+    }
+
+    /// <summary>
     /// Gets the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <returns>A row object.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Throws when the row id does not have a row attached to it.</exception>
     public T GetRow( uint rowId ) =>
-        TryGetRow( rowId ) ??
+        GetRowOrDefault( rowId ) ??
             throw new ArgumentOutOfRangeException( nameof( rowId ), "Row does not exist" );
 
     /// <summary>
