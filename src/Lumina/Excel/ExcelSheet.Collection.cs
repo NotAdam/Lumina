@@ -17,7 +17,7 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
     /// <summary>
     /// Returns an enumerator that can be used to iterate over all rows in this sheet. If this sheet has subrows, it will iterate over every subrow of every row.
     /// </summary>
-    /// <returns>An <see cref="IEnumerator{T}"/> of all rows or subrows in this sheet</returns>
+    /// <returns>An <see cref="IEnumerator{T}"/> of all rows or subrows in this sheet.</returns>
     public SheetEnumerator GetEnumerator() =>
         new( this );
 
@@ -28,7 +28,7 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
     /// <summary>
     /// Returns an enumerator that can be used to iterate over all rows in this sheet. If this sheet has subrows, it will iterate over the first subrow of every row.
     /// </summary>
-    /// <returns>An <see cref="IEnumerator{T}"/> of all rows (or first subrows) in this sheet</returns>
+    /// <returns>An <see cref="IEnumerator{T}"/> of all rows (or first subrows) in this sheet.</returns>
     public RowEnumerator GetRowEnumerator() =>
         new( this );
 

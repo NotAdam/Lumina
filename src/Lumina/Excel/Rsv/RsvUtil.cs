@@ -3,6 +3,9 @@ using System;
 
 namespace Lumina.Excel.Rsv;
 
+/// <summary>
+/// Utility class for RSV string operations.
+/// </summary>
 public static class RsvUtil
 {
     // RsvPrefix => _rsv_
@@ -12,7 +15,7 @@ public static class RsvUtil
     /// Checks if the string is an RSV string and can therefore be resolved.
     /// </summary>
     /// <remarks>This only checks if the string begins with "_rsv_".</remarks>
-    /// <param name="rsvString">The string to check</param>
+    /// <param name="rsvString">The string to check.</param>
     /// <returns>Whether or not the string is an RSV string.</returns>
     public static bool IsRsv( this ReadOnlySeString rsvString ) =>
         rsvString.Data.Span.StartsWith( RsvPrefix );
@@ -24,9 +27,9 @@ public static class RsvUtil
     /// <summary>
     /// Attempts to resolve <paramref name="rsvString"/> with the given <paramref name="provider"/>.
     /// </summary>
-    /// <remarks>This is safe to call on strings that are not RSVs, a.k.a. where <see cref="IsRsv(ReadOnlySeString)"/> returns <see langword="false"/>.</remarks>
-    /// <param name="rsvString">The string to resolve</param>
-    /// <param name="provider">The provider to check with</param>
+    /// <remarks>This method is safe to call on strings that are not RSVs, i.e., where <see cref="IsRsv(ReadOnlySeString)"/> returns <see langword="false"/>.</remarks>
+    /// <param name="rsvString">The string to resolve.</param>
+    /// <param name="provider">The provider to check with.</param>
     /// <returns>The newly resolved string. Returns <paramref name="rsvString"/> if it could not be resolved.</returns>
     public static ReadOnlySeString ResolveRsv( this ReadOnlySeString rsvString, IRsvProvider provider ) =>
         provider.ResolveOrSelf( rsvString );

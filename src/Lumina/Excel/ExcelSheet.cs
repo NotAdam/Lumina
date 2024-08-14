@@ -11,6 +11,10 @@ using System.Runtime.CompilerServices;
 
 namespace Lumina.Excel;
 
+/// <summary>
+/// A strongly-typed wrapper around an excel sheet.
+/// </summary>
+/// <typeparam name="T">The row type.</typeparam>
 public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcelRow<T>
 {
     /// <inheritdoc/>
@@ -278,7 +282,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
     public bool TryGetSubrow( uint rowId, ushort subrowId, out T subrow )
     {
-        if (GetSubrowOrDefault(rowId, subrowId) is { } outSubrow)
+        if( GetSubrowOrDefault( rowId, subrowId ) is { } outSubrow )
         {
             subrow = outSubrow;
             return true;

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Lumina.Excel.Rsv;
 
+/// <summary>
+/// Represents a dictionary-based RSV provider.
+/// </summary>
 public class DictionaryRsvProvider : Dictionary<ReadOnlySeString, ReadOnlySeString>, IRsvProvider
 {
     /// <inheritdoc/>
