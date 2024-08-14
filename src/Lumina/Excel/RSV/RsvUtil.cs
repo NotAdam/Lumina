@@ -1,85 +1,33 @@
+using Lumina.Text.ReadOnly;
 using System;
-using System.Text.RegularExpressions;
-using Lumina.Data;
 
-namespace Lumina.Excel.RSV
+namespace Lumina.Excel.Rsv;
+
+public static class RsvUtil
 {
-    public class RsvUtil
-    {
-        /// <summary>
-        /// Build a key name for a RSV value
-        /// </summary>
-        /// <param name="rowId">The sheet row ID</param>
-        /// <param name="subRowId">The sheet subrow ID or -1 if not subrow variant</param>
-        /// <param name="columnIdx">The column index</param>
-        /// <param name="language">The language</param>
-        /// <param name="sheetName">The name of the sheet</param>
-        /// <returns>The RSV key</returns>
-        public static string BuildRsvKeyName( uint rowId, int subRowId, uint columnIdx, Language language, string sheetName )
-        {
-            return $"_rsv_{rowId}_{subRowId}_{(int)language}_C{columnIdx}_0{sheetName}";
-        }
+    // RsvPrefix => _rsv_
+    private static ReadOnlySpan<byte> RsvPrefix => [0x5F, 0x72, 0x73, 0x76, 0x5F];
 
-        /// <summary>
-        /// Build a key name for a RSV value
-        /// </summary>
-        /// <param name="rowId">The sheet row ID</param>
-        /// <param name="columnIdx">The column index</param>
-        /// <param name="language">The language</param>
-        /// <param name="sheetName">The name of the sheet</param>
-        /// <returns>The RSV key</returns>
-        public static string BuildRsvKeyName( uint rowId, uint columnIdx, Language language, string sheetName )
-        {
-            return BuildRsvKeyName( rowId, -1, columnIdx, language, sheetName );
-        }
+    /// <summary>
+    /// Checks if the string is an RSV string and can therefore be resolved.
+    /// </summary>
+    /// <remarks>This only checks if the string begins with "_rsv_".</remarks>
+    /// <param name="rsvString">The string to check</param>
+    /// <returns>Whether or not the string is an RSV string.</returns>
+    public static bool IsRsv( this ReadOnlySeString rsvString ) =>
+        rsvString.Data.Span.StartsWith( RsvPrefix );
 
-        private static readonly Regex RsvKeyRegex = new(
-            @"_rsv_(\d+)_(-?\d+)_(\d)_C(\d+)_0([\w\d]+)", 
-            RegexOptions.Compiled | RegexOptions.IgnoreCase
-        );
+    /// <inheritdoc cref="IsRsv(ReadOnlySeString)"/>
+    public static bool IsRsv( this ReadOnlySeStringSpan rsvString ) =>
+        rsvString.Data.StartsWith( RsvPrefix );
 
-        /// <summary>
-        /// Parse an RSV key to extract its information such as row, sheet, etc.
-        /// </summary>
-        /// <param name="key">The RSV key</param>
-        /// <returns>A <see cref="RsvKeyData"/> object containing its info or null if it failed to parse</returns>
-        public static RsvKeyData? ParseRsvKey( string key )
-        {
-            var results = RsvKeyRegex.Match( key );
-            if( results.Groups.Count != 6 )
-            {
-                return null;
-            }
-
-            if( !uint.TryParse( results.Groups[ 1 ].Value, out var rowId ) )
-            {
-                return null;
-            }
-
-            if( !int.TryParse( results.Groups[ 2 ].Value, out var subRowId ) )
-            {
-                return null;
-            }
-
-            if( !Enum.TryParse< Language >( results.Groups[ 3 ].Value, out var language ) )
-            {
-                return null;
-            }
-
-            if( !uint.TryParse( results.Groups[ 4 ].Value, out var columnIndex ) )
-            {
-                return null;
-            }
-
-
-            return new RsvKeyData
-            {
-                RowId = rowId,
-                SubRowId = subRowId,
-                ColumnIndex = columnIndex,
-                Language = language,
-                SheetName = results.Groups[ 5 ].Value
-            };
-        }
-    }
+    /// <summary>
+    /// Attempts to resolve <paramref name="rsvString"/> with the given <paramref name="provider"/>.
+    /// </summary>
+    /// <remarks>This is safe to call on strings that are not RSVs, a.k.a. where <see cref="IsRsv(ReadOnlySeString)"/> returns <see langword="false"/>.</remarks>
+    /// <param name="rsvString">The string to resolve</param>
+    /// <param name="provider">The provider to check with</param>
+    /// <returns>The newly resolved string. Returns <paramref name="rsvString"/> if it could not be resolved.</returns>
+    public static ReadOnlySeString ResolveRsv( this ReadOnlySeString rsvString, IRsvProvider provider ) =>
+        provider.ResolveOrSelf( rsvString );
 }
