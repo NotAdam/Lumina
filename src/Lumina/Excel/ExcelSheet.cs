@@ -27,7 +27,9 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     private List<ExcelPage> Pages { get; }
     private (uint RowId, (int PageIdx, uint Offset) Data)[]? Rows { get; }
     private (uint RowId, (int PageIdx, uint Offset, ushort RowCount) Data)[]? Subrows { get; }
-    private FrozenDictionary<uint, int> RowLookup { get; }
+    // RowLookup must use int as the key because it benefits from a fast path that removes indirections.
+    // https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Collections.Immutable/src/System/Collections/Frozen/FrozenDictionary.cs#L140
+    private FrozenDictionary<int, int> RowLookup { get; }
     private ushort SubrowDataOffset { get; }
 
     private static SheetAttribute Attribute =>
@@ -135,20 +137,20 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         {
             Subrows = [.. subrows!];
             int i = 0;
-            RowLookup = subrows!.ToFrozenDictionary( row => row.RowId, _ => i++ );
+            RowLookup = subrows!.ToFrozenDictionary( row => (int)row.RowId, _ => i++ );
             subrowCount = totalSubrowCount;
         }
         else
         {
             Rows = [.. rows!];
             int i = 0;
-            RowLookup = rows!.ToFrozenDictionary( row => row.RowId, _ => i++ );
+            RowLookup = rows!.ToFrozenDictionary( row => (int)row.RowId, _ => i++ );
         }
     }
 
     /// <inheritdoc/>
     public bool HasRow( uint rowId ) =>
-        RowLookup.ContainsKey( rowId );
+        RowLookup.ContainsKey( (int)rowId );
 
     /// <inheritdoc/>
     public bool HasSubrow( uint rowId, ushort subrowId )
@@ -156,7 +158,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
             return false;
 
@@ -169,7 +171,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
             return null;
 
@@ -182,7 +184,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
             throw new ArgumentOutOfRangeException( nameof( rowId ), "Row does not exist" );
 
@@ -205,7 +207,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         if( HasSubrows )
             return TryGetSubrow( rowId, 0 );
 
-        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
             return null;
 
@@ -225,7 +227,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
             return null;
 
@@ -258,7 +260,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         if( !HasSubrows )
             throw new NotSupportedException( "Cannot access subrow in a sheet that doesn't support any." );
 
-        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( rowId );
+        ref readonly var val = ref RowLookup.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in val ) )
             throw new ArgumentOutOfRangeException( nameof( rowId ), "Row does not exist" );
 
