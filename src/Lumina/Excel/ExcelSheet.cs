@@ -37,6 +37,9 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <inheritdoc cref="GetRow(uint)"/>
     public T this[uint rowId] => GetRow( rowId );
 
+    /// <inheritdoc cref="GetSubrow(uint, ushort)"/>
+    public T this[uint rowId, ushort subrowId] => GetSubrow( rowId, subrowId );
+
     /// <summary>
     /// Create an <see cref="ExcelSheet{T}"/> instance with the <paramref name="module"/>'s default language.
     /// </summary>
