@@ -19,9 +19,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <inheritdoc/>
     public Language Language { get; }
 
-    /// <summary>
-    /// Whether or not this sheet has subrows, where each row id can have multiple subrows.
-    /// </summary>
+    /// <inheritdoc/>
     [MemberNotNullWhen( true, nameof( Subrows ), nameof( SubrowDataOffset ) )]
     [MemberNotNullWhen( false, nameof( Rows ) )]
     public bool HasSubrows { get; }
@@ -36,12 +34,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         typeof( T ).GetCustomAttribute<SheetAttribute>() ??
             throw new InvalidOperationException( "T has no SheetAttribute. Use the explicit sheet constructor." );
 
-    /// <summary>
-    /// Get the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
-    /// </summary>
-    /// <param name="rowId">The row id of the row you want</param>
-    /// <returns>The row at <paramref name="rowId"/></returns>
-    /// <exception cref="ArgumentOutOfRangeException">Throws when the row id does not have a row attached to it.</exception>
+    /// <inheritdoc cref="GetRow(uint)"/>
     public T this[uint rowId] => GetRow( rowId );
 
     /// <summary>
@@ -218,7 +211,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
 
 
     /// <summary>
-    /// Tries to get the <paramref name="subrowId"/>th subrow from the <paramref name="rowId"/>th row in this sheet.
+    /// Tries to get the <paramref name="subrowId"/>th subrow with row id <paramref name="rowId"/> in this sheet.
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <param name="subrowId">The subrow id to get</param>
@@ -240,11 +233,11 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     }
 
     /// <summary>
-    /// Gets the row with id <paramref name="rowId"/> in this sheet. If this sheet has subrows, it will return the first subrow with id <paramref name="rowId"/>. Throws if the row does not exist.
+    /// Gets the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
     /// </summary>
     /// <param name="rowId">The row id to get</param>
     /// <returns>A row object.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if the sheet does not have a row at that <paramref name="rowId"/></exception>
+    /// <exception cref="ArgumentOutOfRangeException">Throws when the row id does not have a row attached to it.</exception>
     public T GetRow( uint rowId ) =>
         TryGetRow( rowId ) ??
             throw new ArgumentOutOfRangeException( nameof( rowId ), "Row does not exist" );

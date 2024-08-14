@@ -6,21 +6,12 @@ namespace Lumina.Excel;
 
 public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : struct, IExcelRow<T>
 {
-    /// <summary>
-    /// The number of rows in this sheet.
-    /// </summary>
-    /// <remarks>
-    /// If this sheet has gaps in row ids, it returns the number of rows that exist, not the highest row id.
-    /// If this sheet has subrows, this will still return the number of rows and not the total number of subrows.
-    /// </remarks>
+    /// <inheritdoc/>
     public int Count => RowLookup.Count;
 
     private readonly int subrowCount;
 
-    /// <summary>
-    /// The total number of subrows in this sheet across all rows.
-    /// </summary>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    /// <inheritdoc/>
     public int SubrowCount => HasSubrows ? subrowCount : throw new NotSupportedException( "This sheet that doesn't support subrows." );
 
     /// <summary>

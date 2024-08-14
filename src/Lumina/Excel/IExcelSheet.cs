@@ -21,6 +21,26 @@ public interface IExcelSheet : IEnumerable
     Language Language { get; }
 
     /// <summary>
+    /// Whether or not this sheet has subrows, where each row id can have multiple subrows.
+    /// </summary>
+    bool HasSubrows { get; }
+
+    /// <summary>
+    /// The number of rows in this sheet.
+    /// </summary>
+    /// <remarks>
+    /// If this sheet has gaps in row ids, it returns the number of rows that exist, not the highest row id.
+    /// If this sheet has subrows, this will still return the number of rows and not the total number of subrows.
+    /// </remarks>
+    int Count { get; }
+
+    /// <summary>
+    /// The total number of subrows in this sheet across all rows.
+    /// </summary>
+    /// <exception cref="System.NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    int SubrowCount { get; }
+
+    /// <summary>
     /// Whether or not this sheet has a row with the given <paramref name="rowId"/>.
     /// </summary>
     /// <remarks>
