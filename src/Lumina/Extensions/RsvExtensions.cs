@@ -1,34 +1,26 @@
+using Lumina.Text.ReadOnly;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+using System.Runtime.CompilerServices;
 
-namespace Lumina.Extensions
+namespace Lumina.Extensions;
+
+/// <summary>
+/// Utility class for RSV string operations.
+/// </summary>
+public static class RsvExtensions
 {
-    public static class RsvExtensions
-    {
-        public static List< string > GetEmbeddedRsvResources( this Assembly assembly )
-        {
-            return assembly.GetManifestResourceNames().Where( x => x.EndsWith( ".rsv" ) ).ToList();
-        }
+    /// <summary>
+    /// Checks if the string is an RSV string and can therefore be resolved.
+    /// </summary>
+    /// <remarks>This only checks if the string begins with <c>_rsv_</c>.</remarks>
+    /// <param name="rsvString">The string to check.</param>
+    /// <returns>Whether or not the string is an RSV string.</returns>
+    [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
+    public static bool IsRsv( this ReadOnlySeString rsvString ) =>
+        rsvString.Data.Span.StartsWith( "_rsv_"u8 );
 
-        public static void RegisterRsvFiles( this Assembly assembly, GameData gameData )
-        {
-            throw new NotImplementedException();
-            //var rsv = gameData.Excel.RsvProvider;
-
-            //foreach( var file in GetEmbeddedRsvResources( assembly ) )
-            //{
-            //    gameData.Logger?.Information( "Loading RSV: {RsvFileName}", file );
-
-            //    using var s = assembly.GetManifestResourceStream( file );
-            //    using var sr = new StreamReader( s! );
-
-            //    var data = sr.ReadToEnd();
-
-            //    rsv.ParseData( data );
-            //}
-        }
-    }
+    /// <inheritdoc cref="IsRsv(ReadOnlySeString)"/>
+    [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
+    public static bool IsRsv( this ReadOnlySeStringSpan rsvString ) =>
+        rsvString.Data.StartsWith( "_rsv_"u8 );
 }

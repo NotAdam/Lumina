@@ -22,6 +22,10 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
         new( this );
 
     /// <inheritdoc/>
+    IEnumerator<T> IEnumerable<T>.GetEnumerator() =>
+        GetEnumerator();
+
+    /// <inheritdoc/>
     IEnumerator IEnumerable.GetEnumerator() =>
         GetEnumerator();
 
@@ -32,10 +36,11 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
     public RowEnumerator GetRowEnumerator() =>
         new( this );
 
-    IEnumerator<T> IEnumerable<T>.GetEnumerator() =>
-        GetEnumerator();
-
-    public struct SheetEnumerator( ExcelSheet<T> sheet ) : IEnumerator<T>
+    /// <summary>
+    /// Represents an enumerator that iterates over all rows/subrows in a <see cref="ExcelSheet{T}"/>.
+    /// </summary>
+    /// <param name="sheet">The sheet to iterate over.</param>
+    public struct SheetEnumerator( ExcelSheet<T> sheet ) : IEnumerator<T>, IEnumerable<T>
     {
         private int LookupIndex { get; set; } = -1;
         private ushort SubrowIndex { get; set; } = 0;
@@ -50,6 +55,7 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
         /// <inheritdoc/>
         readonly object IEnumerator.Current => Current;
 
+        /// <inheritdoc/>
         public bool MoveNext()
         {
             if( !HasSubrows )
@@ -78,6 +84,7 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
             return false;
         }
 
+        /// <inheritdoc/>
         public void Reset()
         {
             LookupIndex = -1;
@@ -85,12 +92,23 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
             SubrowCount = 0;
         }
 
+        /// <inheritdoc/>
         public readonly void Dispose()
         {
 
         }
+
+        /// <inheritdoc/>
+        public readonly IEnumerator<T> GetEnumerator() => this;
+
+        /// <inheritdoc/>
+        readonly IEnumerator IEnumerable.GetEnumerator() => this;
     }
 
+    /// <summary>
+    /// Represents an enumerator that iterates over all rows or the first subrow of every row in a <see cref="ExcelSheet{T}"/>.
+    /// </summary>
+    /// <param name="sheet">The sheet to iterate over.</param>
     public struct RowEnumerator( ExcelSheet<T> sheet ) : IEnumerator<T>, IEnumerable<T>
     {
         private int LookupIndex { get; set; } = -1;
@@ -103,6 +121,7 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
         /// <inheritdoc/>
         readonly object IEnumerator.Current => Current;
 
+        /// <inheritdoc/>
         public bool MoveNext()
         {
             if( LookupIndex + 1 < RowCount )
@@ -113,18 +132,22 @@ public sealed partial class ExcelSheet<T> : IReadOnlyCollection<T> where T : str
             return false;
         }
 
+        /// <inheritdoc/>
         public void Reset()
         {
             LookupIndex = -1;
         }
 
+        /// <inheritdoc/>
         public readonly void Dispose()
         {
 
         }
 
+        /// <inheritdoc/>
         public readonly IEnumerator<T> GetEnumerator() => this;
 
+        /// <inheritdoc/>
         readonly IEnumerator IEnumerable.GetEnumerator() => this;
     }
 }

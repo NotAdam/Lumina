@@ -53,8 +53,8 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// Create an <see cref="ExcelSheet{T}"/> instance with the <paramref name="module"/>'s default language.
     /// </summary>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
-    /// <exception cref="InvalidOperationException"><see cref="T"/> does not have a valid <see cref="SheetAttribute"/></exception>
-    /// <exception cref="ArgumentException"><see cref="SheetAttribute"/> parameters were invalid (hash mismatch or invalid sheet name)</exception>
+    /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+    /// <exception cref="ArgumentException"><see cref="SheetAttribute"/> parameters were invalid (hash mismatch or invalid sheet name).</exception>
     public ExcelSheet( ExcelModule module ) : this( module, module.Language )
     {
 
@@ -65,8 +65,8 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// </summary>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="requestedLanguage">The language to use for this sheet.</param>
-    /// <exception cref="InvalidOperationException"><see cref="T"/> does not have a valid <see cref="SheetAttribute"/></exception>
-    /// <exception cref="ArgumentException"><see cref="SheetAttribute"/> parameters were invalid (hash mismatch or invalid sheet name)</exception>
+    /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+    /// <exception cref="ArgumentException"><see cref="SheetAttribute"/> parameters were invalid (hash mismatch or invalid sheet name).</exception>
     public ExcelSheet( ExcelModule module, Language requestedLanguage ) : this( module, requestedLanguage, Attribute.Name, Attribute.ColumnHash )
     {
 
@@ -79,7 +79,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <param name="requestedLanguage">The language to use for this sheet.</param>
     /// <param name="sheetName">The name of the sheet to read from.</param>
     /// <param name="columnHash">The hash of the columns in the sheet. If <see langword="null"/>, it will not check the hash.</param>
-    /// <exception cref="ArgumentException"><paramref name="sheetName"/> or <paramref name="columnHash"/> parameters were invalid (hash mismatch or invalid sheet name)</exception>
+    /// <exception cref="ArgumentException"><paramref name="sheetName"/> or <paramref name="columnHash"/> parameters were invalid (hash mismatch or invalid sheet name).</exception>
     public ExcelSheet( ExcelModule module, Language requestedLanguage, string sheetName, uint? columnHash = null )
     {
         Module = module;
@@ -87,7 +87,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
         var headerFile = module.GameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" ) ??
             throw new ArgumentException( "Invalid sheet name", nameof( sheetName ) );
 
-        if( columnHash is { } hash && headerFile.GetColumnsHash() != hash )
+        if( module.VerifySheetChecksums && columnHash is { } hash && headerFile.GetColumnsHash() != hash )
             throw new ArgumentException( "Column hash mismatch", nameof( columnHash ) );
 
         HasSubrows = headerFile.Header.Variant == ExcelVariant.Subrows;
@@ -217,7 +217,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <summary>
     /// Tries to get the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
     /// </summary>
-    /// <param name="rowId">The row id to get</param>
+    /// <param name="rowId">The row id to get.</param>
     /// <returns>A nullable row object. Returns null if the row does not exist.</returns>
     public T? GetRowOrDefault( uint rowId )
     {
@@ -235,10 +235,10 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <summary>
     /// Tries to get the <paramref name="subrowId"/>th subrow with row id <paramref name="rowId"/> in this sheet.
     /// </summary>
-    /// <param name="rowId">The row id to get</param>
-    /// <param name="subrowId">The subrow id to get</param>
+    /// <param name="rowId">The row id to get.</param>
+    /// <param name="subrowId">The subrow id to get.</param>
     /// <returns>A nullable row object. Returns null if the subrow does not exist.</returns>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows.</exception>
     public T? GetSubrowOrDefault( uint rowId, ushort subrowId )
     {
         if( !HasSubrows )
@@ -257,7 +257,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <summary>
     /// Tries to get the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
     /// </summary>
-    /// <param name="rowId">The row id to get</param>
+    /// <param name="rowId">The row id to get.</param>
     /// <param name="row">The output row object.</param>
     /// <returns><see langword="true"/> if the row exists and <paramref name="row"/> is written to and <see langword="false"/> otherwise.</returns>
     public bool TryGetRow( uint rowId, out T row )
@@ -275,11 +275,11 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <summary>
     /// Tries to get the <paramref name="subrowId"/>th subrow with row id <paramref name="rowId"/> in this sheet.
     /// </summary>
-    /// <param name="rowId">The row id to get</param>
-    /// <param name="subrowId">The subrow id to get</param>
+    /// <param name="rowId">The row id to get.</param>
+    /// <param name="subrowId">The subrow id to get.</param>
     /// <param name="subrow">The output row object.</param>
-    /// <returns><see langword="true"/> if the row exists and <paramref name="row"/> is written to and <see langword="false"/> otherwise.</returns>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    /// <returns><see langword="true"/> if the subrow exists and <paramref name="subrow"/> is written to and <see langword="false"/> otherwise.</returns>
+    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows.</exception>
     public bool TryGetSubrow( uint rowId, ushort subrowId, out T subrow )
     {
         if( GetSubrowOrDefault( rowId, subrowId ) is { } outSubrow )
@@ -294,7 +294,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <summary>
     /// Gets the <paramref name="rowId"/>th row in this sheet. If this sheet has subrows, it will return the first subrow.
     /// </summary>
-    /// <param name="rowId">The row id to get</param>
+    /// <param name="rowId">The row id to get.</param>
     /// <returns>A row object.</returns>
     /// <exception cref="ArgumentOutOfRangeException">Throws when the row id does not have a row attached to it.</exception>
     public T GetRow( uint rowId ) =>
@@ -304,11 +304,11 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// <summary>
     /// Gets the <paramref name="subrowId"/>th subrow with row id <paramref name="rowId"/> in this sheet. Throws if the subrow does not exist.
     /// </summary>
-    /// <param name="rowId">The row id to get</param>
-    /// <param name="subrowId">The subrow id to get</param>
+    /// <param name="rowId">The row id to get.</param>
+    /// <param name="subrowId">The subrow id to get.</param>
     /// <returns>A row object.</returns>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if the sheet does not have a row at that <paramref name="rowId"/></exception>
+    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown if the sheet does not have a row at that <paramref name="rowId"/>.</exception>
     public T GetSubrow( uint rowId, ushort subrowId )
     {
         if( !HasSubrows )
@@ -327,7 +327,7 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// Gets the <paramref name="rowIndex"/>th row in this sheet, ordered by row id in ascending order. If this sheet has subrows, it will return the first subrow.
     /// </summary>
     /// <remarks>If you are looking to find a row by its id, use <see cref="GetRow(uint)"/> instead.</remarks>
-    /// <param name="rowIndex">The zero-based index of this row</param>
+    /// <param name="rowIndex">The zero-based index of this row.</param>
     /// <returns>A row object.</returns>
     public T GetRowAt( int rowIndex )
     {
@@ -342,10 +342,10 @@ public sealed partial class ExcelSheet<T> : IExcelSheet where T : struct, IExcel
     /// Gets the <paramref name="subrowId"/>th subrow of the <paramref name="rowIndex"/>th row in this sheet, ordered by row id in ascending order.
     /// </summary>
     /// <remarks>If you are looking to find a subrow by its id, use <see cref="GetSubrow(uint, ushort)"/> instead.</remarks>
-    /// <param name="rowIndex">The zero-based index of this row</param>
-    /// <param name="subrowId">The subrow id to get</param>
+    /// <param name="rowIndex">The zero-based index of this row.</param>
+    /// <param name="subrowId">The subrow id to get.</param>
     /// <returns>A row object.</returns>
-    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows</exception>
+    /// <exception cref="NotSupportedException">Thrown if the sheet does not support subrows.</exception>
     public T GetSubrowAt( int rowIndex, ushort subrowId )
     {
         if( !HasSubrows )

@@ -1,5 +1,6 @@
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
+using Lumina.Text.ReadOnly;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -18,12 +19,25 @@ public class ExcelModule
 
     internal Language Language => GameData.Options.DefaultExcelLanguage;
 
+    internal bool VerifySheetChecksums => GameData.Options.PanicOnSheetChecksumMismatch;
+
+    internal ResolveRsvDelegate? RsvResolver => GameData.Options.RsvResolver;
+
     private ConcurrentDictionary<(Type sheetType, Language requestedLanguage), IExcelSheet> SheetCache { get; } = [];
+
+    /// <summary>
+    /// A delegate provided by the user to resolve RSV strings.
+    /// </summary>
+    /// <param name="rsvString">The string to resolve. It is guaranteed that this string it begins with <c>_rsv_</c>.</param>
+    /// <param name="resolvedString">The output resolved string.</param>
+    /// <returns><see langword="true"/> if resolved and <paramref name="resolvedString"/> is written to and <see langword="false"/> otherwise.</returns>
+    public delegate bool ResolveRsvDelegate(ReadOnlySeString rsvString, out ReadOnlySeString resolvedString);
 
     /// <summary>
     /// Get the names of all available sheets, parsed from root.exl.
     /// </summary>
     public IReadOnlyCollection<string> SheetNames { get; }
+
 
     /// <summary>
     /// Create a new ExcelModule. This will do all the initial discovery of sheets from the EXL but not load any sheets.

@@ -1,3 +1,4 @@
+using Lumina.Extensions;
 using Lumina.Text.ReadOnly;
 using System;
 using System.Buffers.Binary;
@@ -44,6 +45,9 @@ public sealed class ExcelPage
     /// <summary>
     /// Reads a <see cref="ReadOnlySeString"/> from the page data at <paramref name="offset"/>.
     /// </summary>
+    /// <remarks>
+    /// If the string is a valid RSV string and <see cref="LuminaOptions.RsvResolver"/> is set, the resolved string will be returned if it exists.
+    /// </remarks>
     /// <param name="offset">Offset of the field inside the page.</param>
     /// <param name="structOffset">Offset of the row inside the page.</param>
     /// <returns>The <see cref="ReadOnlySeString"/>.</returns>
@@ -53,7 +57,13 @@ public sealed class ExcelPage
         offset = ReadUInt32( offset ) + structOffset + dataOffset;
         var data = Data[(int)offset..];
         var stringLength = data.Span.IndexOf( (byte)0 );
-        return new ReadOnlySeString( data[..stringLength] );
+        var ret = new ReadOnlySeString( data[..stringLength] );
+        if( ret.IsRsv() && Module.RsvResolver != null )
+        {
+            if( Module.RsvResolver.Invoke( ret, out var resolvedString ) )
+                return resolvedString;
+        }
+        return ret;
     }
 
     /// <summary>
