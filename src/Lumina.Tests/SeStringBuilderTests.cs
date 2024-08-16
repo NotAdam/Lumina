@@ -296,7 +296,9 @@ public class SeStringBuilderTests
     {
         public uint RowId => row;
 
-        public readonly ReadOnlySeString Text => page.ReadString( offset, offset );
+        ushort IExcelRow< Addon >.SubrowId => throw new NotSupportedException();
+
+        public ReadOnlySeString Text => page.ReadString( offset, offset );
 
         static Addon IExcelRow<Addon>.Create( ExcelPage page, uint offset, uint row ) =>
             new( page, offset, row );
@@ -309,7 +311,7 @@ public class SeStringBuilderTests
     public void AddonIsParsedCorrectly()
     {
         var gameData = new GameData( @"C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\sqpack" );
-        var addon = gameData.Excel.GetSheet<Addon>( )!;
+        var addon = gameData.Excel.GetDefaultSheet< Addon >();
         var ssb = new SeStringBuilder();
         var expected = new Dictionary< uint, ReadOnlySeString >
         {

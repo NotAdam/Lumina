@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Lumina.Excel;
 
@@ -16,7 +17,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     public uint RowId => rowId;
 
     /// <summary>
-    /// Whether or not the <see cref="RowRef"/> is untyped.
+    /// Whether the <see cref="RowRef"/> is untyped.
     /// </summary>
     /// <remarks>
     /// An untyped <see cref="RowRef"/> is one that doesn't know which sheet it links to.
@@ -24,11 +25,11 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     public bool IsUntyped => rowType == null;
 
     /// <summary>
-    /// Whether or not the reference is of a specific row type.
+    /// Whether the reference is of a specific row type.
     /// </summary>
     /// <typeparam name="T">The row type/schema to check against.</typeparam>
-    /// <returns>Whether or not this <see cref="RowRef"/> points to a <typeparamref name="T"/>.</returns>
-    public bool Is<T>() where T : struct, IExcelRow<T> =>
+    /// <returns>Whether this <see cref="RowRef"/> points to a <typeparamref name="T"/>.</returns>
+    public bool Is< T >() where T : struct, IExcelRow< T > =>
         typeof( T ) == rowType;
 
     /// <summary>
@@ -36,12 +37,12 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// </summary>
     /// <typeparam name="T">The row type/schema to check against.</typeparam>
     /// <returns>The referenced row type. Returns null if this <see cref="RowRef"/> does not point to a <typeparamref name="T"/> or if the <see cref="RowId"/> does not exist in its sheet.</returns>
-    public T? GetValueOrDefault<T>() where T : struct, IExcelRow<T>
+    public T? GetValueOrDefault< T >() where T : struct, IExcelRow< T >
     {
-        if( !Is<T>() )
+        if( !Is< T >() || module is null )
             return null;
 
-        return module!.GetSheet<T>().GetRowOrDefault( RowId );
+        return new RowRef< T >( module, rowId ).ValueNullable;
     }
 
     /// <summary>
@@ -50,15 +51,16 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// <typeparam name="T">The row type/schema to check against.</typeparam>
     /// <param name="row">The output row object.</param>
     /// <returns><see langword="true"/> if the type is valid, the row exists, and <paramref name="row"/> is written to, and <see langword="false"/> otherwise.</returns>
-    public bool TryGetValue<T>( out T row ) where T : struct, IExcelRow<T>
+    public bool TryGetValue< T >( out T row ) where T : struct, IExcelRow< T >
     {
-        if( !Is<T>() )
+        if( new RowRef< T >( module, rowId ).ValueNullable is { } v )
         {
-            row = default;
-            return false;
+            row = v;
+            return true;
         }
 
-        return module!.GetSheet<T>().TryGetRow( RowId, out row );
+        row = default;
+        return false;
     }
 
     /// <summary>
@@ -72,7 +74,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     {
         foreach( var sheetType in sheetTypes )
         {
-            if( module.GetSheetGeneric( sheetType ) is { } sheet )
+            if( module.GetSheet( sheetType ) is { } sheet )
             {
                 if( sheet.HasRow( rowId ) )
                     return new( module, rowId, sheetType );
@@ -88,8 +90,8 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// <typeparam name="T">The row type referenced by the <paramref name="rowId"/>.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
     /// <param name="rowId">The referenced row id.</param>
-    /// <returns>A <see cref="RowRef"/> to a row in a <see cref="ExcelSheet{T}"/>.</returns>
-    public static RowRef Create<T>( ExcelModule module, uint rowId ) where T : struct, IExcelRow<T> => new( module, rowId, typeof( T ) );
+    /// <returns>A <see cref="RowRef"/> to a row in a <see cref="ExcelSheet"/>.</returns>
+    public static RowRef Create< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T > => new( module, rowId, typeof( T ) );
 
     /// <summary>
     /// Creates an untyped <see cref="RowRef"/>.
@@ -105,9 +107,9 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
 /// <typeparam name="T">The row type referenced by the <see cref="RowId"/>.</typeparam>
 /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
 /// <param name="rowId">The referenced row id.</param>
-public readonly struct RowRef<T>( ExcelModule module, uint rowId ) where T : struct, IExcelRow<T>
+public readonly struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T >
 {
-    private readonly ExcelSheet<T> sheet = module.GetSheet<T>();
+    private readonly ExcelSheet? _sheet = module?.GetSheet< T >();
 
     /// <summary>
     /// The row id of the referenced row.
@@ -115,26 +117,34 @@ public readonly struct RowRef<T>( ExcelModule module, uint rowId ) where T : str
     public uint RowId => rowId;
 
     /// <summary>
-    /// Whether or not the <see cref="RowId"/> exists in the sheet.
+    /// Whether the <see cref="RowId"/> exists in the sheet.
     /// </summary>
-    public bool IsValid => sheet.HasRow( RowId );
+    public bool IsValid => _sheet?.HasRow( RowId ) ?? false;
 
     /// <summary>
     /// The referenced row value itself.
     /// </summary>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown if <see cref="IsValid"/> is false.</exception>
-    public T Value => sheet.GetRow( RowId );
+    /// <exception cref="InvalidOperationException">Thrown if <see cref="IsValid"/> is false.</exception>
+    public T Value => ValueNullable ?? throw new InvalidOperationException();
 
     /// <summary>
     /// Attempts to get the referenced row value. Is null if <see cref="RowId"/> does not exist in the sheet.
     /// </summary>
-    public T? ValueNullable => sheet.GetRowOrDefault( RowId );
+    public T? ValueNullable {
+        get {
+            if( _sheet is null )
+                return null;
 
-    private RowRef ToGeneric() => RowRef.Create<T>( module, rowId );
+            ref readonly var lookup = ref _sheet.GetRowLookupOrNullRef( rowId );
+            return Unsafe.IsNullRef( in lookup ) ? null : _sheet.UnsafeCreateRow< T >( lookup );
+        }
+    }
+
+    private RowRef ToGeneric() => RowRef.Create< T >( module, rowId );
 
     /// <summary>
-    /// Converts a concrete <see cref="RowRef{T}"/> to an generic and dynamically typed <see cref="RowRef"/>.
+    /// Converts a concrete <see cref="RowRef{T}"/> to a generic and dynamically typed <see cref="RowRef"/>.
     /// </summary>
     /// <param name="row">The <see cref="RowRef{T}"/> to convert.</param>
-    public static explicit operator RowRef( RowRef<T> row ) => row.ToGeneric();
+    public static explicit operator RowRef( RowRef< T > row ) => row.ToGeneric();
 }
