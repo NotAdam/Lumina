@@ -14,13 +14,56 @@ namespace Lumina.Excel;
 /// <summary>A wrapper around an excel sheet.</summary>
 public abstract class ExcelSheet
 {
+    /// <summary>Number of items in <see cref="_rowIndexLookupArray"/> that may resolve to no entry.</summary>
+    // 7.05h: across 7292 sheets that exist and are referenced from exlt file, following ratio can be represented solely using lookup array of certain sizes.
+    //  Max Gap, Coverage, Net Wasted
+    //     1024,   99.15%,       38KB
+    //     2048,   99.25%,       82KB
+    //     3072,   99.29%,      109KB
+    //     4096,   99.36%,      183KB
+    //     5120,   99.40%,      239KB
+    //     6144,   99.41%,      259KB
+    //     9216,   99.42%,      295KB
+    //    10240,   99.47%,      410KB
+    //    14336,   99.48%,      463KB
+    //    16384,   99.49%,      525KB
+    //    19456,   99.51%,      599KB
+    //    24576,   99.52%,      692KB
+    //    26624,   99.53%,      793KB
+    //    28672,   99.56%,     1011KB
+    //    29696,   99.57%,     1127KB
+    //    30720,   99.59%,     1244KB
+    //    33792,   99.63%,     1633KB
+    //    34816,   99.64%,     1765KB
+    //    41984,   99.67%,     2089KB
+    //    43008,   99.68%,     2255KB
+    //    44032,   99.71%,     2594KB
+    //    50176,   99.73%,     2789KB
+    //    64512,   99.74%,     3041KB
+    //    65536,   99.75%,     3293KB
+    //    70656,   99.84%,     4941KB
+    //    71680,   99.88%,     5773KB
+    //    89088,   99.89%,     6118KB
+    //   720896,   99.90%,     8934KB
+    //   721920,   99.92%,    11754KB
+    //  1049600,   99.93%,    15853KB
+    //  1507328,   99.95%,    21741KB
+    //  2001920,   99.96%,    29559KB
+    //  2990080,   99.97%,    41236KB
+    //  9832448,   99.99%,    79643KB
+    // 10146816,  100.00%,   119276KB
+    // We're allowing up to 65536 lookup items in _rowOffsetLookupTable, at cost of up to 3293KB of lookup items that resolve to nonexistence per language.
+    private const int MaxUnusedLookupItemCount = 65536;
+
     private readonly ExcelPage[] _pages;
     private readonly RowOffsetLookup[] _rowOffsetLookupTable;
     private readonly ushort _subrowDataOffset;
 
     // RowLookup must use int as the key because it benefits from a fast path that removes indirections.
     // https://github.com/dotnet/runtime/blob/release/8.0/src/libraries/System.Collections.Immutable/src/System/Collections/Frozen/FrozenDictionary.cs#L140
-    private readonly FrozenDictionary< int, int > _rowIndexLookupTable;
+    private readonly FrozenDictionary< int, int > _rowIndexLookupDict;
+
+    private readonly int[] _rowIndexLookupArray;
 
     /// <summary>The module that this sheet belongs to.</summary>
     public ExcelModule Module { get; }
@@ -72,8 +115,55 @@ public abstract class ExcelSheet
         if( i != _rowOffsetLookupTable.Length )
             Array.Resize( ref _rowOffsetLookupTable, i );
 
-        i = 0;
-        _rowIndexLookupTable = _rowOffsetLookupTable.ToFrozenDictionary( static row => (int) row.RowId, _ => i++ );
+        // A lot of sheets do not have large gap between row IDs. If total number of gaps is less than a threshold, then make a lookup array.
+        if( _rowOffsetLookupTable.Length > 0 )
+        {
+            var firstId = _rowOffsetLookupTable[ 0 ].RowId;
+            var numSlots = _rowOffsetLookupTable[ ^1 ].RowId - firstId + 1;
+            var numUnused = numSlots - headerFile.Header.RowCount;
+            if( numUnused <= MaxUnusedLookupItemCount )
+            {
+                _rowIndexLookupArray = new int[ numSlots ];
+                _rowIndexLookupArray.AsSpan().Fill( -1 );
+                for (i = 0; i < _rowOffsetLookupTable.Length; i++)
+                    _rowIndexLookupArray[_rowOffsetLookupTable[ i ].RowId - firstId] = i;
+
+                // All items can be looked up from _rowIndexLookupArray. Dictionary is unnecessary.
+                _rowIndexLookupDict = FrozenDictionary< int, int >.Empty;
+            }
+            else
+            {
+                _rowIndexLookupArray = new int[MaxUnusedLookupItemCount];
+                _rowIndexLookupArray.AsSpan().Fill( -1 );
+
+                var lastLookupArrayRowId = uint.MaxValue;
+                for( i = 0; i < _rowOffsetLookupTable.Length; i++ )
+                {
+                    var offsetRowId = _rowOffsetLookupTable[ i ].RowId - firstId;
+                    if( offsetRowId >= MaxUnusedLookupItemCount )
+                    {
+                        // Discard the unused entries.
+                        Array.Resize( ref _rowIndexLookupArray, unchecked( (int) ( lastLookupArrayRowId + 1 ) ) );
+                        break;
+                    }
+
+                    _rowIndexLookupArray[ offsetRowId ] = i;
+                    lastLookupArrayRowId = offsetRowId;
+                }
+
+                // Skip the items that can be looked up from _rowIndexLookupArray.
+                _rowIndexLookupDict = _rowOffsetLookupTable.Skip( i ).ToFrozenDictionary( static row => (int) row.RowId, _ => i++ );
+            }
+
+            Count = _rowOffsetLookupTable.Length;
+        }
+        else
+        {
+            _rowIndexLookupDict = FrozenDictionary< int, int >.Empty;
+            _rowIndexLookupArray = [];
+            _rowOffsetLookupTable = [default]; // so that MemoryMarshal.GetArrayDataReference( _rowOffsetLookupTable ) is always valid.
+            Count = 0;
+        }
     }
 
     /// <summary>Creates a new instance of <see cref="ExcelSheet"/> with the <paramref name="module"/>'s default language, deducing sheet names and column
@@ -141,10 +231,7 @@ public abstract class ExcelSheet
     /// If this sheet has gaps in row ids, it returns the number of rows that exist, not the highest row id.
     /// If this sheet has subrows, this will still return the number of rows and not the total number of subrows.
     /// </remarks>
-    public int Count {
-        [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
-        get => _rowOffsetLookupTable.Length;
-    }
+    public int Count { get; }
 
     /// <summary>Gets the offset lookup table.</summary>
     private protected ReadOnlySpan< RowOffsetLookup > OffsetLookupTable {
@@ -177,7 +264,16 @@ public abstract class ExcelSheet
     [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
     internal ref readonly RowOffsetLookup GetRowLookupOrNullRef( uint rowId )
     {
-        ref readonly var rowIndexRef = ref _rowIndexLookupTable.GetValueRefOrNullRef( (int) rowId );
+        var lookupArrayIndex = unchecked( rowId - MemoryMarshal.GetArrayDataReference( _rowOffsetLookupTable ).RowId );
+        if( lookupArrayIndex < _rowIndexLookupArray.Length )
+        {
+            var rowIndex = Unsafe.Add( ref MemoryMarshal.GetArrayDataReference( _rowIndexLookupArray ), lookupArrayIndex );
+            if (rowIndex == -1)
+                return ref Unsafe.NullRef<RowOffsetLookup>();
+            return ref UnsafeGetRowLookupAt( rowIndex );
+        }
+
+        ref readonly var rowIndexRef = ref _rowIndexLookupDict.GetValueRefOrNullRef( (int) rowId );
         if( Unsafe.IsNullRef( in rowIndexRef ) )
             return ref Unsafe.NullRef<RowOffsetLookup>();
         return ref UnsafeGetRowLookupAt( rowIndexRef );
