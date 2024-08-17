@@ -1,3 +1,5 @@
+using System;
+
 namespace Lumina.Excel;
 
 /// <summary>
@@ -14,7 +16,7 @@ public interface IExcelRow<T> where T : struct
     /// <param name="offset"></param>
     /// <param name="row"></param>
     /// <returns>A newly created row object.</returns>
-    /// <exception cref="System.NotSupportedException">Thrown when the referenced sheet is using subrows.</exception>
+    /// <exception cref="NotSupportedException">Thrown when the referenced sheet is using subrows.</exception>
     abstract static T Create( ExcelPage page, uint offset, uint row );
 
     /// <summary>
@@ -26,6 +28,13 @@ public interface IExcelRow<T> where T : struct
     /// <param name="row"></param>
     /// <param name="subrow"></param>
     /// <returns>A newly created subrow object.</returns>
-    /// <exception cref="System.NotSupportedException">Thrown when the referenced sheet is not using subrows.</exception>
+    /// <exception cref="NotSupportedException">Thrown when the referenced sheet is not using subrows.</exception>
     abstract static T Create( ExcelPage page, uint offset, uint row, ushort subrow );
+
+    /// <summary>Gets the row ID.</summary>
+    public uint RowId { get; }
+
+    /// <summary>Gets the subrow ID.</summary>
+    /// <exception cref="NotSupportedException">Thrown when the referenced sheet is not using subrows.</exception>
+    public ushort SubrowId { get; }
 }

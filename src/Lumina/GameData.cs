@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lumina.Data;
 using Lumina.Data.Structs;
+using Lumina.Data.Structs.Excel;
 using Lumina.Excel;
 using Lumina.Misc;
 
@@ -286,20 +287,37 @@ namespace Lumina
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
         }
 
-        /// <summary>
-        /// Attempts to load an <see cref="ExcelSheet{T}"/>, optionally with a specific language
-        /// </summary>
+        /// <summary>Loads an <see cref="DefaultExcelSheet{T}"/>.</summary>
         /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-        /// <typeparam name="T">A struct that implements <see cref="IExcelRow{T}"/> to parse rows</typeparam>
-        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
+        /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
+        /// reused from a previous invocation of this method, or <see langword="null"/> if a corresponding sheet could not be loaded.</returns>
         /// <exception cref="InvalidOperationException">Thrown when <typeparamref name="T"/> is not decorated with a <see cref="SheetAttribute"/></exception>
-        public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow<T>
+        /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
+        public DefaultExcelSheet< T >? GetDefaultExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
         {
             try
             {
-                return Excel.GetSheet<T>(language);
+                return Excel.GetDefaultSheet< T >( language );
             }
-            catch (ArgumentException)
+            catch( ArgumentException )
+            {
+                return null;
+            }
+        }
+
+        /// <summary>Loads an <see cref="DefaultExcelSheet{T}"/>.</summary>
+        /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+        /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
+        /// reused from a previous invocation of this method, or <see langword="null"/> if a corresponding sheet could not be loaded.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when <typeparamref name="T"/> is not decorated with a <see cref="SheetAttribute"/></exception>
+        /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
+        public SubrowsExcelSheet< T >? GetSubrowsExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
+        {
+            try
+            {
+                return Excel.GetSubrowsSheet< T >( language );
+            }
+            catch( ArgumentException )
             {
                 return null;
             }
