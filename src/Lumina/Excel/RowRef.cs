@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 
 namespace Lumina.Excel;
 
@@ -32,6 +31,10 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     public bool Is< T >() where T : struct, IExcelRow< T > =>
         typeof( T ) == rowType;
 
+    /// <inheritdoc cref="Is{T}"/>
+    public bool IsSubrow<T>() where T : struct, IExcelSubrow<T> =>
+        typeof( T ) == rowType;
+
     /// <summary>
     /// Tries to get the referenced row as a specific row type.
     /// </summary>
@@ -45,6 +48,15 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
         return new RowRef< T >( module, rowId ).ValueNullable;
     }
 
+    /// <inheritdoc cref="GetValueOrDefault{T}"/>
+    public T? GetValueOrDefaultSubrow<T>() where T : struct, IExcelSubrow<T>
+    {
+        if( !IsSubrow<T>() || module is null )
+            return null;
+
+        return new SubrowRef<T>( module, rowId ).ValueNullable;
+    }
+
     /// <summary>
     /// Tries to get the referenced row as a specific row type.
     /// </summary>
@@ -54,6 +66,19 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     public bool TryGetValue< T >( out T row ) where T : struct, IExcelRow< T >
     {
         if( new RowRef< T >( module, rowId ).ValueNullable is { } v )
+        {
+            row = v;
+            return true;
+        }
+
+        row = default;
+        return false;
+    }
+
+    /// <inheritdoc cref="TryGetValue{T}(out T)"/>
+    public bool TryGetValueSubrow<T>( out T row ) where T : struct, IExcelSubrow<T>
+    {
+        if( new SubrowRef<T>( module, rowId ).ValueNullable is { } v )
         {
             row = v;
             return true;
@@ -93,6 +118,9 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// <returns>A <see cref="RowRef"/> to a row in a <see cref="BaseExcelSheet"/>.</returns>
     public static RowRef Create< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T > => new( module, rowId, typeof( T ) );
 
+    /// <inheritdoc cref="Create{T}(ExcelModule?, uint)"/>
+    public static RowRef CreateSubrow<T>( ExcelModule? module, uint rowId ) where T : struct, IExcelSubrow<T> => new( module, rowId, typeof( T ) );
+
     /// <summary>
     /// Creates an untyped <see cref="RowRef"/>.
     /// </summary>
@@ -109,7 +137,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
 /// <param name="rowId">The referenced row id.</param>
 public readonly struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T >
 {
-    private readonly BaseExcelSheet? _sheet = module?.GetBaseSheet< T >();
+    private readonly ExcelSheet<T>? _sheet = module?.GetSheet< T >();
 
     /// <summary>
     /// The row id of the referenced row.
@@ -130,15 +158,7 @@ public readonly struct RowRef< T >( ExcelModule? module, uint rowId ) where T : 
     /// <summary>
     /// Attempts to get the referenced row value. Is null if <see cref="RowId"/> does not exist in the sheet.
     /// </summary>
-    public T? ValueNullable {
-        get {
-            if( _sheet is null )
-                return null;
-
-            ref readonly var lookup = ref _sheet.GetRowLookupOrNullRef( rowId );
-            return Unsafe.IsNullRef( in lookup ) ? null : _sheet.UnsafeCreateRow< T >( lookup );
-        }
-    }
+    public T? ValueNullable => _sheet?.GetRowOrDefault( rowId );
 
     private RowRef ToGeneric() => RowRef.Create< T >( module, rowId );
 
@@ -147,4 +167,44 @@ public readonly struct RowRef< T >( ExcelModule? module, uint rowId ) where T : 
     /// </summary>
     /// <param name="row">The <see cref="RowRef{T}"/> to convert.</param>
     public static explicit operator RowRef( RowRef< T > row ) => row.ToGeneric();
+}
+
+/// <summary>
+/// A helper type to concretely reference the first subrow of a row in a specific excel sheet.
+/// </summary>
+/// <typeparam name="T">The row type referenced by the <see cref="RowId"/>.</typeparam>
+/// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
+/// <param name="rowId">The referenced row id.</param>
+public readonly struct SubrowRef<T>( ExcelModule? module, uint rowId ) where T : struct, IExcelSubrow<T>
+{
+    private readonly SubrowExcelSheet<T>? _sheet = module?.GetSubrowSheet<T>();
+
+    /// <summary>
+    /// The row id of the referenced subrow.
+    /// </summary>
+    public uint RowId => rowId;
+
+    /// <summary>
+    /// Whether the subrow exists in the sheet.
+    /// </summary>
+    public bool IsValid => _sheet?.HasSubrow( RowId, 0 ) ?? false;
+
+    /// <summary>
+    /// The referenced subrow value itself.
+    /// </summary>
+    /// <exception cref="InvalidOperationException">Thrown if <see cref="IsValid"/> is false.</exception>
+    public T Value => ValueNullable ?? throw new InvalidOperationException();
+
+    /// <summary>
+    /// Attempts to get the referenced subrow value. Is null if it does not exist in the sheet.
+    /// </summary>
+    public T? ValueNullable => _sheet?.GetSubrowOrDefault( rowId, 0 );
+
+    private RowRef ToGeneric() => RowRef.CreateSubrow<T>( module, rowId );
+
+    /// <summary>
+    /// Converts a concrete <see cref="SubrowRef{T}"/> to a generic and dynamically typed <see cref="RowRef"/>.
+    /// </summary>
+    /// <param name="row">The <see cref="SubrowRef{T}"/> to convert.</param>
+    public static explicit operator RowRef( SubrowRef<T> row ) => row.ToGeneric();
 }
