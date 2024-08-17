@@ -208,7 +208,7 @@ public abstract class BaseExcelSheet
     /// <inheritdoc cref="From{T}(ExcelModule, Language)"/>
     public static BaseSubrowExcelSheet FromSubrow< T >( ExcelModule module, Language language ) where T : struct, IExcelSubrow< T >
     {
-        var attribute = typeof( T ).GetCustomAttribute<SheetAttribute>() ??
+        var attribute = typeof( T ).GetCustomAttribute< SheetAttribute >() ??
             throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( From )} with 4 parameters." );
 
         return FromSubrow< T >( module, language, attribute.Name, attribute.ColumnHash );
@@ -254,7 +254,7 @@ public abstract class BaseExcelSheet
 
     private static ExcelHeaderFile VerifySheet( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
     {
-        var headerFile = module.GameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" ) ??
+        var headerFile = module.GameData.GetFile< ExcelHeaderFile >( $"exd/{sheetName}.exh" ) ??
             throw new ArgumentException( "Invalid sheet name", nameof( sheetName ) );
 
         if( module.VerifySheetChecksums && columnHash is { } hash && headerFile.GetColumnsHash() != hash )
