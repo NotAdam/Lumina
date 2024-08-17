@@ -6,7 +6,7 @@ namespace Lumina.Excel;
 /// Defines a row type/schema for an excel sheet.
 /// </summary>
 /// <typeparam name="T">The type that implements the interface.</typeparam>
-public interface IExcelRow<T> where T : struct
+public interface IExcelRow< T > where T : struct
 {
     /// <summary>
     /// Creates an instance of the current type. Designed only for use within <see cref="Lumina"/>.

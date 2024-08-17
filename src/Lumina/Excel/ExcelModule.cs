@@ -88,7 +88,7 @@ public class ExcelModule
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
     /// <inheritdoc cref="GetBaseSheet(Type, Language?)"/>
     [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public BaseExcelSheet GetBaseSheet<T>( Language? language = null ) where T : struct, IExcelRow<T> =>
+    public BaseExcelSheet GetBaseSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
         GetBaseSheet( typeof( T ), language );
 
     /// <summary>Loads an <see cref="BaseExcelSheet"/>.</summary>
@@ -144,6 +144,7 @@ public class ExcelModule
                 throw new UnsupportedLanguageException( nameof( language ), language, null );
             return GetBaseSheet( rowType, Language.None );
         }
+
         throw e;
     }
 
@@ -152,14 +153,15 @@ public class ExcelModule
         public Exception Exception { get; private set; }
 
         // never actually called
-        private InvalidSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName ) : base(module, headerFile, requestedLanguage, sheetName)
+        private InvalidSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName ) : base( module, headerFile,
+            requestedLanguage, sheetName )
         {
             Exception = null!;
         }
 
-        public static InvalidSheet Create(Exception exception )
+        public static InvalidSheet Create( Exception exception )
         {
-            var ret = (InvalidSheet)RuntimeHelpers.GetUninitializedObject( typeof( InvalidSheet ) );
+            var ret = (InvalidSheet) RuntimeHelpers.GetUninitializedObject( typeof( InvalidSheet ) );
             ret.Exception = exception;
             return ret;
         }

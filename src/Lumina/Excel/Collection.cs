@@ -15,37 +15,39 @@ namespace Lumina.Excel;
 /// <param name="offset"></param>
 /// <param name="ctor"></param>
 /// <param name="size"></param>
-public readonly struct Collection<T>( ExcelPage page, uint parentOffset, uint offset, Func<ExcelPage, uint, uint, uint, T> ctor, int size ) : IReadOnlyList<T>, ICollection<T> where T : struct
+public readonly struct Collection< T >( ExcelPage page, uint parentOffset, uint offset, Func< ExcelPage, uint, uint, uint, T > ctor, int size )
+    : IReadOnlyList< T >, ICollection< T > where T : struct
 {
     /// <inheritdoc/>
-    public T this[int index] {
+    public T this[ int index ] {
         [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
         get {
             ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( index, size );
-            return ctor( page, parentOffset, offset, (uint)index );
+            return ctor( page, parentOffset, offset, (uint) index );
         }
     }
 
     /// <inheritdoc/>
     public int Count => size;
 
-    bool ICollection<T>.IsReadOnly => true;
+    bool ICollection< T >.IsReadOnly => true;
 
-    void ICollection<T>.Add( T item ) => throw new NotSupportedException();
+    void ICollection< T >.Add( T item ) => throw new NotSupportedException();
 
-    void ICollection<T>.Clear() => throw new NotSupportedException();
+    void ICollection< T >.Clear() => throw new NotSupportedException();
 
-    bool ICollection<T>.Remove( T item ) => throw new NotSupportedException();
+    bool ICollection< T >.Remove( T item ) => throw new NotSupportedException();
 
     /// <inheritdoc/>
     public bool Contains( T item )
     {
-        var comparer = EqualityComparer<T>.Default;
-        foreach (var element in this )
+        var comparer = EqualityComparer< T >.Default;
+        foreach( var element in this )
         {
             if( comparer.Equals( item, element ) )
                 return true;
         }
+
         return false;
     }
 
@@ -56,25 +58,25 @@ public readonly struct Collection<T>( ExcelPage page, uint parentOffset, uint of
         ArgumentOutOfRangeException.ThrowIfNegative( arrayIndex );
         if( Count > array.Length - arrayIndex )
             throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
-        for (var i = 0; i < Count; i++ )
-            array[ arrayIndex++ ] = this[i];
+        for( var i = 0; i < Count; i++ )
+            array[ arrayIndex++ ] = this[ i ];
     }
 
     /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
     public Enumerator GetEnumerator() => new( this );
 
-    readonly IEnumerator<T> IEnumerable<T>.GetEnumerator() => GetEnumerator();
+    readonly IEnumerator< T > IEnumerable< T >.GetEnumerator() => GetEnumerator();
 
     readonly IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     /// <summary>Enumerator that enumerates over the different items.</summary>
     /// <param name="collection">Collection to iterate over.</param>
-    public struct Enumerator( Collection<T> collection ) : IEnumerator<T>
+    public struct Enumerator( Collection< T > collection ) : IEnumerator< T >
     {
         private int _index = -1;
 
         /// <inheritdoc cref="IEnumerator{T}.Current"/>
-        public readonly T Current => collection[_index];
+        public readonly T Current => collection[ _index ];
 
         readonly object IEnumerator.Current => Current;
 

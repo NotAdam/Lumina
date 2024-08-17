@@ -45,15 +45,15 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         set => throw new NotSupportedException();
     }
 
-    void IList<T>.Insert( int index, T item ) => throw new NotSupportedException();
+    void IList< T >.Insert( int index, T item ) => throw new NotSupportedException();
 
-    void IList<T>.RemoveAt( int index ) => throw new NotSupportedException();
+    void IList< T >.RemoveAt( int index ) => throw new NotSupportedException();
 
-    void ICollection<T>.Add( T item ) => throw new NotSupportedException();
+    void ICollection< T >.Add( T item ) => throw new NotSupportedException();
 
-    void ICollection<T>.Clear() => throw new NotSupportedException();
+    void ICollection< T >.Clear() => throw new NotSupportedException();
 
-    bool ICollection<T>.Remove( T item ) => throw new NotSupportedException();
+    bool ICollection< T >.Remove( T item ) => throw new NotSupportedException();
 
     /// <inheritdoc/>
     public int IndexOf( T item )

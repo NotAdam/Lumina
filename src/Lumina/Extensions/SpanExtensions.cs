@@ -30,12 +30,12 @@ public static class SpanExtensions
 #endif
     }
 
-    public static unsafe ref T UnsafeAt<T>( this Span<T> span, int index ) =>
+    public static unsafe ref T UnsafeAt< T >( this Span< T > span, int index ) =>
         ref Unsafe.Add( ref MemoryMarshal.GetReference( span ), index );
 
-    public static unsafe ref readonly T UnsafeAt<T>( this ReadOnlySpan<T> span, int index ) =>
+    public static unsafe ref readonly T UnsafeAt< T >( this ReadOnlySpan< T > span, int index ) =>
         ref Unsafe.Add( ref MemoryMarshal.GetReference( span ), index );
 
-    public static unsafe ref readonly T UnsafeAt<T>(this T[] array, int index) =>
+    public static unsafe ref readonly T UnsafeAt< T >( this T[] array, int index ) =>
         ref Unsafe.Add( ref MemoryMarshal.GetArrayDataReference( array ), index );
 }
