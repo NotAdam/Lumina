@@ -10,7 +10,7 @@ namespace Lumina.Excel;
 
 /// <summary>An excel sheet of <see cref="ExcelVariant.Default"/> variant.</summary>
 /// <typeparam name="T">Type of the rows contained within.</typeparam>
-public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection<T>, IReadOnlyCollection<T> where T : struct, IExcelRow< T >
+public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection< T >, IReadOnlyCollection< T > where T : struct, IExcelRow< T >
 {
     internal ExcelSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName )
         : base( module, headerFile, requestedLanguage, sheetName )
@@ -29,7 +29,7 @@ public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection<T>, IReadOnlyC
     public T? GetRowOrDefault( uint rowId )
     {
         ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );
-        return Unsafe.IsNullRef(in lookup) ? null : UnsafeCreateRow< T >( in lookup );
+        return Unsafe.IsNullRef( in lookup ) ? null : UnsafeCreateRow< T >( in lookup );
     }
 
     /// <summary>
@@ -41,7 +41,7 @@ public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection<T>, IReadOnlyC
     public bool TryGetRow( uint rowId, out T row )
     {
         ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );
-        if( Unsafe.IsNullRef(in lookup) )
+        if( Unsafe.IsNullRef( in lookup ) )
         {
             row = default;
             return false;
@@ -60,7 +60,7 @@ public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection<T>, IReadOnlyC
     public T GetRow( uint rowId )
     {
         ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );
-        return Unsafe.IsNullRef(in lookup) ? throw new ArgumentOutOfRangeException( nameof( rowId ), rowId, null ) : UnsafeCreateRow< T >( in lookup );
+        return Unsafe.IsNullRef( in lookup ) ? throw new ArgumentOutOfRangeException( nameof( rowId ), rowId, null ) : UnsafeCreateRow< T >( in lookup );
     }
 
     /// <summary>
@@ -87,8 +87,8 @@ public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection<T>, IReadOnlyC
         ArgumentOutOfRangeException.ThrowIfNegative( arrayIndex );
         if( Count > array.Length - arrayIndex )
             throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
-        foreach (var lookup in OffsetLookupTable)
-            array[ arrayIndex++ ] = UnsafeCreateRow<T>( in lookup );
+        foreach( var lookup in OffsetLookupTable )
+            array[ arrayIndex++ ] = UnsafeCreateRow< T >( in lookup );
     }
 
     void ICollection< T >.Add( T item ) => throw new NotSupportedException();
@@ -111,7 +111,7 @@ public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection<T>, IReadOnlyC
         private int _index = -1;
 
         /// <inheritdoc cref="IEnumerator{T}.Current"/>
-        public readonly T Current => sheet.UnsafeCreateRowAt< T >( _index );
+        public T Current { get; private set; }
 
         readonly object IEnumerator.Current => Current;
 
@@ -119,15 +119,20 @@ public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection<T>, IReadOnlyC
         public bool MoveNext()
         {
             if( ++_index < sheet.Count )
+            {
+                // UnsafeCreateRowAt must be called only when the preconditions are validated.
+                // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
+                // so we create the instance in advance here.
+                Current = sheet.UnsafeCreateRowAt< T >( _index );
                 return true;
+            }
 
             --_index;
             return false;
         }
 
         /// <inheritdoc/>
-        public void Reset() =>
-            _index = -1;
+        public void Reset() => _index = -1;
 
         /// <inheritdoc/>
         public readonly void Dispose()

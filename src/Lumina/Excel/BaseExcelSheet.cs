@@ -64,6 +64,7 @@ public abstract class BaseExcelSheet
     private readonly FrozenDictionary< int, int > _rowIndexLookupDict;
 
     private readonly int[] _rowIndexLookupArray;
+    private readonly uint _rowIndexLookupArrayOffset;
 
     /// <summary>The module that this sheet belongs to.</summary>
     public ExcelModule Module { get; }
@@ -118,15 +119,15 @@ public abstract class BaseExcelSheet
         // A lot of sheets do not have large gap between row IDs. If total number of gaps is less than a threshold, then make a lookup array.
         if( _rowOffsetLookupTable.Length > 0 )
         {
-            var firstId = _rowOffsetLookupTable[ 0 ].RowId;
-            var numSlots = _rowOffsetLookupTable[ ^1 ].RowId - firstId + 1;
+            _rowIndexLookupArrayOffset = _rowOffsetLookupTable[ 0 ].RowId;
+            var numSlots = _rowOffsetLookupTable[ ^1 ].RowId - _rowIndexLookupArrayOffset + 1;
             var numUnused = numSlots - headerFile.Header.RowCount;
             if( numUnused <= MaxUnusedLookupItemCount )
             {
-                _rowIndexLookupArray = new int[ numSlots ];
+                _rowIndexLookupArray = new int[numSlots];
                 _rowIndexLookupArray.AsSpan().Fill( -1 );
-                for (i = 0; i < _rowOffsetLookupTable.Length; i++)
-                    _rowIndexLookupArray[_rowOffsetLookupTable[ i ].RowId - firstId] = i;
+                for( i = 0; i < _rowOffsetLookupTable.Length; i++ )
+                    _rowIndexLookupArray[ _rowOffsetLookupTable[ i ].RowId - _rowIndexLookupArrayOffset ] = i;
 
                 // All items can be looked up from _rowIndexLookupArray. Dictionary is unnecessary.
                 _rowIndexLookupDict = FrozenDictionary< int, int >.Empty;
@@ -139,7 +140,7 @@ public abstract class BaseExcelSheet
                 var lastLookupArrayRowId = uint.MaxValue;
                 for( i = 0; i < _rowOffsetLookupTable.Length; i++ )
                 {
-                    var offsetRowId = _rowOffsetLookupTable[ i ].RowId - firstId;
+                    var offsetRowId = _rowOffsetLookupTable[ i ].RowId - _rowIndexLookupArrayOffset;
                     if( offsetRowId >= MaxUnusedLookupItemCount )
                     {
                         // Discard the unused entries.
@@ -161,13 +162,15 @@ public abstract class BaseExcelSheet
         {
             _rowIndexLookupDict = FrozenDictionary< int, int >.Empty;
             _rowIndexLookupArray = [];
-            _rowOffsetLookupTable = [default]; // so that _rowOffsetLookupTable.UnsafeAt(0) is always valid.
+            _rowIndexLookupArrayOffset = 0;
+            _rowOffsetLookupTable = [];
             Count = 0;
         }
     }
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/> with the <paramref name="module"/>'s default language, deducing sheet names and column
     /// hashes from <typeparamref name="T"/>.</summary>
+    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
     /// <exception cref="ArgumentException"><see cref="SheetAttribute.Name"/> was invalid (invalid sheet name).</exception>
@@ -180,6 +183,7 @@ public abstract class BaseExcelSheet
         From< T >( module, module.Language );
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>, deducing sheet names and column hashes from <typeparamref name="T"/>.</summary>
+    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="language">The language to use for this sheet.</param>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
@@ -198,6 +202,7 @@ public abstract class BaseExcelSheet
     }
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>.</summary>
+    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="language">The language to use for this sheet.</param>
     /// <param name="sheetName">The name of the sheet to read from.</param>
@@ -215,15 +220,15 @@ public abstract class BaseExcelSheet
             throw new ArgumentException( "Invalid sheet name", nameof( sheetName ) );
 
         if( module.VerifySheetChecksums && columnHash is { } hash && headerFile.GetColumnsHash() != hash )
-            throw new MismatchedColumnHashException(hash, headerFile.GetColumnsHash(), nameof(columnHash) );
+            throw new MismatchedColumnHashException( hash, headerFile.GetColumnsHash(), nameof( columnHash ) );
 
         if( !headerFile.Languages.Contains( language ) )
-            throw new UnsupportedLanguageException();
+            throw new UnsupportedLanguageException( nameof( language ), language, null );
 
         return headerFile.Header.Variant switch
         {
-            ExcelVariant.Default => new ExcelSheet<T>( module, headerFile, language, sheetName ),
-            ExcelVariant.Subrows => new SubrowExcelSheet<T>( module, headerFile, language, sheetName ),
+            ExcelVariant.Default => new ExcelSheet< T >( module, headerFile, language, sheetName ),
+            ExcelVariant.Subrows => new SubrowExcelSheet< T >( module, headerFile, language, sheetName ),
             _ => throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported." ),
         };
     }
@@ -260,18 +265,18 @@ public abstract class BaseExcelSheet
     [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
     internal ref readonly RowOffsetLookup GetRowLookupOrNullRef( uint rowId )
     {
-        var lookupArrayIndex = unchecked( rowId - _rowOffsetLookupTable.UnsafeAt(0).RowId );
+        var lookupArrayIndex = unchecked( rowId - _rowIndexLookupArrayOffset );
         if( lookupArrayIndex < _rowIndexLookupArray.Length )
         {
             var rowIndex = _rowIndexLookupArray.UnsafeAt( (int) lookupArrayIndex );
-            if (rowIndex == -1)
-                return ref Unsafe.NullRef<RowOffsetLookup>();
+            if( rowIndex == -1 )
+                return ref Unsafe.NullRef< RowOffsetLookup >();
             return ref UnsafeGetRowLookupAt( rowIndex );
         }
 
         ref readonly var rowIndexRef = ref _rowIndexLookupDict.GetValueRefOrNullRef( (int) rowId );
         if( Unsafe.IsNullRef( in rowIndexRef ) )
-            return ref Unsafe.NullRef<RowOffsetLookup>();
+            return ref Unsafe.NullRef< RowOffsetLookup >();
         return ref UnsafeGetRowLookupAt( rowIndexRef );
     }
 
@@ -279,7 +284,7 @@ public abstract class BaseExcelSheet
     /// <param name="rowIndex">Index of the desired row.</param>
     /// <returns>Lookup data for the desired row.</returns>
     internal ref readonly RowOffsetLookup UnsafeGetRowLookupAt( int rowIndex ) =>
-        ref _rowOffsetLookupTable.UnsafeAt(rowIndex);
+        ref _rowOffsetLookupTable.UnsafeAt( rowIndex );
 
     /// <summary>Creates a row at the given index, without checking for bounds or preconditions.</summary>
     /// <param name="rowIndex">Index of the desired row.</param>
@@ -299,7 +304,7 @@ public abstract class BaseExcelSheet
     /// <returns>A new instance of <typeparamref name="T"/>.</returns>
     internal T UnsafeCreateRow< T >( scoped ref readonly RowOffsetLookup lookup ) where T : struct, IExcelRow< T > =>
         T.Create(
-            _pages.UnsafeAt(lookup.PageIndex),
+            _pages.UnsafeAt( lookup.PageIndex ),
             lookup.Offset,
             lookup.RowId );
 
@@ -309,7 +314,7 @@ public abstract class BaseExcelSheet
     /// <returns>A new instance of <typeparamref name="T"/>.</returns>
     internal T UnsafeCreateSubrow< T >( scoped ref readonly RowOffsetLookup lookup, ushort subrowId ) where T : struct, IExcelRow< T > =>
         T.Create(
-            _pages.UnsafeAt(lookup.PageIndex),
+            _pages.UnsafeAt( lookup.PageIndex ),
             lookup.Offset + 2 + subrowId * ( _subrowDataOffset + 2u ),
             lookup.RowId,
             subrowId );

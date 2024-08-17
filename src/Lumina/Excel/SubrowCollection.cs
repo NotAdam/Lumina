@@ -45,15 +45,15 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         set => throw new NotSupportedException();
     }
 
-    void IList<T>.Insert( int index, T item ) => throw new NotSupportedException();
+    void IList< T >.Insert( int index, T item ) => throw new NotSupportedException();
 
-    void IList<T>.RemoveAt( int index ) => throw new NotSupportedException();
+    void IList< T >.RemoveAt( int index ) => throw new NotSupportedException();
 
-    void ICollection<T>.Add( T item ) => throw new NotSupportedException();
+    void ICollection< T >.Add( T item ) => throw new NotSupportedException();
 
-    void ICollection<T>.Clear() => throw new NotSupportedException();
+    void ICollection< T >.Clear() => throw new NotSupportedException();
 
-    bool ICollection<T>.Remove( T item ) => throw new NotSupportedException();
+    bool ICollection< T >.Remove( T item ) => throw new NotSupportedException();
 
     /// <inheritdoc/>
     public int IndexOf( T item )
@@ -93,7 +93,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         private int _index = -1;
 
         /// <inheritdoc cref="IEnumerator{T}.Current"/>
-        public readonly T Current => subrowCollection.Sheet.UnsafeCreateSubrow< T >( in subrowCollection._lookup, unchecked( (ushort) _index ) );
+        public T Current { get; private set; }
 
         readonly object IEnumerator.Current => Current;
 
@@ -101,7 +101,13 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         public bool MoveNext()
         {
             if( ++_index < subrowCollection.Count )
+            {
+                // UnsafeCreateSubrow must be called only when the preconditions are validated.
+                // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
+                // so we create the instance in advance here.
+                Current = subrowCollection.Sheet.UnsafeCreateSubrow< T >( in subrowCollection._lookup, unchecked( (ushort) _index ) );
                 return true;
+            }
 
             --_index;
             return false;

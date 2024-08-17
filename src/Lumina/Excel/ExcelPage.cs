@@ -23,7 +23,7 @@ public sealed class ExcelPage
     public ExcelModule Module { get; }
 
     private readonly byte[] data;
-    private ReadOnlyMemory<byte> Data => data;
+    private ReadOnlyMemory< byte > Data => data;
 
     private readonly ushort dataOffset;
 
@@ -37,12 +37,12 @@ public sealed class ExcelPage
     // Ignores bounds checks to speed up reading data.
     // https://t.ly/EmR4n (Sharplab link)
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
-    private D Read<D>( nuint offset ) where D : unmanaged =>
-        Unsafe.As<byte, D>( ref Unsafe.AddByteOffset( ref MemoryMarshal.GetArrayDataReference( data ), offset ) );
+    private D Read< D >( nuint offset ) where D : unmanaged =>
+        Unsafe.As< byte, D >( ref Unsafe.AddByteOffset( ref MemoryMarshal.GetArrayDataReference( data ), offset ) );
 
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     private static float ReverseEndianness( float v ) =>
-        Unsafe.BitCast<uint, float>( BinaryPrimitives.ReverseEndianness( Unsafe.BitCast<float, uint>( v ) ) );
+        Unsafe.BitCast< uint, float >( BinaryPrimitives.ReverseEndianness( Unsafe.BitCast< float, uint >( v ) ) );
 
     /// <summary>
     /// Reads a <see cref="ReadOnlySeString"/> from the page data at <paramref name="offset"/>.
@@ -57,14 +57,15 @@ public sealed class ExcelPage
     public ReadOnlySeString ReadString( nuint offset, nuint structOffset )
     {
         offset = ReadUInt32( offset ) + structOffset + dataOffset;
-        var data = Data[(int)offset..];
-        var stringLength = data.Span.IndexOf( (byte)0 );
-        var ret = new ReadOnlySeString( data[..stringLength] );
+        var data = Data[ (int) offset.. ];
+        var stringLength = data.Span.IndexOf( (byte) 0 );
+        var ret = new ReadOnlySeString( data[ ..stringLength ] );
         if( ret.IsRsv() && Module.RsvResolver != null )
         {
             if( Module.RsvResolver.Invoke( ret, out var resolvedString ) )
                 return resolvedString;
         }
+
         return ret;
     }
 
@@ -75,7 +76,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="bool"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public bool ReadBool( nuint offset ) =>
-        Read<bool>( offset );
+        Read< bool >( offset );
 
     /// <summary>
     /// Reads a <see cref="sbyte"/> from the page data at <paramref name="offset"/>.
@@ -84,7 +85,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="sbyte"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public sbyte ReadInt8( nuint offset ) =>
-        Read<sbyte>( offset );
+        Read< sbyte >( offset );
 
     /// <summary>
     /// Reads a <see cref="byte"/> from the page data at <paramref name="offset"/>.
@@ -93,7 +94,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="byte"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public byte ReadUInt8( nuint offset ) =>
-        Read<byte>( offset );
+        Read< byte >( offset );
 
     /// <summary>
     /// Reads a <see cref="short"/> from the page data at <paramref name="offset"/>.
@@ -102,7 +103,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="short"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public short ReadInt16( nuint offset ) =>
-        BinaryPrimitives.ReverseEndianness( Read<short>( offset ) );
+        BinaryPrimitives.ReverseEndianness( Read< short >( offset ) );
 
     /// <summary>
     /// Reads a <see cref="ushort"/> from the page data at <paramref name="offset"/>.
@@ -111,7 +112,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="ushort"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public ushort ReadUInt16( nuint offset ) =>
-        BinaryPrimitives.ReverseEndianness( Read<ushort>( offset ) );
+        BinaryPrimitives.ReverseEndianness( Read< ushort >( offset ) );
 
     /// <summary>
     /// Reads a <see cref="int"/> from the page data at <paramref name="offset"/>.
@@ -120,7 +121,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="int"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public int ReadInt32( nuint offset ) =>
-        BinaryPrimitives.ReverseEndianness( Read<int>( offset ) );
+        BinaryPrimitives.ReverseEndianness( Read< int >( offset ) );
 
     /// <summary>
     /// Reads a <see cref="uint"/> from the page data at <paramref name="offset"/>.
@@ -129,7 +130,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="uint"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public uint ReadUInt32( nuint offset ) =>
-        BinaryPrimitives.ReverseEndianness( Read<uint>( offset ) );
+        BinaryPrimitives.ReverseEndianness( Read< uint >( offset ) );
 
     /// <summary>
     /// Reads a <see cref="float"/> from the page data at <paramref name="offset"/>.
@@ -138,7 +139,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="float"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public float ReadFloat32( nuint offset ) =>
-        ReverseEndianness( Read<float>( offset ) );
+        ReverseEndianness( Read< float >( offset ) );
 
     /// <summary>
     /// Reads a <see cref="long"/> from the page data at <paramref name="offset"/>.
@@ -147,7 +148,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="long"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public long ReadInt64( nuint offset ) =>
-        BinaryPrimitives.ReverseEndianness( Read<long>( offset ) );
+        BinaryPrimitives.ReverseEndianness( Read< long >( offset ) );
 
     /// <summary>
     /// Reads a <see cref="ulong"/> from the page data at <paramref name="offset"/>.
@@ -156,7 +157,7 @@ public sealed class ExcelPage
     /// <returns>The <see cref="ulong"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public ulong ReadUInt64( nuint offset ) =>
-        BinaryPrimitives.ReverseEndianness( Read<ulong>( offset ) );
+        BinaryPrimitives.ReverseEndianness( Read< ulong >( offset ) );
 
     /// <summary>
     /// Reads a <see cref="bool"/> from the page data at <paramref name="offset"/> at bit offset <paramref name="bit"/>.
@@ -166,5 +167,5 @@ public sealed class ExcelPage
     /// <returns>The <see cref="ulong"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public bool ReadPackedBool( nuint offset, byte bit ) =>
-        ( Read<byte>( offset ) & ( 1 << bit ) ) != 0;
+        ( Read< byte >( offset ) & ( 1 << bit ) ) != 0;
 }
