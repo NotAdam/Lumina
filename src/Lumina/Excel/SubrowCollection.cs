@@ -8,7 +8,7 @@ namespace Lumina.Excel;
 /// <summary>Collection of subrows under one row.</summary>
 /// <typeparam name="T">Type of the row.</typeparam>
 public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
-    where T : struct, IExcelRow< T >
+    where T : struct, IExcelSubrow< T >
 {
     private readonly BaseExcelSheet.RowOffsetLookup _lookup;
 

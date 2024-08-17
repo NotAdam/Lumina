@@ -291,9 +291,9 @@ namespace Lumina
         /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
         /// reused from a previous invocation of this method.</returns>
         /// <remarks>
-        /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the
+        /// If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the
         /// language-neutral sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function
-        /// will return <see langword="null"/>.</para>
+        /// will return <see langword="null"/>.
         /// </remarks>
         /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
         /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
@@ -313,18 +313,10 @@ namespace Lumina
             }
         }
 
-        /// <summary>Loads an <see cref="SubrowExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
-        /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-        /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
-        /// reused from a previous invocation of this method.</returns>
-        /// <remarks>
-        /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the
-        /// language-neutral sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function
-        /// will return <see langword="null"/>.</para>
-        /// </remarks>
+        /// <summary>Loads a <see cref="SubrowExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
         /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
-        /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-        public SubrowExcelSheet< T >? GetSubrowExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
+        /// <inheritdoc cref="GetExcelSheet{T}(Nullable{Language})"/>
+        public SubrowExcelSheet< T >? GetSubrowExcelSheet< T >( Language? language = null ) where T : struct, IExcelSubrow< T >
         {
             try
             {

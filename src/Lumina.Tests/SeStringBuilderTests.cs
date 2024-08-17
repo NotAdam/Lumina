@@ -296,15 +296,10 @@ public class SeStringBuilderTests
     {
         public uint RowId => row;
 
-        ushort IExcelRow< Addon >.SubrowId => throw new NotSupportedException();
-
         public ReadOnlySeString Text => page.ReadString( offset, offset );
 
         static Addon IExcelRow<Addon>.Create( ExcelPage page, uint offset, uint row ) =>
             new( page, offset, row );
-
-        static Addon IExcelRow<Addon>.Create( ExcelPage page, uint offset, uint row, ushort subrow ) =>
-            throw new NotSupportedException();
     }
 
     [RequiresGameInstallationFact]

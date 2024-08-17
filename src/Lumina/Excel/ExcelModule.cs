@@ -60,36 +60,38 @@ public class ExcelModule
     }
 
     /// <summary>Loads an <see cref="ExcelSheet{T}"/>.</summary>
+    /// <remarks/>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
-    /// <inheritdoc cref="GetSubrowSheet{T}(Nullable{Lumina.Data.Language})"/>
+    /// <inheritdoc cref="GetBaseSheet{T}(Nullable{Lumina.Data.Language})"/>
     public ExcelSheet< T > GetSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
         (ExcelSheet< T >) GetBaseSheet< T >( language );
 
     /// <summary>Loads an <see cref="SubrowExcelSheet{T}"/>.</summary>
-    /// <remarks>
-    /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
-    /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
-    /// <see cref="UnsupportedLanguageException"/>.</para>
-    /// </remarks>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
-    /// <inheritdoc cref="GetBaseSheet{T}(Nullable{Lumina.Data.Language})"/>
-    public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
-        (SubrowExcelSheet< T >) GetBaseSheet< T >( language );
+    /// <inheritdoc cref="GetSheet{T}(Nullable{Lumina.Data.Language})"/>
+    public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null ) where T : struct, IExcelSubrow< T > =>
+        (SubrowExcelSheet< T >) GetBaseSubrowSheet< T >( language );
 
     /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
     /// reused from a previous invocation of this method.</returns>
     /// <remarks>
-    /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
-    /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
-    /// <see cref="UnsupportedLanguageException"/>.</para>
-    /// <para>The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
-    /// before accessing its rows.</para>
+    /// The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/>
+    /// before accessing its rows.
     /// </remarks>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
     /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language})"/>
     [EditorBrowsable( EditorBrowsableState.Advanced )]
     public BaseExcelSheet GetBaseSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
         GetBaseSheet( typeof( T ), language );
+
+    /// <remarks>
+    /// The returned instance of <see cref="BaseSubrowExcelSheet"/> should be cast to <see cref="SubrowExcelSheet{T}"/>
+    /// before accessing its rows.
+    /// </remarks>
+    /// <inheritdoc cref="GetBaseSheet{T}(Language?)"/>
+    [EditorBrowsable( EditorBrowsableState.Advanced )]
+    public BaseSubrowExcelSheet GetBaseSubrowSheet< T >( Language? language = null ) where T : struct, IExcelSubrow< T > =>
+        (BaseSubrowExcelSheet)GetBaseSheet( typeof( T ), language );
 
     /// <summary>Loads an <see cref="BaseExcelSheet"/>.</summary>
     /// <param name="rowType">Type of the rows in the sheet.</param>
@@ -98,9 +100,6 @@ public class ExcelModule
     /// reused from a previous invocation of this method.</returns>
     /// <remarks>
     /// <para>Only use this method if you need to create a sheet while using reflection.</para>
-    /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
-    /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
-    /// <see cref="UnsupportedLanguageException"/>.</para>
     /// <para>The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
     /// before accessing its rows.</para>
     /// </remarks>
@@ -119,20 +118,34 @@ public class ExcelModule
                 MethodInfo m;
                 try
                 {
-                    // As BaseExcelSheet.From<T> has a constraint that T : IExcelRow<T>, it is implicitly required that T is also a struct.
+                    var isSubrowType = key.Type.IsAssignableTo( typeof( IExcelSubrow<> ).MakeGenericType( key.Type ) );
+
+                    // As BaseExcelSheet.From(Subrow)<T> has a constraint that T : IExcel(Row/Subrow)<T>, it is implicitly required that T is also a struct.
                     // MakeGenericMethod will check for constraints, and throw ArgumentException if constraints aren't met.
-                    m = typeof( BaseExcelSheet )
-                        .GetMethod(
-                            nameof( BaseExcelSheet.From ),
-                            BindingFlags.Static | BindingFlags.Public,
-                            [typeof( ExcelModule ), typeof( Language )] )!
-                        .MakeGenericMethod( key.Type );
+                    if( isSubrowType )
+                    {
+                        m = typeof( BaseExcelSheet )
+                            .GetMethod(
+                                nameof( BaseExcelSheet.FromSubrow ),
+                                BindingFlags.Static | BindingFlags.Public,
+                                [typeof( ExcelModule ), typeof( Language )] )!
+                            .MakeGenericMethod( key.Type );
+                    }
+                    else
+                    {
+                        m = typeof( BaseExcelSheet )
+                            .GetMethod(
+                                nameof( BaseExcelSheet.From ),
+                                BindingFlags.Static | BindingFlags.Public,
+                                [typeof( ExcelModule ), typeof( Language )] )!
+                            .MakeGenericMethod( key.Type );
+                    }
                 }
                 catch( ArgumentException e )
                 {
                     // Exception thrown here will propagate outside ConcurrentDictionary<>.GetOrAdd without touching the data stored inside dictionary.
                     throw new ArgumentException(
-                        $"{key.Type.Name} must implement {typeof( IExcelRow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}>.",
+                        $"{key.Type.Name} must implement either {typeof( IExcelRow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}> or {typeof( IExcelSubrow<> ).Name.Split( '`', 2 )[0]}<{key.Type.Name}>.",
                         nameof( rowType ),
                         e );
                 }

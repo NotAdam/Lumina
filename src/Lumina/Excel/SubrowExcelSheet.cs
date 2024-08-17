@@ -11,7 +11,7 @@ namespace Lumina.Excel;
 /// <inheritdoc cref="BaseSubrowExcelSheet"/>
 public sealed class SubrowExcelSheet< T >
     : BaseSubrowExcelSheet, ICollection< SubrowCollection< T > >, IReadOnlyCollection< SubrowCollection< T > >
-    where T : struct, IExcelRow< T >
+    where T : struct, IExcelSubrow< T >
 {
     internal SubrowExcelSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName )
         : base( module, headerFile, requestedLanguage, sheetName )

@@ -182,6 +182,10 @@ public abstract class BaseExcelSheet
     public static BaseExcelSheet From< T >( ExcelModule module ) where T : struct, IExcelRow< T > =>
         From< T >( module, module.Language );
 
+    /// <inheritdoc cref="From{T}(ExcelModule)"/>
+    public static BaseSubrowExcelSheet FromSubrow< T >( ExcelModule module ) where T : struct, IExcelSubrow< T > =>
+        FromSubrow< T >( module, module.Language );
+
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>, deducing sheet names and column hashes from <typeparamref name="T"/>.</summary>
     /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
@@ -201,6 +205,15 @@ public abstract class BaseExcelSheet
         return From< T >( module, language, attribute.Name, attribute.ColumnHash );
     }
 
+    /// <inheritdoc cref="From{T}(ExcelModule, Language)"/>
+    public static BaseSubrowExcelSheet FromSubrow< T >( ExcelModule module, Language language ) where T : struct, IExcelSubrow< T >
+    {
+        var attribute = typeof( T ).GetCustomAttribute<SheetAttribute>() ??
+            throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( From )} with 4 parameters." );
+
+        return FromSubrow< T >( module, language, attribute.Name, attribute.ColumnHash );
+    }
+
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>.</summary>
     /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
@@ -211,12 +224,37 @@ public abstract class BaseExcelSheet
     /// <exception cref="MismatchedColumnHashException"><paramref name="columnHash"/> was invalid (hash mismatch).</exception>
     /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
     /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="BaseExcelSheet"/> that should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
+    /// <returns>A new instance of <see cref="BaseExcelSheet"/> that should be cast to <see cref="ExcelSheet{T}"/>
     /// before further use.</returns>
     public static BaseExcelSheet From< T >( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
         where T : struct, IExcelRow< T >
     {
-        var headerFile = module.GameData.GetFile< ExcelHeaderFile >( $"exd/{sheetName}.exh" ) ??
+        var headerFile = VerifySheet( module, language, sheetName, columnHash );
+
+        if( headerFile.Header.Variant != ExcelVariant.Default )
+            throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported for IExcelRow types." );
+
+        return new ExcelSheet< T >( module, headerFile, language, sheetName );
+    }
+
+    /// <summary>Creates a new instance of <see cref="BaseSubrowExcelSheet"/>.</summary>
+    /// <returns>A new instance of <see cref="BaseSubrowExcelSheet"/> that should be cast to <see cref="SubrowExcelSheet{T}"/>
+    /// before further use.</returns>
+    /// <inheritdoc cref="From{T}(ExcelModule, Language, string, Nullable{uint})"/>
+    public static BaseSubrowExcelSheet FromSubrow< T >( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
+        where T : struct, IExcelSubrow< T >
+    {
+        var headerFile = VerifySheet( module, language, sheetName, columnHash );
+
+        if( headerFile.Header.Variant != ExcelVariant.Subrows )
+            throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported for IExcelSubrow types." );
+
+        return new SubrowExcelSheet< T >( module, headerFile, language, sheetName );
+    }
+
+    private static ExcelHeaderFile VerifySheet( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
+    {
+        var headerFile = module.GameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" ) ??
             throw new ArgumentException( "Invalid sheet name", nameof( sheetName ) );
 
         if( module.VerifySheetChecksums && columnHash is { } hash && headerFile.GetColumnsHash() != hash )
@@ -225,12 +263,7 @@ public abstract class BaseExcelSheet
         if( !headerFile.Languages.Contains( language ) )
             throw new UnsupportedLanguageException( nameof( language ), language, null );
 
-        return headerFile.Header.Variant switch
-        {
-            ExcelVariant.Default => new ExcelSheet< T >( module, headerFile, language, sheetName ),
-            ExcelVariant.Subrows => new SubrowExcelSheet< T >( module, headerFile, language, sheetName ),
-            _ => throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported." ),
-        };
+        return headerFile;
     }
 
     /// <summary>The number of rows in this sheet.</summary>
@@ -296,7 +329,7 @@ public abstract class BaseExcelSheet
     /// <param name="rowIndex">Index of the desired row.</param>
     /// <param name="subrowId">Index of the desired subrow.</param>
     /// <returns>A new instance of <typeparamref name="T"/>.</returns>
-    internal T UnsafeCreateSubrowAt< T >( int rowIndex, ushort subrowId ) where T : struct, IExcelRow< T > =>
+    internal T UnsafeCreateSubrowAt< T >( int rowIndex, ushort subrowId ) where T : struct, IExcelSubrow< T > =>
         UnsafeCreateSubrow< T >( in UnsafeGetRowLookupAt( rowIndex ), subrowId );
 
     /// <summary>Creates a row using the given lookup data, without checking for bounds or preconditions.</summary>
@@ -312,7 +345,7 @@ public abstract class BaseExcelSheet
     /// <param name="lookup">Lookup data for the desired row.</param>
     /// <param name="subrowId">Index of the desired subrow.</param>
     /// <returns>A new instance of <typeparamref name="T"/>.</returns>
-    internal T UnsafeCreateSubrow< T >( scoped ref readonly RowOffsetLookup lookup, ushort subrowId ) where T : struct, IExcelRow< T > =>
+    internal T UnsafeCreateSubrow< T >( scoped ref readonly RowOffsetLookup lookup, ushort subrowId ) where T : struct, IExcelSubrow< T > =>
         T.Create(
             _pages.UnsafeAt( lookup.PageIndex ),
             lookup.Offset + 2 + subrowId * ( _subrowDataOffset + 2u ),
