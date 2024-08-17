@@ -6,7 +6,7 @@ namespace Lumina.Excel;
 /// Defines a row type/schema for an excel sheet.
 /// </summary>
 /// <typeparam name="T">The type that implements the interface.</typeparam>
-public interface IExcelRow< T > where T : struct
+public interface IExcelRow< out T > where T : struct
 {
     /// <summary>
     /// Creates an instance of the current type. Designed only for use within <see cref="Lumina"/>.
@@ -32,9 +32,9 @@ public interface IExcelRow< T > where T : struct
     abstract static T Create( ExcelPage page, uint offset, uint row, ushort subrow );
 
     /// <summary>Gets the row ID.</summary>
-    public uint RowId { get; }
+    uint RowId { get; }
 
     /// <summary>Gets the subrow ID.</summary>
     /// <exception cref="NotSupportedException">Thrown when the referenced sheet is not using subrows.</exception>
-    public ushort SubrowId { get; }
+    ushort SubrowId { get; }
 }

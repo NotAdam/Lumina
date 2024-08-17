@@ -64,6 +64,7 @@ public abstract class BaseExcelSheet
     private readonly FrozenDictionary< int, int > _rowIndexLookupDict;
 
     private readonly int[] _rowIndexLookupArray;
+    private readonly uint _rowIndexLookupArrayOffset;
 
     /// <summary>The module that this sheet belongs to.</summary>
     public ExcelModule Module { get; }
@@ -118,15 +119,15 @@ public abstract class BaseExcelSheet
         // A lot of sheets do not have large gap between row IDs. If total number of gaps is less than a threshold, then make a lookup array.
         if( _rowOffsetLookupTable.Length > 0 )
         {
-            var firstId = _rowOffsetLookupTable[ 0 ].RowId;
-            var numSlots = _rowOffsetLookupTable[ ^1 ].RowId - firstId + 1;
+            _rowIndexLookupArrayOffset = _rowOffsetLookupTable[ 0 ].RowId;
+            var numSlots = _rowOffsetLookupTable[ ^1 ].RowId - _rowIndexLookupArrayOffset + 1;
             var numUnused = numSlots - headerFile.Header.RowCount;
             if( numUnused <= MaxUnusedLookupItemCount )
             {
                 _rowIndexLookupArray = new int[numSlots];
                 _rowIndexLookupArray.AsSpan().Fill( -1 );
                 for( i = 0; i < _rowOffsetLookupTable.Length; i++ )
-                    _rowIndexLookupArray[ _rowOffsetLookupTable[ i ].RowId - firstId ] = i;
+                    _rowIndexLookupArray[ _rowOffsetLookupTable[ i ].RowId - _rowIndexLookupArrayOffset ] = i;
 
                 // All items can be looked up from _rowIndexLookupArray. Dictionary is unnecessary.
                 _rowIndexLookupDict = FrozenDictionary< int, int >.Empty;
@@ -139,7 +140,7 @@ public abstract class BaseExcelSheet
                 var lastLookupArrayRowId = uint.MaxValue;
                 for( i = 0; i < _rowOffsetLookupTable.Length; i++ )
                 {
-                    var offsetRowId = _rowOffsetLookupTable[ i ].RowId - firstId;
+                    var offsetRowId = _rowOffsetLookupTable[ i ].RowId - _rowIndexLookupArrayOffset;
                     if( offsetRowId >= MaxUnusedLookupItemCount )
                     {
                         // Discard the unused entries.
@@ -161,6 +162,7 @@ public abstract class BaseExcelSheet
         {
             _rowIndexLookupDict = FrozenDictionary< int, int >.Empty;
             _rowIndexLookupArray = [];
+            _rowIndexLookupArrayOffset = 0;
             _rowOffsetLookupTable = [default]; // so that _rowOffsetLookupTable.UnsafeAt(0) is always valid.
             Count = 0;
         }
@@ -168,6 +170,7 @@ public abstract class BaseExcelSheet
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/> with the <paramref name="module"/>'s default language, deducing sheet names and column
     /// hashes from <typeparamref name="T"/>.</summary>
+    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
     /// <exception cref="ArgumentException"><see cref="SheetAttribute.Name"/> was invalid (invalid sheet name).</exception>
@@ -180,6 +183,7 @@ public abstract class BaseExcelSheet
         From< T >( module, module.Language );
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>, deducing sheet names and column hashes from <typeparamref name="T"/>.</summary>
+    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="language">The language to use for this sheet.</param>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
@@ -198,6 +202,7 @@ public abstract class BaseExcelSheet
     }
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>.</summary>
+    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="language">The language to use for this sheet.</param>
     /// <param name="sheetName">The name of the sheet to read from.</param>
@@ -218,7 +223,7 @@ public abstract class BaseExcelSheet
             throw new MismatchedColumnHashException( hash, headerFile.GetColumnsHash(), nameof( columnHash ) );
 
         if( !headerFile.Languages.Contains( language ) )
-            throw new UnsupportedLanguageException();
+            throw new UnsupportedLanguageException( nameof( language ), language, null );
 
         return headerFile.Header.Variant switch
         {
@@ -260,7 +265,7 @@ public abstract class BaseExcelSheet
     [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
     internal ref readonly RowOffsetLookup GetRowLookupOrNullRef( uint rowId )
     {
-        var lookupArrayIndex = unchecked( rowId - _rowOffsetLookupTable.UnsafeAt( 0 ).RowId );
+        var lookupArrayIndex = unchecked( rowId - _rowIndexLookupArrayOffset );
         if( lookupArrayIndex < _rowIndexLookupArray.Length )
         {
             var rowIndex = _rowIndexLookupArray.UnsafeAt( (int) lookupArrayIndex );

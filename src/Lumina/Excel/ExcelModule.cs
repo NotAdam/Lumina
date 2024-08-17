@@ -61,7 +61,7 @@ public class ExcelModule
 
     /// <summary>Loads an <see cref="ExcelSheet{T}"/>.</summary>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
-    /// <inheritdoc cref="GetSubrowSheet{T}(Language?)"/>
+    /// <inheritdoc cref="GetSubrowSheet{T}(Nullable{Lumina.Data.Language})"/>
     public ExcelSheet< T > GetSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
         (ExcelSheet< T >) GetBaseSheet< T >( language );
 
@@ -72,7 +72,7 @@ public class ExcelModule
     /// <see cref="UnsupportedLanguageException"/>.</para>
     /// </remarks>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
-    /// <inheritdoc cref="GetBaseSheet{T}(Language?)"/>
+    /// <inheritdoc cref="GetBaseSheet{T}(Nullable{Lumina.Data.Language})"/>
     public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
         (SubrowExcelSheet< T >) GetBaseSheet< T >( language );
 
@@ -86,7 +86,7 @@ public class ExcelModule
     /// before accessing its rows.</para>
     /// </remarks>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-    /// <inheritdoc cref="GetBaseSheet(Type, Language?)"/>
+    /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language})"/>
     [EditorBrowsable( EditorBrowsableState.Advanced )]
     public BaseExcelSheet GetBaseSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
         GetBaseSheet( typeof( T ), language );
@@ -113,21 +113,37 @@ public class ExcelModule
     [EditorBrowsable( EditorBrowsableState.Advanced )]
     public BaseExcelSheet GetBaseSheet( Type rowType, Language? language = null )
     {
-        if( !rowType.IsValueType )
-            throw new ArgumentException( $"{nameof( rowType )} must be a struct.", nameof( rowType ) );
-
-        if( !rowType.IsAssignableTo( typeof( IExcelRow<> ).MakeGenericType( rowType ) ) )
-            throw new ArgumentException( $"{nameof( rowType )} must implement {typeof( IExcelRow<> ).Name}.", nameof( rowType ) );
-
         var sheet = SheetCache.GetOrAdd(
             ( rowType, language ?? Language ),
             static ( key, module ) => {
-                var m = typeof( BaseExcelSheet )
-                    .GetMethod( nameof( BaseExcelSheet.From ), BindingFlags.Static | BindingFlags.Public )!
-                    .MakeGenericMethod( key.Type );
+                MethodInfo m;
+                try
+                {
+                    // As BaseExcelSheet.From<T> has a constraint that T : IExcelRow<T>, it is implicitly required that T is also a struct.
+                    // MakeGenericMethod will check for constraints, and throw ArgumentException if constraints aren't met.
+                    m = typeof( BaseExcelSheet )
+                        .GetMethod(
+                            nameof( BaseExcelSheet.From ),
+                            BindingFlags.Static | BindingFlags.Public,
+                            [typeof( ExcelModule ), typeof( Language )] )!
+                        .MakeGenericMethod( key.Type );
+                }
+                catch( ArgumentException e )
+                {
+                    // Exception thrown here will propagate outside ConcurrentDictionary<>.GetOrAdd without touching the data stored inside dictionary.
+                    throw new ArgumentException(
+                        $"{key.Type.Name} must implement {typeof( IExcelRow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}>.",
+                        nameof( rowType ),
+                        e );
+                }
+
                 try
                 {
                     return m.Invoke( null, [module, key.Language] ) as BaseExcelSheet ?? throw new InvalidOperationException( "Something went wrong" );
+                }
+                catch( TargetInvocationException e )
+                {
+                    return InvalidSheet.Create( e.InnerException ?? e );
                 }
                 catch( Exception e )
                 {
