@@ -26,7 +26,7 @@ public class ExcelModule
 
     internal ResolveRsvDelegate? RsvResolver => GameData.Options.RsvResolver;
 
-    private ConcurrentDictionary< (Type Type, Language Language), ExcelSheet > SheetCache { get; } = [];
+    private ConcurrentDictionary< (Type Type, Language Language), BaseExcelSheet > SheetCache { get; } = [];
 
     /// <summary>
     /// A delegate provided by the user to resolve RSV strings.
@@ -59,54 +59,59 @@ public class ExcelModule
         SheetNames = [.. files.ExdMap.Keys];
     }
 
-    /// <summary>Loads an <see cref="DefaultExcelSheet{T}"/>.</summary>
-    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
-    /// reused from a previous invocation of this method.</returns>
-    /// <remarks>
-    /// If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
-    /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
-    /// <see cref="ExcelLanguageNotSupportedException"/>.
-    /// </remarks>
-    /// <exception cref="ArgumentException">Sheet does not exist or if the column hash has a mismatch.</exception>
-    /// <exception cref="ExcelLanguageNotSupportedException">Sheet does not support <paramref name="language" /> nor <see cref="Language.None"/>.</exception>
+    /// <summary>Loads an <see cref="ExcelSheet{T}"/>.</summary>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
-    public DefaultExcelSheet< T > GetDefaultSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
-        (DefaultExcelSheet< T >) GetSheet< T >( language );
+    /// <inheritdoc cref="GetSubrowSheet{T}(Language?)"/>
+    public ExcelSheet< T > GetSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
+        (ExcelSheet< T >) GetBaseSheet< T >( language );
 
-    /// <summary>Loads an <see cref="DefaultExcelSheet{T}"/>.</summary>
-    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
+    /// <summary>Loads an <see cref="SubrowExcelSheet{T}"/>.</summary>
+    /// <remarks>
+    /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
+    /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
+    /// <see cref="UnsupportedLanguageException"/>.</para>
+    /// </remarks>
+    /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
+    /// <inheritdoc cref="GetBaseSheet{T}(Language?)"/>
+    public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
+        (SubrowExcelSheet< T >) GetBaseSheet< T >( language );
+
+    /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
     /// reused from a previous invocation of this method.</returns>
     /// <remarks>
-    /// If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
+    /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
     /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
-    /// <see cref="ExcelLanguageNotSupportedException"/>.
+    /// <see cref="UnsupportedLanguageException"/>.</para>
+    /// <para>The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
+    /// before accessing its rows.</para>
     /// </remarks>
-    /// <exception cref="ArgumentException">Sheet does not exist or if the column hash has a mismatch.</exception>
-    /// <exception cref="ExcelLanguageNotSupportedException">Sheet does not support <paramref name="language" /> nor <see cref="Language.None"/>.</exception>
-    /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
-    public SubrowsExcelSheet< T > GetSubrowsSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
-        (SubrowsExcelSheet< T >) GetSheet< T >( language );
+    /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+    /// <inheritdoc cref="GetBaseSheet(Type, Language?)"/>
+    [EditorBrowsable( EditorBrowsableState.Advanced )]
+    public BaseExcelSheet GetBaseSheet<T>( Language? language = null ) where T : struct, IExcelRow<T> =>
+        GetBaseSheet( typeof( T ), language );
 
-    /// <summary>Loads an <see cref="ExcelSheet"/>.</summary>
+    /// <summary>Loads an <see cref="BaseExcelSheet"/>.</summary>
     /// <param name="rowType">Type of the rows in the sheet.</param>
     /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <paramref name="rowType"/> and <paramref name="language"/> that may be created anew or
+    /// <returns>An excel sheet corresponding to <paramref name="rowType"/> and <paramref name="language"/> that may be created anew or
     /// reused from a previous invocation of this method.</returns>
     /// <remarks>
     /// <para>Only use this method if you need to create a sheet while using reflection.</para>
     /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
     /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
-    /// <see cref="ExcelLanguageNotSupportedException"/>.</para>
-    /// <para>The returned instance of <see cref="ExcelSheet"/> should be cast to <see cref="DefaultExcelSheet{T}"/> or <see cref="GetDefaultSheet{T}"/>
+    /// <see cref="UnsupportedLanguageException"/>.</para>
+    /// <para>The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
     /// before accessing its rows.</para>
     /// </remarks>
-    /// <exception cref="ArgumentException">Sheet does not exist or if the column hash has a mismatch.</exception>
-    /// <exception cref="ExcelLanguageNotSupportedException">Sheet does not support <paramref name="language" /> nor <see cref="Language.None"/>.</exception>
+    /// <exception cref="InvalidOperationException"><paramref name="rowType"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+    /// <exception cref="ArgumentException">Sheet does not exist.</exception>
+    /// <exception cref="MismatchedColumnHashException">Sheet had a mismatched column hash.</exception>
+    /// <exception cref="UnsupportedLanguageException">Sheet does not support <paramref name="language" /> nor <see cref="Language.None"/>.</exception>
+    /// <exception cref="NotSupportedException">Sheet had an unsupported <see cref="ExcelVariant"/>.</exception>
     [RequiresDynamicCode( "Creating a generic sheet from a type requires reflection and dynamic code." )]
     [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public ExcelSheet GetSheet( Type rowType, Language? language = null )
+    public BaseExcelSheet GetBaseSheet( Type rowType, Language? language = null )
     {
         if( !rowType.IsValueType )
             throw new ArgumentException( $"{nameof( rowType )} must be a struct.", nameof( rowType ) );
@@ -117,70 +122,46 @@ public class ExcelModule
         var sheet = SheetCache.GetOrAdd(
             ( rowType, language ?? Language ),
             static ( key, module ) => {
-                var m = typeof( ExcelSheet )
-                    .GetMethod( nameof( ExcelSheet.From ), BindingFlags.Static | BindingFlags.Public )!
+                var m = typeof( BaseExcelSheet )
+                    .GetMethod( nameof( BaseExcelSheet.From ), BindingFlags.Static | BindingFlags.Public )!
                     .MakeGenericMethod( key.Type );
                 try
                 {
-                    return m.Invoke( null, [module, key.Language] ) as ExcelSheet ?? throw new InvalidOperationException( "Something went wrong" );
+                    return m.Invoke( null, [module, key.Language] ) as BaseExcelSheet ?? throw new InvalidOperationException( "Something went wrong" );
                 }
-                catch( ExcelLanguageNotSupportedException )
+                catch( Exception e )
                 {
-                    return LanguageNotSupportedPlaceholder.Instance;
+                    return InvalidSheet.Create( e );
                 }
             },
             this );
 
-        if( sheet != LanguageNotSupportedPlaceholder.Instance )
+        if( sheet is not InvalidSheet { Exception: var e } )
             return sheet;
-        if( language == Language.None )
-            throw new ExcelLanguageNotSupportedException( nameof( language ), language, null );
-        return GetSheet( rowType, Language.None );
+        if( e is UnsupportedLanguageException )
+        {
+            if( language == Language.None )
+                throw new UnsupportedLanguageException( nameof( language ), language, null );
+            return GetBaseSheet( rowType, Language.None );
+        }
+        throw e;
     }
 
-    /// <summary>Loads an <see cref="ExcelSheet"/>.</summary>
-    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
-    /// reused from a previous invocation of this method.</returns>
-    /// <remarks>
-    /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
-    /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
-    /// <see cref="ExcelLanguageNotSupportedException"/>.</para>
-    /// <para>The returned instance of <see cref="ExcelSheet"/> should be cast to <see cref="DefaultExcelSheet{T}"/> or <see cref="GetDefaultSheet{T}"/>
-    /// before accessing its rows.</para>
-    /// </remarks>
-    /// <exception cref="ArgumentException">Sheet does not exist or if the column hash has a mismatch.</exception>
-    /// <exception cref="ExcelLanguageNotSupportedException">Sheet does not support <paramref name="language" /> nor <see cref="Language.None"/>.</exception>
-    [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public ExcelSheet GetSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
+    private sealed class InvalidSheet : BaseExcelSheet
     {
-        var sheet = SheetCache.GetOrAdd(
-            ( typeof( T ), language ?? Language ),
-            static ( key, module ) => {
-                try
-                {
-                    return ExcelSheet.From< T >( module, key.Language );
-                }
-                catch( ExcelLanguageNotSupportedException )
-                {
-                    return LanguageNotSupportedPlaceholder.Instance;
-                }
-            },
-            this );
+        public Exception Exception { get; private set; }
 
-        if( sheet != LanguageNotSupportedPlaceholder.Instance )
-            return sheet;
-        if( language == Language.None )
-            throw new ExcelLanguageNotSupportedException( nameof( language ), language, null );
-        return GetSheet< T >( Language.None );
-    }
+        // never actually called
+        private InvalidSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName ) : base(module, headerFile, requestedLanguage, sheetName)
+        {
+            Exception = null!;
+        }
 
-    private sealed class LanguageNotSupportedPlaceholder : ExcelSheet
-    {
-        public static readonly ExcelSheet Instance = (ExcelSheet) RuntimeHelpers.GetUninitializedObject( typeof( LanguageNotSupportedPlaceholder ) );
-
-        internal LanguageNotSupportedPlaceholder( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName )
-            : base( module, headerFile, requestedLanguage, sheetName )
-        { }
+        public static InvalidSheet Create(Exception exception )
+        {
+            var ret = (InvalidSheet)RuntimeHelpers.GetUninitializedObject( typeof( InvalidSheet ) );
+            ret.Exception = exception;
+            return ret;
+        }
     }
 }

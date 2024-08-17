@@ -10,30 +10,23 @@ namespace Lumina.Excel;
 public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
     where T : struct, IExcelRow< T >
 {
-    private readonly ExcelSheet.RowOffsetLookup _lookup;
+    private readonly BaseExcelSheet.RowOffsetLookup _lookup;
 
-    internal SubrowCollection( SubrowsExcelSheet< T > sheet, scoped in ExcelSheet.RowOffsetLookup lookup )
+    internal SubrowCollection( SubrowExcelSheet< T > sheet, scoped ref readonly BaseExcelSheet.RowOffsetLookup lookup )
     {
         Sheet = sheet;
         _lookup = lookup;
     }
 
     /// <summary>Gets the associated sheet.</summary>
-    public SubrowsExcelSheet< T > Sheet { get; }
+    public SubrowExcelSheet< T > Sheet { get; }
 
     /// <summary>Gets the Row ID of the subrows contained within.</summary>
-    public uint RowId {
-        [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
-        get => _lookup.RowId;
-    }
+    public uint RowId => _lookup.RowId;
 
     /// <inheritdoc cref="ICollection{T}.Count"/>
-    public int Count {
-        [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
-        get => _lookup.SubrowCount;
-    }
+    public int Count => _lookup.SubrowCount;
 
-    /// <inheritdoc/>
     bool ICollection< T >.IsReadOnly => true;
 
     /// <inheritdoc/>
@@ -42,7 +35,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         get {
             ArgumentOutOfRangeException.ThrowIfNegative( index );
             ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( index, Count );
-            return Sheet.UnsafeCreateSubrow< T >( _lookup, unchecked( (ushort) index ) );
+            return Sheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) index ) );
         }
     }
 
@@ -52,13 +45,23 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         set => throw new NotSupportedException();
     }
 
+    void IList<T>.Insert( int index, T item ) => throw new NotSupportedException();
+
+    void IList<T>.RemoveAt( int index ) => throw new NotSupportedException();
+
+    void ICollection<T>.Add( T item ) => throw new NotSupportedException();
+
+    void ICollection<T>.Clear() => throw new NotSupportedException();
+
+    bool ICollection<T>.Remove( T item ) => throw new NotSupportedException();
+
     /// <inheritdoc/>
     public int IndexOf( T item )
     {
         if( item.RowId != RowId || item.SubrowId >= Count )
             return -1;
 
-        var row = Sheet.UnsafeCreateSubrow< T >( _lookup, item.SubrowId );
+        var row = Sheet.UnsafeCreateSubrow< T >( in _lookup, item.SubrowId );
         return EqualityComparer< T >.Default.Equals( item, row ) ? item.SubrowId : -1;
     }
 
@@ -73,31 +76,14 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         if( Count > array.Length - arrayIndex )
             throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
         for( var i = 0; i < Count; i++ )
-            array[ arrayIndex++ ] = Sheet.UnsafeCreateSubrow< T >( _lookup, unchecked( (ushort) i ) );
+            array[ arrayIndex++ ] = Sheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) i ) );
     }
-
-    /// <inheritdoc/>
-    void IList< T >.Insert( int index, T item ) => throw new NotSupportedException();
-
-    /// <inheritdoc/>
-    void IList< T >.RemoveAt( int index ) => throw new NotSupportedException();
-
-    /// <inheritdoc/>
-    void ICollection< T >.Add( T item ) => throw new NotSupportedException();
-
-    /// <inheritdoc/>
-    void ICollection< T >.Clear() => throw new NotSupportedException();
-
-    /// <inheritdoc/>
-    bool ICollection< T >.Remove( T item ) => throw new NotSupportedException();
 
     /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
     public Enumerator GetEnumerator() => new( this );
 
-    /// <inheritdoc/>
     IEnumerator< T > IEnumerable< T >.GetEnumerator() => GetEnumerator();
 
-    /// <inheritdoc/>
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     /// <summary>Enumerator that enumerates over subrows under one row.</summary>
@@ -107,19 +93,11 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         private int _index = -1;
 
         /// <inheritdoc cref="IEnumerator{T}.Current"/>
-        public readonly T Current {
-            [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
-            get => subrowCollection.Sheet.UnsafeCreateSubrow< T >( subrowCollection._lookup, unchecked( (ushort) _index ) );
-        }
+        public readonly T Current => subrowCollection.Sheet.UnsafeCreateSubrow< T >( in subrowCollection._lookup, unchecked( (ushort) _index ) );
+
+        readonly object IEnumerator.Current => Current;
 
         /// <inheritdoc/>
-        readonly object IEnumerator.Current {
-            [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
-            get => Current;
-        }
-
-        /// <inheritdoc/>
-        [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
         public bool MoveNext()
         {
             if( ++_index < subrowCollection.Count )
@@ -130,11 +108,9 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         }
 
         /// <inheritdoc/>
-        [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
         public void Reset() => _index = -1;
 
         /// <inheritdoc/>
-        [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
         public readonly void Dispose()
         { }
     }

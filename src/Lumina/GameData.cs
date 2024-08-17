@@ -43,8 +43,7 @@ namespace Lumina
         /// <summary>
         /// Provides access to EXD/EXH data, internally called Excel.
         ///
-        /// Loaded by default on init unless you opt not to load it. Can be loaded at a later time by calling Lumina.InitExcelModule or optionally
-        /// constructing your own Excel.ExcelModule.
+        /// Loaded by default on init unless you opt not to load it.
         /// </summary>
         public ExcelModule Excel { get; private set; }
         
@@ -57,7 +56,7 @@ namespace Lumina
         /// <summary>
         /// Provides a pool for file streams for .dat files.
         /// </summary>
-        /// <remarks>The pool will be disposed when <see cref="Dispose"/> is called.</remarks>
+        /// <remarks>The pool will be disposed when <see cref="Dispose()"/> is called.</remarks>
         public SqPackStreamPool? StreamPool { get; set; }
         
         internal ILogger? Logger { get; private set; }
@@ -287,37 +286,55 @@ namespace Lumina
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
         }
 
-        /// <summary>Loads an <see cref="DefaultExcelSheet{T}"/>.</summary>
+        /// <summary>Loads an <see cref="ExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
         /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-        /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
-        /// reused from a previous invocation of this method, or <see langword="null"/> if a corresponding sheet could not be loaded.</returns>
-        /// <exception cref="InvalidOperationException">Thrown when <typeparamref name="T"/> is not decorated with a <see cref="SheetAttribute"/></exception>
+        /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
+        /// reused from a previous invocation of this method.</returns>
+        /// <remarks>
+        /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
+        /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
+        /// <see cref="UnsupportedLanguageException"/>.</para>
+        /// </remarks>
         /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
-        public DefaultExcelSheet< T >? GetDefaultExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
+        /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+        public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
         {
             try
             {
-                return Excel.GetDefaultSheet< T >( language );
+                return Excel.GetSheet< T >( language );
             }
             catch( ArgumentException )
             {
                 return null;
             }
+            catch( NotSupportedException )
+            {
+                return null;
+            }
         }
 
-        /// <summary>Loads an <see cref="DefaultExcelSheet{T}"/>.</summary>
+        /// <summary>Loads an <see cref="SubrowExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
         /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-        /// <returns>An instance of <see cref="ExcelSheet"/> corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
-        /// reused from a previous invocation of this method, or <see langword="null"/> if a corresponding sheet could not be loaded.</returns>
-        /// <exception cref="InvalidOperationException">Thrown when <typeparamref name="T"/> is not decorated with a <see cref="SheetAttribute"/></exception>
+        /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
+        /// reused from a previous invocation of this method.</returns>
+        /// <remarks>
+        /// <para>If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the language-neutral
+        /// sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function will fail with
+        /// <see cref="UnsupportedLanguageException"/>.</para>
+        /// </remarks>
         /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
-        public SubrowsExcelSheet< T >? GetSubrowsExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
+        /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+        public SubrowExcelSheet< T >? GetSubrowExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
         {
             try
             {
-                return Excel.GetSubrowsSheet< T >( language );
+                return Excel.GetSubrowSheet< T >( language );
             }
             catch( ArgumentException )
+            {
+                return null;
+            }
+            catch ( NotSupportedException )
             {
                 return null;
             }

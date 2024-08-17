@@ -311,7 +311,7 @@ public class SeStringBuilderTests
     public void AddonIsParsedCorrectly()
     {
         var gameData = new GameData( @"C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\sqpack" );
-        var addon = gameData.Excel.GetDefaultSheet< Addon >();
+        var addon = gameData.Excel.GetSheet< Addon >();
         var ssb = new SeStringBuilder();
         var expected = new Dictionary< uint, ReadOnlySeString >
         {

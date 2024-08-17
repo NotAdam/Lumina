@@ -74,7 +74,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     {
         foreach( var sheetType in sheetTypes )
         {
-            if( module.GetSheet( sheetType ) is { } sheet )
+            if( module.GetBaseSheet( sheetType ) is { } sheet )
             {
                 if( sheet.HasRow( rowId ) )
                     return new( module, rowId, sheetType );
@@ -90,7 +90,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// <typeparam name="T">The row type referenced by the <paramref name="rowId"/>.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
     /// <param name="rowId">The referenced row id.</param>
-    /// <returns>A <see cref="RowRef"/> to a row in a <see cref="ExcelSheet"/>.</returns>
+    /// <returns>A <see cref="RowRef"/> to a row in a <see cref="BaseExcelSheet"/>.</returns>
     public static RowRef Create< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T > => new( module, rowId, typeof( T ) );
 
     /// <summary>
@@ -109,7 +109,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
 /// <param name="rowId">The referenced row id.</param>
 public readonly struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T >
 {
-    private readonly ExcelSheet? _sheet = module?.GetSheet< T >();
+    private readonly BaseExcelSheet? _sheet = module?.GetBaseSheet< T >();
 
     /// <summary>
     /// The row id of the referenced row.

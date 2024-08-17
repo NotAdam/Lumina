@@ -34,11 +34,13 @@ public sealed class ExcelPage
         dataOffset = headerDataOffset;
     }
 
-    [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
+    // Ignores bounds checks to speed up reading data.
+    // https://t.ly/EmR4n (Sharplab link)
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
     private D Read<D>( nuint offset ) where D : unmanaged =>
         Unsafe.As<byte, D>( ref Unsafe.AddByteOffset( ref MemoryMarshal.GetArrayDataReference( data ), offset ) );
 
-    [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
     private static float ReverseEndianness( float v ) =>
         Unsafe.BitCast<uint, float>( BinaryPrimitives.ReverseEndianness( Unsafe.BitCast<float, uint>( v ) ) );
 
