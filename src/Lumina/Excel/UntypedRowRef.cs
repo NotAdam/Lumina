@@ -76,7 +76,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     }
 
     /// <inheritdoc cref="TryGetValue{T}(out T)"/>
-    public bool TryGetValueSubrow< T >( out SubrowCollection< T > row ) where T : struct, IExcelSubrow<T>
+    public bool TryGetValueSubrow< T >( out SubrowCollection< T > row ) where T : struct, IExcelSubrow< T >
     {
         if( new SubrowRef< T >( module, rowId ).ValueNullable is { } v )
         {

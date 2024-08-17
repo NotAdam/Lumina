@@ -91,7 +91,7 @@ public class ExcelModule
     /// <inheritdoc cref="GetBaseSheet{T}(Language?)"/>
     [EditorBrowsable( EditorBrowsableState.Advanced )]
     public BaseSubrowExcelSheet GetBaseSubrowSheet< T >( Language? language = null ) where T : struct, IExcelSubrow< T > =>
-        (BaseSubrowExcelSheet)GetBaseSheet( typeof( T ), language );
+        (BaseSubrowExcelSheet) GetBaseSheet( typeof( T ), language );
 
     /// <summary>Loads an <see cref="BaseExcelSheet"/>.</summary>
     /// <param name="rowType">Type of the rows in the sheet.</param>
@@ -145,7 +145,7 @@ public class ExcelModule
                 {
                     // Exception thrown here will propagate outside ConcurrentDictionary<>.GetOrAdd without touching the data stored inside dictionary.
                     throw new ArgumentException(
-                        $"{key.Type.Name} must implement either {typeof( IExcelRow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}> or {typeof( IExcelSubrow<> ).Name.Split( '`', 2 )[0]}<{key.Type.Name}>.",
+                        $"{key.Type.Name} must implement either {typeof( IExcelRow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}> or {typeof( IExcelSubrow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}>.",
                         nameof( rowType ),
                         e );
                 }

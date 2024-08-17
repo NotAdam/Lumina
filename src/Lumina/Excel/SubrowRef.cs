@@ -10,7 +10,7 @@ namespace Lumina.Excel;
 /// <param name="rowId">The referenced row id.</param>
 public readonly struct SubrowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelSubrow< T >
 {
-    private readonly SubrowExcelSheet< T >? _sheet = module?.GetSubrowSheet<T>();
+    private readonly SubrowExcelSheet< T >? _sheet = module?.GetSubrowSheet< T >();
 
     /// <summary>
     /// The row id of the referenced row.
