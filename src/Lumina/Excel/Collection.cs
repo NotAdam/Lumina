@@ -16,21 +16,31 @@ namespace Lumina.Excel;
 /// <param name="ctor"></param>
 /// <param name="size"></param>
 public readonly struct Collection< T >( ExcelPage page, uint parentOffset, uint offset, Func< ExcelPage, uint, uint, uint, T > ctor, int size )
-    : IReadOnlyList< T >, ICollection< T > where T : struct
+    : IList< T >, IReadOnlyList< T > where T : struct
 {
+    /// <inheritdoc cref="ICollection{T}.Count"/>
+    public int Count => size;
+
+    bool ICollection< T >.IsReadOnly => true;
+
     /// <inheritdoc/>
     public T this[ int index ] {
         [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
         get {
             ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( index, size );
-            return ctor( page, parentOffset, offset, (uint) index );
+            return UnsafeCreateAt( index );
         }
     }
 
     /// <inheritdoc/>
-    public int Count => size;
+    T IList< T >.this[ int index ] {
+        get => this[ index ];
+        set => throw new NotSupportedException();
+    }
 
-    bool ICollection< T >.IsReadOnly => true;
+    void IList< T >.Insert( int index, T item ) => throw new NotSupportedException();
+
+    void IList< T >.RemoveAt( int index ) => throw new NotSupportedException();
 
     void ICollection< T >.Add( T item ) => throw new NotSupportedException();
 
@@ -39,17 +49,22 @@ public readonly struct Collection< T >( ExcelPage page, uint parentOffset, uint 
     bool ICollection< T >.Remove( T item ) => throw new NotSupportedException();
 
     /// <inheritdoc/>
-    public bool Contains( T item )
+    public int IndexOf( T item )
     {
+        var i = 0;
         var comparer = EqualityComparer< T >.Default;
         foreach( var element in this )
         {
             if( comparer.Equals( item, element ) )
-                return true;
+                return i;
+            ++i;
         }
 
-        return false;
+        return -1;
     }
+
+    /// <inheritdoc/>
+    public bool Contains( T item ) => IndexOf( item ) != -1;
 
     /// <inheritdoc/>
     public void CopyTo( T[] array, int arrayIndex )
@@ -58,16 +73,21 @@ public readonly struct Collection< T >( ExcelPage page, uint parentOffset, uint 
         ArgumentOutOfRangeException.ThrowIfNegative( arrayIndex );
         if( Count > array.Length - arrayIndex )
             throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
-        for( var i = 0; i < Count; i++ )
-            array[ arrayIndex++ ] = this[ i ];
+        foreach( var e in this )
+            array[ arrayIndex++ ] = e;
     }
 
     /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
     public Enumerator GetEnumerator() => new( this );
 
-    readonly IEnumerator< T > IEnumerable< T >.GetEnumerator() => GetEnumerator();
+    IEnumerator< T > IEnumerable< T >.GetEnumerator() => GetEnumerator();
 
-    readonly IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+    /// <summary>Creates an item at the given index, without checking for boundaries.</summary>
+    /// <param name="index">Index of the item.</param>
+    /// <returns>Newly created item.</returns>
+    private T UnsafeCreateAt( int index ) => ctor( page, parentOffset, offset, unchecked( (uint) index ) );
 
     /// <summary>Enumerator that enumerates over the different items.</summary>
     /// <param name="collection">Collection to iterate over.</param>
@@ -76,7 +96,7 @@ public readonly struct Collection< T >( ExcelPage page, uint parentOffset, uint 
         private int _index = -1;
 
         /// <inheritdoc cref="IEnumerator{T}.Current"/>
-        public readonly T Current => collection[ _index ];
+        public T Current { get; private set; }
 
         readonly object IEnumerator.Current => Current;
 
@@ -84,7 +104,13 @@ public readonly struct Collection< T >( ExcelPage page, uint parentOffset, uint 
         public bool MoveNext()
         {
             if( ++_index < collection.Count )
+            {
+                // UnsafeCreateAt must be called only when the preconditions are validated.
+                // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
+                // so we create the instance in advance here.
+                Current = collection.UnsafeCreateAt( _index );
                 return true;
+            }
 
             --_index;
             return false;

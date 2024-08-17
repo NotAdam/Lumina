@@ -189,16 +189,21 @@ public sealed class SubrowExcelSheet< T >
         private int _index = -1;
 
         /// <inheritdoc cref="IEnumerator{T}.Current"/>
-        public readonly SubrowCollection< T > Current => new( sheet, in sheet.UnsafeGetRowLookupAt( _index ) );
+        public SubrowCollection< T > Current { get; private set; }
 
-        readonly object IEnumerator.Current =>
-            Current;
+        readonly object IEnumerator.Current => Current;
 
         /// <inheritdoc/>
         public bool MoveNext()
         {
             if( ++_index < sheet.Count )
+            {
+                // UnsafeGetRowLookupAt must be called only when the preconditions are validated.
+                // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
+                // so we create the instance in advance here.
+                Current = new( sheet, in sheet.UnsafeGetRowLookupAt( _index ) );
                 return true;
+            }
 
             --_index;
             return false;
@@ -222,7 +227,7 @@ public sealed class SubrowExcelSheet< T >
         private ushort _subrowCount;
 
         /// <inheritdoc cref="IEnumerator{T}.Current"/>
-        public readonly T Current => sheet.UnsafeCreateSubrowAt< T >( _index, _subrowIndex );
+        public T Current { get; private set; }
 
         readonly object IEnumerator.Current => Current;
 
@@ -243,11 +248,16 @@ public sealed class SubrowExcelSheet< T >
                     _subrowCount = sheet.UnsafeGetRowLookupAt( _index ).SubrowCount;
                     if( _subrowCount == 0 )
                         continue;
+
                     _subrowIndex = 0;
-                    return true;
+                    break;
                 }
             }
 
+            // UnsafeCreateSubrowAt must be called only when the preconditions are validated.
+            // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
+            // so we create the instance in advance here.
+            Current = sheet.UnsafeCreateSubrowAt< T >( _index, _subrowIndex );
             return true;
         }
 
