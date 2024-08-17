@@ -163,7 +163,7 @@ public abstract class BaseExcelSheet
             _rowIndexLookupDict = FrozenDictionary< int, int >.Empty;
             _rowIndexLookupArray = [];
             _rowIndexLookupArrayOffset = 0;
-            _rowOffsetLookupTable = [default]; // so that _rowOffsetLookupTable.UnsafeAt(0) is always valid.
+            _rowOffsetLookupTable = [];
             Count = 0;
         }
     }
