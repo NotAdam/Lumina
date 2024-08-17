@@ -169,8 +169,8 @@ public class ExcelModule
         public Exception Exception { get; private set; }
 
         // never actually called
-        private InvalidSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName ) : base( module, headerFile,
-            requestedLanguage, sheetName )
+        private InvalidSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName )
+            : base( module, headerFile, requestedLanguage, sheetName )
         {
             Exception = null!;
         }
