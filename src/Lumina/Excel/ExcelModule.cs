@@ -10,6 +10,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Structs.Excel;
+using Lumina.Excel.Exceptions;
 
 namespace Lumina.Excel;
 

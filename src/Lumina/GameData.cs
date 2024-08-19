@@ -8,6 +8,7 @@ using Lumina.Data;
 using Lumina.Data.Structs;
 using Lumina.Data.Structs.Excel;
 using Lumina.Excel;
+using Lumina.Excel.Exceptions;
 using Lumina.Misc;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -296,19 +297,15 @@ namespace Lumina
         /// language-neutral sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function
         /// will return <see langword="null"/>.
         /// </remarks>
-        /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
-        /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+        /// <exception cref="SheetNameEmptyException">Sheet name was not specified neither via <typeparamref name="T"/>'s <see cref="SheetAttribute.Name"/> nor <paramref name="name"/>.</exception>
+        /// <exception cref="SheetAttributeMissingException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
         public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelRow< T >
         {
             try
             {
                 return Excel.GetSheet< T >( language, name );
             }
-            catch( ArgumentException )
-            {
-                return null;
-            }
-            catch( NotSupportedException )
+            catch( Exception e ) when ( e is SheetNotFoundException or MismatchedColumnHashException or NotSupportedException or UnsupportedLanguageException )
             {
                 return null;
             }
@@ -323,11 +320,7 @@ namespace Lumina
             {
                 return Excel.GetSubrowSheet< T >( language, name );
             }
-            catch( ArgumentException )
-            {
-                return null;
-            }
-            catch ( NotSupportedException )
+            catch( Exception e ) when ( e is SheetNotFoundException or MismatchedColumnHashException or NotSupportedException or UnsupportedLanguageException )
             {
                 return null;
             }

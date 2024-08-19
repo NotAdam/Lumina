@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
+using Lumina.Excel.Exceptions;
 
 namespace Lumina.Excel;
 
