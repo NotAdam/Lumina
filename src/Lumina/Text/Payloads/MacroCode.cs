@@ -184,6 +184,13 @@ public enum MacroCode : byte
     /// <remarks>Parameters: row ID in UIColor sheet or 0 to pop(or reset?) the pushed color, terminator.</remarks>
     [MacroCodeData( null, "n x" )] EdgeColorType = 0x49,
 
+    /// <summary>Displays ruby text (furigana, interlinear annotation) above standard text.</summary>
+    /// <remarks>
+    /// <para>Parameters: standard text, ruby text.</para>
+    /// <para>Name of this payload is not defined in the client.</para>
+    /// </remarks>
+    [MacroCodeData(null, "s s")] Ruby = 0x4A,
+
     /// <summary>Adds a zero-padded number as text.</summary>
     /// <remarks>Parameters: integer expression, target length, terminator.</remarks>
     [MacroCodeData( null, "n n x" )] Digit = 0x50,

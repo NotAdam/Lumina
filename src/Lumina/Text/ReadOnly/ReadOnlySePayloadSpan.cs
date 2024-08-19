@@ -39,8 +39,14 @@ public readonly ref struct ReadOnlySePayloadSpan
                     throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode, "MacroCode may not be defined if the payload is of text type." );
                 break;
             case ReadOnlySePayloadType.Macro:
-                if( !Enum.IsDefined( macroCode ) || macroCode == 0 )
-                    throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode, null );
+                if( macroCode == default )
+                    throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode, "MacroCode must be defined if the payload is of macro type." );
+                if( (byte) macroCode >= 0xCF )
+                {
+                    throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode,
+                        "Whether MacroCode is an integer expression is unknown. Change it when it happens." );
+                }
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException( nameof( type ), type, null );
