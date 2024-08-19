@@ -201,7 +201,7 @@ public abstract class BaseExcelSheet
         var attribute = typeof( T ).GetCustomAttribute< SheetAttribute >() ??
             throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( Create )} with 4 parameters." );
 
-        return Create< T >( module, language, name ?? attribute.Name, attribute.ColumnHash );
+        return Create< T >( module, language, name ?? attribute.Name ?? throw new ArgumentNullException( nameof( name ) ), attribute.ColumnHash );
     }
 
     /// <returns>A new instance of <see cref="SubrowExcelSheet{T}"/>.</returns>
@@ -211,7 +211,7 @@ public abstract class BaseExcelSheet
         var attribute = typeof( T ).GetCustomAttribute< SheetAttribute >() ??
             throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( Create )} with 4 parameters." );
 
-        return CreateSubrow< T >( module, language, name ?? attribute.Name, attribute.ColumnHash );
+        return CreateSubrow< T >( module, language, name ?? attribute.Name ?? throw new ArgumentNullException( nameof( name ) ), attribute.ColumnHash );
     }
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>.</summary>
