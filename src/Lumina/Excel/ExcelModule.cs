@@ -41,7 +41,6 @@ public class ExcelModule
     /// </summary>
     public IReadOnlyCollection< string > SheetNames { get; }
 
-
     /// <summary>
     /// Create a new ExcelModule. This will do all the initial discovery of sheets from the EXL but not load any sheets.
     /// </summary>
@@ -61,31 +60,31 @@ public class ExcelModule
 
     /// <summary>Loads an <see cref="ExcelSheet{T}"/>.</summary>
     /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <param name="sheetName">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
-    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="sheetName"/>
+    /// <param name="name">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="name"/>
     /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks/>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
     /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language}, string?)"/>
-    public ExcelSheet< T > GetSheet< T >( Language? language = null, string? sheetName = null ) where T : struct, IExcelRow< T > =>
-        (ExcelSheet< T >)GetBaseSheet( typeof( T ), language, sheetName );
+    public ExcelSheet< T > GetSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelRow< T > =>
+        (ExcelSheet< T >)GetBaseSheet( typeof( T ), language, name );
 
     /// <summary>Loads an <see cref="SubrowExcelSheet{T}"/>.</summary>
     /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <param name="sheetName">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
-    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="sheetName"/>
+    /// <param name="name">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="name"/>
     /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks/>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
     /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language}, string?)"/>
-    public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null, string? sheetName = null ) where T : struct, IExcelSubrow< T > =>
-        (SubrowExcelSheet< T >) GetBaseSheet( typeof( T ), language, sheetName );
+    public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelSubrow< T > =>
+        (SubrowExcelSheet< T >) GetBaseSheet( typeof( T ), language, name );
 
     /// <summary>Loads an <see cref="BaseExcelSheet"/>.</summary>
     /// <param name="rowType">Type of the rows in the sheet.</param>
     /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <param name="sheetName">The requested explicit sheet name. Leave <see langword="null"/> to use <paramref name="rowType"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
-    /// <returns>An excel sheet corresponding to <paramref name="rowType"/>, <paramref name="language"/>, and <paramref name="sheetName"/>
+    /// <param name="name">The requested explicit sheet name. Leave <see langword="null"/> to use <paramref name="rowType"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <paramref name="rowType"/>, <paramref name="language"/>, and <paramref name="name"/>
     /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks>
     /// <para>Only use this method if you need to create a sheet while using reflection.</para>
@@ -99,10 +98,10 @@ public class ExcelModule
     /// <exception cref="NotSupportedException">Sheet had an unsupported <see cref="ExcelVariant"/>.</exception>
     [RequiresDynamicCode( "Creating a generic sheet from a type requires reflection and dynamic code." )]
     [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public BaseExcelSheet GetBaseSheet( Type rowType, Language? language = null, string? sheetName = null )
+    public BaseExcelSheet GetBaseSheet( Type rowType, Language? language = null, string? name = null )
     {
         var sheet = SheetCache.GetOrAdd(
-            ( rowType, language ?? Language, sheetName ),
+            ( rowType, language ?? Language, name ),
             static ( key, module ) => {
                 MethodInfo m;
                 try
