@@ -26,7 +26,8 @@ public class ExcelModule
 
     internal ResolveRsvDelegate? RsvResolver => GameData.Options.RsvResolver;
 
-    private ConcurrentDictionary< (Type Type, Language Language, string? Name), BaseExcelSheet > SheetCache { get; } = [];
+    private ConcurrentDictionary< (Type Type, Language Language, string Name), BaseExcelSheet > SheetCache { get; } = [];
+    private ConcurrentDictionary< Type, SheetAttribute? > SheetAttributeCache { get; } = [];
 
     /// <summary>
     /// A delegate provided by the user to resolve RSV strings.
@@ -67,7 +68,7 @@ public class ExcelModule
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
     /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language}, string?)"/>
     public ExcelSheet< T > GetSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelRow< T > =>
-        (ExcelSheet< T >)GetBaseSheet( typeof( T ), language, name );
+        (ExcelSheet< T >) GetBaseSheet( typeof( T ), language, name );
 
     /// <summary>Loads an <see cref="SubrowExcelSheet{T}"/>.</summary>
     /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
@@ -91,8 +92,9 @@ public class ExcelModule
     /// <para>The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
     /// before accessing its rows.</para>
     /// </remarks>
-    /// <exception cref="InvalidOperationException"><paramref name="rowType"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-    /// <exception cref="ArgumentException">Sheet does not exist.</exception>
+    /// <exception cref="SheetNameEmptyException">Sheet name was not specified neither via <paramref name="rowType"/> nor <paramref name="name"/>.</exception>
+    /// <exception cref="SheetAttributeMissingException"><paramref name="rowType"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+    /// <exception cref="SheetNotFoundException">Sheet does not exist.</exception>
     /// <exception cref="MismatchedColumnHashException">Sheet had a mismatched column hash.</exception>
     /// <exception cref="UnsupportedLanguageException">Sheet does not support <paramref name="language" /> nor <see cref="Language.None"/>.</exception>
     /// <exception cref="NotSupportedException">Sheet had an unsupported <see cref="ExcelVariant"/>.</exception>
@@ -100,37 +102,41 @@ public class ExcelModule
     [EditorBrowsable( EditorBrowsableState.Advanced )]
     public BaseExcelSheet GetBaseSheet( Type rowType, Language? language = null, string? name = null )
     {
+        var attr = GetSheetAttributes( rowType ) ?? throw new SheetAttributeMissingException( null, nameof( rowType ) );
+        name ??= attr.Name ?? throw new SheetNameEmptyException( null, nameof( name ) );
         var sheet = SheetCache.GetOrAdd(
             ( rowType, language ?? Language, name ),
-            static ( key, module ) => {
-                MethodInfo m;
+            static ( key, context ) => {
+                Type t;
                 try
                 {
-                    var isSubrowType = key.Type.IsAssignableTo( typeof( IExcelSubrow<> ).MakeGenericType( key.Type ) );
-
-                    // As BaseExcelSheet.From(Subrow)<T> has a constraint that T : IExcel(Row/Subrow)<T>, it is implicitly required that T is also a struct.
-                    // MakeGenericMethod will check for constraints, and throw ArgumentException if constraints aren't met.
-                    m = typeof( BaseExcelSheet )
-                        .GetMethod(
-                            isSubrowType ?
-                                nameof( BaseExcelSheet.CreateSubrow ) :
-                                nameof( BaseExcelSheet.Create ),
-                            BindingFlags.Static | BindingFlags.Public,
-                            [typeof( ExcelModule ), typeof( Language ), typeof( string )] )!
-                        .MakeGenericMethod( key.Type );
+                    t = typeof( ExcelSheet<> ).MakeGenericType( key.Type );
                 }
-                catch( ArgumentException e )
+                catch( ArgumentException e1 )
                 {
-                    // Exception thrown here will propagate outside ConcurrentDictionary<>.GetOrAdd without touching the data stored inside dictionary.
-                    throw new ArgumentException(
-                        $"{key.Type.Name} must implement either {typeof( IExcelRow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}> or {typeof( IExcelSubrow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}>.",
-                        nameof( rowType ),
-                        e );
+                    try
+                    {
+                        t = typeof( SubrowExcelSheet<> ).MakeGenericType( key.Type );
+                    }
+                    catch( ArgumentException e2 )
+                    {
+                        // Exception thrown here will propagate outside ConcurrentDictionary<>.GetOrAdd without touching the data stored inside dictionary.
+                        throw new ArgumentException(
+                            $"{key.Type.Name} must implement either {typeof( IExcelRow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}> or {typeof( IExcelSubrow<> ).Name.Split( '`', 2 )[ 0 ]}<{key.Type.Name}>.",
+                            nameof( rowType ),
+                            new AggregateException( e1, e2 ) );
+                    }
                 }
 
                 try
                 {
-                    return m.Invoke( null, [module, key.Language, key.Name] ) as BaseExcelSheet ?? throw new InvalidOperationException( "Something went wrong" );
+                    return Activator.CreateInstance(
+                            t,
+                            BindingFlags.Instance | BindingFlags.Public,
+                            null,
+                            [context.Module, key.Language, key.Name, context.Attribute.ColumnHash],
+                            null ) as BaseExcelSheet ??
+                        throw new InvalidOperationException( "Something went wrong" );
                 }
                 catch( TargetInvocationException e )
                 {
@@ -141,7 +147,7 @@ public class ExcelModule
                     return InvalidSheet.Create( e );
                 }
             },
-            this );
+            ( Module: this, Attribute: attr ) );
 
         if( sheet is not InvalidSheet { Exception: var e } )
             return sheet;
@@ -155,16 +161,44 @@ public class ExcelModule
         throw e;
     }
 
+    /// <summary>Unloads cached sheets that reference an assembly.</summary>
+    /// <param name="assembly">Assembly to look for in the cached sheets.</param>
+    public void UnloadCachedSheetsOfAssembly( Assembly assembly )
+    {
+        foreach( var c in SheetCache.Keys )
+        {
+            if( c.Type.Assembly == assembly )
+                _ = SheetCache.TryRemove( c, out _ );
+        }
+
+        foreach( var c in SheetAttributeCache.Keys )
+        {
+            if( c.Assembly == assembly )
+                _ = SheetAttributeCache.TryRemove( c, out _ );
+        }
+    }
+
+    /// <summary>Gets the sheet attributes for <typeparamref name="T"/>.</summary>
+    /// <typeparam name="T">Type of the row.</typeparam>
+    /// <returns>Sheet attributes, if any.</returns>
+    internal SheetAttribute? GetSheetAttributes< T >() => GetSheetAttributes( typeof( T ) );
+
+    /// <summary>Gets the sheet attributes for <paramref name="rowType"/>.</summary>
+    /// <param name="rowType">Type of the row.</param>
+    /// <returns>Sheet attributes, if any.</returns>
+    internal SheetAttribute? GetSheetAttributes( Type rowType ) =>
+        SheetAttributeCache.GetOrAdd(
+            rowType,
+            static type => type.GetCustomAttribute< SheetAttribute >( false ) );
+
     private sealed class InvalidSheet : BaseExcelSheet
     {
         public Exception Exception { get; private set; }
 
         // never actually called
         private InvalidSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName )
-            : base( module, headerFile, requestedLanguage, sheetName )
-        {
+            : base( default!, default, default!, default, default ) =>
             Exception = null!;
-        }
 
         public static InvalidSheet Create( Exception exception )
         {
