@@ -1,6 +1,6 @@
 using System;
 
-namespace Lumina.Excel;
+namespace Lumina.Excel.Exceptions;
 
 /// <summary>Exception indicating that the requested language is not supported by the requested sheet.</summary>
 public sealed class UnsupportedLanguageException : ArgumentOutOfRangeException

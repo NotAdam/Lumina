@@ -1,6 +1,6 @@
 using System;
 
-namespace Lumina.Excel;
+namespace Lumina.Excel.Exceptions;
 
 /// <summary>Exception indicating that no such sheet could be found.</summary>
 public sealed class SheetNotFoundException : ArgumentException

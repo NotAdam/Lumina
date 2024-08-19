@@ -1,6 +1,6 @@
 using System;
 
-namespace Lumina.Excel;
+namespace Lumina.Excel.Exceptions;
 
 /// <summary>Exception indicating that sheet attribute was empty.</summary>
 public sealed class SheetAttributeMissingException : ArgumentException

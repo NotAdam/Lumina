@@ -1,6 +1,6 @@
 using System;
 
-namespace Lumina.Excel;
+namespace Lumina.Excel.Exceptions;
 
 /// <summary>Exception indicating that sheet name could not be resolved.</summary>
 public sealed class SheetNameEmptyException : ArgumentException

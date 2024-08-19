@@ -1,6 +1,6 @@
 using System;
 
-namespace Lumina.Excel;
+namespace Lumina.Excel.Exceptions;
 
 /// <summary>Exception indicating that the requested row type's column hash is different from game data.</summary>
 public sealed class MismatchedColumnHashException( uint typeHash, uint gameHash, string? paramName ) :
