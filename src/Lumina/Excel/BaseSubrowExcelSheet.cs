@@ -1,7 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
 using Lumina.Data;
-using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 
 namespace Lumina.Excel;

@@ -164,7 +164,7 @@ public sealed class ExcelPage
     /// </summary>
     /// <param name="offset">Byte offset of the field inside the page.</param>
     /// <param name="bit">Bit offset of the field inside the byte. (0 - 7)</param>
-    /// <returns>The <see cref="ulong"/>.</returns>
+    /// <returns>The <see cref="bool"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public bool ReadPackedBool( nuint offset, byte bit ) =>
         ( Read< byte >( offset ) & ( 1 << bit ) ) != 0;

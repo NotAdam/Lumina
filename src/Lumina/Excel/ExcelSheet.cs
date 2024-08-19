@@ -13,24 +13,19 @@ public sealed class ExcelSheet< T > : BaseExcelSheet, ICollection< T >, IReadOnl
 {
     /// <summary>Creates a new instance of <see cref="ExcelSheet{T}"/>, deducing sheet names (unless overridden with <paramref name="name"/>) and column hashes
     /// from <typeparamref name="T"/>.</summary>
-    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="language">The language to use for this sheet. Use <see langword="null"/> to use <see cref="ExcelModule.Language"/>.</param>
     /// <param name="name">The explicit sheet name, if needed. Leave <see langword="null"/> to use the type's sheet name. Explicit names are necessary for
     /// quest/dungeon/cutscene sheets.</param>
     /// <exception cref="SheetNameEmptyException"><typeparamref name="T"/> had no <see cref="SheetAttribute"/> and <paramref name="name"/> was empty.
     /// </exception>
-    /// <exception cref="SheetNotFoundException">Sheet does not exist.</exception>
     /// <exception cref="MismatchedColumnHashException"><see cref="SheetAttribute.ColumnHash"/> was invalid (hash mismatch).</exception>
-    /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
-    /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
+    /// <inheritdoc cref="ExcelSheet{T}.ExcelSheet(ExcelModule, Language, string, Nullable{uint})"/>
     public ExcelSheet( ExcelModule module, Language? language = null, string? name = null )
         : this( module, language ?? module.Language, name, module.GetSheetAttributes< T >() )
     { }
 
     /// <summary>Creates a new instance of <see cref="ExcelSheet{T}"/>.</summary>
-    /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="language">The language to use for this sheet.</param>
     /// <param name="name">The name of the sheet to read from.</param>
