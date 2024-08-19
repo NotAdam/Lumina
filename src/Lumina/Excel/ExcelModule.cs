@@ -26,7 +26,7 @@ public class ExcelModule
 
     internal ResolveRsvDelegate? RsvResolver => GameData.Options.RsvResolver;
 
-    private ConcurrentDictionary< (Type Type, Language Language), BaseExcelSheet > SheetCache { get; } = [];
+    private ConcurrentDictionary< (Type Type, Language Language, string? Name), BaseExcelSheet > SheetCache { get; } = [];
 
     /// <summary>
     /// A delegate provided by the user to resolve RSV strings.
@@ -60,44 +60,33 @@ public class ExcelModule
     }
 
     /// <summary>Loads an <see cref="ExcelSheet{T}"/>.</summary>
+    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+    /// <param name="sheetName">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="sheetName"/>
+    /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks/>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
-    /// <inheritdoc cref="GetBaseSheet{T}(Nullable{Lumina.Data.Language})"/>
-    public ExcelSheet< T > GetSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
-        (ExcelSheet< T >) GetBaseSheet< T >( language );
+    /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language}, string?)"/>
+    public ExcelSheet< T > GetSheet< T >( Language? language = null, string? sheetName = null ) where T : struct, IExcelRow< T > =>
+        (ExcelSheet< T >)GetBaseSheet( typeof( T ), language, sheetName );
 
     /// <summary>Loads an <see cref="SubrowExcelSheet{T}"/>.</summary>
+    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+    /// <param name="sheetName">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="sheetName"/>
+    /// that may be created anew or reused from a previous invocation of this method.</returns>
+    /// <remarks/>
     /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
-    /// <inheritdoc cref="GetSheet{T}(Nullable{Lumina.Data.Language})"/>
-    public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null ) where T : struct, IExcelSubrow< T > =>
-        (SubrowExcelSheet< T >) GetBaseSubrowSheet< T >( language );
-
-    /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
-    /// reused from a previous invocation of this method.</returns>
-    /// <remarks>
-    /// The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/>
-    /// before accessing its rows.
-    /// </remarks>
-    /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-    /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language})"/>
-    [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public BaseExcelSheet GetBaseSheet< T >( Language? language = null ) where T : struct, IExcelRow< T > =>
-        GetBaseSheet( typeof( T ), language );
-
-    /// <remarks>
-    /// The returned instance of <see cref="BaseSubrowExcelSheet"/> should be cast to <see cref="SubrowExcelSheet{T}"/>
-    /// before accessing its rows.
-    /// </remarks>
-    /// <inheritdoc cref="GetBaseSheet{T}(Language?)"/>
-    [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public BaseSubrowExcelSheet GetBaseSubrowSheet< T >( Language? language = null ) where T : struct, IExcelSubrow< T > =>
-        (BaseSubrowExcelSheet) GetBaseSheet( typeof( T ), language );
+    /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Lumina.Data.Language}, string?)"/>
+    public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null, string? sheetName = null ) where T : struct, IExcelSubrow< T > =>
+        (SubrowExcelSheet< T >) GetBaseSheet( typeof( T ), language, sheetName );
 
     /// <summary>Loads an <see cref="BaseExcelSheet"/>.</summary>
     /// <param name="rowType">Type of the rows in the sheet.</param>
     /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
-    /// <returns>An excel sheet corresponding to <paramref name="rowType"/> and <paramref name="language"/> that may be created anew or
-    /// reused from a previous invocation of this method.</returns>
+    /// <param name="sheetName">The requested explicit sheet name. Leave <see langword="null"/> to use <paramref name="rowType"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <paramref name="rowType"/>, <paramref name="language"/>, and <paramref name="sheetName"/>
+    /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks>
     /// <para>Only use this method if you need to create a sheet while using reflection.</para>
     /// <para>The returned instance of <see cref="BaseExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
@@ -110,10 +99,10 @@ public class ExcelModule
     /// <exception cref="NotSupportedException">Sheet had an unsupported <see cref="ExcelVariant"/>.</exception>
     [RequiresDynamicCode( "Creating a generic sheet from a type requires reflection and dynamic code." )]
     [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public BaseExcelSheet GetBaseSheet( Type rowType, Language? language = null )
+    public BaseExcelSheet GetBaseSheet( Type rowType, Language? language = null, string? sheetName = null )
     {
         var sheet = SheetCache.GetOrAdd(
-            ( rowType, language ?? Language ),
+            ( rowType, language ?? Language, sheetName ),
             static ( key, module ) => {
                 MethodInfo m;
                 try
@@ -122,24 +111,14 @@ public class ExcelModule
 
                     // As BaseExcelSheet.From(Subrow)<T> has a constraint that T : IExcel(Row/Subrow)<T>, it is implicitly required that T is also a struct.
                     // MakeGenericMethod will check for constraints, and throw ArgumentException if constraints aren't met.
-                    if( isSubrowType )
-                    {
-                        m = typeof( BaseExcelSheet )
-                            .GetMethod(
-                                nameof( BaseExcelSheet.FromSubrow ),
-                                BindingFlags.Static | BindingFlags.Public,
-                                [typeof( ExcelModule ), typeof( Language )] )!
-                            .MakeGenericMethod( key.Type );
-                    }
-                    else
-                    {
-                        m = typeof( BaseExcelSheet )
-                            .GetMethod(
-                                nameof( BaseExcelSheet.From ),
-                                BindingFlags.Static | BindingFlags.Public,
-                                [typeof( ExcelModule ), typeof( Language )] )!
-                            .MakeGenericMethod( key.Type );
-                    }
+                    m = typeof( BaseExcelSheet )
+                        .GetMethod(
+                            isSubrowType ?
+                                nameof( BaseExcelSheet.CreateSubrow ) :
+                                nameof( BaseExcelSheet.Create ),
+                            BindingFlags.Static | BindingFlags.Public,
+                            [typeof( ExcelModule ), typeof( Language ), typeof( string )] )!
+                        .MakeGenericMethod( key.Type );
                 }
                 catch( ArgumentException e )
                 {
@@ -152,7 +131,7 @@ public class ExcelModule
 
                 try
                 {
-                    return m.Invoke( null, [module, key.Language] ) as BaseExcelSheet ?? throw new InvalidOperationException( "Something went wrong" );
+                    return m.Invoke( null, [module, key.Language, key.Name] ) as BaseExcelSheet ?? throw new InvalidOperationException( "Something went wrong" );
                 }
                 catch( TargetInvocationException e )
                 {

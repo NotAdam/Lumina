@@ -168,8 +168,7 @@ public abstract class BaseExcelSheet
         }
     }
 
-    /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/> with the <paramref name="module"/>'s default language, deducing sheet names and column
-    /// hashes from <typeparamref name="T"/>.</summary>
+    /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/> with the <paramref name="module"/>'s default language, deducing sheet names and column hashes from <typeparamref name="T"/>.</summary>
     /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
@@ -177,41 +176,42 @@ public abstract class BaseExcelSheet
     /// <exception cref="MismatchedColumnHashException"><see cref="SheetAttribute.ColumnHash"/> was invalid (hash mismatch).</exception>
     /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
     /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="BaseExcelSheet"/> that should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
-    /// before further use.</returns>
-    public static BaseExcelSheet From< T >( ExcelModule module ) where T : struct, IExcelRow< T > =>
-        From< T >( module, module.Language );
+    /// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
+    public static ExcelSheet< T > Create< T >( ExcelModule module ) where T : struct, IExcelRow< T > =>
+        Create< T >( module, module.Language );
 
-    /// <inheritdoc cref="From{T}(ExcelModule)"/>
-    public static BaseSubrowExcelSheet FromSubrow< T >( ExcelModule module ) where T : struct, IExcelSubrow< T > =>
-        FromSubrow< T >( module, module.Language );
+    /// <returns>A new instance of <see cref="SubrowExcelSheet{T}"/>.</returns>
+    /// <inheritdoc cref="Create{T}(ExcelModule)"/>
+    public static SubrowExcelSheet< T > CreateSubrow< T >( ExcelModule module ) where T : struct, IExcelSubrow< T > =>
+        CreateSubrow< T >( module, module.Language );
 
-    /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>, deducing sheet names and column hashes from <typeparamref name="T"/>.</summary>
+    /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>, deducing sheet names (unless overridden with <paramref name="sheetName"/>) and column hashes from <typeparamref name="T"/>.</summary>
     /// <typeparam name="T">Type of each row.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
     /// <param name="language">The language to use for this sheet.</param>
+    /// <param name="sheetName">The explicit sheet name, if needed. Leave <see langword="null"/> to use the type's sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
     /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
     /// <exception cref="ArgumentException"><see cref="SheetAttribute.Name"/> was invalid (invalid sheet name).</exception>
     /// <exception cref="MismatchedColumnHashException"><see cref="SheetAttribute.ColumnHash"/> was invalid (hash mismatch).</exception>
     /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
     /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="BaseExcelSheet"/> that should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
-    /// before further use.</returns>
-    public static BaseExcelSheet From< T >( ExcelModule module, Language language ) where T : struct, IExcelRow< T >
+    /// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
+    public static ExcelSheet< T > Create< T >( ExcelModule module, Language language, string? sheetName = null ) where T : struct, IExcelRow< T >
     {
         var attribute = typeof( T ).GetCustomAttribute< SheetAttribute >() ??
-            throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( From )} with 4 parameters." );
+            throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( Create )} with 4 parameters." );
 
-        return From< T >( module, language, attribute.Name, attribute.ColumnHash );
+        return Create< T >( module, language, sheetName ?? attribute.Name, attribute.ColumnHash );
     }
 
-    /// <inheritdoc cref="From{T}(ExcelModule, Language)"/>
-    public static BaseSubrowExcelSheet FromSubrow< T >( ExcelModule module, Language language ) where T : struct, IExcelSubrow< T >
+    /// <returns>A new instance of <see cref="SubrowExcelSheet{T}"/>.</returns>
+    /// <inheritdoc cref="Create{T}(ExcelModule, Language, string?)"/>
+    public static SubrowExcelSheet< T > CreateSubrow< T >( ExcelModule module, Language language, string? sheetName = null ) where T : struct, IExcelSubrow< T >
     {
         var attribute = typeof( T ).GetCustomAttribute< SheetAttribute >() ??
-            throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( From )} with 4 parameters." );
+            throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( Create )} with 4 parameters." );
 
-        return FromSubrow< T >( module, language, attribute.Name, attribute.ColumnHash );
+        return CreateSubrow< T >( module, language, sheetName ?? attribute.Name, attribute.ColumnHash );
     }
 
     /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>.</summary>
@@ -224,9 +224,8 @@ public abstract class BaseExcelSheet
     /// <exception cref="MismatchedColumnHashException"><paramref name="columnHash"/> was invalid (hash mismatch).</exception>
     /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
     /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="BaseExcelSheet"/> that should be cast to <see cref="ExcelSheet{T}"/>
-    /// before further use.</returns>
-    public static BaseExcelSheet From< T >( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
+    /// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
+    public static ExcelSheet< T > Create< T >( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
         where T : struct, IExcelRow< T >
     {
         var headerFile = VerifySheet( module, language, sheetName, columnHash );
@@ -238,10 +237,9 @@ public abstract class BaseExcelSheet
     }
 
     /// <summary>Creates a new instance of <see cref="BaseSubrowExcelSheet"/>.</summary>
-    /// <returns>A new instance of <see cref="BaseSubrowExcelSheet"/> that should be cast to <see cref="SubrowExcelSheet{T}"/>
-    /// before further use.</returns>
-    /// <inheritdoc cref="From{T}(ExcelModule, Language, string, Nullable{uint})"/>
-    public static BaseSubrowExcelSheet FromSubrow< T >( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
+    /// <returns>A new instance of <see cref="SubrowExcelSheet{T}"/>.</returns>
+    /// <inheritdoc cref="Create{T}(ExcelModule, Language, string, Nullable{uint})"/>
+    public static SubrowExcelSheet< T > CreateSubrow< T >( ExcelModule module, Language language, string sheetName, uint? columnHash = null )
         where T : struct, IExcelSubrow< T >
     {
         var headerFile = VerifySheet( module, language, sheetName, columnHash );

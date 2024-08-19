@@ -288,6 +288,7 @@ namespace Lumina
 
         /// <summary>Loads an <see cref="ExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
         /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+        /// <param name="name">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
         /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
         /// reused from a previous invocation of this method.</returns>
         /// <remarks>
@@ -297,11 +298,11 @@ namespace Lumina
         /// </remarks>
         /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
         /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-        public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null ) where T : struct, IExcelRow< T >
+        public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelRow< T >
         {
             try
             {
-                return Excel.GetSheet< T >( language );
+                return Excel.GetSheet< T >( language, name );
             }
             catch( ArgumentException )
             {
@@ -315,12 +316,12 @@ namespace Lumina
 
         /// <summary>Loads a <see cref="SubrowExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
         /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
-        /// <inheritdoc cref="GetExcelSheet{T}(Nullable{Language})"/>
-        public SubrowExcelSheet< T >? GetSubrowExcelSheet< T >( Language? language = null ) where T : struct, IExcelSubrow< T >
+        /// <inheritdoc cref="GetExcelSheet{T}(Nullable{Language}, string?)"/>
+        public SubrowExcelSheet< T >? GetSubrowExcelSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelSubrow< T >
         {
             try
             {
-                return Excel.GetSubrowSheet< T >( language );
+                return Excel.GetSubrowSheet< T >( language, name );
             }
             catch( ArgumentException )
             {
