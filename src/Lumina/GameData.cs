@@ -312,7 +312,6 @@ namespace Lumina
         }
 
         /// <summary>Loads a <see cref="SubrowExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
-        /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
         /// <inheritdoc cref="GetExcelSheet{T}(Nullable{Language}, string?)"/>
         public SubrowExcelSheet< T >? GetSubrowExcelSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelSubrow< T >
         {

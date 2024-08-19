@@ -66,7 +66,7 @@ public class ExcelModule
     /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="name"/>
     /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks/>
-    /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Default"/>.</exception>
+    /// <exception cref="NotSupportedException">Sheet was not a <see cref="ExcelVariant.Default"/>.</exception>
     /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Language}, string?)"/>
     public ExcelSheet< T > GetSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelRow< T > =>
         (ExcelSheet< T >) GetBaseSheet( typeof( T ), language, name );
@@ -77,7 +77,7 @@ public class ExcelModule
     /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="name"/>
     /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks/>
-    /// <exception cref="InvalidCastException">Sheet is not of the variant <see cref="ExcelVariant.Subrows"/>.</exception>
+    /// <exception cref="NotSupportedException">Sheet was not a <see cref="ExcelVariant.Subrows"/>.</exception>
     /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Language}, string?)"/>
     public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelSubrow< T > =>
         (SubrowExcelSheet< T >) GetBaseSheet( typeof( T ), language, name );
