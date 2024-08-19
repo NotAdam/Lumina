@@ -9,8 +9,8 @@ namespace Lumina.Excel;
 /// <summary>An excel sheet of <see cref="ExcelVariant.Subrows"/> variant.</summary>
 public abstract class BaseSubrowExcelSheet : BaseExcelSheet
 {
-    private protected BaseSubrowExcelSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName )
-        : base( module, headerFile, requestedLanguage, sheetName )
+    private protected BaseSubrowExcelSheet( ExcelModule module, Language requestedLanguage, string sheetName, uint? columnHash )
+        : base( module, requestedLanguage, sheetName, columnHash, ExcelVariant.Subrows )
     {
         foreach( var f in OffsetLookupTable )
             TotalSubrowCount += f.SubrowCount;

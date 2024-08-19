@@ -24,7 +24,7 @@ public class SheetAttribute : Attribute
     /// <summary>
     /// Creates a new instance of the <see cref="SheetAttribute"/> class.
     /// </summary>
-    public SheetAttribute( )
+    public SheetAttribute()
     {
         Name = null;
         ColumnHash = null;

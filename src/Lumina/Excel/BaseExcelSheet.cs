@@ -6,7 +6,6 @@ using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 
 namespace Lumina.Excel;
@@ -76,12 +75,27 @@ public abstract class BaseExcelSheet
     /// <summary>Contains information on the columns in this sheet.</summary>
     public IReadOnlyList< ExcelColumnDefinition > Columns { get; }
 
-    private protected BaseExcelSheet( ExcelModule module, ExcelHeaderFile headerFile, Language requestedLanguage, string sheetName )
+    private protected BaseExcelSheet( ExcelModule module, Language language, string name, uint? columnHash, ExcelVariant expectedVariant )
     {
+        ArgumentNullException.ThrowIfNull( module );
+        ArgumentNullException.ThrowIfNull( name );
+
+        var headerFile = module.GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh" ) ??
+            throw new SheetNotFoundException( "Invalid sheet name", nameof( name ) );
+
+        if( module.VerifySheetChecksums && columnHash is { } hash && headerFile.GetColumnsHash() != hash )
+            throw new MismatchedColumnHashException( hash, headerFile.GetColumnsHash(), nameof( columnHash ) );
+
+        if( !headerFile.Languages.Contains( language ) )
+            throw new UnsupportedLanguageException( nameof( language ), language, null );
+
+        if( headerFile.Header.Variant != expectedVariant )
+            throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported; was expecting {expectedVariant}." );
+
         var hasSubrows = headerFile.Header.Variant == ExcelVariant.Subrows;
 
         Module = module;
-        Language = headerFile.Languages.Contains( requestedLanguage ) ? requestedLanguage : Language.None;
+        Language = headerFile.Languages.Contains( language ) ? language : Language.None;
         Columns = headerFile.ColumnDefinitions;
         _subrowDataOffset = hasSubrows ? headerFile.Header.DataOffset : (ushort) 0;
         _pages = new ExcelPage[headerFile.DataPages.Length];
@@ -92,8 +106,8 @@ public abstract class BaseExcelSheet
         {
             var pageDef = headerFile.DataPages[ pageIdx ];
             var filePath = Language == Language.None
-                ? $"exd/{sheetName}_{pageDef.StartId}.exd"
-                : $"exd/{sheetName}_{pageDef.StartId}_{LanguageUtil.GetLanguageStr( Language )}.exd";
+                ? $"exd/{name}_{pageDef.StartId}.exd"
+                : $"exd/{name}_{pageDef.StartId}_{LanguageUtil.GetLanguageStr( Language )}.exd";
             var fileData = module.GameData.GetFile< ExcelDataFile >( filePath );
             if( fileData == null )
                 continue;
@@ -166,102 +180,6 @@ public abstract class BaseExcelSheet
             _rowOffsetLookupTable = [];
             Count = 0;
         }
-    }
-
-    /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/> with the <paramref name="module"/>'s default language, deducing sheet names and column hashes from <typeparamref name="T"/>.</summary>
-    /// <typeparam name="T">Type of each row.</typeparam>
-    /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
-    /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-    /// <exception cref="ArgumentException"><see cref="SheetAttribute.Name"/> was invalid (invalid sheet name).</exception>
-    /// <exception cref="MismatchedColumnHashException"><see cref="SheetAttribute.ColumnHash"/> was invalid (hash mismatch).</exception>
-    /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
-    /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
-    public static ExcelSheet< T > Create< T >( ExcelModule module ) where T : struct, IExcelRow< T > =>
-        Create< T >( module, module.Language );
-
-    /// <returns>A new instance of <see cref="SubrowExcelSheet{T}"/>.</returns>
-    /// <inheritdoc cref="Create{T}(ExcelModule)"/>
-    public static SubrowExcelSheet< T > CreateSubrow< T >( ExcelModule module ) where T : struct, IExcelSubrow< T > =>
-        CreateSubrow< T >( module, module.Language );
-
-    /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>, deducing sheet names (unless overridden with <paramref name="name"/>) and column hashes from <typeparamref name="T"/>.</summary>
-    /// <typeparam name="T">Type of each row.</typeparam>
-    /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
-    /// <param name="language">The language to use for this sheet.</param>
-    /// <param name="name">The explicit sheet name, if needed. Leave <see langword="null"/> to use the type's sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
-    /// <exception cref="InvalidOperationException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-    /// <exception cref="ArgumentException"><see cref="SheetAttribute.Name"/> was invalid (invalid sheet name).</exception>
-    /// <exception cref="MismatchedColumnHashException"><see cref="SheetAttribute.ColumnHash"/> was invalid (hash mismatch).</exception>
-    /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
-    /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
-    public static ExcelSheet< T > Create< T >( ExcelModule module, Language language, string? name = null ) where T : struct, IExcelRow< T >
-    {
-        var attribute = typeof( T ).GetCustomAttribute< SheetAttribute >() ??
-            throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( Create )} with 4 parameters." );
-
-        return Create< T >( module, language, name ?? attribute.Name ?? throw new ArgumentNullException( nameof( name ) ), attribute.ColumnHash );
-    }
-
-    /// <returns>A new instance of <see cref="SubrowExcelSheet{T}"/>.</returns>
-    /// <inheritdoc cref="Create{T}(ExcelModule, Language, string?)"/>
-    public static SubrowExcelSheet< T > CreateSubrow< T >( ExcelModule module, Language language, string? name = null ) where T : struct, IExcelSubrow< T >
-    {
-        var attribute = typeof( T ).GetCustomAttribute< SheetAttribute >() ??
-            throw new InvalidOperationException( $"{nameof( T )} has no {nameof( SheetAttribute )}. Use the overload of {nameof( Create )} with 4 parameters." );
-
-        return CreateSubrow< T >( module, language, name ?? attribute.Name ?? throw new ArgumentNullException( nameof( name ) ), attribute.ColumnHash );
-    }
-
-    /// <summary>Creates a new instance of <see cref="BaseExcelSheet"/>.</summary>
-    /// <typeparam name="T">Type of each row.</typeparam>
-    /// <param name="module">The <see cref="ExcelModule"/> to access sheet data from.</param>
-    /// <param name="language">The language to use for this sheet.</param>
-    /// <param name="name">The name of the sheet to read from.</param>
-    /// <param name="columnHash">The hash of the columns in the sheet. If <see langword="null"/>, it will not check the hash.</param>
-    /// <exception cref="ArgumentException"><paramref name="name"/> was invalid (invalid sheet name).</exception>
-    /// <exception cref="MismatchedColumnHashException"><paramref name="columnHash"/> was invalid (hash mismatch).</exception>
-    /// <exception cref="UnsupportedLanguageException">Sheet had an unsupported language.</exception>
-    /// <exception cref="NotSupportedException">Header file had a <see cref="ExcelVariant"/> value that is not supported.</exception>
-    /// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
-    public static ExcelSheet< T > Create< T >( ExcelModule module, Language language, string name, uint? columnHash = null )
-        where T : struct, IExcelRow< T >
-    {
-        var headerFile = VerifySheet( module, language, name, columnHash );
-
-        if( headerFile.Header.Variant != ExcelVariant.Default )
-            throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported for IExcelRow types." );
-
-        return new ExcelSheet< T >( module, headerFile, language, name );
-    }
-
-    /// <summary>Creates a new instance of <see cref="BaseSubrowExcelSheet"/>.</summary>
-    /// <returns>A new instance of <see cref="SubrowExcelSheet{T}"/>.</returns>
-    /// <inheritdoc cref="Create{T}(ExcelModule, Language, string, Nullable{uint})"/>
-    public static SubrowExcelSheet< T > CreateSubrow< T >( ExcelModule module, Language language, string name, uint? columnHash = null )
-        where T : struct, IExcelSubrow< T >
-    {
-        var headerFile = VerifySheet( module, language, name, columnHash );
-
-        if( headerFile.Header.Variant != ExcelVariant.Subrows )
-            throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported for IExcelSubrow types." );
-
-        return new SubrowExcelSheet< T >( module, headerFile, language, name );
-    }
-
-    private static ExcelHeaderFile VerifySheet( ExcelModule module, Language language, string name, uint? columnHash = null )
-    {
-        var headerFile = module.GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh" ) ??
-            throw new ArgumentException( "Invalid sheet name", nameof( name ) );
-
-        if( module.VerifySheetChecksums && columnHash is { } hash && headerFile.GetColumnsHash() != hash )
-            throw new MismatchedColumnHashException( hash, headerFile.GetColumnsHash(), nameof( columnHash ) );
-
-        if( !headerFile.Languages.Contains( language ) )
-            throw new UnsupportedLanguageException( nameof( language ), language, null );
-
-        return headerFile;
     }
 
     /// <summary>The number of rows in this sheet.</summary>
