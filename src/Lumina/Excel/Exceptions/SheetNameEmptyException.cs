@@ -3,17 +3,17 @@ using System;
 namespace Lumina.Excel.Exceptions;
 
 /// <summary>Exception indicating that sheet name could not be resolved.</summary>
-public sealed class SheetNameEmptyException : ArgumentException
+public sealed class SheetNameEmptyException : ArgumentNullException
 {
     private const string DefaultMessage =
-        $"Row type has no {nameof( SheetAttribute )} or its {nameof( SheetAttribute.Name )} is null, and no valid sheet name is specified.";
+        $"Sheet name must be specified via parameter or sheet attributes.";
 
     /// <inheritdoc/>
     public SheetNameEmptyException() : base( DefaultMessage )
     { }
 
     /// <inheritdoc/>
-    public SheetNameEmptyException( string? message ) : base( message ?? DefaultMessage )
+    public SheetNameEmptyException( string? paramName ) : base( paramName, DefaultMessage )
     { }
 
     /// <inheritdoc/>
@@ -21,11 +21,6 @@ public sealed class SheetNameEmptyException : ArgumentException
     { }
 
     /// <inheritdoc/>
-    public SheetNameEmptyException( string? message, string? paramName ) : base( message ?? DefaultMessage, paramName )
-    { }
-
-    /// <inheritdoc/>
-    public SheetNameEmptyException( string? message, string? paramName, Exception? innerException )
-        : base( message ?? DefaultMessage, paramName, innerException )
+    public SheetNameEmptyException( string? paramName, string? message ) : base( paramName, message ?? DefaultMessage )
     { }
 }

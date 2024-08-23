@@ -11,8 +11,8 @@ using System.Runtime.CompilerServices;
 
 namespace Lumina.Excel;
 
-/// <summary>A wrapper around an excel sheet.</summary>
-public abstract class BaseExcelSheet
+/// <summary>An excel sheet of <see cref="ExcelVariant.Default"/> variant.</summary>
+public class RawExcelSheet : IExcelSheet
 {
     /// <summary>Number of items in <see cref="_rowIndexLookupArray"/> that may resolve to no entry.</summary>
     // 7.05h: across 7292 sheets that exist and are referenced from exlt file, following ratio can be represented solely using lookup array of certain sizes.
@@ -53,7 +53,7 @@ public abstract class BaseExcelSheet
     //  9832448,   99.99%,    79643KB
     // 10146816,  100.00%,   119276KB
     // We're allowing up to 65536 lookup items in _rowOffsetLookupTable, at cost of up to 3293KB of lookup items that resolve to nonexistence per language.
-    private const int MaxUnusedLookupItemCount = 65536;
+    private const int MaxUnusedLookupItemCount = 0x10000;
 
     private readonly ExcelPage[] _pages;
     private readonly RowOffsetLookup[] _rowOffsetLookupTable;
@@ -66,38 +66,35 @@ public abstract class BaseExcelSheet
     private readonly int[] _rowIndexLookupArray;
     private readonly uint _rowIndexLookupArrayOffset;
 
-    /// <summary>The module that this sheet belongs to.</summary>
+    internal uint ColumnHash { get; }
+
+    /// <inheritdoc/>
     public ExcelModule Module { get; }
 
-    /// <summary>The language of the rows in this sheet.</summary>
-    /// <remarks>This can be different from the requested language if it wasn't supported.</remarks>
+    /// <inheritdoc/>
     public Language Language { get; }
 
-    /// <summary>Contains information on the columns in this sheet.</summary>
+    /// <inheritdoc/>
     public IReadOnlyList< ExcelColumnDefinition > Columns { get; }
 
-    private protected BaseExcelSheet( ExcelModule module, Language language, string name, uint? columnHash, ExcelVariant expectedVariant )
+    /// <inheritdoc/>
+    public int Count { get; }
+
+    internal RawExcelSheet( ExcelModule module, ExcelHeaderFile headerFile, Language language, string name )
     {
         ArgumentNullException.ThrowIfNull( module );
+        ArgumentNullException.ThrowIfNull( headerFile );
         ArgumentNullException.ThrowIfNull( name );
-
-        var headerFile = module.GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh" ) ??
-            throw new SheetNotFoundException( "Invalid sheet name", nameof( name ) );
-
-        if( module.VerifySheetChecksums && columnHash is { } hash && headerFile.GetColumnsHash() != hash )
-            throw new MismatchedColumnHashException( hash, headerFile.GetColumnsHash(), nameof( columnHash ) );
 
         if( !headerFile.Languages.Contains( language ) )
             throw new UnsupportedLanguageException( nameof( language ), language, null );
 
-        if( headerFile.Header.Variant != expectedVariant )
-            throw new NotSupportedException( $"Specified sheet variant {headerFile.Header.Variant} is not supported; was expecting {expectedVariant}." );
-
         var hasSubrows = headerFile.Header.Variant == ExcelVariant.Subrows;
 
         Module = module;
-        Language = headerFile.Languages.Contains( language ) ? language : Language.None;
+        Language = language;
         Columns = headerFile.ColumnDefinitions;
+        ColumnHash = headerFile.GetColumnsHash();
         _subrowDataOffset = hasSubrows ? headerFile.Header.DataOffset : (ushort) 0;
         _pages = new ExcelPage[headerFile.DataPages.Length];
         _rowOffsetLookupTable = new RowOffsetLookup[headerFile.Header.RowCount];
@@ -183,26 +180,13 @@ public abstract class BaseExcelSheet
         }
     }
 
-    /// <summary>The number of rows in this sheet.</summary>
-    /// <remarks>
-    /// If this sheet has gaps in row ids, it returns the number of rows that exist, not the highest row id.
-    /// If this sheet has subrows, this will still return the number of rows and not the total number of subrows.
-    /// </remarks>
-    public int Count { get; }
-
     /// <summary>Gets the offset lookup table.</summary>
-    private protected ReadOnlySpan< RowOffsetLookup > OffsetLookupTable => _rowOffsetLookupTable;
+    internal ReadOnlySpan< RowOffsetLookup > OffsetLookupTable => _rowOffsetLookupTable;
 
-    /// <summary>Gets the offset of the column at <paramref name="columnIdx"/> in the row data.</summary>
-    /// <param name="columnIdx">The index of the column.</param>
-    /// <returns>The offset of the column.</returns>
-    /// <exception cref="IndexOutOfRangeException">Thrown when the column index is invalid. It must be less than <see cref="Columns"/>.Count.</exception>
+    /// <inheritdoc/>
     public ushort GetColumnOffset( int columnIdx ) => Columns[ columnIdx ].Offset;
 
-    /// <summary>Whether this sheet has a row with the given <paramref name="rowId"/>.</summary>
-    /// <remarks>If this sheet has subrows, this will check if the row id has any subrows.</remarks>
-    /// <param name="rowId">The row id to check.</param>
-    /// <returns>Whether the row exists.</returns>
+    /// <inheritdoc/>
     public bool HasRow( uint rowId )
     {
         ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );

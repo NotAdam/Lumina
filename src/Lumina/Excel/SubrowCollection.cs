@@ -10,9 +10,9 @@ namespace Lumina.Excel;
 public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
     where T : struct, IExcelSubrow< T >
 {
-    private readonly BaseExcelSheet.RowOffsetLookup _lookup;
+    private readonly RawExcelSheet.RowOffsetLookup _lookup;
 
-    internal SubrowCollection( SubrowExcelSheet< T > sheet, scoped ref readonly BaseExcelSheet.RowOffsetLookup lookup )
+    internal SubrowCollection( SubrowExcelSheet< T > sheet, scoped ref readonly RawExcelSheet.RowOffsetLookup lookup )
     {
         Sheet = sheet;
         _lookup = lookup;
@@ -35,7 +35,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         get {
             ArgumentOutOfRangeException.ThrowIfNegative( index );
             ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( index, Count );
-            return Sheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) index ) );
+            return Sheet.RawSheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) index ) );
         }
     }
 
@@ -61,7 +61,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         if( item.RowId != RowId || item.SubrowId >= Count )
             return -1;
 
-        var row = Sheet.UnsafeCreateSubrow< T >( in _lookup, item.SubrowId );
+        var row = Sheet.RawSheet.UnsafeCreateSubrow< T >( in _lookup, item.SubrowId );
         return EqualityComparer< T >.Default.Equals( item, row ) ? item.SubrowId : -1;
     }
 
@@ -76,7 +76,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         if( Count > array.Length - arrayIndex )
             throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
         for( var i = 0; i < Count; i++ )
-            array[ arrayIndex++ ] = Sheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) i ) );
+            array[ arrayIndex++ ] = Sheet.RawSheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) i ) );
     }
 
     /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
@@ -105,7 +105,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
                 // UnsafeCreateSubrow must be called only when the preconditions are validated.
                 // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
                 // so we create the instance in advance here.
-                Current = subrowCollection.Sheet.UnsafeCreateSubrow< T >( in subrowCollection._lookup, unchecked( (ushort) _index ) );
+                Current = subrowCollection.Sheet.RawSheet.UnsafeCreateSubrow< T >( in subrowCollection._lookup, unchecked( (ushort) _index ) );
                 return true;
             }
 

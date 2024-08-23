@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina", "Lumina\Lumina.csproj", "{4B3957D0-3904-4492-8CFA-86791E1DDD6D}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lumina.Cmd", "Lumina.Cmd\Lumina.Cmd.csproj", "{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{C3DB5F15-1172-4938-B946-281EC006FEB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lumina.Benchmark", "Lumina.Benchmark\Lumina.Benchmark.csproj", "{221FB03B-B726-44D1-8A68-2D92D080137D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3637C5FA-3A4F-4275-9C61-4C8CAC955B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{221FB03B-B726-44D1-8A68-2D92D080137D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{221FB03B-B726-44D1-8A68-2D92D080137D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{221FB03B-B726-44D1-8A68-2D92D080137D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{221FB03B-B726-44D1-8A68-2D92D080137D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
