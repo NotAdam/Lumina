@@ -71,20 +71,28 @@ public sealed partial class SeStringBuilder
             var prevLen = _builder.GetStringStream().Length;
             switch( value )
             {
+                case string s:
+                    AppendFormatted( s.AsSpan(), format );
+                    break;
+
 #if NET8_0_OR_GREATER
                 case IUtf8SpanFormattable f:
                     AppendSpanFormattableUtf8( f, format );
                     break;
 #endif
+
                 case ISpanFormattable f:
                     AppendSpanFormattableUtf16( f, format );
                     break;
+
                 case IFormattable f:
                     _builder.Append( f.ToString( format, _provider ) );
                     break;
+
                 case null:
                     _builder.Append( "null"u8 );
                     break;
+
                 default:
                     _builder.Append( value.ToString() );
                     break;
@@ -575,24 +583,6 @@ public sealed partial class SeStringBuilder
 #endif
 
         /// <inheritdoc cref="AppendFormatted{T}(T)"/>
-        public void AppendFormatted( ReadOnlySpan< byte > value ) => AppendFormatted( value, 0, null );
-
-        /// <inheritdoc cref="AppendFormatted{T}(T, string?)"/>
-        public void AppendFormatted( ReadOnlySpan< byte > value, string? format ) => AppendFormatted( value, 0, format );
-
-        /// <inheritdoc cref="AppendFormatted{T}(T, int)"/>
-        public void AppendFormatted( ReadOnlySpan< byte > value, int alignment ) => AppendFormatted( value, alignment, null );
-
-        /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
-        public void AppendFormatted( ReadOnlySpan< byte > value, int alignment, string? format )
-        {
-            _ = format;
-            var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value );
-            FixAlignment( prevLen, alignment );
-        }
-
-        /// <inheritdoc cref="AppendFormatted{T}(T)"/>
         public void AppendFormatted( ReadOnlySeString value ) => AppendFormatted( value, 0, null );
 
         /// <inheritdoc cref="AppendFormatted{T}(T, string?)"/>
@@ -683,6 +673,27 @@ public sealed partial class SeStringBuilder
         }
 
         /// <inheritdoc cref="AppendFormatted{T}(T)"/>
+        public void AppendFormatted( ReadOnlySpan< byte > value ) => AppendFormatted( value, 0, null );
+
+        /// <inheritdoc cref="AppendFormatted{T}(T, string?)"/>
+        public void AppendFormatted( ReadOnlySpan< byte > value, string? format ) => AppendFormatted( value, 0, format );
+
+        /// <inheritdoc cref="AppendFormatted{T}(T, int)"/>
+        public void AppendFormatted( ReadOnlySpan< byte > value, int alignment ) => AppendFormatted( value, alignment, null );
+
+        /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
+        public void AppendFormatted( ReadOnlySpan< byte > value, int alignment, string? format )
+        {
+            _ = format;
+            var prevLen = _builder.GetStringStream().Length;
+            if( format?.StartsWith( 'm' ) is true )
+                _builder.AppendMacroString( value );
+            else
+                _builder.Append( value );
+            FixAlignment( prevLen, alignment );
+        }
+
+        /// <inheritdoc cref="AppendFormatted{T}(T)"/>
         public void AppendFormatted( ReadOnlySpan< char > value ) => AppendFormatted( value, 0, null );
 
         /// <inheritdoc cref="AppendFormatted{T}(T, string?)"/>
@@ -696,7 +707,10 @@ public sealed partial class SeStringBuilder
         {
             _ = format;
             var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value );
+            if( format?.StartsWith( 'm' ) is true )
+                _builder.AppendMacroString( value );
+            else
+                _builder.Append( value );
             FixAlignment( prevLen, alignment );
         }
 
@@ -706,13 +720,13 @@ public sealed partial class SeStringBuilder
                 return;
 
             var len = (int) ( _builder.GetStringStream().Length - prevLen );
-            if( len <= -alignment || len >= alignment )
+            if( len >= Math.Abs( alignment ) )
                 return;
 
             if( alignment < 0 )
             {
                 // left align
-                _builder.AllocateStringSpan( len + alignment ).Fill( (byte) ' ' );
+                _builder.AllocateStringSpan( -( len + alignment ) ).Fill( (byte) ' ' );
             }
             else
             {

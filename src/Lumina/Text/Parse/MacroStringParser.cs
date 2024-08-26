@@ -448,7 +448,7 @@ internal readonly ref struct MacroStringParser
 
         macroCodeName = macroCodeName[ ..macroCodeNameLength ];
 
-        foreach( var n in Enum.GetValues< MacroCode >() )
+        foreach( var n in MacroCodeExtensions.GetDefinedMacroCodes())
         {
             if( macroCodeName.SequenceEqual( n.GetEncodeName() ) )
             {

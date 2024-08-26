@@ -26,10 +26,7 @@ public sealed partial class SeStringBuilder
     /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder AppendNullaryExpression( ExpressionType expressionType )
     {
-        if( _mss[ ^1 ].Type is not StackType.Payload and not StackType.Expression )
-            throw new InvalidOperationException( "Expression cannot be appended in current state." );
-        if( _mss[ ^1 ].Type == StackType.Expression && _mss[ ^1 ].Ident <= 0 )
-            throw new InvalidOperationException( $"No more expressions may be written. Call {nameof( EndExpression )}." );
+        EnsureExpressionWritableStateOrThrow();
         if( expressionType.GetArity() != ExpressionArity.Nullary )
             throw new ArgumentOutOfRangeException( nameof( expressionType ), expressionType, "Only nullary expression types are allowed." );
         AllocateExpressionSpan( 1 )[ 0 ] = (byte) expressionType;
@@ -42,10 +39,7 @@ public sealed partial class SeStringBuilder
     /// <returns>A reference of this instance after the operation is completed.</returns>
     public SeStringBuilder BeginUnaryExpression( ExpressionType expressionType )
     {
-        if( _mss[ ^1 ].Type is not StackType.Payload and not StackType.Expression )
-            throw new InvalidOperationException( "Expression cannot be appended in current state." );
-        if( _mss[ ^1 ].Type == StackType.Expression && _mss[ ^1 ].Ident <= 0 )
-            throw new InvalidOperationException( $"No more expressions may be written. Call {nameof( EndExpression )}." );
+        EnsureExpressionWritableStateOrThrow();
         if( expressionType.GetArity() != ExpressionArity.Unary )
             throw new ArgumentOutOfRangeException( nameof( expressionType ), expressionType, "Only unary expression types are allowed." );
         if( _mssFree.Count == 0 )
@@ -67,10 +61,7 @@ public sealed partial class SeStringBuilder
     /// <returns>A reference of this instance after the operation is completed.</returns>
     public SeStringBuilder BeginBinaryExpression( ExpressionType expressionType )
     {
-        if( _mss[ ^1 ].Type is not StackType.Payload and not StackType.Expression )
-            throw new InvalidOperationException( "Expression cannot be appended in current state." );
-        if( _mss[ ^1 ].Type == StackType.Expression && _mss[ ^1 ].Ident <= 0 )
-            throw new InvalidOperationException( $"No more expressions may be written. Call {nameof( EndExpression )}." );
+        EnsureExpressionWritableStateOrThrow();
         if( expressionType.GetArity() != ExpressionArity.Binary )
             throw new ArgumentOutOfRangeException( nameof( expressionType ), expressionType, "Only binary expression types are allowed." );
         if( _mssFree.Count == 0 )
@@ -173,5 +164,17 @@ public sealed partial class SeStringBuilder
         stream.SetLength( stream.Position = 0 );
         _mssFree.Add( stream );
         return this;
+    }
+
+    private bool IsExpressionWritableState() =>
+        _mss[ ^1 ].Type == StackType.Payload
+        || ( _mss[ ^1 ].Type == StackType.Expression && _mss[ ^1 ].Ident > 0 );
+
+    private void EnsureExpressionWritableStateOrThrow()
+    {
+        if( _mss[ ^1 ].Type is not StackType.Payload and not StackType.Expression )
+            throw new InvalidOperationException( "Expression cannot be appended in current state." );
+        if( _mss[ ^1 ].Type == StackType.Expression && _mss[ ^1 ].Ident <= 0 )
+            throw new InvalidOperationException( $"No more expressions may be written. Call {nameof( EndExpression )}." );
     }
 }

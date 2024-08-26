@@ -431,17 +431,37 @@ public class SeStringBuilderTests
     }
 
     [Fact]
-    public unsafe void InterpolationHandlerTest()
+    public unsafe void InterpolationHandlerTest1()
     {
         const string test = "asdf";
+        Assert.Equal(
+            "Left:1234    \nRight:    1234\nasdf\nint*: 0x0000000012345678",
+            new SeStringBuilder()
+                .Append( $"Left:{0x1234,-8:X}\nRight:{0x1234,8:X}\n{test}\nint*: 0x{(void*) 0x12345678:X16}" )
+                .ToReadOnlySeString()
+                .ToString() );
+    }
+
+    [Fact]
+    public void InterpolationHandlerTest2()
+    {
         var boldHello = new SeStringBuilder().AppendBold( "Hello" ).ToReadOnlySeString();
         Assert.Equal(
-            "Hex:0x    1234\nasdf\nint*: 0x0000000012345678\n|Left|\n<bold(1)>Hello<bold(0)>" ,
+            "|Left    |\n|   Right|\n<bold(1)>Hello<bold(0)>\nnull",
             new SeStringBuilder()
-                .Append( $"Hex:0x{0x1234,8:X}\n{test}\nint*: 0x{(void*) 0x12345678:X16}\n|{"Left",-8}|\n{boldHello}" )
+                .Append( $"|{"Left",-8}|\n|{"Right"u8,8}|\n{boldHello}\n{(object) null}" )
                 .ToReadOnlySeString()
-                .ToString());
+                .ToString() );
     }
+
+    [Fact]
+    public void InterpolationHandlerTest3() =>
+        Assert.Equal(
+            "<italic(1)>test<italic(0)>",
+            new SeStringBuilder()
+                .Append( $"{"<italic(1)>test<italic(0)>":m}" )
+                .ToReadOnlySeString()
+                .ToString() );
 
     [Fact]
     public void ThrowsOnInvalidMacroStrings1() =>
