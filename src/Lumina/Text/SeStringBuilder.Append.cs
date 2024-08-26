@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
+using Lumina.Text.Parse;
 using Lumina.Text.ReadOnly;
 
 namespace Lumina.Text;
@@ -245,6 +247,34 @@ public sealed partial class SeStringBuilder
     /// <param name="value">Value to add.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder Append( object? value ) => Append( value?.ToString() );
+
+    /// <summary>Adds the given value after parsing it as a macro string.</summary>
+    /// <param name="value">String to parse and add.</param>
+    /// <param name="flags">Parse flags for <see cref="value"/>.</param>
+    /// <param name="exceptionMode">Action to take on parse failure.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder AppendMacroString(
+        ReadOnlySpan< byte > value,
+        UtfEnumeratorFlags flags = default,
+        MacroStringParseExceptionMode exceptionMode = MacroStringParseExceptionMode.Throw )
+    {
+        new MacroStringParser( value, flags, this, exceptionMode ).ParseMacroStringAndAppend( 0, false, default );
+        return this;
+    }
+
+    /// <summary>Adds the given value after parsing it as a macro string.</summary>
+    /// <param name="value">String to parse and add.</param>
+    /// <param name="flags">Parse flags for <see cref="value"/>.</param>
+    /// <param name="exceptionMode">Action to take on parse failure.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder AppendMacroString(
+        ReadOnlySpan< char > value,
+        UtfEnumeratorFlags flags = default,
+        MacroStringParseExceptionMode exceptionMode = MacroStringParseExceptionMode.Throw ) =>
+        AppendMacroString(
+            MemoryMarshal.Cast< char, byte >( value ),
+            (flags & UtfEnumeratorFlags.UtfMask) == UtfEnumeratorFlags.Default ? UtfEnumeratorFlags.Utf16 | flags : flags,
+            exceptionMode );
 
     /// <summary>Adds the given value.</summary>
     /// <param name="value">Value to add.</param>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Lumina.Data.Structs.Excel;
 using Lumina.Text;
 using Lumina.Text.Expressions;
 using Lumina.Text.Payloads;
@@ -382,7 +383,7 @@ public class SeStringBuilderTests
                 .Clear()
                 .PushColorType( 508 )
                 .PushEdgeColorType( 509 )
-                .Append("Discard "u8)
+                .Append( "Discard "u8 )
                 .BeginMacro( MacroCode.If )
                 .BeginBinaryExpression( ExpressionType.Equal )
                 .AppendLocalNumberExpression( 2 )
@@ -401,7 +402,7 @@ public class SeStringBuilderTests
                 .BeginMacro( MacroCode.Num )
                 .AppendLocalNumberExpression( 2 )
                 .EndMacro()
-                .Append(" "  )
+                .Append( " " )
                 .BeginMacro( MacroCode.EnNoun )
                 .AppendStringExpression( "Item" )
                 .AppendIntExpression( 3 )
@@ -411,7 +412,7 @@ public class SeStringBuilderTests
                 .EndMacro()
                 .EndExpression()
                 .EndMacro()
-                .Append("?"  )
+                .Append( "?" )
                 .PopEdgeColorType()
                 .PopColorType()
                 .ToReadOnlySeString(),
@@ -421,7 +422,46 @@ public class SeStringBuilderTests
             var r = row.ReadColumn< SeString >( 0 ).AsReadOnly();
             _outputHelper.WriteLine( $"{row.RowId}\t{r.ExtractText()}\t{r}" );
             if( expected.TryGetValue( row.RowId, out var expectedSeString ) )
-                Assert.True( expectedSeString == r, $"{row.RowId} does not match; expected {expectedSeString}" );
+                Assert.StrictEqual( expectedSeString, r );
+        }
+    }
+
+    [RequiresGameInstallationFact]
+    public void AllSheetsTextColumnCodec()
+    {
+        var gameData = new GameData( @"C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\sqpack" );
+        var ssb = new SeStringBuilder();
+        foreach( var sheetName in gameData.Excel.GetSheetNames() )
+        {
+            if( gameData.Excel.GetSheetRaw( sheetName ) is not { } sheet )
+                continue;
+            // CustomTalkDefineClient: it currently fails at reading string columns in sheets of subrow variant. 
+            if( sheet.Variant != ExcelVariant.Default )
+                continue;
+            foreach( var row in sheet )
+            {
+                for( var i = 0; i < sheet.Columns.Length; i++ )
+                {
+                    if( sheet.Columns[ i ].Type != ExcelColumnDataType.String )
+                        continue;
+
+                    var test1 = row.ReadColumn< SeString >(i).AsReadOnly();
+                    if( test1.Data.Span.IndexOf( "payload:"u8 ) != -1 )
+                        throw new( $"Unsupported payload at {sheetName}#{row.RowId}; {test1}" );
+
+                    ReadOnlySeString test2;
+                    try
+                    {
+                        test2 = ssb.Clear().AppendMacroString( test1.ToString() ).ToReadOnlySeString();
+                    }
+                    catch( Exception e )
+                    {
+                        throw new( $"Error at {sheetName}#{row.RowId}; {test1}", e );
+                    }
+
+                    Assert.True( test1.AsSpan().Data.SequenceEqual( test2.AsSpan().Data ), $"Parse-encode failure at {sheetName}#{row.RowId}" );
+                }
+            }
         }
     }
 }

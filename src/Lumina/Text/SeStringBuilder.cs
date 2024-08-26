@@ -65,6 +65,21 @@ public sealed partial class SeStringBuilder : IResettable
         return this;
     }
 
+    /// <summary>Aborts a macro build by discarding the current macro data and exiting the macro scope.</summary>
+    /// <returns>A reference of this instance after the operation is completed.</returns>
+    public SeStringBuilder AbortMacro()
+    {
+        if( _mss[ ^1 ].Type != StackType.Payload )
+            throw new InvalidOperationException( "No payload is currently being built." );
+
+        var stream = _mss[ ^1 ].Stream;
+        _mss.RemoveAt( _mss.Count - 1 );
+        stream.SetLength( stream.Position = 0 );
+        _mssFree.Add( stream );
+
+        return this;
+    }
+
     /// <summary>Clears everything.</summary>
     /// <param name="zeroBuffer">Whether to fill the underlying buffer with zeroes.</param>
     /// <returns>A reference of this instance after the clear operation is completed.</returns>
