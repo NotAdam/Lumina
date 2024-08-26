@@ -165,21 +165,8 @@ public sealed partial class SeStringBuilder
     /// <returns>A reference of this instance after the operation is completed.</returns>
     public SeStringBuilder AbortExpression()
     {
-        switch( _mss[ ^1 ].Type )
-        {
-            case StackType.String:
-                if( _mss.Count == 1 || _mss[ ^1 ].Type != StackType.String )
-                    throw new InvalidOperationException( "String expression is not currently being built." );
-                break;
-
-            case StackType.Expression:
-                if( _mss[ ^1 ].Ident != 0 )
-                    throw new InvalidOperationException( $"{_mss[ ^1 ].Ident} more expression(s) must be written." );
-                break;
-
-            default:
-                throw new InvalidOperationException( "No expression is being written." );
-        }
+        if( _mss[ ^1 ].Type is not (StackType.String or StackType.Expression) )
+            throw new InvalidOperationException( "No expression is being written." );
 
         var stream = _mss[ ^1 ].Stream;
         _mss.RemoveAt( _mss.Count - 1 );

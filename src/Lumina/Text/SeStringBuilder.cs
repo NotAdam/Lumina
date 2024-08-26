@@ -70,7 +70,7 @@ public sealed partial class SeStringBuilder : IResettable
     public SeStringBuilder AbortMacro()
     {
         if( _mss[ ^1 ].Type != StackType.Payload )
-            throw new InvalidOperationException( "No payload is currently being built." );
+            throw new InvalidOperationException( "No payload is currently being built." + _mss[^1].Type );
 
         var stream = _mss[ ^1 ].Stream;
         _mss.RemoveAt( _mss.Count - 1 );

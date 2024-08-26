@@ -149,7 +149,6 @@ internal readonly ref struct MacroStringParser
 
         _builder.BeginMacro( macroCode );
 
-        var macroBuildSuccess = false;
         try
         {
             if( TryConsumeStart( ref offset, "("u8 ) )
@@ -175,15 +174,21 @@ internal readonly ref struct MacroStringParser
             }
 
             ConsumeStart( ref offset, ">"u8 );
-            macroBuildSuccess = true;
+            _builder.EndMacro();
             return offset - beginOffset;
         }
-        finally
+        catch( Exception e1 )
         {
-            if( macroBuildSuccess )
-                _builder.EndMacro();
-            else
+            try
+            {
                 _builder.AbortMacro();
+            }
+            catch( Exception e2 )
+            {
+                throw new AggregateException( e1, e2 );
+            }
+
+            throw;
         }
     }
 
@@ -251,13 +256,13 @@ internal readonly ref struct MacroStringParser
                         _builder.ChangeBinaryExpression( ExpressionType.GreaterThan );
                         break;
                     default:
-                        throw new MacroStringParseException( $"Unsupported binary expression: {(char) op1}{(char) op2}", offset );
+                        throw new MacroStringParseException(
+                            $"Unsupported binary expression: {( op1 == -1 ? "" : "" + (char) op1 )}{( op2 == -1 ? "" : "" + (char) op2 )}", offset );
                 }
 
                 offset += ParseMacroStringExpressionAndAppend( offset, extraTerminators );
                 ConsumeStart( ref offset, "]"u8 );
 
-                abortExpression = false;
                 _builder.EndExpression();
                 return offset - beginOffset;
             }
@@ -266,7 +271,6 @@ internal readonly ref struct MacroStringParser
 
             abortExpression = true;
             var length = ParseMacroStringAndAppend( offset, true, extraTerminators );
-            abortExpression = false;
 
             var text8 = _macroString.Slice( offset, length );
             if( ( _utfEnumeratorFlags & UtfEnumeratorFlags.UtfMask ) is not UtfEnumeratorFlags.Utf8 and not UtfEnumeratorFlags.Utf8SeString )
@@ -280,23 +284,34 @@ internal readonly ref struct MacroStringParser
                 foreach( var e in new UtfEnumerator( text8, _utfEnumeratorFlags ) )
                     tmpOffset += e.EffectiveRune.EncodeToUtf8( tmp[ tmpOffset.. ] );
 
-                TransformStringExpression( tmp );
+                TransformStringAndEndExpression( tmp );
             }
             else
             {
-                TransformStringExpression( text8 );
+                TransformStringAndEndExpression( text8 );
             }
 
             return length;
         }
-        finally
+        catch( Exception e1 )
         {
             if( abortExpression )
-                _builder.AbortExpression();
+            {
+                try
+                {
+                    _builder.AbortExpression();
+                }
+                catch( Exception e2 )
+                {
+                    throw new AggregateException( e1, e2 );
+                }
+            }
+
+            throw;
         }
     }
 
-    private void TransformStringExpression( ReadOnlySpan< byte > text8 )
+    private void TransformStringAndEndExpression( ReadOnlySpan< byte > text8 )
     {
         if( text8.StartsWith( "lnum"u8 ) && TryParseInt( text8[ 4.. ], out var parsedInt ) )
             _builder.AbortExpression().AppendLocalNumberExpression( parsedInt );

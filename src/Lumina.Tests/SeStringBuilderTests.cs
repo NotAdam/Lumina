@@ -4,6 +4,7 @@ using System.Text;
 using Lumina.Data.Structs.Excel;
 using Lumina.Text;
 using Lumina.Text.Expressions;
+using Lumina.Text.Parse;
 using Lumina.Text.Payloads;
 using Lumina.Text.ReadOnly;
 using Xunit;
@@ -426,6 +427,34 @@ public class SeStringBuilderTests
         }
     }
 
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings1() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<bad_payload>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings2() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if([a=b])>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings3() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if(1,2,3>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings4() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if,2,3>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings5() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if(1,2,3)"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings6() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if(1,2,3"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings7() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "< asdf >"u8 ) );
+
     [RequiresGameInstallationFact]
     public void AllSheetsTextColumnCodec()
     {
@@ -445,7 +474,7 @@ public class SeStringBuilderTests
                     if( sheet.Columns[ i ].Type != ExcelColumnDataType.String )
                         continue;
 
-                    var test1 = row.ReadColumn< SeString >(i).AsReadOnly();
+                    var test1 = row.ReadColumn< SeString >( i ).AsReadOnly();
                     if( test1.Data.Span.IndexOf( "payload:"u8 ) != -1 )
                         throw new( $"Unsupported payload at {sheetName}#{row.RowId}; {test1}" );
 
