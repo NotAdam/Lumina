@@ -366,18 +366,18 @@ internal readonly ref struct MacroStringParser
                 data = data[ 1.. ];
             } while( !data.IsEmpty );
 
-            var maxPerDigit = 10;
+            var maxPerDigit = 10u;
             if( data.Length > 2 && data[ 0 ] == '0' )
             {
                 maxPerDigit = (char) data[ 1 ] switch
                 {
-                    'x' or 'X' => 16,
-                    'o' or 'O' => 8,
-                    'b' or 'B' => 2,
-                    'd' or 'D' => 10,
-                    _ => 0
+                    'x' or 'X' => 16u,
+                    'o' or 'O' => 8u,
+                    'b' or 'B' => 2u,
+                    'd' or 'D' => 10u,
+                    _ => 0u
                 };
-                if( maxPerDigit == 0 )
+                if( maxPerDigit == 0u )
                     return false;
                 data = data[ 2.. ];
             }
@@ -389,11 +389,11 @@ internal readonly ref struct MacroStringParser
             foreach( var d in data )
             {
                 var digit = d >= Digits.Length ? -1 : Digits[ d ];
-                if( digit == -1 || digit > maxPerDigit )
+                if( digit == -1 || digit >= maxPerDigit )
                     return false;
                 if( digit == -2 )
                     continue;
-                num = unchecked( num * 10u + (uint) digit );
+                num = unchecked( num * maxPerDigit + (uint) digit );
             }
 
             result = unchecked( sign * (int) num );

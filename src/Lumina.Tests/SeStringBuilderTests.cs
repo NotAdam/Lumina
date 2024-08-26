@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Lumina.Data;
+using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
+using Lumina.Excel;
 using Lumina.Text;
 using Lumina.Text.Expressions;
 using Lumina.Text.Parse;
@@ -462,33 +465,39 @@ public class SeStringBuilderTests
         var ssb = new SeStringBuilder();
         foreach( var sheetName in gameData.Excel.GetSheetNames() )
         {
-            if( gameData.Excel.GetSheetRaw( sheetName ) is not { } sheet )
-                continue;
-            // CustomTalkDefineClient: it currently fails at reading string columns in sheets of subrow variant. 
-            if( sheet.Variant != ExcelVariant.Default )
-                continue;
-            foreach( var row in sheet )
+            var languages = gameData.GetFile< ExcelHeaderFile >( ExcelModule.BuildExcelHeaderPath( sheetName ) )?.Languages ?? [Language.None];
+            foreach( var language in languages )
             {
-                for( var i = 0; i < sheet.Columns.Length; i++ )
+                if( gameData.Excel.GetSheetRaw( sheetName, language ) is not { } sheet )
+                    continue;
+                
+                // CustomTalkDefineClient: it currently fails at reading string columns in sheets of subrow variant. 
+                if( sheet.Variant != ExcelVariant.Default )
+                    continue;
+                
+                foreach( var row in sheet )
                 {
-                    if( sheet.Columns[ i ].Type != ExcelColumnDataType.String )
-                        continue;
-
-                    var test1 = row.ReadColumn< SeString >( i ).AsReadOnly();
-                    if( test1.Data.Span.IndexOf( "payload:"u8 ) != -1 )
-                        throw new( $"Unsupported payload at {sheetName}#{row.RowId}; {test1}" );
-
-                    ReadOnlySeString test2;
-                    try
+                    for( var i = 0; i < sheet.Columns.Length; i++ )
                     {
-                        test2 = ssb.Clear().AppendMacroString( test1.ToString() ).ToReadOnlySeString();
-                    }
-                    catch( Exception e )
-                    {
-                        throw new( $"Error at {sheetName}#{row.RowId}; {test1}", e );
-                    }
+                        if( sheet.Columns[ i ].Type != ExcelColumnDataType.String )
+                            continue;
 
-                    Assert.True( test1.AsSpan().Data.SequenceEqual( test2.AsSpan().Data ), $"Parse-encode failure at {sheetName}#{row.RowId}" );
+                        var test1 = row.ReadColumn< SeString >( i ).AsReadOnly();
+                        if( test1.Data.Span.IndexOf( "payload:"u8 ) != -1 )
+                            throw new( $"Unsupported payload at {sheetName}#{row.RowId}; {test1}" );
+
+                        ReadOnlySeString test2;
+                        try
+                        {
+                            test2 = ssb.Clear().AppendMacroString( test1.ToString() ).ToReadOnlySeString();
+                        }
+                        catch( Exception e )
+                        {
+                            throw new( $"Error at {sheetName}#{row.RowId}({language})", e );
+                        }
+
+                        Assert.True( test1.AsSpan().Data.SequenceEqual( test2.AsSpan().Data ), $"Parse-encode failure at {sheetName}#{row.RowId}({language})" );
+                    }
                 }
             }
         }
