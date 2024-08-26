@@ -23,20 +23,14 @@ internal readonly ref struct MacroStringParser
     ];
 
     private readonly ReadOnlySpan< byte > _macroString;
-    private readonly UtfEnumeratorFlags _utfEnumeratorFlags;
+    private readonly MacroStringParseOptions _parseOptions;
     private readonly SeStringBuilder _builder;
-    private readonly MacroStringParseExceptionMode _exceptionMode;
 
-    internal MacroStringParser(
-        ReadOnlySpan< byte > macroString,
-        UtfEnumeratorFlags utfEnumeratorFlags,
-        SeStringBuilder builder,
-        MacroStringParseExceptionMode exceptionMode )
+    internal MacroStringParser( ReadOnlySpan< byte > macroString, SeStringBuilder builder, MacroStringParseOptions parseOptions )
     {
         _macroString = macroString;
-        _utfEnumeratorFlags = utfEnumeratorFlags;
         _builder = builder;
-        _exceptionMode = exceptionMode;
+        _parseOptions = parseOptions;
     }
 
     /// <summary>Parses the macro string.</summary>
@@ -44,8 +38,14 @@ internal readonly ref struct MacroStringParser
     public int ParseMacroStringAndAppend( int offset, bool stopOnCharRequiringEscape, ReadOnlySpan< byte > extraTerminators )
     {
         var beginOffset = offset;
-        while( new UtfEnumerator( _macroString[ offset.. ], _utfEnumeratorFlags ).TryPeekNext( out var s, out _ ) )
+        while( new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ).TryPeekNext( out var s, out _ ) )
         {
+            if( s.IsSeStringPayload )
+            {
+                _builder.Append( new ReadOnlySeStringSpan( _macroString.Slice( offset + s.ByteOffset, s.ByteLength ) ) );
+                continue;
+            }
+
             switch( s.Value.UIntValue )
             {
                 case '\\':
@@ -55,6 +55,10 @@ internal readonly ref struct MacroStringParser
                 case <= byte.MaxValue when extraTerminators.Contains( (byte) s.Value.UIntValue ):
                     return offset - beginOffset;
 
+                case '<' when _parseOptions.ExceptionMode is MacroStringParseExceptionMode.Throw:
+                    offset += ParseMacroStringPayloadAndAppend( offset, extraTerminators );
+                    break;
+
                 case '<':
                     try
                     {
@@ -62,31 +66,10 @@ internal readonly ref struct MacroStringParser
                     }
                     catch( MacroStringParseException e )
                     {
-                        if( _exceptionMode is MacroStringParseExceptionMode.Throw )
-                            throw;
-
                         var byteLength = Math.Max( s.ByteLength, e.Offset - offset );
                         var sliceUntilError = _macroString.Slice( offset, byteLength );
-                        switch( _utfEnumeratorFlags & UtfEnumeratorFlags.UtfMask )
-                        {
-                            case UtfEnumeratorFlags.Utf8:
-                                _builder.Append( sliceUntilError );
-                                break;
-                            case UtfEnumeratorFlags.Utf8SeString:
-                                _builder.Append( new ReadOnlySeStringSpan( sliceUntilError ) );
-                                break;
-                            case UtfEnumeratorFlags.Utf16:
-                                _builder.Append( MemoryMarshal.Cast< byte, char >( sliceUntilError ) );
-                                break;
-                            case UtfEnumeratorFlags.Utf32:
-                                var dummy = 0;
-                                var dummyAsSpan = MemoryMarshal.Cast< int, byte >( MemoryMarshal.CreateSpan( ref dummy, 1 ) );
-                                foreach( var r in MemoryMarshal.Cast< byte, Rune >( sliceUntilError ) )
-                                    _builder.Append( dummyAsSpan[ ..r.EncodeToUtf8( dummyAsSpan ) ] );
-                                break;
-                        }
-
-                        if( _exceptionMode == MacroStringParseExceptionMode.EmbedError )
+                        _builder.Append( new UtfEnumerator( sliceUntilError, _parseOptions.CharEnumerationFlags ) );
+                        if( _parseOptions.ExceptionMode == MacroStringParseExceptionMode.EmbedError )
                             _builder.Append( "<ERROR: " ).Append( e.Message ).Append( ">" );
                         offset += byteLength;
                     }
@@ -114,7 +97,7 @@ internal readonly ref struct MacroStringParser
     private int ParseMacroStringTextAndAppend( int offset, ReadOnlySpan< byte > extraTerminators )
     {
         var nextIsEscaped = false;
-        foreach( var c in new UtfEnumerator( _macroString[ offset.. ], _utfEnumeratorFlags ) )
+        foreach( var c in new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ) )
         {
             switch( c.Value.UIntValue )
             {
@@ -128,10 +111,7 @@ internal readonly ref struct MacroStringParser
                 case var b and <= byte.MaxValue when extraTerminators.Contains( (byte) b ):
                     return c.ByteOffset;
                 default:
-                    // making a 4 byte buffer:
-                    var buf = 0;
-                    var bufSpan = MemoryMarshal.Cast< int, byte >( MemoryMarshal.CreateSpan( ref buf, 1 ) );
-                    _builder.Append( bufSpan[ ..c.EffectiveRune.EncodeToUtf8( bufSpan ) ] );
+                    _builder.Append( c );
                     break;
             }
         }
@@ -210,7 +190,7 @@ internal readonly ref struct MacroStringParser
                 var op2 = -1;
                 var len1 = 0;
                 var len2 = 0;
-                foreach( var e in new UtfEnumerator( _macroString[ offset.. ], _utfEnumeratorFlags ) )
+                foreach( var e in new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ) )
                 {
                     var c = e.Value.IntValue is '!' or '=' or '<' or '>' ? e.Value.IntValue : 0;
                     if( c == 0 )
@@ -273,15 +253,15 @@ internal readonly ref struct MacroStringParser
             var length = ParseMacroStringAndAppend( offset, true, extraTerminators );
 
             var text8 = _macroString.Slice( offset, length );
-            if( ( _utfEnumeratorFlags & UtfEnumeratorFlags.UtfMask ) is not UtfEnumeratorFlags.Utf8 and not UtfEnumeratorFlags.Utf8SeString )
+            if( ( _parseOptions.CharEnumerationFlags & UtfEnumeratorFlags.UtfMask ) is not UtfEnumeratorFlags.Utf8 and not UtfEnumeratorFlags.Utf8SeString )
             {
                 var text8Length = 0;
-                foreach( var e in new UtfEnumerator( text8, _utfEnumeratorFlags ) )
+                foreach( var e in new UtfEnumerator( text8, _parseOptions.CharEnumerationFlags ) )
                     text8Length += e.EffectiveRune.Utf8SequenceLength;
 
                 var tmp = text8Length < 1024 ? stackalloc byte[text8Length] : new byte[text8Length];
                 var tmpOffset = 0;
-                foreach( var e in new UtfEnumerator( text8, _utfEnumeratorFlags ) )
+                foreach( var e in new UtfEnumerator( text8, _parseOptions.CharEnumerationFlags ) )
                     tmpOffset += e.EffectiveRune.EncodeToUtf8( tmp[ tmpOffset.. ] );
 
                 TransformStringAndEndExpression( tmp );
@@ -403,7 +383,7 @@ internal readonly ref struct MacroStringParser
 
     private bool TryConsumeStart( ref int offset, ReadOnlySpan< byte > expected )
     {
-        var en1 = new UtfEnumerator( _macroString[ offset.. ], _utfEnumeratorFlags );
+        var en1 = new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags );
         var en2 = new UtfEnumerator( expected, UtfEnumeratorFlags.Utf8 );
         if( !en1.MoveNext() || !en2.MoveNext() )
             return false;
@@ -440,7 +420,7 @@ internal readonly ref struct MacroStringParser
 
         var numConsumedBytes = _macroString.Length - offset;
         var nextIsEscaped = false;
-        foreach( var c in new UtfEnumerator( _macroString[ offset.. ], _utfEnumeratorFlags ) )
+        foreach( var c in new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ) )
         {
             var stop = false;
             switch( c.Value.IntValue )
@@ -482,7 +462,7 @@ internal readonly ref struct MacroStringParser
 
     private void SkipWhitespaces( ref int offset )
     {
-        foreach( var c in new UtfEnumerator( _macroString[ offset.. ], _utfEnumeratorFlags ) )
+        foreach( var c in new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ) )
         {
             if( c.Value.TryGetRune( out var rune ) && Rune.IsWhiteSpace( rune ) )
                 continue;

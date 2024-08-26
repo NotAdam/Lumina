@@ -527,7 +527,7 @@ public readonly struct UtfValue : IEquatable<UtfValue>, IComparable<UtfValue>
     /// <param name="target">The optional target byte span.</param>
     /// <param name="codepoint">The codepoint to encode.</param>
     /// <param name="length">The length of the encoded data.</param>
-    /// <returns>The remaning region of <paramref name="target"/>.</returns>
+    /// <returns>The remaining region of <paramref name="target"/>.</returns>
     public static Span<byte> Encode8(Span<byte> target, int codepoint, out int length)
     {
         var value = (uint)codepoint;
@@ -618,7 +618,7 @@ public readonly struct UtfValue : IEquatable<UtfValue>, IComparable<UtfValue>
     /// <param name="codepoint">The codepoint to encode.</param>
     /// <param name="be">Whether to use big endian.</param>
     /// <param name="length">The length of the encoded data.</param>
-    /// <returns>The remaning region of <paramref name="target"/>.</returns>
+    /// <returns>The remaining region of <paramref name="target"/>.</returns>
     public static Span<byte> Encode16(Span<byte> target, int codepoint, bool be, out int length)
     {
         var value = (uint)codepoint;
@@ -720,7 +720,7 @@ public readonly struct UtfValue : IEquatable<UtfValue>, IComparable<UtfValue>
 
     /// <summary>Encodes the codepoint to the target.</summary>
     /// <param name="target">The target byte span.</param>
-    /// <returns>The remaning region of <paramref name="target"/>.</returns>
+    /// <returns>The remaining region of <paramref name="target"/>.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public Span<byte> Encode8(Span<byte> target) => Encode8(target, this, out _);
 }

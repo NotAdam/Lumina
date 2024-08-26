@@ -431,6 +431,19 @@ public class SeStringBuilderTests
     }
 
     [Fact]
+    public unsafe void InterpolationHandlerTest()
+    {
+        const string test = "asdf";
+        var boldHello = new SeStringBuilder().AppendBold( "Hello" ).ToReadOnlySeString();
+        Assert.Equal(
+            "Hex:0x    1234\nasdf\nint*: 0x0000000012345678\n|Left|\n<bold(1)>Hello<bold(0)>" ,
+            new SeStringBuilder()
+                .Append( $"Hex:0x{0x1234,8:X}\n{test}\nint*: 0x{(void*) 0x12345678:X16}\n|{"Left",-8}|\n{boldHello}" )
+                .ToReadOnlySeString()
+                .ToString());
+    }
+
+    [Fact]
     public void ThrowsOnInvalidMacroStrings1() =>
         Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<bad_payload>"u8 ) );
 
@@ -470,11 +483,11 @@ public class SeStringBuilderTests
             {
                 if( gameData.Excel.GetSheetRaw( sheetName, language ) is not { } sheet )
                     continue;
-                
+
                 // CustomTalkDefineClient: it currently fails at reading string columns in sheets of subrow variant. 
                 if( sheet.Variant != ExcelVariant.Default )
                     continue;
-                
+
                 foreach( var row in sheet )
                 {
                     for( var i = 0; i < sheet.Columns.Length; i++ )

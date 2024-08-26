@@ -1,5 +1,4 @@
 using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
 using Lumina.Text.Payloads;
@@ -70,7 +69,7 @@ public sealed partial class SeStringBuilder : IResettable
     public SeStringBuilder AbortMacro()
     {
         if( _mss[ ^1 ].Type != StackType.Payload )
-            throw new InvalidOperationException( "No payload is currently being built." + _mss[^1].Type );
+            throw new InvalidOperationException( "No payload is currently being built." + _mss[ ^1 ].Type );
 
         var stream = _mss[ ^1 ].Stream;
         _mss.RemoveAt( _mss.Count - 1 );
@@ -125,46 +124,16 @@ public sealed partial class SeStringBuilder : IResettable
         return true;
     }
 
-#if NET8_0
-    /// <summary>Helper method for <see cref="Append{T}"/>.</summary>
-    /// <param name="ssb">The target instance of <see cref="SeStringBuilder"/>.</param>
-    /// <param name="value">The value to append.</param>
-    /// <typeparam name="T">The span formattable type.</typeparam>
-    private static void TypedAppendUtf8SpanFormattable< T >( SeStringBuilder ssb, scoped in T value ) where T : IUtf8SpanFormattable
+    /// <summary>Reallocates a byte span from the result of <see cref="GetStringStream"/>.</summary>
+    /// <param name="oldLength">Previously allocated span size from <see cref="AllocateStringSpan"/> or <see cref="ReallocateStringSpan"/>.</param>
+    /// <param name="length">Number of bytes to allocate.</param>
+    /// <returns>The allocated byte span.</returns>
+    private Span< byte > ReallocateStringSpan( int oldLength, int length )
     {
-        for (var len = 128; ; len *= 2)
-        {
-            var buf = ArrayPool< byte >.Shared.Rent( len );
-            if( value.TryFormat( buf, out var written, default, null ) )
-            {
-                ssb.Append( buf[ ..written ] );
-                ArrayPool< byte >.Shared.Return( buf );
-                return;
-            }
-
-            ArrayPool< byte >.Shared.Return( buf );
-        }
-    }
-#endif
-
-    /// <summary>Helper method for <see cref="Append{T}"/>.</summary>
-    /// <param name="ssb">The target instance of <see cref="SeStringBuilder"/>.</param>
-    /// <param name="value">The value to append.</param>
-    /// <typeparam name="T">The span formattable type.</typeparam>
-    private static void TypedAppendSpanFormattable< T >( SeStringBuilder ssb, scoped in T value ) where T : ISpanFormattable
-    {
-        for( var len = 128;; len *= 2 )
-        {
-            var buf = ArrayPool< char >.Shared.Rent( len );
-            if( value.TryFormat( buf, out var written, default, null ) )
-            {
-                ssb.Append( buf[ ..written ] );
-                ArrayPool< char >.Shared.Return( buf );
-                return;
-            }
-
-            ArrayPool< char >.Shared.Return( buf );
-        }
+        var stream = GetStringStream();
+        var offset = unchecked( (int) stream.Position - oldLength );
+        stream.SetLength( stream.Position = offset + length );
+        return stream.GetBuffer().AsSpan( offset, length );
     }
 
     /// <summary>Allocates a byte span from the result of <see cref="GetStringStream"/>.</summary>

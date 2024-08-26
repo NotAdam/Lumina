@@ -41,6 +41,11 @@ public ref struct UtfEnumerator
         };
     }
 
+    public ReadOnlySpan<byte> Data => _data;
+    public UtfEnumeratorFlags EnumeratorFlags => _flags;
+    public int NumBytesPerUnit => _numBytesPerUnit;
+    public bool IsBigEndian => _isBigEndian;
+
     /// <inheritdoc cref="IEnumerator.Current"/>
     public Subsequence Current { get; private set; } = default;
 
@@ -182,6 +187,10 @@ public ref struct UtfEnumerator
         }
     }
 
+    /// <summary>Clones this enumerator, using the current state.</summary>
+    /// <returns>Cloned instance of this enumerator.</returns>
+    public readonly UtfEnumerator Clone() => this;
+
     /// <inheritdoc cref="IEnumerator.MoveNext"/>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public bool MoveNext()
@@ -279,13 +288,33 @@ public ref struct UtfEnumerator
             get => new(EffectiveInt);
         }
 
+        /// <summary>Converts a <see cref="Subsequence"/> to the effective codepoint value, with invalid codepoints replaced.</summary>
+        /// <param name="s"><see cref="Subsequence"/> to convert.</param>
+        /// <returns>Converted value.</returns>
+        public static implicit operator char( scoped in Subsequence s ) => s.EffectiveChar;
+
+        /// <summary>Converts a <see cref="Subsequence"/> to the effective codepoint value, with invalid codepoints replaced.</summary>
+        /// <param name="s"><see cref="Subsequence"/> to convert.</param>
+        /// <returns>Converted value.</returns>
+        public static implicit operator int( scoped in Subsequence s ) => s.EffectiveInt;
+
+        /// <summary>Converts a <see cref="Subsequence"/> to the effective codepoint value, with invalid codepoints replaced.</summary>
+        /// <param name="s"><see cref="Subsequence"/> to convert.</param>
+        /// <returns>Converted value.</returns>
+        public static implicit operator uint( scoped in Subsequence s ) => unchecked( (uint) s.EffectiveInt );
+
+        /// <summary>Converts a <see cref="Subsequence"/> to the effective <see cref="Rune"/> value, with invalid codepoints replaced.</summary>
+        /// <param name="s"><see cref="Subsequence"/> to convert.</param>
+        /// <returns>Converted value.</returns>
+        public static implicit operator Rune( scoped in Subsequence s ) => s.EffectiveRune;
+
         /// <summary>Compares two values to determine equality.</summary>
         /// <param name="left">The value to compare with <paramref name="right" />.</param>
         /// <param name="right">The value to compare with <paramref name="left" />.</param>
         /// <returns>
         /// <see langword="true" /> if <paramref name="left" /> is equal to <paramref name="right" />; otherwise, <see langword="false" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator ==(Subsequence left, Subsequence right) => left.Equals(right);
+        public static bool operator ==(scoped in Subsequence left, scoped in Subsequence right) => left.Equals(right);
 
         /// <summary>Compares two values to determine inequality.</summary>
         /// <param name="left">The value to compare with <paramref name="right" />.</param>
@@ -293,7 +322,7 @@ public ref struct UtfEnumerator
         /// <returns>
         /// <see langword="true" /> if <paramref name="left" /> is not equal to <paramref name="right" />; otherwise, <see langword="false" />.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool operator !=(Subsequence left, Subsequence right) => !left.Equals(right);
+        public static bool operator !=(scoped in Subsequence left, scoped in Subsequence right) => !left.Equals(right);
 
         /// <summary>Creates a new instance of the <see cref="Subsequence"/> struct from a Unicode value.</summary>
         /// <param name="codepoint">The codepoint.</param>

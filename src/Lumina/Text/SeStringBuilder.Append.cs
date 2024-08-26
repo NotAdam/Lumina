@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -13,10 +12,6 @@ namespace Lumina.Text;
 /// <summary>A builder for <see cref="SeString"/>.</summary>
 public sealed partial class SeStringBuilder
 {
-    private static readonly ConditionalWeakTable< Type, Delegate > TypedAppendDelegates = new();
-
-    private delegate void TypedAppendDelegate< T >( SeStringBuilder ssb, scoped in T value ) where T : struct;
-
     /// <summary>Adds the given UTF-16 char sequence.</summary>
     /// <param name="value">Text to add.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
@@ -67,6 +62,20 @@ public sealed partial class SeStringBuilder
     /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder Append( string? value, int startIndex, int count ) => Append( value.AsSpan( startIndex, count ) );
 
+    /// <summary>Adds the specified interpolated string.</summary>
+    /// <param name="handler">Interpolated string to append.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder Append( [InterpolatedStringHandlerArgument( "" )] SeStringInterpolatedStringHandler handler ) => this;
+
+    /// <summary>Adds the specified interpolated string.</summary>
+    /// <param name="provider">An object that supplies culture-specific formatting information.</param>
+    /// <param name="handler">Interpolated string to append.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder Append(
+        IFormatProvider? provider,
+        [InterpolatedStringHandlerArgument( "", "provider" )]
+        SeStringInterpolatedStringHandler handler ) => this;
+
     /// <summary>Adds the given UTF-8 byte sequence.</summary>
     /// <param name="value">Text to add.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
@@ -114,7 +123,7 @@ public sealed partial class SeStringBuilder
         var len = 0;
         foreach( var chunk in value.GetChunks() )
         {
-            if (chunk.Span.IndexOfAny( (char) ReadOnlySeString.Stx, '\0' ) != -1 )
+            if( chunk.Span.IndexOfAny( (char) ReadOnlySeString.Stx, '\0' ) != -1 )
                 throw new ArgumentException( "A SeString may not contain STX or NUL for text.", nameof( value ) );
             len += Encoding.UTF8.GetByteCount( chunk.Span );
         }
@@ -148,7 +157,7 @@ public sealed partial class SeStringBuilder
                 }
 
                 var avail = Math.Min( count2, chunk.Length - index2 );
-                if (chunk.Span.Slice( index2, avail ).IndexOfAny( (char) ReadOnlySeString.Stx, '\0' ) != -1 )
+                if( chunk.Span.Slice( index2, avail ).IndexOfAny( (char) ReadOnlySeString.Stx, '\0' ) != -1 )
                     throw new ArgumentException( "A SeString may not contain STX or NUL for text.", nameof( value ) );
                 len += Encoding.UTF8.GetByteCount( chunk.Span.Slice( index2, avail ) );
                 index2 += avail;
@@ -243,65 +252,63 @@ public sealed partial class SeStringBuilder
     [SuppressMessage( "ReSharper", "UnusedParameter.Global", Justification = "Trap for invalid append call from implicit casts with overloads." )]
     public void Append( ReadOnlySeExpressionSpan value ) => throw new InvalidOperationException();
 
-    /// <summary>Adds the given value.</summary>
-    /// <param name="value">Value to add.</param>
+    /// <summary>Appends the yielded characters from a <see cref="UtfEnumerator"/>.</summary>
+    /// <param name="enumerator">Enumerator to append text from.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
-    public SeStringBuilder Append( object? value ) => Append( value?.ToString() );
+    public SeStringBuilder Append( scoped in UtfEnumerator enumerator )
+    {
+        var length = 0;
+        foreach( var c in enumerator.Clone() )
+            length += c.IsSeStringPayload ? c.ByteLength : c.Value.Length8;
+
+        var target = AllocateStringSpan( length );
+        foreach( var c in enumerator.Clone() )
+        {
+            if( c.IsSeStringPayload )
+            {
+                enumerator.Data.Slice( c.ByteOffset, c.ByteLength ).CopyTo( target );
+                target = target[ c.ByteLength.. ];
+            }
+            else
+            {
+                target = c.Value.Encode8( target );
+            }
+        }
+
+        return this;
+    }
+
+    /// <summary>Adds the given character, or <see cref="Rune.ReplacementChar"/> if the value is not valid.</summary>
+    /// <param name="codepoint">Character to add.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder AppendChar( int codepoint ) => Append( Rune.TryCreate( codepoint, out var rune ) ? rune : Rune.ReplacementChar );
+
+    /// <summary>Adds the given character.</summary>
+    /// <param name="codepoint">Character to add.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder AppendChar( uint codepoint ) => AppendChar( (int) codepoint );
 
     /// <summary>Adds the given value after parsing it as a macro string.</summary>
     /// <param name="value">String to parse and add.</param>
-    /// <param name="flags">Parse flags for <paramref cref="value"/>.</param>
-    /// <param name="exceptionMode">Action to take on parse failure.</param>
+    /// <param name="parseOptions">Parse options for <paramref cref="value"/>. Defaults to interpreting <paramref name="value"/> as UTF-8.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
-    public SeStringBuilder AppendMacroString(
-        ReadOnlySpan< byte > value,
-        UtfEnumeratorFlags flags = default,
-        MacroStringParseExceptionMode exceptionMode = MacroStringParseExceptionMode.Throw )
+    public SeStringBuilder AppendMacroString( ReadOnlySpan< byte > value, scoped in MacroStringParseOptions parseOptions = default )
     {
-        new MacroStringParser( value, flags, this, exceptionMode ).ParseMacroStringAndAppend( 0, false, default );
+        new MacroStringParser( value, this, parseOptions ).ParseMacroStringAndAppend( 0, false, default );
         return this;
     }
 
     /// <summary>Adds the given value after parsing it as a macro string.</summary>
     /// <param name="value">String to parse and add.</param>
-    /// <param name="flags">Parse flags for <paramref cref="value"/>.</param>
-    /// <param name="exceptionMode">Action to take on parse failure.</param>
+    /// <param name="parseOptions">Parse options for <paramref cref="value"/>. Defaults to interpreting <paramref name="value"/> as UTF-16.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
-    public SeStringBuilder AppendMacroString(
-        ReadOnlySpan< char > value,
-        UtfEnumeratorFlags flags = default,
-        MacroStringParseExceptionMode exceptionMode = MacroStringParseExceptionMode.Throw ) =>
+    public SeStringBuilder AppendMacroString( ReadOnlySpan< char > value, scoped in MacroStringParseOptions parseOptions = default ) =>
         AppendMacroString(
             MemoryMarshal.Cast< char, byte >( value ),
-            (flags & UtfEnumeratorFlags.UtfMask) == UtfEnumeratorFlags.Default ? UtfEnumeratorFlags.Utf16 | flags : flags,
-            exceptionMode );
-
-    /// <summary>Adds the given value.</summary>
-    /// <param name="value">Value to add.</param>
-    /// <returns>A reference of this instance after the append operation is completed.</returns>
-    public SeStringBuilder Append< T >( scoped in T value ) where T : struct
-    {
-        ( (TypedAppendDelegate< T >) TypedAppendDelegates.GetValue( typeof( T ), static ty => {
-#if NET8_0
-            if( ty.IsAssignableTo( typeof( IUtf8SpanFormattable ) ) )
+            parseOptions with
             {
-                return typeof( SeStringBuilder )
-                    .GetMethod( nameof( TypedAppendUtf8SpanFormattable ), BindingFlags.Static | BindingFlags.NonPublic )!
-                    .MakeGenericMethod( typeof( T ) )
-                    .CreateDelegate< TypedAppendDelegate< T > >();
-            }
-#endif
-
-            if( ty.IsAssignableTo( typeof( ISpanFormattable ) ) )
-            {
-                return typeof( SeStringBuilder )
-                    .GetMethod( nameof( TypedAppendSpanFormattable ), BindingFlags.Static | BindingFlags.NonPublic )!
-                    .MakeGenericMethod( typeof( T ) )
-                    .CreateDelegate< TypedAppendDelegate< T > >();
-            }
-
-            return new TypedAppendDelegate< T >( ( SeStringBuilder ssb, scoped in T value ) => ssb.Append( (object?) value ) );
-        } ) ).Invoke( this, in value );
-        return this;
-    }
+                CharEnumerationFlags = ( parseOptions.CharEnumerationFlags & UtfEnumeratorFlags.UtfMask ) == UtfEnumeratorFlags.Default
+                    ? UtfEnumeratorFlags.Utf16 | parseOptions.CharEnumerationFlags
+                    : parseOptions.CharEnumerationFlags
+            } );
 }

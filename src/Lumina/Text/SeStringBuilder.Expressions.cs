@@ -92,7 +92,7 @@ public sealed partial class SeStringBuilder
     /// <returns>A reference of this instance after the operation is completed.</returns>
     public SeStringBuilder ChangeBinaryExpression( ExpressionType expressionType )
     {
-        if( _mss[ ^1 ].Type is not StackType.Expression || ((ExpressionType)_mss[^1].Stream.GetBuffer()[0]).GetArity() != ExpressionArity.Binary)
+        if( _mss[ ^1 ].Type is not StackType.Expression || ( (ExpressionType) _mss[ ^1 ].Stream.GetBuffer()[ 0 ] ).GetArity() != ExpressionArity.Binary )
             throw new InvalidOperationException( "Current scope is not a binary expression." );
         if( expressionType.GetArity() != ExpressionArity.Binary )
             throw new ArgumentOutOfRangeException( nameof( expressionType ), expressionType, "Only binary expression types are allowed." );
