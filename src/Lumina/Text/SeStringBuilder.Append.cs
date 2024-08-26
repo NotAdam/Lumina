@@ -250,7 +250,7 @@ public sealed partial class SeStringBuilder
 
     /// <summary>Adds the given value after parsing it as a macro string.</summary>
     /// <param name="value">String to parse and add.</param>
-    /// <param name="flags">Parse flags for <see cref="value"/>.</param>
+    /// <param name="flags">Parse flags for <paramref cref="value"/>.</param>
     /// <param name="exceptionMode">Action to take on parse failure.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder AppendMacroString(
@@ -264,7 +264,7 @@ public sealed partial class SeStringBuilder
 
     /// <summary>Adds the given value after parsing it as a macro string.</summary>
     /// <param name="value">String to parse and add.</param>
-    /// <param name="flags">Parse flags for <see cref="value"/>.</param>
+    /// <param name="flags">Parse flags for <paramref cref="value"/>.</param>
     /// <param name="exceptionMode">Action to take on parse failure.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder AppendMacroString(
