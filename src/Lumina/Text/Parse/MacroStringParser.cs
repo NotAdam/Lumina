@@ -165,7 +165,7 @@ internal readonly ref struct MacroStringParser
                     if( first )
                         first = false;
                     else
-                        ConsumeStart( ref offset, ","u8 );
+                        ConsumeStart( ref offset, ","u8, "\",\" or \")\"" );
 
                     offset += ParseMacroStringExpressionAndAppend( offset, extraTerminators );
                 }
@@ -424,10 +424,13 @@ internal readonly ref struct MacroStringParser
         return true;
     }
 
-    private void ConsumeStart( ref int offset, ReadOnlySpan< byte > expected )
+    private void ConsumeStart( ref int offset, ReadOnlySpan< byte > expected, string? expectedRepresentationForException = null )
     {
-        if( !TryConsumeStart( ref offset, expected ) )
-            throw new MacroStringParseException( $"Expected \"{Encoding.UTF8.GetString( expected )}\"", offset );
+        if( TryConsumeStart( ref offset, expected ) )
+            return;
+
+        expectedRepresentationForException ??= $"\"{Encoding.UTF8.GetString( expected )}\"";
+        throw new MacroStringParseException( $"Expected {expectedRepresentationForException}", offset );
     }
 
     private MacroCode ParseMacroCode( ref int offset )
