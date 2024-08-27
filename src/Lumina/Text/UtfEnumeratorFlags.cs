@@ -11,7 +11,7 @@ public enum UtfEnumeratorFlags
 
     /// <summary>Enumerate as UTF-8 (the default.)</summary>
     Utf8 = Default,
-    
+
     /// <summary>Enumerate as UTF-8 in a SeString.</summary>
     Utf8SeString = 1 << 1,
 

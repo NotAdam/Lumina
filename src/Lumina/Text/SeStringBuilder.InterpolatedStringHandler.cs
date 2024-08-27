@@ -2,6 +2,7 @@ using System;
 using System.Buffers;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using Lumina.Misc;
 using Lumina.Text.ReadOnly;
 
 namespace Lumina.Text;

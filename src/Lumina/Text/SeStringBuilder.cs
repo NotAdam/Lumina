@@ -11,7 +11,7 @@ namespace Lumina.Text;
 public sealed partial class SeStringBuilder : IResettable
 {
     private readonly List< (StackType Type, int Ident, MemoryStream Stream) > _mss = [];
-    private readonly List< MemoryStream >? _mssFree;
+    private readonly List< MemoryStream > _mssFree = [];
     private readonly ObjectPool< MemoryStream >? _mssPool;
 
     private enum StackType
@@ -22,11 +22,7 @@ public sealed partial class SeStringBuilder : IResettable
     }
 
     /// <summary>Initializes a new instance of the <see cref="SeStringBuilder"/> class.</summary>
-    public SeStringBuilder()
-    {
-        _mssFree = [];
-        Clear();
-    }
+    public SeStringBuilder() => Clear();
 
     /// <summary>Initializes a new instance of the <see cref="SeStringBuilder"/> class.</summary>
     /// <param name="memoryStreamPool">Shared memory stream pool to use.</param>
@@ -84,6 +80,16 @@ public sealed partial class SeStringBuilder : IResettable
         while( _mss.Count > 0 )
             PopMemoryStreamStack( out _ );
 
+        if( zeroBuffer )
+        {
+            foreach( var mss in _mssFree )
+                mss.GetBuffer().AsSpan().Clear();
+        }
+
+        foreach( var mss in _mssFree )
+            _mssPool?.Return( mss );
+        _mssFree.Clear();
+
         PushMemoryStreamStack( StackType.String, 0 );
         return this;
     }
@@ -114,16 +120,16 @@ public sealed partial class SeStringBuilder : IResettable
 
     private void PushMemoryStreamStack(StackType stackType, int ident)
     {
-        if( _mssPool is not null )
-        {
-            _mss.Add( ( stackType, ident, _mssPool.Get() ) );
-            return;
-        }
-
-        if (_mssFree?.Count is > 0)
+        if (_mssFree.Count is > 0)
         {
             _mss.Add( ( stackType, ident, _mssFree[ ^1 ] ) );
             _mssFree.RemoveAt( _mssFree.Count - 1 );
+            return;
+        }
+
+        if( _mssPool is not null )
+        {
+            _mss.Add( ( stackType, ident, _mssPool.Get() ) );
             return;
         }
 
@@ -137,10 +143,7 @@ public sealed partial class SeStringBuilder : IResettable
         _mss.RemoveAt( _mss.Count - 1 );
         var span = stream.GetBuffer().AsSpan( 0, (int) stream.Length );
         stream.SetLength( stream.Position = 0 );
-        if (_mssPool is not null)
-            _mssPool.Return( stream );
-        else
-            _mssFree?.Add( stream );
+        _mssFree.Add( stream );
         return span;
     }
 

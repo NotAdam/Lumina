@@ -66,7 +66,7 @@ internal readonly ref struct MacroStringParser
                     }
                     catch( MacroStringParseException e )
                     {
-                        var byteLength = Math.Max( s.ByteLength, e.Offset - offset );
+                        var byteLength = Math.Max( s.ByteLength, e.ByteOffset - offset );
                         var sliceUntilError = _macroString.Slice( offset, byteLength );
                         _builder.Append( new UtfEnumerator( sliceUntilError, _parseOptions.CharEnumerationFlags ) );
                         if( _parseOptions.ExceptionMode == MacroStringParseExceptionMode.EmbedError )
@@ -137,7 +137,7 @@ internal readonly ref struct MacroStringParser
                 while( true )
                 {
                     if( offset >= _macroString.Length )
-                        throw new MacroStringParseException( "Unexpected EOF", offset );
+                        throw new MacroStringParseException( "Unexpected EOF", offset, _macroString, _parseOptions );
 
                     if( TryConsumeStart( ref offset, ")"u8 ) )
                         break;
@@ -237,7 +237,10 @@ internal readonly ref struct MacroStringParser
                         break;
                     default:
                         throw new MacroStringParseException(
-                            $"Unsupported binary expression: {( op1 == -1 ? "" : "" + (char) op1 )}{( op2 == -1 ? "" : "" + (char) op2 )}", offset );
+                            $"Unsupported binary expression: {( op1 == -1 ? "" : "" + (char) op1 )}{( op2 == -1 ? "" : "" + (char) op2 )}",
+                            offset,
+                            _macroString,
+                            _parseOptions );
                 }
 
                 offset += ParseMacroStringExpressionAndAppend( offset, extraTerminators );
@@ -410,7 +413,7 @@ internal readonly ref struct MacroStringParser
             return;
 
         expectedRepresentationForException ??= $"\"{Encoding.UTF8.GetString( expected )}\"";
-        throw new MacroStringParseException( $"Expected {expectedRepresentationForException}", offset );
+        throw new MacroStringParseException( $"Expected {expectedRepresentationForException}", offset, _macroString, _parseOptions );
     }
 
     private MacroCode ParseMacroCode( ref int offset )
@@ -438,7 +441,11 @@ internal readonly ref struct MacroStringParser
                 default:
                     macroCodeNameLength += c.EffectiveRune.TryEncodeToUtf16( macroCodeName[ macroCodeNameLength.. ], out var written )
                         ? written
-                        : throw new MacroStringParseException( $"Unsupported {nameof( MacroCode )}: \"{macroCodeName[ ..macroCodeNameLength ]}...\"", offset );
+                        : throw new MacroStringParseException(
+                            $"Unsupported {nameof( MacroCode )}: \"{macroCodeName[ ..macroCodeNameLength ]}...\"",
+                            offset,
+                            _macroString,
+                            _parseOptions );
                     break;
             }
 
@@ -457,7 +464,7 @@ internal readonly ref struct MacroStringParser
             }
         }
 
-        throw new MacroStringParseException( $"Unsupported {nameof( MacroCode )}: \"{macroCodeName}\"", offset );
+        throw new MacroStringParseException( $"Unsupported {nameof( MacroCode )}: \"{macroCodeName}\"", offset, _macroString, _parseOptions );
     }
 
     private void SkipWhitespaces( ref int offset )

@@ -25,25 +25,20 @@ public ref struct UtfEnumerator
     {
         _data = data;
         _flags = flags;
-        _numBytesPerUnit = (_flags & UtfEnumeratorFlags.UtfMask) switch
-        {
-            UtfEnumeratorFlags.Utf8 or UtfEnumeratorFlags.Utf8SeString => 1,
-            UtfEnumeratorFlags.Utf16 => 2,
-            UtfEnumeratorFlags.Utf32 => 4,
-            _ => throw new ArgumentOutOfRangeException(nameof(flags), flags, "Multiple UTF flag specified."),
-        };
-        _isBigEndian = (flags & UtfEnumeratorFlags.EndiannessMask) switch
-        {
-            UtfEnumeratorFlags.NativeEndian => !BitConverter.IsLittleEndian,
-            UtfEnumeratorFlags.LittleEndian => false,
-            UtfEnumeratorFlags.BigEndian => true,
-            _ => throw new ArgumentOutOfRangeException(nameof(flags), flags, "Multiple endianness flag specified."),
-        };
+        _numBytesPerUnit = _flags.GetMinimumCodepointByteCount();
+        _isBigEndian = flags.IsEffectivelyBigEndian();
     }
 
+    /// <summary>Gets the backing data.</summary>
     public ReadOnlySpan<byte> Data => _data;
+
+    /// <summary>Gets the flags used by this enumerator.</summary>
     public UtfEnumeratorFlags EnumeratorFlags => _flags;
+
+    /// <summary>Gets the minimum number of bytes per codepoint.</summary>
     public int NumBytesPerUnit => _numBytesPerUnit;
+
+    /// <summary>Gets a value indicating whether <see cref="Data"/> is being parsed in big endian.</summary>
     public bool IsBigEndian => _isBigEndian;
 
     /// <inheritdoc cref="IEnumerator.Current"/>

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
@@ -501,7 +503,79 @@ public class SeStringBuilderTests
                 ReadOnlySeString.FromMacroString( $"{i}<string({i})>{i}<string(<string({i})>)>{i}" ).ToString() );
         }
     }
-    
+
+    [Fact]
+    public void ClearZeroBuffers()
+    {
+        var ssb = new SeStringBuilder();
+        ssb.AppendMacroString( "a<string(a,b,c,d,1,2,3,4,<string(asdfasdf)>)>aaaaaa" );
+        ssb.Clear();
+        var mssFree = (List< MemoryStream >)
+            typeof( SeStringBuilder )
+                .GetField( "_mssFree", BindingFlags.Instance | BindingFlags.NonPublic )!
+                .GetValue( ssb )!;
+        Assert.DoesNotContain( mssFree, x => x.GetBuffer().AsSpan().ContainsAnyExcept( (byte) 0 ) );
+    }
+
+    [Fact]
+    public void FriendlyErrorMessage()
+    {
+        try
+        {
+            const string dummy = "AAAA";
+            ReadOnlySeString.FromMacroString( $"{dummy}<string(bbbb<STRING(ccc)>>{dummy}" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 34, e.ByteOffset );
+            Assert.Equal( 17, e.CodepointIndex );
+            Assert.False( e.BeforeError.StartsWith( "..." ) );
+            Assert.False( e.AfterError.EndsWith( "..." ) );
+        }
+
+        try
+        {
+            const string dummy =
+                "AAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDD0000111122223333000011112222333300001111222233330000111122223333";
+            ReadOnlySeString.FromMacroString( $"{dummy}<string(bbbb<STRING(ccc)>>{dummy}" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 282, e.ByteOffset );
+            Assert.Equal( 141, e.CodepointIndex );
+            Assert.StartsWith( "...", e.BeforeError );
+            Assert.EndsWith( "...", e.AfterError );
+        }
+
+        try
+        {
+            const string dummy =
+                "AAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDD0000111122223333000011112222333300001111222233330000111122223333";
+            ReadOnlySeString.FromMacroString( $"{dummy}<string(bbbb<STRING(ccc)>>" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 282, e.ByteOffset );
+            Assert.Equal( 141, e.CodepointIndex );
+            Assert.StartsWith( "...", e.BeforeError );
+            Assert.False( e.AfterError.EndsWith( "..." ) );
+        }
+
+        try
+        {
+            const string dummy =
+                "AAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDD0000111122223333000011112222333300001111222233330000111122223333";
+            ReadOnlySeString.FromMacroString( $"<string(bbbb<STRING(ccc)>>{dummy}" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 26, e.ByteOffset );
+            Assert.Equal( 13, e.CodepointIndex );
+            Assert.False( e.BeforeError.StartsWith( "..." ) );
+            Assert.EndsWith( "...", e.AfterError );
+        }
+    }
+
     [RequiresGameInstallationFact]
     public void AllSheetsTextColumnCodec()
     {
