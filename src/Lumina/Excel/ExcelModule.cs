@@ -13,7 +13,6 @@ using Lumina.Excel.Exceptions;
 using System.Collections.Frozen;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using Lumina.Data.Parsing.Layer;
 
 namespace Lumina.Excel;
 
@@ -45,7 +44,7 @@ public class ExcelModule
     /// <summary>
     /// Get the names of all available sheets, parsed from root.exl.
     /// </summary>
-    public IReadOnlyCollection< string > SheetNames { get; }
+    public IReadOnlyList< string > SheetNames => DefinedSheetCache.Keys;
 
     /// <summary>
     /// Create a new ExcelModule. This will do all the initial discovery of sheets from the EXL but not load any sheets.
@@ -61,14 +60,12 @@ public class ExcelModule
 
         GameData.Logger?.Information( "got {ExltEntryCount} exlt entries", files.ExdMap.Count );
 
-        SheetNames = [.. files.ExdMap.Keys];
-
-        DefinedSheetCache = SheetNames
-            .Select( name => ( name, GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh") ) )
-            .Where( sheet => sheet.Item2 is not null )
+        DefinedSheetCache = files.ExdMap.Keys
+            .Select( name => ( Name: name, Header: GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh") ) )
+            .Where( sheet => sheet.Header is not null )
             .ToFrozenDictionary(
-                sheet => sheet.name,
-                sheet => new SheetData( this, sheet.Item2!, sheet.name ),
+                sheet => sheet.Name,
+                sheet => new SheetData( this, sheet.Header!, sheet.Name ),
                 StringComparer.OrdinalIgnoreCase
             );
         AdhocSheetCache = new( StringComparer.OrdinalIgnoreCase );
