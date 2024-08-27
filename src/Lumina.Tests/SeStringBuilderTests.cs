@@ -491,6 +491,17 @@ public class SeStringBuilderTests
     public void ThrowsOnInvalidMacroStrings7() =>
         Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "< asdf >"u8 ) );
 
+    [Fact]
+    public void PooledObjectsStateTest()
+    {
+        for( var i = 0; i < 64; i++ )
+        {
+            Assert.Equal(
+                $"{i}<string({i})>{i}<string(<string({i})>)>{i}",
+                ReadOnlySeString.FromMacroString( $"{i}<string({i})>{i}<string(<string({i})>)>{i}" ).ToString() );
+        }
+    }
+    
     [RequiresGameInstallationFact]
     public void AllSheetsTextColumnCodec()
     {

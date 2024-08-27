@@ -42,16 +42,8 @@ public sealed partial class SeStringBuilder
         EnsureExpressionWritableStateOrThrow();
         if( expressionType.GetArity() != ExpressionArity.Unary )
             throw new ArgumentOutOfRangeException( nameof( expressionType ), expressionType, "Only unary expression types are allowed." );
-        if( _mssFree.Count == 0 )
-        {
-            _mss.Add( ( StackType.Expression, 1, new() ) );
-        }
-        else
-        {
-            _mss.Add( ( StackType.Expression, 1, _mssFree[ ^1 ] ) );
-            _mssFree.RemoveAt( _mssFree.Count - 1 );
-        }
 
+        PushMemoryStreamStack( StackType.Expression, 1 );
         AllocateExpressionSpan( 1 )[ 0 ] = (byte) expressionType;
         return this;
     }
@@ -64,16 +56,8 @@ public sealed partial class SeStringBuilder
         EnsureExpressionWritableStateOrThrow();
         if( expressionType.GetArity() != ExpressionArity.Binary )
             throw new ArgumentOutOfRangeException( nameof( expressionType ), expressionType, "Only binary expression types are allowed." );
-        if( _mssFree.Count == 0 )
-        {
-            _mss.Add( ( StackType.Expression, 2, new() ) );
-        }
-        else
-        {
-            _mss.Add( ( StackType.Expression, 2, _mssFree[ ^1 ] ) );
-            _mssFree.RemoveAt( _mssFree.Count - 1 );
-        }
 
+        PushMemoryStreamStack( StackType.Expression, 2 );
         AllocateExpressionSpan( 1 )[ 0 ] = (byte) expressionType;
         return this;
     }
@@ -99,54 +83,44 @@ public sealed partial class SeStringBuilder
             throw new InvalidOperationException( "A string expression can be added only in the context of expression or payload." );
         if( _mss[ ^1 ].Type == StackType.Expression && _mss[ ^1 ].Ident <= 0 )
             throw new InvalidOperationException( $"No more expressions may be written. Call {nameof( EndExpression )}." );
-        if( _mssFree.Count == 0 )
-        {
-            _mss.Add( ( StackType.String, 0, new() ) );
-        }
-        else
-        {
-            _mss.Add( ( StackType.String, 0, _mssFree[ ^1 ] ) );
-            _mssFree.RemoveAt( _mssFree.Count - 1 );
-        }
 
+        PushMemoryStreamStack( StackType.String, 0 );
         return this;
     }
 
-    /// <summary>Ends writing an unary, binary, or string expression.</summary>
-    /// <returns></returns>
-    /// <remarks>Use </remarks>
+    /// <summary>Ends writing a unary, binary, or string expression.</summary>
+    /// <returns>A reference of this instance after the operation is completed.</returns>
+    /// <remarks>Use <see cref="AbortExpression"/> to cancel writing this expression instead.</remarks>
     public SeStringBuilder EndExpression()
     {
-        var stream = _mss[ ^1 ].Stream;
-        var span = stream.GetBuffer().AsSpan( 0, (int) stream.Length );
-
         switch( _mss[ ^1 ].Type )
         {
             case StackType.String:
+            {
                 if( _mss.Count == 1 || _mss[ ^1 ].Type != StackType.String )
                     throw new InvalidOperationException( "String expression is not currently being built." );
 
-                _mss.RemoveAt( _mss.Count - 1 );
+                var span = PopMemoryStreamStack(out _);
                 var buf = AllocateExpressionSpan( 1 + SeExpressionUtilities.CalculateLengthInt( span.Length ) + span.Length );
                 buf = buf[ SeExpressionUtilities.WriteRaw( buf, 0xFF ).. ];
                 buf = buf[ SeExpressionUtilities.EncodeInt( buf, span.Length ).. ];
                 span.CopyTo( buf );
                 break;
+            }
 
             case StackType.Expression:
+            {
                 if( _mss[ ^1 ].Ident != 0 )
                     throw new InvalidOperationException( $"{_mss[ ^1 ].Ident} more expression(s) must be written." );
 
-                _mss.RemoveAt( _mss.Count - 1 );
+                var span = PopMemoryStreamStack(out _);
                 _mss[ ^1 ].Stream.Write( span );
                 break;
+            }
 
             default:
                 throw new InvalidOperationException( "No expression is being written." );
         }
-
-        stream.SetLength( stream.Position = 0 );
-        _mssFree.Add( stream );
 
         OneExpressionWritten();
         return this;
@@ -159,16 +133,9 @@ public sealed partial class SeStringBuilder
         if( _mss[ ^1 ].Type is not (StackType.String or StackType.Expression) )
             throw new InvalidOperationException( "No expression is being written." );
 
-        var stream = _mss[ ^1 ].Stream;
-        _mss.RemoveAt( _mss.Count - 1 );
-        stream.SetLength( stream.Position = 0 );
-        _mssFree.Add( stream );
+        PopMemoryStreamStack(out _);
         return this;
     }
-
-    private bool IsExpressionWritableState() =>
-        _mss[ ^1 ].Type == StackType.Payload
-        || ( _mss[ ^1 ].Type == StackType.Expression && _mss[ ^1 ].Ident > 0 );
 
     private void EnsureExpressionWritableStateOrThrow()
     {

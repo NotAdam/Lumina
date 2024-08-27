@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Lumina.Text.Parse;
 using Lumina.Text.Payloads;
 
 namespace Lumina.Text.ReadOnly;
@@ -269,6 +270,32 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <param name="text">Text to create a new <see cref="ReadOnlySeString"/> from.</param>
     /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
     public static ReadOnlySeString FromText( ReadOnlySpan< char > text ) => new( text );
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given macro string.</summary>
+    /// <param name="macroString">String to parse and add.</param>
+    /// <param name="parseOptions">Parse options for <paramref cref="macroString"/>. Defaults to interpreting <paramref name="macroString"/> as UTF-8.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public static ReadOnlySeString FromMacroString( ReadOnlySpan< byte > macroString, MacroStringParseOptions parseOptions = default )
+    {
+        var ssb = SeStringBuilder.SharedPool.Get();
+        ssb.AppendMacroString( macroString, parseOptions );
+        var res = ssb.ToReadOnlySeString();
+        SeStringBuilder.SharedPool.Return( ssb );
+        return res;
+    }
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given macro string.</summary>
+    /// <param name="macroString">String to parse and add.</param>
+    /// <param name="parseOptions">Parse options for <paramref cref="macroString"/>. Defaults to interpreting <paramref name="macroString"/> as UTF-16.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public static ReadOnlySeString FromMacroString( ReadOnlySpan< char > macroString, MacroStringParseOptions parseOptions = default )
+    {
+        var ssb = SeStringBuilder.SharedPool.Get();
+        ssb.AppendMacroString( macroString, parseOptions );
+        var res = ssb.ToReadOnlySeString();
+        SeStringBuilder.SharedPool.Return( ssb );
+        return res;
+    }
 
     /// <summary>Gets a <see cref="ReadOnlySeStringSpan"/> from this <see cref="ReadOnlySeString"/>.</summary>
     /// <returns>A new instance of <see cref="ReadOnlySeStringSpan"/>.</returns>
