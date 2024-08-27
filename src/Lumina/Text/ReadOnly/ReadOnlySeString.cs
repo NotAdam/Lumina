@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Lumina.Text.Parse;
 using Lumina.Text.Payloads;
 
 namespace Lumina.Text.ReadOnly;
@@ -23,9 +24,55 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     public readonly ReadOnlyMemory< byte > Data;
 
     /// <summary>Initializes a new instance of the <see cref="ReadOnlySeString"/> struct.</summary>
+    /// <param name="data">Raw SeString data to copy from.</param>
+    /// <remarks>Data is copied from <paramref name="data"/>; this function is not allocation-free.</remarks>
+    public ReadOnlySeString( ReadOnlySpan< byte > data ) => Data = data.ToArray();
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{byte})"/>
+    public ReadOnlySeString( Span< byte > data ) => Data = data.ToArray();
+
+    /// <summary>Initializes a new instance of the <see cref="ReadOnlySeString"/> struct.</summary>
     /// <param name="data">Raw SeString data.</param>
     /// <remarks>No further mutations to the underlying data behind <paramref name="data"/> is expected.</remarks>
     public ReadOnlySeString( ReadOnlyMemory< byte > data ) => Data = data;
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlyMemory{byte})"/>
+    public ReadOnlySeString( Memory< byte > data ) => Data = data;
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlyMemory{byte})"/>
+    public ReadOnlySeString( byte[] data ) => Data = data;
+
+    /// <summary>Initializes a new instance of the <see cref="ReadOnlySeString"/> struct.</summary>
+    /// <param name="data">Raw UTF-16 string data to copy from.</param>
+    /// <remarks>Data is copied from <paramref name="data"/>; this function is not allocation-free.</remarks>
+    public ReadOnlySeString( ReadOnlySpan< char > data )
+    {
+        if( data.IndexOfAny( (char) Stx, (char) Etx ) != -1 )
+            throw new ArgumentException( "STX and ETX cannot be contained in the string.", nameof( data ) );
+        var d = new byte[Encoding.UTF8.GetByteCount( data )];
+        Encoding.UTF8.GetBytes( data, d );
+        Data = d;
+    }
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{char})"/>
+    public ReadOnlySeString( Span< char > data ) : this( (ReadOnlySpan< char >) data )
+    { }
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{char})"/>
+    public ReadOnlySeString( ReadOnlyMemory< char > data ) : this( data.Span )
+    { }
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{char})"/>
+    public ReadOnlySeString( Memory< char > data ) : this( data.Span )
+    { }
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{char})"/>
+    public ReadOnlySeString( char[] data ) : this( data.AsSpan() )
+    { }
+
+    /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{char})"/>
+    public ReadOnlySeString( string? data ) : this( data.AsSpan() )
+    { }
 
     /// <summary>Gets a value indicating whether this <see cref="ReadOnlySeString"/> is empty.</summary>
     public bool IsEmpty {
@@ -94,12 +141,68 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public static implicit operator ReadOnlySeString( Memory< byte > s ) => new( s );
 
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given byte span view.</summary>
+    /// <param name="s">The source byte span view.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/>.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( ReadOnlySpan< byte > s ) => new( s );
+
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given byte span view.</summary>
+    /// <param name="s">The source byte span view.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/>.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( Span< byte > s ) => new( s );
+
     /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given byte array.</summary>
     /// <param name="s">The source byte array.</param>
     /// <returns>A new instance of <see cref="ReadOnlySeString"/> wrapping <paramref name="s"/>.</returns>
     /// <remarks><paramref name="s"/> is not expected to be mutated once the cast is done.</remarks>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public static implicit operator ReadOnlySeString( byte[] s ) => new( s );
+
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given char memory view.</summary>
+    /// <param name="s">The source char memory view.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/> encoded in UTF-8.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( ReadOnlyMemory< char > s ) => new( s );
+
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given char memory view.</summary>
+    /// <param name="s">The source char memory view.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/> encoded in UTF-8.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( Memory< char > s ) => new( s );
+
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given char span view.</summary>
+    /// <param name="s">The source char span view.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/> encoded in UTF-8.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( ReadOnlySpan< char > s ) => new( s );
+
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given char span view.</summary>
+    /// <param name="s">The source char span view.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/> encoded in UTF-8.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( Span< char > s ) => new( s );
+
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given char array.</summary>
+    /// <param name="s">The source char array.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/> encoded in UTF-8.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( char[] s ) => new( s );
+
+    /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given char array.</summary>
+    /// <param name="s">The source char array.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/> encoded in UTF-8.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static implicit operator ReadOnlySeString( string? s ) => new( s );
 
     /// <summary>Returns a value that indicates whether the specified strings are equal.</summary>
     /// <param name="left">The first string to compare.</param>
@@ -151,6 +254,47 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
         Encoding.UTF8.GetBytes( left, res );
         right.Data.CopyTo( res.AsMemory( lnb ) );
         return new( res );
+    }
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given text in UTF-8.</summary>
+    /// <param name="text">Text to create a new <see cref="ReadOnlySeString"/> from.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
+    public static ReadOnlySeString FromText( ReadOnlySpan< byte > text )
+    {
+        if( text.IndexOfAny( Stx, Etx ) != -1 )
+            throw new ArgumentException( "STX and ETX cannot be contained in the string.", nameof( text ) );
+        return new( text );
+    }
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given text in UTF-16.</summary>
+    /// <param name="text">Text to create a new <see cref="ReadOnlySeString"/> from.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
+    public static ReadOnlySeString FromText( ReadOnlySpan< char > text ) => new( text );
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given macro string.</summary>
+    /// <param name="macroString">String to parse and add.</param>
+    /// <param name="parseOptions">Parse options for <paramref cref="macroString"/>. Defaults to interpreting <paramref name="macroString"/> as UTF-8.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public static ReadOnlySeString FromMacroString( ReadOnlySpan< byte > macroString, MacroStringParseOptions parseOptions = default )
+    {
+        var ssb = SeStringBuilder.SharedPool.Get();
+        ssb.AppendMacroString( macroString, parseOptions );
+        var res = ssb.ToReadOnlySeString();
+        SeStringBuilder.SharedPool.Return( ssb );
+        return res;
+    }
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given macro string.</summary>
+    /// <param name="macroString">String to parse and add.</param>
+    /// <param name="parseOptions">Parse options for <paramref cref="macroString"/>. Defaults to interpreting <paramref name="macroString"/> as UTF-16.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public static ReadOnlySeString FromMacroString( ReadOnlySpan< char > macroString, MacroStringParseOptions parseOptions = default )
+    {
+        var ssb = SeStringBuilder.SharedPool.Get();
+        ssb.AppendMacroString( macroString, parseOptions );
+        var res = ssb.ToReadOnlySeString();
+        SeStringBuilder.SharedPool.Return( ssb );
+        return res;
     }
 
     /// <summary>Gets a <see cref="ReadOnlySeStringSpan"/> from this <see cref="ReadOnlySeString"/>.</summary>

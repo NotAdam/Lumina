@@ -1,8 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
+using Lumina.Data;
+using Lumina.Data.Files.Excel;
+using Lumina.Data.Structs.Excel;
+using Lumina.Excel;
 using Lumina.Text;
 using Lumina.Text.Expressions;
+using Lumina.Text.Parse;
 using Lumina.Text.Payloads;
 using Lumina.Text.ReadOnly;
 using Xunit;
@@ -382,7 +389,7 @@ public class SeStringBuilderTests
                 .Clear()
                 .PushColorType( 508 )
                 .PushEdgeColorType( 509 )
-                .Append("Discard "u8)
+                .Append( "Discard "u8 )
                 .BeginMacro( MacroCode.If )
                 .BeginBinaryExpression( ExpressionType.Equal )
                 .AppendLocalNumberExpression( 2 )
@@ -401,7 +408,7 @@ public class SeStringBuilderTests
                 .BeginMacro( MacroCode.Num )
                 .AppendLocalNumberExpression( 2 )
                 .EndMacro()
-                .Append(" "  )
+                .Append( " " )
                 .BeginMacro( MacroCode.EnNoun )
                 .AppendStringExpression( "Item" )
                 .AppendIntExpression( 3 )
@@ -411,7 +418,7 @@ public class SeStringBuilderTests
                 .EndMacro()
                 .EndExpression()
                 .EndMacro()
-                .Append("?"  )
+                .Append( "?" )
                 .PopEdgeColorType()
                 .PopColorType()
                 .ToReadOnlySeString(),
@@ -421,7 +428,196 @@ public class SeStringBuilderTests
             var r = row.ReadColumn< SeString >( 0 ).AsReadOnly();
             _outputHelper.WriteLine( $"{row.RowId}\t{r.ExtractText()}\t{r}" );
             if( expected.TryGetValue( row.RowId, out var expectedSeString ) )
-                Assert.True( expectedSeString == r, $"{row.RowId} does not match; expected {expectedSeString}" );
+                Assert.StrictEqual( expectedSeString, r );
+        }
+    }
+
+    [Fact]
+    public unsafe void InterpolationHandlerTest1()
+    {
+        const string test = "asdf";
+        Assert.Equal(
+            "Left:1234    \nRight:    1234\nasdf\nint*: 0x0000000012345678",
+            new SeStringBuilder()
+                .Append( $"Left:{0x1234,-8:X}\nRight:{0x1234,8:X}\n{test}\nint*: 0x{(void*) 0x12345678:X16}" )
+                .ToReadOnlySeString()
+                .ToString() );
+    }
+
+    [Fact]
+    public void InterpolationHandlerTest2()
+    {
+        var boldHello = new SeStringBuilder().AppendBold( "Hello" ).ToReadOnlySeString();
+        Assert.Equal(
+            "|Left    |\n|   Right|\n<bold(1)>Hello<bold(0)>\nnull",
+            new SeStringBuilder()
+                .Append( $"|{"Left",-8}|\n|{"Right"u8,8}|\n{boldHello}\n{(object) null}" )
+                .ToReadOnlySeString()
+                .ToString() );
+    }
+
+    [Fact]
+    public void InterpolationHandlerTest3() =>
+        Assert.Equal(
+            "<italic(1)>test<italic(0)>",
+            new SeStringBuilder()
+                .Append( $"{"<italic(1)>test<italic(0)>":m}" )
+                .ToReadOnlySeString()
+                .ToString() );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings1() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<bad_payload>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings2() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if([a=b])>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings3() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if(1,2,3>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings4() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if,2,3>"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings5() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if(1,2,3)"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings6() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "<if(1,2,3"u8 ) );
+
+    [Fact]
+    public void ThrowsOnInvalidMacroStrings7() =>
+        Assert.Throws< MacroStringParseException >( () => new SeStringBuilder().AppendMacroString( "< asdf >"u8 ) );
+
+    [Fact]
+    public void PooledObjectsStateTest()
+    {
+        for( var i = 0; i < 64; i++ )
+        {
+            Assert.Equal(
+                $"{i}<string({i})>{i}<string(<string({i})>)>{i}",
+                ReadOnlySeString.FromMacroString( $"{i}<string({i})>{i}<string(<string({i})>)>{i}" ).ToString() );
+        }
+    }
+
+    [Fact]
+    public void ClearZeroBuffers()
+    {
+        var ssb = new SeStringBuilder();
+        ssb.AppendMacroString( "a<string(a,b,c,d,1,2,3,4,<string(asdfasdf)>)>aaaaaa" );
+        ssb.Clear();
+        var mssFree = (List< MemoryStream >)
+            typeof( SeStringBuilder )
+                .GetField( "_mssFree", BindingFlags.Instance | BindingFlags.NonPublic )!
+                .GetValue( ssb )!;
+        Assert.DoesNotContain( mssFree, x => x.GetBuffer().AsSpan().ContainsAnyExcept( (byte) 0 ) );
+    }
+
+    [Fact]
+    public void FriendlyErrorMessage()
+    {
+        try
+        {
+            const string dummy = "AAAA";
+            ReadOnlySeString.FromMacroString( $"{dummy}<string(bbbb<STRING(ccc)>>{dummy}" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 34, e.ByteOffset );
+            Assert.Equal( 17, e.CodepointIndex );
+            Assert.False( e.BeforeError.StartsWith( "..." ) );
+            Assert.False( e.AfterError.EndsWith( "..." ) );
+        }
+
+        try
+        {
+            const string dummy =
+                "AAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDD0000111122223333000011112222333300001111222233330000111122223333";
+            ReadOnlySeString.FromMacroString( $"{dummy}<string(bbbb<STRING(ccc)>>{dummy}" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 282, e.ByteOffset );
+            Assert.Equal( 141, e.CodepointIndex );
+            Assert.StartsWith( "...", e.BeforeError );
+            Assert.EndsWith( "...", e.AfterError );
+        }
+
+        try
+        {
+            const string dummy =
+                "AAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDD0000111122223333000011112222333300001111222233330000111122223333";
+            ReadOnlySeString.FromMacroString( $"{dummy}<string(bbbb<STRING(ccc)>>" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 282, e.ByteOffset );
+            Assert.Equal( 141, e.CodepointIndex );
+            Assert.StartsWith( "...", e.BeforeError );
+            Assert.False( e.AfterError.EndsWith( "..." ) );
+        }
+
+        try
+        {
+            const string dummy =
+                "AAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDDAAAABBBBCCCCDDDD0000111122223333000011112222333300001111222233330000111122223333";
+            ReadOnlySeString.FromMacroString( $"<string(bbbb<STRING(ccc)>>{dummy}" );
+        }
+        catch( MacroStringParseException e )
+        {
+            Assert.Equal( 26, e.ByteOffset );
+            Assert.Equal( 13, e.CodepointIndex );
+            Assert.False( e.BeforeError.StartsWith( "..." ) );
+            Assert.EndsWith( "...", e.AfterError );
+        }
+    }
+
+    [RequiresGameInstallationFact]
+    public void AllSheetsTextColumnCodec()
+    {
+        var gameData = new GameData( @"C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\sqpack" );
+        var ssb = new SeStringBuilder();
+        foreach( var sheetName in gameData.Excel.GetSheetNames() )
+        {
+            var languages = gameData.GetFile< ExcelHeaderFile >( ExcelModule.BuildExcelHeaderPath( sheetName ) )?.Languages ?? [Language.None];
+            foreach( var language in languages )
+            {
+                if( gameData.Excel.GetSheetRaw( sheetName, language ) is not { } sheet )
+                    continue;
+
+                // CustomTalkDefineClient: it currently fails at reading string columns in sheets of subrow variant. 
+                if( sheet.Variant != ExcelVariant.Default )
+                    continue;
+
+                foreach( var row in sheet )
+                {
+                    for( var i = 0; i < sheet.Columns.Length; i++ )
+                    {
+                        if( sheet.Columns[ i ].Type != ExcelColumnDataType.String )
+                            continue;
+
+                        var test1 = row.ReadColumn< SeString >( i ).AsReadOnly();
+                        if( test1.Data.Span.IndexOf( "payload:"u8 ) != -1 )
+                            throw new( $"Unsupported payload at {sheetName}#{row.RowId}; {test1}" );
+
+                        ReadOnlySeString test2;
+                        try
+                        {
+                            test2 = ssb.Clear().AppendMacroString( test1.ToString() ).ToReadOnlySeString();
+                        }
+                        catch( Exception e )
+                        {
+                            throw new( $"Error at {sheetName}#{row.RowId}({language})", e );
+                        }
+
+                        Assert.True( test1.AsSpan().Data.SequenceEqual( test2.AsSpan().Data ), $"Parse-encode failure at {sheetName}#{row.RowId}({language})" );
+                    }
+                }
+            }
         }
     }
 }

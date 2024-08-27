@@ -1,5 +1,4 @@
 using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
 using Lumina.Text.Payloads;
@@ -11,8 +10,9 @@ namespace Lumina.Text;
 /// <summary>A builder for <see cref="SeString"/>.</summary>
 public sealed partial class SeStringBuilder : IResettable
 {
-    private readonly List< (StackType Type, int Ident, MemoryStream Stream) > _mss = [( StackType.String, 0, new() )];
+    private readonly List< (StackType Type, int Ident, MemoryStream Stream) > _mss = [];
     private readonly List< MemoryStream > _mssFree = [];
+    private readonly ObjectPool< MemoryStream >? _mssPool;
 
     private enum StackType
     {
@@ -20,6 +20,20 @@ public sealed partial class SeStringBuilder : IResettable
         Payload,
         Expression,
     }
+
+    /// <summary>Initializes a new instance of the <see cref="SeStringBuilder"/> class.</summary>
+    public SeStringBuilder() => Clear();
+
+    /// <summary>Initializes a new instance of the <see cref="SeStringBuilder"/> class.</summary>
+    /// <param name="memoryStreamPool">Shared memory stream pool to use.</param>
+    public SeStringBuilder( ObjectPool< MemoryStream >? memoryStreamPool )
+    {
+        _mssPool = memoryStreamPool;
+        Clear();
+    }
+
+    /// <summary>Gets the shared instance of object pool for <see cref="SeStringBuilder"/>.</summary>
+    public static ObjectPool< SeStringBuilder > SharedPool { get; } = ObjectPool.Create( new PooledObjectPolicy() );
 
     /// <summary>Begins a macro.</summary>
     /// <param name="macroCode">The macro code.</param>
@@ -30,16 +44,8 @@ public sealed partial class SeStringBuilder : IResettable
             throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode, "Invalid macro code specified." );
         if( _mss[ ^1 ].Type != StackType.String )
             throw new InvalidOperationException( "A payload can be added only in the context of SeString." );
-        if( _mssFree.Count == 0 )
-        {
-            _mss.Add( ( StackType.Payload, (byte) macroCode, new() ) );
-        }
-        else
-        {
-            _mss.Add( ( StackType.Payload, (byte) macroCode, _mssFree[ ^1 ] ) );
-            _mssFree.RemoveAt( _mssFree.Count - 1 );
-        }
 
+        PushMemoryStreamStack( StackType.Payload, (byte) macroCode );
         return this;
     }
 
@@ -50,18 +56,19 @@ public sealed partial class SeStringBuilder : IResettable
         if( _mss[ ^1 ].Type != StackType.Payload )
             throw new InvalidOperationException( "No payload is currently being built." );
 
-        var stream = _mss[ ^1 ].Stream;
-        var payload = new ReadOnlySePayloadSpan(
-            ReadOnlySePayloadType.Macro,
-            (MacroCode) _mss[ ^1 ].Ident,
-            stream.GetBuffer().AsSpan( 0, (int) stream.Length ) );
+        var span = PopMemoryStreamStack(out var ident);
+        Append( new ReadOnlySePayloadSpan( ReadOnlySePayloadType.Macro, (MacroCode) ident, span ) );
+        return this;
+    }
 
-        _mss.RemoveAt( _mss.Count - 1 );
-        Append( payload );
+    /// <summary>Aborts a macro build by discarding the current macro data and exiting the macro scope.</summary>
+    /// <returns>A reference of this instance after the operation is completed.</returns>
+    public SeStringBuilder AbortMacro()
+    {
+        if( _mss[ ^1 ].Type != StackType.Payload )
+            throw new InvalidOperationException( "No payload is currently being built." );
 
-        stream.SetLength( stream.Position = 0 );
-        _mssFree.Add( stream );
-
+        PopMemoryStreamStack( out _ );
         return this;
     }
 
@@ -70,19 +77,20 @@ public sealed partial class SeStringBuilder : IResettable
     /// <returns>A reference of this instance after the clear operation is completed.</returns>
     public SeStringBuilder Clear( bool zeroBuffer = false )
     {
-        foreach( var ms in _mss )
-            _mssFree.Add( ms.Stream );
-        _mss.Clear();
+        while( _mss.Count > 0 )
+            PopMemoryStreamStack( out _ );
 
-        foreach( var m in _mssFree )
+        if( zeroBuffer )
         {
-            m.SetLength( m.Position = 0 );
-            if( zeroBuffer )
-                m.GetBuffer().AsSpan().Clear();
+            foreach( var mss in _mssFree )
+                mss.GetBuffer().AsSpan().Clear();
         }
 
-        _mss.Add( ( StackType.String, 0, _mssFree[ ^1 ] ) );
-        _mssFree.RemoveAt( _mssFree.Count - 1 );
+        foreach( var mss in _mssFree )
+            _mssPool?.Return( mss );
+        _mssFree.Clear();
+
+        PushMemoryStreamStack( StackType.String, 0 );
         return this;
     }
 
@@ -110,46 +118,45 @@ public sealed partial class SeStringBuilder : IResettable
         return true;
     }
 
-#if NET8_0
-    /// <summary>Helper method for <see cref="Append{T}"/>.</summary>
-    /// <param name="ssb">The target instance of <see cref="SeStringBuilder"/>.</param>
-    /// <param name="value">The value to append.</param>
-    /// <typeparam name="T">The span formattable type.</typeparam>
-    private static void TypedAppendUtf8SpanFormattable< T >( SeStringBuilder ssb, scoped in T value ) where T : IUtf8SpanFormattable
+    private void PushMemoryStreamStack(StackType stackType, int ident)
     {
-        for (var len = 128; ; len *= 2)
+        if (_mssFree.Count is > 0)
         {
-            var buf = ArrayPool< byte >.Shared.Rent( len );
-            if( value.TryFormat( buf, out var written, default, null ) )
-            {
-                ssb.Append( buf[ ..written ] );
-                ArrayPool< byte >.Shared.Return( buf );
-                return;
-            }
-
-            ArrayPool< byte >.Shared.Return( buf );
+            _mss.Add( ( stackType, ident, _mssFree[ ^1 ] ) );
+            _mssFree.RemoveAt( _mssFree.Count - 1 );
+            return;
         }
+
+        if( _mssPool is not null )
+        {
+            _mss.Add( ( stackType, ident, _mssPool.Get() ) );
+            return;
+        }
+
+        _mss.Add( ( stackType, ident, new() ) );
     }
-#endif
 
-    /// <summary>Helper method for <see cref="Append{T}"/>.</summary>
-    /// <param name="ssb">The target instance of <see cref="SeStringBuilder"/>.</param>
-    /// <param name="value">The value to append.</param>
-    /// <typeparam name="T">The span formattable type.</typeparam>
-    private static void TypedAppendSpanFormattable< T >( SeStringBuilder ssb, scoped in T value ) where T : ISpanFormattable
+    private Span< byte > PopMemoryStreamStack(out int ident)
     {
-        for( var len = 128;; len *= 2 )
-        {
-            var buf = ArrayPool< char >.Shared.Rent( len );
-            if( value.TryFormat( buf, out var written, default, null ) )
-            {
-                ssb.Append( buf[ ..written ] );
-                ArrayPool< char >.Shared.Return( buf );
-                return;
-            }
+        var stream = _mss[ ^1 ].Stream;
+        ident = _mss[ ^1 ].Ident;
+        _mss.RemoveAt( _mss.Count - 1 );
+        var span = stream.GetBuffer().AsSpan( 0, (int) stream.Length );
+        stream.SetLength( stream.Position = 0 );
+        _mssFree.Add( stream );
+        return span;
+    }
 
-            ArrayPool< char >.Shared.Return( buf );
-        }
+    /// <summary>Reallocates a byte span from the result of <see cref="GetStringStream"/>.</summary>
+    /// <param name="oldLength">Previously allocated span size from <see cref="AllocateStringSpan"/> or <see cref="ReallocateStringSpan"/>.</param>
+    /// <param name="length">Number of bytes to allocate.</param>
+    /// <returns>The allocated byte span.</returns>
+    private Span< byte > ReallocateStringSpan( int oldLength, int length )
+    {
+        var stream = GetStringStream();
+        var offset = unchecked( (int) stream.Position - oldLength );
+        stream.SetLength( stream.Position = offset + length );
+        return stream.GetBuffer().AsSpan( offset, length );
     }
 
     /// <summary>Allocates a byte span from the result of <see cref="GetStringStream"/>.</summary>
@@ -198,5 +205,47 @@ public sealed partial class SeStringBuilder : IResettable
     {
         if( _mss[ ^1 ].Type is StackType.Expression )
             _mss[ ^1 ] = _mss[ ^1 ] with { Ident = _mss[ ^1 ].Ident - 1 };
+    }
+
+    /// <summary>Pooled object policy for <see cref="SeStringBuilder"/>.</summary>
+    public sealed class PooledObjectPolicy : PooledObjectPolicy< SeStringBuilder >
+    {
+        private readonly ObjectPool< MemoryStream > _memoryStreamPool;
+
+        /// <summary>Initializes a new instance of the <see cref="PooledObjectPolicy"/> class.</summary>
+        public PooledObjectPolicy() => _memoryStreamPool = ObjectPool.Create( new MemoryStreamPolicy() );
+
+        /// <summary>Initializes a new instance of the <see cref="PooledObjectPolicy"/> class.</summary>
+        /// <param name="memoryStreamPooledObjectPolicy">Memory stream pool policy to use.</param>
+        public PooledObjectPolicy( PooledObjectPolicy< MemoryStream > memoryStreamPooledObjectPolicy ) =>
+            _memoryStreamPool = ObjectPool.Create(
+                memoryStreamPooledObjectPolicy ?? throw new ArgumentNullException( nameof( memoryStreamPooledObjectPolicy ) ) );
+
+        /// <summary>Initializes a new instance of the <see cref="PooledObjectPolicy"/> class.</summary>
+        /// <param name="memoryStreamPool">Memory stream pool to use.</param>
+        public PooledObjectPolicy( ObjectPool< MemoryStream > memoryStreamPool ) =>
+            _memoryStreamPool = memoryStreamPool ?? throw new ArgumentNullException( nameof( memoryStreamPool ) );
+
+        /// <inheritdoc/>
+        public override SeStringBuilder Create() => new(_memoryStreamPool);
+
+        /// <inheritdoc/>
+        public override bool Return( SeStringBuilder obj ) => obj.TryReset();
+
+        private sealed class MemoryStreamPolicy : PooledObjectPolicy< MemoryStream >
+        {
+            public int MemoryStreamCapacity { get; set; } = 4096;
+
+            public override MemoryStream Create() => new( MemoryStreamCapacity );
+
+            public override bool Return( MemoryStream obj )
+            {
+                if( obj.Capacity > MemoryStreamCapacity )
+                    return false;
+
+                obj.SetLength( obj.Position = 0 );
+                return true;
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 using Lumina.Text.ReadOnly;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Lumina.Text;
@@ -53,6 +54,28 @@ public sealed partial class SeStringBuilder
     /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder AppendLine( string? value, int startIndex, int count )
         => AppendLine( value.AsSpan( startIndex, count ) );
+
+    /// <summary>Adds the specified interpolated string.</summary>
+    /// <param name="handler">Interpolated string to append.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder AppendLine( [InterpolatedStringHandlerArgument( "" )] SeStringInterpolatedStringHandler handler )
+    {
+        _ = handler;
+        return AppendNewLine();
+    }
+
+    /// <summary>Adds the specified interpolated string.</summary>
+    /// <param name="provider">An object that supplies culture-specific formatting information.</param>
+    /// <param name="handler">Interpolated string to append.</param>
+    /// <returns>A reference of this instance after the append operation is completed.</returns>
+    public SeStringBuilder AppendLine(
+        IFormatProvider? provider,
+        [InterpolatedStringHandlerArgument( "", "provider" )]
+        SeStringInterpolatedStringHandler handler )
+    {
+        _ = handler;
+        return AppendNewLine();
+    }
 
     /// <summary>Adds the given UTF-8 byte sequence and a line break.</summary>
     /// <param name="value">Text to add.</param>
