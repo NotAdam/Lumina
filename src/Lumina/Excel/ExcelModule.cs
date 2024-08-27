@@ -171,7 +171,7 @@ public class ExcelModule
                 BindingFlags.Instance | BindingFlags.Public,
                 null,
                 [rawSheet],
-                null ) as ISubrowExcelSheet ??
+                null ) as IExcelSheet ??
             throw new InvalidOperationException( "Something went wrong" );
     }
 
