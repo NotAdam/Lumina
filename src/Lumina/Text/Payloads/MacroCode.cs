@@ -4,9 +4,6 @@ namespace Lumina.Text.Payloads;
 /// <remarks>A <c>terminator</c> argument does not mean that an argument is required.</remarks>
 public enum MacroCode : byte
 {
-    /// <summary>Not a valid macro code. Representation for <c>default(MacroCode)</c>.</summary>
-    Invalid = 0,
-
     /// <summary>Sets the reset time to the contextual time storage.</summary>
     /// <remarks>Parameters: weekday, hour, terminator.</remarks>
     [MacroCodeData( null, "n N x" )] SetResetTime = 0x06,
