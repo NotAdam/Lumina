@@ -8,19 +8,26 @@ namespace Lumina.Excel;
 /// <typeparam name="T">The row type referenced by the <see cref="RowId"/>.</typeparam>
 /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
 /// <param name="rowId">The referenced row id.</param>
-public readonly struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T >
+public struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T >
 {
-    private readonly ExcelSheet< T >? _sheet = module?.GetSheet< T >();
+    private ExcelSheet< T >? _sheet = null;
+    private ExcelSheet< T >? Sheet {
+        get {
+            if( module == null )
+                return null;
+            return _sheet ??= module.GetSheet< T >();
+        }
+    }
 
     /// <summary>
     /// The row id of the referenced row.
     /// </summary>
-    public uint RowId => rowId;
+    public readonly uint RowId => rowId;
 
     /// <summary>
     /// Whether the <see cref="RowId"/> exists in the sheet.
     /// </summary>
-    public bool IsValid => _sheet?.HasRow( RowId ) ?? false;
+    public bool IsValid => Sheet?.HasRow( RowId ) ?? false;
 
     /// <summary>
     /// The referenced row value itself.
@@ -31,9 +38,9 @@ public readonly struct RowRef< T >( ExcelModule? module, uint rowId ) where T : 
     /// <summary>
     /// Attempts to get the referenced row value. Is <see langword="null"/> if <see cref="RowId"/> does not exist in the sheet.
     /// </summary>
-    public T? ValueNullable => _sheet?.GetRowOrDefault( rowId );
+    public T? ValueNullable => Sheet?.GetRowOrDefault( rowId );
 
-    private RowRef ToGeneric() => RowRef.Create< T >( module, rowId );
+    private readonly RowRef ToGeneric() => RowRef.Create< T >( module, rowId );
 
     /// <summary>
     /// Converts a concrete <see cref="RowRef{T}"/> to a generic and dynamically typed <see cref="RowRef"/>.

@@ -8,19 +8,26 @@ namespace Lumina.Excel;
 /// <typeparam name="T">The subrow type referenced by the subrows of <see cref="RowId"/>.</typeparam>
 /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
 /// <param name="rowId">The referenced row id.</param>
-public readonly struct SubrowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelSubrow< T >
+public struct SubrowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelSubrow< T >
 {
-    private readonly SubrowExcelSheet< T >? _sheet = module?.GetSubrowSheet< T >();
+    private SubrowExcelSheet< T >? _sheet = null;
+    private SubrowExcelSheet< T >? Sheet {
+        get {
+            if( module == null )
+                return null;
+            return _sheet ??= module.GetSubrowSheet< T >();
+        }
+    }
 
     /// <summary>
     /// The row id of the referenced row.
     /// </summary>
-    public uint RowId => rowId;
+    public readonly uint RowId => rowId;
 
     /// <summary>
     /// Whether the <see cref="RowId"/> exists in the sheet.
     /// </summary>
-    public bool IsValid => _sheet?.HasRow( RowId ) ?? false;
+    public bool IsValid => Sheet?.HasRow( RowId ) ?? false;
 
     /// <summary>
     /// The referenced row value itself.
@@ -31,9 +38,9 @@ public readonly struct SubrowRef< T >( ExcelModule? module, uint rowId ) where T
     /// <summary>
     /// Attempts to get the referenced row value. Is <see langword="null"/> if it does not exist in the sheet.
     /// </summary>
-    public SubrowCollection< T >? ValueNullable => _sheet?.GetRowOrDefault( rowId );
+    public SubrowCollection< T >? ValueNullable => Sheet?.GetRowOrDefault( rowId );
 
-    private RowRef ToGeneric() => RowRef.CreateSubrow< T >( module, rowId );
+    private readonly RowRef ToGeneric() => RowRef.CreateSubrow< T >( module, rowId );
 
     /// <summary>
     /// Converts a concrete <see cref="SubrowRef{T}"/> to a generic and dynamically typed <see cref="RowRef"/>.

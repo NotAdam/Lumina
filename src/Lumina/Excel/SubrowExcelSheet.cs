@@ -1,6 +1,5 @@
 using Lumina.Data;
 using Lumina.Data.Structs.Excel;
-using Lumina.Excel.Exceptions;
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -189,8 +189,15 @@ public class RawExcelSheet : IExcelSheet
     /// <inheritdoc/>
     public bool HasRow( uint rowId )
     {
-        ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );
-        return !Unsafe.IsNullRef( in lookup ) && lookup.SubrowCount > 0;
+        var lookupArrayIndex = unchecked( rowId - _rowIndexLookupArrayOffset );
+        if( lookupArrayIndex < _rowIndexLookupArray.Length )
+        {
+            var rowIndex = _rowIndexLookupArray.UnsafeAt( (int) lookupArrayIndex );
+            return rowIndex != -1;
+        }
+
+        ref readonly var rowIndexRef = ref _rowIndexLookupDict.GetValueRefOrNullRef( (int) rowId );
+        return !Unsafe.IsNullRef( in rowIndexRef );
     }
 
     /// <summary>Gets a row lookup at the given index, if possible.</summary>
