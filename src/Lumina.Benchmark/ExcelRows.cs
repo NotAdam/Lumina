@@ -17,6 +17,8 @@ public readonly struct Item( ExcelPage page, uint offset, uint row ) : IExcelRow
     public uint RowId => row;
     public uint Data => row & offset;
 
+    public readonly ushort Icon => page.ReadUInt16( offset + 136 );
+
     static Item IExcelRow<Item>.Create( ExcelPage page, uint offset, uint row ) => new( page, offset, row );
 }
 
@@ -49,6 +51,8 @@ public readonly struct EventItem( ExcelPage page, uint offset, uint row ) : IExc
 {
     public uint RowId => row;
     public uint Data => row & offset;
+
+    public readonly ushort Icon => page.ReadUInt16( offset + 24 );
 
     static EventItem IExcelRow<EventItem>.Create( ExcelPage page, uint offset, uint row ) =>
         new( page, offset, row );

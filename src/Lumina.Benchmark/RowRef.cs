@@ -28,7 +28,7 @@ public class RowRefBench
         ulong ret = 0;
         foreach( var x in rowRefSheet )
         {
-            if( x.RowId == 0 || x.Item.RowId == 0 )
+            if( x.RowId == 0 || x.GatheringItemLevel.RowId == 0 )
                 continue;
 
             ret += x.GatheringItemLevel.RowId;
@@ -37,20 +37,53 @@ public class RowRefBench
     }
 
     [Benchmark]
-    public byte RowRefOne() =>
-        rowRef.Value.GatheringItemLevel;
-
-    [Benchmark]
-    public ulong RowRefSheet()
+    public ulong RowRefResolver()
     {
         ulong ret = 0;
         foreach( var x in rowRefSheet )
         {
-            if( x.RowId == 0 || x.Item.RowId == 0 )
+            if( x.RowId == 0 || x.GatheringItemLevel.RowId == 0 )
                 continue;
 
             ret += x.GatheringItemLevel.Value.GatheringItemLevel;
         }
         return ret;
     }
+
+    [Benchmark]
+    public ulong RowMultiRefEnumerator()
+    {
+        ulong ret = 0;
+        foreach( var x in rowRefSheet )
+        {
+            var item = x.Item;
+            if( x.RowId == 0 || item.RowId == 0 )
+                continue;
+
+            ret += item.RowId;
+        }
+        return ret;
+    }
+
+    [Benchmark]
+    public ulong RowMultiRefResolver()
+    {
+        ulong ret = 0;
+        foreach( var x in rowRefSheet )
+        {
+            var item = x.Item;
+            if( x.RowId == 0 || item.RowId == 0 )
+                continue;
+
+            if( item.GetValueOrDefault<Item>() is { } itemVal )
+                ret += itemVal.Icon;
+            else if( item.GetValueOrDefault<EventItem>() is { } itemVal2 )
+                ret += itemVal2.Icon;
+        }
+        return ret;
+    }
+
+    [Benchmark]
+    public byte RowRefOne() =>
+        rowRef.Value.GatheringItemLevel;
 }
