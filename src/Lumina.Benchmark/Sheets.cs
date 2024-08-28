@@ -25,20 +25,20 @@ public class SheetsBench
         ulong ret = 0;
         foreach( var sheetName in gameData.Excel.SheetNames )
         {
-            if( gameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" ) is not { } headerFile )
+            if( gameData.GetFile< ExcelHeaderFile >( $"exd/{sheetName}.exh" ) is not { } headerFile )
                 continue;
             var lang = headerFile.Languages.Contains( Language.English ) ? Language.English : Language.None;
             switch( headerFile.Header.Variant )
             {
                 case ExcelVariant.Default:
                     {
-                        var sheet = gameData.Excel.GetSheet<Addon>( lang, sheetName );
+                        var sheet = gameData.Excel.GetSheet< Addon >( lang, sheetName );
                         ret += sheet.Count == 0 ? 0 : sheet.GetRowAt( sheet.Count - 1 ).RowId - sheet.GetRowAt( 0 ).RowId + 1 - (uint)sheet.Count;
                         break;
                     }
                 case ExcelVariant.Subrows:
                     {
-                        var sheet = gameData.Excel.GetSubrowSheet<QuestLinkMarker>( lang, sheetName );
+                        var sheet = gameData.Excel.GetSubrowSheet< QuestLinkMarker >( lang, sheetName );
                         ret += sheet.Count == 0 ? 0 : sheet.GetRowAt( sheet.Count - 1 ).RowId - sheet.GetRowAt( 0 ).RowId + 1 - (uint)sheet.Count ;
                         break;
                     }

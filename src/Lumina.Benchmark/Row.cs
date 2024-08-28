@@ -7,11 +7,11 @@ namespace Lumina.Benchmark;
 public class RowBench
 {
     private GameData gameData;
-    private ExcelSheet<Addon> addonSheet;
+    private ExcelSheet< Addon > addonSheet;
     private uint[] addonRows;
-    private ExcelSheet<Item> itemSheet;
+    private ExcelSheet< Item > itemSheet;
     private uint[] itemRows;
-    private SubrowExcelSheet<QuestLinkMarker> subrowSheet;
+    private SubrowExcelSheet< QuestLinkMarker > subrowSheet;
     private uint[] subrowRows;
 
     [GlobalSetup]
@@ -22,13 +22,13 @@ public class RowBench
             PanicOnSheetChecksumMismatch = false,
         } );
 
-        addonSheet = gameData.GetExcelSheet<Addon>()!;
+        addonSheet = gameData.GetExcelSheet< Addon >()!;
         addonRows = addonSheet.Select( x => x.RowId ).ToArray();
 
-        itemSheet = gameData.GetExcelSheet<Item>()!;
+        itemSheet = gameData.GetExcelSheet< Item >()!;
         itemRows = itemSheet.Select( x => x.RowId ).ToArray();
 
-        subrowSheet = gameData.GetSubrowExcelSheet<QuestLinkMarker>()!;
+        subrowSheet = gameData.GetSubrowExcelSheet< QuestLinkMarker >()!;
         subrowRows = subrowSheet.Select( x => x.RowId ).ToArray();
     }
 

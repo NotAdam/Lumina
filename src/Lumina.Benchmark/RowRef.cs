@@ -7,8 +7,8 @@ namespace Lumina.Benchmark;
 public class RowRefBench
 {
     private GameData gameData;
-    private ExcelSheet<GatheringItem> rowRefSheet;
-    private RowRef<GatheringItemLevelConvertTable> rowRef;
+    private ExcelSheet< GatheringItem > rowRefSheet;
+    private RowRef< GatheringItemLevelConvertTable > rowRef;
 
     [GlobalSetup]
     public void Setup()
@@ -18,7 +18,7 @@ public class RowRefBench
             PanicOnSheetChecksumMismatch = false,
         } );
 
-        rowRefSheet = gameData.GetExcelSheet<GatheringItem>()!;
+        rowRefSheet = gameData.GetExcelSheet< GatheringItem >()!;
         rowRef = rowRefSheet.First().GatheringItemLevel;
     }
 
