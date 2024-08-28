@@ -11,20 +11,25 @@ internal readonly ref struct MacroStringParser
 {
     // Map from ascii code to supposed number.
     // -1 = invalid, -2 = ignore.
-    private static readonly sbyte[] Digits =
-    [
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -2, -1, -1, -1, -1, -1, -1, -1, -1, // _
-        +0, +1, +2, +3, +4, +5, +6, +7, +8, +9, -1, -1, -1, -1, -1, -1, // 0-9
-        10, 11, 12, 13, 14, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // A-F
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2, // '
-        10, 11, 12, 13, 14, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, // a-f
-    ];
+    // See the static constructor for initialization.
+    private static readonly sbyte[] Digits;
 
     private readonly ReadOnlySpan< byte > _macroString;
     private readonly MacroStringParseOptions _parseOptions;
     private readonly SeStringBuilder _builder;
+
+    static MacroStringParser()
+    {
+        Digits = new sbyte[0x80];
+        Digits.AsSpan().Fill(-1);
+        Digits['_'] = Digits['\''] = -2;
+        for (var i = '0'; i <= '9'; i++)
+            Digits[i] = (sbyte)(i - '0');
+        for (var i = 'A'; i <= 'F'; i++)
+            Digits[i] = (sbyte)(10 + (i - 'A'));
+        for (var i = 'a'; i <= 'f'; i++)
+            Digits[i] = (sbyte)(10 + (i - 'a'));
+    }
 
     internal MacroStringParser( ReadOnlySpan< byte > macroString, SeStringBuilder builder, MacroStringParseOptions parseOptions )
     {
