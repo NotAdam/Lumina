@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Lumina.Excel;
 
@@ -93,15 +95,48 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// </summary>
     /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
     /// <param name="rowId">The referenced row id.</param>
-    /// <param name="typeHash">A hash of <paramref name="sheetTypes"/>; must be unique in every permutation.</param>
-    /// <param name="sheetTypes">A list of row types to check against the <paramref name="rowId"/>, in order.</param>
-    /// <returns>A <see cref="RowRef"/> to one of the <paramref name="sheetTypes"/>. If the row id does not exist in any of the sheets, an untyped <see cref="RowRef"/> is returned instead.</returns>
-    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, int typeHash, params ReadOnlySpan<Type> sheetTypes )
+    /// <param name="types">A list of <see cref="IExcelRow{T}"/>/<see cref="IExcelSubrow{T}"/> types to check against <paramref name="rowId"/>, in order.</param>
+    /// <param name="typeHash">The order-sensitive hash of <paramref name="types"/>.</param>
+    /// <returns>A <see cref="RowRef"/> to one of the <paramref name="types"/>. If the row id does not exist in any of the sheets, an untyped <see cref="RowRef"/> is returned instead.</returns>
+    /// <remarks>Use <see cref="CreateTypeHash(ReadOnlySpan{Type})"/> to generate a <paramref name="typeHash"/>. It's recommended to make this a compile-time constant if possible to improve performance.</remarks>
+    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, ReadOnlySpan< Type > types, [ConstantExpected] int typeHash )
     {
-        if( module.FindRowInterval( rowId, sheetTypes, typeHash ) is { } type )
+        if( module.FindRowInterval( rowId, types, typeHash ) is { } type )
             return new( module, rowId, type );
 
         return CreateUntyped( rowId );
+    }
+
+    /// <remarks/>
+    /// <inheritdoc cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type}, int)"/>
+    [Obsolete( "It's recommended to use the other overload and to manually generate a typeHash. Only this overload if you are explicitly disregarding performance." )]
+    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, ReadOnlySpan< Type > types )
+    {
+        var hash = new HashCode();
+        foreach( var hashType in types )
+            hash.Add( hashType.TypeHandle.Value );
+
+#pragma warning disable CA1857 // ConstantExpectedAttribute is explicitly ignored; we are re-emitting a warning with ObsoleteAttribute.
+        if( module.FindRowInterval( rowId, types, hash.ToHashCode() ) is { } type )
+#pragma warning restore CA1857
+            return new( module, rowId, type );
+
+        return CreateUntyped( rowId );
+    }
+
+    /// <summary>
+    /// Creates an order-sensitive hash of <paramref name="types"/>.
+    /// </summary>
+    /// <param name="types">A list of ordered <see cref="IExcelRow{T}"/>/<see cref="IExcelSubrow{T}"/> types.</param>
+    /// <returns>A <c>typeHash</c> for use in <see cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type}, int)"/></returns>
+    /// <remarks>It is not recommended to call this at runtime because of the performance hit. Use <see cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type})"/> if you do not have a <c>typeHash</c> at compile-time.</remarks>
+    [EditorBrowsable( EditorBrowsableState.Advanced )]
+    public static int CreateTypeHash( ReadOnlySpan< Type > types )
+    {
+        var ret = new HashCode();
+        foreach( var type in types )
+            ret.Add( type.AssemblyQualifiedName );
+        return ret.ToHashCode();
     }
 
     /// <summary>

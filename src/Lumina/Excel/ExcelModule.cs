@@ -32,7 +32,7 @@ public class ExcelModule
     private FrozenDictionary< string, SheetData > DefinedSheetCache { get; }
     private ConcurrentDictionary< string, SheetData > AdhocSheetCache { get; }
     private ConcurrentDictionary< Type, SheetAttribute? > SheetAttributeCache { get; } = [];
-    private ConcurrentDictionary< Type, IExcelSheet > DirectBaseSheetCache { get; } = [];
+    private ConcurrentDictionary< int, RowRefIntervalTree > RowRefIntervalCache { get; } = [];
 
     /// <summary>
     /// A delegate provided by the user to resolve RSV strings.
@@ -119,24 +119,6 @@ public class ExcelModule
 
         return new SubrowExcelSheet< T >( (RawSubrowExcelSheet)rawSheet );
     }
-
-    /// <summary>Loads a typed <see cref="IExcelSheet"/> using the default language and name.</summary>
-    /// <returns>An excel sheet corresponding to <paramref name="rowType"/>, <see cref="Language"/>, and <see cref="SheetAttribute.Name"/>
-    /// that may be created anew or reused from a previous invocation of this method.</returns>
-    /// <remarks>
-    /// <para>This particular overload caches sheets based on <paramref name="rowType"/>.</para>
-    /// <para>Only use this method if you need to create a sheet while using reflection.</para>
-    /// <para>The returned instance of <see cref="IExcelSheet"/> should be cast to <see cref="ExcelSheet{T}"/> or <see cref="SubrowExcelSheet{T}"/>
-    /// before accessing its rows.</para>
-    /// </remarks>
-    /// <exception cref="SheetAttributeMissingException"><paramref name="rowType"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
-    /// <exception cref="SheetNameEmptyException">Sheet name was not specified via <see cref="SheetAttribute.Name"/>.</exception>
-    /// <exception cref="UnsupportedLanguageException">Sheet supports neither <see cref="Language"/> nor <see cref="Language.None"/>.</exception>
-    /// <inheritdoc cref="GetBaseSheet(Type, Language?, string?)" />
-    [RequiresDynamicCode( "Creating a generic sheet from a type requires reflection and dynamic code." )]
-    [EditorBrowsable( EditorBrowsableState.Advanced )]
-    public IExcelSheet GetBaseSheet( Type rowType ) =>
-        DirectBaseSheetCache.GetOrAdd( rowType, static ( t, self ) => self.GetBaseSheet( t, null, null ), this );
 
     /// <summary>Loads a typed <see cref="IExcelSheet"/>.</summary>
     /// <param name="rowType">Type of the rows in the sheet.</param>
@@ -247,6 +229,22 @@ public class ExcelModule
             if( c.Assembly == assembly )
                 _ = SheetAttributeCache.TryRemove( c, out _ );
         }
+    }
+
+    internal unsafe Type? FindRowInterval( uint rowId, ReadOnlySpan<Type> types, [ConstantExpected] int typeHash )
+    {
+        // We do not need atomicity here. If the cache reallocates/changes (i.e. ConcurrentDictionary._tables is reallocated/rehashed),
+        // TryAdd can simply fail and the GC will take care of the additional interval tree.
+        if( !RowRefIntervalCache.TryGetValue( typeHash, out var ret ) )
+            RowRefIntervalCache.TryAdd( typeHash, ret = new( this, types ) );
+        return ret.Get( rowId );
+    }
+
+    internal RawExcelSheet GetSheetByType( Type type )
+    {
+        var attr = GetSheetAttributes( type ) ?? throw new SheetAttributeMissingException( null, nameof( type ) );
+        var name = attr.Name ?? throw new SheetNameEmptyException( nameof( type ) );
+        return GetRawSheet( name );
     }
 
     /// <summary>Gets the sheet attributes for <typeparamref name="T"/>.</summary>

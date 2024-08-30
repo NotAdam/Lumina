@@ -13,10 +13,7 @@ public class SheetsBench
     [GlobalSetup]
     public void Setup()
     {
-        gameData = new GameData( @"J:\Programs\Steam\steamapps\common\FINAL FANTASY XIV Online\game\sqpack", new()
-        {
-            PanicOnSheetChecksumMismatch = false,
-        } );
+        gameData = Program.CreateGameData();
     }
 
     [Benchmark]
