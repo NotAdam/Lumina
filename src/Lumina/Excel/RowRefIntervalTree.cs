@@ -41,13 +41,17 @@ internal sealed class RowRefIntervalTree
             {
                 var id = row.RowId;
                 if( !from.HasValue )
-                    from = to = id;
-                else if( row.RowId == to + 1 )
-                    to = id;
+                {
+                    from = id;
+                    to = id + 1;
+                }
+                else if( row.RowId == to )
+                    to = id + 1;
                 else
                 {
                     currentIntervals.Add( new( from.Value, to, type ) );
-                    from = to = id;
+                    from = id;
+                    to = id + 1;
                 }
             }
             if( from.HasValue )
@@ -64,7 +68,11 @@ internal sealed class RowRefIntervalTree
                     lstI++;
                 // current item is fully before list item
                 else if( cur.To <= lst.From )
+                {
+                    retIntervals.Insert( lstI, cur );
                     curI++;
+                    lstI++;
+                }
                 // list item is before or begins at current item
                 else if( lst.From <= cur.From )
                 {
