@@ -135,7 +135,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     {
         var ret = new HashCode();
         foreach( var type in types )
-            ret.Add( type.AssemblyQualifiedName );
+            ret.Add( $"{type.Assembly.FullName};{type.FullName}" );
         return ret.ToHashCode();
     }
 
