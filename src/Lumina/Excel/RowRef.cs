@@ -65,27 +65,27 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// <returns><see langword="true"/> if the type is valid, the row exists, and <paramref name="row"/> is written to, and <see langword="false"/> otherwise.</returns>
     public bool TryGetValue< T >( out T row ) where T : struct, IExcelRow< T >
     {
-        if( new RowRef< T >( module, rowId ).ValueNullable is { } v )
+        if( !Is< T >() || module is null )
         {
-            row = v;
-            return true;
+            row = default;
+            return false;
         }
 
-        row = default;
-        return false;
+        row = new RowRef< T >( module, rowId ).Value;
+        return true;
     }
 
     /// <inheritdoc cref="TryGetValue{T}(out T)"/>
     public bool TryGetValueSubrow< T >( out SubrowCollection< T > row ) where T : struct, IExcelSubrow< T >
     {
-        if( new SubrowRef< T >( module, rowId ).ValueNullable is { } v )
+        if( !IsSubrow< T >() || module is null )
         {
-            row = v;
-            return true;
+            row = default;
+            return false;
         }
 
-        row = default;
-        return false;
+        row = new SubrowRef< T >( module, rowId ).Value;
+        return true;
     }
 
     /// <summary>
@@ -93,18 +93,13 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// </summary>
     /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
     /// <param name="rowId">The referenced row id.</param>
+    /// <param name="typeHash">A hash of <paramref name="sheetTypes"/>; must be unique in every permutation.</param>
     /// <param name="sheetTypes">A list of row types to check against the <paramref name="rowId"/>, in order.</param>
     /// <returns>A <see cref="RowRef"/> to one of the <paramref name="sheetTypes"/>. If the row id does not exist in any of the sheets, an untyped <see cref="RowRef"/> is returned instead.</returns>
-    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, params Type[] sheetTypes )
+    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, int typeHash, params ReadOnlySpan<Type> sheetTypes )
     {
-        foreach( var sheetType in sheetTypes )
-        {
-            if( module.GetBaseSheet( sheetType ) is { } sheet )
-            {
-                if( sheet.HasRow( rowId ) )
-                    return new( module, rowId, sheetType );
-            }
-        }
+        if( module.FindRowInterval( rowId, sheetTypes, typeHash ) is { } type )
+            return new( module, rowId, type );
 
         return CreateUntyped( rowId );
     }
