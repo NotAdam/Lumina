@@ -12,4 +12,12 @@ public sealed class RequiresGameInstallationFact : FactAttribute
         if( !Directory.Exists( path ) )
             Skip = "Game installation is not found at the default path.";
     }
+
+    public static GameData CreateGameData()
+    {
+        return new( path, new()
+        {
+            PanicOnSheetChecksumMismatch = false,
+        } );
+    }
 }
