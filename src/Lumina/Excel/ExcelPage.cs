@@ -1,3 +1,4 @@
+using Lumina.Data;
 using Lumina.Extensions;
 using Lumina.Text.ReadOnly;
 using System;
@@ -22,14 +23,20 @@ public sealed class ExcelPage
     /// </summary>
     public ExcelModule Module { get; }
 
+    /// <summary>
+    /// The associated language of the page.
+    /// </summary>
+    public Language Language { get; }
+
     private readonly byte[] data;
     private ReadOnlyMemory< byte > Data => data;
 
     private readonly ushort dataOffset;
 
-    internal ExcelPage( ExcelModule module, byte[] pageData, ushort headerDataOffset )
+    internal ExcelPage( ExcelModule module, Language language, byte[] pageData, ushort headerDataOffset )
     {
         Module = module;
+        Language = language;
         data = pageData;
         dataOffset = headerDataOffset;
     }

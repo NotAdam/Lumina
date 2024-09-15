@@ -110,7 +110,7 @@ public class RawExcelSheet : IExcelSheet
             if( fileData == null )
                 continue;
 
-            var newPage = _pages[ pageIdx ] = new( Module, fileData.Data, headerFile.Header.DataOffset );
+            var newPage = _pages[ pageIdx ] = new( Module, Language, fileData.Data, headerFile.Header.DataOffset );
 
             // If row count information from exh file is incorrect, cope with it.
             if( i + fileData.RowData.Count > _rowOffsetLookupTable.Length )

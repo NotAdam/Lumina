@@ -1,3 +1,4 @@
+using Lumina.Data;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
@@ -10,7 +11,8 @@ namespace Lumina.Excel;
 /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
 /// <param name="rowId">The referenced row id.</param>
 /// <param name="rowType">The referenced row's actual <see cref="Type"/>.</param>
-public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
+/// <param name="language">The associated language of the referenced row. Leave <see langword="null"/> to use <paramref name="module"/>'s default language.</param>
+public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType, Language? language = null )
 {
     /// <summary>
     /// The row id of the referenced row.
@@ -24,6 +26,14 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// An untyped <see cref="RowRef"/> is one that doesn't know which sheet it links to.
     /// </remarks>
     public bool IsUntyped => rowType == null;
+
+    /// <summary>
+    /// The associated language of this row.
+    /// </summary>
+    /// <remarks>
+    /// Can be <see langword="null"/> if this <see cref="RowRef"/> has no associated <see cref="ExcelModule"/>.
+    /// </remarks>
+    public Language? Language => language ?? module?.Language;
 
     /// <summary>
     /// Whether the reference is of a specific row type.
@@ -47,7 +57,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
         if( !Is< T >() || module is null )
             return null;
 
-        return new RowRef< T >( module, rowId ).ValueNullable;
+        return new RowRef< T >( module, rowId, language ).ValueNullable;
     }
 
     /// <inheritdoc cref="GetValueOrDefault{T}"/>
@@ -56,7 +66,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
         if( !IsSubrow< T >() || module is null )
             return null;
 
-        return new SubrowRef< T >( module, rowId ).ValueNullable;
+        return new SubrowRef< T >( module, rowId, language ).ValueNullable;
     }
 
     /// <summary>
@@ -73,7 +83,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
             return false;
         }
 
-        row = new RowRef< T >( module, rowId ).Value;
+        row = new RowRef< T >( module, rowId, language ).Value;
         return true;
     }
 
@@ -86,7 +96,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
             return false;
         }
 
-        row = new SubrowRef< T >( module, rowId ).Value;
+        row = new SubrowRef< T >( module, rowId, language ).Value;
         return true;
     }
 
@@ -97,20 +107,21 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// <param name="rowId">The referenced row id.</param>
     /// <param name="types">A list of <see cref="IExcelRow{T}"/>/<see cref="IExcelSubrow{T}"/> types to check against <paramref name="rowId"/>, in order.</param>
     /// <param name="typeHash">The order-sensitive hash of <paramref name="types"/>.</param>
+    /// <param name="language">The associated language of the row. Leave <see langword="null"/> to use <paramref name="module"/>'s default language instead.</param>
     /// <returns>A <see cref="RowRef"/> to one of the <paramref name="types"/>. If the row id does not exist in any of the sheets, an untyped <see cref="RowRef"/> is returned instead.</returns>
     /// <remarks>Use <see cref="CreateTypeHash(ReadOnlySpan{Type})"/> to generate a <paramref name="typeHash"/>. It's recommended to make this a compile-time constant if possible to improve performance.</remarks>
-    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, ReadOnlySpan< Type > types, [ConstantExpected] int typeHash )
+    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, ReadOnlySpan< Type > types, [ConstantExpected] int typeHash, Language? language = null )
     {
         if( module.FindRowInterval( rowId, types, typeHash ) is { } type )
-            return new( module, rowId, type );
+            return new( module, rowId, type, language );
 
-        return CreateUntyped( rowId );
+        return CreateUntyped( rowId, language ?? module.Language );
     }
 
     /// <remarks/>
-    /// <inheritdoc cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type}, int)"/>
+    /// <inheritdoc cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type}, int, Nullable{Language})"/>
     [Obsolete( "It's recommended to use the other overload and to manually generate a typeHash. Only this overload if you are explicitly disregarding performance." )]
-    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, ReadOnlySpan< Type > types )
+    public static RowRef GetFirstValidRowOrUntyped( ExcelModule module, uint rowId, ReadOnlySpan< Type > types, Language? language = null )
     {
         var hash = new HashCode();
         foreach( var hashType in types )
@@ -119,9 +130,9 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
 #pragma warning disable CA1857 // ConstantExpectedAttribute is explicitly ignored; we are re-emitting a warning with ObsoleteAttribute.
         if( module.FindRowInterval( rowId, types, hash.ToHashCode() ) is { } type )
 #pragma warning restore CA1857
-            return new( module, rowId, type );
+            return new( module, rowId, type, language );
 
-        return CreateUntyped( rowId );
+        return CreateUntyped( rowId, language ?? module.Language );
     }
 
     /// <summary>
@@ -129,7 +140,7 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// </summary>
     /// <param name="types">A list of ordered <see cref="IExcelRow{T}"/>/<see cref="IExcelSubrow{T}"/> types.</param>
     /// <returns>A <c>typeHash</c> for use in <see cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type}, int)"/></returns>
-    /// <remarks>It is not recommended to call this at runtime because of the performance hit. Use <see cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type})"/> if you do not have a <c>typeHash</c> at compile-time.</remarks>
+    /// <remarks>It is not recommended to call this at runtime because of the performance hit. Use <see cref="GetFirstValidRowOrUntyped(ExcelModule, uint, ReadOnlySpan{Type}, Nullable{Language})"/> if you do not have a <c>typeHash</c> at compile-time.</remarks>
     [EditorBrowsable( EditorBrowsableState.Advanced )]
     public static int CreateTypeHash( ReadOnlySpan< Type > types )
     {
@@ -145,16 +156,18 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType )
     /// <typeparam name="T">The row type referenced by the <paramref name="rowId"/>.</typeparam>
     /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
     /// <param name="rowId">The referenced row id.</param>
+    /// <param name="language">The associated language of the row. Leave <see langword="null"/> to use <paramref name="module"/>'s default language instead.</param>
     /// <returns>A <see cref="RowRef"/> to a row in a <see cref="IExcelSheet"/>.</returns>
-    public static RowRef Create< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T > => new( module, rowId, typeof( T ) );
+    public static RowRef Create< T >( ExcelModule? module, uint rowId, Language? language = null ) where T : struct, IExcelRow< T > => new( module, rowId, typeof( T ), language );
 
-    /// <inheritdoc cref="Create{T}(ExcelModule?, uint)"/>
-    public static RowRef CreateSubrow< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelSubrow< T > => new( module, rowId, typeof( T ) );
+    /// <inheritdoc cref="Create{T}(ExcelModule?, uint, Nullable{Language})"/>
+    public static RowRef CreateSubrow< T >( ExcelModule? module, uint rowId, Language? language = null ) where T : struct, IExcelSubrow< T > => new( module, rowId, typeof( T ), language );
 
     /// <summary>
     /// Creates an untyped <see cref="RowRef"/>.
     /// </summary>
     /// <param name="rowId">The referenced row id.</param>
+    /// <param name="language">The associated language of the row, if there is any.</param>
     /// <returns>An untyped <see cref="RowRef"/>.</returns>
-    public static RowRef CreateUntyped( uint rowId ) => new( null, rowId, null );
+    public static RowRef CreateUntyped( uint rowId, Language? language = null ) => new( null, rowId, null, language );
 }

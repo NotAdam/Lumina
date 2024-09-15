@@ -1,3 +1,4 @@
+using Lumina.Data;
 using System;
 
 namespace Lumina.Excel;
@@ -8,14 +9,15 @@ namespace Lumina.Excel;
 /// <typeparam name="T">The row type referenced by the <see cref="RowId"/>.</typeparam>
 /// <param name="module">The <see cref="ExcelModule"/> to read sheet data from.</param>
 /// <param name="rowId">The referenced row id.</param>
-public struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, IExcelRow< T >
+/// <param name="language">The associated language of the referenced row. Leave <see langword="null"/> to use <paramref name="module"/>'s default language.</param>
+public struct RowRef< T >( ExcelModule? module, uint rowId, Language? language = null ) where T : struct, IExcelRow< T >
 {
-    private ExcelSheet< T >? _sheet = null;
+    private ExcelSheet< T >? _sheet = null; 
     private ExcelSheet< T >? Sheet {
         get {
             if( module == null )
                 return null;
-            return _sheet ??= module.GetSheet< T >();
+            return _sheet ??= module.GetSheet< T >(language);
         }
     }
 
@@ -23,6 +25,14 @@ public struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, I
     /// The row id of the referenced row.
     /// </summary>
     public readonly uint RowId => rowId;
+
+    /// <summary>
+    /// The associated language of this row.
+    /// </summary>
+    /// <remarks>
+    /// Can be <see langword="null"/> if this <see cref="RowRef"/> has no associated <see cref="ExcelModule"/>.
+    /// </remarks>
+    public readonly Language? Language => language ?? module?.Language;
 
     /// <summary>
     /// Whether the <see cref="RowId"/> exists in the sheet.
@@ -40,7 +50,7 @@ public struct RowRef< T >( ExcelModule? module, uint rowId ) where T : struct, I
     /// </summary>
     public T? ValueNullable => Sheet?.GetRowOrDefault( rowId );
 
-    private readonly RowRef ToGeneric() => RowRef.Create< T >( module, rowId );
+    private readonly RowRef ToGeneric() => RowRef.Create< T >( module, rowId, language );
 
     /// <summary>
     /// Converts a concrete <see cref="RowRef{T}"/> to a generic and dynamically typed <see cref="RowRef"/>.

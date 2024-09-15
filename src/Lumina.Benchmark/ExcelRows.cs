@@ -39,8 +39,8 @@ public readonly struct GatheringItem( ExcelPage page, uint offset, uint row ) : 
     public uint RowId => row;
     public uint Data => row & offset;
 
-    public readonly RowRef Item => RowRef.GetFirstValidRowOrUntyped( page.Module, (uint)page.ReadInt32( offset + 8 ), [typeof( Item ), typeof( EventItem )], 0 );
-    public readonly RowRef< GatheringItemLevelConvertTable > GatheringItemLevel => new( page.Module, page.ReadUInt16( offset + 12 ) );
+    public readonly RowRef Item => RowRef.GetFirstValidRowOrUntyped( page.Module, (uint)page.ReadInt32( offset + 8 ), [typeof( Item ), typeof( EventItem )], 0, page.Language );
+    public readonly RowRef< GatheringItemLevelConvertTable > GatheringItemLevel => new( page.Module, page.ReadUInt16( offset + 12 ), page.Language );
 
     static GatheringItem IExcelRow< GatheringItem >.Create( ExcelPage page, uint offset, uint row ) =>
         new( page, offset, row );
@@ -75,7 +75,7 @@ public readonly unsafe struct ENpcBase( ExcelPage page, uint offset, uint row ) 
 {
     public uint RowId => row;
 
-    private static RowRef ENpcDataCtor( ExcelPage page, uint parentOffset, uint offset, uint i ) => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + i * 4 ), [typeof( ChocoboTaxiStand ), typeof( CraftLeve ), typeof( CustomTalk ), typeof( DefaultTalk ), typeof( FccShop ), typeof( GCShop ), typeof( GilShop ), typeof( GuildleveAssignment ), typeof( GuildOrderGuide ), typeof( GuildOrderOfficer ), typeof( Quest ), typeof( SpecialShop ), typeof( Story ), typeof( SwitchTalk ), typeof( TopicSelect ), typeof( TripleTriad ), typeof( Warp )], 1 );
+    private static RowRef ENpcDataCtor( ExcelPage page, uint parentOffset, uint offset, uint i ) => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + i * 4 ), [typeof( ChocoboTaxiStand ), typeof( CraftLeve ), typeof( CustomTalk ), typeof( DefaultTalk ), typeof( FccShop ), typeof( GCShop ), typeof( GilShop ), typeof( GuildleveAssignment ), typeof( GuildOrderGuide ), typeof( GuildOrderOfficer ), typeof( Quest ), typeof( SpecialShop ), typeof( Story ), typeof( SwitchTalk ), typeof( TopicSelect ), typeof( TripleTriad ), typeof( Warp )], 1, page.Language );
     public readonly Collection<RowRef> ENpcData => new( page, offset, offset, &ENpcDataCtor, 32 );
 
     static ENpcBase IExcelRow<ENpcBase>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -213,7 +213,7 @@ public readonly unsafe struct TopicSelect( ExcelPage page, uint offset, uint row
 {
     public uint RowId => row;
 
-    private static RowRef ShopCtor( ExcelPage page, uint parentOffset, uint offset, uint i ) => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + 4 + i * 4 ), [typeof( SpecialShop ), typeof( GilShop ), typeof( PreHandler )], 2 );
+    private static RowRef ShopCtor( ExcelPage page, uint parentOffset, uint offset, uint i ) => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + 4 + i * 4 ), [typeof( SpecialShop ), typeof( GilShop ), typeof( PreHandler )], 2, page.Language );
     public readonly Collection<RowRef> Shop => new( page, offset, offset, &ShopCtor, 10 );
 
     static TopicSelect IExcelRow<TopicSelect>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -243,7 +243,7 @@ public readonly struct PreHandler( ExcelPage page, uint offset, uint row ) : IEx
 {
     public uint RowId => row;
 
-    public readonly RowRef Target => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + 8 ), [typeof( CollectablesShop ), typeof( InclusionShop ), typeof( GilShop ), typeof( SpecialShop ), typeof( Description )], 3 );
+    public readonly RowRef Target => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + 8 ), [typeof( CollectablesShop ), typeof( InclusionShop ), typeof( GilShop ), typeof( SpecialShop ), typeof( Description )], 3, page.Language );
 
     static PreHandler IExcelRow<PreHandler>.Create( ExcelPage page, uint offset, uint row ) =>
         new( page, offset, row );
