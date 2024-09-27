@@ -256,5 +256,45 @@ namespace Lumina.Text.Payloads
                 ex => ex is StringExpression se ? se.Value.ToMacroString() : ex.ToString()
             ) )})>";
         }
+
+        internal void AppendMacroStringToStringBuilder( StringBuilder sb, bool forStringExpression )
+        {
+            if( PayloadType == PayloadType.Text )
+            {
+                foreach( var c in RawString )
+                {
+                    switch( forStringExpression )
+                    {
+                        case true when c is '<' or '>' or '[' or ']' or '(' or ')' or ',' or '\\':
+                        case false when c is '<' or '\\':
+                            sb.Append( '\\' );
+                            break;
+                    }
+
+                    sb.Append( c );
+                }
+
+                return;
+            }
+
+            sb.Append( $"<{( (MacroCode) PayloadType ).GetEncodeName()}" );
+            if( Expressions.Count > 0 )
+            {
+                sb.Append( '(' );
+                Expressions[ 0 ].AppendMacroStringToStringBuilder( sb );
+                if( Expressions.Count > 1 )
+                {
+                    for( var i = 1; i < Expressions.Count; i++ )
+                    {
+                        sb.Append( ',' );
+                        Expressions[ i ].AppendMacroStringToStringBuilder( sb );
+                    }
+                }
+
+                sb.Append( ')' );
+            }
+
+            sb.Append( '>' );
+        }
     }
 }

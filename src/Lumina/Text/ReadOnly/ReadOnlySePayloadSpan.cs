@@ -39,8 +39,14 @@ public readonly ref struct ReadOnlySePayloadSpan
                     throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode, "MacroCode may not be defined if the payload is of text type." );
                 break;
             case ReadOnlySePayloadType.Macro:
-                if( !Enum.IsDefined( macroCode ) || macroCode == 0 )
-                    throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode, null );
+                if( macroCode == default )
+                    throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode, "MacroCode must be defined if the payload is of macro type." );
+                if( (byte) macroCode >= 0xCF )
+                {
+                    throw new ArgumentOutOfRangeException( nameof( macroCode ), macroCode,
+                        "Whether MacroCode is an integer expression is unknown. Change it when it happens." );
+                }
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException( nameof( type ), type, null );
@@ -421,45 +427,80 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <inheritdoc/>
     public override string ToString()
     {
+        var sb = new StringBuilder();
+        AppendMacroStringToStringBuilder( sb, false );
+        return sb.ToString();
+    }
+
+    /// <summary>Writes the encodeable macro representation of this instance of <see cref="ReadOnlySePayloadSpan"/> to the given string builder.</summary>
+    /// <param name="sb">Target string builder.</param>
+    /// <param name="forStringExpression">Whether this is being encoded to be used as a string expression.</param>
+    /// <returns>The encodeable macro representation.</returns>
+    public void AppendMacroStringToStringBuilder( StringBuilder sb, bool forStringExpression )
+    {
         switch( Type )
         {
             case ReadOnlySePayloadType.Text:
-                return Encoding.UTF8.GetString( Body ).Replace( "<", "\\<" );
+            {
+                var remaining = Body;
+                Span< char > buf = stackalloc char[2];
+                while( !remaining.IsEmpty )
+                {
+                    Rune.DecodeFromUtf8( remaining, out var rune, out var consumed );
+                    switch( forStringExpression )
+                    {
+                        case true when rune.Value is '<' or '>' or '[' or ']' or '(' or ')' or ',' or '\\':
+                        case false when rune.Value is '<' or '\\':
+                            sb.Append( '\\' );
+                            break;
+                    }
+
+                    sb.Append( buf[ ..rune.EncodeToUtf16( buf ) ] );
+                    remaining = remaining[ consumed.. ];
+                }
+
+                break;
+            }
 
             case ReadOnlySePayloadType.Macro:
             {
-                var sb = new StringBuilder( "<" );
+                sb.Append( '<' );
 
                 // Not using ternary operator here, as it's better to let StringBuilder handle the string interpolation.
                 if( MacroCode.GetEncodeName() is { } encodeName )
                     sb.Append( encodeName );
                 else
-                    sb.Append( $"x{(uint) MacroCode:X02}" );
+                    sb.Append( $"payload:{(uint) MacroCode:X02}" );
 
                 var expre = GetEnumerator();
                 if( expre.MoveNext() )
                 {
                     sb.Append( '(' );
-                    sb.Append( expre.Current.ToString() );
+                    expre.Current.AppendMacroStringToStringBuilder( sb );
                     while( expre.MoveNext() )
-                        sb.Append( ", " ).Append( expre.Current.ToString() );
+                    {
+                        sb.Append( ',' );
+                        expre.Current.AppendMacroStringToStringBuilder( sb );
+                    }
+
                     sb.Append( ')' );
                 }
 
-                return sb.Append( '>' ).ToString();
+                sb.Append( '>' );
+                break;
             }
 
             case var _ when Body.Length == 0:
-                return "<?>";
+                sb.Append( "<payload: invalid empty>" );
+                break;
 
             default:
-            {
-                var sb = new StringBuilder( 3 * Body.Length + 3 );
-                sb.Append( "<?" );
-                foreach (var b in Body)
+                sb.EnsureCapacity( sb.Length + 10 + 3 * Body.Length );
+                sb.Append( "<payload:" );
+                foreach( var b in Body )
                     sb.Append( $" {b:X02}" );
-                return sb.Append( '>' ).ToString();
-            }
+                sb.Append( '>' );
+                break;
         }
     }
 
