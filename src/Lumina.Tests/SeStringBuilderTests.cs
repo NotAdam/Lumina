@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using Lumina.Data;
@@ -311,7 +312,7 @@ public class SeStringBuilderTests
     [RequiresGameInstallationFact]
     public void AddonIsParsedCorrectly()
     {
-        var gameData = new GameData( @"C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\sqpack" );
+        var gameData = RequiresGameInstallationFact.CreateGameData();
         var addon = gameData.Excel.GetSheet< Addon >();
         var ssb = new SeStringBuilder();
         var expected = new Dictionary< uint, ReadOnlySeString >
@@ -438,7 +439,7 @@ public class SeStringBuilderTests
         {
             _outputHelper.WriteLine( $"{row.RowId}\t{row.Text.ExtractText()}\t{row.Text}" );
             if( expected.TryGetValue( row.RowId, out var expectedSeString ) )
-                Assert.StrictEqual( expectedSeString, r );
+                Assert.StrictEqual( expectedSeString, row.Text );
         }
     }
 
@@ -589,28 +590,25 @@ public class SeStringBuilderTests
     [RequiresGameInstallationFact]
     public void AllSheetsTextColumnCodec()
     {
-        var gameData = new GameData( @"C:\Program Files (x86)\SquareEnix\FINAL FANTASY XIV - A Realm Reborn\game\sqpack" );
+        var gameData = RequiresGameInstallationFact.CreateGameData();
         var ssb = new SeStringBuilder();
-        foreach( var sheetName in gameData.Excel.GetSheetNames() )
+        foreach( var sheetName in gameData.Excel.SheetNames )
         {
-            var languages = gameData.GetFile< ExcelHeaderFile >( ExcelModule.BuildExcelHeaderPath( sheetName ) )?.Languages ?? [Language.None];
+            var header = gameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" );
+            if( header?.Header.Variant == ExcelVariant.Subrows )
+                continue;
+            var languages = header?.Languages ?? [Language.None];
             foreach( var language in languages )
             {
-                if( gameData.Excel.GetSheetRaw( sheetName, language ) is not { } sheet )
+                if( gameData.Excel.GetSheet<RawRow>( language, sheetName ) is not { } sheet )
                     continue;
 
-                // CustomTalkDefineClient: it currently fails at reading string columns in sheets of subrow variant. 
-                if( sheet.Variant != ExcelVariant.Default )
-                    continue;
-
+                var stringColumns = sheet.Columns.Where( c => c.Type == ExcelColumnDataType.String ).Select( c => c.Offset ).ToArray();
                 foreach( var row in sheet )
                 {
-                    for( var i = 0; i < sheet.Columns.Length; i++ )
+                    foreach( var columnOffset in stringColumns )
                     {
-                        if( sheet.Columns[ i ].Type != ExcelColumnDataType.String )
-                            continue;
-
-                        var test1 = row.ReadColumn< SeString >( i ).AsReadOnly();
+                        var test1 = row.ReadString(columnOffset);
                         if( test1.Data.Span.IndexOf( "payload:"u8 ) != -1 )
                             throw new( $"Unsupported payload at {sheetName}#{row.RowId}; {test1}" );
 
@@ -629,5 +627,17 @@ public class SeStringBuilderTests
                 }
             }
         }
+    }
+
+    [Sheet]
+    public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelRow<RawRow>
+    {
+        public uint RowId => row;
+
+        public ReadOnlySeString ReadString( ushort off ) =>
+            page.ReadString( off + offset, offset );
+
+        static RawRow IExcelRow<RawRow>.Create( ExcelPage page, uint offset, uint row ) =>
+            new( page, offset, row );
     }
 }

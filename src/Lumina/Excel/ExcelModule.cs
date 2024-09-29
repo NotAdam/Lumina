@@ -62,7 +62,7 @@ public class ExcelModule
         GameData.Logger?.Information( "got {ExltEntryCount} exlt entries", files.ExdMap.Count );
 
         DefinedSheetCache = files.ExdMap.Keys
-            .Select( name => ( Name: name, Header: GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh") ) )
+            .Select( name => ( Name: name, Header: GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh" ) ) )
             .Where( sheet => sheet.Header is not null )
             .ToFrozenDictionary(
                 sheet => sheet.Name,
