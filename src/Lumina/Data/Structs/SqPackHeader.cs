@@ -10,7 +10,9 @@ namespace Lumina.Data.Structs
     {
         Win32,
         PS3,
-        PS4
+        PS4,
+        PS5,
+        Lys // Xbox
     }
     
     [StructLayout( LayoutKind.Sequential )]
