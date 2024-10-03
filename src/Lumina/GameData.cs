@@ -6,7 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lumina.Data;
 using Lumina.Data.Structs;
+using Lumina.Data.Structs.Excel;
 using Lumina.Excel;
+using Lumina.Excel.Exceptions;
 using Lumina.Misc;
 
 // ReSharper disable MemberCanBePrivate.Global
@@ -42,8 +44,7 @@ namespace Lumina
         /// <summary>
         /// Provides access to EXD/EXH data, internally called Excel.
         ///
-        /// Loaded by default on init unless you opt not to load it. Can be loaded at a later time by calling Lumina.InitExcelModule or optionally
-        /// constructing your own Excel.ExcelModule.
+        /// Loaded by default on init unless you opt not to load it.
         /// </summary>
         public ExcelModule Excel { get; private set; }
         
@@ -56,7 +57,7 @@ namespace Lumina
         /// <summary>
         /// Provides a pool for file streams for .dat files.
         /// </summary>
-        /// <remarks>The pool will be disposed when <see cref="Dispose"/> is called.</remarks>
+        /// <remarks>The pool will be disposed when <see cref="Dispose()"/> is called.</remarks>
         public SqPackStreamPool? StreamPool { get; set; }
         
         internal ILogger? Logger { get; private set; }
@@ -286,28 +287,42 @@ namespace Lumina
             return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
         }
 
-        /// <summary>
-        /// Attempts to load the base excel sheet given it's implementing row parser
-        /// </summary>
-        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
-        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T >? GetExcelSheet< T >() where T : ExcelRow
+        /// <summary>Loads an <see cref="ExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
+        /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+        /// <param name="name">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+        /// <returns>An excel sheet corresponding to <typeparamref name="T"/> and <paramref name="language"/> that may be created anew or
+        /// reused from a previous invocation of this method.</returns>
+        /// <remarks>
+        /// If the requested language doesn't exist for the file where <paramref name="language"/> is not <see cref="Language.None"/>, the
+        /// language-neutral sheet using <see cref="Language.None"/> will be loaded instead. If the language-neutral sheet does not exist, then the function
+        /// will return <see langword="null"/>.
+        /// </remarks>
+        /// <exception cref="SheetNameEmptyException">Sheet name was not specified neither via <typeparamref name="T"/>'s <see cref="SheetAttribute.Name"/> nor <paramref name="name"/>.</exception>
+        /// <exception cref="SheetAttributeMissingException"><typeparamref name="T"/> does not have a valid <see cref="SheetAttribute"/>.</exception>
+        public ExcelSheet< T >? GetExcelSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelRow< T >
         {
-            return Excel.GetSheet< T >();
+            try
+            {
+                return Excel.GetSheet< T >( language, name );
+            }
+            catch( Exception e ) when ( e is SheetNotFoundException or MismatchedColumnHashException or NotSupportedException or UnsupportedLanguageException )
+            {
+                return null;
+            }
         }
 
-        /// <summary>
-        /// Attempts to load the base excel sheet with a specific language
-        /// </summary>
-        /// <remarks>
-        /// If the language requested doesn't exist for the file, this will silently be ignored and it will return a sheet with the default language: <see cref="Language.None"/>
-        /// </remarks>
-        /// <param name="language">The requested sheet language</param>
-        /// <typeparam name="T">A class that implements <see cref="ExcelRow"/> to parse rows</typeparam>
-        /// <returns>An <see cref="ExcelSheet{T}"/> if the sheet exists, null if it does not</returns>
-        public ExcelSheet< T >? GetExcelSheet< T >( Language language ) where T : ExcelRow
+        /// <summary>Loads a <see cref="SubrowExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
+        /// <inheritdoc cref="GetExcelSheet{T}(Nullable{Language}, string?)"/>
+        public SubrowExcelSheet< T >? GetSubrowExcelSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelSubrow< T >
         {
-            return Excel.GetSheet< T >( language );
+            try
+            {
+                return Excel.GetSubrowSheet< T >( language, name );
+            }
+            catch( Exception e ) when ( e is SheetNotFoundException or MismatchedColumnHashException or NotSupportedException or UnsupportedLanguageException )
+            {
+                return null;
+            }
         }
 
         /// <summary>

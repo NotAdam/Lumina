@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.10" />
+        <PackageReference Include="BenchmarkDotNet.Diagnostics.dotTrace" Version="0.13.10" />
+        <PackageReference Include="BenchmarkDotNet.Diagnostics.Windows" Version="0.13.10" />
+        <ProjectReference Include="..\Lumina\Lumina.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="BenchmarkDotNet.Artifacts\**" />
+        <EmbeddedResource Remove="BenchmarkDotNet.Artifacts\**" />
+        <None Remove="BenchmarkDotNet.Artifacts\**" />
+    </ItemGroup>
+
+</Project>

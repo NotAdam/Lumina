@@ -1,150 +1,161 @@
 using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.CompilerServices;
 using Lumina.Data;
-using Lumina.Data.Files.Excel;
 using Lumina.Data.Structs.Excel;
 
-namespace Lumina.Excel
+namespace Lumina.Excel;
+
+/// <summary>An excel sheet of <see cref="ExcelVariant.Default"/> variant.</summary>
+/// <typeparam name="T">Type of the rows contained within.</typeparam>
+/// <remarks>Creates a new instance of <see cref="ExcelSheet{T}"/>.</remarks>
+/// <param name="sheet">The <see cref="RawExcelSheet"/> to access sheet data from.</param>
+/// <returns>A new instance of <see cref="ExcelSheet{T}"/>.</returns>
+/// <remarks>This constructor does not perform any type checks.</remarks>
+public sealed class ExcelSheet< T >( RawExcelSheet sheet ) : IExcelSheet, ICollection< T >, IReadOnlyCollection< T > where T : struct, IExcelRow< T >
 {
-    public class ExcelSheet< T > : ExcelSheetImpl, IEnumerable< T > where T : ExcelRow
+    /// <summary>Gets the raw sheet this typed sheet is based on.</summary>
+    public RawExcelSheet RawSheet { get; } = sheet;
+
+    /// <inheritdoc/>
+    public ExcelModule Module => RawSheet.Module;
+
+    /// <inheritdoc/>
+    public Language Language => RawSheet.Language;
+
+    /// <inheritdoc/>
+    public IReadOnlyList< ExcelColumnDefinition > Columns => RawSheet.Columns;
+
+    /// <inheritdoc/>
+    public int Count => RawSheet.Count;
+
+    bool ICollection< T >.IsReadOnly => true;
+
+    /// <inheritdoc cref="GetRow"/>
+    public T this[ uint rowId ] => GetRow( rowId );
+
+    /// <summary>
+    /// Tries to get the <paramref name="rowId"/>th row in this sheet.
+    /// </summary>
+    /// <param name="rowId">The row id to get.</param>
+    /// <returns>A nullable row object. Returns <see langword="null"/> if the row does not exist.</returns>
+    public T? GetRowOrDefault( uint rowId )
     {
-        private readonly ConcurrentDictionary< UInt64, T > _rowCache = new();
+        ref readonly var lookup = ref RawSheet.GetRowLookupOrNullRef( rowId );
+        return Unsafe.IsNullRef( in lookup ) ? null : RawSheet.UnsafeCreateRow< T >( in lookup );
+    }
 
-        public ExcelSheet( ExcelHeaderFile headerFile, string name, Language requestedLanguage, GameData gameData ) :
-            base( headerFile, name, requestedLanguage, gameData )
+    /// <summary>
+    /// Tries to get the <paramref name="rowId"/>th row in this sheet.
+    /// </summary>
+    /// <param name="rowId">The row id to get.</param>
+    /// <param name="row">The output row object.</param>
+    /// <returns><see langword="true"/> if the row exists and <paramref name="row"/> is written to and <see langword="false"/> otherwise.</returns>
+    public bool TryGetRow( uint rowId, out T row )
+    {
+        ref readonly var lookup = ref RawSheet.GetRowLookupOrNullRef( rowId );
+        if( Unsafe.IsNullRef( in lookup ) )
         {
+            row = default;
+            return false;
         }
 
-        public T? GetRow( uint row )
-        {
-            return GetRow( row, UInt32.MaxValue );
-        }
+        row = RawSheet.UnsafeCreateRow< T >( in lookup );
+        return true;
+    }
 
-        public T? GetRow( uint row, uint subRow )
-        {
-            return GetRowInternal( row, subRow );
-        }
+    /// <summary>
+    /// Gets the <paramref name="rowId"/>th row in this sheet.
+    /// </summary>
+    /// <param name="rowId">The row id to get.</param>
+    /// <returns>A row object.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Throws when the row id does not have a row attached to it.</exception>
+    public T GetRow( uint rowId )
+    {
+        ref readonly var lookup = ref RawSheet.GetRowLookupOrNullRef( rowId );
+        return Unsafe.IsNullRef( in lookup ) ? throw new ArgumentOutOfRangeException( nameof( rowId ), rowId, null ) : RawSheet.UnsafeCreateRow< T >( in lookup );
+    }
 
-        internal T? GetRowInternal( uint row, uint subRow )
-        {
-            var cacheKey = GetCacheKey( row, subRow );
+    /// <summary>
+    /// Gets the <paramref name="rowIndex"/>th row in this sheet, ordered by row id in ascending order.
+    /// </summary>
+    /// <remarks>If you are looking to find a row by its id, use <see cref="GetRow(uint)"/> instead.</remarks>
+    /// <param name="rowIndex">The zero-based index of this row.</param>
+    /// <returns>A row object.</returns>
+    public T GetRowAt( int rowIndex )
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative( rowIndex );
+        ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( rowIndex, RawSheet.OffsetLookupTable.Length );
 
-            if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
+        return RawSheet.UnsafeCreateRowAt< T >( rowIndex );
+    }
+
+    /// <inheritdoc/>
+    public ushort GetColumnOffset( int columnIdx ) => RawSheet.GetColumnOffset( columnIdx );
+
+    /// <inheritdoc/>
+    public bool HasRow( uint rowId ) => RawSheet.HasRow( rowId );
+
+    /// <inheritdoc/>
+    public bool Contains( T item ) => TryGetRow( item.RowId, out var row ) && EqualityComparer< T >.Default.Equals( item, row );
+
+    /// <inheritdoc/>
+    public void CopyTo( T[] array, int arrayIndex )
+    {
+        ArgumentNullException.ThrowIfNull( array );
+        ArgumentOutOfRangeException.ThrowIfNegative( arrayIndex );
+        if( Count > array.Length - arrayIndex )
+            throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
+        foreach( var lookup in RawSheet.OffsetLookupTable )
+            array[ arrayIndex++ ] = RawSheet.UnsafeCreateRow< T >( in lookup );
+    }
+
+    void ICollection< T >.Add( T item ) => throw new NotSupportedException();
+
+    void ICollection< T >.Clear() => throw new NotSupportedException();
+
+    bool ICollection< T >.Remove( T item ) => throw new NotSupportedException();
+
+    /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
+    public Enumerator GetEnumerator() => new( this );
+
+    IEnumerator< T > IEnumerable< T >.GetEnumerator() => GetEnumerator();
+
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+    /// <summary>Represents an enumerator that iterates over all rows in a <see cref="ExcelSheet{T}"/>.</summary>
+    /// <param name="sheet">The sheet to iterate over.</param>
+    public struct Enumerator( ExcelSheet< T > sheet ) : IEnumerator< T >
+    {
+        private int _index = -1;
+
+        /// <inheritdoc cref="IEnumerator{T}.Current"/>
+        public T Current { get; private set; }
+
+        readonly object IEnumerator.Current => Current;
+
+        /// <inheritdoc/>
+        public bool MoveNext()
+        {
+            if( ++_index < sheet.Count )
             {
-                return cachedRow;
+                // UnsafeCreateRowAt must be called only when the preconditions are validated.
+                // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
+                // so we create the instance in advance here.
+                Current = sheet.RawSheet.UnsafeCreateRowAt< T >( _index );
+                return true;
             }
 
-            var page = GetPageForRow( row );
-            if( page == null )
-            {
-                return null;
-            }
-            
-            var parser = GetRowParser( page, row, subRow );
-            if( parser == null )
-            {
-                return null;
-            }
-            
-            var rowObj = Activator.CreateInstance< T >();
-
-            lock( page.File.ReaderLock )
-            {
-                rowObj.PopulateData( parser, GameData, RequestedLanguage );
-            }
-            
-            if( !NoCache.IsEnabled )
-            {
-                _rowCache[ cacheKey ] = rowObj;
-            }
-            
-            return rowObj;
+            --_index;
+            return false;
         }
 
-        private T ReadRowObj( RowParser parser, uint rowId )
-        {
-            parser.SeekToRow( rowId );
-            
-            var obj = Activator.CreateInstance< T >();
-                        
-            obj.PopulateData( parser, GameData, RequestedLanguage );
+        /// <inheritdoc/>
+        public void Reset() => _index = -1;
 
-            return obj;
-        }
-
-        private T ReadSubRowObj( RowParser parser, uint rowId, uint subRowId )
-        {
-            parser.SeekToRow( rowId, subRowId );
-            var obj = Activator.CreateInstance< T >();
-
-            obj.PopulateData( parser, GameData, RequestedLanguage );
-
-            return obj;
-        }
-        
-        public IEnumerator< T > GetEnumerator()
-        {
-            ExcelDataFile file = null!;
-            RowParser parser = null!;
-            
-            foreach( var offset in GetRowDataOffsets() )
-            {
-                var rowPtr = offset.RowOffset;
-                if( file != offset.SheetPage )
-                {
-                    parser = new RowParser( this, offset.SheetPage );
-                }
-                
-                if( Header.Variant == ExcelVariant.Subrows )
-                {
-                    // required to read the row header out and know how many subrows there is
-                    parser.SeekToRow( rowPtr.RowId );
-                        
-                    // read subrows
-                    for( uint i = 0; i < parser.RowCount; i++ )
-                    {
-                        var cacheKey = GetCacheKey( rowPtr.RowId, i );
-                        if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
-                        {
-                            yield return cachedRow;
-                            continue;
-                        }
-
-                        var obj = ReadSubRowObj( parser, rowPtr.RowId, i );
-                        if( !NoCache.IsEnabled )
-                        {
-                            _rowCache.TryAdd( cacheKey, obj );
-                        }
-                        
-                        yield return obj;
-                    }
-                }
-                else
-                {
-                    var cacheKey = GetCacheKey( rowPtr.RowId );
-                    if( _rowCache.TryGetValue( cacheKey, out var cachedRow ) )
-                    {
-                        yield return cachedRow;
-                        continue;
-                    }
-                        
-                    var obj = ReadRowObj( parser, rowPtr.RowId );
-                    if( !NoCache.IsEnabled )
-                    {
-                        _rowCache.TryAdd( cacheKey, obj );
-                    }
-                    
-                    yield return obj;
-                }
-            }
-        }
-        
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        /// <inheritdoc/>
+        public readonly void Dispose()
+        { }
     }
 }

@@ -1,27 +1,63 @@
 using System;
 
-namespace Lumina.Excel
+namespace Lumina.Excel;
+
+/// <summary>
+/// An attribute attached to a schema/struct that represents a sheet in an excel file.
+/// </summary>
+[AttributeUsage( AttributeTargets.Struct )]
+public sealed class SheetAttribute : Attribute
 {
-    public class SheetAttribute : Attribute
+    /// <summary>
+    /// The name of the sheet.
+    /// </summary>
+    /// <remarks>
+    /// Can be <see langword="null"/> if the schema is not associated with a specific sheet (i.e. quest/dungeon/cutscene sheets).
+    /// </remarks>
+    public string? Name { get; }
+
+    /// <summary>
+    /// Gets the column hash of the sheet; optionally used to check for schema and sheet changes.
+    /// </summary>
+    public uint? ColumnHash { get; }
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="SheetAttribute"/> class.
+    /// </summary>
+    public SheetAttribute()
     {
-        /// <summary>
-        /// The sheet name
-        /// </summary>
-        public readonly string Name;
-        
-        /// <summary>
-        /// A column hash - used to warn when a sheet structure has changed
-        /// </summary>
-        public readonly uint? ColumnHash;
+        Name = null;
+        ColumnHash = null;
+    }
 
-        public SheetAttribute( string name )
-        {
-            Name = name;
-        }
+    /// <summary>
+    /// Creates a new instance of the <see cref="SheetAttribute"/> class.
+    /// </summary>
+    /// <param name="name">The name of the sheet.</param>
+    public SheetAttribute( string name )
+    {
+        Name = name;
+        ColumnHash = null;
+    }
 
-        public SheetAttribute( string name, uint columnHash ) : this( name )
-        {
-            ColumnHash = columnHash;
-        }
+    /// <summary>
+    /// Creates a new instance of the <see cref="SheetAttribute"/> class.
+    /// </summary>
+    /// <param name="columnHash">The column hash of the sheet; optionally used to check for schema and sheet changes.</param>
+    public SheetAttribute( uint columnHash )
+    {
+        Name = null;
+        ColumnHash = columnHash;
+    }
+
+    /// <summary>
+    /// Creates a new instance of the <see cref="SheetAttribute"/> class.
+    /// </summary>
+    /// <param name="name">The name of the sheet.</param>
+    /// <param name="columnHash">The column hash of the sheet; optionally used to check for schema and sheet changes.</param>
+    public SheetAttribute( string name, uint columnHash )
+    {
+        Name = name;
+        ColumnHash = columnHash;
     }
 }
