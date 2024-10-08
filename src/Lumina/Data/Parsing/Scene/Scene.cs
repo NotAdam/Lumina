@@ -22,7 +22,9 @@ namespace Lumina.Data.Parsing.Scene
         public int Unknown28;
         public int Unknown2C;
         public int Unknown30;
-        public int Unknown34;
+        
+        public HousingSettings? HousingSettings;
+        
         public int Unknown38;
         // 3
         public int Padding3C;
@@ -50,9 +52,10 @@ namespace Lumina.Data.Parsing.Scene
             ret.Unknown28 = br.ReadInt32();
             ret.Unknown2C = br.ReadInt32();
             ret.Unknown30 = br.ReadInt32();
-            ret.Unknown34 = br.ReadInt32();
+            
+            int housingOffset = br.ReadInt32();
+            
             ret.Unknown38 = br.ReadInt32();
-
             ret.Padding3C = br.ReadInt32();
             ret.Padding40 = br.ReadInt32();
             ret.Padding44 = br.ReadInt32();
@@ -64,6 +67,11 @@ namespace Lumina.Data.Parsing.Scene
             {
                 br.Seek( rewind + layerGroupOffset + ( i * 4 ) );
                 ret.LayerGroups[i] = Layer.LayerGroup.Read( br );
+            }
+            if( housingOffset != 0 )
+            {
+                br.Seek( rewind + housingOffset );
+                ret.HousingSettings = Scene.HousingSettings.Read( br );
             }
             return ret;
         }
