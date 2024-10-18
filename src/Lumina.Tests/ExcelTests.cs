@@ -90,4 +90,14 @@ public class ExcelTests
 
         Assert.Equal( brute, interval );
     }
+
+    [RequiresGameInstallationFact]
+    public void IndirectStringSheet()
+    {
+        var gameData = RequiresGameInstallationFact.CreateGameData();
+
+        var row = gameData.GetExcelSheet<GatheringPointBase>()!.GetRow( 30 );
+        var name = row.GatheringType.ValueNullable?.Name;
+        Assert.Equal( "Harvesting", name );
+    }
 }

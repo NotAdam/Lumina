@@ -1,4 +1,6 @@
 using Lumina.Excel;
+using Lumina.Text.ReadOnly;
+using System.CodeDom.Compiler;
 
 namespace Lumina.Tests;
 
@@ -208,5 +210,29 @@ public readonly struct Description( ExcelPage page, uint offset, uint row ) : IE
     public uint RowId => row;
 
     static Description IExcelRow<Description>.Create( ExcelPage page, uint offset, uint row ) =>
+        new( page, offset, row );
+}
+
+[Sheet( "GatheringPointBase" )]
+public readonly unsafe struct GatheringPointBase( ExcelPage page, uint offset, uint row ) : IExcelRow<GatheringPointBase>
+{
+    public uint RowId => row;
+
+    public readonly RowRef<GatheringType> GatheringType => new( page.Module, (uint)page.ReadInt32( offset ), page.Language );
+
+    static GatheringPointBase IExcelRow<GatheringPointBase>.Create( ExcelPage page, uint offset, uint row ) =>
+        new( page, offset, row );
+}
+
+[Sheet( "GatheringType" )]
+public readonly struct GatheringType( ExcelPage page, uint offset, uint row ) : IExcelRow<GatheringType>
+{
+    public uint RowId => row;
+
+    public readonly ReadOnlySeString Name => page.ReadString( offset, offset );
+    public readonly int IconMain => page.ReadInt32( offset + 4 );
+    public readonly int IconOff => page.ReadInt32( offset + 8 );
+
+    static GatheringType IExcelRow<GatheringType>.Create( ExcelPage page, uint offset, uint row ) =>
         new( page, offset, row );
 }

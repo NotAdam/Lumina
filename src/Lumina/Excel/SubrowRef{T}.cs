@@ -17,7 +17,11 @@ public struct SubrowRef< T >( ExcelModule? module, uint rowId, Language? languag
         get {
             if( module == null )
                 return null;
-            return _sheet ??= module.GetSubrowSheet< T >( language );
+            return _sheet ??= module.GetSubrowSheet< T >(
+                language == Data.Language.None ?
+                    null : // Use default language if null (or fall back to None)
+                    language
+                );
         }
     }
 

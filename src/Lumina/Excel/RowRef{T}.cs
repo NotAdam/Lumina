@@ -17,7 +17,11 @@ public struct RowRef< T >( ExcelModule? module, uint rowId, Language? language =
         get {
             if( module == null )
                 return null;
-            return _sheet ??= module.GetSheet< T >( language );
+            return _sheet ??= module.GetSheet< T >(
+                language == Data.Language.None ?
+                    null : // Use default language if null (or fall back to None)
+                    language
+                );
         }
     }
 
