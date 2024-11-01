@@ -15,28 +15,31 @@ namespace Lumina.Excel;
 /// <remarks>
 /// If you only want to read excel sheets, please refrain from touching this class. This class exists mostly as an implementation detail for parsing excel rows.
 /// </remarks>
-[EditorBrowsable( EditorBrowsableState.Advanced )]
 public sealed class ExcelPage
 {
     /// <summary>
+    /// The raw sheet that this page belongs to.
+    /// </summary>
+    public RawExcelSheet Sheet { get; }
+
+    /// <summary>
     /// The module that this page belongs to.
     /// </summary>
-    public ExcelModule Module { get; }
+    public ExcelModule Module => Sheet.Module;
 
     /// <summary>
     /// The associated language of the page.
     /// </summary>
-    public Language Language { get; }
+    public Language Language => Sheet.Language;
 
     private readonly byte[] data;
     private ReadOnlyMemory< byte > Data => data;
 
     private readonly ushort dataOffset;
 
-    internal ExcelPage( ExcelModule module, Language language, byte[] pageData, ushort headerDataOffset )
+    internal ExcelPage( RawExcelSheet sheet, byte[] pageData, ushort headerDataOffset )
     {
-        Module = module;
-        Language = language;
+        Sheet = sheet;
         data = pageData;
         dataOffset = headerDataOffset;
     }
