@@ -11,6 +11,7 @@ namespace Lumina.Excel;
 /// <remarks>
 /// This type is designed to be used to read from arbitrary columns and offsets.
 /// </remarks>
+[Sheet]
 public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelRow<RawRow>
 {
     /// <summary>

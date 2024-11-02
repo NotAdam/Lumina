@@ -9,6 +9,7 @@ namespace Lumina.Excel;
 /// An <see cref="IExcelSubrow{T}"/> type for explicitly reading data from an <see cref="ExcelPage"/>.
 /// </summary>
 /// <inheritdoc cref="RawRow"/>
+[Sheet]
 public readonly struct RawSubrow( ExcelPage page, uint offset, uint row, ushort subrow ) : IExcelSubrow<RawSubrow>
 {
     /// <inheritdoc cref="RawRow.Page"/>
