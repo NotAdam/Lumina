@@ -444,6 +444,24 @@ public class SeStringBuilderTests
     }
 
     [Fact]
+    public unsafe void SpanViewNullTerminationTest()
+    {
+        var test = new SeStringBuilder()
+            .AppendBold( "Test" )
+            .Append( "Asdf" )
+            .AppendItalicized( "Aaaaa" );
+        var expected =
+            "\x02\x19\x02\x02\x03"u8 + "Test"u8 + "\x02\x19\x02\x01\x03"u8 +
+            "Asdf"u8 +
+            "\x02\x1A\x02\x02\x03"u8 + "Aaaaa"u8 + "\x02\x1A\x02\x01\x03"u8;
+
+        var span = test.GetViewAsSpan();
+        Assert.True( span.SequenceEqual( expected ) );
+        fixed( byte* p = span )
+            Assert.Equal( 0 , p[ span.Length ]);
+    }
+
+    [Fact]
     public unsafe void InterpolationHandlerTest1()
     {
         const string test = "asdf";
@@ -600,8 +618,7 @@ public class SeStringBuilderTests
             var languages = header?.Languages ?? [Language.None];
             foreach( var language in languages )
             {
-                if( gameData.Excel.GetSheet<RawRow>( language, sheetName ) is not { } sheet )
-                    continue;
+                var sheet = gameData.Excel.GetSheet< RawRow >( language, sheetName );
 
                 var stringColumns = sheet.Columns.Where( c => c.Type == ExcelColumnDataType.String ).Select( c => c.Offset ).ToArray();
                 foreach( var row in sheet )
