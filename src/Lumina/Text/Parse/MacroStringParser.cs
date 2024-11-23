@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Lumina.Text.Expressions;
@@ -9,9 +10,11 @@ namespace Lumina.Text.Parse;
 
 internal readonly ref struct MacroStringParser
 {
-    // Map from ascii code to supposed number.
-    // -1 = invalid, -2 = ignore.
-    // See the static constructor for initialization.
+    /// <summary>Map from ascii code to supposed number. See the static constructor for initialization.</summary>
+    /// <value><ul>
+    /// <li>-1: invalid</li>
+    /// <li>-2: ignore</li>
+    /// </ul></value>
     private static readonly sbyte[] Digits;
 
     private readonly ReadOnlySpan< byte > _macroString;
@@ -21,14 +24,16 @@ internal readonly ref struct MacroStringParser
     static MacroStringParser()
     {
         Digits = new sbyte[0x80];
-        Digits.AsSpan().Fill(-1);
-        Digits['_'] = Digits['\''] = -2;
-        for (var i = '0'; i <= '9'; i++)
-            Digits[i] = (sbyte)(i - '0');
-        for (var i = 'A'; i <= 'F'; i++)
-            Digits[i] = (sbyte)(10 + (i - 'A'));
-        for (var i = 'a'; i <= 'f'; i++)
-            Digits[i] = (sbyte)(10 + (i - 'a'));
+        Digits.AsSpan().Fill( -1 );
+        // Programming languages such as C# will ignore underscores(_) between digits, to let users write 0x0123_4567_89AB_CDEF for ease of reading.
+        // C++ will use single quotes(') instead of underscores.
+        Digits[ '_' ] = Digits[ '\'' ] = -2;
+        for( var i = '0'; i <= '9'; i++ )
+            Digits[ i ] = (sbyte) ( i - '0' );
+        for( var i = 'A'; i <= 'F'; i++ )
+            Digits[ i ] = (sbyte) ( 10 + ( i - 'A' ) );
+        for( var i = 'a'; i <= 'f'; i++ )
+            Digits[ i ] = (sbyte) ( 10 + ( i - 'a' ) );
     }
 
     internal MacroStringParser( ReadOnlySpan< byte > macroString, SeStringBuilder builder, MacroStringParseOptions parseOptions )
@@ -39,25 +44,44 @@ internal readonly ref struct MacroStringParser
     }
 
     /// <summary>Parses the macro string.</summary>
-    /// <returns>The builder.</returns>
+    /// <param name="offset">Offset in <see cref="_macroString"/> to parse from.</param>
+    /// <param name="stopOnCharRequiringEscape">Whether to stop parsing if a character requires escaping to have itself skipped from being processed as a part
+    /// of string representation of SeString payloads. Used to allow using special characters used to form string representation of SeString payloads, such as
+    /// <c>(</c> or <c>,</c>, when the string being parsed is at the topmost level (not a part of string SeString expression.)</param>
+    /// <param name="extraTerminators">If any of the bytes in this span is encountered while parsing, it will be treated as the end of the current string being
+    /// parsed. Used to terminate parsing string SeString expressions, so that it can exclude <c>)</c> from the expression and stop when parsing
+    /// <c>&lt;string(asdf)&gt;</c>, instead of producing <c>asdf)</c> as the parsed string SeString expression and fail with invalid syntax.</param>
+    /// <returns>One past the final offset in <see cref="_macroString"/> that got parsed.</returns>
     public int ParseMacroStringAndAppend( int offset, bool stopOnCharRequiringEscape, ReadOnlySpan< byte > extraTerminators )
     {
         var beginOffset = offset;
-        while( new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ).TryPeekNext( out var s, out _ ) )
+        while( new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ).TryPeekNext( out var c, out _ ) )
         {
-            if( s.IsSeStringPayload )
+            Debug.Assert(
+                ( _parseOptions.CharEnumerationFlags & UtfEnumeratorFlags.IgnoreErrors ) != 0 || c.ByteOffset == 0,
+                $"Offset of the first item retrieved UtfEnumerator should have been 0, unless {nameof( UtfEnumeratorFlags.IgnoreErrors )} is set." );
+
+            offset += c.ByteOffset;
+
+            if( c.IsSeStringPayload )
             {
-                _builder.Append( new ReadOnlySeStringSpan( _macroString.Slice( offset + s.ByteOffset, s.ByteLength ) ) );
+                Debug.Assert( ( _parseOptions.CharEnumerationFlags & UtfEnumeratorFlags.Utf8SeString ) != 0,
+                    $"SeString Payload should have not been yielded unless {nameof( UtfEnumeratorFlags.Utf8SeString )} is set." );
+
+                _builder.Append( new ReadOnlySeStringSpan( _macroString.Slice( offset, c.ByteLength ) ) );
+                offset += c.ByteLength;
                 continue;
             }
 
-            switch( s.Value.UIntValue )
+            switch( c.Value.UIntValue )
             {
                 case '\\':
+                    // Backslashes will *always* produce the following character as-is.
+                    // No special escape sequences such as \n and \t are defined for SeStrings.
                     offset += ParseMacroStringTextAndAppend( offset, extraTerminators );
                     break;
 
-                case <= byte.MaxValue when extraTerminators.Contains( (byte) s.Value.UIntValue ):
+                case <= byte.MaxValue when extraTerminators.Contains( (byte) c.Value.UIntValue ):
                     return offset - beginOffset;
 
                 case '<' when _parseOptions.ExceptionMode is MacroStringParseExceptionMode.Throw:
@@ -71,7 +95,7 @@ internal readonly ref struct MacroStringParser
                     }
                     catch( MacroStringParseException e )
                     {
-                        var byteLength = Math.Max( s.ByteLength, e.ByteOffset - offset );
+                        var byteLength = Math.Max( c.ByteLength, e.ByteOffset - offset );
                         var sliceUntilError = _macroString.Slice( offset, byteLength );
                         _builder.Append( new UtfEnumerator( sliceUntilError, _parseOptions.CharEnumerationFlags ) );
                         if( _parseOptions.ExceptionMode == MacroStringParseExceptionMode.EmbedError )
@@ -81,13 +105,13 @@ internal readonly ref struct MacroStringParser
 
                     break;
 
-                case <= byte.MaxValue when CharRequiresEscapeInSeString( s.Value.UIntValue ):
+                case <= byte.MaxValue when CharRequiresEscapeInSeString( c.Value.UIntValue ):
                     if( stopOnCharRequiringEscape )
                         return offset - beginOffset;
 
-                    var v = unchecked( (byte) s.Value.UIntValue );
+                    var v = unchecked( (byte) c.Value.UIntValue );
                     _builder.Append( MemoryMarshal.CreateReadOnlySpan( ref v, 1 ) );
-                    offset += s.ByteLength;
+                    offset += c.ByteLength;
                     break;
 
                 default:
@@ -104,6 +128,9 @@ internal readonly ref struct MacroStringParser
         var nextIsEscaped = false;
         foreach( var c in new UtfEnumerator( _macroString[ offset.. ], _parseOptions.CharEnumerationFlags ) )
         {
+            if( c.IsSeStringPayload )
+                return c.ByteOffset;
+
             switch( c.Value.UIntValue )
             {
                 case var _ when nextIsEscaped:
@@ -355,7 +382,12 @@ internal readonly ref struct MacroStringParser
             } while( !data.IsEmpty );
 
             var maxPerDigit = 10u;
-            if( data.Length > 2 && data[ 0 ] == '0' )
+
+            // If the number string begins with 0 followed by non-decimal digits, try parsing it as non-decimal.
+            if( data.Length > 2
+               && data[ 0 ] == '0'
+               && data[ 1 ] is not ((byte) '_' or (byte) '\'')
+               && data[ 1 ] is not (>= (byte) '0' and <= (byte) '9') )
             {
                 maxPerDigit = (char) data[ 1 ] switch
                 {
@@ -460,7 +492,7 @@ internal readonly ref struct MacroStringParser
 
         macroCodeName = macroCodeName[ ..macroCodeNameLength ];
 
-        foreach( var n in MacroCodeExtensions.GetDefinedMacroCodes())
+        foreach( var n in MacroCodeExtensions.GetDefinedMacroCodes() )
         {
             if( macroCodeName.SequenceEqual( n.GetEncodeName() ) )
             {
