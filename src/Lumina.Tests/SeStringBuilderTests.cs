@@ -299,13 +299,13 @@ public class SeStringBuilderTests
     }
 
     [Sheet( "Addon" )]
-    public readonly struct Addon( ExcelPage page, uint offset, uint row ) : IExcelRow<Addon>
+    public readonly struct Addon( ExcelPage page, uint offset, uint row ) : IExcelRow< Addon >
     {
         public uint RowId => row;
 
         public ReadOnlySeString Text => page.ReadString( offset, offset );
 
-        static Addon IExcelRow<Addon>.Create( ExcelPage page, uint offset, uint row ) =>
+        static Addon IExcelRow< Addon >.Create( ExcelPage page, uint offset, uint row ) =>
             new( page, offset, row );
     }
 
@@ -458,7 +458,7 @@ public class SeStringBuilderTests
         var span = test.GetViewAsSpan();
         Assert.True( span.SequenceEqual( expected ) );
         fixed( byte* p = span )
-            Assert.Equal( 0 , p[ span.Length ]);
+            Assert.Equal( 0, p[ span.Length ] );
     }
 
     [Fact]
@@ -605,6 +605,52 @@ public class SeStringBuilderTests
         }
     }
 
+    [Fact]
+    public void ParseNestedSeStringPayloadTest()
+    {
+        var t = ReadOnlySeString.FromMacroString( "ABC\\<italic(1)>DEF<italic(0)>" );
+        t = ReadOnlySeString.FromMacroString( t, new() { CharEnumerationFlags = UtfEnumeratorFlags.Utf8SeString } );
+        Assert.Equal( ReadOnlySeString.FromMacroString( "ABC<italic(1)>DEF<italic(0)>" ), t );
+    }
+
+    [Fact]
+    public void ParseIgnoreInvalidUtf8SequenceTest()
+    {
+        var invalidSequence = new byte[]
+        {
+            (byte) 'A',
+            (byte) 'B',
+            0xFF, // 0xFF is never valid in UTF-8 bytes
+            (byte) 'C',
+            (byte) 'D',
+        };
+        Assert.Throws< EncoderFallbackException >( () =>
+            ReadOnlySeString.FromMacroString( invalidSequence, new() { CharEnumerationFlags = UtfEnumeratorFlags.ThrowOnFirstError } ) );
+        Assert.Equal(
+            ReadOnlySeString.FromMacroString( invalidSequence, new() { CharEnumerationFlags = UtfEnumeratorFlags.IgnoreErrors } ).Data.ToArray(),
+            "ABCD"u8.ToArray() );
+    }
+
+    [Fact]
+    public void ParseNumberTest()
+    {
+        static void Test( string numberString, uint expected )
+        {
+            var e = ReadOnlySeString.FromMacroString( $"<italic({numberString})>" ).AsSpan().GetEnumerator();
+            Assert.True( e.MoveNext() );
+            Assert.Equal( MacroCode.Italic, e.Current.MacroCode );
+            Assert.True( e.Current.TryGetExpression( out var expr ) );
+            Assert.True( expr.TryGetUInt( out var parsed ) );
+            Assert.Equal( parsed, expected );
+        }
+
+        Test( "0_00'0012'345", 12345 );
+        Test( "0o000_5151", 2665 );
+        Test( "0b0000'1111'0000'1111", 0x0F0F );
+        Test( "0x1234_5678", 0x12345678 );
+        Test( "0d_5555", 5555 );
+    }
+
     [RequiresGameInstallationFact]
     public void AllSheetsTextColumnCodec()
     {
@@ -612,7 +658,7 @@ public class SeStringBuilderTests
         var ssb = new SeStringBuilder();
         foreach( var sheetName in gameData.Excel.SheetNames )
         {
-            var header = gameData.GetFile<ExcelHeaderFile>( $"exd/{sheetName}.exh" );
+            var header = gameData.GetFile< ExcelHeaderFile >( $"exd/{sheetName}.exh" );
             if( header?.Header.Variant == ExcelVariant.Subrows )
                 continue;
             var languages = header?.Languages ?? [Language.None];
@@ -625,7 +671,7 @@ public class SeStringBuilderTests
                 {
                     foreach( var columnOffset in stringColumns )
                     {
-                        var test1 = row.ReadString(columnOffset);
+                        var test1 = row.ReadString( columnOffset );
                         if( test1.Data.Span.IndexOf( "payload:"u8 ) != -1 )
                             throw new( $"Unsupported payload at {sheetName}#{row.RowId}; {test1}" );
 
@@ -647,14 +693,14 @@ public class SeStringBuilderTests
     }
 
     [Sheet]
-    public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelRow<RawRow>
+    public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelRow< RawRow >
     {
         public uint RowId => row;
 
         public ReadOnlySeString ReadString( ushort off ) =>
             page.ReadString( off + offset, offset );
 
-        static RawRow IExcelRow<RawRow>.Create( ExcelPage page, uint offset, uint row ) =>
+        static RawRow IExcelRow< RawRow >.Create( ExcelPage page, uint offset, uint row ) =>
             new( page, offset, row );
     }
 }
