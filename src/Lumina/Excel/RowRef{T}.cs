@@ -12,12 +12,12 @@ namespace Lumina.Excel;
 /// <param name="language">The associated language of the referenced row. Leave <see langword="null"/> to use <paramref name="module"/>'s default language.</param>
 public struct RowRef< T >( ExcelModule? module, uint rowId, Language? language = null ) where T : struct, IExcelRow< T >
 {
-    private ExcelSheet< T >? _sheet = null; 
-    private ExcelSheet< T >? Sheet {
+    private RawExcelSheet? _sheet = null; 
+    private RawExcelSheet? Sheet {
         get {
             if( module == null )
                 return null;
-            return _sheet ??= module.GetSheet< T >(
+            return _sheet ??= module.GetRawSheet< T >(
                 language == Data.Language.None ?
                     null : // Use default language if null (or fall back to None)
                     language
@@ -52,7 +52,12 @@ public struct RowRef< T >( ExcelModule? module, uint rowId, Language? language =
     /// <summary>
     /// Attempts to get the referenced row value. Is <see langword="null"/> if <see cref="RowId"/> does not exist in the sheet.
     /// </summary>
-    public T? ValueNullable => Sheet?.GetRowOrDefault( rowId );
+    public T? ValueNullable => Sheet?.GetRowOrDefault<T>( rowId );
+
+    public RowRef( RawExcelSheet sheet, uint rowId ) : this( sheet.Module, rowId, sheet.Language )
+    {
+        _sheet = sheet;
+    }
 
     private readonly RowRef ToGeneric() => RowRef.Create< T >( module, rowId, language );
 
