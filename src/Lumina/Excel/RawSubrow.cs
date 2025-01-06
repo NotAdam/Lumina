@@ -57,7 +57,7 @@ public readonly struct RawSubrow( ExcelPage page, uint offset, uint row, ushort 
             ExcelColumnDataType.Int64 => ReadInt64( column.Offset ),
             ExcelColumnDataType.UInt64 => ReadUInt64( column.Offset ),
             >= ExcelColumnDataType.PackedBool0 and <= ExcelColumnDataType.PackedBool7 =>
-                page.ReadPackedBool( column.Offset, (byte)( column.Type - ExcelColumnDataType.PackedBool0 ) ),
+                ReadPackedBool( column.Offset, (byte)( column.Type - ExcelColumnDataType.PackedBool0 ) ),
             _ => throw new InvalidOperationException( $"Unknown column type {column.Type}" )
         };
     }
