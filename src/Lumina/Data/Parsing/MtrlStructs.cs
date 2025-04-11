@@ -29,6 +29,7 @@ namespace Lumina.Data.Parsing
         SamplerSpecularMap0 = 0x1BBC2F12,
         SamplerSpecularMap1 = 0x6CBB1F84,
         SamplerWaveMap = 0xE6321AFC,
+        SamplerWaveMap1 = 0xE5338C17,
         SamplerWaveletMap0 = 0x574E22D6,
         SamplerWaveletMap1 = 0x20491240,
         SamplerWhitecapMap = 0x95E1F64D
