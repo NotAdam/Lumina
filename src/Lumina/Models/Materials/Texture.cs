@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Lumina.Data.Files;
 using Lumina.Data.Parsing;
 
@@ -114,6 +114,7 @@ namespace Lumina.Models.Materials
                 TextureUsage.SamplerSpecularMap0 => Usage.Specular,
                 TextureUsage.SamplerSpecularMap1 => Usage.Specular,
                 TextureUsage.SamplerWaveMap => Usage.Wave,
+                TextureUsage.SamplerWaveMap1 => Usage.Wave,
                 TextureUsage.SamplerWaveletMap0 => Usage.Wave,
                 TextureUsage.SamplerWaveletMap1 => Usage.Wave,
                 TextureUsage.SamplerWhitecapMap => Usage.Whitecap,
