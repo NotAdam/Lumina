@@ -7,6 +7,7 @@ namespace Lumina.Text.Payloads
     /// <summary>
     /// Represent a simple text payload.
     /// </summary>
+    [Obsolete( "Use ReadOnlySePayload instead." )]
     public class TextPayload : BasePayload
     {
         /// <inheritdoc />

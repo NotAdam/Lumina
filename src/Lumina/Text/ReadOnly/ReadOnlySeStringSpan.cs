@@ -384,7 +384,7 @@ public readonly ref struct ReadOnlySeStringSpan
                     break;
 
                 // Start byte.
-                case SeString.StartByte:
+                case ReadOnlySeString.Stx:
                 {
                     // A macro payload is always at least 4 bytes. (STX, macro type, body length, ETX)
                     // If we cannot produce a well-formed macro payload, consider the current byte as a single byte invalid payload.
@@ -400,7 +400,7 @@ public readonly ref struct ReadOnlySeStringSpan
                         goto case 0;
 
                     // The payload is not terminating with an ETX. Consider it invalid.
-                    if( subspan[ 2 + bodyLengthLength + bodyLength ] != SeString.EndByte )
+                    if( subspan[ 2 + bodyLengthLength + bodyLength ] != ReadOnlySeString.Etx )
                         goto case 0;
 
                     Current = new(

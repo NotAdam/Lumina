@@ -208,7 +208,7 @@ public readonly struct ReadOnlySePayload : IEquatable< ReadOnlySePayload >, IRea
     /// <returns>A new instance of <see cref="ReadOnlySePayload"/></returns>.
     public static ReadOnlySePayload FromText( ReadOnlySpan< byte > utf8String )
     {
-        if( utf8String.IndexOfAny( SeString.StartByte, (byte) 0 ) != -1 )
+        if( utf8String.IndexOfAny( ReadOnlySeString.Stx, (byte) 0 ) != -1 )
             throw new ArgumentException( "A SeString cannot contain STX or NUL.", nameof( utf8String ) );
         return new( ReadOnlySePayloadType.Text, default, utf8String.ToArray() );
     }
@@ -218,7 +218,7 @@ public readonly struct ReadOnlySePayload : IEquatable< ReadOnlySePayload >, IRea
     /// <returns>A new instance of <see cref="ReadOnlySePayload"/></returns>.
     public static ReadOnlySePayload FromText( ReadOnlyMemory< byte > utf8String )
     {
-        if( utf8String.Span.IndexOfAny( SeString.StartByte, (byte) 0 ) != -1 )
+        if( utf8String.Span.IndexOfAny( ReadOnlySeString.Stx, (byte) 0 ) != -1 )
             throw new ArgumentException( "A SeString cannot contain STX or NUL.", nameof( utf8String ) );
         return new( ReadOnlySePayloadType.Text, default, utf8String );
     }
@@ -228,7 +228,7 @@ public readonly struct ReadOnlySePayload : IEquatable< ReadOnlySePayload >, IRea
     /// <returns>A new instance of <see cref="ReadOnlySePayloadSpan"/></returns>.
     public static ReadOnlySePayloadSpan FromText( ReadOnlySpan< char > utf16String )
     {
-        if( utf16String.IndexOfAny( (char) SeString.StartByte, (char) 0 ) != -1 )
+        if( utf16String.IndexOfAny( (char)ReadOnlySeString.Stx, (char) 0 ) != -1 )
             throw new ArgumentException( "A SeString cannot contain STX or NUL.", nameof( utf16String ) );
         var buf = new byte[Encoding.UTF8.GetByteCount( utf16String )];
         Encoding.UTF8.GetBytes( utf16String, buf );

@@ -1,8 +1,11 @@
+using System;
+
 namespace Lumina.Text.Payloads;
 
 /// <summary>
 /// Type of payloads.
 /// </summary>
+[Obsolete( "Use MacroCode instead." )]
 public enum PayloadType : byte
 {
     /// <summary>

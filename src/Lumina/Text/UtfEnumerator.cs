@@ -144,7 +144,7 @@ public ref struct UtfEnumerator
             if (isBroken)
                 value = subspan[0];
 
-            if (value == SeString.StartByte && (_flags & UtfEnumeratorFlags.Utf8SeString) != 0)
+            if (value == ReadOnlySeString.Stx && (_flags & UtfEnumeratorFlags.Utf8SeString) != 0)
             {
                 var e = new ReadOnlySeStringSpan(subspan).GetEnumerator();
                 e.MoveNext();
