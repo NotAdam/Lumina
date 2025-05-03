@@ -7,6 +7,7 @@ namespace Lumina.Text.Expressions;
 /// <summary>
 /// Represent an unsigned int32 value.
 /// </summary>
+[Obsolete]
 public class IntegerExpression : BaseExpression
 {
     /// <summary>

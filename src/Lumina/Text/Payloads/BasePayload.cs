@@ -13,6 +13,7 @@ namespace Lumina.Text.Payloads
     /// <summary>
     /// Represent a payload that is either a complicated payload or a simple text payload.
     /// </summary>
+    [Obsolete( "Use ReadOnlySePayload instead." )]
     public class BasePayload
     {
         private readonly IntegerExpression _expressionTotalSize;

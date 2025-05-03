@@ -14,16 +14,19 @@ namespace Lumina.Text
     /// <summary>
     /// Represent a SeString.
     /// </summary>
+    [Obsolete( "Use ReadOnlySeString instead." )]
     public class SeString
     {
         /// <summary>
         /// Mark the beginning of a payload wrapper inside SeString. 
         /// </summary>
+        [Obsolete( "Use ReadOnlySeString.Stx instead." )]
         public const byte StartByte = 0x02;
 
         /// <summary>
         /// Mark the end of a payload wrapper inside SeString. 
         /// </summary>
+        [Obsolete( "Use ReadOnlySeString.Etx instead." )]
         public const byte EndByte = 0x03;
 
         private readonly Lazy<byte[]> _rawData;

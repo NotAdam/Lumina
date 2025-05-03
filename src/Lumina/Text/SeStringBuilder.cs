@@ -129,6 +129,7 @@ public sealed partial class SeStringBuilder : IResettable
     /// <returns>A new instance of <see cref="SeString"/>.</returns>
     /// <remarks>If the created value does not escape the code scope this function is being called, consider using <see cref="GetViewAsMemory"/> or
     /// <see cref="GetViewAsSpan"/>.</remarks>
+    [Obsolete( "Use ReadOnlySeString instead." )]
     public SeString ToSeString() => new( ToArray() );
 
     /// <summary>Gets the SeString as a new instance of <see cref="ReadOnlySeString"/>.</summary>

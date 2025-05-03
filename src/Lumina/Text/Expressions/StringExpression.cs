@@ -8,6 +8,7 @@ namespace Lumina.Text.Expressions;
 /// <summary>
 /// Represent an Expression containing SeString.
 /// </summary>
+[Obsolete]
 public class StringExpression : BaseExpression
 {
     /// <summary>

@@ -217,7 +217,7 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <returns>A new instance of <see cref="ReadOnlySePayloadSpan"/></returns>.
     public static ReadOnlySePayloadSpan FromText( ReadOnlySpan< byte > utf8String )
     {
-        if( utf8String.IndexOfAny( SeString.StartByte, (byte) 0 ) != -1 )
+        if( utf8String.IndexOfAny( ReadOnlySeString.Stx, (byte) 0 ) != -1 )
             throw new ArgumentException( "A SeString cannot contain STX or NUL.", nameof( utf8String ) );
         return new( ReadOnlySePayloadType.Text, default, utf8String );
     }
@@ -227,7 +227,7 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <returns>A new instance of <see cref="ReadOnlySePayloadSpan"/></returns>.
     public static ReadOnlySePayloadSpan FromText( ReadOnlySpan< char > utf16String )
     {
-        if( utf16String.IndexOfAny( (char) SeString.StartByte, (char) 0 ) != -1 )
+        if( utf16String.IndexOfAny( (char) ReadOnlySeString.Stx, (char) 0 ) != -1 )
             throw new ArgumentException( "A SeString cannot contain STX or NUL.", nameof( utf16String ) );
         var buf = new byte[Encoding.UTF8.GetByteCount( utf16String )];
         Encoding.UTF8.GetBytes( utf16String, buf );
@@ -396,11 +396,11 @@ public readonly ref struct ReadOnlySePayloadSpan
                 return Body.Length;
             case ReadOnlySePayloadType.Macro:
                 var len = 0;
-                len += SeExpressionUtilities.WriteRaw( target.IsEmpty ? target : target[ len.. ], SeString.StartByte );
+                len += SeExpressionUtilities.WriteRaw( target.IsEmpty ? target : target[ len.. ], ReadOnlySeString.Stx );
                 len += SeExpressionUtilities.WriteRaw( target.IsEmpty ? target : target[ len.. ], (byte) MacroCode );
                 len += SeExpressionUtilities.EncodeInt( target.IsEmpty ? target : target[ len.. ], Body.Length );
                 len += SeExpressionUtilities.WriteRaw( target.IsEmpty ? target : target[ len.. ], Body );
-                len += SeExpressionUtilities.WriteRaw( target.IsEmpty ? target : target[ len.. ], SeString.EndByte );
+                len += SeExpressionUtilities.WriteRaw( target.IsEmpty ? target : target[ len.. ], ReadOnlySeString.Etx );
                 return len;
         }
     }

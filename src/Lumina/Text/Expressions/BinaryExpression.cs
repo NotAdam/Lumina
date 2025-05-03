@@ -7,6 +7,7 @@ namespace Lumina.Text.Expressions;
 /// <summary>
 /// Represent an Expression containing an operator with two arguments.
 /// </summary>
+[Obsolete]
 public class BinaryExpression : BaseExpression
 {
     /// <summary>
