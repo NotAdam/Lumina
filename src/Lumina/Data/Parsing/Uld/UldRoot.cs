@@ -11,7 +11,7 @@ namespace Lumina.Data.Parsing.Uld
     /// </summary>
     public static class UldRoot
     {
-        public enum AlignmentType
+        public enum AlignmentType : byte
         {
             TopLeft = 0x0,
             Top = 0x1,
@@ -119,18 +119,24 @@ namespace Lumina.Data.Parsing.Uld
         {
             public uint Id;
             public char[] Path; // 44? wtf?
+            public uint IconId;
+            public byte ThemeSupportBitmask; // Only used when WidgetData.AssetsHaveThemeSupport is true. Example: 4 (0b100) means it's only available in fourth/, while 7 (0b111) means it's available in light/, third/ and fourth/
 
-            //unk2 seems to always be 1
-            public uint Unk1;
-            public uint Unk2;
-
-            public static TextureEntry Read( LuminaBinaryReader br, char minorVersion )
+            public static TextureEntry Read( LuminaBinaryReader br, uint version )
             {
                 TextureEntry ret = new TextureEntry();
                 ret.Id = br.ReadUInt32();
                 ret.Path = br.ReadChars( 44 );
-                ret.Unk1 = br.ReadUInt32();
-                ret.Unk2 = minorVersion == '1' ? br.ReadUInt32() : 0;
+                ret.IconId = br.ReadUInt32();
+                if ( version >= 100 )
+                {
+                    ret.ThemeSupportBitmask = br.ReadByte();
+                    br.BaseStream.Position += 3;
+                }
+                else
+                {
+                    ret.ThemeSupportBitmask = 0;
+                }
                 return ret;
             }
         }
@@ -611,6 +617,7 @@ namespace Lumina.Data.Parsing.Uld
         {
             public uint Id;
             public AlignmentType AlignmentType;
+            public bool AssetsHaveThemeSupport;
             public short X;
             public short Y;
             public ushort NodeCount;
@@ -622,7 +629,9 @@ namespace Lumina.Data.Parsing.Uld
             {
                 WidgetData ret = new WidgetData();
                 ret.Id = br.ReadUInt32();
-                ret.AlignmentType = (AlignmentType)br.ReadInt32();
+                ret.AlignmentType = (AlignmentType)br.ReadByte();
+                ret.AssetsHaveThemeSupport = br.ReadBoolean();
+                br.BaseStream.Position += 2;
                 ret.X = br.ReadInt16();
                 ret.Y = br.ReadInt16();
                 ret.NodeCount = br.ReadUInt16();
