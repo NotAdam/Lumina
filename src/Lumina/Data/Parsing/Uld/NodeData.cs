@@ -2,6 +2,8 @@
 // ReSharper disable NotAccessedField.Global
 // ReSharper disable NotAccessedField.Local
 // ReSharper disable MemberCanBePrivate.Global
+using System;
+
 namespace Lumina.Data.Parsing.Uld
 {
     public interface INode
@@ -80,7 +82,8 @@ namespace Lumina.Data.Parsing.Uld
             public short BottomOffset;
             public short LeftOffset;
             public short RightOffset;
-            public byte Unk1;
+            public byte BlendMode;
+            [Obsolete( "Renamed to BlendMode" )] public byte Unk1;
             public byte Unk2;
 
             public static NineGridNode Read( LuminaBinaryReader br )
@@ -94,7 +97,8 @@ namespace Lumina.Data.Parsing.Uld
                 ret.BottomOffset = br.ReadInt16();
                 ret.LeftOffset = br.ReadInt16();
                 ret.RightOffset = br.ReadInt16();
-                ret.Unk1 = br.ReadByte();
+                ret.BlendMode = br.ReadByte();
+                ret.Unk1 = ret.BlendMode;
                 ret.Unk2 = br.ReadByte();
                 return ret;
             }
