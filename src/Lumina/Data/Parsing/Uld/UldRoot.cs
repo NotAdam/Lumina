@@ -128,7 +128,7 @@ namespace Lumina.Data.Parsing.Uld
                 ret.Id = br.ReadUInt32();
                 ret.Path = br.ReadChars( 44 );
                 ret.IconId = br.ReadUInt32();
-                if ( version >= 100 )
+                if ( version > 100 )
                 {
                     ret.ThemeSupportBitmask = br.ReadByte();
                     br.BaseStream.Position += 3;
