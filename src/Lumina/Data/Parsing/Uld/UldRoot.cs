@@ -600,6 +600,8 @@ namespace Lumina.Data.Parsing.Uld
 
             public static Timeline Read( LuminaBinaryReader br )
             {
+                var pos = br.BaseStream.Position;
+
                 Timeline ret = new Timeline();
                 ret.Id = br.ReadUInt32();
                 ret.Offset = br.ReadUInt32();
@@ -609,6 +611,9 @@ namespace Lumina.Data.Parsing.Uld
                 ret.FrameData = new FrameData[ret.NumFrames];
                 for( int i = 0; i < ret.NumFrames; i++ )
                     ret.FrameData[ i ] = UldRoot.FrameData.Read( br );
+
+                br.BaseStream.Position = pos + ret.Offset;
+
                 return ret;
             }
         }
