@@ -628,7 +628,8 @@ namespace Lumina.Data.Parsing.Uld
             public int Max;
             public int Min;
             public int Add;
-            public uint Unk1;
+            public uint EndLetterId;
+            [Obsolete( "Renamed to EndLetterId" )] public uint Unk1;
             public bool Comma;
             public byte[] Unk2;
 
@@ -639,7 +640,8 @@ namespace Lumina.Data.Parsing.Uld
                 ret.Max = br.ReadInt32();
                 ret.Min = br.ReadInt32();
                 ret.Add = br.ReadInt32();
-                ret.Unk1 = br.ReadUInt32();
+                ret.EndLetterId = br.ReadUInt32();
+                ret.Unk1 = ret.EndLetterId;
                 ret.Comma = br.ReadBoolean();
                 ret.Unk2 = br.ReadBytes( 3 );
                 return ret;
