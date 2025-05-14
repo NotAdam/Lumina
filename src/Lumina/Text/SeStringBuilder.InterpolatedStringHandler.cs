@@ -616,9 +616,11 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( ReadOnlySeString value, int alignment, string? format )
         {
-            _ = format;
             var prevLen = Builder.GetStringStream().Length;
-            Builder.Append( value );
+            if( string.IsNullOrEmpty( format ) || format == "r" )
+                Builder.Append( value );
+            else
+                Builder.Append( value.ToString( format, _provider ) );
             FixAlignment( prevLen, alignment );
         }
 
@@ -634,9 +636,11 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( ReadOnlySeStringSpan value, int alignment, string? format )
         {
-            _ = format;
             var prevLen = Builder.GetStringStream().Length;
-            Builder.Append( value );
+            if( string.IsNullOrEmpty( format ) || format == "r" )
+                Builder.Append( value );
+            else
+                Builder.Append( value.ToString( format, _provider ) );
             FixAlignment( prevLen, alignment );
         }
 

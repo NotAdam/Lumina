@@ -324,9 +324,11 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     /// <inheritdoc/>
     public string ToString( string? format, IFormatProvider? formatProvider = null ) => format switch
     {
-        null or "" => ExtractText(),
+        null or "" or "t" => ExtractText(),
         "y" => ExtractText( true ),
         "m" => ToMacroString(),
+        "r" => throw new ArgumentOutOfRangeException( nameof( format ), format,
+            $"\"r\" is only supported in {nameof( SeStringBuilder.SeStringInterpolatedStringHandler )}." ),
         _ => throw new ArgumentOutOfRangeException( nameof( format ), format, "Unknown format." )
     };
 
