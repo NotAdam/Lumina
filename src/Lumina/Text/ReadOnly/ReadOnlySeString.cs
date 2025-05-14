@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,8 +12,9 @@ namespace Lumina.Text.ReadOnly;
 
 /// <summary>A <see cref="string"/>-like immutable implementation of SeString.</summary>
 [SuppressMessage( "ReSharper", "ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator", Justification = "Avoid heap allocation" )]
+[DebuggerDisplay("{ToMacroString()}")]
 public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadOnlyCollection< ReadOnlySePayload >, ICollection< ReadOnlySePayload >,
-    ICollection
+    ICollection, IFormattable
 {
     /// <summary>STX, which is used as a sentinel value in a SeString to signify that a macro payload will follow.</summary>
     public const byte Stx = 2;
@@ -271,6 +273,31 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
     public static ReadOnlySeString FromText( ReadOnlySpan< char > text ) => new( text );
 
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given text in UTF-16, appending pre-existing instances of
+    /// <see cref="ReadOnlySeString"/> as-is as necessary.</summary>
+    /// <param name="handler">Interpolated text.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
+    public static ReadOnlySeString Format( SeStringBuilder.SeStringInterpolatedStringHandler handler )
+    {
+        var res = handler.Builder.ToReadOnlySeString();
+        SeStringBuilder.SharedPool.Return( handler.Builder );
+        return res;
+    }
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given text in UTF-16, appending pre-existing instances of
+    /// <see cref="ReadOnlySeString"/> as-is as necessary.</summary>
+    /// <param name="provider">An object that supplies culture-specific formatting information.</param>
+    /// <param name="handler">Interpolated text.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
+    public static ReadOnlySeString Format(
+        IFormatProvider? provider,
+        [InterpolatedStringHandlerArgument( "provider" )] SeStringBuilder.SeStringInterpolatedStringHandler handler )
+    {
+        var res = handler.Builder.ToReadOnlySeString();
+        SeStringBuilder.SharedPool.Return( handler.Builder );
+        return res;
+    }
+
     /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given macro string.</summary>
     /// <param name="macroString">String to parse and add.</param>
     /// <param name="parseOptions">Parse options for <paramref cref="macroString"/>. Defaults to interpreting <paramref name="macroString"/> as UTF-8.</param>
@@ -306,9 +333,13 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public bool Validate() => AsSpan().Validate();
 
-    /// <inheritdoc cref="ReadOnlySeStringSpan.ExtractText"/>
+    /// <inheritdoc cref="ReadOnlySeStringSpan.ExtractText()"/>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public string ExtractText() => AsSpan().ExtractText();
+
+    /// <inheritdoc cref="ReadOnlySeStringSpan.ExtractText(bool, string?)"/>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public string ExtractText(bool useSoftHyphen, string? macroPlaceholder = null) => AsSpan().ExtractText(useSoftHyphen, macroPlaceholder);
 
     /// <inheritdoc cref="object.Equals(object?)"/>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
@@ -322,9 +353,15 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public override int GetHashCode() => AsSpan().GetHashCode();
 
+    /// <inheritdoc/>
+    public override string ToString() => AsSpan().ToString();
+
+    /// <inheritdoc/>
+    public string ToString( string? format, IFormatProvider? formatProvider = null ) => AsSpan().ToString( format, formatProvider );
+
     /// <summary>Gets the encodeable macro representation of this instance of <see cref="ReadOnlySeString"/>.</summary>
     /// <returns>The encodeable macro representation.</returns>
-    public override string ToString() => AsSpan().ToString();
+    public string ToMacroString() => AsSpan().ToMacroString();
 
     /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
