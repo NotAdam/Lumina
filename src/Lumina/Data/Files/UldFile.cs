@@ -57,8 +57,8 @@ namespace Lumina.Data.Files
             for( var i = 0; i < TimelineList.ElementCount; i++ )
                 Timelines[ i ] = UldRoot.Timeline.Read( Reader );
 
-            var preSecondHeader = Reader.BaseStream.Position;
             Reader.Seek( basePos + CombineHeader.WidgetOffset );
+            var preSecondHeader = Reader.BaseStream.Position;
             SecondHeader = UldRoot.AtkHeader.Read( Reader );
 
             Reader.Seek( preSecondHeader + SecondHeader.WidgetOffset );
