@@ -45,9 +45,11 @@ public class ReadOnlySeStringTests
     {
         var ss = ReadOnlySeString.Format( $"{_test}{_shy}{_ita1}{_test}{_hy}{_ita0}{_test}" );
         Assert.Equal( "TestTest-Test", ss.ToString() );
+        Assert.Equal( "TestTest-Test", ss.ToString( "t" ) );
         Assert.Equal( "Test\u00adTest-Test", ss.ToString( "y" ) );
         Assert.Equal( "Test<-><italic(1)>Test<--><italic(0)>Test", ss.ToString( "m" ) );
         Assert.Equal( "__TestTest-Test^^", $"__{ss}^^" );
+        Assert.Equal( "__TestTest-Test^^", $"__{ss:t}^^" );
         Assert.Equal( "__Test\u00adTest-Test^^", $"__{ss:y}^^" );
         Assert.Equal( "__Test<-><italic(1)>Test<--><italic(0)>Test^^", $"__{ss:m}^^" );
     }
