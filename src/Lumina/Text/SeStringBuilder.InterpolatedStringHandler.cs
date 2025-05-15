@@ -13,8 +13,26 @@ public sealed partial class SeStringBuilder
     [InterpolatedStringHandler]
     public readonly ref struct SeStringInterpolatedStringHandler
     {
-        private readonly SeStringBuilder _builder;
         private readonly IFormatProvider? _provider;
+
+        /// <summary>Initializes a new instance of the <see cref="SeStringInterpolatedStringHandler"/> struct.</summary>
+        /// <param name="literalLength">Number of characters in the literal.</param>
+        /// <param name="formattedCount">Number of formatted entries.</param>
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
+        [SuppressMessage( "ReSharper", "IntroduceOptionalParameters.Global", Justification = "InterpolatedStringHandlerArgument" )]
+        public SeStringInterpolatedStringHandler( int literalLength, int formattedCount )
+            : this( literalLength, formattedCount, SharedPool.Get(), null )
+        { }
+
+        /// <summary>Initializes a new instance of the <see cref="SeStringInterpolatedStringHandler"/> struct.</summary>
+        /// <param name="literalLength">Number of characters in the literal.</param>
+        /// <param name="formattedCount">Number of formatted entries.</param>
+        /// <param name="provider">Format provider.</param>
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
+        [SuppressMessage( "ReSharper", "IntroduceOptionalParameters.Global", Justification = "InterpolatedStringHandlerArgument" )]
+        public SeStringInterpolatedStringHandler( int literalLength, int formattedCount, IFormatProvider? provider )
+            : this( literalLength, formattedCount, SharedPool.Get(), provider )
+        { }
 
         /// <summary>Initializes a new instance of the <see cref="SeStringInterpolatedStringHandler"/> struct.</summary>
         /// <param name="literalLength">Number of characters in the literal.</param>
@@ -34,16 +52,19 @@ public sealed partial class SeStringBuilder
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public SeStringInterpolatedStringHandler( int literalLength, int formattedCount, SeStringBuilder builder, IFormatProvider? provider )
         {
-            _builder = builder;
+            Builder = builder;
             _provider = provider;
             _ = formattedCount;
 
             builder.ReallocateStringSpan( builder.AllocateStringSpan( literalLength * 4 ).Length, 0 );
         }
 
+        /// <summary>Gets the instance of <see cref="SeStringBuilder"/> that this interpolator is writing to.</summary>
+        public SeStringBuilder Builder { get; }
+
         /// <summary>Writes the specified string to the handler.</summary>
         /// <param name="value">The string to write.</param>
-        public void AppendLiteral( string value ) => _builder.Append( value );
+        public void AppendLiteral( string value ) => Builder.Append( value );
 
         /// <summary>Writes the specified value to the handler.</summary>
         /// <param name="value">The value to write.</param>
@@ -69,7 +90,7 @@ public sealed partial class SeStringBuilder
         /// <typeparam name="T">The type of the value to write.</typeparam>
         public void AppendFormatted< T >( T value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             switch( value )
             {
                 case string s:
@@ -87,15 +108,15 @@ public sealed partial class SeStringBuilder
                     break;
 
                 case IFormattable f:
-                    _builder.Append( f.ToString( format, _provider ) );
+                    Builder.Append( f.ToString( format, _provider ) );
                     break;
 
                 case null:
-                    _builder.Append( "null"u8 );
+                    Builder.Append( "null"u8 );
                     break;
 
                 default:
-                    _builder.Append( value.ToString() );
+                    Builder.Append( value.ToString() );
                     break;
             }
 
@@ -115,8 +136,8 @@ public sealed partial class SeStringBuilder
         public void AppendFormatted( bool value, int alignment, string? format )
         {
             _ = format;
-            var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value ? "true"u8 : "false"u8 );
+            var prevLen = Builder.GetStringStream().Length;
+            Builder.Append( value ? "true"u8 : "false"u8 );
             FixAlignment( prevLen, alignment );
         }
 
@@ -132,7 +153,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( char value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -149,7 +170,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( byte value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -166,7 +187,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( ushort value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -183,7 +204,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( uint value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -200,7 +221,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( ulong value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -217,7 +238,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( nuint value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -234,7 +255,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( sbyte value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -251,7 +272,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( short value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -268,7 +289,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( int value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -285,7 +306,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( long value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -302,7 +323,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( nint value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -319,7 +340,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public unsafe void AppendFormatted( void* value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( (nint) value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -336,7 +357,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( Half value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -353,7 +374,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( float value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -370,7 +391,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( double value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -387,7 +408,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( scoped in decimal value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -404,7 +425,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( scoped in System.Numerics.BigInteger value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -421,7 +442,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( DateOnly value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -438,7 +459,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( TimeOnly value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -455,7 +476,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( TimeSpan value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -472,7 +493,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( DateTime value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -489,7 +510,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( DateTimeOffset value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -507,7 +528,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( scoped in System.Numerics.Complex value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -526,7 +547,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( scoped in UInt128 value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -543,7 +564,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( scoped in Int128 value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -560,7 +581,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( System.Net.IPAddress value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -577,7 +598,7 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( System.Net.IPNetwork value, int alignment, string? format )
         {
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             AppendSpanFormattableAuto( value, format );
             FixAlignment( prevLen, alignment );
         }
@@ -595,9 +616,11 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( ReadOnlySeString value, int alignment, string? format )
         {
-            _ = format;
-            var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value );
+            var prevLen = Builder.GetStringStream().Length;
+            if( string.IsNullOrEmpty( format ) || format == "r" )
+                Builder.Append( value );
+            else
+                Builder.Append( value.ToString( format, _provider ) );
             FixAlignment( prevLen, alignment );
         }
 
@@ -613,9 +636,11 @@ public sealed partial class SeStringBuilder
         /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
         public void AppendFormatted( ReadOnlySeStringSpan value, int alignment, string? format )
         {
-            _ = format;
-            var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value );
+            var prevLen = Builder.GetStringStream().Length;
+            if( string.IsNullOrEmpty( format ) || format == "r" )
+                Builder.Append( value );
+            else
+                Builder.Append( value.ToString( format, _provider ) );
             FixAlignment( prevLen, alignment );
         }
 
@@ -632,8 +657,8 @@ public sealed partial class SeStringBuilder
         public void AppendFormatted( ReadOnlySePayload value, int alignment, string? format )
         {
             _ = format;
-            var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value );
+            var prevLen = Builder.GetStringStream().Length;
+            Builder.Append( value );
             FixAlignment( prevLen, alignment );
         }
 
@@ -650,8 +675,8 @@ public sealed partial class SeStringBuilder
         public void AppendFormatted( ReadOnlySePayloadSpan value, int alignment, string? format )
         {
             _ = format;
-            var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value );
+            var prevLen = Builder.GetStringStream().Length;
+            Builder.Append( value );
             FixAlignment( prevLen, alignment );
         }
 
@@ -672,8 +697,8 @@ public sealed partial class SeStringBuilder
         public void AppendFormatted( SeString value, int alignment, string? format )
         {
             _ = format;
-            var prevLen = _builder.GetStringStream().Length;
-            _builder.Append( value );
+            var prevLen = Builder.GetStringStream().Length;
+            Builder.Append( value );
             FixAlignment( prevLen, alignment );
         }
 
@@ -690,11 +715,11 @@ public sealed partial class SeStringBuilder
         public void AppendFormatted( ReadOnlySpan< byte > value, int alignment, string? format )
         {
             _ = format;
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             if( format?.StartsWith( 'm' ) is true )
-                _builder.AppendMacroString( value );
+                Builder.AppendMacroString( value );
             else
-                _builder.Append( value );
+                Builder.Append( value );
             FixAlignment( prevLen, alignment );
         }
 
@@ -711,11 +736,11 @@ public sealed partial class SeStringBuilder
         public void AppendFormatted( ReadOnlySpan< char > value, int alignment, string? format )
         {
             _ = format;
-            var prevLen = _builder.GetStringStream().Length;
+            var prevLen = Builder.GetStringStream().Length;
             if( format?.StartsWith( 'm' ) is true )
-                _builder.AppendMacroString( value );
+                Builder.AppendMacroString( value );
             else
-                _builder.Append( value );
+                Builder.Append( value );
             FixAlignment( prevLen, alignment );
         }
 
@@ -724,19 +749,19 @@ public sealed partial class SeStringBuilder
             if( alignment == 0 )
                 return;
 
-            var len = (int) ( _builder.GetStringStream().Length - prevLen );
+            var len = (int) ( Builder.GetStringStream().Length - prevLen );
             if( len >= Math.Abs( alignment ) )
                 return;
 
             if( alignment < 0 )
             {
                 // left align
-                _builder.AllocateStringSpan( -( len + alignment ) ).Fill( (byte) ' ' );
+                Builder.AllocateStringSpan( -( len + alignment ) ).Fill( (byte) ' ' );
             }
             else
             {
                 // right align
-                var span = _builder.ReallocateStringSpan( len, alignment );
+                var span = Builder.ReallocateStringSpan( len, alignment );
                 span[ ..len ].CopyTo( span[ ^len.. ] );
                 span[ ..^len ].Fill( (byte) ' ' );
             }
@@ -750,10 +775,10 @@ public sealed partial class SeStringBuilder
             var span = Span< byte >.Empty;
             for( var len = Unsafe.SizeOf< MemoryChunkStorage >(); len < Array.MaxLength >> 1; len *= 2 )
             {
-                span = _builder.ReallocateStringSpan( span.Length, len );
+                span = Builder.ReallocateStringSpan( span.Length, len );
                 if( value.TryFormat( span, out var written, format, _provider ) )
                 {
-                    _builder.ReallocateStringSpan( span.Length, written );
+                    Builder.ReallocateStringSpan( span.Length, written );
                     return;
                 }
             }
@@ -769,7 +794,7 @@ public sealed partial class SeStringBuilder
             var span = MemoryChunkStorage.AsSpanUninitialized< char >( out _ );
             if( value.TryFormat( span, out var written, format, _provider ) )
             {
-                _builder.Append( span[ ..written ] );
+                Builder.Append( span[ ..written ] );
                 return;
             }
 
@@ -778,7 +803,7 @@ public sealed partial class SeStringBuilder
                 var buf = ArrayPool< char >.Shared.Rent( len );
                 if( value.TryFormat( buf, out written, format, _provider ) )
                 {
-                    _builder.Append( buf[ ..written ] );
+                    Builder.Append( buf[ ..written ] );
                     ArrayPool< char >.Shared.Return( buf );
                     return;
                 }

@@ -14,7 +14,8 @@ namespace Lumina.Data
         French,
         ChineseSimplified,
         ChineseTraditional,
-        Korean
+        Korean,
+        ChineseTraditional2,
     }
 
     public class LanguageUtil
@@ -29,6 +30,7 @@ namespace Lumina.Data
             { Language.ChineseSimplified, "chs" },
             { Language.ChineseTraditional, "cht" },
             { Language.Korean, "ko" },
+            { Language.ChineseTraditional2, "tc" },
         };
 
         public static string GetLanguageStr( Language lang )

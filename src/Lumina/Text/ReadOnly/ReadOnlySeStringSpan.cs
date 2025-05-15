@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -11,7 +12,8 @@ namespace Lumina.Text.ReadOnly;
 
 /// <summary>A <see cref="string"/>-like immutable implementation of SeString.</summary>
 [SuppressMessage( "ReSharper", "ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator", Justification = "Avoid heap allocation" )]
-public readonly ref struct ReadOnlySeStringSpan
+[DebuggerDisplay("{ToMacroString()}")]
+public readonly ref struct ReadOnlySeStringSpan : IFormattable
 {
     /// <summary>Read-only byte data for the SeString.</summary>
     public readonly ReadOnlySpan< byte > Data;
@@ -211,8 +213,17 @@ public readonly ref struct ReadOnlySeStringSpan
     /// <summary>Extracts the text contained in this instance of <see cref="ReadOnlySeStringSpan"/>, ignoring any payload that does not have a direct equivalent string
     /// representation.</summary>
     /// <returns>The extracted text.</returns>
-    public string ExtractText()
+    public string ExtractText() => ExtractText( false );
+
+    /// <summary>Extracts the text contained in this instance of <see cref="ReadOnlySeStringSpan"/>, ignoring any payload that does not have a direct equivalent string
+    /// representation.</summary>
+    /// <param name="useSoftHyphen">Whether to include soft hyphens.</param>
+    /// <param name="macroPlaceholder">Placeholder for macros that do not have direct text representations.</param>
+    /// <returns>The extracted text.</returns>
+    public string ExtractText( bool useSoftHyphen, string? macroPlaceholder = null )
     {
+        macroPlaceholder ??= "";
+
         var len = 0;
         foreach( var v in this )
         {
@@ -230,8 +241,11 @@ public readonly ref struct ReadOnlySeStringSpan
                             break;
                         case MacroCode.NonBreakingSpace:
                         case MacroCode.Hyphen:
-                        case MacroCode.SoftHyphen:
+                        case MacroCode.SoftHyphen when useSoftHyphen:
                             len += 1;
+                            break;
+                        default:
+                            len += macroPlaceholder.Length;
                             break;
                     }
 
@@ -268,9 +282,14 @@ public readonly ref struct ReadOnlySeStringSpan
                             bufspan = bufspan[ 1.. ];
                             break;
 
-                        case MacroCode.SoftHyphen:
+                        case MacroCode.SoftHyphen when useSoftHyphen:
                             bufspan[ 0 ] = '\u00AD';
                             bufspan = bufspan[ 1.. ];
+                            break;
+
+                        default:
+                            macroPlaceholder.CopyTo( bufspan );
+                            bufspan = bufspan[ macroPlaceholder.Length.. ];
                             break;
                     }
 
@@ -299,9 +318,23 @@ public readonly ref struct ReadOnlySeStringSpan
         return hc.ToHashCode();
     }
 
+    /// <inheritdoc/>
+    public override string ToString() => ToString( null );
+
+    /// <inheritdoc/>
+    public string ToString( string? format, IFormatProvider? formatProvider = null ) => format switch
+    {
+        null or "" or "t" => ExtractText(),
+        "y" => ExtractText( true ),
+        "m" => ToMacroString(),
+        "r" => throw new ArgumentOutOfRangeException( nameof( format ), format,
+            $"\"r\" is only supported in {nameof( SeStringBuilder.SeStringInterpolatedStringHandler )}." ),
+        _ => throw new ArgumentOutOfRangeException( nameof( format ), format, "Unknown format." )
+    };
+
     /// <summary>Gets the encodeable macro representation of this instance of <see cref="ReadOnlySeStringSpan"/>.</summary>
     /// <returns>The encodeable macro representation.</returns>
-    public override string ToString()
+    public string ToMacroString()
     {
         var sb = new StringBuilder();
         AppendMacroStringToStringBuilder( sb, false );
