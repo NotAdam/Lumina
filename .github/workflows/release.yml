@@ -15,9 +15,9 @@ jobs:
       with:
         fetch-depth: 0
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.x'
     - name: Build with dotnet
       run: dotnet build --configuration Release --nologo ./src/Lumina.sln
     - name: dotnet test
