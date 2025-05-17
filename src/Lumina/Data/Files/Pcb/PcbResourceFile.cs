@@ -28,9 +28,6 @@ namespace Lumina.Data.Files.Pcb
                     TotalPolygons = reader.ReadUInt32()
                 };
 
-                if( header.TotalNodes == 0 )
-                    return header;
-
                 header.Children = new List< ResourceNode >();
 
                 var totalNodesRead = 0;
