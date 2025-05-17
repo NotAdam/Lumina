@@ -100,9 +100,17 @@ namespace Lumina.Data.Files.Pcb
                     header.Vertices[ i ] = Common.Vector3.Read( reader );
                 }
 
+                var xFactor = Math.Abs((header.BoundingBox.Max.X - header.BoundingBox.Min.X) );
+                var yFactor = Math.Abs((header.BoundingBox.Max.Y - header.BoundingBox.Min.Y) );
+                var zFactor = Math.Abs((header.BoundingBox.Max.Z - header.BoundingBox.Min.Z) );
+
                 for( var i = numVertFloat32; i < numVertFloat32 + numVertFloat16; i++ )
                 {
-                    header.Vertices[ i ] = Common.Vector3.Read16( reader );
+                    var vertFloat16 = Common.Vector3.Read16( reader );
+                    vertFloat16.X = vertFloat16.X * xFactor + header.BoundingBox.Min.X;
+                    vertFloat16.Y = vertFloat16.Y * yFactor + header.BoundingBox.Min.Y;
+                    vertFloat16.Z = vertFloat16.Z * zFactor + header.BoundingBox.Min.Z;
+                    header.Vertices[ i ] = vertFloat16;
                 }
 
                 for( var i = 0; i < header.Polygons.Length; i++ )
