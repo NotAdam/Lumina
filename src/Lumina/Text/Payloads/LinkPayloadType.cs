@@ -46,6 +46,18 @@ public enum LinkMacroPayloadType
     /// <remarks>Parameters: this, ID in the AkatsukiNote sheet, unknown(0), unknown(0), probably an optional display string.</remarks>
     AkatsukiNote = 0x0A,
 
+    /// <summary>A Description entry is linked.</summary>
+    /// <remarks>Parameters: this, ID in the DescriptionString sheet, unknown(0), ID in the DescriptionStandAlone[Transient] sheet(?), probably an optional display string.</remarks>
+    Description = 0x0B,
+
+    /// <summary>A WKSPioneeringTrail entry is linked.</summary>
+    /// <remarks>Parameters: this, ID in the WKSPioneeringTrail sheet, SubrowID in the WKSPioneeringTrail sheet, unknown(0), probably an optional display string.</remarks>
+    WKSPioneeringTrail = 0x0C,
+
+    /// <summary>A MKDLore entry is linked.</summary>
+    /// <remarks>Parameters: this, ID in the MKDLore sheet, unknown(0), unknown(0), probably an optional display string.</remarks>
+    MKDLore = 0x0D,
+
     /// <summary>A link is terminated. Akin to <c>&lt;/a&gt;</c>.</summary>
     /// <remarks>Parameters: this, reserved(0), reserved(0), reserved(0), reserved(&quot;&quot;).</remarks>
     Terminator = 0xCE,
