@@ -176,6 +176,10 @@ public enum MacroCode : byte
     /// <remarks>Parameters: string expression, terminator.</remarks>
     [MacroCodeData( null, "s x" )] LowerHead = 0x40,
 
+    /// <summary>Adds a column from a subsheets secondary sheet.</summary>
+    /// <remarks>Parameters: sheet name, row ID, subrow ID, column index, secondary sheet name, secondary sheet column index.</remarks>
+    [MacroCodeData( null, "s . . . s ." )] SheetSub = 0x41,
+
     /// <summary>Pushes the text foreground color, referring to a color defined in UIColor sheet.</summary>
     /// <remarks>Parameters: row ID in UIColor sheet or 0 to pop(or reset?) the pushed color, terminator.</remarks>
     [MacroCodeData( null, "n x" )] ColorType = 0x48,
