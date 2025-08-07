@@ -180,6 +180,10 @@ public enum MacroCode : byte
     /// <remarks>Parameters: sheet name, row ID, subrow ID, column index, secondary sheet name, secondary sheet column index.</remarks>
     [MacroCodeData( null, "s . . . s ." )] SheetSub = 0x41,
 
+    /// <summary>Adds a text from the Platform sheet.</summary>
+    /// <remarks>Parameters: unadjusted row id.</remarks>
+    [MacroCodeData( null, "n x . x x" )] SwitchPlatform = 0x42,
+
     /// <summary>Pushes the text foreground color, referring to a color defined in UIColor sheet.</summary>
     /// <remarks>Parameters: row ID in UIColor sheet or 0 to pop(or reset?) the pushed color, terminator.</remarks>
     [MacroCodeData( null, "n x" )] ColorType = 0x48,
