@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lumina.Data.Files;
+using Lumina.Data.Parsing.Tex.Buffers.BlockCompression;
 using Lumina.Data.Structs;
 
 namespace Lumina.Data.Parsing.Tex.Buffers
