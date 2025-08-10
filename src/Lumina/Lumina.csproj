@@ -27,6 +27,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="BCnEncoder.Net" Version="2.2.1" />
         <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.7" />
         <PackageReference Include="MinVer" Version="5.0.0">
           <PrivateAssets>all</PrivateAssets>

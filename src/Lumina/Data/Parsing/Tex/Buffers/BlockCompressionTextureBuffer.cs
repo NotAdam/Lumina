@@ -1,4 +1,7 @@
-using System;
+﻿using System;
+using System.IO;
+using BCnEncoder.Decoder;
+using BCnEncoder.Shared;
 using Lumina.Data.Files;
 
 namespace Lumina.Data.Parsing.Tex.Buffers
@@ -53,19 +56,27 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             var cbPlane = CalculateNumBytesPerPlane( width, height );
             for( var i = 0; i < depth; i++ )
             {
-                var dec = Squish.DecompressImage( RawData, sourceOffset + cbPlane * i, width, height, _version switch
+                var decoder = new BcDecoder();
+                var stream = new MemoryStream( RawData, sourceOffset + cbPlane * i, cbPlane );
+                var rgbaData = decoder.DecodeRaw( stream, width, height, _version switch
                 {
-                    1 => SquishOptions.DXT1,
-                    2 => SquishOptions.DXT3,
-                    3 => SquishOptions.DXT5,
-                    _ => throw new NotSupportedException( "Decoding BC5/BC7 data is currently not supported." ),
-                }  );
-                Array.Copy(
-                    dec,
-                    0,
-                    buffer,
-                    destOffset + width * height * 4 * i,
-                    dec.Length );
+                    1 => CompressionFormat.Bc1,
+                    2 => CompressionFormat.Bc2,
+                    3 => CompressionFormat.Bc3,
+                    5 => CompressionFormat.Bc5,
+                    7 => CompressionFormat.Bc7,
+                    _ => throw new NotSupportedException( "Unknown block compression version." ),
+                } );
+                
+                // Write ColorRgba32[] to output byte[]
+                for( var j = 0; j < rgbaData.Length; j++ )
+                {
+                    var color = rgbaData[j];
+                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 0] = color.r;
+                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 1] = color.g;
+                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 2] = color.b;
+                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 3] = color.a;
+                }
             }
         }
 
