@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Threading;
+using System.IO;
 using BCnEncoder.Decoder;
 using BCnEncoder.Shared;
 using Lumina.Data.Files;
 
-namespace Lumina.Data.Parsing.Tex.Buffers.BlockCompression
+namespace Lumina.Data.Parsing.Tex.Buffers
 {
     /// <summary>
     /// Represent a face in .tex file, in either BC1(DXT1), BC2(DXT3), BC3(DXT5), BC5(ATI2), or BC7 texture format.
@@ -57,8 +57,8 @@ namespace Lumina.Data.Parsing.Tex.Buffers.BlockCompression
             for( var i = 0; i < depth; i++ )
             {
                 var decoder = new BcDecoder();
-                var rawData = new ReadOnlyMemory<byte>( RawData, sourceOffset + cbPlane * i, cbPlane );
-                var rgbaData = decoder.DecodeRaw( rawData, width, height, _version switch
+                var stream = new MemoryStream( RawData, sourceOffset + cbPlane * i, cbPlane );
+                var rgbaData = decoder.DecodeRaw( stream, width, height, _version switch
                 {
                     1 => CompressionFormat.Bc1,
                     2 => CompressionFormat.Bc2,
@@ -66,7 +66,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers.BlockCompression
                     5 => CompressionFormat.Bc5,
                     7 => CompressionFormat.Bc7,
                     _ => throw new NotSupportedException( "Unknown block compression version." ),
-                }, CancellationToken.None );
+                } );
                 
                 // Write ColorRgba32[] to output byte[]
                 for( var j = 0; j < rgbaData.Length; j++ )
