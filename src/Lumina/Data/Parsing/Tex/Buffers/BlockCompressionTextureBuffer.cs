@@ -72,9 +72,9 @@ namespace Lumina.Data.Parsing.Tex.Buffers
                 for( var j = 0; j < rgbaData.Length; j++ )
                 {
                     var color = rgbaData[j];
-                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 0] = color.r;
+                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 0] = color.b;
                     buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 1] = color.g;
-                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 2] = color.b;
+                    buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 2] = color.r;
                     buffer[destOffset + ( i * width * height * 4 ) + ( j * 4 ) + 3] = color.a;
                 }
             }
