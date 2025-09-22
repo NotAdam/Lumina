@@ -10,7 +10,7 @@ using Lumina.Models.Models;
 
 namespace Lumina.Models.Materials
 {
-    public class Material
+    public partial class Material
     {
         /// <summary>
         /// The path to this Material. May be relative or absolute.
@@ -140,6 +140,7 @@ namespace Lumina.Models.Materials
         /// <summary>
         /// Resolves a relative material path in the form <c>/mt_c0101e0001_top_a.mtrl</c>
         /// into its full path, <c>chara/equipment/e0001/material/v{variantId}/mt_c0101e0001_top_a.mtrl</c>.
+        /// <br/>The Regex used to search is contained in the partial that follows the function.
         /// <br/>This method will successfully resolve all known relative material paths.
         /// </summary>
         /// <param name="relativePath">The relative path of the provided material.</param>
@@ -147,8 +148,7 @@ namespace Lumina.Models.Materials
         /// <returns>The resolved, absolute path to the requested material, or null if unsuccessful.</returns>
         public static string? ResolveRelativeMaterialPath( string relativePath, int variantId )
         {
-            Regex rx = new Regex(
-                @"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_(?:\w{3}(?:_\w)|(?:\w))\.mtrl" );
+            Regex rx = MatNameRegex();
             var result = rx.Match( relativePath );
             if( !result.Success )
                 return null;
@@ -160,20 +160,24 @@ namespace Lumina.Models.Materials
 
             return (id1, id2) switch
             {
-                ('c', 'a' ) => $"chara/accessory/a{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'b' ) => $"chara/human/c{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'e' ) => $"chara/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'f' ) => $"chara/human/c{val1}/obj/face/f{val2}/material{relativePath}",
-                ('c', 'h' ) => $"chara/human/c{val1}/obj/hair/h{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 't' ) => $"chara/human/c{val1}/obj/tail/t{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'z' ) => $"chara/human/c{val1}/obj/zear/z{val2}/material{relativePath}",
-                ('d', 'e' ) => $"chara/demihuman/d{val1}/obj/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
-                ('m', 'b' ) => $"chara/monster/m{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
-                ('w', 'b' ) => $"chara/weapon/w{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
-                (_, _ ) => null
+                ('c', 'a') => $"chara/accessory/a{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'b') => $"chara/human/c{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'e') => $"chara/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'f') => $"chara/human/c{val1}/obj/face/f{val2}/material{relativePath}",
+                ('c', 'h') => $"chara/human/c{val1}/obj/hair/h{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 't') => $"chara/human/c{val1}/obj/tail/t{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'z') => $"chara/human/c{val1}/obj/zear/z{val2}/material{relativePath}",
+                ('d', 'e') => $"chara/demihuman/d{val1}/obj/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
+                ('m', 'b') => $"chara/monster/m{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
+                ('w', 'b') => $"chara/weapon/w{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
+                (_, _) => null
             };
         }
-
+        
+        [GeneratedRegex(@"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_(?:\w{3}(?:_\w)|(?:\w))\.mtrl")]
+        private static partial Regex MatNameRegex();
+        
+        
         /// <summary>
         /// Parse the variant ID out of an existing absolute path to a .mtrl file.
         /// </summary>
