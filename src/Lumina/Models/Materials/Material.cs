@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Lumina.Data;
 using Lumina.Data.Files;
 using Lumina.Data.Parsing;
@@ -146,27 +147,33 @@ namespace Lumina.Models.Materials
         /// <returns>The resolved, absolute path to the requested material, or null if unsuccessful.</returns>
         public static string? ResolveRelativeMaterialPath( string relativePath, int variantId )
         {
-            var id1 = relativePath[4];
-            var val1 = relativePath.Substring( 5, 4 );
-            var id2 = relativePath[9];
-            var val2 = relativePath.Substring( 10, 4 );
+            Regex rx = new Regex(
+                @"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_(?:\w{3}(?:_\w)|(?:\w))\.mtrl" );
+            var result = rx.Match( relativePath );
+            if( !result.Success )
+                return null;
 
-            return ( id1, id2 ) switch
+            var id1 = result.Groups["id1"].Value[0];
+            var val1 = result.Groups["val1"].Value;
+            var id2 = result.Groups["id2"].Value[0];
+            var val2 = result.Groups["val2"].Value;
+
+            return (id1, id2) switch
             {
-                ('c', 'a') => $"chara/accessory/a{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'b') => $"chara/human/c{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'e') => $"chara/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'f') => $"chara/human/c{val1}/obj/face/f{val2}/material{relativePath}",
-                ('c', 'h') => $"chara/human/c{val1}/obj/hair/h{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 't') => $"chara/human/c{val1}/obj/tail/t{val2}/material/v{variantId:D4}{relativePath}",
-                ('c', 'z') => $"chara/human/c{val1}/obj/zear/z{val2}/material{relativePath}",
-                ('d', 'e') => $"chara/demihuman/d{val1}/obj/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
-                ('m', 'b') => $"chara/monster/m{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
-                ('w', 'b') => $"chara/weapon/w{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
-                (_, _) => null
+                ('c', 'a' ) => $"chara/accessory/a{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'b' ) => $"chara/human/c{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'e' ) => $"chara/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'f' ) => $"chara/human/c{val1}/obj/face/f{val2}/material{relativePath}",
+                ('c', 'h' ) => $"chara/human/c{val1}/obj/hair/h{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 't' ) => $"chara/human/c{val1}/obj/tail/t{val2}/material/v{variantId:D4}{relativePath}",
+                ('c', 'z' ) => $"chara/human/c{val1}/obj/zear/z{val2}/material{relativePath}",
+                ('d', 'e' ) => $"chara/demihuman/d{val1}/obj/equipment/e{val2}/material/v{variantId:D4}{relativePath}",
+                ('m', 'b' ) => $"chara/monster/m{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
+                ('w', 'b' ) => $"chara/weapon/w{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
+                (_, _ ) => null
             };
         }
-        
+
         /// <summary>
         /// Parse the variant ID out of an existing absolute path to a .mtrl file.
         /// </summary>
