@@ -12,12 +12,12 @@ namespace Lumina.Excel;
 /// <param name="language">The associated language of the referenced row. Leave <see langword="null"/> to use <paramref name="module"/>'s default language.</param>
 public struct SubrowRef< T >( ExcelModule? module, uint rowId, Language? language = null ) where T : struct, IExcelSubrow< T >
 {
-    private SubrowExcelSheet< T >? _sheet = null;
-    private SubrowExcelSheet< T >? Sheet {
+    private RawSubrowExcelSheet? _sheet = null;
+    private RawSubrowExcelSheet? Sheet {
         get {
             if( module == null )
                 return null;
-            return _sheet ??= module.GetSubrowSheet< T >(
+            return _sheet ??= module.GetRawSubrowSheet< T >(
                 language == Data.Language.None ?
                     null : // Use default language if null (or fall back to None)
                     language
@@ -53,6 +53,11 @@ public struct SubrowRef< T >( ExcelModule? module, uint rowId, Language? languag
     /// Attempts to get the referenced row value. Is <see langword="null"/> if it does not exist in the sheet.
     /// </summary>
     public SubrowCollection< T >? ValueNullable => Sheet?.GetRowOrDefault( rowId );
+
+    public SubrowRef( RawSubrowExcelSheet sheet, uint rowId ) : this(sheet.Module, rowId, sheet.Language)
+    {
+        _sheet = sheet;
+    }
 
     private readonly RowRef ToGeneric() => RowRef.CreateSubrow< T >( module, rowId );
 
