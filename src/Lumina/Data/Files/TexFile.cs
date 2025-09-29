@@ -110,7 +110,9 @@ namespace Lumina.Data.Files
             BC1 = 0x3420,
             BC2 = 0x3430,
             BC3 = 0x3431,
+            BC4 = 0x6120,
             BC5 = 0x6230,
+            BC6H = 0x6330,
             BC7 = 0x6432,
 
             // Depth stencil types
