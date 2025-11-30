@@ -35,13 +35,10 @@ jobs:
           ./src/Lumina/bin/Release/**/Lumina*.deps.json
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1
+      uses: softprops/action-gh-release@v2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Lumina ${{ github.ref }}
-        draft: false
-        prerelease: false
+        name: Lumina ${{ github.ref }}
     - name: publish nuget package
       run: dotnet nuget push ./src/Lumina/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
