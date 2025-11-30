@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Infrastructure;
 
 namespace Lumina.Cmd.Commands
 {
@@ -13,7 +14,7 @@ namespace Lumina.Cmd.Commands
         [CommandOption( "dataPath", 'p',
             Description = "Path to the client sqpack folder",
             IsRequired = true,
-            EnvironmentVariableName = "LUMINA_CMD_CLIENT_PATH" )]
+            EnvironmentVariable = "LUMINA_CMD_CLIENT_PATH" )]
         public string Path { get; set; }
 
         [CommandOption( "outputPath", 'o',

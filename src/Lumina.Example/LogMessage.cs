@@ -1,18 +1,17 @@
-using Lumina.Data;
 using Lumina.Excel;
+using Lumina.Text.ReadOnly;
 
-namespace Lumina.Example
+namespace Lumina.Example;
+
+[Sheet( "LogMessage" )]
+readonly public struct LogMessage( ExcelPage page, uint offset, uint row ) : IExcelRow<LogMessage>
 {
-    [Sheet( "LogMessage" )]
-    public class LogMessage : ExcelRow
-    {
-        public string Text;
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
+    public uint RowId => row;
 
-        public override void PopulateData( RowParser parser, GameData gameData, Language language )
-        {
-            base.PopulateData( parser, gameData, language );
+    public readonly ReadOnlySeString Text => page.ReadString( offset, offset );
 
-            Text = parser.ReadColumn< string >( 4 );
-        }
-    }
+    static LogMessage IExcelRow<LogMessage>.Create( ExcelPage page, uint offset, uint row ) =>
+        new( page, offset, row );
 }

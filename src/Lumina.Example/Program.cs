@@ -1,97 +1,97 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Lumina.Data;
-using Lumina.Excel.GeneratedSheets;
-using Lumina.Extensions;
+using Lumina.Excel;
+using Lumina.Excel.Sheets;
 
-namespace Lumina.Example
+namespace Lumina.Example;
+
+static class Program
 {
-    class Program
+    private class CustomFileType : FileResource
     {
-        private class CustomFileType : FileResource
+        public Dictionary< string, int > ExdMap;
+
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        public int Version { get; private set; }
+
+        public CustomFileType()
         {
-            public Dictionary< string, int > ExdMap;
+            ExdMap = new Dictionary< string, int >();
+        }
 
-            // ReSharper disable once UnusedAutoPropertyAccessor.Local
-            public int Version { get; private set; }
+        public override void LoadFile()
+        {
+            Console.WriteLine( "loading customfiletype" );
 
-            public CustomFileType()
+            // todo: not sure if good idea yet
+            using var stream = new MemoryStream( Data, false );
+            using var sr = new StreamReader( stream );
+
+            // read version
+            var header = sr.ReadLine().Split( ',' );
+            if( header[ 0 ] != "EXLT" )
             {
-                ExdMap = new Dictionary< string, int >();
+                throw new Exception( "invalid file format or something :(" );
             }
 
-            public override void LoadFile()
+            Version = int.Parse( header[ 1 ] );
+
+            // read exd mappings
+            string row;
+            while( ( row = sr.ReadLine() ) != null )
             {
-                Console.WriteLine( "loading customfiletype" );
+                var data = row.Split( ',' );
+                var id = int.Parse( data[ 1 ] );
 
-                // todo: not sure if good idea yet
-                using var stream = new MemoryStream( Data, false );
-                using var sr = new StreamReader( stream );
-
-                // read version
-                var header = sr.ReadLine().Split( ',' );
-                if( header[ 0 ] != "EXLT" )
-                {
-                    throw new Exception( "invalid file format or something :(" );
-                }
-
-                Version = int.Parse( header[ 1 ] );
-
-                // read exd mappings
-                string row;
-                while( ( row = sr.ReadLine() ) != null )
-                {
-                    var data = row.Split( ',' );
-                    var id = int.Parse( data[ 1 ] );
-
-                    ExdMap[ data[ 0 ] ] = id;
-                }
-            }
-
-            public override void SaveFile( string path )
-            {
-                Console.WriteLine( $"saving file to path: {path}" );
-                base.SaveFile( path );
+                ExdMap[ data[ 0 ] ] = id;
             }
         }
 
-        static void Main( string[] args )
+        public override void SaveFile( string path )
         {
-            var gameData = new GameData( args[ 0 ] );
-
-            typeof( ActionTimeline ).Assembly.RegisterRsvFiles( gameData );
-            
-            // excel reading
-            var rawAction = gameData.Excel.GetSheetRaw( "Action", Language.English );
-            foreach( var actionRow in rawAction.Take(20) )
-            {
-                Console.WriteLine( $"action({actionRow.RowId}) name: {actionRow.ReadColumn< string >( 0 )}" );
-            }
-            
-            var zoneSharedGroup = gameData.GetExcelSheet< ZoneSharedGroup >();
-            var zsgRows = zoneSharedGroup.Take( 5 );
-            
-            foreach( var row in zsgRows )
-            {
-                Console.WriteLine( $"ZoneSharedGroup({row.RowId}.{row.SubRowId}) quest1: {row.Quest1}" );
-            }
-            
-            // dump conditions
-            foreach( var condition in gameData.GetExcelSheet< Condition >() )
-            {
-                Console.WriteLine( $"condition {condition.RowId:000}: {condition.LogMessage.Value?.Text}" );
-            }
-            
-            
-            // custom data type
-            var file = gameData.GetFile< CustomFileType >( "exd/root.exl" );
-            file.SaveFile( "root.exl" );
-
-            var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
-
-            Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
+            Console.WriteLine( $"saving file to path: {path}" );
+            base.SaveFile( path );
         }
+    }
+
+    public static void Main( string[] args )
+    {
+        var gameData = new GameData( args[ 0 ] );
+
+        // excel reading
+        var rawAction = gameData.Excel.GetSheet<RawRow>( Language.English, "Action" );
+        foreach( var actionRow in rawAction.Take( 20 ) )
+        {
+            Console.WriteLine( $"action({actionRow.RowId}) name: {actionRow.ReadStringColumn( 0 )}" );
+        }
+        
+        var zoneSharedGroup = gameData.Excel.GetSubrowSheet< ZoneSharedGroup >();
+        var zsgRows = zoneSharedGroup.Take( 5 );
+
+        foreach( var row in zsgRows )
+        {
+            foreach( var subrow in row )
+            {
+                Console.WriteLine( $"ZoneSharedGroup({subrow.RowId}.{subrow.SubrowId}) RequirementType[0]: {subrow.RequirementType[0]}, RequirementRow: {subrow.RequirementRow[0].RowId}" );
+            }
+        }
+
+        // dump conditions
+        foreach( var condition in gameData.GetExcelSheet< Condition >() )
+        {
+            Console.WriteLine( $"condition {condition.RowId:000}: {condition.LogMessage.ValueNullable?.Text}" );
+        }
+        
+        
+        // custom data type
+        var file = gameData.GetFile< CustomFileType >( "exd/root.exl" );
+        file.SaveFile( "root.exl" );
+
+        var aetheryte = file.ExdMap.First( m => m.Key == "Aetheryte" );
+
+        Console.WriteLine( $"aetheryte: id: {aetheryte.Value} name: {aetheryte.Key}" );
     }
 }

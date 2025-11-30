@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Infrastructure;
 using Lumina.Data;
 
 namespace Lumina.Cmd.Commands
@@ -12,7 +13,7 @@ namespace Lumina.Cmd.Commands
         [CommandOption( "dataPath", 'p',
             Description = "Path to the client sqpack folder",
             IsRequired = true,
-            EnvironmentVariableName = "LUMINA_CMD_CLIENT_PATH" )]
+            EnvironmentVariable = "LUMINA_CMD_CLIENT_PATH" )]
         public string DataPath { get; set; }
 
         public ValueTask ExecuteAsync( IConsole console )
