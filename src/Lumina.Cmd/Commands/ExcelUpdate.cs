@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Infrastructure;
 using Lumina.Data.Files.Excel;
 
 namespace Lumina.Cmd.Commands

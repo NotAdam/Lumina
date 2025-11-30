@@ -173,7 +173,7 @@ namespace Lumina.Data
         private T[] ReadPrimitiveArray< T >( int count ) where T : struct
         {
             var size = Unsafe.SizeOf< T >();
-            var span = MemoryMarshal.Cast< byte, T >( ReadBytes( count * size ) );
+            var span = MemoryMarshal.Cast< byte, T >( ReadBytes( count * size ).AsSpan() );
 
             if( ConvertEndianness )
             {

@@ -301,6 +301,8 @@ public class SeStringBuilderTests
     [Sheet( "Addon" )]
     public readonly struct Addon( ExcelPage page, uint offset, uint row ) : IExcelRow< Addon >
     {
+        public ExcelPage ExcelPage => page;
+        public uint RowOffset => offset;
         public uint RowId => row;
 
         public ReadOnlySeString Text => page.ReadString( offset, offset );
@@ -695,6 +697,8 @@ public class SeStringBuilderTests
     [Sheet]
     public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelRow< RawRow >
     {
+        public ExcelPage ExcelPage => page;
+        public uint RowOffset => offset;
         public uint RowId => row;
 
         public ReadOnlySeString ReadString( ushort off ) =>

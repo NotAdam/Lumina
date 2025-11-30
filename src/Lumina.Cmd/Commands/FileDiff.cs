@@ -2,6 +2,7 @@ using System.IO;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Infrastructure;
 
 namespace Lumina.Cmd.Commands
 {

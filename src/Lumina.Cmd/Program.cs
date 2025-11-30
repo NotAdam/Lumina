@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using CliFx;
 
 namespace Lumina.Cmd
@@ -10,7 +10,7 @@ namespace Lumina.Cmd
             Pastel.ConsoleExtensions.Enable();
             
             return await new CliApplicationBuilder()
-                .UseDescription( "A command line tool that probably does useful things." )
+                .SetDescription( "A command line tool that probably does useful things." )
                 .AddCommandsFromThisAssembly()
                 .Build()
                 .RunAsync();

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0</TargetFrameworks>
+        <TargetFrameworks>net10.0</TargetFrameworks>
         <LangVersion>latestmajor</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>NotAdam</Authors>
@@ -28,8 +28,8 @@
 
     <ItemGroup>
         <PackageReference Include="BCnEncoder.Net" Version="2.2.1" />
-        <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="8.0.7" />
-        <PackageReference Include="MinVer" Version="5.0.0">
+        <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="10.0.0" />
+        <PackageReference Include="MinVer" Version="6.0.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>

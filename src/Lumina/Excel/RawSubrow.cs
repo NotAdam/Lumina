@@ -6,19 +6,17 @@ using System.Collections.Generic;
 namespace Lumina.Excel;
 
 /// <summary>
-/// An <see cref="IExcelSubrow{T}"/> type for explicitly reading data from an <see cref="ExcelPage"/>.
+/// An <see cref="IExcelSubrow{T}"/> type for explicitly reading data from an <see cref="Excel.ExcelPage"/>.
 /// </summary>
 /// <inheritdoc cref="RawRow"/>
 [Sheet]
 public readonly struct RawSubrow( ExcelPage page, uint offset, uint row, ushort subrow ) : IExcelSubrow<RawSubrow>
 {
-    /// <inheritdoc cref="RawRow.Page"/>
-    public ExcelPage Page => page;
+    /// <inheritdoc/>
+    public ExcelPage ExcelPage => page;
 
-    /// <summary>
-    /// Offset to the referenced row in the <see cref="Page"/>.
-    /// </summary>
-    public uint Offset => offset;
+    /// <inheritdoc/>
+    public uint RowOffset => offset;
 
     /// <inheritdoc/>
     public uint RowId => row;
@@ -64,51 +62,51 @@ public readonly struct RawSubrow( ExcelPage page, uint offset, uint row, ushort 
 
     /// <inheritdoc cref="RawRow.ReadString(nuint)"/>
     public ReadOnlySeString ReadString( nuint offset ) =>
-        page.ReadString( Offset + offset, Offset );
+        page.ReadString( RowOffset + offset, RowOffset );
 
     /// <inheritdoc cref="RawRow.ReadBool(nuint)"/>
     public bool ReadBool( nuint offset ) =>
-        page.ReadBool( Offset + offset );
+        page.ReadBool( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadInt8(nuint)"/>
     public sbyte ReadInt8( nuint offset ) =>
-        page.ReadInt8( Offset + offset );
+        page.ReadInt8( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadUInt8(nuint)"/>
     public byte ReadUInt8( nuint offset ) =>
-        page.ReadUInt8( Offset + offset );
+        page.ReadUInt8( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadInt16(nuint)"/>
     public short ReadInt16( nuint offset ) =>
-        page.ReadInt16( Offset + offset );
+        page.ReadInt16( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadUInt16(nuint)"/>
     public ushort ReadUInt16( nuint offset ) =>
-        page.ReadUInt16( Offset + offset );
+        page.ReadUInt16( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadInt32(nuint)"/>
     public int ReadInt32( nuint offset ) =>
-        page.ReadInt32( Offset + offset );
+        page.ReadInt32( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadUInt32(nuint)"/>
     public uint ReadUInt32( nuint offset ) =>
-        page.ReadUInt32( Offset + offset );
+        page.ReadUInt32( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadFloat32(nuint)"/>
     public float ReadFloat32( nuint offset ) =>
-        page.ReadFloat32( Offset + offset );
+        page.ReadFloat32( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadInt64(nuint)"/>
     public long ReadInt64( nuint offset ) =>
-        page.ReadInt64( Offset + offset );
+        page.ReadInt64( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadUInt64(nuint)"/>
     public ulong ReadUInt64( nuint offset ) =>
-        page.ReadUInt64( Offset + offset );
+        page.ReadUInt64( RowOffset + offset );
 
     /// <inheritdoc cref="RawRow.ReadPackedBool(nuint, byte)"/>
     public bool ReadPackedBool( nuint offset, byte bit ) =>
-        page.ReadPackedBool( Offset + offset, bit );
+        page.ReadPackedBool( RowOffset + offset, bit );
 
     /// <inheritdoc cref="RawRow.ReadStringColumn(int)"/>
     public ReadOnlySeString ReadStringColumn( int columnIdx ) =>

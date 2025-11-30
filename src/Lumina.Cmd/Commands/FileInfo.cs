@@ -2,6 +2,7 @@ using System.IO;
 using System.Threading.Tasks;
 using CliFx;
 using CliFx.Attributes;
+using CliFx.Infrastructure;
 using Lumina.Data;
 using Lumina.Data.Files;
 using Lumina.Data.Files.Excel;
@@ -17,7 +18,7 @@ namespace Lumina.Cmd.Commands
         [CommandOption( "dataPath", 'p',
             Description = "Path to the client sqpack folder",
             IsRequired = true,
-            EnvironmentVariableName = "LUMINA_CMD_CLIENT_PATH" )]
+            EnvironmentVariable = "LUMINA_CMD_CLIENT_PATH" )]
         public string DataPath { get; set; }
 
         private FileResource LoadResource( GameData gameData, string path )
