@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Lumina.Excel;
 
 /// <summary>
-/// An <see cref="IExcelRow{T}"/> type for explicitly reading data from an <see cref="ExcelPage"/>.
+/// An <see cref="IExcelRow{T}"/> type for explicitly reading data from an <see cref="Excel.ExcelPage"/>.
 /// </summary>
 /// <remarks>
 /// This type is designed to be used to read from arbitrary columns and offsets.
@@ -14,15 +14,11 @@ namespace Lumina.Excel;
 [Sheet]
 public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelRow<RawRow>
 {
-    /// <summary>
-    /// The associated <see cref="ExcelPage"/> of the row.
-    /// </summary>
-    public ExcelPage Page => page;
+    /// <inheritdoc/>
+    public ExcelPage ExcelPage => page;
 
-    /// <summary>
-    /// Offset to the referenced row in the <see cref="Page"/>.
-    /// </summary>
-    public uint Offset => offset;
+    /// <inheritdoc/>
+    public uint RowOffset => offset;
 
     /// <inheritdoc/>
     public uint RowId => row;
@@ -69,7 +65,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadString(nuint, nuint)"/>
     public ReadOnlySeString ReadString( nuint offset ) =>
-        page.ReadString( Offset + offset, Offset );
+        page.ReadString( RowOffset + offset, RowOffset );
 
     /// <summary>
     /// Reads a <see cref="bool"/> at <paramref name="offset"/>.
@@ -77,7 +73,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadBool(nuint)"/>
     public bool ReadBool( nuint offset ) =>
-        page.ReadBool( Offset + offset );
+        page.ReadBool( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="sbyte"/> at <paramref name="offset"/>.
@@ -85,7 +81,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadInt8(nuint)"/>
     public sbyte ReadInt8( nuint offset ) =>
-        page.ReadInt8( Offset + offset );
+        page.ReadInt8( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="byte"/> at <paramref name="offset"/>.
@@ -93,7 +89,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadUInt8(nuint)"/>
     public byte ReadUInt8( nuint offset ) =>
-        page.ReadUInt8( Offset + offset );
+        page.ReadUInt8( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="short"/> at <paramref name="offset"/>.
@@ -101,7 +97,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadInt16(nuint)"/>
     public short ReadInt16( nuint offset ) =>
-        page.ReadInt16( Offset + offset );
+        page.ReadInt16( RowOffset + offset );
 
 
     /// <summary>
@@ -110,7 +106,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadUInt16(nuint)"/>
     public ushort ReadUInt16( nuint offset ) =>
-        page.ReadUInt16( Offset + offset );
+        page.ReadUInt16( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="int"/> at <paramref name="offset"/>.
@@ -118,7 +114,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadInt32(nuint)"/>
     public int ReadInt32( nuint offset ) =>
-        page.ReadInt32( Offset + offset );
+        page.ReadInt32( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="uint"/> at <paramref name="offset"/>.
@@ -126,7 +122,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadUInt32(nuint)"/>
     public uint ReadUInt32( nuint offset ) =>
-        page.ReadUInt32( Offset + offset );
+        page.ReadUInt32( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="float"/> at <paramref name="offset"/>.
@@ -134,7 +130,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadFloat32(nuint)"/>
     public float ReadFloat32( nuint offset ) =>
-        page.ReadFloat32( Offset + offset );
+        page.ReadFloat32( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="long"/> at <paramref name="offset"/>.
@@ -142,7 +138,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadInt64(nuint)"/>
     public long ReadInt64( nuint offset ) =>
-        page.ReadInt64( Offset + offset );
+        page.ReadInt64( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="ulong"/> at <paramref name="offset"/>.
@@ -150,7 +146,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="offset">Offset of the field inside the row.</param>
     /// <inheritdoc cref="ExcelPage.ReadUInt64(nuint)"/>
     public ulong ReadUInt64( nuint offset ) =>
-        page.ReadUInt64( Offset + offset );
+        page.ReadUInt64( RowOffset + offset );
 
     /// <summary>
     /// Reads a <see cref="bool"/> at <paramref name="offset"/> at bit offset <paramref name="bit"/>.
@@ -159,7 +155,7 @@ public readonly struct RawRow( ExcelPage page, uint offset, uint row ) : IExcelR
     /// <param name="bit">Bit offset of the field inside the byte. (0 - 7)</param>
     /// <inheritdoc cref="ExcelPage.ReadPackedBool(nuint, byte)"/>
     public bool ReadPackedBool( nuint offset, byte bit ) =>
-        page.ReadPackedBool( Offset + offset, bit );
+        page.ReadPackedBool( RowOffset + offset, bit );
 
     /// <summary>
     /// Reads a <see cref="ReadOnlySeString"/> at <paramref name="columnIdx"/>.

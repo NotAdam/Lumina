@@ -6,6 +6,12 @@ namespace Lumina.Excel;
 /// <typeparam name="T">The type that implements the interface.</typeparam>
 public interface IExcelSubrow< out T > where T : struct
 {
+    /// <summary>The associated <see cref="Excel.ExcelPage"/> of the row.</summary>
+    public ExcelPage ExcelPage { get; }
+
+    /// <summary>Offset to the referenced row in the <see cref="Excel.ExcelPage"/>.</summary>
+    public uint RowOffset { get; }
+
     /// <summary>Gets the row ID.</summary>
     uint RowId { get; }
 
