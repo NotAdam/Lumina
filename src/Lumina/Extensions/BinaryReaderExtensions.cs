@@ -68,7 +68,7 @@ namespace Lumina.Extensions
         {
             var data = br.ReadBytes( Unsafe.SizeOf< T >() * count );
 
-            return MemoryMarshal.Cast< byte, T >( data );
+            return MemoryMarshal.Cast< byte, T >( data.AsSpan() );
         }
 
         /// <summary>

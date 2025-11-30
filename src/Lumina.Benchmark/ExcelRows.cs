@@ -5,6 +5,8 @@ namespace Lumina.Benchmark;
 [Sheet( "Addon" )]
 public readonly struct Addon( ExcelPage page, uint offset, uint row ) : IExcelRow< Addon >
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
     public uint Data => row & offset;
 
@@ -14,6 +16,8 @@ public readonly struct Addon( ExcelPage page, uint offset, uint row ) : IExcelRo
 [Sheet( "Item" )]
 public readonly struct Item( ExcelPage page, uint offset, uint row ) : IExcelRow< Item >
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
     public uint Data => row & offset;
 
@@ -25,6 +29,8 @@ public readonly struct Item( ExcelPage page, uint offset, uint row ) : IExcelRow
 [Sheet( "QuestLinkMarker" )]
 public readonly struct QuestLinkMarker( ExcelPage page, uint offset, uint row, ushort subrow ) : IExcelSubrow< QuestLinkMarker >
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
     public ushort SubrowId => subrow;
     public uint Data => row & offset;
@@ -36,6 +42,8 @@ public readonly struct QuestLinkMarker( ExcelPage page, uint offset, uint row, u
 [Sheet( "GatheringItem" )]
 public readonly struct GatheringItem( ExcelPage page, uint offset, uint row ) : IExcelRow< GatheringItem >
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
     public uint Data => row & offset;
 
@@ -49,6 +57,8 @@ public readonly struct GatheringItem( ExcelPage page, uint offset, uint row ) : 
 [Sheet( "EventItem" )]
 public readonly struct EventItem( ExcelPage page, uint offset, uint row ) : IExcelRow< EventItem >
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
     public uint Data => row & offset;
 
@@ -61,6 +71,8 @@ public readonly struct EventItem( ExcelPage page, uint offset, uint row ) : IExc
 [Sheet( "GatheringItemLevelConvertTable" )]
 public readonly struct GatheringItemLevelConvertTable( ExcelPage page, uint offset, uint row ) : IExcelRow< GatheringItemLevelConvertTable >
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
     public uint Data => row & offset;
 
@@ -73,6 +85,8 @@ public readonly struct GatheringItemLevelConvertTable( ExcelPage page, uint offs
 [Sheet( "ENpcBase" )]
 public readonly unsafe struct ENpcBase( ExcelPage page, uint offset, uint row ) : IExcelRow<ENpcBase>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     private static RowRef ENpcDataCtor( ExcelPage page, uint parentOffset, uint offset, uint i ) => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + i * 4 ), [typeof( ChocoboTaxiStand ), typeof( CraftLeve ), typeof( CustomTalk ), typeof( DefaultTalk ), typeof( FccShop ), typeof( GCShop ), typeof( GilShop ), typeof( GuildleveAssignment ), typeof( GuildOrderGuide ), typeof( GuildOrderOfficer ), typeof( Quest ), typeof( SpecialShop ), typeof( Story ), typeof( SwitchTalk ), typeof( TopicSelect ), typeof( TripleTriad ), typeof( Warp )], 1, page.Language );
@@ -85,6 +99,8 @@ public readonly unsafe struct ENpcBase( ExcelPage page, uint offset, uint row ) 
 [Sheet( "ChocoboTaxiStand" )]
 public readonly struct ChocoboTaxiStand( ExcelPage page, uint offset, uint row ) : IExcelRow<ChocoboTaxiStand>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static ChocoboTaxiStand IExcelRow<ChocoboTaxiStand>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -94,6 +110,8 @@ public readonly struct ChocoboTaxiStand( ExcelPage page, uint offset, uint row )
 [Sheet( "CraftLeve" )]
 public readonly struct CraftLeve( ExcelPage page, uint offset, uint row ) : IExcelRow<CraftLeve>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static CraftLeve IExcelRow<CraftLeve>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -103,6 +121,8 @@ public readonly struct CraftLeve( ExcelPage page, uint offset, uint row ) : IExc
 [Sheet( "CustomTalk" )]
 public readonly struct CustomTalk( ExcelPage page, uint offset, uint row ) : IExcelRow<CustomTalk>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static CustomTalk IExcelRow<CustomTalk>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -112,6 +132,8 @@ public readonly struct CustomTalk( ExcelPage page, uint offset, uint row ) : IEx
 [Sheet( "DefaultTalk" )]
 public readonly struct DefaultTalk( ExcelPage page, uint offset, uint row ) : IExcelRow<DefaultTalk>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static DefaultTalk IExcelRow<DefaultTalk>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -121,6 +143,8 @@ public readonly struct DefaultTalk( ExcelPage page, uint offset, uint row ) : IE
 [Sheet( "FccShop" )]
 public readonly struct FccShop( ExcelPage page, uint offset, uint row ) : IExcelRow<FccShop>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static FccShop IExcelRow<FccShop>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -130,6 +154,8 @@ public readonly struct FccShop( ExcelPage page, uint offset, uint row ) : IExcel
 [Sheet( "GCShop" )]
 public readonly struct GCShop( ExcelPage page, uint offset, uint row ) : IExcelRow<GCShop>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static GCShop IExcelRow<GCShop>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -139,6 +165,8 @@ public readonly struct GCShop( ExcelPage page, uint offset, uint row ) : IExcelR
 [Sheet( "GilShop" )]
 public readonly struct GilShop( ExcelPage page, uint offset, uint row ) : IExcelRow<GilShop>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static GilShop IExcelRow<GilShop>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -148,6 +176,8 @@ public readonly struct GilShop( ExcelPage page, uint offset, uint row ) : IExcel
 [Sheet( "GuildleveAssignment" )]
 public readonly struct GuildleveAssignment( ExcelPage page, uint offset, uint row ) : IExcelRow<GuildleveAssignment>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static GuildleveAssignment IExcelRow<GuildleveAssignment>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -157,6 +187,8 @@ public readonly struct GuildleveAssignment( ExcelPage page, uint offset, uint ro
 [Sheet( "GuildOrderGuide" )]
 public readonly struct GuildOrderGuide( ExcelPage page, uint offset, uint row ) : IExcelRow<GuildOrderGuide>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static GuildOrderGuide IExcelRow<GuildOrderGuide>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -166,6 +198,8 @@ public readonly struct GuildOrderGuide( ExcelPage page, uint offset, uint row ) 
 [Sheet( "GuildOrderOfficer" )]
 public readonly struct GuildOrderOfficer( ExcelPage page, uint offset, uint row ) : IExcelRow<GuildOrderOfficer>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static GuildOrderOfficer IExcelRow<GuildOrderOfficer>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -175,6 +209,8 @@ public readonly struct GuildOrderOfficer( ExcelPage page, uint offset, uint row 
 [Sheet( "Quest" )]
 public readonly struct Quest( ExcelPage page, uint offset, uint row ) : IExcelRow<Quest>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static Quest IExcelRow<Quest>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -184,6 +220,8 @@ public readonly struct Quest( ExcelPage page, uint offset, uint row ) : IExcelRo
 [Sheet( "SpecialShop" )]
 public readonly struct SpecialShop( ExcelPage page, uint offset, uint row ) : IExcelRow<SpecialShop>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static SpecialShop IExcelRow<SpecialShop>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -193,6 +231,8 @@ public readonly struct SpecialShop( ExcelPage page, uint offset, uint row ) : IE
 [Sheet( "Story" )]
 public readonly struct Story( ExcelPage page, uint offset, uint row ) : IExcelRow<Story>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static Story IExcelRow<Story>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -202,6 +242,8 @@ public readonly struct Story( ExcelPage page, uint offset, uint row ) : IExcelRo
 [Sheet( "SwitchTalk" )]
 public readonly struct SwitchTalk( ExcelPage page, uint offset, uint row ) : IExcelRow<SwitchTalk>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static SwitchTalk IExcelRow<SwitchTalk>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -211,6 +253,8 @@ public readonly struct SwitchTalk( ExcelPage page, uint offset, uint row ) : IEx
 [Sheet( "TopicSelect" )]
 public readonly unsafe struct TopicSelect( ExcelPage page, uint offset, uint row ) : IExcelRow<TopicSelect>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     private static RowRef ShopCtor( ExcelPage page, uint parentOffset, uint offset, uint i ) => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + 4 + i * 4 ), [typeof( SpecialShop ), typeof( GilShop ), typeof( PreHandler )], 2, page.Language );
@@ -223,6 +267,8 @@ public readonly unsafe struct TopicSelect( ExcelPage page, uint offset, uint row
 [Sheet( "TripleTriad" )]
 public readonly struct TripleTriad( ExcelPage page, uint offset, uint row ) : IExcelRow<TripleTriad>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static TripleTriad IExcelRow<TripleTriad>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -232,6 +278,8 @@ public readonly struct TripleTriad( ExcelPage page, uint offset, uint row ) : IE
 [Sheet( "Warp" )]
 public readonly struct Warp( ExcelPage page, uint offset, uint row ) : IExcelRow<Warp>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static Warp IExcelRow<Warp>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -241,6 +289,8 @@ public readonly struct Warp( ExcelPage page, uint offset, uint row ) : IExcelRow
 [Sheet( "PreHandler" )]
 public readonly struct PreHandler( ExcelPage page, uint offset, uint row ) : IExcelRow<PreHandler>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     public readonly RowRef Target => RowRef.GetFirstValidRowOrUntyped( page.Module, page.ReadUInt32( offset + 8 ), [typeof( CollectablesShop ), typeof( InclusionShop ), typeof( GilShop ), typeof( SpecialShop ), typeof( Description )], 3, page.Language );
@@ -252,6 +302,8 @@ public readonly struct PreHandler( ExcelPage page, uint offset, uint row ) : IEx
 [Sheet( "CollectablesShop" )]
 public readonly struct CollectablesShop( ExcelPage page, uint offset, uint row ) : IExcelRow<CollectablesShop>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static CollectablesShop IExcelRow<CollectablesShop>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -261,6 +313,8 @@ public readonly struct CollectablesShop( ExcelPage page, uint offset, uint row )
 [Sheet( "InclusionShop" )]
 public readonly struct InclusionShop( ExcelPage page, uint offset, uint row ) : IExcelRow<InclusionShop>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static InclusionShop IExcelRow<InclusionShop>.Create( ExcelPage page, uint offset, uint row ) =>
@@ -270,6 +324,8 @@ public readonly struct InclusionShop( ExcelPage page, uint offset, uint row ) : 
 [Sheet( "Description" )]
 public readonly struct Description( ExcelPage page, uint offset, uint row ) : IExcelRow<Description>
 {
+    public ExcelPage ExcelPage => page;
+    public uint RowOffset => offset;
     public uint RowId => row;
 
     static Description IExcelRow<Description>.Create( ExcelPage page, uint offset, uint row ) =>
