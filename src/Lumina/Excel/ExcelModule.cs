@@ -79,19 +79,10 @@ public class ExcelModule
     /// that may be created anew or reused from a previous invocation of this method.</returns>
     /// <remarks/>
     /// <exception cref="NotSupportedException">Sheet was not a <see cref="ExcelVariant.Default"/>.</exception>
-    /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Language}, string?)"/>
+    /// <inheritdoc cref="GetRawSheet{T}(Nullable{Language}, string?)"/>
     public ExcelSheet< T > GetSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelRow< T >
     {
-        var attr = GetSheetAttributes( typeof( T ) ) ?? throw new SheetAttributeMissingException( null, nameof( T ) );
-        name ??= attr.Name ?? throw new SheetNameEmptyException( nameof( name ) );
-
-        var rawSheet = GetRawSheetCore( name, language, out var variant );
-
-        if( VerifySheetChecksums && attr?.ColumnHash is { } hash && hash != rawSheet.ColumnHash )
-            throw new MismatchedColumnHashException( hash, rawSheet.ColumnHash, nameof( T ) );
-
-        if( variant != ExcelVariant.Default )
-            throw new NotSupportedException( $"Specified sheet variant {variant} is not supported; was expecting {ExcelVariant.Default}." );
+        var rawSheet = GetRawSheet<T>( language, name );
 
         return new ExcelSheet< T >( rawSheet );
     }
@@ -106,18 +97,9 @@ public class ExcelModule
     /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Language}, string?)"/>
     public SubrowExcelSheet< T > GetSubrowSheet< T >( Language? language = null, string? name = null ) where T : struct, IExcelSubrow< T >
     {
-        var attr = GetSheetAttributes( typeof( T ) ) ?? throw new SheetAttributeMissingException( null, nameof( T ) );
-        name ??= attr.Name ?? throw new SheetNameEmptyException( nameof( name ) );
+        var rawSheet = GetRawSubrowSheet<T>( language, name );
 
-        var rawSheet = GetRawSheetCore( name, language, out var variant );
-
-        if( VerifySheetChecksums && attr?.ColumnHash is { } hash && hash != rawSheet.ColumnHash )
-            throw new MismatchedColumnHashException( hash, rawSheet.ColumnHash, nameof( T ) );
-
-        if ( variant != ExcelVariant.Subrows )
-            throw new NotSupportedException( $"Specified sheet variant {variant} is not supported; was expecting {ExcelVariant.Subrows}." );
-
-        return new SubrowExcelSheet< T >( (RawSubrowExcelSheet)rawSheet );
+        return new SubrowExcelSheet< T >( rawSheet );
     }
 
     /// <summary>Loads a typed <see cref="IExcelSheet"/>.</summary>
@@ -174,6 +156,56 @@ public class ExcelModule
                 [rawSheet],
                 null ) as IExcelSheet ??
             throw new InvalidOperationException( "Something went wrong" );
+    }
+
+    /// <summary>Loads a <see cref="RawExcelSheet"/>.</summary>
+    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+    /// <param name="name">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="name"/>
+    /// that may be created anew or reused from a previous invocation of this method.</returns>
+    /// <remarks/>
+    /// <exception cref="NotSupportedException">Sheet was not a <see cref="ExcelVariant.Default"/>.</exception>
+    /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Language}, string?)"/>
+    [EditorBrowsable( EditorBrowsableState.Advanced )]
+    public RawExcelSheet GetRawSheet<T>( Language? language = null, string? name = null ) where T : struct, IExcelRow<T>
+    {
+        var attr = GetSheetAttributes( typeof( T ) ) ?? throw new SheetAttributeMissingException( null, nameof( T ) );
+        name ??= attr.Name ?? throw new SheetNameEmptyException( nameof( name ) );
+
+        var rawSheet = GetRawSheetCore( name, language, out var variant );
+
+        if( VerifySheetChecksums && attr?.ColumnHash is { } hash && hash != rawSheet.ColumnHash )
+            throw new MismatchedColumnHashException( hash, rawSheet.ColumnHash, nameof( T ) );
+
+        if( variant != ExcelVariant.Default )
+            throw new NotSupportedException( $"Specified sheet variant {variant} is not supported; was expecting {ExcelVariant.Default}." );
+
+        return rawSheet;
+    }
+
+    /// <summary>Loads an <see cref="RawSubrowExcelSheet"/>.</summary>
+    /// <param name="language">The requested sheet language. Leave <see langword="null"/> or empty to use the default language.</param>
+    /// <param name="name">The requested explicit sheet name. Leave <see langword="null"/> to use <typeparamref name="T"/>'s sheet name. Explicit names are necessary for quest/dungeon/cutscene sheets.</param>
+    /// <returns>An excel sheet corresponding to <typeparamref name="T"/>, <paramref name="language"/>, and <paramref name="name"/>
+    /// that may be created anew or reused from a previous invocation of this method.</returns>
+    /// <remarks/>
+    /// <exception cref="NotSupportedException">Sheet was not a <see cref="ExcelVariant.Subrows"/>.</exception>
+    /// <inheritdoc cref="GetBaseSheet(Type, Nullable{Language}, string?)"/>
+    [EditorBrowsable( EditorBrowsableState.Advanced )]
+    public RawSubrowExcelSheet GetRawSubrowSheet<T>( Language? language = null, string? name = null ) where T : struct, IExcelSubrow<T>
+    {
+        var attr = GetSheetAttributes( typeof( T ) ) ?? throw new SheetAttributeMissingException( null, nameof( T ) );
+        name ??= attr.Name ?? throw new SheetNameEmptyException( nameof( name ) );
+
+        var rawSheet = GetRawSheetCore( name, language, out var variant );
+
+        if( VerifySheetChecksums && attr?.ColumnHash is { } hash && hash != rawSheet.ColumnHash )
+            throw new MismatchedColumnHashException( hash, rawSheet.ColumnHash, nameof( T ) );
+
+        if( variant != ExcelVariant.Subrows )
+            throw new NotSupportedException( $"Specified sheet variant {variant} is not supported; was expecting {ExcelVariant.Subrows}." );
+
+        return (RawSubrowExcelSheet)rawSheet;
     }
 
     /// <summary>Loads a <see cref="RawExcelSheet"/>.</summary>

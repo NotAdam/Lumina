@@ -12,14 +12,28 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
 {
     private readonly RawExcelSheet.RowOffsetLookup _lookup;
 
-    internal SubrowCollection( SubrowExcelSheet< T > sheet, scoped ref readonly RawExcelSheet.RowOffsetLookup lookup )
+    internal SubrowCollection( RawSubrowExcelSheet sheet, scoped ref readonly RawExcelSheet.RowOffsetLookup lookup )
     {
-        Sheet = sheet;
+        _rawSheet = sheet;
         _lookup = lookup;
     }
 
+    [Obsolete( "Use RawSheet instead; Create an issue on GitHub if RawSheet does not fit your use case." )]
+    internal SubrowCollection( SubrowExcelSheet<T> sheet, scoped ref readonly RawExcelSheet.RowOffsetLookup lookup )
+    {
+        _sheet = sheet;
+        _lookup = lookup;
+    }
+
+    private RawSubrowExcelSheet? _rawSheet { get; }
+    private SubrowExcelSheet<T>? _sheet { get; }
+
+    /// <summary>Gets the associated raw sheet.</summary>
+    public RawSubrowExcelSheet RawSheet => _rawSheet ?? _sheet!.RawSheet;
+
     /// <summary>Gets the associated sheet.</summary>
-    public SubrowExcelSheet< T > Sheet { get; }
+    [Obsolete("Use RawSheet instead; Create an issue on GitHub if RawSheet does not fit your use case.")]
+    public SubrowExcelSheet<T> Sheet => _sheet ?? new( RawSheet );
 
     /// <summary>Gets the Row ID of the subrows contained within.</summary>
     public uint RowId => _lookup.RowId;
@@ -35,7 +49,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         get {
             ArgumentOutOfRangeException.ThrowIfNegative( index );
             ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( index, Count );
-            return Sheet.RawSheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) index ) );
+            return RawSheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) index ) );
         }
     }
 
@@ -61,7 +75,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         if( item.RowId != RowId || item.SubrowId >= Count )
             return -1;
 
-        var row = Sheet.RawSheet.UnsafeCreateSubrow< T >( in _lookup, item.SubrowId );
+        var row = RawSheet.UnsafeCreateSubrow< T >( in _lookup, item.SubrowId );
         return EqualityComparer< T >.Default.Equals( item, row ) ? item.SubrowId : -1;
     }
 
@@ -76,7 +90,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
         if( Count > array.Length - arrayIndex )
             throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
         for( var i = 0; i < Count; i++ )
-            array[ arrayIndex++ ] = Sheet.RawSheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) i ) );
+            array[ arrayIndex++ ] = RawSheet.UnsafeCreateSubrow< T >( in _lookup, unchecked( (ushort) i ) );
     }
 
     /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
@@ -105,7 +119,7 @@ public readonly struct SubrowCollection< T > : IList< T >, IReadOnlyList< T >
                 // UnsafeCreateSubrow must be called only when the preconditions are validated.
                 // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
                 // so we create the instance in advance here.
-                Current = subrowCollection.Sheet.RawSheet.UnsafeCreateSubrow< T >( in subrowCollection._lookup, unchecked( (ushort) _index ) );
+                Current = subrowCollection.RawSheet.UnsafeCreateSubrow< T >( in subrowCollection._lookup, unchecked( (ushort) _index ) );
                 return true;
             }
 
