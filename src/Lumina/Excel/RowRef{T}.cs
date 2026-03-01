@@ -33,7 +33,7 @@ public struct RowRef< T >( ExcelModule? module, uint rowId, Language? language =
     /// <summary>
     /// The backing type of the referenced row.
     /// </summary>
-    public readonly Type? RowType => typeof(T);
+    public readonly Type RowType => typeof(T);
 
     /// <summary>
     /// The associated language of this row.
