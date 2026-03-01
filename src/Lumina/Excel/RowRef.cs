@@ -18,6 +18,11 @@ public readonly struct RowRef( ExcelModule? module, uint rowId, Type? rowType, L
     /// The row id of the referenced row.
     /// </summary>
     public uint RowId => rowId;
+    
+    /// <summary>
+    /// The backing type of the row, if not untyped.
+    /// </summary>
+    public Type? RowType => rowType;
 
     /// <summary>
     /// Whether the <see cref="RowRef"/> is untyped.

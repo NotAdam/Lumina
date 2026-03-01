@@ -29,6 +29,11 @@ public struct SubrowRef< T >( ExcelModule? module, uint rowId, Language? languag
     /// The row id of the referenced row.
     /// </summary>
     public readonly uint RowId => rowId;
+    
+    /// <summary>
+    /// The backing type of the referenced row.
+    /// </summary>
+    public readonly Type RowType => typeof(T);
 
     /// <summary>
     /// The associated language of this row.
