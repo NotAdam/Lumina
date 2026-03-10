@@ -43,6 +43,30 @@ namespace Lumina.Data.Parsing.Uld
             Tile = 0x1,
         }
 
+        [Flags]
+        public enum TextFlags : byte
+        {
+            None = 0,
+            Bold = 1 << 0,
+            Italic = 1 << 1,
+            Edge = 1 << 2,
+            Glare = 1 << 3,
+            Multiline = 1 << 4,
+            Ellipsis = 1 << 5,
+            WordWrap = 1 << 6,
+            Emboss = 1 << 7, // only used for the Dark theme
+        }
+
+        [Flags]
+        public enum TextColorFlags : byte
+        {
+            None = 0,
+            /// <summary> If <see langword="true"/>, look up <see cref="TextNode.Color"/> in the UIColor sheet. Otherwise, use the Color value directly. </summary>
+            IsUIColor = 1 << 1,
+            /// <summary> If <see langword="true"/>, look up <see cref="TextNode.EdgeColor"/> in the UIColor sheet. Otherwise, use the EdgeColor value directly. </summary>
+            IsUIEdgeColor = 1 << 2,
+        }
+
         public enum SheetType : byte
         {
             Addon = 0x0,
@@ -137,25 +161,13 @@ namespace Lumina.Data.Parsing.Uld
             public byte FontSize;
             public uint EdgeColor;
 
-            public byte TextFlags;
-
-            public bool Bold;
-            public bool Italic;
-            public bool Edge;
-            public bool Glare;
-            public bool Multiline;
-            public bool Ellipsis;
-            public bool Paragraph;
-            public bool Emboss;
+            public TextFlags TextFlags;
 
             public SheetType SheetType;
             public byte CharSpacing;
             public byte LineSpacing;
 
-            public byte ColorFlags;
-
-            public bool IsUIColor; // If true, look up Color in UIColor sheet, otherwise use the value directly
-            public bool IsUIEdgeColor; // If true, look up EdgeColor in UIColor sheet, otherwise use the value directly
+            public TextColorFlags TextColorFlags;
 
             public static TextNode Read( LuminaBinaryReader br )
             {
@@ -168,26 +180,14 @@ namespace Lumina.Data.Parsing.Uld
                 ret.FontSize = br.ReadByte();
                 ret.EdgeColor = br.ReadUInt32();
 
-                ret.TextFlags = br.ReadByte();
-
-                ret.Bold = ( ret.TextFlags & 0x80 ) == 0x80;
-                ret.Italic = ( ret.TextFlags & 0x40 ) == 0x40;
-                ret.Edge = ( ret.TextFlags & 0x20 ) == 0x20;
-                ret.Glare = ( ret.TextFlags & 0x10 ) == 0x10;
-                ret.Multiline = ( ret.TextFlags & 0x08 ) == 0x08;
-                ret.Ellipsis = ( ret.TextFlags & 0x04 ) == 0x04;
-                ret.Paragraph = ( ret.TextFlags & 0x02 ) == 0x02;
-                ret.Emboss = ( ret.TextFlags & 0x01 ) == 0x01;
+                ret.TextFlags = (TextFlags)br.ReadByte();
 
                 ret.SheetType = (SheetType)br.ReadByte();
                 ret.CharSpacing = br.ReadByte();
                 ret.LineSpacing = br.ReadByte();
 
-                ret.ColorFlags = br.ReadByte();
+                ret.TextColorFlags = (TextColorFlags)br.ReadByte();
                 br.ReadBytes( 3 ); // unused
-
-                ret.IsUIEdgeColor = ( ret.ColorFlags & 0x04 ) == 0x04;
-                ret.IsUIColor = ( ret.ColorFlags & 0x02 ) == 0x02;
 
                 return ret;
             }
