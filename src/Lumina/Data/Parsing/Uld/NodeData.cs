@@ -132,12 +132,12 @@ namespace Lumina.Data.Parsing.Uld
         {
             public uint TextId;
             public uint Color;
-            public ushort Alignment;
+            public byte Alignment;
             public FontType Font;
             public byte FontSize;
             public uint EdgeColor;
 
-            private byte field1;
+            public byte TextFlags;
 
             public bool Bold;
             public bool Italic;
@@ -152,34 +152,43 @@ namespace Lumina.Data.Parsing.Uld
             public byte CharSpacing;
             public byte LineSpacing;
 
-            public uint Unk2;
+            public byte ColorFlags;
+
+            public bool IsUIColor; // If true, look up Color in UIColor sheet, otherwise use the value directly
+            public bool IsUIEdgeColor; // If true, look up EdgeColor in UIColor sheet, otherwise use the value directly
 
             public static TextNode Read( LuminaBinaryReader br )
             {
                 TextNode ret = new TextNode();
                 ret.TextId = br.ReadUInt32();
                 ret.Color = br.ReadUInt32();
-                ret.Alignment = br.ReadUInt16();
+                ret.Alignment = br.ReadByte();
+                br.ReadByte(); // unused
                 ret.Font = (FontType)br.ReadByte();
                 ret.FontSize = br.ReadByte();
                 ret.EdgeColor = br.ReadUInt32();
 
-                ret.field1 = br.ReadByte();
+                ret.TextFlags = br.ReadByte();
 
-                ret.Bold = ( ret.field1 & 0x80 ) == 0x80;
-                ret.Italic = ( ret.field1 & 0x40 ) == 0x40;
-                ret.Edge = ( ret.field1 & 0x20 ) == 0x20;
-                ret.Glare = ( ret.field1 & 0x10 ) == 0x10;
-                ret.Multiline = ( ret.field1 & 0x08 ) == 0x08;
-                ret.Ellipsis = ( ret.field1 & 0x04 ) == 0x04;
-                ret.Paragraph = ( ret.field1 & 0x02 ) == 0x02;
-                ret.Emboss = ( ret.field1 & 0x01 ) == 0x01;
+                ret.Bold = ( ret.TextFlags & 0x80 ) == 0x80;
+                ret.Italic = ( ret.TextFlags & 0x40 ) == 0x40;
+                ret.Edge = ( ret.TextFlags & 0x20 ) == 0x20;
+                ret.Glare = ( ret.TextFlags & 0x10 ) == 0x10;
+                ret.Multiline = ( ret.TextFlags & 0x08 ) == 0x08;
+                ret.Ellipsis = ( ret.TextFlags & 0x04 ) == 0x04;
+                ret.Paragraph = ( ret.TextFlags & 0x02 ) == 0x02;
+                ret.Emboss = ( ret.TextFlags & 0x01 ) == 0x01;
 
                 ret.SheetType = (SheetType)br.ReadByte();
                 ret.CharSpacing = br.ReadByte();
                 ret.LineSpacing = br.ReadByte();
 
-                ret.Unk2 = br.ReadUInt32();
+                ret.ColorFlags = br.ReadByte();
+                br.ReadBytes( 3 ); // unused
+
+                ret.IsUIEdgeColor = ( ret.ColorFlags & 0x04 ) == 0x04;
+                ret.IsUIColor = ( ret.ColorFlags & 0x02 ) == 0x02;
+
                 return ret;
             }
         }
