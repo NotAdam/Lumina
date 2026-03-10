@@ -58,9 +58,10 @@ namespace Lumina.Data.Parsing.Uld
         }
 
         [Flags]
-        public enum TextColorFlags : byte
+        public enum TextFlags2 : byte
         {
             None = 0,
+            Unk1 = 1 << 0,
             /// <summary> If <see langword="true"/>, look up <see cref="TextNode.Color"/> in the UIColor sheet. Otherwise, use the Color value directly. </summary>
             IsUIColor = 1 << 1,
             /// <summary> If <see langword="true"/>, look up <see cref="TextNode.EdgeColor"/> in the UIColor sheet. Otherwise, use the EdgeColor value directly. </summary>
@@ -167,7 +168,7 @@ namespace Lumina.Data.Parsing.Uld
             public byte CharSpacing;
             public byte LineSpacing;
 
-            public TextColorFlags TextColorFlags;
+            public TextFlags2 TextFlags2;
 
             public static TextNode Read( LuminaBinaryReader br )
             {
@@ -186,7 +187,7 @@ namespace Lumina.Data.Parsing.Uld
                 ret.CharSpacing = br.ReadByte();
                 ret.LineSpacing = br.ReadByte();
 
-                ret.TextColorFlags = (TextColorFlags)br.ReadByte();
+                ret.TextFlags2 = (TextFlags2)br.ReadByte();
                 br.ReadBytes( 3 ); // unused
 
                 return ret;
