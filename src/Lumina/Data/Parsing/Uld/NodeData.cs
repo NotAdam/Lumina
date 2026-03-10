@@ -43,6 +43,31 @@ namespace Lumina.Data.Parsing.Uld
             Tile = 0x1,
         }
 
+        [Flags]
+        public enum TextFlags : byte
+        {
+            None = 0,
+            Bold = 1 << 0,
+            Italic = 1 << 1,
+            Edge = 1 << 2,
+            Glare = 1 << 3,
+            Multiline = 1 << 4,
+            Ellipsis = 1 << 5,
+            WordWrap = 1 << 6,
+            Emboss = 1 << 7, // only used for the Dark theme
+        }
+
+        [Flags]
+        public enum TextFlags2 : byte
+        {
+            None = 0,
+            Unk1 = 1 << 0,
+            /// <summary> If <see langword="true"/>, look up <see cref="TextNode.Color"/> in the UIColor sheet. Otherwise, use the Color value directly. </summary>
+            IsUIColor = 1 << 1,
+            /// <summary> If <see langword="true"/>, look up <see cref="TextNode.EdgeColor"/> in the UIColor sheet. Otherwise, use the EdgeColor value directly. </summary>
+            IsUIEdgeColor = 1 << 2,
+        }
+
         public enum SheetType : byte
         {
             Addon = 0x0,
@@ -132,54 +157,39 @@ namespace Lumina.Data.Parsing.Uld
         {
             public uint TextId;
             public uint Color;
-            public ushort Alignment;
+            public byte Alignment;
             public FontType Font;
             public byte FontSize;
             public uint EdgeColor;
 
-            private byte field1;
-
-            public bool Bold;
-            public bool Italic;
-            public bool Edge;
-            public bool Glare;
-            public bool Multiline;
-            public bool Ellipsis;
-            public bool Paragraph;
-            public bool Emboss;
+            public TextFlags TextFlags;
 
             public SheetType SheetType;
             public byte CharSpacing;
             public byte LineSpacing;
 
-            public uint Unk2;
+            public TextFlags2 TextFlags2;
 
             public static TextNode Read( LuminaBinaryReader br )
             {
                 TextNode ret = new TextNode();
                 ret.TextId = br.ReadUInt32();
                 ret.Color = br.ReadUInt32();
-                ret.Alignment = br.ReadUInt16();
+                ret.Alignment = br.ReadByte();
+                br.ReadByte(); // unused
                 ret.Font = (FontType)br.ReadByte();
                 ret.FontSize = br.ReadByte();
                 ret.EdgeColor = br.ReadUInt32();
 
-                ret.field1 = br.ReadByte();
-
-                ret.Bold = ( ret.field1 & 0x80 ) == 0x80;
-                ret.Italic = ( ret.field1 & 0x40 ) == 0x40;
-                ret.Edge = ( ret.field1 & 0x20 ) == 0x20;
-                ret.Glare = ( ret.field1 & 0x10 ) == 0x10;
-                ret.Multiline = ( ret.field1 & 0x08 ) == 0x08;
-                ret.Ellipsis = ( ret.field1 & 0x04 ) == 0x04;
-                ret.Paragraph = ( ret.field1 & 0x02 ) == 0x02;
-                ret.Emboss = ( ret.field1 & 0x01 ) == 0x01;
+                ret.TextFlags = (TextFlags)br.ReadByte();
 
                 ret.SheetType = (SheetType)br.ReadByte();
                 ret.CharSpacing = br.ReadByte();
                 ret.LineSpacing = br.ReadByte();
 
-                ret.Unk2 = br.ReadUInt32();
+                ret.TextFlags2 = (TextFlags2)br.ReadByte();
+                br.ReadBytes( 3 ); // unused
+
                 return ret;
             }
         }
