@@ -200,6 +200,13 @@ public class RawExcelSheet : IExcelSheet
         return !Unsafe.IsNullRef( in rowIndexRef );
     }
 
+    [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
+    internal T? GetRowOrDefault<T>( uint rowId ) where T : struct, IExcelRow<T>
+    {
+        ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );
+        return Unsafe.IsNullRef( in lookup ) ? null : UnsafeCreateRow<T>( in lookup );
+    }
+
     /// <summary>Gets a row lookup at the given index, if possible.</summary>
     /// <param name="rowId">Index of the desired row.</param>
     /// <returns>Lookup data for the desired row, or a null reference if no corresponding row exists.</returns>
