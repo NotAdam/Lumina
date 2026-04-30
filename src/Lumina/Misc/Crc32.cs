@@ -41,9 +41,24 @@ namespace Lumina.Misc
         /// <returns>The CRC32 of the input data</returns>
         [MethodImpl( MethodImplOptions.AggressiveInlining )]
         public static uint Get( string value, uint crc = CrcInitialSeed )
+            => Get( value.AsSpan(), crc );
+
+        /// <summary>
+        /// Calculate the CRC32 of the given string.
+        /// </summary>
+        /// <param name="value">The value to hash</param>
+        /// <param name="crc">The initial seed/value</param>
+        /// <returns>The CRC32 of the input data</returns>
+        [MethodImpl( MethodImplOptions.AggressiveInlining )]
+        public static uint Get( ReadOnlySpan<char> value, uint crc = CrcInitialSeed )
         {
-            var data = Encoding.UTF8.GetBytes( value );
-            return Get( data, 0, data.Length, crc );
+            Span< byte > bytes  = stackalloc byte[260];
+            int          length;
+            while( !Encoding.UTF8.TryGetBytes( value, bytes, out length ) )
+                bytes = new byte[bytes.Length * 4];
+            bytes[length] = 0;
+            bytes         = bytes[ ..length ];
+            return Get( bytes, 0, length, crc );
         }
         
         /// <summary>
