@@ -122,29 +122,45 @@ namespace Lumina
             Logger = logger ?? throw new ArgumentNullException( nameof( logger ) );
         }
 
+        /// <inheritdoc cref="ParseFilePath(ReadOnlySpan{char})"/>
+        public static ParsedFilePath? ParseFilePath( string path )
+            => ParseFilePath( path.AsSpan() );
+
         /// <summary>
         /// Parses a game filesystem path and extracts information and hashes the path provided. 
         /// </summary>
         /// <param name="path">A game filesystem path</param>
         /// <returns>A <see cref="ParsedFilePath"/> which contains extracted info from the path, along with the hashes used to access the file index</returns>
-        public static ParsedFilePath? ParseFilePath( string path )
+        public static ParsedFilePath? ParseFilePath( ReadOnlySpan<char> path )
         {
-            if( string.IsNullOrWhiteSpace( path ) )
+            if( path.IsWhiteSpace() )
                 return null;
             
             // validate path slightly
             if( path[ ^1 ] == '/' )
                 return null;
 
-            path = path.ToLowerInvariant().Trim();
-            
-            var pathParts = path.Split( '/' );
-            var category = pathParts.First();
+            // Game paths can not be longer than MAX_PATH.
+            if( path.Length >= 260 )
+                return null;
 
-            var hash = GetFileHash( path );
-            var hash2 = Crc32.Get( path );
+            // Has to have at least one folder.
+            var directorySplit = path.LastIndexOf( '/' );
+            if( directorySplit < 0 )
+                return null;
 
-            var repo = pathParts[ 1 ];
+            Span<char> lowerPath = stackalloc char[260];
+            var length = path.ToLowerInvariant( lowerPath );
+            lowerPath[length] = '\0';
+            lowerPath         = lowerPath[ ..length ];
+            lowerPath         = lowerPath.Trim();
+
+            var hash           = GetFileHash( lowerPath[..directorySplit], lowerPath[(directorySplit + 1)..] );
+            var hash2          = Crc32.Get( lowerPath );
+
+            var                pathParts = lowerPath.Split( '/' );
+            ReadOnlySpan<char> category  = pathParts.MoveNext() ? lowerPath[pathParts.Current] : [];
+            ReadOnlySpan<char> repo      = pathParts.MoveNext() ? lowerPath[pathParts.Current] : [];
             // todo: supports up to ex9, so we've got another ~11 years before this breaks
             if( repo[ 0 ] != 'e' || repo[ 1 ] != 'x' || !char.IsDigit( repo[ 2 ] ) )
             {
@@ -153,11 +169,11 @@ namespace Lumina
 
             return new ParsedFilePath
             {
-                Category = category,
+                Category = category.ToString(),
                 IndexHash = hash,
                 Index2Hash = hash2,
-                Repository = repo,
-                Path = path
+                Repository = repo.ToString(),
+                Path = lowerPath.ToString(),
             };
         }
 
@@ -254,11 +270,7 @@ namespace Lumina
             return null;
         }
 
-        /// <summary>
-        /// Check if a file exists anywhere by checking whether the hash exists in any index
-        /// </summary>
-        /// <param name="path">The full path of the file</param>
-        /// <returns>True if the file exists</returns>
+        /// <inheritdoc cref="FileExists(ReadOnlySpan{char})"/>
         public bool FileExists( string path )
         {
             var parsedPath = ParseFilePath( path );
@@ -274,17 +286,51 @@ namespace Lumina
         }
 
         /// <summary>
+        /// Check if a file exists anywhere by checking whether the hash exists in any index
+        /// </summary>
+        /// <param name="path">The full path of the file</param>
+        /// <returns>True if the file exists</returns>
+        public bool FileExists( ReadOnlySpan<char> path )
+        {
+            var parsedPath = ParseFilePath( path );
+            if( parsedPath == null )
+                return false;
+
+            if( Repositories.TryGetValue( parsedPath.Repository, out var repo ) )
+            {
+                return repo.FileExists( parsedPath.Category, parsedPath );
+            }
+
+            return false;
+        }
+
+        /// <inheritdoc cref="GetFileHash(ReadOnlySpan{char})"/>
+        public static UInt64 GetFileHash( string path )
+            => GetFileHash( path.AsSpan() );
+
+        /// <summary>
         /// Returns the index variant of a file hash
         /// </summary>
         /// <param name="path">The full path of the file</param>
         /// <returns>A U64 containing a split hash of the folder and file CRC32s</returns>
-        public static UInt64 GetFileHash( string path )
+        public static UInt64 GetFileHash( ReadOnlySpan<char> path )
         {
-            var pathParts = path.Split( '/' );
-            var filename = pathParts[ ^1 ];
-            var folder = path.Substring( 0, path.LastIndexOf( '/' ) );
+            var directorySplit = path.LastIndexOf( '/' );
+            if( directorySplit < 0 )
+                return Crc32.Get( path );
 
-            return (UInt64) Crc32.Get( folder ) << 32 | Crc32.Get( filename );
+            return GetFileHash( path[..directorySplit] ) << 32 | Crc32.Get( path[(directorySplit + 1)..] );
+        }
+
+        /// <summary>
+        /// Returns the index variant of a file hash
+        /// </summary>
+        /// <param name="folder">The full path of the directory the file is in without trailing '/'.</param>
+        /// <param name="filename">The file name with extension.</param>
+        /// <returns>A U64 containing a split hash of the folder and file CRC32s</returns>
+        public static UInt64 GetFileHash( ReadOnlySpan<char> folder, ReadOnlySpan<char> filename )
+        {
+            return (UInt64)Crc32.Get( folder ) << 32 | Crc32.Get( filename );
         }
 
         /// <summary>Loads an <see cref="ExcelSheet{T}"/>. Returns <see langword="null"/> if the sheet does not exist, has an invalid column hash or unsupported variant, or was requested with an unsupported language.</summary>
