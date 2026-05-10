@@ -174,7 +174,7 @@ namespace Lumina.Models.Materials
             };
         }
         
-        [GeneratedRegex(@"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_(?:\w{3}(?:_\w)|(?:\w))\.mtrl")]
+        [GeneratedRegex(@"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_(?:\w|_)+\.mtrl")]
         private static partial Regex MatNameRegex();
         
         
