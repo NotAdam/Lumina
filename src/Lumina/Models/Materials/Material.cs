@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using Lumina.Data;
 using Lumina.Data.Files;
@@ -137,6 +138,12 @@ namespace Lumina.Models.Materials
             return this;
         }
 
+        /// <inheritdoc cref="ResolveRelativeMaterialPath(string,int,bool)"/>
+        /// <remarks>This overload is present to maintain compatibility with already compiled binaries and will eventually be removed.</remarks>
+        [OverloadResolutionPriority( 0 )]
+        public static string? ResolveRelativeMaterialPath( string relativePath, int variantId )
+            => ResolveRelativeMaterialPath( relativePath, variantId, true );
+
         /// <summary>
         /// Resolves a relative material path in the form <c>/mt_c0101e0001_top_a.mtrl</c>
         /// into its full path, <c>chara/equipment/e0001/material/v{variantId}/mt_c0101e0001_top_a.mtrl</c>.
@@ -145,20 +152,22 @@ namespace Lumina.Models.Materials
         /// </summary>
         /// <param name="relativePath">The relative path of the provided material.</param>
         /// <param name="variantId">The variant to use in material resolution.</param>
+        /// <param name="strictSuffixValidation">Whether to strictly validate suffixes. If dealing with mods, you may want to turn this off.</param>
         /// <returns>The resolved, absolute path to the requested material, or null if unsuccessful.</returns>
-        public static string? ResolveRelativeMaterialPath( string relativePath, int variantId )
+        [OverloadResolutionPriority( 1 )]
+        public static string? ResolveRelativeMaterialPath( string relativePath, int variantId, bool strictSuffixValidation = true )
         {
-            Regex rx = MatNameRegex();
+            Regex rx = strictSuffixValidation ? MatNameRegexStrictSuffix() : MatNameRegexLaxSuffix();
             var result = rx.Match( relativePath );
             if( !result.Success )
                 return null;
 
-            var id1 = result.Groups["id1"].Value[0];
-            var val1 = result.Groups["val1"].Value;
-            var id2 = result.Groups["id2"].Value[0];
-            var val2 = result.Groups["val2"].Value;
+            var id1 = result.Groups[ "id1" ].Value[ 0 ];
+            var val1 = result.Groups[ "val1" ].Value;
+            var id2 = result.Groups[ "id2" ].Value[ 0 ];
+            var val2 = result.Groups[ "val2" ].Value;
 
-            return (id1, id2) switch
+            return ( id1, id2 ) switch
             {
                 ('c', 'a') => $"chara/accessory/a{val2}/material/v{variantId:D4}{relativePath}",
                 ('c', 'b') => $"chara/human/c{val1}/obj/body/b{val2}/material/v{variantId:D4}{relativePath}",
@@ -173,11 +182,14 @@ namespace Lumina.Models.Materials
                 (_, _) => null
             };
         }
-        
-        [GeneratedRegex(@"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_(?:\w|_)+\.mtrl")]
-        private static partial Regex MatNameRegex();
-        
-        
+
+        [GeneratedRegex( @"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_(?:\w{3}_\w|\w)\.mtrl$" )]
+        private static partial Regex MatNameRegexStrictSuffix();
+
+        [GeneratedRegex( @"/mt_(?'id1'[cdmw])(?'val1'\d{4})(?'id2'[abefhtze])(?'val2'\d{4})_\w+\.mtrl$" )]
+        private static partial Regex MatNameRegexLaxSuffix();
+
+
         /// <summary>
         /// Parse the variant ID out of an existing absolute path to a .mtrl file.
         /// </summary>
