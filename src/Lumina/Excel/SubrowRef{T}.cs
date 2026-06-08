@@ -48,7 +48,7 @@ public struct SubrowRef< T >( ExcelModule? module, uint rowId, Language? languag
     {
         var valueNullable = ValueNullable;
         row = valueNullable ?? default;
-        return valueNullable != null;
+        return valueNullable.HasValue;
     }
 
     /// <summary>

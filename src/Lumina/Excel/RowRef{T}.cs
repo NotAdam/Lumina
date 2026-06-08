@@ -52,7 +52,7 @@ public struct RowRef< T >( ExcelModule? module, uint rowId, Language? language =
     {
         var valueNullable = ValueNullable;
         row = valueNullable ?? default;
-        return valueNullable != null;
+        return valueNullable.HasValue;
     }
 
     /// <summary>
