@@ -35,6 +35,10 @@ namespace Lumina.Data.Parsing.Uld
             Multipurpose = 0x15,
             Map = 0x16,
             Preview = 0x17,
+            HoldButton = 24,
+            Portrait = 25,
+            Unk26 = 26, // related to the XBMItem sheet
+            Unk27 = 27, // related to the XBMContentStageEventMap sheet
         }
 
         public struct ButtonComponent : IComponent
