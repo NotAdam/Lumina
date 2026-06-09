@@ -43,6 +43,14 @@ public struct SubrowRef< T >( ExcelModule? module, uint rowId, Language? languag
     /// </remarks>
     public readonly Language? Language => language ?? module?.Language;
 
+    /// <inheritdoc cref="RowRef{T}.TryGetValue(out T)"/>
+    public bool TryGetValue( out SubrowCollection<T> row )
+    {
+        var valueNullable = ValueNullable;
+        row = valueNullable ?? default;
+        return valueNullable.HasValue;
+    }
+
     /// <summary>
     /// Whether the <see cref="RowId"/> exists in the sheet.
     /// </summary>

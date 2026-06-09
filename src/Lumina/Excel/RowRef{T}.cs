@@ -44,6 +44,18 @@ public struct RowRef< T >( ExcelModule? module, uint rowId, Language? language =
     public readonly Language? Language => language ?? module?.Language;
 
     /// <summary>
+    /// Tries to get the referenced row as a specific row type.
+    /// </summary>
+    /// <param name="row">The output row object.</param>
+    /// <returns><see langword="true"/> if the type is valid, the row exists, and <paramref name="row"/> is written to, and <see langword="false"/> otherwise.</returns>
+    public bool TryGetValue( out T row )
+    {
+        var valueNullable = ValueNullable;
+        row = valueNullable ?? default;
+        return valueNullable.HasValue;
+    }
+
+    /// <summary>
     /// Whether the <see cref="RowId"/> exists in the sheet.
     /// </summary>
     public bool IsValid => Sheet?.HasRow( RowId ) ?? false;
