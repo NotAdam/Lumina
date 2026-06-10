@@ -1106,7 +1106,10 @@ namespace Lumina.Data.Parsing.Layer
             public byte BGMPlayZoneInOnly;
             public byte LiftEnabled;
             public byte HousingEnabled;
-            private byte[] _padding01; //[2]
+            public byte LogFlyingHeightMaxErr;
+            private byte _padding01;
+            public byte MountsAndOrnamentsDisabled;
+            public byte LalafellOnly;
 
             public static MapRangeInstanceObject Read( LuminaBinaryReader br )
             {
@@ -1134,7 +1137,10 @@ namespace Lumina.Data.Parsing.Layer
                 ret.BGMPlayZoneInOnly = br.ReadByte();
                 ret.LiftEnabled = br.ReadByte();
                 ret.HousingEnabled = br.ReadByte();
-                ret._padding01 = br.ReadBytes( 2 );
+                ret.LogFlyingHeightMaxErr = br.ReadByte();
+                ret._padding01 = br.ReadByte();
+                ret.MountsAndOrnamentsDisabled = br.ReadByte();
+                ret.LalafellOnly = br.ReadByte();
 
                 return ret;
             }
