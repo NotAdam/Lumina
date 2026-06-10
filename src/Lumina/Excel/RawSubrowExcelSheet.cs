@@ -46,4 +46,11 @@ public sealed class RawSubrowExcelSheet : RawExcelSheet, ISubrowExcelSheet
         ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );
         return Unsafe.IsNullRef( in lookup ) ? throw new ArgumentOutOfRangeException( nameof( rowId ), rowId, null ) : lookup.SubrowCount;
     }
+
+    [MethodImpl( MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization )]
+    public SubrowCollection<T>? GetRowOrDefault<T>( uint rowId ) where T : struct, IExcelSubrow<T>
+    {
+        ref readonly var lookup = ref GetRowLookupOrNullRef( rowId );
+        return Unsafe.IsNullRef( in lookup ) ? null : new( this, in lookup );
+    }
 }

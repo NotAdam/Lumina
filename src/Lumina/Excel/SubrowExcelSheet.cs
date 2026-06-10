@@ -46,7 +46,7 @@ public sealed class SubrowExcelSheet< T >( RawSubrowExcelSheet sheet ) : ISubrow
     public SubrowCollection< T >? GetRowOrDefault( uint rowId )
     {
         ref readonly var lookup = ref RawSheet.GetRowLookupOrNullRef( rowId );
-        return Unsafe.IsNullRef( in lookup ) ? null : new( this, in lookup );
+        return Unsafe.IsNullRef( in lookup ) ? null : new( RawSheet, in lookup );
     }
 
     /// <summary>
@@ -64,7 +64,7 @@ public sealed class SubrowExcelSheet< T >( RawSubrowExcelSheet sheet ) : ISubrow
             return false;
         }
 
-        row = new( this, in lookup );
+        row = new( RawSheet, in lookup );
         return true;
     }
 
@@ -77,7 +77,7 @@ public sealed class SubrowExcelSheet< T >( RawSubrowExcelSheet sheet ) : ISubrow
     public SubrowCollection< T > GetRow( uint rowId )
     {
         ref readonly var lookup = ref RawSheet.GetRowLookupOrNullRef( rowId );
-        return Unsafe.IsNullRef( in lookup ) ? throw new ArgumentOutOfRangeException( nameof( rowId ), rowId, null ) : new( this, in lookup );
+        return Unsafe.IsNullRef( in lookup ) ? throw new ArgumentOutOfRangeException( nameof( rowId ), rowId, null ) : new( RawSheet, in lookup );
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public sealed class SubrowExcelSheet< T >( RawSubrowExcelSheet sheet ) : ISubrow
         ArgumentOutOfRangeException.ThrowIfNegative( rowIndex );
         ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual( rowIndex, RawSheet.OffsetLookupTable.Length );
 
-        return new( this, in RawSheet.UnsafeGetRowLookupAt( rowIndex ) );
+        return new( RawSheet, in RawSheet.UnsafeGetRowLookupAt( rowIndex ) );
     }
 
     /// <summary>
@@ -179,7 +179,7 @@ public sealed class SubrowExcelSheet< T >( RawSubrowExcelSheet sheet ) : ISubrow
     public bool HasRow( uint rowId ) => RawSheet.HasRow( rowId );
 
     /// <inheritdoc/>
-    public bool Contains( SubrowCollection< T > item ) => ReferenceEquals( item.Sheet, this ) && RawSheet.HasRow( item.RowId );
+    public bool Contains( SubrowCollection< T > item ) => ReferenceEquals( item.RawSheet, this ) && RawSheet.HasRow( item.RowId );
 
     /// <inheritdoc/>
     public void CopyTo( SubrowCollection< T >[] array, int arrayIndex )
@@ -189,7 +189,7 @@ public sealed class SubrowExcelSheet< T >( RawSubrowExcelSheet sheet ) : ISubrow
         if( Count > array.Length - arrayIndex )
             throw new ArgumentException( "The number of elements in the source list is greater than the available space." );
         foreach( var lookup in RawSheet.OffsetLookupTable )
-            array[ arrayIndex++ ] = new( this, in lookup );
+            array[ arrayIndex++ ] = new( RawSheet, in lookup );
     }
 
     void ICollection< SubrowCollection< T > >.Add( SubrowCollection< T > item ) => throw new NotSupportedException();
@@ -228,7 +228,7 @@ public sealed class SubrowExcelSheet< T >( RawSubrowExcelSheet sheet ) : ISubrow
                 // UnsafeGetRowLookupAt must be called only when the preconditions are validated.
                 // If it is to be called on-demand from get_Current, then it may end up being called with invalid parameters,
                 // so we create the instance in advance here.
-                Current = new( sheet, in sheet.RawSheet.UnsafeGetRowLookupAt( _index ) );
+                Current = new( sheet.RawSheet, in sheet.RawSheet.UnsafeGetRowLookupAt( _index ) );
                 return true;
             }
 
