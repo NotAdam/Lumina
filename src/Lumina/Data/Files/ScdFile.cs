@@ -514,7 +514,7 @@ namespace Lumina.Data.Files
                     audio.AudioDataHeader = oggSeekTableHeader;
                     audio.SeekTable = Reader.ReadUInt32Array( (int)( oggSeekTableHeader.SeekTableSize / 4 ) );
 
-                    Reader.Position = subInfoStartPos + audioBasicDesc.SubInfoSize;
+                    Reader.Position = subInfoStartPos + audioBasicDesc.SubInfoSize - oggSeekTableHeader.OggHeaderSize;
 
                     var oggFile = new byte[ oggSeekTableHeader.OggHeaderSize + audioBasicDesc.Size ];
                     Array.Copy( Reader.ReadBytes( (int)oggSeekTableHeader.OggHeaderSize ), oggFile, oggSeekTableHeader.OggHeaderSize );
