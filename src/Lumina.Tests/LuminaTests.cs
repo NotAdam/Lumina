@@ -34,6 +34,5 @@ public class LuminaTests
         Assert.NotNull( file.GetSound( 0 ) );
         Assert.True( file.TrackDataCount > 0 );
         Assert.NotNull( file.GetTrack( 0 ) );
-
     }
 }
