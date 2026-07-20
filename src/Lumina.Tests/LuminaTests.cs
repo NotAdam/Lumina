@@ -1,3 +1,4 @@
+using Lumina.Data.Files;
 using Xunit;
 
 namespace Lumina.Tests;
@@ -17,5 +18,21 @@ public class LuminaTests
         Assert.Equal( category, parsed.Category );
         Assert.Equal( repo, parsed.Repository );
         Assert.Equal( hash, parsed.IndexHash );
+    }
+
+    [RequiresGameInstallationFact]
+    public void ScdFilesAreLoadedCorrectly()
+    {
+        var gameData = RequiresGameInstallationFact.CreateGameData();
+        var file = gameData.GetFile<ScdFile>( "music/ex1/bgm_ex1_alex01.scd" );
+
+        Assert.NotNull( file );
+        Assert.NotEmpty( file.Data );
+        Assert.True( file.AudioDataCount > 0 );
+        Assert.NotNull( file.GetAudio( 0 ) );
+        Assert.True( file.SoundDataCount > 0 );
+        Assert.NotNull( file.GetSound( 0 ) );
+        Assert.True( file.TrackDataCount > 0 );
+        Assert.NotNull( file.GetTrack( 0 ) );
     }
 }
