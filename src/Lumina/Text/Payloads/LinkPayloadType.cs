@@ -58,6 +58,14 @@ public enum LinkMacroPayloadType
     /// <remarks>Parameters: this, ID in the MKDLore sheet, unknown(0), unknown(0), probably an optional display string.</remarks>
     MKDLore = 0x0D,
 
+    /// <summary>A EventTutorial entry is linked.</summary>
+    /// <remarks>Parameters: this, ID in the EventTutorial sheet, unknown(0), unknown(0), probably an optional display string.</remarks>
+    EventTutorial = 0x0E,
+
+    /// <summary>A Emote entry is linked.</summary>
+    /// <remarks>Parameters: this, ID in the Emote sheet, unknown(0), unknown(0), probably an optional display string.</remarks>
+    Emote = 0x0F,
+
     /// <summary>A link is terminated. Akin to <c>&lt;/a&gt;</c>.</summary>
     /// <remarks>Parameters: this, reserved(0), reserved(0), reserved(0), reserved(&quot;&quot;).</remarks>
     Terminator = 0xCE,
