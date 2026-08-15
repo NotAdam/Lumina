@@ -198,16 +198,6 @@ public sealed partial class SeStringBuilder
     /// <summary>Adds the given SeString.</summary>
     /// <param name="value">Text to add.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
-    [Obsolete( "Use ReadOnlySeString instead." )]
-    public SeStringBuilder Append( SeString value )
-    {
-        GetStringStream().Write( value.RawData );
-        return this;
-    }
-
-    /// <summary>Adds the given SeString.</summary>
-    /// <param name="value">Text to add.</param>
-    /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder Append( ReadOnlySeString value )
     {
         GetStringStream().Write( value.Data.Span );

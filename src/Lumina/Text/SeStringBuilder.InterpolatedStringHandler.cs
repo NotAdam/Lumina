@@ -681,28 +681,6 @@ public sealed partial class SeStringBuilder
         }
 
         /// <inheritdoc cref="AppendFormatted{T}(T)"/>
-        [Obsolete( "Use ReadOnlySeString instead." )]
-        public void AppendFormatted( SeString value ) => AppendFormatted( value, 0, null );
-
-        /// <inheritdoc cref="AppendFormatted{T}(T, string?)"/>
-        [Obsolete( "Use ReadOnlySeString instead." )]
-        public void AppendFormatted( SeString value, string? format ) => AppendFormatted( value, 0, format );
-
-        /// <inheritdoc cref="AppendFormatted{T}(T, int)"/>
-        [Obsolete( "Use ReadOnlySeString instead." )]
-        public void AppendFormatted( SeString value, int alignment ) => AppendFormatted( value, alignment, null );
-
-        /// <inheritdoc cref="AppendFormatted{T}(T, int, string?)"/>
-        [Obsolete( "Use ReadOnlySeString instead." )]
-        public void AppendFormatted( SeString value, int alignment, string? format )
-        {
-            _ = format;
-            var prevLen = Builder.GetStringStream().Length;
-            Builder.Append( value );
-            FixAlignment( prevLen, alignment );
-        }
-
-        /// <inheritdoc cref="AppendFormatted{T}(T)"/>
         public void AppendFormatted( ReadOnlySpan< byte > value ) => AppendFormatted( value, 0, null );
 
         /// <inheritdoc cref="AppendFormatted{T}(T, string?)"/>
