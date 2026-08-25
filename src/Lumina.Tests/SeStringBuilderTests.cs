@@ -335,13 +335,8 @@ public class SeStringBuilderTests
                 .ToReadOnlySeString(),
             [ 15 ] = ssb
                 .Clear()
-                .BeginMacro( MacroCode.If )
-                .BeginBinaryExpression( ExpressionType.Equal )
-                .AppendGlobalNumberExpression( 78 )
-                .AppendIntExpression( 99 )
-                .EndExpression()
-                .AppendStringExpression( "Online ID" )
-                .AppendStringExpression( "Gamertag" )
+                .BeginMacro( MacroCode.SwitchPlatform )
+                .AppendIntExpression( 381 )
                 .EndMacro()
                 .Append( ": "u8 )
                 .BeginMacro( MacroCode.String )

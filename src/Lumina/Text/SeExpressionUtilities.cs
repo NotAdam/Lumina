@@ -387,12 +387,19 @@ public static class SeExpressionUtilities
     /// <summary>Calculates the number of bytes required to encode the given value as a SeString expression.</summary>
     /// <param name="value">The value.</param>
     /// <returns>The required number of bytes.</returns>
-    public static int CalculateLengthUInt( uint value ) => Expressions.IntegerExpression.CalculateSize( value );
-
-    /// <summary>Calculates the number of bytes required to encode the given value as a SeString expression.</summary>
+    public static int CalculateLengthUInt( uint value )
+    {
+        if( value < 0xCF )
+            return 1;
+        return 1
+               + ( ( value & 0xFF000000 ) == 0 ? 0 : 1 )
+               + ( ( value & 0x00FF0000 ) == 0 ? 0 : 1 )
+               + ( ( value & 0x0000FF00 ) == 0 ? 0 : 1 )
+               + ( ( value & 0x000000FF ) == 0 ? 0 : 1 );
+    }
     /// <param name="value">The value.</param>
     /// <returns>The required number of bytes.</returns>
-    public static int CalculateLengthInt( int value ) => Expressions.IntegerExpression.CalculateSize( unchecked( (uint) value ) );
+    public static int CalculateLengthInt( int value ) => CalculateLengthUInt( unchecked( (uint) value ) );
 
     /// <summary>Calculates the number of bytes required to encode the given value as a SeString expression.</summary>
     /// <param name="value">The value.</param>

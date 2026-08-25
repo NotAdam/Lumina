@@ -5,7 +5,7 @@ using Lumina.Text.Payloads;
 
 namespace Lumina.Text;
 
-/// <summary>A builder for <see cref="SeString"/>.</summary>
+/// <summary>A builder for <see cref="ReadOnlySeString"/>.</summary>
 public sealed partial class SeStringBuilder
 {
     /// <summary>Appends a BGRA integer calculated from RGBA values as an expression.</summary>

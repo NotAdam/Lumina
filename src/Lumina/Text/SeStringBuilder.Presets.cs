@@ -5,7 +5,7 @@ using Lumina.Text.ReadOnly;
 
 namespace Lumina.Text;
 
-/// <summary>A builder for <see cref="SeString"/>.</summary>
+/// <summary>A builder for <see cref="ReadOnlySeString"/>.</summary>
 public sealed partial class SeStringBuilder
 {
     /// <summary>Appends a local number unary expression.</summary>
