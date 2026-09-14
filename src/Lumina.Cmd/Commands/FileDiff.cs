@@ -23,10 +23,7 @@ namespace Lumina.Cmd.Commands
         public ValueTask ExecuteAsync( IConsole console )
         {
             var co = console.Output;
-            var opts = new LuminaOptions
-            {
-                CacheFileResources = false
-            };
+            var opts = new LuminaOptions();
 
             var ol = new GameData( Path, opts );
             var nl = new GameData( NewPath, opts );
@@ -48,7 +45,7 @@ namespace Lumina.Cmd.Commands
                     return;
                 }
 
-                if( oldMeta.Value.RawFileSize != newMeta.Value.RawFileSize )
+                if( oldMeta.Value.UncompressedFileSize != newMeta.Value.UncompressedFileSize )
                 {
                     co.WriteLine( $"size mismatch: {path}" );
                     return;

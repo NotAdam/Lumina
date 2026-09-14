@@ -1,9 +1,9 @@
 using System.IO;
+using System.IO.Hashing;
 using System.Runtime.CompilerServices;
 using Lumina.Data.Attributes;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
-using Lumina.Misc;
 
 namespace Lumina.Data.Files.Excel
 {
@@ -59,9 +59,7 @@ namespace Lumina.Data.Files.Excel
         public uint GetColumnsHash()
         {
             // 32 is size of header, can't unsafe because of non-fixed arrays
-            var span = DataSpan.Slice( 32, Unsafe.SizeOf< ExcelColumnDefinition >() * Header.ColumnCount );
-
-            return Crc32.Get( span );
+            return ~Crc32.HashToUInt32( Reader.ReadRawOffsetData( 32, Unsafe.SizeOf<ExcelColumnDefinition>() * Header.ColumnCount ) );
         }
 
         public string GetColumnsHashString()

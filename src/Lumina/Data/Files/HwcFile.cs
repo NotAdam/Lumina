@@ -9,6 +9,8 @@ namespace Lumina.Data.Files
         public const int Width = 64;
         public const int Height = 64;
 
+        public byte[] Data { get; private set; }
+
         public override void LoadFile()
         {
             // Format should be in ABGR (or possibly ARGB?)

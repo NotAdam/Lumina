@@ -403,9 +403,9 @@ namespace Lumina.Data.Parsing.Tex.Buffers
             int depth,
             int[] mipmapAllocations,
             byte[] buffer,
-            PlatformId platformId )
+            PlatformType platformId )
         {
-            if( platformId == PlatformId.PS3 )
+            if( platformId == PlatformType.PS3 )
             {
                 switch( format )
                 {
@@ -532,7 +532,7 @@ namespace Lumina.Data.Parsing.Tex.Buffers
                 TexFile.Attribute.TextureType2DArray => header.ArraySize,
                 _ => 1,
             };
-            return FromTextureFormat( header.Type, header.Format, header.Width, header.Height, nd, mipmapAllocations, buffer, reader.PlatformId );
+            return FromTextureFormat( header.Type, header.Format, header.Width, header.Height, nd, mipmapAllocations, buffer, reader.Platform );
         }
     }
 }

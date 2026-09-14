@@ -35,7 +35,7 @@ namespace Lumina.Data.Files
                 imc.VfxId = br.ReadByte();
                 imc._MaterialAnimationIdMask = br.ReadByte();
 
-                if( br.PlatformId == Structs.PlatformId.PS3 )
+                if( br.Platform == PlatformType.PS3 )
                 {
                     imc._AttributeAndSound = (ushort)( ( imc._AttributeAndSound << 10 ) | ( imc._AttributeAndSound >> 6 ) );
                     imc._MaterialAnimationIdMask = (byte)( imc._MaterialAnimationIdMask >> 4 );

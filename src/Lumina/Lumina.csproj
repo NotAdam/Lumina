@@ -28,6 +28,8 @@
 
     <ItemGroup>
         <PackageReference Include="BCnEncoder.Net" Version="2.2.1" />
+        <PackageReference Include="DotNext.Unsafe" Version="5.16.0" />
+        <PackageReference Include="System.IO.Hashing" Version="9.0.0" />
         <PackageReference Include="Microsoft.Extensions.ObjectPool" Version="10.0.0" />
         <PackageReference Include="MinVer" Version="6.0.0">
           <PrivateAssets>all</PrivateAssets>

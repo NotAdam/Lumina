@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using Lumina.Data.Attributes;
 
@@ -18,7 +19,7 @@ namespace Lumina.Data.Files.Excel
 
         public ExcelListFile()
         {
-            ExdMap = new Dictionary< string, int >();
+            ExdMap = [];
         }
 
         public override void LoadFile()
