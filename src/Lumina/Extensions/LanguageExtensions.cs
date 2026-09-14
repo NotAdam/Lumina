@@ -17,6 +17,7 @@ public static class LanguageExtensions
             Language.ChineseSimplified => "chs",
             Language.ChineseTraditional => "cht",
             Language.Korean => "ko",
+            Language.TraditionalChinese => "tc",
             _ => throw new ArgumentOutOfRangeException( nameof( language ), language, null )
         };
     }
