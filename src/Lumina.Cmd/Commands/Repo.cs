@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using CliFx;
@@ -18,45 +19,47 @@ namespace Lumina.Cmd.Commands
 
         public ValueTask ExecuteAsync( IConsole console )
         {
-            var lumina = new GameData( DataPath );
+            throw new NotImplementedException();
 
-            var totalFiles = 0;
+            //var lumina = new GameData( DataPath );
 
-            foreach( var repo in lumina.Repositories.Select( r => r.Value ) )
-            {
-                console.Output.WriteLine( $"Repository: {repo.Name.Data()}" );
-                console.Output.WriteLine( $"Version: {repo.Version.Data()}" );
+            //var totalFiles = 0;
 
-                var repoFileCount = 0;
+            //foreach( var repo in lumina.Repositories.Select( r => r.Value ) )
+            //{
+            //console.Output.WriteLine( $"Repository: {repo.Name.Data()}" );
+            //console.Output.WriteLine( $"Version: {repo.Version.Data()}" );
 
-                foreach( var cat in repo.Categories )
-                {
-                    if( cat.Value.Count == 0 )
-                        continue;
+            //var repoFileCount = 0;
 
-                    var name = Repository.CategoryIdToNameMap[ cat.Key ];
+            //foreach( var cat in repo.Categories )
+            //{
+            //if( cat.Value.Count == 0 )
+            //continue;
 
-                    console.Output.WriteLine( $" Category: {name.Data()}" );
+            //var name = Repository.CategoryIdToNameMap[ cat.Key ];
 
-                    var fileCount = 0;
+            //console.Output.WriteLine( $" Category: {name.Data()}" );
 
-                    foreach( var dat in cat.Value )
-                    {
-                        console.Output.WriteLine( $"  - dat: {dat.Chunk.Data()} files: {dat.IndexHashTableEntries.Count}" );
-                        fileCount += dat.IndexHashTableEntries.Count;
-                    }
+            //var fileCount = 0;
 
-                    totalFiles += fileCount;
-                    repoFileCount += fileCount;
-                }
+            //foreach( var dat in cat.Value )
+            //{
+            //console.Output.WriteLine( $"  - dat: {dat.Chunk.Data()} files: {dat.IndexHashTableEntries.Count}" );
+            //fileCount += dat.IndexHashTableEntries.Count;
+            //}
 
-                console.Output.WriteLine( $"repo filecount: {repoFileCount.Data()}" );
-            }
+            //totalFiles += fileCount;
+            //repoFileCount += fileCount;
+            //}
 
-            console.Output.WriteLine();
-            console.Output.WriteLine( $"total filecount: {totalFiles.Data()}" );
+            //console.Output.WriteLine( $"repo filecount: {repoFileCount.Data()}" );
+            //}
 
-            return default;
+            //console.Output.WriteLine();
+            //console.Output.WriteLine( $"total filecount: {totalFiles.Data()}" );
+
+            //return default;
         }
     }
 }

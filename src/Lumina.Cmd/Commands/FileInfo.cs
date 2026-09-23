@@ -4,6 +4,7 @@ using CliFx;
 using CliFx.Attributes;
 using CliFx.Infrastructure;
 using Lumina.Data;
+using Lumina.Extensions;
 using Lumina.Data.Files;
 using Lumina.Data.Files.Excel;
 
@@ -61,8 +62,8 @@ namespace Lumina.Cmd.Commands
             var co = console.Output;
 
             co.WriteLine( $"File info ({file.GetType().FullName.Data()})" );
-            co.WriteLine( $" path: {file.FilePath.Path.Data()}" );
-            co.WriteLine( $" repo: {file.FilePath.Repository.Data()} cat: {file.FilePath.Category.Data()}" );
+            co.WriteLine( $" path: {file.FilePath?.Path.Data()}" );
+            co.WriteLine( $" repo: {file.FilePath?.Repository.Data()} cat: {file.FilePath?.Category.GetName().Data()}" );
             co.WriteLine( $" size: {file.Data.Length.Data()}" );
 
             switch( file )

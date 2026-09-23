@@ -13,6 +13,7 @@ using Lumina.Excel.Exceptions;
 using System.Collections.Frozen;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace Lumina.Excel;
 
@@ -56,13 +57,15 @@ public class ExcelModule
     {
         GameData = gameData;
 
+        var sw = Stopwatch.StartNew();
+
         var files = GameData.GetFile< ExcelListFile >( "exd/root.exl" ) ??
             throw new FileNotFoundException( "Unable to load exd/root.exl!" );
 
-        GameData.Logger?.Information( "got {ExltEntryCount} exlt entries", files.ExdMap.Count );
+        GameData.Options.Logger?.Information( $"Got {files.ExdMap.Count} exd entries" );
 
         DefinedSheetCache = files.ExdMap.Keys
-            .Select( name => ( Name: name, Header: GameData.GetFile< ExcelHeaderFile >( $"exd/{name}.exh" ) ) )
+            .Select( name => ( Name: name, Header: GameData.TryGetFile< ExcelHeaderFile >( $"exd/{name}.exh" ) ) )
             .Where( sheet => sheet.Header is not null )
             .ToFrozenDictionary(
                 sheet => sheet.Name,
@@ -70,6 +73,9 @@ public class ExcelModule
                 StringComparer.OrdinalIgnoreCase
             );
         AdhocSheetCache = new( StringComparer.OrdinalIgnoreCase );
+
+        sw.Stop();
+        GameData.Options.Logger?.Information( $"Initialized {DefinedSheetCache.Count} sheets in {sw.Elapsed.TotalMilliseconds:0.00}ms" );
     }
 
     /// <summary>Loads an <see cref="ExcelSheet{T}"/>.</summary>

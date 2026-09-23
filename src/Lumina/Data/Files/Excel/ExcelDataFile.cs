@@ -1,28 +1,26 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Buffers.Binary;
+using System.Runtime.InteropServices;
 using Lumina.Data.Attributes;
 using Lumina.Data.Structs.Excel;
-using Lumina.Extensions;
 
 namespace Lumina.Data.Files.Excel
 {
     [FileExtension( ".exd" )]
     public class ExcelDataFile : FileResource
     {
-        public ExcelDataFile()
-        {
-        }
-
         public ExcelDataHeader Header { get; protected set; }
 
-        public Dictionary< uint, ExcelDataOffset > RowData { get; protected set; } = null!;
-        
+        /// <summary>
+        /// The row offsets in this page, in file order.
+        /// </summary>
+        public ExcelDataOffset[] RowData { get; protected set; } = null!;
+
         internal readonly object ReaderLock = new();
 
-        public override unsafe void LoadFile()
+        public override void LoadFile()
         {
             // exd data is always in big endian
             Reader.IsLittleEndian = false;
@@ -35,25 +33,29 @@ namespace Lumina.Data.Files.Excel
                 Header.Magic[ 2 ] != 'D' ||
                 Header.Magic[ 3 ] != 'F' )
             {
-                throw new InvalidDataException( "fucked exd file :(((((" );
+                throw new InvalidDataException( "Invalid EXD file magic" );
             }
 
-            // read offsets
             var offsetSize = Unsafe.SizeOf< ExcelDataOffset >();
             var count = Header.IndexSize / offsetSize;
 
-            var rowDataTmp = new ExcelDataOffset[count];
-            for( int i = 0; i < count; i++ ) rowDataTmp[ i ] = ExcelDataOffset.Read( Reader );
-            
-            RowData = rowDataTmp.ToDictionary( id => id.RowId, row => row );
+            RowData = GC.AllocateUninitializedArray< ExcelDataOffset >( checked( (int)count ) );
+            Reader.BaseStream.ReadExactly( MemoryMarshal.AsBytes( RowData.AsSpan() ) );
+            if( Reader.ConvertEndianness )
+            {
+                var words = MemoryMarshal.Cast< ExcelDataOffset, uint >( RowData.AsSpan() );
+                BinaryPrimitives.ReverseEndianness( words, words );
+            }
         }
 
+        [Obsolete]
         public Span< byte > GetSpanForRow( uint rowId )
         {
-            var offset = (int)RowData[ rowId ].Offset;
-            return DataSpan.Slice( offset );
+            var offset = (int)Array.Find( RowData, row => row.RowId == rowId ).Offset;
+            return DataSpan[ offset.. ];
         }
 
+        [Obsolete]
         public Span< byte > GetSpanForRow( uint rowId, uint subrowId )
         {
             throw new NotImplementedException();

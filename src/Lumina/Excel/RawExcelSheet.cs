@@ -95,7 +95,7 @@ public class RawExcelSheet : IExcelSheet
         Language = language;
         Columns = headerFile.ColumnDefinitions;
         ColumnHash = headerFile.GetColumnsHash();
-        _subrowDataOffset = hasSubrows ? headerFile.Header.DataOffset : (ushort) 0;
+        _subrowDataOffset = hasSubrows ? headerFile.Header.DataOffset : (ushort)0;
         _pages = new ExcelPage[headerFile.DataPages.Length];
         _rowOffsetLookupTable = new RowOffsetLookup[headerFile.Header.RowCount];
 
@@ -105,20 +105,25 @@ public class RawExcelSheet : IExcelSheet
             var pageDef = headerFile.DataPages[ pageIdx ];
             var filePath = Language == Language.None
                 ? $"exd/{name}_{pageDef.StartId}.exd"
-                : $"exd/{name}_{pageDef.StartId}_{LanguageUtil.GetLanguageStr( Language )}.exd";
-            var fileData = module.GameData.GetFile< ExcelDataFile >( filePath );
+                : $"exd/{name}_{pageDef.StartId}_{Language.GetName()}.exd";
+            var fileData = module.GameData.TryGetFile< ExcelDataFile >( filePath );
             if( fileData == null )
                 continue;
 
-            var newPage = _pages[ pageIdx ] = new( this, fileData.Data, headerFile.Header.DataOffset );
+            var pageStream = fileData.Reader.BaseStream;
+            var pageData = GC.AllocateUninitializedArray< byte >( checked( (int)pageStream.Length ) );
+            pageStream.Position = 0;
+            pageStream.ReadExactly( pageData );
+
+            var newPage = _pages[ pageIdx ] = new( this, pageData, headerFile.Header.DataOffset );
 
             // If row count information from exh file is incorrect, cope with it.
-            if( i + fileData.RowData.Count > _rowOffsetLookupTable.Length )
-                Array.Resize( ref _rowOffsetLookupTable, i + fileData.RowData.Count );
+            if( i + fileData.RowData.Length > _rowOffsetLookupTable.Length )
+                Array.Resize( ref _rowOffsetLookupTable, i + fileData.RowData.Length );
 
-            foreach( var rowPtr in fileData.RowData.Values )
+            foreach( var rowPtr in fileData.RowData )
             {
-                var subrowCount = hasSubrows ? newPage.ReadUInt16( rowPtr.Offset + 4 ) : (ushort) 1;
+                var subrowCount = hasSubrows ? newPage.ReadUInt16( rowPtr.Offset + 4 ) : (ushort)1;
                 var rowOffset = rowPtr.Offset + 6;
                 _rowOffsetLookupTable[ i++ ] = new( rowPtr.RowId, rowOffset, pageIdx, subrowCount );
             }
@@ -156,7 +161,7 @@ public class RawExcelSheet : IExcelSheet
                     if( offsetRowId >= MaxUnusedLookupItemCount )
                     {
                         // Discard the unused entries.
-                        Array.Resize( ref _rowIndexLookupArray, unchecked( (int) ( lastLookupArrayRowId + 1 ) ) );
+                        Array.Resize( ref _rowIndexLookupArray, unchecked( (int)( lastLookupArrayRowId + 1 ) ) );
                         break;
                     }
 
@@ -165,7 +170,8 @@ public class RawExcelSheet : IExcelSheet
                 }
 
                 // Skip the items that can be looked up from _rowIndexLookupArray.
-                _rowIndexLookupDict = _rowOffsetLookupTable.Skip( i ).ToFrozenDictionary( static row => (int) row.RowId, _ => i++ );
+                _rowIndexLookupDict = _rowOffsetLookupTable.Skip( i )
+                    .ToFrozenDictionary( static row => (int)row.RowId, _ => i++ );
             }
 
             Count = _rowOffsetLookupTable.Length;
@@ -192,11 +198,11 @@ public class RawExcelSheet : IExcelSheet
         var lookupArrayIndex = unchecked( rowId - _rowIndexLookupArrayOffset );
         if( lookupArrayIndex < _rowIndexLookupArray.Length )
         {
-            var rowIndex = _rowIndexLookupArray.UnsafeAt( (int) lookupArrayIndex );
+            var rowIndex = _rowIndexLookupArray.UnsafeAt( (int)lookupArrayIndex );
             return rowIndex != -1;
         }
 
-        ref readonly var rowIndexRef = ref _rowIndexLookupDict.GetValueRefOrNullRef( (int) rowId );
+        ref readonly var rowIndexRef = ref _rowIndexLookupDict.GetValueRefOrNullRef( (int)rowId );
         return !Unsafe.IsNullRef( in rowIndexRef );
     }
 
@@ -209,13 +215,13 @@ public class RawExcelSheet : IExcelSheet
         var lookupArrayIndex = unchecked( rowId - _rowIndexLookupArrayOffset );
         if( lookupArrayIndex < _rowIndexLookupArray.Length )
         {
-            var rowIndex = _rowIndexLookupArray.UnsafeAt( (int) lookupArrayIndex );
+            var rowIndex = _rowIndexLookupArray.UnsafeAt( (int)lookupArrayIndex );
             if( rowIndex == -1 )
                 return ref Unsafe.NullRef< RowOffsetLookup >();
             return ref UnsafeGetRowLookupAt( rowIndex );
         }
 
-        ref readonly var rowIndexRef = ref _rowIndexLookupDict.GetValueRefOrNullRef( (int) rowId );
+        ref readonly var rowIndexRef = ref _rowIndexLookupDict.GetValueRefOrNullRef( (int)rowId );
         if( Unsafe.IsNullRef( in rowIndexRef ) )
             return ref Unsafe.NullRef< RowOffsetLookup >();
         return ref UnsafeGetRowLookupAt( rowIndexRef );
@@ -253,7 +259,8 @@ public class RawExcelSheet : IExcelSheet
     /// <param name="lookup">Lookup data for the desired row.</param>
     /// <param name="subrowId">Index of the desired subrow.</param>
     /// <returns>A new instance of <typeparamref name="T"/>.</returns>
-    internal T UnsafeCreateSubrow< T >( scoped ref readonly RowOffsetLookup lookup, ushort subrowId ) where T : struct, IExcelSubrow< T > =>
+    internal T UnsafeCreateSubrow< T >( scoped ref readonly RowOffsetLookup lookup, ushort subrowId )
+        where T : struct, IExcelSubrow< T > =>
         T.Create(
             _pages.UnsafeAt( lookup.PageIndex ),
             lookup.Offset + 2 + subrowId * ( _subrowDataOffset + 2u ),

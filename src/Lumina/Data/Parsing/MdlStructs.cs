@@ -40,6 +40,9 @@ namespace Lumina.Data.Parsing
 
         public struct ModelFileHeader
         {
+            public const uint VersionV5 = 0x01000005;
+            public const uint VersionV6 = 0x01000006;
+
             public uint Version;
             public uint StackSize;
             public uint RuntimeSize;
@@ -166,7 +169,8 @@ namespace Lumina.Data.Parsing
             public byte BGChangeMaterialIndex;
             public byte BGCrestChangeMaterialIndex;
             public byte Unknown6;
-            public ushort Unknown7;
+
+            public ushort BoneTableArrayCountTotal;
             public ushort Unknown8;
             public ushort Unknown9;
             private fixed byte Padding[6];
@@ -319,6 +323,20 @@ namespace Lumina.Data.Parsing
             }
         }
 
+        public struct BoneTableSpanStruct
+        {
+            public ushort Offset;
+            public ushort Size;
+
+            public static BoneTableSpanStruct Read( LuminaBinaryReader br )
+            {
+                BoneTableSpanStruct ret = new BoneTableSpanStruct();
+                ret.Offset = br.ReadUInt16();
+                ret.Size = br.ReadUInt16();
+                return ret;
+            }
+        }
+
         public struct ShapeStruct
         {
             public uint StringOffset;
@@ -342,6 +360,7 @@ namespace Lumina.Data.Parsing
             /// This is how Shape Data is tied to each mesh.
             /// </summary>
             public uint MeshIndexOffset;
+
             public uint ShapeValueCount;
             public uint ShapeValueOffset;
         }
@@ -352,6 +371,7 @@ namespace Lumina.Data.Parsing
             /// PROBABLY: Index into the Indices array of a mesh.
             /// </summary>
             public ushort BaseIndicesIndex;
+
             /// <summary>
             /// PROBABLY: Index into the (without transformation probably unused) vertex of a mesh.
             /// </summary>

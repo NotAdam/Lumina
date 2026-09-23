@@ -1,362 +1,234 @@
+using Lumina.Data.Structs.SqPack;
+using Lumina.Misc;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Runtime.CompilerServices;
-using Lumina.Data.Structs;
-using Lumina.Extensions;
+using System.Threading;
 
-namespace Lumina.Data
+namespace Lumina.Data;
+
+public abstract class SqPackStream : Stream
 {
-    public class SqPackStream : IDisposable
+    public MappedFile DatFile { get; }
+
+    public long Offset { get; }
+
+    public SqPackFileHeader Header { get; }
+
+    public override bool CanRead => true;
+    public override bool CanSeek => true;
+    public override bool CanWrite => false;
+    public override long Length => Header.UncompressedFileSize;
+
+    private protected readonly bool BigEndian;
+
+    protected internal SqPackStream( MappedFile datFile, long offset, bool bigEndian = false )
     {
-        public Stream BaseStream { get; }
+        datFile.AddReference();
+        DatFile = datFile;
+        Offset = offset;
+        BigEndian = bigEndian;
+        Header = bigEndian
+            ? datFile.GetAt< SqPackFileHeader >( offset ).ReverseEndianness()
+            : datFile.GetAt< SqPackFileHeader >( offset );
+    }
 
-        protected LuminaBinaryReader Reader { get; }
+    private int _disposed;
 
-        public SqPackStream( FileInfo file ) : this( file.OpenRead(), PlatformId.Win32 )
+    protected override void Dispose( bool disposing )
+    {
+        if( Interlocked.Exchange( ref _disposed, 1 ) == 0 )
+            DatFile.Release();
+
+        base.Dispose( disposing );
+    }
+
+    protected (MappedFile.Segment< byte > Data, int? DecompressedSize) GetBlockInfo( long offset )
+    {
+        var blockOffset = Offset + Header.HeaderSize + offset;
+        var blockHeader = DatFile.GetAt< SqPackBlockHeader >( blockOffset );
+        if( BigEndian )
+            blockHeader = blockHeader.ReverseEndianness();
+        if( blockHeader.DataSize == 0 )
+            throw new InvalidOperationException( "Empty block" );
+
+        var dataOffset = blockOffset + blockHeader.HeaderSize;
+        if( blockHeader.CompressedSize == 32000 ) // Uncompressed
+            return ( DatFile.GetSpanAt< byte >( dataOffset, checked( (int)blockHeader.DataSize ) ), null );
+        else
+            return ( DatFile.GetSpanAt< byte >( dataOffset, checked( (int)blockHeader.CompressedSize ) ),
+                checked( (int)blockHeader.DataSize ) );
+    }
+
+    protected readonly record struct BlockData( byte[]? RawData, int RawLength, MappedFile.Segment< byte >? FileData )
+    {
+        public BlockData( byte[] rawData, int length ) : this( rawData, length, null )
         {
         }
 
-        public SqPackStream( FileInfo file, PlatformId platformId ) : this( file.OpenRead(), platformId )
+        public BlockData( MappedFile.Segment< byte > fileData ) : this( null, 0, fileData )
         {
         }
 
-        public SqPackStream( Stream stream, PlatformId platformId )
-        {
-            BaseStream = stream;
-            Reader = new LuminaBinaryReader( BaseStream, platformId );
-        }
+        public ReadOnlySpan< byte > Span =>
+            RawData == null ? FileData!.Value.Span : RawData.AsSpan( 0, RawLength );
+    }
 
-        public SqPackHeader GetSqPackHeader()
-        {
-            BaseStream.Position = 0;
+    // only one decompressed block is live at a time, so the whole file reuses a single buffer
+    // rather than allocating one byte[] per 16KB block
+    private byte[]? blockBuffer;
 
-            return SqPackHeader.Read( Reader );
-        }
+    protected BlockData GetBlock( long offset )
+    {
+        ( var data, int? uncompSize ) = GetBlockInfo( offset );
+        if( uncompSize is not { } length )
+            return new( data );
 
-        public SqPackFileInfo GetFileMetadata( long offset )
-        {
-            BaseStream.Position = offset;
+        // grow to the largest block seen
+        if( blockBuffer is null || blockBuffer.Length < length )
+            blockBuffer =
+                GC.AllocateUninitializedArray< byte >( Math.Max( length,
+                    blockBuffer is null ? 0 : blockBuffer.Length * 2 ) );
 
-            return Reader.ReadStructure< SqPackFileInfo >();
-        }
+        using UnmanagedMemoryStream stream = data.Stream;
+        using DeflateStream zlibStream = new( stream, CompressionMode.Decompress );
+        zlibStream.ReadExactly( blockBuffer.AsSpan( 0, length ) );
 
-        public T ReadFile< T >( long offset ) where T : FileResource
-        {
-            BaseStream.Position = offset;
+        return new( blockBuffer, length );
+    }
 
-            var fileInfo = Reader.ReadStructure< SqPackFileInfo >();
-            var file = Activator.CreateInstance< T >();
+    private protected long BytePosition { get; set; }
+    private protected int BlockIndex { get; set; }
+    private protected int BlockOffset { get; set; }
+    private protected BlockData? BlockInfo { get; set; }
 
-            // check if we need to read the extended model header or just default to the standard file header
-            if( fileInfo.Type == FileType.Model )
-            {
-                BaseStream.Position = offset;
+    private protected abstract BlockData? GetCurrentBlock();
 
-                var modelFileInfo = Reader.ReadStructure< ModelBlock >();
-
-                file.FileInfo = new LuminaFileInfo
-                {
-                    HeaderSize = modelFileInfo.Size,
-                    Type = modelFileInfo.Type,
-                    BlockCount = modelFileInfo.UsedNumberOfBlocks,
-                    RawFileSize = modelFileInfo.RawFileSize,
-                    Offset = offset,
-
-                    // todo: is this useful?
-                    ModelBlock = modelFileInfo
-                };
-            }
-            else
-            {
-                file.FileInfo = new LuminaFileInfo
-                {
-                    HeaderSize = fileInfo.Size,
-                    Type = fileInfo.Type,
-                    BlockCount = fileInfo.NumberOfBlocks,
-                    RawFileSize = fileInfo.RawFileSize,
-                    Offset = offset
-                };
-            }
-
-            var buffer = new byte[(int)file.FileInfo.RawFileSize];
-            using var ms = new MemoryStream( buffer );
-
-            switch( fileInfo.Type )
-            {
-                case FileType.Empty:
-                    throw new FileNotFoundException( $"The file located at 0x{offset:x} is empty." );
-
-                case FileType.Standard:
-                    ReadStandardFile( file, buffer, ms );
-                    break;
-
-                case FileType.Model:
-                    ReadModelFile( file, buffer, ms );
-                    break;
-
-                case FileType.Texture:
-                    ReadTextureFile( file, buffer, ms );
-                    break;
-
-                default:
-                    throw new NotImplementedException( $"File Type {(UInt32)fileInfo.Type} is not implemented." );
-            }
-
-            file.Data = buffer;
-            if( file.Data.Length != file.FileInfo.RawFileSize )
-            {
-                Debug.WriteLine( "Read data size does not match file size." );
-            }
-
-            file.Reader = new LuminaBinaryReader( file.Data, Reader.PlatformId );
-
-            file.LoadFile();
-
-            return file;
-        }
-
-        private void ReadStandardFile( FileResource resource, byte[] buffer, MemoryStream ms )
-        {
-            var blocks = Reader.ReadStructures< DatStdFileBlockInfos >( (int)resource.FileInfo.BlockCount );
-
-            foreach( var block in blocks )
-            {
-                ReadFileBlock( resource.FileInfo.Offset + resource.FileInfo.HeaderSize + block.Offset, ms, buffer );
-            }
-
-            // reset position ready for reading
-            ms.Position = 0;
-        }
-
-        private unsafe void ReadModelFile( FileResource resource, byte[] buffer, MemoryStream ms )
-        {
-            var mdlBlock = resource.FileInfo.ModelBlock;
-            long baseOffset = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-
-            // 1/1/3/3/3 stack/runtime/vertex/egeo/index
-            // TODO: consider testing if this is more reliable than the Explorer method
-            // of adding mdlBlock.IndexBufferDataBlockIndex[2] + mdlBlock.IndexBufferDataBlockNum[2]
-            // i don't want to move this to that method right now, because i know sometimes the index is 0
-            // but it seems to work fine in explorer...
-            int totalBlocks = mdlBlock.StackBlockNum;
-            totalBlocks += mdlBlock.RuntimeBlockNum;
-            for( int i = 0; i < 3; i++ )
-                totalBlocks += mdlBlock.VertexBufferBlockNum[ i ];
-            for( int i = 0; i < 3; i++ )
-                totalBlocks += mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ];
-            for( int i = 0; i < 3; i++ )
-                totalBlocks += mdlBlock.IndexBufferBlockNum[ i ];
-
-            var compressedBlockSizes = Reader.ReadUInt16Array( totalBlocks );
-            int currentBlock = 0;
-            int stackSize;
-            int runtimeSize;
-            int[] vertexDataOffsets = new int[3];
-            int[] indexDataOffsets = new int[3];
-            int[] vertexBufferSizes = new int[3];
-            int[] indexBufferSizes = new int[3];
-
-            ms.Seek( 0x44, SeekOrigin.Begin );
-
-            Reader.Seek( baseOffset + mdlBlock.StackOffset );
-            long stackStart = ms.Position;
-            for( int i = 0; i < mdlBlock.StackBlockNum; i++ )
-            {
-                long lastPos = Reader.BaseStream.Position;
-                ReadFileBlock( ms, buffer );
-                Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
-                currentBlock++;
-            }
-
-            long stackEnd = ms.Position;
-            stackSize = (int)( stackEnd - stackStart );
-
-            Reader.Seek( baseOffset + mdlBlock.RuntimeOffset );
-            long runtimeStart = ms.Position;
-            for( int i = 0; i < mdlBlock.RuntimeBlockNum; i++ )
-            {
-                long lastPos = Reader.BaseStream.Position;
-                ReadFileBlock( ms, buffer );
-                Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
-                currentBlock++;
-            }
-
-            long runtimeEnd = ms.Position;
-            runtimeSize = (int)( runtimeEnd - runtimeStart );
-
-            for( int i = 0; i < 3; i++ )
-            {
-                if( mdlBlock.VertexBufferBlockNum[ i ] != 0 )
-                {
-                    int currentVertexOffset = (int)ms.Position;
-                    if( i == 0 || currentVertexOffset != vertexDataOffsets[ i - 1 ] )
-                        vertexDataOffsets[ i ] = currentVertexOffset;
-                    else
-                        vertexDataOffsets[ i ] = 0;
-
-                    Reader.Seek( baseOffset + mdlBlock.VertexBufferOffset[ i ] );
-
-                    for( int j = 0; j < mdlBlock.VertexBufferBlockNum[ i ]; j++ )
-                    {
-                        long lastPos = Reader.BaseStream.Position;
-                        vertexBufferSizes[ i ] += (int)ReadFileBlock( ms, buffer );
-                        Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
-                        currentBlock++;
-                    }
-                }
-
-                if( mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ] != 0 )
-                {
-                    for( int j = 0; j < mdlBlock.EdgeGeometryVertexBufferBlockNum[ i ]; j++ )
-                    {
-                        long lastPos = Reader.BaseStream.Position;
-                        ReadFileBlock( ms, buffer );
-                        Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
-                        currentBlock++;
-                    }
-                }
-
-                if( mdlBlock.IndexBufferBlockNum[ i ] != 0 )
-                {
-                    int currentIndexOffset = (int)ms.Position;
-                    if( i == 0 || currentIndexOffset != indexDataOffsets[ i - 1 ] )
-                        indexDataOffsets[ i ] = currentIndexOffset;
-                    else
-                        indexDataOffsets[ i ] = 0;
-
-                    // i guess this is only needed in the vertex area, for i = 0
-                    // Reader.Seek( baseOffset + mdlBlock.IndexBufferOffset[ i ] );
-
-                    for( int j = 0; j < mdlBlock.IndexBufferBlockNum[ i ]; j++ )
-                    {
-                        long lastPos = Reader.BaseStream.Position;
-                        indexBufferSizes[ i ] += (int)ReadFileBlock( ms, buffer );
-                        Reader.Seek( lastPos + compressedBlockSizes[ currentBlock ] );
-                        currentBlock++;
-                    }
-                }
-            }
-
-            ms.Seek( 0, SeekOrigin.Begin );
-            ms.Write( BitConverter.GetBytes( mdlBlock.Version ) );
-            ms.Write( BitConverter.GetBytes( stackSize ) );
-            ms.Write( BitConverter.GetBytes( runtimeSize ) );
-            ms.Write( BitConverter.GetBytes( mdlBlock.VertexDeclarationNum ) );
-            ms.Write( BitConverter.GetBytes( mdlBlock.MaterialNum ) );
-            for( int i = 0; i < 3; i++ )
-                ms.Write( BitConverter.GetBytes( vertexDataOffsets[ i ] ) );
-            for( int i = 0; i < 3; i++ )
-                ms.Write( BitConverter.GetBytes( indexDataOffsets[ i ] ) );
-            for( int i = 0; i < 3; i++ )
-                ms.Write( BitConverter.GetBytes( vertexBufferSizes[ i ] ) );
-            for( int i = 0; i < 3; i++ )
-                ms.Write( BitConverter.GetBytes( indexBufferSizes[ i ] ) );
-            ms.Write( new[] { mdlBlock.NumLods } );
-            ms.Write( BitConverter.GetBytes( mdlBlock.IndexBufferStreamingEnabled ) );
-            ms.Write( BitConverter.GetBytes( mdlBlock.EdgeGeometryEnabled ) );
-            ms.Write( new byte[] { 0 } );
-        }
-
-        private void ReadTextureFile( FileResource resource, byte[] buffer, MemoryStream ms )
-        {
-            int lodBlocks = (int)resource.FileInfo.BlockCount;
-
-            if( Reader.PlatformId == PlatformId.PS3 )
-            {
-                // unknown use
-                _ = Reader.ReadStructures< ReferenceBlockRange >( 3 );
-
-                long originalPos = BaseStream.Position;
-
-                BaseStream.Position = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-                lodBlocks = ( Reader.ReadUInt32() & (uint)Files.TexFile.Attribute.TextureTypeCube ) != 0 ? 18 : 3;
-
-                BaseStream.Position = originalPos;
-            }
-
-            var blocks = Reader.ReadStructures< LodBlock >( lodBlocks );
-
-            // if there is a mipmap header, the comp_offset
-            // will not be 0
-            uint mipMapSize = blocks[ 0 ].CompressedOffset;
-            if( mipMapSize != 0 )
-            {
-                long originalPos = BaseStream.Position;
-
-                BaseStream.Position = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-                ms.Write( Reader.ReadBytes( (int)mipMapSize ) );
-
-                BaseStream.Position = originalPos;
-            }
-
-            // i is for texture blocks, j is 'data blocks'...
-            for( byte i = 0; i < blocks.Count; i++ )
-            {
-                // start from comp_offset
-                long runningBlockTotal = blocks[ i ].CompressedOffset + resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
-
-                for( int j = 0; j < blocks[ i ].BlockCount; j++ )
-                {
-                    ReadFileBlock( runningBlockTotal, ms, buffer, true );
-                    runningBlockTotal += (UInt32)Reader.ReadInt16();
-                }
-            }
-        }
-
-        [MethodImpl( MethodImplOptions.AggressiveInlining )]
-        protected uint ReadFileBlock( MemoryStream dest, byte[] buffer, bool resetPosition = false )
-        {
-            return ReadFileBlock( Reader.BaseStream.Position, dest, buffer, resetPosition );
-        }
-
-        protected uint ReadFileBlock( long offset, MemoryStream dest, byte[] buffer, bool resetPosition = false )
-        {
-            var originalPosition = BaseStream.Position;
-            BaseStream.Position = offset;
-
-            var blockHeader = Reader.ReadStructure< DatBlockHeader >();
-
-            // uncompressed block
-            if( blockHeader.DatBlockType == DatBlockType.Uncompressed )
-            {
-                // fucking .net holy hell
-                Reader.Read( buffer, (int)dest.Position, (int)blockHeader.BlockDataSize );
-            }
-            else
-            {
-                using var zlibStream = new DeflateStream( BaseStream, CompressionMode.Decompress, true );
-
-                var totalRead = 0;
-                while( totalRead < blockHeader.BlockDataSize )
-                {
-                    var bytesRead = zlibStream.Read( buffer, (int)dest.Position + totalRead, (int)blockHeader.BlockDataSize - totalRead );
-                    if( bytesRead == 0 ) { break; }
-                    totalRead += bytesRead;
-                }
-
-                if( totalRead != (int)blockHeader.BlockDataSize )
-                {
-                    throw new SqPackInflateException(
-                        $"failed to inflate block, bytesRead ({totalRead}) != BlockDataSize ({blockHeader.BlockDataSize})"
-                    );
-                }
-            }
-
-            dest.Position += (int)blockHeader.BlockDataSize;
-
-            if( resetPosition )
-            {
-                BaseStream.Position = originalPosition;
-            }
-
-            return blockHeader.BlockDataSize;
-        }
+    /// <summary>
+    /// Restores the cursor position of a <see cref="SqPackStream"/> to its state when the <see cref="CursorScope"/> was created.
+    /// This is useful for temporarily seeking to inspect a block without affecting the caller's current read position.
+    /// </summary>
+    /// <param name="stream">The <see cref="SqPackStream"/> instance whose cursor position will be restored.</param>
+    private protected readonly ref struct CursorScope( SqPackStream stream )
+    {
+        private readonly long position = stream.BytePosition;
+        private readonly int index = stream.BlockIndex;
+        private readonly int offset = stream.BlockOffset;
+        private readonly BlockData? info = stream.BlockInfo;
 
         public void Dispose()
         {
-            Reader?.Dispose();
+            stream.BytePosition = position;
+            stream.BlockIndex = index;
+            stream.BlockOffset = offset;
+            stream.BlockInfo = info;
         }
+    }
+
+    /// <summary>
+    /// Attempts to retrieve a mapped memory segment from the <see cref="SqPackStream"/> for the specified offset and length.
+    /// </summary>
+    /// <param name="offset">The offset within the stream from which to start reading.</param>
+    /// <param name="length">The number of bytes to read from the specified offset.</param>
+    /// <returns>A <see cref="ReadOnlyMemory{byte}"/> representing the mapped memory segment if the range lies within a single uncompressed block; otherwise, returns <see langword="null"/>.</returns>
+    public virtual ReadOnlyMemory< byte >? TryGetMappedMemory( long offset, int length )
+    {
+        using var cursor = new CursorScope( this );
+
+        Seek( offset, SeekOrigin.Begin );
+        if( GetCurrentBlock() is not { FileData: { } mapped } )
+            return null;
+        if( BlockOffset + length > mapped.Length )
+            return null;
+
+        return mapped.Memory.Slice( BlockOffset, length );
+    }
+
+    private protected abstract (int BlockIndex, int BlockOffset) ResolveBlockPosition( long offset );
+
+    public override long Position {
+        get => BytePosition;
+        set => Seek( value, SeekOrigin.Begin );
+    }
+
+    public override int Read( byte[] buffer, int offset, int count ) =>
+        Read( buffer.AsSpan( offset, count ) );
+
+    public override int Read( Span< byte > buffer )
+    {
+        var total = buffer.Length;
+        while( !buffer.IsEmpty )
+        {
+            if( GetCurrentBlock() is not { } blockData )
+                break;
+            var data = blockData.Span;
+            var toCopy = Math.Min( data.Length - BlockOffset, buffer.Length );
+            data.Slice( BlockOffset, toCopy ).CopyTo( buffer );
+            buffer = buffer[ toCopy.. ];
+
+            BlockOffset += toCopy;
+            BytePosition += toCopy;
+            if( BlockOffset >= data.Length )
+            {
+                BlockIndex++;
+                BlockOffset = 0;
+                BlockInfo = null;
+            }
+        }
+
+        return total - buffer.Length;
+    }
+
+    public override long Seek( long offset, SeekOrigin origin )
+    {
+        offset = origin switch
+        {
+            SeekOrigin.Begin => offset,
+            SeekOrigin.Current => BytePosition + offset,
+            SeekOrigin.End => Length + offset,
+            _ => throw new ArgumentOutOfRangeException( nameof( origin ) )
+        };
+
+        ( var idx, BlockOffset ) = ResolveBlockPosition( offset );
+        if( idx != BlockIndex )
+        {
+            BlockIndex = idx;
+            BlockInfo = null;
+        }
+
+        return BytePosition = offset;
+    }
+
+    public override void Flush()
+    {
+        throw new NotSupportedException();
+    }
+
+    public override void SetLength( long value )
+    {
+        throw new NotSupportedException();
+    }
+
+    public override void Write( byte[] buffer, int offset, int count )
+    {
+        throw new NotSupportedException();
+    }
+
+    public static SqPackStream Create( MappedFile datFile, long offset, GameData gameData,
+        in HashedFilePath hashedPath )
+    {
+        var bigEndian = gameData.Options.CurrentPlatform == PlatformType.PS3;
+        var header = datFile.GetAt< SqPackFileHeader >( offset );
+        if( bigEndian )
+            header = header.ReverseEndianness();
+
+        return header.Type switch
+        {
+            SqPackFileType.Empty => new SqPackEmptyStream( datFile, offset, gameData, hashedPath.OldHash ),
+            SqPackFileType.Standard => new SqPackStandardStream( datFile, offset, bigEndian ),
+            SqPackFileType.Model => new SqPackModelStream( datFile, offset ),
+            SqPackFileType.Texture => new SqPackTextureStream( datFile, offset ),
+            _ => throw new InvalidDataException( "Invalid header type" )
+        };
     }
 }

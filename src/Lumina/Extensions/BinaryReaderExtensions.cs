@@ -1,4 +1,5 @@
 using System;
+using Lumina.Data;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -54,7 +55,7 @@ namespace Lumina.Extensions
         /// <returns>An array containing the structures read from the stream</returns>
         public static T[] ReadStructuresAsArray< T >( this BinaryReader br, int count ) where T : struct
         {
-            return br.ReadStructuresAsSpan< T >( count ).ToArray();
+            return [..br.ReadStructuresAsSpan< T >( count )];
         }
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace Lumina.Extensions
 
             br.BaseStream.Position = originalPosition;
 
-            return chars.ToArray();
+            return [.. chars];
         }
         
         public static string ReadStringData( this BinaryReader br )
@@ -117,8 +118,38 @@ namespace Lumina.Extensions
             {
                 chars.Add( current );
             }
-            
-            return Encoding.UTF8.GetString( chars.ToArray(), 0, chars.Count );
+
+            return Encoding.UTF8.GetString( CollectionsMarshal.AsSpan( chars ) );
+        }
+
+        public static byte[] ReadRawOffsetData( this BinaryReader br, Range range )
+        {
+            var (offset, length) = range.GetOffsetAndLength(checked((int)br.BaseStream.Length));
+            return br.ReadRawOffsetData( offset, length );
+        }
+
+        public static byte[] ReadRawOffsetData( this BinaryReader br, long offset, int length )
+        {
+            var pos = br.BaseStream.Position;
+            br.BaseStream.Position = offset;
+            var data = br.ReadBytes( length );
+            br.BaseStream.Position = pos;
+            return data;
+        }
+
+        /// <summary>
+        /// Reads raw data at an offset, without copying it when the reader sits on a mapped SqPack block.
+        /// </summary>
+        /// <param name="br"></param>
+        /// <param name="offset">The offset to read from.</param>
+        /// <param name="length">The number of bytes to read.</param>
+        /// <returns>The data at the given offset.</returns>
+        public static ReadOnlyMemory<byte> ReadRawOffsetMemory( this BinaryReader br, long offset, int length )
+        {
+            if( br.BaseStream is SqPackStream sqpack && sqpack.TryGetMappedMemory( offset, length ) is { } mapped )
+                return mapped;
+
+            return br.ReadRawOffsetData( offset, length );
         }
 
         /// <summary>
