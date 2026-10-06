@@ -7,7 +7,7 @@ using Microsoft.Extensions.ObjectPool;
 
 namespace Lumina.Text;
 
-/// <summary>A builder for <see cref="SeString"/>.</summary>
+/// <summary>A builder for <see cref="ReadOnlySeString"/>.</summary>
 public sealed partial class SeStringBuilder : IResettable
 {
     private readonly List< (StackType Type, int Ident, MemoryStream Stream) > _mss = [];
@@ -99,8 +99,8 @@ public sealed partial class SeStringBuilder : IResettable
     /// <remarks>
     /// <p>Returned view is invalidated upon any mutation to this builder, including <see cref="Clear"/> and <see cref="Append(string)"/>. If
     /// <see cref="SharedPool"/> is being used, then returning to the pool also will invalidate the returned view.</p>
-    /// <p>After the last element (right after the end of the returned memory/span), <c>NUL</c> is present. You can pin the returned value and use the pointer
-    /// to the first element as a pointer to null-terminated string.</p>
+    /// <p>After the last element (right after the end of the returned memory/span), <c>NUL</c> is present. If non-empty, you can pin the returned value and use the pointer
+    /// to the first element as a pointer to null-terminated string. Pinning an empty view yields <c>null</c>.</p>
     /// </remarks>
     public ReadOnlyMemory< byte > GetViewAsMemory()
     {
@@ -124,13 +124,6 @@ public sealed partial class SeStringBuilder : IResettable
     /// <remarks>If the created value does not escape the code scope this function is being called, consider using <see cref="GetViewAsMemory"/> or
     /// <see cref="GetViewAsSpan"/>.</remarks>
     public byte[] ToArray() => GetViewAsMemory().ToArray();
-
-    /// <summary>Gets the SeString as a new instance of <see cref="SeString"/>.</summary>
-    /// <returns>A new instance of <see cref="SeString"/>.</returns>
-    /// <remarks>If the created value does not escape the code scope this function is being called, consider using <see cref="GetViewAsMemory"/> or
-    /// <see cref="GetViewAsSpan"/>.</remarks>
-    [Obsolete( "Use ReadOnlySeString instead." )]
-    public SeString ToSeString() => new( ToArray() );
 
     /// <summary>Gets the SeString as a new instance of <see cref="ReadOnlySeString"/>.</summary>
     /// <returns>A new instance of <see cref="ReadOnlySeString"/>.</returns>

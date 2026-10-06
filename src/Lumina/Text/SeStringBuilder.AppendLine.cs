@@ -126,11 +126,6 @@ public sealed partial class SeStringBuilder
     /// <summary>Adds the given SeString and a line break.</summary>
     /// <param name="value">Text to add.</param>
     /// <returns>A reference of this instance after the append operation is completed.</returns>
-    public SeStringBuilder AppendLine( SeString value ) => Append( value ).AppendNewLine();
-
-    /// <summary>Adds the given SeString and a line break.</summary>
-    /// <param name="value">Text to add.</param>
-    /// <returns>A reference of this instance after the append operation is completed.</returns>
     public SeStringBuilder AppendLine( ReadOnlySeString value ) => Append( value ).AppendNewLine();
 
     /// <summary>Adds the given SeString payload, wrapping in envelope as needed, and a line break.</summary>
