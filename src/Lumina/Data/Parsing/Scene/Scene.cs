@@ -13,13 +13,13 @@ namespace Lumina.Data.Parsing.Scene
 
         public Layer.LayerGroup[] LayerGroups;
 
-        public int Unknown10;
-        public int Unknown14;
-        public int Unknown18;
-        public int Unknown1C;
-        public int Unknown20;
+        public int OffsetGeneral;
+        public int OffsetFilters;
+        public int OffsetTimelines;
+        public int OffsetLayerGroupResources;
+        public int NumLayerGroupResources;
         public int Unknown24;
-        public int Unknown28;
+        public int OffsetAnimationHandlers;
         public int Unknown2C;
         public int Unknown30;
         
@@ -43,13 +43,13 @@ namespace Lumina.Data.Parsing.Scene
             int layerGroupOffset = br.ReadInt32();
             int layerGroupCount = br.ReadInt32();
 
-            ret.Unknown10 = br.ReadInt32();
-            ret.Unknown14 = br.ReadInt32();
-            ret.Unknown18 = br.ReadInt32();
-            ret.Unknown1C = br.ReadInt32();
-            ret.Unknown20 = br.ReadInt32();
+            ret.OffsetGeneral = br.ReadInt32();
+            ret.OffsetFilters = br.ReadInt32();
+            ret.OffsetTimelines = br.ReadInt32();
+            ret.OffsetLayerGroupResources = br.ReadInt32();
+            ret.NumLayerGroupResources = br.ReadInt32();
             ret.Unknown24 = br.ReadInt32();
-            ret.Unknown28 = br.ReadInt32();
+            ret.OffsetAnimationHandlers = br.ReadInt32();
             ret.Unknown2C = br.ReadInt32();
             ret.Unknown30 = br.ReadInt32();
             
