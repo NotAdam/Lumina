@@ -36,12 +36,14 @@ public sealed class ExcelPage
     private ReadOnlyMemory< byte > Data => data;
 
     private readonly ushort dataOffset;
+    private readonly bool hasSubrows;
 
-    internal ExcelPage( RawExcelSheet sheet, byte[] pageData, ushort headerDataOffset )
+    internal ExcelPage( RawExcelSheet sheet, byte[] pageData, ushort headerDataOffset, bool hasSubrows )
     {
         Sheet = sheet;
         data = pageData;
         dataOffset = headerDataOffset;
+        this.hasSubrows = hasSubrows;
     }
 
     // Ignores bounds checks to speed up reading data.
@@ -61,12 +63,12 @@ public sealed class ExcelPage
     /// If the string is a valid RSV string and <see cref="LuminaOptions.RsvResolver"/> is set, the resolved string will be returned if it exists.
     /// </remarks>
     /// <param name="offset">Offset of the field inside the page.</param>
-    /// <param name="structOffset">Offset of the row inside the page.</param>
+    /// <param name="structOffset">Offset of the row (or subrow) inside the page.</param>
     /// <returns>The <see cref="ReadOnlySeString"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public ReadOnlySeString ReadString( nuint offset, nuint structOffset )
     {
-        offset = ReadUInt32( offset ) + structOffset + dataOffset;
+        offset = ReadUInt32( offset ) + GetStringBlockOffset( structOffset );
         var data = Data[ (int) offset.. ];
         var stringLength = data.Span.IndexOf( (byte) 0 );
         var ret = new ReadOnlySeString( data[ ..stringLength ] );
@@ -77,6 +79,18 @@ public sealed class ExcelPage
         }
 
         return ret;
+    }
+
+    // u32 size, u16 count -> default data offset, or if subrows, count * (u16 id, data...)
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    private nuint GetStringBlockOffset( nuint structOffset )
+    {
+        if( !hasSubrows )
+            return structOffset + dataOffset;
+
+        var stride = dataOffset + 2u;
+        var offset = structOffset - 2 - ReadUInt16( structOffset - 2 ) * stride;
+        return offset + ReadUInt16( offset - 2 ) * stride;
     }
 
     /// <summary>

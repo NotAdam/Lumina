@@ -1,6 +1,7 @@
 using Lumina.Excel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -99,5 +100,16 @@ public class ExcelTests
         var row = gameData.GetExcelSheet<GatheringPointBase>()!.GetRow( 30 );
         var name = row.GatheringType.ValueNullable?.Name;
         Assert.Equal( "Harvesting", name );
+    }
+
+    [RequiresGameInstallationFact]
+    public void SubrowStringsUseSharedStringBlock()
+    {
+        var gameData = RequiresGameInstallationFact.CreateGameData();
+
+        var row = gameData.Excel.GetSubrowSheet< RawSubrow >( name: "CustomTalkDefineClient" ).GetRow( 721028 );
+        Assert.Equal(
+            [ "CUTSCENE_STAFF_ROLL_700_BEFORE4", "BGM_STAFF_ROLL_700", "CUTSCENE_STAFF_ROLL_756_BEFORE", "BGM_STAFF_ROLL_756" ],
+            row.Select( subrow => subrow.ReadStringColumn( 0 ).ExtractText() ) );
     }
 }
