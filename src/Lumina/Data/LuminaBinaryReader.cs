@@ -1,14 +1,12 @@
-using Lumina.Data.Parsing;
 using Lumina.Data.Structs;
 using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Lumina.Data
 {
@@ -91,7 +89,7 @@ namespace Lumina.Data
             var data = ReadBytes( Unsafe.SizeOf< T >() );
             
             if( ConvertEndianness )
-                ConvertEndian(typeof(T), data );
+                ConvertEndian( typeof( T ), data );
 
             T structure = MemoryMarshal.Read< T >( data );
             
@@ -99,28 +97,52 @@ namespace Lumina.Data
         }
 
         // this is fucked but it's better than forcing a convert method on every structure ever
-        private static void ConvertEndian(Type type, Span<byte> data, int startOffset = 0)
+        private static void ConvertEndian( Type type, Span< byte > data, int startOffset = 0 )
         {
-            var offset = 0;
-            foreach (var field in type.GetFields())
+            foreach ( var field in type.GetFields( BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic ) )
             {
                 var fieldType = field.FieldType;
-                if (field.IsStatic || fieldType == typeof(string))
-                    continue;
-
-                if (fieldType.IsEnum)
-                    fieldType = Enum.GetUnderlyingType(fieldType);
-
-                var subFields = fieldType.GetFields().Where(subField => subField.IsStatic == false).ToArray();
-                var effectiveOffset = startOffset + offset;
-
-                if (subFields.Length == 0)
-                    data.Slice( effectiveOffset, Marshal.SizeOf( fieldType ) ).Reverse();
+                if ( fieldType.IsEnum )
+                    fieldType = Enum.GetUnderlyingType( fieldType );
+                
+                // small hack to obtain field offset
+                var offset = startOffset + Marshal.ReadInt32( field.FieldHandle.Value + ( IntPtr.Size + 4 ) ) & 0x07FFFFFF;
+                
+                if( fieldType.IsPrimitive )
+                {
+                    data.Slice( offset, SizeOfHelper( fieldType ) ).Reverse();
+                }
                 else
-                    ConvertEndian(fieldType, data, effectiveOffset);
-                offset += Marshal.SizeOf( fieldType );
+                {
+                    var attr = (FixedBufferAttribute?)Attribute.GetCustomAttribute( field, typeof( FixedBufferAttribute ) );
+                    if( attr != null )
+                    {
+                        var fieldSize = SizeOfHelper( attr.ElementType );
+                        if( fieldSize <= 1 )
+                            continue;
+                        
+                        for( var i = 0; i < attr.Length; i++ )
+                        {
+                            data.Slice( offset, fieldSize ).Reverse();
+                            offset += fieldSize;
+                        }
+                    }
+                    else
+                    {
+                        ConvertEndian( fieldType, data, offset );
+                    }
+                }
             }
         }
+
+        private static int SizeOfHelper( Type type ) => Type.GetTypeCode( type ) switch
+        {
+            TypeCode.Boolean or TypeCode.SByte or TypeCode.Byte  => 1,
+            TypeCode.Char or TypeCode.Int16 or TypeCode.UInt16 => 2,
+            TypeCode.Int32 or TypeCode.UInt32 or TypeCode.Single => 4,
+            TypeCode.Int64 or TypeCode.UInt64 or TypeCode.Double => 8,
+            _ => Marshal.SizeOf( type )
+        };
         
         /// <summary>
         /// Reads many structures from the current stream position.
@@ -161,7 +183,7 @@ namespace Lumina.Data
         public Span< T > ReadStructuresAsSpan< T >( int count ) where T : struct
         {
             var tSize = Unsafe.SizeOf< T >();
-            Span<byte> data = ReadBytes( tSize * count );
+            Span< byte > data = ReadBytes( tSize * count );
             
             if( ConvertEndianness )
                 for( var i = 0; i < count; i++ )
