@@ -3,7 +3,6 @@ using Lumina.Extensions;
 using Lumina.Text.ReadOnly;
 using System;
 using System.Buffers.Binary;
-using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -69,7 +68,7 @@ public sealed class ExcelPage
         offset = ReadUInt32( offset ) + structOffset + dataOffset;
         var data = Data[ (int) offset.. ];
         var stringLength = data.Span.IndexOf( (byte) 0 );
-        var ret = new ReadOnlySeString( data[ ..stringLength ] );
+        var ret = ReadOnlySeString.FromTerminatedBufferUnchecked( this.data, (int) offset, stringLength );
         if( ret.IsRsv() && Module.RsvResolver != null )
         {
             if( Module.RsvResolver.Invoke( ret, out var resolvedString ) )
