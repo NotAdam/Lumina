@@ -407,7 +407,7 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
             var subspan = _obj.Data[ _nextIndex.. ];
             switch( subspan[ 0 ] )
             {
-                // A valid SeString never "contains a null byte; it is always the terminator.
+                // A valid SeString never contains a null byte; it is always the terminator.
                 // Take one byte, and consider it as an invalid payload.
                 case 0:
                     Current = new(

@@ -109,6 +109,19 @@ public class ReadOnlySeStringTests
     }
 
     [Fact]
+    public void TextNulTest()
+    {
+        Assert.Throws< ArgumentException >( () => new ReadOnlySeString( "a\0b" ) );
+        Assert.Throws< ArgumentException >( () => ReadOnlySeString.FromText( "a\0b" ) );
+        Assert.Throws< ArgumentException >( () => ReadOnlySeString.FromText( "a\0b"u8 ) );
+
+        // Raw bytes are accepted but validate fails
+        var raw = new ReadOnlySeString( "a\0b"u8 );
+        Assert.Equal( 3, raw.ByteLength );
+        Assert.False( raw.Validate() );
+    }
+
+    [Fact]
     public unsafe void EmptyPinTest()
     {
         ReadOnlySeString[] cases = [ default, new( ""u8 ), new( "" ), new( Array.Empty< byte >() ) ];

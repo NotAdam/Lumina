@@ -63,8 +63,8 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <remarks>Data is copied from <paramref name="data"/>; this function is not allocation-free.</remarks>
     public ReadOnlySeString( ReadOnlySpan< char > data )
     {
-        if( data.IndexOfAny( (char) Stx, (char) Etx ) != -1 )
-            throw new ArgumentException( "STX and ETX cannot be contained in the string.", nameof( data ) );
+        if( data.IndexOfAny( '\0', (char) Stx, (char) Etx ) != -1 )
+            throw new ArgumentException( "NUL, STX and ETX cannot be contained in the string.", nameof( data ) );
 
         // Extra zeroed byte is the null terminator
         var d = new byte[Encoding.UTF8.GetByteCount( data ) + 1];
@@ -281,8 +281,8 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
     public static ReadOnlySeString FromText( ReadOnlySpan< byte > text )
     {
-        if( text.IndexOfAny( Stx, Etx ) != -1 )
-            throw new ArgumentException( "STX and ETX cannot be contained in the string.", nameof( text ) );
+        if( text.IndexOfAny( (byte) 0, Stx, Etx ) != -1 )
+            throw new ArgumentException( "NUL, STX and ETX cannot be contained in the string.", nameof( text ) );
         return new( text );
     }
 
@@ -531,7 +531,7 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
             var subspan = _obj.Data.Span[ _nextIndex.. ];
             switch( subspan[ 0 ] )
             {
-                // A valid SeString never "contains a null byte; it is always the terminator.
+                // A valid SeString never contains a null byte; it is always the terminator.
                 // Take one byte, and consider it as an invalid payload.
                 case 0:
                     Current = (
