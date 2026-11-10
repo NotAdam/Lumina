@@ -82,21 +82,5 @@ public enum ExpressionType : byte
     StackColor = 0xEC,
 
     /// <summary>A SeString preceded by its length is followed.</summary>
-    SeString = 0xff,
-
-    /// <summary>Old name for <see cref="LocalNumber"/>.</summary>
-    [Obsolete( $"Use {nameof( LocalNumber )}." )]
-    IntegerParameter = LocalNumber,
-
-    /// <summary>Old name for <see cref="GlobalNumber"/>.</summary>
-    [Obsolete( $"Use {nameof( GlobalNumber )}." )]
-    PlayerParameter = GlobalNumber,
-
-    /// <summary>Old name for <see cref="LocalString"/>.</summary>
-    [Obsolete( $"Use {nameof( LocalString )}." )]
-    StringParameter = LocalString,
-
-    /// <summary>Old name for <see cref="GlobalString"/>.</summary>
-    [Obsolete( $"Use {nameof( GlobalString )}." )]
-    ObjectParameter = GlobalString,
+    SeString = 0xFF,
 }
