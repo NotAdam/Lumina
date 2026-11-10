@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Lumina.Text.Expressions;
 using Lumina.Text.ReadOnly;
 
 namespace Lumina.Text;
@@ -219,7 +220,7 @@ public static class SeExpressionUtilities
     /// <param name="expressionType">The parsed expression type.</param>
     /// <param name="length">The consumed length.</param>
     /// <returns><c>true</c> on success.</returns>
-    public static bool TryDecodeNullary( ReadOnlyMemory< byte > memory, out byte expressionType, out int length ) =>
+    public static bool TryDecodeNullary( ReadOnlyMemory< byte > memory, out ExpressionType expressionType, out int length ) =>
         TryDecodeNullary( memory.Span, out expressionType, out length );
 
     /// <summary>Parses a placeholder expression.</summary>
@@ -227,10 +228,10 @@ public static class SeExpressionUtilities
     /// <param name="expressionType">The parsed expression type.</param>
     /// <param name="length">The consumed length.</param>
     /// <returns><c>true</c> on success.</returns>
-    public static bool TryDecodeNullary( ReadOnlySpan< byte > span, out byte expressionType, out int length )
+    public static bool TryDecodeNullary( ReadOnlySpan< byte > span, out ExpressionType expressionType, out int length )
     {
-        expressionType = span.IsEmpty ? (byte) 0 : span[ 0 ];
-        length = expressionType is >= 0xD0 and <= 0xDF or 0xEC ? 1 : 0;
+        expressionType = (ExpressionType)( span.IsEmpty ? (byte) 0 : span[ 0 ] );
+        length = expressionType is >= (ExpressionType)0xD0 and <= ExpressionType.Year or ExpressionType.StackColor ? 1 : 0;
         return length != 0;
     }
 
@@ -242,12 +243,12 @@ public static class SeExpressionUtilities
     /// <returns><c>true</c> on success.</returns>
     public static bool TryDecodeUnary(
         ReadOnlyMemory< byte > memory,
-        out byte expressionType,
+        out ExpressionType expressionType,
         out ReadOnlySeExpression operand,
         out int length )
     {
-        expressionType = memory.IsEmpty ? (byte) 0 : memory.Span[ 0 ];
-        if( expressionType is >= 0xE8 and <= 0xEB )
+        expressionType = (ExpressionType)( memory.IsEmpty ? (byte) 0 : memory.Span[ 0 ] );
+        if( expressionType is >= ExpressionType.LocalNumber and <= ExpressionType.GlobalString )
         {
             memory = memory[ 1.. ];
             if( !TryDecodeLength( memory, out length ) || memory.Length < length)
@@ -274,12 +275,12 @@ public static class SeExpressionUtilities
     /// <returns><c>true</c> on success.</returns>
     public static bool TryDecodeUnary(
         ReadOnlySpan< byte > span,
-        out byte expressionType,
+        out ExpressionType expressionType,
         out ReadOnlySeExpressionSpan operand,
         out int length )
     {
-        expressionType = span.IsEmpty ? (byte) 0 : span[ 0 ];
-        if( expressionType is >= 0xE8 and <= 0xEB )
+        expressionType = (ExpressionType)( span.IsEmpty ? (byte) 0 : span[ 0 ] );
+        if( expressionType is >= ExpressionType.LocalNumber and <= ExpressionType.GlobalString )
         {
             span = span[ 1.. ];
             if( !TryDecodeLength( span, out length ) || span.Length < length)
@@ -307,13 +308,13 @@ public static class SeExpressionUtilities
     /// <returns><c>true</c> on success.</returns>
     public static bool TryDecodeBinary(
         ReadOnlyMemory< byte > memory,
-        out byte expressionType,
+        out ExpressionType expressionType,
         out ReadOnlySeExpression operand1,
         out ReadOnlySeExpression operand2,
         out int length )
     {
-        expressionType = memory.IsEmpty ? (byte) 0 : memory.Span[ 0 ];
-        if( expressionType is >= 0xE0 and <= 0xE5 )
+        expressionType = (ExpressionType)( memory.IsEmpty ? (byte) 0 : memory.Span[ 0 ] );
+        if( expressionType is >= ExpressionType.GreaterThanOrEqualTo and <= ExpressionType.NotEqual )
         {
             memory = memory[ 1.. ];
             if( !TryDecodeLength( memory, out length ) || memory.Length < length )
@@ -350,13 +351,13 @@ public static class SeExpressionUtilities
     /// <returns><c>true</c> on success.</returns>
     public static bool TryDecodeBinary(
         ReadOnlySpan< byte > span,
-        out byte expressionType,
+        out ExpressionType expressionType,
         out ReadOnlySeExpressionSpan operand1,
         out ReadOnlySeExpressionSpan operand2,
         out int length )
     {
-        expressionType = span.IsEmpty ? (byte) 0 : span[ 0 ];
-        if( expressionType is >= 0xE0 and <= 0xE5 )
+        expressionType = (ExpressionType)( span.IsEmpty ? (byte) 0 : span[ 0 ] );
+        if( expressionType is >= ExpressionType.GreaterThanOrEqualTo and <= ExpressionType.NotEqual )
         {
             span = span[ 1.. ];
             if( !TryDecodeLength( span, out length ) || span.Length < length )
