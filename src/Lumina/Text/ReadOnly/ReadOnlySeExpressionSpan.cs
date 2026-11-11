@@ -124,14 +124,14 @@ public readonly ref struct ReadOnlySeExpressionSpan
     /// <param name="expressionType">The parsed expression type.</param>
     /// <returns><c>true</c> if successful.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
-    public bool TryGetPlaceholderExpression( out byte expressionType ) => SeExpressionUtilities.TryDecodeNullary( Body, out expressionType, out _ );
+    public bool TryGetPlaceholderExpression( out ExpressionType expressionType ) => SeExpressionUtilities.TryDecodeNullary( Body, out expressionType, out _ );
 
     /// <summary>Attempts to get a paramter expression from this expression.</summary>
     /// <param name="expressionType">The parsed expression type.</param>
     /// <param name="operand">The operand.</param>
     /// <returns><c>true</c> if successful.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
-    public bool TryGetParameterExpression( out byte expressionType, out ReadOnlySeExpressionSpan operand ) =>
+    public bool TryGetParameterExpression( out ExpressionType expressionType, out ReadOnlySeExpressionSpan operand ) =>
         SeExpressionUtilities.TryDecodeUnary( Body, out expressionType, out operand, out _ );
 
     /// <summary>Attempts to get a binary expression from this expression.</summary>
@@ -140,7 +140,7 @@ public readonly ref struct ReadOnlySeExpressionSpan
     /// <param name="operand2">The operand 2.</param>
     /// <returns><c>true</c> if successful.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
-    public bool TryGetBinaryExpression( out byte expressionType, out ReadOnlySeExpressionSpan operand1, out ReadOnlySeExpressionSpan operand2 ) =>
+    public bool TryGetBinaryExpression( out ExpressionType expressionType, out ReadOnlySeExpressionSpan operand1, out ReadOnlySeExpressionSpan operand2 ) =>
         SeExpressionUtilities.TryDecodeBinary( Body, out expressionType, out operand1, out operand2, out _ );
 
     /// <summary>Validates whether this instance of <see cref="ReadOnlySeExpressionSpan"/> is well-formed.</summary>
