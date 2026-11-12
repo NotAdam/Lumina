@@ -141,10 +141,10 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySeString left, ReadOnlySeStringSpan right )
     {
-        var res = new byte[left.ByteLength + right.ByteLength];
+        var res = new byte[left.ByteLength + right.ByteLength + 1];
         left.Data.CopyTo( res );
         right.Data.CopyTo( res.AsSpan( left.ByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -153,10 +153,10 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySeStringSpan left, ReadOnlySeString right )
     {
-        var res = new byte[left.ByteLength + right.ByteLength];
+        var res = new byte[left.ByteLength + right.ByteLength + 1];
         left.Data.CopyTo( res );
         right.Data.CopyTo( res.AsMemory( left.ByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -165,10 +165,10 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySeStringSpan left, ReadOnlySeStringSpan right )
     {
-        var res = new byte[left.ByteLength + right.ByteLength];
+        var res = new byte[left.ByteLength + right.ByteLength + 1];
         left.Data.CopyTo( res );
         right.Data.CopyTo( res.AsSpan( left.ByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -178,10 +178,10 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     public static ReadOnlySeString operator +( ReadOnlySeStringSpan left, ReadOnlySpan< char > right )
     {
         var rnb = Encoding.UTF8.GetByteCount( right );
-        var res = new byte[left.ByteLength + rnb];
+        var res = new byte[left.ByteLength + rnb + 1];
         left.Data.CopyTo( res );
         Encoding.UTF8.GetBytes( right, res.AsSpan( left.Data.Length ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -191,10 +191,10 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     public static ReadOnlySeString operator +( ReadOnlySpan< char > left, ReadOnlySeStringSpan right )
     {
         var lnb = Encoding.UTF8.GetByteCount( left );
-        var res = new byte[lnb + right.ByteLength];
+        var res = new byte[lnb + right.ByteLength + 1];
         Encoding.UTF8.GetBytes( left, res );
         right.Data.CopyTo( res.AsSpan( lnb ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Validates whether this instance of SeString is well-formed.</summary>
@@ -407,7 +407,7 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
             var subspan = _obj.Data[ _nextIndex.. ];
             switch( subspan[ 0 ] )
             {
-                // A valid SeString never "contains a null byte; it is always the terminator.
+                // A valid SeString never contains a null byte; it is always the terminator.
                 // Take one byte, and consider it as an invalid payload.
                 case 0:
                     Current = new(

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using Lumina.Text.Parse;
 using Lumina.Text.Payloads;
@@ -22,38 +23,53 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <summary>ETX, which is used as a sentinel value in a SeString to signify that a macro payload will end.</summary>
     public const byte Etx = 3;
 
+    // Pin target for empty strings
+    private static readonly byte[] EmptyTerminated = [ 0 ];
+
     /// <summary>Read-only byte data for the SeString.</summary>
+    /// <remarks>If non-empty, the byte right after the end is always <c>NUL</c>.</remarks>
     public readonly ReadOnlyMemory< byte > Data;
 
     /// <summary>Initializes a new instance of the <see cref="ReadOnlySeString"/> struct.</summary>
     /// <param name="data">Raw SeString data to copy from.</param>
     /// <remarks>Data is copied from <paramref name="data"/>; this function is not allocation-free.</remarks>
-    public ReadOnlySeString( ReadOnlySpan< byte > data ) => Data = data.ToArray();
+    public ReadOnlySeString( ReadOnlySpan< byte > data ) => Data = CopyTerminated( data );
 
     /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{byte})"/>
-    public ReadOnlySeString( Span< byte > data ) => Data = data.ToArray();
+    public ReadOnlySeString( Span< byte > data ) => Data = CopyTerminated( data );
 
     /// <summary>Initializes a new instance of the <see cref="ReadOnlySeString"/> struct.</summary>
-    /// <param name="data">Raw SeString data.</param>
-    /// <remarks>No further mutations to the underlying data behind <paramref name="data"/> is expected.</remarks>
-    public ReadOnlySeString( ReadOnlyMemory< byte > data ) => Data = data;
+    /// <param name="data">Raw SeString data to copy from.</param>
+    /// <remarks>Data is copied from <paramref name="data"/>, to guarantee <c>NUL</c> termination; this function is not allocation-free.
+    /// Use <see cref="ReadOnlySeStringSpan"/> for a zero-copy view.</remarks>
+    public ReadOnlySeString( ReadOnlyMemory< byte > data ) => Data = CopyTerminated( data.Span );
 
     /// <inheritdoc cref="ReadOnlySeString(ReadOnlyMemory{byte})"/>
-    public ReadOnlySeString( Memory< byte > data ) => Data = data;
+    public ReadOnlySeString( Memory< byte > data ) => Data = CopyTerminated( data.Span );
 
     /// <inheritdoc cref="ReadOnlySeString(ReadOnlyMemory{byte})"/>
-    public ReadOnlySeString( byte[] data ) => Data = data;
+    public ReadOnlySeString( byte[] data ) => Data = CopyTerminated( data );
+
+    /// <summary>Wraps <paramref name="buffer"/> without copying or checking.</summary>
+    /// <remarks><c>buffer[offset + length]</c> must be <c>NUL</c> and <paramref name="buffer"/> must not be mutated afterwards.</remarks>
+    internal ReadOnlySeString( byte[] buffer, int offset, int length )
+    {
+        Debug.Assert( (uint) ( offset + length ) < (uint) buffer.Length && buffer[ offset + length ] == 0, "SeString data must be followed by NUL." );
+        Data = buffer.AsMemory( offset, length );
+    }
 
     /// <summary>Initializes a new instance of the <see cref="ReadOnlySeString"/> struct.</summary>
     /// <param name="data">Raw UTF-16 string data to copy from.</param>
     /// <remarks>Data is copied from <paramref name="data"/>; this function is not allocation-free.</remarks>
     public ReadOnlySeString( ReadOnlySpan< char > data )
     {
-        if( data.IndexOfAny( (char) Stx, (char) Etx ) != -1 )
-            throw new ArgumentException( "STX and ETX cannot be contained in the string.", nameof( data ) );
-        var d = new byte[Encoding.UTF8.GetByteCount( data )];
+        if( data.IndexOfAny( '\0', (char) Stx, (char) Etx ) != -1 )
+            throw new ArgumentException( "NUL, STX and ETX cannot be contained in the string.", nameof( data ) );
+
+        // Extra zeroed byte is the null terminator
+        var d = new byte[Encoding.UTF8.GetByteCount( data ) + 1];
         Encoding.UTF8.GetBytes( data, d );
-        Data = d;
+        Data = d.AsMemory( 0, d.Length - 1 );
     }
 
     /// <inheritdoc cref="ReadOnlySeString(ReadOnlySpan{char})"/>
@@ -126,20 +142,22 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <summary>Gets the read-only byte span view of this instance of <see cref="ReadOnlySeString"/>.</summary>
     /// <param name="s">The string to get a byte span view of.</param>
     /// <returns>The read-only byte span view of <paramref name="s"/>.</returns>
+    /// <remarks>If non-empty, the byte right after the end is <c>NUL</c>. Pinning an empty span yields <c>null</c>. Pin
+    /// <paramref name="s"/> directly instead to receive a span containing a null byte instead.</remarks>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public static implicit operator ReadOnlySpan< byte >( ReadOnlySeString s ) => s.Data.Span;
 
     /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given byte memory view.</summary>
     /// <param name="s">The source byte memory view.</param>
-    /// <returns>A new instance of <see cref="ReadOnlySeString"/> wrapping <paramref name="s"/>.</returns>
-    /// <remarks>The backing data of <paramref name="s"/> is not expected to be mutated once the cast is done.</remarks>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/>.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public static implicit operator ReadOnlySeString( ReadOnlyMemory< byte > s ) => new( s );
 
     /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given byte memory view.</summary>
     /// <param name="s">The source byte memory view.</param>
-    /// <returns>A new instance of <see cref="ReadOnlySeString"/> wrapping <paramref name="s"/>.</returns>
-    /// <remarks>The backing data of <paramref name="s"/> is not expected to be mutated once the cast is done.</remarks>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/>.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public static implicit operator ReadOnlySeString( Memory< byte > s ) => new( s );
 
@@ -159,8 +177,8 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
 
     /// <summary>Creates a new instance of <see cref="ReadOnlySeString"/> struct from the given byte array.</summary>
     /// <param name="s">The source byte array.</param>
-    /// <returns>A new instance of <see cref="ReadOnlySeString"/> wrapping <paramref name="s"/>.</returns>
-    /// <remarks><paramref name="s"/> is not expected to be mutated once the cast is done.</remarks>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> with <paramref name="s"/>.</returns>
+    /// <remarks>Data of <paramref name="s"/> is copied; this function is not allocation-free.</remarks>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public static implicit operator ReadOnlySeString( byte[] s ) => new( s );
 
@@ -226,10 +244,10 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySeString left, ReadOnlySeString right )
     {
-        var res = new byte[left.ByteLength + right.ByteLength];
+        var res = new byte[left.ByteLength + right.ByteLength + 1];
         left.Data.CopyTo( res );
         right.Data.CopyTo( res.AsMemory( left.ByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -239,10 +257,10 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     public static ReadOnlySeString operator +( ReadOnlySeString left, ReadOnlySpan< char > right )
     {
         var rnb = Encoding.UTF8.GetByteCount( right );
-        var res = new byte[left.ByteLength + rnb];
+        var res = new byte[left.ByteLength + rnb + 1];
         left.Data.CopyTo( res );
         Encoding.UTF8.GetBytes( right, res.AsSpan( left.Data.Length ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -252,10 +270,10 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     public static ReadOnlySeString operator +( ReadOnlySpan< char > left, ReadOnlySeString right )
     {
         var lnb = Encoding.UTF8.GetByteCount( left );
-        var res = new byte[lnb + right.ByteLength];
+        var res = new byte[lnb + right.ByteLength + 1];
         Encoding.UTF8.GetBytes( left, res );
         right.Data.CopyTo( res.AsMemory( lnb ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given text in UTF-8.</summary>
@@ -263,8 +281,8 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
     public static ReadOnlySeString FromText( ReadOnlySpan< byte > text )
     {
-        if( text.IndexOfAny( Stx, Etx ) != -1 )
-            throw new ArgumentException( "STX and ETX cannot be contained in the string.", nameof( text ) );
+        if( text.IndexOfAny( (byte) 0, Stx, Etx ) != -1 )
+            throw new ArgumentException( "NUL, STX and ETX cannot be contained in the string.", nameof( text ) );
         return new( text );
     }
 
@@ -272,6 +290,38 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <param name="text">Text to create a new <see cref="ReadOnlySeString"/> from.</param>
     /// <returns>A new instance of <see cref="ReadOnlySeString"/>, independent of the backing memory of <paramref name="text"/>.</returns>
     public static ReadOnlySeString FromText( ReadOnlySpan< char > text ) => new( text );
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct wrapping <paramref name="buffer"/> without copying.</summary>
+    /// <param name="buffer">Buffer holding raw SeString data.</param>
+    /// <param name="offset">Offset of the data in <paramref name="buffer"/>.</param>
+    /// <param name="length">Length of the data, excluding the <c>NUL</c> terminator.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> wrapping <paramref name="buffer"/>.</returns>
+    /// <remarks><c>buffer[offset + length]</c> must be <c>NUL</c>. <paramref name="buffer"/> must not be modified afterwards.</remarks>
+    /// <exception cref="ArgumentException">The data is not followed by <c>NUL</c>.</exception>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static ReadOnlySeString FromTerminatedBuffer( byte[] buffer, int offset, int length )
+    {
+        // Validate offset and length before reading the terminator
+        _ = buffer.AsMemory( offset, length );
+        
+        var end = offset + length;
+        if( (uint) end >= (uint) buffer.Length || buffer[ end ] != 0 )
+        {
+            ThrowNotTerminated();
+        }
+
+        return new( buffer, offset, length );
+    }
+
+    /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct wrapping <paramref name="buffer"/> without copying or checking.</summary>
+    /// <param name="buffer">Buffer holding raw SeString data.</param>
+    /// <param name="offset">Offset of the data in <paramref name="buffer"/>.</param>
+    /// <param name="length">Length of the data, excluding the <c>NUL</c> terminator.</param>
+    /// <returns>A new instance of <see cref="ReadOnlySeString"/> wrapping <paramref name="buffer"/>.</returns>
+    /// <remarks>The caller guarantees <c>buffer[offset + length]</c> is <c>NUL</c>, and that <paramref name="buffer"/> is never modified
+    /// afterwards. Otherwise, native code given this string reads past its end. Prefer <see cref="FromTerminatedBuffer"/>.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public static ReadOnlySeString FromTerminatedBufferUnchecked( byte[] buffer, int offset, int length ) => new( buffer, offset, length );
 
     /// <summary>Creates a new instance of the <see cref="ReadOnlySeString"/> struct from the given text in UTF-16, appending pre-existing instances of
     /// <see cref="ReadOnlySeString"/> as-is as necessary.</summary>
@@ -328,6 +378,37 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <returns>A new instance of <see cref="ReadOnlySeStringSpan"/>.</returns>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public ReadOnlySeStringSpan AsSpan() => new( Data.Span );
+
+    /// <summary>Gets a reference to the first byte for use with <c>fixed</c>.</summary>
+    /// <returns>A reference to the first byte or to a <c>NUL</c> byte if empty.</returns>
+    /// <remarks>The pinned pointer is always a valid null-terminated string, even if empty.</remarks>
+    [MethodImpl( MethodImplOptions.AggressiveInlining )]
+    public ref readonly byte GetPinnableReference()
+    {
+        if( Data.IsEmpty )
+        {
+            return ref EmptyTerminated[ 0 ];
+        }
+
+        return ref MemoryMarshal.GetReference( Data.Span );
+    }
+
+    private static ReadOnlyMemory< byte > CopyTerminated( ReadOnlySpan< byte > data )
+    {
+        if( data.IsEmpty )
+        {
+            return default;
+        }
+
+        var buffer = new byte[data.Length + 1];
+        data.CopyTo( buffer );
+        return buffer.AsMemory( 0, data.Length );
+    }
+
+    [DoesNotReturn]
+    private static void ThrowNotTerminated() =>
+        // ReSharper disable once NotResolvedInText
+        throw new ArgumentException( "SeString data must be followed by NUL.", "buffer" );
 
     /// <inheritdoc cref="ReadOnlySeStringSpan.Validate"/>
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
@@ -450,7 +531,7 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
             var subspan = _obj.Data.Span[ _nextIndex.. ];
             switch( subspan[ 0 ] )
             {
-                // A valid SeString never "contains a null byte; it is always the terminator.
+                // A valid SeString never contains a null byte; it is always the terminator.
                 // Take one byte, and consider it as an invalid payload.
                 case 0:
                     Current = (

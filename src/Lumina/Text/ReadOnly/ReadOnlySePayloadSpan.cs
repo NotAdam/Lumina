@@ -132,10 +132,10 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySePayloadSpan left, ReadOnlySePayloadSpan right )
     {
-        var res = new byte[left.EnvelopeByteLength + right.EnvelopeByteLength];
+        var res = new byte[left.EnvelopeByteLength + right.EnvelopeByteLength + 1];
         left.WriteEnvelopeTo( res );
         right.WriteEnvelopeTo( res.AsSpan( left.EnvelopeByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -144,10 +144,10 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySeString left, ReadOnlySePayloadSpan right )
     {
-        var res = new byte[left.ByteLength + right.EnvelopeByteLength];
+        var res = new byte[left.ByteLength + right.EnvelopeByteLength + 1];
         left.Data.CopyTo( res );
         right.WriteEnvelopeTo( res.AsSpan( left.ByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -156,10 +156,10 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySePayloadSpan left, ReadOnlySeString right )
     {
-        var res = new byte[left.EnvelopeByteLength + right.ByteLength];
+        var res = new byte[left.EnvelopeByteLength + right.ByteLength + 1];
         left.WriteEnvelopeTo( res );
         right.Data.CopyTo( res.AsMemory( left.EnvelopeByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -169,10 +169,10 @@ public readonly ref struct ReadOnlySePayloadSpan
     public static ReadOnlySeString operator +( ReadOnlySpan< char > left, ReadOnlySePayloadSpan right )
     {
         var lnb = Encoding.UTF8.GetByteCount( left );
-        var res = new byte[lnb + right.EnvelopeByteLength];
+        var res = new byte[lnb + right.EnvelopeByteLength + 1];
         Encoding.UTF8.GetBytes( left, res );
         right.WriteEnvelopeTo( res.AsSpan( lnb ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -182,10 +182,10 @@ public readonly ref struct ReadOnlySePayloadSpan
     public static ReadOnlySeString operator +( ReadOnlySePayloadSpan left, ReadOnlySpan< char > right )
     {
         var rnb = Encoding.UTF8.GetByteCount( right );
-        var res = new byte[left.EnvelopeByteLength + rnb];
+        var res = new byte[left.EnvelopeByteLength + rnb + 1];
         left.WriteEnvelopeTo( res );
         Encoding.UTF8.GetBytes( right, res.AsSpan( left.EnvelopeByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -194,10 +194,10 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySeStringSpan left, ReadOnlySePayloadSpan right )
     {
-        var res = new byte[left.ByteLength + right.EnvelopeByteLength];
+        var res = new byte[left.ByteLength + right.EnvelopeByteLength + 1];
         left.Data.CopyTo( res );
         right.WriteEnvelopeTo( res.AsSpan( left.ByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Returns a concatenated instance of <see cref="ReadOnlySeString"/>.</summary>
@@ -206,10 +206,10 @@ public readonly ref struct ReadOnlySePayloadSpan
     /// <returns>The concatenated string.</returns>
     public static ReadOnlySeString operator +( ReadOnlySePayloadSpan left, ReadOnlySeStringSpan right )
     {
-        var res = new byte[left.EnvelopeByteLength + right.ByteLength];
+        var res = new byte[left.EnvelopeByteLength + right.ByteLength + 1];
         left.WriteEnvelopeTo( res );
         right.Data.CopyTo( res.AsSpan( left.EnvelopeByteLength ) );
-        return new( res );
+        return new( res, 0, res.Length - 1 );
     }
 
     /// <summary>Creates a new instance of <see cref="ReadOnlySePayloadSpan"/> from a given UTF-8 string.</summary>
