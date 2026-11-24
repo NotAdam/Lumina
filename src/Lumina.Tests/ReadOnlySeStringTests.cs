@@ -35,7 +35,7 @@ public class ReadOnlySeStringTests
     public void ExtractTextTest()
     {
         var ss = ReadOnlySeString.Format( $"{_test}{_shy}{_ita1}{_test}{_hy}{_ita0}{_test}" );
-        Assert.Equal( "TestTest-Test", ss.ExtractText() );
+        Assert.Equal( "TestTest-Test", ss.ExtractText( false ) );
         Assert.Equal( "Test\u00adTest-Test", ss.ExtractText( true ) );
         Assert.Equal( "Test**Test-*Test", ss.ExtractText( false, "*" ) );
     }
