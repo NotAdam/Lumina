@@ -334,6 +334,7 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     public bool Validate() => AsSpan().Validate();
 
     /// <inheritdoc cref="ReadOnlySeStringSpan.ExtractText()"/>
+    [Obsolete( "Use ToString()" )]
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public string ExtractText() => AsSpan().ExtractText();
 

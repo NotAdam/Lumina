@@ -213,6 +213,7 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     /// <summary>Extracts the text contained in this instance of <see cref="ReadOnlySeStringSpan"/>, ignoring any payload that does not have a direct equivalent string
     /// representation.</summary>
     /// <returns>The extracted text.</returns>
+    [Obsolete( "Use ToString()" )]
     public string ExtractText() => ExtractText( false );
 
     /// <summary>Extracts the text contained in this instance of <see cref="ReadOnlySeStringSpan"/>, ignoring any payload that does not have a direct equivalent string
@@ -324,7 +325,7 @@ public readonly ref struct ReadOnlySeStringSpan : IFormattable
     /// <inheritdoc/>
     public string ToString( string? format, IFormatProvider? formatProvider = null ) => format switch
     {
-        null or "" or "t" => ExtractText(),
+        null or "" or "t" => ExtractText( false ),
         "y" => ExtractText( true ),
         "m" => ToMacroString(),
         "r" => throw new ArgumentOutOfRangeException( nameof( format ), format,

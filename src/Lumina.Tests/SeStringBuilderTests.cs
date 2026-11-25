@@ -434,7 +434,7 @@ public class SeStringBuilderTests
         };
         foreach( var row in addon )
         {
-            _outputHelper.WriteLine( $"{row.RowId}\t{row.Text.ExtractText()}\t{row.Text}" );
+            _outputHelper.WriteLine( $"{row.RowId}\t{row.Text}" );
             if( expected.TryGetValue( row.RowId, out var expectedSeString ) )
                 Assert.StrictEqual( expectedSeString, row.Text );
         }
