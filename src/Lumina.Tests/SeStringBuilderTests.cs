@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using Lumina.Data;
 using Lumina.Data.Files.Excel;
@@ -128,6 +129,26 @@ public class SeStringBuilderTests
                     .BeginMacro( MacroCode.Bold )
                     .EndMacro()
                     .EndMacro() );
+    }
+
+    [Fact]
+    public void ToReadOnlySeStringTest()
+    {
+        var ssb = new SeStringBuilder().Append( "Hello" ).AppendBold( "World" );
+        var expected = ssb.ToArray();
+        var str = ssb.ToReadOnlySeString();
+
+        Assert.True( str.Data.Span.SequenceEqual( expected ) );
+        Assert.Equal( "HelloWorld", str.ExtractText() );
+
+        ssb.Clear().Append( "Other" );
+        Assert.True( str.Data.Span.SequenceEqual( expected ) );
+
+        // null terminator
+        Assert.True( MemoryMarshal.TryGetArray( str.Data, out var segment ) );
+        Assert.Equal( 0, segment.Array![ segment.Offset + segment.Count ] );
+
+        Assert.True( new SeStringBuilder().ToReadOnlySeString().IsEmpty );
     }
 
     [Fact]
