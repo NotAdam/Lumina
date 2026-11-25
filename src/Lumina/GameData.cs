@@ -67,6 +67,10 @@ namespace Lumina
         /// </summary>
         public static ThreadLocal< GameData >? CurrentContext { get; private set; }
 
+        private ThreadLocal< GameData >? _currentContext;
+
+        private static readonly string[] ExpansionRepositoryNames = [ "ex1", "ex2", "ex3", "ex4", "ex5", "ex6", "ex7", "ex8", "ex9" ];
+
         /// <summary>
         /// Constructs a new Lumina object allowing access to game data.
         /// </summary>
@@ -124,7 +128,7 @@ namespace Lumina
 
         /// <inheritdoc cref="ParseFilePath(ReadOnlySpan{char})"/>
         public static ParsedFilePath? ParseFilePath( string path )
-            => ParseFilePath( path.AsSpan() );
+            => ParseFilePath( path.AsSpan(), path );
 
         /// <summary>
         /// Parses a game filesystem path and extracts information and hashes the path provided. 
@@ -132,6 +136,10 @@ namespace Lumina
         /// <param name="path">A game filesystem path</param>
         /// <returns>A <see cref="ParsedFilePath"/> which contains extracted info from the path, along with the hashes used to access the file index</returns>
         public static ParsedFilePath? ParseFilePath( ReadOnlySpan<char> path )
+            => ParseFilePath( path, null );
+
+        // source is the string backing path (if any)
+        private static ParsedFilePath? ParseFilePath( ReadOnlySpan<char> path, string? source )
         {
             if( path.IsWhiteSpace() )
                 return null;
@@ -169,12 +177,28 @@ namespace Lumina
 
             return new ParsedFilePath
             {
-                Category = category.ToString(),
+                Category = GetCategoryName( category ),
                 IndexHash = hash,
                 Index2Hash = hash2,
-                Repository = repo.ToString(),
-                Path = lowerPath.ToString(),
+                Repository = GetRepositoryName( repo ),
+                Path = source != null && lowerPath.SequenceEqual( source ) ? source : lowerPath.ToString(),
             };
+        }
+
+        private static string GetCategoryName( ReadOnlySpan< char > category ) =>
+            Repository.CategoryNameToIdMap.GetAlternateLookup< ReadOnlySpan< char > >().TryGetValue( category, out var name, out _ )
+                ? name
+                : category.ToString();
+
+        private static string GetRepositoryName( ReadOnlySpan< char > repo )
+        {
+            if( repo is "ffxiv" )
+                return "ffxiv";
+
+            if( repo.Length == 3 && repo.StartsWith( "ex" ) && repo[ 2 ] is >= '1' and <= '9' )
+                return ExpansionRepositoryNames[ repo[ 2 ] - '1' ];
+
+            return repo.ToString();
         }
 
         /// <inheritdoc/>
@@ -422,7 +446,7 @@ namespace Lumina
 
         internal static void SetCurrentContext( GameData gameData )
         {
-            CurrentContext = new(() => gameData);
+            CurrentContext = gameData._currentContext ??= new( () => gameData );
         }
     }
 }

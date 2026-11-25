@@ -112,11 +112,13 @@ public class RawExcelSheet : IExcelSheet
 
             var newPage = _pages[ pageIdx ] = new( this, fileData.Data, headerFile.Header.DataOffset, hasSubrows );
 
-            // If row count information from exh file is incorrect, cope with it.
-            if( i + fileData.RowData.Count > _rowOffsetLookupTable.Length )
-                Array.Resize( ref _rowOffsetLookupTable, i + fileData.RowData.Count );
+            var rowOffsets = fileData.RowOffsets ?? [.. fileData.RowData.Values];
 
-            foreach( var rowPtr in fileData.RowData.Values )
+            // If row count information from exh file is incorrect, cope with it.
+            if( i + rowOffsets.Length > _rowOffsetLookupTable.Length )
+                Array.Resize( ref _rowOffsetLookupTable, i + rowOffsets.Length );
+
+            foreach( var rowPtr in rowOffsets )
             {
                 var subrowCount = hasSubrows ? newPage.ReadUInt16( rowPtr.Offset + 4 ) : (ushort) 1;
                 var rowOffset = rowPtr.Offset + 6;

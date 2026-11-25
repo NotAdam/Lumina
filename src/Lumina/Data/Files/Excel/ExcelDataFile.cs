@@ -1,8 +1,11 @@
 using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Threading;
 using Lumina.Data.Attributes;
 using Lumina.Data.Structs.Excel;
 using Lumina.Extensions;
@@ -12,13 +15,45 @@ namespace Lumina.Data.Files.Excel
     [FileExtension( ".exd" )]
     public class ExcelDataFile : FileResource
     {
+        private Dictionary< uint, ExcelDataOffset >? _rowData;
+
         public ExcelDataFile()
         {
         }
 
         public ExcelDataHeader Header { get; protected set; }
 
-        public Dictionary< uint, ExcelDataOffset > RowData { get; protected set; } = null!;
+        /// <summary>
+        /// The row offsets in file order, or <see langword="null"/> if <see cref="RowData"/> has been assigned instead.
+        /// </summary>
+        internal ExcelDataOffset[]? RowOffsets { get; private set; }
+
+        /// <remarks>
+        /// Built on first access, sheets read <see cref="RowOffsets"/> instead.
+        /// </remarks>
+        public Dictionary< uint, ExcelDataOffset > RowData
+        {
+            get
+            {
+                if( _rowData == null && RowOffsets != null )
+                {
+                    var rowData = new Dictionary< uint, ExcelDataOffset >( RowOffsets.Length );
+                    foreach( var row in RowOffsets )
+                    {
+                        rowData.Add( row.RowId, row );
+                    }
+
+                    Interlocked.CompareExchange( ref _rowData, rowData, null );
+                }
+
+                return _rowData!;
+            }
+            protected set
+            {
+                _rowData = value;
+                RowOffsets = null;
+            }
+        }
         
         internal readonly object ReaderLock = new();
 
@@ -42,10 +77,18 @@ namespace Lumina.Data.Files.Excel
             var offsetSize = Unsafe.SizeOf< ExcelDataOffset >();
             var count = Header.IndexSize / offsetSize;
 
-            var rowDataTmp = new ExcelDataOffset[count];
-            for( int i = 0; i < count; i++ ) rowDataTmp[ i ] = ExcelDataOffset.Read( Reader );
-            
-            RowData = rowDataTmp.ToDictionary( id => id.RowId, row => row );
+            var rowOffsets = GC.AllocateUninitializedArray< ExcelDataOffset >( (int)count );
+            Reader.BaseStream.ReadExactly( MemoryMarshal.AsBytes( rowOffsets.AsSpan() ) );
+
+            if( Reader.ConvertEndianness )
+            {
+                Debug.Assert( Unsafe.SizeOf< ExcelDataOffset >() == 2 * sizeof( uint ) );
+                var values = MemoryMarshal.Cast< ExcelDataOffset, uint >( rowOffsets.AsSpan() );
+                BinaryPrimitives.ReverseEndianness( values, values );
+            }
+
+            _rowData = null;
+            RowOffsets = rowOffsets;
         }
 
         public Span< byte > GetSpanForRow( uint rowId )

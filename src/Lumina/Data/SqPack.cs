@@ -137,12 +137,7 @@ namespace Lumina.Data
         /// <returns>The corresponding file resource.</returns>
         public T ReadFile< T >( long offset ) where T : FileResource
         {
-            var cacheBehaviour = FileOptionsAttribute.FileCacheBehaviour.None;
-
-            if( typeof( T ).GetCustomAttribute< FileOptionsAttribute >() is { } fileOpts )
-                cacheBehaviour = fileOpts.CacheBehaviour;
-
-            if( !_gameData.Options.CacheFileResources || cacheBehaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
+            if( !_gameData.Options.CacheFileResources || CacheOptions< T >.Behaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
                 using var rsh = GetStreamHolder();
                 return rsh.Stream.ReadFile< T >( offset );
@@ -181,5 +176,12 @@ namespace Lumina.Data
 
         /// <summary>Create a stream to read this file, using the shared file handle</summary>
         internal SqPackStream CreateStream() => new( OpenSharedStream(), SqPackHeader.platformId );
+
+        /// <summary>Per-type cache of <see cref="FileOptionsAttribute"/>, avoiding a reflection lookup on every read.</summary>
+        private static class CacheOptions< T > where T : FileResource
+        {
+            public static readonly FileOptionsAttribute.FileCacheBehaviour Behaviour =
+                typeof( T ).GetCustomAttribute< FileOptionsAttribute >()?.CacheBehaviour ?? FileOptionsAttribute.FileCacheBehaviour.None;
+        }
     }
 }
