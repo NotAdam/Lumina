@@ -1,5 +1,6 @@
 using Lumina.Data.Parsing;
 using Lumina.Data.Structs;
+using Lumina.Extensions;
 using System;
 using System.Buffers.Binary;
 using System.Collections.Generic;
@@ -88,13 +89,11 @@ namespace Lumina.Data
         /// <returns>The file data as a structure</returns>
         public T ReadStructure< T >() where T : struct
         {
-            var data = ReadBytes( Unsafe.SizeOf< T >() );
-            
-            if( ConvertEndianness )
-                ConvertEndian(typeof(T), data );
+            var structure = BinaryReaderExtensions.ReadStructure< T >( this );
 
-            T structure = MemoryMarshal.Read< T >( data );
-            
+            if( ConvertEndianness )
+                ConvertEndian( typeof( T ), MemoryMarshal.AsBytes( new Span< T >( ref structure ) ) );
+
             return structure;
         }
 

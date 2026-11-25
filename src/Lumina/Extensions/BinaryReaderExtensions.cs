@@ -19,9 +19,13 @@ namespace Lumina.Extensions
         /// <returns>The file data as a structure</returns>
         public static T ReadStructure< T >( this BinaryReader br ) where T : struct
         {
-            ReadOnlySpan< byte > data = br.ReadBytes( Unsafe.SizeOf< T >() );
+            if( RuntimeHelpers.IsReferenceOrContainsReferences< T >() )
+                return MemoryMarshal.Read< T >( br.ReadBytes( Unsafe.SizeOf< T >() ) );
 
-            return MemoryMarshal.Read< T >( data );
+            // read directly instead of allocating temp byte[]
+            Unsafe.SkipInit( out T structure );
+            br.BaseStream.ReadExactly( MemoryMarshal.CreateSpan( ref Unsafe.As< T, byte >( ref structure ), Unsafe.SizeOf< T >() ) );
+            return structure;
         }
 
         /// <summary>

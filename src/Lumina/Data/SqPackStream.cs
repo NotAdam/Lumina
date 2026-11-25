@@ -119,7 +119,7 @@ namespace Lumina.Data
 
         private void ReadStandardFile( FileResource resource, byte[] buffer, MemoryStream ms )
         {
-            var blocks = Reader.ReadStructures< DatStdFileBlockInfos >( (int)resource.FileInfo.BlockCount );
+            var blocks = Reader.ReadStructuresAsSpan< DatStdFileBlockInfos >( (int)resource.FileInfo.BlockCount );
 
             foreach( var block in blocks )
             {
