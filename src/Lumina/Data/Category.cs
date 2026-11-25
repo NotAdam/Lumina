@@ -8,6 +8,11 @@ namespace Lumina.Data
     public class Category
     {
         private readonly GameData _gameData;
+        private Dictionary< ulong, IndexHashTableEntry >? _indexHashTableEntries;
+        private Dictionary< uint, Index2HashTableEntry >? _index2HashTableEntries;
+        private bool _indexHashTableEntriesSet;
+        private bool _index2HashTableEntriesSet;
+
         public DirectoryInfo RootDir { get; }
 
         public byte CategoryId { get; }
@@ -20,8 +25,28 @@ namespace Lumina.Data
 
         public SqPackIndex Index { get; }
 
-        public Dictionary< UInt64, IndexHashTableEntry >? IndexHashTableEntries { get; set; }
-        public Dictionary< uint, Index2HashTableEntry >? Index2HashTableEntries { get; set; }
+        // unless assigned, these forward to the index, which only builds its dictionaries on demand
+        public Dictionary< UInt64, IndexHashTableEntry >? IndexHashTableEntries
+        {
+            get => _indexHashTableEntriesSet ? _indexHashTableEntries
+                : Index.IsIndex2 ? _indexHashTableEntries ??= new() : Index.HashTableEntries;
+            set
+            {
+                _indexHashTableEntries = value;
+                _indexHashTableEntriesSet = true;
+            }
+        }
+
+        public Dictionary< uint, Index2HashTableEntry >? Index2HashTableEntries
+        {
+            get => _index2HashTableEntriesSet ? _index2HashTableEntries
+                : Index.IsIndex2 ? Index.HashTableEntries2 : null;
+            set
+            {
+                _index2HashTableEntries = value;
+                _index2HashTableEntriesSet = true;
+            }
+        }
 
         public Dictionary< byte, SqPack > DatFiles { get; }
 
@@ -58,55 +83,21 @@ namespace Lumina.Data
                     DatFiles[ id ] = new SqPack( fileInfo, _gameData );
                 }
             }
-
-            // postprocess indexes into one hashlist
-            IndexHashTableEntries = new Dictionary< ulong, IndexHashTableEntry >();
-
-            if( index.IsIndex2 )
-            {
-                Index2HashTableEntries = index.HashTableEntries2;
-            }
-            else
-            {
-                IndexHashTableEntries = index.HashTableEntries;
-            }
         }
 
-        public bool FileExists( UInt64 hash )
-        {
-            if( IndexHashTableEntries == null )
-            {
-                return false;
-            }
-            
-            return IndexHashTableEntries.ContainsKey( hash );
-        }
+        public bool FileExists( UInt64 hash ) => TryGetEntry( hash, out _ );
 
-        public bool FileExists( uint hash )
-        {
-            if( Index2HashTableEntries == null )
-            {
-                return false;
-            }
-            
-            return Index2HashTableEntries.ContainsKey( hash );
-        }
+        public bool FileExists( uint hash ) => TryGetEntry( hash, out _ );
 
         public bool TryGetFileDatOffset( ulong hash, out byte dataFileId, out long offset )
         {
-            if( IndexHashTableEntries == null )
-            {
-                goto cleanup;
-            }
-            
-            if( IndexHashTableEntries.TryGetValue( hash, out var hashTableEntry ) )
+            if( TryGetEntry( hash, out var hashTableEntry ) )
             {
                 dataFileId = hashTableEntry.DataFileId;
                 offset = hashTableEntry.Offset;
                 return true;
             }
 
-            cleanup:
             dataFileId = 0;
             offset = 0;
 
@@ -115,23 +106,67 @@ namespace Lumina.Data
 
         public bool TryGetFileDatOffset( uint hash, out byte dataFileId, out long offset )
         {
-            if( Index2HashTableEntries == null )
-            {
-                goto cleanup;
-            }
-            
-            if( Index2HashTableEntries.TryGetValue( hash, out var hashTableEntry ) )
+            if( TryGetEntry( hash, out var hashTableEntry ) )
             {
                 dataFileId = hashTableEntry.DataFileId;
                 offset = hashTableEntry.Offset;
                 return true;
             }
 
-            cleanup:
             dataFileId = 0;
             offset = 0;
 
             return false;
+        }
+
+        private bool TryGetEntry( ulong hash, out IndexHashTableEntry entry )
+        {
+            if( _indexHashTableEntriesSet )
+            {
+                if( _indexHashTableEntries is { } dict )
+                {
+                    return dict.TryGetValue( hash, out entry );
+                }
+
+                entry = default;
+                return false;
+            }
+
+            // index2 categories expose an empty index1 table, which only has entries if a consumer added them
+            if( Index.IsIndex2 )
+            {
+                if( _indexHashTableEntries is { } emptyByDefault )
+                {
+                    return emptyByDefault.TryGetValue( hash, out entry );
+                }
+
+                entry = default;
+                return false;
+            }
+
+            return Index.TryGetEntry( hash, out entry );
+        }
+
+        private bool TryGetEntry( uint hash, out Index2HashTableEntry entry )
+        {
+            if( _index2HashTableEntriesSet )
+            {
+                if( _index2HashTableEntries is { } dict )
+                {
+                    return dict.TryGetValue( hash, out entry );
+                }
+
+                entry = default;
+                return false;
+            }
+
+            if( !Index.IsIndex2 )
+            {
+                entry = default;
+                return false;
+            }
+
+            return Index.TryGetEntry( hash, out entry );
         }
 
         public bool TryGetFileDatOffset( ParsedFilePath path, out byte dataFileId, out long offset )
