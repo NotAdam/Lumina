@@ -9,6 +9,10 @@ jobs:
   build:
     name: Create Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v6.0.0
@@ -40,5 +44,10 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         name: Lumina ${{ github.ref_name }}
+    - name: NuGet login
+      uses: NuGet/login@v1
+      id: nuget_login
+      with:
+        user: NotAdam
     - name: publish nuget package
-      run: dotnet nuget push ./src/Lumina/bin/Release/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push ./src/Lumina/bin/Release/*.nupkg -k ${{ steps.nuget_login.outputs.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json --skip-duplicate
