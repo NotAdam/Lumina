@@ -3,8 +3,10 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using Lumina.Data.Attributes;
 using Lumina.Data.Structs;
+using Microsoft.Win32.SafeHandles;
 
 namespace Lumina.Data
 {
@@ -19,6 +21,9 @@ namespace Lumina.Data
     {
         private readonly GameData _gameData;
         private readonly ConcurrentDictionary< long, WeakReference< FileResource > > _cache;
+        private readonly object _handleLock = new();
+        private SafeFileHandle? _handle;
+        private long _length;
 
         /// <summary>
         /// Where the actual file is located on disk
@@ -38,7 +43,7 @@ namespace Lumina.Data
         /// <summary>
         /// Gets the file header of this SqPack file.
         /// </summary>
-        public SqPackHeader SqPackHeader { get; private set; }
+        public SqPackHeader SqPackHeader { get; }
 
         /// <summary>
         /// PC and PS4 are LE, PS3 is BE
@@ -70,8 +75,50 @@ namespace Lumina.Data
 
             File = file;
 
-            using var sh = GetStreamHolder();
-            SqPackHeader = sh.Stream.GetSqPackHeader();
+            try
+            {
+                // todo: platform is read from header so should probably clean this up, but w/e for now
+                using var stream = new SqPackStream( OpenSharedStream(), PlatformId.Win32 );
+                SqPackHeader = stream.GetSqPackHeader();
+            }
+            catch
+            {
+                CloseHandle();
+                throw;
+            }
+        }
+
+        /// <summary>Opens a stream over the file handle shared by all readers of this file.</summary>
+        /// <remarks>Disposing the stream does not close the shared handle.</remarks>
+        internal SharedHandleStream OpenSharedStream()
+        {
+            var handle = Volatile.Read( ref _handle );
+            if( handle is null || handle.IsClosed )
+            {
+                lock( _handleLock )
+                {
+                    handle = _handle;
+                    if( handle is null || handle.IsClosed )
+                    {
+                        handle = System.IO.File.OpenHandle( File.FullName, FileMode.Open, FileAccess.Read,
+                            FileShare.ReadWrite | FileShare.Delete, FileOptions.RandomAccess );
+                        _length = RandomAccess.GetLength( handle );
+                        Volatile.Write( ref _handle, handle );
+                    }
+                }
+            }
+
+            return new( handle, _length );
+        }
+
+        /// <summary>Closes the shared file handle. It is reopened on the next read.</summary>
+        internal void CloseHandle()
+        {
+            lock( _handleLock )
+            {
+                _handle?.Dispose();
+                _handle = null;
+            }
         }
 
         /// <summary>Gets the file metadata of a file at the given offset.</summary>
@@ -130,6 +177,9 @@ namespace Lumina.Data
         private SqPackStreamPool.StreamHolder GetStreamHolder() =>
             _gameData.StreamPool is { } streamPool
                 ? streamPool.RentScoped( this )
-                : new( new SqPackStream( File, SqPackHeader.platformId ) );
+                : new( CreateStream() );
+
+        /// <summary>Create a stream to read this file, using the shared file handle</summary>
+        internal SqPackStream CreateStream() => new( OpenSharedStream(), SqPackHeader.platformId );
     }
 }

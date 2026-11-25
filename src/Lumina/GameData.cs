@@ -399,6 +399,19 @@ namespace Lumina
             {
                 StreamPool?.Dispose();
                 StreamPool = null;
+
+                // close shared handles
+                // nb: reopened if the same instance is reused, not sure if best idea but i dont think it has problematic side effects
+                foreach( var repo in Repositories.Values )
+                {
+                    foreach( var categories in repo.Categories.Values )
+                    {
+                        foreach( var category in categories )
+                        {
+                            category.CloseHandles();
+                        }
+                    }
+                }
             }
         }
 

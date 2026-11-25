@@ -207,5 +207,14 @@ namespace Lumina.Data
         {
             return DatFiles.TryGetValue( datId, out var dat ) ? dat : null;
         }
+
+        internal void CloseHandles()
+        {
+            Index.CloseHandle();
+            foreach( var dat in DatFiles.Values )
+            {
+                dat.CloseHandle();
+            }
+        }
     }
 }

@@ -49,7 +49,7 @@ public sealed class SqPackStreamPool : IDisposable
     internal StreamHolder RentScoped( SqPack dat )
     {
         if( _pools is not { } pools )
-            return new( new SqPackStream( dat.File, dat.SqPackHeader.platformId ) );
+            return new( dat.CreateStream() );
 
         var pool = pools.GetOrAdd(
             dat,
@@ -103,7 +103,7 @@ public sealed class SqPackStreamPool : IDisposable
             _sqpack = sqpack;
         }
 
-        public SqPackStream Create() => new( _sqpack.File, _sqpack.SqPackHeader.platformId );
+        public SqPackStream Create() => _sqpack.CreateStream();
 
         public bool Return( SqPackStream obj ) => _owner._pools is not null && obj.BaseStream.CanRead;
     }
