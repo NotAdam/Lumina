@@ -57,7 +57,8 @@ namespace Lumina.Data
             PlatformId platform,
             SqPackIndex index,
             DirectoryInfo rootDir,
-            GameData gameData )
+            GameData gameData,
+            IReadOnlyDictionary< string, FileInfo >? rootDirFiles = null )
         {
             _gameData = gameData;
             CategoryId = category;
@@ -74,11 +75,11 @@ namespace Lumina.Data
             {
                 var datName = Repository.BuildDatStr( CategoryId, Expansion, Chunk, Platform, $"dat{id}" );
 
-                var path = Path.Combine( RootDir.FullName, datName );
+                var fileInfo = rootDirFiles is null
+                    ? new FileInfo( Path.Combine( RootDir.FullName, datName ) )
+                    : rootDirFiles.GetValueOrDefault( datName );
 
-                var fileInfo = new FileInfo( path );
-
-                if( fileInfo.Exists )
+                if( fileInfo is { Exists: true } )
                 {
                     DatFiles[ id ] = new SqPack( fileInfo, _gameData );
                 }

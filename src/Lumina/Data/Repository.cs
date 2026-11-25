@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -168,6 +169,38 @@ namespace Lumina.Data
         /// </summary>
         private Dictionary< byte, List< Category > > SetupIndexes( bool multithread )
         {
+            // list the directory once instead of checking every possible index name for existence
+            var platform = _gameData.Options.CurrentPlatform;
+            var indexSuffix = $".{platform.ToString().ToLowerInvariant()}.index";
+            var rootDirFiles = new Dictionary< string, FileInfo >( StringComparer.OrdinalIgnoreCase );
+            var indexChunks = new HashSet< (byte Category, byte Chunk) >();
+            foreach( var fileInfo in RootDir.EnumerateFiles() )
+            {
+                rootDirFiles.TryAdd( fileInfo.Name, fileInfo );
+
+                // 0a0000.win32.index or 0a0000.win32.index2
+                var name = fileInfo.Name.AsSpan();
+                if( name.Length < 6 + indexSuffix.Length )
+                {
+                    continue;
+                }
+
+                var suffix = name[ 6.. ];
+                if( !suffix.StartsWith( indexSuffix, StringComparison.OrdinalIgnoreCase ) ||
+                    !( suffix.Length == indexSuffix.Length || suffix.Length == indexSuffix.Length + 1 && suffix[ ^1 ] == '2' ) )
+                {
+                    continue;
+                }
+
+                if( byte.TryParse( name[ ..2 ], NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var catId ) &&
+                    byte.TryParse( name[ 2..4 ], NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var expansion ) &&
+                    byte.TryParse( name[ 4..6 ], NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var chunkId ) &&
+                    expansion == ExpansionId )
+                {
+                    indexChunks.Add( ( catId, chunkId ) );
+                }
+            }
+
             Dictionary< byte, Task < Category[] > > tasks = new();
             foreach( var cat in CategoryNameToIdMap )
             {
@@ -178,16 +211,15 @@ namespace Lumina.Data
                 // so we don't need to discover those here
                 for( int chunk = 0; chunk < 255; chunk++ )
                 {
-                    var indexFiles = FindIndexes( cat.Value, ExpansionId, chunk );
-
-                    if( indexFiles.Count == 0 )
+                    if( !indexChunks.Contains( ( cat.Value, (byte)chunk ) ) )
                     {
                         continue;
                     }
 
-                    // grab first index from the discovered indexes, this should be index if you have both
+                    // grab the index from the discovered indexes, this should be index if you have both
                     // otherwise it _should_ be index2
-                    var file = indexFiles.FirstOrDefault();
+                    var file = rootDirFiles.GetValueOrDefault( BuildDatStr( cat.Value, ExpansionId, chunk, platform, "index" ) ) ??
+                        rootDirFiles.GetValueOrDefault( BuildDatStr( cat.Value, ExpansionId, chunk, platform, "index2" ) );
                     if( file == null )
                     {
                         continue;
@@ -200,10 +232,11 @@ namespace Lumina.Data
                             cat.Value,
                             ExpansionId,
                             chunk1,
-                            _gameData.Options.CurrentPlatform,
+                            platform,
                             new SqPackIndex( file, _gameData ),
                             RootDir,
-                            _gameData ) ) );
+                            _gameData,
+                            rootDirFiles ) ) );
                     }
                     else
                     {
@@ -211,10 +244,11 @@ namespace Lumina.Data
                             cat.Value,
                             ExpansionId,
                             chunk,
-                            _gameData.Options.CurrentPlatform,
+                            platform,
                             new SqPackIndex( file, _gameData ),
                             RootDir,
-                            _gameData ) ) );
+                            _gameData,
+                            rootDirFiles ) ) );
                     }
                 }
 
