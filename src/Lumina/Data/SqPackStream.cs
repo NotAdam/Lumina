@@ -1,4 +1,5 @@
 using System;
+using System.Buffers;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -42,7 +43,9 @@ namespace Lumina.Data
             return Reader.ReadStructure< SqPackFileInfo >();
         }
 
-        public T ReadFile< T >( long offset ) where T : FileResource
+        public T ReadFile< T >( long offset ) where T : FileResource => ReadFile< T >( offset, null, null );
+
+        internal T ReadFile< T >( long offset, ulong? indexHash, SqPack.RsfFileDelegate? rsfHeaderProvider ) where T : FileResource
         {
             BaseStream.Position = offset;
 
@@ -86,7 +89,12 @@ namespace Lumina.Data
             switch( fileInfo.Type )
             {
                 case FileType.Empty:
-                    throw new FileNotFoundException( $"The file located at 0x{offset:x} is empty." );
+                    // RSFs have the first 64 bytes missing
+                    if( indexHash is not { } hash || rsfHeaderProvider is null || !rsfHeaderProvider( hash, out var rsfHeader ) )
+                        throw new FileNotFoundException( $"The file located at 0x{offset:x} is empty." );
+
+                    ReadRsfFile( file, buffer, rsfHeader.Span );
+                    break;
 
                 case FileType.Standard:
                     ReadStandardFile( file, buffer, ms );
@@ -128,6 +136,29 @@ namespace Lumina.Data
 
             // reset position ready for reading
             ms.Position = 0;
+        }
+
+        private void ReadRsfFile( FileResource resource, byte[] buffer, ReadOnlySpan< byte > rsfHeader )
+        {
+            // for empty files, block count has the size of the compressed data
+            var compressedSize = checked( (int)resource.FileInfo.BlockCount );
+            if( rsfHeader.Length > compressedSize )
+                throw new InvalidDataException( $"RSF header ({rsfHeader.Length} bytes) is larger than the file data ({compressedSize} bytes)." );
+
+            var compressed = ArrayPool< byte >.Shared.Rent( compressedSize );
+            try
+            {
+                BaseStream.Position = resource.FileInfo.Offset + resource.FileInfo.HeaderSize;
+                BaseStream.ReadExactly( compressed, 0, compressedSize );
+                rsfHeader.CopyTo( compressed );
+
+                using var zlibStream = new ZLibStream( new MemoryStream( compressed, 0, compressedSize, false ), CompressionMode.Decompress );
+                zlibStream.ReadExactly( buffer );
+            }
+            finally
+            {
+                ArrayPool< byte >.Shared.Return( compressed );
+            }
         }
 
         private unsafe void ReadModelFile( FileResource resource, byte[] buffer, MemoryStream ms )

@@ -210,7 +210,7 @@ namespace Lumina.Data
                 return null;
             }
 
-            var file = GetFile< T >( dataFileId, offset );
+            var file = DatFiles[ dataFileId ].ReadFile< T >( offset, path.IndexHash );
 
             file.FilePath = path;
 

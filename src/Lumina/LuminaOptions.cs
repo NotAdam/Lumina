@@ -37,6 +37,12 @@ namespace Lumina
         public ExcelModule.ResolveRsvDelegate? RsvResolver { get; set; }
 
         /// <summary>
+        /// The resolver delegate to use when loading RSF files to provide the missing header bytes.
+        /// Leave <see langword="null"/> if you don't need it, RSF files then fail to load like any other empty file.
+        /// </summary>
+        public SqPack.RsfFileDelegate? RsfHeaderProvider { get; set; }
+
+        /// <summary>
         /// If enabled, resources will be loaded using multiple threads.
         /// </summary>
         public bool LoadMultithreaded { get; set; } = false;

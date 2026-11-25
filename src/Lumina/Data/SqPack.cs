@@ -25,6 +25,12 @@ namespace Lumina.Data
         private SafeFileHandle? _handle;
         private long _length;
 
+        /// <summary>Provides the missing data at the start of a RSF'd file</summary>
+        /// <param name="indexHash">The index1 hash of the file path, e.g. <see cref="ParsedFilePath.IndexHash"/></param>
+        /// <param name="header">The bytes that replace the start of the compressed file data</param>
+        /// <returns><see langword="true"/> if a header was provided for the file</returns>
+        public delegate bool RsfFileDelegate( ulong indexHash, out ReadOnlyMemory< byte > header );
+
         /// <summary>
         /// Where the actual file is located on disk
         /// </summary>
@@ -135,12 +141,19 @@ namespace Lumina.Data
         /// <param name="offset">The byte offset of a file in this SqPack .dat file.</param>
         /// <typeparam name="T">The file resource type.</typeparam>
         /// <returns>The corresponding file resource.</returns>
-        public T ReadFile< T >( long offset ) where T : FileResource
+        public T ReadFile< T >( long offset ) where T : FileResource => ReadFile< T >( offset, null );
+
+        /// <summary>Reads the file at the given offset.</summary>
+        /// <param name="offset">The byte offset of a file in this SqPack .dat file.</param>
+        /// <param name="indexHash">The index1 hash of the file path, if known. Required to resolve RSF files.</param>
+        /// <typeparam name="T">The file resource type.</typeparam>
+        /// <returns>The corresponding file resource.</returns>
+        internal T ReadFile< T >( long offset, ulong? indexHash ) where T : FileResource
         {
             if( !_gameData.Options.CacheFileResources || CacheOptions< T >.Behaviour == FileOptionsAttribute.FileCacheBehaviour.Never )
             {
                 using var rsh = GetStreamHolder();
-                return rsh.Stream.ReadFile< T >( offset );
+                return rsh.Stream.ReadFile< T >( offset, indexHash, _gameData.Options.RsfHeaderProvider );
             }
 
             // WeakReference ctor accepts null.
@@ -154,7 +167,7 @@ namespace Lumina.Data
                     return value2;
 
                 using var sh = GetStreamHolder();
-                var f = sh.Stream.ReadFile< T >( offset );
+                var f = sh.Stream.ReadFile< T >( offset, indexHash, _gameData.Options.RsfHeaderProvider );
                 weakRef.SetTarget( f );
                 return f;
             }
