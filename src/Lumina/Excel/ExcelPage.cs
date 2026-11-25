@@ -32,7 +32,6 @@ public sealed class ExcelPage
     public Language Language => Sheet.Language;
 
     private readonly byte[] data;
-    private ReadOnlyMemory< byte > Data => data;
 
     private readonly ushort dataOffset;
     private readonly bool hasSubrows;
@@ -68,9 +67,8 @@ public sealed class ExcelPage
     public ReadOnlySeString ReadString( nuint offset, nuint structOffset )
     {
         offset = ReadUInt32( offset ) + GetStringBlockOffset( structOffset );
-        var data = Data[ (int) offset.. ];
-        var stringLength = data.Span.IndexOf( (byte) 0 );
-        var ret = ReadOnlySeString.FromTerminatedBufferUnchecked( this.data, (int) offset, stringLength );
+        var stringLength = data.AsSpan( (int) offset ).IndexOf( (byte) 0 );
+        var ret = new ReadOnlySeString( data, (int) offset, stringLength );
         if( ret.IsRsv() && Module.RsvResolver != null )
         {
             if( Module.RsvResolver.Invoke( ret, out var resolvedString ) )

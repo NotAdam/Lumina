@@ -23,9 +23,6 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     /// <summary>ETX, which is used as a sentinel value in a SeString to signify that a macro payload will end.</summary>
     public const byte Etx = 3;
 
-    // Pin target for empty strings
-    private static readonly byte[] EmptyTerminated = [ 0 ];
-
     /// <summary>Read-only byte data for the SeString.</summary>
     /// <remarks>If non-empty, the byte right after the end is always <c>NUL</c>.</remarks>
     public readonly ReadOnlyMemory< byte > Data;
@@ -385,9 +382,10 @@ public readonly struct ReadOnlySeString : IEquatable< ReadOnlySeString >, IReadO
     [MethodImpl( MethodImplOptions.AggressiveInlining )]
     public ref readonly byte GetPinnableReference()
     {
+        // return ref from .data rather than pinning something
         if( Data.IsEmpty )
         {
-            return ref EmptyTerminated[ 0 ];
+            return ref MemoryMarshal.GetReference( "\0"u8 );
         }
 
         return ref MemoryMarshal.GetReference( Data.Span );
